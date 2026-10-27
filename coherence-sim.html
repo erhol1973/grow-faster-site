@@ -1,0 +1,542 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Coherence Flow Simulation</title>
+<meta name="robots" content="noindex">
+<style>
+body{margin:0}
+
+/* Layout: control bar, BPMN pool (7 lanes) with measuring panel on the right, executive comparison below */
+:root{
+  --bg:#FFFFFF; --surface:#FFFFFF; --ink:#0E1B2C; --navy:#0B2545; --muted:#5B6B80; --line:#D9E1EA; --lane:#F1F4F8; --lane2:#FFFFFF;
+  --token:#0A8FD0; --token-soft:rgba(10,143,208,.16); --bad:#A33A3A; --bad-soft:rgba(163,58,58,.10); --good:#0B6E4F; --good-soft:rgba(11,110,79,.10); --visit:#E1F1FA;
+  --f-display:"Aptos","Hanken Grotesk","Segoe UI",Helvetica,Arial,sans-serif; --f-mono:ui-monospace,"Cascadia Mono",Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0A1220; --surface:#101B2D; --ink:#E7EEF7; --navy:#CFE2F7; --muted:#93A4BA; --line:#24344B; --lane:#0E1828; --lane2:#122036;
+  --token:#38BDF2; --token-soft:rgba(56,189,242,.18); --bad:#E58A8A; --bad-soft:rgba(229,138,138,.12); --good:#5FD3A8; --good-soft:rgba(95,211,168,.12); --visit:#123552; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0A1220; --surface:#101B2D; --ink:#E7EEF7; --navy:#CFE2F7; --muted:#93A4BA; --line:#24344B; --lane:#0E1828; --lane2:#122036;
+  --token:#38BDF2; --token-soft:rgba(56,189,242,.18); --bad:#E58A8A; --bad-soft:rgba(229,138,138,.12); --good:#5FD3A8; --good-soft:rgba(95,211,168,.12); --visit:#123552; color-scheme:dark}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+#exec-body{display:grid;gap:24px}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-display);font-size:15px;line-height:1.5}
+.page{max-width:1880px;margin:0 auto;padding-block:4px 8px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:grid;gap:22px}
+.k{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+h1{font-size:clamp(26px,3vw,38px);line-height:1.12;margin:6px 0 8px;color:var(--navy);font-weight:700;text-wrap:balance;letter-spacing:-.01em}
+.lede{margin:0;max-width:78ch;color:var(--muted);font-size:16.5px}
+.bar{display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center;justify-content:space-between;background:var(--surface);border:1px solid var(--line);padding:10px 12px}
+.tabs,.ctl,.opts{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+button{font:inherit;cursor:pointer}
+.tab{border:1px solid var(--line);background:transparent;color:var(--ink);padding:9px 14px;font-weight:600;font-size:13px;letter-spacing:.04em}
+.tab[aria-selected="true"]{background:var(--navy);color:var(--surface);border-color:var(--navy)}
+.btn{border:1px solid var(--line);background:var(--surface);color:var(--ink);padding:8px 12px;font-weight:600;font-size:13.5px;min-width:44px}
+.btn.primary{background:var(--token);border-color:var(--token);color:#fff}
+.btn:focus-visible,.tab:focus-visible,.seg button:focus-visible,label.sw:focus-within{outline:2px solid var(--token);outline-offset:2px}
+.seg{display:inline-flex;border:1px solid var(--line)}
+.seg button{border:0;background:transparent;color:var(--ink);padding:8px 10px;font-weight:600;font-size:13px}
+.seg button[aria-pressed="true"]{background:var(--navy);color:var(--surface)}
+label.sw{display:inline-flex;gap:8px;align-items:center;font-size:13.5px;cursor:pointer;padding:6px 4px}
+label.sw input{width:16px;height:16px;accent-color:var(--token)}
+.stage{display:grid;grid-template-columns:minmax(0,1fr) 400px;gap:18px;align-items:start}
+.stage.compare{grid-template-columns:minmax(0,1fr) 400px}
+.diagrams{display:grid;gap:14px;min-width:0}
+.dwrap{background:var(--surface);border:1px solid var(--line);min-width:0}
+.dhead{display:flex;flex-wrap:wrap;justify-content:space-between;gap:6px 16px;padding:14px 18px 10px;border-bottom:1px solid var(--line)}
+.dhead h2{margin:2px 0 0;font-size:20px;color:var(--navy);font-weight:700}
+.dhead p{margin:2px 0 0;color:var(--muted);font-size:14px;max-width:80ch}
+.scroll{overflow-x:auto}
+svg.bpmn{display:block;width:100%;min-width:1080px;height:auto}
+.panel{display:grid;gap:14px;position:sticky;top:max(12px,env(safe-area-inset-top,0px))}
+.card{background:var(--surface);border:1px solid var(--line);padding:16px 18px}
+.card h3{margin:4px 0 6px;font-size:18px;color:var(--navy);line-height:1.25}
+.quote{font-style:italic;color:var(--token);margin:0 0 10px;font-size:14.5px}
+.card h4{margin:12px 0 2px;font-size:12px;font-family:var(--f-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:500}
+.card p{margin:0;font-size:14.5px}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+.chip{font-family:var(--f-mono);font-size:11px;letter-spacing:.06em;padding:3px 7px;border:1px solid var(--line)}
+.chip.bad{color:var(--bad);background:var(--bad-soft);border-color:transparent}
+.chip.good{color:var(--good);background:var(--good-soft);border-color:transparent}
+.metrics{display:grid;grid-template-columns:1fr auto;gap:6px 14px;font-variant-numeric:tabular-nums;align-items:baseline}
+.metrics dt{font-size:14px}
+.metrics dd{margin:0;font-weight:700;font-size:18px;color:var(--navy);text-align:right}
+.metrics .big{font-size:26px}
+.mbar{grid-column:1/-1;height:6px;background:var(--lane);position:relative;margin:-2px 0 6px}
+.mbar i{position:absolute;inset:0 auto 0 0;width:0;background:var(--token);transition:width .25s}
+.cmp{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums;font-size:14px}
+.cmp th,.cmp td{padding:7px 6px;border-bottom:1px solid var(--line);text-align:right}
+.cmp th:first-child,.cmp td:first-child{text-align:left}
+.cmp thead th{font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:500}
+.cmp td.inc{color:var(--bad);font-weight:700}.cmp td.coh{color:var(--good);font-weight:700}
+.kpis{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.kpi{border:1px solid var(--line);padding:8px 10px;display:grid;gap:2px}
+.kpi span{font-size:12.5px;color:var(--muted)}
+.kpi b{font-family:var(--f-mono);font-size:13px;letter-spacing:.06em;color:var(--muted)}
+.kpi.bad b{color:var(--bad)}.kpi.good b{color:var(--good)}
+.kpi.flash{animation:fl .6s}
+@keyframes fl{from{background:var(--token-soft)}to{background:transparent}}
+.note{font-size:12.5px;color:var(--muted);margin:0}
+.result{margin-top:10px;display:grid;gap:2px;text-align:center;font-family:var(--f-mono);letter-spacing:.08em;font-size:12.5px}
+.result b{font-size:13.5px;color:var(--navy)}
+.result.bad b:last-child{color:var(--bad)}.result.good b:last-child{color:var(--good)}
+/* svg */
+.lane-bg{fill:var(--lane)}.lane-bg.alt{fill:var(--lane2)}
+.lane-line{stroke:var(--line);stroke-width:1}
+.lane-head{fill:var(--surface);stroke:var(--line)}
+.lane-t{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.08em;fill:var(--muted)}
+.pool-t{font-family:var(--f-mono);font-size:11px;letter-spacing:.14em;fill:var(--navy)}
+.edge{fill:none;stroke:var(--muted);stroke-width:1.4;opacity:.75}
+.edge.back{stroke-dasharray:5 4;stroke:var(--bad);opacity:.8}
+.edge.alt{stroke-dasharray:3 4;opacity:.5}
+.elabel{font-family:var(--f-mono);font-size:10.5px;fill:var(--muted)}
+.elabel.back{fill:var(--bad)}
+.node rect,.node circle,.node path.gw{fill:var(--surface);stroke:var(--navy);stroke-width:1.3;transition:fill .25s,stroke .25s}
+.node text{font-family:var(--f-display);font-size:11.6px;fill:var(--ink);font-weight:500}
+.node .tag{font-family:var(--f-mono);font-size:8.6px;letter-spacing:.03em;fill:var(--muted);font-weight:400}
+.node .ico{fill:none;stroke:var(--muted);stroke-width:1.2}
+.node.end circle{stroke-width:3.2}
+.node.visited rect,.node.visited circle,.node.visited path.gw{fill:var(--visit)}
+.node.active rect,.node.active circle,.node.active path.gw{stroke:var(--token);stroke-width:2.6;fill:var(--visit)}
+.node.active .tag{fill:var(--token)}
+.trail{fill:none;stroke:var(--token);stroke-width:4;stroke-linecap:round;stroke-linejoin:round;opacity:.5}
+.trail.back{stroke:var(--bad);stroke-dasharray:6 5;opacity:.75}
+.token{fill:var(--token);stroke:var(--surface);stroke-width:2.5}
+.token.wait{animation:pulse .9s ease-in-out infinite}
+.token.back{fill:var(--bad)}
+@keyframes pulse{50%{r:15}}
+.layer{fill:none;stroke-width:2.5}
+.layer.ok{stroke:var(--good)}.layer.broken{stroke:var(--bad);stroke-dasharray:10 9}
+.layer-dot{fill:var(--surface);stroke-width:2}
+.fan{font-family:var(--f-mono);font-size:10px;fill:var(--good)}
+.fan-box{fill:var(--good-soft);stroke:var(--good);stroke-width:1}
+.hide-trail .trail{display:none}
+.hide-layers .layers{display:none}
+/* executive */
+.exec{background:var(--surface);border:1px solid var(--line);padding:24px clamp(16px,3vw,32px);display:grid;gap:22px}
+.exec h2{margin:4px 0 0;font-size:clamp(22px,2.4vw,30px);color:var(--navy);text-wrap:balance}
+.lock{display:flex;flex-wrap:wrap;gap:12px 20px;align-items:center;justify-content:space-between}
+.lock p{margin:0;color:var(--muted);max-width:70ch}
+.twocol{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:24px;align-items:start}
+.tbl{overflow-x:auto}
+.tbl table{width:100%;border-collapse:collapse;font-size:14.5px;min-width:520px}
+.tbl th,.tbl td{text-align:left;padding:9px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+.tbl thead th{font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:500}
+.tbl td:nth-child(2){color:var(--bad)}.tbl td:nth-child(3){color:var(--good);font-weight:600}
+.bars{display:grid;gap:12px}
+.brow{display:grid;gap:4px}
+.brow .lbl{display:flex;justify-content:space-between;font-size:14px}
+.brow .lbl b{font-variant-numeric:tabular-nums}
+.btrack{display:grid;gap:3px}
+.btrack i{display:block;height:9px}
+.btrack i.inc{background:var(--bad)}.btrack i.coh{background:var(--good)}
+.legend{display:flex;gap:16px;font-size:13px;color:var(--muted)}
+.legend i{display:inline-block;width:10px;height:10px;margin-right:6px;vertical-align:middle}
+.formula{display:grid;gap:6px;text-align:center;padding:20px;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.formula .neq{font-family:var(--f-mono);letter-spacing:.08em;color:var(--muted);font-size:15px}
+.formula .eq{font-size:clamp(22px,3vw,34px);font-weight:700;color:var(--navy);letter-spacing:.02em}
+.formula .eq em{font-style:normal;color:var(--token)}
+.formula p{margin:0;color:var(--muted);font-size:13px}
+.formula .claim{color:var(--ink);font-size:16px;max-width:70ch;margin:6px auto 0}
+.final{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.fcol{border:1px solid var(--line);padding:16px;display:grid;gap:6px;justify-items:center;text-align:center}
+.fcol .k{margin-bottom:4px}
+.fcol span{font-weight:600}
+.fcol .arr{color:var(--muted);font-weight:400}
+.fcol.bad span:last-child{color:var(--bad)}.fcol.good span:last-child{color:var(--good)}
+.closing{font-size:clamp(19px,2vw,24px);font-weight:700;color:var(--navy);text-align:center;margin:0;text-wrap:balance}
+@media (max-width:1180px){.stage,.stage.compare{grid-template-columns:minmax(0,1fr)}.panel{position:static}.twocol{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:560px){.final{grid-template-columns:1fr}.kpis{grid-template-columns:1fr 1fr}}
+@media (prefers-reduced-motion:reduce){.token.wait{animation:none}.kpi.flash{animation:none}}
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <div class="bar" role="toolbar" aria-label="Simulatie">
+    <div class="tabs" role="tablist" aria-label="Weergave">
+      <button class="tab" role="tab" id="tab-inc" aria-selected="true" data-view="inc" data-u="tab_inc"></button>
+      <button class="tab" role="tab" id="tab-coh" aria-selected="false" data-view="coh" data-u="tab_coh"></button>
+      <button class="tab" role="tab" id="tab-cmp" aria-selected="false" data-view="cmp" data-u="tab_cmp"></button>
+    </div>
+    <div class="ctl">
+      <button class="btn primary" id="b-play" type="button">▶ Start</button>
+      <button class="btn" id="b-step" type="button" data-u="step"></button>
+      <button class="btn" id="b-reset" type="button" data-u="reset"></button>
+      <span class="seg" role="group" aria-label="Speed"><button type="button" data-speed="0.5" aria-pressed="false">0,5×</button><button type="button" data-speed="1" aria-pressed="true">1×</button><button type="button" data-speed="2" aria-pressed="false">2×</button></span>
+    </div>
+    <div class="opts">
+      <label class="sw"><input type="checkbox" id="o-trail" checked> <span data-u="trail"></span></label>
+      <label class="sw"><input type="checkbox" id="o-layers"> <span data-u="layers"></span></label>
+    </div>
+  </div>
+
+  <div class="stage" id="stage">
+    <div class="diagrams" id="diagrams"></div>
+    <aside class="panel" id="panel" aria-live="polite"></aside>
+  </div>
+
+  <p class="note" data-u="note"></p>
+</div>
+
+<script>
+(function(){
+"use strict";
+const TX={"en": {"ui": {"tab_inc": "BEFORE · INCOHERENT ENTERPRISE", "tab_coh": "AFTER · COHERENT ENTERPRISE", "tab_cmp": "COMPARE", "start": "Start", "pause": "Pause", "resume": "Resume", "step": "Step ›", "reset": "↺ Reset", "trail": "Show travel path", "layers": "Show coherence layers", "before": "Before", "after": "After", "ready": "Ready to start", "stepk": "Step", "what": "What happens here?", "why_bad": "Why is this a problem?", "why_good": "Why is this an advantage?", "impact": "Impact", "hint": "Press Start. The ball represents one AI use case.", "measured": "Measured travel path", "live": "Measured travel path · live", "dist": "Process distance", "hand": "Handoffs between lanes", "hand_s": "Handoffs", "wait": "Waiting moments", "rework": "Rework loops", "gates": "Decision gates", "steps": "Process steps", "other_coh": "Coherent flow", "other_inc": "Incoherent flow", "cmpnote": "{o} for comparison: distance {d}, {h} handoffs, {w} waiting moments, {r} rework loops.", "kpis": "Indicators (qualitative)", "inc": "Incoherent", "coh": "Coherent", "summary": "Same use case. The incoherent ball travels {x}× further and turns back {r} times.", "result": "Result", "yes": "Yes", "no": "No", "newdept": "↺ NEW DEPARTMENT", "inc_title": "Enterprise AI without coherence", "inc_sub": "AI is added to a fragmented enterprise system.", "coh_title": "Enterprise AI with coherence", "coh_sub": "AI is integrated into a system where strategy, processes, data, governance and technology are aligned.", "speed": "Speed", "note": "Illustrative model. Distance, handoffs, waiting and rework are measured on the drawn BPMN flow, not in a real organization. Coherence means alignment and interoperability, not centralization."}, "inc": {"s0": ["Idea"], "n1": ["AI use case proposed", "Local opportunity", "A business unit spots an opportunity for AI.", "There is no enterprise portfolio, no shared prioritization and no value hypothesis."], "n2": ["Select an AI solution", "Solution-first", "The team jumps from the problem straight to an AI solution.", "Process redesign is skipped. The technology sets the approach, not the outcome."], "n3": ["Add AI to the existing process", "AI on top of complexity", "AI becomes an extra layer on top of the existing workflow: manual → AI → manual.", "Waiting and handoffs remain. AI speeds up a task, not the flow."], "n4": ["Collect data", "Data silos", "Data comes from different sources, with duplicates and conflicting definitions.", "Access is missing and nobody owns the data. The use case slows down."], "g1": ["Data available?", "", "Is the required data usable?", "Not the first time: another department has to be contacted."], "n5": ["Contact another department", "Who owns this?", "The team requests data from another department.", "There is no agreed owner. Follow-up happens through email and escalation."], "t1": ["Waiting for data", "", "Waiting for the other department.", "The use case stands still. Nobody manages this waiting time."], "n6": ["Develop AI pilot", "Pilot works", "A local team builds a working pilot with its own prompts, datasets, integrations and vendor.", "It works technically, but almost nothing is reusable."], "n7": ["Privacy / Risk / Security review", "Governance as a gate", "Governance appears only just before production.", "Late findings lead to redesign, extra controls and legal review."], "g2": ["Approved?", "", "Does the pilot meet privacy, risk and security requirements?", "Not the first time. The pilot goes back for rework."], "n8": ["Build point-to-point integration", "Integration complexity", "CRM, ERP, SharePoint and databases are each connected separately.", "Every connection is custom work. Maintenance and risk grow with each use case."], "g3": ["Production ready?", "", "Can the pilot go to production?", "Only after several iterations. Moving from pilot to production is hard."], "n10": ["Employees use the AI tool", "AI beside the work", "Employees get an extra application, an extra login and a new way of working.", "Training and trust are missing. Usage stays limited."], "n11": ["Measure value", "No baseline", "There is no KPI baseline and the business owner is unclear.", "A technically successful pilot, but the business value cannot be shown."], "g4": ["Reusable?", "", "Can another department reuse the solution?", "No, or only partly. Local data, integrations and controls must be rebuilt."], "e1": ["Start again", "", "A new department starts from zero.", "Every next use case follows the same fragmented path."]}, "coh": {"s0": ["Business question"], "c1": ["Define problem, outcome and KPI", "Outcome-first", "The business problem, target outcome, KPI and business owner are set first.", "Every next step steers on the same outcome."], "cg1": ["Is AI the right solution?", "", "An AI suitability assessment: does AI fit this problem?", "AI is not chosen by default. No leads to classic process improvement."], "ca": ["Classic improvement"], "c3": ["Redesign the process end-to-end", "Work redesign", "Decide which steps disappear, which are automated and where people keep deciding.", "AI gets a place in a better process, not on top of the old one."], "p1": ["Parallel", "", "Data and risk are prepared at the same time.", "Parallel work takes waiting time out of the critical path."], "c4": ["Retrieve trusted enterprise data", "Trusted data", "Governed data with metadata, lineage, permissions and consistent definitions.", "No search: the data is findable, reliable and accessible."], "c5": ["AI risk classification", "Governance by design", "Early classification as low, medium or high risk sets the controls.", "Governance is part of the design, not a gate at the end."], "p2": ["Join"], "cg2": ["Autonomy level?", "", "The level of human oversight follows from risk and context.", "More autonomy is not always better: the level matches the risk.", "Human decides · approves · monitors · autonomous within guardrails"], "c7": ["Use AI / agent capability", "Reusable capability", "The agent uses existing identity, knowledge, APIs, monitoring and policies.", "Nothing is rebuilt locally."], "c8": ["Deploy via enterprise AI platform", "Shared platform", "AI gateway, identity, API management, observability, evaluation and monitoring are shared.", "Every new use case reuses the same platform."], "c9": ["AI in the workflow", "AI in the flow of work", "AI works inside CRM, ERP, Teams or ServiceNow. No separate application.", "Employees need to do nothing extra. Adoption follows the work."], "p3": ["Parallel", "", "Measuring outcomes and continuous monitoring happen at the same time.", "Value and risk are followed up together."], "c10": ["Measure business outcome", "Value realization", "KPI, adoption, quality, cycle time, customer impact and risk indicators.", "Value is shown against a baseline set in advance."], "c11": ["Continuous monitoring", "Continuous governance", "Performance, drift, security, policy violations and human overrides are monitored.", "Governance runs along in production instead of blocking at the end."], "p4": ["Join"], "cg3": ["Reusable?", "", "Can the capability serve other use cases?", "Yes. Same data, platform, governance, identity and monitoring."], "ce": ["Value at scale", "", "The capability branches out to new use cases.", "Every next use case starts on an existing foundation."]}}, "nl": {"ui": {"tab_inc": "VOOR · INCOHERENTE ENTERPRISE", "tab_coh": "NA · COHERENTE ENTERPRISE", "tab_cmp": "VERGELIJK", "start": "Start", "pause": "Pauze", "resume": "Verder", "step": "Stap ›", "reset": "↺ Reset", "trail": "Reispad tonen", "layers": "Coherentielagen tonen", "before": "Voor", "after": "Na", "ready": "Klaar om te starten", "stepk": "Stap", "what": "Wat gebeurt hier?", "why_bad": "Waarom is dit een probleem?", "why_good": "Waarom is dit een voordeel?", "impact": "Impact", "hint": "Druk op Start. De bol stelt één AI use case voor.", "measured": "Gemeten reispad", "live": "Gemeten reispad · live", "dist": "Procesafstand", "hand": "Overdrachten tussen lanes", "hand_s": "Overdrachten", "wait": "Wachtmomenten", "rework": "Rework-lussen", "gates": "Beslispoorten", "steps": "Processtappen", "other_coh": "Coherente flow", "other_inc": "Incoherente flow", "cmpnote": "{o} ter vergelijking: afstand {d}, {h} overdrachten, {w} wachtmomenten, {r} rework-lussen.", "kpis": "Indicatoren (kwalitatief)", "inc": "Incoherent", "coh": "Coherent", "summary": "Dezelfde use case. De incoherente bol legt {x}× meer afstand af en keert {r} keer terug.", "result": "Resultaat", "yes": "Ja", "no": "Nee", "newdept": "↺ NIEUWE AFDELING", "inc_title": "Enterprise AI zonder coherentie", "inc_sub": "AI wordt toegevoegd aan een gefragmenteerd enterprise systeem.", "coh_title": "Enterprise AI met coherentie", "coh_sub": "AI wordt geïntegreerd in een systeem waarin strategie, processen, data, governance en technologie op elkaar afgestemd zijn.", "speed": "Snelheid", "note": "Illustratief model. Afstand, overdrachten, wachtmomenten en rework worden gemeten op de getekende BPMN-flow, niet in een echte organisatie. Coherentie betekent afstemming en interoperabiliteit, geen centralisatie."}, "inc": {"s0": ["Idee"], "n1": ["AI use case voorgesteld", "Lokale opportuniteit", "Een businessafdeling ziet een kans voor AI.", "Er is geen enterprise-portfolio, geen gemeenschappelijke prioritering en geen waardehypothese."], "n2": ["AI-oplossing selecteren", "Solution-first", "Het team springt van het probleem meteen naar een AI-oplossing.", "Procesherontwerp wordt overgeslagen. De technologie bepaalt de aanpak, niet het resultaat."], "n3": ["AI toevoegen aan bestaand proces", "AI over complexiteit", "AI komt als extra laag bovenop de bestaande workflow: manueel → AI → manueel.", "Wachttijden en overdrachten blijven bestaan. AI versnelt een taak, niet de flow."], "n4": ["Data verzamelen", "Datasilo’s", "Data komt uit verschillende bronnen, met dubbele records en andere definities.", "Toegang ontbreekt en niemand is eigenaar van de data. De use case vertraagt."], "g1": ["Data beschikbaar?", "", "Is de nodige data bruikbaar?", "De eerste keer niet: er moet een andere afdeling worden aangesproken."], "n5": ["Andere afdeling contacteren", "Wie is eigenaar?", "Het team vraagt data aan bij een andere afdeling.", "Er is geen afgesproken eigenaar. Opvolging gebeurt per mail en escalatie."], "t1": ["Wachten op data", "", "Wachten op de andere afdeling.", "De use case staat stil. Niemand stuurt op deze wachttijd."], "n6": ["AI pilot ontwikkelen", "Pilot werkt", "Een lokaal team bouwt een werkende pilot met eigen prompts, datasets, integraties en leverancier.", "Technisch werkt het, maar bijna niets is herbruikbaar."], "n7": ["Privacy / Risk / Security review", "Governance als gate", "Governance verschijnt pas vlak voor productie.", "Late bevindingen leiden tot herontwerp, extra controles en juridische review."], "g2": ["Goedgekeurd?", "", "Voldoet de pilot aan privacy, risico en security?", "De eerste keer niet. De pilot gaat terug voor herwerking."], "n8": ["Point-to-point integratie bouwen", "Integration complexity", "CRM, ERP, SharePoint en databases worden elk apart gekoppeld.", "Elke koppeling is maatwerk. Onderhoud en risico groeien met elke use case."], "g3": ["Production ready?", "", "Kan de pilot naar productie?", "Pas na meerdere iteraties. De overgang van pilot naar productie is moeizaam."], "n10": ["Medewerkers gebruiken AI-tool", "AI naast het werk", "Medewerkers krijgen een extra applicatie, met een extra login en een nieuwe werkwijze.", "Training en vertrouwen ontbreken. Het gebruik blijft beperkt."], "n11": ["Waarde meten", "Baseline ontbreekt", "Er is geen KPI-baseline en de business owner is onduidelijk.", "Een technisch geslaagde pilot, maar de bedrijfswaarde is niet aantoonbaar."], "g4": ["Herbruikbaar?", "", "Kan een andere afdeling de oplossing hergebruiken?", "Nee, of beperkt. Lokale data, integraties en controles moeten opnieuw."], "e1": ["Opnieuw beginnen", "", "Een nieuwe afdeling begint van nul.", "Elke volgende use case doorloopt hetzelfde gefragmenteerde pad."]}, "coh": {"s0": ["Bedrijfsvraag"], "c1": ["Probleem, outcome en KPI bepalen", "Outcome-first", "Het businessprobleem, het beoogde resultaat, de KPI en de business owner worden eerst vastgelegd.", "Elke volgende stap stuurt op hetzelfde resultaat."], "cg1": ["Is AI de juiste oplossing?", "", "Een AI suitability assessment: past AI bij dit probleem?", "AI wordt niet automatisch gekozen. Nee leidt naar klassieke procesverbetering."], "ca": ["Klassieke verbetering"], "c3": ["End-to-end proces herontwerpen", "Work redesign", "Bepalen welke stappen verdwijnen, welke geautomatiseerd worden en waar mensen blijven beslissen.", "AI krijgt een plaats in een beter proces, niet bovenop het oude."], "p1": ["Parallel", "", "Data en risico worden tegelijk voorbereid.", "Parallel werk haalt wachttijd uit het kritieke pad."], "c4": ["Trusted enterprise data ophalen", "Trusted data", "Governed data met metadata, lineage, rechten en eenduidige definities.", "Geen zoektocht: de data is vindbaar, betrouwbaar en toegankelijk."], "c5": ["AI risk classification", "Governance by design", "Vroege classificatie als laag, middel of hoog risico bepaalt de controles.", "Governance zit in het ontwerp, niet als poort op het einde."], "p2": ["Samenvoegen"], "cg2": ["Autonomy level?", "", "Het niveau van menselijk toezicht volgt uit risico en context.", "Meer autonomie is niet altijd beter: het niveau past bij het risico.", "Mens beslist · keurt goed · bewaakt · autonoom binnen guardrails"], "c7": ["AI / agent capability inzetten", "Reusable capability", "De agent gebruikt bestaande identity, kennis, API’s, monitoring en policies.", "Er wordt niets lokaal opnieuw gebouwd."], "c8": ["Deploy via enterprise AI platform", "Shared platform", "AI gateway, identity, API-beheer, observability, evaluatie en monitoring zijn gedeeld.", "Elke nieuwe use case hergebruikt hetzelfde platform."], "c9": ["AI in de workflow", "AI in the flow of work", "AI werkt binnen CRM, ERP, Teams of ServiceNow. Geen aparte applicatie.", "Medewerkers hoeven niets extra te doen. Adoptie volgt het werk."], "p3": ["Parallel", "", "Resultaat meten en continu bewaken gebeuren tegelijk.", "Waarde en risico worden samen opgevolgd."], "c10": ["Business outcome meten", "Value realization", "KPI, adoptie, kwaliteit, doorlooptijd, klantimpact en risico-indicatoren.", "Waarde wordt aangetoond tegen een vooraf bepaalde baseline."], "c11": ["Continuous monitoring", "Continuous governance", "Prestaties, drift, security, policy-overtredingen en menselijke overrides worden bewaakt.", "Governance loopt mee in productie in plaats van op het einde te blokkeren."], "p4": ["Samenvoegen"], "cg3": ["Herbruikbaar?", "", "Kan de capability voor andere use cases dienen?", "Ja. Dezelfde data, platform, governance, identity en monitoring."], "ce": ["Value at scale", "", "De capability vertakt naar nieuwe use cases.", "Elke volgende use case start op een bestaande fundering."]}}, "fr": {"ui": {"tab_inc": "AVANT · ENTREPRISE INCOHÉRENTE", "tab_coh": "APRÈS · ENTREPRISE COHÉRENTE", "tab_cmp": "COMPARER", "start": "Démarrer", "pause": "Pause", "resume": "Reprendre", "step": "Étape ›", "reset": "↺ Réinitialiser", "trail": "Afficher le trajet", "layers": "Afficher les couches de cohérence", "before": "Avant", "after": "Après", "ready": "Prêt à démarrer", "stepk": "Étape", "what": "Que se passe-t-il ici ?", "why_bad": "Pourquoi est-ce un problème ?", "why_good": "Pourquoi est-ce un avantage ?", "impact": "Impact", "hint": "Appuyez sur Démarrer. La bille représente un cas d’usage IA.", "measured": "Trajet mesuré", "live": "Trajet mesuré · en direct", "dist": "Distance de processus", "hand": "Transferts entre couloirs", "hand_s": "Transferts", "wait": "Moments d’attente", "rework": "Boucles de reprise", "gates": "Points de décision", "steps": "Étapes de processus", "other_coh": "Flux cohérent", "other_inc": "Flux incohérent", "cmpnote": "{o} pour comparaison : distance {d}, {h} transferts, {w} moments d’attente, {r} boucles de reprise.", "kpis": "Indicateurs (qualitatifs)", "inc": "Incohérent", "coh": "Cohérent", "summary": "Même cas d’usage. La bille incohérente parcourt {x}× plus de distance et revient {r} fois en arrière.", "result": "Résultat", "yes": "Oui", "no": "Non", "newdept": "↺ NOUVEAU SERVICE", "inc_title": "L’IA d’entreprise sans cohérence", "inc_sub": "L’IA est ajoutée à un système d’entreprise fragmenté.", "coh_title": "L’IA d’entreprise avec cohérence", "coh_sub": "L’IA est intégrée dans un système où stratégie, processus, données, gouvernance et technologie sont alignés.", "speed": "Vitesse", "note": "Modèle illustratif. Distance, transferts, attentes et reprises sont mesurés sur le flux BPMN dessiné, pas dans une organisation réelle. La cohérence signifie alignement et interopérabilité, pas centralisation."}, "inc": {"s0": ["Idée"], "n1": ["Cas d’usage IA proposé", "Opportunité locale", "Une unité métier repère une opportunité pour l’IA.", "Il n’existe ni portefeuille d’entreprise, ni priorisation commune, ni hypothèse de valeur."], "n2": ["Choisir une solution IA", "Solution-first", "L’équipe passe directement du problème à une solution IA.", "La refonte du processus est ignorée. La technologie dicte l’approche, pas le résultat."], "n3": ["Ajouter l’IA au processus existant", "L’IA sur la complexité", "L’IA devient une couche supplémentaire sur le flux existant : manuel → IA → manuel.", "Attentes et transferts demeurent. L’IA accélère une tâche, pas le flux."], "n4": ["Collecter les données", "Silos de données", "Les données proviennent de sources différentes, avec des doublons et des définitions divergentes.", "L’accès manque et personne n’est responsable des données. Le cas d’usage ralentit."], "g1": ["Données disponibles ?", "", "Les données nécessaires sont-elles utilisables ?", "Pas la première fois : il faut contacter un autre service."], "n5": ["Contacter un autre service", "Qui en est responsable ?", "L’équipe demande des données à un autre service.", "Aucun responsable n’est désigné. Le suivi se fait par e-mail et par escalade."], "t1": ["Attente des données", "", "Attente de l’autre service.", "Le cas d’usage est à l’arrêt. Personne ne pilote ce temps d’attente."], "n6": ["Développer un pilote IA", "Le pilote fonctionne", "Une équipe locale construit un pilote fonctionnel avec ses propres prompts, jeux de données, intégrations et fournisseur.", "Techniquement, cela fonctionne, mais presque rien n’est réutilisable."], "n7": ["Revue vie privée / risques / sécurité", "La gouvernance comme barrière", "La gouvernance n’apparaît que juste avant la production.", "Des constats tardifs entraînent refonte, contrôles supplémentaires et revue juridique."], "g2": ["Approuvé ?", "", "Le pilote respecte-t-il les exigences de confidentialité, de risque et de sécurité ?", "Pas la première fois. Le pilote repart en reprise."], "n8": ["Construire des intégrations point à point", "Complexité d’intégration", "CRM, ERP, SharePoint et bases de données sont connectés un par un.", "Chaque connexion est du sur-mesure. Maintenance et risque augmentent à chaque cas d’usage."], "g3": ["Prêt pour la production ?", "", "Le pilote peut-il passer en production ?", "Seulement après plusieurs itérations. Passer du pilote à la production est laborieux."], "n10": ["Les employés utilisent l’outil IA", "L’IA à côté du travail", "Les employés reçoivent une application de plus, un identifiant de plus et une nouvelle façon de travailler.", "Formation et confiance font défaut. L’usage reste limité."], "n11": ["Mesurer la valeur", "Pas de référence", "Il n’y a pas de référence KPI et le responsable métier n’est pas clair.", "Un pilote réussi techniquement, mais la valeur métier n’est pas démontrable."], "g4": ["Réutilisable ?", "", "Un autre service peut-il réutiliser la solution ?", "Non, ou en partie seulement. Données, intégrations et contrôles locaux sont à refaire."], "e1": ["Recommencer", "", "Un nouveau service repart de zéro.", "Chaque nouveau cas d’usage suit le même chemin fragmenté."]}, "coh": {"s0": ["Question métier"], "c1": ["Définir problème, résultat et KPI", "Outcome-first", "Le problème métier, le résultat visé, le KPI et le responsable métier sont fixés d’abord.", "Chaque étape suivante vise le même résultat."], "cg1": ["L’IA est-elle la bonne solution ?", "", "Une évaluation de pertinence : l’IA convient-elle à ce problème ?", "L’IA n’est pas choisie par défaut. Non mène à une amélioration classique du processus."], "ca": ["Amélioration classique"], "c3": ["Repenser le processus de bout en bout", "Work redesign", "Décider quelles étapes disparaissent, lesquelles sont automatisées et où les personnes continuent de décider.", "L’IA trouve sa place dans un meilleur processus, pas au-dessus de l’ancien."], "p1": ["Parallèle", "", "Données et risques sont préparés en même temps.", "Le travail en parallèle retire l’attente du chemin critique."], "c4": ["Récupérer des données d’entreprise fiables", "Données fiables", "Des données gouvernées avec métadonnées, traçabilité, droits et définitions cohérentes.", "Pas de recherche : les données sont trouvables, fiables et accessibles."], "c5": ["Classification des risques IA", "Governance by design", "Une classification précoce en risque faible, moyen ou élevé détermine les contrôles.", "La gouvernance fait partie de la conception, pas une barrière finale."], "p2": ["Jonction"], "cg2": ["Niveau d’autonomie ?", "", "Le niveau de contrôle humain découle du risque et du contexte.", "Plus d’autonomie n’est pas toujours mieux : le niveau correspond au risque.", "L’humain décide · approuve · surveille · autonome dans un cadre"], "c7": ["Mobiliser une capacité IA / agent", "Capacité réutilisable", "L’agent utilise l’identité, les connaissances, les API, la supervision et les politiques existantes.", "Rien n’est reconstruit localement."], "c8": ["Déployer via la plateforme IA d’entreprise", "Plateforme partagée", "Passerelle IA, identité, gestion des API, observabilité, évaluation et supervision sont partagées.", "Chaque nouveau cas d’usage réutilise la même plateforme."], "c9": ["L’IA dans le flux de travail", "L’IA au cœur du travail", "L’IA fonctionne dans le CRM, l’ERP, Teams ou ServiceNow. Pas d’application séparée.", "Les employés n’ont rien à faire de plus. L’adoption suit le travail."], "p3": ["Parallèle", "", "Mesure des résultats et supervision continue se font en même temps.", "Valeur et risque sont suivis ensemble."], "c10": ["Mesurer le résultat métier", "Réalisation de valeur", "KPI, adoption, qualité, délai, impact client et indicateurs de risque.", "La valeur est démontrée par rapport à une référence fixée au préalable."], "c11": ["Supervision continue", "Gouvernance continue", "Performance, dérive, sécurité, violations de politique et interventions humaines sont surveillées.", "La gouvernance accompagne la production au lieu de bloquer à la fin."], "p4": ["Jonction"], "cg3": ["Réutilisable ?", "", "La capacité peut-elle servir d’autres cas d’usage ?", "Oui. Mêmes données, plateforme, gouvernance, identité et supervision."], "ce": ["Value at scale", "", "La capacité s’étend à de nouveaux cas d’usage.", "Chaque nouveau cas d’usage démarre sur une base existante."]}}, "de": {"ui": {"tab_inc": "VORHER · INKOHÄRENTES UNTERNEHMEN", "tab_coh": "NACHHER · KOHÄRENTES UNTERNEHMEN", "tab_cmp": "VERGLEICHEN", "start": "Start", "pause": "Pause", "resume": "Weiter", "step": "Schritt ›", "reset": "↺ Zurücksetzen", "trail": "Reiseweg anzeigen", "layers": "Kohärenzebenen anzeigen", "before": "Vorher", "after": "Nachher", "ready": "Startbereit", "stepk": "Schritt", "what": "Was passiert hier?", "why_bad": "Warum ist das ein Problem?", "why_good": "Warum ist das ein Vorteil?", "impact": "Wirkung", "hint": "Drücken Sie Start. Die Kugel steht für einen KI-Anwendungsfall.", "measured": "Gemessener Reiseweg", "live": "Gemessener Reiseweg · live", "dist": "Prozessdistanz", "hand": "Übergaben zwischen Bahnen", "hand_s": "Übergaben", "wait": "Wartemomente", "rework": "Nacharbeitsschleifen", "gates": "Entscheidungspunkte", "steps": "Prozessschritte", "other_coh": "Kohärenter Ablauf", "other_inc": "Inkohärenter Ablauf", "cmpnote": "{o} zum Vergleich: Distanz {d}, {h} Übergaben, {w} Wartemomente, {r} Nacharbeitsschleifen.", "kpis": "Indikatoren (qualitativ)", "inc": "Inkohärent", "coh": "Kohärent", "summary": "Derselbe Anwendungsfall. Die inkohärente Kugel legt {x}× mehr Distanz zurück und kehrt {r}-mal um.", "result": "Ergebnis", "yes": "Ja", "no": "Nein", "newdept": "↺ NEUE ABTEILUNG", "inc_title": "Unternehmens-KI ohne Kohärenz", "inc_sub": "KI wird einem fragmentierten Unternehmenssystem hinzugefügt.", "coh_title": "Unternehmens-KI mit Kohärenz", "coh_sub": "KI wird in ein System integriert, in dem Strategie, Prozesse, Daten, Governance und Technologie aufeinander abgestimmt sind.", "speed": "Geschwindigkeit", "note": "Illustratives Modell. Distanz, Übergaben, Wartezeiten und Nacharbeit werden am gezeichneten BPMN-Ablauf gemessen, nicht in einer realen Organisation. Kohärenz bedeutet Abstimmung und Interoperabilität, nicht Zentralisierung."}, "inc": {"s0": ["Idee"], "n1": ["KI-Anwendungsfall vorgeschlagen", "Lokale Chance", "Eine Geschäftseinheit erkennt eine Chance für KI.", "Es gibt kein Unternehmensportfolio, keine gemeinsame Priorisierung und keine Werthypothese."], "n2": ["KI-Lösung auswählen", "Solution-first", "Das Team springt vom Problem direkt zu einer KI-Lösung.", "Die Prozessneugestaltung wird übersprungen. Die Technologie bestimmt den Ansatz, nicht das Ergebnis."], "n3": ["KI in den bestehenden Prozess einfügen", "KI auf Komplexität", "KI wird zu einer zusätzlichen Schicht über dem bestehenden Ablauf: manuell → KI → manuell.", "Wartezeiten und Übergaben bleiben. KI beschleunigt eine Aufgabe, nicht den Ablauf."], "n4": ["Daten sammeln", "Datensilos", "Daten stammen aus verschiedenen Quellen, mit Dubletten und abweichenden Definitionen.", "Der Zugriff fehlt und niemand verantwortet die Daten. Der Anwendungsfall verlangsamt sich."], "g1": ["Daten verfügbar?", "", "Sind die benötigten Daten nutzbar?", "Beim ersten Mal nicht: Eine andere Abteilung muss angesprochen werden."], "n5": ["Andere Abteilung kontaktieren", "Wer ist zuständig?", "Das Team fordert Daten bei einer anderen Abteilung an.", "Es gibt keinen vereinbarten Verantwortlichen. Nachverfolgung per E-Mail und Eskalation."], "t1": ["Warten auf Daten", "", "Warten auf die andere Abteilung.", "Der Anwendungsfall steht still. Niemand steuert diese Wartezeit."], "n6": ["KI-Pilot entwickeln", "Pilot funktioniert", "Ein lokales Team baut einen funktionierenden Piloten mit eigenen Prompts, Datensätzen, Integrationen und Anbieter.", "Technisch funktioniert es, aber fast nichts ist wiederverwendbar."], "n7": ["Prüfung Datenschutz / Risiko / Sicherheit", "Governance als Schranke", "Governance erscheint erst kurz vor der Produktion.", "Späte Befunde führen zu Neugestaltung, zusätzlichen Kontrollen und rechtlicher Prüfung."], "g2": ["Genehmigt?", "", "Erfüllt der Pilot die Anforderungen an Datenschutz, Risiko und Sicherheit?", "Beim ersten Mal nicht. Der Pilot geht zur Überarbeitung zurück."], "n8": ["Punkt-zu-Punkt-Integration bauen", "Integrationskomplexität", "CRM, ERP, SharePoint und Datenbanken werden einzeln angebunden.", "Jede Verbindung ist Maßarbeit. Wartung und Risiko wachsen mit jedem Anwendungsfall."], "g3": ["Produktionsreif?", "", "Kann der Pilot in Produktion gehen?", "Erst nach mehreren Iterationen. Der Übergang vom Piloten in die Produktion ist mühsam."], "n10": ["Mitarbeitende nutzen das KI-Tool", "KI neben der Arbeit", "Mitarbeitende bekommen eine weitere Anwendung, ein weiteres Login und eine neue Arbeitsweise.", "Schulung und Vertrauen fehlen. Die Nutzung bleibt begrenzt."], "n11": ["Wert messen", "Keine Baseline", "Es gibt keine KPI-Baseline, und der Business Owner ist unklar.", "Ein technisch erfolgreicher Pilot, doch der Geschäftswert ist nicht belegbar."], "g4": ["Wiederverwendbar?", "", "Kann eine andere Abteilung die Lösung wiederverwenden?", "Nein, oder nur teilweise. Lokale Daten, Integrationen und Kontrollen müssen neu gebaut werden."], "e1": ["Neu beginnen", "", "Eine neue Abteilung beginnt bei null.", "Jeder weitere Anwendungsfall folgt demselben fragmentierten Weg."]}, "coh": {"s0": ["Geschäftsfrage"], "c1": ["Problem, Ergebnis und KPI festlegen", "Outcome-first", "Geschäftsproblem, Zielergebnis, KPI und Business Owner werden zuerst festgelegt.", "Jeder weitere Schritt richtet sich am selben Ergebnis aus."], "cg1": ["Ist KI die richtige Lösung?", "", "Eine Eignungsprüfung: Passt KI zu diesem Problem?", "KI wird nicht automatisch gewählt. Nein führt zu klassischer Prozessverbesserung."], "ca": ["Klassische Verbesserung"], "c3": ["Prozess durchgängig neu gestalten", "Work redesign", "Festlegen, welche Schritte wegfallen, welche automatisiert werden und wo Menschen weiter entscheiden.", "KI bekommt einen Platz in einem besseren Prozess, nicht über dem alten."], "p1": ["Parallel", "", "Daten und Risiko werden gleichzeitig vorbereitet.", "Parallele Arbeit nimmt Wartezeit aus dem kritischen Pfad."], "c4": ["Vertrauenswürdige Unternehmensdaten abrufen", "Verlässliche Daten", "Gesteuerte Daten mit Metadaten, Herkunft, Berechtigungen und einheitlichen Definitionen.", "Keine Suche: Die Daten sind auffindbar, zuverlässig und zugänglich."], "c5": ["KI-Risikoklassifizierung", "Governance by design", "Eine frühe Einstufung als niedriges, mittleres oder hohes Risiko bestimmt die Kontrollen.", "Governance ist Teil des Designs, keine Schranke am Ende."], "p2": ["Zusammenführen"], "cg2": ["Autonomiestufe?", "", "Das Maß menschlicher Aufsicht folgt aus Risiko und Kontext.", "Mehr Autonomie ist nicht immer besser: Die Stufe passt zum Risiko.", "Mensch entscheidet · genehmigt · überwacht · autonom in Leitplanken"], "c7": ["KI-/Agenten-Fähigkeit nutzen", "Wiederverwendbar", "Der Agent nutzt bestehende Identität, Wissen, APIs, Monitoring und Richtlinien.", "Nichts wird lokal neu gebaut."], "c8": ["Über die KI-Plattform bereitstellen", "Gemeinsame Plattform", "KI-Gateway, Identität, API-Management, Observability, Evaluierung und Monitoring sind gemeinsam.", "Jeder neue Anwendungsfall nutzt dieselbe Plattform."], "c9": ["KI im Arbeitsablauf", "KI im Arbeitsfluss", "KI arbeitet in CRM, ERP, Teams oder ServiceNow. Keine separate Anwendung.", "Mitarbeitende müssen nichts zusätzlich tun. Die Nutzung folgt der Arbeit."], "p3": ["Parallel", "", "Ergebnismessung und kontinuierliches Monitoring laufen gleichzeitig.", "Wert und Risiko werden gemeinsam verfolgt."], "c10": ["Geschäftsergebnis messen", "Wertrealisierung", "KPI, Nutzung, Qualität, Durchlaufzeit, Kundenwirkung und Risikoindikatoren.", "Der Wert wird gegen eine vorab festgelegte Baseline belegt."], "c11": ["Kontinuierliches Monitoring", "Laufende Governance", "Leistung, Drift, Sicherheit, Richtlinienverstöße und menschliche Eingriffe werden überwacht.", "Governance läuft im Betrieb mit, statt am Ende zu blockieren."], "p4": ["Zusammenführen"], "cg3": ["Wiederverwendbar?", "", "Kann die Fähigkeit weiteren Anwendungsfällen dienen?", "Ja. Dieselben Daten, Plattform, Governance, Identität und Monitoring."], "ce": ["Value at scale", "", "Die Fähigkeit verzweigt sich in neue Anwendungsfälle.", "Jeder weitere Anwendungsfall startet auf einem bestehenden Fundament."]}}};
+const NAT=["nl","fr","en","de"];let LG="en";
+function pickLang(){let l=null;try{l=localStorage.getItem("avs-lang")}catch(e){}const q=new URLSearchParams(location.search).get("lang");if(q)l=q;if(!l||NAT.indexOf(l)<0){const n=(navigator.language||"en").slice(0,2).toLowerCase();l=NAT.indexOf(n)>=0?n:"en"}return l}
+const u=k=>(TX[LG].ui[k]!==undefined?TX[LG].ui[k]:k);
+const NS="http://www.w3.org/2000/svg";
+const LANES=["BUSINESS & STRATEGY","BUSINESS PROCESS & PEOPLE","DATA & KNOWLEDGE","AI & AGENTS","GOVERNANCE, RISK & SECURITY","TECHNOLOGY & AI PLATFORM","VALUE & SCALE"];
+const LH=92, TOP=8, HEADW=170, W=1840, H=TOP+LANES.length*LH+8;
+const ly=i=>TOP+i*LH+LH/2;
+const KPI_KEYS=[["value","Business Value"],["ttv","Time-to-Value"],["data","Data Readiness"],["gov","Governance"],["reuse","Reuse"],["integ","Integration Complexity"],["scale","Scalability"],["adopt","AI Adoption"]];
+
+/* ---------------- flows ---------------- */
+const INC={
+  id:"inc", title:"Enterprise AI zonder coherentie", sub:"AI wordt toegevoegd aan een gefragmenteerd enterprise systeem.",
+  result:["AI PILOT","LOCAL OPTIMIZATION","LIMITED ENTERPRISE VALUE"], resultCls:"bad",
+  nodes:{
+    s0:{t:"start",l:0,x:215,label:"Idee"},
+    n1:{t:"task",l:0,x:320,label:"AI use case voorgesteld",tag:"Lokale opportuniteit",q:"We found an AI opportunity.",
+        what:"Een businessafdeling ziet een kans voor AI.",why:"Er is geen enterprise-portfolio, geen gemeenschappelijke prioritering en geen waardehypothese.",imp:[["VALUE","bad"],["SCALE","bad"]],k:{value:["UNCLEAR","bad"]}},
+    n2:{t:"task",l:0,x:455,label:"AI-oplossing selecteren",tag:"Solution-first",q:"Let's build a pilot.",
+        what:"Het team springt van het probleem meteen naar een AI-oplossing.",why:"Procesherontwerp wordt overgeslagen. De technologie bepaalt de aanpak, niet het resultaat.",imp:[["VALUE","bad"],["COMPLEXITY","bad"]]},
+    n3:{t:"task",l:1,x:595,label:"AI toevoegen aan bestaand proces",tag:"AI over complexiteit",
+        what:"AI komt als extra laag bovenop de bestaande workflow: manueel → AI → manueel.",why:"Wachttijden en overdrachten blijven bestaan. AI versnelt een taak, niet de flow.",imp:[["TIME","bad"],["COMPLEXITY","bad"]],k:{adopt:["UNCLEAR","bad"]}},
+    n4:{t:"task",l:2,x:735,label:"Data verzamelen",tag:"Datasilo's",ico:"svc",q:"Where is the data?",dwell:1000,
+        what:"Data komt uit verschillende bronnen, met dubbele records en andere definities.",why:"Toegang ontbreekt en niemand is eigenaar van de data. De use case vertraagt.",imp:[["TIME","bad"],["RISK","bad"]],k:{data:["LOW","bad"]}},
+    g1:{t:"xor",l:2,x:865,label:"Data beschikbaar?",what:"Is de nodige data bruikbaar?",why:"De eerste keer niet: er moet een andere afdeling worden aangesproken.",imp:[["TIME","bad"]]},
+    n5:{t:"task",l:1,x:865,label:"Andere afdeling contacteren",tag:"Wie is eigenaar?",q:"Who owns this?",
+        what:"Het team vraagt data aan bij een andere afdeling.",why:"Er is geen afgesproken eigenaar. Opvolging gebeurt per mail en escalatie.",imp:[["TIME","bad"],["COMPLEXITY","bad"]]},
+    t1:{t:"timer",l:1,x:735,label:"Wachten op data",dwell:2300,wait:true,
+        what:"Wachten op de andere afdeling.",why:"De use case staat stil. Niemand stuurt op deze wachttijd.",imp:[["TIME","bad"]],k:{ttv:["SLOW","bad"]}},
+    n6:{t:"task",l:3,x:1000,label:"AI pilot ontwikkelen",tag:"Pilot werkt",
+        what:"Een lokaal team bouwt een werkende pilot met eigen prompts, datasets, integraties en leverancier.",why:"Technisch werkt het, maar bijna niets is herbruikbaar.",imp:[["SCALE","bad"],["COMPLEXITY","bad"]],k:{reuse:["LOW","bad"]}},
+    n7:{t:"task",l:4,x:1135,label:"Privacy / Risk / Security review",tag:"Governance als gate",q:"Security needs to review this.",
+        what:"Governance verschijnt pas vlak voor productie.",why:"Late bevindingen leiden tot herontwerp, extra controles en juridische review.",imp:[["TIME","bad"],["RISK","bad"]],k:{gov:["REACTIVE","bad"]}},
+    g2:{t:"xor",l:4,x:1265,label:"Goedgekeurd?",what:"Voldoet de pilot aan privacy, risico en security?",why:"De eerste keer niet. De pilot gaat terug voor herwerking.",imp:[["TIME","bad"]]},
+    n8:{t:"task",l:5,x:1395,label:"Point-to-point integratie bouwen",tag:"Integration complexity",ico:"svc",q:"How do we integrate this?",
+        what:"CRM, ERP, SharePoint en databases worden elk apart gekoppeld.",why:"Elke koppeling is maatwerk. Onderhoud en risico groeien met elke use case.",imp:[["COMPLEXITY","bad"],["SCALE","bad"]],k:{integ:["HIGH","bad"]}},
+    g3:{t:"xor",l:3,x:1395,label:"Production ready?",what:"Kan de pilot naar productie?",why:"Pas na meerdere iteraties. De overgang van pilot naar productie is moeizaam.",imp:[["TIME","bad"],["SCALE","bad"]],k:{scale:["LOW","bad"]}},
+    n10:{t:"task",l:1,x:1530,label:"Medewerkers gebruiken AI-tool",tag:"AI naast het werk",q:"Why aren't employees using it?",
+        what:"Medewerkers krijgen een extra applicatie, met een extra login en een nieuwe werkwijze.",why:"Training en vertrouwen ontbreken. Het gebruik blijft beperkt.",imp:[["VALUE","bad"]],k:{adopt:["LIMITED","bad"]}},
+    n11:{t:"task",l:6,x:1530,label:"Waarde meten",tag:"Baseline ontbreekt",q:"Did this actually create value?",
+        what:"Er is geen KPI-baseline en de business owner is onduidelijk.",why:"Een technisch geslaagde pilot, maar de bedrijfswaarde is niet aantoonbaar.",imp:[["VALUE","bad"]],k:{value:["LOW","bad"]}},
+    g4:{t:"xor",l:6,x:1660,label:"Herbruikbaar?",q:"Can another department reuse it?",what:"Kan een andere afdeling de oplossing hergebruiken?",why:"Nee, of beperkt. Lokale data, integraties en controles moeten opnieuw.",imp:[["SCALE","bad"]]},
+    e1:{t:"end",l:6,x:1755,label:"Opnieuw beginnen",q:"Start again.",what:"Een nieuwe afdeling begint van nul.",why:"Elke volgende use case doorloopt hetzelfde gefragmenteerde pad.",imp:[["VALUE","bad"],["SCALE","bad"]]}
+  },
+  seq:[["s0","n1"],["n1","n2"],["n2","n3"],["n3","n4"],["n4","g1"],["g1","n5","Nee"],["n5","t1"],["t1","n4","","back"],["n4","g1"],["g1","n6","Ja"],
+       ["n6","n7"],["n7","g2"],["g2","n6","Nee","back"],["n6","n7"],["n7","g2"],["g2","n8","Ja"],["n8","g3"],["g3","n8","Nee","back"],["n8","g3"],["g3","n8","Nee","back"],["n8","g3"],
+       ["g3","n10","Ja"],["n10","n11"],["n11","g4"],["g4","e1","Nee"]],
+  extra:[]
+};
+const COH={
+  id:"coh", title:"Enterprise AI met coherentie", sub:"AI wordt geïntegreerd in een systeem waarin strategie, processen, data, governance en technologie op elkaar afgestemd zijn.",
+  result:["AI CAPABILITY","REUSABLE ENTERPRISE CAPABILITY","VALUE AT SCALE"], resultCls:"good",
+  nodes:{
+    s0:{t:"start",l:0,x:215,label:"Business vraag"},
+    c1:{t:"task",l:0,x:320,label:"Probleem, outcome en KPI bepalen",tag:"Outcome-first",q:"What business outcome are we trying to improve?",
+        what:"Het businessprobleem, het beoogde resultaat, de KPI en de business owner worden eerst vastgelegd.",why:"Elke volgende stap stuurt op hetzelfde resultaat.",imp:[["VALUE","good"]],k:{value:["TARGETED","good"]}},
+    cg1:{t:"xor",l:0,x:440,label:"Is AI de juiste oplossing?",q:"Should AI be part of the solution?",
+        what:"Een AI suitability assessment: past AI bij dit probleem?",why:"AI wordt niet automatisch gekozen. Nee leidt naar klassieke procesverbetering.",imp:[["RISK","good"],["VALUE","good"]]},
+    ca:{t:"end",l:0,x:560,label:"Klassieke verbetering",alt:true},
+    c3:{t:"task",l:1,x:560,label:"End-to-end proces herontwerpen",tag:"Work redesign",q:"How should we redesign the process?",
+        what:"Bepalen welke stappen verdwijnen, welke geautomatiseerd worden en waar mensen blijven beslissen.",why:"AI krijgt een plaats in een beter proces, niet bovenop het oude.",imp:[["TIME","good"],["VALUE","good"]]},
+    p1:{t:"and",l:1,x:670,label:"Parallel",what:"Data en risico worden tegelijk voorbereid.",why:"Parallel werk haalt wachttijd uit het kritieke pad.",imp:[["TIME","good"]]},
+    c4:{t:"task",l:2,x:780,label:"Trusted enterprise data ophalen",tag:"Trusted Data",ico:"svc",q:"Which trusted data and knowledge are required?",
+        what:"Governed data met metadata, lineage, rechten en eenduidige definities.",why:"Geen zoektocht: de data is vindbaar, betrouwbaar en toegankelijk.",imp:[["TIME","good"],["RISK","good"]],k:{data:["HIGH","good"]}},
+    c5:{t:"task",l:4,x:780,label:"AI risk classification",tag:"Governance by design",ico:"rule",q:"What risk and autonomy level is appropriate?",
+        what:"Vroege classificatie als laag, middel of hoog risico bepaalt de controles.",why:"Governance zit in het ontwerp, niet als poort op het einde.",imp:[["RISK","good"],["TIME","good"]],k:{gov:["EMBEDDED","good"]}},
+    p2:{t:"and",l:3,x:890,label:"Samenvoegen"},
+    cg2:{t:"xor",l:1,x:1000,label:"Autonomy level?",note:"Human decides · approves · monitors · autonoom binnen guardrails",
+        what:"Het niveau van menselijk toezicht volgt uit risico en context.",why:"Meer autonomie is niet altijd beter: het niveau past bij het risico.",imp:[["RISK","good"]]},
+    c7:{t:"task",l:3,x:1110,label:"AI / agent capability inzetten",tag:"Reusable capability",q:"Which reusable AI capabilities already exist?",
+        what:"De agent gebruikt bestaande identity, kennis, API's, monitoring en policies.",why:"Er wordt niets lokaal opnieuw gebouwd.",imp:[["SCALE","good"],["TIME","good"]],k:{reuse:["HIGH","good"]}},
+    c8:{t:"task",l:5,x:1220,label:"Deploy via enterprise AI platform",tag:"Shared platform",ico:"svc",q:"Deploy through the shared AI platform.",
+        what:"AI gateway, identity, API-beheer, observability, evaluatie en monitoring zijn gedeeld.",why:"Elke nieuwe use case hergebruikt hetzelfde platform.",imp:[["COMPLEXITY","good"],["SCALE","good"]],k:{integ:["LOWER","good"]}},
+    c9:{t:"task",l:1,x:1330,label:"AI in de workflow",tag:"AI in the flow of work",q:"Integrate AI into the flow of work.",
+        what:"AI werkt binnen CRM, ERP, Teams of ServiceNow. Geen aparte applicatie.",why:"Medewerkers hoeven niets extra te doen. Adoptie volgt het werk.",imp:[["VALUE","good"]],k:{adopt:["HIGHER","good"]}},
+    p3:{t:"and",l:1,x:1440,label:"Parallel",what:"Resultaat meten en continu bewaken gebeuren tegelijk.",why:"Waarde en risico worden samen opgevolgd.",imp:[["VALUE","good"],["RISK","good"]]},
+    c10:{t:"task",l:6,x:1550,label:"Business outcome meten",tag:"Value realization",q:"Measure business outcomes.",
+        what:"KPI, adoptie, kwaliteit, doorlooptijd, klantimpact en risico-indicatoren.",why:"Waarde wordt aangetoond tegen een vooraf bepaalde baseline.",imp:[["VALUE","good"]],k:{value:["HIGH","good"],ttv:["FASTER","good"]}},
+    c11:{t:"task",l:4,x:1550,label:"Continuous monitoring",tag:"Continuous governance",ico:"svc",
+        what:"Prestaties, drift, security, policy-overtredingen en menselijke overrides worden bewaakt.",why:"Governance loopt mee in productie in plaats van op het einde te blokkeren.",imp:[["RISK","good"]]},
+    p4:{t:"and",l:5,x:1655,label:"Samenvoegen"},
+    cg3:{t:"xor",l:6,x:1655,label:"Herbruikbaar?",q:"Reuse and scale.",what:"Kan de capability voor andere use cases dienen?",why:"Ja. Dezelfde data, platform, governance, identity en monitoring.",imp:[["SCALE","good"]],k:{scale:["HIGH","good"]}},
+    ce:{t:"end",l:6,x:1755,label:"Value at scale",q:"Enterprise AI capability.",what:"De capability vertakt naar nieuwe use cases.",why:"Elke volgende use case start op een bestaande fundering.",imp:[["VALUE","good"],["SCALE","good"]]}
+  },
+  seq:[["s0","c1"],["c1","cg1"],["cg1","c3","Ja"],["c3","p1"],{par:[[["p1","c4"],["c4","p2"]],[["p1","c5"],["c5","p2"]]]},["p2","cg2"],["cg2","c7"],["c7","c8"],["c8","c9"],["c9","p3"],
+       {par:[[["p3","c10"],["c10","p4"]],[["p3","c11"],["c11","p4"]]]},["p4","cg3"],["cg3","ce","Ja"]],
+  extra:[["cg1","ca","Nee","alt"]]
+};
+
+/* ---------------- geometry ---------------- */
+function P(n){return {x:n.x,y:ly(n.l)}}
+function route(A,B,kind){
+  const a=P(A),b=P(B);
+  if(kind==="back"){
+    if(A.l===B.l) return [a,b];
+    if(A.x===B.x){const o=26;return [a,{x:a.x+o,y:a.y},{x:a.x+o,y:b.y},b];}
+    const off=b.y<a.y?b.y+40:b.y-40;return [a,{x:a.x,y:off},{x:b.x,y:off},b];
+  }
+  if(A.l===B.l||A.x===B.x) return [a,b];
+  return [a,{x:a.x,y:b.y},b];
+}
+const plen=pts=>pts.slice(1).reduce((s,p,i)=>s+Math.hypot(p.x-pts[i].x,p.y-pts[i].y),0);
+function at(pts,d){
+  for(let i=1;i<pts.length;i++){const a=pts[i-1],b=pts[i],L=Math.hypot(b.x-a.x,b.y-a.y);if(d<=L){const r=L?d/L:0;return {x:a.x+(b.x-a.x)*r,y:a.y+(b.y-a.y)*r}}d-=L}
+  return pts[pts.length-1];
+}
+const ptsD=pts=>pts.map((p,i)=>(i?"L":"M")+p.x.toFixed(1)+" "+p.y.toFixed(1)).join(" ");
+function el(tag,attrs,parent){const e=document.createElementNS(NS,tag);for(const k in attrs)e.setAttribute(k,attrs[k]);if(parent)parent.appendChild(e);return e}
+function wrapText(s,max){const w=s.split(" "),out=[];let cur="";w.forEach(x=>{if((cur+" "+x).trim().length>max&&cur){out.push(cur);cur=x}else cur=(cur+" "+x).trim()});if(cur)out.push(cur);return out}
+
+/* compile a flow into timeline items + static totals */
+function compile(F){
+  const N=F.nodes, items=[];
+  const seg=(s)=>{const [a,b,lab,kind]=s;const pts=route(N[a],N[b],kind);return {from:a,to:b,lab,kind:kind||"",pts,len:plen(pts),lane:N[a].l!==N[b].l}};
+  F.seq.forEach(s=>{
+    if(s.par){items.push({par:s.par.map(br=>{const segs=br.map(seg);let cum=0;const pts=[];const checks=[];segs.forEach((g,i)=>{(i?g.pts.slice(1):g.pts).forEach(p=>pts.push(p));cum+=g.len;checks.push({node:g.to,at:cum})});
+      return {segs,pts,len:cum,checks}}),join:s.par[0][s.par[0].length-1][1]})}
+    else items.push(seg(s));
+  });
+  const T={dist:0,hand:0,wait:0,rework:0,gates:0,steps:0};
+  const arrive=id=>{const n=N[id];if(n.t==="task")T.steps++;if(n.t==="xor"||n.t==="and")T.gates++;if(n.wait)T.wait++};
+  items.forEach(it=>{
+    if(it.par){T.dist+=Math.max(...it.par.map(b=>b.len));T.hand+=Math.max(...it.par.map(b=>b.segs.filter(g=>g.lane).length));
+      it.par.forEach(b=>b.segs.forEach(g=>{if(g.to!==it.join)arrive(g.to)}));arrive(it.join)}
+    else{T.dist+=it.len;if(it.lane)T.hand++;if(it.kind==="back")T.rework++;arrive(it.to)}
+  });
+  F.items=items;F.total=T;
+  /* static edges */
+  const seen=new Set(),edges=[];
+  const add=(a,b,lab,kind)=>{const key=a+">"+b+">"+(kind||"");if(seen.has(key))return;seen.add(key);edges.push({a,b,lab,kind:kind||"",pts:route(N[a],N[b],kind)})};
+  F.seq.forEach(s=>{if(s.par)s.par.forEach(br=>br.forEach(x=>add(...x)));else add(...s)});
+  (F.extra||[]).forEach(x=>add(...x));
+  F.edges=edges;
+}
+[INC,COH].forEach(compile);
+
+/* ---------------- drawing ---------------- */
+function draw(F,svg){
+  svg.innerHTML="";svg.setAttribute("viewBox",`0 0 ${W} ${H}`);
+  const N=F.nodes;
+  LANES.forEach((t,i)=>{
+    el("rect",{x:0,y:TOP+i*LH,width:W,height:LH,class:"lane-bg"+(i%2?" alt":"")},svg);
+    el("line",{x1:0,y1:TOP+i*LH,x2:W,y2:TOP+i*LH,class:"lane-line"},svg);
+    el("rect",{x:28,y:TOP+i*LH,width:HEADW-28,height:LH,class:"lane-head"},svg);
+    const lines=wrapText(t,17);const tx=el("text",{x:40,y:ly(i)-(lines.length-1)*7+4,class:"lane-t"},svg);
+    lines.forEach((s,j)=>{const ts=el("tspan",{x:40,dy:j?14:0},tx);ts.textContent=s});
+  });
+  el("line",{x1:0,y1:TOP+LANES.length*LH,x2:W,y2:TOP+LANES.length*LH,class:"lane-line"},svg);
+  el("rect",{x:0,y:TOP,width:28,height:LANES.length*LH,class:"lane-head"},svg);
+  const pt=el("text",{x:18,y:TOP+LANES.length*LH/2,class:"pool-t","text-anchor":"middle",transform:`rotate(-90 18 ${TOP+LANES.length*LH/2})`},svg);pt.textContent="ENTERPRISE · AI USE CASE";
+  /* coherence layers */
+  const lg=el("g",{class:"layers"},svg);
+  for(let i=0;i<LANES.length-1;i++){
+    if(F.id==="coh") el("line",{x1:161,y1:ly(i),x2:161,y2:ly(i+1),class:"layer ok"},lg);
+    else{const m=(ly(i)+ly(i+1))/2;el("line",{x1:161,y1:ly(i),x2:161,y2:m-12,class:"layer broken"},lg);el("line",{x1:161,y1:m+12,x2:161,y2:ly(i+1),class:"layer broken"},lg);
+      el("path",{d:`M155 ${m-5}l12 10M167 ${m-5}l-12 10`,class:"layer broken",style:"stroke-dasharray:none"},lg)}
+  }
+  LANES.forEach((t,i)=>el("circle",{cx:161,cy:ly(i),r:5,class:"layer-dot",stroke:F.id==="coh"?"var(--good)":"var(--bad)"},lg));
+  /* edges */
+  const eg=el("g",{},svg);
+  F.edges.forEach(e=>{
+    el("path",{d:ptsD(e.pts),class:"edge"+(e.kind?" "+e.kind:""),"marker-end":`url(#ar-${F.id}${e.kind==="back"?"-b":""})`},eg);
+    if(e.lab){const labTxt=e.lab==="Ja"?u("yes"):e.lab==="Nee"?u("no"):e.lab;const p=e.kind==="back"?e.pts[1]:at(e.pts,Math.min(40,plen(e.pts)/2));const t=el("text",{x:p.x+(e.kind==="back"?6:6),y:p.y-6,class:"elabel"+(e.kind==="back"?" back":"")},eg);t.textContent=labTxt}
+  });
+  const defs=el("defs",{},svg);
+  [["",'var(--muted)'],["-b","var(--bad)"]].forEach(([s,c])=>{const m=el("marker",{id:`ar-${F.id}${s}`,viewBox:"0 0 10 10",refX:"10",refY:"5",markerWidth:"7",markerHeight:"7",orient:"auto-start-reverse"},defs);el("path",{d:"M0 0L10 5L0 10z",fill:c},m)});
+  /* trail layer */
+  const tg=el("g",{class:"trails"},svg);
+  /* nodes */
+  const ng=el("g",{},svg);F.el={};
+  for(const id in N){const n=N[id],p=P(n),g=el("g",{class:"node "+n.t,"data-id":id},ng);F.el[id]=g;
+    if(n.t==="task"){el("rect",{x:p.x-67,y:p.y-30,width:134,height:60,rx:7},g);
+      if(n.ico==="svc"){el("circle",{cx:p.x-57,cy:p.y-20,r:5,class:"ico"},g);el("circle",{cx:p.x-57,cy:p.y-20,r:2,class:"ico"},g)}
+      else if(n.ico==="rule"){el("rect",{x:p.x-62,y:p.y-25,width:12,height:9,class:"ico"},g);el("line",{x1:p.x-62,y1:p.y-21.5,x2:p.x-50,y2:p.y-21.5,class:"ico"},g)}
+      else{el("circle",{cx:p.x-57,cy:p.y-23,r:2.6,class:"ico"},g);el("path",{d:`M${p.x-62} ${p.y-15}q5 -6 10 0`,class:"ico"},g)}
+      const lines=wrapText(n.label,19);const tx=el("text",{x:p.x+4,y:p.y-(lines.length-1)*7+(n.tag?-4:4),"text-anchor":"middle"},g);
+      lines.forEach((s,j)=>{const ts=el("tspan",{x:p.x+4,dy:j?14:0},tx);ts.textContent=s});
+      if(n.tag){const tt=el("text",{x:p.x,y:p.y+24,"text-anchor":"middle",class:"tag"},g);tt.textContent=n.tag.toUpperCase()}
+    }else if(n.t==="xor"||n.t==="and"){el("path",{d:`M${p.x} ${p.y-21}L${p.x+21} ${p.y}L${p.x} ${p.y+21}L${p.x-21} ${p.y}Z`,class:"gw"},g);
+      if(n.t==="xor")el("path",{d:`M${p.x-7} ${p.y-7}l14 14M${p.x+7} ${p.y-7}l-14 14`,class:"ico",style:"stroke:var(--navy);stroke-width:2"},g);
+      else el("path",{d:`M${p.x} ${p.y-9}v18M${p.x-9} ${p.y}h18`,class:"ico",style:"stroke:var(--navy);stroke-width:2.2"},g);
+      if(n.t==="xor"){const lines=wrapText(n.label,18);const tx=el("text",{x:p.x,y:p.y-30-(lines.length-1)*13,"text-anchor":"middle",style:"font-size:11px"},g);lines.forEach((s,j)=>{const ts=el("tspan",{x:p.x,dy:j?13:0},tx);ts.textContent=s})}
+      if(n.note){const lines=wrapText(n.note,26);const tx=el("text",{x:p.x+30,y:p.y+32,"text-anchor":"start",class:"tag"},g);lines.forEach((s,j)=>{const ts=el("tspan",{x:p.x+30,dy:j?12:0},tx);ts.textContent=s})}
+    }else{el("circle",{cx:p.x,cy:p.y,r:16},g);
+      if(n.t==="timer"){el("circle",{cx:p.x,cy:p.y,r:12},g);el("path",{d:`M${p.x} ${p.y-7}v7l5 3`,class:"ico",style:"stroke:var(--navy)"},g)}
+      const lines=wrapText(n.label,16);const tx=el("text",{x:p.x,y:p.y+31,"text-anchor":"middle",style:"font-size:11px"},g);lines.forEach((s,j)=>{const ts=el("tspan",{x:p.x,dy:j?13:0},tx);ts.textContent=s});
+      if(n.alt)g.style.opacity=".55";
+    }
+  }
+  if(F.id==="coh"){const fg=el("g",{},svg);[["Use case B",3],["Use case C",4],["Use case D",5]].forEach(([t,l])=>{
+      el("path",{d:`M1755 ${ly(6)-16}V${ly(l)+14}`,class:"edge alt"},fg);
+      el("rect",{x:1714,y:ly(l)-13,width:82,height:26,rx:4,class:"fan-box"},fg);const tx=el("text",{x:1755,y:ly(l)+4,"text-anchor":"middle",class:"fan"},fg);tx.textContent=t.toUpperCase()});}
+  if(F.id==="inc"){const t=el("text",{x:1755,y:ly(6)-28,"text-anchor":"middle",class:"elabel back"},svg);t.textContent=u("newdept");}
+  F.trailG=tg;F.svg=svg;
+  F.tokens=[el("circle",{r:10,class:"token",cx:P(N.s0).x,cy:P(N.s0).y},svg)];
+}
+
+/* ---------------- simulation ---------------- */
+const SPEED=700, DWELL=360, DWELL_GW=260;
+function Sim(F,isMain){
+  this.F=F;this.main=isMain;this.reset();
+}
+Sim.prototype.reset=function(){
+  const F=this.F;this.i=0;this.phase="dwell";this.d=0;this.left=350;this.done=false;this.stepStop=false;
+  this.m={dist:0,hand:0,wait:0,rework:0,gates:0,steps:0,time:0};this.kpi={};
+  if(F.svg){F.trailG.innerHTML="";Object.values(F.el).forEach(g=>g.classList.remove("active","visited"));
+    F.tokens.forEach((t,k)=>{if(k)t.remove()});F.tokens=[F.tokens[0]];const p=P(F.nodes.s0);F.tokens[0].setAttribute("cx",p.x);F.tokens[0].setAttribute("cy",p.y);F.tokens[0].setAttribute("class","token");
+    this.activate("s0",true)}
+};
+Sim.prototype.activate=function(id,silent){
+  const F=this.F;Object.values(F.el).forEach(g=>{if(g.classList.contains("active")){g.classList.remove("active");g.classList.add("visited")}});
+  F.el[id].classList.add("active");
+  const n=F.nodes[id];
+  if(n.k)for(const k in n.k){this.kpi[k]=n.k[k];this.flash=k}
+  this.cur=id;
+  if(!silent){if(n.t==="task")this.m.steps++;if(n.t==="xor"||n.t==="and")this.m.gates++;if(n.wait)this.m.wait++}
+  if(n.wait)F.tokens[0].classList.add("wait");else F.tokens[0].classList.remove("wait");
+  ui.update();
+};
+Sim.prototype.trail=function(pts,back){el("path",{d:ptsD(pts),class:"trail"+(back?" back":"")},this.F.trailG)};
+Sim.prototype.tick=function(dt){
+  if(this.done)return;const F=this.F;this.m.time+=dt;
+  if(this.phase==="dwell"){this.left-=dt*1000;if(this.left>0)return;
+    if(this.i>=F.items.length){this.finish();return}
+    const it=F.items[this.i];this.phase="move";this.d=0;
+    if(it.par){F.tokens[0].setAttribute("class","token");it.par.forEach((b,k)=>{if(k)F.tokens.push(el("circle",{r:7,class:"token"},F.svg))});F.tokens[0].setAttribute("r",7);
+      it._trails=it.par.map(b=>el("path",{d:"",class:"trail"},F.trailG));it._hit=it.par.map(()=>0);
+      this.m.hand+=Math.max(...it.par.map(b=>b.segs.filter(g=>g.lane).length))}
+    else{if(it.lane)this.m.hand++;if(it.kind==="back"){this.m.rework++;F.tokens[0].classList.add("back")}else F.tokens[0].classList.remove("back");F.tokens[0].classList.remove("wait");
+      it._trail=el("path",{d:"",class:"trail"+(it.kind==="back"?" back":"")},F.trailG)}
+    ui.update();return;
+  }
+  const it=F.items[this.i];this.d+=dt*SPEED;
+  if(it.par){const L=Math.max(...it.par.map(b=>b.len));
+    it.par.forEach((b,k)=>{const dd=Math.min(this.d,b.len),p=at(b.pts,dd);F.tokens[k].setAttribute("cx",p.x);F.tokens[k].setAttribute("cy",p.y);
+      it._trails[k].setAttribute("d",ptsD(cut(b.pts,dd)));
+      while(it._hit[k]<b.checks.length-1&&dd>=b.checks[it._hit[k]].at){const nid=b.checks[it._hit[k]].node;F.el[nid].classList.add("active");const n=F.nodes[nid];if(n.k)for(const kk in n.k){this.kpi[kk]=n.k[kk];this.flash=kk}if(n.t==="task")this.m.steps++;it._hit[k]++;this.lastPar=nid;ui.update()}});
+    this.m.dist=this.base()+Math.min(this.d,L);
+    if(this.d>=L){F.tokens.slice(1).forEach(t=>t.remove());F.tokens=[F.tokens[0]];F.tokens[0].setAttribute("r",10);const p=P(F.nodes[it.join]);F.tokens[0].setAttribute("cx",p.x);F.tokens[0].setAttribute("cy",p.y);
+      this.arrive(it.join,L)}
+  }else{const p=at(it.pts,Math.min(this.d,it.len));F.tokens[0].setAttribute("cx",p.x);F.tokens[0].setAttribute("cy",p.y);it._trail.setAttribute("d",ptsD(cut(it.pts,Math.min(this.d,it.len))));
+    this.m.dist=this.base()+Math.min(this.d,it.len);
+    if(this.d>=it.len)this.arrive(it.to,it.len)}
+};
+Sim.prototype.base=function(){let s=0;for(let k=0;k<this.i;k++){const it=this.F.items[k];s+=it.par?Math.max(...it.par.map(b=>b.len)):it.len}return s};
+Sim.prototype.arrive=function(id,len){
+  this.i++;this.phase="dwell";const n=this.F.nodes[id];
+  this.left=n.dwell||((n.t==="xor"||n.t==="and")?DWELL_GW:DWELL);this.F.tokens[0].classList.remove("back");
+  this.activate(id);if(this.stepStop){this.stepStop=false;ui.pause()}
+};
+Sim.prototype.finish=function(){this.done=true;this.F.tokens[0].classList.remove("wait");done[this.F.id]=true;ui.update();ui.checkUnlock();if(sims.every(s=>s.done||!s.live))ui.pause(true)};
+function cut(pts,d){const out=[pts[0]];for(let i=1;i<pts.length;i++){const a=pts[i-1],b=pts[i],L=Math.hypot(b.x-a.x,b.y-a.y);if(d>=L){out.push(b);d-=L}else{const r=L?d/L:0;out.push({x:a.x+(b.x-a.x)*r,y:a.y+(b.y-a.y)*r});break}}return out}
+
+/* ---------------- UI ---------------- */
+const done={inc:false,coh:false};
+let view="inc",running=false,speed=1,sims=[],last=0;
+const $=s=>document.querySelector(s);
+const diagrams=$("#diagrams"),panel=$("#panel"),stage=$("#stage");
+const U=v=>Math.round(v/10);
+function diagram(F){
+  const w=document.createElement("div");w.className="dwrap";
+  w.innerHTML=`<div class="dhead"><div><span class="k">${F.id==="inc"?u("before"):u("after")}</span><h2>${F.title}</h2><p>${F.sub}</p></div></div><div class="scroll"></div>`;
+  const svg=document.createElementNS(NS,"svg");svg.setAttribute("class","bpmn");svg.setAttribute("role","img");svg.setAttribute("aria-label",F.title+": BPMN");
+  w.querySelector(".scroll").appendChild(svg);diagrams.appendChild(w);draw(F,svg);return w;
+}
+function setView(v){
+  view=v;running=false;setPlay();
+  document.querySelectorAll(".tab").forEach(t=>t.setAttribute("aria-selected",String(t.dataset.view===v)));
+  diagrams.innerHTML="";
+  sims=[];
+  if(v==="cmp"){diagram(INC);diagram(COH);sims=[new Sim(INC,false),new Sim(COH,false)];stage.classList.add("compare");ui.checkUnlock(true)}
+  else{const F=v==="inc"?INC:COH;diagram(F);sims=[new Sim(F,true)];stage.classList.remove("compare")}
+  sims.forEach(s=>s.live=true);applyOpts();ui.update();
+}
+function applyOpts(){diagrams.classList.toggle("hide-trail",!$("#o-trail").checked);diagrams.classList.toggle("hide-layers",!$("#o-layers").checked)}
+function setPlay(){$("#b-play").textContent=running?"❚❚ "+u("pause"):(sims.length&&sims.some(s=>s.i>0||s.done)&&!sims.every(s=>s.done)?"▶ "+u("resume"):"▶ "+u("start"))}
+const ui={
+  pause(){running=false;setPlay()},
+  update(){
+    if(!sims.length)return;
+    if(view==="cmp"){renderCompare();return}
+    const s=sims[0],F=s.F,n=F.nodes[s.lastPar&&s.F.items[s.i-1]&&s.F.items[s.i-1].par&&s.phase==="move"?s.lastPar:s.cur]||F.nodes.s0;
+    const T=F.total,other=(F.id==="inc"?COH:INC).total;
+    const kp=KPI_KEYS.map(([k,l])=>{const v=s.kpi[k];return `<div class="kpi ${v?v[1]:""}${s.flash===k?" flash":""}"><span>${l}</span><b>${v?v[0]:"—"}</b></div>`}).join("");s.flash=null;
+    const row=(lbl,val,tot,big)=>`<dt>${lbl}</dt><dd class="${big?"big":""}">${val}<span class="note" style="font-weight:400"> / ${tot}</span></dd>`;
+    panel.innerHTML=`
+      <div class="card"><span class="k">${n===F.nodes.s0&&!s.i?u("ready"):u("stepk")}</span><h3>${n.label}</h3>${n.q?`<p class="quote">“${n.q}”</p>`:""}
+        ${n.what?`<h4>${u("what")}</h4><p>${n.what}</p><h4>${F.id==="inc"?u("why_bad"):u("why_good")}</h4><p>${n.why}</p>`:`<p>${u("hint")}</p>`}
+        ${n.imp?`<h4>${u("impact")}</h4><div class="chips">${n.imp.map(([t,c])=>`<span class="chip ${c}">${t} ${c==="bad"?"▼":"▲"}</span>`).join("")}</div>`:""}
+        ${s.done?`<div class="result ${F.resultCls}">${F.result.map((r,i)=>(i?"<span>↓</span>":"")+`<b>${r}</b>`).join("")}</div>`:""}
+      </div>
+      <div class="card"><span class="k">${u("measured")}</span>
+        <dl class="metrics">
+          ${row(u("dist"),U(s.m.dist),U(T.dist),true)}<div class="mbar"><i style="width:${Math.min(100,s.m.dist/Math.max(INC.total.dist,COH.total.dist)*100)}%"></i></div>
+          ${row(u("hand"),s.m.hand,T.hand)}
+          ${row(u("wait"),s.m.wait,T.wait)}
+          ${row(u("rework"),s.m.rework,T.rework)}
+          ${row(u("gates"),s.m.gates,T.gates)}
+          ${row(u("steps"),s.m.steps,T.steps)}
+        </dl>
+        <p class="note" style="margin-top:8px">${u("cmpnote").replace("{o}",F.id==="inc"?u("other_coh"):u("other_inc")).replace("{d}",U(other.dist)).replace("{h}",other.hand).replace("{w}",other.wait).replace("{r}",other.rework)}</p>
+      </div>
+      <div class="card"><span class="k">${u("kpis")}</span><div class="kpis" style="margin-top:8px">${kp}</div></div>`;
+  },
+  checkUnlock(){}
+};
+function renderCompare(){
+  if(sims.length<2)return;const [a,b]=sims;const r=(lbl,x,y,tx,ty)=>`<tr><td>${lbl}</td><td class="inc">${x}<span class="note"> / ${tx}</span></td><td class="coh">${y}<span class="note"> / ${ty}</span></td></tr>`;
+  const A=INC.total,B=COH.total;
+  panel.innerHTML=`<div class="card"><span class="k">${u("live")}</span>
+    <table class="cmp"><thead><tr><th></th><th>${u("inc")}</th><th>${u("coh")}</th></tr></thead><tbody>
+    ${r(u("dist"),U(a.m.dist),U(b.m.dist),U(A.dist),U(B.dist))}
+    ${r(u("hand_s"),a.m.hand,b.m.hand,A.hand,B.hand)}
+    ${r(u("wait"),a.m.wait,b.m.wait,A.wait,B.wait)}
+    ${r(u("rework"),a.m.rework,b.m.rework,A.rework,B.rework)}
+    ${r(u("gates"),a.m.gates,b.m.gates,A.gates,B.gates)}
+    ${r(u("steps"),a.m.steps,b.m.steps,A.steps,B.steps)}
+    </tbody></table>
+    <p class="note" style="margin-top:10px">${u("summary").replace("{x}",(A.dist/B.dist).toLocaleString(LG==="en"?"en-GB":LG+"-BE",{maximumFractionDigits:1})).replace("{r}",A.rework)}</p></div>
+    <div class="card"><span class="k">${u("result")}</span>
+      <div class="result bad">${INC.result.map((x,i)=>(i?"<span>↓</span>":"")+`<b>${x}</b>`).join("")}</div>
+      <div class="result good" style="margin-top:14px">${COH.result.map((x,i)=>(i?"<span>↓</span>":"")+`<b>${x}</b>`).join("")}</div></div>`;
+}
+function renderBars(){
+  const box=$("#travel-bars");box.querySelectorAll(".brow").forEach(e=>e.remove());
+  const A=INC.total,B=COH.total;
+  [["Procesafstand",U(A.dist),U(B.dist)],["Overdrachten tussen lanes",A.hand,B.hand],["Wachtmomenten",A.wait,B.wait],["Rework-lussen",A.rework,B.rework],["Beslispoorten",A.gates,B.gates],["Processtappen",A.steps,B.steps]].forEach(([l,x,y])=>{
+    const mx=Math.max(x,y,1);const d=document.createElement("div");d.className="brow";
+    d.innerHTML=`<div class="lbl"><span>${l}</span><b>${x} → ${y}</b></div><div class="btrack"><i class="inc" style="width:${x/mx*100}%"></i><i class="coh" style="width:${Math.max(y/mx*100,y?2:0)}%"></i></div>`;box.appendChild(d)});
+}
+function loop(t){const dt=Math.min(.05,(t-last)/1000||0);last=t;if(running){sims.forEach(s=>s.tick(dt*speed))}requestAnimationFrame(loop)}
+requestAnimationFrame(loop);
+
+$("#b-play").addEventListener("click",()=>{if(sims.every(s=>s.done))sims.forEach(s=>s.reset());running=!running;setPlay()});
+$("#b-step").addEventListener("click",()=>{if(sims.every(s=>s.done))return;sims.forEach(s=>s.stepStop=true);running=true;setPlay()});
+$("#b-reset").addEventListener("click",()=>{running=false;sims.forEach(s=>s.reset());setPlay();ui.update()});
+document.querySelectorAll(".tab").forEach(t=>t.addEventListener("click",()=>setView(t.dataset.view)));
+document.querySelectorAll(".seg button").forEach(b=>b.addEventListener("click",()=>{speed=+b.dataset.speed;document.querySelectorAll(".seg button").forEach(x=>x.setAttribute("aria-pressed",String(x===b)))}));
+$("#o-trail").addEventListener("change",applyOpts);$("#o-layers").addEventListener("change",applyOpts);
+document.querySelector(".tabs").addEventListener("keydown",e=>{if(e.key!=="ArrowRight"&&e.key!=="ArrowLeft")return;const tabs=[...document.querySelectorAll(".tab")];let i=tabs.indexOf(document.activeElement);i=(i+(e.key==="ArrowRight"?1:-1)+tabs.length)%tabs.length;tabs[i].focus();tabs[i].click()});
+function applyLang(l){LG=TX[l]?l:"en";document.documentElement.lang=LG;
+  [INC,COH].forEach(F=>{const t=TX[LG][F.id];for(const id in t){const n=F.nodes[id],a=t[id];if(!n)continue;n.label=a[0];if(a.length>1){n.tag=a[1]||n.tag&&a[1];if(!a[1])delete n.tag;n.what=a[2];n.why=a[3]}if(a[4])n.note=a[4]}
+    F.title=u(F.id+"_title");F.sub=u(F.id+"_sub")});
+  document.querySelectorAll("[data-u]").forEach(e=>e.textContent=u(e.dataset.u));
+  setView(view)}
+applyLang(pickLang());
+addEventListener("storage",e=>{if(e.key==="avs-lang"&&e.newValue&&e.newValue!==LG)applyLang(e.newValue)});
+addEventListener("message",e=>{if(e.origin===location.origin&&e.data&&e.data.type==="avs-lang"&&e.data.lang!==LG)applyLang(e.data.lang)});
+function postH(){if(parent!==window)parent.postMessage({type:"ec-sim-h",h:Math.ceil(document.body.getBoundingClientRect().height)+4},location.origin)}
+new ResizeObserver(postH).observe(document.body);addEventListener("load",postH);
+})();
+</script>
+
+</body>
+</html>

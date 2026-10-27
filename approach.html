@@ -1262,6 +1262,9 @@ html[lang="en"] .lg[lang="en"],html[lang="nl"] .lg[lang="nl"],html[lang="fr"] .l
 
 /* ---- v19: hero byline ---- */
 .hero-by{display:block;margin-bottom:18px;font-family:var(--f-mono);font-size:12.5px;letter-spacing:.12em;text-transform:uppercase;color:#7FD3F7}
+
+/* ---- v20: responsive images ---- */
+picture{display:contents}
 </style>
 
 </head>
@@ -1299,7 +1302,7 @@ html[lang="en"] .lg[lang="en"],html[lang="nl"] .lg[lang="nl"],html[lang="fr"] .l
 <main id="top">
 <header class="hero page-hero" id="hero">
   <div class="hero-top">
-    <div class="hero-bg" aria-hidden="true"><img src="img/band-roadmap.jpg" alt="" fetchpriority="high"></div>
+    <div class="hero-bg" aria-hidden="true"><picture><source type="image/webp" srcset="img/band-roadmap-640.webp 640w, img/band-roadmap-1280.webp 1280w, img/band-roadmap-1920.webp 1920w" sizes="100vw"><img src="img/band-roadmap.jpg" alt="" fetchpriority="high"></picture></div>
     <div class="wrap hero-inner">
       <span class="eyebrow">Chapters 11–13</span>
       <h1>From first step to scale</h1>

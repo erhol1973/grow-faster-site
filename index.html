@@ -1262,6 +1262,9 @@ html[lang="en"] .lg[lang="en"],html[lang="nl"] .lg[lang="nl"],html[lang="fr"] .l
 
 /* ---- v19: hero byline ---- */
 .hero-by{display:block;margin-bottom:18px;font-family:var(--f-mono);font-size:12.5px;letter-spacing:.12em;text-transform:uppercase;color:#7FD3F7}
+
+/* ---- v20: responsive images ---- */
+picture{display:contents}
 </style>
 
 </head>
@@ -1299,7 +1302,7 @@ html[lang="en"] .lg[lang="en"],html[lang="nl"] .lg[lang="nl"],html[lang="fr"] .l
 <main id="top">
 <header class="hero" id="hero">
   <div class="hero-top">
-    <div class="hero-bg" aria-hidden="true"><img src="img/hero.jpg" alt="" fetchpriority="high"></div>
+    <div class="hero-bg" aria-hidden="true"><picture><source type="image/webp" srcset="img/hero-640.webp 640w, img/hero-1280.webp 1280w, img/hero-1920.webp 1920w, img/hero-2400.webp 2400w" sizes="100vw"><img src="img/hero.jpg" alt="" fetchpriority="high"></picture></div>
     <div class="wrap hero-inner">
     <span class="eyebrow hero-by">An executive briefing by Erlend Hollebosch</span>
     <h1 data-ih="h1">AI amplifies the system it enters. <em>Make it coherent first.</em></h1>
@@ -1409,7 +1412,7 @@ html[lang="en"] .lg[lang="en"],html[lang="nl"] .lg[lang="nl"],html[lang="fr"] .l
   </div>
 </section>
 <section class="final" id="final" aria-labelledby="fn-h">
-  <div class="final-bg" aria-hidden="true"><img src="img/final.jpg" alt="" loading="lazy"></div>
+  <div class="final-bg" aria-hidden="true"><picture><source type="image/webp" srcset="img/final-640.webp 640w, img/final-1280.webp 1280w, img/final-1920.webp 1920w" sizes="100vw"><img src="img/final.jpg" alt="" loading="lazy"></picture></div>
   <div class="spot" aria-hidden="true"></div>
   <div class="wrap" style="position:relative">
     <h2 id="fn-h">The AI Advantage Will Not Come From Having More AI.</h2>

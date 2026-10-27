@@ -1262,6 +1262,9 @@ html[lang="en"] .lg[lang="en"],html[lang="nl"] .lg[lang="nl"],html[lang="fr"] .l
 
 /* ---- v19: hero byline ---- */
 .hero-by{display:block;margin-bottom:18px;font-family:var(--f-mono);font-size:12.5px;letter-spacing:.12em;text-transform:uppercase;color:#7FD3F7}
+
+/* ---- v20: responsive images ---- */
+picture{display:contents}
 </style>
 
 </head>
@@ -1299,7 +1302,7 @@ html[lang="en"] .lg[lang="en"],html[lang="nl"] .lg[lang="nl"],html[lang="fr"] .l
 <main id="top">
 <header class="hero page-hero" id="hero">
   <div class="hero-top">
-    <div class="hero-bg" aria-hidden="true"><img src="img/final.jpg" alt="" fetchpriority="high"></div>
+    <div class="hero-bg" aria-hidden="true"><picture><source type="image/webp" srcset="img/final-640.webp 640w, img/final-1280.webp 1280w, img/final-1920.webp 1920w" sizes="100vw"><img src="img/final.jpg" alt="" fetchpriority="high"></picture></div>
     <div class="wrap hero-inner">
       <span class="eyebrow">About the author</span>
       <h1>About & contact</h1>
@@ -1309,14 +1312,14 @@ html[lang="en"] .lg[lang="en"],html[lang="nl"] .lg[lang="nl"],html[lang="fr"] .l
 </header>
 <section id="contact" class="author" aria-labelledby="au-h">
   <div class="wrap au-grid">
-    <div class="au-side rv"><figure class="au-photo"><img src="img/author.jpg" alt="Portrait of Erlend Hollebosch" loading="lazy" width="720" height="900"></figure></div>
+    <div class="au-side rv"><figure class="au-photo"><picture><source type="image/webp" srcset="img/author-400.webp 400w, img/author-720.webp 720w" sizes="(min-width: 900px) 420px, 260px"><img src="img/author.jpg" alt="Portrait of Erlend Hollebosch" loading="lazy" width="720" height="900"></picture></figure></div>
     <div class="au-text rv">
       <span class="eyebrow">About the author</span>
       <h2 id="au-h">Erlend Hollebosch</h2>
       <p class="au-role">Enterprise Transformation Lead</p>
       <p>More than 20 years of programme, portfolio and transformation leadership in international organisations, including Volvo Group, Solvay, Telenet and Colruyt Group.</p>
       <p>Today I help leaders redesign work for people and AI agents: operating models, governance and adoption that turn AI investment into measurable outcomes.</p>
-      <div class="au-book has-cover"><img class="au-cover" src="img/book-cover.png" alt="Cover of the book The Coherent Enterprise by Erlend Hollebosch" width="600" height="870" loading="lazy"><div class="au-book-t"><span class="k">Forthcoming book</span><cite data-notr>The Coherent Enterprise</cite><p>Why organizations lose coherence faster than they can adapt, and how leaders restore it. This briefing applies that lens to AI and agents.</p><a href="#contact" data-mail="?subject=The%20Coherent%20Enterprise">Ask about the book <span aria-hidden="true">→</span></a></div></div>
+      <div class="au-book has-cover"><picture><source type="image/webp" srcset="img/book-cover-300.webp 300w, img/book-cover-600.webp 600w" sizes="(min-width: 900px) 240px, 50vw"><img class="au-cover" src="img/book-cover.png" alt="Cover of the book The Coherent Enterprise by Erlend Hollebosch" width="600" height="870" loading="lazy"></picture><div class="au-book-t"><span class="k">Forthcoming book</span><cite data-notr>The Coherent Enterprise</cite><p>Why organizations lose coherence faster than they can adapt, and how leaders restore it. This briefing applies that lens to AI and agents.</p><a href="#contact" data-mail="?subject=The%20Coherent%20Enterprise">Ask about the book <span aria-hidden="true">→</span></a></div></div>
     </div>
     <div class="au-reads">
       <article class="au-read rv">

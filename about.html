@@ -1298,7 +1298,7 @@ html[lang="en"] .lg[lang="en"],html[lang="nl"] .lg[lang="nl"],html[lang="fr"] .l
       <p class="au-role">Enterprise Transformation Lead</p>
       <p>More than 20 years of programme, portfolio and transformation leadership in international organisations, including Volvo Group, Solvay, Telenet and Colruyt Group.</p>
       <p>Today I help leaders redesign work for people and AI agents: operating models, governance and adoption that turn AI investment into measurable outcomes.</p>
-      <div class="au-book has-cover"><img class="au-cover" src="img/book-cover.png" alt="Cover of the book The Coherent Enterprise by Erlend Hollebosch" width="600" height="870" loading="lazy"><div class="au-book-t"><span class="k">Forthcoming book</span><cite data-notr>The Coherent Enterprise</cite><p>Why organizations lose coherence faster than they can adapt, and how leaders restore it. This briefing applies that lens to AI and agents.</p><a href="mailto:erlendhollebosch@gmail.com?subject=The%20Coherent%20Enterprise">Ask about the book <span aria-hidden="true">→</span></a></div></div>
+      <div class="au-book has-cover"><img class="au-cover" src="img/book-cover.png" alt="Cover of the book The Coherent Enterprise by Erlend Hollebosch" width="600" height="870" loading="lazy"><div class="au-book-t"><span class="k">Forthcoming book</span><cite data-notr>The Coherent Enterprise</cite><p>Why organizations lose coherence faster than they can adapt, and how leaders restore it. This briefing applies that lens to AI and agents.</p><a href="#contact" data-mail="?subject=The%20Coherent%20Enterprise">Ask about the book <span aria-hidden="true">→</span></a></div></div>
     </div>
     <div class="au-reads">
       <article class="au-read rv">
@@ -1312,7 +1312,7 @@ html[lang="en"] .lg[lang="en"],html[lang="nl"] .lg[lang="nl"],html[lang="fr"] .l
         <span class="k">Full manuscript · 281 pages · on request</span>
         <h3>Read the full book</h3>
         <p>The complete manuscript in five parts: the collision with complexity, the logic of enterprise coherence, diagnosing incoherence, designing the coherent enterprise, and the future of enterprise leadership. Including the Coherence Diagnostic Model and the Coherent Transformation Playbook.</p>
-        <a class="btn ghost" href="mailto:erlendhollebosch@gmail.com?subject=Request%3A%20The%20Coherent%20Enterprise%20%E2%80%93%20full%20manuscript&amp;body=Hello%20Erlend%2C%0D%0A%0D%0AI%20would%20like%20to%20receive%20the%20full%20manuscript%20of%20The%20Coherent%20Enterprise.%0D%0A%0D%0AName%3A%0D%0AOrganisation%3A%0D%0ARole%3A%0D%0A%0D%0AKind%20regards">Request the full manuscript <span aria-hidden="true">→</span></a>
+        <a class="btn ghost" href="#contact" data-mail="?subject=Request%3A%20The%20Coherent%20Enterprise%20%E2%80%93%20full%20manuscript&amp;body=Hello%20Erlend%2C%0D%0A%0D%0AI%20would%20like%20to%20receive%20the%20full%20manuscript%20of%20The%20Coherent%20Enterprise.%0D%0A%0D%0AName%3A%0D%0AOrganisation%3A%0D%0ARole%3A%0D%0A%0D%0AKind%20regards">Request the full manuscript <span aria-hidden="true">→</span></a>
         <small>Opens your email with a ready-made request. I share the manuscript personally.</small>
       </article>
     </div>
@@ -1324,9 +1324,9 @@ html[lang="en"] .lg[lang="en"],html[lang="nl"] .lg[lang="nl"],html[lang="fr"] .l
       <div class="au-c-act">
         <div class="au-btns">
 <a class="btn ghost" id="li-btn" href="#" target="_blank" rel="noopener" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9.5h4V21H3zM9.5 9.5h3.8v1.6h.06c.53-1 1.83-2.06 3.77-2.06C21.1 9.04 22 11.5 22 14.7V21h-4v-5.6c0-1.34-.03-3.06-1.86-3.06-1.87 0-2.15 1.46-2.15 2.96V21h-4z"/></svg>Connect on LinkedIn</a>
-<a class="btn primary" href="mailto:erlendhollebosch@gmail.com?subject=Agentic%20transformation"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="1.5"/><path d="M3.5 6.5 12 13l8.5-6.5"/></svg>Send an email</a>
+<a class="btn primary" href="#contact" data-mail="?subject=Agentic%20transformation"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="1.5"/><path d="M3.5 6.5 12 13l8.5-6.5"/></svg>Send an email</a>
         </div>
-        <p class="au-mail"><code data-notr id="au-mail">erlendhollebosch@gmail.com</code><button type="button" class="au-copy" id="au-copy" data-dyn>Copy</button></p>
+        <p class="au-mail"><code data-notr id="au-mail" data-em>erlendhollebosch [at] gmail [dot] com</code><button type="button" class="au-copy" id="au-copy" data-dyn>Copy</button></p>
       </div>
     </div>
   </div>
@@ -1822,6 +1822,10 @@ html[lang="en"] .lg[lang="en"],html[lang="nl"] .lg[lang="nl"],html[lang="fr"] .l
   });
   document.addEventListener("keydown",e=>{if(e.key==="Escape")closeMenus()});
 
+  /* e-mail address assembled at runtime (anti-spam) */
+  (function(){const a=["erlend","hollebosch"].join("")+String.fromCharCode(64)+["gmail","com"].join(".");
+    document.querySelectorAll("[data-em]").forEach(e=>e.textContent=a);
+    document.querySelectorAll("a[data-mail]").forEach(e=>{e.href="mailto:"+a+e.dataset.mail.replace(/&amp;/g,"&")})})();
   /* start */
   const stored=store.get("avs-lang"), nav0=(navigator.language||"en").slice(0,2).toLowerCase();
   applyLang(stored||(NATIVE[nav0]?nav0:"en"),false);

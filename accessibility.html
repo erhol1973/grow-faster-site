@@ -1318,7 +1318,7 @@ html[lang="en"] .lg[lang="en"],html[lang="nl"] .lg[lang="nl"],html[lang="fr"] .l
 <h2>4. Hoe deze verklaring is opgesteld</h2>
 <p>Deze verklaring is op 27 oktober 2026 opgesteld op basis van een zelfevaluatie: een handmatige controle van het ontwerp en de broncode tegen de WCAG-criteria. Er is nog geen externe audit uitgevoerd.</p>
 <h2>5. Feedback en hulp</h2>
-<p>Loop je ergens tegenaan, of heb je informatie in een andere vorm nodig? Mail naar <a href="mailto:erlendhollebosch@gmail.com" data-notr>erlendhollebosch@gmail.com</a>. Vermeld de pagina en wat er misloopt. We antwoorden binnen 10 werkdagen en zoeken samen met jou een oplossing.</p>
+<p>Loop je ergens tegenaan, of heb je informatie in een andere vorm nodig? Mail naar <a href="#" data-mail="" data-em data-notr>erlendhollebosch [at] gmail [dot] com</a>. Vermeld de pagina en wat er misloopt. We antwoorden binnen 10 werkdagen en zoeken samen met jou een oplossing.</p>
 <h2>6. Herziening</h2>
 <p>We herzien deze verklaring bij elke grote wijziging van de website, en minstens één keer per jaar.</p>
 </div>
@@ -1349,7 +1349,7 @@ html[lang="en"] .lg[lang="en"],html[lang="nl"] .lg[lang="nl"],html[lang="fr"] .l
 <h2>4. How this statement was prepared</h2>
 <p>This statement was prepared on 27 October 2026 based on a self-assessment: a manual review of the design and source code against the WCAG criteria. No external audit has been carried out yet.</p>
 <h2>5. Feedback and help</h2>
-<p>Running into a problem, or need information in another format? Email <a href="mailto:erlendhollebosch@gmail.com" data-notr>erlendhollebosch@gmail.com</a>. Mention the page and what goes wrong. We reply within 10 working days and look for a solution together with you.</p>
+<p>Running into a problem, or need information in another format? Email <a href="#" data-mail="" data-em data-notr>erlendhollebosch [at] gmail [dot] com</a>. Mention the page and what goes wrong. We reply within 10 working days and look for a solution together with you.</p>
 <h2>6. Review</h2>
 <p>We review this statement with every major change to the website, and at least once a year.</p>
 </div>
@@ -1380,7 +1380,7 @@ html[lang="en"] .lg[lang="en"],html[lang="nl"] .lg[lang="nl"],html[lang="fr"] .l
 <h2>4. Établissement de cette déclaration</h2>
 <p>Cette déclaration a été établie le 27 octobre 2026 sur la base d’une auto-évaluation : un contrôle manuel du design et du code source au regard des critères WCAG. Aucun audit externe n’a encore été réalisé.</p>
 <h2>5. Retour d’information et aide</h2>
-<p>Vous rencontrez une difficulté ou avez besoin d’une information sous une autre forme ? Écrivez à <a href="mailto:erlendhollebosch@gmail.com" data-notr>erlendhollebosch@gmail.com</a> en précisant la page et le problème. Nous répondons dans les 10 jours ouvrables et cherchons une solution avec vous.</p>
+<p>Vous rencontrez une difficulté ou avez besoin d’une information sous une autre forme ? Écrivez à <a href="#" data-mail="" data-em data-notr>erlendhollebosch [at] gmail [dot] com</a> en précisant la page et le problème. Nous répondons dans les 10 jours ouvrables et cherchons une solution avec vous.</p>
 <h2>6. Révision</h2>
 <p>Nous révisons cette déclaration à chaque modification importante du site, et au moins une fois par an.</p>
 </div>
@@ -1411,7 +1411,7 @@ html[lang="en"] .lg[lang="en"],html[lang="nl"] .lg[lang="nl"],html[lang="fr"] .l
 <h2>4. Wie diese Erklärung erstellt wurde</h2>
 <p>Diese Erklärung wurde am 27. Oktober 2026 auf Grundlage einer Selbstbewertung erstellt: einer manuellen Prüfung von Design und Quellcode anhand der WCAG-Kriterien. Ein externes Audit wurde noch nicht durchgeführt.</p>
 <h2>5. Feedback und Hilfe</h2>
-<p>Stoßen Sie auf ein Problem oder benötigen Sie Informationen in einem anderen Format? Schreiben Sie an <a href="mailto:erlendhollebosch@gmail.com" data-notr>erlendhollebosch@gmail.com</a> und nennen Sie die Seite und das Problem. Wir antworten innerhalb von 10 Werktagen und suchen gemeinsam mit Ihnen eine Lösung.</p>
+<p>Stoßen Sie auf ein Problem oder benötigen Sie Informationen in einem anderen Format? Schreiben Sie an <a href="#" data-mail="" data-em data-notr>erlendhollebosch [at] gmail [dot] com</a> und nennen Sie die Seite und das Problem. Wir antworten innerhalb von 10 Werktagen und suchen gemeinsam mit Ihnen eine Lösung.</p>
 <h2>6. Überprüfung</h2>
 <p>Wir überprüfen diese Erklärung bei jeder größeren Änderung der Website, mindestens jedoch einmal jährlich.</p>
 </div>
@@ -1907,6 +1907,10 @@ html[lang="en"] .lg[lang="en"],html[lang="nl"] .lg[lang="nl"],html[lang="fr"] .l
   });
   document.addEventListener("keydown",e=>{if(e.key==="Escape")closeMenus()});
 
+  /* e-mail address assembled at runtime (anti-spam) */
+  (function(){const a=["erlend","hollebosch"].join("")+String.fromCharCode(64)+["gmail","com"].join(".");
+    document.querySelectorAll("[data-em]").forEach(e=>e.textContent=a);
+    document.querySelectorAll("a[data-mail]").forEach(e=>{e.href="mailto:"+a+e.dataset.mail.replace(/&amp;/g,"&")})})();
   /* start */
   const stored=store.get("avs-lang"), nav0=(navigator.language||"en").slice(0,2).toLowerCase();
   applyLang(stored||(NATIVE[nav0]?nav0:"en"),false);

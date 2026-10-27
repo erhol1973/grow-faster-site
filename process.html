@@ -1828,6 +1828,10 @@ html[lang="en"] .lg[lang="en"],html[lang="nl"] .lg[lang="nl"],html[lang="fr"] .l
   });
   document.addEventListener("keydown",e=>{if(e.key==="Escape")closeMenus()});
 
+  /* e-mail address assembled at runtime (anti-spam) */
+  (function(){const a=["erlend","hollebosch"].join("")+String.fromCharCode(64)+["gmail","com"].join(".");
+    document.querySelectorAll("[data-em]").forEach(e=>e.textContent=a);
+    document.querySelectorAll("a[data-mail]").forEach(e=>{e.href="mailto:"+a+e.dataset.mail.replace(/&amp;/g,"&")})})();
   /* start */
   const stored=store.get("avs-lang"), nav0=(navigator.language||"en").slice(0,2).toLowerCase();
   applyLang(stored||(NATIVE[nav0]?nav0:"en"),false);

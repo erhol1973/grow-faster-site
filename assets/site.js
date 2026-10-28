@@ -365,7 +365,7 @@
     const root=document.documentElement;root.lang=l;root.dir=l==="ar"?"rtl":"ltr";
     recs.forEach(r=>{r.n.nodeValue=r.pre+t(r.key)+r.post});
     ihs.forEach(o=>{o.el.innerHTML=l==="en"?o.orig:((((window.I18N_HTML||{})[o.el.dataset.ih])||[])[LIDX[l]]||o.orig)});
-    document.querySelectorAll(".lang-cur").forEach(e=>e.textContent=NATIVE[l]);document.querySelectorAll(".lang-btn").forEach(b=>b.dataset.code=({nl:"NL-BE",fr:"FR-BE",en:"EN",de:"DE"})[l]);document.querySelectorAll(".lang-btn .flag").forEach(f=>f.className="flag flag-"+l);
+    document.querySelectorAll(".lang-cur").forEach(e=>e.textContent=e.closest(".lang-top")?({nl:"NL-BE",fr:"FR-BE",en:"EN",de:"DE"})[l]:NATIVE[l]);document.querySelectorAll(".lang-btn").forEach(b=>b.dataset.code=({nl:"NL-BE",fr:"FR-BE",en:"EN",de:"DE"})[l]);document.querySelectorAll(".lang-btn .flag").forEach(f=>f.className="flag flag-"+l);
     document.querySelectorAll(".lang-menu [data-lang]").forEach(b=>b.setAttribute("aria-checked",String(b.dataset.lang===l)));
     document.querySelectorAll(".lang-btn").forEach(b=>b.setAttribute("aria-label",t("Language")+": "+NATIVE[l]));
     if(fcopy)fcopy.textContent=t("Copy");auCopy.textContent=t("Copy");

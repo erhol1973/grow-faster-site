@@ -1,0 +1,16 @@
+{
+  "name": "grow-faster-site",
+  "version": "1.0.0",
+  "private": true,
+  "engines": { "node": ">=22" },
+  "scripts": {
+    "build": "node scripts/build.cjs",
+    "serve": "node scripts/server.cjs",
+    "test": "node --test tests/*.test.cjs",
+    "test:e2e": "playwright test",
+    "test:load": "node scripts/load.cjs",
+    "security": "node scripts/security.cjs"
+  },
+  "packageManager": "pnpm@11.25.0",
+  "devDependencies": { "playwright": "1.62.1" }
+}

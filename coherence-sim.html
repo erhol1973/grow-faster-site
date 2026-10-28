@@ -150,6 +150,16 @@ svg.bpmn{display:block;width:100%;min-width:1080px;height:auto}
 @media (max-width:1180px){.stage,.stage.compare{grid-template-columns:minmax(0,1fr)}.panel{position:static}.twocol{grid-template-columns:minmax(0,1fr)}}
 @media (max-width:560px){.final{grid-template-columns:1fr}.kpis{grid-template-columns:1fr 1fr}}
 @media (prefers-reduced-motion:reduce){.token.wait{animation:none}.kpi.flash{animation:none}}
+/* A full-width pool, followed by the explanation and metrics. */
+.stage,.stage.compare{grid-template-columns:minmax(0,1fr)}
+.page{max-width:none;gap:18px}
+.scroll{overflow:visible;min-width:0}
+svg.bpmn{width:100%;min-width:0;max-width:100%;height:auto}
+.panel{position:static;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr) minmax(0,1fr);align-items:start}
+.stage.compare .panel{grid-template-columns:minmax(0,1fr)}
+.panel>.card{min-width:0}
+@media(max-width:900px){.panel{grid-template-columns:repeat(2,minmax(0,1fr))}.panel>.card:first-child{grid-column:1/-1}.bar{align-items:flex-start}.tabs,.ctl,.opts{gap:8px}}
+@media(max-width:560px){.panel{grid-template-columns:minmax(0,1fr)}.page{padding-inline:8px}.dhead{padding:12px}.card{padding:14px}.bar{padding:10px}.tab{padding:8px;font-size:11px}.tbl{overflow-x:visible}.tbl table{min-width:0;table-layout:fixed}.tbl th,.tbl td{overflow-wrap:anywhere}}
 </style>
 </head>
 <body>

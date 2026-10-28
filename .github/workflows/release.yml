@@ -1,0 +1,123 @@
+name: Website release
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: website-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  checks:
+    name: Website quality gate
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      # Action commits verified against their official release pages.
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      - uses: actions/setup-node@53b83947a5a98c8d113130e565377fae1a50d02f # v6.3.0
+        with:
+          node-version: '24.21.0'
+      - name: Install pinned package manager
+        run: npm install --global pnpm@11.25.0
+      - name: Install locked dependencies
+        run: pnpm install --frozen-lockfile --ignore-scripts
+      - run: npm run build
+      - run: npm test
+      - run: npm run security
+      - name: Dependency vulnerabilities
+        run: pnpm audit --audit-level=high
+      - name: Install browsers
+        run: npx playwright install --with-deps chromium firefox webkit
+      - run: npm run test:e2e
+      - run: npm run test:load
+      - name: Save reports
+        if: always()
+        uses: actions/upload-artifact@330a01c490aca151604b8cf639adc76d48f6c5d4 # v5.0.0
+        with:
+          name: quality-reports
+          path: |
+            reports/
+            playwright-report/
+            test-results/
+          if-no-files-found: warn
+      - name: Package tested website
+        if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+        uses: actions/upload-pages-artifact@7b1f4a764d45c48632c6b24a0339c27f5614fb0b # v4.0.0
+        with:
+          path: dist
+  secrets:
+    name: Secrets history gate
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          fetch-depth: 0
+      - name: Scan Git history for secrets
+        uses: gitleaks/gitleaks-action@e0c47f4f8be36e29cdc102c57e68cb5cbf0e8d1e # v3
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITLEAKS_ENABLE_COMMENTS: 'false'
+          GITLEAKS_ENABLE_UPLOAD_ARTIFACT: 'false'
+  codeql:
+    name: JavaScript security gate
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    permissions:
+      contents: read
+      security-events: write
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      - uses: github/codeql-action/init@8aad20d150bbac5944a9f9d289da16a4b0d87c1e # v4.36.2
+        with:
+          languages: javascript-typescript
+          queries: security-extended
+          config: |
+            paths-ignore:
+              - node_modules
+              - dist
+              - tests
+      - uses: github/codeql-action/analyze@8aad20d150bbac5944a9f9d289da16a4b0d87c1e # v4.36.2
+        with:
+          output: codeql-results
+      - name: Block security findings
+        run: |
+          node - <<'NODE'
+          const fs = require('node:fs');
+          let count = 0;
+          const files = fs.readdirSync('codeql-results').filter(f => f.endsWith('.sarif'));
+          if (!files.length) throw new Error('CodeQL produced no SARIF report');
+          for (const file of files) {
+            const data = JSON.parse(fs.readFileSync('codeql-results/' + file, 'utf8'));
+            for (const run of data.runs || []) count += (run.results || []).filter(r => r.level !== 'none' && !(r.suppressions || []).some(s => s.status === 'accepted')).length;
+          }
+          if (count) throw new Error(`${count} CodeQL findings require review before release`);
+          NODE
+      - uses: actions/upload-artifact@330a01c490aca151604b8cf639adc76d48f6c5d4 # v5.0.0
+        if: always()
+        with:
+          name: codeql-results
+          path: codeql-results/
+  deploy:
+    name: Deploy tested website
+    needs: [checks, codeql, secrets]
+    # Deliberately disabled until Pages settings and protection are approved.
+    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request' && vars.PAGES_RELEASE_ENABLED == 'true'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy tested artifact
+        id: deployment
+        uses: actions/deploy-pages@d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e # v4.0.5
+

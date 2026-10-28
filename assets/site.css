@@ -1398,3 +1398,8 @@ h1,h2,h3,p,a,li,dd,dt{overflow-wrap:break-word}
 @media(max-width:1000px){.ec-intro-grid{grid-template-columns:minmax(0,1fr);gap:24px}.ec-intro-grid .ec-formula{padding:8px 0 8px 20px}.om>.om-col{padding:22px}}
 @media(max-width:760px){.process-benefits{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:520px){.process-benefits{grid-template-columns:minmax(0,1fr)}.work-flow,.agent-flow{grid-template-columns:minmax(0,1fr);gap:22px}.work-node{min-height:78px;flex-direction:row;padding:18px 22px;gap:16px}.work-node:not(:last-child)::after{content:'↓';top:100%;left:50%;height:22px;transform:translateX(-50%);line-height:22px}.role-governance ul{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+/* Briefing label directly beneath the homepage title. */
+.hero-inner .hero-by{display:flex;align-items:center;gap:12px;margin:22px 0 30px;color:#b9e3f5;text-transform:none;letter-spacing:.06em;font-size:13px;line-height:1.5}
+.hero-inner .hero-by::before,.hero-inner .hero-by::after{content:"";display:block;flex:0 0 .5cm;width:.5cm;height:1px;background:currentColor}
+.hero-inner .hero-by strong{font-weight:600}

@@ -1,0 +1,4 @@
+const {defineConfig,devices}=require('playwright/test');
+module.exports=defineConfig({testDir:'./tests/browser',timeout:30000,fullyParallel:true,retries:process.env.CI?1:0,reporter:[['list'],['html',{open:'never'}],['junit',{outputFile:'test-results/e2e.xml'}]],use:{baseURL:'http://127.0.0.1:4173',launchOptions:process.env.TEST_BROWSER_EXECUTABLE?{executablePath:process.env.TEST_BROWSER_EXECUTABLE}:{},trace:'retain-on-failure',screenshot:'only-on-failure'},webServer:{command:'node scripts/server.cjs',url:'http://127.0.0.1:4173',reuseExistingServer:!process.env.CI},projects:[{name:'firefox-smoke',testMatch:'**/smoke.spec.cjs',use:{...devices['Desktop Firefox'],launchOptions:{}}},{name:'webkit-smoke',testMatch:'**/smoke.spec.cjs',use:{...devices['Desktop Safari'],launchOptions:{}}},{name:'chromium',use:{...devices['Desktop Chrome']}},{name:'mobile',use:{...devices['iPhone 13'],defaultBrowserType:'chromium'}}]});
+
+

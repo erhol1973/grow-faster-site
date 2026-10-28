@@ -348,7 +348,7 @@
 
 
   /* ===== contact: LinkedIn + copy email ===== */
-  const LINKEDIN_URL=""; /* paste the full profile URL here, e.g. https://www.linkedin.com/in/your-name/ */
+  const LINKEDIN_URL="https://www.linkedin.com/in/erlend-hollebosch-053361181/"; /* paste the full profile URL here, e.g. https://www.linkedin.com/in/your-name/ */
   if(LINKEDIN_URL){const lb=$("#li-btn");lb.href=LINKEDIN_URL;lb.hidden=false;document.querySelectorAll(".li-link").forEach(a=>{a.href=LINKEDIN_URL;a.parentElement.hidden=false})}
   const auCopy=$("#au-copy");
   auCopy.addEventListener("click",()=>{const txt=$("#au-mail").textContent;const done=()=>{auCopy.textContent=t("Copied");setTimeout(()=>auCopy.textContent=t("Copy"),1600)};const sel=()=>{const r=document.createRange();r.selectNodeContents($("#au-mail"));const sl=getSelection();sl.removeAllRanges();sl.addRange(r)};try{navigator.clipboard.writeText(txt).then(done,sel)}catch(e){sel()}});

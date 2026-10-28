@@ -230,3 +230,37 @@ Object.assign(window.I18N,{
 });
 
 window.I18N=Object.assign(window.I18N||{},{"Organizations have rapidly deployed GenAI, mostly as horizontal tools such as copilots and chatbots. These tools help with: Writing, Summarization, Information retrieval, Meeting preparation, Content generation and Individual productivity. The gains are real, but spread thinly across thousands of employees and individual tasks. The business process underneath stays largely the same.":["Organisaties hebben GenAI snel uitgerold, vooral als horizontale tools zoals copilots en chatbots. Die tools helpen bij: Schrijven, Samenvatten, Informatie opzoeken, Vergaderingen voorbereiden, Content genereren en Individuele productiviteit. De winst is echt, maar dun verspreid over duizenden medewerkers en losse taken. Het onderliggende bedrijfsproces blijft grotendeels hetzelfde.","Les organisations ont rapidement déployé la GenAI, surtout sous forme d’outils horizontaux comme les copilotes et les chatbots. Ces outils aident à rédiger, résumer, rechercher des informations, préparer des réunions, générer du contenu et améliorer la productivité individuelle. Les gains sont réels, mais dispersés entre des milliers de collaborateurs et de tâches isolées. Le processus métier sous-jacent reste largement inchangé.","Organisationen haben GenAI schnell eingeführt, vor allem als horizontale Werkzeuge wie Copiloten und Chatbots. Sie helfen beim Schreiben, Zusammenfassen, Suchen von Informationen, Vorbereiten von Besprechungen, Erstellen von Inhalten und bei der individuellen Produktivität. Die Gewinne sind real, aber auf Tausende Mitarbeitende und einzelne Aufgaben verteilt. Der zugrunde liegende Geschäftsprozess bleibt weitgehend gleich."]});
+
+/* Verified career history and homepage briefing label. */
+Object.assign(window.I18N,{
+  "An executive briefing": [
+    "Een executive briefing",
+    "Une analyse pour les dirigeants",
+    "Ein Executive-Briefing"
+  ],
+  "I’m Erlend Hollebosch. My background combines 16 years in project management and PMO leadership with 10 years developing expertise in business transformation. I explore how fragmentation affects execution and how organizations can restore coherence.": [
+    "Ik ben Erlend Hollebosch. Mijn achtergrond combineert 16 jaar projectmanagement en PMO-leiderschap met 10 jaar expertiseopbouw in bedrijfstransformatie. Ik onderzoek hoe fragmentatie de uitvoering belemmert en hoe organisaties hun samenhang kunnen versterken.",
+    "Je suis Erlend Hollebosch. Mon parcours associe 16 ans en gestion de projets et direction de PMO à 10 ans de développement de mon expertise en transformation des entreprises. J’explore comment la fragmentation freine l’exécution et comment renforcer la cohérence des organisations.",
+    "Ich bin Erlend Hollebosch. Mein Hintergrund verbindet 16 Jahre Projektmanagement und PMO-Leitung mit 10 Jahren Aufbau von Expertise in Unternehmenstransformation. Ich untersuche, wie Fragmentierung die Umsetzung behindert und wie Organisationen ihre Kohärenz stärken können."
+  ],
+  "My career spans 26 years. During the first 16, I worked primarily as a project manager and PMO lead. Over the following 10 years, I developed my expertise in business transformation at operational, tactical and strategic levels.": [
+    "Mijn loopbaan omvat 26 jaar. De eerste 16 jaar was ik vooral actief als projectmanager en PMO lead. De daaropvolgende 10 jaar bouwde ik mijn expertise uit in bedrijfstransformaties op operationeel, tactisch en strategisch niveau.",
+    "Mon parcours couvre 26 ans. Durant les 16 premières années, j’ai principalement exercé comme chef de projet et responsable PMO. Au cours des 10 années suivantes, j’ai développé mon expertise en transformation des entreprises aux niveaux opérationnel, tactique et stratégique.",
+    "Mein beruflicher Werdegang umfasst 26 Jahre. In den ersten 16 Jahren war ich vor allem als Projektmanager und PMO-Leiter tätig. In den darauffolgenden 10 Jahren baute ich meine Expertise in Unternehmenstransformation auf operativer, taktischer und strategischer Ebene aus."
+  ],
+  "That combination shapes how I approach change: with an understanding of day-to-day delivery and a view of the organization as a whole. I focus on where priorities compete, decisions stall and responsibilities fail to connect, so that strategic ambition can become a workable course of action.": [
+    "Die combinatie bepaalt hoe ik verandering benader: met inzicht in de dagelijkse uitvoering en zicht op de organisatie als geheel. Ik richt me op de plaatsen waar prioriteiten botsen, besluiten blijven liggen en verantwoordelijkheden niet op elkaar aansluiten. Zo maak ik de vertaalslag van strategische ambitie naar een uitvoerbare aanpak.",
+    "Cette combinaison guide ma manière d’aborder le changement : comprendre l’exécution au quotidien tout en considérant l’entreprise dans son ensemble. Je m’intéresse aux priorités qui se concurrencent, aux décisions qui restent en attente et aux responsabilités qui s’articulent mal, afin de traduire l’ambition stratégique en une démarche réalisable.",
+    "Diese Verbindung prägt meinen Ansatz: Verständnis für die tägliche Umsetzung und ein Blick auf die Organisation als Ganzes. Mein Fokus liegt auf konkurrierenden Prioritäten, stockenden Entscheidungen und unklaren Schnittstellen zwischen Verantwortlichkeiten, um strategische Ambitionen in einen umsetzbaren Ansatz zu übersetzen."
+  ],
+  "My particular focus is enterprise coherence: aligning goals, processes, information, technology and decision-making. For AI transformation, I start with the business problem and the complete workflow. The question is where AI can contribute to a better outcome, and which organizational conditions are needed to make that contribution last.": [
+    "Mijn bijzondere focus ligt op Enterprise Coherence: samenhang tussen doelen, processen, informatie, technologie en besluitvorming. Bij AI-transformatie vertrek ik vanuit het bedrijfsprobleem en de volledige werkstroom. Waar kan AI bijdragen aan een beter resultaat, en welke organisatorische voorwaarden maken die bijdrage duurzaam?",
+    "Mon attention porte particulièrement sur l’Enterprise Coherence : l’articulation des objectifs, des processus, de l’information, de la technologie et de la prise de décision. Pour la transformation par l’IA, je pars du problème métier et du flux de travail complet. Où l’IA peut-elle améliorer le résultat, et quelles conditions organisationnelles rendent cette contribution durable ?",
+    "Mein besonderer Fokus liegt auf Enterprise Coherence: dem Zusammenspiel von Zielen, Prozessen, Informationen, Technologie und Entscheidungen. Bei der KI-Transformation beginne ich mit dem Geschäftsproblem und dem vollständigen Arbeitsablauf. Wo kann KI zu einem besseren Ergebnis beitragen, und welche organisatorischen Voraussetzungen machen diesen Beitrag nachhaltig?"
+  ],
+  "Project management and PMO": [
+    "Projectmanagement en PMO",
+    "Gestion de projets et PMO",
+    "Projektmanagement und PMO"
+  ]
+});

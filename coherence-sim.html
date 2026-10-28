@@ -160,6 +160,7 @@ svg.bpmn{width:100%;min-width:0;max-width:100%;height:auto}
 .panel>.card{min-width:0}
 @media(max-width:900px){.panel{grid-template-columns:repeat(2,minmax(0,1fr))}.panel>.card:first-child{grid-column:1/-1}.bar{align-items:flex-start}.tabs,.ctl,.opts{gap:8px}}
 @media(max-width:560px){.panel{grid-template-columns:minmax(0,1fr)}.page{padding-inline:8px}.dhead{padding:12px}.card{padding:14px}.bar{padding:10px}.tab{padding:8px;font-size:11px}.tbl{overflow-x:visible}.tbl table{min-width:0;table-layout:fixed}.tbl th,.tbl td{overflow-wrap:anywhere}}
+.result-lane{margin-top:20px;padding:20px;background:var(--lane);border:1px solid var(--line)}.result-lane>h4{margin:0 0 16px;font-family:var(--f-display);font-size:15px;letter-spacing:0;font-weight:600;color:var(--navy)}.result-flow{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:32px}.result-flow li{position:relative;display:grid;align-content:center;gap:8px;padding:16px;min-height:100px;border:1px solid var(--line);border-top:3px solid var(--navy);background:var(--surface);color:var(--navy);font-family:var(--f-display);text-align:left}.result-number{font-size:11px;font-weight:600;color:var(--muted)}.result-flow b{font-size:15px;line-height:1.4}.result-flow li:not(:last-child)::after{content:'→';position:absolute;left:100%;width:32px;top:50%;transform:translateY(-50%);font-size:24px;text-align:center;color:var(--token)}.result-lane.bad .result-outcome{border-top-color:var(--bad);color:var(--bad)}.result-lane.good .result-outcome{border-top-color:var(--good);color:var(--good)}@media(max-width:600px){.result-flow{grid-template-columns:minmax(0,1fr);gap:26px}.result-flow li:not(:last-child)::after{content:'↓';top:100%;left:50%;width:24px;height:26px;line-height:26px;transform:translateX(-50%)}.result-lane{padding:14px}.result-flow li{min-height:76px}}
 </style>
 </head>
 <body>
@@ -487,7 +488,7 @@ const ui={
       <div class="card"><span class="k">${n===F.nodes.s0&&!s.i?u("ready"):u("stepk")}</span><h3>${n.label}</h3>${n.q?`<p class="quote">“${n.q}”</p>`:""}
         ${n.what?`<h4>${u("what")}</h4><p>${n.what}</p><h4>${F.id==="inc"?u("why_bad"):u("why_good")}</h4><p>${n.why}</p>`:`<p>${u("hint")}</p>`}
         ${n.imp?`<h4>${u("impact")}</h4><div class="chips">${n.imp.map(([t,c])=>`<span class="chip ${c}">${t} ${c==="bad"?"▼":"▲"}</span>`).join("")}</div>`:""}
-        ${s.done?`<div class="result ${F.resultCls}">${F.result.map((r,i)=>(i?"<span>↓</span>":"")+`<b>${r}</b>`).join("")}</div>`:""}
+        ${s.done?`${resultFlow(F)}`:""}
       </div>
       <div class="card"><span class="k">${u("measured")}</span>
         <dl class="metrics">
@@ -504,6 +505,11 @@ const ui={
   },
   checkUnlock(){}
 };
+function resultFlow(F){
+  const labels={nl:['AI-pilot','Lokale optimalisatie','Beperkte organisatiewaarde','AI-capaciteit','Herbruikbare organisatiecapaciteit','Waarde op schaal'],fr:['Pilote IA','Optimisation locale','Valeur métier limitée','Capacité IA','Capacité réutilisable à l’échelle de l’entreprise','Valeur à grande échelle'],de:['KI-Pilot','Lokale Optimierung','Begrenzter Unternehmenswert','KI-Fähigkeit','Wiederverwendbare Unternehmensfähigkeit','Wert im großen Maßstab'],en:['AI pilot','Local optimization','Limited enterprise value','AI capability','Reusable enterprise capability','Value at scale']}[LG];
+  const offset=F.id==='inc'?0:3;
+  return '<div class="result-lane '+F.resultCls+'"><h4>'+u(F.id==='inc'?'inc':'coh')+'</h4><ol class="result-flow">'+F.result.map((_,i)=>'<li'+(i===2?' class="result-outcome"':'')+'><span class="result-number">'+String(i+1).padStart(2,'0')+'</span><b>'+labels[offset+i]+'</b></li>').join('')+'</ol></div>';
+}
 function renderCompare(){
   if(sims.length<2)return;const [a,b]=sims;const r=(lbl,x,y,tx,ty)=>`<tr><td>${lbl}</td><td class="inc">${x}<span class="note"> / ${tx}</span></td><td class="coh">${y}<span class="note"> / ${ty}</span></td></tr>`;
   const A=INC.total,B=COH.total;
@@ -518,8 +524,8 @@ function renderCompare(){
     </tbody></table>
     <p class="note" style="margin-top:10px">${u("summary").replace("{x}",(A.dist/B.dist).toLocaleString(LG==="en"?"en-GB":LG+"-BE",{maximumFractionDigits:1})).replace("{r}",A.rework)}</p></div>
     <div class="card"><span class="k">${u("result")}</span>
-      <div class="result bad">${INC.result.map((x,i)=>(i?"<span>↓</span>":"")+`<b>${x}</b>`).join("")}</div>
-      <div class="result good" style="margin-top:14px">${COH.result.map((x,i)=>(i?"<span>↓</span>":"")+`<b>${x}</b>`).join("")}</div></div>`;
+      ${resultFlow(INC)}
+      ${resultFlow(COH)}</div>`;
 }
 function renderBars(){
   const box=$("#travel-bars");box.querySelectorAll(".brow").forEach(e=>e.remove());

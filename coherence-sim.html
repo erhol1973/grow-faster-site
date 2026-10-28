@@ -441,6 +441,8 @@ function cut(pts,d){const out=[pts[0]];for(let i=1;i<pts.length;i++){const a=pts
 /* ---------------- UI ---------------- */
 const done={inc:false,coh:false};
 let view="inc",running=false,speed=1,sims=[],last=0;
+let frameId=0, motionTimer=0;
+const motionPreference=matchMedia("(prefers-reduced-motion: reduce)");
 const $=s=>document.querySelector(s);
 const diagrams=$("#diagrams"),panel=$("#panel"),stage=$("#stage");
 const U=v=>Math.round(v/10);
@@ -452,7 +454,8 @@ function diagram(F){
 }
 function setView(v){
   view=v;running=false;setPlay();
-  document.querySelectorAll(".tab").forEach(t=>t.setAttribute("aria-selected",String(t.dataset.view===v)));
+  document.querySelectorAll(".tab").forEach(t=>{const selected=t.dataset.view===v;t.setAttribute("aria-selected",String(selected));t.tabIndex=selected?0:-1;t.setAttribute("aria-controls","diagrams")});
+  diagrams.setAttribute("role","tabpanel");diagrams.setAttribute("aria-labelledby","tab-"+v);
   diagrams.innerHTML="";
   sims=[];
   if(v==="cmp"){diagram(INC);diagram(COH);sims=[new Sim(INC,false),new Sim(COH,false)];stage.classList.add("compare");ui.checkUnlock(true)}
@@ -460,7 +463,7 @@ function setView(v){
   sims.forEach(s=>s.live=true);applyOpts();ui.update();
 }
 function applyOpts(){diagrams.classList.toggle("hide-trail",!$("#o-trail").checked);diagrams.classList.toggle("hide-layers",!$("#o-layers").checked)}
-function setPlay(){$("#b-play").textContent=running?"❚❚ "+u("pause"):(sims.length&&sims.some(s=>s.i>0||s.done)&&!sims.every(s=>s.done)?"▶ "+u("resume"):"▶ "+u("start"))}
+function setPlay(){$("#b-play").textContent=running?"❚❚ "+u("pause"):(sims.length&&sims.some(s=>s.i>0||s.done)&&!sims.every(s=>s.done)?"▶ "+u("resume"):"▶ "+u("start"));if(running)scheduleLoop();else stopLoop()}
 const ui={
   pause(){running=false;setPlay()},
   update(){
@@ -515,8 +518,11 @@ function renderBars(){
     const mx=Math.max(x,y,1);const d=document.createElement("div");d.className="brow";
     d.innerHTML=`<div class="lbl"><span>${l}</span><b>${x} → ${y}</b></div><div class="btrack"><i class="inc" style="width:${x/mx*100}%"></i><i class="coh" style="width:${Math.max(y/mx*100,y?2:0)}%"></i></div>`;box.appendChild(d)});
 }
-function loop(t){const dt=Math.min(.05,(t-last)/1000||0);last=t;if(running){sims.forEach(s=>s.tick(dt*speed))}requestAnimationFrame(loop)}
-requestAnimationFrame(loop);
+function stopLoop(){cancelAnimationFrame(frameId);clearTimeout(motionTimer);frameId=motionTimer=0;last=0}
+function scheduleLoop(){if(!running||document.hidden||frameId||motionTimer)return;if(motionPreference.matches)motionTimer=setTimeout(()=>loop(performance.now()),900);else frameId=requestAnimationFrame(loop)}
+function loop(t){frameId=motionTimer=0;if(!running||document.hidden){last=0;return}const dt=motionPreference.matches?1e6:Math.min(.05,(t-last)/1000||0);last=t;sims.forEach(s=>s.tick(dt*speed));scheduleLoop()}
+document.addEventListener("visibilitychange",()=>{stopLoop();if(!document.hidden)scheduleLoop()});
+motionPreference.addEventListener("change",()=>{stopLoop();scheduleLoop()});
 
 $("#b-play").addEventListener("click",()=>{if(sims.every(s=>s.done))sims.forEach(s=>s.reset());running=!running;setPlay()});
 $("#b-step").addEventListener("click",()=>{if(sims.every(s=>s.done))return;sims.forEach(s=>s.stepStop=true);running=true;setPlay()});
@@ -524,15 +530,16 @@ $("#b-reset").addEventListener("click",()=>{running=false;sims.forEach(s=>s.rese
 document.querySelectorAll(".tab").forEach(t=>t.addEventListener("click",()=>setView(t.dataset.view)));
 document.querySelectorAll(".seg button").forEach(b=>b.addEventListener("click",()=>{speed=+b.dataset.speed;document.querySelectorAll(".seg button").forEach(x=>x.setAttribute("aria-pressed",String(x===b)))}));
 $("#o-trail").addEventListener("change",applyOpts);$("#o-layers").addEventListener("change",applyOpts);
-document.querySelector(".tabs").addEventListener("keydown",e=>{if(e.key!=="ArrowRight"&&e.key!=="ArrowLeft")return;const tabs=[...document.querySelectorAll(".tab")];let i=tabs.indexOf(document.activeElement);i=(i+(e.key==="ArrowRight"?1:-1)+tabs.length)%tabs.length;tabs[i].focus();tabs[i].click()});
+document.querySelector(".tabs").addEventListener("keydown",e=>{if(!["ArrowRight","ArrowLeft","Home","End"].includes(e.key))return;e.preventDefault();const tabs=[...document.querySelectorAll(".tab")];let i=tabs.indexOf(document.activeElement);i=e.key==="Home"?0:e.key==="End"?tabs.length-1:(i+(e.key==="ArrowRight"?1:-1)+tabs.length)%tabs.length;tabs[i].focus();tabs[i].click()});
 function applyLang(l){LG=TX[l]?l:"en";document.documentElement.lang=LG;
+  const labels={en:["Simulation","View","Speed"],nl:["Simulatie","Weergave","Snelheid"],fr:["Simulation","Vue","Vitesse"],de:["Simulation","Ansicht","Geschwindigkeit"]}[LG];document.querySelector(".toolbar")?.setAttribute("aria-label",labels[0]);document.querySelector(".tabs")?.setAttribute("aria-label",labels[1]);document.querySelector(".seg")?.setAttribute("aria-label",labels[2]);
   [INC,COH].forEach(F=>{const t=TX[LG][F.id];for(const id in t){const n=F.nodes[id],a=t[id];if(!n)continue;n.label=a[0];if(a.length>1){n.tag=a[1]||n.tag&&a[1];if(!a[1])delete n.tag;n.what=a[2];n.why=a[3]}if(a[4])n.note=a[4]}
     F.title=u(F.id+"_title");F.sub=u(F.id+"_sub")});
   document.querySelectorAll("[data-u]").forEach(e=>e.textContent=u(e.dataset.u));
   setView(view)}
 applyLang(pickLang());
 addEventListener("storage",e=>{if(e.key==="avs-lang"&&e.newValue&&e.newValue!==LG)applyLang(e.newValue)});
-addEventListener("message",e=>{if(e.origin===location.origin&&e.data&&e.data.type==="avs-lang"&&e.data.lang!==LG)applyLang(e.data.lang)});
+addEventListener("message",e=>{if(e.source===parent&&e.origin===location.origin&&e.data&&e.data.type==="avs-lang"&&e.data.lang!==LG&&TX[e.data.lang])applyLang(e.data.lang)});
 function postH(){if(parent!==window)parent.postMessage({type:"ec-sim-h",h:Math.ceil(document.body.getBoundingClientRect().height)+4},location.origin)}
 new ResizeObserver(postH).observe(document.body);addEventListener("load",postH);
 })();

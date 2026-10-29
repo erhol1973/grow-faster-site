@@ -9,10 +9,10 @@
 ## Werkwijze
 1. Wijzigingen gaan via een pull request.
 2. De pipeline maakt een schoon publicatiepakket met uitsluitend publieke websitebestanden.
-3. Broncontroles, unit/integratietests, browserregressies, securitycontroles en lokale load/prestatiechecks moeten slagen.
+3. Broncontroles, unit/integratietests, browserregressies op vijf profielen, axe, securitycontroles, lokale loadchecks en herhaalde Lighthouse-metingen moeten slagen. Instabiele tests na retry blokkeren.
 4. Bekijk rapporten en beoordeel nieuwe veiligheidsbevindingen. Geen generieke uitzonderingen voor een volledige scanner.
 5. Publiceer alleen hetzelfde geteste pakket vanaf main.
-6. Controleer na publicatie homepage, navigatie, Inzichten en belangrijke assets met een beperkte smokecheck.
+6. De publieke smokecheck controleert Home/Enterprise Coherence/Inzichten naar Contact en scriptfouten; bewaar ook de aanvullende publieke snelheidsmeting. Onderzoek mislukte nacontroles en herstel zo nodig de vorige goedgekeurde versie via dezelfde procedure.
 7. Bij een defect: herstel de vorige goedgekeurde commit via een nieuwe wijziging en voer dezelfde controles opnieuw uit.
 
 ## Actieve vrijgaveblokkering

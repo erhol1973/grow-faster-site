@@ -82,3 +82,5 @@
     burger.setAttribute('aria-label', translated(burger.getAttribute('aria-expanded') === 'true' ? 'Close menu' : 'Menu', language));
   }).observe(burger, {attributes: true, attributeFilter: ['aria-expanded']});
 })();
+
+(function(){const frame=document.getElementById('ec-sim');if(!frame||!frame.dataset.src)return;const load=()=>{frame.src=frame.dataset.src;delete frame.dataset.src};if(!('IntersectionObserver'in window)){load();return}const observer=new IntersectionObserver(entries=>{if(entries.some(e=>e.isIntersecting)){load();observer.disconnect()}},{rootMargin:'400px'});observer.observe(frame)})();

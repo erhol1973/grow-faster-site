@@ -2,7 +2,6 @@ const {test,expect}=require('playwright/test');
 const routes=require('../navigation-cases.json');
 test.beforeEach(async({page})=>{
   await page.addInitScript(()=>{
-    localStorage.setItem('avs-lang','nl');
     localStorage.setItem('avs-consent',JSON.stringify({v:3,ext:false,ana:false,ts:Date.now()}));
   });
 });
@@ -19,6 +18,7 @@ async function expectTop(page){
 }
 for(const route of routes)for(const position of ['top','bottom']){
   test(`${route} → Contact, source ${position}`,async({page})=>{
+    await page.addInitScript(()=>localStorage.setItem('avs-lang','nl'));
     await page.goto('/about.html');await clickMenu(page,route);
     await expect(page).toHaveURL(new RegExp('/'+route.replace('.','\\.')+'$'));
     if(position==='bottom'){

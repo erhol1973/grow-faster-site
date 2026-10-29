@@ -15,13 +15,8 @@
 6. Controleer na publicatie homepage, navigatie, Inzichten en belangrijke assets met een beperkte smokecheck.
 7. Bij een defect: herstel de vorige goedgekeurde commit via een nieuwe wijziging en voer dezelfde controles opnieuw uit.
 
-## Nog te activeren op GitHub
-De workflowbestanden alleen veranderen de bestaande GitHub Pages-instelling niet. Bij publicatie rechtstreeks vanaf een branch kan de site verschijnen voordat tests klaar zijn. De eigenaar moet expliciet instemmen met:
-- Pages-bron omschakelen naar GitHub Actions;
-- verplichte statuscontroles en bescherming van main, zonder onbedoelde uitzonderingen;
-- de beperkte Pages-deploymentrechten van de workflow.
-
-Tot deze instellingen zijn gecontroleerd en geactiveerd is de releaseblokkering voorbereid, niet afgedwongen. Publiceer testbestanden en rapporten nooit als website-inhoud.
+## Actieve vrijgaveblokkering
+Gecontroleerd op 29 oktober 2026: GitHub Pages publiceert via GitHub Actions; main vereist een pull request en de drie statuscontroles Website quality gate, JavaScript security gate en Secrets history gate. De deployment gebruikt hetzelfde geteste pakket en start pas nadat deze controles slagen. De bestaande Pages-vrijgave is geactiveerd. Publiceer testbestanden en rapporten nooit als website-inhoud.
 
 ## Beveiliging
 Deze website heeft geen eigen backend. Relevante risico’s zijn accountmisbruik, onbedoeld gepubliceerde bestanden, externe scripts, onveilige browsercode en kwetsbare ontwikkelafhankelijkheden. Scanners beperken risico’s en bewijzen niet dat een site niet gehackt kan worden. Gebruik voor het GitHub-account sterke meervoudige authenticatie en minimale toegangsrechten; wijzig accountinstellingen alleen met toestemming van de eigenaar.
@@ -30,3 +25,5 @@ Loadtests blijven lokaal. Ze meten het testpakket en de lokale server; ze voorsp
 
 ## Onderhoud
 Beoordeel dependency-updates en pas lockfile en browserinstallatie samen aan. Leg prestatiedrempels en uitzonderingen met reden vast. Houd nieuwe pagina’s en gebruikerspaden in de tests bij. Onderzoek mislukte tests eerst; herstarten is geen oplossing voor instabiele tests.
+
+Elke foutoplossing of nieuwe functionaliteit bevat passende blijvende regressietests. Werk de gedeelde navigatiegevallen en betrokken integratie-, end-to-end-, load- en prestatiecontroles in dezelfde pull request bij. Unit tests horen bij afzonderlijke logica; niet elk tekst- of layoutdetail heeft een unit test nodig. Behoud positieve en negatieve scenario’s. Breid de suite gericht uit en verwijder verouderde of dubbele tests alleen met onderbouwde reden. Zie TESTPLAN.md voor dekking en beperkingen.

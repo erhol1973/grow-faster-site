@@ -1,13 +1,45 @@
 const {test,expect}=require('playwright/test');
-const fs=require('node:fs'),path=require('node:path');
-test('Contact menus on every public page link to the top',async()=>{
-  const root=path.resolve(__dirname,'../../dist');let pages=0;
-  for(const file of fs.readdirSync(root).filter(f=>f.endsWith('.html'))){
-    const html=fs.readFileSync(path.join(root,file),'utf8'),nav=html.match(/<nav\b[\s\S]*?<\/nav>/i);
-    if(!nav)continue;pages++;
-    expect(nav[0],file).toMatch(/class="[^"]*nav-cta[^"]*"[^>]*href="about\.html"/);
-    expect(html,file).not.toContain('href="about.html#contact">Contact</a>');
-  }
-  expect(pages).toBe(12);
+const routes=require('../navigation-cases.json');
+test.beforeEach(async({page})=>{
+  await page.addInitScript(()=>{
+    localStorage.setItem('avs-consent',JSON.stringify({v:3,ext:false,ana:false,ts:Date.now()}));
+  });
 });
-test('Contact opens at top from another page and from the scrolled About page',async({page})=>{await page.addInitScript(()=>{localStorage.setItem('avs-lang','nl');localStorage.setItem('avs-consent',JSON.stringify({v:3,ext:false,ana:false,ts:Date.now()}))});async function contact(){const link=page.locator('.nav .nav-cta');if(!await link.isVisible())await page.locator('#burger').click();await expect(link).toHaveAttribute('href','about.html');await link.click();await expect(page).toHaveURL(/\/about\.html$/);await expect.poll(()=>page.evaluate(()=>scrollY)).toBeLessThan(8)}await page.goto('/index.html');await contact();await page.goto('/about.html#contact');await expect.poll(()=>page.evaluate(()=>scrollY)).toBeGreaterThan(100);await contact();});
+async function clickMenu(page,route,keyboard=false){
+  const link=page.locator(`.nav a.l[href="${route}"]`);
+  if(!await link.isVisible())await page.locator('#burger').click();
+  if(keyboard){await link.focus();await link.press('Enter')}
+  else await link.click();
+}
+async function expectTop(page){
+  await expect(page).toHaveURL(/\/about\.html$/);
+  await expect.poll(()=>page.evaluate(()=>scrollY)).toBeLessThan(8);
+  await expect(page.locator('h1')).toBeInViewport();
+}
+for(const route of routes)for(const position of ['top','bottom']){
+  test(`${route} → Contact, source ${position}`,async({page})=>{
+    await page.addInitScript(()=>localStorage.setItem('avs-lang','nl'));
+    await page.goto('/about.html');await clickMenu(page,route);
+    await expect(page).toHaveURL(new RegExp('/'+route.replace('.','\\.')+'$'));
+    if(position==='bottom'){
+      await page.locator('body').press('End');
+      await expect.poll(()=>page.evaluate(()=>scrollY)).toBeGreaterThan(100);
+    }
+    await clickMenu(page,'about.html');await expectTop(page);
+    await page.goto('/about.html#contact');
+    await expect.poll(()=>page.evaluate(()=>scrollY)).toBeGreaterThan(100);
+    await clickMenu(page,'about.html');await expectTop(page);
+  });
+}
+for(const language of ['nl','fr','en','de']){
+  test(`keyboard, history and footer Contact preserve ${language}`,async({page})=>{
+    await page.addInitScript(l=>localStorage.setItem('avs-lang',l),language);
+    await page.goto('/insights.html#who-decides');await clickMenu(page,'about.html',true);
+    await expectTop(page);await expect(page.locator('html')).toHaveAttribute('lang',language);
+    await page.goBack();await expect(page).toHaveURL(/\/insights\.html#who-decides$/);
+    await clickMenu(page,'about.html');await expectTop(page);
+    await page.goto('/coherence.html');
+    await page.locator('footer .fcol').last().locator('a[href="about.html"]').click();
+    await expectTop(page);await expect(page.locator('html')).toHaveAttribute('lang',language);
+  });
+}

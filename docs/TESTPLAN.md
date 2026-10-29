@@ -7,7 +7,7 @@ Every change runs Node document/asset integration tests and browser regression t
 - `npm test`: Node source/integration tests.
 - `npx playwright test`: browser smoke, integration, regression and end-to-end scenarios.
 - `node scripts/security.cjs`: heuristic secret and dangerous URL checks.
-- `node scripts/load.cjs`: starts and closes its own preview on an ephemeral local port, issuing 240 requests with eight concurrent workers. Errors block; latency is diagnostic because CI hardware varies.
+- `node scripts/load.cjs`: starts and closes its own preview on an ephemeral local port. It issues 288 requests with eight concurrent workers, exercising all eight menu destinations, the simulator, shared CSS/JS and an expected 404. Wrong responses, untested required routes and local p95 latency above 1,500ms block release. The JSON report is retained with the other quality artifacts.
 
 ## Positive and negative coverage
 
@@ -26,3 +26,15 @@ Browser suites additionally cover malformed/expired consent, unsupported languag
 ## Local verification, 28 October 2026
 
 Node: 11 tests passed. Artifact security scan passed. Local load: 240 requests, zero errors, 1,791ms total and 112ms p95 in this run (diagnostic values). Desktop/mobile Playwright executed through installed Edge using TEST_BROWSER_EXECUTABLE; Firefox/WebKit projects are configured for CI and have not been executed locally. The browser report is the authoritative current result; local Edge execution is not a claim of Firefox/WebKit validation.
+
+## Regression policy and Contact coverage, 29 October 2026
+
+Tests are versioned in this repository and automatically discovered by the release workflow on pull requests and main pushes. Deployment requires all quality and security gates to pass. Add a regression scenario for each fixed defect or new user flow; update the appropriate layers rather than duplicating every scenario across every layer. Do not remove a failing assertion or loosen a budget merely to release. Retire obsolete cases only with an explanation and replacement coverage where needed.
+
+The navigation case list is shared by HTTP integration, browser end-to-end, HTML performance budgets and local load tests. When a menu route is added or changed, update this list and its acceptance criteria in the same pull request.
+
+Contact scenarios cover every one of the eight menu destinations, at the top and after scrolling, including clicking Contact again from the contact section. The 16 route cases run on Chromium desktop/mobile and Firefox/WebKit desktop. Four additional cases per project exercise keyboard activation, browser history, the footer link and saved NL/FR/EN/DE language. That is 80 Contact end-to-end cases across four projects. The 32 Chromium desktop/mobile route cases reproduce the manual live matrix. Each uses the real menu, including the mobile toggle.
+
+HTTP integration checks all 12 ordinary pages for complete menu links and Contact targets without fragments, while preserving intentional in-content contact-section shortcuts. Load-policy unit tests cover expected negative responses, unexpected errors, timeouts, invalid timings, missing routes and the percentile threshold. Menu HTML documents have an 85KB budget alongside the existing asset budgets. The 1,500ms local-response p95 limit is deliberately generous compared with the historical 112ms baseline to allow CI variation; it detects severe local regressions, not a public-site speed SLA.
+
+Previously cached pages and browser back/forward storage can retain an old HTML link. Fresh artifact tests cannot invalidate existing visitors' caches. After a navigation change, perform a limited live smoke check from the affected routes and distinguish old cached HTML from the released artifact. Do not report these artifact and local-load checks as Core Web Vitals or production capacity tests.

@@ -37,4 +37,6 @@ async function main(){
   fs.writeFileSync(path.join(out,'summary.md'),markdown);if(process.env.GITHUB_STEP_SUMMARY)fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY,markdown);
   if(failures.length){console.error(failures.join('\n'));process.exitCode=1}
 }
-main().catch(e=>{console.error(e);process.exitCode=1});
+// main closes every owned browser and server and writes reports before resolving.
+// Do not let leftover third-party handles keep a completed CLI run alive.
+main().then(()=>process.exit(process.exitCode||0)).catch(e=>{console.error(e);process.exit(1)});

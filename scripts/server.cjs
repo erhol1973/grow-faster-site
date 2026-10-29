@@ -4,7 +4,7 @@ const fs = require('node:fs');
 const path = require('node:path');
 const root = path.resolve(__dirname, '..', 'dist');
 const types = { '.html': 'text/html; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.css': 'text/css; charset=utf-8', '.json': 'application/json', '.svg': 'image/svg+xml', '.png': 'image/png', '.jpg': 'image/jpeg', '.jpeg': 'image/jpeg', '.webp': 'image/webp', '.avif': 'image/avif', '.ico': 'image/x-icon', '.pdf': 'application/pdf', '.txt': 'text/plain; charset=utf-8', '.xml': 'application/xml' };
-function createServer() {
+function createServer(options={}) {
   return http.createServer((req, res) => {
     if (!['GET', 'HEAD'].includes(req.method)) { res.writeHead(405, { Allow: 'GET, HEAD' }); return res.end(); }
     let pathname;
@@ -14,9 +14,10 @@ function createServer() {
     if (!target.startsWith(root + path.sep)) { res.writeHead(403); return res.end(); }
     fs.stat(target, (error, stat) => {
       if (error || !stat.isFile()) { res.writeHead(404); return res.end('Not found'); }
-      res.writeHead(200, { 'Content-Type': types[path.extname(target).toLowerCase()] || 'application/octet-stream', 'Cache-Control': 'no-store', 'X-Content-Type-Options': 'nosniff' });
+      const compress=options.compress&&/gzip/.test(req.headers['accept-encoding']||'')&&/\.(html|css|js|json|svg|txt|xml)$/i.test(target);
+      res.writeHead(200, { 'Content-Type': types[path.extname(target).toLowerCase()] || 'application/octet-stream', 'Cache-Control': 'no-store', 'X-Content-Type-Options': 'nosniff',...(compress?{'Content-Encoding':'gzip','Vary':'Accept-Encoding'}:{}) });
       if (req.method === 'HEAD') return res.end();
-      const stream = fs.createReadStream(target); stream.on('error', () => res.destroy()); stream.pipe(res);
+      const stream = fs.createReadStream(target); stream.on('error', () => res.destroy());if(compress)stream.pipe(require('node:zlib').createGzip()).pipe(res);else stream.pipe(res);
     });
   });
 }

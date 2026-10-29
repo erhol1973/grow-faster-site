@@ -13,7 +13,11 @@ function copy(source, relative) {
   if (fs.lstatSync(source).isSymbolicLink()) throw new Error(`Symbolic link rejected: ${relative}`);
   const target = path.join(out, relative);
   fs.mkdirSync(path.dirname(target), { recursive: true });
-  fs.copyFileSync(source, target); count++;
+  if(relative.replaceAll('\\','/')==='assets/i18n.js'){
+    const context={window:{}};require('node:vm').runInNewContext(fs.readFileSync(source,'utf8'),context,{timeout:1000});
+    const active=data=>Object.fromEntries(Object.entries(data||{}).map(([key,value])=>[key,Array.isArray(value)?value.slice(0,3):value]));
+    fs.writeFileSync(target,'window.I18N='+JSON.stringify(active(context.window.I18N))+';\nwindow.I18N_HTML='+JSON.stringify(active(context.window.I18N_HTML))+';\n');
+  }else fs.copyFileSync(source, target);count++;
 }
 for (const file of files) copy(path.join(root, file), file);
 function walk(folder, relative, allowed) {

@@ -11,7 +11,8 @@ test('served ordinary pages have complete menus and Contact opens without a frag
   for(const file of fs.readdirSync(root).filter(f=>f.endsWith('.html'))){
     const response=await fetch(base+'/'+file),html=await response.text();assert.equal(response.status,200,file);
     const nav=html.match(/<nav\b[\s\S]*?<\/nav>/i);if(!nav)continue;pages++;
-    for(const route of routes)assert.ok(nav[0].includes(`href="${route}"`),`${file}: menu target ${route} missing or changed`);
+    const actual=[...nav[0].matchAll(/<a\b[^>]*class="[^"]*\bl\b[^"]*"[^>]*href="([^"]+)"/g)].map(m=>m[1]);
+    assert.deepEqual(actual,routes,`${file}: shared navigation cases must match the complete menu`);
     assert.match(nav[0],/class="[^"]*nav-cta[^"]*"[^>]*href="about\.html"/,file);
     const footer=html.match(/<footer\b[\s\S]*?<\/footer>/i);assert.ok(footer,`${file}: footer missing`);
     assert.match(footer[0],/href="about\.html">Contact<\/a>/,file);assert.doesNotMatch(nav[0],/about\.html#/,file);

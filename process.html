@@ -28,7 +28,7 @@
 <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
 <meta name="theme-color" content="#0B2545">
 <meta name="claude:viewport-fit-sides" content="cover">
-<link rel="stylesheet" href="assets/site.css?v=20261028-3">
+<link rel="stylesheet" href="assets/site.css?v=20261029-quality">
 
 </head>
 <body>
@@ -88,14 +88,14 @@
     <div class="ba">
       <div id="p-before">
         <div class="bp-hint" aria-hidden="true">Swipe to follow the process <span>→</span></div>
-        <div class="bpmn-wrap" data-dyn><svg class="bpmn" id="bpmn-b" role="img" aria-label="BPMN: traditional process"></svg></div>
+        <div class="bpmn-wrap" tabindex="0" data-dyn><svg class="bpmn" id="bpmn-b" role="img" aria-label="BPMN: traditional process"></svg></div>
         <div class="runner" aria-hidden="true"><span>One case moving through the process</span><span data-dyn id="run-b">Step 1 of 10</span></div>
         <div class="counts"><span><b>10</b>sequential steps</span><span><b>4</b>handoffs or manual updates</span><span><b>2</b>waiting points</span></div>
         <div class="traits bad"><span>Sequential work</span><span>Waiting</span><span>Handoffs</span><span>Manual coordination</span><span>Fragmented systems</span><span>Repetitive work</span></div>
       </div>
       <div id="p-after" hidden>
         <div class="bp-hint" aria-hidden="true">Swipe to follow the process <span>→</span></div>
-        <div class="bpmn-wrap" data-dyn><svg class="bpmn" id="bpmn-a" role="img" aria-label="BPMN: agentic process"></svg></div>
+        <div class="bpmn-wrap" tabindex="0" data-dyn><svg class="bpmn" id="bpmn-a" role="img" aria-label="BPMN: agentic process"></svg></div>
         <div class="runner" aria-hidden="true"><span>One case moving through the process</span><span data-dyn id="run-a">Intent understood</span></div>
         <div class="counts"><span><b>6</b>activities run at once</span><span><b>0</b>handoffs on routine cases</span><span><b>1</b>handoff, for exceptions only</span></div>
         <div class="traits good"><span>Parallel execution</span><span>Fewer handoffs</span><span>Dynamic routing</span><span>Reduced waiting</span><span>Autonomous routine execution</span><span>Human exception handling</span></div>
@@ -208,8 +208,10 @@
   </div>
 </div>
 
-<script src="assets/i18n.js?v=20261028-3"></script>
-<script src="assets/site.js?v=20261028-3"></script>
+<script defer src="assets/i18n.js?v=20261029-quality"></script>
+<script defer src="assets/models.js?v=20261029-quality"></script>
+<script defer src="assets/consent.js?v=20261029-quality"></script>
+<script defer src="assets/site.js?v=20261029-quality"></script>
 
-<script src="assets/ux.js?v=20261028-3"></script></body>
+<script defer src="assets/ux.js?v=20261029-quality"></script></body>
 </html>

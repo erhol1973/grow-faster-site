@@ -161,6 +161,7 @@ svg.bpmn{width:100%;min-width:0;max-width:100%;height:auto}
 @media(max-width:900px){.panel{grid-template-columns:repeat(2,minmax(0,1fr))}.panel>.card:first-child{grid-column:1/-1}.bar{align-items:flex-start}.tabs,.ctl,.opts{gap:8px}}
 @media(max-width:560px){.panel{grid-template-columns:minmax(0,1fr)}.page{padding-inline:8px}.dhead{padding:12px}.card{padding:14px}.bar{padding:10px}.tab{padding:8px;font-size:11px}.tbl{overflow-x:visible}.tbl table{min-width:0;table-layout:fixed}.tbl th,.tbl td{overflow-wrap:anywhere}}
 .result-lane{margin-top:20px;padding:20px;background:var(--lane);border:1px solid var(--line)}.result-lane>h4{margin:0 0 16px;font-family:var(--f-display);font-size:15px;letter-spacing:0;font-weight:600;color:var(--navy)}.result-flow{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:32px}.result-flow li{position:relative;display:grid;align-content:center;gap:8px;padding:16px;min-height:100px;border:1px solid var(--line);border-top:3px solid var(--navy);background:var(--surface);color:var(--navy);font-family:var(--f-display);text-align:left}.result-number{font-size:11px;font-weight:600;color:var(--muted)}.result-flow b{font-size:15px;line-height:1.4}.result-flow li:not(:last-child)::after{content:'→';position:absolute;left:100%;width:32px;top:50%;transform:translateY(-50%);font-size:24px;text-align:center;color:var(--token)}.result-lane.bad .result-outcome{border-top-color:var(--bad);color:var(--bad)}.result-lane.good .result-outcome{border-top-color:var(--good);color:var(--good)}@media(max-width:600px){.result-flow{grid-template-columns:minmax(0,1fr);gap:26px}.result-flow li:not(:last-child)::after{content:'↓';top:100%;left:50%;width:24px;height:26px;line-height:26px;transform:translateX(-50%)}.result-lane{padding:14px}.result-flow li{min-height:76px}}
+#b-play{background:#0072a8;border-color:#0072a8}.flow-meter{grid-column:1/-1;margin:0}
 </style>
 </head>
 <body>
@@ -193,6 +194,7 @@ svg.bpmn{width:100%;min-width:0;max-width:100%;height:auto}
   <p class="note" data-u="note"></p>
 </div>
 
+<script src="assets/models.js?v=20261029-quality"></script>
 <script>
 (function(){
 "use strict";
@@ -286,50 +288,13 @@ const COH={
 };
 
 /* ---------------- geometry ---------------- */
-function P(n){return {x:n.x,y:ly(n.l)}}
-function route(A,B,kind){
-  const a=P(A),b=P(B);
-  if(kind==="back"){
-    if(A.l===B.l) return [a,b];
-    if(A.x===B.x){const o=26;return [a,{x:a.x+o,y:a.y},{x:a.x+o,y:b.y},b];}
-    const off=b.y<a.y?b.y+40:b.y-40;return [a,{x:a.x,y:off},{x:b.x,y:off},b];
-  }
-  if(A.l===B.l||A.x===B.x) return [a,b];
-  return [a,{x:a.x,y:b.y},b];
-}
-const plen=pts=>pts.slice(1).reduce((s,p,i)=>s+Math.hypot(p.x-pts[i].x,p.y-pts[i].y),0);
-function at(pts,d){
-  for(let i=1;i<pts.length;i++){const a=pts[i-1],b=pts[i],L=Math.hypot(b.x-a.x,b.y-a.y);if(d<=L){const r=L?d/L:0;return {x:a.x+(b.x-a.x)*r,y:a.y+(b.y-a.y)*r}}d-=L}
-  return pts[pts.length-1];
-}
+const {point:P,route,length:plen,at}=GFModels.geometry({top:TOP,laneHeight:LH});
 const ptsD=pts=>pts.map((p,i)=>(i?"L":"M")+p.x.toFixed(1)+" "+p.y.toFixed(1)).join(" ");
 function el(tag,attrs,parent){const e=document.createElementNS(NS,tag);for(const k in attrs)e.setAttribute(k,attrs[k]);if(parent)parent.appendChild(e);return e}
 function wrapText(s,max){const w=s.split(" "),out=[];let cur="";w.forEach(x=>{if((cur+" "+x).trim().length>max&&cur){out.push(cur);cur=x}else cur=(cur+" "+x).trim()});if(cur)out.push(cur);return out}
 
 /* compile a flow into timeline items + static totals */
-function compile(F){
-  const N=F.nodes, items=[];
-  const seg=(s)=>{const [a,b,lab,kind]=s;const pts=route(N[a],N[b],kind);return {from:a,to:b,lab,kind:kind||"",pts,len:plen(pts),lane:N[a].l!==N[b].l}};
-  F.seq.forEach(s=>{
-    if(s.par){items.push({par:s.par.map(br=>{const segs=br.map(seg);let cum=0;const pts=[];const checks=[];segs.forEach((g,i)=>{(i?g.pts.slice(1):g.pts).forEach(p=>pts.push(p));cum+=g.len;checks.push({node:g.to,at:cum})});
-      return {segs,pts,len:cum,checks}}),join:s.par[0][s.par[0].length-1][1]})}
-    else items.push(seg(s));
-  });
-  const T={dist:0,hand:0,wait:0,rework:0,gates:0,steps:0};
-  const arrive=id=>{const n=N[id];if(n.t==="task")T.steps++;if(n.t==="xor"||n.t==="and")T.gates++;if(n.wait)T.wait++};
-  items.forEach(it=>{
-    if(it.par){T.dist+=Math.max(...it.par.map(b=>b.len));T.hand+=Math.max(...it.par.map(b=>b.segs.filter(g=>g.lane).length));
-      it.par.forEach(b=>b.segs.forEach(g=>{if(g.to!==it.join)arrive(g.to)}));arrive(it.join)}
-    else{T.dist+=it.len;if(it.lane)T.hand++;if(it.kind==="back")T.rework++;arrive(it.to)}
-  });
-  F.items=items;F.total=T;
-  /* static edges */
-  const seen=new Set(),edges=[];
-  const add=(a,b,lab,kind)=>{const key=a+">"+b+">"+(kind||"");if(seen.has(key))return;seen.add(key);edges.push({a,b,lab,kind:kind||"",pts:route(N[a],N[b],kind)})};
-  F.seq.forEach(s=>{if(s.par)s.par.forEach(br=>br.forEach(x=>add(...x)));else add(...s)});
-  (F.extra||[]).forEach(x=>add(...x));
-  F.edges=edges;
-}
+const compile=F=>GFModels.compileFlow(F,{top:TOP,laneHeight:LH});
 [INC,COH].forEach(compile);
 
 /* ---------------- drawing ---------------- */
@@ -492,7 +457,7 @@ const ui={
       </div>
       <div class="card"><span class="k">${u("measured")}</span>
         <dl class="metrics">
-          ${row(u("dist"),U(s.m.dist),U(T.dist),true)}<div class="mbar"><i style="width:${Math.min(100,s.m.dist/Math.max(INC.total.dist,COH.total.dist)*100)}%"></i></div>
+          ${row(u("dist"),U(s.m.dist),U(T.dist),true)}<dd class="flow-meter" aria-hidden="true"><div class="mbar"><i style="width:${Math.min(100,s.m.dist/Math.max(INC.total.dist,COH.total.dist)*100)}%"></i></div></dd>
           ${row(u("hand"),s.m.hand,T.hand)}
           ${row(u("wait"),s.m.wait,T.wait)}
           ${row(u("rework"),s.m.rework,T.rework)}

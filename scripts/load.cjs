@@ -26,12 +26,12 @@ async function main(){
   try{
     await Promise.all(Array.from({length:8},async()=>{
       for(let i=0;i<36;i++){
-        const scenario=routes[i%routes.length],t=performance.now();let status=0;
-        try{const response=await fetch(base+scenario.route,{signal:AbortSignal.timeout(5000)});status=response.status;await response.arrayBuffer()}catch{}
-        samples.push({route:scenario.route,expected:scenario.status,status,latencyMs:performance.now()-t});
+        const scenario=routes[i%routes.length],t=performance.now();let status=0,failure;
+        try{const response=await fetch(base+scenario.route,{signal:AbortSignal.timeout(5000)});status=response.status;await response.arrayBuffer()}catch(error){status=0;failure=error.name+': '+error.message+(error.cause?.code?' ('+error.cause.code+')':'')}
+        samples.push({route:scenario.route,expected:scenario.status,status,latencyMs:performance.now()-t,...(failure?{failure}:{})});
       }
     }));
-    const report={...summarize(samples),durationMs:Math.round(performance.now()-started),workers:8,target:'local-preview'};
+    const report={...summarize(samples),durationMs:Math.round(performance.now()-started),workers:8,target:'local-preview',failures:samples.filter(s=>s.status!==s.expected||!Number.isFinite(s.latencyMs))};
     const reportDir=path.resolve(__dirname,'../reports');fs.mkdirSync(reportDir,{recursive:true});
     fs.writeFileSync(path.join(reportDir,'load.json'),JSON.stringify(report,null,2));console.log(JSON.stringify(report,null,2));
     if(report.violations.length)process.exitCode=1;

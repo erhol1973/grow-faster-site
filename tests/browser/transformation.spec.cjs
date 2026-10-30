@@ -59,8 +59,8 @@ test('executive contact presents identity and working contact and book actions i
  if(await page.locator('#burger').isVisible())await page.locator('#burger').click();await page.locator('#navlist a[href="about.html"]').click();await expect(page).toHaveURL(/\/about\.html$/);await expect(page.locator('h1')).toBeInViewport();
 });
 
-test('initialise the scorecard once in the saved language and update it on language change',async({page})=>{
- await page.addInitScript(()=>{localStorage.setItem('avs-lang','nl');localStorage.setItem('avs-consent',JSON.stringify({v:3,ext:false,ana:false,ts:Date.now()}));window.scorecardRenders=0;new MutationObserver(records=>{for(const record of records)if(record.type==='childList'&&record.target.id==='dg-rows')window.scorecardRenders++}).observe(document,{childList:true,subtree:true})});
- await page.goto('/approach.html');await expect(page.locator('#dg-rows .dg-row')).toHaveCount(8);await expect(page.locator('#dg-rows')).toContainText('Strategisch');expect(await page.evaluate(()=>window.scorecardRenders)).toBe(1);
- await page.locator('#lang-btn-top').click();await page.locator('.lang-top [data-lang="fr"]').click();await expect(page.locator('#dg-rows')).toContainText('Stratégique');expect(await page.evaluate(()=>window.scorecardRenders)).toBe(2);
+test('initialise the scorecard and decision matrix once in the saved language and update on language change',async({page})=>{
+ await page.addInitScript(()=>{localStorage.setItem('avs-lang','nl');localStorage.setItem('avs-consent',JSON.stringify({v:3,ext:false,ana:false,ts:Date.now()}));window.scorecardRenders=0;window.matrixRenders=0;new MutationObserver(records=>{for(const record of records)if(record.type==='childList'){if(record.target.id==='dg-rows')window.scorecardRenders++;if(record.target.id==='quad')window.matrixRenders++}}).observe(document,{childList:true,subtree:true})});
+ await page.goto('/approach.html');await expect(page.locator('#dg-rows .dg-row')).toHaveCount(8);await expect(page.locator('#dg-rows')).toContainText('Strategisch');expect(await page.evaluate(()=>window.scorecardRenders)).toBe(1);expect(await page.evaluate(()=>window.matrixRenders)).toBe(1);
+ await page.locator('#lang-btn-top').click();await page.locator('.lang-top [data-lang="fr"]').click();await expect(page.locator('#dg-rows')).toContainText('Stratégique');expect(await page.evaluate(()=>window.scorecardRenders)).toBe(2);expect(await page.evaluate(()=>window.matrixRenders)).toBe(2);
 });

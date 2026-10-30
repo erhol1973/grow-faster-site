@@ -1,40 +1,54 @@
-# Release test plan
+# Testplan en kwaliteitsbeleid
 
-Every change runs Node document/asset integration tests and browser regression tests. Browser coverage includes desktop and mobile, four saved languages, article selection/history/deeplinks, cookie rejection and focus restoration, navigation smoke, process layout and simulator controls/message-source rejection. Tests use local preview only. Failed assertions block release; reports and failure traces must be retained.
+Tests onderzoeken hetzelfde gebouwde `dist`-pakket dat wordt gepubliceerd. Ontwikkelbestanden en rapporten blijven buiten de website. Elke foutoplossing en nieuw gebruikerspad krijgt passende blijvende regressiedekking. Aantallen alleen zijn geen kwaliteitsmaatstaf.
 
-## Commands
+| Laag | Dekking |
+|---|---|
+| Unit | Werkelijk gebruikte modellen: coherentiefactoren, vier besliskwadranten, risico/readiness, capaciteit, cashflow, break-even en procesgeometrie. Onafhankelijk uitgerekende rechte, parallelle en teruglopende paden; geen gekopieerde implementatie in tests. |
+| Negatief | Ongeldige/lege scores, NaN/Infinity, negatieve waarden, percentages buiten bereik, nulvolume, onbekende nodes. Strikte consentversie, boolean-types, ouderdom en toekomstige timestamps. |
+| HTTP/integratie | Echte server: GET/HEAD, MIME, gzip, 404, geweigerde schrijfmethoden, misvormde URL, NUL/backslash en traversal. Alle menu's, assets, fragmenten, unieke IDs, syntax en metadata. |
+| Browser/E2E | Alle acht routes naar Contact vanaf bovenaan en na scrollen, herhaald Contact, toetsenbord, footer, geschiedenis; vier talen, echte taalwissels, artikelen/deeplinks, calculatorinvoer en simulator. |
+| Consent | Weigeren, gedeeltelijk/volledig toestaan, intrekken, opnieuw toestaan en intrekken tijdens een vertraagde download. Externe diensten zijn gestubd: dit test ons contract, niet alle leverancierscode. |
+| Cache | Echte ETag/304, versiewissel en oude HTML met actuele scripts. Back/Forward en feitelijke pageshow.persisted worden vastgelegd. Geen routingmocks die de browsercache uitschakelen; BFCache wordt niet kunstmatig afgedwongen. |
+| Toegankelijkheid | Axe op acht menuwebpagina's, dialoog en simulator, Chromium desktop/mobiel, WCAG A/AA 2.0/2.1/2.2 en contrast. Uitgestelde inhoud wordt voor scans gerenderd. Ook toetsenbord, focus, tablet en 200% tekst. |
+| Load | Uitsluitend lokaal: 288 verzoeken met acht workers, alle menuroutes, simulator, CSS/JS en verwachte 404. Geen fouten of ontbrekende routes, p95 maximaal 1.500ms. |
+| Performance | Bestandsbudgetten plus drie koude Lighthouse-runs per Home/Coherence/Aanpak op mobiel en desktop; individuele rapporten en medianen. Na browsersuite, zonder gelijktijdige loadtests. |
+| Security | Artifactscan, dependency-audit, Gitleaks geschiedenis en CodeQL security-extended. Bevindingen blokkeren; geen productieaanvallen of loadtests. |
 
-- `npm test`: Node source/integration tests.
-- `npx playwright test`: browser smoke, integration, regression and end-to-end scenarios.
-- `node scripts/security.cjs`: heuristic secret and dangerous URL checks.
-- `node scripts/load.cjs`: starts and closes its own preview on an ephemeral local port. It issues 288 requests with eight concurrent workers, exercising all eight menu destinations, the simulator, shared CSS/JS and an expected 404. Wrong responses, untested required routes and local p95 latency above 1,500ms block release. The JSON report is retained with the other quality artifacts.
+## Browsermatrix en rapportage
 
-## Positive and negative coverage
+Chromium desktop/mobiel draait alle scenario's. Firefox, WebKit desktop en mobiel WebKit draaien dezelfde functionele kern. Momenteel zijn 265 browsergevallen geregistreerd; het actuele rapport is leidend. Mobiel WebKit is emulatie, geen fysiek iPhone/Safari-bewijs.
 
-Positive: every local link resolves, all article targets exist, valid saved language persists, reject/save closes consent and unlocks scroll, simulator responds to controls. Negative: unknown article hash falls back safely, optional analytics/fonts stay unrequested when rejected, a message from the wrong source cannot resize the iframe, missing assets and duplicate IDs fail integration checks.
+Retries dienen voor diagnose. Eerst falen en daarna slagen blokkeert CI als instabiel. Ook .only en onverklaarde skips blokkeren. Rapporten onderscheiden geslaagd/gefaald/instabiel/overgeslagen en bewaren pogingen, redenen, screenshots en fouttraces. Desktop-only layouttests en de aparte tabletproef hebben expliciete skipredenen voor andere projecten. Geen stille quarantaine.
 
-## Release evidence and follow-up suites
+Echte screenreader-spraak en fysieke apparaten blijven aanvullende controles. Axe bewijst geen volledige WCAG-conformiteit. Lab-LCP/CLS/TBT zijn geen veldmetingen of INP; lokale load bewijst geen GitHub Pages-capaciteit.
 
-Use browser HTML/JUnit reports, screenshots and retained traces to investigate failures. Tests validate the built dist deployment artifact, including executable syntax, assets and fragments. The privacy `#cookies` anchor is a documented exception: runtime redirects it to a language-specific anchor rather than a literal source ID. Add a dedicated browser assertion before changing this convention.
+De oude-HTML-cachefixture verwijdert ook deferred model- en consentscripts. Een HTTP-test controleert het verschil tussen beide releases; de browser controleert de ongewijzigde HTTP-body en daarna het laden van de ontbrekende modules door site.js. Zo kan aanwezige nieuwe markup de hersteltest niet ongemerkt laten slagen.
 
-The performance suite enforces measured artifact budgets: CSS 125KB; site.js 55KB; translations 260KB; content.js 23KB; ux.js 15KB; each raster image 700KB. The largest current raster is 616,868 bytes. These limits constrain transfer-size regressions; they do not measure Core Web Vitals. Lighthouse mobile/desktop timing remains a follow-up with three-run median baselines. Local load measurements describe the preview server, not GitHub Pages capacity. Dependency auditing and a dedicated secret scanner complement the artifact heuristic scan. Passive DAST must target the local preview; do not run production attack/load tests. A heuristic scan is not a security guarantee.
+WebKit rendert de uitgestelde hoofdstukken direct en laadt de simulator met het document. Dit voorkomt dat het renderen of het aanpassen van de iframehoogte een footerlink tijdens de klik verplaatst. De bestaande Contact-test behoudt een echte klik, zonder force, extra retry of ruimere timeout; in WebKit controleert hij ook dat de simulator zonder scrollen geladen is. Chromium behoudt de optimalisaties. Deze keuze kan de initiële laadtijd op Safari verhogen.
 
-Unit/component coverage tests the real preview server (GET, HEAD, MIME, unknown resources, denied write methods, malformed URLs, NUL/backslash and traversal), and the exported security detector using positive and negative synthetic fixtures. Static document checks are integration tests, not unit tests. There is no extracted simulator business module. Do not copy inline simulator code into tests or claim artificial unit coverage. A future safe extraction should add hand-calculated straight, parallel and back-loop fixtures. Consent schema hardening (boolean types and future timestamps) and checking analytics withdrawal stops already-installed listeners remain follow-up work.
+## Uitvoering
 
-Browser suites additionally cover malformed/expired consent, unsupported language fallback, keyboard skip navigation and dialog focus containment, accessible button naming, and Value alignment in every language. These targeted accessibility checks do not replace axe scanning or manual screen-reader/contrast review. Full Chromium desktop/mobile suites run alongside small Firefox/WebKit smoke projects; browser downloads are needed in CI. Mobile intentionally skips desktop-only 3x2/alignment assertions.
+1. `npm run build`
+2. `npm test` (spec, JUnit en lokale rapportgeschiedenis)
+3. `npm run security` en `pnpm audit --audit-level=high`
+4. `npx playwright install --with-deps chromium firefox webkit`
+5. `npm run test:e2e`
+6. `npm run test:load`
+7. `npm run test:performance`
 
-## Local verification, 28 October 2026
+CI bewaart reports/, playwright-report/ en test-results/, ook bij falen. browser-summary.json bevat pogingen en skipredenen; unit.xml de Node-resultaten. Lighthouse bewaart JSON en HTML. Lokale Edge via TEST_BROWSER_EXECUTABLE bewijst geen Firefox/WebKit-validatie.
 
-Node: 11 tests passed. Artifact security scan passed. Local load: 240 requests, zero errors, 1,791ms total and 112ms p95 in this run (diagnostic values). Desktop/mobile Playwright executed through installed Edge using TEST_BROWSER_EXECUTABLE; Firefox/WebKit projects are configured for CI and have not been executed locally. The browser report is the authoritative current result; local Edge execution is not a claim of Firefox/WebKit validation.
+Lighthouse vereist medianen van minimaal 90 voor de score, LCP maximaal 2.500ms, CLS maximaal 0,1 en TBT maximaal 200ms. Afgebroken metingen falen en bewaren tussentijdse resultaten. De build leest gecontroleerde open bestandsdescriptors; regressietests weigeren vervangen paden, symlinks en niet-bestanden. De vertaalbron wordt als JSON gelezen, niet als code uitgevoerd.
 
-## Regression policy and Contact coverage, 29 October 2026
+Na deployment controleert `npm run verify:production` drie gewone navigatiepaden naar Contact en scriptfouten. Eén publieke mobiele Lighthouse-meting is aanvullend; de herhaalbare vrijgavecontroles draaien vooraf in CI.
 
-Tests are versioned in this repository and automatically discovered by the release workflow on pull requests and main pushes. Deployment requires all quality and security gates to pass. Add a regression scenario for each fixed defect or new user flow; update the appropriate layers rather than duplicating every scenario across every layer. Do not remove a failing assertion or loosen a budget merely to release. Retire obsolete cases only with an explanation and replacement coverage where needed.
+## Grenzen en onderhoud
 
-The navigation case list is shared by HTTP integration, browser end-to-end, HTML performance budgets and local load tests. When a menu route is added or changed, update this list and its acceptance criteria in the same pull request.
+Behoud transferbudgetten: menu-HTML 85KB, CSS 125KB, site.js 55KB, vertalingen 260KB, content.js 23KB, ux.js 15KB, raster 700KB. Model- en consentmodule maximaal 18KB en 2,5KB. Build verwijdert alleen de niet aangeboden Arabische vertaalcolumn en serialiseert compacter; tests vergelijken iedere actieve vertaling exact met de bron. Aangeboden talen: NL-BE, FR-BE, EN, DE.
 
-Contact scenarios cover every one of the eight menu destinations, at the top and after scrolling, including clicking Contact again from the contact section. The 16 route cases run on Chromium desktop/mobile and Firefox/WebKit desktop. Four additional cases per project exercise keyboard activation, browser history, the footer link and saved NL/FR/EN/DE language. That is 80 Contact end-to-end cases across four projects. The 32 Chromium desktop/mobile route cases reproduce the manual live matrix. Each uses the real menu, including the mobile toggle.
+Werk tests/navigation-cases.json en betrokken lagen samen bij als routes veranderen. Contact in menu/footer opent about.html bovenaan; bewuste inhoudelijke #contact-shortcuts blijven geldig. Privacy-#cookies wordt runtime naar een taalgebonden fragment vertaald.
 
-HTTP integration checks all 12 ordinary pages for complete menu links and Contact targets without fragments, while preserving intentional in-content contact-section shortcuts. Load-policy unit tests cover expected negative responses, unexpected errors, timeouts, invalid timings, missing routes and the percentile threshold. Menu HTML documents have an 85KB budget alongside the existing asset budgets. The 1,500ms local-response p95 limit is deliberately generous compared with the historical 112ms baseline to allow CI variation; it detects severe local regressions, not a public-site speed SLA.
+Onderzoek fouten vóór een nieuwe run. De historische acht lokale loadfouten hebben geen bewezen oorzaak; een latere groene run verklaart ze niet. Loadrapporten registreren daarom fouttype, route, Node/OS/CPU/geheugen en event-loopvertraging. Ook lokale HTTP-verbindingsresets worden bewaard en onderzocht, zonder automatische retry die ze verbergt.
 
-Previously cached pages and browser back/forward storage can retain an old HTML link. Fresh artifact tests cannot invalidate existing visitors' caches. After a navigation change, perform a limited live smoke check from the affected routes and distinguish old cached HTML from the released artifact. Do not report these artifact and local-load checks as Core Web Vitals or production capacity tests.
+Verzwak geen vastgelegde grens om te publiceren. Bespreek wezenlijke model-, beveiligings- of vrijgavewijzigingen met de eigenaar. Geen scanner garandeert dat de site nooit gehackt wordt.

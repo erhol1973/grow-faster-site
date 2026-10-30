@@ -1,10 +1,10 @@
 const {test,expect}=require('playwright/test');
-test('practice reading route works in four languages, with six perspectives and Contact',async({page})=>{
+test('practice reading route works in three languages, with six perspectives and Contact',async({page})=>{
  const errors=[];page.on('pageerror',e=>errors.push(e.message));
  await page.addInitScript(()=>{if(!localStorage.getItem('avs-lang'))localStorage.setItem('avs-lang','nl');localStorage.setItem('avs-consent',JSON.stringify({v:3,ext:false,ana:false,ts:Date.now()}))});
  await page.goto('/index.html');await page.locator('.hero-grid a[href="transformation.html"]').click();
  await expect(page).toHaveURL(/\/transformation\.html$/);
- for(const [language,heading,lens,title]of [['nl','Transformatie in de praktijk','Strategie en keuzes','Bedrijfstransformatie in de praktijk | Erlend Hollebosch'],['fr','La transformation en pratique','Stratégie et choix','La transformation des entreprises en pratique | Erlend Hollebosch'],['de','Transformation in der Praxis','Strategie und Entscheidungen','Unternehmenstransformation in der Praxis | Erlend Hollebosch'],['en','Transformation in practice','Strategy and choices','Business Transformation in Practice | Erlend Hollebosch']]){
+ for(const [language,heading,lens,title]of [['nl','Transformatie in de praktijk','Strategie en keuzes','Bedrijfstransformatie in de praktijk | Erlend Hollebosch'],['fr','La transformation en pratique','Stratégie et choix','La transformation des entreprises en pratique | Erlend Hollebosch'],['en','Transformation in practice','Strategy and choices','Business Transformation in Practice | Erlend Hollebosch']]){
    if(language!=='nl'){await page.locator('#lang-btn-top').click();await page.locator('.lang-top [data-lang="'+language+'"]').click()}
    await expect(page.locator('html')).toHaveAttribute('lang',language);await expect(page.locator('h1')).toHaveText(heading);
    await expect(page.locator('.practice-questions dt')).toHaveCount(6);
@@ -28,7 +28,7 @@ test('manuscript vision links AI, coherence, credited Ross sources and the manus
  await page.goto('/index.html');await expect(page.locator('h1')).toContainText('Ontwerp voor samenhang.');
  await page.locator('.hero-grid a[href="coherence.html#book-thesis"]').click();
  await expect(page.locator('#book-thesis-h')).toBeInViewport();
- for(const [language,title]of [['nl','Een snellere taak maakt nog geen betere onderneming'],['fr','Une tâche plus rapide ne suffit pas à améliorer l’entreprise'],['de','Eine schnellere Aufgabe macht noch kein besseres Unternehmen'],['en','A faster task is not automatically a better enterprise']]){
+ for(const [language,title]of [['nl','Een snellere taak maakt nog geen betere onderneming'],['fr','Une tâche plus rapide ne suffit pas à améliorer l’entreprise'],['en','A faster task is not automatically a better enterprise']]){
    if(language!=='nl'){await page.locator('#lang-btn-top').click();await page.locator('.lang-top [data-lang="'+language+'"]').click()}
    await expect(page.locator('#book-thesis-h')).toHaveText(title);
    await expect(page.locator('#book-thesis')).toContainText('Jeanne Ross');
@@ -43,10 +43,10 @@ test('manuscript vision links AI, coherence, credited Ross sources and the manus
  await expect(page.locator('#intellectual-foundation')).toContainText('Jeanne Ross');
 });
 
-test('executive contact presents identity and working contact and book actions in four languages',async({page})=>{
+test('executive contact presents identity and working contact and book actions in three languages',async({page})=>{
  await page.addInitScript(()=>{if(!localStorage.getItem('avs-lang'))localStorage.setItem('avs-lang','nl');localStorage.setItem('avs-consent',JSON.stringify({v:3,ext:false,ana:false,ts:Date.now()}))});
  await page.goto('/about.html');
- for(const [language,eyebrow]of [['nl','Perspectieven op bedrijfstransformatie'],['fr','Perspectives sur la transformation des entreprises'],['de','Perspektiven zur Unternehmenstransformation'],['en','Perspectives on enterprise transformation']]){
+ for(const [language,eyebrow]of [['nl','Perspectieven op bedrijfstransformatie'],['fr','Perspectives sur la transformation des entreprises'],['en','Perspectives on enterprise transformation']]){
    if(language!=='nl'){await page.locator('#lang-btn-top').click();await page.locator('.lang-top [data-lang="'+language+'"]').click()}
    await expect(page.locator('h1')).toHaveText('Erlend Hollebosch');await expect(page.locator('.executive-eyebrow')).toHaveText(eyebrow);
    await expect(page.locator('.executive-portrait img')).toBeVisible();expect(await page.locator('.executive-portrait img').evaluate(e=>e.complete&&e.naturalWidth>0)).toBe(true);
@@ -59,8 +59,8 @@ test('executive contact presents identity and working contact and book actions i
  if(await page.locator('#burger').isVisible())await page.locator('#burger').click();await page.locator('#navlist a[href="about.html"]').click();await expect(page).toHaveURL(/\/about\.html$/);await expect(page.locator('h1')).toBeInViewport();
 });
 
-test('initialise the scorecard once in the saved language and update it on language change',async({page})=>{
- await page.addInitScript(()=>{localStorage.setItem('avs-lang','nl');localStorage.setItem('avs-consent',JSON.stringify({v:3,ext:false,ana:false,ts:Date.now()}));window.scorecardRenders=0;new MutationObserver(records=>{for(const record of records)if(record.type==='childList'&&record.target.id==='dg-rows')window.scorecardRenders++}).observe(document,{childList:true,subtree:true})});
- await page.goto('/approach.html');await expect(page.locator('#dg-rows .dg-row')).toHaveCount(8);await expect(page.locator('#dg-rows')).toContainText('Strategisch');expect(await page.evaluate(()=>window.scorecardRenders)).toBe(1);
- await page.locator('#lang-btn-top').click();await page.locator('.lang-top [data-lang="fr"]').click();await expect(page.locator('#dg-rows')).toContainText('Stratégique');expect(await page.evaluate(()=>window.scorecardRenders)).toBe(2);
+test('initialise the scorecard and decision matrix once in the saved language and update on language change',async({page})=>{
+ await page.addInitScript(()=>{localStorage.setItem('avs-lang','nl');localStorage.setItem('avs-consent',JSON.stringify({v:3,ext:false,ana:false,ts:Date.now()}));window.scorecardRenders=0;window.matrixRenders=0;new MutationObserver(records=>{for(const record of records)if(record.type==='childList'){if(record.target.id==='dg-rows')window.scorecardRenders++;if(record.target.id==='quad')window.matrixRenders++}}).observe(document,{childList:true,subtree:true})});
+ await page.goto('/approach.html');await expect(page.locator('#dg-rows .dg-row')).toHaveCount(8);await expect(page.locator('#dg-rows')).toContainText('Strategisch');expect(await page.evaluate(()=>window.scorecardRenders)).toBe(1);expect(await page.evaluate(()=>window.matrixRenders)).toBe(1);
+ await page.locator('#lang-btn-top').click();await page.locator('.lang-top [data-lang="fr"]').click();await expect(page.locator('#dg-rows')).toContainText('Stratégique');expect(await page.evaluate(()=>window.scorecardRenders)).toBe(2);expect(await page.evaluate(()=>window.matrixRenders)).toBe(2);
 });

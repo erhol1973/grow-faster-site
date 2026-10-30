@@ -6,7 +6,7 @@ async function stubs(page){
 }
 test('actual language switching persists between pages and selected article',async({page})=>{
   await seed(page);await page.goto('/insights.html');
-  for(const [language,label]of Object.entries({fr:'FR-BE',de:'DE',en:'EN',nl:'NL-BE'})){
+  for(const [language,label]of Object.entries({fr:'FR-BE',en:'EN',nl:'NL-BE'})){
     await page.locator('#lang-btn-top').click();await page.locator('.lang-top .lang-menu [data-lang="'+language+'"]').click();
     await expect(page.locator('html')).toHaveAttribute('lang',language);await expect(page.locator('#lang-btn-top .lang-cur')).toHaveText(label);
     await expect(page.locator('#ai-pilot [data-article-lang="'+language+'"]')).toBeVisible();

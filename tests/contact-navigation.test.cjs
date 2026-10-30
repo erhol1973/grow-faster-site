@@ -16,7 +16,7 @@ test('served ordinary pages have complete menus and Contact opens without a frag
     assert.match(nav[0],/class="[^"]*nav-cta[^"]*"[^>]*href="about\.html"/,file);
     const footer=html.match(/<footer\b[\s\S]*?<\/footer>/i);assert.ok(footer,`${file}: footer missing`);
     assert.match(footer[0],/href="about\.html">Contact<\/a>/,file);assert.doesNotMatch(nav[0],/about\.html#/,file);
-  }assert.equal(pages,12);
+  }assert.equal(pages,13);
 });
 test('intentional contact shortcuts still resolve to an accessible destination',async()=>{
   const html=await (await fetch(base+'/about.html')).text();assert.match(html,/<[^>]*id="contact"[^>]*tabindex="-1"/);

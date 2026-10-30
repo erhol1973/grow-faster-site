@@ -54,7 +54,7 @@
   const spec=$("#spec"), sd=$("#spec-desc");
   SPEC.forEach((s,i)=>{const b=document.createElement("button");b.type="button";b.id="spec-"+i;const hgt=12+i*14;b.style.setProperty("--gw",(16+i*10)+"px");b.innerHTML=`<span class="gov" style="height:${hgt}px"></span><span class="t">${s[0]}</span>`;b.onclick=()=>pick(i);spec.appendChild(b)});
   let curSpec=3;function pick(i){curSpec=i;[...spec.children].forEach((b,k)=>b.setAttribute("aria-pressed",String(k===i)));sd.innerHTML=`<b>${t(SPEC[i][0])}.</b> ${t(SPEC[i][1])}`}
-  pick(3);
+  // applyLang performs the first render once all controls are initialised.
 
   /* roadmap progress line */
   const stepsEl=$("#steps"), sItems=[...stepsEl.children].filter(e=>e.tagName==="LI");
@@ -87,7 +87,6 @@
       +`<span class="k">${t("Coherence score")} · ${fmt(avg)} / 5</span><div class="dg-bars">${bars}</div>`;
   }
   document.getElementById("dg-rows")?.addEventListener("click",e=>{const b=e.target.closest("button[data-i]");if(!b)return;dgScore[+b.dataset.i]=+b.dataset.v;coh();if(typeof sim==="function")sim();const nb=document.querySelector(`#dg-rows button[data-i="${b.dataset.i}"][data-v="${b.dataset.v}"]`);if(nb)nb.focus()});
-  coh();
   /* decision framework */
   const CRIT=[["value","Business value","Value"],["complexity","Process complexity","Coordination"],["coord","Coordination overhead","Coordination"],["handoffs","Number of handoffs","Coordination"],["decision","Decision intensity","Coordination"],["data","Data availability","Readiness"],["repeat","Repetitive workload","Readiness"],["exceptions","Exception frequency","Readiness"],["personal","Personalization potential","Value"],["scale","Scalability potential","Value"],["risk","Risk","Risk"]];
   const PRE={
@@ -182,7 +181,6 @@
       <div class="cs-bars">${sc.map(x=>`<div class="cs-bar"><span>${t(x.n)}</span><i style="--w:${pct(x.f)}"></i><b>${pct(x.f)}</b></div>`).join("")}</div>
       ${CO.mn<4&&wi>0?`<p class="wi">${t("If no dimension scored below 4, process reinvention would add {v} net value over 3 years.").replace("{v}",fmtE(Math.round(wi/1000)*1000))}</p>`:""}`;
   }
-  sim();
 
   /* final reveal */
   const rv=$("#reveal");
@@ -320,7 +318,6 @@
       ['<path d="M1 9H23" class="lg-ho"/><path d="M20 5L25 9L20 13" class="lg-ho"/>',"Handoff"]];
       lg.innerHTML=it.map(([g,l])=>`<span><svg viewBox="0 0 26 18" aria-hidden="true">${g}</svg>${esc2(t(l))}</span>`).join("")}
   }
-  renderBPMN();
 
   /* process simulation: one case moving through */
   const runB=document.getElementById("run-b"), runA=document.getElementById("run-a");

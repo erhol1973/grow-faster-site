@@ -12,12 +12,12 @@ Tests onderzoeken hetzelfde gebouwde `dist`-pakket dat wordt gepubliceerd. Ontwi
 | Cache | Echte ETag/304, versiewissel en oude HTML met actuele scripts. Back/Forward en feitelijke pageshow.persisted worden vastgelegd. Geen routingmocks die de browsercache uitschakelen; BFCache wordt niet kunstmatig afgedwongen. |
 | Toegankelijkheid | Axe op acht menuwebpagina's, dialoog en simulator, Chromium desktop/mobiel, WCAG A/AA 2.0/2.1/2.2 en contrast. Uitgestelde inhoud wordt voor scans gerenderd. Ook toetsenbord, focus, tablet en 200% tekst. |
 | Load | Uitsluitend lokaal: 288 verzoeken met acht workers, alle menuroutes, simulator, CSS/JS en verwachte 404. Geen fouten of ontbrekende routes, p95 maximaal 1.500ms. |
-| Performance | Bestandsbudgetten plus drie koude Lighthouse-runs per Home/Coherence/Aanpak op mobiel en desktop; individuele rapporten en medianen. Na browsersuite, zonder gelijktijdige loadtests. |
+| Performance | Bestandsbudgetten plus drie koude Lighthouse-runs per Home/Coherence/Aanpak/Contact/Contact op mobiel en desktop; individuele rapporten en medianen. Na browsersuite, zonder gelijktijdige loadtests. |
 | Security | Artifactscan, dependency-audit, Gitleaks geschiedenis en CodeQL security-extended. Bevindingen blokkeren; geen productieaanvallen of loadtests. |
 
 ## Browsermatrix en rapportage
 
-Chromium desktop/mobiel draait alle scenario's. Firefox, WebKit desktop en mobiel WebKit draaien dezelfde functionele kern. Momenteel zijn 265 browsergevallen geregistreerd; het actuele rapport is leidend. Mobiel WebKit is emulatie, geen fysiek iPhone/Safari-bewijs.
+Chromium desktop/mobiel draait alle scenario's. Firefox, WebKit desktop en mobiel WebKit draaien dezelfde functionele kern. Momenteel zijn 297 browsergevallen geregistreerd; het actuele rapport is leidend. Mobiel WebKit is emulatie, geen fysiek iPhone/Safari-bewijs.
 
 Retries dienen voor diagnose. Eerst falen en daarna slagen blokkeert CI als instabiel. Ook .only en onverklaarde skips blokkeren. Rapporten onderscheiden geslaagd/gefaald/instabiel/overgeslagen en bewaren pogingen, redenen, screenshots en fouttraces. Desktop-only layouttests en de aparte tabletproef hebben expliciete skipredenen voor andere projecten. Geen stille quarantaine.
 
@@ -58,3 +58,28 @@ Verzwak geen vastgelegde grens om te publiceren. Bespreek wezenlijke model-, bev
 Tien oude SITE123-adressen krijgen een directe meta-refresh, canonical en zichtbare terugval-link. Het bouwpakket neemt alleen de expliciete redirectlijst op. De lokale server ondersteunt de overeenkomstige extensionless HTML- en mapadressen, met behoud van gzip, HEAD, nosniff en de bestaande padcontroles. HTTP-tests controleren alle tien adressen en onbekende adressen; browserregressies controleren de daadwerkelijke navigatie en twee artikelbestemmingen. Dit zijn client-side redirects; er wordt geen HTTP-301 van GitHub Pages geclaimd.
 
 Contenttests bewaken de zoekgerichte titels, NL/FR/DE-vertalingen, JSON-LD voor persoon/boek/website, taalcorrecties en labelcontrast. De browser controleert de dynamische titel, auteursregel en Franse typografie. De bestaande model-, consent-, cache-, WebKit-, toegankelijkheids- en releasecontroles blijven gelden. De vertalingen blijven zuivere JSON-data voor de beveiligde buildparser. De McKinsey-update is gecontroleerd tegen de editie van 25 augustus 2026; bestaande exhibits houden hun oorspronkelijke jaartal. Actuele testresultaten worden afzonderlijk vastgelegd; eerdere pakketcijfers worden niet als bewijs overgenomen.
+
+
+## Praktijkreflecties, concept
+
+transformation.html is een secundaire leesroute, bereikbaar vanaf de homepage, auteurspagina en Inzichten. De build neemt de pagina expliciet op; de hoofdmenu-casussen blijven dezelfde acht bestemmingen. De gewone-paginatest controleert nu dertien pagina’s met het gedeelde menu.
+
+De praktijkroute wordt ook in de kritieke browsermatrix getest: vier taalwissels met titel en inhoud, zes invalshoeken, geen horizontale overloop, ankers en de routes vanaf homepage/auteur/Inzichten naar Contact. De automatische WCAG-scan omvat de nieuwe pagina op desktop en mobiel. Geen retries, skips of vrijgavegrenzen zijn voor dit concept versoepeld. Een lokale selectie is geen bewijs dat de volledige CI-, Lighthouse- en productiecontrole gedraaid heeft.
+
+Bronbestanden en interne bronnotities maken geen deel uit van het bouwpakket. De praktijkteksten zijn redactionele syntheses; ze presenteren geen beoogde programmabaten als persoonlijke gerealiseerde resultaten. Inhoudelijke goedkeuring van de ik-formuleringen gaat vooraf aan publicatie.
+
+
+## Visie uit het manuscript
+
+De centrale leesroute loopt van de homepage naar coherence.html#book-thesis, vervolgens naar about.html#book en de bestaande manuscriptaanvraag. De praktijkreflecties verbinden historische transformatievraagstukken met actuele AI-vragen. De permanente browserdekking controleert de centrale redenering in vier talen, de primaire Ross-bronverwijzingen, de leesroute en de runtime mailto-aanvraag zonder een bericht te openen of te versturen. De vier gewijzigde inhoudspagina’s vallen onder de bestaande WCAG-scans. Scorelogica en releasegrenzen blijven behouden; de scorekaart vermeldt nu expliciet haar beperkingen tegenover het interactiegerichte manuscriptmodel. De volledige bron-PDF’s worden niet in het bouwpakket opgenomen.
+
+
+## Executive contactpresentatie
+
+De contactpagina gebruikt Erlend Hollebosch als enige hoofdtitel, met een portret in de introductie, contact- en boekankers en de bestaande manuscript- en mailroutes. De vaste browserregressie controleert vier talen, portretbeschikbaarheid, horizontale overloop, ankers, de mailbestemming en terugkeer via het hoofdmenu. De bestaande boek- en praktijkroutes en WCAG-scan blijven van toepassing. De gewone Contact-navigatie opent about.html bovenaan; nieuwe hero-acties naar #contact en #book zijn bewuste inhoudelijke shortcuts. De presentatie voegt geen externe dienst toe.
+
+
+De executive contactpagina valt ook onder de drie koude Lighthouse-metingen per mobiel en desktop. De nieuwe praktijkroute staat in de sitemap. Vrijgave vindt pas plaats nadat de volledige controleketen voor de gepubliceerde revision geslaagd is.
+
+
+De vrijgave verwijdert dubbele initiële renders van specificatie, diagnose, simulator en procesdiagram: de eerste render gebeurt via de opgeslagen taalinstelling. Een permanente browserregressie observeert één initiële scorekaartrender en een volgende render bij taalwissel. De mobiele profielafbeelding gebruikt een compacte weergave en passende responsive beeldselectie; desktop behoudt het grote portret. De prestatiedrempels blijven ongewijzigd.

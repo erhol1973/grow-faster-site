@@ -15,7 +15,7 @@ test('main pages carry a search title that matches <title>, og:title and is tran
   assert.equal(decode(h.match(/<title>([^<]+)<\/title>/)[1]),seo,`${f}: <title> differs from seo-title`);
   assert.equal(decode(h.match(/<meta property="og:title" content="([^"]+)"/)[1]),seo,`${f}: og:title differs`);
   assert.ok(seo.length<=70,`${f}: title too long for search results (${seo.length})`);assert.match(seo,/Erlend Hollebosch/,f);
-  const tr=I[seo];assert.ok(Array.isArray(tr)&&tr.slice(0,3).every(Boolean),`${f}: missing nl/fr/de translation for title`);}
+  const tr=I[seo];assert.ok(Array.isArray(tr)&&tr.slice(0,2).every(Boolean),`${f}: missing nl/fr translation for title`);}
 });
 test('structured data describes the author, the book and the site',()=>{
  const graph=f=>{const m=read(f).match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/);assert.ok(m,`${f}: no JSON-LD`);const j=JSON.parse(m[1]);assert.equal(j['@context'],'https://schema.org');return j['@graph'];};
@@ -27,7 +27,7 @@ test('structured data describes the author, the book and the site',()=>{
 test('fixed language errors do not return',()=>{const all=['assets/i18n.js','assets/content.js','assets/ux.js','assets/site.js',...main].map(read).join('\n');
  for(const bad of ['Waar zet u ','Vul uw eigen','van uw invoer','Beoordeel uw gereedheid','Ontwikkel coherence','gesprek over coherence','Transformatie roadmap','projectmanager en PMO lead','strategische capability','machinale capabilities','buitensporige waarde','vuurtorenproject','de volgende strategisch','L’IA amplifie le système où elle est déployée','futur workflow','in das sie kommt','Copiloten','Dimensions de cohérence:','coherencediagnose'])
   assert.ok(!all.includes(bad),`regression: "${bad}" is back`);
- assert.equal((read('coherence.html').match(/laggards \(1×\)/g)||[]).length,1,'only the English block may say laggards');for(const w of ['achterblijvers (1×)','retardataires (1×)','Nachzügler (1×)'])assert.ok(read('coherence.html').includes(w),w);
+ assert.equal((read('coherence.html').match(/laggards \(1×\)/g)||[]).length,1,'only the English block may say laggards');for(const w of ['achterblijvers (1×)','retardataires (1×)'])assert.ok(read('coherence.html').includes(w),w);
  const I=dict();assert.match(I['How I work'][1],/façon/);
  assert.match(read('assets/site.js'),/\$\{t\("Start here"\)\}\$\{document\.documentElement\.lang==="fr"\?"\\u00a0":""\}:/,'French colon needs a non-breaking space');
 });

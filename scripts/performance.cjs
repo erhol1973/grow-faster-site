@@ -6,7 +6,7 @@ async function main(){
   const {default:lighthouse}=await import('lighthouse'),launcher=await import('chrome-launcher');
   let server,base='https://grow-faster.be';
   if(!production){server=createServer({compress:true});await new Promise(r=>server.listen(0,'127.0.0.1',r));base='http://127.0.0.1:'+server.address().port}
-  const routes=production?['/index.html']:['/index.html','/coherence.html','/approach.html'];
+  const routes=production?['/index.html']:['/index.html','/coherence.html','/approach.html','/about.html'];
   let modes=production?['mobile']:['mobile','desktop'];if(process.argv.includes('--mobile-only'))modes=['mobile'];
   if(process.argv.includes('--home-only'))routes.splice(1);
   const runs=production?1:3,out=path.resolve('reports/lighthouse'+(production?'/production':''));fs.mkdirSync(out,{recursive:true});

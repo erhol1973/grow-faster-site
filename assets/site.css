@@ -1413,5 +1413,5 @@ h1,h2,h3,p,a,li,dd,dt{overflow-wrap:break-word}
 @supports(content-visibility:auto){#summary,#why,#coherence,#final{content-visibility:auto;contain-intrinsic-block-size:auto 55rem}}
 @supports(content-visibility:auto){.ec-page .ec-sec:not(.ec-simbox){content-visibility:auto;contain-intrinsic-block-size:auto 50rem}}
 @supports(content-visibility:auto){#decide,#simulator{content-visibility:auto;contain-intrinsic-block-size:auto 55rem}}
-/* Gecko can move footer targets while skipped chapters become rendered. */
-@supports(-moz-appearance:none){#summary,#why,#coherence,#final,#decide,#simulator,.ec-page .ec-sec:not(.ec-simbox){content-visibility:visible;contain-intrinsic-block-size:none}}
+/* Gecko and WebKit can move footer targets while skipped chapters render. */
+@supports (-moz-appearance:none) or (-webkit-hyphens:none){#summary,#why,#coherence,#final,#decide,#simulator,.ec-page .ec-sec:not(.ec-simbox){content-visibility:visible;contain-intrinsic-block-size:none}}

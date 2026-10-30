@@ -18,7 +18,7 @@ function copy(source, relative) {
     const match=data.toString('utf8').match(/^window\.I18N\s*=\s*(\{[\s\S]*\});\s*window\.I18N_HTML\s*=\s*(\{[\s\S]*\});?\s*$/);
     if(!match)throw Error('Unexpected translation data format');
     const dictionary=JSON.parse(match[1]),html=JSON.parse(match[2]);
-    const active=data=>Object.fromEntries(Object.entries(data||{}).map(([key,value])=>[key,Array.isArray(value)?value.slice(0,3):value]));
+    const active=data=>Object.fromEntries(Object.entries(data||{}).map(([key,value])=>[key,Array.isArray(value)?value.slice(0,2):value]));
     fs.writeFileSync(target,'window.I18N='+JSON.stringify(active(dictionary))+';\nwindow.I18N_HTML='+JSON.stringify(active(html))+';\n');
   }else fs.writeFileSync(target,data);count++;
 }

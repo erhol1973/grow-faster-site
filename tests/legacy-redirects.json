@@ -1,0 +1,62 @@
+[
+ {
+  "from": "/about-the-author",
+  "file": "about-the-author.html",
+  "to": "about.html",
+  "canonical": "https://grow-faster.be/about.html"
+ },
+ {
+  "from": "/the-coherence-model-1",
+  "file": "the-coherence-model-1.html",
+  "to": "coherence.html",
+  "canonical": "https://grow-faster.be/coherence.html"
+ },
+ {
+  "from": "/the-enterprise-paradox-1",
+  "file": "the-enterprise-paradox-1.html",
+  "to": "coherence.html",
+  "canonical": "https://grow-faster.be/coherence.html"
+ },
+ {
+  "from": "/decision-latency",
+  "file": "decision-latency.html",
+  "to": "coherence.html",
+  "canonical": "https://grow-faster.be/coherence.html"
+ },
+ {
+  "from": "/coordination-overload-1",
+  "file": "coordination-overload-1.html",
+  "to": "insights.html#friction-first",
+  "canonical": "https://grow-faster.be/insights.html"
+ },
+ {
+  "from": "/de-rol-van-leiderschap",
+  "file": "de-rol-van-leiderschap.html",
+  "to": "insights.html#who-decides",
+  "canonical": "https://grow-faster.be/insights.html"
+ },
+ {
+  "from": "/all-articles",
+  "file": "all-articles.html",
+  "to": "insights.html",
+  "canonical": "https://grow-faster.be/insights.html"
+ },
+ {
+  "from": "/articles-1",
+  "file": "articles-1/index.html",
+  "to": "../insights.html",
+  "canonical": "https://grow-faster.be/insights.html"
+ },
+ {
+  "from": "/articles-1/the-evolution-of-enterprise-management",
+  "file": "articles-1/the-evolution-of-enterprise-management.html",
+  "to": "../insights.html",
+  "canonical": "https://grow-faster.be/insights.html"
+ },
+ {
+  "from": "/articles-1/enterprise-architecture-needs-enterprise-coherence",
+  "file": "articles-1/enterprise-architecture-needs-enterprise-coherence.html",
+  "to": "../coherence.html",
+  "canonical": "https://grow-faster.be/coherence.html"
+ }
+]

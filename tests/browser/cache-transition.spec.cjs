@@ -3,7 +3,13 @@ test('old markup with current scripts loads required modules and normalizes menu
   const fixture=createCacheServer();await new Promise(r=>fixture.server.listen(0,'127.0.0.1',r));const base='http://127.0.0.1:'+fixture.server.address().port;
   try{
     const errors=[];page.on('pageerror',e=>errors.push(e.message));await page.addInitScript(()=>{localStorage.setItem('avs-consent',JSON.stringify({v:3,ext:false,ana:false,ts:Date.now()}));window.addEventListener('pageshow',e=>window.__restored=e.persisted)});
-    await page.goto(base+'/index.html');await expect.poll(()=>page.evaluate(()=>!!window.GFModels&&!!window.GFConsent)).toBe(true);
+    const response=await page.goto(base+'/index.html');
+    // Check the HTTP body, before runtime recovery adds the missing modules.
+    const markup=await response.text();
+    expect(markup).not.toMatch(/<script\b[^>]*\bsrc=["']assets\/(?:models|consent)\.js/i);
+    expect(markup).toContain('href="about.html#contact">Contact</a>');
+    await expect.poll(()=>page.evaluate(()=>!!window.GFModels&&!!window.GFConsent)).toBe(true);
+    for(const name of ['models','consent'])await expect(page.locator(`script[src^="assets/${name}.js"]`)).toHaveCount(1);
     const link=page.locator('.nav .nav-cta');if(!await link.isVisible())await page.locator('#burger').click();await expect(link).toHaveAttribute('href','about.html');await link.click();await expect(page).toHaveURL(base+'/about.html');await expect.poll(()=>page.evaluate(()=>scrollY)).toBeLessThan(8);expect(errors).toEqual([]);
     await info.attach('cache-requests',{body:JSON.stringify(fixture.requests,null,2),contentType:'application/json'});
   }finally{await page.close();fixture.server.closeAllConnections();await new Promise(r=>fixture.server.close(r))}

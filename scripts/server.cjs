@@ -12,12 +12,21 @@ function createServer(options={}) {
     if (pathname.includes('\0') || pathname.includes('\\')) { res.writeHead(400); return res.end(); }
     const target = path.resolve(root, '.' + pathname + (pathname.endsWith('/') ? 'index.html' : ''));
     if (!target.startsWith(root + path.sep)) { res.writeHead(403); return res.end(); }
-    fs.stat(target, (error, stat) => {
-      if (error || !stat.isFile()) { res.writeHead(404); return res.end('Not found'); }
-      const compress=options.compress&&/gzip/.test(req.headers['accept-encoding']||'')&&/\.(html|css|js|json|svg|txt|xml)$/i.test(target);
-      res.writeHead(200, { 'Content-Type': types[path.extname(target).toLowerCase()] || 'application/octet-stream', 'Cache-Control': 'no-store', 'X-Content-Type-Options': 'nosniff',...(compress?{'Content-Encoding':'gzip','Vary':'Accept-Encoding'}:{}) });
+    const notFound=()=>{res.writeHead(404);res.end('Not found')};
+    const send=file=>{
+      const compress=options.compress&&/gzip/.test(req.headers['accept-encoding']||'')&&/\.(html|css|js|json|svg|txt|xml)$/i.test(file);
+      res.writeHead(200, { 'Content-Type': types[path.extname(file).toLowerCase()] || 'application/octet-stream', 'Cache-Control': 'no-store', 'X-Content-Type-Options': 'nosniff',...(compress?{'Content-Encoding':'gzip','Vary':'Accept-Encoding'}:{}) });
       if (req.method === 'HEAD') return res.end();
-      const stream = fs.createReadStream(target); stream.on('error', () => res.destroy());if(compress)stream.pipe(require('node:zlib').createGzip()).pipe(res);else stream.pipe(res);
+      const stream = fs.createReadStream(file); stream.on('error', () => res.destroy());if(compress)stream.pipe(require('node:zlib').createGzip()).pipe(res);else stream.pipe(res);
+    };
+    fs.stat(target, (error, stat) => {
+      if (!error && stat.isFile()) return send(target);
+      if (!error && stat.isDirectory() && !pathname.endsWith('/')) {
+        const location='/'+pathname.split('/').filter(Boolean).map(encodeURIComponent).join('/')+'/'+new URL(req.url,'http://localhost').search;
+        res.writeHead(301,{Location:location});return res.end();
+      }
+      if (!path.extname(target) && !pathname.endsWith('/')) return fs.stat(target+'.html',(e,s)=>!e&&s.isFile()?send(target+'.html'):notFound());
+      notFound();
     });
   });
 }

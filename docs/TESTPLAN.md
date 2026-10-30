@@ -52,3 +52,9 @@ Werk tests/navigation-cases.json en betrokken lagen samen bij als routes verande
 Onderzoek fouten vóór een nieuwe run. De historische acht lokale loadfouten hebben geen bewezen oorzaak; een latere groene run verklaart ze niet. Loadrapporten registreren daarom fouttype, route, Node/OS/CPU/geheugen en event-loopvertraging. Ook lokale HTTP-verbindingsresets worden bewaard en onderzocht, zonder automatische retry die ze verbergt.
 
 Verzwak geen vastgelegde grens om te publiceren. Bespreek wezenlijke model-, beveiligings- of vrijgavewijzigingen met de eigenaar. Geen scanner garandeert dat de site nooit gehackt wordt.
+
+## Claude-optimalisaties, 30 oktober 2026
+
+Tien oude SITE123-adressen krijgen een directe meta-refresh, canonical en zichtbare terugval-link. Het bouwpakket neemt alleen de expliciete redirectlijst op. De lokale server ondersteunt de overeenkomstige extensionless HTML- en mapadressen, met behoud van gzip, HEAD, nosniff en de bestaande padcontroles. HTTP-tests controleren alle tien adressen en onbekende adressen; browserregressies controleren de daadwerkelijke navigatie en twee artikelbestemmingen. Dit zijn client-side redirects; er wordt geen HTTP-301 van GitHub Pages geclaimd.
+
+Contenttests bewaken de zoekgerichte titels, NL/FR/DE-vertalingen, JSON-LD voor persoon/boek/website, taalcorrecties en labelcontrast. De browser controleert de dynamische titel, auteursregel en Franse typografie. De bestaande model-, consent-, cache-, WebKit-, toegankelijkheids- en releasecontroles blijven gelden. De vertalingen blijven zuivere JSON-data voor de beveiligde buildparser. De McKinsey-update is gecontroleerd tegen de editie van 25 augustus 2026; bestaande exhibits houden hun oorspronkelijke jaartal. Actuele testresultaten worden afzonderlijk vastgelegd; eerdere pakketcijfers worden niet als bewijs overgenomen.

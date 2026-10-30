@@ -6,9 +6,13 @@ test('preview serves GET HTML with nosniff and CSS with correct MIME',async()=>{
 test('HEAD returns headers without body; write methods are denied',async()=>{assert.equal((await request('/index.html','HEAD')).body,'');const r=await request('/index.html','POST');assert.equal(r.status,405);assert.equal(r.headers.allow,'GET, HEAD')});
 test('unknown file, malformed encoding and traversal cannot expose source',async()=>{assert.equal((await request('/missing-file.html')).status,404);assert.equal((await request('/%ZZ')).status,400);for(const p of ['/%00','/%5c..%5cpackage.json'])assert.equal((await request(p)).status,400);const r=await request('/..%2fpackage.json');assert.equal(r.status,403);assert.ok(!r.body.includes('devDependencies'))});
 
-test('performance preview gzip decodes to the same public document',async()=>{
+test('performance preview gzip decodes ordinary and extensionless public documents',async()=>{
   const compressed=createServer({compress:true});await new Promise(r=>compressed.listen(0,'127.0.0.1',r));
-  try{const response=await new Promise((resolve,reject)=>{http.get({hostname:'127.0.0.1',port:compressed.address().port,path:'/index.html',headers:{'accept-encoding':'gzip'}},res=>{const chunks=[];res.on('data',c=>chunks.push(c));res.on('end',()=>resolve({headers:res.headers,body:Buffer.concat(chunks)}))}).on('error',reject)});
-    assert.equal(response.headers['content-encoding'],'gzip');assert.equal(response.headers.vary,'Accept-Encoding');assert.equal(require('node:zlib').gunzipSync(response.body).toString(),(await request('/index.html')).body);
+  try{for(const route of ['/index.html','/decision-latency']){const response=await new Promise((resolve,reject)=>{http.get({hostname:'127.0.0.1',port:compressed.address().port,path:route,headers:{'accept-encoding':'gzip'}},res=>{const chunks=[];res.on('data',c=>chunks.push(c));res.on('end',()=>resolve({headers:res.headers,body:Buffer.concat(chunks)}))}).on('error',reject)});
+    assert.equal(response.headers['content-encoding'],'gzip');assert.equal(response.headers.vary,'Accept-Encoding');assert.equal(require('node:zlib').gunzipSync(response.body).toString(),(await request(route)).body);}
   }finally{compressed.closeAllConnections();await new Promise(r=>compressed.close(r))}
 });
+
+test('extensionless legacy addresses resolve like GitHub Pages; unknown ones still 404',async()=>{for(const r of require('./legacy-redirects.json')){let res=await request(r.from);if(res.status===301){assert.equal(res.headers.location,r.from+'/',r.from);res=await request(res.headers.location);}assert.equal(res.status,200,r.from);assert.match(res.headers['content-type'],/^text\/html/,r.from);assert.ok(res.body.includes(`content="0;url=${r.to}"`),`${r.from} must forward to ${r.to}`);}assert.equal((await request('/no-such-legacy-page')).status,404);assert.equal((await request('/articles-1/no-such-article')).status,404);});
+
+test('legacy folder redirects preserve query strings and extensionless HEAD stays empty',async()=>{const folder=await request('/articles-1?lang=fr');assert.equal(folder.status,301);assert.equal(folder.headers.location,'/articles-1/?lang=fr');const head=await request('/decision-latency?from=legacy','HEAD');assert.equal(head.status,200);assert.equal(head.body,'');assert.equal(head.headers['x-content-type-options'],'nosniff');});

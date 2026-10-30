@@ -1310,7 +1310,7 @@ html[lang="en"] .ec-page .lgx[lang="en"],html[lang="nl"] .ec-page .lgx[lang="nl"
 .ec-seg{width:var(--w);display:grid;align-content:end;gap:2px;padding:10px;color:#fff;min-width:0}
 .ec-seg b{font-size:22px;line-height:1}
 .ec-seg span{font-size:12.5px;line-height:1.3}
-.ec-seg.s10{background:#7C93B3}.ec-seg.s20{background:#2F5D8C}.ec-seg.s70{background:var(--brand-fill)}
+.ec-seg.s10{background:#5E7799}.ec-seg.s20{background:#2F5D8C}.ec-seg.s70{background:var(--brand-fill)}
 .ec-seg.s10 span{display:none}
 .ec-seg.s10{padding:8px 4px}.ec-seg.s10 b{font-size:15px}
 .ec-exps{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:16px}
@@ -1407,7 +1407,7 @@ h1,h2,h3,p,a,li,dd,dt{overflow-wrap:break-word}
 /* Accessible supporting labels retain the established palette. */
 .metric .pot{color:var(--muted);opacity:1}
 .agent-flow .work-number{color:var(--ai-ink);opacity:1}
-.ec-seg.s10 b{color:var(--brand)}
+.ec-seg.s10 b{color:#FFFFFF}
 
 /* Large, below-the-fold Home chapters keep their accessibility tree. */
 @supports(content-visibility:auto){#summary,#why,#coherence,#final{content-visibility:auto;contain-intrinsic-block-size:auto 55rem}}
@@ -1415,3 +1415,8 @@ h1,h2,h3,p,a,li,dd,dt{overflow-wrap:break-word}
 @supports(content-visibility:auto){#decide,#simulator{content-visibility:auto;contain-intrinsic-block-size:auto 55rem}}
 /* Gecko and WebKit can move footer targets while skipped chapters render. */
 @supports (-moz-appearance:none) or (-webkit-hyphens:none){#summary,#why,#coherence,#final,#decide,#simulator,.ec-page .ec-sec:not(.ec-simbox){content-visibility:visible;contain-intrinsic-block-size:none}}
+
+/* Quick wins: accessible arrows, source note and calmer author portrait. */
+.lvl.l3 .stack .a{color:#38BDF2}
+.exhibit-note{margin:10px 0 0;font-size:14px;line-height:1.5;color:var(--muted)}
+@media(min-width:960px){.au-side .au-photo{flex:0 0 auto;aspect-ratio:4/5!important;position:sticky;top:96px}}

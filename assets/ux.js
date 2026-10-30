@@ -83,4 +83,11 @@
   }).observe(burger, {attributes: true, attributeFilter: ['aria-expanded']});
 })();
 
-(function(){const frame=document.getElementById('ec-sim');if(!frame||!frame.dataset.src)return;const load=()=>{frame.src=frame.dataset.src;delete frame.dataset.src};if(!('IntersectionObserver'in window)){load();return}const observer=new IntersectionObserver(entries=>{if(entries.some(e=>e.isIntersecting)){load();observer.disconnect()}},{rootMargin:'400px'});observer.observe(frame)})();
+(function(){
+  const frame=document.getElementById('ec-sim');if(!frame||!frame.dataset.src)return;
+  const load=()=>{frame.src=frame.dataset.src;delete frame.dataset.src};
+  // WebKit can lose a footer click when scrolling starts the iframe and its
+  // height changes between pointer down and up. Load it with the document.
+  if(!('IntersectionObserver'in window)||CSS.supports('-webkit-hyphens','none')){load();return}
+  const observer=new IntersectionObserver(entries=>{if(entries.some(e=>e.isIntersecting)){load();observer.disconnect()}},{rootMargin:'400px'});observer.observe(frame);
+})();

@@ -141,7 +141,7 @@ window.I18N=Object.assign(window.I18N||{},{
     "Dies beschreibt meinen Ansatz, keine Kundenfallstudie oder Behauptung gemessener Ergebnisse."
   ],
   "A conversation about coherence and change": [
-    "Een gesprek over coherence en verandering",
+    "Een gesprek over samenhang en verandering",
     "Échanger sur la cohérence et le changement",
     "Ein Gespräch über Kohärenz und Veränderung"
   ],
@@ -218,7 +218,7 @@ Object.assign(window.I18N,{
 
 Object.assign(window.I18N,{
   "Start with one important workflow. Develop coherence and AI adoption together.": [
-    "Begin met één belangrijke werkstroom. Ontwikkel coherence en AI-toepassing samen.",
+    "Begin met één belangrijke werkstroom. Ontwikkel samenhang en AI-toepassing samen.",
     "Commencez par un flux de travail important. Développez ensemble la cohérence et l’adoption de l’IA.",
     "Beginnen Sie mit einem wichtigen Arbeitsfluss. Entwickeln Sie Kohärenz und KI-Einsatz gemeinsam."
   ],
@@ -229,7 +229,7 @@ Object.assign(window.I18N,{
   ]
 });
 
-window.I18N=Object.assign(window.I18N||{},{"Organizations have rapidly deployed GenAI, mostly as horizontal tools such as copilots and chatbots. These tools help with: Writing, Summarization, Information retrieval, Meeting preparation, Content generation and Individual productivity. The gains are real, but spread thinly across thousands of employees and individual tasks. The business process underneath stays largely the same.":["Organisaties hebben GenAI snel uitgerold, vooral als horizontale tools zoals copilots en chatbots. Die tools helpen bij: Schrijven, Samenvatten, Informatie opzoeken, Vergaderingen voorbereiden, Content genereren en Individuele productiviteit. De winst is echt, maar dun verspreid over duizenden medewerkers en losse taken. Het onderliggende bedrijfsproces blijft grotendeels hetzelfde.","Les organisations ont rapidement déployé la GenAI, surtout sous forme d’outils horizontaux comme les copilotes et les chatbots. Ces outils aident à rédiger, résumer, rechercher des informations, préparer des réunions, générer du contenu et améliorer la productivité individuelle. Les gains sont réels, mais dispersés entre des milliers de collaborateurs et de tâches isolées. Le processus métier sous-jacent reste largement inchangé.","Organisationen haben GenAI schnell eingeführt, vor allem als horizontale Werkzeuge wie Copiloten und Chatbots. Sie helfen beim Schreiben, Zusammenfassen, Suchen von Informationen, Vorbereiten von Besprechungen, Erstellen von Inhalten und bei der individuellen Produktivität. Die Gewinne sind real, aber auf Tausende Mitarbeitende und einzelne Aufgaben verteilt. Der zugrunde liegende Geschäftsprozess bleibt weitgehend gleich."]});
+window.I18N=Object.assign(window.I18N||{},{"Organizations have rapidly deployed GenAI, mostly as horizontal tools such as copilots and chatbots. These tools help with: Writing, Summarization, Information retrieval, Meeting preparation, Content generation and Individual productivity. The gains are real, but spread thinly across thousands of employees and individual tasks. The business process underneath stays largely the same.":["Organisaties hebben GenAI snel uitgerold, vooral als horizontale tools zoals copilots en chatbots. Die tools helpen bij: Schrijven, Samenvatten, Informatie opzoeken, Vergaderingen voorbereiden, Content genereren en Individuele productiviteit. De winst is echt, maar dun verspreid over duizenden medewerkers en losse taken. Het onderliggende bedrijfsproces blijft grotendeels hetzelfde.","Les organisations ont rapidement déployé la GenAI, surtout sous forme d’outils horizontaux comme les copilotes et les chatbots. Ces outils aident à rédiger, résumer, rechercher des informations, préparer des réunions, générer du contenu et améliorer la productivité individuelle. Les gains sont réels, mais dispersés entre des milliers de collaborateurs et de tâches isolées. Le processus métier sous-jacent reste largement inchangé.","Organisationen haben GenAI schnell eingeführt, vor allem als horizontale Werkzeuge wie Copilots und Chatbots. Sie helfen beim Schreiben, Zusammenfassen, Suchen von Informationen, Vorbereiten von Besprechungen, Erstellen von Inhalten und bei der individuellen Produktivität. Die Gewinne sind real, aber auf Tausende Mitarbeitende und einzelne Aufgaben verteilt. Der zugrunde liegende Geschäftsprozess bleibt weitgehend gleich."]});
 
 /* Verified career history and homepage briefing label. */
 Object.assign(window.I18N,{
@@ -244,7 +244,7 @@ Object.assign(window.I18N,{
     "Ich bin Erlend Hollebosch. Mein Hintergrund verbindet 16 Jahre Projektmanagement und PMO-Leitung mit 10 Jahren Aufbau von Expertise in Unternehmenstransformation. Ich untersuche, wie Fragmentierung die Umsetzung behindert und wie Organisationen ihre Kohärenz stärken können."
   ],
   "My career spans 26 years. During the first 16, I worked primarily as a project manager and PMO lead. Over the following 10 years, I developed my expertise in business transformation at operational, tactical and strategic levels.": [
-    "Mijn loopbaan omvat 26 jaar. De eerste 16 jaar was ik vooral actief als projectmanager en PMO lead. De daaropvolgende 10 jaar bouwde ik mijn expertise uit in bedrijfstransformaties op operationeel, tactisch en strategisch niveau.",
+    "Mijn loopbaan omvat 26 jaar. De eerste 16 jaar was ik vooral actief als projectmanager en PMO-lead. De daaropvolgende 10 jaar bouwde ik mijn expertise uit in bedrijfstransformaties op operationeel, tactisch en strategisch niveau.",
     "Mon parcours couvre 26 ans. Durant les 16 premières années, j’ai principalement exercé comme chef de projet et responsable PMO. Au cours des 10 années suivantes, j’ai développé mon expertise en transformation des entreprises aux niveaux opérationnel, tactique et stratégique.",
     "Mein beruflicher Werdegang umfasst 26 Jahre. In den ersten 16 Jahren war ich vor allem als Projektmanager und PMO-Leiter tätig. In den darauffolgenden 10 Jahren baute ich meine Expertise in Unternehmenstransformation auf operativer, taktischer und strategischer Ebene aus."
   ],

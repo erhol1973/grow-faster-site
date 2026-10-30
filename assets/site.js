@@ -82,7 +82,7 @@
     const fmt=v=>v.toLocaleString(LOCALE[LANG]||"en-GB",{minimumFractionDigits:1,maximumFractionDigits:1});
     rows.innerHTML=DIM.map((d,i)=>`<div class="dg-row${dgScore[i]===min&&min<4?" low":""}"><b>${t(d[0])}</b><small>${t(d[1])}</small><span class="dg-anc">${d[4].map((a,j)=>`<span${dgScore[i]===[1,3,5][j]?' class="on"':''}><i>${[1,3,5][j]}</i>${t(a)}</span>`).join("")}</span><span class="dg-sc" role="group" aria-label="${t(d[0])}">${[1,2,3,4,5].map(v=>`<button type="button" data-i="${i}" data-v="${v}" aria-pressed="${dgScore[i]===v}" aria-label="${t(d[0])}: ${v}">${v}</button>`).join("")}</span></div>`).join("");
     const bars=DIM.map((d,i)=>`<div class="dg-bar${dgScore[i]===min&&min<4?" low":""}"><span>${t(d[0])}</span><i style="--w:${dgScore[i]*20}%"></i><span>${dgScore[i]}</span></div>`).join("");
-    out.innerHTML=(min<4?`<span class="k">${t("Your bottleneck")}</span><div class="bn">${t(DIM[bi][0])}</div><p><b>${t("Start here")}:</b> ${t(DIM[bi][2])}</p>`
+    out.innerHTML=(min<4?`<span class="k">${t("Your bottleneck")}</span><div class="bn">${t(DIM[bi][0])}</div><p><b>${t("Start here")}${document.documentElement.lang==="fr"?"\u00a0":""}:</b> ${t(DIM[bi][2])}</p>`
       :`<span class="k">${t("Your bottleneck")}</span><div class="bn">${t("Coherent enough to accelerate")}</div><p>${t("No dimension scores below 4. Scale what works, and keep measuring how the enterprise moves.")}</p>`)
       +`<span class="k">${t("Coherence score")} · ${fmt(avg)} / 5</span><div class="dg-bars">${bars}</div>`;
   }
@@ -365,7 +365,7 @@
     document.querySelectorAll(".lang-menu [data-lang]").forEach(b=>b.setAttribute("aria-checked",String(b.dataset.lang===l)));
     document.querySelectorAll(".lang-btn").forEach(b=>b.setAttribute("aria-label",t("Language")+": "+(b.closest(".lang-top")?({nl:"NL-BE",fr:"FR-BE",en:"EN",de:"DE"})[l]+" — ":"")+NATIVE[l]));
     if(fcopy)fcopy.textContent=t("Copy");auCopy.textContent=t("Copy");
-    {const pt=(document.querySelector('meta[name="page-title"]')||{}).content;document.title=pt?t(pt)+" · The Coherent Enterprise":"The Coherent Enterprise · Erlend Hollebosch";}
+    {const st=(document.querySelector('meta[name="seo-title"]')||{}).content,pt=(document.querySelector('meta[name="page-title"]')||{}).content;document.title=st?t(st):pt?t(pt)+" · The Coherent Enterprise":"The Coherent Enterprise · Erlend Hollebosch";}
     pick(curSpec);evalP();sim();renderBPMN();coh();if(typeof fitNav==="function")fitNav();
     if(save)store.set("avs-lang",l);
   }

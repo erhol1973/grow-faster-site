@@ -12,12 +12,12 @@ Tests onderzoeken hetzelfde gebouwde `dist`-pakket dat wordt gepubliceerd. Ontwi
 | Cache | Echte ETag/304, versiewissel en oude HTML met actuele scripts. Back/Forward en feitelijke pageshow.persisted worden vastgelegd. Geen routingmocks die de browsercache uitschakelen; BFCache wordt niet kunstmatig afgedwongen. |
 | Toegankelijkheid | Axe op acht menuwebpagina's, dialoog en simulator, Chromium desktop/mobiel, WCAG A/AA 2.0/2.1/2.2 en contrast. Uitgestelde inhoud wordt voor scans gerenderd. Ook toetsenbord, focus, tablet en 200% tekst. |
 | Load | Uitsluitend lokaal: 288 verzoeken met acht workers, alle menuroutes, simulator, CSS/JS en verwachte 404. Geen fouten of ontbrekende routes, p95 maximaal 1.500ms. |
-| Performance | Bestandsbudgetten plus drie koude Lighthouse-runs per Home/Coherence/Aanpak/Contact op mobiel en desktop; individuele rapporten en medianen. Na browsersuite, zonder gelijktijdige loadtests. |
+| Performance | Bestandsbudgetten plus drie koude Lighthouse-runs per Home/Coherence/Aanpak/Contact/Contact op mobiel en desktop; individuele rapporten en medianen. Na browsersuite, zonder gelijktijdige loadtests. |
 | Security | Artifactscan, dependency-audit, Gitleaks geschiedenis en CodeQL security-extended. Bevindingen blokkeren; geen productieaanvallen of loadtests. |
 
 ## Browsermatrix en rapportage
 
-Chromium desktop/mobiel draait alle scenario's. Firefox, WebKit desktop en mobiel WebKit draaien dezelfde functionele kern. Momenteel zijn 292 browsergevallen geregistreerd; het actuele rapport is leidend. Mobiel WebKit is emulatie, geen fysiek iPhone/Safari-bewijs.
+Chromium desktop/mobiel draait alle scenario's. Firefox, WebKit desktop en mobiel WebKit draaien dezelfde functionele kern. Momenteel zijn 297 browsergevallen geregistreerd; het actuele rapport is leidend. Mobiel WebKit is emulatie, geen fysiek iPhone/Safari-bewijs.
 
 Retries dienen voor diagnose. Eerst falen en daarna slagen blokkeert CI als instabiel. Ook .only en onverklaarde skips blokkeren. Rapporten onderscheiden geslaagd/gefaald/instabiel/overgeslagen en bewaren pogingen, redenen, screenshots en fouttraces. Desktop-only layouttests en de aparte tabletproef hebben expliciete skipredenen voor andere projecten. Geen stille quarantaine.
 
@@ -80,3 +80,6 @@ De contactpagina gebruikt Erlend Hollebosch als enige hoofdtitel, met een portre
 
 
 De executive contactpagina valt ook onder de drie koude Lighthouse-metingen per mobiel en desktop. De nieuwe praktijkroute staat in de sitemap. Vrijgave vindt pas plaats nadat de volledige controleketen voor de gepubliceerde revision geslaagd is.
+
+
+De vrijgave verwijdert dubbele initiële renders van specificatie, diagnose, simulator en procesdiagram: de eerste render gebeurt via de opgeslagen taalinstelling. Een permanente browserregressie observeert één initiële scorekaartrender en een volgende render bij taalwissel. De mobiele profielafbeelding gebruikt een compacte weergave en passende responsive beeldselectie; desktop behoudt het grote portret. De prestatiedrempels blijven ongewijzigd.

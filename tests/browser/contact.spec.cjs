@@ -32,13 +32,16 @@ for(const route of routes)for(const position of ['top','bottom']){
   });
 }
 for(const language of ['nl','fr','en','de']){
-  test(`keyboard, history and footer Contact preserve ${language}`,async({page})=>{
+  test(`keyboard, history and footer Contact preserve ${language}`,async({page,browserName})=>{
     await page.addInitScript(l=>localStorage.setItem('avs-lang',l),language);
     await page.goto('/insights.html#who-decides');await clickMenu(page,'about.html',true);
     await expectTop(page);await expect(page.locator('html')).toHaveAttribute('lang',language);
     await page.goBack();await expect(page).toHaveURL(/\/insights\.html#who-decides$/);
     await clickMenu(page,'about.html');await expectTop(page);
     await page.goto('/coherence.html');
+    // In WebKit the simulator must finish its initial layout before a footer
+    // click. Do not scroll it into view here: that would hide lazy-load races.
+    if(browserName==='webkit')await expect(page.frameLocator('#ec-sim').locator('#b-play')).toBeAttached();
     await page.locator('footer .fcol').last().locator('a[href="about.html"]').click();
     await expectTop(page);await expect(page.locator('html')).toHaveAttribute('lang',language);
   });

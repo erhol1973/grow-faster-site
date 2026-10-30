@@ -1,5 +1,10 @@
 
-(function(){
+(function initializeSite(){
+  // A cached HTML document may still reference the previous script version.
+  const missing=[];if(!window.GFModels)missing.push('models');if(!window.GFConsent)missing.push('consent');
+  if(missing.length){Promise.all(missing.map(name=>new Promise((resolve,reject)=>{const script=document.createElement('script');script.src='assets/'+name+'.js?v=20261029-quality';script.onload=resolve;script.onerror=reject;document.head.appendChild(script)}))).then(initializeSite).catch(()=>console.error('Website support modules could not be loaded'));return}
+  document.querySelectorAll('.nav .nav-cta, footer .fcol a[href="about.html#contact"]').forEach(a=>a.setAttribute('href','about.html'));
+
   const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
   {const _o=IntersectionObserver.prototype.observe;IntersectionObserver.prototype.observe=function(el){if(el instanceof Element)return _o.call(this,el)}}
   const $=s=>document.querySelector(s)||document.createElement("div");
@@ -73,7 +78,7 @@
   const dgScore=DIM.map(d=>d[3]);
   function coh(){
     const rows=document.getElementById("dg-rows"),out=document.getElementById("dg-out");if(!rows||!out)return;
-    const min=Math.min(...dgScore),bi=dgScore.indexOf(min),avg=dgScore.reduce((a,b)=>a+b,0)/dgScore.length;
+    const {mn:min,bottleneck:bi,avg}=GFModels.coherenceFactors(dgScore);
     const fmt=v=>v.toLocaleString(LOCALE[LANG]||"en-GB",{minimumFractionDigits:1,maximumFractionDigits:1});
     rows.innerHTML=DIM.map((d,i)=>`<div class="dg-row${dgScore[i]===min&&min<4?" low":""}"><b>${t(d[0])}</b><small>${t(d[1])}</small><span class="dg-anc">${d[4].map((a,j)=>`<span${dgScore[i]===[1,3,5][j]?' class="on"':''}><i>${[1,3,5][j]}</i>${t(a)}</span>`).join("")}</span><span class="dg-sc" role="group" aria-label="${t(d[0])}">${[1,2,3,4,5].map(v=>`<button type="button" data-i="${i}" data-v="${v}" aria-pressed="${dgScore[i]===v}" aria-label="${t(d[0])}: ${v}">${v}</button>`).join("")}</span></div>`).join("");
     const bars=DIM.map((d,i)=>`<div class="dg-bar${dgScore[i]===min&&min<4?" low":""}"><span>${t(d[0])}</span><i style="--w:${dgScore[i]*20}%"></i><span>${dgScore[i]}</span></div>`).join("");
@@ -99,15 +104,11 @@
   const Q={Automate:"Simple, repetitive work. Use rules and straightforward automation; agents help mainly with the exceptions.","Prepare first":"High potential, but the data or the exception rate is not ready. Build the data foundation and reduce exceptions before you deploy agents.",Augment:"Knowledge-intensive human work. Give experts AI support; keep the human in charge of the work.","Agent-enable":"Complex workflows where agents can coordinate execution across steps and systems.",Reinvent:"A strategic, end-to-end process with high value and high transformation potential. Redesign it around humans and agents."};
   const quad=$("#quad");
   function evalP(){
+    if(!document.getElementById("cls"))return;
     CRIT.forEach(([k])=>$("#so-"+k).textContent=vals[k]);
-    const n=v=>(v-1)/4;
-    const x=n((vals.complexity+vals.coord+vals.handoffs+vals.decision+vals.personal)/5);
-    const y=n((2*vals.value+vals.scale)/3);
-    const cls=x<.5?(y>.5?"Augment":"Automate"):(y>.5?"Reinvent":"Agent-enable");
-    const r=vals.risk, rd0=(vals.data+vals.repeat+(6-vals.exceptions))/3;
-    let fin=cls; if(r>=5&&(cls==="Automate"||cls==="Agent-enable"))fin="Augment"; if(rd0<2.7&&(cls==="Agent-enable"||cls==="Reinvent"))fin="Prepare first";
+    const {x,y,cls,fin,r,rd}=GFModels.classify(vals);
     const c=$("#cls");c.textContent=t(fin);c.classList.toggle("re",fin==="Reinvent");$("#cls-d").textContent=t(Q[fin])+(fin!==cls?" "+t("Risk or readiness changed the result from {c}.").replace("{c}",t(cls)):"");$("#v-aut").textContent=t(r<=2?"Act within boundaries; autonomous for routine cases":r===3?"Bounded autonomy with monitoring":r===4?"Act with human approval":"Human decides, AI recommends");
-    const rd=(vals.data+vals.repeat+(6-vals.exceptions))/3;$("#v-ready").textContent=t(rd>=3.7?"Strong: data and volume support agents":rd>=2.7?"Moderate: close data or exception gaps first":"Limited: build the data foundation first");
+    $("#v-ready").textContent=t(rd>=3.7?"Strong: data and volume support agents":rd>=2.7?"Moderate: close data or exception gaps first":"Limited: build the data foundation first");
     drawQuad(x,y,cls);
   }
   function drawQuad(x,y,cls){
@@ -129,15 +130,12 @@
   ["c-g1","c-g2","c-a1","c-a2","c-r1","c-r2"].forEach(k=>$("#"+k).addEventListener("input",sim));
   ids.forEach(k=>$("#i-"+k).addEventListener("input",sim));
   function g(k){const v=parseFloat($("#i-"+k).value);return isFinite(v)&&v>0?v:0}
-  function cohF(sc){const mn=Math.min(...sc),av=sc.reduce((p,q)=>p+q,0)/sc.length,cs=(mn+av)/2,k=(cs-1)/4;return {mn,cs,k,f:[.6+.4*k,.3+.7*k,.15+.85*k]}}
+  const cohF=GFModels.coherenceFactors;
   function sim(){
+    if(!document.getElementById("scen"))return;
     ["rout","auto","red","gen","ov","cyc","wait","cons","real"].forEach(k=>$("#o-"+k).textContent=g(k)+"%");
     const V=g("vol"),P=g("time"),C=g("cost"),CT=g("cycle"),R=g("rout")/100,A=g("auto")/100,D=g("red")/100,G=g("gen")/100,OV=g("ov")/100,CY=g("cyc")/100,RUN=g("run");
-    const base=V*P/60, a=R*A, saveDays=(P*G/60)/8;
-    const pot=[
-      {h:base*G,ct:Math.max(0,CT-saveDays)},
-      {h:base*(a*(1-OV)+(1-a)*G),ct:a*CT*CY+(1-a)*Math.max(0,CT-saveDays)},
-      {h:base*(a*(1-OV)+(1-a)*(1-(1-G)*(1-D))),ct:a*CT*CY+(1-a)*Math.max(0,CT*(1-D)-saveDays)}];
+    const {base,a,pot}=GFModels.potentials({V,P,CT,R,A,D,G,OV,CY});
     const names=["GenAI assistance","Agentic automation","Process reinvention"];
     const CO=cohF(dgScore), CF=cohF(dgScore.map(v=>Math.max(v,4)));
     const sc=pot.map((p,i)=>({n:names[i],hp:p.h,h:p.h*CO.f[i],ct:CT-(CT-p.ct)*CO.f[i],f:CO.f[i]}));
@@ -167,9 +165,7 @@
     const gc=k=>{const v=parseFloat($("#"+k).value);return isFinite(v)&&v>0?v:0};const cost=[[gc("c-g1"),gc("c-g2")],[gc("c-a1"),gc("c-a2")],[gc("c-r1"),gc("c-r2")]];
     const fmtM=v=>(v<0?"−":"")+fmtE(Math.abs(v));
     const cell=v=>{v=Math.round(v/1000)*1000;return `<span${v<0?' class="neg"':''}>${fmtM(v)}</span>`};
-    const calc=(h,i,f)=>{const gross=h*C,B=gross*F,run=i?RUN*V*a*f:0,[I,R0]=cost[i],R=R0+run,y1=B*RR-R-I,yN=B-R,y3=y1+2*yN;
-      let be=null,cum=-I;for(let m=1;m<=60;m++){cum+=((m<=12?B*RR:B)-R)/12;if(cum>=0){be=m;break}}
-      return {gross,B,y1,yN,y3,be}};
+    const calc=(h,i,f)=>GFModels.businessCase({h,C,F,RUN,V,a,f,I:cost[i][0],R0:cost[i][1],RR,i});
     const bc=sc.map((x,i)=>calc(x.h,i,x.f));
     const brow=(lbl,f,cls)=>`<tr${cls?` class="${cls}"`:""}><td>${t(lbl)}</td>${bc.map((x,i)=>`<td${i===2?' class="top"':''}>${f(x)}</td>`).join("")}</tr>`;
     $("#bc-t").innerHTML=`<table><thead><tr><th></th>${sc.map(x=>`<th>${t(x.n)}</th>`).join("")}</tr></thead><tbody>
@@ -367,7 +363,7 @@
     ihs.forEach(o=>{o.el.innerHTML=l==="en"?o.orig:((((window.I18N_HTML||{})[o.el.dataset.ih])||[])[LIDX[l]]||o.orig)});
     document.querySelectorAll(".lang-cur").forEach(e=>e.textContent=e.closest(".lang-top")?({nl:"NL-BE",fr:"FR-BE",en:"EN",de:"DE"})[l]:NATIVE[l]);document.querySelectorAll(".lang-btn").forEach(b=>b.dataset.code=({nl:"NL-BE",fr:"FR-BE",en:"EN",de:"DE"})[l]);document.querySelectorAll(".lang-btn .flag").forEach(f=>f.className="flag flag-"+l);
     document.querySelectorAll(".lang-menu [data-lang]").forEach(b=>b.setAttribute("aria-checked",String(b.dataset.lang===l)));
-    document.querySelectorAll(".lang-btn").forEach(b=>b.setAttribute("aria-label",t("Language")+": "+NATIVE[l]));
+    document.querySelectorAll(".lang-btn").forEach(b=>b.setAttribute("aria-label",t("Language")+": "+(b.closest(".lang-top")?({nl:"NL-BE",fr:"FR-BE",en:"EN",de:"DE"})[l]+" — ":"")+NATIVE[l]));
     if(fcopy)fcopy.textContent=t("Copy");auCopy.textContent=t("Copy");
     {const pt=(document.querySelector('meta[name="page-title"]')||{}).content;document.title=pt?t(pt)+" · The Coherent Enterprise":"The Coherent Enterprise · Erlend Hollebosch";}
     pick(curSpec);evalP();sim();renderBPMN();coh();if(typeof fitNav==="function")fitNav();
@@ -394,9 +390,24 @@
   function focusables(el){return [...el.querySelectorAll('button:not([disabled]),a[href],input:not([disabled])')].filter(x=>x.offsetParent!==null)}
   function trap(el,e){if(e.key!=="Tab")return;const f=focusables(el);if(!f.length)return;const a=f[0],z=f[f.length-1];if(e.shiftKey&&document.activeElement===a){e.preventDefault();z.focus()}else if(!e.shiftKey&&document.activeElement===z){e.preventDefault();a.focus()}}
   const CONSENT_V=3,CONSENT_MAX=182*864e5,GC_CODE="growfaster";
-  function readConsent(){try{const c=JSON.parse(store.get("avs-consent")||"null");if(!c||c.v!==CONSENT_V||!c.ts||Date.now()-c.ts>CONSENT_MAX)return null;return c}catch(e){return null}}
-  function applyConsent(c){const gs=document.getElementById("gc");if(c&&c.ana&&GC_CODE){if(!gs){const x=document.createElement("script");x.id="gc";x.async=true;x.src="https://gc.zgo.at/count.js";x.dataset.goatcounter="https://"+GC_CODE+".goatcounter.com/count";document.head.appendChild(x)}}else if(gs){gs.remove()}
-  const g=document.getElementById("gf");if(!(c&&c.ext)){if(g)g.remove();return}if(!g){const l=document.createElement("link");l.id="gf";l.rel="stylesheet";l.href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,400..700;1,400..600&family=Noto+Sans+Arabic:wght@400..700&display=swap";document.head.appendChild(l)}}
+  function readConsent(){return GFConsent.parse(store.get("avs-consent"))}
+  function applyConsent(c){
+    const gs=document.getElementById("gc");
+    if(c&&c.ana&&GC_CODE){
+      if(!gs){
+        // Explicit pageview only: the third-party script never installs its own event listeners.
+        window.goatcounter={no_onload:true,no_events:true};
+        const x=document.createElement("script");x.id="gc";x.async=true;x.src="https://gc.zgo.at/count.js";
+        x.dataset.goatcounter="https://"+GC_CODE+".goatcounter.com/count";
+        x.onload=()=>{if(readConsent()?.ana)window.goatcounter?.count?.()};document.head.appendChild(x);
+      }
+    }else{
+      if(gs)gs.remove();
+      if(window.goatcounter){window.goatcounter.no_onload=true;window.goatcounter.no_events=true;window.goatcounter.count=()=>{};window.goatcounter.bind_events=()=>{}}
+    }
+    const font=document.getElementById("gf");if(!(c&&c.ext)){if(font)font.remove();return}
+    if(!font){const l=document.createElement("link");l.id="gf";l.rel="stylesheet";l.href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,400..700;1,400..600&family=Noto+Sans+Arabic:wght@400..700&display=swap";document.head.appendChild(l)}
+  }
   function openConsent(expanded=true){const c=readConsent();cExt.checked=!!(c&&c.ext);cAna.checked=!!(c&&c.ana);lastFocus=document.activeElement;modal.classList.toggle("compact",!expanded);tab(false);modal.hidden=false;lock();setTimeout(()=>$(expanded?"#c-save":"#c-cust").focus(),30)}
   function closeConsent(){modal.hidden=true;lock();if(lastFocus&&lastFocus.focus)lastFocus.focus()}
   function saveConsent(ext,ana){const c={v:CONSENT_V,ext:!!ext,ana:!!ana,ts:Date.now()};store.set("avs-consent",JSON.stringify(c));applyConsent(c);closeConsent()}

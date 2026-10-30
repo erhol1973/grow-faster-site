@@ -101,7 +101,7 @@
   CRIT.forEach(([k,l,g])=>{const d=document.createElement("div");d.className="sl";d.innerHTML=`<label for="s-${k}"><span>${l} <span class="g">${g}</span></span><output id="so-${k}">3</output></label><input type="range" id="s-${k}" min="1" max="5" step="1" value="3">`;slEl.appendChild(d);d.querySelector("input").oninput=e=>{vals[k]=+e.target.value;markPreset(null);evalP()}});
   Object.keys(PRE).forEach(n=>{const b=document.createElement("button");b.type="button";b.id="pre-"+n.replace(/\W+/g,"-").toLowerCase();b.dataset.n=n;b.textContent=n;b.onclick=()=>setPreset(n);preEl.appendChild(b)});
   function markPreset(n){[...preEl.children].forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.n===n)))}
-  function setPreset(n){PRE[n].forEach((v,i)=>{const k=CRIT[i][0];vals[k]=v;$("#s-"+k).value=v});markPreset(n);evalP()}
+  function setPreset(n,render=true){PRE[n].forEach((v,i)=>{const k=CRIT[i][0];vals[k]=v;$("#s-"+k).value=v});markPreset(n);if(render)evalP()}
   const Q={Automate:"Simple, repetitive work. Use rules and straightforward automation; agents help mainly with the exceptions.","Prepare first":"High potential, but the data or the exception rate is not ready. Build the data foundation and reduce exceptions before you deploy agents.",Augment:"Knowledge-intensive human work. Give experts AI support; keep the human in charge of the work.","Agent-enable":"Complex workflows where agents can coordinate execution across steps and systems.",Reinvent:"A strategic, end-to-end process with high value and high transformation potential. Redesign it around humans and agents."};
   const quad=$("#quad");
   function evalP(){
@@ -121,7 +121,8 @@
       `<text transform="translate(16 ${T+S/2}) rotate(-90)" text-anchor="middle" font-family="Aptos, Hanken Grotesk, Segoe UI, sans-serif" font-size="10.5" letter-spacing="1" fill="var(--muted)">${t("Value potential").toUpperCase()} →</text>`+
       `<circle cx="${cx}" cy="${cy}" r="16" fill="var(--ai)" opacity=".18"/><circle cx="${cx}" cy="${cy}" r="7" fill="var(--brand)" stroke="var(--bg)" stroke-width="2"/>`;
   }
-  setPreset("Customer claims, end-to-end");
+  // applyLang performs the first render after the stored language is selected.
+  setPreset("Customer claims, end-to-end",false);
 
   /* simulator */
   const fmtN=v=>Math.round(v).toLocaleString(LOCALE[LANG]);
@@ -214,7 +215,7 @@
   addEventListener("resize",()=>{if(innerWidth>1100&&nav.classList.contains("open"))setMenu(false)});
   /* fit the desktop menu, else switch to hamburger */
   function fitNav(){if(!navlist)return;nav.classList.remove("compact");if(innerWidth>1100){const w=nav.querySelector(".wrap");if(navlist.scrollWidth>navlist.clientWidth+1||w.scrollWidth>w.clientWidth+1)nav.classList.add("compact")}if(!nav.classList.contains("compact")&&innerWidth>1100&&nav.classList.contains("open"))setMenu(false)}
-  addEventListener("resize",fitNav);fitNav();
+  addEventListener("resize",fitNav);
 
 
   const io2=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");io2.unobserve(e.target)}}),{threshold:.18,rootMargin:"0px 0px -6% 0px"});

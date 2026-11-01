@@ -11,8 +11,8 @@ Tests onderzoeken hetzelfde gebouwde `dist`-pakket dat wordt gepubliceerd. Ontwi
 | Consent | Weigeren, gedeeltelijk/volledig toestaan, intrekken, opnieuw toestaan en intrekken tijdens een vertraagde download. Externe diensten zijn gestubd: dit test ons contract, niet alle leverancierscode. |
 | Cache | Echte ETag/304, versiewissel en oude HTML met actuele scripts. Back/Forward en feitelijke pageshow.persisted worden vastgelegd. Geen routingmocks die de browsercache uitschakelen; BFCache wordt niet kunstmatig afgedwongen. |
 | Toegankelijkheid | Axe op acht menuwebpagina's, dialoog en simulator, Chromium desktop/mobiel, WCAG A/AA 2.0/2.1/2.2 en contrast. Uitgestelde inhoud wordt voor scans gerenderd. Ook toetsenbord, focus, tablet en 200% tekst. |
-| Load | Uitsluitend lokaal: 288 verzoeken met acht workers, alle menuroutes, simulator, CSS/JS en verwachte 404. Geen fouten of ontbrekende routes, p95 maximaal 1.500ms. |
-| Performance | Bestandsbudgetten plus drie koude Lighthouse-runs per Home/Coherence/Aanpak/Contact op mobiel en desktop; individuele rapporten en medianen. Na browsersuite, zonder gelijktijdige loadtests. |
+| Load | Uitsluitend lokaal: 288 verzoeken met acht workers, alle menuroutes, ECA met zijn vier scripts, simulator, CSS/JS en verwachte 404. Geen fouten of ontbrekende routes, p95 maximaal 1.500ms. |
+| Performance | Bestandsbudgetten plus drie koude Lighthouse-runs per Home/Coherence/Aanpak/Contact/ECA op mobiel en desktop; individuele rapporten en medianen. Na browsersuite, zonder gelijktijdige loadtests. |
 | Security | Artifactscan, dependency-audit, Gitleaks geschiedenis en CodeQL security-extended. Bevindingen blokkeren; geen productieaanvallen of loadtests. |
 
 ## Browsermatrix en rapportage
@@ -92,3 +92,21 @@ Engels, Nederlands en Frans zijn de enige aangeboden talen. Duits is verwijderd 
 
 De kortere homepage gebruikt geen grote content-visibility-placeholders voor de leeskaarten en het boek. De oude #final-link verwijst naar de echte afsluiting en krijgt browserdekking in drie talen. De boekomslag reserveert zijn beeldverhouding. De blijvende Lighthouse-CLS-grens van 0,1 bewaakt de initiële lay-out, ook met een nog niet beantwoorde cookiedialoog. Het eerste lokale rapport met desktop-CLS circa 0,147 is bewaard.
 Het besliskader initialiseert de standaardinvoer zonder een eerste Engelse tekening. applyLang rendert de matrix eenmaal in de gekozen taal; ook de eerste menumeting gebeurt daar. De bestaande regressie observeert zowel matrix als scorekaart: één render bij initialisatie, twee na taalwissel. De modelberekeningen, standaardwaarden en prestatiegrenzen blijven gelijk.
+
+## Leesbaarheid en interacties, 1 november 2026
+
+De homepage sluit af met een vooruitlink naar Enterprise Coherence. In de 10–20–70-grafiek zijn alleen 10% en 20% knoppen: activeren vergroot het vak, een tweede activering of Escape sluit het detail. Native toetsenbordbediening, aanraakbediening, zichtbare focus en reduced-motion blijven beschikbaar. De 70% is statisch. De simulatie-intro toont twee organisatiecontexten en een conceptuele formule in drie stappen; het rekenmodel blijft ongewijzigd. De actuele meetwaarden gebruiken vaste numerieke kolommen.
+
+De operating-modeltekst is teruggebracht van 789 naar 358 woorden in de statische Engelse hoofdinhoud (54,6% reductie); een blijvende bovengrens bewaakt minimaal 40% reductie. Alle vijf beslisvragen en de interactieve autonomieschaal blijven bestaan. De drie talen worden behouden. Namen van onderzoekers staan in de formele bronvermelding, niet meer in promotionele koppen of de auteurskaart.
+
+Inzichten heeft zes kaarten en zes adresseerbare artikelen. De twee nieuwe stukken over uitzonderingsroutes en het benutten van vrijgekomen capaciteit zijn in EN/NL/FR toegevoegd. De bestaande standaardselectie, deep links en browsergeschiedenis blijven getest. Het oude vierkaarten-aantal is aangepast naar de zes gevraagde artikelen; er is geen scenario verwijderd. De oude auteurskaarttest controleert nu de neutrale link; de primaire MIT-broncontrole blijft behouden.
+
+Lokale controle: build, 55 unit-/HTTP-tests en artifact-security slagen. De gerichte desktop-/mobiele browserselectie telde 46 geslaagde gevallen en vier bestaande, gemotiveerde desktop-only skips; de acht nieuwe interactiegevallen slagen ook afzonderlijk. Een eerdere desktopnavigatie had een laadtimeout. De eerste loadrun had 24 timeouts en een event-loopmaximum van circa 40 seconden; een latere geïsoleerde run had 0 fouten op 288 requests en p95 circa 170ms. De eerdere mislukking blijft hier gedocumenteerd; een herhaling alleen bewijst geen opgeloste oorzaak. Nieuwe loadruns bewaren hun rapporten voortaan apart in load-history. De volledige vijf-browsermatrix, Lighthouse en CI blijven vrijgavevoorwaarden. Geen main-merge of deployment voor deze wijziging.
+
+## Afronding ECA
+
+De ECA ondersteunt EN/NL/FR zonder antwoorden te verliezen bij een taalwissel. De browsercontrole vergelijkt alle twintig vragen met hun Engelse brontekst, bewaakt de score bij wisselen en scant vragen én uitslag met axe in alle drie talen, op desktop en mobiel. De native HubSpot-vorm blijft Nederlandstalig zoals gepubliceerd; dat wordt vooraf vermeld. Twee leesroutes leiden naar de vrije diagnose. Ongeldige niet-scalaire modelinvoer wordt geweigerd.
+
+Gedeelde laagste scores gebruiken de expliciete bestaande-propertykeuze multiple_constraints. De live terugkerende-contacttest controleerde eerst 65/100 met een unieke strategische beperking, daarna 75/100 met gedeelde dimensies op hetzelfde contact. Beide inzendingen gebruikten de native verwerkingstoestemming zonder marketingtoestemming. De terugleescontrole van het contact bevestigde dat de eerdere unieke beperking vervangen werd. Zie ECA-HUBSPOT.md voor het contract en de gegevensgrenzen.
+
+De optionele formulierloader blijft begrensd op 60 seconden om ook tragere initialisatie tussen browserframes toe te laten. De browsertest gebruikt een gecontroleerde klok voor een leverancier die nooit gereed komt, controleert de behouden anonieme uitslag en weigert een laat ready-event na de fout. Dit verandert geen releasebudget of retrybeleid. Alle 58 unit-/HTTP-tests slagen met dezelfde Node 24-runtime buiten de beperkte lokale netwerkomgeving; eerdere fouten blijven als historie beschikbaar. De drie volledige GitHub-gates slaagden voor 0e23e92; de definitieve revision wordt opnieuw volledig gecontroleerd.

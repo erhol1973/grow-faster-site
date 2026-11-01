@@ -162,6 +162,7 @@ svg.bpmn{width:100%;min-width:0;max-width:100%;height:auto}
 @media(max-width:560px){.panel{grid-template-columns:minmax(0,1fr)}.page{padding-inline:8px}.dhead{padding:12px}.card{padding:14px}.bar{padding:10px}.tab{padding:8px;font-size:11px}.tbl{overflow-x:visible}.tbl table{min-width:0;table-layout:fixed}.tbl th,.tbl td{overflow-wrap:anywhere}}
 .result-lane{margin-top:20px;padding:20px;background:var(--lane);border:1px solid var(--line)}.result-lane>h4{margin:0 0 16px;font-family:var(--f-display);font-size:15px;letter-spacing:0;font-weight:600;color:var(--navy)}.result-flow{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:32px}.result-flow li{position:relative;display:grid;align-content:center;gap:8px;padding:16px;min-height:100px;border:1px solid var(--line);border-top:3px solid var(--navy);background:var(--surface);color:var(--navy);font-family:var(--f-display);text-align:left}.result-number{font-size:11px;font-weight:600;color:var(--muted)}.result-flow b{font-size:15px;line-height:1.4}.result-flow li:not(:last-child)::after{content:'→';position:absolute;left:100%;width:32px;top:50%;transform:translateY(-50%);font-size:24px;text-align:center;color:var(--token)}.result-lane.bad .result-outcome{border-top-color:var(--bad);color:var(--bad)}.result-lane.good .result-outcome{border-top-color:var(--good);color:var(--good)}@media(max-width:600px){.result-flow{grid-template-columns:minmax(0,1fr);gap:26px}.result-flow li:not(:last-child)::after{content:'↓';top:100%;left:50%;width:24px;height:26px;line-height:26px;transform:translateX(-50%)}.result-lane{padding:14px}.result-flow li{min-height:76px}}
 #b-play{background:#0072a8;border-color:#0072a8}.flow-meter{grid-column:1/-1;margin:0}
+.metrics dd:not(.flow-meter){display:grid;grid-template-columns:4ch 1ch 4ch;gap:.3ch;align-items:baseline;font-size:18px}.metric-current{text-align:right;font-size:22px}.metric-total{font-size:14px;font-weight:400;text-align:right;color:var(--muted)}.metric-slash{font-size:14px;font-weight:400;text-align:center}.metrics dd.big .metric-current{font-size:22px}@media(max-width:420px){.metrics dt{font-size:12px}.metrics dd:not(.flow-meter){grid-template-columns:3.5ch 1ch 3.5ch}}
 </style>
 </head>
 <body>
@@ -448,7 +449,7 @@ const ui={
     const s=sims[0],F=s.F,n=F.nodes[s.lastPar&&s.F.items[s.i-1]&&s.F.items[s.i-1].par&&s.phase==="move"?s.lastPar:s.cur]||F.nodes.s0;
     const T=F.total,other=(F.id==="inc"?COH:INC).total;
     const kp=KPI_KEYS.map(([k,l])=>{const v=s.kpi[k];return `<div class="kpi ${v?v[1]:""}${s.flash===k?" flash":""}"><span>${l}</span><b>${v?v[0]:"—"}</b></div>`}).join("");s.flash=null;
-    const row=(lbl,val,tot,big)=>`<dt>${lbl}</dt><dd class="${big?"big":""}">${val}<span class="note" style="font-weight:400"> / ${tot}</span></dd>`;
+    const row=(lbl,val,tot,big)=>`<dt>${lbl}</dt><dd class="${big?"big":""}"><span class="metric-current">${val}</span><span class="metric-slash" aria-hidden="true">/</span><span class="metric-total">${tot}</span></dd>`;
     panel.innerHTML=`
       <div class="card"><span class="k">${n===F.nodes.s0&&!s.i?u("ready"):u("stepk")}</span><h3>${n.label}</h3>${n.q?`<p class="quote">“${n.q}”</p>`:""}
         ${n.what?`<h4>${u("what")}</h4><p>${n.what}</p><h4>${F.id==="inc"?u("why_bad"):u("why_good")}</h4><p>${n.why}</p>`:`<p>${u("hint")}</p>`}

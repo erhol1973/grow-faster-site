@@ -115,3 +115,6 @@ De optionele formulierloader blijft begrensd op 60 seconden om ook tragere initi
 ## Correcties ECA-vragenlijst
 
 Alle twintig vragen vereisen een expliciete keuze; N/A blijft ongescoord en de minimale numerieke dekking blijft gelijk. Model- en browsertests onderscheiden ontbrekende antwoorden van expliciete N/A. De browser controleert foutmelding/focus, normaal vraaggewicht, genummerde antwoordlabels, compacte antwoordhoogte, de echte contactbestemming en de oude deep link. De kritieke matrix controleert de taalafhankelijke native formulier-ID voor EN/NL/FR; axe scant vragen en uitslag in alle drie talen op desktop en mobiel. Native taalvarianten zijn expliciet toegestaan door de eigenaar en behouden het propertycontract en optionele marketingtoestemming. De alleen-lezen livecontrole ondersteunt --lang=en, --lang=nl en --lang=fr.
+
+
+Antwoordlabels ECA: op verzoek zijn de zichtbare cijfers en punten verwijderd in EN/NL/FR. De bestaande browserverwachtingen volgen de nieuwe tekst en controleren alle antwoordlabels op numerieke voorvoegsels. Vraagnummers en onderliggende scorewaarden blijven gelijk.

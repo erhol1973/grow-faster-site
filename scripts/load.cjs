@@ -3,6 +3,7 @@ const fs=require('node:fs'),path=require('node:path');
 const {performance,monitorEventLoopDelay}=require('node:perf_hooks'),os=require('node:os');
 const {createServer}=require('./server.cjs');
 const routes=require('../tests/navigation-cases.json').map(p=>({route:'/'+p,status:200})).concat([
+  ...['eca.html','assets/eca.js','assets/eca-locales.js','assets/eca-ui.js','assets/eca-hubspot.js'].map(file=>({route:'/'+file,status:200})),
   {route:'/coherence-sim.html',status:200},{route:'/assets/site.css',status:200},
   {route:'/assets/site.js',status:200},{route:'/missing-load-test.html',status:404}
 ]);

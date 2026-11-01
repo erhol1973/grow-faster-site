@@ -5,6 +5,7 @@
   else root.ECAHubSpot=api;
 })(typeof globalThis!=='undefined'?globalThis:this,function(){
   const FORM_ID='97bca96a-12a6-4542-a5a1-e915d4371a2b';
+  const FORM_IDS={nl:FORM_ID,en:'cc190a9a-fae1-4e6d-8ddc-110bb019538b',fr:'1544528d-0ea2-4a27-b368-9fe1e594a036'};
   const fields={strategic:'strategic_coherence_score',operating:'operating_model_coherence_score',governance:'decision_governance_coherence_score',ai:'ai_enablement_coherence_score',capability:'capability_value_coherence_score'};
   function attribution(search){
     const params=new URLSearchParams(search),out={};
@@ -55,6 +56,7 @@
     let opened=false;
     button.onclick=()=>{
       if(opened)return;
+      const formId=FORM_IDS[doc.documentElement.lang]||FORM_ID;
       let data,utm;
       try{utm=attribution(win.location.search);data=properties(result(),utm)}catch{status.textContent=translate('Complete your assessment before opening the form.');return}
       opened=true;button.disabled=true;
@@ -66,16 +68,16 @@
       let timer,failed=false;
       const fail=(reason='timeout')=>{failed=true;if(!status.dataset.integrationError)status.dataset.integrationError=reason;win.clearTimeout(timer);host.hidden=true;host.replaceChildren();status.textContent=translate('The diagnostic form is unavailable. Your anonymous profile remains available. Reload this page to try again.')};
       win.addEventListener('hs-form-event:on-ready',async event=>{
-        if(failed||event.detail?.formId!==FORM_ID)return;
+        if(failed||event.detail?.formId!==formId)return;
         try{await populate(win.HubSpotFormsV4.getFormFromEvent(event),data,utm);if(failed)return;win.clearTimeout(timer);host.hidden=false;host.style.visibility='';host.inert=false;status.textContent=translate('Only submitting this form links this profile to your contact. Marketing subscription is optional. Reload the page to start a new assessment.')}catch(error){if(/^(Missing assessment field|Assessment field rejected): /.test(error.message))status.dataset.integrationError=error.message;fail('provider-api')}
       });
-      win.addEventListener('hs-form-event:on-submission:failed',event=>{if(event.detail?.formId===FORM_ID)status.textContent=translate('Submission failed. Your profile remains available. Please retry in the form.')});
-      win.addEventListener('hs-form-event:on-submission:success',event=>{if(event.detail?.formId===FORM_ID)status.textContent=translate('Your diagnostic request was submitted successfully.')});
-      const frame=doc.createElement('div');frame.className='hs-form-frame';frame.dataset.region='eu1';frame.dataset.formId=FORM_ID;frame.dataset.portalId='149675328';host.appendChild(frame);
+      win.addEventListener('hs-form-event:on-submission:failed',event=>{if(event.detail?.formId===formId)status.textContent=translate('Submission failed. Your profile remains available. Please retry in the form.')});
+      win.addEventListener('hs-form-event:on-submission:success',event=>{if(event.detail?.formId===formId)status.textContent=translate('Your diagnostic request was submitted successfully.')});
+      const frame=doc.createElement('div');frame.className='hs-form-frame';frame.dataset.region='eu1';frame.dataset.formId=formId;frame.dataset.portalId='149675328';host.appendChild(frame);
       const script=doc.createElement('script');script.src='https://js-eu1.hsforms.net/forms/embed/149675328.js';script.onerror=()=>fail('script-load');
       // Background tabs can throttle the provider's cross-frame initialization and field acknowledgements.
       timer=win.setTimeout(()=>fail('timeout'),60000);doc.head.appendChild(script);
     };
   }
-  return {FORM_ID,attribution,properties,populate,mount};
+  return {FORM_ID,FORM_IDS,attribution,properties,populate,mount};
 });

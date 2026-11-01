@@ -39,7 +39,8 @@
       counts[d]=vals.length;total+=vals.length;scores[d]=vals.length>=3?mean(vals):null;
     }
     const valid=Object.values(scores).filter(v=>v!=null);
-    const sufficient=total>=15&&valid.length===5;
+    const complete=Object.values(QUESTIONS).flat().every(q=>answers[q]===''||value(answers[q])!==null);
+    const sufficient=complete&&total>=15&&valid.length===5;
     const overall=sufficient?mean(valid):null;
     return {sufficient,totalAnswered:total,dimensionScores:scores,dimensionCounts:counts,overall,displayScore:overall==null?null:Math.round(overall),band:band(overall),primaryConstraints:sufficient?ties(scores,'low'):[],strongestMechanisms:sufficient?ties(scores,'high'):[],patterns:sufficient?patterns(scores):[]};
   }

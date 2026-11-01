@@ -35,7 +35,7 @@ test('the site reading route leads to an ungated assessment in the saved site la
 });
 
  test('all twenty responses are required, explicit N/A remains possible, and labels are compact',async({page})=>{
- await page.goto('/eca.html?lang=en');for(const prefix of ['S','O','D','T','C'])for(let n=1;n<=4;n++)if(prefix!=='S'||n!==1)await page.locator('input[name="'+prefix+n+'"][value="4"]').check();
+ await page.goto('/eca.html?lang=en');await expect(page.locator('html')).toHaveCSS('scroll-behavior','auto');for(const prefix of ['S','O','D','T','C'])for(let n=1;n<=4;n++)if(prefix!=='S'||n!==1)await page.locator('input[name="'+prefix+n+'"][value="4"]').check();
  await page.locator('#ecaForm button[type="submit"]').click();await expect(page.locator('#results')).toBeHidden();await expect(page.locator('#formError')).toContainText('every question');await expect(page.locator('input[name="S1"]').first()).toBeFocused();await expect(page.locator('#questions fieldset').first()).toHaveAttribute('aria-invalid','true');
  await page.locator('input[name="S1"][value=""]').check();await page.locator('#ecaForm button[type="submit"]').click();await expect(page.locator('#overall')).toHaveText('75/100');await expect(page.locator('#progressText')).toHaveText('20/20');await expect(page.locator('#questions legend').first()).toHaveCSS('font-weight','400');await expect(page.locator('#questions label').first()).toHaveText('Strongly disagree');await expect(page.locator('#questions label').nth(4)).toHaveText('Strongly agree');
  const heights=await page.locator('#questions .eca-scale').first().locator('label').evaluateAll(nodes=>nodes.map(n=>n.getBoundingClientRect().height));expect(Math.max(...heights)).toBeLessThan(100);

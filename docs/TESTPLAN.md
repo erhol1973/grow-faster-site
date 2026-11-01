@@ -118,3 +118,5 @@ Alle twintig vragen vereisen een expliciete keuze; N/A blijft ongescoord en de m
 
 
 Antwoordlabels ECA: op verzoek zijn de zichtbare cijfers en punten verwijderd in EN/NL/FR. De bestaande browserverwachtingen volgen de nieuwe tekst en controleren alle antwoordlabels op numerieke voorvoegsels. Vraagnummers en onderliggende scorewaarden blijven gelijk.
+
+De eerste label-PR-controle blokkeerde op één instabiele mobiele WebKit-casus: een gesimuleerde tik tijdens de automatische resultaat-scroll activeerde het formulier niet. Trace en foutbeelden blijven bewaard. De resultaat-overgang scrolt nu direct en geeft de uitslagkop focus; de bestaande scenario’s controleren die focus voor de eerste formulierklik. Geen wachttijd, retry of vrijgavegrens is verruimd. De nieuwe focuscontrole faalde eerst op de oude implementatie.

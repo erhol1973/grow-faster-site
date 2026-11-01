@@ -10,11 +10,12 @@
   ];
   const QUESTIONS={strategic:['S1','S2','S3','S4'],operating:['O1','O2','O3','O4'],governance:['D1','D2','D3','D4'],ai:['T1','T2','T3','T4'],capability:['C1','C2','C3','C4']};
   function value(answer){
+    if(typeof answer!=='number'&&!(typeof answer==='string'&&/^[1-5]$/.test(answer)))return null;
     const n=Number(answer);
     return Number.isInteger(n)&&n>=1&&n<=5?(n-1)*25:null;
   }
   function mean(values){return values.length?values.reduce((a,b)=>a+b,0)/values.length:null;}
-  function band(score){if(score==null)return null;return BAND.find(([max])=>score<max)[1];}
+  function band(score){if(!Number.isFinite(score)||score<0||score>100)return null;return BAND.find(([max])=>score<max)[1];}
   function ties(scores,mode){
     const entries=Object.entries(scores).filter(([,v])=>v!=null);
     if(!entries.length)return [];

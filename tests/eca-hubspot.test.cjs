@@ -9,7 +9,7 @@ test('N/A profile maps only aggregate properties with independent hand-calculate
   a.S2='';assert.throws(()=>HS.properties(ECA.score(a)),/Incomplete/);
 });
 test('ties are preserved; absent campaign does not erase an existing CRM value',()=>{
-  const p=HS.properties(ECA.score(answers()));assert.equal(p.primary_coherence_risk,'');assert.ok(!('assessment_campaign' in p));
+  const p=HS.properties(ECA.score(answers()));assert.equal(p.primary_coherence_risk,'multiple_constraints');assert.ok(!('assessment_campaign' in p));
 });
 test('attribution allows only bounded campaign tokens and never forwards arbitrary URL data',()=>{
   assert.deepEqual(HS.attribution('?utm_source=linkedin&utm_medium=social&utm_campaign=eca-v1&email=person@example.com&utm_content=person%40example.com&utm_term='+ 'a'.repeat(101)),{utm_source:'linkedin',utm_medium:'social',utm_campaign:'eca-v1'});

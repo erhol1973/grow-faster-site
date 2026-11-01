@@ -9,8 +9,27 @@ test('anonymous scoring has no HubSpot requests; optional form carries aggregate
   await page.getByRole('button',{name:'Open optional diagnostic form'}).click();await expect(page.locator('#diagnosticForm')).toBeVisible();
   const values=await page.evaluate(()=>window.testValues);expect(values['0-1/enterprise_coherence_score']).toBe('75');expect(values['0-1/assessment_campaign']).toBe('launch');expect(Object.keys(values)).toHaveLength(12);expect(await page.evaluate(()=>window.testMetadata)).toEqual({utm_source:'linkedin',utm_campaign:'launch',utm_medium:'social'});
   await expect(page.locator('input[name="S1"]').first()).toBeDisabled();
+  await expect(page.locator('#ecaLanguage')).toBeDisabled();
   await page.evaluate(()=>window.dispatchEvent(new CustomEvent('hs-form-event:on-submission:failed',{detail:{formId:'97bca96a-12a6-4542-a5a1-e915d4371a2b'}})));await expect(page.locator('#diagnosticStatus')).toContainText('Submission failed');await expect(page.locator('#overall')).toHaveText('75/100');
+});
+test('a provider that never becomes ready times out safely and cannot expose a late form',async({page})=>{
+ await page.emulateMedia({reducedMotion:'reduce'});await page.clock.install();await page.route('https://**/*',route=>route.fulfill({contentType:'text/javascript',body:''}));
+ await page.goto('/eca.html?lang=en');await score(page);await page.locator('#openDiagnostic').click();await expect(page.locator('#diagnosticForm')).not.toBeVisible();
+ await page.clock.fastForward(60001);await expect(page.locator('#diagnosticStatus')).toContainText('unavailable');await expect(page.locator('#diagnosticStatus')).toHaveAttribute('data-integration-error','timeout');
+ await page.evaluate(()=>window.dispatchEvent(new CustomEvent('hs-form-event:on-ready',{detail:{formId:'97bca96a-12a6-4542-a5a1-e915d4371a2b'}})));await expect(page.locator('#diagnosticForm')).toBeHidden();await expect(page.locator('#overall')).toHaveText('75/100');
 });
 test('blocked form script preserves the ungated profile and hides the form',async({page})=>{
   await page.route('https://**/*',route=>route.abort());await page.goto('/eca.html');await score(page);await page.getByRole('button',{name:'Open optional diagnostic form'}).click();await expect(page.locator('#diagnosticStatus')).toContainText('unavailable');await expect(page.locator('#diagnosticForm')).toBeHidden();await expect(page.locator('#overall')).toHaveText('75/100');
+});
+test('language changes preserve answers and the scored profile without contacting HubSpot',async({page})=>{
+ const requests=[];await page.route('https://**/*',route=>{requests.push(route.request().url());return route.abort()});
+ await page.goto('/eca.html?lang=en');const englishQuestions=await page.locator('#questions legend').allTextContents();await page.locator('input[name="S1"][value="5"]').check();
+ await page.locator('#ecaLanguage').selectOption('nl');await expect(page.locator('html')).toHaveAttribute('lang','nl');await expect(page.locator('input[name="S1"][value="5"]')).toBeChecked();await expect(page.locator('#assessment-title')).toHaveText('Beoordeel je onderneming');(await page.locator('#questions legend').allTextContents()).forEach((text,i)=>expect(text).not.toBe(englishQuestions[i]));
+ for(const prefix of ['S','O','D','T','C'])for(let n=1;n<=4;n++)if(prefix!=='S'||n!==1)await page.locator(`input[name="${prefix}${n}"][value="4"]`).check();
+ await page.locator('#ecaForm button[type="submit"]').click();await expect(page.locator('#overall')).toHaveText('76/100');
+ await page.locator('#ecaLanguage').selectOption('fr');await expect(page.locator('html')).toHaveAttribute('lang','fr');await expect(page.locator('#overall')).toHaveText('76/100');await expect(page.locator('#strongest')).toHaveText('Cohérence stratégique');await expect(page.locator('#openDiagnostic')).toHaveText('Ouvrir le formulaire de contact facultatif');(await page.locator('#questions legend').allTextContents()).forEach((text,i)=>expect(text).not.toBe(englishQuestions[i]));expect(requests).toEqual([]);
+});
+test('the site reading route leads to an ungated assessment in the saved site language',async({page})=>{
+ await page.addInitScript(()=>{localStorage.setItem('avs-lang','fr');localStorage.setItem('avs-consent',JSON.stringify({v:3,ext:false,ana:false,ts:Date.now()}))});
+ await page.goto('/index.html');await page.locator('a[href="eca.html"]').click();await expect(page.locator('html')).toHaveAttribute('lang','fr');await expect(page.locator('#questions fieldset')).toHaveCount(20);await expect(page.locator('#openDiagnostic')).toBeHidden();
 });

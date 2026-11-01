@@ -1,0 +1,9 @@
+'use strict';
+const {test}=require('node:test');
+const assert=require('node:assert/strict');
+const ECA=require('../assets/eca.js');
+const all=v=>Object.fromEntries(Object.values(ECA.QUESTIONS).flat().map(q=>[q,v]));
+test('ECA answer mapping and band boundaries',()=>{assert.equal(ECA.value(1),0);assert.equal(ECA.value(5),100);assert.equal(ECA.value(''),null);assert.equal(ECA.value(6),null);for(const [n,b] of [[39,'fragmented'],[40,'constrained'],[59,'constrained'],[60,'partially_aligned'],[74,'partially_aligned'],[75,'coherent'],[89,'coherent'],[90,'highly_coherent']])assert.equal(ECA.band(n),b)});
+test('ECA equal scores retain tie rather than false precision',()=>{const r=ECA.score(all(4));assert.equal(r.sufficient,true);assert.equal(r.displayScore,75);assert.equal(r.band,'coherent');assert.equal(r.primaryConstraints.length,5);assert.equal(r.strongestMechanisms.length,5)});
+test('ECA excludes N/A and requires three answers per dimension',()=>{const a=all(4);a.S1='';a.S2='';const r=ECA.score(a);assert.equal(r.sufficient,false);assert.equal(r.dimensionScores.strategic,null)});
+test('ECA pattern rules fire deterministically',()=>{let a=all(3);['S1','S2','S3','S4'].forEach(q=>a[q]=5);['D1','D2','D3','D4'].forEach(q=>a[q]=2);assert.ok(ECA.score(a).patterns.includes('strategy_execution_gap'));a=all(3);['O1','O2','O3','O4','D1','D2','D3','D4'].forEach(q=>a[q]=2);assert.ok(ECA.score(a).patterns.includes('coordination_overload'));a=all(3);['T1','T2','T3','T4'].forEach(q=>a[q]=4);['O1','O2','O3','O4','D1','D2','D3','D4','C1','C2','C3','C4'].forEach(q=>a[q]=2);assert.ok(ECA.score(a).patterns.includes('ai_absorption_gap'));a=all(4);['C1','C2','C3','C4'].forEach(q=>a[q]=2);assert.ok(ECA.score(a).patterns.includes('local_optimization'));a=all(4);['D1','D2','D3','D4'].forEach(q=>a[q]=2);assert.ok(ECA.score(a).patterns.includes('governance_drag'))});

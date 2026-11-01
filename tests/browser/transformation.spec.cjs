@@ -40,7 +40,7 @@ test('manuscript vision links AI, coherence, credited Ross sources and the manus
  await expect(page.locator('#book')).toBeInViewport();
  const request=page.locator('a[data-mail*="full%20manuscript"]');await expect(request).toHaveCount(1);await expect(request).toHaveAttribute('href',/^mailto:/);
  const message=new URL(await request.getAttribute('href'));expect(message.pathname).toBe('erlendhollebosch@gmail.com');expect(message.searchParams.get('subject')).toContain('full manuscript');expect(message.searchParams.get('body')).toContain('I would like to receive the full manuscript');
- await expect(page.locator('#intellectual-foundation')).toContainText('Jeanne Ross');
+ await expect(page.locator('#intellectual-foundation a')).toHaveAttribute('href','coherence.html#book-thesis');await expect(page.locator('#intellectual-foundation')).not.toContainText('Jeanne Ross');
 });
 
 test('executive contact presents identity and working contact and book actions in three languages',async({page})=>{

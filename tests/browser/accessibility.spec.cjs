@@ -16,3 +16,5 @@ test('consent dialog labels, focus cycle and WCAG checks',async({page},info)=>{
   expect(await page.locator('#consent').evaluate(e=>e.contains(document.activeElement))).toBe(true);
 });
 test('standalone simulator has accessible labels and contrast',async({page},info)=>{await page.goto('/coherence-sim.html');await audit(page,info,'simulator')});
+
+for(const lang of ['en','nl','fr'])test('ECA questions and result are accessible in '+lang,async({page},info)=>{await page.goto('/eca.html?lang='+lang);await audit(page,info,'eca-questions-'+lang);for(const prefix of ['S','O','D','T','C'])for(let n=1;n<=4;n++)await page.locator('input[name="'+prefix+n+'"][value="4"]').check();await page.locator('#ecaForm button[type="submit"]').click();await expect(page.locator('#results')).toBeVisible();await audit(page,info,'eca-results-'+lang)});

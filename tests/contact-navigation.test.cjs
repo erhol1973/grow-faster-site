@@ -19,7 +19,7 @@ test('served ordinary pages have complete menus and Contact opens without a frag
     assert.equal((nav[0].match(/class="nav-toggle"/g)||[]).length,2,file);
     const footer=html.match(/<footer\b[\s\S]*?<\/footer>/i);assert.ok(footer,`${file}: footer missing`);
     assert.match(footer[0],/href="about\.html">Contact<\/a>/,file);assert.doesNotMatch(nav[0],/about\.html#/,file);
-  }assert.equal(pages,14);
+  }assert.equal(pages,15);
 });
 
 test('parent pages repeat the complete submenu routes without requiring a dropdown',async()=>{

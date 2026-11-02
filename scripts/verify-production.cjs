@@ -37,6 +37,21 @@ async function main(){
     if(!entry||entry.y<0||entry.y+entry.height>await page.evaluate(()=>innerHeight))throw Error('Approach workshop entry is not fully visible without scrolling');
     await workshopEntry.click();await page.waitForURL('https://grow-faster.be/workshop.html');
     results.push({route:'approach.html',workshopAboveFold:true});
+    await page.goto('https://grow-faster.be/index.html');
+    if(await page.locator('#burger').isVisible())await page.locator('#burger').click();
+    await page.locator('[aria-controls="nav-coherence"]').click();
+    await page.locator('#nav-coherence a[href="books.html"]').click();await page.waitForURL('https://grow-faster.be/books.html');
+    for(const [lang,label]of [['fr','Téléchargez le livre complet'],['nl','Download het volledige boek'],['en','Download the full book']]){
+      if(await page.locator('html').getAttribute('lang')!==lang){await page.locator('#lang-btn-top').click();await page.locator('.lang-top [data-lang="'+lang+'"]').click()}
+      if(!(await page.locator('.book-download').innerText()).includes(label))throw Error('Book download language mismatch: '+lang);
+      if(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth+1))throw Error('Book overflow: '+lang);
+      results.push({route:'books.html',language:lang,freeDownloadAvailable:true});
+    }
+    const publication=require('../tests/book-publication.json');
+    const pdf=await page.request.get('https://grow-faster.be/'+publication.file);
+    if(pdf.status()!==200||!pdf.headers()['content-type']?.startsWith('application/pdf'))throw Error('Public book PDF unavailable');
+    const bytes=await pdf.body();if(bytes.length!==publication.bytes||require('node:crypto').createHash('sha256').update(bytes).digest('hex')!==publication.sha256)throw Error('Public PDF differs from approved publication');
+    results.push({route:publication.file,bytes:bytes.length,sha256:publication.sha256});
     if(errors.length)throw Error(errors.join('\n'));fs.mkdirSync('reports',{recursive:true});fs.writeFileSync('reports/production-smoke.json',JSON.stringify({results,errors,at:new Date().toISOString()},null,2));
   }finally{await browser.close()}
 }

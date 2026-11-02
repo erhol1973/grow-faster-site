@@ -197,7 +197,7 @@
   function parallax(){
     nav.classList.toggle("scrolled",scrollY>20);
     const heroTop=document.querySelector(".hero-top");
-    document.documentElement.classList.toggle("nav-over",!nav.classList.contains("open")&&!!heroTop&&scrollY<heroTop.offsetHeight-64);
+    document.documentElement.classList.toggle("nav-over",!nav.classList.contains("nav-executive")&&!nav.classList.contains("open")&&!!heroTop&&scrollY<heroTop.offsetHeight-64);
     // Decorative motion is opt-in; navigation behaviour remains available.
     if(reduce||document.documentElement.dataset.motion!=="full")return;
     const y=scrollY; if(heroBg&&y<innerHeight*1.2)heroBg.style.transform="translate3d(0,"+(y*.25)+"px,0)";
@@ -207,14 +207,41 @@
 
   /* hamburger menu */
   const burger=document.getElementById("burger"), navlist=document.getElementById("navlist");
-  function setMenu(o){nav.classList.toggle("open",o);burger.setAttribute("aria-expanded",String(o));burger.setAttribute("aria-label",o?"Close menu":"Menu");parallax();}
-  burger.addEventListener("click",e=>{e.stopPropagation();setMenu(!nav.classList.contains("open"))});
+  const navigationGroups=[...nav.querySelectorAll(".nav-group")];
+  function closeSubmenus(except){navigationGroups.forEach(group=>{if(group===except)return;group.querySelector(".nav-toggle").setAttribute("aria-expanded","false");group.querySelector(".nav-sub").hidden=true})}
+  function setMenu(o){closeSubmenus();nav.classList.toggle("open",o);burger.setAttribute("aria-expanded",String(o));burger.setAttribute("aria-label",o?"Close menu":"Menu");parallax();}
+  burger.addEventListener("click",e=>{e.stopPropagation();closeMenus();setMenu(!nav.classList.contains("open"))});
+  navigationGroups.forEach(group=>{
+    const button=group.querySelector(".nav-toggle"),submenu=group.querySelector(".nav-sub");
+    button.addEventListener("click",()=>{const open=submenu.hidden;closeMenus();closeSubmenus(group);button.setAttribute("aria-expanded",String(open));submenu.hidden=!open});
+  });
   navlist.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>setMenu(false)));
-  document.addEventListener("click",e=>{if(nav.classList.contains("open")&&!e.target.closest(".nav"))setMenu(false)});
-  document.addEventListener("keydown",e=>{if(e.key==="Escape"&&nav.classList.contains("open")){setMenu(false);burger.focus()}});
+  document.addEventListener("click",e=>{if(!nav.contains(e.target)){closeSubmenus();if(nav.classList.contains("open"))setMenu(false)}});
+  document.addEventListener("keydown",e=>{if(e.key!=="Escape")return;const open=navigationGroups.find(group=>!group.querySelector(".nav-sub").hidden);if(open){e.preventDefault();closeSubmenus();open.querySelector(".nav-toggle").focus();return}if(nav.classList.contains("open")){setMenu(false);burger.focus()}});
+  // Close after leaving the navigation, not while a pointer is moving focus
+  // between groups: collapsing the first group would move the next button.
+  nav.addEventListener("focusout",e=>{if(e.relatedTarget&&!nav.contains(e.relatedTarget)){closeSubmenus();if(nav.classList.contains("open"))setMenu(false)}});
   addEventListener("resize",()=>{if(innerWidth>1100&&nav.classList.contains("open"))setMenu(false)});
   /* fit the desktop menu, else switch to hamburger */
-  function fitNav(){if(!navlist)return;nav.classList.remove("compact");if(innerWidth>1100){const w=nav.querySelector(".wrap");if(navlist.scrollWidth>navlist.clientWidth+1||w.scrollWidth>w.clientWidth+1)nav.classList.add("compact")}if(!nav.classList.contains("compact")&&innerWidth>1100&&nav.classList.contains("open"))setMenu(false)}
+  function fitNav(){
+    if(!navlist)return;
+    closeSubmenus();nav.classList.remove("compact");
+    if(innerWidth>1100){
+      const wrap=nav.querySelector(".wrap");
+      if(navlist.scrollWidth>navlist.clientWidth+1||wrap.scrollWidth>wrap.clientWidth+1)nav.classList.add("compact");
+    }else if(nav.classList.contains("nav-executive"))nav.classList.add("compact");
+    if(nav.classList.contains("nav-executive")){
+      const action=navlist.querySelector(".nav-action");
+      if(action){
+        // Match DOM and visual order so keyboard users meet the mobile action first.
+        const narrow=nav.classList.contains("compact"),focused=action.contains(document.activeElement)?document.activeElement:null;
+        if(narrow&&navlist.firstElementChild!==action)navlist.prepend(action);
+        else if(!narrow&&navlist.lastElementChild!==action)navlist.append(action);
+        if(focused)focused.focus({preventScroll:true});
+      }
+    }
+    if(!nav.classList.contains("compact")&&innerWidth>1100&&nav.classList.contains("open"))setMenu(false);
+  }
   addEventListener("resize",fitNav);
 
 
@@ -374,7 +401,7 @@
   function closeMenus(){langs.forEach(w=>{w.querySelector(".lang-menu").hidden=true;w.querySelector(".lang-btn").setAttribute("aria-expanded","false")})}
   langs.forEach(w=>{
     const b=w.querySelector(".lang-btn"),m=w.querySelector(".lang-menu");
-    b.addEventListener("click",e=>{e.stopPropagation();const open=m.hidden;closeMenus();if(open){m.hidden=false;b.setAttribute("aria-expanded","true");(m.querySelector('[aria-checked="true"]')||m.querySelector("button")).focus()}});
+    b.addEventListener("click",e=>{e.stopPropagation();closeSubmenus();const open=m.hidden;closeMenus();if(open){m.hidden=false;b.setAttribute("aria-expanded","true");(m.querySelector('[aria-checked="true"]')||m.querySelector("button")).focus()}});
     m.addEventListener("click",e=>{const o=e.target.closest("[data-lang]");if(!o)return;applyLang(o.dataset.lang,true);closeMenus();b.focus()});
     m.addEventListener("keydown",e=>{const items=[...m.querySelectorAll("button")],i=items.indexOf(document.activeElement);if(e.key==="ArrowDown"){e.preventDefault();items[(i+1)%items.length].focus()}if(e.key==="ArrowUp"){e.preventDefault();items[(i-1+items.length)%items.length].focus()}});
   });

@@ -25,7 +25,7 @@ test('HTTP revalidation and Back Forward restore remain functional across a rele
     const validation=await page.evaluate(async tag=>(await fetch(location.href,{cache:'no-store',headers:{'If-None-Match':tag}})).status,etag);
     expect(validation).toBe(304);expect(fixture.requests.some(r=>r.file==='insights.html'&&r.conditional===etag)).toBe(true);
     fixture.publish();await page.reload();await expect(page.locator('html')).toHaveAttribute('data-fixture-release','2');
-    const contact=page.locator('.nav .nav-cta');if(!await contact.isVisible())await page.locator('#burger').click();await contact.click();await page.goBack();await expect(page.locator('#ai-pilot')).toBeVisible();
+    const contact=page.locator('.nav a[href="about.html"]');if(!await contact.isVisible())await page.locator('#burger').click();await contact.click();await page.goBack();await expect(page.locator('#ai-pilot')).toBeVisible();
     const restored=await page.evaluate(()=>window.__restored===true);await info.attach('cache-evidence',{body:JSON.stringify({restoredFromBFCache:restored,requests:fixture.requests},null,2),contentType:'application/json'});
   }finally{await page.close();fixture.server.closeAllConnections();await new Promise(r=>fixture.server.close(r))}
 });

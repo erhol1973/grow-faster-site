@@ -21,6 +21,6 @@ test('95th percentile uses the agreed nearest rank and blocks a slow run',()=>{
   for(const limit of [0,-1,Infinity,NaN])assert.throws(()=>summarize(samples,['/about.html'],limit),RangeError);
 });
 test('load scenarios include every menu destination and one negative route',()=>{
-  for(const page of require('./navigation-cases.json'))assert.ok(routes.some(r=>r.route==='/'+page&&r.status===200));
+  for(const page of require('./navigation-cases.json').pages)assert.ok(routes.some(r=>r.route==='/'+page&&r.status===200));
   assert.ok(routes.some(r=>r.status===404));assert.equal(new Set(routes.map(r=>r.route)).size,routes.length);
 });

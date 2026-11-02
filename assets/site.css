@@ -1518,4 +1518,5 @@ body:has(#operating) .shift{font-size:clamp(22px,2.6vw,34px);max-width:36ch;marg
 .editorial-routes .eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;color:var(--muted)}.hero-grid .ctas{margin-top:20px}
 
 /* The shorter editorial home does not need large deferred chapter placeholders. */
+.editorial-home{overflow-anchor:none} /* Firefox must not move a pressed link when the lazy book cover finishes loading. */
 .editorial-home #summary,.editorial-home #why,.editorial-home #coherence,.editorial-home #final{content-visibility:visible;contain-intrinsic-block-size:none}.editorial-home .editorial-anchor{content-visibility:visible;contain-intrinsic-size:none;height:0}.editorial-book picture{display:block;width:240px;aspect-ratio:600/870}.editorial-book img{aspect-ratio:600/870;object-fit:contain}@media(max-width:900px){.editorial-book picture{width:180px}}

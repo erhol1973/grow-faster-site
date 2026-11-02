@@ -436,7 +436,8 @@
     document.querySelectorAll("a[data-mail]").forEach(e=>{e.href="mailto:"+a+e.dataset.mail.replace(/&amp;/g,"&")})})();
   /* start */
   const stored=store.get("avs-lang"), nav0=(navigator.language||"en").slice(0,2).toLowerCase();
-  const initial=Object.hasOwn(NATIVE,stored)?stored:(Object.hasOwn(NATIVE,nav0)?nav0:"en");
+  const requested=new URLSearchParams(location.search).get("lang");
+  const initial=Object.hasOwn(NATIVE,requested)?requested:Object.hasOwn(NATIVE,stored)?stored:(Object.hasOwn(NATIVE,nav0)?nav0:"en");
   applyLang(initial,!!stored&&stored!==initial);
   const c0=readConsent();applyConsent(c0);
   if(location.hash==="#privacy")openPrivacy(); 

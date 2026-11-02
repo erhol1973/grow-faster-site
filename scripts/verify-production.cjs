@@ -7,10 +7,11 @@ async function main(){
     for(const route of ['index.html','coherence.html','insights.html']){
       const response=await page.goto('https://grow-faster.be/'+route);if(response.status()!==200)throw Error(route+': HTTP '+response.status());
       if(await page.locator('#burger').isVisible())await page.locator('#burger').click();
-      await page.locator('.nav .nav-cta').click();await page.waitForURL('https://grow-faster.be/about.html');
+      await page.locator('.nav a[href="about.html"]').click();await page.waitForURL('https://grow-faster.be/about.html');
       if(await page.evaluate(()=>scrollY)>8)throw Error('Contact scrolled from '+route);results.push({route,contactTop:true});
     }
     await page.goto('https://grow-faster.be/index.html');
+    if(await page.locator('#navlist a.l:not(.nav-workshop)').count()!==4)throw Error('Expected four primary navigation categories');
     if(await page.locator('#burger').isVisible())await page.locator('#burger').click();
     await page.locator('#navlist a[href="workshop.html"]').click();
     await page.waitForURL('https://grow-faster.be/workshop.html');
@@ -22,6 +23,14 @@ async function main(){
       if(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth+1))throw Error('Workshop overflow: '+lang);
       results.push({route:'workshop.html',language:lang,requestAvailable:true});
     }
+    await page.goto('https://grow-faster.be/index.html');
+    if(await page.locator('#burger').isVisible())await page.locator('#burger').click();
+    await page.locator('[aria-controls="nav-coherence"]').click();
+    await page.locator('[aria-controls="nav-approach"]').click();
+    if(!await page.locator('#nav-coherence').isHidden())throw Error('Only one navigation group may be expanded');
+    await page.locator('#nav-approach a[href="eca.html"]').click();await page.waitForURL('https://grow-faster.be/eca.html');
+    if(!await page.locator('#assessment').isVisible())throw Error('Anonymous ECA unavailable from navigation');
+    results.push({route:'index.html',groupedEcaRoute:true});
     await page.goto('https://grow-faster.be/approach.html');
     const workshopEntry=page.locator('#approach-workshop-cta');
     const entry=await workshopEntry.boundingBox();

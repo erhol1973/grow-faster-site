@@ -43,7 +43,7 @@ test('tablet viewport and 200 percent text retain readable navigation and conten
   await seed(page);await page.setViewportSize({width:768,height:1024});await page.goto('/insights.html');
   await page.addStyleTag({content:'html{font-size:200%!important}'});await expect(page.locator('h1')).toBeVisible();
   expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+2)).toBe(true);
-  const contact=page.locator('.nav .nav-cta');if(!await contact.isVisible())await page.locator('#burger').click();await contact.click();await expect(page).toHaveURL(/about\.html$/);
+  const contact=page.locator('.nav a[href="about.html"]');if(!await contact.isVisible())await page.locator('#burger').click();await contact.click();await expect(page).toHaveURL(/about\.html$/);
 });
 test('calculator displays the independently specified full-coherence capacity fixture',async({page})=>{
   await seed(page);await page.goto('/approach.html');for(let i=0;i<8;i++)await page.locator(`#dg-rows button[data-i="${i}"][data-v="5"]`).click();

@@ -9,6 +9,16 @@ async function main(){
       await page.locator('.nav .nav-cta').click();await page.waitForURL('https://grow-faster.be/about.html');
       if(await page.evaluate(()=>scrollY)>8)throw Error('Contact scrolled from '+route);results.push({route,contactTop:true});
     }
+    await page.goto('https://grow-faster.be/index.html');
+    await page.locator('#workshop-entry a[href="workshop.html"]').click();
+    if(new URL(page.url()).pathname!=='/workshop.html')throw Error('Home workshop link did not open the offer');
+    for(const [lang,title]of [['nl','Van AI-pilot naar bedrijfswaarde'],['en','From AI pilot to business value'],['fr','Du pilote IA à la valeur pour l’entreprise']]){
+      if(await page.locator('html').getAttribute('lang')!==lang){await page.locator('#lang-btn-top').click();await page.locator('.lang-top [data-lang="'+lang+'"]').click()}
+      if(!(await page.locator('h1').innerText()).includes(title))throw Error('Workshop heading mismatch: '+lang);
+      if(!await page.locator('#request-form').isVisible())throw Error('Workshop request unavailable: '+lang);
+      if(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth+1))throw Error('Workshop overflow: '+lang);
+      results.push({route:'workshop.html',language:lang,requestAvailable:true});
+    }
     if(errors.length)throw Error(errors.join('\n'));fs.mkdirSync('reports',{recursive:true});fs.writeFileSync('reports/production-smoke.json',JSON.stringify({results,errors,at:new Date().toISOString()},null,2));
   }finally{await browser.close()}
 }

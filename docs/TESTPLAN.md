@@ -1,5 +1,13 @@
 # Testplan en kwaliteitsbeleid
 
+## Executive werksessie, 1 november 2026
+
+workshop.html is een secundaire route met het gedeelde menu; veertien gewone pagina’s hebben nu dat menu. De acht hoofdmenubestemmingen blijven gelijk. Home, Aanpak, Contact, Tools en de ECA-uitslag leiden naar het aanbod. De functionele workshopkern draait op de vijf bestaande browserprofielen. Uitgeklapte voorbeelden, praktische vragen en e-mailconcepten krijgen aanvullende WCAG-scans in EN/NL/FR op desktop en mobiel Chromium.
+
+De ECA-route geeft uitsluitend de taal door. De gerichte aanvraag opent een vrijwillig e-mailconcept, met verplichte vraag, veilige codering, taalwissel zonder verlies van invoer, klembordterugval en direct contact zonder JavaScript. Tests onderscheppen mailto-acties; ze versturen geen berichten. Er wordt geen contact- of ECA-inhoud opgeslagen of aan analytics of HubSpot toegevoegd.
+
+De nieuwe pagina en twee assets zijn toegevoegd aan dezelfde 288 lokale loadverzoeken en aan de transferbudgetten. Lighthouse meet ook workshop.html met drie koude samples per mobiel en desktop. Bestaande drempels, retries en skipredenen zijn ongewijzigd. Zie WORKSHOP.md voor het goedgekeurde aanbod en de gegevensgrenzen.
+
 Tests onderzoeken hetzelfde gebouwde `dist`-pakket dat wordt gepubliceerd. Ontwikkelbestanden en rapporten blijven buiten de website. Elke foutoplossing en nieuw gebruikerspad krijgt passende blijvende regressiedekking. Aantallen alleen zijn geen kwaliteitsmaatstaf.
 
 | Laag | Dekking |

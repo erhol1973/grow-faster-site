@@ -1,13 +1,17 @@
 const {test,expect}=require('playwright/test');
-const routes=require('../navigation-cases.json');
+const routes=require('../navigation-cases.json').pages;
 test.beforeEach(async({page})=>{
   await page.addInitScript(()=>{
     localStorage.setItem('avs-consent',JSON.stringify({v:3,ext:false,ana:false,ts:Date.now()}));
   });
 });
 async function clickMenu(page,route,keyboard=false){
-  const link=page.locator(`.nav a.l[href="${route}"]`);
-  if(!await link.isVisible())await page.locator('#burger').click();
+  const link=page.locator(`.nav a[href="${route}"]`);
+  if(!await link.isVisible()&&await page.locator('#burger').isVisible()&&!await page.locator('#navlist').isVisible())await page.locator('#burger').click();
+  if(!await link.isVisible()){
+    const toggle=page.locator('.nav-group').filter({has:page.locator(`a[href="${route}"]`)}).locator('.nav-toggle');
+    if(keyboard){await toggle.focus();await toggle.press('Enter')}else await toggle.click();
+  }
   if(keyboard){await link.focus();await link.press('Enter')}
   else await link.click();
 }

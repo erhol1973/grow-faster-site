@@ -11,7 +11,7 @@ Het aanbod en de pakketprijs zijn op 1 november 2026 door Erlend goedgekeurd. De
 
 ## Leesroutes en gegevens
 
-De pagina is bereikbaar via Home, Aanpak, Contact en de Tools-footer. Het hoofdmenu heeft negen bestemmingen, met Werksessie als rechtstreeks menu-item. Op Aanpak staat de verwijzing in de hero, zonder dat bezoekers naar beneden hoeven te scrollen. De ECA-uitslag biedt een vrijwillige link naar het betaalde aanbod. Alleen de gekozen taal gaat in die link mee; geen score, profiel, antwoorden of contactgegevens.
+De pagina is bereikbaar via Home, Aanpak, Contact en de Tools-footer. Het hoofdmenu heeft vier inhoudelijke rubrieken met daarnaast één directe werksessieknop. In het geopende mobiele menu staat die actie eerst. Op Aanpak staat de verwijzing in de hero, zonder dat bezoekers naar beneden hoeven te scrollen. De ECA-uitslag biedt een vrijwillige link naar het betaalde aanbod. Alleen de gekozen taal gaat in die link mee; geen score, profiel, antwoorden of contactgegevens.
 
 De aanvraag gebruikt Erlends bestaande e-mailcontact. Naam en organisatie zijn optioneel; de vraag is verplicht, ook na alleen-witruimte-invoer. De bezoeker opent en verstuurt zelf een e-mailconcept. Heropenen, kopiëren en een directe e-maillink bieden een terugval. Er is geen nieuwe CRM-inzending of marketinginschrijving. Ingevoerde inhoud gaat niet naar browseropslag, URL-query’s of analytics. De bestaande essentiële taal- en consentvoorkeuren blijven werken.
 

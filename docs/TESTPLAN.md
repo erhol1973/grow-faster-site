@@ -16,6 +16,8 @@ Een eerste lokale ronde vond dat het sluiten tijdens focusout de volgende knop o
 
 Menulinks hebben expliciet tabindex="0", zonder positieve tabindices. De Safari-testbrowser sloeg native links bij Tab standaard over; de ongewijzigde toetsenbordcasus test nu ook daar de eerste submenuverwijzing en het Escape-focusherstel. Browserinstellingen en testverwachtingen zijn hiervoor niet aangepast.
 
+De eerste volledige PR-run 41464395805 telde 485 geslaagde gevallen, vijf fouten en twaalf bestaande skips. De vijf fouten betroffen dezelfde bestaande Home-ECA-leesroute: haar globale a[href="eca.html"] vond door het nieuwe menu twee links. Die casus kiest nu expliciet de oorspronkelijke link in main; de nieuwe submenu-route heeft eigen aanvullende dekking op alle vijf profielen. Alle taal-, twintig-vragen- en ungated-asserties blijven behouden. Geen geval, timeout of retryregel is verwijderd of versoepeld; het oorspronkelijke rapport is bewaard.
+
 navigation.css heeft een afzonderlijk budget van 8KB en wordt meegenomen in de lokale loadscenario’s. De bestaande CSS-/JS-/HTML-budgetten, 288 requests, 1.500ms-grens, Lighthouse-drempels, retries en skipredenen zijn ongewijzigd. De publieke nacontrole controleert ook de vier hoofdrubrieken en de gegroepeerde route naar de anonieme ECA zonder een contactformulier te openen.
 
 Tests onderzoeken hetzelfde gebouwde `dist`-pakket dat wordt gepubliceerd. Ontwikkelbestanden en rapporten blijven buiten de website. Elke foutoplossing en nieuw gebruikerspad krijgt passende blijvende regressiedekking. Aantallen alleen zijn geen kwaliteitsmaatstaf.

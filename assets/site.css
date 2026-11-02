@@ -1423,6 +1423,7 @@ button.ec-seg.s10{min-width:44px}button.ec-seg.s20{min-width:64px}
 .ec-split.has-detail button[aria-expanded="false"] span{display:none}
 .ec-split button[aria-expanded="true"] i{font-size:0}.ec-split button[aria-expanded="true"] i:after{content:'−';font-size:20px}
 .ec-simulation-intro{display:grid;grid-template-columns:1.1fr 1fr;gap:48px;align-items:center}
+.ec-simulation-intro.solo{grid-template-columns:minmax(0,1fr)}.ec-simulation-intro.solo h2,.ec-page .ec-simulation-intro.solo .head h2{max-width:none}
 .ec-simulation-intro .head{margin:0}.ec-simulation-intro h2{max-width:16ch;font-size:clamp(32px,4vw,56px);line-height:1.08}
 .ec-simulation-intro .lede{max-width:48ch;font-size:18px;line-height:1.6}
 .ec-route-pair{display:grid;gap:16px}.ec-route{position:relative;padding:22px 24px 22px 48px;border:1px solid var(--line);background:var(--bg)}

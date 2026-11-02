@@ -14,6 +14,19 @@ for(const [language,heading,choices]of [['en','Choose a deeper look',['The persp
  await page.goto('/index.html#final');await expect(page.locator('#fn-h')).toBeInViewport();
  expect(errors).toEqual([]);
 });
+test('a late book cover does not move the article link between pointer down and up',async({page})=>{
+ let releaseCover;const coverReady=new Promise(resolve=>{releaseCover=resolve});
+ await page.route('**/img/book-cover-*.webp',async route=>{await coverReady;await route.continue()});
+ await page.addInitScript(()=>{localStorage.setItem('avs-lang','nl');localStorage.setItem('avs-consent',JSON.stringify({v:3,ext:false,ana:false,ts:Date.now()}))});
+ try{
+  await page.goto('/index.html');const link=page.locator('#selected-insight a');await link.scrollIntoViewIfNeeded();
+  const before=await link.boundingBox();await page.mouse.move(before.x+before.width/2,before.y+before.height/2);await page.mouse.down();
+  releaseCover();await page.locator('.editorial-book img').evaluate(async image=>{image.loading='eager';await image.decode();await new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)))});
+  const after=await link.boundingBox();expect(Math.abs(after.y-before.y),'Loading the cover must not move a pressed link').toBeLessThan(1);
+  await page.mouse.up();await expect(page.locator('#ai-pilot')).toBeVisible();await expect(page.locator('#ai-pilot [data-article-lang="nl"]')).toBeVisible();
+ }finally{releaseCover()}
+});
+
 test('retired saved German migrates safely across pages and the simulation',async({page})=>{
  await page.addInitScript(()=>{if(!localStorage.getItem('avs-lang'))localStorage.setItem('avs-lang','de');localStorage.setItem('avs-consent',JSON.stringify({v:3,ext:false,ana:false,ts:Date.now()}))});
  await page.goto('/index.html');await expect(page.locator('html')).toHaveAttribute('lang','en');expect(await page.evaluate(()=>localStorage.getItem('avs-lang'))).toBe('en');

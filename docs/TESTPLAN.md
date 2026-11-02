@@ -1,5 +1,9 @@
 # Testplan en kwaliteitsbeleid
 
+## Vrij boek, 2 november 2026
+
+Vijftien gewone pagina's delen het bestaande viercategorieënmenu. Boeken vervangt Visie & boek binnen Enterprise Coherence en opent books.html. De nieuwe pagina, haar route naar Contact, de publicatie-assets en de volledige vrijwillige download zijn toegevoegd aan de gedeelde menu-, HTTP-, load-, budget-, browser- en toegankelijkheidscontroles. Lighthouse voegt books.html toe met drie koude samples per mobiel en desktop. Zie BOOKS.md voor de twee publicaties en de gegevensgrenzen. Oude preview- en manuscriptverzoeken blijven getest. Een publicatie-checksum voorkomt dat een onbedoeld gewijzigd of onvolledig bestand de goedgekeurde uitgave vervangt.
+
 ## Executive werksessie, 1 november 2026
 
 Veertien gewone pagina’s delen vier inhoudelijke hoofdrubrieken en één directe werksessieknop. Enterprise Coherence groepeert visie/boek, bedrijfswaarde, procesherontwerp en operating model. Aanpak groepeert roadmap, besliskader en de vrije ECA. Inzichten en Over Erlend zijn directe links. Het logo opent Home. De werksessieknop is op mobiel de eerste actie in het geopende menu. Op Aanpak blijft de verwijzing in de hero. Home, Aanpak, Contact, Tools en de ECA-uitslag leiden naar het aanbod. De functionele workshopkern draait op de vijf bestaande browserprofielen. Uitgeklapte voorbeelden, praktische vragen en e-mailconcepten krijgen aanvullende WCAG-scans in EN/NL/FR op desktop en mobiel Chromium.

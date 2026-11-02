@@ -2,11 +2,13 @@
 
 ## Executive werksessie, 1 november 2026
 
-workshop.html is een secundaire route met het gedeelde menu; veertien gewone pagina’s hebben nu dat menu. De acht hoofdmenubestemmingen blijven gelijk. Home, Aanpak, Contact, Tools en de ECA-uitslag leiden naar het aanbod. De functionele workshopkern draait op de vijf bestaande browserprofielen. Uitgeklapte voorbeelden, praktische vragen en e-mailconcepten krijgen aanvullende WCAG-scans in EN/NL/FR op desktop en mobiel Chromium.
+workshop.html heeft een eigen hoofdmenu-item; veertien gewone pagina’s delen hetzelfde menu. Het hoofdmenu heeft negen bestemmingen: Werksessie is rechtstreeks bereikbaar. Op Aanpak staat de verwijzing in de hero. Home, Aanpak, Contact, Tools en de ECA-uitslag leiden naar het aanbod. De functionele workshopkern draait op de vijf bestaande browserprofielen. Uitgeklapte voorbeelden, praktische vragen en e-mailconcepten krijgen aanvullende WCAG-scans in EN/NL/FR op desktop en mobiel Chromium.
 
 De ECA-route geeft uitsluitend de taal door. De gerichte aanvraag opent een vrijwillig e-mailconcept, met verplichte vraag, veilige codering, taalwissel zonder verlies van invoer, klembordterugval en direct contact zonder JavaScript. Tests onderscheppen mailto-acties; ze versturen geen berichten. Er wordt geen contact- of ECA-inhoud opgeslagen of aan analytics of HubSpot toegevoegd.
 
 De nieuwe pagina en twee assets zijn toegevoegd aan dezelfde 288 lokale loadverzoeken en aan de transferbudgetten. Lighthouse meet ook workshop.html met drie koude samples per mobiel en desktop. Bestaande drempels, retries en skipredenen zijn ongewijzigd. Zie WORKSHOP.md voor het goedgekeurde aanbod en de gegevensgrenzen.
+
+Op 2 november is de vindbaarheid aangescherpt: de functionele browserkern controleert het rechtstreekse menu-item zonder paginascroll, de actieve menustatus en de volledig zichtbare knop in de Aanpak-hero, in drie talen. De extra workshopvermelding in losse load-, budget- en WCAG-lijsten is vervallen omdat dezelfde route nu via de gedeelde menucasussen wordt meegenomen. De unieke routedekking en de bestaande grenzen blijven behouden; er wordt geen identiek scenario dubbel geteld.
 
 Tests onderzoeken hetzelfde gebouwde `dist`-pakket dat wordt gepubliceerd. Ontwikkelbestanden en rapporten blijven buiten de website. Elke foutoplossing en nieuw gebruikerspad krijgt passende blijvende regressiedekking. Aantallen alleen zijn geen kwaliteitsmaatstaf.
 
@@ -15,10 +17,10 @@ Tests onderzoeken hetzelfde gebouwde `dist`-pakket dat wordt gepubliceerd. Ontwi
 | Unit | Werkelijk gebruikte modellen: coherentiefactoren, vier besliskwadranten, risico/readiness, capaciteit, cashflow, break-even en procesgeometrie. Onafhankelijk uitgerekende rechte, parallelle en teruglopende paden; geen gekopieerde implementatie in tests. |
 | Negatief | Ongeldige/lege scores, NaN/Infinity, negatieve waarden, percentages buiten bereik, nulvolume, onbekende nodes. Strikte consentversie, boolean-types, ouderdom en toekomstige timestamps. |
 | HTTP/integratie | Echte server: GET/HEAD, MIME, gzip, 404, geweigerde schrijfmethoden, misvormde URL, NUL/backslash en traversal. Alle menu's, assets, fragmenten, unieke IDs, syntax en metadata. |
-| Browser/E2E | Alle acht routes naar Contact vanaf bovenaan en na scrollen, herhaald Contact, toetsenbord, footer, geschiedenis; drie talen, echte taalwissels, artikelen/deeplinks, calculatorinvoer en simulator. |
+| Browser/E2E | Alle negen routes naar Contact vanaf bovenaan en na scrollen, herhaald Contact, toetsenbord, footer, geschiedenis; drie talen, echte taalwissels, artikelen/deeplinks, calculatorinvoer en simulator. |
 | Consent | Weigeren, gedeeltelijk/volledig toestaan, intrekken, opnieuw toestaan en intrekken tijdens een vertraagde download. Externe diensten zijn gestubd: dit test ons contract, niet alle leverancierscode. |
 | Cache | Echte ETag/304, versiewissel en oude HTML met actuele scripts. Back/Forward en feitelijke pageshow.persisted worden vastgelegd. Geen routingmocks die de browsercache uitschakelen; BFCache wordt niet kunstmatig afgedwongen. |
-| Toegankelijkheid | Axe op acht menuwebpagina's, dialoog en simulator, Chromium desktop/mobiel, WCAG A/AA 2.0/2.1/2.2 en contrast. Uitgestelde inhoud wordt voor scans gerenderd. Ook toetsenbord, focus, tablet en 200% tekst. |
+| Toegankelijkheid | Axe op negen menuwebpagina's, dialoog en simulator, Chromium desktop/mobiel, WCAG A/AA 2.0/2.1/2.2 en contrast. Uitgestelde inhoud wordt voor scans gerenderd. Ook toetsenbord, focus, tablet en 200% tekst. |
 | Load | Uitsluitend lokaal: 288 verzoeken met acht workers, alle menuroutes, ECA met zijn vier scripts, simulator, CSS/JS en verwachte 404. Geen fouten of ontbrekende routes, p95 maximaal 1.500ms. |
 | Performance | Bestandsbudgetten plus drie koude Lighthouse-runs per Home/Coherence/Aanpak/Contact/ECA op mobiel en desktop; individuele rapporten en medianen. Na browsersuite, zonder gelijktijdige loadtests. |
 | Security | Artifactscan, dependency-audit, Gitleaks geschiedenis en CodeQL security-extended. Bevindingen blokkeren; geen productieaanvallen of loadtests. |

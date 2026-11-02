@@ -8,6 +8,14 @@ async function seed(page,lang='nl'){
  await page.addInitScript(l=>{localStorage.setItem('avs-lang',l);localStorage.setItem('avs-consent',JSON.stringify({v:3,ext:false,ana:false,ts:Date.now()}));window.workshopMails=[];document.addEventListener('click',event=>{const a=event.target.closest('a[href^="mailto:"]');if(a){event.preventDefault();window.workshopMails.push(a.href)}},true)},lang);
 }
 for(const [lang,copy]of Object.entries(cases)){
+ test('workshop is directly discoverable without page scrolling in '+lang,async({page})=>{
+  await seed(page,lang);await page.goto('/index.html');
+  const directWorkshop=page.locator('#navlist a[href="workshop.html"]');await expect(directWorkshop).toHaveCount(1);
+  if(await page.locator('#burger').isVisible())await page.locator('#burger').click();
+  await expect(directWorkshop).toBeVisible();expect(await page.evaluate(()=>scrollY)).toBeLessThan(8);await directWorkshop.click();await expect(page.locator('h1')).toContainText(copy.title);
+  await expect(page.locator('#navlist a[href="workshop.html"]')).toHaveAttribute('aria-current','page');
+  await page.goto('/approach.html');expect(await page.evaluate(()=>scrollY)).toBeLessThan(8);await expect(page.locator('#approach-workshop-cta')).toBeInViewport({ratio:1});await page.locator('#approach-workshop-cta').click();await expect(page.locator('h1')).toContainText(copy.title);
+ });
  test('workshop entry routes and shared navigation in '+lang,async({page})=>{
   await seed(page,lang);const errors=[];page.on('pageerror',e=>errors.push(e.message));
   await page.goto('/index.html');await page.locator('#workshop-entry a').click();

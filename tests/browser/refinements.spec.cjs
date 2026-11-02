@@ -10,7 +10,7 @@ test('10 and 20 percent expand with pointer or keyboard; 70 percent remains a fi
  await expect(chart.locator('button')).toHaveCount(2);const before=await ten.boundingBox();await ten.click();await expect(ten).toHaveAttribute('aria-expanded','true');await expect(ten.locator('span')).toBeVisible();
  await expect.poll(async()=>Math.round((await ten.boundingBox()).width)).toBeGreaterThan(Math.round(before.width));
  await twenty.focus();await twenty.press('Enter');await expect(twenty).toHaveAttribute('aria-expanded','true');await expect(ten).toHaveAttribute('aria-expanded','false');await twenty.press('Escape');await expect(twenty).toHaveAttribute('aria-expanded','false');
- await expect(page.locator('.lgx[lang="en"] .ec-route')).toHaveCount(2);await expect(page.locator('.lgx[lang="en"] .ec-value-token')).toHaveCount(3);expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1)).toBe(true);
+ await expect(page.locator('.lgx[lang="en"] .ec-route')).toHaveCount(0);await expect(page.locator('.lgx[lang="en"] .ec-value-token')).toHaveCount(0);await expect(page.locator('.lgx[lang="en"] .ec-simhead h2')).toHaveText('Same AI. Different enterprise.');expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1)).toBe(true);
 });
 test('six insights have working multilingual deep links and history',async({page})=>{
  await page.goto('/insights.html');await expect(page.locator('.ins-list>.ins-card')).toHaveCount(6);

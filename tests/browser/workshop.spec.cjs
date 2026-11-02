@@ -15,6 +15,8 @@ for(const [lang,copy]of Object.entries(cases)){
   await expect(page.locator('html')).toHaveAttribute('lang',lang);
   await expect(page.locator('.ws-hero .ws-btn')).toContainText(copy.cta);await expect(page.locator('.ws-result')).toHaveCount(3);
   await expect(page.locator('#request-form')).toBeVisible();
+  const summaryHeights=await page.locator('.workshop summary').evaluateAll(es=>es.map(e=>e.getBoundingClientRect().height).filter(h=>h>0));
+  for(const height of summaryHeights)expect(height,'Workshop disclosures must retain compact, readable headings').toBeLessThanOrEqual(96);
   expect(await page.evaluate(()=>getComputedStyle(document.documentElement).scrollBehavior)).toBe('auto');
   expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1)).toBe(true);
   expect(await page.locator('#voorbeeldplan').evaluate(e=>e.open)).toBe(await page.evaluate(()=>innerWidth>=900));

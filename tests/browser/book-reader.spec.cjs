@@ -13,3 +13,14 @@ test('reader works without external services and retains pages when its script i
  const external=[];page.on('request',r=>{if(!r.url().startsWith('http://127.0.0.1:4173/'))external.push(r.url())});
  await page.route('**/page-flip-2.0.7.js',r=>r.abort());await page.goto('/boek/index.html');await expect(page.locator('#fallback')).toHaveAttribute('open','');await expect(page.locator('#fallback img')).toHaveCount(26);await expect(page.locator('#loader')).toHaveCount(0);expect(external).toEqual([]);
 });
+test('reader controls follow Dutch and French preferences and remain accessible when enlarged',async({page})=>{
+ const AxeBuilder=require('@axe-core/playwright').default;
+ for(const [lang,label]of [['nl','Vergroot pagina'],['fr','Agrandir la page']]){
+  await page.goto('/boek/index.html');await page.evaluate(l=>localStorage.setItem('avs-lang',l),lang);await page.reload();await expect(page.locator('#loader')).toHaveCount(0);await expect(page.locator('html')).toHaveAttribute('lang',lang);await expect(page.locator('#zoomButton')).toHaveText(label);
+  let result=await new AxeBuilder({page}).withTags(['wcag2a','wcag2aa','wcag21a','wcag21aa','wcag22aa']).analyze();expect(result.violations.map(v=>v.id)).toEqual([]);
+  await page.locator('#zoomButton').click();result=await new AxeBuilder({page}).withTags(['wcag2a','wcag2aa','wcag21a','wcag21aa','wcag22aa']).analyze();expect(result.violations.map(v=>v.id)).toEqual([]);await page.keyboard.press('Escape');
+ }
+});
+test('the supplied pages remain readable without JavaScript',async({browser,baseURL})=>{
+ const context=await browser.newContext({javaScriptEnabled:false});try{const page=await context.newPage();await page.goto(baseURL+'/boek/index.html');await page.locator('#fallback summary').click();await expect(page.locator('#fallback img').first()).toBeVisible();await expect(page.locator('#fallback img')).toHaveCount(26);await expect(page.locator('.loader')).not.toBeVisible()}finally{await context.close()}
+});

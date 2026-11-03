@@ -68,7 +68,7 @@
   document.addEventListener('keydown', e => {
     if (zoom.classList.contains('open')){
       if (e.key === 'Escape') closeZoom();
-      if (e.key === 'Tab'){e.preventDefault();zoomClose.focus();}
+      if (e.key === 'Tab'){e.preventDefault();(document.activeElement===zoom ? zoomClose : zoom).focus();}
       return;
     }
     if (e.key === 'ArrowLeft') pageFlip.flipPrev();
@@ -108,7 +108,7 @@
     zoomClose.classList.add('show');
     zoom.scrollTop = 0;
     document.body.style.overflow = 'hidden';
-    zoomClose.focus();
+    zoom.focus();
   }
   function closeZoom(){
     zoom.classList.remove('open');

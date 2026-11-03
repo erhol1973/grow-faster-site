@@ -2,7 +2,7 @@ const {test,expect}=require('playwright/test');
 test('practice reading route works in three languages, with six perspectives and Contact',async({page})=>{
  const errors=[];page.on('pageerror',e=>errors.push(e.message));
  await page.addInitScript(()=>{if(!localStorage.getItem('avs-lang'))localStorage.setItem('avs-lang','nl');localStorage.setItem('avs-consent',JSON.stringify({v:3,ext:false,ana:false,ts:Date.now()}))});
- await page.goto('/index.html');await page.locator('.hero-grid a[href="transformation.html"]').click();
+ await page.goto('/index.html');await page.locator('main a[href="transformation.html"]').first().click();
  await expect(page).toHaveURL(/\/transformation\.html$/);
  for(const [language,heading,lens,title]of [['nl','Transformatie in de praktijk','Strategie en keuzes','Bedrijfstransformatie in de praktijk | Erlend Hollebosch'],['fr','La transformation en pratique','Stratégie et choix','La transformation des entreprises en pratique | Erlend Hollebosch'],['en','Transformation in practice','Strategy and choices','Business Transformation in Practice | Erlend Hollebosch']]){
    if(language!=='nl'){await page.locator('#lang-btn-top').click();await page.locator('.lang-top [data-lang="'+language+'"]').click()}

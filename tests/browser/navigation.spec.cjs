@@ -8,7 +8,7 @@ for(const [lang,text]of Object.entries(copy))test('Home plus four navigation cat
  await expect(page.locator('#navlist a.l:not(.nav-workshop)')).toHaveText(text.primary);
  await expect(page.locator('#navlist .nav-workshop')).toHaveAccessibleName(text.workshop);
  await expect(page.locator('.nav .brand')).toHaveAttribute('href','index.html');
- expect(await page.locator('.nav').evaluate(e=>getComputedStyle(e).backgroundColor)).toBe('rgb(255, 255, 255)');
+ if(await page.locator('.nav').evaluate(e=>e.classList.contains('open')))await expect.poll(()=>page.locator('.nav').evaluate(e=>getComputedStyle(e).backgroundColor)).toBe('rgb(255, 255, 255)');else{await expect(page.locator('html')).toHaveClass(/nav-over/);await expect.poll(()=>page.locator('#navlist .nav-parent>a.l').first().evaluate(e=>getComputedStyle(e).color)).toBe('rgb(255, 255, 255)');}
  const toggle=page.locator('[aria-controls="nav-coherence"]');await activate(toggle,info);await expect(toggle).toHaveAttribute('aria-expanded','true');
  const value=page.locator('#nav-coherence a[href="value.html"]');await expect(value).toHaveText(text.value);await activate(value,info);
  await expect(page).toHaveURL(/\/value\.html$/);await expect(page.locator('html')).toHaveAttribute('lang',lang);

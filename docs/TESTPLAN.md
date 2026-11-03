@@ -1,5 +1,9 @@
 # Testplan en kwaliteitsbeleid
 
+## Bladerbare boekpreview, 3 november 2026
+
+Home, Boeken en Over Erlend openen de aangeleverde online lezer met 25 previewpagina’s plus afsluitpagina. De 26 JPEG-bestanden blijven exact gelijk aan de ZIP. Blijvende tests controleren checksums, lokale afhankelijkheden, desktop-spreads, één pagina op mobiel, de daadwerkelijke homepageklik, vergroten/Escape/focus, de laatste pagina en terugval bij een ontbrekende bibliotheek. De bestaande PDF blijft bereikbaar voor oude gedeelde links. Zie BOOK-READER.md. De lokale loadlijst neemt de nieuwe route en assets mee; alle bestaande releasegrenzen blijven behouden.
+
 ## Vrij boek, 2 november 2026
 
 Vijftien gewone pagina's delen het bestaande viercategorieënmenu. Boeken vervangt Visie & boek binnen Enterprise Coherence en opent books.html. De nieuwe pagina, haar route naar Contact, de publicatie-assets en de volledige vrijwillige download zijn toegevoegd aan de gedeelde menu-, HTTP-, load-, budget-, browser- en toegankelijkheidscontroles. Lighthouse voegt books.html toe met drie koude samples per mobiel en desktop. Zie BOOKS.md voor de twee publicaties en de gegevensgrenzen. Oude preview- en manuscriptverzoeken blijven getest. Een publicatie-checksum voorkomt dat een onbedoeld gewijzigd of onvolledig bestand de goedgekeurde uitgave vervangt.

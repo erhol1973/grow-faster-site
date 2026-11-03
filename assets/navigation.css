@@ -3,7 +3,6 @@
 .nav.nav-executive .wrap{height:var(--nav-height);gap:24px}
 .nav.nav-executive .brand{margin-right:auto}
 .nav.nav-executive .logo{height:40px;filter:none;text-shadow:none}
-.nav.nav-executive .logo .lg-tx{fill:#0b2545}
 .nav.nav-executive .wrap>#navlist{display:flex;gap:20px;align-items:center;overflow:visible;margin:0;padding:0;list-style:none}
 .nav.nav-executive #navlist>li{position:relative;border:0}
 .nav.nav-executive .nav-parent{display:flex;align-items:center;gap:0}
@@ -44,11 +43,9 @@
 .nav.nav-executive.compact .nav-sub{position:static;width:auto;max-width:none;box-shadow:none;border:0;border-left:2px solid #dce4eb;border-radius:0;margin:0 0 12px 6px;padding:0 0 0 10px}
 @media(max-width:1100px){.nav.nav-executive{--nav-height:68px}.nav.nav-executive .wrap{gap:10px}.nav.nav-executive .brand{margin:0}.nav.nav-executive .logo{height:36px}.nav.nav-executive .lang-top{margin-left:auto;padding-left:0;border:0}.nav.nav-executive .wrap>#navlist{display:none}.topic-links{gap:4px 18px}}
 
-/* Transparent menu bar over the hero photograph; solid white once the page scrolls past it. */
 .nav-executive~main .hero,.nav-executive~main>.hero{margin-top:calc(-1*76px)}
 .nav-executive~main .hero-inner{padding-top:calc(76px + clamp(48px,6vw,80px))}
 html.nav-over .nav.nav-executive{background:transparent!important;border-bottom-color:rgba(255,255,255,.18)!important}
-html.nav-over .nav.nav-executive .logo .lg-tx{fill:#fff}
 html.nav-over .nav.nav-executive #navlist>li>a.l:not(.nav-workshop),html.nav-over .nav.nav-executive .nav-parent>a.l{color:#fff!important;text-shadow:0 1px 8px rgba(7,16,30,.6)}
 html.nav-over .nav.nav-executive #navlist>li>a.l:not(.nav-workshop):hover,html.nav-over .nav.nav-executive #navlist>li>a.l.on:not(.nav-workshop),html.nav-over .nav.nav-executive .nav-parent>a.l:hover{color:#7fd3f7!important}
 html.nav-over .nav.nav-executive .nav-toggle{color:#fff}
@@ -62,3 +59,10 @@ html.nav-over .nav.nav-executive .burger{color:#fff!important;border-color:rgba(
 /* Keep anchor targets and focused links clear of the sticky menu bar. */
 html{scroll-padding-top:92px}
 @media(max-width:1100px){html{scroll-padding-top:84px}}
+
+.nav.nav-executive .brand picture{display:block;position:relative;width:clamp(160px,18vw,238px);aspect-ratio:1100/250}
+.nav.nav-executive .brand .gf-wordmark{display:block;width:100%;height:100%;object-fit:contain}
+.nav.nav-executive .brand .gf-wordmark-dark{display:none}
+html.nav-over .nav.nav-executive .brand .gf-wordmark-light{display:none}
+html.nav-over .nav.nav-executive .brand .gf-wordmark-dark{display:block}
+@media(max-width:1100px){.nav.nav-executive .brand picture{width:clamp(146px,27vw,204px)}}

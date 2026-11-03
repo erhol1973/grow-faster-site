@@ -148,3 +148,11 @@ Antwoordlabels ECA: op verzoek zijn de zichtbare cijfers en punten verwijderd in
 De eerste label-PR-controle blokkeerde op één instabiele mobiele WebKit-casus: een gesimuleerde tik tijdens de automatische resultaat-scroll activeerde het formulier niet. Trace en foutbeelden blijven bewaard. De resultaat-overgang scrolt nu direct en geeft de uitslagkop focus; de bestaande scenario’s controleren die focus voor de eerste formulierklik. Geen wachttijd, retry of vrijgavegrens is verruimd. De nieuwe focuscontrole faalde eerst op de oude implementatie.
 
 De tweede CI-uitvoering blokkeerde op WebKit-tikken na de validatiefocus naar de eerste vraag. De ECA schakelt daarom ook de overgeërfde algemene smooth-scroll uit voor alle impliciete focus- en ankerovergangen. De bestaande validatie-/selectietest controleert de berekende scrollstijl; die controle faalde op de oude smooth-stijl. Klik-/check-acties, timeouts, retries en alle vrijgavegrenzen blijven behouden. Beide mislukte CI-rapporten worden bewaard.
+
+## Work with me, Home in the menu and book presentation, 3 November 2026
+
+The home hero states the role (Enterprise & AI Transformation Lead) and availability in Belgium, and its single primary action opens the two routes on `about.html#work-with-me`: a permanent role and a long-term assignment. Each route opens the visitor's email with a short template in English, Dutch or French; the template follows a language switch without reload, and the address itself stays assembled at runtime. Coverage: `tests/work-routes.test.cjs` (hero action, both routes, localised templates, translations) and browser cases for the hero route in three languages and the language switch.
+
+Home is now the first item of the main menu on every page; `tests/navigation-cases.json` lists it first among the primary routes, so HTTP navigation, Contact, accessibility, load and performance coverage follow automatically. `scripts/verify-production.cjs` now expects Home plus four categories.
+
+Both books on `books.html` share the same structure (cover, label, title, subtitle, summary, three takeaways, action, meta, access) and are shown as 3D book objects. *Design for Coherence* uses a new transparent mockup (`img/design-for-coherence-book-*.png/.webp`) on Home, About and Books. Coverage: `tests/books.test.cjs`.

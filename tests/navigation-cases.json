@@ -1,10 +1,35 @@
 {
   "home": "index.html",
-  "primary": ["coherence.html", "approach.html", "insights.html", "about.html"],
+  "primary": [
+    "coherence.html",
+    "approach.html",
+    "insights.html",
+    "about.html"
+  ],
   "action": "workshop.html",
   "groups": {
-    "coherence.html": ["coherence.html#book-thesis", "value.html", "process.html", "operating-model.html"],
-    "approach.html": ["approach.html#roadmap", "approach.html#decide", "eca.html"]
+    "coherence.html": [
+      "books.html",
+      "value.html",
+      "process.html",
+      "operating-model.html"
+    ],
+    "approach.html": [
+      "approach.html#roadmap",
+      "approach.html#decide",
+      "eca.html"
+    ]
   },
-  "pages": ["index.html", "coherence.html", "value.html", "process.html", "operating-model.html", "approach.html", "workshop.html", "insights.html", "about.html"]
+  "pages": [
+    "index.html",
+    "coherence.html",
+    "value.html",
+    "process.html",
+    "operating-model.html",
+    "approach.html",
+    "workshop.html",
+    "insights.html",
+    "about.html",
+    "books.html"
+  ]
 }

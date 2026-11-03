@@ -1,6 +1,7 @@
 {
   "home": "index.html",
   "primary": [
+    "index.html",
     "coherence.html",
     "approach.html",
     "insights.html",

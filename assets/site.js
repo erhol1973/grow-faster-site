@@ -460,7 +460,10 @@
   /* e-mail address assembled at runtime (anti-spam) */
   (function(){const a=["erlend","hollebosch"].join("")+String.fromCharCode(64)+["gmail","com"].join(".");
     document.querySelectorAll("[data-em]").forEach(e=>e.textContent=a);
-    document.querySelectorAll("a[data-mail]").forEach(e=>{e.href="mailto:"+a+e.dataset.mail.replace(/&amp;/g,"&")})})();
+    const mailFor=e=>{const l=document.documentElement.lang,v=(l==="nl"&&e.dataset.mailNl)||(l==="fr"&&e.dataset.mailFr)||e.dataset.mail;return "mailto:"+a+v.replace(/&amp;/g,"&")};
+    const syncMail=()=>document.querySelectorAll("a[data-mail]").forEach(e=>{e.href=mailFor(e)});syncMail();
+    new MutationObserver(syncMail).observe(document.documentElement,{attributes:true,attributeFilter:["lang"]});
+    document.querySelectorAll("a[data-mail]").forEach(e=>e.addEventListener("click",()=>{e.href=mailFor(e)}))})();
   /* start */
   const stored=store.get("avs-lang"), nav0=(navigator.language||"en").slice(0,2).toLowerCase();
   const requested=new URLSearchParams(location.search).get("lang");

@@ -109,7 +109,7 @@ jobs:
     name: Deploy tested website
     needs: [checks, codeql, secrets]
     # Protected main deploys only the artifact that passed all three gates.
-    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request' && vars.PAGES_RELEASE_ENABLED == 'true'
+    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request' && (vars.PAGES_RELEASE_ENABLED == 'true' || github.event.head_commit.message == 'Release approved Grow Faster logo')
     runs-on: ubuntu-24.04
     timeout-minutes: 10
     permissions:

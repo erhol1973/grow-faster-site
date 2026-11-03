@@ -3,7 +3,7 @@ const fs=require('node:fs'),path=require('node:path');
 const {performance,monitorEventLoopDelay}=require('node:perf_hooks'),os=require('node:os');
 const {createServer}=require('./server.cjs');
 const routes=require('../tests/navigation-cases.json').pages.map(p=>({route:'/'+p,status:200})).concat([
-  ...['assets/workshop.js','assets/workshop.css','eca.html','assets/eca.js','assets/eca-locales.js','assets/eca-ui.js','assets/eca-hubspot.js','assets/navigation.css','assets/books.css','books/turning-ai-potential-executive-preview.pdf'].map(file=>({route:'/'+file,status:200})),
+  ...['boek/index.html','assets/book-reader.js','assets/book-reader.css','assets/page-flip-2.0.7.js','boek/pages/page-01.jpg','boek/pages/page-26.jpg','assets/workshop.js','assets/workshop.css','eca.html','assets/eca.js','assets/eca-locales.js','assets/eca-ui.js','assets/eca-hubspot.js','assets/navigation.css','assets/books.css','books/turning-ai-potential-executive-preview.pdf'].map(file=>({route:'/'+file,status:200})),
   {route:'/coherence-sim.html',status:200},{route:'/assets/site.css',status:200},
   {route:'/assets/site.js',status:200},{route:'/missing-load-test.html',status:404}
 ]);

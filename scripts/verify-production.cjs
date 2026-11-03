@@ -50,7 +50,7 @@ async function main(){
     const publication=require('../tests/book-publication.json');
     const pdf=await page.request.get('https://grow-faster.be/'+publication.file);
     if(pdf.status()!==200||!pdf.headers()['content-type']?.startsWith('application/pdf'))throw Error('Public book PDF unavailable');
-    const bytes=await pdf.body();if(bytes.length!==publication.bytes||require('node:crypto').createHash('sha256').update(bytes).digest('hex')!==publication.sha256)throw Error('Public PDF differs from approved publication');
+    const bytes=await pdf.body();if(bytes.length!==publication.bytes||require('node:crypto').createHash('sha256').update(bytes).digest('hex')!==publication.sha256)throw Error('Public PDF differs from approved publication');if((await page.request.get('https://grow-faster.be/books/design-for-coherence.pdf')).status()!==404)throw Error('Full book PDF must not be public');
     results.push({route:publication.file,bytes:bytes.length,sha256:publication.sha256});
     if(errors.length)throw Error(errors.join('\n'));fs.mkdirSync('reports',{recursive:true});fs.writeFileSync('reports/production-smoke.json',JSON.stringify({results,errors,at:new Date().toISOString()},null,2));
   }finally{await browser.close()}

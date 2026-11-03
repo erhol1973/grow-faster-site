@@ -1,12 +1,14 @@
 # Publicaties
 
-## Design for Coherence
+## Turning AI Potential into Enterprise Value
 
-Goedgekeurde titel: **Design for Coherence — Turning AI Potential into Enterprise Value**. Auteur: Erlend Hollebosch. Eerste editie november 2026. Engelstalige PDF, 79 pagina's, volledig en vrij downloadbaar. Geen e-mailadres, account, HubSpot-formulier of marketingtoestemming nodig. De download gebruikt dezelfde eigen websitehost en start uitsluitend na een bewuste klik. Gewone hostingverzoeken blijven onder het bestaande privacybeleid vallen.
+Hoofdtitel: **Turning AI Potential into Enterprise Value**, ondertitel **Design for Coherence**. Auteur: Erlend Hollebosch. Eerste editie november 2026, 79 pagina's.
 
-De aangeleverde publicatie-editie blijft het bronbestand. De websiteversie heeft de gekozen ondertitel op de cover, een gecorrigeerde titel op de copyrightpagina, correcte auteur/titel-metadata, zeventien gecorrigeerde inhoudsopgavepaginanummers en zeventien klikbare inhoudsopgaveregels plus bladwijzers. De inhoudsstromen en geëxtraheerde tekst van pagina's 5–79 zijn bij publicatie per pagina met de bron vergeleken en ongewijzigd. De oorspronkelijke laatste lege pagina blijft behouden. Het publicatiebewijs en de bron blijven buiten het websitepakket. `tests/book-publication.json` identificeert de gecontroleerde PDF met grootte en SHA-256; een nieuwe editie vraagt om een nieuwe inhoudelijke controle.
+Publiek staat alleen de executive preview: `books/turning-ai-potential-executive-preview.pdf`, met pagina's 10–25 en 45–57 van het boek (29 pagina's). Het volledige boek staat niet meer op de website; `books/design-for-coherence.pdf` geeft 404. Let op: de vroegere volledige PDF blijft in de Git-geschiedenis van deze publieke repository staan.
 
-De PDF behoudt de bestaande copyrightvermelding. Vrij downloaden betekent geen open licentie voor herpublicatie of verkoop.
+Het volledige boek is te bestellen als hardcover, softcover-managementhandboek en e-book via `books.html#order`. Elke bestelknop opent een e-mail met een vooraf ingevuld onderwerp en bestelsjabloon; prijs, levering en factuur worden persoonlijk bevestigd. Geen formulieren of betaalgegevens op de site.
+
+`tests/book-publication.json` identificeert de gecontroleerde preview met grootte en SHA-256. De 3D-omslag op de site toont de hoofdtitel en ondertitel in de juiste volgorde.
 
 ## Twee verschillende boeken
 

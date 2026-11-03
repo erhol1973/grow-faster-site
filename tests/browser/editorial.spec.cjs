@@ -21,7 +21,7 @@ test('a late book cover does not move the article link between pointer down and 
  try{
   await page.goto('/index.html');const link=page.locator('#selected-insight a');await link.scrollIntoViewIfNeeded();
   const before=await link.boundingBox();await page.mouse.move(before.x+before.width/2,before.y+before.height/2);await page.mouse.down();
-  releaseCover();await page.locator('.editorial-book img').evaluate(async image=>{image.loading='eager';await image.decode();await new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)))});
+  releaseCover();await page.locator('#the-coherent-enterprise img').evaluate(async image=>{image.loading='eager';await image.decode();await new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)))});
   const after=await link.boundingBox();expect(Math.abs(after.y-before.y),'Loading the cover must not move a pressed link').toBeLessThan(1);
   await page.mouse.up();await expect(page.locator('#ai-pilot')).toBeVisible();await expect(page.locator('#ai-pilot [data-article-lang="nl"]')).toBeVisible();
  }finally{releaseCover()}

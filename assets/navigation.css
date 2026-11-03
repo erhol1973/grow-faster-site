@@ -58,3 +58,7 @@ html.nav-over .nav.nav-executive .lang-top{border-left-color:rgba(255,255,255,.3
 html.nav-over .nav.nav-executive .lang-btn{color:#fff!important}
 html.nav-over .nav.nav-executive .burger{color:#fff!important;border-color:rgba(255,255,255,.45)!important}
 @media(max-width:1100px){.nav-executive~main .hero,.nav-executive~main>.hero{margin-top:calc(-1*68px)}.nav-executive~main .hero-inner{padding-top:calc(68px + clamp(48px,6vw,80px))}}
+
+/* Keep anchor targets and focused links clear of the sticky menu bar. */
+html{scroll-padding-top:92px}
+@media(max-width:1100px){html{scroll-padding-top:84px}}

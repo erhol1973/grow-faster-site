@@ -41,7 +41,7 @@ async function main(){
     if(await page.locator('#burger').isVisible())await page.locator('#burger').click();
     await page.locator('[aria-controls="nav-coherence"]').click();
     await page.locator('#nav-coherence a[href="books.html"]').click();await page.waitForURL('https://grow-faster.be/books.html');
-    for(const [lang,label]of [['fr','Téléchargez le livre complet'],['nl','Download het volledige boek'],['en','Download the full book']]){
+    for(const [lang,label]of [['fr','Lire l’aperçu pour les dirigeants'],['nl','Lees de executive preview'],['en','Read the executive preview']]){
       if(await page.locator('html').getAttribute('lang')!==lang){await page.locator('#lang-btn-top').click();await page.locator('.lang-top [data-lang="'+lang+'"]').click()}
       if(!(await page.locator('.book-download').innerText()).includes(label))throw Error('Book download language mismatch: '+lang);
       if(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth+1))throw Error('Book overflow: '+lang);

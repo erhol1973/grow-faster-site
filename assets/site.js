@@ -197,7 +197,7 @@
   function parallax(){
     nav.classList.toggle("scrolled",scrollY>20);
     const heroTop=document.querySelector(".hero-top");
-    document.documentElement.classList.toggle("nav-over",!nav.classList.contains("nav-executive")&&!nav.classList.contains("open")&&!!heroTop&&scrollY<heroTop.offsetHeight-64);
+    document.documentElement.classList.toggle("nav-over",!nav.classList.contains("open")&&!!heroTop&&scrollY<heroTop.offsetHeight-64);
     // Decorative motion is opt-in; navigation behaviour remains available.
     if(reduce||document.documentElement.dataset.motion!=="full")return;
     const y=scrollY; if(heroBg&&y<innerHeight*1.2)heroBg.style.transform="translate3d(0,"+(y*.25)+"px,0)";

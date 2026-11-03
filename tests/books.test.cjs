@@ -19,7 +19,7 @@ test('publication reading routes, translations and local performance coverage ar
   const html=fs.readFileSync(path.join(root,file),'utf8');assert.match(html,/href="books\/design-for-coherence\.pdf" download=/,file);assert.match(html,/books\/the-coherent-enterprise-executive-preview\.pdf/,file);
  }
  const html=fs.readFileSync(path.join(root,'books.html'),'utf8');
- for(const phrase of ['Books','Download the full book','English PDF · 73 pages · 3 MB · November 2026','The complete book. No email address or registration required.'])assert.ok(context.window.I18N[phrase].slice(0,2).every(Boolean),phrase);
+ for(const phrase of ['Books','Download the full book','English PDF · 79 pages · 5.4 MB · November 2026','The complete book. No email address or registration required.'])assert.ok(context.window.I18N[phrase].slice(0,2).every(Boolean),phrase);
  assert.match(html,/href="workshop\.html"/);assert.match(html,/href="about\.html#foundation-book"/);
  const {routes}=require('../scripts/load.cjs');for(const file of ['books.html','assets/books.css',publication.file])assert.ok(routes.some(r=>r.route==='/'+file&&r.status===200),file);
 });

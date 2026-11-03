@@ -5,7 +5,7 @@ const I18N=()=>{const c={window:{}};vm.runInNewContext(read('assets/i18n.js'),c)
 test('home hero leads with organisational friction and an advisory conversation',()=>{const h=read('index.html');
  assert.match(h,/When organisations lose coherence/);
  assert.doesNotMatch(h,/<p class="hero-avail">/,'role availability should not compete with advisory in hero');
- const ctas=h.match(/<div class="ctas">([\\s\\S]*?)<\\/div>/)[1];const links=[...ctas.matchAll(/<a href="([^"]+)" class="btn (\\w+)"/g)].map(m=>[m[1],m[2]]);
+ const ctas=h.match(/<div class="ctas">([\s\S]*?)<\/div>/)[1];const links=[...ctas.matchAll(/<a href="([^"]+)" class="btn (\w+)"/g)].map(m=>[m[1],m[2]]);
  assert.deepEqual(links[0],['about.html#contact','primary'],'primary hero action must open the transformation contact route');
  assert.equal(links.filter(l=>l[1]==='primary').length,1,'one primary hero action');
  assert.match(h,/href="coherence.html#book-thesis"/);

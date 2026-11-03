@@ -70,6 +70,7 @@
 };
   const localeIndex = {nl: 0, fr: 1};
   const descriptions = {
+  "books.html": ["Download Design for Coherence: een gratis Engelstalig handboek van 73 pagina’s over AI en bedrijfswaarde. Ontdek ook The Coherent Enterprise en de werksessie.", "Téléchargez Design for Coherence : un guide gratuit de 73 pages en anglais sur l’IA et la valeur métier. Découvrez aussi The Coherent Enterprise et l’atelier."],
   "transformation.html": [
     "Erlend Hollebosch onderzoekt hoe strategie, mensen, processen, structuur, infrastructuur en data op elkaar inwerken bij bedrijfstransformatie.",
     "Erlend Hollebosch examine les interactions entre stratégie, personnes, processus, structure, infrastructure et données dans la transformation des entreprises."

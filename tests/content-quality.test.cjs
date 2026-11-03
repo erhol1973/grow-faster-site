@@ -8,7 +8,7 @@ const root=path.resolve(__dirname,'..','dist');
 const read=f=>fs.readFileSync(path.join(root,f),'utf8');
 const dict=()=>{const ctx={window:{}};for(const f of ['i18n.js','content.js'])vm.runInNewContext(read('assets/'+f),ctx);return ctx.window.I18N;};
 const decode=s=>s.replaceAll('&amp;','&');
-const main=['index.html','coherence.html','value.html','process.html','operating-model.html','approach.html','insights.html','about.html'];
+const main=['index.html','coherence.html','value.html','process.html','operating-model.html','approach.html','insights.html','about.html','books.html'];
 
 test('main pages carry a search title that matches <title>, og:title and is translated',()=>{const I=dict();
  for(const f of main){const h=read(f);const seo=decode((h.match(/<meta name="seo-title" content="([^"]+)"/)||[])[1]||'');assert.ok(seo,`${f}: seo-title missing`);

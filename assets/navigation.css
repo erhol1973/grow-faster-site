@@ -62,3 +62,11 @@ html.nav-over .nav.nav-executive .burger{color:#fff!important;border-color:rgba(
 /* Keep anchor targets and focused links clear of the sticky menu bar. */
 html{scroll-padding-top:92px}
 @media(max-width:1100px){html{scroll-padding-top:84px}}
+
+/* Brand wordmark: dark artwork only when navigation overlays the dark hero. */
+.nav.nav-executive .brand picture{display:block;position:relative;width:clamp(160px,18vw,238px);aspect-ratio:1100/250}
+.nav.nav-executive .brand .gf-wordmark{display:block;width:100%;height:100%;object-fit:contain}
+.nav.nav-executive .brand .gf-wordmark-dark{display:none}
+html.nav-over .nav.nav-executive .brand .gf-wordmark-light{display:none}
+html.nav-over .nav.nav-executive .brand .gf-wordmark-dark{display:block}
+@media(max-width:1100px){.nav.nav-executive .brand picture{width:clamp(146px,27vw,204px)}}

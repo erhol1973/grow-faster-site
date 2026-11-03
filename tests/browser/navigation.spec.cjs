@@ -1,9 +1,9 @@
 const {test,expect}=require('playwright/test');
-const copy={en:{primary:['Enterprise Coherence','Approach','Insights','About Erlend'],workshop:'Workshop',value:'AI & business value',eca:'Coherence assessment (ECA)'},nl:{primary:['Enterprise Coherence','Aanpak','Inzichten','Over Erlend'],workshop:'Werksessie',value:'AI & bedrijfswaarde',eca:'Coherentiescan (ECA)'},fr:{primary:['Enterprise Coherence','Approche','Analyses','À propos d’Erlend'],workshop:'Atelier',value:'IA & valeur métier',eca:'Diagnostic de cohérence (ECA)'}};
+const copy={en:{primary:['Home','Enterprise Coherence','Approach','Insights','About Erlend'],workshop:'Workshop',value:'AI & business value',eca:'Coherence assessment (ECA)'},nl:{primary:['Home','Enterprise Coherence','Aanpak','Inzichten','Over Erlend'],workshop:'Werksessie',value:'AI & bedrijfswaarde',eca:'Coherentiescan (ECA)'},fr:{primary:['Accueil','Enterprise Coherence','Approche','Analyses','À propos d’Erlend'],workshop:'Atelier',value:'IA & valeur métier',eca:'Diagnostic de cohérence (ECA)'}};
 async function seed(page,lang='nl'){await page.addInitScript(l=>{localStorage.setItem('avs-lang',l);localStorage.setItem('avs-consent',JSON.stringify({v:3,ext:false,ana:false,ts:Date.now()}))},lang)}
 async function activate(locator,info){if(info.project.use.isMobile)await locator.tap();else await locator.click()}
 async function openMenu(page,info){if(await page.locator('#burger').isVisible()&&!await page.locator('#navlist').isVisible())await activate(page.locator('#burger'),info)}
-for(const [lang,text]of Object.entries(copy))test('four navigation categories, grouped depth and direct ECA route in '+lang,async({page},info)=>{
+for(const [lang,text]of Object.entries(copy))test('Home plus four navigation categories, grouped depth and direct ECA route in '+lang,async({page},info)=>{
  await seed(page,lang);await page.goto('/index.html');await openMenu(page,info);
  await expect(page.locator('#navlist a.l:not(.nav-workshop)')).toHaveText(text.primary);
  await expect(page.locator('#navlist .nav-workshop')).toHaveAccessibleName(text.workshop);

@@ -6,7 +6,7 @@ test.beforeEach(async({page})=>{
   });
 });
 async function clickMenu(page,route,keyboard=false){
-  const link=page.locator(`.nav a[href="${route}"]`);
+  const link=page.locator(`#navlist a[href="${route}"]`);
   if(!await link.isVisible()&&await page.locator('#burger').isVisible()&&!await page.locator('#navlist').isVisible())await page.locator('#burger').click();
   if(!await link.isVisible()){
     const toggle=page.locator('.nav-group').filter({has:page.locator(`a[href="${route}"]`)}).locator('.nav-toggle');

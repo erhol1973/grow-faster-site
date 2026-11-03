@@ -16,7 +16,7 @@ for(const [language,heading,choices]of [['en','Choose a deeper look',['The persp
 });
 test('a late book cover does not move the article link between pointer down and up',async({page})=>{
  let releaseCover;const coverReady=new Promise(resolve=>{releaseCover=resolve});
- await page.route('**/img/book-cover-*.webp',async route=>{await coverReady;await route.continue()});
+ await page.route('**/img/the-coherent-enterprise-book-*.webp',async route=>{await coverReady;await route.continue()});
  await page.addInitScript(()=>{localStorage.setItem('avs-lang','nl');localStorage.setItem('avs-consent',JSON.stringify({v:3,ext:false,ana:false,ts:Date.now()}))});
  try{
   await page.goto('/index.html');const link=page.locator('#selected-insight a');await link.scrollIntoViewIfNeeded();

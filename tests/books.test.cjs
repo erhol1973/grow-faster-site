@@ -16,7 +16,7 @@ test('only the approved executive preview is public and the full book is not ser
 test('publication reading routes, translations and local performance coverage are retained',()=>{
  const context={window:{}};vm.runInNewContext(fs.readFileSync(path.join(root,'assets/i18n.js'),'utf8'),context);
  for(const file of ['books.html','index.html','about.html']){
-  const html=fs.readFileSync(path.join(root,file),'utf8');assert.match(html,/href="boek\/index\.html" target="_blank" rel="noopener">Read the executive preview/,file);assert.match(html,/href="(books\.html)?#order">Buy the full book/,file);assert.doesNotMatch(html,/design-for-coherence\.pdf/,file);assert.match(html,/books\/the-coherent-enterprise-executive-preview\.pdf/,file);
+  const html=fs.readFileSync(path.join(root,file),'utf8');assert.match(html,/href="boek\/index\.html" target="_blank" rel="noopener">Read the executive preview/,file);assert.match(html,/href="(books\.html)?#order">Buy the full book/,file);assert.doesNotMatch(html,/design-for-coherence\.pdf/,file);assert.match(html,/boek\/the-coherent-enterprise\/index\.html/,file);
  }
  const html=fs.readFileSync(path.join(root,'books.html'),'utf8');
  for(const phrase of ['Books','Read the executive preview','English PDF · 29-page preview · 79-page book · November 2026','Available as hardcover, softcover and e-book.','Buy the full book','Order the full book','Order the hardcover','Order the softcover','Order the e-book'])assert.ok(context.window.I18N[phrase].slice(0,2).every(Boolean),phrase);

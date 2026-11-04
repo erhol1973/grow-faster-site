@@ -1,0 +1,17 @@
+{
+  "file": "books/the-coherent-enterprise-executive-preview.pdf",
+  "sha256": "045c434e1b5c41a82e6177f58db986c93b9507b048a320edd615ae1e4206052b",
+  "bytes": 3209106,
+  "pageCount": 9,
+  "pages": {
+    "page-01.jpg": "594007f2e1d0794aa6d812a61d01d55d3433afb2f7e41d785586a5f90c2ee97d",
+    "page-02.jpg": "642d21d9b889086f38b1a00e8f39750fdd1f67b30a2ebf49a51eec0def69e47a",
+    "page-03.jpg": "0e7fa1e8517d019dc11709b33afccdbf81b393d9ac99553c60dc662c60d871a0",
+    "page-04.jpg": "ed8a846f943cc7e4efe0a5945c684aba1109b5ab6e8c35532abaf34aab783732",
+    "page-05.jpg": "1bd2cab66fc683c5aff0e2869469fcf413f6d987bbf281eaedea14e5a7895705",
+    "page-06.jpg": "7bfe5e1cccb13144746f78f2cc654aecaebb55f8e4e9b49810e3e90fb4018da7",
+    "page-07.jpg": "73e32654dd8b286ebf59d515e4c2992eaa0982e006bcbabafb56fe15fbcf90fb",
+    "page-08.jpg": "1fa4f7ae03e90bbf44b2a86a302fbf3e2cc9e5dd5a5d7bb7261526bbd82b609e",
+    "page-09.jpg": "9f9ea4446d702e03ff3e83cc01c017b1f178de14c21502cec95e612889604332"
+  }
+}

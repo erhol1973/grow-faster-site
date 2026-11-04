@@ -1,9 +1,16 @@
 (function(){
+  const coherent=document.body.dataset.book==='coherent-enterprise';
   let lang='nl';try{lang=localStorage.getItem('avs-lang')||'nl'}catch{}
   if(!['nl','en','fr'].includes(lang))lang='nl';document.documentElement.lang=lang;
   const labels={nl:['Bestel het boek','Vorige pagina','Volgende pagina','Het boek wordt geopend…','Preview — de eerste 25 pagina’s van 82','Klik op het boek om te vergroten','Vergroot pagina','Terug naar de website','Sluiten ✕','Na de preview stopt het — bestel het volledige boek via grow-faster.be'],en:['Order the book','Previous page','Next page','Opening the book…','Preview — the first 25 pages of 82','Click the book to enlarge','Enlarge page','Back to the website','Close ✕','End of preview — order the full book via grow-faster.be'],fr:['Commander le livre','Page précédente','Page suivante','Ouverture du livre…','Aperçu — les 25 premières pages sur 82','Cliquez sur le livre pour agrandir','Agrandir la page','Retour au site','Fermer ✕','Fin de l’aperçu — commandez le livre complet sur grow-faster.be']}[lang];
   document.querySelector('.buy').textContent=labels[0];document.getElementById('prev').setAttribute('aria-label',labels[1]);document.getElementById('next').setAttribute('aria-label',labels[2]);document.getElementById('loader').textContent=labels[3];document.querySelector('.status > span:nth-child(2)').textContent=labels[4];document.querySelector('.zoomhint').textContent=labels[5];document.getElementById('zoomButton').textContent=labels[6];document.getElementById('backHome').textContent=labels[7];document.getElementById('zoomClose').textContent=labels[8];document.querySelector('footer').textContent=labels[9];document.getElementById('zoom').setAttribute('aria-label',labels[6]);
-  const TOTAL = 26;
+  if(coherent){
+    const copy={nl:['Download PDF','Executive preview - 9 pagina’s','Executive preview · The Coherent Enterprise · Erlend Hollebosch'],en:['Download PDF','Executive preview - 9 pages','Executive preview · The Coherent Enterprise · Erlend Hollebosch'],fr:['Télécharger le PDF','Aperçu pour les dirigeants - 9 pages','Aperçu pour les dirigeants · The Coherent Enterprise · Erlend Hollebosch']}[lang];
+    document.querySelector('.buy').textContent=copy[0];
+    document.querySelector('.status > span:nth-child(2)').textContent=copy[1];
+    document.querySelector('footer').textContent=copy[2];
+  }
+  const TOTAL = coherent ? 9 : 26;
   if(!window.St){document.getElementById('loader').remove();document.getElementById('fallback').open=true;document.querySelector('.book-wrap').hidden=true;document.getElementById('zoomButton').disabled=true;return;}
   const pages = [];
   for (let i = 1; i <= TOTAL; i++){
@@ -59,7 +66,8 @@
     const idx = pageFlip.getCurrentPageIndex(); // 0-based left page
     info.textContent = (idx + 1) + ' / ' + TOTAL;
     prev.disabled = idx <= 0;
-    next.disabled = idx >= TOTAL - 1;
+    const lastVisible=idx+(pageFlip.getOrientation()==='landscape'&&idx>0?1:0);
+    next.disabled = lastVisible >= TOTAL - 1;
   }
 
   pageFlip.on('flip', update);

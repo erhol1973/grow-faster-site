@@ -1,5 +1,9 @@
 # Testplan en kwaliteitsbeleid
 
+## Blauwe executive preview, 4 november 2026
+
+De negen aangeleverde pagina's van The Coherent Enterprise vervangen de oude oranje/koperen PDF op dezelfde URL. De knoppen op Home, Boeken en Over Erlend openen een afzonderlijke flipbookroute. Checksums bewaken de exacte PDF en de negen gerenderde afbeeldingen; browserregressies controleren de Nederlandse knop, mobiel/desktop, bladeren, laatste pagina, vergroten, focusherstel, fallback en WCAG. De bestaande handbookreader blijft apart getest. De lokale loadlijst voegt de nieuwe route, eerste/laatste afbeelding en PDF toe binnen de bestaande 36 verzoeken per worker en ongewijzigde latencygrens.
+
 ## Bladerbare boekpreview, 3 november 2026
 
 Home, Boeken en Over Erlend openen de aangeleverde online lezer met 25 previewpagina’s plus afsluitpagina. De 26 JPEG-bestanden blijven exact gelijk aan de ZIP. Blijvende tests controleren checksums, lokale afhankelijkheden, desktop-spreads, één pagina op mobiel, de daadwerkelijke homepageklik, vergroten/Escape/focus, de laatste pagina en terugval bij een ontbrekende bibliotheek. De bestaande PDF blijft bereikbaar voor oude gedeelde links. Zie BOOK-READER.md. De lokale loadlijst neemt de nieuwe route en assets mee; alle bestaande releasegrenzen blijven behouden.

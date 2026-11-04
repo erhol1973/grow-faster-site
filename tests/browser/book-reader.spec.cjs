@@ -4,7 +4,7 @@ test('The Coherent Enterprise button opens the new nine-page blue flipbook and p
  const crypto=require('node:crypto'),manifest=require('../coherent-preview.json');
  await page.addInitScript(()=>{localStorage.setItem('avs-lang','nl');localStorage.setItem('avs-consent',JSON.stringify({v:3,ext:false,ana:false,ts:Date.now()}))});
  await page.goto('/books.html');const feature=page.locator('#the-coherent-enterprise');const button=feature.locator('.book-preview');await expect(button).toContainText('Lees de executive preview');
- const popup=context.waitForEvent('page');await button.click();const reader=await popup;const errors=[];reader.on('pageerror',e=>errors.push(e.message));
+ const popup=context.waitForEvent('page');await button.click();const reader=await popup;const errors=[];reader.on('pageerror',e=>errors.push(e.message));await reader.waitForLoadState();
  await expect(reader).toHaveURL(/\/boek\/the-coherent-enterprise\/index.html$/);await expect(reader.locator('#loader')).toHaveCount(0);await expect(reader.locator('h1')).toHaveText('The Coherent Enterprise');
  await expect(reader.locator('#pageInfo')).toHaveText('1 / 9');await expect(reader.locator('#book')).toHaveAttribute('data-orientation',isMobile?'portrait':'landscape');await expect(reader.locator('#prev')).toBeDisabled();
  await reader.locator('#zoomButton').click();await expect(reader.locator('#zoomInner img').first()).toHaveAttribute('src','pages/page-01.jpg');await reader.keyboard.press('Escape');await expect(reader.locator('#zoomButton')).toBeFocused();

@@ -1,7 +1,7 @@
 const {test,expect}=require('playwright/test');
 test('practice reading route works in three languages, with six perspectives and Contact',async({page})=>{
  const errors=[];page.on('pageerror',e=>errors.push(e.message));
- await page.addInitScript(()=>{if(!localStorage.getItem('avs-lang'))localStorage.setItem('avs-lang','nl');localStorage.setItem('avs-consent',JSON.stringify({v:3,ext:false,ana:false,ts:Date.now()}))});
+ await page.addInitScript(()=>{if(!localStorage.getItem('avs-lang'))localStorage.setItem('avs-lang','nl');localStorage.setItem('avs-consent',JSON.stringify({v:4,ext:false,ana:false,ts:Date.now()}))});
  await page.goto('/index.html');await page.locator('main a[href="transformation.html"]').first().click();
  await expect(page).toHaveURL(/\/transformation\.html$/);
  for(const [language,heading,lens,title]of [['nl','Transformatie in de praktijk','Strategie en keuzes','Bedrijfstransformatie in de praktijk | Erlend Hollebosch'],['fr','La transformation en pratique','Stratégie et choix','La transformation des entreprises en pratique | Erlend Hollebosch'],['en','Transformation in practice','Strategy and choices','Business Transformation in Practice | Erlend Hollebosch']]){
@@ -24,7 +24,7 @@ test('practice reading route works in three languages, with six perspectives and
 });
 
 test('manuscript vision links AI, coherence, credited Ross sources and the manuscript request',async({page})=>{
- await page.addInitScript(()=>{localStorage.setItem('avs-consent',JSON.stringify({v:3,ext:false,ana:false,ts:Date.now()}));if(!localStorage.getItem('avs-lang'))localStorage.setItem('avs-lang','nl')});
+ await page.addInitScript(()=>{localStorage.setItem('avs-consent',JSON.stringify({v:4,ext:false,ana:false,ts:Date.now()}));if(!localStorage.getItem('avs-lang'))localStorage.setItem('avs-lang','nl')});
  await page.goto('/index.html');await expect(page.locator('h1')).toContainText('Ontwerp voor samenhang.');
  await page.locator('.hero-grid a[href="coherence.html#book-thesis"]').click();
  await expect(page.locator('#book-thesis-h')).toBeInViewport();
@@ -44,7 +44,7 @@ test('manuscript vision links AI, coherence, credited Ross sources and the manus
 });
 
 test('executive contact presents identity and working contact and book actions in three languages',async({page})=>{
- await page.addInitScript(()=>{if(!localStorage.getItem('avs-lang'))localStorage.setItem('avs-lang','nl');localStorage.setItem('avs-consent',JSON.stringify({v:3,ext:false,ana:false,ts:Date.now()}))});
+ await page.addInitScript(()=>{if(!localStorage.getItem('avs-lang'))localStorage.setItem('avs-lang','nl');localStorage.setItem('avs-consent',JSON.stringify({v:4,ext:false,ana:false,ts:Date.now()}))});
  await page.goto('/about.html');
  for(const [language,eyebrow]of [['nl','Perspectieven op bedrijfstransformatie'],['fr','Perspectives sur la transformation des entreprises'],['en','Perspectives on enterprise transformation']]){
    if(language!=='nl'){await page.locator('#lang-btn-top').click();await page.locator('.lang-top [data-lang="'+language+'"]').click()}
@@ -60,7 +60,7 @@ test('executive contact presents identity and working contact and book actions i
 });
 
 test('initialise the scorecard and decision matrix once in the saved language and update on language change',async({page})=>{
- await page.addInitScript(()=>{localStorage.setItem('avs-lang','nl');localStorage.setItem('avs-consent',JSON.stringify({v:3,ext:false,ana:false,ts:Date.now()}));window.scorecardRenders=0;window.matrixRenders=0;new MutationObserver(records=>{for(const record of records)if(record.type==='childList'){if(record.target.id==='dg-rows')window.scorecardRenders++;if(record.target.id==='quad')window.matrixRenders++}}).observe(document,{childList:true,subtree:true})});
+ await page.addInitScript(()=>{localStorage.setItem('avs-lang','nl');localStorage.setItem('avs-consent',JSON.stringify({v:4,ext:false,ana:false,ts:Date.now()}));window.scorecardRenders=0;window.matrixRenders=0;new MutationObserver(records=>{for(const record of records)if(record.type==='childList'){if(record.target.id==='dg-rows')window.scorecardRenders++;if(record.target.id==='quad')window.matrixRenders++}}).observe(document,{childList:true,subtree:true})});
  await page.goto('/approach.html');await expect(page.locator('#dg-rows .dg-row')).toHaveCount(8);await expect(page.locator('#dg-rows')).toContainText('Strategisch');expect(await page.evaluate(()=>window.scorecardRenders)).toBe(1);expect(await page.evaluate(()=>window.matrixRenders)).toBe(1);
  await page.locator('#lang-btn-top').click();await page.locator('.lang-top [data-lang="fr"]').click();await expect(page.locator('#dg-rows')).toContainText('Stratégique');expect(await page.evaluate(()=>window.scorecardRenders)).toBe(2);expect(await page.evaluate(()=>window.matrixRenders)).toBe(2);
 });

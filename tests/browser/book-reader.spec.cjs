@@ -43,7 +43,8 @@ test('flipbook offers the full preview, the executive summary and the current ch
  test.skip(isMobile,'Download events are verified on desktop profiles');
  const manifest=require('../book-reader-pdfs.json'),crypto=require('node:crypto');
  await page.addInitScript(()=>{localStorage.setItem('flip:hinted','1')});await page.goto('/boek/index.html#page-9');await expect(page.locator('#pgNow')).toContainText('9');
- for(const [kind,file]of [['full','turning-ai-potential-executive-preview.pdf'],['summary','executive-summary.pdf'],['chapter','chapter-04.pdf']]){
+ await page.locator('#btnDownload').click();const chapterId=(await page.locator('#dlChapName').textContent()).match(/Chapter (\d\d)/)[1];await page.keyboard.press('Escape');await expect(page.locator('#popDownload')).toBeHidden();
+ for(const [kind,file]of [['full','turning-ai-potential-executive-preview.pdf'],['summary','executive-summary.pdf'],['chapter','chapter-'+chapterId+'.pdf']]){
   await page.locator('#btnDownload').click();await expect(page.locator('#popDownload')).toHaveClass(/open/);const wait=page.waitForEvent('download');await page.locator('[data-dl="'+kind+'"]').click();const download=await wait;await expect(page.locator('#popDownload')).toBeHidden();
   const response=await page.request.get('/boek/pdf/'+file);expect(response.status()).toBe(200);expect(crypto.createHash('sha256').update(await response.body()).digest('hex')).toBe(manifest[file]);expect(download.url().endsWith('/boek/pdf/'+file)).toBe(true);
  }

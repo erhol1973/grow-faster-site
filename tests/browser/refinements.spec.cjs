@@ -1,5 +1,5 @@
 const {test,expect}=require('playwright/test');
-test.beforeEach(async({page})=>{await page.addInitScript(()=>{localStorage.setItem('avs-lang','en');localStorage.setItem('avs-consent',JSON.stringify({v:3,ext:false,ana:false,ts:Date.now()}))})});
+test.beforeEach(async({page})=>{await page.addInitScript(()=>{localStorage.setItem('avs-lang','en');localStorage.setItem('avs-consent',JSON.stringify({v:4,ext:false,ana:false,ts:Date.now()}))})});
 test('home has a forward route and authors are credited in sources instead of promotional copy',async({page})=>{
  await page.goto('/index.html');await expect(page.locator('main')).not.toContainText('Jeanne Ross');await page.locator('.next-pg a').click();await expect(page).toHaveURL(/coherence\.html$/);
  await expect(page.locator('.book-foundation h3')).toHaveText('Research foundations');await expect(page.locator('.book-sources')).toContainText('Jeanne');

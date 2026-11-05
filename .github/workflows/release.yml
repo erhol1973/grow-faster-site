@@ -13,6 +13,9 @@ jobs:
   checks:
     name: Website quality gate
     runs-on: ubuntu-24.04
+    container:
+      # Keep the image version aligned with the locked Playwright dependency.
+      image: mcr.microsoft.com/playwright:v1.64.1-noble
     timeout-minutes: 45
     steps:
       # Action commits verified against their official release pages.
@@ -29,9 +32,13 @@ jobs:
       - run: npm run security
       - name: Dependency vulnerabilities
         run: pnpm audit --audit-level=high
-      - name: Install browsers
-        run: npx playwright install --with-deps chromium firefox webkit
+      - name: Verify preinstalled Playwright browsers
+        run: |
+          node -e "const p = require('playwright'); for (const name of ['chromium', 'firefox', 'webkit']) require('node:fs').accessSync(p[name].executablePath(), require('node:fs').constants.X_OK)"
       - run: npm run test:e2e
+        env:
+          # Firefox requires a home directory owned by the container user.
+          HOME: /root
       - run: npm run test:load
       - name: Lighthouse mobile and desktop medians
         run: npm run test:performance

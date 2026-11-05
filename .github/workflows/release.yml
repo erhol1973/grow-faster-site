@@ -36,6 +36,9 @@ jobs:
         run: |
           node -e "const p = require('playwright'); for (const name of ['chromium', 'firefox', 'webkit']) require('node:fs').accessSync(p[name].executablePath(), require('node:fs').constants.X_OK)"
       - run: npm run test:e2e
+        env:
+          # Firefox requires a home directory owned by the container user.
+          HOME: /root
       - run: npm run test:load
       - name: Lighthouse mobile and desktop medians
         run: npm run test:performance

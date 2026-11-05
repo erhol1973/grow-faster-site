@@ -1,5 +1,5 @@
 const {test,expect}=require('playwright/test');
-async function seed(page,c={v:3,ext:false,ana:false,ts:Date.now()}){await page.addInitScript(c=>{localStorage.setItem('avs-lang','nl');if(c)localStorage.setItem('avs-consent',JSON.stringify(c));else localStorage.removeItem('avs-consent')},c)}
+async function seed(page,c={v:4,ext:false,ana:false,ts:Date.now()}){await page.addInitScript(c=>{localStorage.setItem('avs-lang','nl');if(c)localStorage.setItem('avs-consent',JSON.stringify(c));else localStorage.removeItem('avs-consent')},c)}
 async function stubs(page){
   await page.route('https://fonts.googleapis.com/**',r=>r.fulfill({status:200,contentType:'text/css',body:''}));
   await page.route('https://gc.zgo.at/count.js',r=>r.fulfill({status:200,contentType:'text/javascript',body:`window.__analyticsLoaded=(window.__analyticsLoaded||0)+1;window.goatcounter.count=function(){window.__counts=(window.__counts||0)+1};if(!window.goatcounter.no_onload)window.goatcounter.count();`}));
@@ -36,7 +36,7 @@ test('withdrawal during a delayed analytics download never records a pageview',a
   await expect(page.locator('#gc')).toHaveCount(0);expect(await page.evaluate(()=>window.__counts||0)).toBe(0);
 });
 for(const [name,change]of Object.entries({future:{ts:Date.now()+864e5},wrongBoolean:{ana:'false'}}))test(`invalid ${name} consent is not silently accepted`,async({page})=>{
-  await seed(page,{v:3,ext:false,ana:false,ts:Date.now(),...change});const optional=[];page.on('request',r=>{if(/gc\.zgo|googleapis/.test(r.url()))optional.push(r.url())});await page.goto('/index.html');await expect(page.locator('#consent')).toBeVisible();expect(optional).toEqual([]);
+  await seed(page,{v:4,ext:false,ana:false,ts:Date.now(),...change});const optional=[];page.on('request',r=>{if(/gc\.zgo|googleapis/.test(r.url()))optional.push(r.url())});await page.goto('/index.html');await expect(page.locator('#consent')).toBeVisible();expect(optional).toEqual([]);
 });
 test('tablet viewport and 200 percent text retain readable navigation and content',async({page},info)=>{
   test.skip(info.project.name!=='chromium','Tablet/text review is a dedicated Chromium viewport scenario');

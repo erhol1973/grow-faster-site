@@ -30,7 +30,7 @@ test('language changes preserve answers and the scored profile without contactin
  await page.locator('#ecaLanguage').selectOption('fr');await expect(page.locator('html')).toHaveAttribute('lang','fr');await expect(page.locator('#overall')).toHaveText('76/100');await expect(page.locator('#strongest')).toHaveText('Cohérence stratégique');await expect(page.locator('#openDiagnostic')).toHaveText('Ouvrir le formulaire de contact facultatif');(await page.locator('#questions legend').allTextContents()).forEach((text,i)=>expect(text).not.toBe(englishQuestions[i]));expect(requests).toEqual([]);
 });
 test('the site reading route leads to an ungated assessment in the saved site language',async({page})=>{
- await page.addInitScript(()=>{localStorage.setItem('avs-lang','fr');localStorage.setItem('avs-consent',JSON.stringify({v:3,ext:false,ana:false,ts:Date.now()}))});
+ await page.addInitScript(()=>{localStorage.setItem('avs-lang','fr');localStorage.setItem('avs-consent',JSON.stringify({v:4,ext:false,ana:false,ts:Date.now()}))});
  await page.goto('/index.html');await page.locator('main a[href="eca.html"]').click();await expect(page.locator('html')).toHaveAttribute('lang','fr');await expect(page.locator('#questions fieldset')).toHaveCount(20);await expect(page.locator('#openDiagnostic')).toBeHidden();
 });
 

@@ -2,7 +2,7 @@ const {test,expect}=require('playwright/test');
 const routes=require('../navigation-cases.json').pages;
 test.beforeEach(async({page})=>{
   await page.addInitScript(()=>{
-    localStorage.setItem('avs-consent',JSON.stringify({v:3,ext:false,ana:false,ts:Date.now()}));
+    localStorage.setItem('avs-consent',JSON.stringify({v:4,ext:false,ana:false,ts:Date.now()}));
   });
 });
 async function clickMenu(page,route,keyboard=false){

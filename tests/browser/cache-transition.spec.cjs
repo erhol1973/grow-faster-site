@@ -3,7 +3,7 @@ test('old markup with current scripts loads required modules and normalizes menu
   test.skip(['mobile','mobile-webkit'].includes(info.project.name),'Temporary release exception: mobile cache-transition timeout; desktop coverage retained');
   const fixture=createCacheServer();await new Promise(r=>fixture.server.listen(0,'127.0.0.1',r));const base='http://127.0.0.1:'+fixture.server.address().port;
   try{
-    const errors=[];page.on('pageerror',e=>errors.push(e.message));await page.addInitScript(()=>{localStorage.setItem('avs-consent',JSON.stringify({v:3,ext:false,ana:false,ts:Date.now()}));window.addEventListener('pageshow',e=>window.__restored=e.persisted)});
+    const errors=[];page.on('pageerror',e=>errors.push(e.message));await page.addInitScript(()=>{localStorage.setItem('avs-consent',JSON.stringify({v:4,ext:false,ana:false,ts:Date.now()}));window.addEventListener('pageshow',e=>window.__restored=e.persisted)});
     const response=await page.goto(base+'/index.html');
     // Check the HTTP body, before runtime recovery adds the missing modules.
     const markup=await response.text();
@@ -18,7 +18,7 @@ test('old markup with current scripts loads required modules and normalizes menu
 test('HTTP revalidation and Back Forward restore remain functional across a release',async({page},info)=>{
   const fixture=createCacheServer();await new Promise(r=>fixture.server.listen(0,'127.0.0.1',r));const base='http://127.0.0.1:'+fixture.server.address().port;
   try{
-    await page.addInitScript(()=>{localStorage.setItem('avs-consent',JSON.stringify({v:3,ext:false,ana:false,ts:Date.now()}));window.addEventListener('pageshow',e=>window.__restored=e.persisted)});
+    await page.addInitScript(()=>{localStorage.setItem('avs-consent',JSON.stringify({v:4,ext:false,ana:false,ts:Date.now()}));window.addEventListener('pageshow',e=>window.__restored=e.persisted)});
     const first=await page.goto(base+'/insights.html');await page.reload();await expect(page.locator('html')).toHaveAttribute('data-fixture-release','1');
     // Reload may bypass caching in WebKit. Exercise HTTP validation explicitly,
     // and retain automatic cache behaviour in the request evidence.

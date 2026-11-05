@@ -5,7 +5,7 @@ const cases={
  fr:{title:'Du pilote IA à la valeur pour l’entreprise',cta:'Parlons de votre application IA',subject:'Premier échange : du pilote IA à la valeur pour l’entreprise',greeting:'Bonjour Erlend,',missing:'Décrivez brièvement votre application IA ou votre question.'}
 };
 async function seed(page,lang='nl'){
- await page.addInitScript(l=>{localStorage.setItem('avs-lang',l);localStorage.setItem('avs-consent',JSON.stringify({v:3,ext:false,ana:false,ts:Date.now()}));window.workshopMails=[];document.addEventListener('click',event=>{const a=event.target.closest('a[href^="mailto:"]');if(a){event.preventDefault();window.workshopMails.push(a.href)}},true)},lang);
+ await page.addInitScript(l=>{localStorage.setItem('avs-lang',l);localStorage.setItem('avs-consent',JSON.stringify({v:4,ext:false,ana:false,ts:Date.now()}));window.workshopMails=[];document.addEventListener('click',event=>{const a=event.target.closest('a[href^="mailto:"]');if(a){event.preventDefault();window.workshopMails.push(a.href)}},true)},lang);
 }
 for(const [lang,copy]of Object.entries(cases)){
  test('workshop is directly discoverable without page scrolling in '+lang,async({page})=>{

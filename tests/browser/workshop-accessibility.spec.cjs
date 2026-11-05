@@ -1,7 +1,7 @@
 const {test,expect}=require('playwright/test');
 const AxeBuilder=require('@axe-core/playwright').default;
 for(const lang of ['nl','fr','en'])test('expanded workshop and request are accessible in '+lang,async({page},info)=>{
- await page.addInitScript(()=>localStorage.setItem('avs-consent',JSON.stringify({v:3,ext:false,ana:false,ts:Date.now()})));
+ await page.addInitScript(()=>localStorage.setItem('avs-consent',JSON.stringify({v:4,ext:false,ana:false,ts:Date.now()})));
  await page.goto('/workshop.html?lang='+lang);await expect(page.locator('html')).toHaveAttribute('lang',lang);
  if(!await page.locator('#voorbeeldplan').evaluate(e=>e.open))await page.locator('#voorbeeldplan>summary').click();
  for(const summary of await page.locator('.ws-faq>summary').all())await summary.click();

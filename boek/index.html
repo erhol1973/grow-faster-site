@@ -1274,10 +1274,25 @@ document.addEventListener('keydown', e => {
 });
 
 /* contents */
-$('#tocList').innerHTML = '<div class="dsec">Front matter</div>' +
-  CFG.front.map(([p, t]) => '<button class="chap" data-go="' + p + '"><span class="n">·</span><span class="t">' + t + '</span><span class="p">' + p + '</span></button>').join('') +
-  '<div class="dsec">Chapters</div>' +
-  CHAPTERS.map(c => '<button class="chap" data-go="' + c.p + '"><span class="n">' + c.id + '</span><span class="t">' + c.title + '<small>' + c.sub + '</small></span><span class="p">' + c.p + (c.end > c.p ? '–' + c.end : '') + '</span><span class="bar-mini" aria-hidden="true"><i data-id="' + c.id + '"></i></span></button>').join('');
+(function buildToc() {
+  const list = $('#tocList');
+  const el = (tag, cls, text) => { const e = document.createElement(tag); if (cls) e.className = cls; if (text !== undefined) e.textContent = text; return e; };
+  list.appendChild(el('div', 'dsec', 'Front matter'));
+  CFG.front.forEach(([p, t]) => {
+    const b = el('button', 'chap'); b.dataset.go = String(+p);
+    b.append(el('span', 'n', '·'), el('span', 't', t), el('span', 'p', String(+p)));
+    list.appendChild(b);
+  });
+  list.appendChild(el('div', 'dsec', 'Chapters'));
+  CHAPTERS.forEach(c => {
+    const b = el('button', 'chap'); b.dataset.go = String(+c.p);
+    const t = el('span', 't', c.title); t.appendChild(el('small', '', c.sub));
+    const bar = el('span', 'bar-mini'); bar.setAttribute('aria-hidden', 'true');
+    const fill = el('i'); fill.dataset.id = c.id; bar.appendChild(fill);
+    b.append(el('span', 'n', c.id), t, el('span', 'p', c.p + (c.end > c.p ? '–' + c.end : '')), bar);
+    list.appendChild(b);
+  });
+})();
 
 /* thumbnails */
 let thumbsBuilt = false;
@@ -1322,7 +1337,7 @@ function runSearch() {
   if (!hits.length) { out.innerHTML = '<p class="empty">No pages mention “' + esc(q) + '”. Try a broader word, such as <em>value</em>, <em>agent</em> or <em>workflow</em>.</p>'; track('search', { term: q, results: 0 }); return; }
   out.innerHTML = '<p class="small" style="padding:6px 10px;margin:0;color:var(--muted);font-size:12.5px">' + hits.length + ' page' + (hits.length > 1 ? 's' : '') + '</p>' + hits.map(h => {
     const ch = chapterOf(h.m.p);
-    return '<button class="result" data-go="' + h.m.p + '" data-term="' + esc(q) + '"><span class="meta"><b>Page ' + h.m.p + '</b><span>' + (ch ? 'Chapter ' + ch.id + ' · ' + ch.title : 'Front matter') + '</span></span><span class="snip"><strong>' + esc(h.m.title) + '</strong> — ' + (q ? snippet(h.m.text, q) : esc(h.m.text.slice(0, 110)) + '…') + '</span>' +
+    return '<button class="result" data-go="' + h.m.p + '" data-term="' + esc(q) + '"><span class="meta"><b>Page ' + h.m.p + '</b><span>' + esc(ch ? 'Chapter ' + ch.id + ' · ' + ch.title : 'Front matter') + '</span></span><span class="snip"><strong>' + esc(h.m.title) + '</strong> — ' + (q ? snippet(h.m.text, q) : esc(h.m.text.slice(0, 110)) + '…') + '</span>' +
       (h.tagHits.length ? '<span class="tags">' + h.tagHits.slice(0, 4).map(t => '<span>' + esc(t.value) + '</span>').join('') + '</span>' : '') + '</button>';
   }).join('');
   if (q) track('search', { term: q, results: hits.length });
@@ -1379,7 +1394,8 @@ async function download(kind) {
   if (kind === 'chapter') { const ch = offeredChapter; if (!ch) { toast('Open a chapter first'); return; } f = FILES.chapter(ch.id); }
   else f = FILES[kind];
   if (!inClaude) {
-    const a = document.createElement('a'); a.href = f.url; a.download = f.name; a.rel = 'noopener';
+    if (!/^pdf\/[a-z0-9-]+\.pdf$/.test(f.url)) { toast('The download could not start.'); return; }
+    const a = document.createElement('a'); a.href = encodeURI(f.url); a.download = f.name.replace(/[^\w .()-]/g, ''); a.rel = 'noopener';
     document.body.appendChild(a); a.click(); a.remove();
     toast('Downloading ' + f.name); track('download', { type: kind }); return;
   }

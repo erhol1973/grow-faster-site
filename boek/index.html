@@ -573,6 +573,7 @@ body.present .stage::before { display: none; }
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 <div class="sr" id="live" aria-live="polite"></div>
 
+<script type="application/json" id="bookcfg">{"title": "Turning AI Potential into Enterprise Value", "fileTitle": "Turning AI Potential", "pdfPrefix": "turning-ai-potential-", "summary": true, "lastContentPage": 21, "front": [["1", "Cover"], ["2", "About this preview"], ["3", "Contents"]], "chapters": [{"id": "01", "title": "Introduction", "sub": "The pilot that worked", "p": 4}, {"id": "02", "title": "Executive Summary", "sub": "The argument and the numbers", "p": 5}, {"id": "03", "title": "The AI Value Challenge", "sub": "Nine voices, one root cause", "p": 7}, {"id": "04", "title": "Enterprise Coherence", "sub": "Five properties and their price", "p": 9}, {"id": "05", "title": "Operating Model Transformation", "sub": "Backbone, edge and workflow", "p": 11}, {"id": "06", "title": "Agentic AI", "sub": "Amplifier, actor, autonomy", "p": 13}, {"id": "07", "title": "Implementation Roadmap", "sub": "Five gates and the diagnostic", "p": 15}, {"id": "08", "title": "Case Studies", "sub": "One workflow, redesigned", "p": 17}, {"id": "09", "title": "Key Takeaways", "sub": "Value, rules and failure signals", "p": 18}, {"id": "10", "title": "Next Steps", "sub": "The first fifteen working days", "p": 20}]}</script>
 <template id="tpl">
 <div class="page hard" data-density="hard" data-p="1" data-ch="" data-title="Cover" data-tags="author:Erlend Hollebosch">
 <article style="--k:1" class="pg cover" aria-label="Page 1: Cover">
@@ -974,25 +975,15 @@ body.present .stage::before { display: none; }
 'use strict';
 const $ = (s, r = document) => r.querySelector(s);
 const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+const CFG = JSON.parse(document.getElementById('bookcfg').textContent);
 const SHARE_BASE = 'https://grow-faster.be/boek/index.html';
 const WPM = 230;
-const CHAPTERS = [
-  { id: '01', title: 'Introduction', sub: 'The pilot that worked', p: 4 },
-  { id: '02', title: 'Executive Summary', sub: 'The argument and the numbers', p: 5 },
-  { id: '03', title: 'The AI Value Challenge', sub: 'Nine voices, one root cause', p: 7 },
-  { id: '04', title: 'Enterprise Coherence', sub: 'Five properties and their price', p: 9 },
-  { id: '05', title: 'Operating Model Transformation', sub: 'Backbone, edge and workflow', p: 11 },
-  { id: '06', title: 'Agentic AI', sub: 'Amplifier, actor, autonomy', p: 13 },
-  { id: '07', title: 'Implementation Roadmap', sub: 'Five gates and the diagnostic', p: 15 },
-  { id: '08', title: 'Case Studies', sub: 'One workflow, redesigned', p: 17 },
-  { id: '09', title: 'Key Takeaways', sub: 'Value, rules and failure signals', p: 18 },
-  { id: '10', title: 'Next Steps', sub: 'The first fifteen working days', p: 20 }
-];
-CHAPTERS.forEach((c, i) => { c.end = i < CHAPTERS.length - 1 ? CHAPTERS[i + 1].p - 1 : 21; });
+const CHAPTERS = CFG.chapters;
+CHAPTERS.forEach((c, i) => { c.end = i < CHAPTERS.length - 1 ? CHAPTERS[i + 1].p - 1 : CFG.lastContentPage; });
 const FILES = {
-  full: { url: 'pdf/turning-ai-potential-executive-preview.pdf', name: 'Turning AI Potential - Executive Preview.pdf' },
-  summary: { url: 'pdf/executive-summary.pdf', name: 'Turning AI Potential - Executive Summary.pdf' },
-  chapter: id => ({ url: 'pdf/chapter-' + id + '.pdf', name: 'Turning AI Potential - Chapter ' + id + '.pdf' })
+  full: { url: 'pdf/' + CFG.pdfPrefix + 'executive-preview.pdf', name: CFG.fileTitle + ' - Executive Preview.pdf' },
+  summary: CFG.summary ? { url: 'pdf/executive-summary.pdf', name: CFG.fileTitle + ' - Executive Summary.pdf' } : null,
+  chapter: id => ({ url: 'pdf/chapter-' + id + '.pdf', name: CFG.fileTitle + ' - Chapter ' + id + '.pdf' })
 };
 const store = {
   get(k) { try { return localStorage.getItem(k); } catch (e) { return null; } },
@@ -1023,6 +1014,7 @@ function uniq(root) {
   return root;
 }
 /* ---------- state ---------- */
+let offeredChapter = null;
 let pf = null, cur = 1, zoom = 1, dims = { w: 0, h: 0, landscape: true }, textMode = false, activeTerm = '', lastSize = '';
 const inClaude = !!(window.claude && typeof window.claude.use === 'function');
 let downloadsPromise = inClaude ? window.claude.use('downloads').catch(() => null) : Promise.resolve(null);
@@ -1048,7 +1040,7 @@ function initBook(startPage) {
   nb.id = 'book';
   nb.setAttribute('role', 'region');
   nb.setAttribute('aria-roledescription', 'flipbook');
-  nb.setAttribute('aria-label', 'Turning AI Potential into Enterprise Value, executive preview');
+  nb.setAttribute('aria-label', CFG.title + ', executive preview');
   holder.appendChild(nb);
   dims = { w: m.landscape ? m.pw * 2 : m.pw, h: m.ph, landscape: m.landscape };
   nb.style.width = dims.w + 'px';
@@ -1109,7 +1101,7 @@ function onPage(p, silent) {
     i.style.width = Math.round(done / (c.end - c.p + 1) * 100) + '%';
   });
   $$('.thumb').forEach(t => t.classList.toggle('current', vis.includes(+t.dataset.go)));
-  const dlCh = ch || null;
+  const dlCh = ch || null; offeredChapter = dlCh;
   $('#dlChapName').textContent = dlCh ? 'Chapter ' + dlCh.id + ' · ' + dlCh.title : 'This chapter';
   $('#dlChapSub').textContent = dlCh ? 'PDF · pages ' + dlCh.p + (dlCh.end > dlCh.p ? '–' + dlCh.end : '') : 'Open a chapter first';
   $('[data-dl="chapter"]').disabled = !dlCh;
@@ -1283,7 +1275,7 @@ document.addEventListener('keydown', e => {
 
 /* contents */
 $('#tocList').innerHTML = '<div class="dsec">Front matter</div>' +
-  [['1', 'Cover'], ['2', 'About this preview'], ['3', 'Contents']].map(([p, t]) => '<button class="chap" data-go="' + p + '"><span class="n">·</span><span class="t">' + t + '</span><span class="p">' + p + '</span></button>').join('') +
+  CFG.front.map(([p, t]) => '<button class="chap" data-go="' + p + '"><span class="n">·</span><span class="t">' + t + '</span><span class="p">' + p + '</span></button>').join('') +
   '<div class="dsec">Chapters</div>' +
   CHAPTERS.map(c => '<button class="chap" data-go="' + c.p + '"><span class="n">' + c.id + '</span><span class="t">' + c.title + '<small>' + c.sub + '</small></span><span class="p">' + c.p + (c.end > c.p ? '–' + c.end : '') + '</span><span class="bar-mini" aria-hidden="true"><i data-id="' + c.id + '"></i></span></button>').join('');
 
@@ -1366,7 +1358,7 @@ function shareUrl() {
 }
 function refreshShare() {
   const u = shareUrl(), e = encodeURIComponent(u);
-  const title = 'Turning AI Potential into Enterprise Value — Executive Preview';
+  const title = CFG.title + ' — Executive Preview';
   $('#shLinkedIn').href = 'https://www.linkedin.com/sharing/share-offsite/?url=' + e;
   $('#shTeams').href = 'https://teams.microsoft.com/share?href=' + e + '&msgText=' + encodeURIComponent(title);
   $('#shEmail').href = 'mailto:?subject=' + encodeURIComponent(title) + '&body=' + encodeURIComponent('An executive preview worth ten minutes of your time:\n\n' + u);
@@ -1384,7 +1376,7 @@ $('#shCopy').addEventListener('click', () => {
 /* ---------- download ---------- */
 async function download(kind) {
   let f;
-  if (kind === 'chapter') { const ch = chapterOf(cur) || chapterOf(visible(cur).slice(-1)[0]); if (!ch) { toast('Open a chapter first'); return; } f = FILES.chapter(ch.id); }
+  if (kind === 'chapter') { const ch = offeredChapter; if (!ch) { toast('Open a chapter first'); return; } f = FILES.chapter(ch.id); }
   else f = FILES[kind];
   if (!inClaude) {
     const a = document.createElement('a'); a.href = f.url; a.download = f.name; a.rel = 'noopener';

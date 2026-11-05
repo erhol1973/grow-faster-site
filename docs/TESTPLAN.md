@@ -164,3 +164,7 @@ The home hero states the role (Enterprise & AI Transformation Lead) and availabi
 Home is now the first item of the main menu on every page; `tests/navigation-cases.json` lists it first among the primary routes, so HTTP navigation, Contact, accessibility, load and performance coverage follow automatically. `scripts/verify-production.cjs` now expects Home plus four categories.
 
 Both books on `books.html` share the same structure (cover, label, title, subtitle, summary, three takeaways, action, meta, access) and are shown as 3D book objects. *Design for Coherence* uses a new transparent mockup (`img/design-for-coherence-book-*.png/.webp`) on Home, About and Books. Coverage: `tests/books.test.cjs`.
+
+## Journal newsletter invitation, 5 November 2026
+
+The journal displays one non-modal, blue slide-in invitation after 60 seconds of active, visible reading. The invitation links to the existing HubSpot signup below the 15-page reader; the form and newsletter consent remain unchanged. Closing with the button or Escape returns focus to the reader. Browser regressions verify the delay, signup destination, dismissal and focus restoration on desktop and mobile profiles. No persistent tracking state is added.

@@ -58,3 +58,32 @@ test('keyboard reaches the footer through deferred Home chapters',async({page})=
   for(let i=0;i<130;i++){await page.keyboard.press('Tab');reached=await page.evaluate(()=>!!document.activeElement?.closest('footer'));if(reached)break}
   expect(reached).toBe(true);
 });
+
+test('journal newsletter invitation waits for a minute of active reading and opens the signup',async({page})=>{
+  await page.clock.install();
+  await page.route('https://fonts.googleapis.com/**',r=>r.fulfill({status:200,contentType:'text/css',body:''}));
+  await page.route('https://js-eu1.hsforms.net/**',r=>r.fulfill({status:200,contentType:'text/javascript',body:''}));
+  await page.goto('/journal.html');
+  const invite=page.locator('#gf-journal-prompt');
+  await expect(invite).toBeHidden();
+  await page.clock.fastForward(59000);
+  await expect(invite).toBeHidden();
+  await page.clock.fastForward(1000);
+  await expect(invite).toBeVisible();
+  await expect(invite.getByRole('link')).toHaveAttribute('href','#subscribe');
+  await invite.getByRole('link').click();
+  await expect(page).toHaveURL(/journal\.html#subscribe$/);
+  await expect(page.locator('#subscribe')).toBeVisible();
+});
+test('journal newsletter invitation can be dismissed with Escape and returns focus to the reader',async({page})=>{
+  await page.clock.install();
+  await page.route('https://js-eu1.hsforms.net/**',r=>r.fulfill({status:200,contentType:'text/javascript',body:''}));
+  await page.goto('/journal.html');
+  const invite=page.locator('#gf-journal-prompt');
+  await page.clock.fastForward(60000);
+  await expect(invite).toBeVisible();
+  await invite.getByRole('button',{name:'Dismiss newsletter invitation'}).focus();
+  await page.keyboard.press('Escape');
+  await expect(invite).toBeHidden();
+  await expect(page.locator('#journal-content')).toBeFocused();
+});

@@ -17,3 +17,14 @@ test('Executive Journal is publicly readable and offers optional weekly email si
  assert.match(insights,/href="journal\.html">Read issue 01/);
  assert.match(insights,/href="journal\.html#subscribe">Get new issues by email/);
 });
+
+test('journal includes a delayed, dismissible newsletter invitation linked to its HubSpot signup',()=>{
+ const html=fs.readFileSync(path.join(dist,'journal.html'),'utf8');
+ assert.match(html,/id="gf-journal-prompt"/);
+ assert.match(html,/role="region" aria-label="Weekly executive journal invitation"/);
+ assert.match(html,/class="gf-journal-prompt__link" href="#subscribe"/);
+ assert.match(html,/assets\/journal-prompt\.(?:css|js)/);
+ const promptScript=fs.readFileSync(path.join(dist,'assets','journal-prompt.js'),'utf8');
+ assert.match(promptScript,/remaining=60000/);
+ assert.match(promptScript,/Escape/);
+});

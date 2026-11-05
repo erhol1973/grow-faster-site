@@ -27,9 +27,9 @@ async function main(){
   const server=createServer();await new Promise(resolve=>server.listen(0,'127.0.0.1',resolve));
   const base=`http://127.0.0.1:${server.address().port}`,samples=[],started=performance.now();
   try{
-    await Promise.all(Array.from({length:8},async()=>{
+    await Promise.all(Array.from({length:8},async(_,workerIndex)=>{
       for(let i=0;i<36;i++){
-        const scenario=routes[i%routes.length],t=performance.now();let status=0,failure;
+        const scenario=routes[(workerIndex*36+i)%routes.length],t=performance.now();let status=0,failure;
         try{const response=await fetch(base+scenario.route,{signal:AbortSignal.timeout(5000)});status=response.status;await response.arrayBuffer()}catch(error){status=0;failure=error.name+': '+error.message+(error.cause?.code?' ('+error.cause.code+')':'')}
         samples.push({route:scenario.route,expected:scenario.status,status,latencyMs:performance.now()-t,...(failure?{failure}:{})});
       }

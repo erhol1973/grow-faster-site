@@ -8,7 +8,7 @@ async function audit(page,info,label){
   await info.attach(label,{body:JSON.stringify(result,null,2),contentType:'application/json'});
   expect(result.violations.map(v=>({id:v.id,impact:v.impact,nodes:v.nodes.map(n=>({target:n.target,summary:n.failureSummary}))}))).toEqual([]);
 }
-test.beforeEach(async({page})=>{await page.addInitScript(()=>{localStorage.setItem('avs-consent',JSON.stringify({v:3,ext:false,ana:false,ts:Date.now()}));localStorage.setItem('avs-lang','nl')})});
+test.beforeEach(async({page})=>{await page.addInitScript(()=>{localStorage.setItem('avs-consent',JSON.stringify({v:4,ext:false,ana:false,ts:Date.now()}));localStorage.setItem('avs-lang','nl')})});
 for(const route of routes)test(`WCAG automatic scan ${route}`,async({page},info)=>{await page.goto('/'+route);await page.locator('footer').scrollIntoViewIfNeeded();await page.locator('h1').scrollIntoViewIfNeeded();await audit(page,info,route)});
 test('consent dialog labels, focus cycle and WCAG checks',async({page},info)=>{
   await page.goto('/index.html');await page.locator('.open-consent').first().click();await audit(page,info,'consent');

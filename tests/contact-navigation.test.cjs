@@ -14,8 +14,9 @@ test('served ordinary pages have complete menus and Contact opens without a frag
     const nav=html.match(/<nav\b[\s\S]*?<\/nav>/i);if(!nav)continue;pages++;
     const actual=[...nav[0].matchAll(/<a\b[^>]*href="([^"]+)"/g)].map(m=>m[1]);
     assert.deepEqual(actual,routes,`${file}: shared navigation cases must match the complete menu`);
-    assert.deepEqual([...nav[0].matchAll(/<a\b[^>]*class="[^"]*\bl\b[^"]*"[^>]*href="([^"]+)"/g)].map(m=>m[1]),[...navigation.primary,navigation.action],`${file}: five categories and one action`);
-    assert.match(nav[0],/href="about\.html">About Erlend<\/a>|href="about\.html" aria-current="page">About Erlend<\/a>/,file);
+    assert.deepEqual([...nav[0].matchAll(/<a\b[^>]*class="[^"]*\bl\b[^"]*"[^>]*href="([^"]+)"/g)].map(m=>m[1]),[...navigation.primary,navigation.action],`${file}: Home, four categories and the Work with me action`);
+    assert.match(nav[0],/class="l(?: cur on)? nav-work" href="about\.html"(?: aria-current="page")?>Work with me <span aria-hidden="true">→<\/span><\/a>/,file);
+    assert.doesNotMatch(nav[0],/href="workshop\.html"/,`${file}: the workshop is an offer on Approach, Home and About, not a main-menu action`);
     assert.equal((nav[0].match(/class="nav-toggle"/g)||[]).length,2,file);
     const footer=html.match(/<footer\b[\s\S]*?<\/footer>/i);assert.ok(footer,`${file}: footer missing`);
     assert.match(footer[0],/href="about\.html">Contact<\/a>/,file);assert.doesNotMatch(nav[0],/about\.html#/,file);

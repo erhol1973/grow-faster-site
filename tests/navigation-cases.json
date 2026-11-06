@@ -2,13 +2,12 @@
   "home": "index.html",
   "primary": [
     "index.html",
+    "insights.html",
     "coherence.html",
     "approach.html",
-    "insights.html",
-    "insights.html#executive-journal",
-    "about.html"
+    "transformation.html"
   ],
-  "action": "workshop.html",
+  "action": "about.html",
   "groups": {
     "coherence.html": [
       "books.html",
@@ -24,13 +23,13 @@
   },
   "pages": [
     "index.html",
+    "insights.html",
     "coherence.html",
     "value.html",
     "process.html",
     "operating-model.html",
     "approach.html",
-    "workshop.html",
-    "insights.html",
+    "transformation.html",
     "about.html",
     "books.html"
   ]

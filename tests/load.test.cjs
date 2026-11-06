@@ -1,6 +1,6 @@
 const {test}=require('node:test');
 const assert=require('node:assert/strict');
-const {summarize,routes}=require('../scripts/load.cjs');
+const {summarize,routes,REQUESTS_PER_WORKER}=require('../scripts/load.cjs');
 const sample=(latencyMs=20,status=200,expected=200)=>({route:'/about.html',latencyMs,status,expected});
 test('load policy accepts valid responses, including an expected negative 404',()=>{
   const result=summarize([sample(),{...sample(25,404,404),route:'/missing.html'}],['/about.html','/missing.html']);
@@ -23,4 +23,9 @@ test('95th percentile uses the agreed nearest rank and blocks a slow run',()=>{
 test('load scenarios include every menu destination and one negative route',()=>{
   for(const page of require('./navigation-cases.json').pages)assert.ok(routes.some(r=>r.route==='/'+page&&r.status===200));
   assert.ok(routes.some(r=>r.status===404));assert.equal(new Set(routes.map(r=>r.route)).size,routes.length);
+});
+test('every worker reaches every load route at least once, without lowering the original 36 requests',()=>{
+  assert.ok(REQUESTS_PER_WORKER>=36);assert.ok(REQUESTS_PER_WORKER>=routes.length);
+  assert.ok(routes.some(r=>r.route==='/assets/journal.css'&&r.status===200));
+  assert.ok(routes.some(r=>r.route==='/workshop.html'&&r.status===200),'the workshop left the menu but keeps load coverage');
 });

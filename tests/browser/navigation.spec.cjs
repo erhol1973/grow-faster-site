@@ -1,12 +1,12 @@
 const {test,expect}=require('playwright/test');
-const copy={en:{primary:['Home','Enterprise Coherence','Approach','Insights','Executive Journal','About Erlend'],workshop:'Workshop',value:'AI & business value',eca:'Coherence assessment (ECA)'},nl:{primary:['Home','Enterprise Coherence','Aanpak','Inzichten','Executive Journal','Over Erlend'],workshop:'Werksessie',value:'AI & bedrijfswaarde',eca:'Coherentiescan (ECA)'},fr:{primary:['Accueil','Enterprise Coherence','Approche','Analyses','Executive Journal','À propos d’Erlend'],workshop:'Atelier',value:'IA & valeur métier',eca:'Diagnostic de cohérence (ECA)'}};
+const copy={en:{primary:['Home','Executive Journal','Enterprise Coherence','Approach','Track record'],work:'Work with me',value:'AI & business value',eca:'Coherence assessment (ECA)'},nl:{primary:['Home','Executive Journal','Enterprise Coherence','Aanpak','Trackrecord'],work:'Samenwerken',value:'AI & bedrijfswaarde',eca:'Coherentiescan (ECA)'},fr:{primary:['Accueil','Executive Journal','Enterprise Coherence','Approche','Parcours'],work:'Collaborer',value:'IA & valeur métier',eca:'Diagnostic de cohérence (ECA)'}};
 async function seed(page,lang='nl'){await page.addInitScript(l=>{localStorage.setItem('avs-lang',l);localStorage.setItem('avs-consent',JSON.stringify({v:4,ext:false,ana:false,ts:Date.now()}))},lang)}
 async function activate(locator,info){if(info.project.use.isMobile)await locator.tap();else await locator.click()}
 async function openMenu(page,info){if(await page.locator('#burger').isVisible()&&!await page.locator('#navlist').isVisible())await activate(page.locator('#burger'),info)}
-for(const [lang,text]of Object.entries(copy))test('Home plus five navigation categories, grouped depth and direct ECA route in '+lang,async({page},info)=>{
+for(const [lang,text]of Object.entries(copy))test('Home plus four navigation categories, grouped depth and direct ECA route in '+lang,async({page},info)=>{
  await seed(page,lang);await page.goto('/index.html');await openMenu(page,info);
- await expect(page.locator('#navlist a.l:not(.nav-workshop)')).toHaveText(text.primary);
- await expect(page.locator('#navlist .nav-workshop')).toHaveAccessibleName(text.workshop);
+ await expect(page.locator('#navlist a.l:not(.nav-work)')).toHaveText(text.primary);
+ await expect(page.locator('#navlist .nav-work')).toHaveAccessibleName(text.work);
  await expect(page.locator('.nav .brand')).toHaveAttribute('href','index.html');
  if(await page.locator('.nav').evaluate(e=>e.classList.contains('open')))await expect.poll(()=>page.locator('.nav').evaluate(e=>getComputedStyle(e).backgroundColor)).toBe('rgb(255, 255, 255)');else{await expect(page.locator('html')).toHaveClass(/nav-over/);await expect.poll(()=>page.locator('#navlist .nav-parent>a.l').first().evaluate(e=>getComputedStyle(e).color)).toBe('rgb(255, 255, 255)');}
  const toggle=page.locator('[aria-controls="nav-coherence"]');await activate(toggle,info);await expect(toggle).toHaveAttribute('aria-expanded','true');
@@ -28,11 +28,11 @@ test('disclosure keyboard focus, Escape, outside click and language choice close
  await openMenu(page,info);await coherence.click();await page.mouse.click(4,page.viewportSize().height-4);await expect(page.locator('#nav-coherence')).toBeHidden();
  if(await page.locator('#burger').isVisible()){await openMenu(page,info);await page.keyboard.press('Escape');await expect(page.locator('#navlist')).toBeHidden();await expect(page.locator('#burger')).toBeFocused()}
 });
-test('resizing keeps a single workshop action first on mobile and restores desktop order',async({page})=>{
+test('resizing keeps a single Work with me action first on mobile and restores desktop order',async({page})=>{
  await seed(page,'fr');await page.setViewportSize({width:1440,height:900});await page.goto('/index.html');
  await expect(page.locator('#burger')).toBeHidden();await expect(page.locator('#navlist >li').last()).toHaveClass('nav-action');
  await page.locator('[aria-controls="nav-coherence"]').click();await page.setViewportSize({width:320,height:568});await expect(page.locator('#burger')).toBeVisible();await page.locator('#burger').click();
- await expect(page.locator('#navlist >li').first()).toHaveClass('nav-action');await expect(page.locator('#navlist .nav-workshop')).toHaveCount(1);await expect(page.locator('#nav-coherence')).toBeHidden();
+ await expect(page.locator('#navlist >li').first()).toHaveClass('nav-action');await expect(page.locator('#navlist .nav-work')).toHaveCount(1);await expect(page.locator('#nav-coherence')).toBeHidden();
  await page.locator('[aria-controls="nav-approach"]').click();const box=await page.locator('#nav-approach').boundingBox();expect(box.x).toBeGreaterThanOrEqual(0);expect(box.x+box.width).toBeLessThanOrEqual(321);
  expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1)).toBe(true);
  await page.setViewportSize({width:1440,height:900});await expect(page.locator('#navlist >li').last()).toHaveClass('nav-action');await expect(page.locator('#nav-approach')).toBeHidden();await expect(page.locator('#burger')).toHaveAttribute('aria-expanded','false');

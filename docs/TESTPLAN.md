@@ -1,5 +1,8 @@
 # Testplan en kwaliteitsbeleid
 
+## Maandelijks Executive Journal
+De browsertest volgt Executive Journal vanaf Home, schakelt NL/FR op dezelfde pagina en controleert bronlinks en de cartoon. De lokale belastingtest bezoekt per worker minstens eenmaal elke route, inclusief beide taalversies en de nieuwe lezerbestanden. Het bestaande minimum en de p95-drempel blijven van kracht.
+
 ## Blauwe executive preview, 4 november 2026
 
 De negen aangeleverde pagina's van The Coherent Enterprise vervangen de oude oranje/koperen PDF op dezelfde URL. De knoppen op Home, Boeken en Over Erlend openen een afzonderlijke flipbookroute. Checksums bewaken de exacte PDF en de negen gerenderde afbeeldingen; browserregressies controleren de Nederlandse knop, mobiel/desktop, bladeren, laatste pagina, vergroten, focusherstel, fallback en WCAG. De bestaande handbookreader blijft apart getest. De lokale loadlijst voegt de nieuwe route, eerste/laatste afbeelding en PDF toe binnen de bestaande 36 verzoeken per worker en ongewijzigde latencygrens.
@@ -164,3 +167,13 @@ The home hero states the role (Enterprise & AI Transformation Lead) and availabi
 Home is now the first item of the main menu on every page; `tests/navigation-cases.json` lists it first among the primary routes, so HTTP navigation, Contact, accessibility, load and performance coverage follow automatically. `scripts/verify-production.cjs` now expects Home plus four categories.
 
 Both books on `books.html` share the same structure (cover, label, title, subtitle, summary, three takeaways, action, meta, access) and are shown as 3D book objects. *Design for Coherence* uses a new transparent mockup (`img/design-for-coherence-book-*.png/.webp`) on Home, About and Books. Coverage: `tests/books.test.cjs`.
+
+## Executive Journal, trackrecord en menu, 6 november 2026 (demo-branch)
+
+Doel: de site richt zich op werkgevers en recruiters. Het hoofdmenu bevat nu Home, Executive Journal (insights.html), Enterprise Coherence (groep), Aanpak (groep) en Trackrecord (transformation.html), plus één actie: Samenwerken (about.html). Contact opent nog steeds about.html bovenaan, zonder fragment. De werksessie is bewust geen menu-actie meer. Ze blijft bereikbaar via de Aanpak-hero, Home, Over Erlend, de footer en de ECA-uitslag. `navigation-cases.json` is bijgewerkt. workshop.html staat niet meer in `pages`, omdat het geen menubestemming meer is. Daarom is de pagina expliciet toegevoegd aan de axe-routes, het 85KB-HTML-budget en de lokale loadroutes. De workshopspecificatie controleert nu dat het menu géén workshoplink bevat en dat de Aanpak-hero zonder scrollen naar de werksessie leidt. De Contact-route vanaf de werksessie blijft gedekt via de bestaande gedeelde-navigatiecasus in workshop.spec.
+
+Executive Journal in HBR-stijl: één hoofdartikel en daarna de nieuwste stukken. Elk artikel opent met een blok "In het kort" (probleem, oorzaak, actie) en sluit af met een auteursblok dat naar de werkroutes en het trackrecord verwijst. De drie meertalige artikels hebben dat blok per taal; de overige drie gebruiken I18N. `journal.css` (eigen budget van 6KB, zonder externe requests) bevat de redactionele laag. site.css bleef onder 125KB. De serif is een systeemletter, dus er wordt geen extra lettertype geladen. De homepage toont ervaring (een strook met organisaties) direct na de hero en drie journal-artikels na het geselecteerde artikel. #selected-insight behoudt precies één link voor de bestaande Firefox-scrollcasus. transformation.html heeft een ankerbaar trackrecord (#track-record) met jaartallen, certificeringen en opleiding. De klasse heet `career`, omdat `.track` al in site.css bestaat.
+
+Lokaal kregen de bestaande 36 routes er de journal-stylesheet en de werksessie bij. Elke worker doet daarom `max(36, routes)` verzoeken; daarmee wordt elke route minstens één keer bezocht (296 in totaal). Er is geen grens verlaagd. Lighthouse meet nu ook insights.html. De Franse menuvertaling van "Work with me" is "Collaborer", omdat "Travailler ensemble" op 1440px het compacte menu forceerde.
+
+Lokaal bewijs: 79 unit-/HTTP-tests, artifact-security, load (296/0 fouten) en Chromium desktop/mobiel (volledige suite) slagen met de systeem-Chrome. Firefox, WebKit, Lighthouse en CI zijn lokaal niet gedraaid en blijven voorwaarden voor vrijgave. Inhoudelijke goedkeuring door de eigenaar volgt vóór publicatie, in het bijzonder voor de jaartallen en rollen in het trackrecord en de samenvattingen in "In het kort".

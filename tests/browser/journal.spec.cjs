@@ -5,8 +5,8 @@ test('monthly journal opens from its menu and preserves page when switching lang
  await page.goto('/index.html');
  const burger=page.locator('#burger');
  if(await burger.isVisible())await burger.click();
- await page.locator('#navlist a[href="insights.html#executive-journal"]').click();
- await expect(page).toHaveURL(/insights\.html#executive-journal$/);
+ await page.locator('#navlist a[href="insights.html"]').click();
+ await expect(page).toHaveURL(/insights\.html$/);
  await page.getByRole('link',{name:'Lees editie 01'}).click();
  await expect(page.locator('html')).toHaveAttribute('lang','nl');
  await expect(page.locator('.sheet:visible')).toHaveAttribute('id','p1');

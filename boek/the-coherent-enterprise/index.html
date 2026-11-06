@@ -1,44 +1,1310 @@
 <!DOCTYPE html>
-<html lang="nl">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Coherent Enterprise — Lees de preview</title>
-
-<link rel="stylesheet" href="../../assets/book-reader.css">
-<link rel="canonical" href="https://grow-faster.be/boek/the-coherent-enterprise/index.html">
-<meta name="description" content="Read the nine-page executive preview of The Coherent Enterprise by Erlend Hollebosch in the online flipbook, or download the PDF.">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>The Coherent Enterprise</title>
+<meta name="description" content="Executive preview of The Coherent Enterprise — why complexity is quietly breaking modern organisations and how to move with coherence, by Erlend Hollebosch.">
+<meta property="og:title" content="The Coherent Enterprise — Executive Preview">
+<meta property="og:description" content="An executive preview of The Coherent Enterprise by Erlend Hollebosch: why complexity is quietly breaking modern organisations and how to move with coherence.">
+<meta property="og:type" content="book">
+<link rel="icon" href="../../favicon.ico">
+<style>
+:root { padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); }
+html, body { margin: 0; } [hidden] { display: none !important; }
+.order-link { font-family: var(--ui); font-size: 13px; font-weight: 600; color: var(--bar-ink); text-decoration: none; padding: 9px 14px; border-radius: 999px; box-shadow: inset 0 0 0 1px var(--rule); margin: 0 6px; white-space: nowrap; }
+.order-link:hover { background: var(--chip); }
+.noscript { padding: 24px; font-family: system-ui, sans-serif; }
+</style>
 </head>
-<body data-book="coherent-enterprise">
+<body>
+<noscript><div class="noscript">This flipbook needs JavaScript. Read the preview as a PDF instead: <a href="pdf/the-coherent-enterprise-executive-preview.pdf">download the executive preview</a> or <a href="../../about.html#foundation-book">request the manuscript</a>.</div></noscript>
+<style>
+/* Layout: a reading desk — slim top bar, the book centred on the desk, a slim bottom bar; drawers slide over the desk. */
+:root {
+  --navy: #0A2342; --azure: #0078D4; --azure-ink: #005A9E; --sky: #DCEEFF;
+  --paper: #FFFFFF; --ink: #1A2433; --muted: #5B6B80; --rule: #D5DEE8;
+  --desk: #E9EEF4; --bar: rgba(255,255,255,.86); --bar-ink: #0A2342; --bar-line: rgba(10,35,66,.10);
+  --chip: #F1F5FA; --mark: #FFE58A; --mark-ink: #1A2433;
+  --good: #17734A; --warn: #C98A0B; --crit: #B23A2A;
+  --cover: #0A2342; --cover-ink: #FFFFFF; --cover-soft: #9DB8D9;
+  --shadow: 0 18px 48px rgba(10,35,66,.22);
+  --display: "Avenir Next", "SF Pro Display", "Montserrat", "Helvetica Neue", Arial, sans-serif;
+  --body: "Avenir", "Inter", "Source Sans Pro", "Helvetica Neue", Arial, sans-serif;
+  --ui: "Inter", "Avenir", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --navy: #0A2342; --azure: #4DA3FF; --azure-ink: #7FC1FF; --sky: #16294A;
+  --paper: #121C2E; --ink: #E8EEF6; --muted: #9FB0C6; --rule: #26344D;
+  --desk: #0B1220; --bar: rgba(13,21,36,.88); --bar-ink: #E8EEF6; --bar-line: rgba(232,238,246,.10);
+  --chip: #1A2740; --mark: #7A5E00; --mark-ink: #FFF7D6;
+  --good: #3DBB82; --warn: #E3AE3C; --crit: #E8705E;
+  --cover: #0A2342; --cover-ink: #FFFFFF; --cover-soft: #9DB8D9;
+  --shadow: 0 18px 48px rgba(0,0,0,.5); color-scheme: dark; } }
+:root[data-theme="dark"] {
+  --navy: #0A2342; --azure: #4DA3FF; --azure-ink: #7FC1FF; --sky: #16294A;
+  --paper: #121C2E; --ink: #E8EEF6; --muted: #9FB0C6; --rule: #26344D;
+  --desk: #0B1220; --bar: rgba(13,21,36,.88); --bar-ink: #E8EEF6; --bar-line: rgba(232,238,246,.10);
+  --chip: #1A2740; --mark: #7A5E00; --mark-ink: #FFF7D6;
+  --good: #3DBB82; --warn: #E3AE3C; --crit: #E8705E;
+  --cover: #0A2342; --cover-ink: #FFFFFF; --cover-soft: #9DB8D9;
+  --shadow: 0 18px 48px rgba(0,0,0,.5); color-scheme: dark; }
 
-<header>
-  <div class="brand">
-    <span class="title">THE COHERENT ENTERPRISE</span>
-    <span class="sub">Erlend Hollebosch · Executive preview</span>
+html, body { height: 100%; }
+body { background: var(--desk); color: var(--ink); font-family: var(--ui); overflow: hidden; }
+*, *::before, *::after { box-sizing: border-box; }
+button { font: inherit; color: inherit; }
+:focus-visible { outline: 2px solid var(--azure); outline-offset: 2px; }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+/* ---------- App frame ---------- */
+.app { height: 100%; display: grid; grid-template-rows: auto 1fr auto; grid-template-columns: minmax(0, 1fr); }
+.bar { display: flex; align-items: center; gap: 6px; background: var(--bar); color: var(--bar-ink);
+  backdrop-filter: saturate(1.4) blur(14px); -webkit-backdrop-filter: saturate(1.4) blur(14px);
+  padding-left: max(12px, env(safe-area-inset-left, 0px)); padding-right: max(12px, env(safe-area-inset-right, 0px));
+  padding-block: 6px; z-index: 20; transition: opacity .3s ease, transform .3s ease; }
+.top { border-bottom: 1px solid var(--bar-line); }
+.bottom { border-top: 1px solid var(--bar-line); }
+.brand { display: flex; align-items: center; gap: 10px; min-width: 0; flex: 1; }
+.brand-mark { width: 30px; height: 30px; border-radius: 8px; background: var(--navy); display: grid; place-items: center; flex: none; }
+.brand-text { min-width: 0; line-height: 1.2; }
+.brand-text b { display: block; font-family: var(--display); font-weight: 700; font-size: 14px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.brand-text span { display: block; font-size: 12px; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.tools { display: flex; align-items: center; gap: 2px; flex: none; }
+.sep { width: 1px; height: 22px; background: var(--bar-line); margin: 0 4px; }
+.ib { position: relative; width: 44px; height: 44px; border-radius: 999px; border: 0; background: transparent; display: grid; place-items: center; cursor: pointer;
+  transition: background .15s ease, transform .15s ease; flex: none; }
+.ib:hover { background: var(--chip); }
+.ib:active { transform: scale(.94); }
+.ib[aria-pressed="true"] { background: var(--sky); color: var(--azure-ink); }
+.ib svg { width: 20px; height: 20px; }
+.ib[data-tip]::after { content: attr(data-tip); position: absolute; top: calc(100% + 6px); left: 50%; transform: translate(-50%, -4px);
+  background: var(--navy); color: #fff; font-size: 12px; font-weight: 500; padding: 5px 8px; border-radius: 6px; white-space: nowrap;
+  opacity: 0; pointer-events: none; transition: opacity .15s ease .4s, transform .15s ease .4s; z-index: 40; }
+.bottom .ib[data-tip]::after { top: auto; bottom: calc(100% + 6px); transform: translate(-50%, 4px); }
+.ib[data-tip]:hover::after, .ib[data-tip]:focus-visible::after { opacity: 1; transform: translate(-50%, 0); }
+.ib.tip-r[data-tip]::after { left: auto; right: 0; transform: translate(0, -4px); }
+.bottom .ib.tip-r[data-tip]::after { transform: translate(0, 4px); }
+.ib.tip-l[data-tip]::after { left: 0; transform: translate(0, 4px); }
+.ib.tip-r[data-tip]:hover::after, .ib.tip-r[data-tip]:focus-visible::after, .ib.tip-l[data-tip]:hover::after, .ib.tip-l[data-tip]:focus-visible::after { transform: translate(0, 0); }
+
+.nav { display: flex; align-items: center; gap: 8px; flex: 1; min-width: 0; }
+.counter { font-variant-numeric: tabular-nums; font-size: 13px; font-weight: 600; white-space: nowrap; }
+.progress { flex: 1; min-width: 60px; display: grid; gap: 4px; }
+.progress-track { height: 4px; border-radius: 4px; background: var(--rule); overflow: hidden; }
+.progress-fill { height: 100%; width: 0; background: var(--azure); border-radius: 4px; transition: width .4s ease; }
+.progress-meta { display: flex; justify-content: space-between; gap: 8px; font-size: 11.5px; color: var(--muted); font-variant-numeric: tabular-nums; }
+.progress-meta span { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.zoom { display: flex; align-items: center; gap: 2px; }
+.zoomval { font-size: 12px; font-variant-numeric: tabular-nums; width: 42px; text-align: center; color: var(--muted); }
+
+/* ---------- Stage ---------- */
+.stage { position: relative; overflow: hidden; display: grid; place-items: center; min-height: 0; }
+.stage.zoomed { overflow: auto; place-items: start; cursor: grab; }
+.stage.zoomed.panning { cursor: grabbing; }
+.zoomwrap { position: relative; }
+.zoomwrap.zoomed-in #book { pointer-events: none; }
+#book { transform-origin: 0 0; }
+#book .stf__parent { margin: 0 auto; }
+.stage::before { content: ""; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 45%, var(--paper) 0%, transparent 70%); opacity: .35; pointer-events: none; }
+.edge { position: absolute; top: 50%; transform: translateY(-50%); z-index: 5; width: 48px; height: 96px; border: 0; background: transparent; cursor: pointer; border-radius: 12px; opacity: .55; transition: opacity .2s, background .2s; display: grid; place-items: center; color: var(--muted); }
+.edge:hover { opacity: 1; background: var(--chip); }
+.edge svg { width: 26px; height: 26px; }
+.edge.prev { left: max(8px, env(safe-area-inset-left, 0px)); }
+.edge.next { right: max(8px, env(safe-area-inset-right, 0px)); }
+.hint { position: absolute; bottom: 14px; left: 50%; transform: translateX(-50%); background: var(--navy); color: #fff; font-size: 12.5px; padding: 8px 14px; border-radius: 999px; z-index: 6; box-shadow: var(--shadow); display: flex; gap: 10px; align-items: center; }
+.hint button { background: transparent; border: 1px solid rgba(255,255,255,.4); color: #fff; border-radius: 999px; padding: 4px 10px; cursor: pointer; font-size: 12px; }
+
+/* page container (StPageFlip item) */
+.page { background: var(--paper); container-type: inline-size; overflow: hidden; }
+.page.hard { background: var(--cover); }
+.stf__item { box-shadow: inset 0 0 0 1px var(--rule), 0 14px 34px rgba(10,35,66,.16); }
+
+/* ---------- Text view ---------- */
+#textview { position: absolute; inset: 0; overflow: auto; padding-block: 24px 64px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+.tv-page { max-width: 720px; margin: 0 auto 20px; border-radius: 10px; overflow: hidden; box-shadow: 0 2px 10px rgba(10,35,66,.08); container-type: normal; }
+.tv-page .pg { --u: clamp(4.4px, 1.15vw + 1.6px, 6.4px); height: auto !important; min-height: 0; }
+.tv-page .pg .cover-art { display: none; }
+.tv-page .pg.cover, .tv-page .pg.back { min-height: calc(90 * var(--u)); }
+
+/* ---------- Page design (all sizes scale with --u = 1% of page width) ---------- */
+.pg { --u: calc(1cqw * var(--k, 1)); position: relative; width: 100%; height: 100%; display: flex; flex-direction: column; gap: calc(2.2 * var(--u));
+  padding: calc(7 * var(--u)) calc(7.5 * var(--u)) calc(5 * var(--u)); font-family: var(--body); font-size: calc(2.02 * var(--u)); line-height: 1.5;
+  color: var(--ink); background: var(--paper); overflow: hidden; }
+.pg p { margin: 0; }
+.pg strong { font-weight: 700; color: var(--navy); }
+:root[data-theme="dark"] .pg strong { color: var(--azure-ink); }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .pg strong { color: var(--azure-ink); } }
+.kicker { font-family: var(--display); font-weight: 700; font-size: calc(1.5 * var(--u)); letter-spacing: calc(.22 * var(--u)); text-transform: uppercase; color: var(--azure-ink); }
+.pg h1 { font-family: var(--display); font-weight: 800; font-size: calc(4.5 * var(--u)); line-height: 1.08; letter-spacing: calc(-.06 * var(--u)); color: var(--navy); margin: 0; text-wrap: balance; }
+.pg h2 { font-family: var(--display); font-weight: 700; font-size: calc(2.45 * var(--u)); line-height: 1.25; color: var(--navy); margin: 0; text-wrap: balance; }
+.pg h3 { font-family: var(--display); font-weight: 700; font-size: calc(1.95 * var(--u)); line-height: 1.3; color: var(--navy); margin: 0; }
+:root[data-theme="dark"] .pg :is(h1,h2,h3) { color: #F2F6FB; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .pg :is(h1,h2,h3) { color: #F2F6FB; } }
+.rule { width: calc(8 * var(--u)); height: calc(.45 * var(--u)); background: var(--azure); border-radius: 2px; }
+.head { display: grid; gap: calc(1.3 * var(--u)); position: relative; }
+.chno { position: absolute; right: calc(-1 * var(--u)); top: calc(-3.2 * var(--u)); font-family: var(--display); font-weight: 800; font-size: calc(15 * var(--u)); line-height: 1; color: var(--sky); z-index: 0; letter-spacing: calc(-.5 * var(--u)); }
+.chno::after { content: attr(data-n); }
+.head > :not(.chno) { position: relative; z-index: 1; }
+.head:has(.chno) h1 { max-width: 76%; }
+.lead { font-size: calc(2.3 * var(--u)); line-height: 1.45; color: var(--ink); }
+.small { font-size: calc(1.6 * var(--u)); color: var(--muted); line-height: 1.45; }
+.stack { display: grid; gap: calc(1.4 * var(--u)); }
+.foot { margin-top: auto; display: flex; justify-content: space-between; align-items: center; padding-top: calc(1.6 * var(--u)); border-top: 1px solid var(--rule); font-size: calc(1.3 * var(--u)); color: var(--muted); letter-spacing: calc(.12 * var(--u)); text-transform: uppercase; font-family: var(--ui); }
+.foot b { color: var(--navy); font-weight: 700; font-variant-numeric: tabular-nums; }
+:root[data-theme="dark"] .foot b { color: var(--azure-ink); }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .foot b { color: var(--azure-ink); } }
+
+/* pull quote: navy panel, white type */
+.quote { background: var(--navy); color: #fff; border-radius: calc(1.4 * var(--u)); padding: calc(3 * var(--u)) calc(3.4 * var(--u)) calc(3 * var(--u)) calc(6.4 * var(--u)); position: relative;
+  font-family: var(--display); font-weight: 600; font-size: calc(2.7 * var(--u)); line-height: 1.35; }
+.quote::before { content: "\201C"; position: absolute; left: calc(2.2 * var(--u)); top: calc(1 * var(--u)); font-size: calc(7 * var(--u)); line-height: 1; color: #4DA3FF; font-family: Georgia, serif; }
+.quote cite { display: block; margin-top: calc(1.2 * var(--u)); font-style: normal; font-family: var(--ui); font-weight: 500; font-size: calc(1.4 * var(--u)); color: #9DB8D9; letter-spacing: calc(.1 * var(--u)); text-transform: uppercase; }
+/* executive insight panel */
+.insight { background: var(--navy); color: #E8EEF6; border-radius: calc(1.2 * var(--u)); padding: calc(2.4 * var(--u)) calc(3 * var(--u)); display: grid; gap: calc(.8 * var(--u)); border-left: calc(.8 * var(--u)) solid #4DA3FF; font-size: calc(1.85 * var(--u)); line-height: 1.5; }
+.insight .lbl { font-family: var(--display); font-weight: 700; font-size: calc(1.35 * var(--u)); letter-spacing: calc(.2 * var(--u)); text-transform: uppercase; color: #7FC1FF; }
+.insight strong { color: #fff; }
+/* key takeaways */
+.take { background: var(--sky); border-radius: calc(1.2 * var(--u)); padding: calc(2.3 * var(--u)) calc(3 * var(--u)); display: grid; gap: calc(1 * var(--u)); }
+.take .lbl { font-family: var(--display); font-weight: 800; font-size: calc(1.4 * var(--u)); letter-spacing: calc(.24 * var(--u)); text-transform: uppercase; color: var(--azure-ink); }
+.take ul { margin: 0; padding: 0; list-style: none; display: grid; gap: calc(.7 * var(--u)); }
+.take li { display: grid; grid-template-columns: calc(2.2 * var(--u)) 1fr; gap: calc(.8 * var(--u)); font-size: calc(1.8 * var(--u)); line-height: 1.42; color: var(--ink); }
+.take li::before { content: ""; width: calc(1.5 * var(--u)); height: calc(.8 * var(--u)); border-left: calc(.38 * var(--u)) solid var(--azure); border-bottom: calc(.38 * var(--u)) solid var(--azure); transform: translateY(calc(.45 * var(--u))) rotate(-45deg); }
+/* framework card */
+.frame { background: var(--sky); border-radius: calc(1.4 * var(--u)); padding: calc(2.6 * var(--u)) calc(3 * var(--u)); display: grid; gap: calc(1.6 * var(--u)); }
+.frame-label { font-family: var(--display); font-weight: 800; font-size: calc(1.4 * var(--u)); letter-spacing: calc(.24 * var(--u)); text-transform: uppercase; color: var(--azure-ink); }
+.prop { display: grid; grid-template-columns: calc(5 * var(--u)) 1fr; gap: calc(1.6 * var(--u)); align-items: start; padding-top: calc(1.4 * var(--u)); border-top: 1px solid color-mix(in srgb, var(--azure) 25%, transparent); }
+.prop:first-of-type { border-top: 0; padding-top: 0; }
+.prop .n { width: calc(5 * var(--u)); height: calc(5 * var(--u)); border-radius: 50%; background: var(--navy); color: #fff; display: grid; place-items: center; font-family: var(--display); font-weight: 800; font-size: calc(2 * var(--u)); }
+.prop h3 { margin-bottom: calc(.3 * var(--u)); }
+.prop p { font-size: calc(1.8 * var(--u)); }
+.prop .fail { display: inline-block; margin-top: calc(.6 * var(--u)); font-size: calc(1.4 * var(--u)); font-weight: 600; color: var(--azure-ink); letter-spacing: calc(.05 * var(--u)); }
+/* tiles */
+.tiles { display: grid; grid-template-columns: 1fr 1fr; gap: calc(1.8 * var(--u)); }
+.tiles.three { grid-template-columns: 1fr 1fr 1fr; }
+.tile { border: 1px solid var(--rule); border-radius: calc(1.2 * var(--u)); padding: calc(2.2 * var(--u)) calc(2.4 * var(--u)); display: grid; gap: calc(.6 * var(--u)); align-content: start; background: var(--paper); }
+.tile .big { font-family: var(--display); font-weight: 800; font-size: calc(5.6 * var(--u)); line-height: 1; color: var(--azure); letter-spacing: calc(-.12 * var(--u)); font-variant-numeric: tabular-nums; }
+.tiles.three .tile .big { font-size: calc(4 * var(--u)); }
+.tile .what { font-size: calc(1.8 * var(--u)); line-height: 1.4; color: var(--ink); font-weight: 500; }
+.tile .src { font-size: calc(1.35 * var(--u)); color: var(--muted); letter-spacing: calc(.08 * var(--u)); text-transform: uppercase; }
+/* nine voices */
+.voices { display: grid; grid-template-columns: repeat(3, 1fr); gap: calc(1.4 * var(--u)); }
+.voice { border-top: calc(.5 * var(--u)) solid var(--navy); background: var(--chip); border-radius: 0 0 calc(1 * var(--u)) calc(1 * var(--u)); padding: calc(1.6 * var(--u)) calc(1.8 * var(--u)) calc(1.8 * var(--u)); display: grid; gap: calc(.6 * var(--u)); align-content: start; }
+.voice:first-child { border-top-color: var(--azure); }
+.voice b { font-family: var(--display); font-weight: 800; font-size: calc(1.5 * var(--u)); letter-spacing: calc(.16 * var(--u)); text-transform: uppercase; color: var(--azure-ink); }
+.voice span { font-size: calc(1.7 * var(--u)); line-height: 1.38; }
+/* signals */
+.signals { display: grid; grid-template-columns: repeat(3, 1fr); gap: calc(1.6 * var(--u)); }
+.signal { border: 1px solid var(--rule); border-radius: calc(1.2 * var(--u)); padding: calc(2 * var(--u)); display: grid; gap: calc(.8 * var(--u)); align-content: start; }
+.signal svg { width: calc(4.4 * var(--u)); height: calc(4.4 * var(--u)); color: var(--azure); }
+.signal h3 { font-size: calc(1.85 * var(--u)); }
+.signal p { font-size: calc(1.65 * var(--u)); line-height: 1.4; color: var(--muted); }
+/* argument ladder */
+.ladder { display: grid; gap: calc(1.2 * var(--u)); counter-reset: step; }
+.rung { display: grid; grid-template-columns: calc(6.4 * var(--u)) 1fr; gap: calc(2 * var(--u)); align-items: center; padding: calc(1.8 * var(--u)) calc(2.2 * var(--u)); border-radius: calc(1.2 * var(--u)); background: var(--chip); }
+.rung:nth-child(odd) { background: var(--sky); }
+.rung .n { font-family: var(--display); font-weight: 800; font-size: calc(3.6 * var(--u)); color: var(--azure); line-height: 1; }
+.rung h3 { font-size: calc(2.05 * var(--u)); }
+.rung p { font-size: calc(1.72 * var(--u)); line-height: 1.42; margin-top: calc(.3 * var(--u)); }
+/* chapter list on contents page */
+.toc { list-style: none; margin: 0; padding: 0; display: grid; }
+.toc button { all: unset; box-sizing: border-box; width: 100%; display: grid; grid-template-columns: calc(6.5 * var(--u)) 1fr auto; align-items: baseline; gap: calc(1.4 * var(--u));
+  padding: calc(1.75 * var(--u)) calc(.6 * var(--u)); border-bottom: 1px solid var(--rule); cursor: pointer; transition: background .15s ease, padding .2s ease; border-radius: calc(.6 * var(--u)); }
+.toc button:hover { background: var(--chip); padding-left: calc(1.4 * var(--u)); }
+.toc button:focus-visible { outline: 2px solid var(--azure); }
+.toc .n { font-family: var(--display); font-weight: 800; font-size: calc(2.6 * var(--u)); color: var(--azure); font-variant-numeric: tabular-nums; }
+.toc .t { font-family: var(--display); font-weight: 700; font-size: calc(2.2 * var(--u)); color: var(--navy); }
+:root[data-theme="dark"] .toc .t { color: #F2F6FB; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .toc .t { color: #F2F6FB; } }
+.toc .t small { display: block; font-family: var(--body); font-weight: 400; font-size: calc(1.55 * var(--u)); color: var(--muted); margin-top: calc(.2 * var(--u)); }
+.toc .p { font-size: calc(1.6 * var(--u)); color: var(--muted); font-variant-numeric: tabular-nums; }
+/* role routes */
+.routes { display: grid; grid-template-columns: 1fr 1fr; gap: calc(1.4 * var(--u)); }
+.route { all: unset; box-sizing: border-box; cursor: pointer; border: 1px solid var(--rule); border-radius: calc(1.2 * var(--u)); padding: calc(1.8 * var(--u)) calc(2 * var(--u)); display: grid; gap: calc(.5 * var(--u)); transition: border-color .15s ease, transform .15s ease, background .15s ease; }
+.route:hover { border-color: var(--azure); background: var(--chip); transform: translateY(-1px); }
+.route:focus-visible { outline: 2px solid var(--azure); }
+.route b { font-family: var(--display); font-weight: 800; font-size: calc(1.9 * var(--u)); color: var(--navy); }
+:root[data-theme="dark"] .route b { color: #F2F6FB; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .route b { color: #F2F6FB; } }
+.route span { font-size: calc(1.6 * var(--u)); line-height: 1.4; color: var(--muted); }
+.route em { font-style: normal; font-size: calc(1.4 * var(--u)); font-weight: 600; color: var(--azure-ink); }
+/* gates roadmap */
+.gates { display: grid; gap: 0; position: relative; }
+.gate { display: grid; grid-template-columns: calc(5 * var(--u)) 1fr calc(16 * var(--u)); gap: calc(2 * var(--u)); align-items: center; padding: calc(1.5 * var(--u)) 0; position: relative; }
+.gate + .gate { border-top: 1px dashed var(--rule); }
+.gate .dot { width: calc(4.2 * var(--u)); height: calc(4.2 * var(--u)); transform: rotate(45deg); border: calc(.35 * var(--u)) solid var(--azure); background: var(--paper); margin-left: calc(.4 * var(--u)); display: grid; place-items: center; }
+.gate .dot span { transform: rotate(-45deg); font-family: var(--display); font-weight: 800; font-size: calc(1.7 * var(--u)); color: var(--azure); }
+.gate:first-child .dot { background: var(--azure); }
+.gate:first-child .dot span { color: #fff; }
+.gate h3 { font-size: calc(2 * var(--u)); }
+.gate p { font-size: calc(1.62 * var(--u)); color: var(--muted); line-height: 1.4; margin-top: calc(.2 * var(--u)); }
+.gate .who { justify-self: end; text-align: right; display: grid; gap: calc(.3 * var(--u)); }
+.gate .who b { font-family: var(--display); font-weight: 800; font-size: calc(1.7 * var(--u)); color: var(--navy); background: var(--sky); padding: calc(.5 * var(--u)) calc(1.2 * var(--u)); border-radius: 999px; white-space: nowrap; }
+.gate .who i { font-style: normal; font-size: calc(1.35 * var(--u)); color: var(--muted); font-variant-numeric: tabular-nums; }
+/* heatmap */
+.heat { display: grid; grid-template-columns: calc(17 * var(--u)) repeat(3, 1fr); gap: calc(.6 * var(--u)); font-size: calc(1.5 * var(--u)); }
+.heat .hd { font-family: var(--display); font-weight: 700; font-size: calc(1.35 * var(--u)); letter-spacing: calc(.12 * var(--u)); text-transform: uppercase; color: var(--muted); padding: calc(.4 * var(--u)); align-self: end; line-height: 1.3; }
+.heat .row { font-weight: 600; padding: calc(1.2 * var(--u)) calc(.4 * var(--u)); color: var(--ink); }
+.heat .c { border-radius: calc(.6 * var(--u)); padding: calc(1.2 * var(--u)); color: #fff; font-weight: 700; font-size: calc(1.35 * var(--u)); letter-spacing: calc(.1 * var(--u)); text-transform: uppercase; display: flex; align-items: center; }
+.heat .r { background: var(--crit); } .heat .a { background: var(--warn); color: #1A2433; } .heat .g { background: var(--good); }
+/* autonomy ladder */
+.steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: calc(1.2 * var(--u)); align-items: end; }
+.stepc { border-radius: calc(1.2 * var(--u)) calc(1.2 * var(--u)) 0 0; padding: calc(1.8 * var(--u)); display: grid; gap: calc(.6 * var(--u)); align-content: start; }
+.stepc:nth-child(1) { background: var(--sky); min-height: calc(19 * var(--u)); }
+.stepc:nth-child(2) { background: color-mix(in srgb, var(--azure) 22%, var(--paper)); min-height: calc(24 * var(--u)); }
+.stepc:nth-child(3) { background: var(--navy); color: #fff; min-height: calc(29 * var(--u)); }
+.stepc .lv { font-family: var(--display); font-weight: 800; font-size: calc(1.35 * var(--u)); letter-spacing: calc(.2 * var(--u)); text-transform: uppercase; color: var(--azure-ink); }
+.stepc:nth-child(3) .lv { color: #7FC1FF; }
+.stepc h3 { font-size: calc(1.8 * var(--u)); }
+.stepc:nth-child(3) h3 { color: #fff !important; }
+.stepc p { font-size: calc(1.55 * var(--u)); line-height: 1.4; }
+.axis { display: flex; justify-content: space-between; font-size: calc(1.35 * var(--u)); color: var(--muted); letter-spacing: calc(.1 * var(--u)); text-transform: uppercase; border-top: calc(.3 * var(--u)) solid var(--rule); padding-top: calc(.8 * var(--u)); }
+/* moves */
+.moves { display: grid; grid-template-columns: repeat(4, 1fr); gap: calc(1 * var(--u)); }
+.move { background: var(--chip); padding: calc(1.8 * var(--u)) calc(1.6 * var(--u)) calc(1.8 * var(--u)) calc(2.6 * var(--u)); display: grid; gap: calc(.6 * var(--u)); align-content: start;
+  clip-path: polygon(0 0, calc(100% - 2.2 * var(--u)) 0, 100% 50%, calc(100% - 2.2 * var(--u)) 100%, 0 100%, calc(2.2 * var(--u)) 50%); }
+.move:first-child { clip-path: polygon(0 0, calc(100% - 2.2 * var(--u)) 0, 100% 50%, calc(100% - 2.2 * var(--u)) 100%, 0 100%); padding-left: calc(1.8 * var(--u)); background: var(--navy); color: #fff; }
+.move:first-child h3, .move:first-child .n { color: #fff !important; }
+.move .n { font-family: var(--display); font-weight: 800; font-size: calc(2.6 * var(--u)); color: var(--azure); line-height: 1; }
+.move h3 { font-size: calc(1.65 * var(--u)); }
+.move p { font-size: calc(1.45 * var(--u)); line-height: 1.38; }
+/* case */
+.case { display: grid; grid-template-columns: 1fr 1fr; gap: calc(2 * var(--u)); }
+.casecol { border-radius: calc(1.2 * var(--u)); padding: calc(2 * var(--u)); display: grid; gap: calc(1 * var(--u)); align-content: start; }
+.casecol.before { border: 1px dashed var(--muted); }
+.casecol.after { background: var(--sky); }
+.casecol .lbl { font-family: var(--display); font-weight: 800; font-size: calc(1.35 * var(--u)); letter-spacing: calc(.22 * var(--u)); text-transform: uppercase; color: var(--muted); }
+.casecol.after .lbl { color: var(--azure-ink); }
+.box { border-radius: calc(.8 * var(--u)); padding: calc(1.1 * var(--u)) calc(1.4 * var(--u)); font-size: calc(1.6 * var(--u)); line-height: 1.35; background: var(--paper); border: 1px solid var(--rule); }
+.box b { display: block; font-family: var(--display); font-size: calc(1.6 * var(--u)); color: var(--navy); }
+:root[data-theme="dark"] .box b { color: #F2F6FB; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .box b { color: #F2F6FB; } }
+.box.model { background: var(--navy); color: #fff; border-color: var(--navy); }
+.box.model b { color: #fff !important; }
+.flowline { justify-self: center; width: 1px; height: calc(1.6 * var(--u)); background: var(--muted); }
+.res { display: flex; gap: calc(1 * var(--u)); flex-wrap: wrap; }
+.res span { font-size: calc(1.45 * var(--u)); font-weight: 700; padding: calc(.5 * var(--u)) calc(1.2 * var(--u)); border-radius: 999px; background: var(--paper); color: var(--good); border: 1px solid var(--good); }
+/* tables */
+.tbl { width: 100%; border-collapse: collapse; font-size: calc(1.6 * var(--u)); line-height: 1.38; }
+.tbl th { text-align: left; font-family: var(--display); font-weight: 700; font-size: calc(1.3 * var(--u)); letter-spacing: calc(.14 * var(--u)); text-transform: uppercase; color: #fff; background: var(--navy); padding: calc(1 * var(--u)) calc(1.4 * var(--u)); }
+.tbl td { padding: calc(.95 * var(--u)) calc(1.4 * var(--u)); border-bottom: 1px solid var(--rule); vertical-align: top; }
+.tbl td:first-child { font-weight: 700; color: var(--navy); white-space: nowrap; }
+:root[data-theme="dark"] .tbl td:first-child { color: var(--azure-ink); }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .tbl td:first-child { color: var(--azure-ink); } }
+.tbl tr:nth-child(even) td { background: var(--chip); }
+/* rules list */
+.rules { list-style: none; margin: 0; padding: 0; display: grid; gap: calc(.8 * var(--u)); counter-reset: r; }
+.rules li { counter-increment: r; display: grid; grid-template-columns: calc(3.4 * var(--u)) 1fr; gap: calc(1.2 * var(--u)); font-size: calc(1.72 * var(--u)); line-height: 1.4; align-items: start; }
+.rules li::before { content: counter(r); width: calc(3.2 * var(--u)); height: calc(3.2 * var(--u)); border-radius: 50%; border: calc(.25 * var(--u)) solid var(--azure); color: var(--azure); font-family: var(--display); font-weight: 800; font-size: calc(1.5 * var(--u)); display: grid; place-items: center; }
+/* timeline */
+.days { display: grid; gap: 0; }
+.day { display: grid; grid-template-columns: calc(9.5 * var(--u)) calc(2.6 * var(--u)) 1fr; gap: calc(1.4 * var(--u)); align-items: start; }
+.day .d { font-family: var(--display); font-weight: 800; font-size: calc(1.75 * var(--u)); color: var(--azure); text-align: right; padding-top: calc(.1 * var(--u)); font-variant-numeric: tabular-nums; }
+.day .ln { position: relative; height: 100%; display: flex; justify-content: center; }
+.day .ln::before { content: ""; position: absolute; top: 0; bottom: 0; width: calc(.3 * var(--u)); background: var(--rule); }
+.day .ln::after { content: ""; position: relative; margin-top: calc(.4 * var(--u)); width: calc(1.8 * var(--u)); height: calc(1.8 * var(--u)); border-radius: 50%; background: var(--paper); border: calc(.35 * var(--u)) solid var(--azure); }
+.day:first-child .ln::before { top: calc(1 * var(--u)); }
+.day:last-child .ln::before { bottom: auto; height: calc(1 * var(--u)); }
+.day .what { padding-bottom: calc(1.6 * var(--u)); font-size: calc(1.72 * var(--u)); line-height: 1.42; }
+.day .what b { display: block; font-family: var(--display); font-size: calc(1.8 * var(--u)); color: var(--navy); }
+:root[data-theme="dark"] .day .what b { color: #F2F6FB; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .day .what b { color: #F2F6FB; } }
+.day .what i { font-style: normal; font-size: calc(1.4 * var(--u)); color: var(--muted); }
+/* svg figures */
+.fig { width: 100%; height: auto; display: block; }
+.fig text { font-family: var(--ui); }
+.cap { font-size: calc(1.35 * var(--u)); color: var(--muted); letter-spacing: calc(.06 * var(--u)); }
+.two { display: grid; grid-template-columns: 1fr 1fr; gap: calc(2.4 * var(--u)); align-items: start; }
+.cta { display: flex; gap: calc(1.2 * var(--u)); flex-wrap: wrap; }
+.cta button { all: unset; cursor: pointer; font-family: var(--ui); font-weight: 600; font-size: calc(1.6 * var(--u)); padding: calc(1.2 * var(--u)) calc(2.2 * var(--u)); border-radius: 999px; background: var(--azure); color: #fff; transition: transform .15s ease, filter .15s ease; }
+.cta button.ghost { background: transparent; color: var(--azure-ink); box-shadow: inset 0 0 0 1px var(--azure); }
+.cta button:hover { transform: translateY(-1px); filter: brightness(1.06); }
+.cta button:focus-visible { outline: 2px solid var(--azure); outline-offset: 2px; }
+
+/* covers */
+.cover, .back { background: var(--cover); color: var(--cover-ink); padding: calc(8 * var(--u)) calc(8 * var(--u)) calc(7 * var(--u)); }
+.cover-art { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 0; }
+.cover > :not(.cover-art), .back > :not(.cover-art) { position: relative; z-index: 1; }
+.wordmark { display: flex; align-items: center; gap: calc(1.4 * var(--u)); font-family: var(--display); font-weight: 800; font-size: calc(1.8 * var(--u)); letter-spacing: calc(.3 * var(--u)); color: #fff; }
+.wordmark small { display: block; font-family: var(--ui); font-weight: 500; font-size: calc(1.1 * var(--u)); letter-spacing: calc(.22 * var(--u)); color: var(--cover-soft); margin-top: calc(.3 * var(--u)); }
+.cover .tag { margin-top: calc(14 * var(--u)); display: inline-flex; align-self: flex-start; font-family: var(--ui); font-weight: 600; font-size: calc(1.4 * var(--u)); letter-spacing: calc(.3 * var(--u)); text-transform: uppercase; color: #fff; border: 1px solid rgba(255,255,255,.45); border-radius: 999px; padding: calc(.7 * var(--u)) calc(1.8 * var(--u)); }
+.cover h1 { color: #fff !important; font-size: calc(6.6 * var(--u)); line-height: 1.04; max-width: 72%; letter-spacing: calc(-.15 * var(--u)); }
+.cover .sub { font-family: var(--display); font-weight: 600; font-size: calc(2.6 * var(--u)); color: #fff; }
+.cover .sub2 { font-size: calc(1.8 * var(--u)); color: var(--cover-soft); font-style: italic; margin-top: calc(-1 * var(--u)); }
+.cover .by { margin-top: auto; display: grid; gap: calc(.4 * var(--u)); }
+.cover .by b { font-family: var(--display); font-weight: 700; font-size: calc(2 * var(--u)); letter-spacing: calc(.25 * var(--u)); text-transform: uppercase; color: #fff; }
+.cover .by span { font-size: calc(1.5 * var(--u)); color: var(--cover-soft); }
+.back { justify-content: center; align-items: flex-start; }
+.back h2 { color: #fff !important; font-size: calc(5.4 * var(--u)); line-height: 1.08; max-width: 80%; }
+.back p { color: var(--cover-soft); font-size: calc(1.9 * var(--u)); max-width: 70%; }
+.back .cta button { background: #fff; color: var(--navy); }
+.back .wordmark { position: absolute !important; left: calc(8 * var(--u)); bottom: calc(7 * var(--u)); }
+
+/* search highlight */
+mark.hit { background: var(--mark); color: var(--mark-ink); border-radius: 2px; padding: 0 1px; }
+
+/* ---------- Drawers, sheets, popovers ---------- */
+.scrim { position: fixed; inset: 0; background: rgba(10,35,66,.32); z-index: 30; opacity: 0; transition: opacity .25s ease; }
+.scrim.show { opacity: 1; }
+.drawer { position: fixed; top: 0; bottom: 0; width: min(380px, 92vw); background: var(--paper); color: var(--ink); z-index: 31; box-shadow: var(--shadow);
+  display: flex; flex-direction: column; transition: transform .25s cubic-bezier(.2,.8,.2,1); padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); }
+.drawer.left { left: 0; transform: translateX(-105%); padding-left: env(safe-area-inset-left, 0px); }
+.drawer.right { right: 0; transform: translateX(105%); padding-right: env(safe-area-inset-right, 0px); }
+.drawer.open { transform: none; }
+.dhead { display: flex; align-items: center; justify-content: space-between; padding: 14px 12px 10px 20px; border-bottom: 1px solid var(--rule); }
+.dhead h2 { margin: 0; font-family: var(--display); font-size: 17px; font-weight: 700; }
+.dbody { overflow: auto; padding: 8px 12px 20px; flex: 1; }
+.chap { all: unset; box-sizing: border-box; width: 100%; cursor: pointer; display: grid; grid-template-columns: 34px 1fr auto; gap: 10px; align-items: center; padding: 11px 10px; border-radius: 10px; transition: background .15s ease; }
+.chap:hover { background: var(--chip); }
+.chap:focus-visible { outline: 2px solid var(--azure); }
+.chap .n { font-family: var(--display); font-weight: 800; color: var(--azure); font-size: 15px; font-variant-numeric: tabular-nums; }
+.chap .t { font-weight: 600; font-size: 14.5px; }
+.chap .t small { display: block; font-weight: 400; color: var(--muted); font-size: 12.5px; margin-top: 2px; }
+.chap .p { font-size: 12px; color: var(--muted); font-variant-numeric: tabular-nums; }
+.chap.current { background: var(--sky); }
+.chap.current .t { color: var(--azure-ink); }
+.chap .bar-mini { grid-column: 2 / 4; height: 3px; border-radius: 3px; background: var(--rule); overflow: hidden; }
+.chap .bar-mini i { display: block; height: 100%; background: var(--azure); width: 0; }
+.dsec { font-size: 11.5px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase; color: var(--muted); padding: 14px 10px 6px; }
+.searchbox { display: flex; align-items: center; gap: 8px; margin: 12px 8px 6px; padding: 0 12px; border: 1px solid var(--rule); border-radius: 12px; background: var(--chip); }
+.searchbox:focus-within { border-color: var(--azure); }
+.searchbox input { flex: 1; border: 0; outline: 0; background: transparent; padding: 12px 0; font: inherit; font-size: 15px; color: var(--ink); min-width: 0; }
+.searchbox svg { width: 18px; height: 18px; color: var(--muted); flex: none; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; padding: 6px 8px 4px; }
+.chip { border: 1px solid var(--rule); background: var(--paper); border-radius: 999px; padding: 7px 12px; font-size: 12.5px; font-weight: 600; cursor: pointer; min-height: 34px; transition: background .15s, border-color .15s; }
+.chip[aria-pressed="true"] { background: var(--navy); border-color: var(--navy); color: #fff; }
+.suggest { padding: 4px 10px; font-size: 12.5px; color: var(--muted); }
+.suggest button { border: 0; background: none; color: var(--azure-ink); font-weight: 600; cursor: pointer; padding: 4px 2px; font-size: 12.5px; }
+.result { all: unset; box-sizing: border-box; width: 100%; cursor: pointer; display: grid; gap: 4px; padding: 12px 10px; border-radius: 10px; border-bottom: 1px solid var(--rule); }
+.result:hover { background: var(--chip); }
+.result:focus-visible { outline: 2px solid var(--azure); }
+.result .meta { display: flex; gap: 8px; font-size: 11.5px; color: var(--muted); font-weight: 600; letter-spacing: .4px; text-transform: uppercase; }
+.result .meta b { color: var(--azure-ink); }
+.result .snip { font-size: 13.5px; line-height: 1.45; }
+.result mark { background: var(--mark); color: var(--mark-ink); border-radius: 2px; }
+.result .tags { display: flex; gap: 4px; flex-wrap: wrap; }
+.result .tags span { font-size: 11px; padding: 2px 7px; border-radius: 999px; background: var(--sky); color: var(--azure-ink); font-weight: 600; }
+.empty { padding: 24px 12px; font-size: 13.5px; color: var(--muted); line-height: 1.5; }
+
+.sheet { position: fixed; left: 0; right: 0; bottom: 0; background: var(--paper); z-index: 31; transform: translateY(105%); transition: transform .25s cubic-bezier(.2,.8,.2,1); box-shadow: var(--shadow);
+  border-radius: 16px 16px 0 0; padding-bottom: env(safe-area-inset-bottom, 0px); }
+.sheet.open { transform: none; }
+.thumbs { display: flex; gap: 14px; overflow-x: auto; padding: 14px max(16px, env(safe-area-inset-right, 0px)) 18px max(16px, env(safe-area-inset-left, 0px)); scroll-snap-type: x proximity; }
+.thumb { all: unset; flex: none; width: 92px; display: grid; gap: 6px; cursor: pointer; scroll-snap-align: center; }
+.thumb .mini { width: 92px; aspect-ratio: 1 / 1.4142; border-radius: 4px; overflow: hidden; box-shadow: 0 1px 4px rgba(10,35,66,.18); outline: 2px solid transparent; outline-offset: 2px; transition: outline-color .15s, transform .15s; container-type: inline-size; background: var(--paper); }
+.thumb:hover .mini { transform: translateY(-2px); }
+.thumb.current .mini, .thumb:focus-visible .mini { outline-color: var(--azure); }
+.thumb .mini .pg { pointer-events: none; }
+.thumb > span { font-size: 11.5px; text-align: center; color: var(--muted); font-variant-numeric: tabular-nums; }
+.thumb.current > span { color: var(--azure-ink); font-weight: 700; }
+
+.pop { position: fixed; z-index: 32; width: min(340px, calc(100vw - 24px)); background: var(--paper); color: var(--ink); border-radius: 14px; box-shadow: var(--shadow); border: 1px solid var(--rule); padding: 10px;
+  opacity: 0; transform: translateY(-6px) scale(.98); transform-origin: top right; transition: opacity .18s ease, transform .18s ease; pointer-events: none; }
+.pop.open { opacity: 1; transform: none; pointer-events: auto; }
+.pop h2 { margin: 4px 8px 8px; font-family: var(--display); font-size: 15px; }
+.pop .row { all: unset; box-sizing: border-box; width: 100%; display: grid; grid-template-columns: 36px 1fr; gap: 10px; align-items: center; padding: 10px 8px; border-radius: 10px; cursor: pointer; text-decoration: none; color: var(--ink); min-height: 44px; }
+.pop .row:hover { background: var(--chip); }
+.pop .row:focus-visible { outline: 2px solid var(--azure); }
+.pop .row .ic { width: 36px; height: 36px; border-radius: 10px; background: var(--sky); color: var(--azure-ink); display: grid; place-items: center; }
+.pop .row .ic svg { width: 18px; height: 18px; }
+.pop .row b { display: block; font-size: 14px; font-weight: 600; }
+.pop .row small { display: block; font-size: 12px; color: var(--muted); margin-top: 1px; }
+.pop .note { font-size: 12px; color: var(--muted); padding: 6px 8px 4px; line-height: 1.45; }
+.pop .copyfield { display: flex; gap: 6px; padding: 6px 8px; }
+.pop .copyfield input { flex: 1; min-width: 0; font: inherit; font-size: 12.5px; padding: 8px 10px; border-radius: 8px; border: 1px solid var(--rule); background: var(--chip); color: var(--ink); }
+.pop .incl { display: flex; align-items: center; gap: 8px; padding: 4px 8px 8px; font-size: 12.5px; color: var(--muted); }
+.pop .incl input { width: 18px; height: 18px; accent-color: var(--azure); }
+
+.toast { position: fixed; left: 50%; bottom: calc(84px + env(safe-area-inset-bottom, 0px)); transform: translate(-50%, 12px); background: var(--navy); color: #fff; padding: 10px 16px; border-radius: 999px; font-size: 13px; font-weight: 500; z-index: 50; opacity: 0; transition: opacity .2s ease, transform .2s ease; pointer-events: none; box-shadow: var(--shadow); max-width: calc(100vw - 32px); text-align: center; }
+.toast.show { opacity: 1; transform: translate(-50%, 0); }
+.kbd { position: fixed; inset: 0; display: grid; place-items: center; z-index: 45; padding: 16px; }
+.kbd .card { background: var(--paper); color: var(--ink); border-radius: 16px; box-shadow: var(--shadow); padding: 20px 22px; width: min(440px, 100%); }
+.kbd h2 { margin: 0 0 10px; font-family: var(--display); font-size: 17px; }
+.kbd dl { display: grid; grid-template-columns: auto 1fr; gap: 8px 16px; margin: 0 0 14px; font-size: 13.5px; }
+.kbd dt { font-weight: 700; font-variant-numeric: tabular-nums; }
+.kbd dt kbd { font-family: var(--ui); background: var(--chip); border: 1px solid var(--rule); border-radius: 6px; padding: 2px 7px; font-size: 12px; }
+.kbd dd { margin: 0; color: var(--muted); }
+.btn { border: 0; background: var(--azure); color: #fff; padding: 10px 16px; border-radius: 999px; font-weight: 600; cursor: pointer; min-height: 40px; }
+
+/* presentation mode */
+body.present .bar { opacity: 0; pointer-events: none; }
+body.present.chrome .bar { opacity: 1; pointer-events: auto; }
+body.present .top { transform: translateY(-100%); position: fixed; left: 0; right: 0; top: 0; }
+body.present .bottom { transform: translateY(100%); position: fixed; left: 0; right: 0; bottom: 0; }
+body.present.chrome .top, body.present.chrome .bottom { transform: none; }
+body.present .app { grid-template-rows: 0 1fr 0; }
+body.present .stage { background: #050B16; }
+body.present .stage::before { display: none; }
+
+/* responsive */
+.hide-s { }
+@media (max-width: 860px) { .hide-m { display: none !important; } }
+@media (max-width: 600px) {
+  .hide-s { display: none !important; }
+  .brand-text span { display: none; }
+  .ib { width: 42px; height: 42px; }
+  .zoom .zoomval { display: none; }
+  .edge { display: none; }
+  .progress-meta .chname { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition-duration: .01ms !important; animation: none !important; }
+}
+
+.fig .t-ink { fill: var(--ink); } .fig .t-muted { fill: var(--muted); } .fig .t-azi { fill: var(--azure-ink); }
+.fig .f-sky { fill: var(--sky); } .fig .f-navy { fill: var(--navy); } .fig .f-azure { fill: var(--azure); } .fig .f-muted { fill: var(--muted); }
+.fig .s-rule { stroke: var(--rule); } .fig .s-azure { stroke: var(--azure); } .fig .s-muted { stroke: var(--muted); }
+</style>
+
+<div class="app" id="app">
+  <header class="bar top" role="banner">
+    <div class="brand">
+      <div class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#4DA3FF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21V9l4-3v15"/><path d="M8 21V4l6 3v14"/><path d="M14 21V11l5 2v8"/><path d="M10 21v-4a2 2 0 0 1 4 0v4"/></svg>
+      </div>
+      <div class="brand-text"><b>The Coherent Enterprise</b><span id="chapname">Executive Preview</span></div>
+    </div>
+    <div class="tools" role="toolbar" aria-label="Reader tools">
+      <button class="ib" id="btnToc" data-tip="Contents (C)" aria-label="Contents" aria-haspopup="dialog" aria-controls="drawerToc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M8 6h13M8 12h13M8 18h13M3.5 6h.01M3.5 12h.01M3.5 18h.01"/></svg></button>
+      <button class="ib" id="btnSearch" data-tip="Search (/)" aria-label="Search" aria-haspopup="dialog" aria-controls="drawerSearch"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></button>
+      <button class="ib hide-s" id="btnThumbs2" data-tip="Thumbnails (T)" aria-label="Thumbnails" aria-controls="sheetThumbs"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.5"/></svg></button>
+      <span class="sep hide-s" aria-hidden="true"></span>
+      <button class="ib" id="btnNight" data-tip="Night mode (N)" aria-label="Night mode" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20.5 13.5A8.5 8.5 0 1 1 10.5 3.5a6.5 6.5 0 0 0 10 10z"/></svg></button>
+      <button class="ib" id="btnText" data-tip="Text view" aria-label="Text view" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 6h16M4 10h16M4 14h10M4 18h13"/></svg></button>
+      <button class="ib hide-s" id="btnPresent" data-tip="Presentation mode (P)" aria-label="Presentation mode" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="2.5" y="3.5" width="19" height="13" rx="2"/><path d="M8 21h8M12 16.5V21"/><path d="m10 8 4 2-4 2z"/></svg></button>
+      <span class="sep hide-s" aria-hidden="true"></span>
+      <a class="order-link hide-s" href="../../about.html#foundation-book">Request the manuscript</a>
+      <button class="ib tip-r" id="btnShare" data-tip="Share" aria-label="Share" aria-haspopup="dialog" aria-controls="popShare"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="18" cy="5" r="2.5"/><circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="19" r="2.5"/><path d="m8.2 13.3 7.6 4.4M15.8 6.3 8.2 10.7"/></svg></button>
+      <button class="ib tip-r" id="btnDownload" data-tip="Download" aria-label="Download" aria-haspopup="dialog" aria-controls="popDownload"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3.5v11m0 0-4-4m4 4 4-4"/><path d="M4 16.5v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg></button>
+      <button class="ib hide-s tip-r" id="btnFull" data-tip="Fullscreen (F)" aria-label="Enter fullscreen"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M8 3.5H5.5a2 2 0 0 0-2 2V8M20.5 8V5.5a2 2 0 0 0-2-2H16M3.5 16v2.5a2 2 0 0 0 2 2H8M16 20.5h2.5a2 2 0 0 0 2-2V16"/></svg></button>
+      <button class="ib hide-m tip-r" id="btnKeys" data-tip="Keyboard shortcuts (?)" aria-label="Keyboard shortcuts"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="2.5" y="6" width="19" height="12" rx="2"/><path d="M6.5 10h.01M10 10h.01M13.5 10h.01M17 10h.01M7.5 14h9"/></svg></button>
+    </div>
+  </header>
+
+  <main class="stage" id="stage" aria-label="Flipbook">
+    <button class="edge prev" id="edgePrev" aria-label="Previous page"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m15 18-6-6 6-6"/></svg></button>
+    <div class="zoomwrap" id="zoomwrap"><div id="book" role="region" aria-roledescription="flipbook" aria-label="The Coherent Enterprise, executive preview"></div></div>
+    <div id="textview" hidden aria-label="Text view"></div>
+    <button class="edge next" id="edgeNext" aria-label="Next page"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m9 18 6-6-6-6"/></svg></button>
+    <div class="hint" id="hint" hidden><span>Drag a page corner, use the arrows, or press → to turn</span><button id="hintClose">Got it</button></div>
+  </main>
+
+  <footer class="bar bottom">
+    <div class="nav">
+      <button class="ib tip-l" id="btnPrev" data-tip="Previous (←)" aria-label="Previous page"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m15 18-6-6 6-6"/></svg></button>
+      <span class="counter" aria-hidden="true"><span id="pgNow">1</span> / <span id="pgAll">12</span></span>
+      <button class="ib" id="btnNext" data-tip="Next (→)" aria-label="Next page"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m9 18 6-6-6-6"/></svg></button>
+      <div class="progress" aria-hidden="true">
+        <div class="progress-track"><div class="progress-fill" id="progFill"></div></div>
+        <div class="progress-meta"><span id="progPct">0% read</span><span class="chname" id="progChap">Cover</span><span id="progTime">10 min left</span></div>
+      </div>
+    </div>
+    <div class="zoom">
+      <button class="ib tip-r" id="btnThumbs" data-tip="Thumbnails (T)" aria-label="Thumbnails" aria-controls="sheetThumbs"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.5"/></svg></button>
+      <button class="ib hide-s" id="btnZoomOut" data-tip="Zoom out (−)" aria-label="Zoom out"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5M8 11h6"/></svg></button>
+      <span class="zoomval hide-s" id="zoomVal" aria-live="polite">100%</span>
+      <button class="ib hide-s tip-r" id="btnZoomIn" data-tip="Zoom in (+)" aria-label="Zoom in"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5M11 8v6M8 11h6"/></svg></button>
+      <button class="ib hide-s tip-r" id="btnFitPage" data-tip="Fit page (0)" aria-label="Fit page"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="6" y="3" width="12" height="18" rx="1.5"/><path d="M3 8V5M3 19v-3M21 8V5M21 19v-3"/></svg></button>
+      <button class="ib hide-s tip-r" id="btnFitWidth" data-tip="Fit width" aria-label="Fit width"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 12h18M7 8l-4 4 4 4M17 8l4 4-4 4"/></svg></button>
+    </div>
+  </footer>
+</div>
+
+<div class="scrim" id="scrim" hidden></div>
+
+<aside class="drawer left" id="drawerToc" role="dialog" aria-modal="true" aria-labelledby="tocTitle" hidden>
+  <div class="dhead"><h2 id="tocTitle">Contents</h2><button class="ib" data-close aria-label="Close contents"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 6 6 18M6 6l12 12"/></svg></button></div>
+  <div class="dbody" id="tocList"></div>
+</aside>
+
+<aside class="drawer right" id="drawerSearch" role="dialog" aria-modal="true" aria-labelledby="searchTitle" hidden>
+  <div class="dhead"><h2 id="searchTitle">Search the preview</h2><button class="ib" data-close aria-label="Close search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 6 6 18M6 6l12 12"/></svg></button></div>
+  <label class="searchbox" for="q"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><input id="q" type="search" placeholder="Keyword, concept, framework or author" autocomplete="off"></label>
+  <div class="chips" role="group" aria-label="Filter results">
+    <button class="chip" data-f="all" aria-pressed="true">All</button>
+    <button class="chip" data-f="concept" aria-pressed="false">Concepts</button>
+    <button class="chip" data-f="framework" aria-pressed="false">Frameworks</button>
+    <button class="chip" data-f="author" aria-pressed="false">Authors</button>
   </div>
-  <a class="buy" href="../../books/the-coherent-enterprise-executive-preview.pdf" target="_blank" rel="noopener">Download PDF</a>
-</header>
+  <div class="suggest" id="suggest">Try <button data-s="coherence">coherence</button> · <button data-s="complexity">complexity</button> · <button data-s="fragmentation">fragmentation</button> · <button data-s="paradox">paradox</button> · <button data-s="capability">capability</button></div>
+  <div class="dbody" id="results" aria-live="polite"></div>
+</aside>
 
-<div class="loader" id="loader">Het boek wordt geopend…</div>
+<div class="sheet" id="sheetThumbs" role="dialog" aria-modal="true" aria-labelledby="thumbTitle" hidden>
+  <div class="dhead"><h2 id="thumbTitle">All pages</h2><button class="ib" data-close aria-label="Close thumbnails"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 6 6 18M6 6l12 12"/></svg></button></div>
+  <div class="thumbs" id="thumbs"></div>
+</div>
 
-<main id="main"><h1 class="reader-heading" style="font-size:18px;text-align:center">The Coherent Enterprise</h1>
-  <div class="book-wrap">
-    <button class="nav" id="prev" aria-label="Vorige pagina">&#8249;</button>
-    <div class="book-stage"><div id="book"></div></div>
-    <button class="nav" id="next" aria-label="Volgende pagina">&#8250;</button>
+<div class="pop" id="popShare" role="dialog" aria-modal="false" aria-labelledby="shareTitle" hidden>
+  <h2 id="shareTitle">Share this preview</h2>
+  <label class="incl"><input type="checkbox" id="shareHere" checked> Link to the current page</label>
+  <a class="row" id="shLinkedIn" target="_blank" rel="noopener"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 10.5V17M8 7.5v.01M12 17v-6.5M12 13.5a2.5 2.5 0 0 1 5 0V17"/></svg></span><span><b>LinkedIn</b><small>Post to your network</small></span></a>
+  <a class="row" id="shTeams" target="_blank" rel="noopener"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="6.5" width="11" height="11" rx="2"/><path d="M6 9.5h5M8.5 9.5v5.5"/><circle cx="18" cy="7.5" r="2"/><path d="M14 11.5h6a1 1 0 0 1 1 1V15a3.5 3.5 0 0 1-7 0"/></svg></span><span><b>Microsoft Teams</b><small>Share in a chat or channel</small></span></a>
+  <a class="row" id="shEmail"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3.5 7 8.5 6 8.5-6"/></svg></span><span><b>Email</b><small>Opens your mail app, if it can</small></span></a>
+  <button class="row" id="shCopy"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M10 13.5a4.5 4.5 0 0 0 6.8.5l2.7-2.7a4.5 4.5 0 0 0-6.4-6.4L11.6 6.4"/><path d="M14 10.5a4.5 4.5 0 0 0-6.8-.5l-2.7 2.7a4.5 4.5 0 0 0 6.4 6.4l1.5-1.5"/></svg></span><span><b>Copy link</b><small id="shCopySub">Paste it anywhere</small></span></button>
+  <div class="copyfield"><input id="shField" readonly aria-label="Link to share"></div>
+  <p class="note">Recipients need access to this page. Share the published version for public readers.</p>
+</div>
+
+<div class="pop" id="popDownload" role="dialog" aria-modal="false" aria-labelledby="dlTitle" hidden>
+  <h2 id="dlTitle">Download</h2>
+  <button class="row" data-dl="full"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V3H6.5A2.5 2.5 0 0 0 4 5.5z"/><path d="M4 19.5A2.5 2.5 0 0 0 6.5 22H20v-5"/></svg></span><span><b>Full preview</b><small>PDF · 12 pages</small></span></button>
+  
+  <button class="row" data-dl="chapter"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M14 3H6.5A2.5 2.5 0 0 0 4 5.5v13A2.5 2.5 0 0 0 6.5 21h11a2.5 2.5 0 0 0 2.5-2.5V9z"/><path d="M14 3v6h6M8 13h8M8 17h5"/></svg></span><span><b id="dlChapName">This chapter</b><small id="dlChapSub">PDF</small></span></button>
+  <p class="note" id="dlNote">Your browser asks you to confirm each download.</p>
+</div>
+
+<div class="kbd" id="keys" role="dialog" aria-modal="true" aria-labelledby="keysTitle" hidden>
+  <div class="card">
+    <h2 id="keysTitle">Keyboard shortcuts</h2>
+    <dl>
+      <dt><kbd>←</kbd> <kbd>→</kbd></dt><dd>Previous or next page</dd>
+      <dt><kbd>Home</kbd> <kbd>End</kbd></dt><dd>First or last page</dd>
+      <dt><kbd>+</kbd> <kbd>−</kbd> <kbd>0</kbd></dt><dd>Zoom in, zoom out, fit page</dd>
+      <dt><kbd>C</kbd> <kbd>T</kbd> <kbd>/</kbd></dt><dd>Contents, thumbnails, search</dd>
+      <dt><kbd>N</kbd> <kbd>P</kbd> <kbd>F</kbd></dt><dd>Night, presentation, fullscreen</dd>
+      <dt><kbd>Esc</kbd></dt><dd>Close a panel or leave a mode</dd>
+    </dl>
+    <button class="btn" data-close>Close</button>
   </div>
-  <div class="status" aria-live="polite">
-    <span class="badge" id="pageInfo">1 / 9</span>
-    <span>Executive preview - 9 pagina’s</span>
-    <span class="zoomhint">Klik op het boek om te vergroten</span>
-  </div>
-<div class="reader-tools"><button type="button" class="zoom-button" id="zoomButton">Vergroot pagina</button><a href="../../books.html#the-coherent-enterprise" id="backHome">Terug naar de website</a></div></main>
+</div>
 
-<details class="fallback" id="fallback"><summary>Alle previewpagina’s onder elkaar / All preview pages / Toutes les pages</summary><img src="pages/page-01.jpg" alt="Preview page 1" loading="lazy" width="1489" height="2106"><img src="pages/page-02.jpg" alt="Preview page 2" loading="lazy" width="1489" height="2106"><img src="pages/page-03.jpg" alt="Preview page 3" loading="lazy" width="1489" height="2106"><img src="pages/page-04.jpg" alt="Preview page 4" loading="lazy" width="1489" height="2106"><img src="pages/page-05.jpg" alt="Preview page 5" loading="lazy" width="1489" height="2106"><img src="pages/page-06.jpg" alt="Preview page 6" loading="lazy" width="1489" height="2106"><img src="pages/page-07.jpg" alt="Preview page 7" loading="lazy" width="1489" height="2106"><img src="pages/page-08.jpg" alt="Preview page 8" loading="lazy" width="1489" height="2106"><img src="pages/page-09.jpg" alt="Preview page 9" loading="lazy" width="1489" height="2106"></details><footer>Executive preview · The Coherent Enterprise · Erlend Hollebosch</footer>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<div class="sr" id="live" aria-live="polite"></div>
 
-<div class="zoom" id="zoom" role="dialog" aria-modal="true" aria-label="Vergrote pagina" tabindex="0"><div class="zoom-inner" id="zoomInner"></div><button class="zoom-close" id="zoomClose">Sluiten ✕</button></div>
+<script type="application/json" id="bookcfg">{"title": "The Coherent Enterprise", "fileTitle": "The Coherent Enterprise", "pdfPrefix": "the-coherent-enterprise-", "summary": false, "lastContentPage": 11, "front": [["1", "Cover"], ["2", "About this preview"], ["3", "Contents"]], "chapters": [{"id": "01", "title": "Executive Introduction", "sub": "A quieter pattern beneath success", "p": 4}, {"id": "02", "title": "The Enterprise Paradox", "sub": "More activity, less movement", "p": 5}, {"id": "03", "title": "Why Complexity Has Changed", "sub": "From temporary to structural", "p": 6}, {"id": "04", "title": "Why Enterprises Fragment", "sub": "The relationships, not the parts", "p": 7}, {"id": "05", "title": "Coherence as Strategic Capability", "sub": "The next competitive advantage", "p": 8}, {"id": "06", "title": "Why This Book Matters Now", "sub": "Scale, transformation, coherence", "p": 9}, {"id": "07", "title": "Closing Reflection", "sub": "Moving together as complexity grows", "p": 10}]}</script>
+<template id="tpl">
+<div class="page hard" data-density="hard" data-p="1" data-ch="" data-title="Cover" data-tags="author:Erlend Hollebosch">
+<article style="--k:1" class="pg cover" aria-label="Page 1: Cover">
+<svg class="cover-art" viewBox="0 0 100 141.42" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="rb0" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#061A33"/><stop offset=".55" stop-color="#0E3A6E"/><stop offset="1" stop-color="#9FD0FF"/></linearGradient><linearGradient id="rb1" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#061A33"/><stop offset=".55" stop-color="#0B5AA6"/><stop offset="1" stop-color="#9FD0FF"/></linearGradient><linearGradient id="rb2" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#061A33"/><stop offset=".55" stop-color="#0078D4"/><stop offset="1" stop-color="#9FD0FF"/></linearGradient><linearGradient id="rb3" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#061A33"/><stop offset=".55" stop-color="#1E8BE8"/><stop offset="1" stop-color="#9FD0FF"/></linearGradient><linearGradient id="rb4" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#061A33"/><stop offset=".55" stop-color="#0A4A8C"/><stop offset="1" stop-color="#9FD0FF"/></linearGradient><linearGradient id="rb5" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#061A33"/><stop offset=".55" stop-color="#4DA3FF"/><stop offset="1" stop-color="#9FD0FF"/></linearGradient><linearGradient id="rb6" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#061A33"/><stop offset=".55" stop-color="#0868BE"/><stop offset="1" stop-color="#9FD0FF"/></linearGradient><linearGradient id="rb7" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#061A33"/><stop offset=".55" stop-color="#2C95F0"/><stop offset="1" stop-color="#9FD0FF"/></linearGradient></defs><g opacity="1.00"><path d="M30.0 141.42 C56.0 104.0 86.0 38.0 100.5 4.0 L100.5 10.9 C92.4 43.4 63.4 109.4 36.6 141.42 Z" fill="url(#rb0)"/><path d="M30.0 141.42 C56.0 104.0 86.0 38.0 100.5 4.0" fill="none" stroke="#FFFFFF" stroke-opacity=".28" stroke-width=".22"/><path d="M38.2 141.42 C64.2 102.0 87.2 45.5 100.5 11.5 L100.5 18.4 C93.6 50.9 71.6 107.4 44.8 141.42 Z" fill="url(#rb1)"/><path d="M38.2 141.42 C64.2 102.0 87.2 45.5 100.5 11.5" fill="none" stroke="#FFFFFF" stroke-opacity=".28" stroke-width=".22"/><path d="M46.4 141.42 C72.4 100.0 88.4 53.0 100.5 19.0 L100.5 25.9 C94.8 58.4 79.8 105.4 53.0 141.42 Z" fill="url(#rb2)"/><path d="M46.4 141.42 C72.4 100.0 88.4 53.0 100.5 19.0" fill="none" stroke="#FFFFFF" stroke-opacity=".28" stroke-width=".22"/><path d="M54.6 141.42 C80.6 98.0 89.6 60.5 100.5 26.5 L100.5 33.4 C96.0 65.9 88.0 103.4 61.2 141.42 Z" fill="url(#rb3)"/><path d="M54.6 141.42 C80.6 98.0 89.6 60.5 100.5 26.5" fill="none" stroke="#FFFFFF" stroke-opacity=".28" stroke-width=".22"/><path d="M62.8 141.42 C88.8 96.0 90.8 68.0 100.5 34.0 L100.5 40.9 C97.2 73.4 96.2 101.4 69.4 141.42 Z" fill="url(#rb4)"/><path d="M62.8 141.42 C88.8 96.0 90.8 68.0 100.5 34.0" fill="none" stroke="#FFFFFF" stroke-opacity=".28" stroke-width=".22"/><path d="M71.0 141.42 C97.0 94.0 92.0 75.5 100.5 41.5 L100.5 48.4 C98.4 80.9 104.4 99.4 77.6 141.42 Z" fill="url(#rb5)"/><path d="M71.0 141.42 C97.0 94.0 92.0 75.5 100.5 41.5" fill="none" stroke="#FFFFFF" stroke-opacity=".28" stroke-width=".22"/><path d="M79.2 141.42 C105.2 92.0 93.2 83.0 100.5 49.0 L100.5 55.9 C99.6 88.4 112.6 97.4 85.8 141.42 Z" fill="url(#rb6)"/><path d="M79.2 141.42 C105.2 92.0 93.2 83.0 100.5 49.0" fill="none" stroke="#FFFFFF" stroke-opacity=".28" stroke-width=".22"/><path d="M87.4 141.42 C113.4 90.0 94.4 90.5 100.5 56.5 L100.5 63.4 C100.8 95.9 120.8 95.4 94.0 141.42 Z" fill="url(#rb7)"/><path d="M87.4 141.42 C113.4 90.0 94.4 90.5 100.5 56.5" fill="none" stroke="#FFFFFF" stroke-opacity=".28" stroke-width=".22"/></g></svg>
+<div class="wordmark"><svg viewBox="0 0 24 24" width="1em" height="1em" style="width:calc(3.6*var(--u));height:calc(3.6*var(--u))" fill="none" stroke="#4DA3FF" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 21V9l4-3v15"/><path d="M8 21V4l6 3v14"/><path d="M14 21V11l5 2v8"/><path d="M10 21v-4a2 2 0 0 1 4 0v4"/></svg><span>GROW FASTER<small>PEOPLE | ORGANISATIONS | IMPACT</small></span></div>
+<span class="tag">Executive Preview</span>
+<h1>The Coherent Enterprise</h1>
+<div class="sub">Why complexity is quietly breaking modern organisations</div>
+<div class="sub2">and how to move with coherence</div>
+<div class="by"><b>Erlend Hollebosch</b><span>Executive preview of the manuscript</span></div>
+</article></div>
 
-<script src="../../assets/page-flip-2.0.7.js" defer></script>
-<script src="../../assets/book-reader.js?v=20261104-coherent-preview" defer></script><noscript><style>.loader,.book-wrap,.status,.zoom-button{display:none}</style></noscript>
+<div class="page" data-p="2" data-ch="" data-title="About this preview" data-tags="concept:reading guide">
+<article style="--k:1.08" class="pg" aria-label="Page 2: About this preview">
+<div class="head"><div class="kicker">Before you begin</div><h1>Five minutes, one question</h1><div class="rule"></div></div>
+<p class="lead">This preview introduces <em>The Coherent Enterprise</em> by Erlend Hollebosch: a manuscript about why capable organisations become harder to move, and what leaders can do about it.</p>
+<div class="quote">How do organisations continue moving coherently as complexity continues to expand?<cite>The question the manuscript explores</cite></div>
+<p>Read it in order, or start with the chapter that matches what you see in your own organisation.</p>
+<h2>Your route through the preview</h2>
+<div class="routes">
+<button class="route" data-go="5"><b>You see slow progress</b><span>Activity is high, momentum is not</span><em>Page 5 · The Enterprise Paradox</em></button>
+<button class="route" data-go="6"><b>You see overlapping change</b><span>Initiatives that collide instead of combine</span><em>Page 6 · Why Complexity Has Changed</em></button>
+<button class="route" data-go="7"><b>You see coordination overload</b><span>Dependencies, longer decision paths</span><em>Page 7 · Why Enterprises Fragment</em></button>
+<button class="route" data-go="8"><b>You want the answer</b><span>Coherence as a capability to build</span><em>Page 8 · Coherence as Strategic Capability</em></button>
+</div>
+<div class="foot"><span>Executive Preview</span><b>02</b></div>
+</article></div>
+
+<div class="page" data-p="3" data-ch="" data-title="Contents" data-tags="">
+<article style="--k:1.08" class="pg" aria-label="Page 3: Contents">
+<div class="head"><div class="kicker">Contents</div><h1>Seven chapters</h1><div class="rule"></div></div>
+<ol class="toc">
+<li><button data-go="4"><span class="n">01</span><span class="t">Executive Introduction<small>A quieter pattern beneath success</small></span><span class="p">4</span></button></li>
+<li><button data-go="5"><span class="n">02</span><span class="t">The Enterprise Paradox<small>More activity, less movement</small></span><span class="p">5</span></button></li>
+<li><button data-go="6"><span class="n">03</span><span class="t">Why Complexity Has Changed<small>From temporary to structural</small></span><span class="p">6</span></button></li>
+<li><button data-go="7"><span class="n">04</span><span class="t">Why Enterprises Fragment<small>The relationships, not the parts</small></span><span class="p">7</span></button></li>
+<li><button data-go="8"><span class="n">05</span><span class="t">Coherence as Strategic Capability<small>The next competitive advantage</small></span><span class="p">8</span></button></li>
+<li><button data-go="9"><span class="n">06</span><span class="t">Why This Book Matters Now<small>Scale, transformation, coherence</small></span><span class="p">9</span></button></li>
+<li><button data-go="10"><span class="n">07</span><span class="t">Closing Reflection<small>Moving together as complexity grows</small></span><span class="p">10</span></button></li>
+</ol>
+<div class="quote">The defining challenge of modern enterprises may no longer be capability, but coherence.<cite>Executive Introduction</cite></div>
+<div class="foot"><span>Executive Preview</span><b>03</b></div>
+</article></div>
+
+<div class="page" data-p="4" data-ch="01" data-title="Executive Introduction" data-tags="concept:coherence;concept:capability;concept:structural condition">
+<article style="--k:1.08" class="pg" aria-label="Page 4: Executive Introduction">
+<div class="head"><span class="chno" data-n="01" aria-hidden="true"></span><div class="kicker">Chapter 01 · Executive Introduction</div><h1>Most organisations are not failing</h1><div class="rule"></div></div>
+<p class="lead">They continue investing in technology, transformation, governance, talent and growth. Many remain profitable, continue expanding and appear successful by conventional measures. Yet beneath that success, a quieter pattern is emerging.</p>
+<div class="signals">
+<div class="signal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2 2 7l10 5 10-5-10-5z"/><path d="m2 17 10 5 10-5"/><path d="m2 12 10 5 10-5"/></svg><h3>More coordination</h3><p>Decisions require more coordination.</p></div>
+<div class="signal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6" cy="6" r="2.5"/><circle cx="18" cy="6" r="2.5"/><circle cx="12" cy="18" r="2.5"/><path d="M8 7.5 10.5 16M16 7.5 13.5 16M8.5 6h7"/></svg><h3>More dependencies</h3><p>Initiatives demand greater alignment; dependencies multiply.</p></div>
+<div class="signal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><h3>Slower progress</h3><p>Transformation efforts overlap; progress feels slower than expected.</p></div>
+</div>
+<p>Leaders increasingly describe organisations that are becoming harder to move. The organisation remains active, yet progress often feels slower than expected.</p>
+<div class="insight"><span class="lbl">Executive insight · The central question</span><span>What if these symptoms are not isolated problems, but signs of a broader structural condition? <strong>What if the defining challenge of modern enterprises is no longer capability, but coherence?</strong></span></div>
+<div class="take"><div class="lbl">Key takeaways</div><ul>
+<li>Success by conventional measures can hide a loss of movement.</li>
+<li>Slower progress is a pattern, not a series of isolated problems.</li>
+<li>The manuscript asks how organisations keep moving coherently as complexity grows.</li></ul></div>
+<div class="foot"><span>01 · Executive Introduction</span><b>04</b></div>
+</article></div>
+
+<div class="page" data-p="5" data-ch="02" data-title="The Enterprise Paradox" data-tags="concept:enterprise paradox;concept:momentum;concept:alignment;concept:governance">
+<article style="--k:1.08" class="pg" aria-label="Page 5: The Enterprise Paradox">
+<div class="head"><span class="chno" data-n="02" aria-hidden="true"></span><div class="kicker">Chapter 02 · The Enterprise Paradox</div><h1>More of everything, less movement</h1><div class="rule"></div></div>
+<p>A senior executive recently summarised a challenge heard across many enterprises:</p>
+<div class="quote">We have more governance, more transformation, more technology… and somehow less movement.<cite>A senior executive</cite></div>
+<p>The organisation remained successful by traditional measures, with growing revenue, active transformation programmes and increasing technology investments. Yet internally, progress slowed as coordination, dependencies and alignment became increasingly difficult to manage.</p>
+<figure style="margin:0"><svg class="fig" viewBox="0 0 100 35" role="img" aria-label="Conceptual illustration: as complexity grows, activity keeps rising while momentum declines">
+<line x1="12" x2="94" y1="30" y2="30" class="s-muted" stroke-width=".3"/><line x1="12" x2="12" y1="3" y2="30" class="s-muted" stroke-width=".3"/>
+<text x="53" y="34" text-anchor="middle" class="t-muted" font-size="2.1">Complexity grows →  (conceptual, not measured data)</text>
+<path d="M12.00 27.00 C14.27 26.43 21.07 24.73 25.60 23.60 C30.13 22.47 34.67 21.33 39.20 20.20 C43.73 19.07 48.27 17.93 52.80 16.80 C57.33 15.67 61.87 14.53 66.40 13.40 C70.93 12.27 75.47 11.13 80.00 10.00 C84.53 8.87 91.33 7.17 93.60 6.60" fill="none" class="s-azure" stroke-width=".9" stroke-linecap="round"/>
+<path d="M12.00 9.00 C14.27 9.45 21.07 10.80 25.60 11.70 C30.13 12.60 34.67 13.50 39.20 14.40 C43.73 15.30 48.27 16.20 52.80 17.10 C57.33 18.00 61.87 18.90 66.40 19.80 C70.93 20.70 75.47 21.60 80.00 22.50 C84.53 23.40 91.33 24.75 93.60 25.20" fill="none" class="s-muted" stroke-width=".8" stroke-dasharray="1.4 1" stroke-linecap="round"/>
+<text x="92.6" y="4.6" text-anchor="end" class="t-azi" font-size="2.3" font-weight="700">Activity: governance, programmes, technology</text>
+<text x="92.6" y="28.8" text-anchor="end" class="t-muted" font-size="2.3" font-weight="600">Momentum: coordinated movement</text>
+</svg></figure>
+<p>As complexity expands, organisations spend more energy maintaining alignment than creating momentum. <strong>Activity remains high, but momentum declines.</strong></p>
+<div class="take"><div class="lbl">Key takeaways</div><ul>
+<li>Organisations were long constrained by capability; many are now constrained by coherence.</li>
+<li>The leadership challenge: sustain coherent movement as complexity grows.</li></ul></div>
+<div class="foot"><span>02 · The Enterprise Paradox</span><b>05</b></div>
+</article></div>
+
+<div class="page" data-p="6" data-ch="03" data-title="Why Complexity Has Changed" data-tags="concept:structural complexity;concept:systems of change;concept:AI adoption;concept:regulation;concept:ecosystem dependencies">
+<article style="--k:1.08" class="pg" aria-label="Page 6: Why Complexity Has Changed">
+<div class="head"><span class="chno" data-n="03" aria-hidden="true"></span><div class="kicker">Chapter 03 · Why Complexity Has Changed</div><h1>Complexity is now structural</h1><div class="rule"></div></div>
+<p class="lead">For decades, organisations treated complexity as a problem that could be reduced through structures, processes and operating models. Today, complexity has become structural rather than temporary.</p>
+<div class="frame"><div class="frame-label">Framework · Overlapping systems of change</div>
+<div class="tiles">
+<div class="tile"><span class="src">System 1</span><span class="what"><strong>Digital transformation</strong></span></div>
+<div class="tile"><span class="src">System 2</span><span class="what"><strong>AI adoption</strong></span></div>
+<div class="tile"><span class="src">System 3</span><span class="what"><strong>Regulation</strong></span></div>
+<div class="tile"><span class="src">System 4</span><span class="what"><strong>Ecosystem dependencies</strong></span></div>
+</div>
+<p class="small">The challenge no longer comes from individual initiatives, but from the growing interactions between them.</p></div>
+<p>As complexity increases, coordination demands grow and alignment becomes harder to sustain. The challenge is therefore no longer simply managing complexity. <strong>It is preserving coherence and coordinated movement within it.</strong></p>
+<div class="take"><div class="lbl">Key takeaways</div><ul>
+<li>Complexity can no longer be designed away; it is permanent.</li>
+<li>The risk sits in the interactions between initiatives, not in any one of them.</li>
+<li>The task shifts from managing complexity to moving coherently within it.</li></ul></div>
+<div class="foot"><span>03 · Why Complexity Has Changed</span><b>06</b></div>
+</article></div>
+
+<div class="page" data-p="7" data-ch="04" data-title="Why Enterprises Fragment" data-tags="concept:fragmentation;concept:relationships;concept:dependencies;concept:synchronisation;concept:decision paths">
+<article style="--k:1.08" class="pg" aria-label="Page 7: Why Enterprises Fragment">
+<div class="head"><span class="chno" data-n="04" aria-hidden="true"></span><div class="kicker">Chapter 04 · Why Enterprises Fragment</div><h1>Fragmentation lives between the parts</h1><div class="rule"></div></div>
+<p class="lead">Organisations rarely fragment because individual teams fail. They fragment because growing complexity makes the connections between teams, systems and stakeholders harder to manage.</p>
+<div class="frame"><div class="frame-label">Illustration · Connections grow faster than parts</div>
+<div class="tiles three">
+<div class="tile"><span class="src">5 teams</span><span class="big">10</span><span class="what">possible connections</span></div>
+<div class="tile"><span class="src">10 teams</span><span class="big">45</span><span class="what">possible connections</span></div>
+<div class="tile"><span class="src">20 teams</span><span class="big">190</span><span class="what">possible connections</span></div>
+</div>
+<p class="small">Pairs between n parts: n × (n − 1) ÷ 2. Doubling the parts roughly quadruples the relationships to manage.</p></div>
+<p>As interactions increase, dependencies multiply, decision paths lengthen and coordination consumes more organisational energy. The challenge shifts from managing individual components to <strong>managing the relationships between them.</strong></p>
+<p>Fragmentation emerges when these relationships become too numerous or too dependent on continuous synchronisation.</p>
+<div class="quote">Organisations rarely struggle from a lack of capability. They struggle when capability can no longer move coherently together.<cite>Why Enterprises Fragment</cite></div>
+<div class="foot"><span>04 · Why Enterprises Fragment</span><b>07</b></div>
+</article></div>
+
+<div class="page" data-p="8" data-ch="05" data-title="Coherence as Strategic Capability" data-tags="concept:coherence;concept:competitive advantage;concept:adaptability;concept:continuity">
+<article style="--k:1.08" class="pg" aria-label="Page 8: Coherence as Strategic Capability">
+<div class="head"><span class="chno" data-n="05" aria-hidden="true"></span><div class="kicker">Chapter 05 · Coherence as Strategic Capability</div><h1>The next advantage may be coherence itself</h1><div class="rule"></div></div>
+<p class="lead">For decades, organisations competed through scale, efficiency, speed and transformation. The complexity era may reward something different: <strong>coherence</strong>.</p>
+<div class="case">
+<div class="casecol before"><span class="lbl">Coherence is not</span>
+<div class="box"><b>Consensus</b>Everyone agreeing</div>
+<div class="box"><b>Simplicity</b>Fewer moving parts</div>
+<div class="box"><b>Centralised control</b>Decisions pulled to the top</div></div>
+<div class="casecol after"><span class="lbl">Coherence is</span>
+<div class="box model"><b>Coordinated movement</b>Sustained despite increasing complexity</div>
+<div class="box"><b>Preserving alignment</b>The parts keep pulling in one direction</div>
+<div class="box"><b>Continuity and adaptability</b>Changing without losing the whole</div></div>
+</div>
+<p>As complexity continues to grow, the organisations that succeed may not be those that transform the most or move the fastest, but those that remain coherent while transforming continuously.</p>
+<div class="insight"><span class="lbl">For the executive team</span><span>Treat coherence as an organisational ability to build and measure, <strong>not as a state of agreement to reach once.</strong></span></div>
+<div class="take"><div class="lbl">Key takeaways</div><ul>
+<li>Coherence is the ability to move together, not the absence of difference.</li>
+<li>It preserves alignment, continuity and adaptability at the same time.</li>
+<li>Winners may be the most coherent, not the fastest or most transformed.</li></ul></div>
+<div class="foot"><span>05 · Coherence as Strategic Capability</span><b>08</b></div>
+</article></div>
+
+<div class="page" data-p="9" data-ch="06" data-title="Why This Book Matters Now" data-tags="concept:complexity era;concept:scale;concept:transformation;concept:transformation fatigue;concept:governance congestion">
+<article style="--k:1.08" class="pg" aria-label="Page 9: Why This Book Matters Now">
+<div class="head"><span class="chno" data-n="06" aria-hidden="true"></span><div class="kicker">Chapter 06 · Why This Book Matters Now</div><h1>Every era has its defining challenge</h1><div class="rule"></div></div>
+<div class="gates">
+<div class="gate"><span class="dot"><span>1</span></span><div><h3>Scale</h3><p>The defining challenge of the twentieth century</p></div><div class="who"><b>20th century</b></div></div>
+<div class="gate"><span class="dot"><span>2</span></span><div><h3>Transformation</h3><p>The defining challenge of the early twenty-first century</p></div><div class="who"><b>Early 21st</b></div></div>
+<div class="gate"><span class="dot"><span>3</span></span><div><h3>Coherence</h3><p>The defining challenge of the complexity era</p></div><div class="who"><b>Now</b></div></div>
+</div>
+<p>As complexity, interdependence and the pace of change continue to increase, many organisational challenges may share a common cause: <strong>a growing gap between complexity and coherence.</strong></p>
+<div class="frame"><div class="frame-label">Symptoms that may share one cause</div>
+<ol class="rules"><li><span>Decision bottlenecks</span></li><li><span>Governance congestion</span></li><li><span>Transformation fatigue</span></li><li><span>Fragmented execution</span></li></ol></div>
+<p>The manuscript argues that the key leadership question is no longer how organisations become more capable, but how they remain coherent as complexity expands.</p>
+<div class="take"><div class="lbl">Key takeaways</div><ul>
+<li>Scale, then transformation, now coherence.</li>
+<li>Familiar symptoms may share one cause: the complexity–coherence gap.</li>
+<li>The organisations that thrive preserve coordinated movement while adapting.</li></ul></div>
+<div class="foot"><span>06 · Why This Book Matters Now</span><b>09</b></div>
+</article></div>
+
+<div class="page" data-p="10" data-ch="07" data-title="Closing Reflection" data-tags="concept:permanent complexity;concept:coordination">
+<article style="--k:1.08" class="pg" aria-label="Page 10: Closing Reflection">
+<div class="head"><span class="chno" data-n="07" aria-hidden="true"></span><div class="kicker">Chapter 07 · Closing Reflection</div><h1>Complexity is now a permanent condition</h1><div class="rule"></div></div>
+<p class="lead">Modern organisations are entering an era where complexity is no longer an occasional challenge, but a permanent condition. The question is not whether complexity will grow, but whether organisations can continue moving coherently as it does.</p>
+<p>For more than a century, management focused on building capability. The next challenge may be preserving coherence across that capability. Organisations rarely struggle because complexity exists, but because it grows faster than their ability to coordinate, align and move together.</p>
+<div class="quote">The enterprises that thrive may not be those that change the fastest, but those that remain coherent as complexity continues to expand.<cite>Closing Reflection</cite></div>
+<div class="take"><div class="lbl">Key takeaways</div><ul>
+<li>Complexity will keep growing; that is no longer the question.</li>
+<li>The risk is complexity outpacing the ability to coordinate and align.</li>
+<li>Coherence across capability is the next management discipline.</li></ul></div>
+<div class="foot"><span>07 · Closing Reflection</span><b>10</b></div>
+</article></div>
+
+<div class="page" data-p="11" data-ch="07" data-title="The full manuscript" data-tags="author:Erlend Hollebosch;framework:Coherence Diagnostic Model;framework:Coherent Transformation Playbook;concept:full manuscript">
+<article style="--k:1.08" class="pg" aria-label="Page 11: The full manuscript">
+<div class="head"><div class="kicker">Next steps</div><h1>Continue with the full manuscript</h1><div class="rule"></div></div>
+<p class="lead">The full manuscript explores how strategy, governance, decisions, operations, technology and learning reinforce one another as an organisation changes.</p>
+<div class="frame"><div class="frame-label">In the full manuscript</div>
+<ol class="rules">
+<li><span><strong>Understand</strong> why capable organisations become harder to move as complexity grows.</span></li>
+<li><span><strong>Diagnose</strong> where coherence erodes with the Coherence Diagnostic Model.</span></li>
+<li><span><strong>Redesign</strong> governance, decisions and flow with the Coherent Transformation Playbook.</span></li>
+</ol></div>
+<div class="two">
+<div class="stack"><h3>About the author</h3><p class="small">Erlend Hollebosch works on enterprise coherence and AI transformation, with a background in Agile, Lean and process optimisation.</p></div>
+<div class="stack"><h3>The full manuscript</h3><p class="small">281 pages, shared personally on request · grow-faster.be</p></div>
+</div>
+<div class="cta"><button data-action="download">Download the preview</button><button class="ghost" data-action="share">Share with your team</button></div>
+<div class="foot"><span>Executive Preview</span><b>11</b></div>
+</article></div>
+
+<div class="page hard" data-density="hard" data-p="12" data-ch="" data-title="Back cover" data-tags="">
+<article style="--k:1" class="pg back" aria-label="Page 12: Back cover">
+<svg class="cover-art" viewBox="0 0 100 141.42" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="rbm0" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#061A33"/><stop offset=".55" stop-color="#0E3A6E"/><stop offset="1" stop-color="#9FD0FF"/></linearGradient><linearGradient id="rbm1" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#061A33"/><stop offset=".55" stop-color="#0B5AA6"/><stop offset="1" stop-color="#9FD0FF"/></linearGradient><linearGradient id="rbm2" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#061A33"/><stop offset=".55" stop-color="#0078D4"/><stop offset="1" stop-color="#9FD0FF"/></linearGradient><linearGradient id="rbm3" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#061A33"/><stop offset=".55" stop-color="#1E8BE8"/><stop offset="1" stop-color="#9FD0FF"/></linearGradient><linearGradient id="rbm4" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#061A33"/><stop offset=".55" stop-color="#0A4A8C"/><stop offset="1" stop-color="#9FD0FF"/></linearGradient><linearGradient id="rbm5" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#061A33"/><stop offset=".55" stop-color="#4DA3FF"/><stop offset="1" stop-color="#9FD0FF"/></linearGradient><linearGradient id="rbm6" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#061A33"/><stop offset=".55" stop-color="#0868BE"/><stop offset="1" stop-color="#9FD0FF"/></linearGradient><linearGradient id="rbm7" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#061A33"/><stop offset=".55" stop-color="#2C95F0"/><stop offset="1" stop-color="#9FD0FF"/></linearGradient></defs><g opacity="0.55" transform="translate(100 0) scale(-1 1)"><path d="M30.0 141.42 C56.0 104.0 86.0 38.0 100.5 4.0 L100.5 10.9 C92.4 43.4 63.4 109.4 36.6 141.42 Z" fill="url(#rbm0)"/><path d="M30.0 141.42 C56.0 104.0 86.0 38.0 100.5 4.0" fill="none" stroke="#FFFFFF" stroke-opacity=".28" stroke-width=".22"/><path d="M38.2 141.42 C64.2 102.0 87.2 45.5 100.5 11.5 L100.5 18.4 C93.6 50.9 71.6 107.4 44.8 141.42 Z" fill="url(#rbm1)"/><path d="M38.2 141.42 C64.2 102.0 87.2 45.5 100.5 11.5" fill="none" stroke="#FFFFFF" stroke-opacity=".28" stroke-width=".22"/><path d="M46.4 141.42 C72.4 100.0 88.4 53.0 100.5 19.0 L100.5 25.9 C94.8 58.4 79.8 105.4 53.0 141.42 Z" fill="url(#rbm2)"/><path d="M46.4 141.42 C72.4 100.0 88.4 53.0 100.5 19.0" fill="none" stroke="#FFFFFF" stroke-opacity=".28" stroke-width=".22"/><path d="M54.6 141.42 C80.6 98.0 89.6 60.5 100.5 26.5 L100.5 33.4 C96.0 65.9 88.0 103.4 61.2 141.42 Z" fill="url(#rbm3)"/><path d="M54.6 141.42 C80.6 98.0 89.6 60.5 100.5 26.5" fill="none" stroke="#FFFFFF" stroke-opacity=".28" stroke-width=".22"/><path d="M62.8 141.42 C88.8 96.0 90.8 68.0 100.5 34.0 L100.5 40.9 C97.2 73.4 96.2 101.4 69.4 141.42 Z" fill="url(#rbm4)"/><path d="M62.8 141.42 C88.8 96.0 90.8 68.0 100.5 34.0" fill="none" stroke="#FFFFFF" stroke-opacity=".28" stroke-width=".22"/><path d="M71.0 141.42 C97.0 94.0 92.0 75.5 100.5 41.5 L100.5 48.4 C98.4 80.9 104.4 99.4 77.6 141.42 Z" fill="url(#rbm5)"/><path d="M71.0 141.42 C97.0 94.0 92.0 75.5 100.5 41.5" fill="none" stroke="#FFFFFF" stroke-opacity=".28" stroke-width=".22"/><path d="M79.2 141.42 C105.2 92.0 93.2 83.0 100.5 49.0 L100.5 55.9 C99.6 88.4 112.6 97.4 85.8 141.42 Z" fill="url(#rbm6)"/><path d="M79.2 141.42 C105.2 92.0 93.2 83.0 100.5 49.0" fill="none" stroke="#FFFFFF" stroke-opacity=".28" stroke-width=".22"/><path d="M87.4 141.42 C113.4 90.0 94.4 90.5 100.5 56.5 L100.5 63.4 C100.8 95.9 120.8 95.4 94.0 141.42 Z" fill="url(#rbm7)"/><path d="M87.4 141.42 C113.4 90.0 94.4 90.5 100.5 56.5" fill="none" stroke="#FFFFFF" stroke-opacity=".28" stroke-width=".22"/></g></svg>
+<h2>Coherence decides what AI amplifies.</h2>
+<p>The Coherent Enterprise — why complexity is quietly breaking modern organisations and how to move with coherence.</p>
+<div class="cta"><button data-go="1">Back to the start</button></div>
+<div class="wordmark"><svg viewBox="0 0 24 24" fill="none" stroke="#4DA3FF" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:calc(3.6*var(--u));height:calc(3.6*var(--u))"><path d="M4 21V9l4-3v15"/><path d="M8 21V4l6 3v14"/><path d="M14 21V11l5 2v8"/><path d="M10 21v-4a2 2 0 0 1 4 0v4"/></svg><span>GROW FASTER<small>grow-faster.be</small></span></div>
+</article></div>
+
+</template>
+
+<script src="../../assets/page-flip-2.0.7.js"></script>
+<script>
+(() => {
+'use strict';
+const $ = (s, r = document) => r.querySelector(s);
+const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+const CFG = JSON.parse(document.getElementById('bookcfg').textContent);
+const SHARE_BASE = 'https://grow-faster.be/boek/the-coherent-enterprise/index.html';
+const WPM = 230;
+const CHAPTERS = CFG.chapters;
+CHAPTERS.forEach((c, i) => { c.end = i < CHAPTERS.length - 1 ? CHAPTERS[i + 1].p - 1 : CFG.lastContentPage; });
+const FILES = {
+  full: { url: 'pdf/' + CFG.pdfPrefix + 'executive-preview.pdf', name: CFG.fileTitle + ' - Executive Preview.pdf' },
+  summary: CFG.summary ? { url: 'pdf/executive-summary.pdf', name: CFG.fileTitle + ' - Executive Summary.pdf' } : null,
+  chapter: id => ({ url: 'pdf/chapter-' + id + '.pdf', name: CFG.fileTitle + ' - Chapter ' + id + '.pdf' })
+};
+const store = {
+  get(k) { try { return localStorage.getItem(k); } catch (e) { return null; } },
+  set(k, v) { try { localStorage.setItem(k, v); } catch (e) { /* storage unavailable */ } }
+};
+const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const track = (name, props) => { try { if (typeof window.plausible === 'function') window.plausible(name, { props }); } catch (e) {} };
+
+/* ---------- metadata from the page template ---------- */
+const tplPages = [...$('#tpl').content.querySelectorAll('.page')];
+const N = tplPages.length;
+const meta = tplPages.map(el => {
+  const text = el.querySelector('.pg').textContent.replace(/\s+/g, ' ').trim();
+  const tags = (el.dataset.tags || '').split(';').filter(Boolean).map(t => { const i = t.indexOf(':'); return { type: t.slice(0, i), value: t.slice(i + 1) }; });
+  return { p: +el.dataset.p, ch: el.dataset.ch, title: el.dataset.title, text, words: text.split(' ').length, tags };
+});
+const chapterOf = p => CHAPTERS.find(c => p >= c.p && p <= c.end) || null;
+$('#pgAll').textContent = N;
+
+/* Each clone of a page gets its own SVG ids, so gradients never point into a hidden copy. */
+let uidN = 0;
+function uniq(root) {
+  const sfx = '_' + (++uidN);
+  root.querySelectorAll('[id]').forEach(el => {
+    const o = el.id; el.id = o + sfx;
+    root.querySelectorAll('[fill="url(#' + o + ')"]').forEach(x => x.setAttribute('fill', 'url(#' + o + sfx + ')'));
+  });
+  return root;
+}
+/* ---------- state ---------- */
+let offeredChapter = null;
+let pf = null, cur = 1, zoom = 1, dims = { w: 0, h: 0, landscape: true }, textMode = false, activeTerm = '', lastSize = '';
+const inClaude = !!(window.claude && typeof window.claude.use === 'function');
+let downloadsPromise = inClaude ? window.claude.use('downloads').catch(() => null) : Promise.resolve(null);
+
+/* ---------- book ---------- */
+function measure() {
+  const st = $('#stage');
+  const W = st.clientWidth - (innerWidth > 600 ? 120 : 16), H = st.clientHeight - 24;
+  const R = 1.4142;
+  let pw = Math.floor(Math.min(H / R, W / 2));
+  let landscape = innerWidth >= 700 && pw >= 220;
+  if (!landscape) pw = Math.floor(Math.min(W, H / R));
+  pw = Math.max(pw, 180);
+  return { pw, ph: Math.round(pw * R), landscape };
+}
+function initBook(startPage) {
+  const m = measure();
+  lastSize = m.pw + 'x' + m.landscape;
+  if (pf) { try { pf.destroy(); } catch (e) {} pf = null; }
+  const holder = $('#zoomwrap');
+  holder.innerHTML = '';
+  const nb = document.createElement('div');
+  nb.id = 'book';
+  nb.setAttribute('role', 'region');
+  nb.setAttribute('aria-roledescription', 'flipbook');
+  nb.setAttribute('aria-label', CFG.title + ', executive preview');
+  holder.appendChild(nb);
+  dims = { w: m.landscape ? m.pw * 2 : m.pw, h: m.ph, landscape: m.landscape };
+  nb.style.width = dims.w + 'px';
+  nb.style.height = dims.h + 'px';
+  const pages = tplPages.map(n => uniq(n.cloneNode(true)));
+  pages.forEach(p => nb.appendChild(p));
+  if (!window.St || !window.St.PageFlip) { fallbackBook(nb, pages, startPage); return; }
+  pf = new St.PageFlip(nb, {
+    width: m.pw, height: m.ph, size: 'fixed', autoSize: false, showCover: true, usePortrait: true,
+    maxShadowOpacity: 0.5, flippingTime: reduced ? 1 : 700, drawShadow: !reduced, mobileScrollSupport: false,
+    startPage: Math.max(0, startPage - 1), disableFlipByClick: true, clickEventForward: true, showPageCorners: true, swipeDistance: 30
+  });
+  pf.loadFromHTML(pages);
+  pf.on('flip', e => onPage(e.data + 1));
+  pf.on('changeOrientation', () => onPage(pf.getCurrentPageIndex() + 1));
+  applyZoom();
+  onPage(pf.getCurrentPageIndex() + 1, true);
+}
+/* If the flip engine cannot load, show one page at a time so the book still reads. */
+function fallbackBook(nb, pages, startPage) {
+  nb.style.position = 'relative';
+  pages.forEach(p => { p.style.cssText = 'position:absolute;inset:0;width:100%;height:100%'; p.hidden = true; });
+  pf = {
+    _i: startPage - 1,
+    getCurrentPageIndex() { return this._i; }, getPageCount() { return N; },
+    show() { pages.forEach((p, i) => { p.hidden = i !== this._i; }); onPage(this._i + 1); },
+    flip(i) { this._i = Math.max(0, Math.min(N - 1, i)); this.show(); }, turnToPage(i) { this.flip(i); },
+    flipNext() { this.flip(this._i + 1); }, flipPrev() { this.flip(this._i - 1); }, destroy() {}
+  };
+  dims.landscape = false;
+  pf.show();
+}
+function visible(p) {
+  if (!dims.landscape || textMode || p <= 1 || p >= N) return [p];
+  return p % 2 === 0 ? [p, Math.min(p + 1, N)] : [p - 1, p];
+}
+
+/* ---------- page change ---------- */
+function onPage(p, silent) {
+  cur = Math.max(1, Math.min(N, p));
+  const vis = visible(cur).filter(x => x >= 1 && x <= N);
+  const hi = Math.max(...vis);
+  $('#pgNow').textContent = vis.length > 1 ? vis[0] + '–' + vis[1] : String(vis[0]);
+  const pct = Math.round(hi / N * 100);
+  $('#progFill').style.width = pct + '%';
+  $('#progPct').textContent = pct + '% read';
+  const left = meta.filter(m => m.p > hi).reduce((a, m) => a + m.words, 0);
+  const mins = Math.ceil(left / WPM);
+  $('#progTime').textContent = hi >= N ? 'Finished' : (mins <= 1 ? 'Under a minute left' : mins + ' min left');
+  const ch = chapterOf(vis[vis.length - 1]) || chapterOf(vis[0]);
+  const chName = ch ? ch.id + ' · ' + ch.title : (cur === 1 ? 'Cover' : cur === N ? 'Back cover' : 'Front matter');
+  $('#progChap').textContent = chName;
+  $('#chapname').textContent = ch ? 'Chapter ' + ch.id + ' · ' + ch.title : 'Executive Preview';
+  $$('.chap').forEach(b => b.classList.toggle('current', !!ch && b.dataset.go == ch.p));
+  $$('.chap .bar-mini i').forEach(i => {
+    const c = CHAPTERS.find(x => x.id === i.dataset.id);
+    const done = Math.max(0, Math.min(c.end, hi) - c.p + 1);
+    i.style.width = Math.round(done / (c.end - c.p + 1) * 100) + '%';
+  });
+  $$('.thumb').forEach(t => t.classList.toggle('current', vis.includes(+t.dataset.go)));
+  const dlCh = ch || null; offeredChapter = dlCh;
+  $('#dlChapName').textContent = dlCh ? 'Chapter ' + dlCh.id + ' · ' + dlCh.title : 'This chapter';
+  $('#dlChapSub').textContent = dlCh ? 'PDF · pages ' + dlCh.p + (dlCh.end > dlCh.p ? '–' + dlCh.end : '') : 'Open a chapter first';
+  $('[data-dl="chapter"]').disabled = !dlCh;
+  try { history.replaceState(null, '', '#page-' + cur); } catch (e) {}
+  store.set('flip:last', String(cur));
+  if (!silent) {
+    $('#live').textContent = 'Page ' + vis.join(' and ') + ' of ' + N + '. ' + vis.map(v => meta[v - 1].title).join(', ');
+    track('page_view', { page: cur, chapter: ch ? ch.id : 'front' });
+    if (hi >= N) track('finish', {});
+  }
+  setTimeout(() => highlight(activeTerm), reduced ? 0 : 720);
+}
+function goto(p, how) {
+  p = Math.max(1, Math.min(N, +p));
+  if (textMode) { const el = $('#tv-' + p); if (el) el.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth', block: 'start' }); onPage(p); return; }
+  if (!pf) return;
+  if (zoom > 1.01) setZoom(1);
+  const idx = p - 1;
+  const now = pf.getCurrentPageIndex();
+  if (visible(now + 1).includes(p)) { onPage(p); return; }
+  if (reduced || Math.abs(idx - now) > 2) { pf.turnToPage(idx); onPage(p); }
+  else pf.flip(idx);
+  if (how) track(how, { page: p });
+}
+const next = () => { if (textMode) return goto(cur + 1); if (zoom > 1.01) setZoom(1); pf && pf.flipNext(); };
+const prev = () => { if (textMode) return goto(cur - 1); if (zoom > 1.01) setZoom(1); pf && pf.flipPrev(); };
+
+/* ---------- zoom ---------- */
+function applyZoom() {
+  const book = $('#book'), wrap = $('#zoomwrap'), st = $('#stage');
+  if (!book) return;
+  book.style.transform = zoom === 1 ? '' : 'scale(' + zoom + ')';
+  wrap.style.width = Math.round(dims.w * zoom) + 'px';
+  wrap.style.height = Math.round(dims.h * zoom) + 'px';
+  const over = dims.w * zoom > st.clientWidth || dims.h * zoom > st.clientHeight;
+  st.classList.toggle('zoomed', over);
+  wrap.classList.toggle('zoomed-in', zoom > 1.01);
+  wrap.style.margin = over ? '12px' : '';
+  $('#zoomVal').textContent = Math.round(zoom * 100) + '%';
+}
+function setZoom(z) {
+  const st = $('#stage');
+  const cx = (st.scrollLeft + st.clientWidth / 2) / (dims.w * zoom), cy = (st.scrollTop + st.clientHeight / 2) / (dims.h * zoom);
+  zoom = Math.max(0.5, Math.min(3, Math.round(z * 100) / 100));
+  applyZoom();
+  st.scrollLeft = cx * dims.w * zoom - st.clientWidth / 2;
+  st.scrollTop = cy * dims.h * zoom - st.clientHeight / 2;
+}
+const zoomIn = () => setZoom(zoom + 0.25), zoomOut = () => setZoom(zoom - 0.25);
+const fitPage = () => setZoom(1);
+const fitWidth = () => { const st = $('#stage'); setZoom((st.clientWidth - 40) / dims.w); };
+(function pan() {
+  const st = $('#stage'); let down = null;
+  st.addEventListener('pointerdown', e => {
+    if (!st.classList.contains('zoomed') || e.target.closest('button, a, .edge')) return;
+    down = { x: e.clientX, y: e.clientY, l: st.scrollLeft, t: st.scrollTop }; st.classList.add('panning');
+  });
+  addEventListener('pointermove', e => { if (!down) return; st.scrollLeft = down.l - (e.clientX - down.x); st.scrollTop = down.t - (e.clientY - down.y); });
+  addEventListener('pointerup', () => { down = null; st.classList.remove('panning'); });
+})();
+
+/* ---------- text view ---------- */
+let tvBuilt = false, tvObserver = null;
+function buildTextView() {
+  const tv = $('#textview');
+  tplPages.forEach(n => {
+    const w = document.createElement('section');
+    w.className = 'tv-page'; w.id = 'tv-' + n.dataset.p; w.setAttribute('aria-label', 'Page ' + n.dataset.p);
+    w.appendChild(uniq(n.querySelector('.pg').cloneNode(true)));
+    tv.appendChild(w);
+  });
+  tvObserver = new IntersectionObserver(es => {
+    es.forEach(e => { if (e.isIntersecting && textMode) onPage(+e.target.id.slice(3), true); });
+  }, { root: tv, rootMargin: '-40% 0px -55% 0px' });
+  $$('.tv-page', tv).forEach(s => tvObserver.observe(s));
+  tvBuilt = true;
+}
+function setTextMode(on) {
+  textMode = on;
+  if (on && !tvBuilt) buildTextView();
+  $('#textview').hidden = !on;
+  $('#zoomwrap').hidden = on;
+  $$('.edge').forEach(e => { e.hidden = on; });
+  $('#btnText').setAttribute('aria-pressed', String(on));
+  $$('#btnZoomIn, #btnZoomOut, #btnFitPage, #btnFitWidth').forEach(b => { b.disabled = on; });
+  if (on) { const el = $('#tv-' + cur); if (el) el.scrollIntoView({ block: 'start' }); toast('Text view on'); track('mode', { name: 'text' }); }
+  else { initBook(cur); toast('Book view on'); }
+}
+
+/* ---------- theme ---------- */
+const darkMQ = matchMedia('(prefers-color-scheme: dark)');
+const isDark = () => document.documentElement.dataset.theme === 'dark' || (!document.documentElement.dataset.theme && darkMQ.matches);
+function syncNight() { $('#btnNight').setAttribute('aria-pressed', String(isDark())); $('#btnNight').dataset.tip = isDark() ? 'Day mode (N)' : 'Night mode (N)'; $('#btnNight').setAttribute('aria-label', isDark() ? 'Day mode' : 'Night mode'); }
+function toggleNight() {
+  const d = !isDark();
+  document.documentElement.dataset.theme = d ? 'dark' : 'light';
+  store.set('flip:theme', d ? 'dark' : 'light');
+  syncNight(); toast(d ? 'Night mode' : 'Day mode'); track('mode', { name: d ? 'night' : 'day' });
+}
+const savedTheme = store.get('flip:theme');
+if (savedTheme === 'dark' || savedTheme === 'light') document.documentElement.dataset.theme = savedTheme;
+darkMQ.addEventListener && darkMQ.addEventListener('change', syncNight);
+
+/* ---------- presentation and fullscreen ---------- */
+let hideTimer = null;
+function wake() { document.body.classList.add('chrome'); clearTimeout(hideTimer); hideTimer = setTimeout(() => document.body.classList.remove('chrome'), 2200); }
+function setPresent(on) {
+  document.body.classList.toggle('present', on);
+  $('#btnPresent').setAttribute('aria-pressed', String(on));
+  if (on) { if (textMode) setTextMode(false); enterFull(); wake(); toast('Presentation mode · press Esc to leave'); track('mode', { name: 'presentation' }); }
+  else { document.body.classList.remove('chrome'); if (document.fullscreenElement) exitFull(); }
+  setTimeout(() => initBook(cur), 320);
+}
+addEventListener('pointermove', () => { if (document.body.classList.contains('present')) wake(); });
+const canFull = !!(document.documentElement.requestFullscreen);
+if (!canFull) $('#btnFull').hidden = true;
+function enterFull() { if (!canFull) return; document.documentElement.requestFullscreen().catch(() => {}); }
+function exitFull() { if (document.exitFullscreen) document.exitFullscreen().catch(() => {}); }
+function toggleFull() { document.fullscreenElement ? exitFull() : enterFull(); }
+document.addEventListener('fullscreenchange', () => {
+  const on = !!document.fullscreenElement;
+  $('#btnFull').innerHTML = on ? ICON_MIN : ICON_MAX;
+  $('#btnFull').dataset.tip = on ? 'Exit fullscreen (F)' : 'Fullscreen (F)';
+  $('#btnFull').setAttribute('aria-label', on ? 'Exit fullscreen' : 'Enter fullscreen');
+  if (!on && document.body.classList.contains('present')) setPresent(false);
+});
+const ICON_MAX = $('#btnFull').innerHTML;
+const ICON_MIN = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M8 3.5V6a2 2 0 0 1-2 2H3.5M20.5 8H18a2 2 0 0 1-2-2V3.5M3.5 16H6a2 2 0 0 1 2 2v2.5M16 20.5V18a2 2 0 0 1 2-2h2.5"/></svg>';
+
+/* ---------- drawers and popovers ---------- */
+let openPanel = null, returnFocus = null;
+function openDrawer(id) {
+  closeAll();
+  const el = $('#' + id); returnFocus = document.activeElement;
+  el.hidden = false; $('#scrim').hidden = false;
+  requestAnimationFrame(() => { el.classList.add('open'); $('#scrim').classList.add('show'); });
+  openPanel = el;
+  setTimeout(() => { const f = id === 'drawerSearch' ? $('#q') : el.querySelector('.current, .thumb.current, button, input'); f && f.focus(); if (id === 'sheetThumbs') { const c = $('.thumb.current'); c && c.scrollIntoView({ inline: 'center', block: 'nearest' }); } }, 60);
+}
+function openPop(id, btn) {
+  const was = openPanel && openPanel.id === id;
+  closeAll(); if (was) return;
+  const el = $('#' + id); returnFocus = btn;
+  el.hidden = false;
+  const r = btn.getBoundingClientRect();
+  el.style.top = (r.bottom + 8) + 'px';
+  el.style.right = Math.max(12, innerWidth - r.right) + 'px';
+  requestAnimationFrame(() => el.classList.add('open'));
+  openPanel = el;
+  setTimeout(() => { const f = el.querySelector('a, button, input'); f && f.focus(); }, 60);
+}
+function closeAll() {
+  if (!openPanel) return;
+  const el = openPanel; openPanel = null;
+  el.classList.remove('open'); $('#scrim').classList.remove('show');
+  setTimeout(() => { el.hidden = true; if (!openPanel) $('#scrim').hidden = true; }, 260);
+  if (returnFocus && document.contains(returnFocus)) returnFocus.focus();
+}
+$('#scrim').addEventListener('click', closeAll);
+$$('[data-close]').forEach(b => b.addEventListener('click', closeAll));
+document.addEventListener('pointerdown', e => {
+  if (openPanel && openPanel.classList.contains('pop') && !openPanel.contains(e.target) && !e.target.closest('#btnShare, #btnDownload')) closeAll();
+});
+document.addEventListener('keydown', e => {
+  if (e.key !== 'Tab' || !openPanel || openPanel.classList.contains('pop')) return;
+  const f = $$('a[href], button:not([disabled]), input', openPanel).filter(x => !x.hidden && x.offsetParent !== null);
+  if (!f.length) return;
+  if (e.shiftKey && document.activeElement === f[0]) { e.preventDefault(); f[f.length - 1].focus(); }
+  else if (!e.shiftKey && document.activeElement === f[f.length - 1]) { e.preventDefault(); f[0].focus(); }
+});
+
+/* contents */
+(function buildToc() {
+  const list = $('#tocList');
+  const el = (tag, cls, text) => { const e = document.createElement(tag); if (cls) e.className = cls; if (text !== undefined) e.textContent = text; return e; };
+  list.appendChild(el('div', 'dsec', 'Front matter'));
+  CFG.front.forEach(([p, t]) => {
+    const b = el('button', 'chap'); b.dataset.go = String(+p);
+    b.append(el('span', 'n', '·'), el('span', 't', t), el('span', 'p', String(+p)));
+    list.appendChild(b);
+  });
+  list.appendChild(el('div', 'dsec', 'Chapters'));
+  CHAPTERS.forEach(c => {
+    const b = el('button', 'chap'); b.dataset.go = String(+c.p);
+    const t = el('span', 't', c.title); t.appendChild(el('small', '', c.sub));
+    const bar = el('span', 'bar-mini'); bar.setAttribute('aria-hidden', 'true');
+    const fill = el('i'); fill.dataset.id = c.id; bar.appendChild(fill);
+    b.append(el('span', 'n', c.id), t, el('span', 'p', c.p + (c.end > c.p ? '–' + c.end : '')), bar);
+    list.appendChild(b);
+  });
+})();
+
+/* thumbnails */
+let thumbsBuilt = false;
+function buildThumbs() {
+  $('#thumbs').innerHTML = '';
+  tplPages.forEach(n => {
+    const b = document.createElement('button');
+    b.className = 'thumb'; b.dataset.go = n.dataset.p; b.setAttribute('aria-label', 'Page ' + n.dataset.p + ': ' + n.dataset.title);
+    const mini = document.createElement('div'); mini.className = 'mini'; mini.setAttribute('aria-hidden', 'true');
+    const pg = uniq(n.querySelector('.pg').cloneNode(true)); pg.setAttribute('inert', ''); pg.removeAttribute('aria-label');
+    mini.appendChild(pg);
+    const s = document.createElement('span'); s.textContent = n.dataset.p;
+    b.append(mini, s); $('#thumbs').appendChild(b);
+  });
+  thumbsBuilt = true; onPage(cur, true);
+}
+function openThumbs() { if (!thumbsBuilt) buildThumbs(); openDrawer('sheetThumbs'); }
+
+/* ---------- search ---------- */
+const norm = s => s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
+const esc = s => s.replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+let filter = 'all';
+function snippet(text, q) {
+  const i = norm(text).indexOf(norm(q));
+  if (i < 0) return esc(text.slice(0, 140)) + '…';
+  const a = Math.max(0, i - 60), b = Math.min(text.length, i + q.length + 80);
+  return (a > 0 ? '…' : '') + esc(text.slice(a, i)) + '<mark>' + esc(text.slice(i, i + q.length)) + '</mark>' + esc(text.slice(i + q.length, b)) + (b < text.length ? '…' : '');
+}
+function runSearch() {
+  const q = $('#q').value.trim();
+  const out = $('#results');
+  $('#suggest').hidden = !!q || filter !== 'all';
+  if (!q && filter === 'all') { out.innerHTML = '<p class="empty">Search every page of the preview, or pick a filter to browse its concepts, frameworks and authors.</p>'; return; }
+  const nq = norm(q);
+  let hits = [];
+  meta.forEach(m => {
+    const tagHits = m.tags.filter(t => (filter === 'all' || t.type === filter) && (!q || norm(t.value).includes(nq)));
+    const textHit = filter === 'all' && q && norm(m.text).includes(nq);
+    if (textHit || tagHits.length) hits.push({ m, tagHits, score: (tagHits.length ? 2 : 0) + (textHit ? (norm(m.text).split(nq).length - 1) : 0) });
+  });
+  hits.sort((a, b) => b.score - a.score || a.m.p - b.m.p);
+  if (!hits.length) { out.innerHTML = '<p class="empty">No pages mention “' + esc(q) + '”. Try a broader word, such as <em>value</em>, <em>agent</em> or <em>workflow</em>.</p>'; track('search', { term: q, results: 0 }); return; }
+  out.innerHTML = '<p class="small" style="padding:6px 10px;margin:0;color:var(--muted);font-size:12.5px">' + hits.length + ' page' + (hits.length > 1 ? 's' : '') + '</p>' + hits.map(h => {
+    const ch = chapterOf(h.m.p);
+    return '<button class="result" data-go="' + h.m.p + '" data-term="' + esc(q) + '"><span class="meta"><b>Page ' + h.m.p + '</b><span>' + esc(ch ? 'Chapter ' + ch.id + ' · ' + ch.title : 'Front matter') + '</span></span><span class="snip"><strong>' + esc(h.m.title) + '</strong> — ' + (q ? snippet(h.m.text, q) : esc(h.m.text.slice(0, 110)) + '…') + '</span>' +
+      (h.tagHits.length ? '<span class="tags">' + h.tagHits.slice(0, 4).map(t => '<span>' + esc(t.value) + '</span>').join('') + '</span>' : '') + '</button>';
+  }).join('');
+  if (q) track('search', { term: q, results: hits.length });
+}
+let sTimer = null;
+$('#q').addEventListener('input', () => { clearTimeout(sTimer); sTimer = setTimeout(runSearch, 120); });
+$$('.chip').forEach(c => c.addEventListener('click', () => { filter = c.dataset.f; $$('.chip').forEach(x => x.setAttribute('aria-pressed', String(x === c))); runSearch(); }));
+$$('#suggest button').forEach(b => b.addEventListener('click', () => { $('#q').value = b.dataset.s; runSearch(); $('#q').focus(); }));
+runSearch();
+function highlight(term) {
+  const root = textMode ? $('#textview') : $('#book');
+  if (!root) return;
+  $$('mark.hit', root).forEach(m => { const t = document.createTextNode(m.textContent); m.replaceWith(t); t.parentNode && t.parentNode.normalize(); });
+  if (!term) return;
+  const nt = norm(term);
+  const targets = textMode ? $$('.tv-page', root) : $$('.page', root).filter(p => visible(cur).includes(+p.dataset.p));
+  targets.forEach(pg => {
+    const w = document.createTreeWalker(pg, NodeFilter.SHOW_TEXT, { acceptNode: n => n.nodeValue.trim() && !n.parentNode.closest('svg, script, style') ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_REJECT });
+    const nodes = []; while (w.nextNode()) nodes.push(w.currentNode);
+    nodes.forEach(n => {
+      const v = n.nodeValue, i = norm(v).indexOf(nt);
+      if (i < 0 || norm(v).length !== v.length) return;
+      const r = document.createRange(); r.setStart(n, i); r.setEnd(n, i + term.length);
+      const m = document.createElement('mark'); m.className = 'hit'; r.surroundContents(m);
+    });
+  });
+}
+
+/* ---------- share ---------- */
+function shareUrl() {
+  const base = SHARE_BASE.indexOf('{{') === 0 ? location.href.split('#')[0] : SHARE_BASE;
+  return $('#shareHere').checked ? base + '#page-' + cur : base;
+}
+function refreshShare() {
+  const u = shareUrl(), e = encodeURIComponent(u);
+  const title = CFG.title + ' — Executive Preview';
+  $('#shLinkedIn').href = 'https://www.linkedin.com/sharing/share-offsite/?url=' + e;
+  $('#shTeams').href = 'https://teams.microsoft.com/share?href=' + e + '&msgText=' + encodeURIComponent(title);
+  $('#shEmail').href = 'mailto:?subject=' + encodeURIComponent(title) + '&body=' + encodeURIComponent('An executive preview worth ten minutes of your time:\n\n' + u);
+  $('#shField').value = u;
+}
+$('#shareHere').addEventListener('change', refreshShare);
+['shLinkedIn', 'shTeams', 'shEmail'].forEach(id => $('#' + id).addEventListener('click', () => track('share', { channel: id.slice(2).toLowerCase() })));
+$('#shCopy').addEventListener('click', () => {
+  const u = shareUrl();
+  const done = () => { toast('Link copied'); $('#shCopySub').textContent = 'Copied'; setTimeout(() => { $('#shCopySub').textContent = 'Paste it anywhere'; }, 2000); track('share', { channel: 'copy' }); };
+  const fallback = () => { const f = $('#shField'); f.focus(); f.select(); toast('Link selected — press Ctrl+C or ⌘C to copy'); };
+  try { navigator.clipboard.writeText(u).then(done, fallback); } catch (e) { fallback(); }
+});
+
+/* ---------- download ---------- */
+async function download(kind) {
+  let f;
+  if (kind === 'chapter') { const ch = offeredChapter; if (!ch) { toast('Open a chapter first'); return; } f = FILES.chapter(ch.id); }
+  else f = FILES[kind];
+  if (!inClaude) {
+    if (!/^pdf\/[a-z0-9-]+\.pdf$/.test(f.url)) { toast('The download could not start.'); return; }
+    const a = document.createElement('a'); a.href = encodeURI(f.url); a.download = f.name.replace(/[^\w .()-]/g, ''); a.rel = 'noopener';
+    document.body.appendChild(a); a.click(); a.remove();
+    toast('Downloading ' + f.name); track('download', { type: kind }); return;
+  }
+  const d = await downloadsPromise;
+  if (!d) { toast('Downloads are not available in this view'); return; }
+  try {
+    const res = await fetch(f.url);
+    if (!res.ok) throw new Error('missing');
+    const blob = await res.blob();
+    await d.save({ filename: f.name, data: blob });
+    toast('Saved: ' + f.name); track('download', { type: kind });
+  } catch (e) {
+    if (e && e.code === 'declined') toast('Download cancelled');
+    else if (e && e.code === 'rate_limited') toast('A download is already waiting for your confirmation');
+    else toast('The download could not start. Try again in a moment.');
+  }
+}
+$$('[data-dl]').forEach(b => b.addEventListener('click', () => { const k = b.dataset.dl; closeAll(); download(k); }));
+if (inClaude) downloadsPromise.then(d => { if (!d) $('#dlNote').textContent = 'Downloads are not available in this view.'; });
+else $('#dlNote').textContent = 'PDF files, ready to print or forward.';
+
+/* ---------- toast ---------- */
+let tTimer = null;
+function toast(msg) { const t = $('#toast'); t.textContent = msg; t.classList.add('show'); clearTimeout(tTimer); tTimer = setTimeout(() => t.classList.remove('show'), 2500); }
+
+/* ---------- wiring ---------- */
+document.addEventListener('click', e => {
+  const g = e.target.closest('[data-go]');
+  if (g && !g.closest('.mini')) {
+    e.preventDefault();
+    const term = g.dataset.term;
+    if (term !== undefined) activeTerm = term;
+    const inPanel = !!g.closest('.drawer, .sheet');
+    if (inPanel) closeAll();
+    goto(+g.dataset.go, g.closest('#drawerToc') ? 'toc_jump' : (g.closest('.result') ? 'search_jump' : (g.closest('.thumb') ? 'thumb_jump' : 'page_link')));
+    return;
+  }
+  const a = e.target.closest('[data-action]');
+  if (a) { e.preventDefault(); if (a.dataset.action === 'download') openPop('popDownload', $('#btnDownload')); else { refreshShare(); openPop('popShare', $('#btnShare')); } }
+});
+$('#btnPrev').addEventListener('click', prev); $('#btnNext').addEventListener('click', next);
+$('#edgePrev').addEventListener('click', prev); $('#edgeNext').addEventListener('click', next);
+$('#btnToc').addEventListener('click', () => openDrawer('drawerToc'));
+$('#btnSearch').addEventListener('click', () => openDrawer('drawerSearch'));
+$('#btnThumbs').addEventListener('click', openThumbs); $('#btnThumbs2').addEventListener('click', openThumbs);
+$('#btnNight').addEventListener('click', toggleNight);
+$('#btnText').addEventListener('click', () => setTextMode(!textMode));
+$('#btnPresent').addEventListener('click', () => setPresent(!document.body.classList.contains('present')));
+$('#btnFull').addEventListener('click', toggleFull);
+$('#btnShare').addEventListener('click', () => { refreshShare(); openPop('popShare', $('#btnShare')); });
+$('#btnDownload').addEventListener('click', () => openPop('popDownload', $('#btnDownload')));
+$('#btnKeys').addEventListener('click', () => { closeAll(); returnFocus = $('#btnKeys'); $('#keys').hidden = false; openPanel = $('#keys'); $('#keys .btn').focus(); });
+$('#keys').addEventListener('click', e => { if (e.target === $('#keys')) closeAll(); });
+$('#btnZoomIn').addEventListener('click', zoomIn); $('#btnZoomOut').addEventListener('click', zoomOut);
+$('#btnFitPage').addEventListener('click', fitPage); $('#btnFitWidth').addEventListener('click', fitWidth);
+$('#hintClose').addEventListener('click', () => { $('#hint').hidden = true; store.set('flip:hinted', '1'); });
+
+document.addEventListener('keydown', e => {
+  if (e.target.closest('input, textarea') && e.key !== 'Escape') return;
+  if (e.metaKey || e.ctrlKey || e.altKey) return;
+  const k = e.key;
+  if (k === 'Escape') {
+    if (openPanel) return closeAll();
+    if (document.body.classList.contains('present')) return setPresent(false);
+    if (zoom !== 1) return setZoom(1);
+    return;
+  }
+  if (openPanel && openPanel.classList.contains('drawer')) return;
+  const map = {
+    ArrowRight: next, PageDown: next, ' ': next, ArrowLeft: prev, PageUp: prev,
+    Home: () => goto(1), End: () => goto(N), '+': zoomIn, '=': zoomIn, '-': zoomOut, '0': fitPage,
+    f: toggleFull, t: openThumbs, c: () => openDrawer('drawerToc'), '/': () => openDrawer('drawerSearch'),
+    n: toggleNight, p: () => setPresent(!document.body.classList.contains('present')), '?': () => $('#btnKeys').click()
+  };
+  const fn = map[k] || map[k.toLowerCase && k.toLowerCase()];
+  if (fn) { if (e.target.closest('button') && (k === ' ' || k === 'Enter')) return; e.preventDefault(); if (document.body.classList.contains('present')) wake(); fn(); }
+});
+
+let rTimer = null;
+addEventListener('resize', () => {
+  clearTimeout(rTimer);
+  rTimer = setTimeout(() => { if (textMode) return; const m = measure(); if (m.pw + 'x' + m.landscape !== lastSize) initBook(cur); else applyZoom(); }, 180);
+});
+
+/* ---------- start ---------- */
+function startPage() {
+  const h = location.hash.slice(1);
+  let mm = /^page-(\d+)$/.exec(h); if (mm) return Math.min(N, Math.max(1, +mm[1]));
+  mm = /^chapter-(\d\d)$/.exec(h); if (mm) { const c = CHAPTERS.find(x => x.id === mm[1]); if (c) return c.p; }
+  const last = +store.get('flip:last'); return last >= 1 && last <= N ? last : 1;
+}
+addEventListener('hashchange', () => { const p = startPage(); if (p !== cur) goto(p); });
+syncNight();
+const narrow = innerWidth < 520;
+initBook(startPage());
+if (narrow && store.get('flip:mobilehint') !== '1') { store.set('flip:mobilehint', '1'); setTimeout(() => toast('Tip: Text view is easier to read on a phone'), 1200); }
+if (!narrow && store.get('flip:hinted') !== '1') { $('#hint').hidden = false; setTimeout(() => { $('#hint').hidden = true; store.set('flip:hinted', '1'); }, 7000); }
+})();
+
+</script>
+
 </body>
 </html>

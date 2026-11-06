@@ -3,7 +3,7 @@ const fs=require('node:fs'),path=require('node:path');
 const {performance,monitorEventLoopDelay}=require('node:perf_hooks'),os=require('node:os');
 const {createServer}=require('./server.cjs');
 const routes=require('../tests/navigation-cases.json').pages.map(p=>({route:'/'+p,status:200})).concat([
-  ...['boek/the-coherent-enterprise/index.html','boek/the-coherent-enterprise/pages/page-01.jpg','boek/the-coherent-enterprise/pages/page-09.jpg','books/the-coherent-enterprise-executive-preview.pdf'].map(file=>({route:'/'+file,status:200})),
+  ...['boek/the-coherent-enterprise/index.html','boek/the-coherent-enterprise/pdf/the-coherent-enterprise-executive-preview.pdf','boek/the-coherent-enterprise/pdf/chapter-07.pdf','books/the-coherent-enterprise-executive-preview.pdf'].map(file=>({route:'/'+file,status:200})),
   ...['boek/index.html','assets/book-reader.js','assets/book-reader.css','assets/page-flip-2.0.7.js','boek/pdf/turning-ai-potential-executive-preview.pdf','boek/pdf/chapter-10.pdf','assets/workshop.js','assets/workshop.css','eca.html','assets/eca.js','assets/eca-locales.js','assets/eca-ui.js','assets/eca-hubspot.js','assets/navigation.css','assets/books.css','books/turning-ai-potential-executive-preview.pdf'].map(file=>({route:'/'+file,status:200})),
   {route:'/journal.html',status:200},{route:'/coherence-sim.html',status:200},{route:'/assets/site.css',status:200},
   {route:'/assets/site.js',status:200},{route:'/missing-load-test.html',status:404}

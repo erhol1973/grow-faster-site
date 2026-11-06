@@ -28,7 +28,7 @@ async function main(){
   const base=`http://127.0.0.1:${server.address().port}`,samples=[],started=performance.now();
   try{
     await Promise.all(Array.from({length:8},async()=>{
-      for(let i=0;i<36;i++){
+      for(let i=0;i<Math.max(36,routes.length);i++){
         const scenario=routes[i%routes.length],t=performance.now();let status=0,failure;
         try{const response=await fetch(base+scenario.route,{signal:AbortSignal.timeout(5000)});status=response.status;await response.arrayBuffer()}catch(error){status=0;failure=error.name+': '+error.message+(error.cause?.code?' ('+error.cause.code+')':'')}
         samples.push({route:scenario.route,expected:scenario.status,status,latencyMs:performance.now()-t,...(failure?{failure}:{})});
@@ -46,3 +46,4 @@ async function main(){
 }
 module.exports={summarize,routes,P95_LIMIT_MS};
 if(require.main===module)main().catch(e=>{console.error(e.message);process.exitCode=1});
+

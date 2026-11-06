@@ -4,7 +4,7 @@ test('practice reading route works in three languages, with six perspectives and
  await page.addInitScript(()=>{if(!localStorage.getItem('avs-lang'))localStorage.setItem('avs-lang','nl');localStorage.setItem('avs-consent',JSON.stringify({v:4,ext:false,ana:false,ts:Date.now()}))});
  await page.goto('/index.html');await page.locator('main a[href="transformation.html"]').first().click();
  await expect(page).toHaveURL(/\/transformation\.html$/);
- for(const [language,heading,lens,title]of [['nl','Transformatie in de praktijk','Strategie en keuzes','Bedrijfstransformatie in de praktijk | Erlend Hollebosch'],['fr','La transformation en pratique','Stratégie et choix','La transformation des entreprises en pratique | Erlend Hollebosch'],['en','Transformation in practice','Strategy and choices','Business Transformation in Practice | Erlend Hollebosch']]){
+ for(const [language,heading,lens,title]of [['nl','Transformatie in de praktijk','Strategie en keuzes','Trackrecord in bedrijfstransformatie | Erlend Hollebosch'],['fr','La transformation en pratique','Stratégie et choix','Parcours en transformation d’entreprise | Erlend Hollebosch'],['en','Transformation in practice','Strategy and choices','Track Record in Enterprise Transformation | Erlend Hollebosch']]){
    if(language!=='nl'){await page.locator('#lang-btn-top').click();await page.locator('.lang-top [data-lang="'+language+'"]').click()}
    await expect(page.locator('html')).toHaveAttribute('lang',language);await expect(page.locator('h1')).toHaveText(heading);
    await expect(page.locator('.practice-questions dt')).toHaveCount(6);
@@ -12,7 +12,8 @@ test('practice reading route works in three languages, with six perspectives and
    await expect(page.locator('.practice-questions dt').first()).toHaveText(lens);await expect(page).toHaveTitle(title);
    expect(await page.locator('meta[name="description"]').getAttribute('content')).not.toBe('');
    expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1)).toBe(true);
-   await expect(page.locator('[aria-current="page"]')).toHaveCount(0);
+   await expect(page.locator('[aria-current="page"]')).toHaveCount(1);await expect(page.locator('#navlist a.l[href="transformation.html"]')).toHaveAttribute('aria-current','page');
+   await expect(page.locator('#track-record .career-list li')).toHaveCount(5);
  }
  await page.locator('.practice-index a[href="#working-chain"]').click();await expect(page).toHaveURL(/#working-chain$/);
  await expect(page.locator('#working-chain-h')).toBeInViewport();

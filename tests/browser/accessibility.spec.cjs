@@ -1,6 +1,6 @@
 const {test,expect}=require('playwright/test');
 const AxeBuilder=require('@axe-core/playwright').default;
-const routes=[...require('../navigation-cases.json').pages,'transformation.html'];
+const routes=[...new Set([...require('../navigation-cases.json').pages,'transformation.html','workshop.html'])];
 async function audit(page,info,label){
   // Render all offscreen chapters for a complete contrast audit.
   await page.addStyleTag({content:'*{content-visibility:visible!important}'});

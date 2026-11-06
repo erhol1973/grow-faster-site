@@ -11,7 +11,8 @@ async function main(){
       if(await page.evaluate(()=>scrollY)>8)throw Error('Contact scrolled from '+route);results.push({route,contactTop:true});
     }
     await page.goto('https://grow-faster.be/index.html');
-    if(await page.locator('#navlist a.l:not(.nav-workshop)').count()!==5)throw Error('Expected Home plus four primary navigation categories');
+    if(await page.locator('#navlist a.l:not(.nav-work)').count()!==5)throw Error('Expected Home plus four primary navigation categories');
+    if(await page.locator('#navlist a.nav-work[href="about.html"]').count()!==1)throw Error('Expected one Work with me action');
     if(await page.locator('#burger').isVisible())await page.locator('#burger').click();
     await page.locator('#navlist a[href="workshop.html"]').click();
     await page.waitForURL('https://grow-faster.be/workshop.html');

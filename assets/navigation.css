@@ -45,7 +45,7 @@
 
 .nav-executive~main .hero,.nav-executive~main>.hero{margin-top:calc(-1*76px)}
 .nav-executive~main .hero-inner{padding-top:calc(76px + clamp(48px,6vw,80px))}
-html.nav-over .nav.nav-executive{background:transparent!important;border-bottom-color:rgba(255,255,255,.18)!important}
+html.nav-over .nav.nav-executive{background:rgba(11,37,69,.96)!important;backdrop-filter:blur(10px)!important;-webkit-backdrop-filter:blur(10px)!important;border-bottom-color:rgba(255,255,255,.18)!important}
 html.nav-over .nav.nav-executive #navlist>li>a.l:not(.nav-workshop),html.nav-over .nav.nav-executive .nav-parent>a.l{color:#fff!important;text-shadow:0 1px 8px rgba(7,16,30,.6)}
 html.nav-over .nav.nav-executive #navlist>li>a.l:not(.nav-workshop):hover,html.nav-over .nav.nav-executive #navlist>li>a.l.on:not(.nav-workshop),html.nav-over .nav.nav-executive .nav-parent>a.l:hover{color:#7fd3f7!important}
 html.nav-over .nav.nav-executive .nav-toggle{color:#fff}

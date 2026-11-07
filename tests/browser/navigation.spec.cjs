@@ -1,5 +1,5 @@
 const {test,expect}=require('playwright/test');
-const copy={en:{primary:['Home','Executive Journal','Enterprise Coherence','Approach','Track record'],work:'Work with me',value:'AI & business value',eca:'Coherence assessment (ECA)'},nl:{primary:['Home','Executive Journal','Enterprise Coherence','Aanpak','Trackrecord'],work:'Samenwerken',value:'AI & bedrijfswaarde',eca:'Coherentiescan (ECA)'},fr:{primary:['Accueil','Executive Journal','Enterprise Coherence','Approche','Parcours'],work:'Collaborer',value:'IA & valeur métier',eca:'Diagnostic de cohérence (ECA)'}};
+const copy={nl:{primary:['Home','Executive Journal','Enterprise Coherence','Aanpak','Trackrecord'],work:'Samenwerken',value:'AI & bedrijfswaarde',eca:'Coherentiescan (ECA)'},fr:{primary:['Accueil','Executive Journal','Enterprise Coherence','Approche','Parcours'],work:'Collaborer',value:'IA & valeur métier',eca:'Diagnostic de cohérence (ECA)'}};
 async function seed(page,lang='nl'){await page.addInitScript(l=>{localStorage.setItem('avs-lang',l);localStorage.setItem('avs-consent',JSON.stringify({v:4,ext:false,ana:false,ts:Date.now()}))},lang)}
 async function activate(locator,info){if(info.project.use.isMobile)await locator.tap();else await locator.click()}
 async function openMenu(page,info){if(await page.locator('#burger').isVisible()&&!await page.locator('#navlist').isVisible())await activate(page.locator('#burger'),info)}
@@ -24,7 +24,7 @@ test('disclosure keyboard focus, Escape, outside click and language choice close
  await coherence.focus();await page.keyboard.press('Enter');await expect(page.locator('#nav-coherence')).toBeVisible();await page.keyboard.press('Tab');await expect(page.locator('#nav-coherence a').first()).toBeFocused();
  await page.keyboard.press('Escape');await expect(page.locator('#nav-coherence')).toBeHidden();await expect(coherence).toBeFocused();
  await page.keyboard.press('Space');await expect(page.locator('#nav-coherence')).toBeVisible();await approach.focus();await page.keyboard.press('Enter');await expect(page.locator('#nav-coherence')).toBeHidden();await expect(page.locator('#nav-approach')).toBeVisible();
- await page.locator('#lang-btn-top').click();await expect(page.locator('#nav-approach')).toBeHidden();await page.locator('.lang-top [data-lang="en"]').click();
+ await page.locator('#lang-btn-top').click();await expect(page.locator('#nav-approach')).toBeHidden();await page.locator('.lang-top [data-lang="fr"]').click();
  await openMenu(page,info);await coherence.click();await page.mouse.click(4,page.viewportSize().height-4);await expect(page.locator('#nav-coherence')).toBeHidden();
  if(await page.locator('#burger').isVisible()){await openMenu(page,info);await page.keyboard.press('Escape');await expect(page.locator('#navlist')).toBeHidden();await expect(page.locator('#burger')).toBeFocused()}
 });

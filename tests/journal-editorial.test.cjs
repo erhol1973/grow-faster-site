@@ -7,15 +7,15 @@ const root=path.resolve(__dirname,'../dist');
 const read=f=>fs.readFileSync(path.join(root,f),'utf8');
 const I18N=()=>{const ctx={window:{}};vm.runInNewContext(read('assets/i18n.js'),ctx);return ctx.window.I18N};
 const articles=['ai-pilot','turn-time-into-value','design-the-exception','no-ai-impact','friction-first','who-decides'];
-const trilingual=['ai-pilot','design-the-exception','turn-time-into-value'];
+const bilingual=['ai-pilot','design-the-exception','turn-time-into-value'];
 const article=(html,id)=>{const a=html.indexOf(`<article class="ins-art rv" id="${id}"`);assert.ok(a>0,id);return html.slice(a,html.indexOf('</article>',a))};
 
 test('every journal article opens with an In brief summary and closes with an author box',()=>{
   const html=read('insights.html');
   for(const id of articles){
-    const t=article(html,id),langs=trilingual.includes(id)?['nl','en','fr']:['en'];
+    const t=article(html,id),langs=bilingual.includes(id)?['nl','fr']:['source'];
     for(const lang of langs){
-      const block=trilingual.includes(id)?t.slice(t.indexOf(`data-article-lang="${lang}"`)):t;
+      const block=bilingual.includes(id)?t.slice(t.indexOf(`data-article-lang="${lang}"`)):t;
       const brief=block.match(/<aside class="in-brief"[\s\S]*?<\/aside>/);assert.ok(brief,`${id}/${lang}: In brief missing`);
       assert.equal((brief[0].match(/<dt>/g)||[]).length,3,`${id}/${lang}: problem, cause and action`);
       assert.ok(block.indexOf('class="in-brief"')<block.indexOf('<h3>')||!block.includes('<h3>'),`${id}/${lang}: In brief precedes the body`);

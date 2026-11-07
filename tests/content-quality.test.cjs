@@ -27,7 +27,7 @@ test('structured data describes the author, the book and the site',()=>{
 test('fixed language errors do not return',()=>{const all=['assets/i18n.js','assets/content.js','assets/ux.js','assets/site.js',...main].map(read).join('\n');
  for(const bad of ['Waar zet u ','Vul uw eigen','van uw invoer','Beoordeel uw gereedheid','Ontwikkel coherence','gesprek over coherence','Transformatie roadmap','projectmanager en PMO lead','strategische capability','machinale capabilities','buitensporige waarde','vuurtorenproject','de volgende strategisch','L’IA amplifie le système où elle est déployée','futur workflow','in das sie kommt','Copiloten','Dimensions de cohérence:','coherencediagnose'])
   assert.ok(!all.includes(bad),`regression: "${bad}" is back`);
- assert.equal((read('coherence.html').match(/laggards \(1×\)/g)||[]).length,1,'only the English block may say laggards');for(const w of ['achterblijvers (1×)','retardataires (1×)'])assert.ok(read('coherence.html').includes(w),w);
+ assert.equal((read('coherence.html').match(/laggards \(1×\)/g)||[]).length,0,'the removed English block must not return');assert.doesNotMatch(read('coherence.html'),/class="lgx" lang="en"/,'no English language block');for(const w of ['achterblijvers (1×)','retardataires (1×)'])assert.ok(read('coherence.html').includes(w),w);
  const I=dict();assert.match(I['How I work'][1],/façon/);
  assert.match(read('assets/site.js'),/\$\{t\("Start here"\)\}\$\{document\.documentElement\.lang==="fr"\?"\\u00a0":""\}:/,'French colon needs a non-breaking space');
 });

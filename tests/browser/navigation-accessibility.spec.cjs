@@ -1,5 +1,5 @@
 const {test,expect}=require('playwright/test');const AxeBuilder=require('@axe-core/playwright').default;
-for(const lang of ['nl','en','fr'])test('expanded navigation has accessible labels, contrast and targets in '+lang,async({page},info)=>{
+for(const lang of ['nl','fr'])test('expanded navigation has accessible labels, contrast and targets in '+lang,async({page},info)=>{
  await page.addInitScript(l=>{localStorage.setItem('avs-lang',l);localStorage.setItem('avs-consent',JSON.stringify({v:4,ext:false,ana:false,ts:Date.now()}))},lang);await page.goto('/index.html');
  if(await page.locator('#burger').isVisible())await page.locator('#burger').click();
  for(const id of ['nav-coherence','nav-approach']){

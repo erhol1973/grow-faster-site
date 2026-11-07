@@ -1,7 +1,6 @@
 const {test,expect}=require('playwright/test');
 const cases={
  nl:{title:'Van AI-pilot naar bedrijfswaarde',cta:'Bespreek jullie AI-toepassing',subject:'Kennismaking: Van AI-pilot naar bedrijfswaarde',greeting:'Beste Erlend,',missing:'Beschrijf kort jullie AI-toepassing of vraag.'},
- en:{title:'From AI pilot to business value',cta:'Discuss your AI application',subject:'Introduction: From AI pilot to business value',greeting:'Hello Erlend,',missing:'Please briefly describe your AI application or question.'},
  fr:{title:'Du pilote IA à la valeur pour l’entreprise',cta:'Parlons de votre application IA',subject:'Premier échange : du pilote IA à la valeur pour l’entreprise',greeting:'Bonjour Erlend,',missing:'Décrivez brièvement votre application IA ou votre question.'}
 };
 async function seed(page,lang='nl'){
@@ -56,7 +55,7 @@ for(const [lang,copy]of Object.entries(cases)){
    await page.evaluate(()=>Object.defineProperty(navigator,'clipboard',{configurable:true,value:{writeText:async()=>{throw Error('denied')}}}));await page.locator('#copy-request').click();await expect(page.locator('#draft-details')).toHaveAttribute('open','');await expect(page.locator('#copy-status')).toContainText('Automatisch kopiëren lukt niet');expect(await page.evaluate(()=>getSelection().toString())).toContain(question);
    await page.evaluate(()=>Object.defineProperty(navigator,'clipboard',{configurable:true,value:{writeText:async value=>window.copiedRequest=value}}));await page.locator('#copy-request').click();await expect(page.locator('#copy-status')).toContainText('Aanvraag gekopieerd');expect(await page.evaluate(()=>window.copiedRequest)).toContain(question);
   }
-  const next=lang==='fr'?'en':'fr';await page.locator('#lang-btn-top').click();await page.locator('.lang-top [data-lang="'+next+'"]').click();await expect(page.locator('html')).toHaveAttribute('lang',next);
+  const next=lang==='fr'?'nl':'fr';await page.locator('#lang-btn-top').click();await page.locator('.lang-top [data-lang="'+next+'"]').click();await expect(page.locator('html')).toHaveAttribute('lang',next);
   await expect(page.locator('#request-name')).toHaveValue("Nina D'Haene");await expect(page.locator('#request-question')).toHaveValue(question);await expect(page.locator('#request-result')).toBeHidden();await expect(page.locator('#request-mail')).not.toHaveAttribute('href');
   await page.locator('#request-form button[type="submit"]').click();const changed=new URL((await page.evaluate(()=>window.workshopMails)).at(-1));expect(changed.searchParams.get('subject')).toBe(cases[next].subject);expect(changed.searchParams.get('body')).toContain(cases[next].greeting);
   await page.locator('#request-question').fill('Updated question');await expect(page.locator('#request-result')).toBeHidden();await expect(page.locator('#request-preview')).toHaveText('');
@@ -66,9 +65,9 @@ test('anonymous ECA profile offers a paid workshop without transferring answers 
  await seed(page);const requests=[];page.on('request',r=>{if(new URL(r.url()).origin!=='http://127.0.0.1:4173')requests.push(r.url())});
  await page.goto('/eca.html?lang=nl');for(const prefix of ['S','O','D','T','C'])for(let n=1;n<=4;n++)await page.locator(`input[name="${prefix+n}"][value="4"]`).check();
  await page.locator('#ecaForm button[type="submit"]').click();await expect(page.locator('#overall')).toHaveText('75/100');
- for(const lang of ['nl','fr','en']){await page.locator('#ecaLanguage').selectOption(lang);await expect(page.locator('#ecaWorkshop')).toHaveAttribute('href','workshop.html?lang='+lang);}
- expect(requests).toEqual([]);await page.locator('#ecaWorkshop').click();await expect(page).toHaveURL(/\/workshop\.html\?lang=en$/);await expect(page.locator('html')).toHaveAttribute('lang','en');
- expect(new URL(page.url()).searchParams.toString()).toBe('lang=en');await expect(page.locator('#request-question')).toHaveValue('');expect(requests).toEqual([]);
+ for(const lang of ['nl','fr']){await page.locator('#ecaLanguage').selectOption(lang);await expect(page.locator('#ecaWorkshop')).toHaveAttribute('href','workshop.html?lang='+lang);}
+ expect(requests).toEqual([]);await page.locator('#ecaWorkshop').click();await expect(page).toHaveURL(/\/workshop\.html\?lang=fr$/);await expect(page.locator('html')).toHaveAttribute('lang','fr');
+ expect(new URL(page.url()).searchParams.toString()).toBe('lang=fr');await expect(page.locator('#request-question')).toHaveValue('');expect(requests).toEqual([]);
 });
 test('workshop example, agenda, skip link and privacy choices support keyboard use',async({page})=>{
  await seed(page);await page.goto('/workshop.html');await page.keyboard.press('Tab');await expect(page.locator('.skip-link')).toBeFocused();await page.keyboard.press('Enter');await expect(page.locator('main')).toBeFocused();

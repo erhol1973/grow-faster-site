@@ -1,10 +1,10 @@
 const {test,expect}=require('playwright/test');
-test('practice reading route works in three languages, with six perspectives and Contact',async({page})=>{
+test('practice reading route works in both languages, with six perspectives and Contact',async({page})=>{
  const errors=[];page.on('pageerror',e=>errors.push(e.message));
  await page.addInitScript(()=>{if(!localStorage.getItem('avs-lang'))localStorage.setItem('avs-lang','nl');localStorage.setItem('avs-consent',JSON.stringify({v:4,ext:false,ana:false,ts:Date.now()}))});
  await page.goto('/index.html');await page.locator('main a[href="transformation.html"]').first().click();
  await expect(page).toHaveURL(/\/transformation\.html$/);
- for(const [language,heading,lens,title]of [['nl','Transformatie in de praktijk','Strategie en keuzes','Trackrecord in bedrijfstransformatie | Erlend Hollebosch'],['fr','La transformation en pratique','Stratégie et choix','Parcours en transformation d’entreprise | Erlend Hollebosch'],['en','Transformation in practice','Strategy and choices','Track Record in Enterprise Transformation | Erlend Hollebosch']]){
+ for(const [language,heading,lens,title]of [['nl','Transformatie in de praktijk','Strategie en keuzes','Trackrecord in bedrijfstransformatie | Erlend Hollebosch'],['fr','La transformation en pratique','Stratégie et choix','Parcours en transformation d’entreprise | Erlend Hollebosch']]){
    if(language!=='nl'){await page.locator('#lang-btn-top').click();await page.locator('.lang-top [data-lang="'+language+'"]').click()}
    await expect(page.locator('html')).toHaveAttribute('lang',language);await expect(page.locator('h1')).toHaveText(heading);
    await expect(page.locator('.practice-questions dt')).toHaveCount(6);
@@ -18,7 +18,7 @@ test('practice reading route works in three languages, with six perspectives and
  await page.locator('.practice-index a[href="#working-chain"]').click();await expect(page).toHaveURL(/#working-chain$/);
  await expect(page.locator('#working-chain-h')).toBeInViewport();
  await page.goto('/about.html');await expect(page.locator('main a[href="transformation.html"]')).toHaveCount(1);
- await page.goto('/insights.html');await page.locator('.practice-entry a[href="transformation.html"]').click();await expect(page.locator('h1')).toHaveText('Transformation in practice');
+ await page.goto('/insights.html');await page.locator('.practice-entry a[href="transformation.html"]').click();await expect(page.locator('h1')).toHaveText('La transformation en pratique');
  if(await page.locator('#burger').isVisible())await page.locator('#burger').click();await page.locator('#navlist a[href="about.html"]').click();
  await expect(page).toHaveURL(/\/about\.html$/);await expect(page.locator('.au-photo')).toBeInViewport();
  expect(errors).toEqual([]);
@@ -29,7 +29,7 @@ test('manuscript vision links AI, coherence, credited Ross sources and the manus
  await page.goto('/index.html');await expect(page.locator('h1')).toContainText('Ontwerp voor samenhang.');
  await page.locator('.hero-grid a[href="coherence.html#book-thesis"]').click();
  await expect(page.locator('#book-thesis-h')).toBeInViewport();
- for(const [language,title]of [['nl','Een snellere taak maakt nog geen betere onderneming'],['fr','Une tâche plus rapide ne suffit pas à améliorer l’entreprise'],['en','A faster task is not automatically a better enterprise']]){
+ for(const [language,title]of [['nl','Een snellere taak maakt nog geen betere onderneming'],['fr','Une tâche plus rapide ne suffit pas à améliorer l’entreprise']]){
    if(language!=='nl'){await page.locator('#lang-btn-top').click();await page.locator('.lang-top [data-lang="'+language+'"]').click()}
    await expect(page.locator('#book-thesis-h')).toHaveText(title);
    await expect(page.locator('#book-thesis')).toContainText('Jeanne Ross');
@@ -47,7 +47,7 @@ test('manuscript vision links AI, coherence, credited Ross sources and the manus
 test('executive contact presents identity and working contact and book actions in three languages',async({page})=>{
  await page.addInitScript(()=>{if(!localStorage.getItem('avs-lang'))localStorage.setItem('avs-lang','nl');localStorage.setItem('avs-consent',JSON.stringify({v:4,ext:false,ana:false,ts:Date.now()}))});
  await page.goto('/about.html');
- for(const [language,eyebrow]of [['nl','Perspectieven op bedrijfstransformatie'],['fr','Perspectives sur la transformation des entreprises'],['en','Perspectives on enterprise transformation']]){
+ for(const [language,eyebrow]of [['nl','Perspectieven op bedrijfstransformatie'],['fr','Perspectives sur la transformation des entreprises']]){
    if(language!=='nl'){await page.locator('#lang-btn-top').click();await page.locator('.lang-top [data-lang="'+language+'"]').click()}
    await expect(page.locator('h1')).toHaveText('Erlend Hollebosch');await expect(page.locator('.executive-eyebrow')).toHaveText(eyebrow);
    await expect(page.locator('.executive-portrait img')).toBeVisible();expect(await page.locator('.executive-portrait img').evaluate(e=>e.complete&&e.naturalWidth>0)).toBe(true);

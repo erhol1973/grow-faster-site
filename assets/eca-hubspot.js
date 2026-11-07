@@ -5,7 +5,7 @@
   else root.ECAHubSpot=api;
 })(typeof globalThis!=='undefined'?globalThis:this,function(){
   const FORM_ID='97bca96a-12a6-4542-a5a1-e915d4371a2b';
-  const FORM_IDS={nl:FORM_ID,en:'cc190a9a-fae1-4e6d-8ddc-110bb019538b',fr:'1544528d-0ea2-4a27-b368-9fe1e594a036'};
+  const FORM_IDS={nl:FORM_ID,fr:'1544528d-0ea2-4a27-b368-9fe1e594a036'};
   const fields={strategic:'strategic_coherence_score',operating:'operating_model_coherence_score',governance:'decision_governance_coherence_score',ai:'ai_enablement_coherence_score',capability:'capability_value_coherence_score'};
   function attribution(search){
     const params=new URLSearchParams(search),out={};

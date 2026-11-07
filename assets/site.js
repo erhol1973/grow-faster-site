@@ -10,8 +10,8 @@
   const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
   {const _o=IntersectionObserver.prototype.observe;IntersectionObserver.prototype.observe=function(el){if(el instanceof Element)return _o.call(this,el)}}
   const $=s=>document.querySelector(s)||document.createElement("div");
-  const LIDX={nl:0,fr:1}, LOCALE={nl:"nl-BE",fr:"fr-BE",en:"en-GB"};
-  let LANG="en";
+  const LIDX={nl:0,fr:1}, LOCALE={nl:"nl-BE",fr:"fr-BE"};
+  let LANG="nl";
   const t=k=>LANG==="en"?k:(((window.I18N||{})[k]||[])[LIDX[LANG]]||k);
   function refreshHubspotConsentCopy(){
     const m=document.getElementById("consent");if(!m)return;
@@ -383,7 +383,7 @@
   const auCopy=$("#au-copy");
   auCopy.addEventListener("click",()=>{const txt=$("#au-mail").textContent;const done=()=>{auCopy.textContent=t("Copied");setTimeout(()=>auCopy.textContent=t("Copy"),1600)};const sel=()=>{const r=document.createRange();r.selectNodeContents($("#au-mail"));const sl=getSelection();sl.removeAllRanges();sl.addRange(r)};try{navigator.clipboard.writeText(txt).then(done,sel)}catch(e){sel()}});
   /* ===== i18n ===== */
-  const NATIVE={nl:"Nederlands (BE)",fr:"Français (BE)",en:"English"};
+  const NATIVE={nl:"Nederlands (BE)",fr:"Français (BE)"};
   const SKIP="script,style,output,[data-dyn],[data-notr],[data-ih]";
   const recs=[], ihs=[...document.querySelectorAll("[data-ih]")].map(el=>({el,orig:el.innerHTML}));
   const tw=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT,{acceptNode(n){if(!n.nodeValue.trim())return NodeFilter.FILTER_REJECT;const pe=n.parentElement;return(!pe||pe.closest(SKIP))?NodeFilter.FILTER_REJECT:NodeFilter.FILTER_ACCEPT}});
@@ -391,18 +391,19 @@
   const store={get(k){try{return localStorage.getItem(k)}catch(e){return null}},set(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
   const fcopy=$("#fcopy");
   function applyLang(l,save){
-    if(!Object.hasOwn(NATIVE,l))l="en";LANG=l;
+    if(!Object.hasOwn(NATIVE,l))l="nl";LANG=l;
     const root=document.documentElement;root.lang=l;root.dir="ltr";
     recs.forEach(r=>{r.n.nodeValue=r.pre+t(r.key)+r.post});
     ihs.forEach(o=>{o.el.innerHTML=l==="en"?o.orig:((((window.I18N_HTML||{})[o.el.dataset.ih])||[])[LIDX[l]]||o.orig)});
     refreshHubspotConsentCopy();
-    document.querySelectorAll(".lang-cur").forEach(e=>e.textContent=e.closest(".lang-top")?({nl:"NL-BE",fr:"FR-BE",en:"EN"})[l]:NATIVE[l]);document.querySelectorAll(".lang-btn").forEach(b=>b.dataset.code=({nl:"NL-BE",fr:"FR-BE",en:"EN"})[l]);document.querySelectorAll(".lang-btn .flag").forEach(f=>f.className="flag flag-"+l);
+    document.querySelectorAll(".lang-cur").forEach(e=>e.textContent=e.closest(".lang-top")?({nl:"NL-BE",fr:"FR-BE"})[l]:NATIVE[l]);document.querySelectorAll(".lang-btn").forEach(b=>b.dataset.code=({nl:"NL-BE",fr:"FR-BE"})[l]);document.querySelectorAll(".lang-btn .flag").forEach(f=>f.className="flag flag-"+l);
     document.querySelectorAll(".lang-menu [data-lang]").forEach(b=>b.setAttribute("aria-checked",String(b.dataset.lang===l)));
-    document.querySelectorAll(".lang-btn").forEach(b=>b.setAttribute("aria-label",t("Language")+": "+(b.closest(".lang-top")?({nl:"NL-BE",fr:"FR-BE",en:"EN"})[l]+" — ":"")+NATIVE[l]));
+    document.querySelectorAll(".lang-btn").forEach(b=>b.setAttribute("aria-label",t("Language")+": "+(b.closest(".lang-top")?({nl:"NL-BE",fr:"FR-BE"})[l]+" — ":"")+NATIVE[l]));
     if(fcopy)fcopy.textContent=t("Copy");auCopy.textContent=t("Copy");
     {const st=(document.querySelector('meta[name="seo-title"]')||{}).content,pt=(document.querySelector('meta[name="page-title"]')||{}).content;document.title=st?t(st):pt?t(pt)+" · The Coherent Enterprise":"The Coherent Enterprise · Erlend Hollebosch";}
     pick(curSpec);evalP();sim();renderBPMN();coh();if(typeof fitNav==="function")fitNav();
     if(save)store.set("avs-lang",l);
+    root.classList.add("i18n-ready");
   }
   /* language menus */
   const langs=[...document.querySelectorAll(".lang")];
@@ -474,9 +475,9 @@
     new MutationObserver(syncMail).observe(document.documentElement,{attributes:true,attributeFilter:["lang"]});
     document.querySelectorAll("a[data-mail]").forEach(e=>e.addEventListener("click",()=>{e.href=mailFor(e)}))})();
   /* start */
-  const stored=store.get("avs-lang"), nav0=(navigator.language||"en").slice(0,2).toLowerCase();
+  const stored=store.get("avs-lang"), nav0=(navigator.language||"nl").slice(0,2).toLowerCase();
   const requested=new URLSearchParams(location.search).get("lang");
-  const initial=Object.hasOwn(NATIVE,requested)?requested:Object.hasOwn(NATIVE,stored)?stored:(Object.hasOwn(NATIVE,nav0)?nav0:"en");
+  const initial=Object.hasOwn(NATIVE,requested)?requested:Object.hasOwn(NATIVE,stored)?stored:(Object.hasOwn(NATIVE,nav0)?nav0:"nl");
   applyLang(initial,!!stored&&stored!==initial);
   const c0=readConsent();applyConsent(c0);
   if(location.hash==="#privacy")openPrivacy(); 

@@ -1201,7 +1201,7 @@ html.nav-over .nav.scrolled{background:rgba(7,16,30,.96)!important;-webkit-backd
 /* ---- v16: legal pages ---- */
 .legal-body{padding-top:8px}
 .legal-body .lg{display:none}
-html[lang="en"] .lg[lang="en"],html[lang="nl"] .lg[lang="nl"],html[lang="fr"] .lg[lang="fr"],html[lang="de"] .lg[lang="de"],html[lang="ar"] .lg[lang="en"]{display:block}
+html[lang="nl"] .lg[lang="nl"],html[lang="fr"] .lg[lang="fr"]{display:block}
 .legal-body h2{font-family:var(--f-display);font-weight:600;font-size:22px;color:var(--brand);margin:36px 0 10px;scroll-margin-top:90px}
 .legal-body a{color:var(--brand);text-decoration:underline;text-underline-offset:2px}
 .lg-tw{overflow-x:auto;margin:6px 0 18px;border:1px solid var(--line);border-radius:10px}
@@ -1275,7 +1275,7 @@ picture{display:contents}picture>source{display:none}
 
 /* ---- v24: Enterprise Coherence page ---- */
 .ec-page .lgx{display:none}
-html[lang="en"] .ec-page .lgx[lang="en"],html[lang="nl"] .ec-page .lgx[lang="nl"],html[lang="fr"] .ec-page .lgx[lang="fr"],html[lang="de"] .ec-page .lgx[lang="de"],html[lang="ar"] .ec-page .lgx[lang="en"]{display:block}
+html[lang="nl"] .ec-page .lgx[lang="nl"],html[lang="fr"] .ec-page .lgx[lang="fr"]{display:block}
 .ec-sec{padding-block:clamp(48px,7vw,88px)}
 .ec-sec.alt{background:var(--bg2)}
 .ec-sec .head{margin-bottom:28px;max-width:860px}

@@ -17,7 +17,7 @@ async function main(){
     await page.locator('main a.btn[href="workshop.html"]').click();
     await page.waitForURL('https://grow-faster.be/workshop.html');
     if(new URL(page.url()).pathname!=='/workshop.html')throw Error('Home workshop link did not open the offer');
-    for(const [lang,title]of [['nl','Van AI-pilot naar bedrijfswaarde'],['en','From AI pilot to business value'],['fr','Du pilote IA à la valeur pour l’entreprise']]){
+    for(const [lang,title]of [['nl','Van AI-pilot naar bedrijfswaarde'],['fr','Du pilote IA à la valeur pour l’entreprise']]){
       if(await page.locator('html').getAttribute('lang')!==lang){await page.locator('#lang-btn-top').click();await page.locator('.lang-top [data-lang="'+lang+'"]').click()}
       if(!(await page.locator('h1').innerText()).includes(title))throw Error('Workshop heading mismatch: '+lang);
       if(!await page.locator('#request-form').isVisible())throw Error('Workshop request unavailable: '+lang);
@@ -42,7 +42,7 @@ async function main(){
     if(await page.locator('#burger').isVisible())await page.locator('#burger').click();
     await page.locator('[aria-controls="nav-coherence"]').click();
     await page.locator('#nav-coherence a[href="books.html"]').click();await page.waitForURL('https://grow-faster.be/books.html');
-    for(const [lang,label]of [['fr','Lire l’aperçu pour les dirigeants'],['nl','Lees de executive preview'],['en','Read the executive preview']]){
+    for(const [lang,label]of [['fr','Lire l’aperçu pour les dirigeants'],['nl','Lees de executive preview']]){
       if(await page.locator('html').getAttribute('lang')!==lang){await page.locator('#lang-btn-top').click();await page.locator('.lang-top [data-lang="'+lang+'"]').click()}
       if(!(await page.locator('.book-download').innerText()).includes(label))throw Error('Book download language mismatch: '+lang);
       if(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth+1))throw Error('Book overflow: '+lang);

@@ -3,7 +3,7 @@ const {chromium}=require('playwright'),{createServer}=require('./server.cjs');
 const assert=require('node:assert/strict'),fs=require('node:fs');
 (async()=>{
   const server=createServer();await new Promise(r=>server.listen(0,'127.0.0.1',r));
-  const lang=process.argv.find(a=>a.startsWith('--lang='))?.slice(7)||'en';assert.ok(['en','nl','fr'].includes(lang),'Supported language required');
+  const lang=process.argv.find(a=>a.startsWith('--lang='))?.slice(7)||'nl';assert.ok(['nl','fr'].includes(lang),'Supported language required');
   const labels={en:{marketing:/I agree to receive other communications/,processing:/I consent to Grow Faster/,submit:'Submit'},nl:{marketing:/Ik ga ermee akkoord om andere berichten/,processing:/Ik geef toestemming aan Grow Faster/,submit:'Verzenden'},fr:{marketing:/J’accepte de recevoir d’autres communications/,processing:/J’autorise Grow Faster/,submit:'Envoyer'}}[lang];
   let browser;
   try{

@@ -27,7 +27,7 @@ test('The Coherent Enterprise flipbook keeps every page readable if the flip lib
 });
 
 test('home preview opens the HTML flipbook, flips, searches and reaches its final page',async({page,context,isMobile})=>{
- await page.addInitScript(()=>{localStorage.setItem('avs-lang','en');localStorage.setItem('avs-consent',JSON.stringify({v:4,ext:false,ana:false,ts:Date.now()}));localStorage.setItem('flip:hinted','1');localStorage.setItem('flip:mobilehint','1')});
+ await page.addInitScript(()=>{localStorage.setItem('avs-lang','nl');localStorage.setItem('avs-consent',JSON.stringify({v:4,ext:false,ana:false,ts:Date.now()}));localStorage.setItem('flip:hinted','1');localStorage.setItem('flip:mobilehint','1')});
  await page.goto('/index.html');const popupPromise=context.waitForEvent('page');await page.locator('#design-for-coherence .book-download').click();const reader=await popupPromise;
  const errors=[];reader.on('pageerror',e=>errors.push(e.message));await reader.waitForLoadState();await expect(reader).toHaveURL(/\/boek\/index.html(#page-1)?$/);await expect(reader.locator('html')).toHaveAttribute('lang','en');
  await expect(reader.locator('#book .page')).toHaveCount(22);await expect(reader.locator('#pgNow')).toHaveText('1');await expect(reader.locator('#pgAll')).toHaveText('22');

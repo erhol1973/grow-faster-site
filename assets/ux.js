@@ -1,7 +1,7 @@
 /* Accessible names and metadata follow the existing three-language selector. */
 (function () {
   'use strict';
-  const languages = {en: 'en_GB', nl: 'nl_BE', fr: 'fr_BE'};
+  const languages = {nl: 'nl_BE', fr: 'fr_BE'};
   const names = {
   "Sections": [
     "Hoofdnavigatie",
@@ -135,7 +135,6 @@
   const originalOgDescription = document.querySelector('meta[property="og:description"]')?.content || originalDescription;
   const pageName = location.pathname.split('/').pop() || 'index.html';
   function translated(value, language) {
-    if (language === 'en') return value;
     const variants = names[value] || (window.I18N || {})[value];
     return variants?.[localeIndex[language]] || value;
   }
@@ -153,9 +152,9 @@
     if (ogTitle) ogTitle.content = document.title;
     const description = document.querySelector('meta[name="description"]');
     const localizedDescription = descriptions[pageName]?.[localeIndex[language]];
-    if (description) description.content = language === 'en' ? originalDescription : (localizedDescription || translated(originalDescription, language));
+    if (description) description.content = localizedDescription || translated(originalDescription, language);
     const ogDescription = document.querySelector('meta[property="og:description"]');
-    if (ogDescription) ogDescription.content = language === 'en' ? originalOgDescription : (localizedDescription || translated(originalOgDescription, language));
+    if (ogDescription) ogDescription.content = localizedDescription || translated(originalOgDescription, language);
     const ogLocale = document.querySelector('meta[property="og:locale"]');
     if (ogLocale) ogLocale.content = languages[language];
     const alternateLocales = Object.keys(languages).filter(function (code) { return code !== language; });

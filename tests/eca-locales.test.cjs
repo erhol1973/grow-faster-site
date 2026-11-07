@@ -1,6 +1,7 @@
 const {test}=require('node:test'),assert=require('node:assert/strict'),locale=require('../assets/eca-locales.js'),ECA=require('../assets/eca.js');
 test('ECA language selection accepts the supported URL, site preference and browser languages in order',()=>{
- assert.equal(locale.resolveLanguage('fr','nl','en'),'fr');assert.equal(locale.resolveLanguage('de','nl','en'),'nl');assert.equal(locale.resolveLanguage(null,null,'fr-BE'),'fr');assert.equal(locale.resolveLanguage(null,'de','es'),'en');
+ assert.equal(locale.resolveLanguage('fr','nl','en'),'fr');assert.equal(locale.resolveLanguage('de','nl','en'),'nl');assert.equal(locale.resolveLanguage(null,null,'fr-BE'),'fr');assert.equal(locale.resolveLanguage(null,'de','es'),'nl');
+ assert.equal(locale.resolveLanguage('en','fr','en-GB'),'fr','English is no longer a site language');assert.equal(locale.resolveLanguage('en',null,'en-GB'),'nl','English falls back to Dutch');
 });
 test('every translated ECA phrase has complete Dutch and French copy',()=>{
  assert.ok(locale.dictionary['Show my coherence profile']);assert.ok(locale.dictionary['Your diagnostic request was submitted successfully.']);

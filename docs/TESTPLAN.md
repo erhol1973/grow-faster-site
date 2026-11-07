@@ -1,5 +1,11 @@
 # Testplan en kwaliteitsbeleid
 
+## Alleen Nederlands en Frans, 7 november 2026
+
+De Engelse taalkeuze is van de hele website verwijderd. De taalmenu's, de ECA-keuzelijst, de workshop, de simulator, de boeklezer en de metadata ondersteunen alleen nog NL-BE en FR-BE; Nederlands is de standaard. Een opgeslagen of gevraagde Engelse voorkeur (`avs-lang=en`, `?lang=en`) valt veilig terug op Nederlands. De Engelstalige inhoudsblokken op Coherence, Inzichten, Privacy, Voorwaarden en Toegankelijkheid zijn verwijderd; Engelse bronzinnen blijven alleen bestaan als vertaalsleutel. Het Engelse HubSpot-formulier wordt niet meer gebruikt. De boeken zelf blijven Engelstalige uitgaven en houden `lang="en"` en `inLanguage: "en"`.
+
+Blijvende dekking: unit- en artifacttests weigeren `data-lang="en"`, `en_GB`, een Engelse ECA-optie en Engelse taalblokken; de ECA-taalresolutie test de terugval van Engels naar Nederlands. Browsertests controleren de terugval van een oude Engelse voorkeur, het menu met twee talen en de ECA zonder Engelse optie. Taallussen in de bestaande scenario's lopen nu over NL/FR; geen casus is verwijderd zonder vervanging en geen drempel of timeout is gewijzigd.
+
 ## Maandelijks Executive Journal
 De browsertest volgt Executive Journal vanaf Home, schakelt NL/FR op dezelfde pagina en controleert bronlinks en de cartoon. De lokale belastingtest bezoekt per worker minstens eenmaal elke route, inclusief beide taalversies en de nieuwe lezerbestanden. Het bestaande minimum en de p95-drempel blijven van kracht.
 

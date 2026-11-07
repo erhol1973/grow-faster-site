@@ -1,13 +1,13 @@
 'use strict';
 (() => {
-  const supported = ['en', 'nl', 'fr'];
+  const supported = ['nl', 'fr'];
   const requested = new URLSearchParams(location.search).get('lang');
   if (supported.includes(requested)) {
     try { localStorage.setItem('avs-lang', requested); } catch { /* The page remains usable without storage. */ }
     document.documentElement.lang = requested;
   }
   const language = () => document.documentElement.lang;
-  const t = key => language() === 'en' ? key : window.I18N?.[key]?.[{nl: 0, fr: 1}[language()]] || key;
+  const t = key => window.I18N?.[key]?.[{nl: 0, fr: 1}[language()]] || key;
   const sample = document.getElementById('voorbeeldplan');
   const wide = matchMedia('(min-width: 900px)');
   const setSample = () => { sample.open = wide.matches; };
@@ -41,7 +41,7 @@
       a.href = 'mailto:' + form.dataset.recipient + '?subject=' + encodeURIComponent(subject());
     });
     const assessment = document.querySelector('.ws-eca-link');
-    assessment.href = 'eca.html?lang=' + (supported.includes(language()) ? language() : 'en');
+    assessment.href = 'eca.html?lang=' + (supported.includes(language()) ? language() : 'nl');
     if (questionField.validity.customError) questionField.setCustomValidity(t(missing));
   }
   new MutationObserver(localize).observe(document.documentElement, {attributes: true, attributeFilter: ['lang']});

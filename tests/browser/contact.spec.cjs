@@ -35,7 +35,7 @@ for(const route of routes)for(const position of ['top','bottom']){
     await clickMenu(page,'about.html');await expectTop(page);
   });
 }
-for(const language of ['nl','fr','en']){
+for(const language of ['nl','fr']){
   test(`keyboard, history and footer Contact preserve ${language}`,async({page,browserName})=>{
     await page.addInitScript(l=>localStorage.setItem('avs-lang',l),language);
     await page.goto('/insights.html#who-decides');await clickMenu(page,'about.html',true);

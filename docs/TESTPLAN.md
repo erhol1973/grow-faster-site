@@ -6,6 +6,8 @@ De Engelse taalkeuze is van de hele website verwijderd. De taalmenu's, de ECA-ke
 
 Blijvende dekking: unit- en artifacttests weigeren `data-lang="en"`, `en_GB`, een Engelse ECA-optie en Engelse taalblokken; de ECA-taalresolutie test de terugval van Engels naar Nederlands. Browsertests controleren de terugval van een oude Engelse voorkeur, het menu met twee talen en de ECA zonder Engelse optie. Taallussen in de bestaande scenario's lopen nu over NL/FR; geen casus is verwijderd zonder vervanging en geen drempel of timeout is gewijzigd.
 
+De eerste CI-run (42384203640) slaagde voor alle browserscenario's maar faalde op Lighthouse: mobiele CLS 0,103 op Home en Inzichten. Oorzaak: de statische HTML is Engels en wordt na het laden naar het Nederlands vertaald, waardoor de hero verschuift. Dat raakte vroeger ook NL/FR-bezoekers, maar CI mat alleen Engels. Oplossing: `main` blijft onzichtbaar tot site.js de taal heeft toegepast (`html.i18n-ready`), met een `noscript`-uitzondering en een CSS-terugval na 2,5 s als het script faalt. Lokaal daalt de mobiele CLS naar 0,002 bij ongewijzigde LCP. De drempel van 0,1 is niet aangepast. Een unit-test bewaakt de guard in elke vertaalde pagina; een browsertest controleert dat `main` zichtbaar wordt.
+
 ## Maandelijks Executive Journal
 De browsertest volgt Executive Journal vanaf Home, schakelt NL/FR op dezelfde pagina en controleert bronlinks en de cartoon. De lokale belastingtest bezoekt per worker minstens eenmaal elke route, inclusief beide taalversies en de nieuwe lezerbestanden. Het bestaande minimum en de p95-drempel blijven van kracht.
 

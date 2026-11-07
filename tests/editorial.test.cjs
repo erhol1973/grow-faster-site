@@ -7,3 +7,9 @@ test('published language markers and structured data support only Dutch and Fren
  const sim=fs.readFileSync(path.join(root,'coherence-sim.html'),'utf8');const tx=JSON.parse(sim.match(/^const TX=(\{.*\});$/m)[1]);assert.deepEqual(Object.keys(tx).sort(),['en','fr','nl']);
  const translations=fs.readFileSync(path.join(root,'assets/i18n.js'),'utf8').match(/^window\.I18N=(\{[\s\S]*\});\s*window\.I18N_HTML=(\{[\s\S]*\});\s*$/);for(const group of translations.slice(1))for(const [key,value]of Object.entries(JSON.parse(group)))if(Array.isArray(value)){assert.equal(value.length,2,key);assert.ok(value.every(x=>typeof x==='string'&&x.length>0),key);}
 });
+
+test('main content translated at runtime stays hidden until the Dutch or French text is applied, with a no-JS and failure fallback',()=>{
+ for(const file of fs.readdirSync(root).filter(x=>x.endsWith('.html'))){const s=fs.readFileSync(path.join(root,file),'utf8');if(!s.includes('assets/site.js'))continue;
+  const head=s.slice(0,s.indexOf('</head>'));assert.match(head,/html:not\(\.i18n-ready\) main\{visibility:hidden;animation:i18n-reveal 0s 2\.5s forwards\}/,file);assert.match(head,/<noscript><style>html main\{visibility:visible;animation:none\}<\/style><\/noscript>/,file);}
+ assert.match(fs.readFileSync(path.join(root,'assets/site.js'),'utf8'),/root\.classList\.add\("i18n-ready"\)/);
+});

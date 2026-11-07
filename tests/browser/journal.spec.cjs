@@ -34,7 +34,9 @@ test('journal uses a portrait A4 page on desktop',async({page})=>{
   expect(box.width).toBeCloseTo(210*96/25.4,0);
   expect(box.height/box.width).toBeCloseTo(297/210,2);
   await page.locator('a[href="#p15"]').first().click();
+  await expect(page.locator('#p15')).toBeVisible();
   const sources=await page.locator('#p15').boundingBox();
   expect(sources.height).toBeGreaterThan(sources.width);
  }
 });
+

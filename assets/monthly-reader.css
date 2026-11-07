@@ -37,3 +37,80 @@ figcaption{font:italic 1.3rem/1.4 Georgia,serif;text-align:center;margin:.7rem a
 @media print{.journal-header,.toolbar,.signup,.reader-links{display:none!important}.enhanced-reader,.enhanced-reader body{height:auto;overflow:visible;display:block}.reader,.enhanced-reader .reader{display:block;width:297mm;margin:0}.enhanced-reader .page-window{display:block;overflow:visible;padding:0}.enhanced-reader .book{width:auto!important;height:auto!important}.sheet[hidden]{display:block!important}.sheet,.enhanced-reader .sheet{position:static;width:297mm;height:210mm;min-height:0;padding:13mm 16mm;box-shadow:none;border:0;transform:none;break-after:page;overflow:visible}.cover{color:var(--ink);background:white}.cover h1,.cover .folio{color:var(--navy)}}
 
 
+
+/* Complete translated edition, with all source sections retained on landscape paper. */
+.exact-edition .sheet{font-size:14px;line-height:1.38;padding:10mm 13mm}
+.exact-edition .paper-content{position:relative;min-height:100%;padding-bottom:1.6rem}
+.exact-edition .folio{font-size:10px;line-height:1.3;letter-spacing:.04em;margin-bottom:12px}
+.exact-edition .sheet h1,.exact-edition .sheet h2{font-size:31px;line-height:1.08;margin:.25rem 0 .65rem;max-width:100%}
+.exact-edition .sheet h3{font-size:12px;line-height:1.3;letter-spacing:.02em;margin:.7rem 0 .25rem}
+.exact-edition .sheet p{max-width:none;margin:.2rem 0 .55rem}
+.exact-edition .deck{font-size:15px;line-height:1.4;color:#4d637b;margin-bottom:.65rem!important}
+.exact-edition .part,.exact-edition .kicker{font-size:10px;line-height:1.3;font-weight:700;letter-spacing:.08em;color:var(--blue)}
+.exact-edition .byline{font-size:11px;color:#4d637b}
+.exact-edition .note{font-size:10px;line-height:1.35;color:#53667a}
+.exact-edition .center{text-align:center}
+.exact-edition .split,.exact-edition .columns,.exact-edition .cards,.exact-edition .steps,.exact-edition .routes{display:grid;gap:12px}
+.exact-edition .two,.exact-edition .split,.exact-edition .routes{grid-template-columns:repeat(2,minmax(0,1fr))}
+.exact-edition .three{grid-template-columns:repeat(3,minmax(0,1fr))}
+.exact-edition .five{grid-template-columns:repeat(5,minmax(0,1fr))}
+.exact-edition .cards>section{padding:10px 12px;background:var(--pale)}
+.exact-edition .steps>div{padding:11px 10px;background:var(--pale);border-top:2px solid #0a8fd0}
+.exact-edition .steps p{margin-top:.35rem}
+.exact-edition .callout{background:var(--pale);border-left:3px solid #0a8fd0;padding:9px 12px;margin:.65rem 0}
+.exact-edition .callout h3{margin:0 0 .25rem}
+.exact-edition .callout p:last-child{margin-bottom:0}
+.exact-edition .metrics{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:10px 0}
+.exact-edition .metrics>div{padding:10px 12px;background:var(--pale)}
+.exact-edition .metrics strong{display:block;font-size:28px;line-height:1.15;color:var(--navy);margin-bottom:5px;font-weight:500}
+.exact-edition .metrics p{font-size:12px;line-height:1.4}
+.exact-edition .metrics-four{grid-template-columns:repeat(2,minmax(0,1fr));margin:0}
+.exact-edition blockquote{font:italic 18px/1.35 Georgia,serif;color:var(--navy);margin:12px 0;padding-left:12px;border-left:2px solid #0a8fd0}
+.exact-edition cite{font:normal 10px/1.35 Aptos,"Segoe UI",sans-serif;display:block;margin-top:5px;color:#53667a}
+.exact-edition ul,.exact-edition ol{padding-left:1.2rem;margin:.3rem 0}
+.exact-edition li{margin-bottom:.35rem}
+.exact-edition table{width:100%;max-width:none;font-size:12.5px;line-height:1.35;margin:10px 0}
+.exact-edition table caption{text-transform:uppercase;font-size:11px;margin-bottom:6px}
+.exact-edition table th,.exact-edition table td{padding:7px 9px;vertical-align:top}
+.exact-edition .paper-footer{position:absolute;bottom:0;left:0;right:0;border-top:1px solid var(--line);padding-top:5px;font-size:8px;color:#53667a;letter-spacing:.06em}
+.exact-edition .paper-footer span{float:right}
+.exact-edition .cover{display:block}
+.exact-edition .cover h1{font-size:40px;max-width:85%;margin-top:18px}
+.exact-edition .cover .deck{color:#d9e9f6;max-width:85%}
+.exact-edition .cover .kicker{color:#7fd3f7}
+.exact-edition .cover .folio{margin-bottom:1rem}
+.exact-edition .cover .paper-footer{color:#c5d6e5;border-color:#54718b}
+.exact-edition .cover .timeline{margin:20px 0;padding:16px;border:1px solid #5e7b95}
+.exact-edition .cover h3{color:#d9e9f6}
+.exact-edition .tenure-line{display:grid;grid-template-columns:1fr 3fr 2fr;background:#184568;gap:10px;padding:12px;font-size:12px;border-left:4px solid #7fd3f7}
+.exact-edition .stages{display:grid;grid-template-columns:1fr 1fr 2fr 1.3fr;gap:10px;background:#16456a;padding:12px;font-size:12px;border-left:4px solid #7fd3f7}
+.exact-edition .years{word-spacing:12px;font-size:11px;margin-top:8px!important}
+.exact-edition .cover-bottom{display:grid;grid-template-columns:1fr 1.15fr;gap:24px;font-size:12px;margin-top:14px}
+.exact-edition .cover-bottom strong{font-size:10px;letter-spacing:.06em}
+.exact-edition .data-chart{margin:10px 0}
+.exact-edition .data-chart figcaption{font:700 11px/1.3 Aptos,"Segoe UI",sans-serif;text-align:left;margin:0 0 8px;max-width:none;text-transform:uppercase}
+.exact-edition .legend{display:flex;gap:20px;font-size:11px;margin:6px 0}
+.exact-edition .be-key:before,.exact-edition .eu-key:before{content:"";display:inline-block;width:18px;height:6px;background:#0a8fd0;margin-right:6px;vertical-align:middle}
+.exact-edition .eu-key:before{background:#8d9caf}
+.exact-edition .paired-row{display:grid;grid-template-columns:210px 1fr;align-items:center;gap:15px;margin:8px 0;font-size:12px}
+.exact-edition .paired-bars{display:grid;gap:4px}
+.exact-edition .paired-bars span{display:block;width:var(--value);min-width:38px;height:19px;background:#0a8fd0;color:white;text-align:right;padding:1px 5px;font-size:11px;line-height:17px}
+.exact-edition .paired-bars .eu{background:#718399}
+.exact-edition .bar-chart>div{display:grid;grid-template-columns:45px 1fr;margin:9px 0;font-size:12px}
+.exact-edition .bar-chart span{width:var(--value);background:#0a8fd0;color:white;padding:3px 8px;text-align:right}
+.exact-edition .matrix{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
+.exact-edition .matrix section{background:var(--pale);padding:10px 12px}
+.exact-edition .matrix section:nth-child(2){background:#d9eef9}
+.exact-edition .matrix h3{margin:0 0 4px}
+.exact-edition .matrix-axes{display:flex;justify-content:space-between;font-size:9px;color:var(--blue);margin:4px 0 8px}
+.exact-edition .source-list{columns:2;font-size:12px;line-height:1.35;list-style:none;padding:0;margin:14px 0}
+.exact-edition .source-list li{margin:0 0 12px}
+.exact-edition #p14 h2{font-size:28px}
+.exact-edition #p14 figure{margin-top:14px}
+.exact-edition #p14 figure img{max-height:137mm}
+.exact-edition #p14 figcaption{font-size:19px;margin:12px auto;max-width:90%}
+@media print{.exact-edition .sheet{font-size:10.5pt}.exact-edition .cover{background:#0b2545;color:white;print-color-adjust:exact}.exact-edition .cover h1,.exact-edition .cover .folio{color:white}}
+
+
+.exact-edition .cover-logo{width:180px;height:auto;display:block;margin:0 0 12px}
+.exact-edition .sheet h1:focus,.exact-edition .sheet h2:focus{outline:none}

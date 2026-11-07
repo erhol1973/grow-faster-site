@@ -54,3 +54,21 @@ test('reader keeps controls and subscription visible around a landscape page',as
   }
  }
 });
+test('complete Dutch and French editions fit every landscape sheet without truncation',async({page})=>{
+ await page.setViewportSize({width:1366,height:900});
+ for(const route of ['/journal.html','/journal-fr.html']){
+  await page.goto(route);
+  for(let n=1;n<=15;n++){
+   await page.evaluate(index=>{location.hash='p'+index},n);
+   const sheet=page.locator('#p'+n);
+   await expect(sheet).toBeVisible();
+   const layout=await sheet.evaluate(e=>{
+    const footer=e.querySelector('.paper-footer');
+    const content=footer.previousElementSibling;
+    return {overflow:e.scrollHeight-e.clientHeight,overlap:content.getBoundingClientRect().bottom-footer.getBoundingClientRect().top};
+   });
+   expect(layout.overflow,route+' page '+n+' overflows').toBeLessThanOrEqual(1);
+   expect(layout.overlap,route+' page '+n+' overlaps its footer').toBeLessThanOrEqual(1);
+  }
+ }
+});

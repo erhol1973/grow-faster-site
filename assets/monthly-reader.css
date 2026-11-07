@@ -114,3 +114,25 @@ figcaption{font:italic 1.3rem/1.4 Georgia,serif;text-align:center;margin:.7rem a
 
 .exact-edition .cover-logo{width:180px;height:auto;display:block;margin:0 0 12px}
 .exact-edition .sheet h1:focus,.exact-edition .sheet h2:focus{outline:none}
+
+/* Shared 0–10 year axis: outgoing CEO at 7.1 years; transformation phases illustrative. */
+.exact-edition .cover .timeline{background:#123257;border:0;padding:16px 22px;margin:16px 0}
+.exact-edition .timeline-plot{position:relative}
+.exact-edition .timeline-plot h3{font-size:11px;letter-spacing:.07em;margin:0 0 8px;color:#a6c8e4}
+.exact-edition .tenure-line{position:relative;display:grid;grid-template-columns:20fr 51fr 29fr;gap:0;padding:0;background:transparent;border:0;margin-bottom:18px;font-size:11px;min-height:37px}
+.exact-edition .tenure-line>span{display:flex;align-items:center;padding:8px;color:#102e50;font-weight:700}
+.exact-edition .tenure-line .grace{background:#f8bb40}
+.exact-edition .tenure-line .ceo-window{background:#e8f2fc}
+.exact-edition .tenure-line .exit-label{align-self:center;padding-left:10px;color:#fff;font:700 18px/1.15 Georgia,serif}
+.exact-edition .stages{display:grid;grid-template-columns:15fr 25fr 30fr 30fr;gap:0;background:transparent;border:0;padding:0;font-size:11px;min-height:43px}
+.exact-edition .stages>span{display:flex;align-items:center;padding:7px;border-right:3px solid #123257;background:#2d5e90;position:relative;z-index:1}
+.exact-edition .stages>span:nth-child(2){background:#2f80bf}
+.exact-edition .stages>span:nth-child(3){background:#389fdd}
+.exact-edition .stages>span:nth-child(4){background:#65bff0;border-right:0}
+.exact-edition .timeline-plot .value-note{color:#f8bb40;text-align:right;font-size:12px;font-weight:600;margin:9px 0 20px;position:relative;z-index:1}
+.exact-edition .years{display:flex;justify-content:space-between;position:relative;border-top:1px solid #9bbad5;margin:0!important;padding-top:10px;word-spacing:normal;font-size:10px;color:#a6c8e4}
+.exact-edition .years>span{position:relative;width:0;overflow:visible;white-space:nowrap;text-indent:-7px}
+.exact-edition .years>span:before{content:"";position:absolute;top:-11px;left:0;height:6px;border-left:1px solid #9bbad5}
+.exact-edition .departure-marker{position:absolute;left:71%;top:19px;bottom:24px;border-left:2px dashed #f8bb40;pointer-events:none}
+.exact-edition #p2 .byline{margin-bottom:15px}
+@media print{.exact-edition .timeline,.exact-edition .tenure-line>span,.exact-edition .stages>span{print-color-adjust:exact}}

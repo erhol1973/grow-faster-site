@@ -72,3 +72,23 @@ test('complete Dutch and French editions fit every landscape sheet without trunc
   }
  }
 });
+
+test('cover chart retains source colours, common year scale and editorial reading order',async({page})=>{
+ for(const route of ['/journal.html','/journal-fr.html']){
+  await page.goto(route);
+  const chart=page.locator('.timeline-plot');
+  const result=await chart.evaluate(e=>{
+   const colour=s=>getComputedStyle(e.querySelector(s)).backgroundColor;
+   const plot=e.getBoundingClientRect(), marker=e.querySelector('.departure-marker').getBoundingClientRect();
+   return {grace:colour('.grace'),window:colour('.ceo-window'),stages:[...e.querySelectorAll('.stages>span')].map(s=>getComputedStyle(s).backgroundColor),position:(marker.left-plot.left)/plot.width,graceWidth:e.querySelector('.grace').getBoundingClientRect().width/plot.width,tenureWidth:e.querySelector('.ceo-window').getBoundingClientRect().right-plot.left};
+  });
+  expect(result.grace).toBe('rgb(248, 187, 64)');
+  expect(result.window).toBe('rgb(232, 242, 252)');
+  expect(new Set(result.stages).size).toBe(4);
+  expect(result.position).toBeCloseTo(.71,2);
+  expect(result.graceWidth).toBeCloseTo(.20,2);
+  await page.goto(route+'#p2');
+  const order=await page.locator('#p2 .paper-content').evaluate(e=>[...e.children].slice(1,4).map(x=>x.className||x.tagName));
+  expect(order).toEqual(['deck','byline','H2']);
+ }
+});

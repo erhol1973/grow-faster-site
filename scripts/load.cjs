@@ -5,7 +5,7 @@ const {createServer}=require('./server.cjs');
 const routes=require('../tests/navigation-cases.json').pages.map(p=>({route:'/'+p,status:200})).concat([
   ...['boek/the-coherent-enterprise/index.html','boek/the-coherent-enterprise/pdf/the-coherent-enterprise-executive-preview.pdf','boek/the-coherent-enterprise/pdf/chapter-07.pdf','books/the-coherent-enterprise-executive-preview.pdf'].map(file=>({route:'/'+file,status:200})),
   ...['boek/index.html','assets/book-reader.js','assets/book-reader.css','assets/page-flip-2.0.7.js','boek/pdf/turning-ai-potential-executive-preview.pdf','boek/pdf/chapter-10.pdf','assets/workshop.js','assets/workshop.css','eca.html','assets/eca.js','assets/eca-locales.js','assets/eca-ui.js','assets/eca-hubspot.js','assets/navigation.css','assets/journal.css','assets/books.css','books/turning-ai-potential-executive-preview.pdf'].map(file=>({route:'/'+file,status:200})),
-  {route:'/journal.html',status:200},{route:'/workshop.html',status:200},{route:'/coherence-sim.html',status:200},{route:'/assets/site.css',status:200},
+  {route:'/journal.html',status:200},{route:'/journal-fr.html',status:200},{route:'/assets/monthly-reader.css',status:200},{route:'/assets/journal.js',status:200},{route:'/img/journal-01-cartoon.webp',status:200},{route:'/workshop.html',status:200},{route:'/coherence-sim.html',status:200},{route:'/assets/site.css',status:200},
   {route:'/assets/site.js',status:200},{route:'/missing-load-test.html',status:404}
 ]);
 const P95_LIMIT_MS=1500;
@@ -30,7 +30,7 @@ async function main(){
   const base=`http://127.0.0.1:${server.address().port}`,samples=[],started=performance.now();
   try{
     await Promise.all(Array.from({length:8},async()=>{
-      for(let i=0;i<REQUESTS_PER_WORKER;i++){
+      for(let i=0;i<Math.max(REQUESTS_PER_WORKER,routes.length);i++){
         const scenario=routes[i%routes.length],t=performance.now();let status=0,failure;
         try{const response=await fetch(base+scenario.route,{signal:AbortSignal.timeout(5000)});status=response.status;await response.arrayBuffer()}catch(error){status=0;failure=error.name+': '+error.message+(error.cause?.code?' ('+error.cause.code+')':'')}
         samples.push({route:scenario.route,expected:scenario.status,status,latencyMs:performance.now()-t,...(failure?{failure}:{})});

@@ -3,17 +3,20 @@ const {test}=require('node:test');
 const assert=require('node:assert/strict');
 const fs=require('node:fs');
 const path=require('node:path');
-const dist=path.resolve(__dirname,'../dist');
+const read=file=>fs.readFileSync(path.resolve(__dirname,'../dist',file),'utf8');
 
-test('Executive Journal is publicly readable and offers optional weekly email signup',()=>{
- const html=fs.readFileSync(path.join(dist,'journal.html'),'utf8');
- const pages=html.match(/<article class="page(?: cover)?[^"]*" aria-label="Page \d+"/g)||[];
- assert.equal(pages.length,15,'the flipbook must retain exactly 15 pages');
- assert.match(html,/id="subscribe"/);
- assert.match(html,/data-region="eu1" data-form-id="2da1e87b-2acf-44be-b6fa-34999739895f" data-portal-id="149675328"/);
- assert.match(html,/Every issue remains free to read on the website/);
- assert.match(html,/2LaHoeyrPRL62-jSZlzmJXw/);
- const insights=fs.readFileSync(path.join(dist,'insights.html'),'utf8');
- assert.match(insights,/href="journal\.html">Read issue 01/);
- assert.match(insights,/href="journal\.html#subscribe">Get new issues by email/);
+test('Monthly Issue 01 replaces the old reader in Dutch and French',()=>{
+ for(const [file,language,other] of [['journal.html','nl','journal-fr.html'],['journal-fr.html','fr','journal.html']]){
+  const html=read(file);
+  assert.match(html,new RegExp('<html lang="'+language+'">'));
+  assert.equal([...html.matchAll(/<article class="sheet[^"]*" id="p(\d+)"/g)].length,15);
+  assert.match(html,new RegExp('data-alternate[^>]*href="'+other+'"'));
+  assert.match(html,/id="p14"[\s\S]*journal-01-cartoon\.webp[\s\S]*id="p15"[\s\S]*id="source-16"/);
+  assert.match(html,/id="subscribe"[\s\S]*2LaHoeyrPRL62-jSZlzmJXw/);
+  assert.doesNotMatch(html,/\bweekly\b|week 45/i);
+ }
+ const insights=read('insights.html');
+ assert.match(insights,/href="insights\.html"[^>]*>Executive Journal/);
+ assert.match(insights,/id="executive-journal"[\s\S]*Monthly Executive Journal[\s\S]*href="journal\.html" lang="nl"[\s\S]*href="journal-fr\.html" lang="fr"/);
+ assert.doesNotMatch(insights,/Weekly executive journal/i);
 });

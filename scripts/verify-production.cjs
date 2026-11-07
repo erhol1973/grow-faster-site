@@ -14,7 +14,7 @@ async function main(){
     if(await page.locator('#navlist a.l:not(.nav-work)').count()!==5)throw Error('Expected Home plus four primary navigation categories');
     if(await page.locator('#navlist a.nav-work[href="about.html"]').count()!==1)throw Error('Expected one Work with me action');
     if(await page.locator('#burger').isVisible())await page.locator('#burger').click();
-    await page.locator('#navlist a[href="workshop.html"]').click();
+    await page.locator('main a.btn[href="workshop.html"]').click();
     await page.waitForURL('https://grow-faster.be/workshop.html');
     if(new URL(page.url()).pathname!=='/workshop.html')throw Error('Home workshop link did not open the offer');
     for(const [lang,title]of [['nl','Van AI-pilot naar bedrijfswaarde'],['en','From AI pilot to business value'],['fr','Du pilote IA à la valeur pour l’entreprise']]){
@@ -48,6 +48,20 @@ async function main(){
       if(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth+1))throw Error('Book overflow: '+lang);
       results.push({route:'books.html',language:lang,freeDownloadAvailable:true});
     }
+    await page.goto('https://grow-faster.be/index.html');
+    if(await page.locator('#burger').isVisible())await page.locator('#burger').click();
+    await page.locator('#navlist a[href="insights.html"]').click();
+    await page.waitForURL('https://grow-faster.be/insights.html');
+    const journal=page.locator('#executive-journal');
+    if(!await journal.getByText('Monthly Executive Journal',{exact:true}).isVisible())throw Error('Monthly Journal entry unavailable');
+    await journal.locator('a[href="journal.html"]').click();
+    await page.waitForURL('https://grow-faster.be/journal.html');
+    if(await page.locator('html').getAttribute('lang')!=='nl'||!await page.locator('#p1:visible').count())throw Error('Dutch Journal unavailable');
+    await page.locator('[data-next]').click();
+    await page.locator('[data-alternate]').click();
+    await page.waitForURL('https://grow-faster.be/journal-fr.html#p2');
+    if(await page.locator('html').getAttribute('lang')!=='fr'||!await page.locator('#p2:visible').count())throw Error('French Journal or preserved page unavailable');
+    results.push({route:'journal.html',monthlyIssue:1,languages:['nl','fr'],pagePreserved:true});
     const publication=require('../tests/book-publication.json');
     const pdf=await page.request.get('https://grow-faster.be/'+publication.file);
     if(pdf.status()!==200||!pdf.headers()['content-type']?.startsWith('application/pdf'))throw Error('Public book PDF unavailable');

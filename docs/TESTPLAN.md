@@ -1,5 +1,10 @@
 # Testplan en kwaliteitsbeleid
 
+## Maandblad: taal, terugkeer en leesbediening, 7 november 2026
+
+Het promotieblok toont uitsluitend de gekozen NL/FR-taal en de bijbehorende leesknop. De teruglink opent dezelfde rubriek op de website in de taal van de lezer. Bladerpijlen staan naast de liggende pagina; A−/A+ vergroot de leespagina zonder vaste bediening of inschrijving te verbergen. Browsergevallen controleren beide taalroutes, terugkeer, zijpijlen op desktop/mobiel en vergroting. Alle dertig pagina’s, broncijfers en de bestaande kleur- en volgordecontroles blijven getest.
+
+
 ## Alleen Nederlands en Frans, 7 november 2026
 
 De Engelse taalkeuze is van de hele website verwijderd. De taalmenu's, de ECA-keuzelijst, de workshop, de simulator, de boeklezer en de metadata ondersteunen alleen nog NL-BE en FR-BE; Nederlands is de standaard. Een opgeslagen of gevraagde Engelse voorkeur (`avs-lang=en`, `?lang=en`) valt veilig terug op Nederlands. De Engelstalige inhoudsblokken op Coherence, Inzichten, Privacy, Voorwaarden en Toegankelijkheid zijn verwijderd; Engelse bronzinnen blijven alleen bestaan als vertaalsleutel. Het Engelse HubSpot-formulier wordt niet meer gebruikt. De boeken zelf blijven Engelstalige uitgaven en houden `lang="en"` en `inLanguage: "en"`.

@@ -53,7 +53,7 @@ async function main(){
     await page.locator('#navlist a[href="insights.html"]').click();
     await page.waitForURL('https://grow-faster.be/insights.html');
     const journal=page.locator('#executive-journal');
-    if(!await journal.getByText('Monthly Executive Journal',{exact:true}).isVisible())throw Error('Monthly Journal entry unavailable');
+    if(!await journal.getByText('De Maandelijkse Executive Journal',{exact:true}).isVisible())throw Error('Monthly Journal entry unavailable');
     await journal.locator('a[href="journal.html"]').click();
     await page.waitForURL('https://grow-faster.be/journal.html');
     if(await page.locator('html').getAttribute('lang')!=='nl'||!await page.locator('#p1:visible').count())throw Error('Dutch Journal unavailable');

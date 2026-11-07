@@ -3,13 +3,15 @@
 const book = document.querySelector('.book');
 const sheets = [...book.querySelectorAll('.sheet')];
 const toolbar = document.querySelector('.toolbar');
-const previous = toolbar.querySelector('[data-prev]');
-const next = toolbar.querySelector('[data-next]');
+const previous = document.querySelector('[data-prev]');
+const next = document.querySelector('[data-next]');
 const position = toolbar.querySelector('output');
 const alternate = document.querySelector('[data-alternate]');
 const alternateRoute = alternate.getAttribute('href');
 let current = -1;
 let enlarged = false;
+let readingScale = 1;
+try { localStorage.setItem("avs-lang", document.documentElement.lang); } catch {}
 const windowArea = document.querySelector('.page-window');
 const zoom = toolbar.querySelector('[data-zoom]');
 
@@ -17,7 +19,7 @@ function fitPage() {
   const width = 297 * 96 / 25.4;
   const height = 210 * 96 / 25.4;
   const fit = Math.min((windowArea.clientWidth - 16) / width, (windowArea.clientHeight - 16) / height, 1);
-  const scale = enlarged ? 1 : Math.max(fit, 0.01);
+  const scale = enlarged ? readingScale : Math.max(fit, 0.01);
   book.style.setProperty('--page-scale', scale);
   book.style.setProperty('--book-width', width * scale + 'px');
   book.style.setProperty('--book-height', height * scale + 'px');
@@ -26,9 +28,19 @@ document.documentElement.classList.add('enhanced-reader');
 new ResizeObserver(fitPage).observe(windowArea);
 zoom.addEventListener('click', () => {
   enlarged = !enlarged;
+  readingScale = 1;
   zoom.setAttribute('aria-pressed', String(enlarged));
   fitPage();
 });
+
+function resizeText(direction) {
+  readingScale = Math.max(.4, Math.min(2.5, (enlarged ? readingScale : Math.max(Number(book.style.getPropertyValue('--page-scale')), .8)) + direction * .2));
+  enlarged = true;
+  zoom.setAttribute('aria-pressed', 'true');
+  fitPage();
+}
+toolbar.querySelector('[data-bigger]').addEventListener('click', () => resizeText(1));
+toolbar.querySelector('[data-smaller]').addEventListener('click', () => resizeText(-1));
 
 function targetIndex() {
   const target = document.getElementById(location.hash.slice(1));

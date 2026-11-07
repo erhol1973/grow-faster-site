@@ -136,3 +136,15 @@ figcaption{font:italic 1.3rem/1.4 Georgia,serif;text-align:center;margin:.7rem a
 .exact-edition .departure-marker{position:absolute;left:71%;top:19px;bottom:24px;border-left:2px dashed #f8bb40;pointer-events:none}
 .exact-edition #p2 .byline{margin-bottom:15px}
 @media print{.exact-edition .timeline,.exact-edition .tenure-line>span,.exact-edition .stages>span{print-color-adjust:exact}}
+
+/* Persistent side navigation and keyboard-accessible reading magnification. */
+.page-stage{display:grid;grid-template-columns:48px minmax(0,1fr) 48px;align-items:center;min-height:0;width:100%}
+.enhanced-reader .page-stage{grid-template-rows:minmax(0,1fr)}
+.enhanced-reader .page-window{height:100%;width:100%}
+.page-arrow{align-self:center;justify-self:center;min-width:44px;min-height:60px;border:1px solid #90a8bf;border-radius:6px;background:white;color:var(--navy);font:36px/1 Georgia,serif;cursor:pointer}
+.page-arrow:disabled{opacity:.4;cursor:default}
+.reading-tools{display:flex;gap:.4rem;align-items:center}
+.return-link{font-size:.9rem;white-space:nowrap}
+@media(max-width:600px){.page-stage{grid-template-columns:34px minmax(0,1fr) 34px}.page-arrow{min-width:30px;min-height:48px;font-size:30px}.journal-header .return-link{font-size:.75rem}.reading-tools{gap:.2rem}.reading-tools button{padding:.3rem .45rem}}
+@media print{.page-arrow{display:none!important}.page-stage{display:block}}
+.exact-edition .sheet a[href^="#source-"]{display:inline-block;min-width:1.4em;text-align:center;touch-action:manipulation}

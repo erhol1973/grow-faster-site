@@ -1,26 +1,39 @@
 
 :root{color-scheme:light;--navy:#0b2545;--blue:#006a9c;--ink:#182d45;--line:#cbd8e6;--pale:#edf4fa}
-*{box-sizing:border-box}body{margin:0;background:var(--pale);color:var(--ink);font:1rem/1.6 Aptos,"Segoe UI",sans-serif}
-a{color:var(--blue)}a:focus-visible,button:focus-visible{outline:3px solid #0874a9;outline-offset:3px}
-.journal-header{background:var(--navy);color:white;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;padding:1rem max(1rem,calc((100vw - 68rem)/2))}
-.journal-header img{display:block;width:min(15rem,60vw);height:auto}.journal-header a{color:white}.journal-header p{margin:0}
-.language a,.language strong{padding:.3rem .5rem}.reader{width:min(210mm,100% - 2rem);margin:1.2rem auto}
-.toolbar{display:flex;gap:.65rem;flex-wrap:wrap;align-items:center;justify-content:space-between;margin:.75rem 0}.toolbar button{font:inherit;background:white;color:var(--navy);border:1px solid #637c95;border-radius:.3rem;padding:.42rem .75rem;cursor:pointer}.toolbar button:disabled{opacity:.55;cursor:default}
-[hidden]{display:none!important}.book{perspective:1400px}
-.sheet{background:white;border:1px solid var(--line);padding:18mm 17mm;box-shadow:0 10px 30px #0b254518;min-height:297mm;overflow-wrap:anywhere}
-.sheet+.sheet{margin-top:1rem}.sheet[hidden]+.sheet{margin-top:0}.enhanced .sheet{margin:0}
-.sheet.turning{animation:turn .32s ease-out both;transform-origin:left center}.sheet.turning.back{transform-origin:right center;animation-name:turn-back}
-@keyframes turn{from{transform:rotateY(-13deg);opacity:.65}to{transform:none;opacity:1}}@keyframes turn-back{from{transform:rotateY(13deg);opacity:.65}to{transform:none;opacity:1}}
-@media(prefers-reduced-motion:reduce){.sheet.turning,.sheet.turning.back{animation:none}}
-.sheet h1,.sheet h2{font:normal clamp(1.8rem,4vw,2.65rem)/1.12 Georgia,serif;color:var(--navy);margin:.65rem 0 1.1rem}.sheet h3{font-size:1.13rem;margin:1.15rem 0 .2rem}
-.sheet p{max-width:70ch;margin:.3rem 0 .85rem}.folio{display:flex;justify-content:space-between;gap:1rem;color:var(--blue);font-weight:700;font-size:.82rem;letter-spacing:.06em}
-.cover{color:white;background:linear-gradient(145deg,#07182d,#124264);display:flex;flex-direction:column;justify-content:center;min-height:297mm}.cover h1,.cover .folio{color:white}.cover .folio{margin-bottom:2rem}
-figure{margin:1.2rem 0 0}figure img{display:block;width:100%;height:auto;border-radius:.3rem}figcaption{font:italic clamp(1.1rem,2.6vw,1.65rem)/1.45 Georgia,serif;text-align:center;margin:1rem auto 0;max-width:55ch}
-.source-list{columns:2;column-gap:2rem;padding-inline-start:1.65rem;font-size:.97rem}.source-list li{break-inside:avoid;margin:0 0 .65rem}.source-list li:target{background:var(--pale)}
-.signup{border-top:1px solid var(--line);margin-top:1.3rem;padding:1rem 0}.signup h2{font:1.5rem Georgia,serif;margin:.2rem 0}.signup p{margin:.3rem 0}
-@media(max-width:600px){.source-list{columns:1}.sheet{padding:1.3rem;min-height:calc((100vw - 2rem)*297/210)}.cover{min-height:calc((100vw - 2rem)*297/210)}.toolbar{font-size:.95rem}}
-@page{size:A4 portrait;margin:0}
-@media print{.journal-header,.toolbar,.signup{display:none!important}.reader{width:210mm;margin:0}.sheet[hidden]{display:block!important}.sheet{break-after:page;min-height:297mm;padding:18mm 17mm;box-shadow:none;border:0;font-size:11pt}.sheet h1,.sheet h2{font-size:28pt}.sheet h3{font-size:12pt}.source-list{font-size:10pt}.cover{min-height:297mm}.reader>p{display:none}.cover{color:var(--ink);background:white}.cover h1,.cover .folio{color:var(--navy)}}
-
+*{box-sizing:border-box}body{margin:0;background:var(--pale);color:var(--ink);font:1rem/1.6 Aptos,"Segoe UI",sans-serif}a{color:var(--blue)}
+a:focus-visible,button:focus-visible{outline:3px solid #0874a9;outline-offset:3px}[hidden]{display:none!important}
+.journal-header{background:var(--navy);color:white;display:flex;align-items:center;justify-content:space-between;gap:.7rem;flex-wrap:wrap;padding:.55rem 1rem}
+.journal-header img{display:block;width:min(12rem,38vw);height:auto}.journal-header a{color:white}.journal-header p{margin:0}.language a,.language strong{padding:.25rem}
+.reader{width:min(297mm,100% - 2rem);margin:1rem auto}.toolbar{display:flex;gap:.5rem;align-items:center;justify-content:space-between}
+.toolbar button{font:inherit;background:white;color:var(--navy);border:1px solid #637c95;border-radius:.3rem;padding:.35rem .7rem;cursor:pointer}
+.toolbar button:disabled{opacity:.55;cursor:default}.reader-links{margin:.3rem 0;font-size:.95rem}
+.sheet{background:white;border:1px solid var(--line);padding:13mm 16mm;min-height:210mm;overflow-wrap:anywhere;box-shadow:0 6px 24px #0b254518}
+.sheet+.sheet{margin-top:1rem}.sheet h1,.sheet h2{font:normal 2.6rem/1.12 Georgia,serif;color:var(--navy);margin:.6rem 0 1rem}
+.sheet h3{font-size:1.1rem;margin:.8rem 0 .15rem}.sheet p{margin:.25rem 0 .7rem;max-width:85ch}
+.folio{display:flex;justify-content:space-between;gap:1rem;color:var(--blue);font-weight:700;font-size:.82rem;letter-spacing:.06em}
+.cover{color:white;background:linear-gradient(145deg,#07182d,#124264);display:flex;flex-direction:column;justify-content:center}
+.cover h1,.cover .folio{color:white}.cover .folio{margin-bottom:1.5rem}
+figure{margin:1rem 0 0;text-align:center}figure img{display:block;max-width:100%;max-height:118mm;width:auto;height:auto;margin:auto}
+figcaption{font:italic 1.3rem/1.4 Georgia,serif;text-align:center;margin:.7rem auto 0;max-width:65ch}
+.source-list{columns:2;column-gap:2rem;padding-inline-start:1.65rem;font-size:.92rem}.source-list li{break-inside:avoid;margin:0 0 .5rem}.source-list li:target{background:var(--pale)}
+.signup{border-top:1px solid var(--line);background:var(--pale);margin-top:.6rem;padding:.55rem 1rem}
+.signup h2{font:1.2rem Georgia,serif;margin:0}.signup p{margin:.1rem 0;font-size:.9rem}
+.sheet table{border-collapse:collapse;width:min(100%,44rem);margin:.75rem 0;font-size:.95rem}
+.sheet caption{text-align:left;font-weight:700;margin-bottom:.25rem;color:var(--navy)}
+.sheet th,.sheet td{border-bottom:1px solid var(--line);text-align:left;padding:.25rem .5rem}.sheet thead{background:var(--pale)}
 .skip-link{position:absolute;left:1rem;top:.5rem;z-index:2;padding:.5rem 1rem;background:white;transform:translateY(-180%)}.skip-link:focus{transform:none}
-.sheet table{border-collapse:collapse;width:min(100%,40rem);margin:1rem 0 1.2rem;font-size:.95rem}.sheet caption{text-align:left;font-weight:700;margin-bottom:.35rem;color:var(--navy)}.sheet th,.sheet td{border-bottom:1px solid var(--line);text-align:left;padding:.35rem .55rem}.sheet thead{background:var(--pale)}
+.enhanced-reader{height:100%;overflow:hidden}.enhanced-reader body{height:100vh;height:100dvh;display:flex;flex-direction:column;overflow:hidden}
+.enhanced-reader .journal-header{flex:none}.enhanced-reader .reader{width:100%;margin:0;flex:1;min-height:0;display:grid;grid-template-rows:auto auto minmax(0,1fr) auto}
+.enhanced-reader .toolbar,.enhanced-reader .reader-links{width:min(100% - 2rem,68rem);margin:.25rem auto}
+.enhanced-reader .page-window{min-height:0;overflow:auto;display:grid;align-items:safe center;justify-items:safe center;padding:.5rem}
+.enhanced-reader .book{position:relative;width:var(--book-width);height:var(--book-height);flex:none}
+.enhanced-reader .sheet{position:absolute;top:0;left:0;margin:0;width:297mm;height:210mm;min-height:0;overflow:auto;transform:scale(var(--page-scale));transform-origin:top left}
+.enhanced-reader .sheet.turning{animation:appear .2s ease-out}
+.enhanced-reader .signup{margin:0;text-align:center}
+@keyframes appear{from{opacity:.65}to{opacity:1}}
+@media(prefers-reduced-motion:reduce){.enhanced-reader .sheet.turning{animation:none}}
+@media(max-width:600px){.journal-header{font-size:.8rem;gap:.3rem}.journal-header>p:first-of-type{display:none}.toolbar{font-size:.88rem}.reader-links{font-size:.82rem}.signup{padding:.4rem}.signup h2{font-size:1rem}.signup p{font-size:.8rem}}
+@page{size:A4 landscape;margin:0}
+@media print{.journal-header,.toolbar,.signup,.reader-links{display:none!important}.enhanced-reader,.enhanced-reader body{height:auto;overflow:visible;display:block}.reader,.enhanced-reader .reader{display:block;width:297mm;margin:0}.enhanced-reader .page-window{display:block;overflow:visible;padding:0}.enhanced-reader .book{width:auto!important;height:auto!important}.sheet[hidden]{display:block!important}.sheet,.enhanced-reader .sheet{position:static;width:297mm;height:210mm;min-height:0;padding:13mm 16mm;box-shadow:none;border:0;transform:none;break-after:page;overflow:visible}.cover{color:var(--ink);background:white}.cover h1,.cover .folio{color:var(--navy)}}
+
+

@@ -25,3 +25,18 @@ test('monthly journal opens from its menu and preserves page when switching lang
  expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1)).toBe(true);
 });
 
+
+test('journal uses a portrait A4 page on desktop',async({page})=>{
+ await page.setViewportSize({width:1366,height:900});
+ for(const route of ['/journal.html','/journal-fr.html']){
+  await page.goto(route);
+  const box=await page.locator('#p1').boundingBox();
+  expect(box.width).toBeCloseTo(210*96/25.4,0);
+  expect(box.height/box.width).toBeCloseTo(297/210,2);
+  await page.locator('a[href="#p15"]').first().click();
+  await expect(page.locator('#p15')).toBeVisible();
+  const sources=await page.locator('#p15').boundingBox();
+  expect(sources.height).toBeGreaterThan(sources.width);
+ }
+});
+

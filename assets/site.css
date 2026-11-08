@@ -1548,3 +1548,4 @@ body:has(#operating) .shift{font-size:clamp(22px,2.6vw,34px);max-width:36ch;marg
 .workshop-photo{display:block;overflow:hidden}
 .workshop-photo img{display:block;width:100%;height:auto;aspect-ratio:4/3;object-fit:cover}
 @media(min-width:900px){.workshop-entry-grid{grid-template-columns:minmax(0,6fr) minmax(0,5fr);gap:64px}}
+.ec-film-video{display:block;width:100%;height:auto;aspect-ratio:16/9;background:#0B2545;border-radius:8px}.ec-film-text{margin-top:16px}.ec-film-text summary{cursor:pointer;font-weight:650}.ec-film-text ol{line-height:1.7}

@@ -18,5 +18,4 @@ description = "Supabase public publishable browser key, never a service-role or 
 condition = "AND"
 paths = ['''(^|/)assets/cms-config\.js$''']
 regexTarget = "secret"
-regexes = ['''^sb_publishable_[A-Za-z0-9_-]{20,}
-'']
+regexes = ['''^sb_publishable_[A-Za-z0-9_-]{20,}$''']

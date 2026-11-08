@@ -92,3 +92,39 @@ test('cover chart retains source colours, common year scale and editorial readin
   expect(order).toEqual(['deck','byline','H2']);
  }
 });
+
+test('journal promotion follows selected language and return link restores it',async({page})=>{
+ await page.addInitScript(()=>{localStorage.setItem('avs-consent',JSON.stringify({v:4,ext:false,ana:false,ts:Date.now()}))});
+ for(const [lang,title,cta,route] of [['nl','De Maandelijkse Executive Journal','Lees editie 01','journal.html'],['fr','Le Journal Exécutif Mensuel','Lire le numéro 01','journal-fr.html']]){
+  await page.goto('/insights.html?lang='+lang+'#executive-journal');
+  const promo=page.locator('#executive-journal');
+  await expect(promo.getByText(title,{exact:true})).toBeVisible();
+  await expect(promo.locator('[data-article-lang]:visible')).toHaveCount(1);
+  await expect(promo.locator('a:visible')).toHaveCount(1);
+  await promo.getByRole('link',{name:cta}).click();
+  await expect(page).toHaveURL(new RegExp(route+'$'));
+  await page.locator('.return-link').click();
+  await expect(page).toHaveURL(new RegExp('insights.html\\?lang='+lang+'#executive-journal$'));
+  await expect(promo.getByText(title,{exact:true})).toBeInViewport();
+ }
+});
+
+test('side arrows frame the page and text magnification stays usable',async({page})=>{
+ for(const viewport of [{width:1366,height:900},{width:390,height:844}]){
+  await page.setViewportSize(viewport);
+  await page.goto('/journal.html#p2');
+  const prev=page.locator('[data-prev]'),next=page.locator('[data-next]');
+  await expect(prev).toBeInViewport({ratio:1});await expect(next).toBeInViewport({ratio:1});
+  const left=await prev.boundingBox(),right=await next.boundingBox(),paper=await page.locator('#p2').boundingBox();
+  expect(left.x+left.width).toBeLessThanOrEqual(paper.x+1);
+  expect(right.x).toBeGreaterThanOrEqual(paper.x+paper.width-1);
+  const before=await page.locator('#p2 .deck').boundingBox();
+  await page.locator('[data-bigger]').click();await page.locator('[data-bigger]').click();
+  const after=await page.locator('#p2 .deck').boundingBox();
+  expect(after.height).toBeGreaterThan(before.height);
+  await expect(page.locator('.return-link')).toBeInViewport({ratio:1});
+  await expect(page.locator('.signup')).toBeInViewport({ratio:1});
+  await next.click();await expect(page.locator('#p3')).toBeVisible();
+  await page.locator('[data-zoom]').click();await expect(page.locator('[data-zoom]')).toHaveAttribute('aria-pressed','false');
+ }
+});

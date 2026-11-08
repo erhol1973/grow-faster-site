@@ -66,3 +66,5 @@ html{scroll-padding-top:92px}
 html.nav-over .nav.nav-executive .brand .gf-wordmark-light{display:none}
 html.nav-over .nav.nav-executive .brand .gf-wordmark-dark{display:block}
 @media(max-width:1100px){.nav.nav-executive .brand picture{width:clamp(146px,27vw,204px)}}
+/* Switch header colours atomically: fading light text over the open white menu briefly loses contrast. */
+.nav.nav-executive,.nav.nav-executive .brand,.nav.nav-executive a.l,.nav.nav-executive .lang-btn{transition:none}

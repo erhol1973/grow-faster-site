@@ -17,7 +17,7 @@ test('Monthly Issue 01 replaces the old reader in Dutch and French',()=>{
  }
  const insights=read('insights.html');
  assert.match(insights,/href="insights\.html"[^>]*>Executive Journal/);
- assert.match(insights,/id="executive-journal"[\s\S]*Monthly Executive Journal[\s\S]*href="journal\.html" lang="nl"[\s\S]*href="journal-fr\.html" lang="fr"/);
+ assert.match(insights,/id="executive-journal"[\s\S]*De Maandelijkse Executive Journal[\s\S]*href="journal\.html" lang="nl"[\s\S]*href="journal-fr\.html" lang="fr"/);
  assert.doesNotMatch(insights,/Weekly executive journal/i);
 });
 

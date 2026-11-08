@@ -32,3 +32,16 @@ test('build and local server support the film format',()=>{
   assert.match(fs.readFileSync(path.join(root,'scripts/build.cjs'),'utf8'),/video: new Set\(\['\.mp4'\]\)/);
   assert.match(fs.readFileSync(path.join(root,'scripts/server.cjs'),'utf8'),/'\.mp4': 'video\/mp4'/);
 });
+
+
+test('both film variants sit directly below the hero and above the website argument',()=>{
+  const heroEnd=html.indexOf('</header>');
+  const filmStart=html.indexOf('<div class="ec-page" id="coherence-film">');
+  const argument=html.indexOf('<section id="book-thesis"');
+  assert.ok(heroEnd>=0&&filmStart>heroEnd&&argument>filmStart,'Required order: hero, film, website argument');
+  assert.equal(html.slice(heroEnd+'</header>'.length,filmStart).trim(),'','Film must immediately follow the hero');
+  const intro=html.slice(filmStart,argument);
+  for(const lang of ['nl','fr'])assert.ok(intro.includes(`id="ec-film-${lang}-h"`),`${lang}: film is below the website argument`);
+  assert.equal((intro.match(/<video\b/g)||[]).length,2);
+  assert.equal((html.slice(argument).match(/class="ec-sec ec-film"/g)||[]).length,0,'No duplicate films in research sections');
+});

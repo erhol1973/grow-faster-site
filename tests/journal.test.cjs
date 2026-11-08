@@ -12,7 +12,8 @@ test('Monthly Issue 01 replaces the old reader in Dutch and French',()=>{
   assert.equal([...html.matchAll(/<article class="sheet[^"]*" id="p(\d+)"/g)].length,15);
   assert.match(html,new RegExp('data-alternate[^>]*href="'+other+'"'));
   assert.match(html,/id="p14"[\s\S]*journal-01-cartoon\.webp[\s\S]*id="p15"[\s\S]*id="source-16"/);
-  assert.match(html,/id="subscribe"[\s\S]*2LaHoeyrPRL62-jSZlzmJXw/);
+  const subscription=language==='fr'?'2QhDcPYTUQAW_WCzfPGJZhA':'2LaHoeyrPRL62-jSZlzmJXw';
+  assert.ok(html.slice(html.indexOf('id="subscribe"')).includes('href="https://2h4280.share-eu1.hsforms.com/'+subscription+'"'),file+' subscription must use its own language form');
   assert.doesNotMatch(html,/\bweekly\b|week 45/i);
  }
  const insights=read('insights.html');

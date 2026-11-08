@@ -29,8 +29,8 @@ test('journal index leads with one feature and lists the newest articles after i
   const html=read('insights.html'),list=html.slice(html.indexOf('<div class="ins-list journal-grid">'),html.indexOf('<div class="ins-arts">'));
   assert.deepEqual([...list.matchAll(/class="ins-card[^"]*" href="#([^"]+)"/g)].map(m=>m[1]),articles);
   assert.equal((list.match(/ins-card--lead/g)||[]).length,1);assert.match(list,/ins-card ins-card--lead rv" href="#ai-pilot"/);
-  assert.match(html,/<h2 id="ins-h" class="journal-label">Latest articles<\/h2>/,'aria-labelledby="ins-h" resolves');
-  assert.match(html,/<h1>Leading the agentic enterprise<\/h1>/);
+  assert.match(html,/<h2 id="ins-h" class="journal-label"[^>]*>Latest articles<\/h2>/,'aria-labelledby="ins-h" resolves');
+  assert.match(html,/<h1\b[^>]*>Leading the agentic enterprise<\/h1>/);
 });
 test('home shows experience proof and three journal articles that resolve to real article panels',()=>{
   const home=read('index.html'),insights=read('insights.html');
@@ -46,7 +46,7 @@ test('track record lists dated roles, certifications and education with an acces
   const html=read('transformation.html'),track=html.match(/<section class="career" id="track-record"[\s\S]*?<\/section>/);assert.ok(track);
   assert.match(track[0],/tabindex="-1"/);assert.equal((track[0].match(/<li><span class="career-y">\d{4}–\d{4}<\/span>/g)||[]).length,5);
   assert.match(track[0],/class="career-certs" data-notr/);assert.match(track[0],/Ghent University/);
-  assert.match(html,/<h1>Transformation in practice<\/h1>/);
+  assert.match(html,/<h1\b[^>]*>Transformation in practice<\/h1>/);
 });
 test('editorial pages load the journal stylesheet and every new visible text has Dutch and French',()=>{
   for(const f of ['index.html','insights.html','transformation.html'])assert.match(read(f),/assets\/journal\.css\?v=20261106-journal/,f);

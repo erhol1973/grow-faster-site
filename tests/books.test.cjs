@@ -26,7 +26,7 @@ test('publication reading routes, translations and local performance coverage ar
 test('both books share one structure and are shown as 3D book objects',()=>{const dist=require('node:path').resolve(__dirname,'..','dist');const fs2=require('node:fs');const html=fs2.readFileSync(dist+'/books.html','utf8');
  for(const id of ['design-for-coherence','the-coherent-enterprise']){const art=html.match(new RegExp(`<article class="publication-feature[^"]*" id="${id}">([\\s\\S]*?)</article>`));if(!art)throw Error(`${id}: not structured as a publication-feature`);const a=art[1];
   for(const part of ['class="publication-cover"','class="book-3d"','class="eyebrow"','class="books-subtitle"','class="books-takeaways"','class="books-meta"','class="books-access"'])if(!a.includes(part))throw Error(`${id}: missing ${part}`);
-  if((a.match(/<li>/g)||[]).length!==3)throw Error(`${id}: expected three takeaways`);}
+  if((a.match(/<li\b[^>]*>/g)||[]).length!==3)throw Error(`${id}: expected three takeaways`);}
  for(const page of ['index.html','about.html','books.html'])if(fs2.readFileSync(dist+'/'+page,'utf8').includes('design-for-coherence-cover'))throw Error(`${page}: still shows the flat cover`);
  const png=fs2.readFileSync(dist+'/img/design-for-coherence-book-600.png');if(png[25]!==6)throw Error('3D book PNG must keep its transparent background (RGBA)');
 });

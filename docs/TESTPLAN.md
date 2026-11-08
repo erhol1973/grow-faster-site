@@ -1,5 +1,13 @@
 # Testplan en kwaliteitsbeleid
 
+## Contentstudio, 8 november 2026
+
+Het CMS voegt afzonderlijke concepten en gepubliceerde snapshots toe aan de bestaande Supabase-structuur. De blijvende clienttests controleren sessies, beheerderscontrole, revisieconflicten en uploads. PostgreSQL-tests voeren de werkelijke migratie en RLS uit met nagebootste Supabase Auth-claims en Storage-metadata: geen conceptlek, geen zelfpromotie, geen publicatie door gewone gebruikers, behoud van de vorige publicatie en onveranderlijke uploadpaden. Dit bewijst nog geen live Auth- of Storage-werking.
+
+De CMS-browsergevallen controleren desktop en mobiel, weigering van gewone accounts, opslaan vóór publiceren, privévoorbeelden in de echte pagina, veilige tekstweergave, NL/FR en toegankelijkheid. De gewone lokale browserserver schakelt alleen de externe CMS-configuratie uit via `--cms-test`; gerichte CMS-gevallen gebruiken een synthetische API. De cachefixture gebruikt echte HTTP-cacheheaders en geen browserrouting. De oorspronkelijke releasegrenzen blijven ongewijzigd. Exacte resultaten en onvolledige controles staan in `docs/CMS-VERIFICATION.md`.
+
+
+
 ## Maandblad: taal, terugkeer en leesbediening, 7 november 2026
 
 Het promotieblok toont uitsluitend de gekozen NL/FR-taal en de bijbehorende leesknop. De teruglink opent dezelfde rubriek op de website in de taal van de lezer. Bladerpijlen staan naast de liggende pagina; A−/A+ vergroot de leespagina zonder vaste bediening of inschrijving te verbergen. Browsergevallen controleren beide taalroutes, terugkeer, zijpijlen op desktop/mobiel en vergroting. Alle dertig pagina’s, broncijfers en de bestaande kleur- en volgordecontroles blijven getest.

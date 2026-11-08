@@ -404,6 +404,7 @@
     pick(curSpec);evalP();sim();renderBPMN();coh();if(typeof fitNav==="function")fitNav();
     if(save)store.set("avs-lang",l);
     root.classList.add("i18n-ready");
+    document.dispatchEvent(new CustomEvent("gf:language",{detail:{language:l}}));
   }
   /* language menus */
   const langs=[...document.querySelectorAll(".lang")];

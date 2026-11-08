@@ -1,7 +1,7 @@
 const {test,expect}=require('playwright/test');
 test.beforeEach(async({page})=>{await page.addInitScript(()=>{localStorage.setItem('avs-lang','nl');localStorage.setItem('avs-consent',JSON.stringify({v:4,ext:false,ana:false,ts:Date.now()}))})});
 test('home has a forward route and authors are credited in sources instead of promotional copy',async({page})=>{
- await page.goto('/index.html');await expect(page.locator('main')).not.toContainText('Jeanne Ross');await page.locator('.next-pg a').click();await expect(page).toHaveURL(/coherence\.html$/);
+ await page.goto('/index.html');await expect(page.locator('main')).not.toContainText('Jeanne Ross');await page.locator('.next-pg a').click();await expect(page).toHaveURL(/insights\.html$/);await page.locator('.next-pg a').click();await expect(page).toHaveURL(/coherence\.html$/);
  await expect(page.locator('.book-foundation h3')).toHaveText('Onderzoeksbasis');await expect(page.locator('.book-sources')).toContainText('Jeanne');
  await page.goto('/about.html');await expect(page.locator('#intellectual-foundation')).not.toContainText('Jeanne Ross');await expect(page.locator('#intellectual-foundation a')).toHaveAttribute('href','coherence.html#book-thesis');
 });

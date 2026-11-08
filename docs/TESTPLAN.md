@@ -190,3 +190,9 @@ Executive Journal in HBR-stijl: één hoofdartikel en daarna de nieuwste stukken
 Lokaal kregen de bestaande 36 routes er de journal-stylesheet en de werksessie bij. Elke worker doet daarom `max(36, routes)` verzoeken; daarmee wordt elke route minstens één keer bezocht (296 in totaal). Er is geen grens verlaagd. Lighthouse meet nu ook insights.html. De Franse menuvertaling van "Work with me" is "Collaborer", omdat "Travailler ensemble" op 1440px het compacte menu forceerde.
 
 Lokaal bewijs: 79 unit-/HTTP-tests, artifact-security, load (296/0 fouten) en Chromium desktop/mobiel (volledige suite) slagen met de systeem-Chrome. Firefox, WebKit, Lighthouse en CI zijn lokaal niet gedraaid en blijven voorwaarden voor vrijgave. Inhoudelijke goedkeuring door de eigenaar volgt vóór publicatie, in het bijzonder voor de jaartallen en rollen in het trackrecord en de samenvattingen in "In het kort".
+
+
+## Coherence film and layout, 8 November 2026
+NL/FR film playback, poster/caption matching, no autoplay, narrow left-aligned landscape player, left-aligned Trackrecord/Operating model/ECA and the four approved next-page destinations are covered on all five browser profiles. Unit/HTTP tests enforce 15 MiB video limits and valid/invalid byte ranges. Local load adds the small film scripts, captions and posters; large video payloads are tested with HTTP byte ranges and real browser playback. Caption text follows the supplied transcript; final human listening and physical-device accessibility remain manual checks. Existing gates and thresholds are unchanged.
+
+The final media is the user-supplied 23-second commercial, shared by both locales. Dutch/French captions translate the two supplied English dialogue lines and the visible English end card; office ambience/music is labelled. Caption timing follows the supplied approximate dialogue timings. Old VR-dialogue captions are removed.

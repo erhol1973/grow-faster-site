@@ -1,0 +1,14 @@
+const {test,expect}=require('playwright/test');
+test.beforeEach(async({page})=>{await page.addInitScript(()=>localStorage.setItem('avs-consent',JSON.stringify({v:4,ext:false,ana:false,ts:Date.now()}))) });
+for(const lang of ['nl','fr']){
+ test(`left alignment and requested next-page route (${lang})`,async({page})=>{
+  for(const route of ['transformation.html','operating-model.html','eca.html']){
+   await page.goto('/'+route+'?lang='+lang);await expect(page.locator('html')).toHaveAttribute('lang',lang);
+   const points=await page.evaluate(()=>{const selectors=location.pathname.includes('transformation')?['.practice-intro h1',...Array.from(document.querySelectorAll('.practice-prose>h2')).map(e=>'#'+e.id)]:location.pathname.includes('operating')?['#operating h2','.shift[data-ih="shift"]','.shift[data-ih="drights"]']:['.eca h1','.eca-toolbar'];return selectors.map(s=>document.querySelector(s).getBoundingClientRect().left)});expect(Math.max(...points)-Math.min(...points)).toBeLessThan(2);
+  }
+  for(const [route,dest]of Object.entries({'index.html':'insights.html','insights.html':'coherence.html','coherence.html':'approach.html','approach.html':'about.html'})){await page.goto('/'+route+'?lang='+lang);await expect(page.locator('html')).toHaveAttribute('lang',lang);await expect(page.locator('.next-pg a')).toHaveAttribute('href',dest);await page.locator('.next-pg a').click();await expect(page).toHaveURL(new RegExp('/'+dest.replace('.','\\.')+'$'))}
+ });
+ test(`film language, lazy loading, playback and poster (${lang})`,async({page})=>{
+  await page.goto('/coherence.html?lang='+lang);const video=page.locator('#coherence-film video');await expect(video).toHaveAttribute('src','media/grow-faster-commercial-23s.mp4');await expect(video).toHaveAttribute('poster','img/grow-faster-commercial.webp');await expect(video.locator('track')).toHaveAttribute('srclang',lang);await expect(video).toHaveAttribute('preload','none');expect(await video.evaluate(v=>v.paused&&!v.autoplay)).toBe(true);await video.evaluate(v=>v.play());await expect.poll(()=>video.evaluate(v=>v.currentTime)).toBeGreaterThan(0);await video.evaluate(v=>v.pause());const x=await page.locator('#coherence-film h2').evaluate(e=>e.getBoundingClientRect().left);expect(Math.abs((await video.boundingBox()).x-x)).toBeLessThan(2);expect((await video.boundingBox()).width).toBeLessThanOrEqual(840);const schema=JSON.parse(await page.locator('#coherence-video-schema').textContent());expect(schema.inLanguage).toBe('en');expect(schema.duration).toBe('PT23S');expect(schema.contentUrl).toContain('grow-faster-commercial-23s.mp4');
+ });
+}

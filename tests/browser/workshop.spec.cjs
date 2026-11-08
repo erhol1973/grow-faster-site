@@ -35,7 +35,7 @@ for(const [lang,copy]of Object.entries(cases)){
   expect(errors).toEqual([]);
  });
  test('voluntary workshop request is local, encoded and language-correct in '+lang,async({page})=>{
-  await seed(page,lang);const external=[];page.on('request',r=>{if(!r.url().startsWith('http://127.0.0.1:4173/'))external.push(r.url())});
+  await seed(page,lang);const external=[];page.on('request',r=>{const url=r.url();if(/^https?:\/\//.test(url)&&!url.startsWith('http://127.0.0.1:4173/'))external.push(url)});
   await page.goto('/workshop.html?lang='+lang);await page.locator('.ws-hero .ws-btn').click();
   await expect(page).toHaveURL(new RegExp('lang='+lang+'#kennismaking$'));
   await page.locator('#request-form button[type="submit"]').click();

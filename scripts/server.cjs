@@ -3,7 +3,7 @@ const http = require('node:http');
 const fs = require('node:fs');
 const path = require('node:path');
 const root = path.resolve(__dirname, '..', 'dist');
-const types = { '.html': 'text/html; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.css': 'text/css; charset=utf-8', '.json': 'application/json', '.svg': 'image/svg+xml', '.png': 'image/png', '.jpg': 'image/jpeg', '.jpeg': 'image/jpeg', '.webp': 'image/webp', '.avif': 'image/avif', '.ico': 'image/x-icon', '.pdf': 'application/pdf', '.txt': 'text/plain; charset=utf-8', '.xml': 'application/xml' };
+const types = { '.mp4':'video/mp4', '.vtt':'text/vtt; charset=utf-8', '.html': 'text/html; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.css': 'text/css; charset=utf-8', '.json': 'application/json', '.svg': 'image/svg+xml', '.png': 'image/png', '.jpg': 'image/jpeg', '.jpeg': 'image/jpeg', '.webp': 'image/webp', '.avif': 'image/avif', '.ico': 'image/x-icon', '.pdf': 'application/pdf', '.txt': 'text/plain; charset=utf-8', '.xml': 'application/xml' };
 function createServer(options={}) {
   return http.createServer((req, res) => {
     if (!['GET', 'HEAD'].includes(req.method)) { res.writeHead(405, { Allow: 'GET, HEAD' }); return res.end(); }
@@ -14,6 +14,19 @@ function createServer(options={}) {
     if (!target.startsWith(root + path.sep)) { res.writeHead(403); return res.end(); }
     const notFound=()=>{res.writeHead(404);res.end('Not found')};
     const send=file=>{
+      if(path.extname(file).toLowerCase()==='.mp4'){
+        const size=fs.statSync(file).size,range=req.headers.range;
+        const headers={'Content-Type':'video/mp4','Accept-Ranges':'bytes','Cache-Control':'no-store','X-Content-Type-Options':'nosniff'};
+        if(range){
+          const match=/^bytes=(\d*)-(\d*)$/.exec(range);
+          let begin,end;
+          if(match&&(match[1]||match[2])){begin=match[1]?Number(match[1]):Math.max(0,size-Number(match[2]));end=match[1]?(match[2]?Number(match[2]):size-1):size-1;}
+          if(!Number.isSafeInteger(begin)||!Number.isSafeInteger(end)||begin<0||begin>=size||end<begin){res.writeHead(416,{...headers,'Content-Range':`bytes */${size}`});return res.end()}
+          end=Math.min(end,size-1);res.writeHead(206,{...headers,'Content-Length':end-begin+1,'Content-Range':`bytes ${begin}-${end}/${size}`});
+          if(req.method==='HEAD')return res.end();return fs.createReadStream(file,{start:begin,end}).on('error',()=>res.destroy()).pipe(res);
+        }
+        res.writeHead(200,{...headers,'Content-Length':size});if(req.method==='HEAD')return res.end();return fs.createReadStream(file).on('error',()=>res.destroy()).pipe(res);
+      }
       const compress=options.compress&&/gzip/.test(req.headers['accept-encoding']||'')&&/\.(html|css|js|json|svg|txt|xml)$/i.test(file);
       res.writeHead(200, { 'Content-Type': types[path.extname(file).toLowerCase()] || 'application/octet-stream', 'Cache-Control': 'no-store', 'X-Content-Type-Options': 'nosniff',...(compress?{'Content-Encoding':'gzip','Vary':'Accept-Encoding'}:{}) });
       if (req.method === 'HEAD') return res.end();

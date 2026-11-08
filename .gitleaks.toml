@@ -1,0 +1,20 @@
+# Gitleaks retains its default rules. These two exceptions match audited, public/non-secret CMS values only.
+# Do not skip a file or disable generic-api-key; unexpected tokens must still fail CI.
+[extend]
+useDefault = true
+
+[[allowlists]]
+description = "Generated CMS DOM field identifiers in the initial catalog commit (not authentication keys)"
+targetRules = ["generic-api-key"]
+condition = "AND"
+paths = ['''(^|/)assets/cms-catalog\.js$''']
+regexTarget = "line"
+regexes = ['''^\s*"key": "f[a-f0-9]{12,14}-[0-9]+",?\s*$''']
+
+[[allowlists]]
+description = "Supabase public publishable browser key, never a service-role or secret key"
+targetRules = ["generic-api-key"]
+condition = "AND"
+paths = ['''(^|/)assets/cms-config\.js$''']
+regexTarget = "line"
+regexes = ['''^window\.GF_CMS_CONFIG = Object\.freeze\(\{url:'https://dbooobckaqbkrmkpcuem\.supabase\.co',key:'sb_publishable_[A-Za-z0-9_-]{20,}'\}\);\s*$''']

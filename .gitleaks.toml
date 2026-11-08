@@ -17,5 +17,6 @@ regexes = ['''^\s*"key": "f[a-f0-9]{12,14}-[0-9]+",?\s*$''']
 description = "Supabase public publishable browser key, never a service-role or secret key"
 condition = "AND"
 paths = ['''(^|/)assets/cms-config\.js$''']
-regexTarget = "line"
-regexes = ['''^window\.GF_CMS_CONFIG = Object\.freeze\(\{url:'https://dbooobckaqbkrmkpcuem\.supabase\.co',key:'sb_publishable_[A-Za-z0-9_-]{20,}'\}\);\s*$''']
+regexTarget = "secret"
+regexes = ['''^sb_publishable_[A-Za-z0-9_-]{20,}
+'']

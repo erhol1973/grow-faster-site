@@ -414,7 +414,7 @@
     m.addEventListener("click",e=>{const o=e.target.closest("[data-lang]");if(!o)return;applyLang(o.dataset.lang,true);closeMenus();b.focus()});
     m.addEventListener("keydown",e=>{const items=[...m.querySelectorAll("button")],i=items.indexOf(document.activeElement);if(e.key==="ArrowDown"){e.preventDefault();items[(i+1)%items.length].focus()}if(e.key==="ArrowUp"){e.preventDefault();items[(i-1+items.length)%items.length].focus()}});
   });
-  document.addEventListener("click",e=>{if(!e.target.closest(".lang"))closeMenus()});
+  document.addEventListener("click",e=>{if(!e.target?.closest?.(".lang"))closeMenus()});
 
   /* copy email */
   if(fcopy)fcopy.addEventListener("click",()=>{const txt=$("#fmail").textContent;const done=()=>{fcopy.textContent=t("Copied");setTimeout(()=>fcopy.textContent=t("Copy"),1600)};const sel=()=>{const r=document.createRange();r.selectNodeContents($("#fmail"));const sl=getSelection();sl.removeAllRanges();sl.addRange(r)};try{navigator.clipboard.writeText(txt).then(done,sel)}catch(e){sel()}});
@@ -462,8 +462,8 @@
   document.getElementById("pp-close")?.addEventListener("click",closePrivacy);
   panel?.addEventListener("keydown",e=>{trap(panel,e);if(e.key==="Escape")closePrivacy()});
   document.addEventListener("click",e=>{
-    const pv=e.target.closest(".open-priv");if(pv){e.preventDefault();openPrivacy(pv.dataset.sec);return}
-    const oc=e.target.closest(".open-consent");if(oc){e.preventDefault();if(panel&&!panel.hidden)closePrivacy();openConsent()}
+    const pv=e.target?.closest?.(".open-priv");if(pv){e.preventDefault();openPrivacy(pv.dataset.sec);return}
+    const oc=e.target?.closest?.(".open-consent");if(oc){e.preventDefault();if(panel&&!panel.hidden)closePrivacy();openConsent()}
   });
   document.addEventListener("keydown",e=>{if(e.key==="Escape")closeMenus()});
 

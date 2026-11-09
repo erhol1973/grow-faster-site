@@ -17,7 +17,7 @@ for(const lang of ['nl','fr'])test(`value cards align in ${lang}`,async({page},i
 test('old indexed SITE123 addresses land on the new page and article',async({page})=>{for(const [from,url,visible] of [['/decision-latency',/\/coherence\.html$/,'main'],['/coordination-overload-1',/\/insights\.html#friction-first$/,'#friction-first'],['/de-rol-van-leiderschap',/\/insights\.html#who-decides$/,'#who-decides'],['/articles-1/the-evolution-of-enterprise-management',/\/insights\.html$/,'main'],['/about-the-author',/\/about\.html$/,'main']]){await page.goto(from);await expect(page).toHaveURL(url);await expect(page.locator(visible)).toBeVisible();}});
 test('search title, brand line and French typography follow the language',async({page})=>{
   await page.addInitScript(()=>{if(!localStorage.getItem('avs-lang'))localStorage.setItem('avs-lang','nl')});
-  await page.goto('/index.html');await expect(page).toHaveTitle('Enterprise Coherence & AI-transformatie | Erlend Hollebosch');await expect(page.locator('.hero-by')).toContainText('door Erlend Hollebosch');
+  await page.goto('/index.html');await expect(page).toHaveTitle('Enterprise Coherence & AI-transformatie | Erlend Hollebosch');await expect(page.locator('#hero h1')).toHaveText('AI creëert pas waarde wanneer de organisatie samenwerkt.');
   for(const [language,title]of [['fr','Enterprise Coherence & transformation IA | Erlend Hollebosch']]){
     await page.locator('#lang-btn-top').click();await page.locator('.lang-top .lang-menu [data-lang="'+language+'"]').click();await expect(page).toHaveTitle(title);
   }

@@ -26,8 +26,8 @@ test('practice reading route works in both languages, with six perspectives and 
 
 test('manuscript vision links AI, coherence, credited Ross sources and the manuscript request',async({page})=>{
  await page.addInitScript(()=>{localStorage.setItem('avs-consent',JSON.stringify({v:4,ext:false,ana:false,ts:Date.now()}));if(!localStorage.getItem('avs-lang'))localStorage.setItem('avs-lang','nl')});
- await page.goto('/index.html');await expect(page.locator('h1')).toContainText('Ontwerp voor samenhang.');
- await page.locator('.hero-grid a[href="coherence.html#book-thesis"]').click();
+ await page.goto('/index.html');await expect(page.locator('h1')).toHaveText('AI creëert pas waarde wanneer de organisatie samenwerkt.');
+ await page.locator('#reading-route a[href="coherence.html#book-thesis"]').click();
  await expect(page.locator('#book-thesis-h')).toBeInViewport();
  for(const [language,title]of [['nl','Een snellere taak maakt nog geen betere onderneming'],['fr','Une tâche plus rapide ne suffit pas à améliorer l’entreprise']]){
    if(language!=='nl'){await page.locator('#lang-btn-top').click();await page.locator('.lang-top [data-lang="'+language+'"]').click()}

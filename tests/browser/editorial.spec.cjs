@@ -1,8 +1,9 @@
 const {test,expect}=require('playwright/test');
 test('minimal hero stays readable across mobile, tablet and desktop',async({page})=>{
- await page.addInitScript(()=>{localStorage.setItem('avs-lang','nl');localStorage.setItem('avs-consent',JSON.stringify({v:3,ext:false,ana:false,ts:Date.now()}))});
+ await page.addInitScript(()=>{localStorage.setItem('avs-lang','nl');localStorage.setItem('avs-consent',JSON.stringify({v:4,ext:false,ana:false,ts:Date.now()}))});
  for(const width of [320,390,768,1024,1440]){
   await page.setViewportSize({width,height:900});await page.goto('/index.html');
+  await expect(page.locator('#consent')).toBeHidden();
   await expect(page.locator('#hero h1')).toHaveText('Van AI-investering naar bedrijfswaarde.');
   await expect(page.locator('#hero-work')).toContainText('Plan een kennismaking');
   await expect(page.locator('#hero .ghost')).toContainText('Ontdek de aanpak');

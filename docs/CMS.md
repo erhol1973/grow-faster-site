@@ -8,13 +8,17 @@ The production Supabase schema was inspected on 8 November 2026: the existing
 `private.cms_admins`, all eight public content tables have RLS, and the public
 `media` bucket has no objects. Existing data is retained.
 
-The new migration has **not been executed in production**. No CMS content has
-been published. Do not release the frontend until the following are verified:
+The additive migration and private `cms-media` bucket are now installed in
+growfaster-prod. A transaction on the real database verified admin publication,
+private drafts, preservation of the previous publication and anonymous/non-admin
+denial, then rolled back all verification rows. No real editorial content was
+published by the agent. The frontend is available as a branch preview; production
+website release remains blocked by real login/media acceptance and release gates.
 
-1. Run `supabase/migrations/20261108_cms_publications.sql` once in growfaster-prod.
+1. Completed: `supabase/migrations/20261108_cms_publications.sql` in growfaster-prod.
    It adds publication snapshots, administrator-only version history and two
    checked RPCs. It does not replace the existing schema or publish any record.
-2. Create the **private** `cms-media` bucket through Storage, maximum 25 MB,
+2. Completed: **private** `cms-media` bucket through Storage, maximum 25 MB,
    allow image/jpeg, image/png, image/webp, image/avif and video/mp4. Leave the
    existing public `media` bucket unchanged. Never upload private drafts there.
 3. Verify Auth password login for the existing allowlisted administrator.
@@ -67,7 +71,7 @@ may remain orphaned; review references before manual cleanup.
 The authenticated role is insufficient: every privileged RPC checks the existing
 private administrator allowlist. The UI checks membership, while PostgreSQL RLS
 enforces it independently. Sessions stay in memory and are cleared on reload,
-logout or expiry. There is no signup or password-change flow. Concurrent edits
+logout or expiry. There is no signup flow. The owner can request a first-password/recovery email and choose their own password through a verified recovery link. Recovery is disabled in configuration until the two exact preview/production redirect URLs are approved and saved in Supabase. Recovery tokens are removed from the address bar, checked against Auth and administrator membership, and kept only in memory. The agent has not sent a recovery email or chosen a password. Concurrent edits
 use the server revision as a precondition; conflicts retain local text and
 require reload, rather than overwriting somebody else's update.
 

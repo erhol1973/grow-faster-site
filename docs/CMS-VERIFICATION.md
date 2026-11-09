@@ -1,4 +1,4 @@
-# CMS verification — 8 November 2026
+# CMS verification — 8–9 November 2026
 
 Source baseline: `895cd869761a37df543ecf1d9aa26bf2d7cd09da` (main, protected).
 The CMS was reapplied to this revision after the coherence commercial merged.
@@ -16,16 +16,23 @@ An anonymous API read of `page_sections` returned HTTP 200 with zero rows.
 Other subsequent public endpoint probes timed out and are not claimed as passed.
 
 The dashboard session expired and was restored by the owner. Browser control
-then repeatedly failed on CDP input and state requests; the native window
-fallback also timed out. An additive SQL migration was prepared, but its Run
-button was never activated. **No production migration, private bucket creation,
-CMS content publication or website deployment has been performed.** Use the
-versioned migration file, not any unexecuted SQL-editor buffer, for activation.
+repeatedly timed out, then recovered. The additive migration was executed and
+returned success. The private `cms-media` bucket was created through Storage:
+25 MB, JPEG/PNG/WebP/AVIF/MP4 only, with the three intended policies. The existing
+public `media` bucket remains unchanged.
+
+A transaction on the actual production PostgreSQL database verified admin
+publication/save, hidden anonymous drafts/history, preservation of the published
+snapshot during a later draft, and rejection of anonymous and ordinary-user
+publication. The transaction returned PASS and rolled back its verification
+rows. This is real database-policy evidence with controlled role/claim settings;
+it does not substitute for authenticating a browser user through the Auth gateway.
+No editorial CMS content or main website release has been published by the agent.
 
 ## Latest local artifact
 
 - Build: 151 public files, including the administrator page and existing film.
-- Unit/HTTP/client/PostgreSQL: **100 passed, zero failed/skipped** on Node 24.22.1.
+- Unit/HTTP/client/PostgreSQL: **104 passed, zero failed/skipped** on Node 24.22.1, with test concurrency one.
   PostgreSQL coverage includes actual policies and RPCs under synthetic admin,
   ordinary authenticated and anonymous identities, concurrent edits, two
   successive publications, private drafts and media-reference restrictions.
@@ -34,8 +41,13 @@ versioned migration file, not any unexecuted SQL-editor buffer, for activation.
 - Local load: **432 requests, zero errors/missing routes, p95 108.737 ms**, against
   the unchanged 1,500 ms limit. Eight workers, local preview only. This does not
   establish production capacity or Core Web Vitals.
-- Targeted browser verification of the latest artifact: running; results will
-  be recorded before this draft is considered for release.
+- Targeted browser verification: **45 passed, zero failures/skips/retries** across
+  Firefox, WebKit, mobile WebKit, Chromium and mobile Chromium. This covers the
+  CMS plus the existing film, NL/FR playback/captions and approved page routes.
+
+The latest additional recovery/navigation run passed **25 cases across all five browsers, zero failures/skips/retries**. This covers owner-initiated email, verified recovery, non-admin denial, disabled credential submission without JavaScript and immediate French Coherence next-page navigation. API recovery tests use synthetic identities and do not establish live email delivery. A prior fixture run failed because its public key mock was missing; its reports are retained. The corrected run passed.
+
+CI at revision 4d859dd passed 581 browser cases, with 14 existing skips, but correctly failed its gate for one flaky Firefox French Coherence route. Its trace exposed smooth scrolling during pointer activation. A regression failed before the CSS fix; native immediate scrolling on Coherence now passes the targeted regression in all five browser projects. The final full CI run is still required.
 
 The earlier implementation on c288be4 passed 95 unit/HTTP/database cases and ten
 focused Chromium desktop/mobile CMS cases. Early failures found an obstructing
@@ -59,15 +71,22 @@ local environment is stable.
 
 ## Release blockers
 
-1. Apply and verify the reviewed migration and create private `cms-media` in
-   the existing growfaster-prod project.
-2. Verify real CMS password login, non-admin denial, file byte delivery, MIME
+1. Verify real CMS password login, non-admin denial, file byte delivery, MIME
    limits, private draft URLs, anonymous signing restrictions and actual
    save/preview/publish against the live service. Local mocks do not prove these.
-3. Pass the complete protected-main browser, dependency, secret-history,
+2. Pass the complete protected-main browser, dependency, secret-history,
    CodeQL, load and Lighthouse gates on the final revision. Local Lighthouse
    medians and the full latest local browser matrix are not yet complete.
-4. Only then merge/deploy the tested artifact and perform live smoke checks.
+3. Only then merge/deploy the tested artifact and perform live smoke checks.
+
+The first CI secret scan flagged 114 false positives: the public publishable key and public field identifiers. The current .gitleaks.toml retains default rules and narrowly scopes inherited generic-api-key allowlists to the public key value/config path and the exact public catalog field-ID format/catalog path. No general path skip or rule disable is used. Secrets history, CodeQL and JavaScript security passed at 4d859dd. The final revision must pass them again.
+
+Preview: https://feature-secure-supabase-cms.grow-faster-site.pages.dev/admin . The first-password UI is implemented, but recoveryEnabled remains false pending approval and verification of the two exact Supabase redirect URLs. The owner has no CMS password yet; no recovery email has been sent by the agent.
+
+The local Lighthouse run did not complete: reports/lighthouse/summary.json is
+failed and partial samples are retained. Its partial home-page measurements
+are not claimed as full performance acceptance. A wider earlier local Firefox
+run also failed and was stopped, as described above. Neither is treated as green.
 
 Physical-device testing, manual screen-reader testing and full rich-text/site
 content migration have not been performed. The supported editorial surface is

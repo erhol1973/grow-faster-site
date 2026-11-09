@@ -13,6 +13,9 @@
     }
     return {
       request,
+      async recover(email,redirect){if(config.recoveryEnabled!==true)throw Error('De beveiligde herstelroute is nog niet geactiveerd.');if(!['https://grow-faster.be/admin','https://feature-secure-supabase-cms.grow-faster-site.pages.dev/admin'].includes(redirect))throw Error('Gebruik het online CMS om je wachtwoord in te stellen.');return request('/auth/v1/recover?redirect_to='+encodeURIComponent(redirect),{method:'POST',body:{email}});},
+      async acceptRecovery(token,expiresIn){if(typeof token!=='string'||token.length>8192||!/^[-A-Za-z0-9_]+\.[-A-Za-z0-9_]+\.[-A-Za-z0-9_]+$/.test(token))throw Error('Deze herstellink is ongeldig. Vraag een nieuwe link aan.');session={access_token:token,expires_at:Date.now()+Math.min(Math.max(Number(expiresIn)||3600,1),3600)*1000};try{const user=await request('/auth/v1/user',{auth:true});if(!user?.id||await request('/rest/v1/rpc/cms_is_admin',{method:'POST',body:{},auth:true})!==true)throw Error('Dit account heeft geen beheerdersrechten.');}catch(e){session=null;throw e;}},
+      async updatePassword(password){if(typeof password!=='string'||password.length<12)throw Error('Gebruik minstens 12 tekens.');await request('/auth/v1/user',{method:'PUT',body:{password},auth:true});session=null;},
       async login(email,password){const result=await request('/auth/v1/token?grant_type=password',{method:'POST',body:{email,password}});session={access_token:result.access_token,expires_at:Date.now()+result.expires_in*1000};try{if(await request('/rest/v1/rpc/cms_is_admin',{method:'POST',body:{},auth:true})!==true)throw Error('Dit account heeft geen beheerdersrechten.');}catch(e){session=null;throw e;}},
       async logout(){try{if(session)await request('/auth/v1/logout',{method:'POST',auth:true});}finally{session=null;}},
       list:()=>request('/rest/v1/page_sections?select=*&order=page_slug,sort_order,section_key',{auth:true}),

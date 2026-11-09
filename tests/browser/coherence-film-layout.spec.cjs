@@ -1,5 +1,6 @@
 const {test,expect}=require('playwright/test');
 test.beforeEach(async({page})=>{await page.addInitScript(()=>localStorage.setItem('avs-consent',JSON.stringify({v:4,ext:false,ana:false,ts:Date.now()}))) });
+test('Coherence implicit route scrolling settles before pointer activation',async({page})=>{await page.goto('/coherence.html?lang=fr');await expect(page.locator('html')).toHaveAttribute('lang','fr');const visible=await page.locator('.next-pg a').evaluate(el=>{el.scrollIntoView({block:'center'});const r=el.getBoundingClientRect();return r.top>=0&&r.bottom<=innerHeight});expect(visible).toBe(true);await page.locator('.next-pg a').click();await expect(page).toHaveURL(/\/approach\.html$/);});
 for(const lang of ['nl','fr']){
  test(`left alignment and requested next-page route (${lang})`,async({page})=>{
   for(const route of ['transformation.html','operating-model.html','eca.html']){

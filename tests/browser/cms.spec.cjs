@@ -32,3 +32,12 @@ test('filtered homepage saves every NL/FR field and retains hidden edits',async(
  expect(Object.keys(fields).length).toBe(home.fields.filter(f=>f.type==='text').length);expect(f.published()).toBeNull();
  await page.locator('#field-search').fill('geen-bestaand-veld-20261109');await expect(page.locator('#field-count')).toHaveText('0 van '+home.fields.length+' velden zichtbaar');
 });
+
+test('preview language accepts only fixed NL/FR routes even when the selector is tampered with',async({page})=>{
+ await fixture(page);await page.getByRole('button',{name:'Homepage',exact:true}).click();await page.locator('#preview').click();
+ const picker=page.getByRole('combobox',{name:'Voorbeeldtaal'}),frame=page.locator('iframe[title="Websitevoorbeeld"]');
+ await picker.selectOption('fr');await expect(frame).toHaveAttribute('src','index.html?cms-preview=1&lang=fr');
+ await picker.evaluate(select=>{const option=document.createElement('option');option.value='"><script>alert(1)</script>';select.append(option);select.value=option.value;select.dispatchEvent(new Event('change'));});
+ await expect(frame).toHaveAttribute('src','index.html?cms-preview=1&lang=nl');
+ await expect(page.frameLocator('iframe[title="Websitevoorbeeld"]').locator('[data-cms="home-hero-heading"]')).toContainText('Oorspronkelijke titel');
+});

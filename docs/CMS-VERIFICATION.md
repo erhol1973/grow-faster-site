@@ -1,3 +1,16 @@
+# Integration status — 9 November 2026
+
+This section supersedes historical status statements below. Main a8fae016 was integrated on the existing CMS branch in commit 31f798b; both conflicts are resolved and the local index/tree matched the pushed GitHub tree. No production release was requested or performed.
+
+The open real administrator session previously saved and previewed a temporary Books draft in NL/FR; the original text was restored. An older loaded editor unexpectedly published the original Books content. With explicit owner approval, only that publication (2026-11-09T15:23:06.867298Z) was withdrawn. A guarded transaction and independent checks verified unchanged draft/history. Do not repeat the withdrawal. Anonymous database-role checks confirmed zero visible drafts and no save/publish/history privilege. The private bucket was verified at 25 MiB with JPEG/PNG/WebP/AVIF/MP4 restrictions and zero objects. These observations are prior-session evidence, not a complete live Auth/Storage acceptance test.
+
+Integration build (152 files), 109 unit/HTTP/database cases and artifact security passed locally. An incomplete local dependency setup ran Playwright 1.62.1 against a 1.64.1 lockfile; its interrupted browser run is not release evidence. The local load run failed (432 requests, 29 errors, p95 20611.98 ms); reports are retained. Dependencies were subsequently installed from the frozen lockfile without install scripts.
+
+GitHub run 42649140522 on 31f798b passed build, unit, artifact security, dependency audit and secret-history scanning. CodeQL found a DOM-controlled preview URL suffix. The handler now selects a fixed NL/FR suffix, with a tampered-selector browser regression. No scanner exclusion or threshold was changed. The final revision requires fresh full CI; do not infer success from the earlier partial run.
+
+Release remains NO-GO until complete final CI and real isolated Supabase Auth/Storage acceptance pass. No existing isolated Supabase configuration, local CLI or Docker executable was found in this workspace. Real non-admin login, storage byte delivery, expiring signatures and publication/history through the live gateway are not claimed. Do not run publication tests on growfaster-prod. The public site supports NL/FR; English source keys and English-language books do not imply an English website editor.
+
+---
 # CMS verification — 8–9 November 2026
 
 Source baseline: `895cd869761a37df543ecf1d9aa26bf2d7cd09da` (main, protected).

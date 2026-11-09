@@ -2,8 +2,10 @@
 const {test}=require('node:test');const assert=require('node:assert/strict');const fs=require('node:fs');const path=require('node:path');const vm=require('node:vm');
 const root=path.resolve(__dirname,'..','dist');const read=f=>fs.readFileSync(path.join(root,f),'utf8');
 const I18N=()=>{const c={window:{}};vm.runInNewContext(read('assets/i18n.js'),c);return c.window.I18N};
-test('home hero states the role and availability and leads to the work routes',()=>{const h=read('index.html');
- assert.match(h,/<p class="hero-avail">[\s\S]*?Enterprise &amp; AI Transformation Lead · Available now in Belgium for a permanent role or a long-term assignment<\/p>/);
+test('home hero introduces AI business value and keeps the work route',()=>{const h=read('index.html');
+ assert.match(h,/<h1>From AI investment to business value\.<\/h1>/);
+ assert.match(h,/href="approach.html" class="btn ghost"/);
+ assert.doesNotMatch(h,/<p class="hero-avail">/);
  const ctas=h.match(/<div class="ctas">([\s\S]*?)<\/div>/)[1];const links=[...ctas.matchAll(/<a href="([^"]+)" class="btn (\w+)"/g)].map(m=>[m[1],m[2]]);
  assert.deepEqual(links[0],['about.html#work-with-me','primary'],'primary hero action must be the role/assignment route');assert.equal(links.filter(l=>l[1]==='primary').length,1,'one primary hero action');});
 test('About offers both routes with a localised email template each',()=>{const a=read('about.html');assert.match(a,/<section id="work-with-me"/);

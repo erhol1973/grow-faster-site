@@ -1,4 +1,20 @@
 const {test,expect}=require('playwright/test');
+test('minimal hero stays readable across mobile, tablet and desktop',async({page})=>{
+ await page.addInitScript(()=>{localStorage.setItem('avs-lang','nl');localStorage.setItem('avs-consent',JSON.stringify({v:3,ext:false,ana:false,ts:Date.now()}))});
+ for(const width of [320,390,768,1024,1440]){
+  await page.setViewportSize({width,height:900});await page.goto('/index.html');
+  await expect(page.locator('#hero h1')).toHaveText('Van AI-investering naar bedrijfswaarde.');
+  await expect(page.locator('#hero-work')).toContainText('Plan een kennismaking');
+  await expect(page.locator('#hero .ghost')).toContainText('Ontdek de aanpak');
+  expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1)).toBe(true);
+  expect(await page.locator('#hero img').evaluate(async image=>{await image.decode();return image.naturalWidth>0})).toBe(true);
+  for(const selector of ['#hero h1','#hero .sub','#hero-work','#hero .ghost']){
+   const box=await page.locator(selector).boundingBox();expect(box.x).toBeGreaterThanOrEqual(0);expect(box.x+box.width).toBeLessThanOrEqual(width+1);
+  }
+ }
+ await page.locator('#hero .ghost').focus();await page.keyboard.press('Enter');await expect(page).toHaveURL(/approach\.html$/);
+ await page.goto('/index.html');await page.locator('#hero-work').focus();await page.keyboard.press('Enter');await expect(page).toHaveURL(/about\.html#work-with-me$/);
+});
 for(const [language,heading,choices]of [['en','Choose a deeper look',['The perspective','The practice','The application']],['nl','Kies een verdieping',['De visie','De praktijk','De toepassing']],['fr','Choisissez un angle d’approfondissement',['La perspective','La pratique','L’application']]])test(`editorial home gives working reading routes in ${language}`,async({page})=>{
  const errors=[];page.on('pageerror',e=>errors.push(e.message));
  await page.addInitScript(l=>{if(!localStorage.getItem('avs-lang'))localStorage.setItem('avs-lang',l);localStorage.setItem('avs-consent',JSON.stringify({v:3,ext:false,ana:false,ts:Date.now()}))},language);

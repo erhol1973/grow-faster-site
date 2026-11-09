@@ -218,3 +218,9 @@ Main a8fae016 and CMS head 00559b7 are integrated without dropping the 44-second
 
 No release is authorised by this integration. Live Supabase publication tests must not use the shared production database. The prior accidental Books publication was withdrawn with exact identity/timestamp and unchanged draft/history checks; do not repeat that deletion. Real isolated Auth/Storage acceptance remains a release blocker.
 CodeQL integration review: preview language URLs now use fixed NL/FR suffixes rather than concatenating a DOM-controlled value. A browser regression injects an unsupported selector value and verifies the NL fallback; no scanner rule is suppressed.
+
+## Mobile cache compatibility and Lighthouse coverage, 9 November 2026
+
+The temporary mobile cache-transition skip is removed. A retained local failure trace showed that the current wordmark in legacy navigation markup pushed the hamburger outside the mobile viewport. Wordmark dimensions now apply to both legacy and executive navigation; the existing cache scenario also asserts that the hamburger is in the viewport before opening it. No forced click, timeout increase or retry change is used.
+
+Lighthouse now collects accessibility and SEO alongside performance for every existing route, mode and sample, and retains scores in JSON/HTML and median summaries. Existing performance thresholds and axe accessibility assertions remain unchanged. Accessibility/SEO scores are evidence for release review, not an automatic waiver of audit findings. Real isolated Supabase acceptance remains outstanding; no production writes or release are authorised.

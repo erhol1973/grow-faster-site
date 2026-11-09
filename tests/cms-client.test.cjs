@@ -46,3 +46,12 @@ test('CMS page selector preserves all field values while showing one homepage se
  assert.equal(new Set(indices).size,home.fields.length,'every homepage field must appear in precisely one group');
  assert.deepEqual(indices.slice().sort((a,b)=>a-b),Array.from({length:home.fields.length},(_,i)=>i));
 });
+
+test('CMS publication requires a reviewed saved revision and explicit confirmation',()=>{
+ const source=fs.readFileSync('assets/cms-admin.js','utf8');
+ assert.match(source,/previewedRevision=null,previewedSection=null/);
+ assert.match(source,/if\(previewedSection!==selected\.id\|\|previewedRevision!==selected\.updated_at\)/);
+ assert.match(source,/window\.confirm\('Deze wijziging wordt zichtbaar voor alle bezoekers/);
+ assert.match(source,/if\(!dirty\)\{previewedSection=selected\.id;previewedRevision=selected\.updated_at;\}/);
+ assert.match(source,/records=await client\.list\(\);selected=records\.find\(record=>record\.id===selected\.id\)/);
+});

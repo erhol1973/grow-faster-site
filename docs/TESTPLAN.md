@@ -196,3 +196,11 @@ Lokaal bewijs: 79 unit-/HTTP-tests, artifact-security, load (296/0 fouten) en Ch
 NL/FR film playback, poster/caption matching, no autoplay, narrow left-aligned landscape player, left-aligned Trackrecord/Operating model/ECA and the four approved next-page destinations are covered on all five browser profiles. Unit/HTTP tests enforce 15 MiB video limits and valid/invalid byte ranges. Local load adds the small film scripts, captions and posters; large video payloads are tested with HTTP byte ranges and real browser playback. Caption text follows the supplied transcript; final human listening and physical-device accessibility remain manual checks. Existing gates and thresholds are unchanged.
 
 The final media is the user-supplied 23-second commercial, shared by both locales. Dutch/French captions translate the two supplied English dialogue lines and the visible English end card; office ambience/music is labelled. Caption timing follows the supplied approximate dialogue timings. Old VR-dialogue captions are removed.
+
+
+## Original 44-second commercial — owner-approved budget, 9 November 2026
+
+The owner explicitly requested preserving the uploaded video exactly and then authorised changing its size limit. Only media/grow-faster-commercial-final-44s.mp4 now has a 22 MiB budget (previously 15 MiB); its actual size is 21,549,033 bytes. A permanent byte-count and SHA-256 regression preserves the original upload, including all 44 seconds and its original audio. Playback-to-ended and absence of subtitle tracks remain required. This supersedes the earlier 23-second/caption notes for this film. Other budgets and release gates remain unchanged. This budget change does not authorise a merge or production deployment; outstanding release gates and preview range-delivery verification still apply.
+
+
+Release authorisation, 9 November 2026: the owner subsequently requested production publication after the required checks pass. Main integration retains the publication-identity fixture and updates it to the exact approved 44-second upload, superseding the prior 23-second identity. No other release gate is waived.

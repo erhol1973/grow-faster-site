@@ -18,3 +18,10 @@ button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible,
 #fields .field[hidden]{display:none!important}
 #fields .field h3{overflow-wrap:anywhere}
 @media(max-width:800px){.brand img{width:144px}.field-tools{top:0}}
+
+/* CMS page-part selection; keep controls visible without scrolling through every field. */
+.field-controls{display:grid;grid-template-columns:minmax(210px,1fr) minmax(250px,1.5fr);gap:16px;align-items:end}
+.field-controls label{display:grid;gap:8px}
+.field-controls select{width:100%;min-height:46px;border:1px solid #b8cbe1;border-radius:6px;padding:10px 12px;color:#092450;background:#fff;font:inherit}
+.field-controls select:focus-visible{border-color:#1177cf}
+@media(max-width:800px){.field-controls{grid-template-columns:1fr;gap:12px}}

@@ -24,3 +24,25 @@ test('CMS admin uses Grow Faster logo and searchable fields while retaining save
  assert.match(script,/filterFields\(\);/);
  assert.match(script,/for\(const field of definition\.fields\)/);
 });
+
+test('CMS page selector preserves all field values while showing one homepage section',()=>{
+ const html=fs.readFileSync('admin.html','utf8');
+ const script=fs.readFileSync('assets/cms-admin.js','utf8');
+ const catalogSource=fs.readFileSync('assets/cms-catalog.js','utf8');
+ const context={window:{}};vm.runInNewContext(catalogSource,context);
+ const home=context.window.GF_CMS_CATALOG.find(page=>page.page==='home');
+ assert.ok(home);
+ assert.match(html,/id="field-group"/);
+ assert.match(script,/function sectionOptions\(\)/);
+ assert.match(script,/definition\.page==='home'\?'hero':'all'/);
+ assert.match(script,/const match=textMatch&&\(term\?true:groupMatch\)/);
+ assert.match(script,/section\.hidden=!match/);
+ assert.match(script,/for\(const field of definition\.fields\)/);
+ const groups=[
+  [0,4,[47]],[5,12,[]],[13,20,[50]],[21,27,[]],
+  [28,38,[48,49]],[39,41,[]],[42,44,[]],[45,46,[]],[51,51,[]]
+ ];
+ const indices=groups.flatMap(([start,end,extra])=>[...Array.from({length:end-start+1},(_,i)=>start+i),...extra]);
+ assert.equal(new Set(indices).size,home.fields.length,'every homepage field must appear in precisely one group');
+ assert.deepEqual(indices.slice().sort((a,b)=>a-b),Array.from({length:home.fields.length},(_,i)=>i));
+});

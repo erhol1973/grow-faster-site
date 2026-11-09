@@ -11,6 +11,7 @@
   return content;
  }
  function paint(){
+  $('field-search').value='';
   $('page-name').textContent=definition.label;$('section-name').textContent='Teksten & media';$('state').textContent=dirty?'Niet opgeslagen':'Opgeslagen concept';$('fields').replaceChildren();
   for(const field of definition.fields){const saved=selected.settings?.fields?.[field.key]||(field.source?{...field,...Object.fromEntries(['nl','fr'].map(lang=>[lang,selected[field.source]?.[lang]?(field.source==='heading'?selected[field.source][lang].replace(/\. /,'.\n'):selected[field.source][lang]):field[lang]]))}:field),wrap=node('section');wrap.className='field';wrap.append(node('h3',field.label||'Afbeelding'));const langs=node('div');langs.className='languages';
    for(const lang of ['nl','fr']){const label=node('label',(lang==='nl'?'Nederlands':'Français')+(field.type==='media'?' · beeldbeschrijving':''));const input=node(field.type==='text'?'textarea':'input');input.id=field.key+'-'+lang;input.value=field.type==='text'?(saved[lang]??(field.source&&selected[field.source]?.[lang]?selected[field.source][lang].replace(/\. /,'.\n'):field[lang])):(saved.alt?.[lang]||'');input.maxLength=12000;input.addEventListener('input',()=>{dirty=true;$('state').textContent='Niet opgeslagen';});label.append(input);langs.append(label);}
@@ -18,7 +19,19 @@
    if(field.type==='media'){const label=node('label','Nieuwe foto of video · maximaal 25 MB');const input=node('input');input.type='file';input.accept=field.kind==='video'?'video/mp4':'image/jpeg,image/png,image/webp,image/avif';input.addEventListener('change',()=>run(async()=>{const file=input.files[0];if(!file)return;if((field.kind==='video')!==(file.type==='video/mp4'))throw Error('Kies het juiste bestandstype voor dit veld.');const path=await client.upload(file);selected.settings={...selected.settings,fields:{...selected.settings?.fields,[field.key]:{type:'media',path,alt:{nl:$(field.key+'-nl').value,fr:$(field.key+'-fr').value}}}};dirty=true;$('state').textContent='Niet opgeslagen';notify('Upload klaar. Sla het concept op om de verwijzing te bewaren.');}));label.append(input);wrap.append(label,node('p',saved.path?'Een nieuwe upload is gekoppeld.':'De bestaande website-afbeelding blijft behouden.'));}
    $('fields').append(wrap);
   }
+  filterFields();
  }
+ function filterFields(){
+  const term=$('field-search').value.trim().toLocaleLowerCase('nl');
+  let shown=0;
+  for(const [index,field] of definition.fields.entries()){
+   const section=$('fields').children[index];if(!section)continue;
+   const match=!term||[field.label,field.nl,field.fr,field.src,field.type==='media'?'afbeelding foto video media':'tekst'].filter(Boolean).some(value=>String(value).toLocaleLowerCase('nl').includes(term));
+   section.hidden=!match;if(match)shown++;
+  }
+  $('field-count').textContent=shown+' van '+definition.fields.length+' velden zichtbaar';
+ }
+ $('field-search').addEventListener('input',filterFields);
  function nav(){const query=$('search').value.toLocaleLowerCase('nl');$('sections').replaceChildren();for(const item of catalog){if(!(item.label+' '+item.page).toLowerCase().includes(query))continue;const b=button(item.label,async()=>{if(dirty){notify('Sla eerst je huidige concept op.');return;}definition=item;selected=records.find(r=>r.page_slug===item.page&&r.section_key===item.section);if(!selected){const result=await client.request('/rest/v1/page_sections?select=*',{method:'POST',auth:true,body:{page_slug:item.page,section_key:item.section,heading:{nl:item.label,fr:item.label},body:{nl:'',fr:''},settings:{fields:{}}}}); // PostgREST default is minimal: reload after successful insert.
        void result;records=await client.list();selected=records.find(r=>r.page_slug===item.page&&r.section_key===item.section);}
       paint();nav();});b.setAttribute('aria-current',String(definition===item));$('sections').append(b);}}

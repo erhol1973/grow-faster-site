@@ -18,3 +18,5 @@
 @media(max-width:1024px){.hero-minimal .hero-inner{padding-block:144px 88px}.hero-minimal .hero-top{min-height:640px}}
 @media(max-width:820px){.hero-minimal .hero-inner{padding-block:132px 76px}.hero-minimal .hero-top::after{background:linear-gradient(90deg,rgba(6,27,52,.95),rgba(6,27,52,.76))}}
 @media(max-width:480px){.hero-minimal .hero-inner{padding-block:120px 64px}.hero.hero-minimal h1{font-size:clamp(32px,9.6vw,42px);letter-spacing:-.04em}.hero-minimal .ctas{gap:12px}.hero-minimal .btn{width:100%;box-sizing:border-box}.hero-minimal .hero-top{min-height:650px}}
+/* Keep the longer French headline readable across the brighter photo area. */
+@media(min-width:821px){html:lang(fr) .hero-minimal .hero-top::after{background:linear-gradient(90deg,rgba(6,27,52,.95),rgba(6,27,52,.87) 42%,rgba(6,27,52,.64) 74%,rgba(6,27,52,.12) 100%)}}

@@ -10,8 +10,34 @@
   for(const field of definition.fields){const saved=selected.settings?.fields?.[field.key];if(field.type==='text'){content.settings.fields[field.key]={type:'text',nl:$(field.key+'-nl').value,fr:$(field.key+'-fr').value};if(field.source)content[field.source]={nl:content.settings.fields[field.key].nl,fr:content.settings.fields[field.key].fr};}else if(saved?.path){content.settings.fields[field.key]={...saved,alt:{nl:$(field.key+'-nl').value,fr:$(field.key+'-fr').value}};}}
   return content;
  }
+ const homeGroups=[
+  {id:'hero',label:'Hero & introductie',from:0,to:4,extra:[47]},
+  {id:'experience',label:'Ervaring & trackrecord',from:5,to:12},
+  {id:'coherence',label:'Enterprise Coherence',from:13,to:20,extra:[50]},
+  {id:'explore',label:'Verdieping & perspectief',from:21,to:27},
+  {id:'books',label:'Boeken & previews',from:28,to:38,extra:[48,49]},
+  {id:'journal',label:'Executive Journal',from:39,to:41},
+  {id:'workshop',label:'Workshop & aanbod',from:42,to:44},
+  {id:'contact',label:'Contact',from:45,to:46},
+  {id:'video',label:'Video',from:51,to:51}
+ ];
+ function fieldGroup(index,field){
+  if(definition.page!=='home')return field.type==='media'?'media':'text';
+  const group=homeGroups.find(item=>index>=item.from&&index<=item.to||item.extra?.includes(index));
+  return group?.id||'other';
+ }
+ function sectionOptions(){
+  const selector=$('field-group');selector.replaceChildren();
+  const groups=definition.page==='home'
+   ?[{id:'all',label:'Alle onderdelen'},...homeGroups]
+   :[{id:'all',label:'Alle onderdelen'},{id:'text',label:'Teksten'},{id:'media',label:'Afbeeldingen en video'}];
+  for(const group of groups){const option=node('option',group.label);option.value=group.id;selector.append(option);}
+  selector.value=definition.page==='home'?'hero':'all';
+ }
+ $('field-group').addEventListener('change',filterFields);
  function paint(){
   $('field-search').value='';
+  sectionOptions();
   $('page-name').textContent=definition.label;$('section-name').textContent='Teksten & media';$('state').textContent=dirty?'Niet opgeslagen':'Opgeslagen concept';$('fields').replaceChildren();
   for(const field of definition.fields){const saved=selected.settings?.fields?.[field.key]||(field.source?{...field,...Object.fromEntries(['nl','fr'].map(lang=>[lang,selected[field.source]?.[lang]?(field.source==='heading'?selected[field.source][lang].replace(/\. /,'.\n'):selected[field.source][lang]):field[lang]]))}:field),wrap=node('section');wrap.className='field';wrap.append(node('h3',field.label||'Afbeelding'));const langs=node('div');langs.className='languages';
    for(const lang of ['nl','fr']){const label=node('label',(lang==='nl'?'Nederlands':'Français')+(field.type==='media'?' · beeldbeschrijving':''));const input=node(field.type==='text'?'textarea':'input');input.id=field.key+'-'+lang;input.value=field.type==='text'?(saved[lang]??(field.source&&selected[field.source]?.[lang]?selected[field.source][lang].replace(/\. /,'.\n'):field[lang])):(saved.alt?.[lang]||'');input.maxLength=12000;input.addEventListener('input',()=>{dirty=true;$('state').textContent='Niet opgeslagen';});label.append(input);langs.append(label);}
@@ -23,10 +49,13 @@
  }
  function filterFields(){
   const term=$('field-search').value.trim().toLocaleLowerCase('nl');
+  const activeGroup=$('field-group').value;
   let shown=0;
   for(const [index,field] of definition.fields.entries()){
    const section=$('fields').children[index];if(!section)continue;
-   const match=!term||[field.label,field.nl,field.fr,field.src,field.type==='media'?'afbeelding foto video media':'tekst'].filter(Boolean).some(value=>String(value).toLocaleLowerCase('nl').includes(term));
+   const textMatch=!term||[field.label,field.nl,field.fr,field.src,field.type==='media'?'afbeelding foto video media':'tekst'].filter(Boolean).some(value=>String(value).toLocaleLowerCase('nl').includes(term));
+   const groupMatch=activeGroup==='all'||fieldGroup(index,field)===activeGroup;
+   const match=textMatch&&(term?true:groupMatch);
    section.hidden=!match;if(match)shown++;
   }
   $('field-count').textContent=shown+' van '+definition.fields.length+' velden zichtbaar';

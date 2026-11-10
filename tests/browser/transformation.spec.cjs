@@ -54,7 +54,8 @@ test('executive contact presents identity and working contact and book actions i
    expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1)).toBe(true);
  }
  await page.locator('.executive-hero a[href="#contact"]').click();await expect(page.locator('#contact h2')).toBeInViewport();
- const email=page.locator('#contact a[data-mail]');await expect(email).toHaveAttribute('href',/^mailto:/);const message=new URL(await email.getAttribute('href'));expect(message.searchParams.get('subject')).toBe('Enterprise coherence and transformation');
+ await expect(page.locator('#contact')).toHaveText(/Two ways to work together|Twee manieren|Deux fa/);await expect(page.locator('.au-reads, .au-contact, #au-copy')).toHaveCount(0);
+ const role=page.locator('#route-role');await expect(role).toHaveAttribute('href',/^mailto:/);
  await page.goto('/about.html');await page.locator('.executive-book-link').click();await expect(page.locator('#book')).toBeInViewport();
  await expect(page.locator('a[href="boek/the-coherent-enterprise/index.html"]').first()).toBeVisible();
  if(await page.locator('#burger').isVisible())await page.locator('#burger').click();await page.locator('#navlist a[href="about.html"]').click();await expect(page).toHaveURL(/\/about\.html$/);await expect(page.locator('h1')).toBeInViewport();

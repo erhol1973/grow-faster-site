@@ -10,7 +10,7 @@ test('The Coherent Enterprise serves its 12-page HTML flipbook, the flipbook PDF
  assert.equal((html.match(/class="page[^"]*" data-density="(?:soft|hard)"|class="page[^"]*" data-p="/g)||[]).length,12);
  assert.match(html,/<h1>The Coherent Enterprise<\/h1>/);assert.match(html,/<script src="\.\.\/\.\.\/assets\/page-flip-2\.0\.7\.js"><\/script>/);assert.match(html,/href="\.\.\/\.\.\/about.html#foundation-book"/);assert.match(html,/<noscript>/);assert.doesNotMatch(html,/(?:src|href)="https?:/);
  for(const name of ['index.html','about.html','books.html']){const text=fs.readFileSync(path.join(root,name),'utf8');assert.match(text,/href="boek\/the-coherent-enterprise\/index.html"/);assert.match(text,/12-page preview/);assert.doesNotMatch(text,/href="books\/the-coherent-enterprise-executive-preview.pdf"/)}
- // The separate 'Read the Executive Preview' cards were removed from About; the foundation-book feature carries the preview and the manuscript request.
- {const about=fs.readFileSync(path.join(root,'about.html'),'utf8');assert.doesNotMatch(about,/class="au-reads"/);assert.match(about,/id="foundation-book"[\s\S]*?data-mail="[^"]*full%20manuscript[^"]*">Request the full manuscript/)}
+ // The separate Executive Preview cards were removed from About on request; the foundation-book feature above still links the 12-page preview (checked in the loop above).
+ assert.doesNotMatch(fs.readFileSync(path.join(root,'about.html'),'utf8'),/class="au-reads"/);
  const {routes}=require('../scripts/load.cjs');for(const route of ['/'+manifest.file,'/boek/the-coherent-enterprise/index.html','/boek/the-coherent-enterprise/pdf/the-coherent-enterprise-executive-preview.pdf'])assert.ok(routes.some(r=>r.route===route));
 });

@@ -39,8 +39,9 @@ test('manuscript vision links AI, coherence, credited Ross sources and the manus
  }
  await page.locator('#book-thesis .book-reading').click();await expect(page).toHaveURL(/\/about\.html#book$/);
  await expect(page.locator('#book')).toBeInViewport();
- const request=page.locator('a[data-mail*="full%20manuscript"]');await expect(request).toHaveCount(1);await expect(request).toHaveAttribute('href',/^mailto:/);
- const message=new URL(await request.getAttribute('href'));expect(message.pathname).toBe('erlendhollebosch@gmail.com');expect(message.searchParams.get('subject')).toContain('full manuscript');expect(message.searchParams.get('body')).toContain('I would like to receive the full manuscript');
+ // The 'Read the full book' card with the full-manuscript template was removed on request; the foundation-book link remains the manuscript request.
+ const request=page.locator('#foundation-book a[data-mail]');await expect(request).toHaveCount(1);await expect(request).toHaveAttribute('href',/^mailto:/);
+ const message=new URL(await request.getAttribute('href'));expect(message.pathname).toBe('erlendhollebosch@gmail.com');expect(message.searchParams.get('subject')).toBe('The Coherent Enterprise');
  await expect(page.locator('#intellectual-foundation a')).toHaveAttribute('href','coherence.html#book-thesis');await expect(page.locator('#intellectual-foundation')).not.toContainText('Jeanne Ross');
 });
 
@@ -53,8 +54,9 @@ test('executive contact presents identity and working contact and book actions i
    await expect(page.locator('.executive-portrait img')).toBeVisible();expect(await page.locator('.executive-portrait img').evaluate(e=>e.complete&&e.naturalWidth>0)).toBe(true);
    expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1)).toBe(true);
  }
- await page.locator('.executive-hero a[href="#contact"]').click();await expect(page.locator('#contact h2')).toBeInViewport();
- const email=page.locator('#contact a[data-mail]');await expect(email).toHaveAttribute('href',/^mailto:/);const message=new URL(await email.getAttribute('href'));expect(message.searchParams.get('subject')).toBe('Enterprise coherence and transformation');
+ // The 'Let's connect' block was removed on request; #contact remains as an anchor just above the work routes.
+ await page.locator('.executive-hero a[href="#contact"]').click();await expect(page).toHaveURL(/#contact$/);await expect(page.locator('#work-h')).toBeInViewport();await expect(page.locator('.au-reads, .au-contact, #au-copy')).toHaveCount(0);
+ const role=page.locator('#route-role');await expect(role).toHaveAttribute('href',/^mailto:/);
  await page.goto('/about.html');await page.locator('.executive-book-link').click();await expect(page.locator('#book')).toBeInViewport();
  await expect(page.locator('a[href="boek/the-coherent-enterprise/index.html"]').first()).toBeVisible();
  if(await page.locator('#burger').isVisible())await page.locator('#burger').click();await page.locator('#navlist a[href="about.html"]').click();await expect(page).toHaveURL(/\/about\.html$/);await expect(page.locator('h1')).toBeInViewport();

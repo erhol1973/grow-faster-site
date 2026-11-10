@@ -19,3 +19,10 @@ condition = "AND"
 paths = ['''(^|/)assets/cms-config\.js$''']
 regexTarget = "secret"
 regexes = ['''^sb_publishable_[A-Za-z0-9_-]{20,}$''']
+
+[[rules.allowlists]]
+description = "Verified public growfaster-test publishable key in the isolated gateway runner; not a credential"
+condition = "AND"
+paths = ['''(^|/)scripts/accept-cms-storage\.cjs$''']
+regexTarget = "secret"
+regexes = ['''^sb_publishable_PrzDBgnoLtpUjOLnAM0lfw_up3URiTf$''']

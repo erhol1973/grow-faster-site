@@ -39,8 +39,8 @@ test('CMS page selector preserves all field values while showing one homepage se
  assert.match(script,/section\.hidden=!match/);
  assert.match(script,/for\(const field of definition\.fields\)/);
  const groups=[
-  [0,4,[47]],[5,12,[]],[13,20,[50]],[21,27,[]],
-  [28,38,[48,49]],[39,41,[]],[42,44,[]],[45,46,[]],[51,51,[]]
+  [0,1,[44]],[2,9,[]],[10,17,[47]],[18,24,[]],
+  [25,35,[45,46]],[36,38,[]],[39,41,[]],[42,43,[]],[48,48,[]]
  ];
  const indices=groups.flatMap(([start,end,extra])=>[...Array.from({length:end-start+1},(_,i)=>start+i),...extra]);
  assert.equal(new Set(indices).size,home.fields.length,'every homepage field must appear in precisely one group');

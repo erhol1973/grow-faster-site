@@ -11,15 +11,15 @@
   return content;
  }
  const homeGroups=[
-  {id:'hero',label:'Hero & introductie',from:0,to:4,extra:[47]},
-  {id:'experience',label:'Ervaring & trackrecord',from:5,to:12},
-  {id:'coherence',label:'Enterprise Coherence',from:13,to:20,extra:[50]},
-  {id:'explore',label:'Verdieping & perspectief',from:21,to:27},
-  {id:'books',label:'Boeken & previews',from:28,to:38,extra:[48,49]},
-  {id:'journal',label:'Executive Journal',from:39,to:41},
-  {id:'workshop',label:'Workshop & aanbod',from:42,to:44},
-  {id:'contact',label:'Contact',from:45,to:46},
-  {id:'video',label:'Video',from:51,to:51}
+  {id:'hero',label:'Hero & introductie',from:0,to:1,extra:[44]},
+  {id:'experience',label:'Ervaring & trackrecord',from:2,to:9},
+  {id:'coherence',label:'Enterprise Coherence',from:10,to:17,extra:[47]},
+  {id:'explore',label:'Verdieping & perspectief',from:18,to:24},
+  {id:'books',label:'Boeken & previews',from:25,to:35,extra:[45,46]},
+  {id:'journal',label:'Executive Journal',from:36,to:38},
+  {id:'workshop',label:'Workshop & aanbod',from:39,to:41},
+  {id:'contact',label:'Contact',from:42,to:43},
+  {id:'video',label:'Video',from:48,to:48}
  ];
  function fieldGroup(index,field){
   if(definition.page!=='home')return field.type==='media'?'media':'text';

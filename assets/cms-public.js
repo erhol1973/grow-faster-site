@@ -10,7 +10,8 @@
       for(const [key,value] of Object.entries(fields)){
         const node=document.querySelector('[data-cms="'+CSS.escape(key)+'"]');if(!node)continue;
         if(value.type==='text'&&typeof value[lang]==='string'){
-          if(node.hasAttribute('data-cms-heading')){const [first,...rest]=value[lang].split('\n');node.replaceChildren(document.createTextNode(first));if(rest.length){const em=document.createElement('em');em.textContent=rest.join(' ');node.append(document.createTextNode(' '),em);}}
+          if(node.hasAttribute('data-cms-heading')&&node.closest('.hero-minimal')){const lines=value[lang].split('\n');node.replaceChildren();lines.forEach((line,index)=>{if(index)node.append(document.createElement('br'),document.createTextNode('\n'));node.append(document.createTextNode(line));});}
+          else if(node.hasAttribute('data-cms-heading')){const [first,...rest]=value[lang].split('\n');node.replaceChildren(document.createTextNode(first));if(rest.length){const em=document.createElement('em');em.textContent=rest.join(' ');node.append(document.createTextNode(' '),em);}}
           else node.textContent=value[lang];
         }
         if(value.type==='media'&&value.path){try{const url=previewUrls[value.path]||await client.media(value.path);if(current!==generation)return;

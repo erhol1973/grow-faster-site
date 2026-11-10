@@ -9,38 +9,17 @@ window.GF_CMS_CATALOG=[
         "key": "home-hero-heading",
         "type": "text",
         "source": "heading",
-        "label": "Hoofdtitel · nieuwe regel = nadruk",
-        "nl": "AI versterkt het systeem waarin het terechtkomt. \nOntwerp voor samenhang.",
-        "fr": "L’IA amplifie le système dans lequel elle s’insère. \nConcevez pour la cohérence."
-      },
-      {
-        "key": "f9b00d7984dd0-0",
-        "type": "text",
-        "label": "Perspectives on enterprise transformation by Erlend Hollebosch",
-        "nl": "Perspectieven op bedrijfstransformatie, door Erlend Hollebosch",
-        "fr": "Perspectives sur la transformation des entreprises, par Erlend Hollebosch"
+        "label": "Hoofdtitel · nieuwe regel = regeleinde",
+        "nl": "Van AI-investering\nnaar bedrijfswaarde.",
+        "fr": "De l’investissement en IA\nà la valeur pour l’entreprise."
       },
       {
         "key": "f3c1fc5b6f45d-0",
         "type": "text",
-        "label": "How does strategic ambition become an outcome people can achieve together?",
-        "nl": "Hoe wordt een strategische ambitie een resultaat dat mensen samen kunnen realiseren?",
-        "fr": "Comment transformer une ambition stratégique en un résultat que les personnes peuvent atteindre ensemble ?",
+        "label": "Bring strategy, people, processes and technology into coherence.",
+        "nl": "Breng strategie, mensen, processen en technologie in samenhang. Maak AI-transformatie uitvoerbaar en bedrijfsresultaten meetbaar.",
+        "fr": "Alignez stratégie, personnes, processus et technologie. Rendez la transformation IA réalisable et les résultats de l’entreprise mesurables.",
         "source": "body"
-      },
-      {
-        "key": "f145b281c002b-0",
-        "type": "text",
-        "label": "In The Coherent Enterprise, I examine how choices about strategy, people, processes, struc",
-        "nl": "In The Coherent Enterprise onderzoek ik hoe keuzes in strategie, mensen, processen, structuur, infrastructuur en data elkaar versterken of tegenwerken.",
-        "fr": "Dans The Coherent Enterprise, j’examine comment les choix concernant la stratégie, les personnes, les processus, la structure, l’infrastructure et les données se renforcent ou se contredisent."
-      },
-      {
-        "key": "ff616f06fd48d-0",
-        "type": "text",
-        "label": "A faster task helps the enterprise move forward when the surrounding decisions, handoffs a",
-        "nl": "Een snellere taak helpt de onderneming verder wanneer ook de besluiten, overdrachten en verantwoordelijkheden eromheen aansluiten. Ontwikkel de toepassing van AI en de organisatie samen.",
-        "fr": "Une tâche plus rapide fait progresser l’entreprise lorsque les décisions, les passages de relais et les responsabilités qui l’entourent soutiennent le résultat. Développez ensemble l’application de l’IA et l’organisation."
       },
       {
         "key": "f8fa0899b12db-0",
@@ -339,10 +318,10 @@ window.GF_CMS_CATALOG=[
       {
         "key": "f7a4946dfd792-0",
         "type": "media",
-        "label": "img/hero.jpg",
-        "nl": "img/hero.jpg",
-        "fr": "img/hero.jpg",
-        "src": "img/hero.jpg",
+        "label": "img/hero-executive-meeting-1774.webp",
+        "nl": "img/hero-executive-meeting-1774.webp",
+        "fr": "img/hero-executive-meeting-1774.webp",
+        "src": "img/hero-executive-meeting-1774.webp",
         "alt": {
           "nl": "",
           "fr": ""

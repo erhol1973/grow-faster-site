@@ -1,4 +1,23 @@
 const {test,expect}=require('playwright/test');
+
+for(const [language,heading,primary,secondary] of [
+ ['nl','Van AI-investering naar bedrijfswaarde.','Plan een kennismaking','Ontdek de aanpak'],
+ ['fr','De l’investissement en IA à la valeur pour l’entreprise.','Planifier un premier échange','Découvrez l’approche']
+])test('minimal hero layout and approach keyboard action in '+language,async({page})=>{
+ await page.addInitScript(l=>{localStorage.setItem('avs-lang',l);localStorage.setItem('avs-consent',JSON.stringify({v:4,ext:false,ana:false,ts:Date.now()}))},language);
+ for(const width of [390,768,1024,1440]){
+  await page.setViewportSize({width,height:1000});await page.goto('/index.html');
+  await expect(page.locator('#consent')).toBeHidden();await expect(page.locator('#hero h1')).toHaveText(heading);
+  await expect(page.locator('#hero-work')).toContainText(primary);await expect(page.locator('#hero-approach')).toContainText(secondary);
+  expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1)).toBe(true);
+  expect(await page.locator('#hero img').evaluate(async image=>{await image.decode();return image.naturalWidth>0})).toBe(true);
+  const bounds=await page.locator('#hero h1,#hero .sub,#hero .btn').evaluateAll(els=>els.map(el=>{const r=el.getBoundingClientRect();return{x:r.x,right:r.right,width:r.width,height:r.height,bottom:r.bottom}}));
+  for(const r of bounds){expect(r.x).toBeGreaterThanOrEqual(0);expect(r.right).toBeLessThanOrEqual(width+1)}
+  for(const r of bounds.slice(2)){expect(r.height).toBeGreaterThanOrEqual(44);expect(r.width).toBeGreaterThanOrEqual(44)}
+ }
+ await page.locator('#hero-approach').focus();await page.keyboard.press('Enter');await expect(page).toHaveURL(/approach\.html$/);await expect(page.locator('html')).toHaveAttribute('lang',language);
+});
+
 for(const [language,heading,choices]of [['nl','Kies een verdieping',['De visie','De praktijk','De toepassing']],['fr','Choisissez un angle d’approfondissement',['La perspective','La pratique','L’application']]])test(`editorial home gives working reading routes in ${language}`,async({page})=>{
  const errors=[];page.on('pageerror',e=>errors.push(e.message));
  await page.addInitScript(l=>{if(!localStorage.getItem('avs-lang'))localStorage.setItem('avs-lang',l);localStorage.setItem('avs-consent',JSON.stringify({v:4,ext:false,ana:false,ts:Date.now()}))},language);

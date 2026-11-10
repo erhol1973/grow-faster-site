@@ -27,6 +27,15 @@ test('accept, withdraw and accept analytics again without leaving active tracker
   expect(await page.evaluate(()=>window.__counts)).toBe(1);await expect(page.locator('#gc')).toHaveCount(0);
   await page.locator('.open-consent').first().click();await page.locator('#c-all').click();await expect.poll(()=>page.evaluate(()=>window.__counts)).toBe(2);
 });
+test('document-level synthetic clicks do not throw or change analytics consent',async({page})=>{
+  await seed(page,{v:4,ext:false,ana:false,ts:Date.now()});
+  const errors=[];page.on('pageerror',error=>errors.push(error.message));
+  await page.goto('/index.html');
+  await page.evaluate(()=>{document.dispatchEvent(new MouseEvent('click',{bubbles:true}));document.dispatchEvent(new Event('click',{bubbles:true}))});
+  expect(errors).toEqual([]);
+  await expect(page.locator('#gc')).toHaveCount(0);
+  expect(await page.evaluate(()=>JSON.parse(localStorage.getItem('avs-consent')).ana)).toBe(false);
+});
 test('withdrawal during a delayed analytics download never records a pageview',async({page})=>{
   await seed(page,null);let release;const wait=new Promise(r=>release=r);let requested=false;
   await page.route('https://fonts.googleapis.com/**',r=>r.fulfill({status:200,contentType:'text/css',body:''}));

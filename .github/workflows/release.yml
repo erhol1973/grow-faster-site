@@ -10,13 +10,18 @@ concurrency:
   group: website-${{ github.ref }}
   cancel-in-progress: true
 jobs:
-  checks:
-    name: Website quality gate
+  # The quality gate runs in parallel jobs. Every job builds the same commit and
+  # proves its dist/ is byte-identical to the prepared package (dist-hash), so the
+  # deployed artifact is exactly the one that every browser shard and Lighthouse tested.
+  prepare:
+    name: Build, unit and source checks
     runs-on: ubuntu-24.04
     container:
       # Keep the image version aligned with the locked Playwright dependency.
       image: mcr.microsoft.com/playwright:v1.64.1-noble
-    timeout-minutes: 45
+    timeout-minutes: 15
+    outputs:
+      dist_hash: ${{ steps.hash.outputs.dist_hash }}
     steps:
       # Action commits verified against their official release pages.
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
@@ -28,30 +33,126 @@ jobs:
       - name: Install locked dependencies
         run: pnpm install --frozen-lockfile --ignore-scripts
       - run: npm run build
+      - id: hash
+        run: echo "dist_hash=$(node scripts/dist-hash.cjs)" >> "$GITHUB_OUTPUT"
       - run: npm test
       - run: npm run security
       - name: Dependency vulnerabilities
         run: pnpm audit --audit-level=high
-      - name: Verify preinstalled Playwright browsers
-        run: |
-          node -e "const p = require('playwright'); for (const name of ['chromium', 'firefox', 'webkit']) require('node:fs').accessSync(p[name].executablePath(), require('node:fs').constants.X_OK)"
-      - run: npm run test:e2e
-        env:
-          # Firefox requires a home directory owned by the container user.
-          HOME: /root
-      - run: npm run test:load
-      - name: Lighthouse mobile and desktop medians
-        run: npm run test:performance
       - name: Save reports
         if: always()
         uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
-          name: quality-reports
+          name: unit-reports
+          path: reports/
+          if-no-files-found: warn
+  browsers:
+    name: Browser regressions ${{ matrix.shard }}/8
+    needs: prepare
+    runs-on: ubuntu-24.04
+    container:
+      # Keep the image version aligned with the locked Playwright dependency.
+      image: mcr.microsoft.com/playwright:v1.64.1-noble
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [1, 2, 3, 4, 5, 6, 7, 8]
+    steps:
+      # Action commits verified against their official release pages.
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: '24.21.0'
+      - name: Install pinned package manager
+        run: npm install --global pnpm@11.25.0
+      - name: Install locked dependencies
+        run: pnpm install --frozen-lockfile --ignore-scripts
+      - run: npm run build
+      - name: Verify this build is the prepared release package
+        run: test "$(node scripts/dist-hash.cjs)" = "${{ needs.prepare.outputs.dist_hash }}"
+      - name: Verify preinstalled Playwright browsers
+        run: |
+          node -e "const p = require('playwright'); for (const name of ['chromium', 'firefox', 'webkit']) require('node:fs').accessSync(p[name].executablePath(), require('node:fs').constants.X_OK)"
+      - run: npm run test:e2e -- --shard=${{ matrix.shard }}/8
+        env:
+          # Firefox requires a home directory owned by the container user.
+          HOME: /root
+      - name: Save reports
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: browser-reports-${{ matrix.shard }}
           path: |
             reports/
             playwright-report/
             test-results/
           if-no-files-found: warn
+  performance:
+    name: Load and Lighthouse ${{ matrix.mode }}
+    needs: prepare
+    runs-on: ubuntu-24.04
+    container:
+      # Keep the image version aligned with the locked Playwright dependency.
+      image: mcr.microsoft.com/playwright:v1.64.1-noble
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        mode: [mobile, desktop]
+    steps:
+      # Action commits verified against their official release pages.
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: '24.21.0'
+      - name: Install pinned package manager
+        run: npm install --global pnpm@11.25.0
+      - name: Install locked dependencies
+        run: pnpm install --frozen-lockfile --ignore-scripts
+      - run: npm run build
+      - name: Verify this build is the prepared release package
+        run: test "$(node scripts/dist-hash.cjs)" = "${{ needs.prepare.outputs.dist_hash }}"
+      - name: Local load checks
+        if: matrix.mode == 'mobile'
+        run: npm run test:load
+      - name: Lighthouse ${{ matrix.mode }} medians (samples stay sequential within this job)
+        run: npm run test:performance -- --${{ matrix.mode }}-only
+      - name: Save reports
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: performance-reports-${{ matrix.mode }}
+          path: reports/
+          if-no-files-found: warn
+  checks:
+    # Required status check: keep this exact job name.
+    name: Website quality gate
+    needs: [prepare, browsers, performance]
+    if: always()
+    runs-on: ubuntu-24.04
+    container:
+      # Keep the image version aligned with the locked Playwright dependency.
+      image: mcr.microsoft.com/playwright:v1.64.1-noble
+    timeout-minutes: 15
+    steps:
+      - name: All parallel quality jobs passed
+        run: |
+          test "${{ needs.prepare.result }}" = success
+          test "${{ needs.browsers.result }}" = success
+          test "${{ needs.performance.result }}" = success
+      # Action commits verified against their official release pages.
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: '24.21.0'
+      - name: Install pinned package manager
+        run: npm install --global pnpm@11.25.0
+      - name: Install locked dependencies
+        run: pnpm install --frozen-lockfile --ignore-scripts
+      - run: npm run build
+      - name: Verify this build is the prepared release package
+        run: test "$(node scripts/dist-hash.cjs)" = "${{ needs.prepare.outputs.dist_hash }}"
       - name: Package tested website
         if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
         uses: actions/upload-pages-artifact@7b1f4a764d45c48632c6b24a0339c27f5614fb0b # v4.0.0

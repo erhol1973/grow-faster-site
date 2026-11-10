@@ -85,7 +85,7 @@ WebKit rendert de uitgestelde hoofdstukken direct en laadt de simulator met het 
 6. `npm run test:load`
 7. `npm run test:performance`
 
-CI bewaart reports/, playwright-report/ en test-results/, ook bij falen. browser-summary.json bevat pogingen en skipredenen; unit.xml de Node-resultaten. Lighthouse bewaart JSON en HTML. Lokale Edge via TEST_BROWSER_EXECUTABLE bewijst geen Firefox/WebKit-validatie.
+In CI draaien deze stappen parallel: één job voor build, unit- en broncontroles, acht browsershards (`--shard=n/8`, samen alle profielen en scenario’s) en twee Lighthouse-jobs (mobiel met lokale load, desktop). Binnen elke Lighthouse-job blijven de metingen sequentieel. Elke job bouwt dezelfde commit en controleert met `scripts/dist-hash.cjs` dat dist/ byte-identiek is aan het voorbereide pakket; de verplichte check Website quality gate slaagt alleen als alle parallelle jobs slagen en publiceert dat pakket. CI bewaart reports/, playwright-report/ en test-results/, ook bij falen. browser-summary.json bevat pogingen en skipredenen; unit.xml de Node-resultaten. Lighthouse bewaart JSON en HTML. Lokale Edge via TEST_BROWSER_EXECUTABLE bewijst geen Firefox/WebKit-validatie.
 
 Lighthouse vereist medianen van minimaal 90 voor de score, LCP maximaal 2.500ms, CLS maximaal 0,1 en TBT maximaal 200ms. Afgebroken metingen falen en bewaren tussentijdse resultaten. De build leest gecontroleerde open bestandsdescriptors; regressietests weigeren vervangen paden, symlinks en niet-bestanden. De vertaalbron wordt als JSON gelezen, niet als code uitgevoerd.
 

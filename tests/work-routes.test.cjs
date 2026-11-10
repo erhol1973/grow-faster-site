@@ -3,7 +3,7 @@ const {test}=require('node:test');const assert=require('node:assert/strict');con
 const root=path.resolve(__dirname,'..','dist');const read=f=>fs.readFileSync(path.join(root,f),'utf8');
 const I18N=()=>{const c={window:{}};vm.runInNewContext(read('assets/i18n.js'),c);return c.window.I18N};
 test('minimal home hero keeps one primary introduction and one approach action',()=>{const h=read('index.html');
- assert.match(h,/<h1 data-ih="home-minimal-value">From AI investment <br>to business value\.<\/h1>/);
+ assert.match(h,/<h1\b[^>]*\bdata-ih="home-minimal-value"[^>]*>From AI investment <br>to business value\.<\/h1>/);
  assert.match(h,/href="approach.html" class="btn ghost"/);
  assert.doesNotMatch(h,/<p class="hero-avail">/);
  const ctas=h.match(/<div class="ctas">([\s\S]*?)<\/div>/)[1];const links=[...ctas.matchAll(/<a href="([^"]+)" class="btn (\w+)"/g)].map(m=>[m[1],m[2]]);

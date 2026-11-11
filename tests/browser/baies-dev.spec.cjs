@@ -43,9 +43,8 @@ test('BAEIS: newsletter consent remains local, no HTTP submission',async({page})
   expect(posts).toEqual([]);
 });
 const AxeBuilder=require('@axe-core/playwright').default;
-test('BAEIS branding: readable responsive NL/FR views and AA contrast',async({page})=>{
+test('BAEIS branding: readable responsive layouts',async({page})=>{
   await page.goto('/baies-dev/');
-  const initialViewport=page.viewportSize();
   const logo=page.locator('.site-header .brand-logo');
   await expect(logo).toHaveJSProperty('naturalWidth',1110);
   await expect(page.locator('body')).toHaveCSS('font-size','17px');
@@ -55,14 +54,16 @@ test('BAEIS branding: readable responsive NL/FR views and AA contrast',async({pa
     expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);
     const box=await logo.boundingBox();expect(box.x).toBeGreaterThanOrEqual(0);expect(box.x+box.width).toBeLessThanOrEqual(width);
   }
-  await page.setViewportSize(initialViewport);
-  for(const lang of ['nl-BE','fr-BE']){
-    await expect(page.locator('html')).toHaveAttribute('lang',lang);
-    for(const view of ['overview','radar','evidence','editorial','about']){
-      await page.locator(`[data-view="${view}"]`).click();
-      const scan=await new AxeBuilder({page}).withTags(['wcag2a','wcag2aa','wcag21aa','wcag22aa']).analyze();
-      expect(scan.violations).toEqual([]);
-    }
-    await page.locator('#language-switch').click();
+});
+
+// Each locale is an independent scenario: retain all ten scans without extending timeouts.
+for(const lang of ['nl-BE','fr-BE'])test('BAEIS branding: all '+lang+' views meet AA contrast',async({page})=>{
+  await page.goto('/baies-dev/');
+  if(lang==='fr-BE')await page.locator('#language-switch').click();
+  await expect(page.locator('html')).toHaveAttribute('lang',lang);
+  for(const view of ['overview','radar','evidence','editorial','about']){
+    await page.locator('[data-view="'+view+'"]').click();
+    const scan=await new AxeBuilder({page}).withTags(['wcag2a','wcag2aa','wcag21aa','wcag22aa']).analyze();
+    expect(scan.violations).toEqual([]);
   }
 });

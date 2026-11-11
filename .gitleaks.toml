@@ -1,4 +1,4 @@
-# Gitleaks 8.24.3 retains its default rules. Extend only the generic-api-key rule with two AND-constrained path-and-line exceptions.
+# Gitleaks 8.24.3 retains its default rules. Exceptions are constrained by both path and matched content.
 # Do not skip a file or disable generic-api-key; unexpected tokens must still fail CI.
 [extend]
 useDefault = true
@@ -10,6 +10,13 @@ id = "generic-api-key"
 description = "Generated CMS DOM field identifiers in the initial catalog commit (not authentication keys)"
 condition = "AND"
 paths = ['''(^|/)assets/cms-catalog\.js$''']
+regexTarget = "line"
+regexes = ['''^\s*"key": "f[a-f0-9]{12,14}-[0-9]+",?\s*$''']
+
+[[rules.allowlists]]
+description = "Same verified public CMS DOM identifiers in language-baseline source metadata, not credentials"
+condition = "AND"
+paths = ['''(^|/)language/nl-baseline\.json$''']
 regexTarget = "line"
 regexes = ['''^\s*"key": "f[a-f0-9]{12,14}-[0-9]+",?\s*$''']
 

@@ -29,6 +29,10 @@ jobs:
         with:
           fetch-depth: 0
           persist-credentials: false
+      - name: Trust only this runner checkout for Git ancestry checks
+        run: |
+          git config --global --add safe.directory "$GITHUB_WORKSPACE"
+          git -C "$GITHUB_WORKSPACE" rev-parse --verify HEAD
       - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
         with:
           node-version: '24.21.0'

@@ -10,6 +10,8 @@ Every run uploads `nl-language-audit-<run>-<attempt>` for 90 days, with JSON, Ma
 
 On 11 November the two preserved attempts of run `43034228187` failed before scanning because Ubuntu's package mirror `azure.archive.ubuntu.com` could not resolve. One diagnosed fresh-runner retry repeated the same cause; it was not counted as a product-test failure or as a solved DNS incident. The container/JDK setup removes that specific apt dependency rather than retrying indefinitely. A separate minimal bootstrap-report job emits an artifact/summary if the scan job fails before it can upload its own artifact (including container startup). It never changes the failed primary job to success. MCR, GitHub and vendor-download availability remain external dependencies; no global DNS recovery is claimed.
 
+Run `43040043799` verified the new browser, Java checksum, archive extraction and LanguageTool startup, then exposed Git's ownership check for the runner-mounted container checkout. The workflow trusts only its exact platform-provided `GITHUB_WORKSPACE` path and verifies `HEAD` before proceeding. No wildcard, ancestry bypass, credential persistence or repository-protection change is used. That failed run's artifact contains setup/engine evidence and no candidate baseline.
+
 LanguageTool is a detector, not an official language authority. Suggestions need assessment against official Taalunie spelling and accepted Belgian Standard Dutch. Machine receipts never create a human approval. A human review must identify reviewer, date, evidence/reference and exact content hash; a hash match by itself is insufficient.
 
 ## Scope and fail-closed coverage

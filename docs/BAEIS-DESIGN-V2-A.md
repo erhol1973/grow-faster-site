@@ -20,3 +20,9 @@ The initial commit uses the Cloudflare-specific `[CF-Pages-Skip]` prefix, so rev
 Local evidence is retained in the parent workspace under `work/baeis-a-*.log`, and standard reports remain under ignored `reports/`, `test-results/` and `playwright-report/`. The Windows system default Node 20 is below the project minimum; verification uses the already-installed Node 24.22.1. Browser binaries come from the existing `.playwright-browsers` directory. Initial setup failures and contrast failures are retained in the logs.
 
 Physical devices and actual screen-reader speech remain manual validation limitations; axe does not prove complete WCAG conformity.
+
+## Dedicated dev gate
+
+`.github/workflows/baies-dev-quality.yml` adds a BAEIS-only Linux gate. `playwright.baies-dev.config.cjs` runs the existing BAEIS flow/branding/axe cases on all five browser profiles. `scripts/baies-dev-load.cjs` and `scripts/baies-dev-performance.cjs` use the repository harness implementation with only BAEIS routes and a separate report directory. They retain eight workers, at least 288 requests, p95 <= 1500ms, three cold sequential samples per mode, score >= 90, LCP <= 2500ms, CLS <= 0.1 and TBT <= 200ms. The shared workflow, scripts and production routes are unchanged.
+
+A Windows-only initial-scroll experiment did not resolve variable mobile blocking time and was discarded. Local Windows clipboard CRLF mismatch, load timeouts and failed performance samples remain evidence, not passing gates. The dedicated Linux job verifies BAEIS independently of concurrent desktop work.

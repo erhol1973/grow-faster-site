@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="nl-BE">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#0A2472">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <meta name="description" content="BAEIS development prototype — isolated demonstration, not a live intelligence service.">
+  <title>Belgian AI Economic Intelligence System · Dev Prototype | Grow Faster</title>
+  <link rel="stylesheet" href="../assets/baies-dev.css">
+  <script defer src="../assets/baies-dev-data.js"></script>
+  <script defer src="../assets/baies-dev-core.js"></script>
+  <script defer src="../assets/baies-dev-app.js"></script>
+</head>
+<body>
+<a class="skip" href="#main" data-i18n="skip">Ga naar inhoud</a>
+<div class="dev-strip"><span class="pulse-dot" aria-hidden="true"></span><strong data-i18n="dev">DEV PROTOTYPE</strong><span data-i18n="devNote">Geen live agenten · Geen externe publicatie · Geen persoonsgegevens opgeslagen</span></div>
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="identity" href="#overview" aria-label="Grow Faster – BAEIS overzicht">
+      <span class="gf-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+      <span class="gf-title">Grow Faster</span>
+      <span class="identity-divider" aria-hidden="true"></span>
+      <span class="product-title">Belgian AI Economic<br>Intelligence System</span>
+    </a>
+    <div class="header-right">
+      <span class="label-chip"><span aria-hidden="true">●</span> <span data-i18n="isolated">Isolated preview</span></span>
+      <button id="language-switch" class="lang-switch" type="button" aria-label="Switch language / Changer de langue">NL <span aria-hidden="true">/</span> FR</button>
+    </div>
+  </div>
+</header>
+<nav class="main-nav" aria-label="BAEIS prototype navigatie">
+  <div class="container nav-list">
+    <button type="button" data-view="overview" class="nav-link active" aria-current="page"><span data-i18n="navOverview">Overzicht</span></button>
+    <button type="button" data-view="radar" class="nav-link"><span data-i18n="navRadar">Trend Radar</span></button>
+    <button type="button" data-view="evidence" class="nav-link"><span data-i18n="navEvidence">Evidence Register</span></button>
+    <button type="button" data-view="editorial" class="nav-link"><span data-i18n="navEditorial">Redactie & Governance</span></button>
+    <button type="button" data-view="about" class="nav-link"><span data-i18n="navModel">4 Sprint MVP</span></button>
+  </div>
+</nav>
+<main id="main" tabindex="-1">
+  <section id="overview" class="view" aria-labelledby="heading-overview">
+    <div class="hero">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <div class="eyebrow"><span class="eyebrow-line"></span><span data-i18n="eyebrow">Grow Faster / Intelligence voor directies</span></div>
+          <h1 id="heading-overview" data-i18n="heroTitle">Van AI-signalen naar <em>betere bedrijfsbeslissingen.</em></h1>
+          <p class="hero-lead" data-i18n="heroLead">Onderbouwde AI-intelligence voor Belgische CEO's, CFO's, CIO's en COO's. Met primaire bronnen, economische context en expliciete onzekerheden.</p>
+          <div class="action-row">
+            <button class="btn primary" type="button" data-goto="radar"><span data-i18n="explore">Verken de Trend Radar</span><span aria-hidden="true">↗</span></button>
+            <button class="btn quiet" type="button" data-goto="evidence"><span data-i18n="inspect">Controleer de bronnen</span><span aria-hidden="true">→</span></button>
+          </div>
+          <div class="trustline"><span class="shield" aria-hidden="true">✓</span><span data-i18n="trustline">Bronnen en claims zijn controleerbaar. Dit is een afgeschermd functioneel prototype met vaste demonstratierecords.</span></div>
+        </div>
+        <div class="hero-preview" aria-label="Voorbeeld van executive intelligence">
+          <div class="preview-top"><span data-i18n="previewTitle">Executive snapshot</span><span class="mini-tag" data-i18n="devData">Vaste referentiedata</span></div>
+          <div class="snapshot-metrics">
+            <div class="snapshot-stat"><span data-i18n="statAi">AI-gebruik, België 2025</span><strong>34,5%</strong><small>Statbel · 02.12.2025</small></div>
+            <div class="snapshot-stat"><span data-i18n="statGDP">BBP-groei 2026, prognose</span><strong>0,6%</strong><small>NBB · 12.06.2026</small></div>
+          </div>
+          <div class="preview-heading"><span data-i18n="signalsHead">Brongecontroleerde signalen</span><b id="hero-count">05</b></div>
+          <div id="hero-signal-list" class="hero-signal-list"></div>
+          <div class="preview-bottom"><span data-i18n="noAuto">Geen autonome externe publicatie</span><span aria-hidden="true">●</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="container section-pad">
+      <div class="section-intro"><div><p class="kicker" data-i18n="valueKicker">Waarom dit platform?</p><h2 data-i18n="valueTitle">Eerst het bewijs. Dan de beslissing.</h2></div><p data-i18n="valueDesc">Het systeem onderscheidt observaties, prognoses en interpretaties. Hierdoor krijgt de directie geen schijnzekerheid, maar toepasbare hypotheses.</p></div>
+      <div class="value-grid">
+        <article class="value-card"><div class="value-icon">01</div><h3 data-i18n="value1Title">Discover</h3><p data-i18n="value1">Nieuwe ontwikkelingen ontdekken en prioriteren voor België.</p></article>
+        <article class="value-card"><div class="value-icon teal">02</div><h3 data-i18n="value2Title">Verify</h3><p data-i18n="value2">Bronnen, steekproeven, cijfers en beperkingen zichtbaar maken.</p></article>
+        <article class="value-card"><div class="value-icon violet">03</div><h3 data-i18n="value3Title">Decide</h3><p data-i18n="value3">De implicaties vertalen naar concrete managementvragen.</p></article>
+      </div>
+      <div class="brief-layout">
+        <div class="brief-copy"><p class="kicker" data-i18n="briefKicker">Sprint 4 · Executive Brief</p><h2 data-i18n="briefTitle">Eén heldere briefing. Meerdere perspectieven.</h2><p data-i18n="briefIntro">Kies een directiefunctie en genereer een lokale voorbeeldbrief op basis van de gecontroleerde referentierecords. Er wordt niets verstuurd.</p><div class="role-chips" id="overview-roles" aria-label="Directierol"><button type="button" data-role="CEO" aria-pressed="true" class="selected">CEO</button><button type="button" data-role="CFO" aria-pressed="false">CFO</button><button type="button" data-role="CIO" aria-pressed="false">CIO</button><button type="button" data-role="COO" aria-pressed="false">COO</button></div><p id="role-explainer" class="role-explainer"></p><button type="button" id="download-brief" class="btn primary" data-i18n="download">Download voorbeeldbrief (.txt)</button></div>
+        <div class="brief-preview"><div class="brief-label">GROW FASTER · BELGIAN AI ECONOMIC INTELLIGENCE SYSTEM</div><h3 data-i18n="briefPreviewTitle">Executive Intelligence Brief</h3><div class="brief-rule"></div><ol id="brief-items"></ol><div class="brief-disclaimer" data-i18n="briefDisclaimer">Demonstratie · Geen actuele dagelijkse nieuwsbrief · Geen AI-gegenereerd nieuws</div></div>
+      </div>
+    </div>
+  </section>
+  <section id="radar" class="view" hidden aria-labelledby="heading-radar">
+    <div class="container section-pad pad-top">
+      <p class="kicker" data-i18n="radarKicker">Sprint 4 · Intelligence Experience</p><div class="section-intro"><div><h1 id="heading-radar" data-i18n="radarTitle">AI Trend Radar</h1><p data-i18n="radarSub">Echte bronlinks, transparante prioriteiten en rolgerichte beslissingsvragen.</p></div><span class="inline-notice" data-i18n="sampleNotice">5 vaste referentierecords · geen live feed</span></div>
+      <div class="filters"><div class="filter"><label for="role-filter" data-i18n="audience">Directiefunctie</label><select id="role-filter"><option value="ALL" data-i18n="allRoles">Alle functies</option><option>CEO</option><option>CFO</option><option>CIO</option><option>COO</option></select></div><div class="filter"><label for="sector-filter" data-i18n="sector">Sector</label><select id="sector-filter"><option value="All" data-i18n="allSectors">Alle sectoren</option><option value="Cross-sector">Cross-sector</option><option value="SME">KMO</option><option value="Manufacturing">Manufacturing</option></select></div><div class="filter grow"><label for="signal-search" data-i18n="search">Zoek op titel, bron of onderwerp</label><input id="signal-search" type="search" autocomplete="off" placeholder="Zoeken / Rechercher"></div></div>
+      <div class="radar-summary"><div><strong id="visible-count">0</strong><span data-i18n="visibleSignals">zichtbare signalen</span></div><p data-i18n="scoreNote">Prioriteitsscores zijn redactionele hypothesen en geen bewezen voorspellingen van ROI.</p></div>
+      <div id="signal-grid" class="signal-grid" aria-live="polite"></div>
+    </div>
+  </section>
+  <section id="evidence" class="view" hidden aria-labelledby="heading-evidence">
+    <div class="container section-pad pad-top"><p class="kicker" data-i18n="evidenceKicker">Sprint 2 · Trusted Evidence</p><div class="section-intro"><div><h1 id="heading-evidence" data-i18n="evidenceTitle">Evidence Register</h1><p data-i18n="evidenceSub">Van elke cijfermatige claim naar een oorspronkelijke bron, datum en beperking.</p></div><span class="inline-notice" data-i18n="sourceNote">Bronmetadata handmatig gecontroleerd · geen automatische verificatieservice</span></div>
+      <div class="evidence-banner"><div class="evidence-banner-icon" aria-hidden="true">✓</div><div><strong data-i18n="verifiedPolicy">Evidence before publication.</strong><p data-i18n="verifiedDesc">Een geldig bronadres is niet hetzelfde als wetenschappelijk bewijs. De inhoud, methode en causaliteit vereisen onafhankelijke beoordeling.</p></div></div>
+      <div class="table-wrap"><table><caption data-i18n="evidenceCaption">Vijf controleerbare referentieclaims</caption><thead><tr><th scope="col" data-i18n="thClaim">Claim-ID / onderwerp</th><th scope="col" data-i18n="thPublisher">Primaire bron</th><th scope="col" data-i18n="thDate">Publicatie</th><th scope="col" data-i18n="thType">Bewijstype</th><th scope="col" data-i18n="thAction">Controle</th></tr></thead><tbody id="evidence-rows"></tbody></table></div>
+      <div class="method-note"><strong data-i18n="noteTitle">Methodologische grens</strong><p data-i18n="noteCopy">Deze MVP demonstreert brontraceerbaarheid en kwaliteitsregels. Ze automatiseert nog geen full-text factchecking, crawling, PDF-analyse of onafhankelijke wetenschappelijke peer review.</p></div>
+    </div>
+  </section>
+  <section id="editorial" class="view" hidden aria-labelledby="heading-editorial">
+    <div class="container section-pad pad-top"><p class="kicker" data-i18n="editorialKicker">Sprint 3 · Controlled Workflow</p><div class="section-intro"><div><h1 id="heading-editorial" data-i18n="editorialTitle">Redactie & Governance</h1><p data-i18n="editorialSub">Onafhankelijke controlefasen, zichtbare blokkeringen en een menselijk goedkeuringsmoment.</p></div><span class="inline-notice" data-i18n="sessionOnly">Simulatie · status alleen in deze browsersessie</span></div>
+      <div class="workflow-rail"><div><span>01</span><b data-i18n="stageDiscover">Discover</b></div><i aria-hidden="true">→</i><div><span>02</span><b data-i18n="stageEvidence">Evidence</b></div><i aria-hidden="true">→</i><div><span>03</span><b data-i18n="stageChallenge">Challenge</b></div><i aria-hidden="true">→</i><div><span>04</span><b data-i18n="stageApproval">Internal approval</b></div></div>
+      <div class="governance-grid"><div class="queue-panel"><div class="queue-head"><h2 data-i18n="queueTitle">Voorbeeldredactiedossier</h2><p data-i18n="queueSub">De knoppen simuleren controles; ze vervangen geen onafhankelijke menselijke of wetenschappelijke verificatie.</p></div><div class="queue-body"><div class="queue-record"><span class="subtle-label" data-i18n="queueRecord">Geselecteerd onderzoeksrecord</span><strong id="queue-title"></strong><span id="queue-source"></span></div><div class="queue-steps" id="queue-steps"></div><div class="queue-actions"><button class="btn primary" type="button" id="advance-review"></button><button class="btn quiet" type="button" id="reset-review" data-i18n="reset">Reset demo</button></div><p id="workflow-feedback" class="workflow-feedback" role="status"></p><button class="btn locked" type="button" id="external-publish" disabled aria-disabled="true" data-i18n="blockedPublish">Externe publicatie geblokkeerd</button></div></div><aside class="governance-side"><h2 data-i18n="guardrailTitle">Autonomiegrenzen</h2><div class="guardrail-item"><span class="guardrail-icon">L0–L2</span><p data-i18n="autoInternal">Agenten mogen interne signalen onderzoeken, structureren en concepten voorbereiden.</p></div><div class="guardrail-item"><span class="guardrail-icon violet">L3</span><p data-i18n="requiresHuman">Onafhankelijke beoordeling en interne goedkeuring vereisen aantoonbare rollen en auditgegevens.</p></div><div class="guardrail-item"><span class="guardrail-icon red">L4</span><p data-i18n="noPublish">Publicatie, mailing, betalingen en productiereleases zijn niet beschikbaar in deze dev-MVP.</p></div><div class="audit"><h3 data-i18n="auditTitle">Sessielog</h3><ol id="audit-events" aria-live="polite"></ol></div></aside></div>
+    </div>
+  </section>
+  <section id="about" class="view" hidden aria-labelledby="heading-about"><div class="container section-pad pad-top"><p class="kicker" data-i18n="roadmapKicker">Product Owner · 4 Sprint Proof of Concept</p><h1 id="heading-about" data-i18n="roadmapTitle">Van fundament tot gecontroleerde MVP.</h1><p class="intro-p" data-i18n="roadmapSub">Vier doelgerichte increments binnen één geïsoleerde ontwikkelroute. De doelarchitectuur met echte autonome agents blijft een vervolgfase.</p><div class="sprint-grid"><article class="sprint-card"><span>SPRINT 01</span><h2 data-i18n="s1Title">Product Foundation</h2><p data-i18n="s1Text">Een afzonderlijke dev-pagina, premium navigatie, NL/FR-taalwissel en responsieve toegankelijkheid.</p><strong data-i18n="s1Done">Interactief prototype</strong></article><article class="sprint-card"><span>SPRINT 02</span><h2 data-i18n="s2Title">Evidence Foundation</h2><p data-i18n="s2Text">Stabiele claim-ID's, originele bronlinks, datum, bewijsclassificatie en methodologische beperkingen.</p><strong data-i18n="s2Done">5 gecontroleerde referentierecords</strong></article><article class="sprint-card"><span>SPRINT 03</span><h2 data-i18n="s3Title">Editorial Workflow</h2><p data-i18n="s3Text">Gated reviewstatussen en lokaal auditspoor; externe publicatie technisch uitgeschakeld.</p><strong data-i18n="s3Done">Simulatie van de reviewketen</strong></article><article class="sprint-card"><span>SPRINT 04</span><h2 data-i18n="s4Title">Executive Experience</h2><p data-i18n="s4Text">Trend Radar, functie- en sectorfilters, evidence-detail en downloadbare voorbeeldbrief.</p><strong data-i18n="s4Done">Pilot-ready UX-demo</strong></article></div><div class="next-stage"><h2 data-i18n="nextTitle">Wat bewust nog niet gebouwd is</h2><p data-i18n="nextBody">Een werkende multi-agentruntime, automatische wetenschappelijke factchecking, Supabase-writes, accounts, HubSpot-verzending, production deployment, betaalde abonnementen of live datavernieuwing. Hiervoor zijn aparte security-, databron- en acceptatietests nodig.</p></div><div class="signup"><div><h2 data-i18n="signupTitle">Nieuwsbriefinschrijving — toestemmingsprototype</h2><p data-i18n="signupDesc">Je kunt de interactie testen, maar er wordt geen e-mailadres opgeslagen of verzonden.</p></div><form id="signup-form"><label for="signup-email" data-i18n="email">E-mailadres</label><input type="email" id="signup-email" autocomplete="email" placeholder="naam@bedrijf.be" required><label class="checkline"><input type="checkbox" id="signup-consent" required><span data-i18n="consent">Ik geef toestemming voor de nieuwsbrief (alleen interactietest).</span></label><button class="btn primary" type="submit" data-i18n="testSignup">Test inschrijving zonder verzenden</button><p id="signup-feedback" role="status"></p></form></div></div></section>
+</main>
+<footer><div class="container footer-inner"><span><strong>Grow Faster</strong> · Belgian AI Economic Intelligence System</span><span data-i18n="footer">Dev-only prototype · No production changes · © 2026</span></div></footer>
+<dialog id="evidence-dialog" aria-labelledby="dialog-title"><div class="dialog-layout"><div class="dialog-head"><span class="kicker" data-i18n="dialogKicker">Evidence review · Original source</span><button id="dialog-close" type="button" aria-label="Sluiten / Fermer">×</button></div><h2 id="dialog-title"></h2><div id="dialog-body"></div><div class="dialog-end"><button type="button" id="dialog-done" class="btn primary" data-i18n="close">Sluiten</button></div></div></dialog>
+</body>
+</html>

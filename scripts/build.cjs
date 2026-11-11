@@ -4,7 +4,7 @@ const path = require('node:path');
 const {readRegularFile}=require('./file-reader.cjs');
 const root = path.resolve(__dirname, '..');
 const out = path.join(root, 'dist');
-const files = ['boek/the-coherent-enterprise/index.html', 'boek/index.html', 'boek/page-flip-LICENSE.txt', '.nojekyll', 'CNAME', '404.html', 'about.html', 'books.html', 'accessibility.html', 'approach.html', 'coherence-sim.html', 'coherence.html', 'eca.html', 'favicon.ico', 'index.html', 'insights-ai-pilot.html', 'insights.html', 'journal.html', 'journal-fr.html', 'operating-model.html', 'privacy.html', 'process.html', 'robots.txt', 'sitemap.xml', 'terms.html', 'value.html', 'transformation.html', 'workshop.html', ...require('../tests/legacy-redirects.json').map(r=>r.file)];
+const files = ['baies-dev/index.html', 'boek/the-coherent-enterprise/index.html', 'boek/index.html', 'boek/page-flip-LICENSE.txt', '.nojekyll', 'CNAME', '404.html', 'about.html', 'books.html', 'accessibility.html', 'approach.html', 'coherence-sim.html', 'coherence.html', 'eca.html', 'favicon.ico', 'index.html', 'insights-ai-pilot.html', 'insights.html', 'journal.html', 'journal-fr.html', 'operating-model.html', 'privacy.html', 'process.html', 'robots.txt', 'sitemap.xml', 'terms.html', 'value.html', 'transformation.html', 'workshop.html', ...require('../tests/legacy-redirects.json').map(r=>r.file)];
 const extensions = { media: new Set(['.mp4', '.vtt']), boek: new Set(['.pdf']), assets: new Set(['.js', '.css']), img: new Set(['.jpg', '.jpeg', '.png', '.webp', '.avif', '.svg', '.ico']), books: new Set(['.pdf', '.jpg', '.jpeg', '.png', '.webp']) };
 if (out !== path.join(root, 'dist')) throw new Error('Unsafe output directory');
 fs.rmSync(out, { recursive: true, force: true });

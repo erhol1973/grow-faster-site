@@ -1,0 +1,589 @@
+{
+  "schema": 1,
+  "kind": "advisory_agent_triage",
+  "humanApproval": false,
+  "baselineSourceCommit": "4615a87faf67514832c64ae611f0e3458b1aa29c",
+  "totals": {
+    "blocks": 8536,
+    "locations": 2221,
+    "uniqueTextRuleFindings": 760
+  },
+  "rules": [
+    {
+      "rule": "MORFOLOGIK_RULE_NL_NL",
+      "locations": 2098,
+      "unique": 700
+    },
+    {
+      "rule": "UPPERCASE_SENTENCE_START",
+      "locations": 36,
+      "unique": 11
+    },
+    {
+      "rule": "UNPAIRED_BRACKETS",
+      "locations": 27,
+      "unique": 2
+    },
+    {
+      "rule": "SENTENCE_WHITESPACE",
+      "locations": 13,
+      "unique": 13
+    },
+    {
+      "rule": "EURO",
+      "locations": 8,
+      "unique": 3
+    },
+    {
+      "rule": "NL_SIMPLE_REPLACE_MLN",
+      "locations": 6,
+      "unique": 6
+    },
+    {
+      "rule": "KOMMA_ONTBR",
+      "locations": 6,
+      "unique": 1
+    },
+    {
+      "rule": "NL_CHECKCASE_PDF",
+      "locations": 4,
+      "unique": 4
+    },
+    {
+      "rule": "XXX_DING",
+      "locations": 4,
+      "unique": 3
+    },
+    {
+      "rule": "NL_SPACE_IN_COMPOUND_BUSINESS_CASE",
+      "locations": 2,
+      "unique": 2
+    },
+    {
+      "rule": "NL_SIMPLE_REPLACE_SUPPLY_CHAIN",
+      "locations": 2,
+      "unique": 1
+    },
+    {
+      "rule": "NL_SIMPLE_REPLACE_ÉÉN_OP_ÉÉN",
+      "locations": 2,
+      "unique": 1
+    },
+    {
+      "rule": "ERG_LANG_WOORD",
+      "locations": 2,
+      "unique": 2
+    },
+    {
+      "rule": "NL_CHECKCASE_NOVEMBER",
+      "locations": 2,
+      "unique": 2
+    },
+    {
+      "rule": "STAP-VOOR-STAP-PLAN",
+      "locations": 1,
+      "unique": 1
+    },
+    {
+      "rule": "DUBBEL_WOORD",
+      "locations": 1,
+      "unique": 1
+    },
+    {
+      "rule": "EN_OF",
+      "locations": 1,
+      "unique": 1
+    },
+    {
+      "rule": "NL_SIMPLE_REPLACE_RECHTTOE_RECHTAAN",
+      "locations": 1,
+      "unique": 1
+    },
+    {
+      "rule": "U_REACTIE",
+      "locations": 1,
+      "unique": 1
+    },
+    {
+      "rule": "NL_SIMPLE_REPLACE_PP",
+      "locations": 1,
+      "unique": 1
+    },
+    {
+      "rule": "NL_SIMPLE_REPLACE_HIER_GELDT_",
+      "locations": 1,
+      "unique": 1
+    },
+    {
+      "rule": "VINDT_IK",
+      "locations": 1,
+      "unique": 1
+    },
+    {
+      "rule": "CIJFERS_IN_WOORD",
+      "locations": 1,
+      "unique": 1
+    }
+  ],
+  "priorities": [
+    {
+      "priority": 0,
+      "category": "extraction_noise",
+      "action": "Fix boundaries before accepting blanket spelling changes. Preserve ledger; mark old signals historical only when source identity/text changes, not corrected.",
+      "evidence": [
+        {
+          "findingId": "528fb2347b169e20359c1751b830bdae32f3de04fd7088a46f637e6df2082e59",
+          "blockId": "coherence-sim.html#text:body:2>div:1>div:2>div:1>div:1>div:2",
+          "page": "coherence-sim.html",
+          "kind": "text",
+          "text": "BUSINESS &STRATEGYBUSINESS PROCESS& PEOPLEDATA & KNOWLEDGEAI & AGENTSGOVERNANCE, RISK& SECURITYTECHNOLOGY & AIPLATFORMVALUE & SCALEENTERPRISE · AI USE CASENeeJaNeeJaNeeJaNeeIdeeAI use casevoorgesteldLOKALE OPPORTUNITEITAI-oplossingselecterenSOLUTION-FIRSTAI toevoegen aanbestaand procesAI OVER COMPLEXITEITData verzamelenDATASILO’SData beschikbaar?Andere afdelingcontacterenWIE IS EIGENAAR?Wachten op dataAI pilotontwikkelenPILOT WERKTPrivacy / Risk /Security reviewGOVERNANCE ALS GATEGoedgekeurd?Point-to-pointintegratie bouwenINTEGRATION COMPLEXITYProduction ready?Medewerkersgebruiken AI-toolAI NAAST HET WERKWaarde metenBASELINE ONTBREEKTHerbruikbaar?Opnieuw beginnen↺ NIEUWE AFDELING",
+          "marked": "Andere",
+          "rule": "SENTENCE_WHITESPACE",
+          "replacements": [
+            " Andere"
+          ]
+        },
+        {
+          "findingId": "cd213b5e3af8a16851038207c8ab44463b660cb6155d42f7e04ea140a2be660c",
+          "blockId": "coherence-sim.html#text:body:2>div:1>div:2>div:1>div:1>div:2",
+          "page": "coherence-sim.html",
+          "kind": "text",
+          "text": "BUSINESS &STRATEGYBUSINESS PROCESS& PEOPLEDATA & KNOWLEDGEAI & AGENTSGOVERNANCE, RISK& SECURITYTECHNOLOGY & AIPLATFORMVALUE & SCALEENTERPRISE · AI USE CASENeeJaNeeJaNeeJaNeeIdeeAI use casevoorgesteldLOKALE OPPORTUNITEITAI-oplossingselecterenSOLUTION-FIRSTAI toevoegen aanbestaand procesAI OVER COMPLEXITEITData verzamelenDATASILO’SData beschikbaar?Andere afdelingcontacterenWIE IS EIGENAAR?Wachten op dataAI pilotontwikkelenPILOT WERKTPrivacy / Risk /Security reviewGOVERNANCE ALS GATEGoedgekeurd?Point-to-pointintegratie bouwenINTEGRATION COMPLEXITYProduction ready?Medewerkersgebruiken AI-toolAI NAAST HET WERKWaarde metenBASELINE ONTBREEKTHerbruikbaar?Opnieuw beginnen↺ NIEUWE AFDELING",
+          "marked": "Wachten",
+          "rule": "SENTENCE_WHITESPACE",
+          "replacements": [
+            " Wachten"
+          ]
+        },
+        {
+          "findingId": "36deecf1977f7b6ea025ed529b03d031d86f278bbe6b54975545bc6b912e12ad",
+          "blockId": "coherence-sim.html#text:body:2>div:1>div:2>div:1>div:1>div:2",
+          "page": "coherence-sim.html",
+          "kind": "text",
+          "text": "BUSINESS &STRATEGYBUSINESS PROCESS& PEOPLEDATA & KNOWLEDGEAI & AGENTSGOVERNANCE, RISK& SECURITYTECHNOLOGY & AIPLATFORMVALUE & SCALEENTERPRISE · AI USE CASENeeJaNeeJaNeeJaNeeIdeeAI use casevoorgesteldLOKALE OPPORTUNITEITAI-oplossingselecterenSOLUTION-FIRSTAI toevoegen aanbestaand procesAI OVER COMPLEXITEITData verzamelenDATASILO’SData beschikbaar?Andere afdelingcontacterenWIE IS EIGENAAR?Wachten op dataAI pilotontwikkelenPILOT WERKTPrivacy / Risk /Security reviewGOVERNANCE ALS GATEGoedgekeurd?Point-to-pointintegratie bouwenINTEGRATION COMPLEXITYProduction ready?Medewerkersgebruiken AI-toolAI NAAST HET WERKWaarde metenBASELINE ONTBREEKTHerbruikbaar?Opnieuw beginnen↺ NIEUWE AFDELING",
+          "marked": "Opnieuw",
+          "rule": "SENTENCE_WHITESPACE",
+          "replacements": [
+            " Opnieuw"
+          ]
+        },
+        {
+          "findingId": "97e6789876767ae3133f711ba67b12961b8459d1b51434ae2209f4f69b4ea58b",
+          "blockId": "journal.html#text:body:2>main:3>div:3>div:2>div:1>article:3>div:1>blockquote:6",
+          "page": "journal.html",
+          "kind": "text",
+          "text": "‘Die wittebroodsweken zijn sterk ingekort.’Laura Sanderson, Russell Reynolds Associates, over de eerste jaren van een CEO-mandaat [1]",
+          "marked": "Laura",
+          "rule": "SENTENCE_WHITESPACE",
+          "replacements": [
+            " Laura"
+          ]
+        },
+        {
+          "findingId": "519c1cb58104c82591a55a953de96420ae73d362bfed6fb02f251f7325f418e3",
+          "blockId": "operating-model.html#text:body:2>main:3>section:2>div:1>div:5>div:3>div:2",
+          "page": "operating-model.html",
+          "kind": "text",
+          "text": "Wie keurt de ingebruikname goed?Business ownerBenoem een eigenaar; toets het risico.",
+          "marked": "Business",
+          "rule": "SENTENCE_WHITESPACE",
+          "replacements": [
+            " Business"
+          ]
+        },
+        {
+          "findingId": "fc6b3702202d91a50f73075216f699330ff8025c0a8e03ace483142f0d8529d2",
+          "blockId": "operating-model.html#text:body:2>main:3>section:2>div:1>div:5>div:3>div:3",
+          "page": "operating-model.html",
+          "kind": "text",
+          "text": "Wie bewaakt het gedrag?Agent ownerVolg prestaties en incidenten.",
+          "marked": "Agent",
+          "rule": "SENTENCE_WHITESPACE",
+          "replacements": [
+            " Agent"
+          ]
+        }
+      ],
+      "notes": [
+        "SVG/counter/card labels have been concatenated into fake prose: 10opeenvolgende stappen4overdrachten; large coherence-sim SVG block; quote attribution appended to sentence.",
+        "Lowercase fragment following a number may be a correct continuation of a sentence, so do not globally auto-capitalise UPPERCASE_SENTENCE_START."
+      ]
+    },
+    {
+      "priority": 1,
+      "category": "clear_source_correction_candidate",
+      "change": "€2.750 → € 2.750 in Dutch text only",
+      "sourceFiles": [
+        "assets/i18n.js (3 Dutch values; retain English keys and French values)"
+      ],
+      "evidence": [
+        {
+          "findingId": "d5e8b46449dfe70d4895761049b9d2e8e32eeea89e2fa45237f4c0de3999c1bd",
+          "blockId": "books.html#text:body:2>main:3>section:4>div:1>p:5",
+          "page": "books.html",
+          "kind": "text",
+          "text": "3,5 uur · 4–8 deelnemers · €2.750 exclusief btw per team",
+          "marked": "€2",
+          "rule": "EURO",
+          "replacements": [
+            "€ 2"
+          ]
+        },
+        {
+          "findingId": "31e628dbb7e3470619f227798dbd13161e09ac9d73091b59f5b5829059b557e1",
+          "blockId": "dictionary:I18N:€2,750",
+          "page": "404.html",
+          "kind": "dictionary:I18N:€2,750",
+          "text": "€2.750",
+          "marked": "€2",
+          "rule": "EURO",
+          "replacements": [
+            "€ 2"
+          ]
+        },
+        {
+          "findingId": "8940f48ee653973352d1897a48009a1552c9816d6a6b767d5c1b8c38d62e60a2",
+          "blockId": "dictionary:I18N:3.5 hours · 4–8 participants · €2,750 excluding VAT per team",
+          "page": "404.html",
+          "kind": "dictionary:I18N:3.5 hours · 4–8 participants · €2,750 excluding VAT per team",
+          "text": "3,5 uur · 4–8 deelnemers · €2.750 exclusief btw per team",
+          "marked": "€2",
+          "rule": "EURO",
+          "replacements": [
+            "€ 2"
+          ]
+        },
+        {
+          "findingId": "312a96920d8d7ab450b45aafb9b920399b747543260ea4f7395e89f060744e62",
+          "blockId": "dictionary:I18N:Work on one AI application with your leadership team. A 3.5-hour workshop for 4–8 participants, including preparation and follow-up. €2,750 excluding VAT per team.",
+          "page": "404.html",
+          "kind": "dictionary:I18N:Work on one AI application with your leadership team. A 3.5-hour workshop for 4–8 participants, including preparation and follow-up. €2,750 excluding VAT per team.",
+          "text": "Werk met je leiderschapsteam aan één AI-toepassing. Een werksessie van 3,5 uur voor 4–8 deelnemers, inclusief voorbereiding en opvolging. €2.750 exclusief btw per team.",
+          "marked": "€2",
+          "rule": "EURO",
+          "replacements": [
+            "€ 2"
+          ]
+        },
+        {
+          "findingId": "df9d75757e1abd6502ed6cb5152daba24023f4eedb53991694a7b2f43dd225bd",
+          "blockId": "index.html#text:body:2>main:3>section:12>div:1>div:1>div:1>p:3",
+          "page": "index.html",
+          "kind": "text",
+          "text": "3,5 uur · 4–8 deelnemers · €2.750 exclusief btw per team",
+          "marked": "€2",
+          "rule": "EURO",
+          "replacements": [
+            "€ 2"
+          ]
+        },
+        {
+          "findingId": "2ba40c0d71645154ec6a25a73897f657322dc2f7dbebed44d1b22e4fc90ae443",
+          "blockId": "workshop.html#content:head:1>meta:3",
+          "page": "workshop.html",
+          "kind": "content",
+          "text": "Werk met je leiderschapsteam aan één AI-toepassing. Een werksessie van 3,5 uur voor 4–8 deelnemers, inclusief voorbereiding en opvolging. €2.750 exclusief btw per team.",
+          "marked": "€2",
+          "rule": "EURO",
+          "replacements": [
+            "€ 2"
+          ]
+        },
+        {
+          "findingId": "87f6da1026ca871d45b4663f15d01822438bbb29af540138397ac65644dcded9",
+          "blockId": "workshop.html#text:body:2>main:3>section:1>div:1>div:1>dl:5>div:3>dt:1",
+          "page": "workshop.html",
+          "kind": "text",
+          "text": "€2.750",
+          "marked": "€2",
+          "rule": "EURO",
+          "replacements": [
+            "€ 2"
+          ]
+        },
+        {
+          "findingId": "6529e5e637f75ae685561a07e0b8ffde163780187dd47b0c61215151f69e33b5",
+          "blockId": "workshop.html#text:body:2>main:3>section:5>div:1>div:1>div:1>p:3",
+          "page": "workshop.html",
+          "kind": "text",
+          "text": "€2.750",
+          "marked": "€2",
+          "rule": "EURO",
+          "replacements": [
+            "€ 2"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Taaladvies.net — Euro / EUR / euroteken",
+          "url": "https://taaladvies.net/euro-of-eur-of-euroteken/",
+          "support": "Dutch amounts use a space after the euro sign."
+        }
+      ],
+      "confidence": "high; not an approval or ledger status change"
+    },
+    {
+      "priority": 1,
+      "category": "clear_source_correction_candidate",
+      "change": "November 2026 → november 2026 in Dutch journal title/footer",
+      "sourceFiles": [
+        "journal.html"
+      ],
+      "evidence": [
+        {
+          "findingId": "451fd9329493615c6b248a325ecdaeff2cba548ab27e4c52fd521152b12cad5a",
+          "blockId": "journal.html#text:body:2>header:2>p:3",
+          "page": "journal.html",
+          "kind": "text",
+          "text": "Executive Journal · November 2026",
+          "marked": "November",
+          "rule": "NL_CHECKCASE_NOVEMBER",
+          "replacements": [
+            "november"
+          ]
+        },
+        {
+          "findingId": "60309fc65350ffaba3987b46dbeae39d6af224599936474f25303087d999f7e7",
+          "blockId": "journal.html#title:head:1>title:3",
+          "page": "journal.html",
+          "kind": "title",
+          "text": "Executive Journal · Maandnummer 01 · November 2026",
+          "marked": "November",
+          "rule": "NL_CHECKCASE_NOVEMBER",
+          "replacements": [
+            "november"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Team Taaladvies — Hoofdletters 09",
+          "url": "https://www.vlaanderen.be/team-taaladvies/spellingregels/hoofdletters/hoofdletters-09-namen-van-dagen-feestdagen-periodes-en-historische-gebeurtenissen",
+          "support": "Month names are lowercase."
+        }
+      ],
+      "confidence": "high; month is after a separator, not sentence-initial"
+    },
+    {
+      "priority": 2,
+      "category": "source_correction_candidate_inference",
+      "change": "≈ {n} VTE capaciteit → ≈ {n} VTE-capaciteit",
+      "sourceFiles": [
+        "assets/i18n.js"
+      ],
+      "evidence": [
+        {
+          "findingId": "f3716b13bf8bbd950d1d519b66972fc5ac9a66298c2271c5b6bd0eda590b0bb7",
+          "blockId": "dictionary:I18N:≈ {n} FTE capacity",
+          "page": "404.html",
+          "kind": "dictionary:I18N:≈ {n} FTE capacity",
+          "text": "≈ {n} VTE capaciteit",
+          "marked": "VTE capaciteit",
+          "rule": "XXX_DING",
+          "replacements": [
+            "VTE-capaciteit"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Team Taaladvies — initiaalwoorden in compounds",
+          "url": "https://www.vlaanderen.be/team-taaladvies/spellingregels/engelse-woorden-aaneenschrijven/engelse-woorden-aaneenschrijven-4-samenstellingen-met-cijfers-letters-afkortingen-en-symbolen",
+          "support": "Inference from the hyphen rule for compounds containing initialisms."
+        }
+      ],
+      "confidence": "high inference; verify intended meaning is capacity in full-time equivalents"
+    },
+    {
+      "priority": 2,
+      "category": "proper_names_terminology_proposal",
+      "action": "Propose exact spelling-only exceptions for verified proper names. Do not skip surrounding sentence or all occurrences of a rule.",
+      "terms": [
+        "GoatCounter",
+        "QuantumBlack",
+        "NL-BE",
+        "HubSpot",
+        "Erlend Hollebosch",
+        "Google Ireland Ltd.",
+        "HubSpot Ireland Ltd."
+      ],
+      "notes": [
+        "Validate legal/provider names against named providers, retain their spelling.",
+        "Enterprise Coherence and playbook/book titles require a terminology policy; do not silently translate branded/conceptual English titles.",
+        "Do not blanket-allow English words such as the: tag complete foreign quotations/titles with language provenance instead.",
+        "New productive Dutch compounds are not necessarily errors merely because missing from the dictionary."
+      ],
+      "sources": [
+        {
+          "title": "Taaladvies.net — productive compounds not exhaustive in dictionary",
+          "url": "https://taaladvies.net/tussenklanken-in-samenstellingen-van-zelfstandige-naamwoorden-algemeen/"
+        }
+      ]
+    },
+    {
+      "priority": 2,
+      "category": "contextual_false_positive_candidates",
+      "action": "Do not apply automatically; retain findings and add evidence-bound exact-context adjudication only after review.",
+      "evidence": [
+        {
+          "findingId": "32b6384ecda8527afcce731ea453cc29d85f2e2c04d185d63ff06dd3617b81fb",
+          "blockId": "accessibility.html#text:body:2>main:3>section:2>article:1>div:1>p:9",
+          "page": "accessibility.html",
+          "kind": "text",
+          "text": "We werken deze punten stap voor stap weg.",
+          "marked": "stap voor stap weg",
+          "rule": "STAP-VOOR-STAP-PLAN",
+          "replacements": [
+            "stap-voor-stapweg",
+            "stap-voor-stap-weg"
+          ]
+        },
+        {
+          "findingId": "a7bbec713fafcc9179b09714c4d1dc70805bd5a7cdf54f3ae45aa009885ba9cf",
+          "blockId": "dictionary:I18N:I look at what people need to accomplish together, which choices shape that work, and whether processes, responsibilities, systems and information support those choices. The connections between them are where I start investigating a transformation.",
+          "page": "404.html",
+          "kind": "dictionary:I18N:I look at what people need to accomplish together, which choices shape that work, and whether processes, responsibilities, systems and information support those choices. The connections between them are where I start investigating a transformation.",
+          "text": "Ik kijk naar wat mensen samen moeten kunnen realiseren, welke keuzes hun werk bepalen en of processen, verantwoordelijkheden, systemen en informatie die keuzes ondersteunen. Bij die verbindingen begint mijn onderzoek naar een transformatie.",
+          "marked": "en of",
+          "rule": "EN_OF",
+          "replacements": [
+            "en/of"
+          ]
+        },
+        {
+          "findingId": "c17e6f8e3f1d24f04b118b10eb7a2a43d6d7474e401d30729d79ef38b9f84d7d",
+          "blockId": "dictionary:I18N:Where AI Creates Business Value | Erlend Hollebosch",
+          "page": "404.html",
+          "kind": "dictionary:I18N:Where AI Creates Business Value | Erlend Hollebosch",
+          "text": "Waar AI bedrijfswaarde creëert | Erlend Hollebosch",
+          "marked": "AI bedrijfswaarde",
+          "rule": "XXX_DING",
+          "replacements": [
+            "AI-bedrijfswaarde"
+          ]
+        },
+        {
+          "findingId": "ba44b38dfdf30f5038bd739234bda989d7943747577c682900dd192adf6cccb2",
+          "blockId": "journal.html#text:body:2>main:3>div:3>div:2>div:1>article:11>div:1>div:7>section:3>p:3",
+          "page": "journal.html",
+          "kind": "text",
+          "text": "Bouw het beoordelingsvermogen op om AI aan te kopen en te besturen vóór u specialisten aanwerft. Combineer een klein intern team met externe partners.",
+          "marked": "u",
+          "rule": "U_REACTIE",
+          "replacements": [
+            "uw"
+          ]
+        },
+        {
+          "findingId": "747bbbf019e5be25f59fdc1327cf06ab95d5cad24dbaa9de71feed047bf23f23",
+          "blockId": "journal.html#text:body:2>main:3>div:3>div:2>div:1>article:8>div:1>aside:10>p:2",
+          "page": "journal.html",
+          "kind": "text",
+          "text": "Maak AI onderdeel van het opvolgingsplan. Geef de opvolger vóór de eigendomsoverdracht een begrensd AI-mandaat, met een budget, één workflow en een resultaat dat de raad beoordeelt. Het is de meest praktische leiderschapstest die beschikbaar is.",
+          "marked": "AI onderdeel",
+          "rule": "XXX_DING",
+          "replacements": [
+            "AI-onderdeel"
+          ]
+        },
+        {
+          "findingId": "470249586587b8e21ac5957adcd0c15443642b92f969048df569bd237f4dbcf9",
+          "blockId": "privacy.html#text:body:2>main:3>section:2>article:1>div:1>div:15>table:1>tbody:2>tr:1>td:3",
+          "page": "privacy.html",
+          "kind": "text",
+          "text": "Onthoudt je cookiekeuze",
+          "marked": "Onthoudt",
+          "rule": "VINDT_IK",
+          "replacements": [
+            "Onthou",
+            "Onthoud"
+          ]
+        },
+        {
+          "findingId": "0f35e781515c612fed072ff4e1036a2295b45ce134f7f4f9788b8ca09e2098c4",
+          "blockId": "value.html#title:head:1>title:19",
+          "page": "value.html",
+          "kind": "title",
+          "text": "Waar AI bedrijfswaarde creëert | Erlend Hollebosch",
+          "marked": "AI bedrijfswaarde",
+          "rule": "XXX_DING",
+          "replacements": [
+            "AI-bedrijfswaarde"
+          ]
+        }
+      ],
+      "notes": [
+        "Waar AI bedrijfswaarde creëert: AI is subject, bedrijfswaarde object; AI-bedrijfswaarde changes syntax.",
+        "Maak AI onderdeel van het opvolgingsplan: AI is object of maak and onderdeel is complement; AI-onderdeel changes syntax.",
+        "vóór u specialisten aanwerft: u is subject of aanwerft; uw is inappropriate here.",
+        "stap voor stap weg: weg belongs to wegwerken; no compound stap-voor-stapweg.",
+        "en of processen ... ondersteunen: en coordinates indirect questions; en/of changes meaning.",
+        "Onthoudt je cookiekeuze needs UI context: descriptive third-person label versus imperative; inspect source/container before disposition.",
+        "Standalone › is a navigation chevron, not an unpaired quotation bracket."
+      ]
+    },
+    {
+      "priority": 3,
+      "category": "needs_human_or_editorial_judgment",
+      "rules": [
+        "NL_SIMPLE_REPLACE_MLN",
+        "KOMMA_ONTBR",
+        "NL_CHECKCASE_PDF",
+        "NL_SPACE_IN_COMPOUND_BUSINESS_CASE",
+        "NL_SIMPLE_REPLACE_SUPPLY_CHAIN",
+        "NL_SIMPLE_REPLACE_ÉÉN_OP_ÉÉN",
+        "NL_SIMPLE_REPLACE_PP",
+        "NL_SIMPLE_REPLACE_RECHTTOE_RECHTAAN",
+        "NL_SIMPLE_REPLACE_HIER_GELDT_"
+      ],
+      "notes": [
+        "Do not accept the engine claim mln is not official without independent source; it is a compact financial notation / style issue.",
+        "Comma placement depends on clause structure and reading; not every machine suggestion is mandatory.",
+        "Foreign titles/quotations and technical notation pp require language/context annotation.",
+        "Businesscase, supplychain, one-to-one spelling and end-to-end compounds warrant direct official dictionary lookup before broad replacement."
+      ]
+    }
+  ],
+  "nextActions": [
+    "Fix extraction segmentation and add regressions for real SVG, dl dt/dd, statistics number + continuation, quote/cite boundaries.",
+    "Apply small source-only euro/month corrections via their own reviewed PR and normal gates if orchestrator accepts evidence.",
+    "Keep machine checkpoint distinct from review status. Never delete earlier findings or mark them resolved solely because they disappear after adapter changes."
+  ],
+  "implementation": {
+    "status": "source_edits_in_shared_worktree_for_independent_review",
+    "humanApproval": false,
+    "baselineOrFindingStatusChanged": false,
+    "committed": false,
+    "pushed": false,
+    "files": [
+      {
+        "path": "assets/i18n.js",
+        "changes": "Exactly 3 Dutch values: €2.750 → € 2.750; English keys, French values and all other dictionary content deep-equality checked unchanged."
+      },
+      {
+        "path": "assets/cms-catalog.js",
+        "changes": "Exactly 3 matching Dutch CMS defaults: €2.750 → € 2.750; remaining catalog deep-equality checked unchanged."
+      },
+      {
+        "path": "journal.html",
+        "changes": "Exactly 2 occurrences: November 2026 → november 2026 in Dutch title/footer."
+      },
+      {
+        "path": "tests/nl-editorial.test.cjs",
+        "changes": "Two built-dist regressions for Dutch euro spacing, preserved English/French pairs, CMS/default consistency, and lowercase Dutch month in journal title/footer."
+      }
+    ],
+    "verification": {
+      "oldArtifactRegression": "Both new tests failed before source edits, as expected; ../tmp/nl-editorial-before.log retained.",
+      "sourceScope": "Deep-equality validation passed for changed NL values only; all English keys, French values, CMS fields outside selected NL prices remain identical.",
+      "positiveBuiltArtifact": "Pending orchestrator build; agent intentionally did not mutate shared dist during parallel work.",
+      "format": "Historical i18n.js and journal.html index content is CRLF. EOLs preserved; default git diff --check flags CR as whitespace. With core.whitespace=cr-at-eol, verify actual trailing spaces."
+    },
+    "deferred": [
+      "VTE-capaciteit (explicitly deferred by root)",
+      "All glossary exceptions and contextual dispositions",
+      "All broad spelling replacements and human review fields"
+    ]
+  }
+}

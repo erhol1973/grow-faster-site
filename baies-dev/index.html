@@ -3,10 +3,12 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="theme-color" content="#0A2472">
+  <meta name="theme-color" content="#0B2545">
   <meta name="robots" content="noindex,nofollow,noarchive">
   <meta name="description" content="BAEIS development prototype — isolated demonstration, not a live intelligence service.">
   <title>Belgian AI Economic Intelligence System · Dev Prototype | Grow Faster</title>
+  <link rel="icon" type="image/svg+xml" href="../img/baies-dev-favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="../img/baies-dev-favicon.png">
   <link rel="stylesheet" href="../assets/baies-dev.css">
   <script defer src="../assets/baies-dev-data.js"></script>
   <script defer src="../assets/baies-dev-core.js"></script>
@@ -18,8 +20,7 @@
 <header class="site-header">
   <div class="container header-inner">
     <a class="identity" href="#overview" aria-label="Grow Faster – BAEIS overzicht">
-      <span class="gf-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
-      <span class="gf-title">Grow Faster</span>
+      <img class="brand-logo" src="../img/baies-dev-logo-dark.svg" alt="Grow Faster" width="370" height="64">
       <span class="identity-divider" aria-hidden="true"></span>
       <span class="product-title">Belgian AI Economic<br>Intelligence System</span>
     </a>
@@ -100,7 +101,7 @@
   </section>
   <section id="about" class="view" hidden aria-labelledby="heading-about"><div class="container section-pad pad-top"><p class="kicker" data-i18n="roadmapKicker">Product Owner · 4 Sprint Proof of Concept</p><h1 id="heading-about" data-i18n="roadmapTitle">Van fundament tot gecontroleerde MVP.</h1><p class="intro-p" data-i18n="roadmapSub">Vier doelgerichte increments binnen één geïsoleerde ontwikkelroute. De doelarchitectuur met echte autonome agents blijft een vervolgfase.</p><div class="sprint-grid"><article class="sprint-card"><span>SPRINT 01</span><h2 data-i18n="s1Title">Product Foundation</h2><p data-i18n="s1Text">Een afzonderlijke dev-pagina, premium navigatie, NL/FR-taalwissel en responsieve toegankelijkheid.</p><strong data-i18n="s1Done">Interactief prototype</strong></article><article class="sprint-card"><span>SPRINT 02</span><h2 data-i18n="s2Title">Evidence Foundation</h2><p data-i18n="s2Text">Stabiele claim-ID's, originele bronlinks, datum, bewijsclassificatie en methodologische beperkingen.</p><strong data-i18n="s2Done">5 gecontroleerde referentierecords</strong></article><article class="sprint-card"><span>SPRINT 03</span><h2 data-i18n="s3Title">Editorial Workflow</h2><p data-i18n="s3Text">Gated reviewstatussen en lokaal auditspoor; externe publicatie technisch uitgeschakeld.</p><strong data-i18n="s3Done">Simulatie van de reviewketen</strong></article><article class="sprint-card"><span>SPRINT 04</span><h2 data-i18n="s4Title">Executive Experience</h2><p data-i18n="s4Text">Trend Radar, functie- en sectorfilters, evidence-detail en downloadbare voorbeeldbrief.</p><strong data-i18n="s4Done">Pilot-ready UX-demo</strong></article></div><div class="next-stage"><h2 data-i18n="nextTitle">Wat bewust nog niet gebouwd is</h2><p data-i18n="nextBody">Een werkende multi-agentruntime, automatische wetenschappelijke factchecking, Supabase-writes, accounts, HubSpot-verzending, production deployment, betaalde abonnementen of live datavernieuwing. Hiervoor zijn aparte security-, databron- en acceptatietests nodig.</p></div><div class="signup"><div><h2 data-i18n="signupTitle">Nieuwsbriefinschrijving — toestemmingsprototype</h2><p data-i18n="signupDesc">Je kunt de interactie testen, maar er wordt geen e-mailadres opgeslagen of verzonden.</p></div><form id="signup-form"><label for="signup-email" data-i18n="email">E-mailadres</label><input type="email" id="signup-email" autocomplete="email" placeholder="naam@bedrijf.be" required><label class="checkline"><input type="checkbox" id="signup-consent" required><span data-i18n="consent">Ik geef toestemming voor de nieuwsbrief (alleen interactietest).</span></label><button class="btn primary" type="submit" data-i18n="testSignup">Test inschrijving zonder verzenden</button><p id="signup-feedback" role="status"></p></form></div></div></section>
 </main>
-<footer><div class="container footer-inner"><span><strong>Grow Faster</strong> · Belgian AI Economic Intelligence System</span><span data-i18n="footer">Dev-only prototype · No production changes · © 2026</span></div></footer>
+<footer><div class="container footer-inner"><img class="brand-logo brand-logo--footer" src="../img/baies-dev-logo-white.svg" alt="Grow Faster" width="370" height="64"><span><strong>Grow Faster</strong> · Belgian AI Economic Intelligence System</span><span data-i18n="footer">Dev-only prototype · No production changes · © 2026</span></div></footer>
 <dialog id="evidence-dialog" aria-labelledby="dialog-title"><div class="dialog-layout"><div class="dialog-head"><span class="kicker" data-i18n="dialogKicker">Evidence review · Original source</span><button id="dialog-close" type="button" aria-label="Sluiten / Fermer">×</button></div><h2 id="dialog-title"></h2><div id="dialog-body"></div><div class="dialog-end"><button type="button" id="dialog-done" class="btn primary" data-i18n="close">Sluiten</button></div></div></dialog>
 </body>
 </html>

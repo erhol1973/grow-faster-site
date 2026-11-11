@@ -29,7 +29,8 @@ test('filtered homepage saves every NL/FR field and retains hidden edits',async(
  await expect(page.locator('#fields input[type=file]:visible').first()).toBeVisible();
  await page.locator('#save').click();await expect(page.locator('#notice')).toContainText('Concept opgeslagen');
  const fields=f.draft().settings.fields;expect(fields[remoteField.key].nl).toBe('Verborgen aangepaste tekst');expect(fields[remoteField.key].fr).toBe('Texte masqué conservé');
- expect(Object.keys(fields).length).toBe(home.fields.filter(f=>f.type==='text').length);expect(f.published()).toBeNull();
+ const expectedKeys = [...home.fields.filter(field => field.type === 'text').map(field => field.key), 'retired-copy'];
+ expect(Object.keys(fields).sort()).toEqual(expectedKeys.sort());expect(f.published()).toBeNull();
  await page.locator('#field-search').fill('geen-bestaand-veld-20261109');await expect(page.locator('#field-count')).toHaveText('0 van '+home.fields.length+' velden zichtbaar');
 });
 

@@ -43,7 +43,14 @@
   function canPublishExternally(){return false;} // DEV POLICY: no external write integration.
   function filterRecords(records,role,sector,query){
     const term=String(query||'').toLocaleLowerCase('nl-BE');
-    return records.filter(r=>(role==='ALL'||r.roles.includes(role))&&(sector==='All'||r.sector===sector)&&[r.title.nl,r.title.fr,r.claim.nl,r.source,r.id,r.sector].join(' ').toLocaleLowerCase('nl-BE').includes(term));
+    return records.filter(r=>(role==='ALL'||r.roles.includes(role))&&(sector==='All'||r.sector===sector)&&[r.title.nl,r.title.fr,r.claim.nl,r.claim.fr,r.source,r.id,r.sector].join(' ').toLocaleLowerCase('nl-BE').includes(term));
   }
-  return Object.freeze({weights,scoreSignal,sourceIsApproved,checkRecord,nextStage,canPublishExternally,filterRecords});
+  function sortRecords(records,mode='priority'){
+    if(!['priority','date','source'].includes(mode))throw new RangeError('Invalid sort mode');
+    return [...records].sort((a,b)=>{
+      const order=mode==='date'?b.published.localeCompare(a.published):mode==='source'?a.source.localeCompare(b.source,'en'):scoreSignal(b.score)-scoreSignal(a.score);
+      return order||a.id.localeCompare(b.id,'en');
+    });
+  }
+  return Object.freeze({weights,scoreSignal,sourceIsApproved,checkRecord,nextStage,canPublishExternally,filterRecords,sortRecords});
 });

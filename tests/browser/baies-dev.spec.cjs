@@ -22,7 +22,7 @@ test('BAEIS: evidence-backed executive navigation and filters',async({page})=>{
   await expect(page.locator('#dialog-body a')).toHaveAttribute('href',/^https:\/\/www\.nbb\.be\//);
   await page.locator('#dialog-close').click();
   await navigate(page,'evidence');
-  await expect(page.locator('#evidence-rows tr')).toHaveCount(5);
+  await expect(page.locator('#evidence-rows .evidence-record')).toHaveCount(5);
 });
 
 test('BAEIS: editorial simulation never enables external publication',async({page})=>{
@@ -65,12 +65,12 @@ test('BAEIS branding: readable responsive layouts',async({page})=>{
   }
 });
 
-// Each locale is an independent scenario: retain all ten scans without extending timeouts.
+// Each locale is an independent scenario: retain all twelve scans without extending timeouts.
 for(const lang of ['nl-BE','fr-BE'])test('BAEIS branding: all '+lang+' views meet AA contrast',async({page})=>{
   await page.goto('/baies-dev/');
   if(lang==='fr-BE')await language(page,'fr');
   await expect(page.locator('html')).toHaveAttribute('lang',lang);
-  for(const view of ['overview','radar','evidence','editorial','about']){
+  for(const view of ['overview','dashboard','radar','evidence','editorial','about']){
     await navigate(page,view);
     const scan=await new AxeBuilder({page}).withTags(['wcag2a','wcag2aa','wcag21aa','wcag22aa']).analyze();
     expect(scan.violations).toEqual([]);
@@ -135,7 +135,7 @@ test('BAEIS navigation: mobile disclosure, keyboard, outside click and resize',a
   await expect(toggle).toHaveAttribute('aria-controls','product-links');
   await expect(toggle).toHaveAttribute('aria-expanded','false');await expect(links).toBeHidden();
   if(isMobile)await toggle.tap();else await toggle.click();
-  await expect(toggle).toHaveAttribute('aria-expanded','true');await expect(links.locator('a')).toHaveCount(5);
+  await expect(toggle).toHaveAttribute('aria-expanded','true');await expect(links.locator('a')).toHaveCount(6);
   for(const link of await links.locator('a').all()){
     await expect(link).toBeVisible();const box=await link.boundingBox();expect(box.x).toBeGreaterThanOrEqual(0);expect(box.x+box.width).toBeLessThanOrEqual(390);expect(box.height).toBeGreaterThanOrEqual(44);
   }
@@ -144,7 +144,7 @@ test('BAEIS navigation: mobile disclosure, keyboard, outside click and resize',a
   await expect(links).toBeHidden();await expect(toggle).toBeFocused();
   await toggle.click();await page.locator('.dev-strip').click();await expect(links).toBeHidden();
   await toggle.click();await links.locator('a').last().focus();await page.keyboard.press('Tab');
-  await expect(page.locator('.hero-copy [data-goto=radar]')).toBeFocused();await expect(links).toBeHidden();
+  await expect(page.locator('.hero-copy [data-goto=dashboard]')).toBeFocused();await expect(links).toBeHidden();
   await toggle.focus();await page.setViewportSize({width:1440,height:900});
   await expect(toggle).toBeHidden();await expect(page.locator('.nav-link[aria-current=page]')).toBeFocused();
   await page.setViewportSize({width:390,height:900});await expect(toggle).toBeFocused();
@@ -209,4 +209,62 @@ test('BAEIS palette: verified, evidence, score and blocked states use Grow Faste
   await expect(page.locator('.guardrail-icon.blocked')).toHaveCSS('background-color','rgb(11, 37, 69)');
   await expect(page.locator('.guardrail-icon.blocked')).toHaveCSS('color','rgb(255, 255, 255)');
   await expect(page.locator('#external-publish')).toBeDisabled();
+});
+
+for(const lang of ['nl','fr'])test('BAEIS C: '+lang+' dashboard agenda, source detail, download and role handoff',async({page})=>{
+  const writes=[];page.on('request',r=>{if(r.method()!=='GET')writes.push(r.url());});
+  await page.goto('/baies-dev/?lang='+lang+'#dashboard');
+  await expect(page.locator('#dashboard')).toBeVisible();
+  expect(await page.locator('#heading-dashboard').evaluate(e=>e.getBoundingClientRect().top>=document.querySelector('.main-nav').getBoundingClientRect().bottom)).toBe(true);
+  await expect(page.locator('.nav-link[aria-current=page]')).toHaveAttribute('data-view','dashboard');
+  await expect(page.locator('#dashboard-records')).toHaveText('5');
+  await expect(page.locator('#dashboard-publishers')).toHaveText('3');
+  await expect(page.locator('#dashboard-types')).toHaveText('4');
+  await page.locator('[data-role=CIO]').click();
+  await expect(page.locator('#dashboard-records')).toHaveText('2');
+  await expect(page.locator('#brief-items li')).toHaveCount(2);
+  await expect(page.locator('#brief-items li').first()).toContainText('34,5%');
+  await page.locator('#brief-items .text-btn').first().click();
+  await expect(page.locator('#dialog-body')).toContainText('BE-AI-001');
+  await expect(page.locator('#dialog-body')).toContainText(lang==='fr'?'Limites de recherche':'Onderzoeksbeperkingen');
+  await page.locator('#dialog-done').click();
+  const downloadPromise=page.waitForEvent('download');await page.locator('#download-brief').click();const download=await downloadPromise;
+  expect(download.suggestedFilename()).toBe('BAEIS_DEV_Executive_Brief_CIO.txt');
+  const content=require('fs').readFileSync(await download.path(),'utf8');
+  expect(content).toContain('Audience: CIO');expect(content).toContain('https://statbel.fgov.be');expect(content).toContain('https://www.vlaio.be');expect(content).not.toContain('https://www.nbb.be');
+  expect(content).toContain(lang==='fr'?'Limites de recherche':'Onderzoeksbeperkingen');
+  await page.locator('#dashboard-radar').click();await expect(page.locator('#role-filter')).toHaveValue('CIO');await expect(page.locator('#signal-grid .signal-card')).toHaveCount(2);
+  await navigate(page,'dashboard');await expect(page.locator('[data-role=CIO]')).toHaveAttribute('aria-pressed','true');
+  await language(page,lang==='fr'?'nl':'fr');await expect(page.locator('#brief-items li')).toHaveCount(2);expect(writes).toEqual([]);
+});
+
+for(const lang of ['nl','fr'])test('BAEIS C: '+lang+' radar ordering, bilingual search, empty state and reset',async({page})=>{
+  await page.goto('/baies-dev/?lang='+lang+'#radar');
+  const cards=page.locator('#signal-grid .signal-card');await expect(cards.first()).toHaveAttribute('data-record','BE-EC-003');
+  await page.locator('#signal-sort').selectOption('date');await expect(cards.first()).toHaveAttribute('data-record','BE-EC-004');
+  await page.locator('#signal-sort').selectOption('source');await expect(cards.last()).toHaveAttribute('data-record','BE-AI-002');
+  await page.locator('#signal-search').fill('exploitables');await expect(cards).toHaveCount(1);await expect(cards).toHaveAttribute('data-record','BE-AI-002');
+  await cards.locator('summary').click();await expect(cards.locator('details')).toHaveAttribute('open','');
+  await page.locator('#sector-filter').selectOption('Manufacturing');await expect(cards).toHaveCount(0);await expect(page.locator('#signal-grid .empty')).toBeVisible();await expect(page.locator('#visible-count')).toHaveText('0');
+  await page.locator('#reset-radar').click();await expect(cards).toHaveCount(5);await expect(page.locator('#signal-sort')).toHaveValue('priority');await expect(page.locator('#signal-search')).toBeEmpty();
+});
+
+for(const lang of ['nl','fr'])test('BAEIS C: '+lang+' register combines source and evidence filters without hiding caveats',async({page})=>{
+  await page.goto('/baies-dev/?lang='+lang+'#evidence');const cards=page.locator('.evidence-record');await expect(cards).toHaveCount(5);
+  await page.locator('#evidence-source').selectOption('Nationale Bank van België');await expect(cards).toHaveCount(2);
+  await page.locator('#evidence-type').selectOption('Economic forecast');await expect(cards).toHaveCount(1);await expect(cards).toHaveAttribute('data-record','BE-EC-003');
+  await cards.locator('summary').click();await expect(cards.locator('details p')).toBeVisible();
+  await language(page,lang==='fr'?'nl':'fr');await expect(page.locator('#evidence-type')).toHaveValue('Economic forecast');await expect(cards).toHaveCount(1);
+  await cards.locator('.text-btn').click();await expect(page.locator('#dialog-body')).toContainText('BE-EC-003');await expect(page.locator('#dialog-body a')).toHaveAttribute('href',/^https:\/\/www\.nbb\.be\//);
+  const scan=await new AxeBuilder({page}).withTags(['wcag2a','wcag2aa','wcag21aa','wcag22aa']).analyze();expect(scan.violations).toEqual([]);
+  await page.locator('#dialog-close').click();await expect(cards.locator('.text-btn')).toBeFocused();
+  await cards.locator('.text-btn').click();await page.keyboard.press('Escape');await expect(page.locator('#evidence-dialog')).toBeHidden();await expect(cards.locator('.text-btn')).toBeFocused();
+  await page.locator('#evidence-search').fill('no-results-here');await expect(cards).toHaveCount(0);await expect(page.locator('#evidence-count')).toContainText('0 / 5');
+  await page.locator('#reset-evidence').click();await expect(cards).toHaveCount(5);await expect(page.locator('#evidence-source')).toHaveValue('ALL');await expect(page.locator('#evidence-type')).toHaveValue('ALL');
+});
+
+// Independent locales preserve all 24 viewport/view checks within the existing timeout.
+for(const lang of ['nl','fr'])test('BAEIS C: '+lang+' workspaces remain usable at narrow and wide viewports',async({page})=>{
+  await page.goto('/baies-dev/?lang='+lang);
+  for(const width of [320,768,1440]){await page.setViewportSize({width,height:900});for(const view of ['overview','dashboard','radar','evidence']){await navigate(page,view);expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);const heading=page.locator('#heading-'+view);await expect(heading).toBeVisible();expect(await heading.evaluate(e=>e.getBoundingClientRect().top>=document.querySelector('.main-nav').getBoundingClientRect().bottom)).toBe(true);}}
 });

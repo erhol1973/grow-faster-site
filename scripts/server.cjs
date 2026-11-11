@@ -9,6 +9,10 @@ function createServer(options={}) {
     if (!['GET', 'HEAD'].includes(req.method)) { res.writeHead(405, { Allow: 'GET, HEAD' }); return res.end(); }
     let pathname;
     try { pathname = decodeURIComponent(new URL(req.url, 'http://localhost').pathname); } catch { res.writeHead(400); return res.end(); }
+    if(options.cmsTestMode && pathname==='/assets/cms-config.js'){
+      res.writeHead(200,{'Content-Type':'text/javascript; charset=utf-8','Cache-Control':'no-store','X-Content-Type-Options':'nosniff'});
+      return res.end(req.method==='HEAD'?'':"window.GF_CMS_CONFIG=Object.freeze({url:'https://dbooobckaqbkrmkpcuem.supabase.co',key:''});");
+    }
     if (pathname.includes('\0') || pathname.includes('\\')) { res.writeHead(400); return res.end(); }
     const target = path.resolve(root, '.' + pathname + (pathname.endsWith('/') ? 'index.html' : ''));
     if (!target.startsWith(root + path.sep)) { res.writeHead(403); return res.end(); }
@@ -47,5 +51,5 @@ module.exports = { createServer, root };
 if (require.main === module) {
   const port = Number(process.env.PORT || 4173);
   if (!Number.isInteger(port) || port < 1 || port > 65535) throw new Error('Invalid PORT');
-  createServer().listen(port, '127.0.0.1', () => console.log(`Preview: http://127.0.0.1:${port}`));
+  createServer({cmsTestMode:process.argv.includes('--cms-test')}).listen(port, '127.0.0.1', () => console.log(`Preview: http://127.0.0.1:${port}`));
 }

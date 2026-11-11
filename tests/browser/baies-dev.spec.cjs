@@ -173,3 +173,15 @@ test('BAEIS navigation: native section links remain readable without JavaScript'
     await expect(page).toHaveURL(/#evidence$/);await expect(page.locator('#evidence')).toBeVisible();
   }finally{await context.close();}
 });
+
+
+test('BAEIS navigation: skip preserves the screen and Back closes evidence detail',async({page})=>{
+  await page.goto('/baies-dev/?lang=fr#radar');
+  await page.keyboard.press('Tab');await expect(page.locator('.skip')).toBeFocused();
+  await page.keyboard.press('Enter');await expect(page.locator('#main')).toBeFocused();
+  await expect(page.locator('#radar')).toBeVisible();await expect(page).toHaveURL(/#radar$/);
+  await navigate(page,'evidence');
+  await page.locator('#evidence-rows .text-btn').first().click();await expect(page.locator('#evidence-dialog')).toBeVisible();
+  await page.goBack();await expect(page.locator('#evidence-dialog')).toBeHidden();
+  await expect(page.locator('#radar')).toBeVisible();await expect(page.locator('#heading-radar')).toBeFocused();
+});

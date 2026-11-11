@@ -41,6 +41,7 @@
   }
   function goTo(view,focus=true){
     if(!views.includes(view)||(!evidenceReady&&['radar','evidence'].includes(view)))return;
+    const dialog=$('evidence-dialog');if(dialog.hasAttribute('open')){if(typeof dialog.close==='function')dialog.close();else dialog.removeAttribute('open');}
     document.querySelectorAll('.view').forEach(x=>x.hidden=x.id!==view);
     document.querySelectorAll('[data-view]').forEach(link=>{const active=link.dataset.view===view;link.classList.toggle('active',active);if(active)link.setAttribute('aria-current','page');else link.removeAttribute('aria-current');});
     state.view=view;setNavigationOpen(false);
@@ -107,6 +108,7 @@
   function resetReview(){state.stage='intake';$('workflow-feedback').textContent=text('resetMessage');state.audit=[];logEvent(text('resetMessage'));renderReview();}
   function renderAll(){renderHero();renderBrief();renderRadar();renderEvidence();renderReview();renderAudit();}
   function downloadBrief(){const selected=records.filter(r=>r.roles.includes(state.role)).sort((a,b)=>core.scoreSignal(b.score)-core.scoreSignal(a.score)).slice(0,3);const lines=[`GROW FASTER · BAEIS DEV EXECUTIVE BRIEF · ${dataset.snapshotDate}`,`Audience: ${state.role}`,'DEMONSTRATION ONLY. NOT A LIVE INTELLIGENCE FEED.',''];selected.forEach((r,i)=>{lines.push(`${i+1}. ${localized(r.title)}`,`${localized(r.claim)}`,`${text('limit')}: ${localized(r.limit)}`,`${text('decision')}: ${localized(r.decision)}`,`Source: ${r.source} · ${r.published} · ${r.url}`,'');});lines.push('No external publication or distribution occurred.');const blob=new Blob([lines.join('\n')],{type:'text/plain;charset=utf-8'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download=`BAEIS_DEV_Executive_Brief_${state.role}.txt`;document.body.append(a);a.click();a.remove();URL.revokeObjectURL(url);}
+  document.querySelector('.skip').addEventListener('click',event=>{event.preventDefault();setNavigationOpen(false);const main=$('main');main.focus({preventScroll:true});const top=main.getBoundingClientRect().top+window.scrollY-navigation.getBoundingClientRect().height;window.scrollTo({top:Math.max(0,top),behavior:'instant'});});
   document.querySelector('.identity').addEventListener('click',e=>{if(e.button!==0||e.ctrlKey||e.metaKey||e.shiftKey||e.altKey)return;e.preventDefault();navigate('overview');});
   document.querySelectorAll('[data-view]').forEach(link=>link.addEventListener('click',event=>{if(event.button!==0||event.ctrlKey||event.metaKey||event.shiftKey||event.altKey)return;event.preventDefault();navigate(link.dataset.view);}));
   document.querySelectorAll('[data-goto]').forEach(b=>b.addEventListener('click',()=>navigate(b.dataset.goto)));

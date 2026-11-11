@@ -176,8 +176,12 @@ test('BAEIS navigation: native section links remain readable without JavaScript'
 
 
 test('BAEIS navigation: skip preserves the screen and Back closes evidence detail',async({page})=>{
-  await page.goto('/baies-dev/?lang=fr#radar');
+  await page.goto('/baies-dev/?lang=fr');
   await page.keyboard.press('Tab');await expect(page.locator('.skip')).toBeFocused();
+  await page.keyboard.press('Enter');await expect(page.locator('#main')).toBeFocused();
+  await navigate(page,'radar');
+  await page.locator('.identity').focus();await page.keyboard.press('Shift+Tab');
+  await expect(page.locator('.skip')).toBeFocused();
   await page.keyboard.press('Enter');await expect(page.locator('#main')).toBeFocused();
   await expect(page.locator('#radar')).toBeVisible();await expect(page).toHaveURL(/#radar$/);
   await navigate(page,'evidence');

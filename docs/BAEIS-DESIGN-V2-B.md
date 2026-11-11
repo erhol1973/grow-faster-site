@@ -13,7 +13,7 @@ Isolated development only. Baseline: Work package A / PR #64, commit `da86b1aee1
 
 ## Scope
 
-Only `baies-dev/index.html`, `assets/baies-dev.css`, `assets/baies-dev-app.js`, the two BAEIS test files and this document change. Logo files, the evidence dataset/core, production pages/CSS, CMS data, HubSpot, shared workflows and thresholds remain unchanged. The actual four-sprint model and publishing prohibition are preserved.
+Only `baies-dev/index.html`, `assets/baies-dev.css`, `assets/baies-dev-app.js`, the two BAEIS test files, the two dedicated BAEIS load/performance scripts and this document change. Logo files, the evidence dataset/core, production pages/CSS, CMS data, HubSpot, shared workflows and thresholds remain unchanged. The actual four-sprint model and publishing prohibition are preserved.
 
 ## Verification
 
@@ -30,3 +30,5 @@ The expanded mobile coverage also checks 320px reflow. A long pre-existing Dutch
 The app owns history scroll restoration so Back/Forward places the focused destination heading below the sticky product navigation instead of restoring a stale scroll offset from another section. A scrolled-route regression checks this with preserved filters.
 
 Native skip activation preserves the selected product screen and focuses main content without adding a history entry. Route changes close any transient evidence dialog before restoring the destination focus. Header/navigation links use tabindex=0 (no positive order) so keyboard links remain reachable under the existing WebKit browser configuration. A regression exercises skip and history with an open evidence dialog.
+
+The dedicated BAEIS performance and local-load lists now include the shareable French initial-load URL as well as the default Dutch entry. Lighthouse keeps three cold samples per locale and device mode, all original thresholds intact. Safe NL/FR report filenames preserve Windows compatibility. Shared test/release scripts and workflow definitions are unchanged.

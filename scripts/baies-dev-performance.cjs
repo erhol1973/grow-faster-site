@@ -7,7 +7,7 @@ async function main(){
   const {default:lighthouse}=await import('lighthouse'),launcher=await import('chrome-launcher');
   let server,base='https://grow-faster.be';
   if(!production){server=createServer({compress:true});await new Promise(r=>server.listen(0,'127.0.0.1',r));base='http://127.0.0.1:'+server.address().port}
-  const routes=['/baies-dev/'];
+  const routes=['/baies-dev/','/baies-dev/?lang=fr'];
   let modes=production?['mobile']:['mobile','desktop'];if(process.argv.includes('--mobile-only'))modes=['mobile'];
   if(process.argv.includes('--home-only'))routes.splice(1);
   const runs=production?1:3,out=path.resolve('reports/lighthouse/baies-dev'+(production?'/production':''));fs.mkdirSync(out,{recursive:true});
@@ -26,7 +26,7 @@ async function main(){
           const lhr=result.lhr,a=lhr.audits,sample={score:lhr.categories.performance.score*100,lcp:a['largest-contentful-paint'].numericValue,cls:a['cumulative-layout-shift'].numericValue,tbt:a['total-blocking-time'].numericValue,fcp:a['first-contentful-paint'].numericValue};samples.push(sample);
           if(!Object.values(sample).every(Number.isFinite))throw Error(mode+' '+route+': incomplete Lighthouse metrics');
           journal('running');
-          const name=mode+'-'+path.basename(route,'.html')+'-'+(i+1);fs.writeFileSync(path.join(out,name+'.json'),JSON.stringify(lhr));fs.writeFileSync(path.join(out,name+'.html'),result.report[1]);console.log(JSON.stringify({mode,route,run:i+1,...sample}));
+          const name=mode+'-'+(route.includes('?lang=fr')?'baies-dev-fr':'baies-dev-nl')+'-'+(i+1);fs.writeFileSync(path.join(out,name+'.json'),JSON.stringify(lhr));fs.writeFileSync(path.join(out,name+'.html'),result.report[1]);console.log(JSON.stringify({mode,route,run:i+1,...sample}));
         }finally{await chrome.kill()}
       }
       const summary={mode,route,runs,samples,median:Object.fromEntries(['score','lcp','cls','tbt','fcp'].map(k=>[k,median(samples.map(s=>s[k]))]))};summaries.push(summary);

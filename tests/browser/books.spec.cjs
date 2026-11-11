@@ -17,6 +17,6 @@ for(const [language,text]of Object.entries(copy))test('free book download and wo
 test('the new full book remains downloadable without JavaScript and the first book retains its request route',async({browser})=>{
  const context=await browser.newContext({javaScriptEnabled:false,viewport:{width:390,height:844},acceptDownloads:true});const page=await context.newPage();try{
  await page.goto('http://127.0.0.1:4173/books.html');await expect(page.locator('.book-download')).toBeVisible();await expect(page.locator('.book-download')).toHaveAttribute('href','boek/index.html');await expect(page.locator('#order .order-card')).toHaveCount(3);await expect(page.locator('.book-download')).toHaveAttribute('target','_blank');
- await page.locator('#the-coherent-enterprise a[href="about.html#foundation-book"]').click();await expect(page.locator('#foundation-book')).toBeInViewport();await expect(page.locator('a[data-mail*="full%20manuscript"]')).toHaveCount(1);
+ await page.locator('#the-coherent-enterprise a[href="about.html#foundation-book"]').click();await expect(page.locator('#foundation-book')).toBeInViewport();await expect(page.locator('#foundation-book a[data-mail]')).toHaveCount(1); // the separate full-manuscript card was removed from About on request
  }finally{await context.close()}
 });

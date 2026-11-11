@@ -31,7 +31,7 @@ for(const [lang,copy]of Object.entries(cases)){
   await page.goto('/approach.html');await page.locator('#workshop-entry a').click();await expect(page.locator('h1')).toContainText(copy.title);
   if(await page.locator('#burger').isVisible())await page.locator('#burger').click();await page.locator('#navlist a[href="about.html"]').click();
   await expect(page).toHaveURL(/\/about\.html$/);await expect(page.locator('h1')).toBeInViewport();
-  await page.locator('.au-btns a[href="workshop.html"]').click();await expect(page.locator('h1')).toContainText(copy.title);
+  await page.locator('footer a[href="workshop.html"]').first().click();await expect(page.locator('h1')).toContainText(copy.title);
   expect(errors).toEqual([]);
  });
  test('voluntary workshop request is local, encoded and language-correct in '+lang,async({page})=>{

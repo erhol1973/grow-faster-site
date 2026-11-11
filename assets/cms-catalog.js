@@ -467,48 +467,6 @@ window.GF_CMS_CATALOG=[
         "fr": "Livre à feuilleter en ligne · aperçu de 12 pages · manuscrit de 281 pages sur demande"
       },
       {
-        "key": "f8d530c4a0d34-0",
-        "type": "text",
-        "label": "Read the Executive Preview",
-        "nl": "Lees de Executive Preview",
-        "fr": "Lire l’Executive Preview"
-      },
-      {
-        "key": "f5a5836da9cc7-0",
-        "type": "text",
-        "label": "A short introduction to the central idea of the book: why capable, well-funded organizatio",
-        "nl": "Een korte kennismaking met de kerngedachte van het boek: waarom bekwame organisaties met voldoende middelen steeds moeilijker in beweging komen, en waarom samenhang wel eens het volgende strategische vermogen kan zijn. Zeven compacte delen, van de enterprise-paradox tot waarom dit vandaag belangrijk is. Ongeveer tien minuten leestijd.",
-        "fr": "Une courte introduction à l’idée centrale du livre : pourquoi des organisations compétentes et bien financées ont de plus en plus de mal à avancer, et pourquoi la cohérence pourrait devenir la prochaine capacité stratégique. Sept courtes parties, du paradoxe de l’entreprise à l’urgence du sujet aujourd’hui. Environ dix minutes de lecture."
-      },
-      {
-        "key": "fdab3e6aafc2a-0",
-        "type": "text",
-        "label": "Read the full book",
-        "nl": "Lees het volledige boek",
-        "fr": "Lire le livre complet"
-      },
-      {
-        "key": "fd8ab5a1cd25a-0",
-        "type": "text",
-        "label": "The complete manuscript in five parts: the collision with complexity, the logic of enterpr",
-        "nl": "Het volledige manuscript in vijf delen: de botsing met complexiteit, de logica van enterprise coherence, incoherentie diagnosticeren, de coherente organisatie ontwerpen, en de toekomst van leiderschap in de onderneming. Inclusief het Coherence Diagnostic Model en het Coherent Transformation Playbook.",
-        "fr": "Le manuscrit complet en cinq parties : le choc de la complexité, la logique de la cohérence d’entreprise, le diagnostic de l’incohérence, la conception de l’entreprise cohérente et l’avenir du leadership. Avec le Coherence Diagnostic Model et le Coherent Transformation Playbook."
-      },
-      {
-        "key": "fe61c2483b304-0",
-        "type": "text",
-        "label": "Let’s connect",
-        "nl": "Laten we kennismaken",
-        "fr": "Faisons connaissance"
-      },
-      {
-        "key": "f441a5f8794aa-0",
-        "type": "text",
-        "label": "I welcome thoughtful conversations about enterprise transformation, coherent organisations",
-        "nl": "Ik wissel graag van gedachten over bedrijfstransformatie, coherente organisaties en de voorwaarden waaronder AI duurzame waarde kan creëren.",
-        "fr": "J’échange volontiers sur la transformation des entreprises, les organisations cohérentes et les conditions permettant à l’IA de créer une valeur durable."
-      },
-      {
         "key": "f3732e763f5e5-0",
         "type": "text",
         "label": "Two ways to work together",

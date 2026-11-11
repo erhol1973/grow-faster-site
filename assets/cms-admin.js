@@ -6,7 +6,7 @@
  const button=(text,fn)=>{const b=document.createElement('button');b.type='button';b.textContent=text;b.addEventListener('click',()=>run(fn));return b;};
  function node(tag,text){const el=document.createElement(tag);if(text!==undefined)el.textContent=text;return el;}
  async function run(fn){if(busy)return;busy=true;document.querySelectorAll('button').forEach(b=>b.disabled=true);try{await fn();}catch(e){notify(e.message);}finally{busy=false;document.querySelectorAll('button').forEach(b=>b.disabled=false);}}
- function values(){const content={heading:selected.heading,body:selected.body,settings:{...selected.settings,fields:{}}};
+ function values(){const content={heading:selected.heading,body:selected.body,settings:{...selected.settings,fields:{...selected.settings?.fields}}};
   for(const field of definition.fields){const saved=selected.settings?.fields?.[field.key];if(field.type==='text'){content.settings.fields[field.key]={type:'text',nl:$(field.key+'-nl').value,fr:$(field.key+'-fr').value};if(field.source)content[field.source]={nl:content.settings.fields[field.key].nl,fr:content.settings.fields[field.key].fr};}else if(saved?.path){content.settings.fields[field.key]={...saved,alt:{nl:$(field.key+'-nl').value,fr:$(field.key+'-fr').value}};}}
   return content;
  }

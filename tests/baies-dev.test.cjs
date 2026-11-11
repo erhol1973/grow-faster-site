@@ -83,3 +83,23 @@ test('BAEIS dev: isolated NL/FR accessible markup and static asset linkage',()=>
   assert.match(html,/assets\/baies-dev\.css/);
   for(const asset of ['baies-dev.css','baies-dev-core.js','baies-dev-data.js','baies-dev-app.js'])assert.ok(fs.statSync(path.join(root,'assets',asset)).isFile());
 });
+test('BAEIS branding: exact solid four-bar transparent logo variants and favicon',()=>{
+  for(const [variant,ink] of [['dark','#0B2545'],['white','#FFFFFF']]){
+    const svg=fs.readFileSync(path.join(root,'img',`baies-dev-logo-${variant}.svg`),'utf8');
+    assert.equal((svg.match(/<rect /g)||[]).length,4);
+    assert.match(svg,/>Grow Faster<\/text>/);
+    assert.ok(svg.includes(`fill="${ink}"`));
+    assert.match(svg,/fill="#2189E1"/);
+    assert.doesNotMatch(svg,/gradient|filter|opacity|<image|<script|stroke=/i);
+    const png=fs.readFileSync(path.join(root,'img',`baies-dev-logo-${variant}.png`));
+    assert.equal(png.subarray(1,4).toString(),'PNG');
+    assert.equal(png[25],6,'RGBA transparent PNG');
+  }
+  assert.match(html,/rel="icon"[^>]*baies-dev-favicon.svg/);
+  assert.match(html,/class="brand-logo"[^>]*baies-dev-logo-dark.svg/);
+  const css=fs.readFileSync(path.join(root,'assets/baies-dev.css'),'utf8');
+  assert.match(css,/--brand-navy:#0B2545/);
+  assert.match(css,/--brand-blue:#2189E1/);
+  assert.match(css,/font-family:"Aptos","Hanken Grotesk","Segoe UI",Helvetica,Arial,sans-serif/);
+  assert.match(css,/--text-body:17px/);
+});

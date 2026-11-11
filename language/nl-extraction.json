@@ -1,0 +1,200 @@
+{
+  "schema": 1,
+  "scope": "rendered_local_nl_and_runtime_dictionaries",
+  "javascript": [
+    {
+      "file": "assets/book-reader.js",
+      "sha256": "a42ed03bc91a891387db047031803c0de04d78f0950da1f5d7c79b63ca931bc6"
+    },
+    {
+      "file": "assets/coherence-film.js",
+      "sha256": "66d554253113aa940a8a9abd6d76438cde558ccbfcd82a723f705edd2d6a2279"
+    },
+    {
+      "file": "assets/consent.js",
+      "sha256": "0ddf242a710aa9272140f2ca2c33261f3abd7d501f4b523e22b28239fb17c5ca"
+    },
+    {
+      "file": "assets/content.js",
+      "sha256": "8d922e5de2f5870d5a79f83d3924bdb9f55160a47505b3a7201e28dd5d047e00"
+    },
+    {
+      "file": "assets/eca-hubspot.js",
+      "sha256": "2c86b80efeb080328d7e66fac1e3ae58da2fe60f78425fdbb6306355ddee5e9c"
+    },
+    {
+      "file": "assets/eca-locales.js",
+      "sha256": "6f32ec7630e6873de8380833d1279a00c792513fe04c7fcf371c0bd56bb0bc90"
+    },
+    {
+      "file": "assets/eca-ui.js",
+      "sha256": "e1a533edc3eedacbe3ea2b69569a4b0cf12b6eb5b092e2285c2df9cad9a561ef"
+    },
+    {
+      "file": "assets/eca.js",
+      "sha256": "0be40d0ebd318364882270371357756c3a150aa8229e721b1f6eeecd89e8b9c8"
+    },
+    {
+      "file": "assets/i18n.js",
+      "sha256": "86b012b7c2085413fce9a3e33362a6b40005aa92095b82522c378fdb7a4711bf"
+    },
+    {
+      "file": "assets/journal.js",
+      "sha256": "292c0bbaa1b1c15ebac85e2df23c3e601c5172dbb1d7981cfe2b7778d88db47f"
+    },
+    {
+      "file": "assets/models.js",
+      "sha256": "f559c785bba371d7129be18a6a5f35a4eb5e3b6eeeaf87a07be0e3c687576ace"
+    },
+    {
+      "file": "assets/page-flip-2.0.7.js",
+      "sha256": "bbaca0bbef57a22bb66a3fc69d67baf9a17fb9a9c89ec9ed35e2b91abe4bd1e7"
+    },
+    {
+      "file": "assets/refinements.js",
+      "sha256": "d3fe86bd6656df8f67e08355c92442d2d6b468df32459d55257f4ef5c65aeade"
+    },
+    {
+      "file": "assets/site.js",
+      "sha256": "d3bb7825842b6883ff493b5cb0fcada4370c525a37dec63cac47af49dd80701d"
+    },
+    {
+      "file": "assets/ux.js",
+      "sha256": "86d835968ecad2c25d019fa0d2c2d266652a7829fc215fcd7952171bd2de7d94"
+    },
+    {
+      "file": "assets/workshop.js",
+      "sha256": "a19e4d86bce237f8f3eaec64bcaf7f2022e19a38cdf6e9f74136779da04c3ec0"
+    }
+  ],
+  "inline": [
+    {
+      "file": "404.html",
+      "sha256": "545c38b0922de19734fbffde62792c37c2aef6a3216cfa472449173165220f7d"
+    },
+    {
+      "file": "about-the-author.html",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "about.html",
+      "sha256": "50bb706cdd79779234f84abcf443ad9d48bd2130300359319d3d7129cea8e3d5"
+    },
+    {
+      "file": "accessibility.html",
+      "sha256": "d471083ac75a0c3966c07716aaf17ca1b9f77a721e97f7d3d5319bbbc7bdfdc1"
+    },
+    {
+      "file": "all-articles.html",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "approach.html",
+      "sha256": "545c38b0922de19734fbffde62792c37c2aef6a3216cfa472449173165220f7d"
+    },
+    {
+      "file": "articles-1/enterprise-architecture-needs-enterprise-coherence.html",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "articles-1/index.html",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "articles-1/the-evolution-of-enterprise-management.html",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "boek/index.html",
+      "sha256": "8930ecfa36af4ec4e3548720eebb76805de93506d17cd4aebdfd96d7b1ce2fe4"
+    },
+    {
+      "file": "boek/the-coherent-enterprise/index.html",
+      "sha256": "3ed192a021c0ebaf18f74c6ef5a1d6abf74c27c8064c9d7b9df8437c67c22315"
+    },
+    {
+      "file": "books.html",
+      "sha256": "a167552b03787e38501fcf895aa5977e55f01a0102e98d7c2b598b38c2fed895"
+    },
+    {
+      "file": "coherence-sim.html",
+      "sha256": "392eed35f66b6737014daedfab21f893779ed23ea763001b9df3411a8a0fa989"
+    },
+    {
+      "file": "coherence.html",
+      "sha256": "9edae40395c7604b590ffaf51a0579c377e8762971d9284bcc3c3f7033a6bbf5"
+    },
+    {
+      "file": "coordination-overload-1.html",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "de-rol-van-leiderschap.html",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "decision-latency.html",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "eca.html",
+      "sha256": "545c38b0922de19734fbffde62792c37c2aef6a3216cfa472449173165220f7d"
+    },
+    {
+      "file": "index.html",
+      "sha256": "337d5079f5a09cee76f81f27c7a54db057ca336e13757070bb86fa0339d8f9df"
+    },
+    {
+      "file": "insights-ai-pilot.html",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "insights.html",
+      "sha256": "b074b90bec2a0de68b4bebbecc52bef452b747214d0fec243d78297a1f0ae73a"
+    },
+    {
+      "file": "journal-fr.html",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "journal.html",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "operating-model.html",
+      "sha256": "545c38b0922de19734fbffde62792c37c2aef6a3216cfa472449173165220f7d"
+    },
+    {
+      "file": "privacy.html",
+      "sha256": "d471083ac75a0c3966c07716aaf17ca1b9f77a721e97f7d3d5319bbbc7bdfdc1"
+    },
+    {
+      "file": "process.html",
+      "sha256": "545c38b0922de19734fbffde62792c37c2aef6a3216cfa472449173165220f7d"
+    },
+    {
+      "file": "terms.html",
+      "sha256": "d471083ac75a0c3966c07716aaf17ca1b9f77a721e97f7d3d5319bbbc7bdfdc1"
+    },
+    {
+      "file": "the-coherence-model-1.html",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "the-enterprise-paradox-1.html",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "transformation.html",
+      "sha256": "f193f784681548009e4ef8fa729b5980f854f678a895eee70607e424293d0571"
+    },
+    {
+      "file": "value.html",
+      "sha256": "545c38b0922de19734fbffde62792c37c2aef6a3216cfa472449173165220f7d"
+    },
+    {
+      "file": "workshop.html",
+      "sha256": "dbc61f9dc89ddeb26e062b9d13ef7783779010616834a5bf0ec94e226385509f"
+    }
+  ]
+}

@@ -1,5 +1,9 @@
 # Releaseprocedure en verantwoordelijkheden
 
+## Nederlandse taalscan, 11 november 2026
+
+`nl-language-audit.yml` staat los van publicatie: uitsluitend `contents: read`, geen Pages- of CMS-toegang en geen automatische registermutaties. Planning 08:07 Europe/Brussels wordt pas actief op de standaardbranch. Baselinepromotie en extractiecontractwijzigingen gaan via een aparte branch/PR; zie `NL-LANGUAGE-AUDIT.md`. De drie beschermde statuscontroles en alle bestaande kwaliteitsvoorwaarden blijven behouden. Deze implementatie autoriseert geen main-merge of deployment.
+
 ## Rollen
 - Product owner/orchestrator: scope, acceptatiecriteria, risicoafweging en vrijgave.
 - Lead tester: scenario’s, regressies, negatieve paden en testbewijs.

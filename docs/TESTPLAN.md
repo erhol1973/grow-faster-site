@@ -204,3 +204,8 @@ The owner explicitly requested preserving the uploaded video exactly and then au
 
 
 Release authorisation, 9 November 2026: the owner subsequently requested production publication after the required checks pass. Main integration retains the publication-identity fixture and updates it to the exact approved 44-second upload, superseding the prior 23-second identity. No other release gate is waived.
+
+
+## Dagelijkse Nederlandse taalcontrole, 11 november 2026
+
+De afzonderlijke read-only workflow gebruikt de lokaal gebouwde site en een eigen LanguageTool-server. Zie `NL-LANGUAGE-AUDIT.md` voor de precieze dekking en uitsluitingen. Permanente regressies in `tests/nl-audit.test.cjs` en `tests/nl-dom.test.cjs` bewaken zinscontext, verschillen, inhoudsgebonden reviews, veilige historie, API-beperkingen en falende engines. De nieuwe workflow controleert bovendien de echte engine en pagina-inventaris bij relevante PR-wijzigingen. Geen bestaande vrijgavegrens of browsercasus is verwijderd. Deze taalscan bewijst geen officiële taalgoedkeuring, volledige bronextractie of live-CMS-dekking.

@@ -72,7 +72,7 @@ test('BAEIS dev: strategic and sector filters produce expected subsets',()=>{
 
 test('BAEIS dev: isolated NL/FR accessible markup and static asset linkage',()=>{
   assert.match(html,/lang="nl-BE"/);
-  for(const view of ['overview','radar','evidence','editorial','about']){
+  for(const view of ['overview','dashboard','radar','evidence','editorial','about']){
     assert.match(html,new RegExp(`id="${view}"`));
     assert.match(html,new RegExp(`data-view="${view}"`));
   }
@@ -105,10 +105,22 @@ test('BAEIS branding: exact solid four-bar transparent logo variants and favicon
 });
 
 test('BAEIS navigation: isolated native routes, explicit locale choice and safe disclosure',()=>{
-  for(const view of ['overview','radar','evidence','editorial','about'])assert.match(html,new RegExp(`<a href="#${view}" data-view="${view}"`));
+  for(const view of ['overview','dashboard','radar','evidence','editorial','about'])assert.match(html,new RegExp(`<a href="#${view}" data-view="${view}"`));
   assert.match(html,/id="navigation-toggle"[^>]*aria-expanded="false"[^>]*aria-controls="product-links"/);
   for(const lang of ['nl','fr'])assert.match(html,new RegExp(`data-language="${lang}"`));
   assert.match(html,/baies-dev-logo-white\.svg/);
   assert.match(html,/<noscript>/);
   assert.doesNotMatch(app,/localStorage|sessionStorage|fetch\s*\(/);
+});
+
+test('BAEIS workspace: bilingual claim search and immutable, deterministic sorting',()=>{
+  const before=structuredClone(data.records);
+  const ids=mode=>core.sortRecords(data.records,mode).map(r=>r.id);
+  assert.deepEqual(ids('priority'),['BE-EC-003','BE-EC-004','BE-AI-001','BE-AI-002','BE-SME-005']);
+  assert.deepEqual(ids('date'),['BE-EC-004','BE-SME-005','BE-EC-003','BE-AI-002','BE-AI-001']);
+  assert.deepEqual(ids('source'),['BE-EC-003','BE-EC-004','BE-AI-001','BE-SME-005','BE-AI-002']);
+  assert.deepEqual(core.filterRecords(data.records,'ALL','All','exploitables').map(r=>r.id),['BE-AI-002']);
+  assert.deepEqual(core.filterRecords(data.records,'CFO','Manufacturing','BE-EC-004').map(r=>r.id),['BE-EC-004']);
+  assert.throws(()=>core.sortRecords(data.records,'invented'),RangeError);
+  assert.deepEqual(data.records,before);
 });

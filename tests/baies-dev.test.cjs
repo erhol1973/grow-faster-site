@@ -96,10 +96,19 @@ test('BAEIS branding: exact solid four-bar transparent logo variants and favicon
     assert.equal(png[25],6,'RGBA transparent PNG');
   }
   assert.match(html,/rel="icon"[^>]*baies-dev-favicon.svg/);
-  assert.match(html,/class="brand-logo"[^>]*baies-dev-logo-dark.svg/);
+  assert.match(html,/class="brand-logo"[^>]*baies-dev-logo-white.svg/);
   const css=fs.readFileSync(path.join(root,'assets/baies-dev.css'),'utf8');
   assert.match(css,/--brand-navy:#0B2545/);
   assert.match(css,/--brand-blue:#2189E1/);
   assert.match(css,/font-family:"Aptos","Hanken Grotesk","Segoe UI",Helvetica,Arial,sans-serif/);
   assert.match(css,/--text-body:17px/);
+});
+
+test('BAEIS navigation: isolated native routes, explicit locale choice and safe disclosure',()=>{
+  for(const view of ['overview','radar','evidence','editorial','about'])assert.match(html,new RegExp(`<a href="#${view}" data-view="${view}"`));
+  assert.match(html,/id="navigation-toggle"[^>]*aria-expanded="false"[^>]*aria-controls="product-links"/);
+  for(const lang of ['nl','fr'])assert.match(html,new RegExp(`data-language="${lang}"`));
+  assert.match(html,/baies-dev-logo-white\.svg/);
+  assert.match(html,/<noscript>/);
+  assert.doesNotMatch(app,/localStorage|sessionStorage|fetch\s*\(/);
 });

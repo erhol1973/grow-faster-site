@@ -15,30 +15,38 @@
   <script defer src="../assets/baies-dev-app.js"></script>
 </head>
 <body>
-<a class="skip" href="#main" data-i18n="skip">Ga naar inhoud</a>
+<a class="skip" href="#main" tabindex="0" data-i18n="skip">Ga naar inhoud</a>
 <div class="dev-strip"><span class="pulse-dot" aria-hidden="true"></span><strong data-i18n="dev">DEV PROTOTYPE</strong><span data-i18n="devNote">Geen live agenten · Geen externe publicatie · Geen persoonsgegevens opgeslagen</span></div>
 <header class="site-header">
   <div class="container header-inner">
-    <a class="identity" href="#overview" aria-label="Grow Faster – BAEIS overzicht">
-      <img class="brand-logo" src="../img/baies-dev-logo-dark.svg" alt="Grow Faster" width="370" height="64">
-      <span class="identity-divider" aria-hidden="true"></span>
-      <span class="product-title">Belgian AI Economic<br>Intelligence System</span>
+    <a class="identity" href="#overview" tabindex="0" aria-label="Grow Faster — BAEIS-overzicht">
+      <img class="brand-logo" src="../img/baies-dev-logo-white.svg" alt="Grow Faster" width="370" height="64">
     </a>
     <div class="header-right">
-      <span class="label-chip"><span aria-hidden="true">●</span> <span data-i18n="isolated">Isolated preview</span></span>
-      <button id="language-switch" class="lang-switch" type="button" aria-label="Switch language / Changer de langue">NL <span aria-hidden="true">/</span> FR</button>
+      <span class="label-chip"><span aria-hidden="true">●</span> <span data-i18n="isolated">Geïsoleerde preview</span></span>
+      <div id="language-switch" class="language-picker" role="group" aria-label="Taal">
+        <button type="button" data-language="nl" lang="nl" aria-label="Nederlands" aria-pressed="true">NL</button>
+        <button type="button" data-language="fr" lang="fr" aria-label="Français" aria-pressed="false">FR</button>
+      </div>
     </div>
   </div>
 </header>
-<nav class="main-nav" aria-label="BAEIS prototype navigatie">
-  <div class="container nav-list">
-    <button type="button" data-view="overview" class="nav-link active" aria-current="page"><span data-i18n="navOverview">Overzicht</span></button>
-    <button type="button" data-view="radar" class="nav-link"><span data-i18n="navRadar">Trend Radar</span></button>
-    <button type="button" data-view="evidence" class="nav-link"><span data-i18n="navEvidence">Evidence Register</span></button>
-    <button type="button" data-view="editorial" class="nav-link"><span data-i18n="navEditorial">Redactie & Governance</span></button>
-    <button type="button" data-view="about" class="nav-link"><span data-i18n="navModel">4 Sprint MVP</span></button>
+<nav class="main-nav" aria-label="BAEIS-productnavigatie">
+  <div class="container product-bar">
+    <div class="product-heading">
+      <div class="product-identity"><strong>BAEIS</strong><span class="product-name" data-i18n="productTagline">AI-intelligence voor Belgische directies</span><span id="current-view-label" aria-hidden="true">Overzicht</span></div>
+      <button id="navigation-toggle" class="nav-toggle" type="button" aria-expanded="false" aria-controls="product-links" aria-label="BAEIS-menu openen"><span data-i18n="menu">Menu</span><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="m3 6 5 5 5-5" fill="none" stroke="currentColor" stroke-width="2"/></svg></button>
+    </div>
+    <div id="product-links" class="nav-list">
+      <a href="#overview" data-view="overview" tabindex="0" class="nav-link active" aria-current="page"><span data-i18n="navOverview">Overzicht</span></a>
+      <a href="#radar" data-view="radar" tabindex="0" class="nav-link"><span data-i18n="navRadar">Trend Radar</span></a>
+      <a href="#evidence" data-view="evidence" tabindex="0" class="nav-link"><span data-i18n="navEvidence">Evidence Register</span></a>
+      <a href="#editorial" data-view="editorial" tabindex="0" class="nav-link"><span data-i18n="navEditorial">Redactie &amp; Governance</span></a>
+      <a href="#about" data-view="about" tabindex="0" class="nav-link"><span data-i18n="navModel">Over BAEIS</span></a>
+    </div>
   </div>
 </nav>
+<noscript><style>.language-picker{display:none!important}.main-nav{position:static}.nav-toggle{display:none!important}.main-nav .nav-list{display:flex!important;position:static;flex-wrap:wrap;max-height:none}.view[hidden]{display:block!important}</style><p class="container">Activeer JavaScript voor filters en taalkeuze. / Activez JavaScript pour les filtres et le choix de langue.</p></noscript>
 <main id="main" tabindex="-1">
   <section id="overview" class="view" aria-labelledby="heading-overview">
     <div class="hero">

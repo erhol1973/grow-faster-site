@@ -4,6 +4,7 @@ const fs=require('node:fs'),path=require('node:path');
 const {performance,monitorEventLoopDelay}=require('node:perf_hooks'),os=require('node:os');
 const {createServer}=require('./server.cjs');
 const routes=[
+  {"route":"/baies-dev/?lang=fr","status":200},
   {
     "route": "/baies-dev/",
     "status": 200

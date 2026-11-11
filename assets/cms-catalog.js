@@ -634,6 +634,18 @@ window.GF_CMS_CATALOG=[
         "fr": "Deux livres complémentaires : les fondements de la cohérence de l’entreprise et un guide pratique pour les équipes dirigeantes qui travaillent avec l’IA."
       },
       {
+        "key": "fc3a07aae55df-0",
+        "type": "media",
+        "label": "Cover of Turning AI Potential into Enterprise Value by Erlend Hollebosch",
+        "nl": "Omslag van Turning AI Potential into Enterprise Value van Erlend Hollebosch",
+        "fr": "Couverture de Turning AI Potential into Enterprise Value d’Erlend Hollebosch",
+        "src": "img/design-for-coherence-book-600.png",
+        "alt": {
+          "nl": "Cover of Turning AI Potential into Enterprise Value by Erlend Hollebosch",
+          "fr": "Cover of Turning AI Potential into Enterprise Value by Erlend Hollebosch"
+        }
+      },
+      {
         "key": "f0ff39a459542-0",
         "type": "text",
         "label": "AI can accelerate a task while decisions, handoffs and responsibilities still hold back th",
@@ -667,6 +679,18 @@ window.GF_CMS_CATALOG=[
         "label": "Online flipbook · 22-page preview · 82-page book · November 2026",
         "nl": "Online flipbook · preview van 22 pagina’s · boek van 82 pagina’s · november 2026",
         "fr": "Livre feuilletable en ligne · aperçu de 22 pages · livre de 82 pages · novembre 2026"
+      },
+      {
+        "key": "f739d4882395d-0",
+        "type": "media",
+        "label": "Cover of the book The Coherent Enterprise by Erlend Hollebosch",
+        "nl": "Cover of the book The Coherent Enterprise by Erlend Hollebosch",
+        "fr": "Cover of the book The Coherent Enterprise by Erlend Hollebosch",
+        "src": "img/the-coherent-enterprise-book-600.png",
+        "alt": {
+          "nl": "Cover of the book The Coherent Enterprise by Erlend Hollebosch",
+          "fr": "Cover of the book The Coherent Enterprise by Erlend Hollebosch"
+        }
       },
       {
         "key": "f8b47a8f217e4-0",
@@ -704,39 +728,25 @@ window.GF_CMS_CATALOG=[
         "fr": "Livre à feuilleter en ligne · aperçu de 12 pages · manuscrit de 281 pages sur demande"
       },
       {
-        "key": "fbf23b4103753-0",
+        "key": "coherent-ebook-title",
         "type": "text",
-        "label": "Choose the edition that suits you. Your order opens as an email; I confirm the price, deli",
-        "nl": "Kies de uitvoering die bij je past. Je bestelling opent als e-mail; ik bevestig prijs, levering en factuur persoonlijk.",
-        "fr": "Choisissez l’édition qui vous convient. Votre commande s’ouvre dans un e-mail ; je confirme personnellement le prix, la livraison et la facture."
+        "label": "E-book",
+        "nl": "E-book",
+        "fr": "Livre numérique"
       },
       {
-        "key": "fe08c51e40d17-0",
+        "key": "coherent-ebook-description",
         "type": "text",
-        "label": "Hardcover edition",
-        "nl": "Hardcover-uitgave",
-        "fr": "Édition reliée"
+        "label": "Read on your laptop, tablet or e-reader, wherever you are.",
+        "nl": "Lees op je laptop, tablet of e-reader, waar je ook bent.",
+        "fr": "À lire sur ordinateur, tablette ou liseuse, où que vous soyez."
       },
       {
-        "key": "f309856ddea30-0",
+        "key": "f3a3e568cb3e0-0",
         "type": "text",
-        "label": "A durable copy for your bookshelf, or as a gift for your leadership team.",
-        "nl": "Een duurzaam exemplaar voor je boekenkast, of als geschenk voor je leiderschapsteam.",
-        "fr": "Un exemplaire durable pour votre bibliothèque, ou à offrir à votre équipe dirigeante."
-      },
-      {
-        "key": "fc4e8c94cf88a-0",
-        "type": "text",
-        "label": "Softcover management handbook",
-        "nl": "Softcover managementhandboek",
-        "fr": "Manuel de management broché"
-      },
-      {
-        "key": "f94caf5642a29-0",
-        "type": "text",
-        "label": "A practical working copy to annotate and take into leadership sessions.",
-        "nl": "Een praktisch werkexemplaar om in te noteren en mee te nemen naar leiderschapssessies.",
-        "fr": "Un exemplaire de travail pratique, à annoter et à emporter en séance de direction."
+        "label": "English edition · 82 pages · Erlend Hollebosch · November 2026",
+        "nl": "Engelse editie · 82 pagina’s · Erlend Hollebosch · november 2026",
+        "fr": "Édition anglaise · 82 pages · Erlend Hollebosch · novembre 2026"
       },
       {
         "key": "f8d76beba3813-0",
@@ -751,13 +761,6 @@ window.GF_CMS_CATALOG=[
         "label": "Read on your laptop, tablet or e-reader, wherever you are.",
         "nl": "Lees op je laptop, tablet of e-reader, waar je ook bent.",
         "fr": "À lire sur ordinateur, tablette ou liseuse, où que vous soyez."
-      },
-      {
-        "key": "f3a3e568cb3e0-0",
-        "type": "text",
-        "label": "English edition · 82 pages · Erlend Hollebosch · November 2026",
-        "nl": "Engelse editie · 82 pagina’s · Erlend Hollebosch · november 2026",
-        "fr": "Édition anglaise · 82 pages · Erlend Hollebosch · novembre 2026"
       },
       {
         "key": "ff8b0a454f318-0",
@@ -779,30 +782,6 @@ window.GF_CMS_CATALOG=[
         "label": "3.5 hours · 4–8 participants · €2,750 excluding VAT per team",
         "nl": "3,5 uur · 4–8 deelnemers · €2.750 exclusief btw per team",
         "fr": "3,5 heures · 4 à 8 participants · 2 750 € HT par équipe"
-      },
-      {
-        "key": "fc3a07aae55df-0",
-        "type": "media",
-        "label": "Cover of Turning AI Potential into Enterprise Value by Erlend Hollebosch",
-        "nl": "Omslag van Turning AI Potential into Enterprise Value van Erlend Hollebosch",
-        "fr": "Couverture de Turning AI Potential into Enterprise Value d’Erlend Hollebosch",
-        "src": "img/design-for-coherence-book-600.png",
-        "alt": {
-          "nl": "Cover of Turning AI Potential into Enterprise Value by Erlend Hollebosch",
-          "fr": "Cover of Turning AI Potential into Enterprise Value by Erlend Hollebosch"
-        }
-      },
-      {
-        "key": "f739d4882395d-0",
-        "type": "media",
-        "label": "Cover of the book The Coherent Enterprise by Erlend Hollebosch",
-        "nl": "Cover of the book The Coherent Enterprise by Erlend Hollebosch",
-        "fr": "Cover of the book The Coherent Enterprise by Erlend Hollebosch",
-        "src": "img/the-coherent-enterprise-book-600.png",
-        "alt": {
-          "nl": "Cover of the book The Coherent Enterprise by Erlend Hollebosch",
-          "fr": "Cover of the book The Coherent Enterprise by Erlend Hollebosch"
-        }
       },
       {
         "key": "cms-video-books",

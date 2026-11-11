@@ -189,3 +189,24 @@ test('BAEIS navigation: skip preserves the screen and Back closes evidence detai
   await page.goBack();await expect(page.locator('#evidence-dialog')).toBeHidden();
   await expect(page.locator('#radar')).toBeVisible();await expect(page.locator('#heading-radar')).toBeFocused();
 });
+
+
+test('BAEIS palette: verified, evidence, score and blocked states use Grow Faster blues',async({page})=>{
+  await page.goto('/baies-dev/');
+  await expect(page.locator('.value-icon.verified')).toHaveCSS('background-color','rgb(217, 238, 249)');
+  await expect(page.locator('.value-icon.verified')).toHaveCSS('color','rgb(0, 106, 156)');
+  await navigate(page,'radar');
+  await expect(page.locator('.signal-score').first()).toHaveCSS('background-color','rgb(217, 238, 249)');
+  await expect(page.locator('.signal-score').first()).toHaveCSS('color','rgb(0, 106, 156)');
+  await navigate(page,'evidence');
+  await expect(page.locator('.evidence-banner')).toHaveCSS('background-color','rgb(237, 244, 250)');
+  await expect(page.locator('.evidence-banner')).toHaveCSS('border-top-color','rgb(217, 238, 249)');
+  await navigate(page,'editorial');
+  for(let i=0;i<3;i++)await page.locator('#advance-review').click();
+  await expect(page.locator('.step.done i')).toHaveCount(4);
+  await expect(page.locator('.step.done i').first()).toHaveCSS('background-color','rgb(217, 238, 249)');
+  await expect(page.locator('.guardrail-icon.blocked')).toHaveText('L4');
+  await expect(page.locator('.guardrail-icon.blocked')).toHaveCSS('background-color','rgb(11, 37, 69)');
+  await expect(page.locator('.guardrail-icon.blocked')).toHaveCSS('color','rgb(255, 255, 255)');
+  await expect(page.locator('#external-publish')).toBeDisabled();
+});

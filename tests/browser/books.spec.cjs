@@ -1,20 +1,22 @@
 const {test,expect}=require('playwright/test');
 const fs=require('node:fs'),crypto=require('node:crypto');
 const publication=require('../book-publication.json');
-const copy={nl:{menu:'Boeken',download:'Lees de executive preview',access:'Verkrijgbaar als e-book. Koop het volledige boek →'},fr:{menu:'Livres',download:'Lire l’aperçu pour les dirigeants',access:'Disponible en livre numérique. Acheter le livre complet →'}};
+const copy={nl:{menu:'Boeken',download:'Lees de executive preview'},fr:{menu:'Livres',download:'Lire l’aperçu pour les dirigeants'}};
 for(const [language,text]of Object.entries(copy))test('free book download and workshop reading route in '+language,async({page},info)=>{
  const errors=[],external=[],pdfs=[];page.on('pageerror',e=>errors.push(e.message));page.on('request',r=>{if(/hubspot|hsforms|goatcounter|fonts\.google/i.test(r.url()))external.push(r.url());if(r.url().includes(publication.file))pdfs.push(r.url())});
  await page.addInitScript(l=>{localStorage.setItem('avs-lang',l);localStorage.setItem('avs-consent',JSON.stringify({v:4,ext:false,ana:false,ts:Date.now()}))},language);
  await page.goto('/index.html');if(await page.locator('#burger').isVisible())await page.locator('#burger').click();await page.locator('[aria-controls="nav-coherence"]').click();const book=page.locator('#nav-coherence a[href="books.html"]');await expect(book).toHaveText(text.menu);await book.click();
  await expect(page).toHaveURL(/\/books\.html$/);await expect(page.locator('html')).toHaveAttribute('lang',language);await expect(page.locator('#nav-coherence a[href="books.html"]')).toHaveAttribute('aria-current','page');
- const feature=page.locator('#design-for-coherence');await expect(feature.locator('h2')).toHaveText(publication.title);await expect(feature.locator('.books-subtitle')).toHaveText(publication.subtitle);await expect(feature.locator('.books-access')).toHaveText(text.access);await expect(feature.locator('form,input')).toHaveCount(0);await expect(feature.locator('.books-meta')).toContainText(language==='nl'?'Online flipbook · preview van 22':'Livre feuilletable en ligne');
+ const feature=page.locator('#design-for-coherence');await expect(feature.locator('h2')).toHaveText(publication.title);await expect(feature.locator('.books-subtitle')).toHaveText(publication.subtitle);await expect(feature.locator('.book-actions a')).toHaveCount(2);await expect(feature.locator('form,input')).toHaveCount(0);await expect(feature.locator('.books-meta')).toContainText(language==='nl'?'Online flipbook · preview van 22':'Livre feuilletable en ligne');
  const typography=await feature.evaluate(el=>({title:parseFloat(getComputedStyle(el.querySelector('h2 cite')).fontSize),label:parseFloat(getComputedStyle(el.querySelector('.eyebrow')).fontSize)}));expect(typography.title).toBeGreaterThan(typography.label);
  expect(pdfs,'The PDF must not load before the visitor chooses the download').toEqual([]);expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1)).toBe(true);
  await expect(feature.locator('.book-download')).toContainText(text.download);await expect(feature.locator('.book-download')).toHaveAttribute('href','boek/index.html');await expect(feature.locator('.book-download')).toHaveAttribute('target','_blank');const bytes=await (await page.request.get('/'+publication.file)).body();expect(bytes.length).toBe(publication.bytes);expect(crypto.createHash('sha256').update(bytes).digest('hex')).toBe(publication.sha256);
- for (const [id,title] of [['order-coherent-enterprise','The Coherent Enterprise'],['order',publication.title]]) {
+ for (const [id,title] of [['the-coherent-enterprise','The Coherent Enterprise'],['design-for-coherence',publication.title]]) {
    const row=page.locator('#'+id);
    await expect(row.locator('h2')).toHaveText(title);
-   const button=row.getByRole('link',{name:language==='nl'?/Bestel het e-book/:/Commander le livre numérique/});
+   await expect(row.locator('.book-actions .primary')).toHaveText(new RegExp(text.download));
+   const button=row.locator('.book-actions .ghost');
+   await expect(button).toHaveAccessibleName(language==='nl'?/Bestel het e-book/:/Commander le livre numérique/);
    const message=new URL(await button.getAttribute('href'));
    expect(message.protocol).toBe('mailto:');
    expect(message.searchParams.get('subject')).toBe((language==='nl'?'Bestelling':'Commande')+' – '+title+' (e-book)');
@@ -25,7 +27,7 @@ for(const [language,text]of Object.entries(copy))test('free book download and wo
 });
 test('the new full book remains downloadable without JavaScript and the first book retains its request route',async({browser})=>{
  const context=await browser.newContext({javaScriptEnabled:false,viewport:{width:390,height:844},acceptDownloads:true});const page=await context.newPage();try{
- await page.goto('http://127.0.0.1:4173/books.html');await expect(page.locator('.book-download')).toBeVisible();await expect(page.locator('.book-download')).toHaveAttribute('href','boek/index.html');await expect(page.locator('.books-order .order-card')).toHaveCount(2);await expect(page.locator('.book-download')).toHaveAttribute('target','_blank');
- await page.locator('#the-coherent-enterprise a[href="#order-coherent-enterprise"]').click();await expect(page.locator('#order-coherent-enterprise a[data-mail]')).toHaveAttribute('href',/^mailto:/);await page.goto('http://127.0.0.1:4173/about.html#foundation-book');await expect(page.locator('#foundation-book')).toBeInViewport();await expect(page.locator('#foundation-book a[data-mail]')).toHaveCount(1); // the separate full-manuscript card was removed from About on request
+ await page.goto('http://127.0.0.1:4173/books.html');await expect(page.locator('.book-download')).toBeVisible();await expect(page.locator('.book-download')).toHaveAttribute('href','boek/index.html');await expect(page.locator('.book-actions a[data-mail]')).toHaveCount(2);await expect(page.locator('.book-download')).toHaveAttribute('target','_blank');
+ await page.goto('http://127.0.0.1:4173/books.html#order-coherent-enterprise');await expect(page.locator('#order-coherent-enterprise')).toBeInViewport();await expect(page.locator('#order-coherent-enterprise a[data-mail]')).toHaveAttribute('href',/^mailto:/);await page.goto('http://127.0.0.1:4173/about.html#foundation-book');await expect(page.locator('#foundation-book')).toBeInViewport();await expect(page.locator('#foundation-book a[data-mail]')).toHaveCount(1); // the separate full-manuscript card was removed from About on request
  }finally{await context.close()}
 });

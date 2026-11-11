@@ -728,41 +728,6 @@ window.GF_CMS_CATALOG=[
         "fr": "Livre à feuilleter en ligne · aperçu de 12 pages · manuscrit de 281 pages sur demande"
       },
       {
-        "key": "coherent-ebook-title",
-        "type": "text",
-        "label": "E-book",
-        "nl": "E-book",
-        "fr": "Livre numérique"
-      },
-      {
-        "key": "coherent-ebook-description",
-        "type": "text",
-        "label": "Read on your laptop, tablet or e-reader, wherever you are.",
-        "nl": "Lees op je laptop, tablet of e-reader, waar je ook bent.",
-        "fr": "À lire sur ordinateur, tablette ou liseuse, où que vous soyez."
-      },
-      {
-        "key": "f3a3e568cb3e0-0",
-        "type": "text",
-        "label": "English edition · 82 pages · Erlend Hollebosch · November 2026",
-        "nl": "Engelse editie · 82 pagina’s · Erlend Hollebosch · november 2026",
-        "fr": "Édition anglaise · 82 pages · Erlend Hollebosch · novembre 2026"
-      },
-      {
-        "key": "f8d76beba3813-0",
-        "type": "text",
-        "label": "E-book",
-        "nl": "E-book",
-        "fr": "Livre numérique"
-      },
-      {
-        "key": "f8a90d75ea711-0",
-        "type": "text",
-        "label": "Read on your laptop, tablet or e-reader, wherever you are.",
-        "nl": "Lees op je laptop, tablet of e-reader, waar je ook bent.",
-        "fr": "À lire sur ordinateur, tablette ou liseuse, où que vous soyez."
-      },
-      {
         "key": "ff8b0a454f318-0",
         "type": "text",
         "label": "Bring one AI application to the table",

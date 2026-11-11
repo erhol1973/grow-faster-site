@@ -3,6 +3,8 @@ const fs=require('node:fs'),path=require('node:path'),crypto=require('node:crypt
 const {execFileSync}=require('node:child_process');
 const root=path.resolve(__dirname,'..');
 const hash=value=>crypto.createHash('sha256').update(value).digest('hex');
+const baselineDigest=value=>hash(String(value).replaceAll('\r\n','\n'));
+const inlineScripts=html=>[...html.matchAll(/<script\b[^>]*>([\s\S]*?)<\/script\s*>/gi)].map(m=>m[1]).join('\n').replaceAll('\r\n','\n');
 const git=(...args)=>execFileSync('git',args,{cwd:root,encoding:'utf8'}).trim();
 const json=file=>JSON.parse(fs.readFileSync(path.join(root,file),'utf8'));
 function files(dir,prefix='') {return fs.readdirSync(dir,{withFileTypes:true}).flatMap(e=>{
@@ -141,7 +143,7 @@ async function run(){
   try{
     const contract=json('language/nl-extraction.json');const currentSources=sources();
     validateContract(contract.javascript,currentSources,'JavaScript');
-    const inline=files(path.join(root,'dist')).filter(f=>f.endsWith('.html')).map(file=>({file,sha256:hash([...fs.readFileSync(path.join(root,'dist',file),'utf8').matchAll(/<script\b[^>]*>([\s\S]*?)<\/script>/gi)].map(m=>m[1]).join('\n').replaceAll('\r\n','\n'))}));
+    const inline=files(path.join(root,'dist')).filter(f=>f.endsWith('.html')).map(file=>({file,sha256:hash(inlineScripts(fs.readFileSync(path.join(root,'dist',file),'utf8')))}));
     validateContract(contract.inline,inline,'Inline JavaScript');
     const baseline=json('language/nl-baseline.json');validateBaseline(baseline,sha=>{try{git('merge-base','--is-ancestor',sha,'HEAD');return true}catch{return false}});
     report.findings=baseline.findings;
@@ -153,7 +155,7 @@ async function run(){
     const probe=await check('Dit is een spelfoutt.',url);
     if(!probe.matches.some(m=>m.rule.issueType==='misspelling'))throw Error('Dutch engine failed spelling-error canary');
     // An engine change invalidates machine receipts, without altering human reviews.
-    const pending=changes.pending.concat(changes.unchanged.filter(b=>{const prior=baseline.blocks.find(p=>p.id===b.id).engine;return prior.version!==report.engine.version||prior.extractor!==report.engine.extractor}));
+    const pending=changes.pending.concat(changes.unchanged.filter(b=>baseline.blocks.find(p=>p.id===b.id).engine.version!==report.engine.version));
     report.checkedBlocks=pending.length;const cache=new Map(),newFindings=[];
     const grouped=batches(pending);report.engineRequests=grouped.length;
     for(const [index,batch] of grouped.entries()){
@@ -172,14 +174,15 @@ async function run(){
     for(const f of newFindings)if(!ledger.some(old=>old.id===f.id))ledger.push(f);
     report.findings=ledger;report.newFindings=newFindings.filter(f=>!baseline.findings.some(old=>old.id===f.id));
     report.historicalFindings=ledger.filter(f=>!extracted.blocks.some(b=>b.id===f.blockId&&b.sha256===f.textHash)).map(f=>f.id);
-    const candidate={schema:1,origin:baseline.origin,sourceCommit:report.sourceCommit,parentBaseline:hash(fs.readFileSync(path.join(root,'language/nl-baseline.json'))),coverage:extracted.coverage,history:[...baseline.history,{sourceCommit:baseline.sourceCommit,digest:hash(fs.readFileSync(path.join(root,'language/nl-baseline.json')))}],blocks:extracted.blocks.map(b=>({...b,engine:report.engine,...(baseline.blocks.find(old=>old.id===b.id&&old.sha256===b.sha256)?.review?{review:baseline.blocks.find(old=>old.id===b.id).review}:{})})),findings:ledger};
+    const candidate={schema:1,origin:baseline.origin,sourceCommit:report.sourceCommit,parentBaseline:baselineDigest(fs.readFileSync(path.join(root,'language/nl-baseline.json'))),coverage:extracted.coverage,history:[...baseline.history,{sourceCommit:baseline.sourceCommit,digest:baselineDigest(fs.readFileSync(path.join(root,'language/nl-baseline.json')))}],blocks:extracted.blocks.map(b=>({...b,engine:report.engine,...(baseline.blocks.find(old=>old.id===b.id&&old.sha256===b.sha256)?.review?{review:baseline.blocks.find(old=>old.id===b.id).review}:{})})),findings:ledger};
     fs.writeFileSync(path.join(out,'candidate-baseline.json'),JSON.stringify(candidate,null,2)+'\n');
     report.status=report.newFindings.length?'FINDINGS':'PASSED';
   }catch(e){report.errors.push(e.message);}
   fs.writeFileSync(path.join(out,'report.json'),JSON.stringify(report,null,2)+'\n');
-  const summary=`## Nederlandse taalcontrole — ${report.status}\n\nBron: ${report.sourceCommit}\n\nNieuwe bevindingen: ${report.newFindings?.length??'onbekend'}. Gecontroleerde blokken: ${report.checkedBlocks??'onbekend'}.\n\nGeen officiële taalgoedkeuring. Register en productie zijn ongewijzigd.\n\n${report.errors.join('\n')}\n\n${report.limitations.join('\n\n')}\n\nZie report.json en eventuele candidate-baseline.json in het artifact.\n`;
-  fs.writeFileSync(path.join(out,'summary.md'),summary);if(process.env.GITHUB_STEP_SUMMARY)fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY,summary);
+  const summary=`## Nederlandse taalcontrole — ${report.status}\n\nBron: ${report.sourceCommit}\n\nNieuwe bevindingen: ${report.newFindings?.length??'onbekend'}. Gecontroleerde blokken: ${report.checkedBlocks??'onbekend'}.\n\nBewaarde registerbevindingen: ${report.findings.length}; daarvan historisch door tekstwijziging/verwijdering: ${report.historicalFindings?.length??'onbekend'}.\n\nGeen officiële taalgoedkeuring. Register en productie zijn ongewijzigd.\n\n${report.errors.join('\n')}\n\n${report.limitations.join('\n\n')}\n\nZie report.json en eventuele candidate-baseline.json in het artifact.\n`;
+  // Fixed local output only; the workflow publishes this file to GitHub's summary.
+  fs.writeFileSync(path.join(out,'summary.md'),summary);
   console.log(summary);if(report.status!=='PASSED')process.exitCode=1;return report;
 }
-module.exports={hash,validateContract,validateCoverage,validateBaseline,delta,endpoint,check,batches,distribute,domBlocks,inventory,run,sources,files};
+module.exports={hash,baselineDigest,inlineScripts,validateContract,validateCoverage,validateBaseline,delta,endpoint,check,batches,distribute,domBlocks,inventory,run,sources,files};
 if(require.main===module)run().catch(e=>{console.error(e);process.exitCode=1});

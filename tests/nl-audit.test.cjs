@@ -1,9 +1,17 @@
 'use strict';
 const {test}=require('node:test'),assert=require('node:assert/strict');
-const {hash,validateContract,validateCoverage,delta,validateBaseline,endpoint,check,batches,distribute}=require('../scripts/nl-audit.cjs');
+const {hash,baselineDigest,inlineScripts,validateContract,validateCoverage,delta,validateBaseline,endpoint,check,batches,distribute}=require('../scripts/nl-audit.cjs');
 const {promote}=require('../scripts/nl-promote.cjs');
 const block=text=>({id:'page#paragraph',text,sha256:hash(text),engine:{version:'6.6'}});
 const baseline=()=>({schema:1,sourceCommit:'a'.repeat(40),history:[],blocks:[block('Dit is een zin.')],findings:[]});
+test('Inline JavaScript extraction recognises case and whitespace in script end tags',()=>{
+  assert.equal(inlineScripts('<script>first()</SCRIPT ><script type="application/json">{"key":1}</script\n>'),'first()\n{"key":1}');
+  assert.notEqual(hash(inlineScripts('<script>first()</script >')),hash(inlineScripts('<script>changed()</script >')));
+});
+test('Baseline digests are portable across Windows/Linux but still detect content edits',()=>{
+  assert.equal(baselineDigest('{\n"key":1\n}\n'),baselineDigest('{\r\n"key":1\r\n}\r\n'));
+  assert.notEqual(baselineDigest('{"key":1}'),baselineDigest('{"key":2}'));
+});
 test('Extraction changes, added scripts and coverage regressions fail closed',()=>{
   const original=[{file:'assets/site.js',sha256:hash('source')}];
   assert.doesNotThrow(()=>validateContract(original,structuredClone(original),'JavaScript'));

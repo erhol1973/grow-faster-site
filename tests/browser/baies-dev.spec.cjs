@@ -46,6 +46,8 @@ const AxeBuilder=require('@axe-core/playwright').default;
 test('BAEIS branding: readable responsive layouts',async({page})=>{
   await page.goto('/baies-dev/');
   const logo=page.locator('.site-header .brand-logo');
+  await page.locator('#language-switch').focus();
+  await expect(page.locator('#language-switch')).toHaveCSS('outline-color','rgb(33, 137, 225)');
   await expect(logo).toHaveJSProperty('naturalWidth',1110);
   await expect(page.locator('body')).toHaveCSS('font-size','17px');
   await expect(page.locator('.nav-link').first()).toHaveCSS('font-size','15px');

@@ -1,12 +1,14 @@
 'use strict';
 const {test}=require('node:test'),assert=require('node:assert/strict');
-const {hash,baselineDigest,inlineScripts,validateContract,validateCoverage,delta,validateBaseline,endpoint,check,batches,distribute}=require('../scripts/nl-audit.cjs');
+const {hash,files,baselineDigest,validateContract,validateCoverage,delta,validateBaseline,endpoint,check,batches,distribute}=require('../scripts/nl-audit.cjs');
 const {promote}=require('../scripts/nl-promote.cjs');
 const block=text=>({id:'page#paragraph',text,sha256:hash(text),engine:{version:'6.6'}});
 const baseline=()=>({schema:1,sourceCommit:'a'.repeat(40),history:[],blocks:[block('Dit is een zin.')],findings:[]});
-test('Inline JavaScript extraction recognises case and whitespace in script end tags',()=>{
-  assert.equal(inlineScripts('<script>first()</SCRIPT ><script type="application/json">{"key":1}</script\n>'),'first()\n{"key":1}');
-  assert.notEqual(hash(inlineScripts('<script>first()</script >')),hash(inlineScripts('<script>changed()</script >')));
+test('OneDrive placeholders are files; actual symlinks and special entries are rejected',()=>{
+  const io={readdirSync:()=>[{name:'page.html',isSymbolicLink:()=>true}],lstatSync:()=>({isSymbolicLink:()=>false,isDirectory:()=>false,isFile:()=>true})};
+  assert.deepEqual(files('/fixture','',io),['page.html']);
+  io.lstatSync=()=>({isSymbolicLink:()=>true});assert.throws(()=>files('/fixture','',io),/Symlink/);
+  io.lstatSync=()=>({isSymbolicLink:()=>false,isDirectory:()=>false,isFile:()=>false});assert.throws(()=>files('/fixture','',io),/Non-regular/);
 });
 test('Baseline digests are portable across Windows/Linux but still detect content edits',()=>{
   assert.equal(baselineDigest('{\n"key":1\n}\n'),baselineDigest('{\r\n"key":1\r\n}\r\n'));
@@ -59,6 +61,7 @@ test('Malformed, incomplete, oversized and failed engine scans fail closed',asyn
   await assert.rejects(check('Zin',url,async()=>({ok:false,status:429})),/429/);
   await assert.rejects(check('Zin',url,async()=>({ok:true,json:async()=>({matches:[]})})),/Incomplete/);
   await assert.rejects(check('Zin',url,async()=>({ok:true,json:async()=>({matches:[],software:{version:'6.6'},language:{code:'nl'},warnings:{incompleteResults:true}})})),/Incomplete/);
+  await assert.rejects(check('Zin',url,async()=>({ok:true,json:async()=>({matches:[],software:{version:'unexpected'},language:{code:'nl'}})})),/Unexpected/);
 });
 test('Candidate promotion enforces compare-and-swap and preserves findings and history',()=>{
   const old=baseline();old.findings=[{id:'finding',blockId:'page#paragraph',textHash:old.blocks[0].sha256,rule:'RULE',status:'open'}];

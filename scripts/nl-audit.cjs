@@ -4,12 +4,21 @@ const {execFileSync}=require('node:child_process');
 const root=path.resolve(__dirname,'..');
 const hash=value=>crypto.createHash('sha256').update(value).digest('hex');
 const baselineDigest=value=>hash(String(value).replaceAll('\r\n','\n'));
-const inlineScripts=html=>[...html.matchAll(/<script\b[^>]*>([\s\S]*?)<\/script\s*>/gi)].map(m=>m[1]).join('\n').replaceAll('\r\n','\n');
+const ENGINE_VERSION='6.6';
+// Runs in the browser on an inert document: HTML tokenisation, never a tag regex.
+function inlineScripts(html){return [...new DOMParser().parseFromString(html,'text/html').querySelectorAll('script')].map(el=>el.textContent).join('\n').replaceAll('\r\n','\n');}
+async function inlineSources(){
+  const {chromium}=require('playwright');const browser=await chromium.launch({executablePath:process.env.TEST_BROWSER_EXECUTABLE||undefined});
+  try{const page=await browser.newPage();const result=[];for(const file of files(path.join(root,'dist')).filter(f=>f.endsWith('.html')))result.push({file,sha256:hash(await page.evaluate(inlineScripts,fs.readFileSync(path.join(root,'dist',file),'utf8')))});return result;}finally{await browser.close();}
+}
 const git=(...args)=>execFileSync('git',args,{cwd:root,encoding:'utf8'}).trim();
 const json=file=>JSON.parse(fs.readFileSync(path.join(root,file),'utf8'));
-function files(dir,prefix='') {return fs.readdirSync(dir,{withFileTypes:true}).flatMap(e=>{
-  if(e.isSymbolicLink())throw Error('Symlink in scan scope');
-  const name=prefix+e.name;return e.isDirectory()?files(path.join(dir,e.name),name+'/'):[name];
+function files(dir,prefix='',io=fs) {return io.readdirSync(dir,{withFileTypes:true}).flatMap(e=>{
+  // Windows OneDrive Dirent can claim a cloud placeholder is a symlink; lstat is authoritative.
+  const stat=io.lstatSync(path.join(dir,e.name));
+  if(stat.isSymbolicLink())throw Error('Symlink in scan scope: '+prefix+e.name);
+  const name=prefix+e.name;if(stat.isDirectory())return files(path.join(dir,e.name),name+'/',io);
+  if(!stat.isFile())throw Error('Non-regular entry in scan scope: '+name);return [name];
 }).sort();}
 function sources(){return files(path.join(root,'dist')).filter(f=>f.endsWith('.js')).map(f=>({file:f,sha256:hash(fs.readFileSync(path.join(root,'dist',f),'utf8').replaceAll('\r\n','\n'))}));}
 function validateContract(expected,actual,kind){if(JSON.stringify(expected)!==JSON.stringify(actual))throw Error(kind+' extraction contract changed: review adapters and regenerate contract via PR');}
@@ -49,6 +58,7 @@ async function check(text,url,request=fetch){
   if(!response.ok)throw Error('LanguageTool HTTP '+response.status);
   const data=await response.json();
   if(!Array.isArray(data.matches)||!data.software?.version||data.language?.code!=='nl'||data.warnings?.incompleteResults)throw Error('Incomplete or invalid Dutch LanguageTool response');
+  if(data.software.version!==ENGINE_VERSION)throw Error('Unexpected LanguageTool version: update pinned engine and review via PR');
   for(const m of data.matches)if(!m.rule?.id||!Number.isInteger(m.offset)||!Number.isInteger(m.length)||m.offset<0||m.length<0||m.offset+m.length>text.length)throw Error('Invalid LanguageTool match');
   return data;
 }
@@ -143,7 +153,7 @@ async function run(){
   try{
     const contract=json('language/nl-extraction.json');const currentSources=sources();
     validateContract(contract.javascript,currentSources,'JavaScript');
-    const inline=files(path.join(root,'dist')).filter(f=>f.endsWith('.html')).map(file=>({file,sha256:hash(inlineScripts(fs.readFileSync(path.join(root,'dist',file),'utf8')))}));
+    const inline=await inlineSources();
     validateContract(contract.inline,inline,'Inline JavaScript');
     const baseline=json('language/nl-baseline.json');validateBaseline(baseline,sha=>{try{git('merge-base','--is-ancestor',sha,'HEAD');return true}catch{return false}});
     report.findings=baseline.findings;
@@ -151,7 +161,7 @@ async function run(){
     validateCoverage(baseline.coverage,extracted.coverage);
     const changes=delta(extracted.blocks,baseline);report.counts={created:changes.pending.filter(b=>!baseline.blocks.some(p=>p.id===b.id)).length,updated:changes.pending.filter(b=>baseline.blocks.some(p=>p.id===b.id)).length,deleted:changes.deleted.length,unchanged:changes.unchanged.length};
     const url=process.env.LANGUAGETOOL_URL||'http://127.0.0.1:18081/v2/check';
-    const health=await check('Dit is een correcte Nederlandse zin.',url);report.engine={name:'LanguageTool',version:health.software.version,language:'nl',extractor:hash(fs.readFileSync(__filename,'utf8').replaceAll('\r\n','\n'))};
+    await check('Dit is een correcte Nederlandse zin.',url);report.engine={name:'LanguageTool',version:ENGINE_VERSION,language:'nl',extractor:hash(fs.readFileSync(__filename,'utf8').replaceAll('\r\n','\n'))};
     const probe=await check('Dit is een spelfoutt.',url);
     if(!probe.matches.some(m=>m.rule.issueType==='misspelling'))throw Error('Dutch engine failed spelling-error canary');
     // An engine change invalidates machine receipts, without altering human reviews.

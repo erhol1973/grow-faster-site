@@ -1,11 +1,13 @@
 'use strict';
 const {test}=require('node:test'),assert=require('node:assert/strict');
 const {chromium}=require('playwright');
-const {domBlocks}=require('../scripts/nl-audit.cjs');
+const {domBlocks,inlineScripts}=require('../scripts/nl-audit.cjs');
 test('DOM extraction retains sentence context, hidden NL, metadata and dictionary; excludes French',async()=>{
   const browser=await chromium.launch({executablePath:process.env.TEST_BROWSER_EXECUTABLE||undefined});
   try{
     const page=await browser.newPage();
+    assert.equal(await page.evaluate(inlineScripts,'<script>first()</SCRIPT ><script type="application/json">{"key":1}</script\t\n bar>'),'first()\n{"key":1}');
+    assert.equal(await page.evaluate(inlineScripts,'<script>const fake="</script-not-a-tag>"; keep();</script>'),'const fake="</script-not-a-tag>"; keep();');
     await page.setContent('<html lang="nl"><head><title>Nederlandse titel</title><meta name="description" content="Volledige beschrijving."></head><body><p>Dit is <strong>een volledige</strong> zin. Ook deze zin hoort erbij.</p><section lang="fr"><p>Texte français.</p></section><p hidden>Verborgen Nederlandse tekst.</p><img alt="Een afbeelding"><script>window.I18N={key:["Nederlandse woorden.","Français"]}</script></body></html>');
     const rows=await page.evaluate(domBlocks);
     assert.equal(rows.filter(r=>r.text==='Dit is een volledige zin. Ook deze zin hoort erbij.').length,1);

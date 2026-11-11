@@ -37,3 +37,16 @@ test('Dutch Executive Journal title and footer spell the month in lowercase',()=
   assert.match(html,/<p>Executive Journal · november 2026<\/p>/);
   assert.doesNotMatch(html,/November 2026/);
 });
+test('Every built page referencing changed Dutch translations requests the current delivery version',()=>{
+  let references=0;
+  for(const file of fs.readdirSync(root,{recursive:true}).filter(file=>file.endsWith('.html'))){
+    const html=fs.readFileSync(path.join(root,file),'utf8');
+    for(const match of html.matchAll(/<script\b[^>]*\bsrc\s*=\s*(["'])(.*?)\1/gi)){
+      const url=new URL(match[2],'https://fixture.invalid/');
+      if(!url.pathname.endsWith('/i18n.js'))continue;
+      references++;
+      assert.equal(url.searchParams.get('v'),'20261111-nl-audit',file+' translation delivery version');
+    }
+  }
+  assert.ok(references>0,'The built site still includes its shared translation data');
+});

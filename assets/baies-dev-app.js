@@ -26,6 +26,7 @@
   const evidenceReady=!records.some(r=>core.checkRecord(r).length);
   let lastRoute='';
   let navigationFocus=null;
+  let evidenceTrigger=null;
   function navigationLabels(){
     $('current-view-label').textContent=text(viewLabels[state.view]);
     navigation.setAttribute('aria-label',text('navLabel'));
@@ -88,11 +89,12 @@
   const typeLabel=value=>text('typeLabels')[value]||value;
   const dateFormatters=Object.fromEntries(['nl','fr'].map(lang=>[lang,new Intl.DateTimeFormat(lang+'-BE',{day:'numeric',month:'short',year:'numeric',timeZone:'UTC'})]));
   const dateLabel=value=>dateFormatters[state.lang].format(new Date(value+'T00:00:00Z'));
-  function detailsButton(record){const b=element('button','text-btn',text('viewEvidence')+' ↗');b.type='button';b.setAttribute('aria-label',text('viewEvidence')+': '+localized(record.title));b.addEventListener('click',()=>showDetails(record));return b;}
+  function detailsButton(record){const b=element('button','text-btn',text('viewEvidence')+' ↗');b.type='button';b.setAttribute('aria-label',text('viewEvidence')+': '+localized(record.title));b.addEventListener('click',()=>showDetails(record,b));return b;}
   function limitation(record){const details=element('details','record-limitation');details.append(element('summary','',text('limit')),element('p','',localized(record.limit)));return details;}
   function renderHero(){const target=$('hero-signal-list');clear(target);for(const [i,r] of core.sortRecords(records).slice(0,3).entries()){const row=element('div','preview-signal');row.append(element('span','rank',String(i+1).padStart(2,'0')));const copy=element('div');copy.append(element('b','',localized(r.title)),element('small','',r.source+' · '+dateLabel(r.published)));row.append(copy);target.append(row);}$('hero-count').textContent=String(records.length).padStart(2,'0');$('home-record-count').textContent=records.length;$('home-publisher-count').textContent=new Set(records.map(r=>r.source)).size;}
   function renderBrief(){const target=$('brief-items');clear(target);const all=records.filter(r=>r.roles.includes(state.role));for(const r of core.sortRecords(all).slice(0,3)){const li=element('li');li.append(element('h4','',localized(r.title)),element('span','agenda-metric',r.metric),element('p','',localized(r.decision)),element('small','',r.source+' · '+dateLabel(r.published)+' · '+typeLabel(r.type)),detailsButton(r));target.append(li);}$('dashboard-records').textContent=all.length;$('dashboard-publishers').textContent=new Set(all.map(r=>r.source)).size;$('dashboard-types').textContent=new Set(all.map(r=>r.type)).size;$('role-explainer').textContent=text('roles')[state.role];document.querySelectorAll('[data-role]').forEach(b=>{const active=b.dataset.role===state.role;b.classList.toggle('selected',active);b.setAttribute('aria-pressed',String(active));});}
-  function showDetails(record){
+  function showDetails(record,trigger){
+    evidenceTrigger=trigger;
     $('dialog-title').textContent=localized(record.title);const body=$('dialog-body');clear(body);body.append(element('p','record-id',record.id));
     for(const [label,value] of [[text('method'),typeLabel(record.type)],[text('confidence'),(text('confidenceLabels')[record.confidence]||record.confidence)+' · '+text('confidenceNote')],[text('date'),dateLabel(record.published)],[text('claim'),localized(record.claim)],[text('limit'),localized(record.limit)],[text('decision'),localized(record.decision)],[text('priority'),core.scoreSignal(record.score)+'/100 · '+text('editorialHypothesis')]]){const section=element('div','detail');section.append(element('strong','detail-label',label),element('p','',value));body.append(section);}
     const linkWrap=element('div','detail');linkWrap.append(element('strong','detail-label',record.source));const link=element('a','',text('openSource'));link.href=record.url;link.rel='noopener noreferrer';link.target='_blank';linkWrap.append(link);body.append(linkWrap);const dialog=$('evidence-dialog');if(typeof dialog.showModal==='function')dialog.showModal();else dialog.setAttribute('open','');
@@ -135,7 +137,9 @@
   $('download-brief').addEventListener('click',downloadBrief);
   $('advance-review').addEventListener('click',advanceReview);
   $('reset-review').addEventListener('click',resetReview);
-  const closeDialog=()=>{const d=$('evidence-dialog');if(typeof d.close==='function')d.close();else d.removeAttribute('open')};
+  function restoreEvidenceFocus(){const trigger=evidenceTrigger;evidenceTrigger=null;if(trigger?.isConnected&&!trigger.closest('.view').hidden)trigger.focus({preventScroll:true});}
+  $('evidence-dialog').addEventListener('close',restoreEvidenceFocus);
+  const closeDialog=()=>{const d=$('evidence-dialog');if(typeof d.close==='function')d.close();else{d.removeAttribute('open');restoreEvidenceFocus();}};
   $('dialog-close').addEventListener('click',closeDialog);$('dialog-done').addEventListener('click',closeDialog);
   $('signup-form').addEventListener('submit',event=>{event.preventDefault();$('signup-feedback').textContent=text('signupMessage');$('signup-form').reset();});
   if(!evidenceReady){

@@ -258,6 +258,7 @@ for(const lang of ['nl','fr'])test('BAEIS C: '+lang+' register combines source a
   await cards.locator('.text-btn').click();await expect(page.locator('#dialog-body')).toContainText('BE-EC-003');await expect(page.locator('#dialog-body a')).toHaveAttribute('href',/^https:\/\/www\.nbb\.be\//);
   const scan=await new AxeBuilder({page}).withTags(['wcag2a','wcag2aa','wcag21aa','wcag22aa']).analyze();expect(scan.violations).toEqual([]);
   await page.locator('#dialog-close').click();await expect(cards.locator('.text-btn')).toBeFocused();
+  await cards.locator('.text-btn').click();await page.keyboard.press('Escape');await expect(page.locator('#evidence-dialog')).toBeHidden();await expect(cards.locator('.text-btn')).toBeFocused();
   await page.locator('#evidence-search').fill('no-results-here');await expect(cards).toHaveCount(0);await expect(page.locator('#evidence-count')).toContainText('0 / 5');
   await page.locator('#reset-evidence').click();await expect(cards).toHaveCount(5);await expect(page.locator('#evidence-source')).toHaveValue('ALL');await expect(page.locator('#evidence-type')).toHaveValue('ALL');
 });

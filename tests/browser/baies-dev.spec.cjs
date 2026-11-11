@@ -263,6 +263,8 @@ for(const lang of ['nl','fr'])test('BAEIS C: '+lang+' register combines source a
   await page.locator('#reset-evidence').click();await expect(cards).toHaveCount(5);await expect(page.locator('#evidence-source')).toHaveValue('ALL');await expect(page.locator('#evidence-type')).toHaveValue('ALL');
 });
 
-test('BAEIS C: four workspaces remain usable at narrow and wide viewports in both languages',async({page})=>{
-  for(const lang of ['nl','fr']){await page.goto('/baies-dev/?lang='+lang);for(const width of [320,768,1440]){await page.setViewportSize({width,height:900});for(const view of ['overview','dashboard','radar','evidence']){await navigate(page,view);expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);const heading=page.locator('#heading-'+view);await expect(heading).toBeVisible();expect(await heading.evaluate(e=>e.getBoundingClientRect().top>=document.querySelector('.main-nav').getBoundingClientRect().bottom)).toBe(true);}}}
+// Independent locales preserve all 24 viewport/view checks within the existing timeout.
+for(const lang of ['nl','fr'])test('BAEIS C: '+lang+' workspaces remain usable at narrow and wide viewports',async({page})=>{
+  await page.goto('/baies-dev/?lang='+lang);
+  for(const width of [320,768,1440]){await page.setViewportSize({width,height:900});for(const view of ['overview','dashboard','radar','evidence']){await navigate(page,view);expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);const heading=page.locator('#heading-'+view);await expect(heading).toBeVisible();expect(await heading.evaluate(e=>e.getBoundingClientRect().top>=document.querySelector('.main-nav').getBoundingClientRect().bottom)).toBe(true);}}
 });

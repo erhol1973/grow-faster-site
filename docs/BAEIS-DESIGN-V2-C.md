@@ -14,7 +14,7 @@ Isolated dev continuation of the tested blue palette (PR #71), based on source c
 
 Existing source-validation, publication blocking, review, consent, branding, navigation and contrast cases are retained. Table-row assertions now target semantic evidence cards; the new Dashboard is included in route and NL/FR axe coverage. The mobile menu now expects six links and its next keyboard target is the new primary Dashboard action.
 
-New independent fixtures assert sort order, French claim search and input immutability. Browser cases cover both-language Dashboard counts and role retention, full local download contents, role handoff, sort order, combined filters, empty/reset states, caveat disclosure, dialog focus/axe and all four workspaces at 320/768/1440px.
+New independent fixtures assert sort order, French claim search and input immutability. Browser cases cover both-language Dashboard counts and role retention, full local download contents, role handoff, sort order, combined filters, empty/reset states, caveat disclosure, dialog focus/axe (including explicit return focus after close and Escape in WebKit) and all four workspaces at 320/768/1440px.
 
 BAEIS Lighthouse coverage expands from the landing page to overview, Dashboard, Radar and Evidence Register in both languages and both mobile/desktop profiles: three sequential cold samples per route/profile (48 total). Existing score/LCP/CLS/TBT thresholds remain unchanged. Load scans remain local and continue to exercise all BAEIS resource paths; hash routes share one HTTP document.
 

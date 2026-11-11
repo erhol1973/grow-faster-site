@@ -9,7 +9,7 @@ const ENGINE_VERSION='6.6';
 function inlineScripts(html){return [...new DOMParser().parseFromString(html,'text/html').querySelectorAll('script')].map(el=>el.textContent).join('\n').replaceAll('\r\n','\n');}
 async function inlineSources(){
   const {chromium}=require('playwright');const browser=await chromium.launch({executablePath:process.env.TEST_BROWSER_EXECUTABLE||undefined});
-  try{const page=await browser.newPage();const result=[];for(const file of files(path.join(root,'dist')).filter(f=>f.endsWith('.html')))result.push({file,sha256:hash(await page.evaluate(inlineScripts,fs.readFileSync(path.join(root,'dist',file),'utf8')))});return result;}finally{await browser.close();}
+  try{const page=await browser.newPage();await page.route('**/*',route=>route.abort());const result=[];for(const file of files(path.join(root,'dist')).filter(f=>f.endsWith('.html')))result.push({file,sha256:hash(await page.evaluate(inlineScripts,fs.readFileSync(path.join(root,'dist',file),'utf8')))});return result;}finally{await browser.close();}
 }
 const git=(...args)=>execFileSync('git',args,{cwd:root,encoding:'utf8'}).trim();
 const json=file=>JSON.parse(fs.readFileSync(path.join(root,file),'utf8'));
@@ -21,6 +21,28 @@ function files(dir,prefix='',io=fs) {return io.readdirSync(dir,{withFileTypes:tr
   if(!stat.isFile())throw Error('Non-regular entry in scan scope: '+name);return [name];
 }).sort();}
 function sources(){return files(path.join(root,'dist')).filter(f=>f.endsWith('.js')).map(f=>({file:f,sha256:hash(fs.readFileSync(path.join(root,'dist',f),'utf8').replaceAll('\r\n','\n'))}));}
+function allowLocalRequest(url,method,origin){try{return ['GET','HEAD'].includes(method)&&new URL(url).origin===origin;}catch{return false;}}
+// The catalog is a committed JSON data assignment, not an admin session or a live publication.
+function catalogBlocks(source){
+  const match=source.match(/^\s*window\.GF_CMS_CATALOG\s*=\s*(\[[\s\S]*\]);\s*$/);
+  if(!match)throw Error('Unexpected static CMS catalog format');
+  const catalog=JSON.parse(match[1]);if(!catalog.length)throw Error('Empty static CMS catalog');
+  const result=[],ids=new Set();
+  for(const section of catalog){
+    if(!/^[a-z0-9-]+\.html$/.test(section.route)||!section.section||typeof section.section!=='string'||!Array.isArray(section.fields))throw Error('Invalid static CMS section');
+    for(const field of section.fields){
+      if(typeof field.key!=='string'||!field.key)throw Error('Missing static CMS field key');
+      const identity=section.route+'#cms-catalog:'+section.section+':'+field.key;
+      if(ids.has(identity))throw Error('Duplicate static CMS field: '+identity);ids.add(identity);
+      if(!['text','media'].includes(field.type))throw Error('Unsupported static CMS field type');
+      const value=field.type==='text'?field.nl:field.alt?.nl;
+      if(typeof value!=='string'||(field.type==='text'&&!value.trim()))throw Error('Missing Dutch static CMS value: '+identity);
+      const text=value.replace(/\s+/g,' ').trim();if(!text)continue; // Empty decorative/unused media alt is allowed.
+      result.push({id:identity+':'+(field.type==='text'?'text':'alt'),page:section.route,kind:'cms-catalog:'+field.type,text,sha256:hash(text),source:{adapter:'static-cms-catalog',file:'assets/cms-catalog.js',section:section.section,key:field.key,language:'nl',scope:'committed-defaults'}});
+    }
+  }
+  return result;
+}
 function validateContract(expected,actual,kind){if(JSON.stringify(expected)!==JSON.stringify(actual))throw Error(kind+' extraction contract changed: review adapters and regenerate contract via PR');}
 function validateCoverage(previous,current){
   if(!current.some(p=>p.status==='scanned'&&p.blocks>0))throw Error('Empty Dutch coverage');
@@ -45,6 +67,10 @@ function validateBaseline(b,ancestor){
 function delta(blocks,baseline){
   const old=new Map(baseline.blocks.map(b=>[b.id,b]));
   return {pending:blocks.filter(b=>old.get(b.id)?.sha256!==b.sha256),deleted:baseline.blocks.filter(b=>!blocks.some(n=>n.id===b.id)),unchanged:blocks.filter(b=>old.get(b.id)?.sha256===b.sha256)};
+}
+function findingId(block,match,ledger){
+  const previous=ledger.find(f=>f.blockId===block.id&&f.textHash===block.sha256&&f.rule===match.rule.id&&f.offset===match.offset&&f.length===match.length);
+  return previous?.id||hash(JSON.stringify([block.id,block.sha256,match.rule.id,match.offset,match.length]));
 }
 function endpoint(value){
   const u=new URL(value);
@@ -87,7 +113,7 @@ function domBlocks(){
   while(walker.nextNode()){
     const node=walker.currentNode;if(node.nodeType===1&&node.tagName!=='BR')continue;
     if(excluded(node.nodeType===1?node:node.parentElement))continue;
-    const owner=node.parentElement.closest(selector)||node.parentElement.closest('a,div,section,main,header,footer,nav,body');
+    const owner=node.parentElement.closest('svg text')||node.parentElement.closest(selector)||node.parentElement.closest('a,div,section,main,header,footer,nav,body');
     if(owner){if(!selected.has(owner))selected.set(owner,[]);selected.get(owner).push(node.nodeType===1?' ':node.textContent);}
   }
   for(const [el,nodes] of selected){
@@ -99,6 +125,19 @@ function domBlocks(){
       const text=el.getAttribute(attr)?.trim();if(text)result.push({kind:attr,location:location(el),text});
     }
     if(el.matches('title'))result.push({kind:'title',location:location(el),text:el.textContent.trim()});
+  }
+  // Read the explicitly Dutch mail template; never click mailto links or include entered visitor data.
+  for(const el of document.querySelectorAll('[data-mail-nl]')){
+    if(excluded(el))continue;
+    const query=el.getAttribute('data-mail-nl');if(!query?.startsWith('?'))throw Error('Invalid Dutch mail template');
+    for(const parameter of query.slice(1).split('&'))for(const part of parameter.split('='))decodeURIComponent(part.replace(/\+/g,' '));
+    const params=new URLSearchParams(query.slice(1));
+    for(const component of ['subject','body']){
+      if(params.getAll(component).length>1)throw Error('Duplicate Dutch mail template component');
+      const value=params.get(component);if(!value)continue;
+      const paragraphs=component==='body'?value.split(/\r?\n\s*\r?\n/):[value];
+      paragraphs.forEach((paragraph,index)=>{const text=paragraph.replace(/\s+/g,' ').trim();if(text)result.push({kind:'mail:'+component,location:location(el)+':'+index,text,source:{adapter:'dutch-mail-template',attribute:'data-mail-nl',component,paragraph:index,language:'nl'}});});
+    }
   }
   for(const [name,dictionary] of Object.entries({I18N:window.I18N,I18N_HTML:window.I18N_HTML,ECA:window.ECALocale?.dictionary})){
     for(const [key,values] of Object.entries(dictionary||{})){
@@ -116,16 +155,21 @@ async function inventory(){
   const server=createServer();await new Promise(resolve=>server.listen(0,'127.0.0.1',resolve));
   let browser;const blocks=[],coverage=[];
   try{
+    const builtPages=files(path.join(root,'dist')).filter(f=>f.endsWith('.html'));
+    const catalogFile=path.join(root,'dist/assets/cms-catalog.js');
+    const catalog=fs.existsSync(catalogFile)?catalogBlocks(fs.readFileSync(catalogFile,'utf8')):[];
+    if(catalog.some(b=>!builtPages.includes(b.page)))throw Error('Static CMS catalog references an unbuilt page');
+    blocks.push(...catalog);
     browser=await chromium.launch({executablePath:process.env.TEST_BROWSER_EXECUTABLE||undefined});
-    for(const file of files(path.join(root,'dist')).filter(f=>f.endsWith('.html'))){
-      const exclusions={'journal-fr.html':'Dedicated French publication','boek/index.html':'English book reader and book text','boek/the-coherent-enterprise/index.html':'English book reader and book text'};
+    for(const file of builtPages){
+      const exclusions={'admin.html':'Authenticated Contentstudio; public scan does not open auth or editorial controls','journal-fr.html':'Dedicated French publication','boek/index.html':'English book reader and book text','boek/the-coherent-enterprise/index.html':'English book reader and book text'};
       if(exclusions[file]){coverage.push({file,status:'excluded',reason:exclusions[file]});continue;}
       const context=await browser.newContext({locale:'nl-BE'});
       await context.addInitScript(()=>localStorage.setItem('avs-lang','nl'));
       const page=await context.newPage();const errors=[];
       console.log('Dutch inventory: '+file);
       page.on('pageerror',e=>errors.push(e.message));
-      await page.route('**/*',route=>new URL(route.request().url()).origin===`http://127.0.0.1:${server.address().port}`?route.continue():route.abort());
+      await page.route('**/*',route=>allowLocalRequest(route.request().url(),route.request().method(),`http://127.0.0.1:${server.address().port}`)?route.continue():route.abort());
       const response=await page.goto(`http://127.0.0.1:${server.address().port}/${file}?lang=nl`,{waitUntil:'networkidle'});
       if(!response?.ok())throw Error('Page unavailable: '+file);
       // Translation readiness is synchronous at load; lazy sections are forced into layout.
@@ -140,10 +184,10 @@ async function inventory(){
       const rows=await page.evaluate(domBlocks);
       if(!rows.length)throw Error('Empty Dutch inventory: '+file);
       // Stable identity: dictionary key or full text hash, with page/kind provenance.
-      for(const row of rows){const id=row.kind.startsWith('dictionary:')?row.kind:file+'#'+row.kind+':'+row.location;const previous=blocks.find(b=>b.id===id);if(previous&&previous.text!==row.text)throw Error('Conflicting dictionary values: '+id);if(!previous)blocks.push({id,page:file,kind:row.kind,text:row.text,sha256:hash(row.text)});}
+      for(const row of rows){const id=row.kind.startsWith('dictionary:')?row.kind:file+'#'+row.kind+':'+row.location;const previous=blocks.find(b=>b.id===id);if(previous&&previous.text!==row.text)throw Error('Conflicting dictionary values: '+id);if(!previous)blocks.push({id,page:file,kind:row.kind,text:row.text,sha256:hash(row.text),...(row.source?{source:row.source}:{})});}
       coverage.push({file,status:'scanned',blocks:rows.length});await context.close();
     }
-    return {blocks:blocks.sort((a,b)=>a.id.localeCompare(b.id,'en')),coverage};
+    return {blocks:blocks.sort((a,b)=>a.id.localeCompare(b.id,'en')),coverage,adapters:{network:'local-get-head-only',staticCmsCatalog:{source:'assets/cms-catalog.js',scope:'committed-defaults-not-live-CMS',blocks:catalog.length},dutchMailTemplates:{source:'data-mail-nl',blocks:blocks.filter(b=>b.kind.startsWith('mail:')).length}}};
   }finally{await browser?.close();await new Promise(resolve=>server.close(resolve));}
 }
 async function run(){
@@ -177,7 +221,7 @@ async function run(){
     for(const block of pending){
       let data=cache.get(block.sha256);if(!data){data=await check(block.text,url);cache.set(block.sha256,data);}
       if(data.software.version!==report.engine.version)throw Error('LanguageTool changed version during scan');
-      for(const m of data.matches){const finding={id:hash(block.id+block.sha256+m.rule.id+m.offset+m.length),blockId:block.id,textHash:block.sha256,rule:m.rule.id,offset:m.offset,length:m.length,message:m.message,replacements:(m.replacements||[]).map(r=>r.value),context:block.text,status:'open',firstSeen:report.sourceCommit};newFindings.push(finding);}
+      for(const m of data.matches){const finding={id:findingId(block,m,baseline.findings),blockId:block.id,textHash:block.sha256,rule:m.rule.id,offset:m.offset,length:m.length,message:m.message,replacements:(m.replacements||[]).map(r=>r.value),context:block.text,status:'open',firstSeen:report.sourceCommit};newFindings.push(finding);}
     }
     // Preserve every old finding; disappearance is never treated as a correction.
     const ledger=baseline.findings.map(f=>({...f}));
@@ -194,5 +238,5 @@ async function run(){
   fs.writeFileSync(path.join(out,'summary.md'),summary);
   console.log(summary);if(report.status!=='PASSED')process.exitCode=1;return report;
 }
-module.exports={hash,baselineDigest,inlineScripts,validateContract,validateCoverage,validateBaseline,delta,endpoint,check,batches,distribute,domBlocks,inventory,run,sources,files};
+module.exports={hash,baselineDigest,inlineScripts,allowLocalRequest,catalogBlocks,validateContract,validateCoverage,validateBaseline,delta,findingId,endpoint,check,batches,distribute,domBlocks,inventory,run,sources,files};
 if(require.main===module)run().catch(e=>{console.error(e);process.exitCode=1});

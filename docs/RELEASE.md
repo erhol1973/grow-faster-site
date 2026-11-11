@@ -4,6 +4,8 @@
 
 `nl-language-audit.yml` staat los van publicatie: uitsluitend `contents: read`, geen Pages- of CMS-toegang en geen automatische registermutaties. Planning 08:07 Europe/Brussels wordt pas actief op de standaardbranch. Baselinepromotie en extractiecontractwijzigingen gaan via een aparte branch/PR; zie `NL-LANGUAGE-AUDIT.md`. De drie beschermde statuscontroles en alle bestaande kwaliteitsvoorwaarden blijven behouden. Deze implementatie autoriseert geen main-merge of deployment.
 
+Vervolg op verzoek van de eigenaar, 11 november: activering wordt voorbereid met onafhankelijke agents voor technische audit, taaltriage en dekkingsuitbreiding, onder één orchestrator. De actuele CMS-main moet eerst zonder verlies worden geïntegreerd; eerdere groene checks gelden niet voor de nieuwe revision. Samenvoegen gebeurt uitsluitend via de beschermde PR-route na de actuele gates. Daarna wordt de read-only workflow handmatig op main uitgevoerd en worden release-/smokeresultaten gevolgd. Dit autoriseert geen CMS-login, herstelmail, concept-/publicatiemutatie, migratie of media-acceptatietest op productie. Een nog open CMS-acceptatiepunt wordt niet als geslaagd voorgesteld.
+
 ## Rollen
 - Product owner/orchestrator: scope, acceptatiecriteria, risicoafweging en vrijgave.
 - Lead tester: scenario’s, regressies, negatieve paden en testbewijs.

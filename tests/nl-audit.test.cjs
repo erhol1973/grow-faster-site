@@ -1,9 +1,47 @@
 'use strict';
 const {test}=require('node:test'),assert=require('node:assert/strict');
-const {hash,files,baselineDigest,validateContract,validateCoverage,delta,validateBaseline,endpoint,check,batches,distribute}=require('../scripts/nl-audit.cjs');
+const {hash,files,baselineDigest,allowLocalRequest,catalogBlocks,validateContract,validateCoverage,delta,findingId,validateBaseline,endpoint,check,batches,distribute}=require('../scripts/nl-audit.cjs');
 const {promote}=require('../scripts/nl-promote.cjs');
 const block=text=>({id:'page#paragraph',text,sha256:hash(text),engine:{version:'6.6'}});
 const baseline=()=>({schema:1,sourceCommit:'a'.repeat(40),history:[],blocks:[block('Dit is een zin.')],findings:[]});
+test('Finding tuple identities avoid offset/length collisions while retaining exact legacy identities',()=>{
+  const paragraph=block('Een volledige alinea. '.repeat(8));
+  const first={rule:{id:'RULE'},offset:9,length:12},second={rule:{id:'RULE'},offset:91,length:2};
+  const oldId=hash(paragraph.id+paragraph.sha256+'RULE'+first.offset+first.length);
+  assert.equal(oldId,hash(paragraph.id+paragraph.sha256+'RULE'+second.offset+second.length));
+  assert.notEqual(findingId(paragraph,first,[]),findingId(paragraph,second,[]));
+  const legacy={id:oldId,blockId:paragraph.id,textHash:paragraph.sha256,rule:'RULE',offset:9,length:12,status:'open'};
+  const ledger=[structuredClone(legacy)];assert.equal(findingId(paragraph,first,ledger),oldId);
+  assert.notEqual(findingId(paragraph,second,ledger),oldId);assert.deepEqual(ledger,[legacy]);
+});
+test('Public inventory allows only local GET/HEAD and never auth, signing or write calls',()=>{
+  const origin='http://127.0.0.1:4173';
+  assert.equal(allowLocalRequest(origin+'/index.html','GET',origin),true);
+  assert.equal(allowLocalRequest(origin+'/assets/site.js','HEAD',origin),true);
+  for(const method of ['POST','PUT','PATCH','DELETE'])assert.equal(allowLocalRequest(origin+'/rpc',''+method,origin),false);
+  for(const url of ['https://project.supabase.co/rest/v1/cms_publications','https://project.supabase.co/storage/v1/object/sign/cms-media/image.webp','mailto:person@example.test','invalid'])assert.equal(allowLocalRequest(url,'GET',origin),false);
+});
+test('Static CMS catalog extracts only committed Dutch text/alt with stable source identities',()=>{
+  const catalog=[{route:'index.html',section:'hero',fields:[{key:'heading',type:'text',nl:'Een volledige zin.\nNog een zin.',fr:'Français'},{key:'image',type:'media',alt:{nl:'Een Nederlandse afbeelding',fr:'Image française'}},{key:'optional-video',type:'media',alt:{nl:'',fr:''}}]}];
+  const source='window.GF_CMS_CATALOG='+JSON.stringify(catalog)+';';const rows=catalogBlocks(source);
+  assert.equal(rows.length,2);assert.equal(rows[0].text,'Een volledige zin. Nog een zin.');
+  assert.equal(rows[0].id,'index.html#cms-catalog:hero:heading:text');
+  assert.equal(rows[0].source.scope,'committed-defaults');assert.equal(rows[0].source.file,'assets/cms-catalog.js');
+  assert.equal(rows[1].text,'Een Nederlandse afbeelding');assert.ok(!rows.some(r=>r.text.includes('Français')));
+  const changed=structuredClone(catalog);changed[0].fields[0].nl='Een gewijzigde volledige zin.';
+  const after=catalogBlocks('window.GF_CMS_CATALOG='+JSON.stringify(changed)+';');
+  assert.equal(after[0].id,rows[0].id);assert.notEqual(after[0].sha256,rows[0].sha256);
+});
+test('Static CMS catalog fails closed on executable tails, missing Dutch values and duplicate keys',()=>{
+  const catalog=[{route:'index.html',section:'hero',fields:[{key:'heading',type:'text',nl:'Nederlandse tekst.'}]}];
+  const assignment=value=>'window.GF_CMS_CATALOG='+JSON.stringify(value)+';';
+  assert.throws(()=>catalogBlocks(assignment(catalog)+'globalThis.catalogExecuted=true;'),/format/);
+  assert.equal(globalThis.catalogExecuted,undefined);
+  assert.throws(()=>catalogBlocks('window.GF_CMS_CATALOG=[{bad:true}];'));
+  const missing=structuredClone(catalog);delete missing[0].fields[0].nl;assert.throws(()=>catalogBlocks(assignment(missing)),/Missing Dutch/);
+  const duplicate=structuredClone(catalog);duplicate[0].fields.push(duplicate[0].fields[0]);assert.throws(()=>catalogBlocks(assignment(duplicate)),/Duplicate/);
+  const unsafe=structuredClone(catalog);unsafe[0].route='../admin.html';assert.throws(()=>catalogBlocks(assignment(unsafe)),/section/);
+});
 test('OneDrive placeholders are files; actual symlinks and special entries are rejected',()=>{
   const io={readdirSync:()=>[{name:'page.html',isSymbolicLink:()=>true}],lstatSync:()=>({isSymbolicLink:()=>false,isDirectory:()=>false,isFile:()=>true})};
   assert.deepEqual(files('/fixture','',io),['page.html']);

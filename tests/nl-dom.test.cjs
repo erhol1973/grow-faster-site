@@ -23,5 +23,21 @@ test('DOM extraction retains sentence context, hidden NL, metadata and dictionar
     const boundaries=await page.evaluate(domBlocks);
     assert.ok(boundaries.some(r=>r.text==='Een volledige zin. Een tweede zin.'));
     assert.ok(boundaries.some(r=>r.text==='Eerste zin. Tweede zin.'));
+    await page.setContent('<html lang="nl"><body><div><svg><text>Strategische samenhang</text><text>Operationele samenhang</text></svg></div><p>Een <strong>volledige</strong> zin.</p></body></html>');
+    const diagram=await page.evaluate(domBlocks);
+    assert.ok(diagram.some(r=>r.text==='Strategische samenhang'));assert.ok(diagram.some(r=>r.text==='Operationele samenhang'));
+    assert.ok(!diagram.some(r=>r.text==='Strategische samenhangOperationele samenhang'));assert.ok(diagram.some(r=>r.text==='Een volledige zin.'));
+    await page.setContent('<html lang="nl"><body><a data-mail-nl="?subject=Vaste%20rol&amp;body=Beste%20Erlend%2C%0A%0AWe%20willen%20graag%20een%20vaste%20rol%20bespreken.%20Dit%20is%20de%20context." data-mail-fr="?body=Texte%20fran%C3%A7ais" href="mailto:example@example.test">Bespreek de rol</a><a data-mail="?body=English%20default">English only</a></body></html>');
+    await page.evaluate(()=>{window.mailClicks=0;document.addEventListener('click',()=>window.mailClicks++);});
+    const mail=await page.evaluate(domBlocks);const templates=mail.filter(r=>r.kind.startsWith('mail:'));
+    assert.equal(templates.length,3);assert.ok(templates.some(r=>r.text==='Vaste rol'));
+    assert.ok(templates.some(r=>r.text==='We willen graag een vaste rol bespreken. Dit is de context.'));
+    assert.ok(templates.every(r=>r.source.attribute==='data-mail-nl'&&r.source.language==='nl'));
+    assert.ok(!templates.some(r=>r.text.includes('français')||r.text.includes('English')));
+    assert.equal(await page.evaluate(()=>window.mailClicks),0);assert.equal(page.url(),'about:blank');
+    await page.setContent('<html lang="nl"><body><a data-mail-nl="?body=Ongeldig%E0%A4%A">Link</a></body></html>');
+    await assert.rejects(page.evaluate(domBlocks),/URI malformed/);
+    await page.setContent('<html lang="nl"><body><a data-mail-nl="?body=Een&amp;body=Twee">Link</a></body></html>');
+    await assert.rejects(page.evaluate(domBlocks),/Duplicate Dutch mail/);
   }finally{await browser.close();}
 });

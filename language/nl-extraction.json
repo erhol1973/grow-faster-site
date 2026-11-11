@@ -1,10 +1,35 @@
 {
   "schema": 1,
-  "scope": "rendered_local_nl_and_runtime_dictionaries",
+  "scope": "rendered_local_nl_runtime_dictionaries_static_cms_and_mail",
+  "technicalReview": {
+    "date": "2026-11-11",
+    "reason": "Reviewed CMS-main integration, read-only catalog/mail adapters and separate SVG labels; no language approval",
+    "officialApproval": false
+  },
   "javascript": [
     {
       "file": "assets/book-reader.js",
       "sha256": "a42ed03bc91a891387db047031803c0de04d78f0950da1f5d7c79b63ca931bc6"
+    },
+    {
+      "file": "assets/cms-admin.js",
+      "sha256": "0ad372e2844c9cd8ce787e02e67163209f8159ba42bf01d73666d8eee78c3ed7"
+    },
+    {
+      "file": "assets/cms-catalog.js",
+      "sha256": "106babfb06d55b748a615d46c2ca277adf1e51daf20600f843df3d76f6457a3b"
+    },
+    {
+      "file": "assets/cms-client.js",
+      "sha256": "d5bb29e182e568037d2f633dfdf58c8aa1a75723752872243fa7f63caf9de0ad"
+    },
+    {
+      "file": "assets/cms-config.js",
+      "sha256": "9db9aa02f7cf8fd9dd0acfddecb0bf6dffea3fd28e5d8b63c25b352c08d73a38"
+    },
+    {
+      "file": "assets/cms-public.js",
+      "sha256": "ef3be989cbb61adb1402ba08c26c026b5ff90a2f59035c92509f6cdd9c9e078b"
     },
     {
       "file": "assets/coherence-film.js",
@@ -36,7 +61,7 @@
     },
     {
       "file": "assets/i18n.js",
-      "sha256": "86b012b7c2085413fce9a3e33362a6b40005aa92095b82522c378fdb7a4711bf"
+      "sha256": "3387f79f5d7f674195276ff379987adf8fc2ccb5e5aa33573c3945d41aa84a42"
     },
     {
       "file": "assets/journal.js",
@@ -56,7 +81,7 @@
     },
     {
       "file": "assets/site.js",
-      "sha256": "d3bb7825842b6883ff493b5cb0fcada4370c525a37dec63cac47af49dd80701d"
+      "sha256": "13b620570b45b2d7ff293d9dc32209b2a82a5a59da3781eaf6ac9d1e859a4c90"
     },
     {
       "file": "assets/ux.js",
@@ -78,11 +103,15 @@
     },
     {
       "file": "about.html",
-      "sha256": "50bb706cdd79779234f84abcf443ad9d48bd2130300359319d3d7129cea8e3d5"
+      "sha256": "28f4aac4989cb89b32e664c3ded9cba69aa59e7f8408f00c568d02754d40682e"
     },
     {
       "file": "accessibility.html",
       "sha256": "d471083ac75a0c3966c07716aaf17ca1b9f77a721e97f7d3d5319bbbc7bdfdc1"
+    },
+    {
+      "file": "admin.html",
+      "sha256": "6a3cf5192354f71615ac51034b3e97c20eda99643fcaf5bbe6d41ad59bd12167"
     },
     {
       "file": "all-articles.html",
@@ -90,7 +119,7 @@
     },
     {
       "file": "approach.html",
-      "sha256": "545c38b0922de19734fbffde62792c37c2aef6a3216cfa472449173165220f7d"
+      "sha256": "538d6440534fa5f615e8a26932792a82a2e4a33a97886e2d815eab8fc216d415"
     },
     {
       "file": "articles-1/enterprise-architecture-needs-enterprise-coherence.html",
@@ -114,7 +143,7 @@
     },
     {
       "file": "books.html",
-      "sha256": "a167552b03787e38501fcf895aa5977e55f01a0102e98d7c2b598b38c2fed895"
+      "sha256": "2f5428f4e13f39414190852df9c76d037c7e0f538da6fd926cca3c4c0c5cb7a6"
     },
     {
       "file": "coherence-sim.html",
@@ -122,7 +151,7 @@
     },
     {
       "file": "coherence.html",
-      "sha256": "9edae40395c7604b590ffaf51a0579c377e8762971d9284bcc3c3f7033a6bbf5"
+      "sha256": "e747f3687e3b5b89d6a68cec36d392a6a66d459f9cac5955d3ce6e804d507002"
     },
     {
       "file": "coordination-overload-1.html",
@@ -142,7 +171,7 @@
     },
     {
       "file": "index.html",
-      "sha256": "337d5079f5a09cee76f81f27c7a54db057ca336e13757070bb86fa0339d8f9df"
+      "sha256": "13d78b95576434d274f799aabbc17d84849bae30b5e5ad44adcb5e3b73a66059"
     },
     {
       "file": "insights-ai-pilot.html",
@@ -150,7 +179,7 @@
     },
     {
       "file": "insights.html",
-      "sha256": "b074b90bec2a0de68b4bebbecc52bef452b747214d0fec243d78297a1f0ae73a"
+      "sha256": "04550110ad74df06a33f4f22200c529dde88c435c3627d14de06948eb3b6bc98"
     },
     {
       "file": "journal-fr.html",
@@ -162,7 +191,7 @@
     },
     {
       "file": "operating-model.html",
-      "sha256": "545c38b0922de19734fbffde62792c37c2aef6a3216cfa472449173165220f7d"
+      "sha256": "538d6440534fa5f615e8a26932792a82a2e4a33a97886e2d815eab8fc216d415"
     },
     {
       "file": "privacy.html",
@@ -170,7 +199,7 @@
     },
     {
       "file": "process.html",
-      "sha256": "545c38b0922de19734fbffde62792c37c2aef6a3216cfa472449173165220f7d"
+      "sha256": "538d6440534fa5f615e8a26932792a82a2e4a33a97886e2d815eab8fc216d415"
     },
     {
       "file": "terms.html",
@@ -186,15 +215,15 @@
     },
     {
       "file": "transformation.html",
-      "sha256": "f193f784681548009e4ef8fa729b5980f854f678a895eee70607e424293d0571"
+      "sha256": "18b2f11891e52280598086d8a2b5d9510588fea66dad3b87071d80ab4ca462a1"
     },
     {
       "file": "value.html",
-      "sha256": "545c38b0922de19734fbffde62792c37c2aef6a3216cfa472449173165220f7d"
+      "sha256": "538d6440534fa5f615e8a26932792a82a2e4a33a97886e2d815eab8fc216d415"
     },
     {
       "file": "workshop.html",
-      "sha256": "dbc61f9dc89ddeb26e062b9d13ef7783779010616834a5bf0ec94e226385509f"
+      "sha256": "8023426b7186377817eabd5ab75912535c266859c3c197eabc41d8f2d4779397"
     }
   ]
 }

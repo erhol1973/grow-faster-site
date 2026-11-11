@@ -18,6 +18,16 @@ All shipped `.js` files and inline scripts are covered by an exact, LF-normalise
 
 Explicit exclusions: the dedicated French `journal-fr.html`, both English book readers under `boek/`, and legacy refresh redirects. PDFs, images, text inside book/journal page images, live CMS/HubSpot content, third-party form states, canvas text and interactive states not represented by the initial DOM/dictionaries are **not covered**. This is `rendered_local_nl_and_runtime_dictionaries`, not a claim of exhaustive `source_nl_inventory` or live-site coverage. Runtime-only JS text outside those states is protected by the extraction-change guard, not exhaustively extracted. Extending scope requires fixtures for the new adapter/state. Noscript text is excluded.
 
+### Reviewed coverage extension, 11 November 2026
+
+After integrating main's Contentstudio changes, the inventory also reads the committed `GF_CMS_CATALOG` as strict JSON data: Dutch text and nonempty media-alt defaults, with route/section/field provenance. It does **not** authenticate, open the editor, read drafts or fetch live publication overlays. `admin.html` is explicitly excluded. Source fallback and committed CMS defaults may differ from the currently published CMS content; no live-CMS language coverage is claimed. CMS auth, recovery, save/publish, upload and media-signing requests remain blocked. The browser accepts only local GET/HEAD; inert script parsing blocks all network requests.
+
+Dutch email templates in `data-mail-nl` contribute decoded subjects and complete body paragraphs without clicking mail links or sending messages. Malformed URI encodings and duplicate subject/body components fail the scan. SVG text labels are inventoried separately instead of concatenated into fictitious words. Other counter-fragment composition and exhaustive ECA interaction-state checks remain outside this extension.
+
+New finding IDs hash an unambiguous JSON tuple. Exact prior findings retain their existing IDs; no previous finding is deleted or marked corrected because extraction changes or text disappears. Historical extractor-noise findings remain traceable in the ledger.
+
+`language/nl-triage.json` contains advisory agent triage of the original 2,221 locations / 760 text-rule combinations, not human approval or a suppression list. Only three Dutch euro-spacing values (including matching static CMS defaults) and two Dutch month-name occurrences were corrected initially, supported by [Taaladvies.net](https://taaladvies.net/euro-of-eur-of-euroteken/) and [Team Taaladvies](https://www.vlaanderen.be/team-taaladvies/spellingregels/hoofdletters/hoofdletters-09-namen-van-dagen-feestdagen-periodes-en-historische-gebeurtenissen). Brand terms, contextual false positives and disputed suggestions stay open. Human review fields are not invented.
+
 ## Versioned baseline and register
 
 The earlier ChatGPT Library baseline and register were not accessible as attachments, repository files or connected tools. No reviews or findings from that register have been guessed or overwritten. The repository starts a separate machine baseline with an explicit provenance note. Import the earlier register by a reviewed PR when its actual file is available; preserve its original evidence and distinguish human review from machine results.

@@ -298,7 +298,7 @@ window.GF_CMS_CATALOG=[
         "key": "f1c0050f2f183-0",
         "type": "text",
         "label": "3.5 hours · 4–8 participants · €2,750 excluding VAT per team",
-        "nl": "3,5 uur · 4–8 deelnemers · €2.750 exclusief btw per team",
+        "nl": "3,5 uur · 4–8 deelnemers · € 2.750 exclusief btw per team",
         "fr": "3,5 heures · 4 à 8 participants · 2 750 € HT par équipe"
       },
       {
@@ -745,7 +745,7 @@ window.GF_CMS_CATALOG=[
         "key": "f78a430897780-0",
         "type": "text",
         "label": "3.5 hours · 4–8 participants · €2,750 excluding VAT per team",
-        "nl": "3,5 uur · 4–8 deelnemers · €2.750 exclusief btw per team",
+        "nl": "3,5 uur · 4–8 deelnemers · € 2.750 exclusief btw per team",
         "fr": "3,5 heures · 4 à 8 participants · 2 750 € HT par équipe"
       },
       {
@@ -4596,7 +4596,7 @@ window.GF_CMS_CATALOG=[
         "key": "fc211225156ad-0",
         "type": "text",
         "label": "€2,750",
-        "nl": "€2.750",
+        "nl": "€ 2.750",
         "fr": "2 750 €"
       },
       {

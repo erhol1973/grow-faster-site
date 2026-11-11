@@ -6,7 +6,7 @@ const path=require('node:path');
 const root=path.resolve(__dirname,'..');
 const core=require('../assets/baies-dev-core.js');
 const data=require('../assets/baies-dev-data.js');
-const html=fs.readFileSync(path.join(root,'baies-dev.html'),'utf8');
+const html=fs.readFileSync(path.join(root,'baies-dev','index.html'),'utf8');
 const app=fs.readFileSync(path.join(root,'assets/baies-dev-app.js'),'utf8');
 
 test('BAEIS dev: five unique, evidence-linked source records',()=>{

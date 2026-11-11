@@ -4,7 +4,7 @@
 
 ## Four prototype increments
 
-1. **S1 — Navigation / Product foundation:** separate `baies-dev.html` route, premium blue design, mobile layout, NL/FR switching, five prototype sections, accessible controls.
+1. **S1 — Navigation / Product foundation:** separate `baies-dev/index.html` route, premium blue design, mobile layout, NL/FR switching, five prototype sections, accessible controls.
 2. **S2 — Trusted evidence:** five traceable primary source records from Statbel, VLAIO/ECOOM and NBB; claim IDs, dates, limitations, proof categories, record validation and allowlisted source domains.
 3. **S3 — Editorial workflow:** deterministic four-stage local simulation. Metadata checks before review, challenge before internal preview approval, audit history in memory only. **It is not an actual independent agent runtime.**
 4. **S4 — Executive experience:** CEO/CFO/CIO/COO lens, sector and search filtering, evidence dialog, local sample brief download, no-send signup consent simulation.
@@ -35,7 +35,7 @@ Original URLs and caveats are maintained in `assets/baies-dev-data.js`.
 ## Verification
 
 - `node --test tests/baies-dev.test.cjs`
-- `npm run build` (the branch additionally packages `baies-dev.html`; JS/CSS are copied by the existing assets whitelist)
+- `npm run build` (the branch additionally packages `baies-dev/index.html`; JS/CSS are copied by the existing assets whitelist)
 - `npm test`, `npm run security`, `npm run test:e2e`, `npm run test:load`, `npm run test:performance` and the unchanged repository CI gates before a public preview can be described as fully validated.
 - New browser scenarios: `tests/browser/baies-dev.spec.cjs` (Chromium desktop and mobile via existing config).
 - Local exploratory smoke checks were exercised separately on desktop 1440, tablet 768 and mobile 390 viewport with browser-injected static assets; this does not substitute for a real deployed URL/HTTP/browser build check.

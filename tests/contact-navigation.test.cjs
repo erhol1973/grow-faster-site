@@ -11,7 +11,7 @@ test('served ordinary pages have complete menus and Contact opens without a frag
   let pages=0;
   for(const file of fs.readdirSync(root).filter(f=>f.endsWith('.html'))){
     const response=await fetch(base+'/'+file),html=await response.text();assert.equal(response.status,200,file);
-    const nav=html.match(/<nav\b[\s\S]*?<\/nav>/i);if(!nav)continue;pages++;
+    const nav=html.match(/<nav\b[^>]*class="nav [\s\S]*?<\/nav>/i);if(!nav)continue;pages++;
     const actual=[...nav[0].matchAll(/<a\b[^>]*href="([^"]+)"/g)].map(m=>m[1]);
     assert.deepEqual(actual,routes,`${file}: shared navigation cases must match the complete menu`);
     assert.deepEqual([...nav[0].matchAll(/<a\b[^>]*class="[^"]*\bl\b[^"]*"[^>]*href="([^"]+)"/g)].map(m=>m[1]),[...navigation.primary,navigation.action],`${file}: Home, four categories and the Work with me action`);

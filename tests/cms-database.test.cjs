@@ -1,0 +1,34 @@
+/* PostgreSQL policy regression tests; mocked Auth claims and Storage metadata, no remote calls. */
+'use strict';
+const {test}=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs');
+const {PGlite}=require('@electric-sql/pglite');
+test('CMS publication boundary and private-media policies on PostgreSQL',async t=>{
+ const db=new PGlite();const admin='aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa',reader='bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb',id='cccccccc-cccc-4ccc-8ccc-cccccccccccc';
+ const query=(sql,args=[])=>db.query(sql,args);const scalar=async sql=>(await query(sql)).rows[0].n;
+ const denied=async(sql,code='42501')=>assert.rejects(db.exec(sql),e=>e.code===code);
+ try{
+ await db.exec(`create role anon;create role authenticated;create role service_role bypassrls;create schema auth;create table auth.users(id uuid primary key,email text);create function auth.uid() returns uuid language sql stable as $$select nullif(current_setting('request.jwt.claim.sub',true),'')::uuid$$;grant usage on schema auth,public to anon,authenticated,service_role;create schema storage;create table storage.buckets(id text primary key,name text,public boolean,file_size_limit bigint,allowed_mime_types text[]);create table storage.objects(id uuid primary key default gen_random_uuid(),bucket_id text references storage.buckets(id),name text,unique(bucket_id,name));alter table storage.objects enable row level security;grant usage on schema storage to anon,authenticated;grant select,insert,update,delete on storage.objects to anon,authenticated;insert into auth.users values('${admin}','admin@example.test'),('${reader}','reader@example.test');`);
+ await db.exec(fs.readFileSync('tests/support/cms-existing-schema.sql','utf8'));
+ await db.exec(fs.readFileSync('supabase/migrations/20261108_cms_publications.sql','utf8'));
+ await db.exec(fs.readFileSync('supabase/migrations/20261109_cms_conflict_http409.sql','utf8'));
+ await db.exec(`insert into private.cms_admins(user_id) values('${admin}');insert into storage.buckets values('cms-media','cms-media',false,26214400,array['image/jpeg','image/png','image/webp','image/avif','video/mp4']);insert into public.page_sections(id,page_slug,section_key) values('${id}','home','hero');set role anon;`);
+ await t.test('anonymous reads no drafts and cannot save, publish, self-promote or upload',async()=>{assert.equal(await scalar('select count(*)::int n from public.page_sections'),0);assert.equal(await scalar('select count(*)::int n from public.cms_publications'),0);await denied(`select public.cms_publish_section('${id}',now())`);await denied(`select * from private.cms_admins`);await denied(`insert into storage.objects(bucket_id,name) values('cms-media','00000000-0000-4000-8000-000000000000.jpg')`);});
+ await db.exec(`reset role;set role authenticated;set request.jwt.claim.sub='${reader}';`);
+ await t.test('signed-in non-admin has no privileged actions or version history',async()=>{assert.equal(await scalar('select public.cms_is_admin() n'),false);await denied(`select public.cms_publish_section('${id}',now())`);await denied(`select public.cms_save_section('${id}',now(),'{}')`);assert.equal(await scalar('select count(*)::int n from public.cms_versions'),0);await denied(`insert into private.cms_admins(user_id) values('${reader}')`);});
+ await db.exec(`set request.jwt.claim.sub='${admin}';insert into storage.objects(bucket_id,name) values('cms-media','00000000-0000-4000-8000-000000000000.jpg');`);
+ let revision=await scalar(`select to_jsonb(p)->>'updated_at' n from public.page_sections p where id='${id}'`);
+ const content={heading:{nl:'Titel',fr:'Titre'},body:{nl:'Tekst',fr:'Texte'},settings:{fields:{title:{type:'text',nl:'Eerste versie',fr:'Première version'},photo:{type:'media',path:'00000000-0000-4000-8000-000000000000.jpg',alt:{nl:'Foto',fr:'Photo'}}}}};
+ const save=async()=>{const row=(await query('select to_jsonb(public.cms_save_section($1,$2,$3)) n',[id,revision,content])).rows[0].n;revision=row.updated_at;return row;};
+ await t.test('admin saves draft; stale saves and publishes fail with a deterministic conflict',async()=>{const previous=revision;await save();assert.equal(await scalar('select count(*)::int n from public.cms_publications'),0);await assert.rejects(query('select public.cms_save_section($1,$2,$3)',[id,previous,content]),e=>e.code==='PT409');await assert.rejects(query('select public.cms_publish_section($1,$2)',[id,previous]),e=>e.code==='PT409');});
+ await db.exec('reset role;set role anon;');
+ await t.test('private draft upload is not readable to anonymous visitors',async()=>{assert.equal(await scalar("select count(*)::int n from storage.objects where bucket_id='cms-media'"),0);});
+ await db.exec(`reset role;set role authenticated;set request.jwt.claim.sub='${admin}';`);
+ await t.test('publish atomically records version and public snapshot',async()=>{await query('select public.cms_publish_section($1,$2)',[id,revision]);assert.equal(await scalar('select count(*)::int n from public.cms_versions'),1);});
+ content.settings.fields.title.nl='Nieuw concept';await save();
+ await db.exec('reset role;set role anon;');
+ await t.test('editing a new draft preserves the last published text and exposes only referenced media',async()=>{assert.equal(await scalar("select content->'settings'->'fields'->'title'->>'nl' n from public.cms_publications"),'Eerste versie');assert.equal(await scalar("select count(*)::int n from storage.objects where bucket_id='cms-media'"),1);await denied('select * from public.cms_versions');await denied("insert into public.cms_publications(section_id,page_slug,section_key,content) values(gen_random_uuid(),'x','x','{}')");});
+ await db.exec(`reset role;set role authenticated;set request.jwt.claim.sub='${admin}';`);
+ await t.test('referenced uploads cannot be overwritten or deleted',async()=>{await db.exec("delete from storage.objects where bucket_id='cms-media';update storage.objects set name='changed.jpg' where bucket_id='cms-media';");assert.equal(await scalar("select count(*)::int n from storage.objects where name='00000000-0000-4000-8000-000000000000.jpg'"),1);});
+ await t.test('second publish succeeds; incomplete translations and missing uploads cannot publish',async()=>{await query('select public.cms_publish_section($1,$2)',[id,revision]);assert.equal(await scalar('select count(*)::int n from public.cms_versions'),2);content.settings.fields.title.fr='';await save();await assert.rejects(query('select public.cms_publish_section($1,$2)',[id,revision]),e=>e.code==='23514');content.settings.fields.title.fr='Bon';content.settings.fields.photo.path='ffffffff-ffff-4fff-8fff-ffffffffffff.jpg';await save();await assert.rejects(query('select public.cms_publish_section($1,$2)',[id,revision]),e=>e.code==='23514');});
+ }finally{await db.close();}
+});

@@ -404,6 +404,7 @@
     pick(curSpec);evalP();sim();renderBPMN();coh();if(typeof fitNav==="function")fitNav();
     if(save)store.set("avs-lang",l);
     root.classList.add("i18n-ready");
+    document.dispatchEvent(new CustomEvent("gf:language",{detail:{language:l}}));
   }
   /* language menus */
   const langs=[...document.querySelectorAll(".lang")];
@@ -488,3 +489,4 @@
   if(!reduce&&fin)fin.addEventListener("pointermove",e=>{const r=fin.getBoundingClientRect();fin.style.setProperty("--mx",(e.clientX-r.left)+"px");fin.style.setProperty("--my",(e.clientY-r.top)+"px")});
 
 })();
+

@@ -10,7 +10,7 @@ function createCacheServer(){
     if(!fs.existsSync(target)||!fs.statSync(target).isFile()){res.writeHead(404);res.end();return}
     const html=file.endsWith('.html'),etag='"'+(html?version:'asset')+'-'+file+'"';requests.push({file,version,conditional:req.headers['if-none-match']||null});
     if(req.headers['if-none-match']===etag){res.writeHead(304,{'ETag':etag,'Cache-Control':'max-age=0, must-revalidate'});res.end();return}
-    let body=fs.readFileSync(target);if(html){let text=body.toString().replace('<html','<html data-fixture-release="'+version+'"');if(version===1)text=oldMarkup(text);body=Buffer.from(text)}
+    let body=fs.readFileSync(target);if(file==='assets/cms-config.js')body=Buffer.from("window.GF_CMS_CONFIG=Object.freeze({url:'https://dbooobckaqbkrmkpcuem.supabase.co',key:''});");if(html){let text=body.toString().replace('<html','<html data-fixture-release="'+version+'"');if(version===1)text=oldMarkup(text);body=Buffer.from(text)}
     const type=html?'text/html; charset=utf-8':file.endsWith('.js')?'text/javascript':file.endsWith('.css')?'text/css':file.endsWith('.svg')?'image/svg+xml':file.endsWith('.jpg')?'image/jpeg':'application/octet-stream';
     res.writeHead(200,{'Content-Type':type,'ETag':etag,'Cache-Control':html?'max-age=0, must-revalidate':'public, max-age=3600'});res.end(body);
   });return {server,requests,publish(){version=2}};

@@ -1,5 +1,13 @@
 # Testplan en kwaliteitsbeleid
 
+## Contentstudio, 8 november 2026
+
+Het CMS voegt afzonderlijke concepten en gepubliceerde snapshots toe aan de bestaande Supabase-structuur. De blijvende clienttests controleren sessies, beheerderscontrole, revisieconflicten en uploads. PostgreSQL-tests voeren de werkelijke migratie en RLS uit met nagebootste Supabase Auth-claims en Storage-metadata: geen conceptlek, geen zelfpromotie, geen publicatie door gewone gebruikers, behoud van de vorige publicatie en onveranderlijke uploadpaden. Dit bewijst nog geen live Auth- of Storage-werking.
+
+De CMS-browsergevallen controleren desktop en mobiel, weigering van gewone accounts, opslaan vóór publiceren, privévoorbeelden in de echte pagina, veilige tekstweergave, NL/FR en toegankelijkheid. De gewone lokale browserserver schakelt alleen de externe CMS-configuratie uit via `--cms-test`; gerichte CMS-gevallen gebruiken een synthetische API. De cachefixture gebruikt echte HTTP-cacheheaders en geen browserrouting. De oorspronkelijke releasegrenzen blijven ongewijzigd. Exacte resultaten en onvolledige controles staan in `docs/CMS-VERIFICATION.md`.
+
+
+
 ## Maandblad: taal, terugkeer en leesbediening, 7 november 2026
 
 Het promotieblok toont uitsluitend de gekozen NL/FR-taal en de bijbehorende leesknop. De teruglink opent dezelfde rubriek op de website in de taal van de lezer. Bladerpijlen staan naast de liggende pagina; A−/A+ vergroot de leespagina zonder vaste bediening of inschrijving te verbergen. Browsergevallen controleren beide taalroutes, terugkeer, zijpijlen op desktop/mobiel en vergroting. Alle dertig pagina’s, broncijfers en de bestaande kleur- en volgordecontroles blijven getest.
@@ -197,10 +205,54 @@ NL/FR film playback, poster/caption matching, no autoplay, narrow left-aligned l
 
 The final media is the user-supplied 23-second commercial, shared by both locales. Dutch/French captions translate the two supplied English dialogue lines and the visible English end card; office ambience/music is labelled. Caption timing follows the supplied approximate dialogue timings. Old VR-dialogue captions are removed.
 
-
 ## Original 44-second commercial — owner-approved budget, 9 November 2026
 
 The owner explicitly requested preserving the uploaded video exactly and then authorised changing its size limit. Only media/grow-faster-commercial-final-44s.mp4 now has a 22 MiB budget (previously 15 MiB); its actual size is 21,549,033 bytes. A permanent byte-count and SHA-256 regression preserves the original upload, including all 44 seconds and its original audio. Playback-to-ended and absence of subtitle tracks remain required. This supersedes the earlier 23-second/caption notes for this film. Other budgets and release gates remain unchanged. This budget change does not authorise a merge or production deployment; outstanding release gates and preview range-delivery verification still apply.
 
 
 Release authorisation, 9 November 2026: the owner subsequently requested production publication after the required checks pass. Main integration retains the publication-identity fixture and updates it to the exact approved 44-second upload, superseding the prior 23-second identity. No other release gate is waived.
+
+## CMS integration acceptance, 9 November 2026
+
+Main a8fae016 and CMS head 00559b7 are integrated without dropping the 44-second playback-to-ended/no-subtitle assertions or the Coherence immediate-scroll regression. CMS browser coverage now explicitly dismisses and accepts publication confirmation, rejects publication before preview, and checks that filtering preserves every NL/FR text field including hidden edits. The public website supports NL/FR only; no English editor is introduced. Existing thresholds and retries are unchanged.
+
+No release is authorised by this integration. Live Supabase publication tests must not use the shared production database. The prior accidental Books publication was withdrawn with exact identity/timestamp and unchanged draft/history checks; do not repeat that deletion. Real isolated Auth/Storage acceptance remains a release blocker.
+CodeQL integration review: preview language URLs now use fixed NL/FR suffixes rather than concatenating a DOM-controlled value. A browser regression injects an unsupported selector value and verifies the NL fallback; no scanner rule is suppressed.
+
+## Mobile cache compatibility and Lighthouse coverage, 9 November 2026
+
+The temporary mobile cache-transition skip is removed. A retained local failure trace showed that the current wordmark in legacy navigation markup pushed the hamburger outside the mobile viewport. Wordmark dimensions now apply to both legacy and executive navigation; the existing cache scenario also asserts that the hamburger is in the viewport before opening it. No forced click, timeout increase or retry change is used.
+
+Lighthouse now collects accessibility and SEO alongside performance for every existing route, mode and sample, and retains scores in JSON/HTML and median summaries. Existing performance thresholds and axe accessibility assertions remain unchanged. Accessibility/SEO scores are evidence for release review, not an automatic waiver of audit findings. Real isolated Supabase acceptance remains outstanding; no production writes or release are authorised.
+
+## Dependency security follow-up, 9 November 2026
+
+A targeted pnpm update of the transitive @sentry/node dependency within Lighthouse's existing supported range updates Sentry to 11.11.0, glob to 14.0.4 and minimatch to 11.0.5. Direct package versions, browser versions, audit thresholds and package-manager version remain unchanged; no override is introduced. Frozen-lockfile installation and Lighthouse import pass; pnpm audit reports zero advisories.
+
+Three local Windows/system-Chrome homepage mobile samples after the update report accessibility 100 and SEO 100 each. Performance scores 83/82/88 (median 83), median LCP 2561.71 ms and median TBT 432 ms fail the existing limits; these results are retained and are not green release evidence. Full pinned Linux CI on the final head is still required. Live read-only Home/Books/Coherence continue to match main a8fae016; anonymous REST reveals no drafts/publications and denies history. No production writes occurred.
+
+## Isolated CMS preview, 9 November 2026
+
+The exact feature-secure-supabase-cms.grow-faster-site.pages.dev hostname selects growfaster-test for all CMS clients, including page previews and public media. Production keeps its existing project. No URL parameter can choose or override an environment. The editor displays TEST on the isolated host; recovery is disabled there pending a separate redirect review. Admin CSP permits the two explicit project origins without wildcards. New configuration regressions verify preview routing, production preservation, lookalike-host rejection and URL-override rejection. The public test project key is publishable; no privileged key or password is added. Real Auth/Storage acceptance is still pending and production release remains NO-GO.
+
+## Isolated acceptance and conflict fix, 9 November 2026
+
+Actual test-project evidence (gqsvoioccvklzfmdmexy only): ordinary account denial was shown by the owner; the authorised administrator session saved a Books NL/FR marker, both actual-page previews displayed it, and anonymous publications stayed empty before confirmation. A confirmed publication produced one snapshot and one history version for section d24e0505-b003-4288-8c31-c83f80834ef2. Anonymous page/API delivery showed the published marker; a later private draft did not replace or leak into it. The first interrupted confirmation attempt left no publication.
+
+A real stale-revision save timed out with SQLSTATE 40001 on PostgREST 14. Supabase documents its retry loop: https://supabase.com/kb/troubleshooting/high-cpu-and-infinite-transaction-retries-when-using-custom-error-codes-in-rpc-functions-77326b . Follow-up migration 20261109_cms_conflict_http409.sql preserves both RPC definitions and changes only business-conflict SQLSTATE to PT409. Applied only to growfaster-test; the same stale browser save then returned the actionable conflict message and retained its local text. PostgreSQL regression coverage checks both stale save and stale publish use PT409.
+
+Real private JPEG upload succeeded at 62e2d7fb-8caa-40b2-9103-da8eae457143.jpg; actual-page preview loaded its signed URL (naturalWidth 1152). Anonymous unsigned download and anonymous signing both returned Object not found. Signed URL expiry, direct gateway MIME/size rejection, and later publication of uploaded media remain unverified. The upload remains in the test bucket; the browser retains unsaved local conflict text/media. No production writes, deletions, merges or deployments occurred. Production still requires the follow-up migration as a separately reviewed release step. Full CI must pass on the new head; release remains NO-GO.
+
+## Real isolated Storage gateway runner
+
+`scripts/accept-cms-storage.cjs` is a standalone Node 22+ interactive acceptance runner, fixed to growfaster-test (gqsvoioccvklzfmdmexy). Run `node scripts/accept-cms-storage.cjs` locally and enter the test administrator password in the hidden terminal prompt. No environment override, production project, privileged key, password argument or token logging is supported. Its own Auth session is signed out with scope=local; other sessions are not revoked. It uploads one valid synthetic PNG and directly tests forbidden SVG MIME plus a 26214401-byte PNG payload against the unchanged bucket limit. It also verifies both rejected paths cannot be signed. Objects are unique and no overwrite/delete operation is performed. The valid test-object path and sanitized results are printed. Real results remain pending until the owner enters the credential locally. Unit coverage rejects permission/service failures as false positive bucket enforcement. Existing browser session and previous evidence do not substitute for this gateway test. No production baseline/migration/merge/deployment is authorised until this gate and all remaining gates pass.
+
+## Main integration and real gateway result, 10 November 2026
+
+The owner ran the committed standalone Storage runner against growfaster-test from 09:56:07Z to 09:56:18Z. Reported results: real administrator Auth and allowed PNG upload passed; forbidden MIME returned HTTP 400 InvalidMimeType; a 26214401-byte payload returned HTTP 400 EntityTooLarge; both rejected paths had no signable object. Valid test object: 91499af0-9305-4ec5-9168-3db046147e05.png. This is owner-executed evidence, not an agent rerun. It supersedes the earlier pending direct-gateway notes.
+
+Main 30077526 (approved PR60 homepage release) is integrated. index.html retains its approved hero photograph, responsive markup, headline/subheadline and CTA destinations; CMS hooks are reapplied without changing that markup. Three text fields removed by the approved layout are removed from the editor catalog only; remaining homepage groups cover all 49 current fields. New NL/FR defaults follow main, and preview/public heading rendering preserves the minimal hero line break without the former emphasis element. Existing browser regression retains safe rendering, both lines and explicit publication confirmation, now checking the actual approved br structure. All regression tests from main are retained. No database content was deleted or production migration applied.
+
+The previous website gate passed 113 unit/integration tests, 624 browser cases (12 profile-specific skips), load and Lighthouse; CodeQL passed. Secret-history flagged the runner's publicly documented sb_publishable key. The existing generic-api-key rule is retained with one additional AND-constrained exception: the exact scripts/accept-cms-storage.cjs path and exact verified public test key only. No secret/service-role keys or unexpected strings match this exception. Full CI on the integration head remains required.
+
+Local integration checks verify exact preservation of main markup after removing additive CMS hooks, catalog/DOM key equality and uniqueness, complete field-group coverage, and script parsing. The earlier Windows git checkout is unavailable in the active cloud workspace; local unknown changes were not overwritten. Remaining gate: publish uploaded test media via the editor and verify anonymous byte delivery, plus final-head CI. The preserved stale editor session will need an explicit recovery/re-authentication before further saves.

@@ -39,7 +39,11 @@ test('resizing keeps a single Work with me action first on mobile and restores d
 });
 test('overview pages retain the grouped reading routes without JavaScript',async({browser})=>{
  const context=await browser.newContext({javaScriptEnabled:false,viewport:{width:390,height:844}});const page=await context.newPage();try{
- await page.goto('http://127.0.0.1:4173/index.html');await expect(page.locator('#navlist a[href="coherence.html"]')).toBeVisible();await page.locator('#navlist a[href="coherence.html"]').click();
+ await page.goto('http://127.0.0.1:4173/index.html');
+ const guestLink=page.locator('#navlist').getByRole('link',{name:'Aanmelden',exact:true});
+ await expect(guestLink).toBeVisible();
+ await expect(guestLink).toHaveAttribute('href','/account?return=%2Findex.html');
+ await expect(page.locator('#navlist a[href="coherence.html"]')).toBeVisible();await page.locator('#navlist a[href="coherence.html"]').click();
  await expect(page.locator('.topic-links a')).toHaveCount(4);await page.locator('.topic-links a[href="value.html"]').click();await expect(page).toHaveURL(/\/value\.html$/);
  await page.locator('.nav .brand').click();await page.locator('#navlist a[href="approach.html"]').click();await expect(page.locator('.topic-links a[href="eca.html"]')).toBeVisible();
  }finally{await context.close()}

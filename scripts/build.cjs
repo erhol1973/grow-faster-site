@@ -11,8 +11,7 @@ fs.rmSync(out, { recursive: true, force: true });
 fs.mkdirSync(out);
 let count = 0;
 function copy(source, relative) {
-  let data=readRegularFile(source);
-  if (relative.endsWith('.html')) data=Buffer.from(require('./member-navigation.cjs').withMemberNavigation(data.toString('utf8'),relative));
+  const data=require('./member-navigation.cjs').bundleMemberNavigation(readRegularFile(source), relative, root);
   const target = path.join(out, relative);
   fs.mkdirSync(path.dirname(target), { recursive: true });
   if(relative.replaceAll('\\','/')==='assets/i18n.js'){

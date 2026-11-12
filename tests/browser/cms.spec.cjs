@@ -16,7 +16,9 @@ test('admin login meets automated accessibility checks on this viewport',async({
 
 test('filtered homepage saves every NL/FR field and retains hidden edits',async({page})=>{
  const f=await fixture(page);await page.getByRole('button',{name:'Homepage',exact:true}).click();
- await expect(page.locator('.brand img')).toHaveAttribute('src','img/grow-faster-logo-dark.svg');
+ await expect(page.locator('.brand img')).toHaveAttribute('src','img/grow-faster-logo-light.svg');
+ await expect(page.locator('.brand img')).toHaveAttribute('alt','Grow Faster');
+ await expect(page.locator('header.top')).toHaveCSS('background-color','rgb(255, 255, 255)');
  await expect(page.locator('#field-group')).toHaveValue('hero');
  const remoteField=home.fields.find((field,index)=>index>5&&field.type==='text');
  await page.locator('#field-group').selectOption('all');

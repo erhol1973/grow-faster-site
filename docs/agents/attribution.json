@@ -42,7 +42,8 @@
     "tests/performance.test.cjs",
     "tests/load.test.cjs",
     "tests/cms-client.test.cjs",
-    "tests/editorial.test.cjs"
+    "tests/editorial.test.cjs",
+    "tests/browser/cms.spec.cjs"
   ],
   "radar": [
     "assets/baies-dev-app.js",

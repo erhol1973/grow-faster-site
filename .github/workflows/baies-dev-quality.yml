@@ -3,6 +3,7 @@ on:
   pull_request:
     paths:
       - 'baies-dev/**'
+      - 'executive-radar/**'
       - 'assets/baies-dev*'
       - 'img/baies-dev*'
       - 'tests/baies-dev*'

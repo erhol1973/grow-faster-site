@@ -14,7 +14,8 @@ test('CMS admin uses Grow Faster logo and searchable fields while retaining save
  const html=fs.readFileSync('admin.html','utf8');
  const css=fs.readFileSync('assets/cms-admin.css','utf8');
  const script=fs.readFileSync('assets/cms-admin.js','utf8');
- assert.match(html,/src="img\/grow-faster-logo-dark\.svg"/);
+ assert.match(html,/src="img\/grow-faster-logo-light\.svg" alt="Grow Faster" width="192" height="32"/);
+ assert.match(css,/\.top\{[^}]*background:#fff/);
  assert.match(html,/id="field-search"/);
  assert.match(html,/id="field-count"/);
  for(const id of ['save','preview','publish'])assert.match(html,new RegExp('id="'+id+'"'));

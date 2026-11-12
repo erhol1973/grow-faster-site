@@ -6,7 +6,7 @@ const path=require('node:path');
 const root=path.resolve(__dirname,'..');
 const core=require('../assets/baies-dev-core.js');
 const data=require('../assets/baies-dev-data.js');
-const html=fs.readFileSync(path.join(root,'baies-dev','index.html'),'utf8');
+const html=fs.readFileSync(path.join(root,'executive-radar','index.html'),'utf8');
 const app=fs.readFileSync(path.join(root,'assets/baies-dev-app.js'),'utf8');
 
 test('BAEIS dev: five unique, evidence-linked source records',()=>{
@@ -86,8 +86,8 @@ test('BAEIS dev: isolated NL/FR accessible markup and static asset linkage',()=>
 test('BAEIS branding: exact solid four-bar transparent logo variants and favicon',()=>{
   for(const [variant,ink] of [['dark','#0B2545'],['white','#FFFFFF']]){
     const svg=fs.readFileSync(path.join(root,'img',`baies-dev-logo-${variant}.svg`),'utf8');
-    assert.equal((svg.match(/<rect /g)||[]).length,4);
-    assert.match(svg,/>Grow Faster<\/text>/);
+    const bars=svg.match(/<g id="grow-faster-bars"[^>]*>([\s\S]*?)<\/g>/);assert.ok(bars,'four-bar symbol group');assert.equal((bars[1].match(/<path /g)||[]).length,4);
+    assert.match(svg,/>Grow Faster<\/(?:text|title)>/);
     assert.ok(svg.includes(`fill="${ink}"`));
     assert.match(svg,/fill="#2189E1"/);
     assert.doesNotMatch(svg,/gradient|filter|opacity|<image|<script|stroke=/i);
@@ -176,7 +176,8 @@ test('BAEIS D: research plans distinguish size, role and unknown business values
 test('BAEIS production artifact: isolated public route, complete assets and no test/report publication',async()=>{
   const {createServer}=require('../scripts/server.cjs');const server=createServer();await new Promise(r=>server.listen(0,'127.0.0.1',r));const base='http://127.0.0.1:'+server.address().port;
   try{
-    for(const route of ['/baies-dev/','/baies-dev/?lang=nl','/baies-dev/?lang=fr']){const r=await fetch(base+route);assert.equal(r.status,200,route);const body=await r.text();assert.match(body,/data-i18n="dev">DEMONSTRATIE/);assert.match(body,/id="heading-dashboard"/);assert.match(body,/id="company-size"/);assert.match(body,/noindex,nofollow,noarchive/);}
+    const canonical=await (await fetch(base+'/executive-radar/')).text();assert.match(canonical,/<title>Executive Radar \| Grow Faster<\/title>/);assert.doesNotMatch(canonical,/BAEIS|Belgian AI Economic Intelligence System/);assert.match(canonical,/class="identity" href="\.\.\/index\.html\?lang=nl"/);
+    for(const route of ['/executive-radar/','/executive-radar/?lang=nl','/executive-radar/?lang=fr','/baies-dev/','/baies-dev/?lang=nl','/baies-dev/?lang=fr']){const r=await fetch(base+route);assert.equal(r.status,200,route);const body=await r.text();assert.equal(body,canonical,'canonical and legacy route bytes');assert.match(body,/data-i18n="dev">DEMONSTRATIE/);assert.match(body,/id="heading-dashboard"/);assert.match(body,/id="company-size"/);assert.match(body,/noindex,nofollow,noarchive/);}
     for(const asset of ['baies-dev.css','baies-dev-core.js','baies-dev-data.js','baies-dev-app.js'])assert.equal((await fetch(base+'/assets/'+asset)).status,200,asset);
     for(const asset of ['logo-dark.svg','logo-white.svg','logo-dark.png','logo-white.png','favicon.svg','favicon.png'])assert.equal((await fetch(base+'/img/baies-dev-'+asset)).status,200,asset);
     for(const route of ['/docs/BAEIS-D-FOLLOWUP.md','/tests/baies-dev.test.cjs','/reports/unit.xml'])assert.equal((await fetch(base+route)).status,404,route);

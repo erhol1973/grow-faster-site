@@ -22,6 +22,8 @@ The local TXT export retains its existing filename, includes source IDs and orig
 
 Existing checks remain; new independent search positives/negatives, fixed-facts checksum and research-plan assertions exercise the actual shared core. Browser scenarios cover AI/IA equivalence, irrelevant substring rejection, role widening with preserved filters/focus, Evidence search, both CEO/CFO roles and all three contexts in NL/FR, complete downloaded proposals, state retention, keyboard disclosure and expanded-state axe scans. The existing export assertion is intentionally localized; its role/source/limitation intent remains intact.
 
+The local startup measurement exposed unnecessary hidden-workspace construction. Each view now renders its dynamic data when entered; language changes refresh the active view and later navigation fills hidden views in the selected language. Existing route/history/language/state cases verify this behavior without changing performance limits.
+
 Full repository build, unit/HTTP, browser, axe, audit/security, local load, Lighthouse and GitHub gates must pass unchanged before dev-preview deployment. The existing dedicated performance runner covers all four views, NL/FR, mobile/desktop, three cold runs each. General shared CI/test policies are not modified. No main merge, shared site CSS/CMS changes, HubSpot integration or production publication is authorized.
 
 Reports are retained outside the checkout in output/baeis-d-implementatie. Physical devices and actual screen-reader speech remain manual. Existing moderate-only dependency findings remain outside this BAEIS scope.

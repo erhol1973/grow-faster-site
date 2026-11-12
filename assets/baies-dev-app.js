@@ -49,7 +49,7 @@
     const dialog=$('evidence-dialog');if(dialog.hasAttribute('open')){if(typeof dialog.close==='function')dialog.close();else dialog.removeAttribute('open');}
     document.querySelectorAll('.view').forEach(x=>x.hidden=x.id!==view);
     document.querySelectorAll('[data-view]').forEach(link=>{const active=link.dataset.view===view;link.classList.toggle('active',active);if(active)link.setAttribute('aria-current','page');else link.removeAttribute('aria-current');});
-    state.view=view;setNavigationOpen(false);
+    state.view=view;renderView(view);setNavigationOpen(false);
     window.scrollTo({top:0,behavior:'instant'});
     if(focus){const heading=$(view).querySelector('h1');heading.tabIndex=-1;heading.focus({preventScroll:true});}
   }
@@ -68,7 +68,7 @@
     if(url.hash&&url.hash!=='#'+view)url.hash=view;
     if(url.searchParams.has('lang')&&url.searchParams.get('lang')!==lang)url.searchParams.set('lang',lang);
     if(url.href!==window.location.href)window.history.replaceState(null,'',url);
-    if(state.lang!==lang||!lastRoute)setLang(lang);
+    if(state.lang!==lang||!lastRoute)setLang(lang,false);
     lastRoute=url.href;goTo(view,focus);
   }
   function chooseLanguage(lang){
@@ -76,7 +76,7 @@
     const url=new URL(window.location.href);url.searchParams.set('lang',lang);
     window.history.replaceState(null,'',url);lastRoute=url.href;setLang(lang);
   }
-  function setLang(lang){
+  function setLang(lang,render=true){
     if(!['nl','fr'].includes(lang))return;state.lang=lang;document.documentElement.lang=lang==='nl'?'nl-BE':'fr-BE';
     document.querySelectorAll('[data-i18n]').forEach(n=>{const v=dict[lang][n.dataset.i18n];if(typeof v==='string')n.textContent=v;});
     $('heading-overview').replaceChildren(document.createTextNode(lang==='nl'?'Van AI-signalen naar ':'Des signaux IA vers '),element('em','',lang==='nl'?'betere bedrijfsbeslissingen.':'de meilleures décisions.'));
@@ -86,7 +86,7 @@
     $('evidence-rows').setAttribute('aria-label',text('evidenceTitle'));
     for(const option of $('sector-filter').options)if(text('sectorLabels')[option.value])option.textContent=text('sectorLabels')[option.value];
     const type=$('evidence-type'),selected=type.value;clear(type);const all=element('option','',text('allTypes'));all.value='ALL';type.append(all);for(const value of [...new Set(records.map(r=>r.type))]){const option=element('option','',typeLabel(value));option.value=value;type.append(option);}type.value=selected||'ALL';
-    renderAll();navigationLabels();
+    if(render)renderView(state.view);navigationLabels();
   }
   const typeLabel=value=>text('typeLabels')[value]||value;
   const dateFormatters=Object.fromEntries(['nl','fr'].map(lang=>[lang,new Intl.DateTimeFormat(lang+'-BE',{day:'numeric',month:'short',year:'numeric',timeZone:'UTC'})]));
@@ -127,7 +127,14 @@
   }
   function advanceReview(){try{const next=core.nextStage(state.stage,editorRecord);state.stage=next;const i=['intake','source-checked','challenge-checked','preview-approved'].indexOf(next);const msg=text('feedback')[i];$('workflow-feedback').textContent=msg;logEvent(msg);renderReview();}catch(err){$('workflow-feedback').textContent=err.message;}}
   function resetReview(){state.stage='intake';$('workflow-feedback').textContent=text('resetMessage');state.audit=[];logEvent(text('resetMessage'));renderReview();}
-  function renderAll(){renderHero();renderBrief();renderRadar();renderEvidence();renderReview();renderAudit();}
+  // Populate only the active workspace; each navigation refreshes its localized data.
+  function renderView(view){
+    if(view==='overview')renderHero();
+    else if(view==='dashboard')renderBrief();
+    else if(view==='radar')renderRadar();
+    else if(view==='evidence')renderEvidence();
+    else if(view==='editorial'){renderReview();renderAudit();}
+  }
   function downloadBrief(){
     const selected=core.sortRecords(records.filter(r=>r.roles.includes(state.role))).slice(0,3);
     const sizeLabel=text({small:'sizeSmall',medium:'sizeMedium',large:'sizeLarge'}[state.size]);

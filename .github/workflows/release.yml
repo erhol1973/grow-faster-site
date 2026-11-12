@@ -2,7 +2,7 @@ name: Website release
 on:
   pull_request:
   push:
-    branches: [main]
+    branches: [main, dev/member-access]
   workflow_dispatch:
 permissions:
   contents: read

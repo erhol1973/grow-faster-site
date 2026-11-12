@@ -1,5 +1,7 @@
 name: BAEIS dev quality
 on:
+  push:
+    branches: [dev/member-access]
   pull_request:
     paths:
       - 'baies-dev/**'

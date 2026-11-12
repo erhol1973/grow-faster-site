@@ -36,7 +36,12 @@ jobs:
       - run: npx playwright test tests/browser/navigation.spec.cjs tests/browser/navigation-accessibility.spec.cjs --project=chromium --project=mobile
         env:
           HOME: /root
-      - run: npm run test:performance
+      - name: Early homepage mobile measurement
+        run: node scripts/performance.cjs --home-only --mobile-only
+      - name: Preserve all early homepage samples
+        run: cp -R reports/lighthouse reports/lighthouse-home-preflight
+      - name: Complete unchanged performance matrix
+        run: npm run test:performance
       - name: Save early navigation performance evidence
         if: always()
         uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9

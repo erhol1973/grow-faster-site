@@ -1,6 +1,6 @@
-# Dev navigation and Executive Radar agent surfaces
+# Navigation and Executive Radar agent surfaces
 
-Task scope: isolated dev only. No main merge, production deploy, CMS/HubSpot writes or hosting configuration changes. Orchestrator alone commits. All builders report paths, verification and limitations. Independent reviewer never edits.
+Current task (13 November 2026): remove the internal Executive Radar About link, view and obsolete public runtime copy in NL/FR, with regression coverage. The owner requests correction of the public production page. Radar is the only dispatched builder; reviewer is independent and read-only. Orchestrator alone commits and publishes through the protected PR and tested-artifact release gates after successful review. No CMS/HubSpot writes, hosting configuration changes or threshold relaxation. All builders report paths, verification and limitations. Other surfaces below remain preservation-only in this task. The former dev navigation task is retained in Git history.
 
 ```roster
 navigation builder installed autonomous

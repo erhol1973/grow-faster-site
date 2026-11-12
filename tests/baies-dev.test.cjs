@@ -124,3 +124,50 @@ test('BAEIS workspace: bilingual claim search and immutable, deterministic sorti
   assert.throws(()=>core.sortRecords(data.records,'invented'),RangeError);
   assert.deepEqual(data.records,before);
 });
+
+
+test('BAEIS D: AI/IA concepts, word prefixes and bilingual IDs do not produce substring noise',()=>{
+  const ids=(q,role='ALL',sector='All')=>core.filterRecords(data.records,role,sector,q).map(r=>r.id);
+  assert.deepEqual(ids('AI','CFO'),['BE-AI-001','BE-AI-002']);
+  assert.deepEqual(ids('IA','CFO'),ids('AI','CFO'));
+  assert.deepEqual(ids(' ai '),ids('IA'));
+  assert.deepEqual(ids('factur'),[]);
+  assert.deepEqual(ids('comptaient'),['BE-SME-005']);
+  assert.deepEqual(ids('exploitables'),['BE-AI-002']);
+  assert.deepEqual(ids('BE-EC-004'),['BE-EC-004']);
+  assert.deepEqual(ids('BE-EC'),['BE-EC-003','BE-EC-004']);
+  assert.deepEqual(ids('Manufacturing'),['BE-EC-004']);
+  assert.deepEqual(ids('industrie'),['BE-EC-004']);
+  assert.deepEqual(ids('économie trimestre'),['BE-EC-004']);
+  assert.deepEqual(ids('AI','CFO','Manufacturing'),[]);
+  assert.deepEqual(ids('!!!'),[]);
+  assert.deepEqual(ids(''),data.records.map(r=>r.id));
+});
+
+test('BAEIS D: CFO relevance expands without changing any source facts or scores',()=>{
+  assert.equal(core.filterRecords(data.records,'CFO','All','').length,5);
+  for(const id of ['BE-AI-001','BE-AI-002'])assert.ok(data.records.find(r=>r.id===id).roles.includes('CFO'));
+  const facts=data.records.map(({roles,...record})=>record);
+  const hash=require('node:crypto').createHash('sha256').update(JSON.stringify(facts)).digest('hex');
+  assert.equal(hash,'259f0cc62a53269aa2adc7dbda082c45498a5307c56396067fd4603202961676','fixed source facts remain identical to tested C');
+});
+
+test('BAEIS D: research plans distinguish size, role and unknown business values',()=>{
+  const record=data.records[0],before=structuredClone(record);
+  const small=core.decisionPlan(record,'CEO','small');
+  const medium=core.decisionPlan(record,'CEO','medium');
+  const large=core.decisionPlan(record,'CFO','large');
+  assert.match(small.measure.nl,/minuten per handeling/);
+  assert.match(medium.measure.fr,/par équipe/);
+  assert.match(large.measure.nl,/per eenheid/);
+  assert.match(large.owner.fr,/financier/);
+  assert.match(large.horizon.nl,/onafhankelijke beoordeling/);
+  assert.match(small.owner.nl,/nog te bevestigen/);
+  assert.notDeepEqual(small.measure,medium.measure);
+  assert.notDeepEqual(medium.measure,large.measure);
+  assert.equal(large.recordId,'BE-AI-001');
+  assert.throws(()=>core.decisionPlan(record,'admin','small'),RangeError);
+  assert.throws(()=>core.decisionPlan(record,'CEO','invented'),RangeError);
+  assert.throws(()=>core.decisionPlan({id:'BE-UNKNOWN-999'},'CEO','small'),RangeError);
+  assert.deepEqual(record,before);
+});

@@ -11,7 +11,9 @@
   };
   const workspaceCopy={"nl":{"navDashboard":"Executive Dashboard","openDashboard":"Open Executive Dashboard","referenceCount":"Referentierecords","publisherCount":"Primaire uitgevers","fixedSnapshot":"Vaste dataset · 11.11.2026","dashboardKicker":"Van bewijs naar managementvragen","dashboardIntro":"Kies uw functie. Bekijk de prioriteiten, onderzoek de beperkingen en neem uw voorbeeldbrief mee.","roleRecords":"Records voor uw functie","evidenceTypes":"Bewijstypen","roleRadar":"Bekijk de radar voor deze functie","sortLabel":"Sorteren","sortPriority":"Redactionele prioriteit","sortDate":"Nieuwste publicatie","sortSource":"Bron A–Z","resetFilters":"Wis filters","allSources":"Alle bronnen","allTypes":"Alle bewijstypen","referenceClaims":"referentieclaims","confidence":"Redactionele zekerheid","confidenceNote":"Inschatting op basis van bronmetadata; geen onafhankelijke wetenschappelijke verificatie.","editorialHypothesis":"Redactionele hypothese","briefTitle":"Uw beslissingsagenda","briefPreviewTitle":"Prioriteiten om te onderzoeken","devNote":"Vaste demo · Geen externe publicatie of gegevensopslag","sectorLabels":{"Cross-sector":"Sectoroverschrijdend","SME":"KMO","Manufacturing":"Industrie"},"typeLabels":{"Official statistics":"Officiële statistiek","Survey":"Enquête","Economic forecast":"Prognose","Preliminary economic estimate":"Voorlopige raming"},"confidenceLabels":{"High":"Hoog","Medium":"Gemiddeld"}},"fr":{"navDashboard":"Tableau de bord","openDashboard":"Ouvrir le tableau de bord","referenceCount":"Données de référence","publisherCount":"Éditeurs primaires","fixedSnapshot":"Données fixes · 11.11.2026","dashboardKicker":"Des preuves aux questions de décision","dashboardIntro":"Choisissez votre fonction. Examinez les priorités et les limites, puis emportez votre brief exemple.","roleRecords":"Données pour votre fonction","evidenceTypes":"Types de preuve","roleRadar":"Voir le radar pour cette fonction","sortLabel":"Trier","sortPriority":"Priorité éditoriale","sortDate":"Publication la plus récente","sortSource":"Source A–Z","resetFilters":"Effacer les filtres","allSources":"Toutes les sources","allTypes":"Tous les types de preuve","referenceClaims":"affirmations de référence","confidence":"Confiance éditoriale","confidenceNote":"Appréciation des métadonnées ; aucune vérification scientifique indépendante.","editorialHypothesis":"Hypothèse éditoriale","briefTitle":"Votre agenda de décision","briefPreviewTitle":"Priorités à examiner","devNote":"Démo fixe · Aucune publication ni conservation de données","sectorLabels":{"Cross-sector":"Intersectoriel","SME":"PME","Manufacturing":"Industrie"},"typeLabels":{"Official statistics":"Statistiques officielles","Survey":"Enquête","Economic forecast":"Prévision","Preliminary economic estimate":"Estimation préliminaire"},"confidenceLabels":{"High":"Élevée","Medium":"Moyenne"}}};
   for(const lang of ['nl','fr'])Object.assign(dict[lang],workspaceCopy[lang]);
-  const state={lang:'nl',view:'overview',role:'CEO',stage:'intake',audit:[]};
+  const improvementCopy={"nl":{"companySize":"Bedrijfscontext","sizeSmall":"Klein bedrijf","sizeMedium":"Middelgroot bedrijf","sizeLarge":"Grote organisatie","contextNote":"Werkcontext voor voorstellen; geen juridische grootteclassificatie. Alleen in deze sessie.","planNotice":"Voorstellen voor intern onderzoek, geen bronfeiten of berekende ROI. Eigenaar, waarden en planning zijn nog te bevestigen.","planDetails":"Meetpunt, eigenaar en planning","planTitle":"Voorgestelde vervolgstap","planMeasure":"Meetpunt / nog te verzamelen","planOwner":"Voorgestelde eigenaar","planHorizon":"Beslismoment / nog te plannen","cfoContext":"AI-adoptie is financiële context, geen bewijs van projectrendement. De Vlaamse barometer is geen Belgisch totaal.","coverageAll":"Zoekbereik: alle functies.","coverageRole":"Zoekbereik: {role}. {outside} extra referentierecord(s) vallen buiten deze functie bij dezelfde zoek- en sectorfilters.","expandRoles":"Bekijk alle functies","audienceExport":"Directiefunctie","sourceExport":"Bron","downloadEnd":"Er is niets extern gepubliceerd of verstuurd."},"fr":{"companySize":"Contexte d’entreprise","sizeSmall":"Petite entreprise","sizeMedium":"Moyenne entreprise","sizeLarge":"Grande organisation","contextNote":"Contexte de travail des propositions ; aucune classification juridique. Cette session uniquement.","planNotice":"Propositions d’étude interne, pas des faits sourcés ni un ROI calculé. Responsables, valeurs et calendrier restent à confirmer.","planDetails":"Mesure, responsable et calendrier","planTitle":"Prochaine étape proposée","planMeasure":"Mesure / données à recueillir","planOwner":"Responsable proposé","planHorizon":"Décision / calendrier à définir","cfoContext":"L’adoption IA est un contexte financier, pas une preuve de rendement. Le baromètre flamand ne représente pas toute la Belgique.","coverageAll":"Recherche : toutes les fonctions.","coverageRole":"Recherche : {role}. {outside} donnée(s) supplémentaire(s) hors de cette fonction avec les mêmes filtres de recherche et de secteur.","expandRoles":"Voir toutes les fonctions","audienceExport":"Fonction","sourceExport":"Source","downloadEnd":"Aucune publication externe ni aucun envoi."}};
+  for(const lang of ['nl','fr'])Object.assign(dict[lang],improvementCopy[lang]);
+  const state={lang:'nl',view:'overview',role:'CEO',size:'small',stage:'intake',audit:[]};
   const records=dataset.records;
   const editorRecord=records.find(r=>r.id==='BE-EC-003');
   const text=(key)=>dict[state.lang][key]||dict.nl[key]||key;
@@ -47,7 +49,7 @@
     const dialog=$('evidence-dialog');if(dialog.hasAttribute('open')){if(typeof dialog.close==='function')dialog.close();else dialog.removeAttribute('open');}
     document.querySelectorAll('.view').forEach(x=>x.hidden=x.id!==view);
     document.querySelectorAll('[data-view]').forEach(link=>{const active=link.dataset.view===view;link.classList.toggle('active',active);if(active)link.setAttribute('aria-current','page');else link.removeAttribute('aria-current');});
-    state.view=view;setNavigationOpen(false);
+    state.view=view;renderView(view);setNavigationOpen(false);
     window.scrollTo({top:0,behavior:'instant'});
     if(focus){const heading=$(view).querySelector('h1');heading.tabIndex=-1;heading.focus({preventScroll:true});}
   }
@@ -66,7 +68,7 @@
     if(url.hash&&url.hash!=='#'+view)url.hash=view;
     if(url.searchParams.has('lang')&&url.searchParams.get('lang')!==lang)url.searchParams.set('lang',lang);
     if(url.href!==window.location.href)window.history.replaceState(null,'',url);
-    if(state.lang!==lang||!lastRoute)setLang(lang);
+    if(state.lang!==lang||!lastRoute)setLang(lang,false);
     lastRoute=url.href;goTo(view,focus);
   }
   function chooseLanguage(lang){
@@ -74,7 +76,7 @@
     const url=new URL(window.location.href);url.searchParams.set('lang',lang);
     window.history.replaceState(null,'',url);lastRoute=url.href;setLang(lang);
   }
-  function setLang(lang){
+  function setLang(lang,render=true){
     if(!['nl','fr'].includes(lang))return;state.lang=lang;document.documentElement.lang=lang==='nl'?'nl-BE':'fr-BE';
     document.querySelectorAll('[data-i18n]').forEach(n=>{const v=dict[lang][n.dataset.i18n];if(typeof v==='string')n.textContent=v;});
     $('heading-overview').replaceChildren(document.createTextNode(lang==='nl'?'Van AI-signalen naar ':'Des signaux IA vers '),element('em','',lang==='nl'?'betere bedrijfsbeslissingen.':'de meilleures décisions.'));
@@ -84,7 +86,7 @@
     $('evidence-rows').setAttribute('aria-label',text('evidenceTitle'));
     for(const option of $('sector-filter').options)if(text('sectorLabels')[option.value])option.textContent=text('sectorLabels')[option.value];
     const type=$('evidence-type'),selected=type.value;clear(type);const all=element('option','',text('allTypes'));all.value='ALL';type.append(all);for(const value of [...new Set(records.map(r=>r.type))]){const option=element('option','',typeLabel(value));option.value=value;type.append(option);}type.value=selected||'ALL';
-    renderAll();navigationLabels();
+    if(render)renderView(state.view);navigationLabels();
   }
   const typeLabel=value=>text('typeLabels')[value]||value;
   const dateFormatters=Object.fromEntries(['nl','fr'].map(lang=>[lang,new Intl.DateTimeFormat(lang+'-BE',{day:'numeric',month:'short',year:'numeric',timeZone:'UTC'})]));
@@ -92,7 +94,15 @@
   function detailsButton(record){const b=element('button','text-btn',text('viewEvidence')+' ↗');b.type='button';b.setAttribute('aria-label',text('viewEvidence')+': '+localized(record.title));b.addEventListener('click',()=>showDetails(record,b));return b;}
   function limitation(record){const details=element('details','record-limitation');details.append(element('summary','',text('limit')),element('p','',localized(record.limit)));return details;}
   function renderHero(){const target=$('hero-signal-list');clear(target);for(const [i,r] of core.sortRecords(records).slice(0,3).entries()){const row=element('div','preview-signal');row.append(element('span','rank',String(i+1).padStart(2,'0')));const copy=element('div');copy.append(element('b','',localized(r.title)),element('small','',r.source+' · '+dateLabel(r.published)));row.append(copy);target.append(row);}$('hero-count').textContent=String(records.length).padStart(2,'0');$('home-record-count').textContent=records.length;$('home-publisher-count').textContent=new Set(records.map(r=>r.source)).size;}
-  function renderBrief(){const target=$('brief-items');clear(target);const all=records.filter(r=>r.roles.includes(state.role));for(const r of core.sortRecords(all).slice(0,3)){const li=element('li');li.append(element('h4','',localized(r.title)),element('span','agenda-metric',r.metric),element('p','',localized(r.decision)),element('small','',r.source+' · '+dateLabel(r.published)+' · '+typeLabel(r.type)),detailsButton(r));target.append(li);}$('dashboard-records').textContent=all.length;$('dashboard-publishers').textContent=new Set(all.map(r=>r.source)).size;$('dashboard-types').textContent=new Set(all.map(r=>r.type)).size;$('role-explainer').textContent=text('roles')[state.role];document.querySelectorAll('[data-role]').forEach(b=>{const active=b.dataset.role===state.role;b.classList.toggle('selected',active);b.setAttribute('aria-pressed',String(active));});}
+  function planRows(plan){return [['planTitle',plan.step],['planMeasure',plan.measure],['planOwner',plan.owner],['planHorizon',plan.horizon]];}
+  function planElement(record){
+    const plan=core.decisionPlan(record,state.role,state.size);const section=element('div','decision-plan');section.dataset.context=state.size;
+    section.append(element('strong','plan-heading',text('planTitle')),element('p','',localized(plan.step)));
+    const details=element('details');details.append(element('summary','',text('planDetails')));const list=element('dl');
+    for(const [label,value] of planRows(plan).slice(1)){const pair=element('div');pair.append(element('dt','',text(label)),element('dd','',localized(value)));list.append(pair);}
+    details.append(list);section.append(details);return section;
+  }
+  function renderBrief(){const target=$('brief-items');clear(target);const all=records.filter(r=>r.roles.includes(state.role));for(const r of core.sortRecords(all).slice(0,3)){const li=element('li');li.dataset.record=r.id;li.append(element('small','record-id',r.id),element('h4','',localized(r.title)),element('span','agenda-metric',r.metric),element('p','',localized(r.decision)),element('small','',r.source+' · '+dateLabel(r.published)+' · '+typeLabel(r.type)),planElement(r),detailsButton(r));target.append(li);}$('dashboard-records').textContent=all.length;$('dashboard-publishers').textContent=new Set(all.map(r=>r.source)).size;$('dashboard-types').textContent=new Set(all.map(r=>r.type)).size;$('role-explainer').textContent=text('roles')[state.role];$('cfo-context').hidden=state.role!=='CFO';document.querySelectorAll('[data-role]').forEach(b=>{const active=b.dataset.role===state.role;b.classList.toggle('selected',active);b.setAttribute('aria-pressed',String(active));});}
   function showDetails(record,trigger){
     evidenceTrigger=trigger;
     $('dialog-title').textContent=localized(record.title);const body=$('dialog-body');clear(body);body.append(element('p','record-id',record.id));
@@ -100,6 +110,9 @@
     const linkWrap=element('div','detail');linkWrap.append(element('strong','detail-label',record.source));const link=element('a','',text('openSource'));link.href=record.url;link.rel='noopener noreferrer';link.target='_blank';linkWrap.append(link);body.append(linkWrap);const dialog=$('evidence-dialog');if(typeof dialog.showModal==='function')dialog.showModal();else dialog.setAttribute('open','');
   }
   function renderRadar(){const target=$('signal-grid');clear(target);const filtered=core.filterRecords(records,$('role-filter').value,$('sector-filter').value,$('signal-search').value);$('visible-count').textContent=String(filtered.length);
+    const role=$('role-filter').value;const outside=core.filterRecords(records,'ALL',$('sector-filter').value,$('signal-search').value).length-filtered.length;
+    $('role-coverage').textContent=role==='ALL'?text('coverageAll'):text('coverageRole').replace('{role}',role).replace('{outside}',outside);
+    $('expand-role-filter').hidden=role==='ALL'||outside===0;
     if(!filtered.length){target.append(element('p','empty',text('noSignals')));return;}
     for(const r of core.sortRecords(filtered,$('signal-sort').value)){const card=element('article','signal-card');card.dataset.record=r.id;const head=element('div','signal-top');head.append(element('span','signal-cat',text('sectorLabels')[r.sector]||r.sector),element('span','signal-score',core.scoreSignal(r.score)+'/100'));card.append(head,element('h2','',localized(r.title)),element('div','signal-metric',r.metric),element('p','',localized(r.claim)));const question=element('div','decision-question');question.append(element('strong','',text('decision')),element('p','',localized(r.decision)));card.append(question,limitation(r));const bottom=element('div','signal-bottom');bottom.append(element('small','',r.source+' · '+dateLabel(r.published)+' · '+typeLabel(r.type)),detailsButton(r));card.append(bottom);target.append(card);}
   }
@@ -114,8 +127,21 @@
   }
   function advanceReview(){try{const next=core.nextStage(state.stage,editorRecord);state.stage=next;const i=['intake','source-checked','challenge-checked','preview-approved'].indexOf(next);const msg=text('feedback')[i];$('workflow-feedback').textContent=msg;logEvent(msg);renderReview();}catch(err){$('workflow-feedback').textContent=err.message;}}
   function resetReview(){state.stage='intake';$('workflow-feedback').textContent=text('resetMessage');state.audit=[];logEvent(text('resetMessage'));renderReview();}
-  function renderAll(){renderHero();renderBrief();renderRadar();renderEvidence();renderReview();renderAudit();}
-  function downloadBrief(){const selected=records.filter(r=>r.roles.includes(state.role)).sort((a,b)=>core.scoreSignal(b.score)-core.scoreSignal(a.score)).slice(0,3);const lines=[`GROW FASTER · BAEIS DEV EXECUTIVE BRIEF · ${dataset.snapshotDate}`,`Audience: ${state.role}`,'DEMONSTRATION ONLY. NOT A LIVE INTELLIGENCE FEED.',''];selected.forEach((r,i)=>{lines.push(`${i+1}. ${localized(r.title)}`,`${localized(r.claim)}`,`${text('limit')}: ${localized(r.limit)}`,`${text('decision')}: ${localized(r.decision)}`,`Source: ${r.source} · ${r.published} · ${r.url}`,'');});lines.push('No external publication or distribution occurred.');const blob=new Blob([lines.join('\n')],{type:'text/plain;charset=utf-8'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download=`BAEIS_DEV_Executive_Brief_${state.role}.txt`;document.body.append(a);a.click();a.remove();URL.revokeObjectURL(url);}
+  // Populate only the active workspace; each navigation refreshes its localized data.
+  function renderView(view){
+    if(view==='overview')renderHero();
+    else if(view==='dashboard')renderBrief();
+    else if(view==='radar')renderRadar();
+    else if(view==='evidence')renderEvidence();
+    else if(view==='editorial'){renderReview();renderAudit();}
+  }
+  function downloadBrief(){
+    const selected=core.sortRecords(records.filter(r=>r.roles.includes(state.role))).slice(0,3);
+    const sizeLabel=text({small:'sizeSmall',medium:'sizeMedium',large:'sizeLarge'}[state.size]);
+    const lines=['GROW FASTER · BAEIS DEV · '+dataset.snapshotDate,text('audienceExport')+': '+state.role,text('companySize')+': '+sizeLabel,text('briefDisclaimer'),text('planNotice'),''];
+    selected.forEach((r,i)=>{lines.push((i+1)+'. '+r.id+' · '+localized(r.title),localized(r.claim),text('limit')+': '+localized(r.limit),text('decision')+': '+localized(r.decision));for(const [label,value] of planRows(core.decisionPlan(r,state.role,state.size)))lines.push(text(label)+': '+localized(value));lines.push(text('sourceExport')+': '+r.source+' · '+r.published+' · '+r.url,'');});
+    lines.push(text('downloadEnd'));const blob=new Blob([lines.join('\n')],{type:'text/plain;charset=utf-8'});const url=URL.createObjectURL(blob);const link=document.createElement('a');link.href=url;link.download='BAEIS_DEV_Executive_Brief_'+state.role+'.txt';document.body.append(link);link.click();link.remove();URL.revokeObjectURL(url);
+  }
   document.querySelector('.skip').addEventListener('click',event=>{event.preventDefault();setNavigationOpen(false);const main=$('main');main.focus({preventScroll:true});const top=main.getBoundingClientRect().top+window.scrollY-navigation.getBoundingClientRect().height;window.scrollTo({top:Math.max(0,top),behavior:'instant'});});
   document.querySelector('.identity').addEventListener('click',e=>{if(e.button!==0||e.ctrlKey||e.metaKey||e.shiftKey||e.altKey)return;e.preventDefault();navigate('overview');});
   document.querySelectorAll('[data-view]').forEach(link=>link.addEventListener('click',event=>{if(event.button!==0||event.ctrlKey||event.metaKey||event.shiftKey||event.altKey)return;event.preventDefault();navigate(link.dataset.view);}));
@@ -134,6 +160,8 @@
   document.addEventListener('pointerdown',event=>{if(!navigation.contains(event.target)){navigationFocus=null;setNavigationOpen(false);}});
   document.addEventListener('focusin',event=>{if(!navigation.contains(event.target)){if(event.target!==document.body)navigationFocus=null;if(toggle.getAttribute('aria-expanded')==='true')setNavigationOpen(false);}});
   mobileNavigation.addEventListener('change',()=>{const active=document.activeElement;const previous=active===document.body?navigationFocus:active;setNavigationOpen(false);if(mobileNavigation.matches&&$('product-links').contains(previous))toggle.focus({preventScroll:true});else if(!mobileNavigation.matches&&previous===toggle)document.querySelector('.nav-link[aria-current="page"]').focus({preventScroll:true});});
+  $('company-size').addEventListener('change',()=>{const size=$('company-size').value;if(!['small','medium','large'].includes(size))return;state.size=size;renderBrief();});
+  $('expand-role-filter').addEventListener('click',()=>{$('role-filter').value='ALL';renderRadar();$('role-filter').focus({preventScroll:true});});
   $('download-brief').addEventListener('click',downloadBrief);
   $('advance-review').addEventListener('click',advanceReview);
   $('reset-review').addEventListener('click',resetReview);

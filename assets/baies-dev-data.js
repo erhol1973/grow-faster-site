@@ -9,7 +9,7 @@
     snapshotDate: '2026-11-11',
     records: [
       {
-        id:'BE-AI-001', sector:'Cross-sector', roles:['CEO','CIO','COO'], score:{belgium:5,value:4,urgency:3,evidence:5,cross:5},
+        id:'BE-AI-001', sector:'Cross-sector', roles:['CEO','CFO','CIO','COO'], score:{belgium:5,value:4,urgency:3,evidence:5,cross:5},
         source:'Statbel', published:'2025-12-02', type:'Official statistics', confidence:'High',
         url:'https://statbel.fgov.be/nl/nieuws/artificiele-intelligentie-wordt-steeds-belangrijker-voor-belgische-bedrijven',
         metric:'34,5%',
@@ -19,7 +19,7 @@
         decision:{nl:'Onderzoek of bestaande AI-toepassingen gekoppeld zijn aan concrete proces-KPI’s en een financiële baseline.',fr:'Vérifier si les usages de l’IA sont liés à des KPI de processus et à une situation financière de référence.'}
       },
       {
-        id:'BE-AI-002', sector:'SME', roles:['CEO','CIO'], score:{belgium:5,value:4,urgency:3,evidence:4,cross:4},
+        id:'BE-AI-002', sector:'SME', roles:['CEO','CFO','CIO'], score:{belgium:5,value:4,urgency:3,evidence:4,cross:4},
         source:'VLAIO / ECOOM', published:'2026-03-18', type:'Survey', confidence:'Medium',
         url:'https://www.vlaio.be/en/node/15666',
         metric:'58,8%',

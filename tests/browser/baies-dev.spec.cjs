@@ -70,6 +70,8 @@ for(const lang of ['nl-BE','fr-BE'])test('BAEIS branding: all '+lang+' views mee
   await page.goto('/baies-dev/');
   if(lang==='fr-BE')await language(page,'fr');
   await expect(page.locator('html')).toHaveAttribute('lang',lang);
+  await expect(page.locator('.dev-strip strong')).toHaveText(lang==='fr-BE'?'DÉMONSTRATION':'DEMONSTRATIE');
+  await expect(page.locator('[data-i18n=footer]')).toContainText(lang==='fr-BE'?'Données de référence fixes':'Vaste referentiedata');
   for(const view of ['overview','dashboard','radar','evidence','editorial','about']){
     await navigate(page,view);
     const scan=await new AxeBuilder({page}).withTags(['wcag2a','wcag2aa','wcag21aa','wcag22aa']).analyze();

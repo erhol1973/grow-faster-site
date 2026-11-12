@@ -176,3 +176,7 @@ figcaption{font:italic 1.3rem/1.4 Georgia,serif;text-align:center;margin:.7rem a
 .exact-edition .cover .tenure-line { margin-bottom: 10px; }
 .exact-edition .cover .value-note { margin: 6px 0 10px; }
 .exact-edition .cover-bottom { margin-top: 4px; }
+
+@media screen {
+  .enhanced-reader .sheet { width: var(--sheet-width, 297mm); height: var(--sheet-height, 210mm); }
+}

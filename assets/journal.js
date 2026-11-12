@@ -15,9 +15,32 @@ try { localStorage.setItem("avs-lang", document.documentElement.lang); } catch {
 const windowArea = document.querySelector('.page-window');
 const zoom = toolbar.querySelector('[data-zoom]');
 
+const baseWidth = 297 * 96 / 25.4;
+const pageAspect = 297 / 210;
+const measuredWidth = new WeakMap();
+
+function sizeSheet(sheet, width) {
+  sheet.style.setProperty('--sheet-width', width + 'px');
+  sheet.style.setProperty('--sheet-height', width / pageAspect + 'px');
+}
+
 function fitPage() {
-  const width = 297 * 96 / 25.4;
-  const height = 210 * 96 / 25.4;
+  const sheet = sheets[current];
+  if (!sheet || sheet.hidden) return;
+  let width = measuredWidth.get(sheet) || baseWidth;
+  sizeSheet(sheet, width);
+  // Layout metrics are unscaled CSS pixels. Wider landscape paper also gives
+  // long translated paragraphs more room to wrap. Keep scroll/zoom available
+  // if an exceptionally large future item exceeds the bounded layout pass.
+  for (let pass = 0; pass < 4; pass++) {
+    const excess = sheet.scrollHeight - sheet.clientHeight;
+    const horizontal = sheet.scrollWidth - sheet.clientWidth;
+    if (excess <= 1 && horizontal <= 1) break;
+    width = Math.max(width + Math.max(0, excess) * pageAspect, width + Math.max(0, horizontal)) + 2;
+    sizeSheet(sheet, width);
+  }
+  measuredWidth.set(sheet, width);
+  const height = width / pageAspect;
   const fit = Math.min((windowArea.clientWidth - 16) / width, (windowArea.clientHeight - 16) / height, 1);
   const scale = enlarged ? readingScale : Math.max(fit, 0.01);
   book.style.setProperty('--page-scale', scale);
@@ -26,6 +49,8 @@ function fitPage() {
 }
 document.documentElement.classList.add('enhanced-reader');
 new ResizeObserver(fitPage).observe(windowArea);
+book.addEventListener('load', fitPage, true);
+document.fonts.ready.then(fitPage);
 zoom.addEventListener('click', () => {
   enlarged = !enlarged;
   readingScale = 1;
@@ -60,6 +85,7 @@ function show(index, focus = false) {
       sheet.classList.add('turning');
     }
     current = index;
+    fitPage();
   }
   previous.disabled = index === 0;
   next.disabled = index === sheets.length - 1;

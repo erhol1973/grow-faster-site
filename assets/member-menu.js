@@ -6,7 +6,9 @@
   const item = document.createElement('li');
   item.className = 'member-nav';
   item.setAttribute('data-notr','');
-  list.append(item);
+  const action = list.querySelector(':scope > .nav-action');
+  if (action && action === list.lastElementChild) action.before(item);
+  else list.append(item);
   let generation = 0;
   function link(label, href) {
     const a = document.createElement('a');

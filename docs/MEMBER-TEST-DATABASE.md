@@ -28,6 +28,8 @@ With an authenticated Dashboard instead, open [test Storage](https://supabase.co
 
 ## Check access through the deployed dev site
 
+In the isolated project, open **Authentication → URL Configuration**. Allow the exact dev host and the `/account` callback used for signup confirmation and password recovery, including its `state` and `lang` query parameters. Scope any query wildcard to this path on `dev-member-access.grow-faster-site.pages.dev`. Send and follow an actual confirmation email and an actual recovery email from dev. Confirm that each returns to that host, retains the chosen language and rejects a reused or altered state.
+
 Run the isolated gateway check from the checkout with a confirmed regular test account and the existing test administrator. Supply only email addresses as arguments. Enter passwords in the terminal's hidden prompts. The runner logs HTTP results and byte counts; its SHA-256 expectations identify the initial test edition. `--guest-only` runs just the anonymous side. The complete run checks the real membership and CMS role RPCs, the four objects and denied URL signing before closing the two sessions.
 
 ```powershell

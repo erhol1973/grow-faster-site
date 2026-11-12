@@ -12,6 +12,8 @@ test('anonymous journal exposes the full opening article and no member pages or 
 });
 
 test.describe('complete journal with a member entitlement', () => {
+  let payloads;
+  test.beforeAll(() => { payloads = {nl:edition('nl').payload,fr:edition('fr').payload,image:cartoon()}; });
   test.beforeEach(async ({page}) => {
     // Isolate editorial/UI regressions from live Auth; the companion DB tests exercise actual policies.
     await page.route('**/assets/member-auth.js*', route => route.fulfill({
@@ -20,9 +22,9 @@ test.describe('complete journal with a member entitlement', () => {
     }));
     await page.route('**/test-fixture/*', async route => {
       const file = new URL(route.request().url()).pathname.split('/').pop();
-      if (file === 'cartoon.webp') return route.fulfill({contentType:'image/webp',body:cartoon()});
+      if (file === 'cartoon.webp') return route.fulfill({contentType:'image/webp',body:payloads.image});
       const lang = file === 'fr.json' ? 'fr' : 'nl';
-      return route.fulfill({contentType:'application/json', body:edition(lang).payload});
+      return route.fulfill({contentType:'application/json', body:payloads[lang]});
     });
   });
 

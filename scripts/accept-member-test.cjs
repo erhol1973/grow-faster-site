@@ -77,7 +77,10 @@ async function main() {
   await anonymousStorage();
   const rpc = await request('/rest/v1/rpc/member_has_access',null,{});
   const error = await rpc.json().catch(() => ({}));
-  check('guest cannot execute deployed membership RPC',[401,403].includes(rpc.status) && error.code === '42501',
+  // Depending on role visibility, PostgREST may hide the function from guests.
+  // Only successful authenticated RPC calls below establish that it was deployed.
+  check('guest cannot execute membership RPC',([401,403].includes(rpc.status) && error.code === '42501') ||
+        (rpc.status === 404 && error.code === 'PGRST202'),
         'HTTP ' + rpc.status + ', ' + (error.code || 'unknown code'));
   if (!guestOnly) {
     await memberOrAdmin(args[0],false);

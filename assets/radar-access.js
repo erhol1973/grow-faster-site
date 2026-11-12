@@ -25,6 +25,11 @@
   });
   try {
     if (!(await auth.ready())) return;
+    const account = document.createElement('a');
+    account.href = auth.accountUrl();
+    account.textContent = fr ? 'Mon compte' : 'Mijn account';
+    account.className = 'radar-account';
+    document.querySelector('.header-inner').append(account);
     const requestGeneration = generation;
     const response = await auth.request('/storage/v1/object/authenticated/member-content/radar/current.json');
     if (!response.ok) throw new Error('Access unavailable');
@@ -42,10 +47,10 @@
     window.BAEIS_DEV_DATA = edition.data;
     window.BAEIS_MEMBER_COPY = edition.copy;
     showingEdition = true;
+    template.content.querySelector('noscript')?.remove();
     document.body.replaceChildren(template.content);
-    const app = document.createElement('script');
-    app.src = '/assets/baies-dev-app.js';
-    document.body.append(app);
+    document.querySelector('.header-right').prepend(account);
+    window.openMemberRadar();
   } catch {
     const status = document.getElementById('radar-status');
     if (status) status.textContent = fr ? 'L’édition complète est momentanément indisponible.' : 'De volledige ledeneditie is momenteel niet beschikbaar.';

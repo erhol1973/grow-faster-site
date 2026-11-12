@@ -176,10 +176,11 @@ test('BAEIS D: research plans distinguish size, role and unknown business values
 // Production integration uses main's existing server/build and never exposes repo reports.
 test('BAEIS production artifact: isolated public route, complete assets and no test/report publication',async()=>{
   const {createServer}=require('../scripts/server.cjs');const server=createServer();await new Promise(r=>server.listen(0,'127.0.0.1',r));const base='http://127.0.0.1:'+server.address().port;
+  async function status(route){const response=await fetch(base+route);await response.arrayBuffer();return response.status;}
   try{
     for(const route of ['/baies-dev/','/executive-radar/','/baies-dev/?lang=nl','/baies-dev/?lang=fr']){const r=await fetch(base+route);assert.equal(r.status,200,route);const body=await r.text();assert.match(body,/Bekijk de volledige radar/);assert.doesNotMatch(body,/id="heading-dashboard"|id="company-size"|BE-EC-003|96,1%/);assert.match(body,/name="radar-template" content="[a-f0-9]{64}"/);}
-    for(const asset of ['baies-dev.css','baies-dev-core.js','radar-access.js','baies-dev-app.js'])assert.equal((await fetch(base+'/assets/'+asset)).status,200,asset);
-    for(const asset of ['logo-dark.svg','logo-white.svg','logo-dark.png','logo-white.png','favicon.svg','favicon.png'])assert.equal((await fetch(base+'/img/baies-dev-'+asset)).status,200,asset);
-    for(const route of ['/assets/baies-dev-data.js','/scripts/radar-reference/data.cjs','/reports/member-content/radar/current.json','/radar/current.json','/docs/BAEIS-D-FOLLOWUP.md','/tests/baies-dev.test.cjs','/reports/unit.xml'])assert.equal((await fetch(base+route)).status,404,route);
+    for(const asset of ['baies-dev.css','baies-dev-core.js','radar-access.js','baies-dev-app.js'])assert.equal(await status('/assets/'+asset),200,asset);
+    for(const asset of ['logo-dark.svg','logo-white.svg','logo-dark.png','logo-white.png','favicon.svg','favicon.png'])assert.equal(await status('/img/baies-dev-'+asset),200,asset);
+    for(const route of ['/assets/baies-dev-data.js','/scripts/radar-reference/data.cjs','/reports/member-content/radar/current.json','/radar/current.json','/docs/BAEIS-D-FOLLOWUP.md','/tests/baies-dev.test.cjs','/reports/unit.xml'])assert.equal(await status(route),404,route);
   }finally{server.closeAllConnections();await new Promise(r=>server.close(r));}
 });

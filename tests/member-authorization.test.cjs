@@ -95,7 +95,7 @@ test('member access with the existing CMS roles and private Storage policies', a
   });
   await t.test('members cannot mint bearer download URLs, list objects or access the table outside Storage',async () => {
     await role('authenticated',member);
-    for (const op of ['object.sign','object.sign_multiple','object.list','']) {
+    for (const op of ['object.sign','object.sign_many','object.list','']) {
       await db.query("select set_config('test.storage_operation',$1,false)",[op]);
       assert.equal(await readable(),0);
     }

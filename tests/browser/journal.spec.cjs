@@ -36,6 +36,7 @@ test('monthly journal opens from its menu and preserves page when switching lang
  await expect(page).toHaveURL(/insights\.html$/);
  await page.getByRole('link',{name:'Lees editie 01'}).click();
  await expect(page.locator('html')).toHaveAttribute('lang','nl');
+ await expect(page.locator('.book.enhanced')).toBeVisible();
  await expect(page.locator('.sheet:visible')).toHaveAttribute('id','p1');
  await page.getByRole('button',{name:/Volgende/}).click();
  await expect(page.locator('.sheet:visible')).toHaveAttribute('id','p2');

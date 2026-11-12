@@ -10,6 +10,7 @@ on:
       - 'img/baies-dev*'
       - 'tests/baies-dev*'
       - 'tests/browser/baies-dev*'
+      - 'tests/browser/radar-access*'
       - 'scripts/baies-dev*'
       - 'playwright.baies-dev.config.cjs'
       - '.github/workflows/baies-dev-quality.yml'

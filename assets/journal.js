@@ -124,6 +124,7 @@ function removeMemberPages() {
   current = -1;
   joinLink.hidden = false;
   sourcesLink.hidden = true;
+  document.querySelectorAll('[data-member-ref]').forEach(link => { link.href = '#journal-source'; });
   journalStatus.textContent = '';
   show(targetIndex());
 }
@@ -162,6 +163,7 @@ async function updateEdition() {
     editionOwner = member.id;
     joinLink.hidden = true;
     sourcesLink.hidden = false;
+    document.querySelectorAll('[data-member-ref]').forEach(link => { link.href = link.dataset.memberRef; });
     journalStatus.textContent = '';
     current = -1;
     show(targetIndex());
@@ -179,8 +181,8 @@ async function updateEdition() {
 }
 
 book.addEventListener('click', event => {
-  const citation = event.target.closest('a[href^="#source-"][title]');
-  if (citation && !document.getElementById(citation.hash.slice(1))) {
+  const citation = event.target.closest('a[data-member-ref][title]');
+  if (citation && !editionOwner) {
     event.preventDefault();
     journalStatus.textContent = citation.title;
   }

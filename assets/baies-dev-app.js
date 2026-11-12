@@ -1,5 +1,5 @@
 /* BAEIS DEV front-end. No network requests, remote writes, or CMS/HubSpot connection. */
-(function(){
+window.openMemberRadar = function(){
   'use strict';
   const dataset=window.BAEIS_DEV_DATA;
   const core=window.BAEIS_DEV_CORE;
@@ -172,4 +172,4 @@
   window.addEventListener('popstate',()=>syncRoute());
   window.addEventListener('hashchange',()=>syncRoute());
   syncRoute(false);logEvent(text('auditInit'));
-})();
+};

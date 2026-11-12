@@ -45,7 +45,7 @@
     return target.pathname + target.search + target.hash;
   }
   function accountUrl(returnTo = location.pathname + location.search + location.hash) {
-    const url = new URL('/account.html', location.origin);
+    const url = new URL('/account', location.origin);
     url.searchParams.set('return', cleanReturn(returnTo));
     url.searchParams.set('lang', document.documentElement.lang.startsWith('fr') ? 'fr' : 'nl');
     return url.pathname + url.search;
@@ -86,7 +86,7 @@
   async function emailFlow(mode, email, password, returnTo, language) {
     if (!['signup','recover'].includes(mode)) throw Error('form');
     const nonce = crypto.randomUUID();
-    const callback = new URL('/account.html', location.origin);
+    const callback = new URL('/account', location.origin);
     callback.searchParams.set('state',nonce);
     callback.searchParams.set('lang',language === 'fr' ? 'fr' : 'nl');
     localStorage.setItem(flowKey, JSON.stringify({nonce,mode,returnTo:cleanReturn(returnTo),end:Date.now()+3600000}));

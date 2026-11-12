@@ -37,7 +37,8 @@ function provision(journalDirectory, radarFile) {
     select exists(select 1 from storage.buckets where id='member-content' and public=false)
        and to_regprocedure('public.member_has_access()') is not null
        and exists(select 1 from pg_policies where schemaname='storage' and tablename='objects'
-                  and policyname='member_content_read_guard' and permissive='RESTRICTIVE') as ready
+                  and policyname='member_content_read_guard' and permissive='RESTRICTIVE'
+                  and position('object.get_authenticated' in qual) > 0) as ready
   `]);
   // CLI releases can return either an array or an object with a rows property.
   const result = JSON.parse(check);

@@ -148,3 +148,5 @@ figcaption{font:italic 1.3rem/1.4 Georgia,serif;text-align:center;margin:.7rem a
 @media(max-width:600px){.page-stage{grid-template-columns:34px minmax(0,1fr) 34px}.page-arrow{min-width:30px;min-height:48px;font-size:30px}.journal-header .return-link{font-size:.75rem}.reading-tools{gap:.2rem}.reading-tools button{padding:.3rem .45rem}}
 @media print{.page-arrow{display:none!important}.page-stage{display:block}}
 .exact-edition .sheet a[href^="#source-"]{display:inline-block;min-width:1.4em;text-align:center;touch-action:manipulation}
+
+.reader-account{list-style:none;margin:0;padding:0}.journal-header .member-nav-panel{position:absolute}.journal-header .member-nav-panel a{color:#103958}

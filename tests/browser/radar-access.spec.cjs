@@ -1,0 +1,30 @@
+'use strict';
+const {test,expect}=require('playwright/test');
+const {edition}=require('../../scripts/radar-release.cjs');
+
+test('Radar preview never requests private data as a guest', async ({page}) => {
+  let attempts=0;
+  await page.route('**/assets/member-auth.js',route=>route.fulfill({contentType:'text/javascript',
+    body:"window.GFMember={ready:async()=>null,accountUrl:()=>'/account.html',request:async()=>fetch('/__private_radar')};"}));
+  await page.route('**/__private_radar',route=>{attempts++;return route.fulfill({status:403});});
+  await page.goto('/executive-radar/?lang=fr');
+  await expect(page.locator('article:visible')).toHaveCount(1);
+  await expect(page.locator('article:visible h2')).toContainText('entreprise belge');
+  await expect(page.locator('#dashboard')).toHaveCount(0);
+  expect(attempts).toBe(0);
+});
+for(const scenario of ['denied','tampered template','unsafe source']) {
+  test('Radar member reader fails closed for '+scenario, async ({page}) => {
+    await page.route('**/assets/member-auth.js',route=>route.fulfill({contentType:'text/javascript',
+      body:"window.GFMember={ready:async()=>({id:'member'}),accountUrl:()=>'/account.html',request:async()=>fetch('/__private_radar')};"}));
+    const payload=structuredClone(edition());
+    if(scenario==='tampered template') payload.body+='<img src=x onerror=alert(1)>';
+    if(scenario==='unsafe source') payload.data.records[1].url='javascript:alert(1)';
+    await page.route('**/__private_radar',route=>route.fulfill({status:scenario==='denied'?403:200,
+      contentType:'application/json',body:JSON.stringify(payload)}));
+    await page.goto('/baies-dev/');
+    await expect(page.getByRole('status')).toContainText('niet beschikbaar');
+    await expect(page.locator('#dashboard')).toHaveCount(0);
+    await expect(page.locator('article:visible')).toHaveCount(1);
+  });
+}

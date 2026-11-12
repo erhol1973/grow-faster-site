@@ -52,5 +52,5 @@ async function main(){
   console.log(JSON.stringify({...result,finishedAt:new Date().toISOString()},null,2));
  }
 }
-module.exports={isBucketRejection};
+module.exports={isBucketRejection,passwordPrompt,testProject:project,testPublishableKey:key};
 if(require.main===module)main().catch(error=>{console.error(error.message);process.exitCode=1;});

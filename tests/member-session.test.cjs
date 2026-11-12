@@ -37,6 +37,7 @@ function environment({host='localhost',project=testProject,admin=false,confirmed
   const api = window.GFMember;
   function emailCallback(type) {
     const url = new URL(calls.at(-1).target.searchParams.get('redirect_to'));
+    assert.equal(url.pathname,'/account');
     location.search=url.search;
     location.hash='#access_token=fixture&type='+type+'&expires_in=300';
   }

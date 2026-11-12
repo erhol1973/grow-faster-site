@@ -9,7 +9,7 @@ const referenceCommit = '9f3a0ddbd7fa0d3dc548a2ba17b66a816f946d10';
 const templateHash = '3c98575b19bd0f0b3e039aa28db889812657f5edf2b90fdd84658f4bfdd91d50';
 let cached;
 function historicalFile(relativePath) {
-  return execFileSync('git', ['show', referenceCommit + ':' + relativePath], { cwd: root, encoding:'utf8' });
+  return execFileSync('git', ['-c','safe.directory='+root,'show', referenceCommit + ':' + relativePath], { cwd: root, encoding:'utf8' });
 }
 // Used only by isolated acceptance and initial provisioning. Subsequent private
 // editions are maintained outside Git and delivered by the authenticated gateway.

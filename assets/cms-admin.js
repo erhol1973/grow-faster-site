@@ -1,6 +1,7 @@
 (function(){
  'use strict';
  const $=id=>document.getElementById(id),client=window.GFCms.createClient(window.GF_CMS_CONFIG),catalog=window.GF_CMS_CATALOG;
+ let usingMemberSession=false;
  let records=[],selected=null,definition=null,dirty=false,busy=false,returnFocus=null,previewedRevision=null,previewedSection=null;
  const notify=text=>$('notice').textContent=text;
  const button=(text,fn)=>{const b=document.createElement('button');b.type='button';b.textContent=text;b.addEventListener('click',()=>run(fn));return b;};
@@ -66,7 +67,7 @@
       paint();nav();});b.setAttribute('aria-current',String(definition===item));$('sections').append(b);}}
  async function openWorkspace(){records=await client.list();$('login-panel').hidden=true;$('workspace').hidden=false;$('logout').hidden=false;nav();notify('Aangemeld. Kies de pagina die je wilt bijwerken.');}
  $('login').addEventListener('submit',event=>{event.preventDefault();run(async()=>{const data=new FormData(event.target);try{await client.login(data.get('email'),data.get('password'));}finally{event.target.elements.password.value='';}await openWorkspace();});});
- $('logout').addEventListener('click',()=>run(async()=>{try{await window.GFMember?.logout();}finally{try{await client.logout();}finally{location.reload();}}}));
+ $('logout').addEventListener('click',()=>run(async()=>{try{if(usingMemberSession)await window.GFMember.logout();else await client.logout();}finally{location.reload();}}));
  $('search').addEventListener('input',nav);
  $('recover').addEventListener('click',()=>{const email=$('login').elements.email;if(!email.reportValidity())return;run(async()=>{const redirect=location.hostname==='grow-faster.be'?'https://grow-faster.be/admin':'https://feature-secure-supabase-cms.grow-faster-site.pages.dev/admin';await client.recover(email.value,redirect);notify('Als dit adres een account heeft, ontvang je een persoonlijke herstellink. Controleer ook je spammap.');});});
  $('recovery-form').addEventListener('submit',event=>{event.preventDefault();run(async()=>{const form=event.target;if(form.elements.password.value!==form.elements.confirm.value)throw Error('De twee wachtwoorden zijn niet gelijk.');await client.updatePassword(form.elements.password.value);form.reset();$('recovery-panel').hidden=true;$('login-panel').hidden=false;notify('Wachtwoord ingesteld. Meld je nu aan met je nieuwe wachtwoord.');});});
@@ -77,6 +78,7 @@
   const session=await window.GFMember.getAdminSession();
   if(!session)return;
   await client.acceptRecovery(session.token,session.expiresIn);
+  usingMemberSession=true;
   await openWorkspace();
  });}
  $('edit').addEventListener('submit',event=>{event.preventDefault();run(async()=>{if(!selected)return;selected=await client.save(selected.id,selected.updated_at,values());records=records.map(r=>r.id===selected.id?selected:r);dirty=false;previewedRevision=null;previewedSection=null;$('state').textContent='Opgeslagen concept';notify('Concept opgeslagen. Controleer het voorbeeld voordat je publiceert. De livewebsite is ongewijzigd.');});});

@@ -20,7 +20,7 @@
     item.replaceChildren();
     const href = member.accountUrl();
     const signIn = link(fr ? 'Se connecter' : 'Aanmelden',href);
-    signIn.className = 'l';
+    signIn.className = 'member-login-link';
     item.append(signIn);
     const user = await member.ready();
     if (!user || generationAtStart !== generation) return;

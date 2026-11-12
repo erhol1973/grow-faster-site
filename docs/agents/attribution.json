@@ -43,7 +43,8 @@
     "tests/load.test.cjs",
     "tests/cms-client.test.cjs",
     "tests/editorial.test.cjs",
-    "tests/browser/cms.spec.cjs"
+    "tests/browser/cms.spec.cjs",
+    "tests/browser/navigation-accessibility.spec.cjs"
   ],
   "radar": [
     "assets/baies-dev-app.js",

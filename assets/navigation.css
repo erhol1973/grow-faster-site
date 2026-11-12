@@ -1,6 +1,6 @@
-/* Four content categories and one direct workshop action. */
+
 .nav.nav-executive{--nav-height:76px;--bg:#fff;--brand:#0b2545;--ink:#0b2545;--muted:#46596d;--line:#dce4eb;--tint:#edf4fa;--ai-ink:#006a9c;background:#fff!important;color:var(--ink);border-bottom:1px solid var(--line)!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;box-shadow:none!important}
-.nav.nav-executive .wrap{height:var(--nav-height);gap:24px}
+.nav.nav-executive .wrap{height:var(--nav-height);gap:20px;max-width:1800px}
 .nav.nav-executive .brand{margin-right:auto}
 .nav.nav-executive .logo{height:40px;filter:none;text-shadow:none}
 .nav.nav-executive .wrap>#navlist{display:flex;gap:20px;align-items:center;overflow:visible;margin:0;padding:0;list-style:none}
@@ -14,8 +14,8 @@
 .nav.nav-executive .nav-sub{position:absolute;top:calc(100% + 16px);left:-18px;width:296px;max-width:calc(100vw - 32px);margin:0;padding:10px;list-style:none;background:#fff;border:1px solid var(--line);border-radius:6px;box-shadow:0 16px 36px #0b25451a;z-index:22}
 .nav.nav-executive .nav-sub a{display:block;min-height:44px;padding:11px 12px;font-size:14px;line-height:1.5;text-decoration:none;color:#0b2545;border-radius:3px;white-space:normal}
 .nav.nav-executive .nav-sub a:hover,.nav.nav-executive .nav-sub a[aria-current="page"]{background:#edf4fa;color:#006a9c;text-decoration:underline;text-underline-offset:3px}
-.nav.nav-executive a.nav-work{gap:12px;padding:12px 18px;min-height:44px;background:#0b2545;color:#fff!important;border:1px solid #0b2545;border-radius:3px;font-weight:600;text-decoration:none}
-.nav.nav-executive a.nav-work:hover,.nav.nav-executive a.nav-work.on{background:#123b60;color:#fff!important;text-decoration:none;box-shadow:inset 0 -3px #7fd3f7}
+.nav.nav-executive a.nav-work{gap:12px;padding:12px 18px;min-height:44px;background:#1568ae;color:#fff!important;border:1px solid #1568ae;border-radius:3px;font-weight:600;text-decoration:none}
+.nav.nav-executive a.nav-work:hover,.nav.nav-executive a.nav-work.on{background:#7fd3f7;color:#0b2545!important;text-decoration:none;box-shadow:inset 0 -3px #7fd3f7}
 .nav.nav-executive .lang-top{margin:0;padding-left:15px;border-left:1px solid var(--line);flex-shrink:0}
 .nav.nav-executive .lang-btn{min-height:44px;padding:6px 0;border:0;background:transparent;color:#46596d!important;font-size:12px;font-weight:500;text-shadow:none}
 .nav.nav-executive .lang-btn:hover{background:transparent;color:#0b2545!important}
@@ -37,34 +37,33 @@
 .nav.nav-executive.compact .nav-parent>a.l{flex:1}
 .nav.nav-executive.compact #navlist a.l{display:flex;min-height:52px;font-size:16px;padding:12px 0}
 .nav.nav-executive.compact .nav-toggle{width:44px;min-height:52px}
-.nav.nav-executive.compact .nav-action{margin-bottom:8px}
+.nav.nav-executive.compact .nav-action{margin-top:8px}
 .nav.nav-executive.compact #navlist a.nav-work{justify-content:space-between;min-height:48px;padding:12px 16px;font-size:15px}
 .nav.nav-executive #navlist .nav-sub li{border:0}
 .nav.nav-executive.compact .nav-sub{position:static;width:auto;max-width:none;box-shadow:none;border:0;border-left:2px solid #dce4eb;border-radius:0;margin:0 0 12px 6px;padding:0 0 0 10px}
 @media(max-width:1100px){.nav.nav-executive{--nav-height:68px}.nav.nav-executive .wrap{gap:10px}.nav.nav-executive .brand{margin:0}.nav.nav-executive .logo{height:36px}.nav.nav-executive .lang-top{margin-left:auto;padding-left:0;border:0}.nav.nav-executive .wrap>#navlist{display:none}.topic-links{gap:4px 18px}}
-
 .nav-executive~main .hero,.nav-executive~main>.hero{margin-top:calc(-1*76px)}
 .nav-executive~main .hero-inner{padding-top:calc(76px + clamp(48px,6vw,80px))}
 html.nav-over .nav.nav-executive{background:transparent!important;border-bottom-color:rgba(255,255,255,.18)!important}
 html.nav-over .nav.nav-executive #navlist>li>a.l:not(.nav-work),html.nav-over .nav.nav-executive .nav-parent>a.l{color:#fff!important;text-shadow:0 1px 8px rgba(7,16,30,.6)}
 html.nav-over .nav.nav-executive #navlist>li>a.l:not(.nav-work):hover,html.nav-over .nav.nav-executive #navlist>li>a.l.on:not(.nav-work),html.nav-over .nav.nav-executive .nav-parent>a.l:hover{color:#7fd3f7!important}
 html.nav-over .nav.nav-executive .nav-toggle{color:#fff}
-html.nav-over .nav.nav-executive #navlist a.nav-work{background:#fff;border-color:#fff;color:#0b2545!important;text-shadow:none;filter:none}
-html.nav-over .nav.nav-executive #navlist a.nav-work:hover{background:#edf4fa;color:#0b2545!important}
+html.nav-over .nav.nav-executive #navlist a.nav-work{background:#1568ae;border-color:#1568ae;color:#fff!important;text-shadow:none;filter:none}
+html.nav-over .nav.nav-executive #navlist a.nav-work:hover{background:#7fd3f7;color:#0b2545!important}
 html.nav-over .nav.nav-executive .lang-top{border-left-color:rgba(255,255,255,.3)}
 html.nav-over .nav.nav-executive .lang-btn{color:#fff!important}
 html.nav-over .nav.nav-executive .burger{color:#fff!important;border-color:rgba(255,255,255,.45)!important}
 @media(max-width:1100px){.nav-executive~main .hero,.nav-executive~main>.hero{margin-top:calc(-1*68px)}.nav-executive~main .hero-inner{padding-top:calc(68px + clamp(48px,6vw,80px))}}
-
-/* Keep anchor targets and focused links clear of the sticky menu bar. */
 html{scroll-padding-top:92px}
 @media(max-width:1100px){html{scroll-padding-top:84px}}
-
-.nav .brand picture{display:block;position:relative;width:clamp(160px,18vw,238px);aspect-ratio:1100/250}
+.nav .brand picture{display:block;position:relative;width:clamp(160px,16vw,220px);aspect-ratio:1920/320}
 .nav .brand .gf-wordmark{display:block;width:100%;height:100%;object-fit:contain}
 .nav .brand .gf-wordmark-dark{display:none}
 html.nav-over .nav .brand .gf-wordmark-light{display:none}
 html.nav-over .nav .brand .gf-wordmark-dark{display:block}
 @media(max-width:1100px){.nav .brand picture{width:clamp(146px,27vw,204px)}}
-/* Switch header colours atomically: fading light text over the open white menu briefly loses contrast. */
 .nav.nav-executive,.nav.nav-executive .brand,.nav.nav-executive a.l,.nav.nav-executive .lang-btn{transition:none}
+
+.footer-brand{display:block;width:190px;max-width:100%}.footer-brand img{display:block;width:100%;height:auto}
+
+.c-logo .logo{width:clamp(130px,22vw,190px);height:auto}

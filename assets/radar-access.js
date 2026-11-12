@@ -5,10 +5,17 @@
   document.querySelectorAll('article[data-language]').forEach(el => {
     el.hidden = el.dataset.language !== (fr ? 'fr' : 'nl');
   });
+  const skip = document.querySelector('.skip');
+  if (fr) skip.textContent = 'Aller au contenu';
+  let showingEdition = false;
+  skip.addEventListener('click', event => {
+    if (showingEdition) return;
+    event.preventDefault();
+    document.getElementById('main').focus();
+  });
   const auth = window.GFMember;
   if (!auth) return;
   document.querySelectorAll('[data-member-link]').forEach(a => { a.href = auth.accountUrl(); });
-  let showingEdition = false;
   let generation = 0;
   function clearEdition() {
     generation++;
@@ -48,9 +55,16 @@
     window.BAEIS_MEMBER_COPY = edition.copy;
     showingEdition = true;
     template.content.querySelector('noscript')?.remove();
-    document.body.replaceChildren(template.content);
+    // Keep the focused skip link connected while the private edition replaces the preview.
+    const wasInMain = document.activeElement === document.getElementById('main');
+    template.content.querySelector('.skip').remove();
+    for (const child of Array.from(document.body.childNodes)) {
+      if (child !== skip) child.remove();
+    }
+    document.body.append(template.content);
     document.querySelector('.header-right').prepend(account);
     window.openMemberRadar();
+    if (wasInMain) document.getElementById('main').focus({preventScroll:true});
   } catch {
     const status = document.getElementById('radar-status');
     if (status) status.textContent = fr ? 'L’édition complète est momentanément indisponible.' : 'De volledige ledeneditie is momenteel niet beschikbaar.';

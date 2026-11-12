@@ -28,3 +28,32 @@ for(const scenario of ['denied','tampered template','unsafe source']) {
     await expect(page.locator('article:visible')).toHaveCount(1);
   });
 }
+
+for (const target of ['skip', 'main']) {
+  test('Radar keeps keyboard focus on '+target+' while the private edition opens', async ({page}) => {
+    let releaseEdition;
+    const waiting = new Promise(resolve => { releaseEdition = resolve; });
+    await page.route('**/assets/member-auth.js', route => route.fulfill({
+      contentType:'text/javascript',
+      body:"window.GFMember={ready:async()=>({id:'member'}),accountUrl:()=>'/account.html',request:async()=>fetch('/__private_radar')};"
+    }));
+    await page.route('**/__private_radar', async route => {
+      await waiting;
+      await route.fulfill({contentType:'application/json',body:JSON.stringify(edition())});
+    });
+    try {
+      await page.goto('/baies-dev/?lang=fr#radar');
+      await page.keyboard.press('Tab');
+      await expect(page.locator('.skip')).toBeFocused();
+      if (target === 'main') await page.keyboard.press('Enter');
+      const focused = page.locator(target === 'main' ? '#main' : '.skip');
+      await expect(focused).toBeFocused();
+      releaseEdition();
+      await expect(page.locator('#radar')).toBeVisible();
+      await expect(focused).toBeFocused();
+      await expect(page).toHaveURL(/#radar$/);
+    } finally {
+      releaseEdition();
+    }
+  });
+}

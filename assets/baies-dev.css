@@ -122,3 +122,8 @@ body{font-size:var(--text-body);line-height:1.6}.brand-logo{width:190px;height:a
 
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;transition:none!important}
 }
+
+/* Simulation follow-up: context and source-separated research proposals. */
+.company-context{margin-block:20px;max-width:100%;min-width:0}.company-context small{display:block;font-size:13px;line-height:1.6;color:var(--muted);margin-top:8px}.context-note{font-size:14px;line-height:1.6;color:var(--muted)}.decision-plan{margin-top:16px;padding:16px;border-left:3px solid var(--brand-blue);background:var(--status-tint);border-radius:0 10px 10px 0}.decision-plan dl{margin:0}.decision-plan dl>div+div{margin-top:12px}.decision-plan dt{font-size:13px;font-weight:750;color:var(--brand-navy)}.decision-plan dd{margin:4px 0 0;font-size:15px;line-height:1.6;color:var(--ink)}.filter-coverage{margin:12px 0 24px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}.filter-coverage p{font-size:14px;color:var(--muted);margin:0;flex:1 1 240px}#brief-items .record-id{margin-bottom:6px}#company-size{max-width:100%;min-height:44px}
+
+.decision-plan .plan-heading{font-size:13px}.decision-plan p{font-size:15px;margin:6px 0 10px}.decision-plan summary{min-height:44px;padding-block:10px;cursor:pointer;font-size:14px;font-weight:700;color:var(--brand-navy)}.decision-plan details[open] dl{padding-top:10px}

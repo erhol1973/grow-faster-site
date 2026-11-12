@@ -231,7 +231,7 @@ for(const lang of ['nl','fr'])test('BAEIS C: '+lang+' dashboard agenda, source d
   const downloadPromise=page.waitForEvent('download');await page.locator('#download-brief').click();const download=await downloadPromise;
   expect(download.suggestedFilename()).toBe('BAEIS_DEV_Executive_Brief_CIO.txt');
   const content=require('fs').readFileSync(await download.path(),'utf8');
-  expect(content).toContain('Audience: CIO');expect(content).toContain('https://statbel.fgov.be');expect(content).toContain('https://www.vlaio.be');expect(content).not.toContain('https://www.nbb.be');
+  expect(content).toContain(lang==='fr'?'Fonction: CIO':'Directiefunctie: CIO');expect(content).toContain('https://statbel.fgov.be');expect(content).toContain('https://www.vlaio.be');expect(content).not.toContain('https://www.nbb.be');
   expect(content).toContain(lang==='fr'?'Limites de recherche':'Onderzoeksbeperkingen');
   await page.locator('#dashboard-radar').click();await expect(page.locator('#role-filter')).toHaveValue('CIO');await expect(page.locator('#signal-grid .signal-card')).toHaveCount(2);
   await navigate(page,'dashboard');await expect(page.locator('[data-role=CIO]')).toHaveAttribute('aria-pressed','true');
@@ -267,4 +267,28 @@ for(const lang of ['nl','fr'])test('BAEIS C: '+lang+' register combines source a
 for(const lang of ['nl','fr'])test('BAEIS C: '+lang+' workspaces remain usable at narrow and wide viewports',async({page})=>{
   await page.goto('/baies-dev/?lang='+lang);
   for(const width of [320,768,1440]){await page.setViewportSize({width,height:900});for(const view of ['overview','dashboard','radar','evidence']){await navigate(page,view);expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);const heading=page.locator('#heading-'+view);await expect(heading).toBeVisible();expect(await heading.evaluate(e=>e.getBoundingClientRect().top>=document.querySelector('.main-nav').getBoundingClientRect().bottom)).toBe(true);}}
+});
+
+for(const lang of ['nl','fr'])test('BAEIS D: '+lang+' concept search and transparent role widening',async({page})=>{
+  await page.goto('/baies-dev/?lang='+lang+'#radar');await page.locator('#role-filter').selectOption('CFO');
+  for(const query of ['AI','IA']){await page.locator('#signal-search').fill(query);await expect(page.locator('.signal-card')).toHaveCount(2);await expect(page.locator('.signal-card').first()).toHaveAttribute('data-record','BE-AI-001');await expect(page.locator('.signal-card').last()).toHaveAttribute('data-record','BE-AI-002');}
+  await page.locator('#signal-search').fill('factur');await expect(page.locator('.signal-card')).toHaveCount(0);await expect(page.locator('#signal-grid .empty')).toBeVisible();
+  await page.locator('#role-filter').selectOption('CIO');await page.locator('#sector-filter').selectOption('Manufacturing');await page.locator('#signal-sort').selectOption('date');await page.locator('#signal-search').fill('BE-EC-004');
+  await expect(page.locator('#role-coverage')).toContainText('CIO');await expect(page.locator('#role-coverage')).toContainText('1');await expect(page.locator('#expand-role-filter')).toBeVisible();
+  await page.locator('#expand-role-filter').click();await expect(page.locator('#role-filter')).toHaveValue('ALL');await expect(page.locator('#role-filter')).toBeFocused();await expect(page.locator('#sector-filter')).toHaveValue('Manufacturing');await expect(page.locator('#signal-search')).toHaveValue('BE-EC-004');await expect(page.locator('#signal-sort')).toHaveValue('date');await expect(page.locator('.signal-card')).toHaveCount(1);await expect(page.locator('#expand-role-filter')).toBeHidden();
+  await navigate(page,'evidence');for(const query of ['AI','IA']){await page.locator('#evidence-search').fill(query);await expect(page.locator('.evidence-record')).toHaveCount(2);}await page.locator('#evidence-search').fill('factur');await expect(page.locator('.evidence-record')).toHaveCount(0);await page.locator('#reset-evidence').click();await expect(page.locator('.evidence-record')).toHaveCount(5);
+});
+
+for(const role of ['CEO','CFO'])for(const lang of ['nl','fr'])test('BAEIS D: '+role+' '+lang+' size-specific research agenda and complete local brief',async({page})=>{
+  const writes=[];page.on('request',r=>{if(r.method()!=='GET')writes.push(r.url());});await page.goto('/baies-dev/?lang='+lang+'#dashboard');await page.locator('[data-role='+role+']').click();
+  await expect(page.locator('#dashboard-records')).toHaveText('5');if(role==='CFO')await expect(page.locator('#cfo-context')).toBeVisible();else await expect(page.locator('#cfo-context')).toBeHidden();
+  const expected={small:lang==='fr'?'minutes par opération':'minuten per handeling',medium:lang==='fr'?'par équipe':'per betrokken team',large:lang==='fr'?'Dossier par entité':'Beoordelingsdossier per eenheid'};
+  for(const size of ['small','medium','large']){
+    await page.locator('#company-size').selectOption(size);await expect(page.locator('#brief-items .decision-plan')).toHaveCount(3);await expect(page.locator('#brief-items .decision-plan').first()).toHaveAttribute('data-context',size);await page.locator('#brief-items .decision-plan summary').first().click();await expect(page.locator('#brief-items .decision-plan').first().locator('details')).toHaveAttribute('open','');await expect(page.locator('#brief-items .decision-plan').first().locator('dd').first()).toBeVisible();await expect(page.locator('#brief-items .decision-plan').first()).toContainText(expected[size]);
+    const promise=page.waitForEvent('download');await page.locator('#download-brief').click();const d=await promise;const text=require('fs').readFileSync(await d.path(),'utf8');expect(d.suggestedFilename()).toBe('BAEIS_DEV_Executive_Brief_'+role+'.txt');expect(text).toContain((lang==='fr'?'Fonction: ':'Directiefunctie: ')+role);expect(text).toContain(expected[size]);expect(text).toContain('BE-EC-003');expect(text).toContain('https://www.nbb.be/');expect(text).toContain(lang==='fr'?'Prochaine étape proposée':'Voorgestelde vervolgstap');expect(text).toContain(lang==='fr'?'pas des faits sourcés':'geen bronfeiten');expect(text).toContain(lang==='fr'?'Limites de recherche':'Onderzoeksbeperkingen');
+  }
+  await language(page,lang==='fr'?'nl':'fr');await expect(page.locator('#company-size')).toHaveValue('large');await expect(page.locator('[data-role='+role+']')).toHaveAttribute('aria-pressed','true');
+  await navigate(page,'radar');await navigate(page,'dashboard');await expect(page.locator('#company-size')).toHaveValue('large');await expect(page.locator('#brief-items .decision-plan').first()).toHaveAttribute('data-context','large');
+  await page.locator('#brief-items .decision-plan summary').first().focus();await page.keyboard.press('Enter');await expect(page.locator('#brief-items .decision-plan details').first()).toHaveAttribute('open','');
+  const scan=await new AxeBuilder({page}).withTags(['wcag2a','wcag2aa','wcag21aa','wcag22aa']).analyze();expect(scan.violations).toEqual([]);expect(writes).toEqual([]);
 });

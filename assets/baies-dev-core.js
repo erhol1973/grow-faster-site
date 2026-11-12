@@ -41,9 +41,43 @@
     return next;
   }
   function canPublishExternally(){return false;} // DEV POLICY: no external write integration.
+  function searchTokens(value){
+    return (String(value).normalize('NFD').replace(/\p{M}/gu,'').toLocaleLowerCase('nl-BE').match(/[\p{L}\p{N}]+/gu)||[]).map(t=>t==='ia'?'ai':t);
+  }
+  const sectorTerms=Object.freeze({'Cross-sector':'sectoroverschrijdend intersectoriel cross sector',SME:'kmo pme sme',Manufacturing:'industrie industrieel industriel manufacturing'});
+  function matchesQuery(record,query){
+    if(!String(query||'').trim())return true;
+    const terms=searchTokens(query);if(!terms.length)return false;
+    const words=searchTokens([record.id,record.title.nl,record.title.fr,record.claim.nl,record.claim.fr,record.source,sectorTerms[record.sector]||record.sector].join(' '));
+    return terms.every(term=>words.some(word=>word===term||(term.length>=3&&word.startsWith(term))));
+  }
   function filterRecords(records,role,sector,query){
-    const term=String(query||'').toLocaleLowerCase('nl-BE');
-    return records.filter(r=>(role==='ALL'||r.roles.includes(role))&&(sector==='All'||r.sector===sector)&&[r.title.nl,r.title.fr,r.claim.nl,r.claim.fr,r.source,r.id,r.sector].join(' ').toLocaleLowerCase('nl-BE').includes(term));
+    return records.filter(r=>(role==='ALL'||r.roles.includes(role))&&(sector==='All'||r.sector===sector)&&matchesQuery(r,query));
+  }
+  // Editorial research proposals, kept separate from the fixed factual claims.
+  function decisionPlan(record,role,size){
+    if(!['CEO','CFO','CIO','COO'].includes(role))throw new RangeError('Unknown executive role');
+    if(!['small','medium','large'].includes(size))throw new RangeError('Unknown company context');
+    const steps={
+      'BE-AI-001':{nl:'Kies één bestaand AI-gebruik in een proces en vergelijk tijd, fouten en kosten met een nulmeting.',fr:'Choisir un usage IA existant dans un processus et comparer temps, erreurs et coûts à une mesure initiale.'},
+      'BE-AI-002':{nl:'Inventariseer AI-gebruik per functie en noteer ontbrekende vaardigheden, controles en uitvoeringskosten. Gebruik de Vlaamse studie als context.',fr:'Recenser les usages IA par fonction et les compétences, contrôles et coûts manquants. Utiliser l’étude flamande comme contexte.'},
+      'BE-EC-003':{nl:'Werk voor één AI-project een basis-, gunstig en ongunstig scenario uit. Noteer aannames en ontbrekende kosten zonder de macroprognose als projectopbrengst te gebruiken.',fr:'Décrire les scénarios central, favorable et défavorable d’un projet IA. Noter hypothèses et coûts manquants sans utiliser la prévision macro comme rendement du projet.'},
+      'BE-EC-004':{nl:'Kies één industrieel proces en registreer wachttijd, doorlooptijd en foutkosten vóór een eventuele AI-pilot.',fr:'Choisir un processus industriel et relever attente, temps de cycle et coûts d’erreur avant un éventuel pilote IA.'},
+      'BE-SME-005':{nl:'Controleer welke capaciteit en vaardigheden beschikbaar zijn voor één AI-onderzoek. Leid geen eigen AI-opbrengst af uit het aandeel microbedrijven.',fr:'Vérifier les capacités et compétences disponibles pour une étude IA. Ne pas déduire un bénéfice IA propre de la proportion de microentreprises.'}
+    };
+    const contexts={
+      small:{measure:{nl:'Eén proces: minuten per handeling, fouten per week en huidige kosten; waarden nog vast te leggen.',fr:'Un processus : minutes par opération, erreurs par semaine et coûts actuels ; valeurs à établir.'},horizon:{nl:'Eerst de nulmeting; een vervolgmoment afspreken vóór een pilotbesluit.',fr:'D’abord la mesure initiale ; fixer une revue avant toute décision de pilote.'}},
+      medium:{measure:{nl:'Afgebakende pilot: volume, doorlooptijd, foutkosten en uitvoeringskosten per betrokken team; nulmeting ontbreekt nog.',fr:'Pilote délimité : volume, temps de cycle, coûts d’erreur et de mise en œuvre par équipe ; référence initiale à établir.'},horizon:{nl:'Nulmeting en proceseigenaar bevestigen vóór pilotstart; evaluatiemoment nog te plannen.',fr:'Confirmer référence et responsable avant le pilote ; planifier ensuite l’évaluation.'}},
+      large:{measure:{nl:'Beoordelingsdossier per eenheid: baseline, aannames, datadekking, kosten en bewijsgrenzen; onafhankelijk te beoordelen.',fr:'Dossier par entité : référence, hypothèses, couverture des données, coûts et limites des preuves ; revue indépendante requise.'},horizon:{nl:'Eerst bron- en aannamereview; een besluitmoment pas na onafhankelijke beoordeling plannen.',fr:'D’abord revoir sources et hypothèses ; fixer une décision après examen indépendant.'}}
+    };
+    const owners={
+      CEO:{nl:'Voorstel: proceseigenaar met directiesponsor; personen nog te bevestigen.',fr:'Proposition : responsable de processus et sponsor de direction ; personnes à confirmer.'},
+      CFO:{nl:'Voorstel: financiële verantwoordelijke met proceseigenaar; personen nog te bevestigen.',fr:'Proposition : responsable financier et responsable de processus ; personnes à confirmer.'},
+      CIO:{nl:'Voorstel: IT-/dataverantwoordelijke met proceseigenaar; personen nog te bevestigen.',fr:'Proposition : responsable IT/données et responsable de processus ; personnes à confirmer.'},
+      COO:{nl:'Voorstel: operationele proceseigenaar; persoon nog te bevestigen.',fr:'Proposition : responsable du processus opérationnel ; personne à confirmer.'}
+    };
+    if(!record||!steps[record.id])throw new RangeError('Unknown decision record');
+    return Object.freeze({recordId:record.id,role,size,step:Object.freeze({...steps[record.id]}),measure:Object.freeze({...contexts[size].measure}),owner:Object.freeze({...owners[role]}),horizon:Object.freeze({...contexts[size].horizon})});
   }
   function sortRecords(records,mode='priority'){
     if(!['priority','date','source'].includes(mode))throw new RangeError('Invalid sort mode');
@@ -52,5 +86,5 @@
       return order||a.id.localeCompare(b.id,'en');
     });
   }
-  return Object.freeze({weights,scoreSignal,sourceIsApproved,checkRecord,nextStage,canPublishExternally,filterRecords,sortRecords});
+  return Object.freeze({weights,scoreSignal,sourceIsApproved,checkRecord,nextStage,canPublishExternally,filterRecords,sortRecords,decisionPlan});
 });

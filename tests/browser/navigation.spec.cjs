@@ -33,15 +33,16 @@ test('resizing keeps the same ordered menu with a single final Work with me acti
  await expect(page.locator('#burger')).toBeHidden();await expect(page.locator('#navlist >li').last()).toHaveClass('nav-action');
  await page.locator('[aria-controls="nav-coherence"]').click();await page.setViewportSize({width:320,height:568});await expect(page.locator('#burger')).toBeVisible();await page.locator('#burger').click();
  await expect(page.locator('#navlist >li').last()).toHaveClass('nav-action');await expect(page.locator('#navlist .nav-work')).toHaveCount(1);await expect(page.locator('#nav-coherence')).toBeHidden();
+ await page.locator('html').evaluate(e=>e.style.fontSize='200%');await page.locator('#navlist .nav-work').scrollIntoViewIfNeeded();await expect(page.locator('#navlist .nav-work')).toBeInViewport();await page.locator('html').evaluate(e=>e.style.fontSize='');await page.locator('[aria-controls="nav-approach"]').scrollIntoViewIfNeeded();
  await page.locator('[aria-controls="nav-approach"]').click();const box=await page.locator('#nav-approach').boundingBox();expect(box.x).toBeGreaterThanOrEqual(0);expect(box.x+box.width).toBeLessThanOrEqual(321);
  expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1)).toBe(true);
  await page.setViewportSize({width:1440,height:900});await expect(page.locator('#navlist >li').last()).toHaveClass('nav-action');await expect(page.locator('#nav-approach')).toBeHidden();await expect(page.locator('#burger')).toHaveAttribute('aria-expanded','false');
 });
-test('overview pages retain the grouped reading routes without JavaScript',async({browser})=>{
- const context=await browser.newContext({javaScriptEnabled:false,viewport:{width:390,height:844}});const page=await context.newPage();try{
- await page.goto('http://127.0.0.1:4173/index.html');await expect(page.locator('#navlist a[href="coherence.html"]')).toBeVisible();await page.locator('#navlist a[href="coherence.html"]').click();
+for(const reducedMotion of ['no-preference','reduce'])test('overview pages retain the grouped reading routes without JavaScript and '+reducedMotion+' motion',async({browser,baseURL})=>{
+ const context=await browser.newContext({javaScriptEnabled:false,reducedMotion,viewport:{width:390,height:844}});const page=await context.newPage();try{
+ await page.goto(baseURL+'/index.html');await expect(page.locator('main')).toHaveCSS('visibility','visible');await expect(page.locator('#navlist a[href="coherence.html"]')).toBeVisible();await page.locator('#navlist a[href="coherence.html"]').click();
  await expect(page.locator('.topic-links a')).toHaveCount(4);await page.locator('.topic-links a[href="value.html"]').click();await expect(page).toHaveURL(/\/value\.html$/);
- await page.locator('.nav .brand').click();await page.locator('#navlist a[href="approach.html"]').click();await expect(page.locator('.topic-links a[href="eca.html"]')).toBeVisible();
+ await page.locator('.nav .brand').click();await page.locator('#navlist a[href="approach.html"]').click();await expect(page.locator('main')).toHaveCSS('visibility','visible');await expect(page.locator('.topic-links a[href="eca.html"]')).toBeVisible();await page.locator('.topic-links a[href="eca.html"]').click();await expect(page).toHaveURL(/\/eca\.html$/);
  }finally{await context.close()}
 });
 

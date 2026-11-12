@@ -10,6 +10,6 @@ test('published language markers and structured data support only Dutch and Fren
 
 test('main content translated at runtime stays hidden until the Dutch or French text is applied, with a no-JS and failure fallback',()=>{
  for(const file of fs.readdirSync(root).filter(x=>x.endsWith('.html'))){const s=fs.readFileSync(path.join(root,file),'utf8');if(!s.includes('assets/site.js'))continue;
-  const head=s.slice(0,s.indexOf('</head>'));assert.match(head,/html:not\(\.i18n-ready\) main\{visibility:hidden;animation:i18n-reveal 0s 2\.5s forwards\}/,file);assert.match(head,/<noscript><style>html main\{visibility:visible;animation:none\}<\/style><\/noscript>/,file);}
+  const head=s.slice(0,s.indexOf('</head>'));assert.match(head,/html:not\(\.i18n-ready\) main\{visibility:hidden;animation:i18n-reveal 0s 2\.5s forwards\}/,file);assert.match(head,/<noscript><style>html:not\(\.i18n-ready\) main\{visibility:visible;animation:none\}<\/style><\/noscript>/,file);}
  assert.match(fs.readFileSync(path.join(root,'assets/site.js'),'utf8'),/root\.classList\.add\("i18n-ready"\)/);
 });

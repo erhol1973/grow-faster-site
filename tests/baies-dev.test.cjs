@@ -5,8 +5,9 @@ const fs=require('node:fs');
 const path=require('node:path');
 const root=path.resolve(__dirname,'..');
 const core=require('../assets/baies-dev-core.js');
-const data=require('../assets/baies-dev-data.js');
-const html=fs.readFileSync(path.join(root,'baies-dev','index.html'),'utf8');
+const {edition,historicalFile}=require('../scripts/radar-release.cjs');
+const data=edition().data;
+const html=historicalFile('baies-dev/index.html');
 const app=fs.readFileSync(path.join(root,'assets/baies-dev-app.js'),'utf8');
 
 test('BAEIS dev: five unique, evidence-linked source records',()=>{
@@ -81,7 +82,7 @@ test('BAEIS dev: isolated NL/FR accessible markup and static asset linkage',()=>
   assert.match(html,/id="signup-consent" required/);
   assert.match(html,/role="status"/);
   assert.match(html,/assets\/baies-dev\.css/);
-  for(const asset of ['baies-dev.css','baies-dev-core.js','baies-dev-data.js','baies-dev-app.js'])assert.ok(fs.statSync(path.join(root,'assets',asset)).isFile());
+  for(const asset of ['baies-dev.css','baies-dev-core.js','radar-access.js','baies-dev-app.js'])assert.ok(fs.statSync(path.join(root,'assets',asset)).isFile());
 });
 test('BAEIS branding: exact solid four-bar transparent logo variants and favicon',()=>{
   for(const [variant,ink] of [['dark','#0B2545'],['white','#FFFFFF']]){
@@ -176,9 +177,9 @@ test('BAEIS D: research plans distinguish size, role and unknown business values
 test('BAEIS production artifact: isolated public route, complete assets and no test/report publication',async()=>{
   const {createServer}=require('../scripts/server.cjs');const server=createServer();await new Promise(r=>server.listen(0,'127.0.0.1',r));const base='http://127.0.0.1:'+server.address().port;
   try{
-    for(const route of ['/baies-dev/','/baies-dev/?lang=nl','/baies-dev/?lang=fr']){const r=await fetch(base+route);assert.equal(r.status,200,route);const body=await r.text();assert.match(body,/data-i18n="dev">DEMONSTRATIE/);assert.match(body,/id="heading-dashboard"/);assert.match(body,/id="company-size"/);assert.match(body,/noindex,nofollow,noarchive/);}
-    for(const asset of ['baies-dev.css','baies-dev-core.js','baies-dev-data.js','baies-dev-app.js'])assert.equal((await fetch(base+'/assets/'+asset)).status,200,asset);
+    for(const route of ['/baies-dev/','/executive-radar/','/baies-dev/?lang=nl','/baies-dev/?lang=fr']){const r=await fetch(base+route);assert.equal(r.status,200,route);const body=await r.text();assert.match(body,/Bekijk de volledige radar/);assert.doesNotMatch(body,/id="heading-dashboard"|id="company-size"|BE-EC-003|96,1%/);assert.match(body,/name="radar-template" content="[a-f0-9]{64}"/);}
+    for(const asset of ['baies-dev.css','baies-dev-core.js','radar-access.js','baies-dev-app.js'])assert.equal((await fetch(base+'/assets/'+asset)).status,200,asset);
     for(const asset of ['logo-dark.svg','logo-white.svg','logo-dark.png','logo-white.png','favicon.svg','favicon.png'])assert.equal((await fetch(base+'/img/baies-dev-'+asset)).status,200,asset);
-    for(const route of ['/docs/BAEIS-D-FOLLOWUP.md','/tests/baies-dev.test.cjs','/reports/unit.xml'])assert.equal((await fetch(base+route)).status,404,route);
+    for(const route of ['/assets/baies-dev-data.js','/scripts/radar-reference/data.cjs','/reports/member-content/radar/current.json','/radar/current.json','/docs/BAEIS-D-FOLLOWUP.md','/tests/baies-dev.test.cjs','/reports/unit.xml'])assert.equal((await fetch(base+route)).status,404,route);
   }finally{server.closeAllConnections();await new Promise(r=>server.close(r));}
 });

@@ -1,4 +1,31 @@
 const {test,expect}=require('playwright/test');
+const {edition,cartoon} = require('../../scripts/journal-archive.cjs');
+
+test('anonymous journal exposes the full opening article and no member pages or artwork', async ({page}) => {
+  for (const route of ['/journal.html','/journal-fr.html']) {
+    await page.goto(route + '#p14');
+    await expect(page.locator('[data-journal-join]')).toBeVisible();
+    await expect(page.locator('.sheet')).toHaveCount(3);
+    await expect(page.locator('#p4,#p14,#p15')).toHaveCount(0);
+    expect((await page.request.get('/img/journal-01-cartoon.webp')).status()).toBe(404);
+  }
+});
+
+test.describe('complete journal with a member entitlement', () => {
+  test.beforeEach(async ({page}) => {
+    // Isolate editorial/UI regressions from live Auth; the companion DB tests exercise actual policies.
+    await page.route('**/assets/member-auth.js*', route => route.fulfill({
+      contentType:'application/javascript',
+      body:"window.GFMember={ready:async()=>({id:'journal-reader'}),accountUrl:()=>'/account.html',request:path=>fetch('/test-fixture/'+path.split('/').pop())};"
+    }));
+    await page.route('**/test-fixture/*', async route => {
+      const file = new URL(route.request().url()).pathname.split('/').pop();
+      if (file === 'cartoon.webp') return route.fulfill({contentType:'image/webp',body:cartoon()});
+      const lang = file === 'fr.json' ? 'fr' : 'nl';
+      return route.fulfill({contentType:'application/json', body:edition(lang).payload});
+    });
+  });
+
 
 test('monthly journal opens from its menu and preserves page when switching language',async({page})=>{
  await page.addInitScript(()=>{localStorage.setItem('avs-lang','nl');localStorage.setItem('avs-consent',JSON.stringify({v:4,ext:false,ana:false,ts:Date.now()}))});
@@ -127,4 +154,37 @@ test('side arrows frame the page and text magnification stays usable',async({pag
   await next.click();await expect(page.locator('#p3')).toBeVisible();
   await page.locator('[data-zoom]').click();await expect(page.locator('[data-zoom]')).toHaveAttribute('aria-pressed','false');
  }
+});
+
+});
+test('forbidden and tampered edition responses leave only the public excerpt', async ({page}) => {
+  await page.route('**/assets/member-auth.js*', route => route.fulfill({
+    contentType:'application/javascript',
+    body:"window.GFMember={ready:async()=>({id:'reader'}),accountUrl:()=>'/account.html',request:()=>fetch('/test-fixture/content')}"
+  }));
+  for (const status of [403,200]) {
+    await page.route('**/test-fixture/content', route => route.fulfill({status,contentType:'application/json',body:'{"sheets":["untrusted"]}'}));
+    await page.goto('/journal.html#p14');
+    await expect(page.locator('[data-journal-status]')).toContainText('tijdelijk niet beschikbaar');
+    await expect(page.locator('.sheet')).toHaveCount(3);
+    await expect(page.locator('[data-journal-join]')).toBeVisible();
+    await page.unroute('**/test-fixture/content');
+  }
+});
+test('ending the member session removes all private sheets and resets the reader', async ({page}) => {
+  await page.route('**/assets/member-auth.js*', route => route.fulfill({
+    contentType:'application/javascript',
+    body:"window.GFMember={ready:async()=>window.loggedOut?null:{id:'reader'},accountUrl:()=>'/account.html',request:path=>fetch('/test-fixture/'+path.split('/').pop())}"
+  }));
+  await page.route('**/test-fixture/nl.json', route => route.fulfill({contentType:'application/json',body:edition('nl').payload}));
+  await page.route('**/test-fixture/cartoon.webp', route => route.fulfill({contentType:'image/webp',body:cartoon()}));
+  await page.goto('/journal.html#p14');
+  await expect(page.locator('#p14')).toBeVisible();
+  await page.evaluate(() => {
+    window.loggedOut=true;
+    window.dispatchEvent(new Event('gf-member-change'));
+  });
+  await expect(page.locator('.sheet')).toHaveCount(3);
+  await expect(page.locator('#p1')).toBeVisible();
+  await expect(page.locator('[data-journal-join]')).toBeVisible();
 });

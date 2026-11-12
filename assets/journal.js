@@ -1,7 +1,7 @@
 
 'use strict';
 const book = document.querySelector('.book');
-const sheets = [...book.querySelectorAll('.sheet')];
+let sheets = [...book.querySelectorAll('.sheet')];
 const toolbar = document.querySelector('.toolbar');
 const previous = document.querySelector('[data-prev]');
 const next = document.querySelector('[data-next]');
@@ -104,3 +104,89 @@ document.addEventListener('keydown', event => {
   }
 });
 
+
+const joinLink = document.querySelector('[data-journal-join]');
+const sourcesLink = document.querySelector('[data-journal-sources]');
+const journalStatus = document.querySelector('[data-journal-status]');
+const isFrench = document.documentElement.lang === 'fr';
+const editionPath = '/storage/v1/object/authenticated/member-content/journal/2026-11/';
+let requestVersion = 0;
+let protectedImageUrl;
+let editionOwner;
+
+function removeMemberPages() {
+  requestVersion++;
+  book.querySelectorAll('[data-member-sheet]').forEach(sheet => sheet.remove());
+  if (protectedImageUrl) URL.revokeObjectURL(protectedImageUrl);
+  protectedImageUrl = undefined;
+  editionOwner = undefined;
+  sheets = [...book.querySelectorAll('.sheet')];
+  current = -1;
+  joinLink.hidden = false;
+  sourcesLink.hidden = true;
+  journalStatus.textContent = '';
+  show(targetIndex());
+}
+
+async function updateEdition() {
+  if (!window.GFMember) return;
+  joinLink.href = GFMember.accountUrl();
+  const version = ++requestVersion;
+  try {
+    const member = await GFMember.ready();
+    if (version !== requestVersion) return;
+    if (!member) { removeMemberPages(); return; }
+    if (editionOwner === member.id && sheets.length === 15) return;
+    if (editionOwner && editionOwner !== member.id) {
+      removeMemberPages();
+      return updateEdition();
+    }
+    const editionResponse = await GFMember.request(editionPath + (isFrench ? 'fr.json' : 'nl.json'));
+    if (!editionResponse.ok) throw Error('Edition unavailable');
+    const bytes = await editionResponse.arrayBuffer();
+    // Only render the exact editorial markup approved with this release.
+    const hash = await crypto.subtle.digest('SHA-256',bytes);
+    const digest = Array.from(new Uint8Array(hash), byte => byte.toString(16).padStart(2,'0')).join('');
+    if (digest !== book.dataset.editionDigest) throw Error('Edition integrity');
+    const contents = JSON.parse(new TextDecoder().decode(bytes));
+    if (contents.sheets.length !== 12) throw Error('Incomplete edition');
+    const template = document.createElement('template');
+    template.innerHTML = contents.sheets.join('');
+    if (version !== requestVersion) return;
+    for (const sheet of template.content.children) {
+      sheet.dataset.memberSheet = '';
+      sheet.hidden = true;
+    }
+    book.append(template.content);
+    sheets = [...book.querySelectorAll('.sheet')];
+    editionOwner = member.id;
+    joinLink.hidden = true;
+    sourcesLink.hidden = false;
+    journalStatus.textContent = '';
+    current = -1;
+    show(targetIndex());
+    const pictureResponse = await GFMember.request(editionPath + 'cartoon.webp');
+    if (!pictureResponse.ok) throw Error('Artwork unavailable');
+    const picture = await pictureResponse.blob();
+    if (version !== requestVersion) return;
+    protectedImageUrl = URL.createObjectURL(picture);
+    book.querySelector('[data-journal-cartoon]').src = protectedImageUrl;
+  } catch {
+    if (version !== requestVersion) return;
+    removeMemberPages();
+    journalStatus.textContent = isFrench ? 'Le numéro complet est temporairement indisponible.' : 'De volledige editie is tijdelijk niet beschikbaar.';
+  }
+}
+
+book.addEventListener('click', event => {
+  const citation = event.target.closest('a[href^="#source-"][title]');
+  if (citation && !document.getElementById(citation.hash.slice(1))) {
+    event.preventDefault();
+    journalStatus.textContent = citation.title;
+  }
+});
+window.addEventListener('gf-member-change', updateEdition);
+// Browsers can retain the DOM in the back-forward cache after logout.
+window.addEventListener('pagehide', removeMemberPages);
+window.addEventListener('pageshow', event => { if (event.persisted) updateEdition(); });
+updateEdition();

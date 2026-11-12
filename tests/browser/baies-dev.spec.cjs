@@ -1,6 +1,12 @@
 'use strict';
 const {test,expect}=require('playwright/test');
 
+const {edition}=require('../../scripts/radar-release.cjs');
+// Existing full-product scenarios use a signed-in reader fixture. Storage RLS has separate database tests.
+test.beforeEach(async({page})=>{
+  await page.route('**/assets/member-auth.js',route=>route.fulfill({contentType:'text/javascript',body:"window.GFMember={ready:async()=>({id:'fixture-reader'}),accountUrl:()=>'/account.html',request:async()=>fetch('/__radar_member_fixture')};"}));
+  await page.route('**/__radar_member_fixture',route=>route.fulfill({contentType:'application/json',body:JSON.stringify(edition())}));
+});
 async function navigate(page,view){
   const toggle=page.locator('#navigation-toggle');
   if(await toggle.isVisible()&&await toggle.getAttribute('aria-expanded')==='false')await toggle.click();
@@ -166,13 +172,12 @@ test('BAEIS navigation: unsupported language and unknown hashes fall back safely
   await page.locator('.hero-copy [data-goto=radar]').click();await expect(page).toHaveURL(/#radar$/);
 });
 
-test('BAEIS navigation: native section links remain readable without JavaScript',async({browser,baseURL})=>{
+test('BAEIS access: the featured signal and source remain readable without JavaScript',async({browser,baseURL})=>{
   const context=await browser.newContext({javaScriptEnabled:false,baseURL,viewport:{width:390,height:900}});
   try{const page=await context.newPage();await page.goto('/baies-dev/');
-    await expect(page.locator('#navigation-toggle')).toBeHidden();
-    await expect(page.locator('#product-links')).toBeVisible();
-    await page.locator('.nav-link[href="#evidence"]').click();
-    await expect(page).toHaveURL(/#evidence$/);await expect(page.locator('#evidence')).toBeVisible();
+    await expect(page.locator('article[lang=nl] h2')).toBeVisible();
+    await expect(page.locator('article[lang=nl] a[href*=statbel]')).toBeVisible();
+    await expect(page.locator('#evidence')).toHaveCount(0);
   }finally{await context.close();}
 });
 

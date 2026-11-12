@@ -23,7 +23,7 @@ const routes=[
   },
   {
     "route": "/assets/baies-dev-data.js",
-    "status": 200
+    "status": 404
   },
   {
     "route": "/img/baies-dev-logo-dark.svg",

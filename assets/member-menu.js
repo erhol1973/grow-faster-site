@@ -2,13 +2,16 @@
   'use strict';
   const member = window.GFMember;
   const list = document.querySelector('#navlist');
-  if (!member || !list || list.querySelector('.member-nav')) return;
-  const item = document.createElement('li');
+  if (!member || !list || list.querySelector('.member-nav:not([data-member-placeholder])')) return;
+  const item = list.querySelector('[data-member-placeholder]') || document.createElement('li');
+  item.removeAttribute('data-member-placeholder');
   item.className = 'member-nav';
   item.setAttribute('data-notr','');
   const action = list.querySelector(':scope > .nav-action');
-  if (action && action === list.lastElementChild) action.before(item);
-  else list.append(item);
+  if (!item.isConnected) {
+    if (action && action === list.lastElementChild) action.before(item);
+    else list.append(item);
+  }
   let generation = 0;
   function link(label, href) {
     const a = document.createElement('a');

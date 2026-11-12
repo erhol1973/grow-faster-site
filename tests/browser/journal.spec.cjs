@@ -84,6 +84,14 @@ test('reader keeps controls and subscription visible around a landscape page',as
   }
  }
 });
+test('a signed-in reader follows a members-only table of contents link directly',async ({page})=>{
+  await page.goto('/journal.html#p2');
+  await expect(page.locator('#p9')).toHaveCount(1);
+  await page.locator('.routes a[data-member-target="#p9"]').click();
+  await expect(page.locator('#p9')).toBeVisible();
+  await expect(page.getByRole('dialog')).toHaveCount(0);
+});
+
 test('complete Dutch and French editions fit every landscape sheet without truncation',async({page})=>{
  await page.setViewportSize({width:1366,height:900});
  for(const route of ['/journal.html','/journal-fr.html']){

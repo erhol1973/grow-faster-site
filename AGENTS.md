@@ -11,3 +11,9 @@ Before release, run the built-artifact checks: `npm run build`, `npm test`, `npm
 Also run `npm run test:performance` before release. Flaky retries and undocumented skips block CI. Keep actual model logic shared with production and independent hand-calculated fixtures. Cache tests use real HTTP caching without routing mocks. Run Lighthouse samples sequentially, retain individual samples and medians, and keep physical-device/screen-reader limitations explicit.
 
 Publish through the protected-main pull-request workflow using the tested artifact. Load and intrusive security tests target the local preview only. Transfer budgets and local-response latency are not Core Web Vitals or proof of production capacity. For navigation changes, perform a limited live smoke check and account for older cached HTML in existing browser tabs.
+
+## Permanent public-content boundary
+
+Internal Executive Radar About/sprint-roadmap information must never be published: this includes the old About view/navigation, four-sprint product-owner roadmap and obsolete runtime translations, on canonical, legacy and copied pages. Keep the shared non-public policy in scripts/baies-dev-public-policy.cjs wired into build, artifact security and post-release checks. Do not remove or weaken these guards or their negative fixtures to make a build pass. Ordinary company About pages and legitimate public discussion of sprints remain allowed.
+
+Removing content from current source does not remove immutable historical previews. When withdrawing internal content, inventory previously shared deployment URLs and branch aliases, retire confirmed unsafe preview deployments, and verify fresh canonical/legacy NL/FR responses. Do not claim withdrawal complete while a known old preview still serves the content. Do not resurrect a retired preview or redeploy its unsafe historical source. Preserve the separate sponsor acceptance/production gate for unreleased product editions.

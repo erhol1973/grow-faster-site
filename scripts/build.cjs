@@ -16,7 +16,10 @@ fs.rmSync(out, { recursive: true, force: true });
 fs.mkdirSync(out);
 let count = 0;
 function copy(source, relative) {
-  const data=readRegularFile(source);
+  let data=readRegularFile(source);
+  if (path.extname(relative).toLowerCase() === '.html') {
+    data = require('./component-style-delivery.cjs').inlineComponentStyles(data.toString('utf8'), asset => readRegularFile(path.join(root, asset)).toString('utf8'));
+  }
   const target = path.join(out, relative);
   fs.mkdirSync(path.dirname(target), { recursive: true });
   if(relative.replaceAll('\\','/')==='assets/i18n.js'){

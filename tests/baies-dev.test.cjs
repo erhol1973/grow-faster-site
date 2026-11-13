@@ -247,7 +247,7 @@ test('Radar publication policy walks all artifact text, including renamed copies
 
 test('Radar build publishes only a complete policy-approved artifact and removes staged output on internal content rejection',t=>{
   const fixture=policyTemp(t);policyFs.mkdirSync(policyPath.join(fixture,'scripts'));policyFs.mkdirSync(policyPath.join(fixture,'tests'));policyFs.writeFileSync(policyPath.join(fixture,'tests/legacy-redirects.json'),'[]');
-  for(const file of ['build.cjs','file-reader.cjs','baies-dev-public-policy.cjs'])policyFs.copyFileSync(policyPath.join(policyRoot,'scripts',file),policyPath.join(fixture,'scripts',file));
+  for(const file of ['build.cjs','file-reader.cjs','baies-dev-public-policy.cjs','component-style-delivery.cjs'])policyFs.copyFileSync(policyPath.join(policyRoot,'scripts',file),policyPath.join(fixture,'scripts',file));
   // Use the real build allowlist to construct a minimal input tree; assertions exercise its actual CLI.
   const source=policyFs.readFileSync(policyPath.join(policyRoot,'scripts/build.cjs'),'utf8'),expression=source.match(/^const files = (.+);$/m)[1];
   const files=require('node:vm').runInNewContext(expression,{require:id=>{assert.equal(id,'../tests/legacy-redirects.json');return [];}});

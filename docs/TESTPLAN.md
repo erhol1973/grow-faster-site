@@ -293,3 +293,16 @@ Historische previewretirement wordt afzonderlijk live gecontroleerd; nieuwe code
 De publieke release-smoke gebruikt dezelfde vastgezette Playwright-container als de Website quality gate. Chromium en de systeembibliotheken zijn daarin aanwezig; de nacontrole voert geen `playwright install --with-deps` of APT uit. Een lokale, netwerkvrije browserproef controleert de echte executable, browserstart en DOM-uitvoering vóór de publieke controles; dezelfde proef draait vóór vrijgave in de PR-gate. Een ontbrekende of onbruikbare browser faalt zichtbaar en wordt niet met retries of ruimere tijdslimieten verborgen.
 
 De bestaande `verify:production`-controles, inclusief de permanente Radar-inhoudsgrens, en de afzonderlijke publieke mobiele Lighthouse-meting blijven behouden. De job houdt uitsluitend leesrechten en de bestaande tijdslimiet van tien minuten. Installatie-, runtime- en controleresultaten worden als rapport en samenvatting bewaard; een mislukt onderdeel blijft de job doen falen. Container-/registry-, pakketdownload- en publieke netwerkstoringen blijven mogelijke expliciete fouten. De lokale load- en Lighthouse-vrijgavegrenzen veranderen niet.
+## Component stylesheet delivery regression
+
+The build may inline only the exact bytes of the small, URL-free navigation and
+books stylesheets at their original link positions. This removes blocking
+requests without changing the cascade or creating another typography policy.
+The final shared typography stylesheet remains external and versioned. Documents
+with a meta CSP, links with additional attributes, CSS imports/URLs and styles
+larger than 16KB retain external delivery. Style-container injection fails the
+build. Standalone assets remain available to cached older documents.
+
+Four safety tests cover these boundaries. The full browser inventory, load and
+54-sample Lighthouse thresholds still apply to the resulting immutable build.
+Output-only experiments support the change but do not count as release gates.

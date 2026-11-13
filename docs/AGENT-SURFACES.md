@@ -19,6 +19,7 @@ reviewer reviewer installed autonomous
 !coherence.html
 !insights.html
 !about.html
+!books.html
 assets/navigation.css
 assets/i18n.js
 tests/**
@@ -36,6 +37,8 @@ tests/**
 !tests/hero-image.test.cjs
 !tests/browser/navigation-accessibility.spec.cjs
 !tests/server-compression.test.cjs
+!tests/books.test.cjs
+!tests/browser/books.spec.cjs
 !tests/nl-member-copy.test.cjs
 !tests/first-paint.test.cjs
 !tests/browser/first-paint.spec.cjs
@@ -82,6 +85,9 @@ docs/EXECUTIVE-RADAR-NAV-DEV.md
 ```
 
 ```surface:performance
+books.html
+tests/books.test.cjs
+tests/browser/books.spec.cjs
 .gitleaks.toml
 scripts/nl-secret-guard.cjs
 scripts/coherence-dictionary.cjs

@@ -33,6 +33,9 @@
     "tests/browser/radar-access.spec.cjs"
   ],
   "performance": [
+    "books.html",
+    "tests/books.test.cjs",
+    "tests/browser/books.spec.cjs",
     ".gitleaks.toml",
     "scripts/nl-secret-guard.cjs",
     "scripts/coherence-dictionary.cjs",

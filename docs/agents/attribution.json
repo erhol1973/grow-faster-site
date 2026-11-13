@@ -63,6 +63,12 @@
     "tests/browser/navigation-accessibility.spec.cjs"
   ],
   "repository": [
+    "scripts/nl-member-copy.cjs",
+    "scripts/nl-audit.cjs",
+    "language/nl-extraction.json",
+    "language/nl-baseline.json",
+    "docs/NL-LANGUAGE-AUDIT.md",
+    "tests/nl-member-copy.test.cjs",
     "scripts/server.cjs",
     "scripts/accept-member-test.cjs",
     "tests/server-compression.test.cjs",

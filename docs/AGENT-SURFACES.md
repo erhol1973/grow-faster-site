@@ -36,6 +36,7 @@ tests/**
 !tests/hero-image.test.cjs
 !tests/browser/navigation-accessibility.spec.cjs
 !tests/server-compression.test.cjs
+!tests/nl-member-copy.test.cjs
 !tests/first-paint.test.cjs
 !tests/browser/first-paint.spec.cjs
 !tests/browser/radar-access.spec.cjs
@@ -164,6 +165,7 @@ tests/performance-fonts.test.cjs
 !.github/workflows/baies-dev-quality.yml
 !docs/EXECUTIVE-RADAR-NAV-DEV.md
 tests/server-compression.test.cjs
+tests/nl-member-copy.test.cjs
 ```
 
 Navigation owns the ordinary site header and shared locale/rendering code, and updates existing menu/test contracts. Radar owns its dedicated product and legacy-compatible canonical route. Branding owns brand image files, including existing BAEIS image paths, without editing HTML. Repository surface is handled by the orchestrator for acceptance-runner hashes, provisioning and registration verification; no credentials are stored. Performance owns the listed CSS/font files and the temporarily reassigned shared site renderer plus first-paint tests. Reviewer audits every producer independently. Root HTML includes admin only if its actual brand/header needs consistency; do not change CMS behavior.

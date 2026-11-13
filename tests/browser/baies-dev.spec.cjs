@@ -38,16 +38,33 @@ test('BAEIS: editorial simulation never enables external publication',async({pag
   await expect(page.locator('#external-publish')).toBeDisabled();
 });
 
-test('BAEIS: newsletter consent remains local, no HTTP submission',async({page})=>{
-  const posts=[];page.on('request',r=>{if(r.method()!=='GET')posts.push(r.url());});
-  await page.goto('/executive-radar/');
-  await navigate(page,'about');
-  await page.locator('#signup-email').fill('demo@example.com');
-  await page.locator('#signup-consent').check();
-  await page.locator('#signup-form button[type=submit]').click();
-  await expect(page.locator('#signup-feedback')).toContainText('niets opgeslagen of verstuurd');
-  await expect(page.locator('#signup-email')).toBeEmpty();
-  expect(posts).toEqual([]);
+// Replaces the removed internal newsletter-prototype flow with public-surface and legacy-route regressions.
+for(const lang of ['nl','fr'])test('Executive Radar: '+lang+' removed internal about routes fall back to public overview',async({page})=>{
+  const writes=[],errors=[];page.on('request',r=>{if(!['GET','HEAD'].includes(r.method()))writes.push(r.url());});page.on('pageerror',e=>errors.push(e.message));
+  for(const route of ['executive-radar','baies-dev']){
+    await page.goto('/'+route+'/?lang='+lang+'#about');
+    await expect(page).toHaveURL(new RegExp('/'+route+'/[?]lang='+lang+'#overview$'));
+    await expect(page.locator('html')).toHaveAttribute('lang',lang+'-BE');
+    await expect(page.locator('#overview')).toBeVisible();
+    await expect(page.locator('.nav-link[data-view=overview]')).toHaveAttribute('aria-current','page');
+    await expect(page.locator('#about,#heading-about,[data-view=about],[href="#about"],[id^=signup-]')).toHaveCount(0);
+    await expect(page.locator('#product-links .nav-link')).toHaveCount(5);
+    await language(page,lang==='fr'?'nl':'fr');
+    await expect(page).toHaveURL(new RegExp('/'+route+'/[?]lang='+(lang==='fr'?'nl':'fr')+'#overview$'));
+    await expect(page.locator('#overview')).toBeVisible();
+    await page.reload();await expect(page.locator('#overview')).toBeVisible();
+    await expect(page.locator('[data-i18n=footer]')).toContainText(lang==='fr'?'Vaste referentiedata':'Données de référence fixes');
+    // Restore a legacy history entry, then verify both directions retain the locale.
+    const activeLang=lang==='fr'?'nl':'fr';
+    await page.evaluate(()=>{const old=new URL(location.href);old.hash='about';history.pushState(null,'',old);});
+    await navigate(page,'radar');await page.locator('#role-filter').selectOption('CFO');
+    await page.goBack();await expect(page).toHaveURL(new RegExp('/'+route+'/[?]lang='+activeLang+'#overview$'));
+    await expect(page.locator('#overview')).toBeVisible();await expect(page.locator('#heading-overview')).toBeFocused();
+    await page.goForward();await expect(page).toHaveURL(new RegExp('/'+route+'/[?]lang='+activeLang+'#radar$'));
+    await expect(page.locator('#radar')).toBeVisible();await expect(page.locator('#role-filter')).toHaveValue('CFO');
+    await expect(page.locator('html')).toHaveAttribute('lang',activeLang+'-BE');
+  }
+  expect(writes).toEqual([]);expect(errors).toEqual([]);
 });
 const AxeBuilder=require('@axe-core/playwright').default;
 test('BAEIS branding: readable responsive layouts',async({page})=>{
@@ -65,14 +82,14 @@ test('BAEIS branding: readable responsive layouts',async({page})=>{
   }
 });
 
-// Each locale is an independent scenario: retain all twelve scans without extending timeouts.
+// Each locale scans all five remaining public views without extending timeouts.
 for(const lang of ['nl-BE','fr-BE'])test('BAEIS branding: all '+lang+' views meet AA contrast',async({page})=>{
   await page.goto('/executive-radar/');
   if(lang==='fr-BE')await language(page,'fr');
   await expect(page.locator('html')).toHaveAttribute('lang',lang);
   await expect(page.locator('.dev-strip strong')).toHaveText(lang==='fr-BE'?'DÉMONSTRATION':'DEMONSTRATIE');
   await expect(page.locator('[data-i18n=footer]')).toContainText(lang==='fr-BE'?'Données de référence fixes':'Vaste referentiedata');
-  for(const view of ['overview','dashboard','radar','evidence','editorial','about']){
+  for(const view of ['overview','dashboard','radar','evidence','editorial']){
     await navigate(page,view);
     const scan=await new AxeBuilder({page}).withTags(['wcag2a','wcag2aa','wcag21aa','wcag22aa']).analyze();
     expect(scan.violations).toEqual([]);
@@ -107,7 +124,7 @@ test('BAEIS navigation: French deep links, history and preserved filters',async(
   await expect(page.locator('html')).toHaveAttribute('lang','fr-BE');
 });
 
-test('BAEIS navigation: language choices preserve review and form state',async({page})=>{
+test('BAEIS navigation: language choices preserve review state and history',async({page})=>{
   const writes=[];page.on('request',r=>{if(r.method()!=='GET')writes.push(r.url());});
   await page.goto('/executive-radar/#editorial');
   await page.locator('#advance-review').click();await page.locator('#advance-review').click();
@@ -118,13 +135,8 @@ test('BAEIS navigation: language choices preserve review and form state',async({
   await expect(page.locator('#advance-review')).toBeDisabled();
   await expect(page.locator('#external-publish')).toBeDisabled();
   await language(page,'nl');await expect(page.locator('#advance-review')).toBeDisabled();
-  await navigate(page,'about');
-  await page.locator('#signup-email').fill('demo@example.com');await page.locator('#signup-consent').check();
-  await language(page,'fr');
-  await expect(page.locator('#signup-email')).toHaveValue('demo@example.com');
-  await expect(page.locator('#signup-consent')).toBeChecked();
   await expect(page.locator('[data-language][aria-pressed=true]')).toHaveCount(1);
-  expect(page.url()).not.toContain('demo');
+  await navigate(page,'evidence');await expect(page.locator('#evidence')).toBeVisible();
   await page.goBack();await expect(page.locator('#editorial')).toBeVisible();
   await expect(page.locator('html')).toHaveAttribute('lang','nl-BE');
   await expect(page.locator('#advance-review')).toBeDisabled();
@@ -137,7 +149,7 @@ test('BAEIS navigation: mobile disclosure, keyboard, outside click and resize',a
   await expect(toggle).toHaveAttribute('aria-controls','product-links');
   await expect(toggle).toHaveAttribute('aria-expanded','false');await expect(links).toBeHidden();
   if(isMobile)await toggle.tap();else await toggle.click();
-  await expect(toggle).toHaveAttribute('aria-expanded','true');await expect(links.locator('a')).toHaveCount(6);
+  await expect(toggle).toHaveAttribute('aria-expanded','true');await expect(links.locator('a')).toHaveCount(5);
   for(const link of await links.locator('a').all()){
     await expect(link).toBeVisible();const box=await link.boundingBox();expect(box.x).toBeGreaterThanOrEqual(0);expect(box.x+box.width).toBeLessThanOrEqual(390);expect(box.height).toBeGreaterThanOrEqual(44);
   }

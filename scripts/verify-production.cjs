@@ -1,4 +1,41 @@
 const fs=require('node:fs'),{chromium}=require('playwright');
+async function getRadarPublicPayload(request,url,origin){
+  const base=new URL(origin).origin,target=new URL(url);
+  if(target.origin!==base||target.username||target.password)throw Error('Unexpected external Radar payload URL');
+  // Never follow a script redirect: even a subsequently rejected foreign response
+  // would already have sent a request outside the verified publication origin.
+  const response=await request.get(target.href,{maxRedirects:0});
+  if(new URL(response.url()).origin!==base)throw Error('Unexpected external Radar payload response');
+  if(response.status()!==200)throw Error('Radar public payload unavailable (HTTP '+response.status()+'): '+target.pathname);
+  return response;
+}
+async function verifyRadarPublicSurface(page,origin='https://grow-faster.be'){
+  const policy=require('./baies-dev-public-policy.cjs'),base=new URL(origin).origin,scriptCache=new Map(),results=[],writes=[];
+  const requestListener=request=>{if(!['GET','HEAD'].includes(request.method()))writes.push(request.method()+' '+new URL(request.url()).pathname);};page.on('request',requestListener);
+  try{
+    for(const route of ['executive-radar','baies-dev'])for(const lang of ['nl','fr']){
+      const response=await page.goto(base+'/'+route+'/?lang='+lang+'#about');if(!response||response.status()!==200)throw Error('Radar public route unavailable: '+route+' '+lang);
+      if(new URL(response.url()).origin!==base)throw Error('Unexpected external Radar page response');
+      const raw=await response.text(),findings=policy.inspectPublicText(route+'/index.html',raw);if(findings.length)throw Error(findings.join('\n'));
+      const scripts=[...raw.matchAll(/<script\b[^>]*\bsrc\s*=\s*(?:"([^"]+)"|'([^']+)'|([^\s>]+))/gi)].map(match=>new URL(policy.decodePolicyText(match[1]||match[2]||match[3]),response.url()));
+      if(!scripts.length)throw Error('Radar runtime scripts missing: '+route);
+      for(const script of scripts){if(script.origin!==base)throw Error('Unexpected external Radar script');if(!scriptCache.has(script.href)){
+        const payload=await getRadarPublicPayload(page.request,script.href,base);
+        const text=await payload.text(),violations=policy.inspectPublicText(script.pathname,text);if(violations.length)throw Error(violations.join('\n'));
+        scriptCache.set(script.href,{path:script.pathname+script.search,sha256:require('node:crypto').createHash('sha256').update(text).digest('hex')});
+      }}
+      const current=new URL(page.url());if(current.pathname!=='/'+route+'/'||current.searchParams.get('lang')!==lang||current.hash!=='#overview')throw Error('Removed Radar About route did not safely preserve locale: '+route+' '+lang);
+      if(await page.locator('html').getAttribute('lang')!==lang+'-BE'||!await page.locator('#overview').isVisible())throw Error('Radar overview fallback unavailable: '+route+' '+lang);
+      if(await page.locator('#about,#heading-about,[data-view=about],[href="#about"],[id^=signup-]').count())throw Error('Internal Radar About DOM remains public');
+      const views=await page.locator('#product-links .nav-link').evaluateAll(links=>links.map(link=>link.dataset.view));
+      if(JSON.stringify(views)!==JSON.stringify(['overview','dashboard','radar','evidence','editorial']))throw Error('Expected exactly five public Radar views');
+      results.push({route:route+'/',language:lang,internalAboutAbsent:true,legacyHashFallback:'overview',publicViews:views,rawSha256:require('node:crypto').createHash('sha256').update(raw).digest('hex')});
+    }
+    if(writes.length)throw Error('Unexpected Radar write request: '+writes.join(', '));
+    return {routes:results,scripts:[...scriptCache.values()],readOnly:true,writes:0};
+  }finally{page.off('request',requestListener);}
+}
+
 async function main(){
   const browser=await chromium.launch({headless:true,...(process.env.TEST_BROWSER_EXECUTABLE?{executablePath:process.env.TEST_BROWSER_EXECUTABLE}:{})});
   try{
@@ -67,7 +104,9 @@ async function main(){
     if(pdf.status()!==200||!pdf.headers()['content-type']?.startsWith('application/pdf'))throw Error('Public book PDF unavailable');
     const bytes=await pdf.body();if(bytes.length!==publication.bytes||require('node:crypto').createHash('sha256').update(bytes).digest('hex')!==publication.sha256)throw Error('Public PDF differs from approved publication');if((await page.request.get('https://grow-faster.be/books/design-for-coherence.pdf')).status()!==404)throw Error('Full book PDF must not be public');
     results.push({route:publication.file,bytes:bytes.length,sha256:publication.sha256});
-    if(errors.length)throw Error(errors.join('\n'));fs.mkdirSync('reports',{recursive:true});fs.writeFileSync('reports/production-smoke.json',JSON.stringify({results,errors,at:new Date().toISOString()},null,2));
+    const radar=await verifyRadarPublicSurface(page);results.push({radarPublicContent:radar});
+    if(errors.length)throw Error(errors.join('\n')); fs.mkdirSync('reports',{recursive:true});fs.writeFileSync('reports/production-smoke.json',JSON.stringify({results,errors,at:new Date().toISOString()},null,2));
   }finally{await browser.close()}
 }
-main().catch(e=>{console.error(e);process.exitCode=1});
+module.exports={verifyRadarPublicSurface,getRadarPublicPayload};
+if(require.main===module)main().catch(e=>{console.error(e);process.exitCode=1});

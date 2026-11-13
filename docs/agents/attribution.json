@@ -1,12 +1,16 @@
 {
   "orchestrator": [
+    "AGENTS.md",
     "docs/AGENT-SURFACES.md",
+    "docs/RELEASE.md",
+    "docs/TESTPLAN.md",
     "docs/agents/attribution.json"
   ],
   "radar": [
-    "executive-radar/index.html",
-    "assets/baies-dev-app.js",
-    "tests/baies-dev.test.cjs",
-    "tests/browser/baies-dev.spec.cjs"
+    "scripts/baies-dev-public-policy.cjs",
+    "scripts/build.cjs",
+    "scripts/security.cjs",
+    "scripts/verify-production.cjs",
+    "tests/baies-dev.test.cjs"
   ]
 }

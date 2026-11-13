@@ -12,7 +12,7 @@ supabase db query --remote=gqsvoioccvklzfmdmexy --file supabase/migrations/20261
 
 Alternatively, open the [test project SQL Editor](https://supabase.com/dashboard/project/gqsvoioccvklzfmdmexy/sql/new) and run the SQL from that file. Complete this step once. Use the existing release process to keep any active migration register synchronized.
 
-If you already applied the development draft before it restricted signed URLs, run only `docs/member-test-existing-policy.sql` in the same test project. It replaces the read condition on the existing policy. The current migration includes this condition already. The test project needs the Storage helper `storage.allow_only_operation(text)`.
+After the feature migration, apply `supabase/migrations/20261113_member_download_info.sql` in the same test project. It adds the authenticated metadata precheck needed by the Storage download gateway. For an already-provisioned test project, `docs/member-test-existing-policy.sql` is an equivalent standalone correction: apply either correction file, not both. Do not rerun the bucket-creation migration. The test project needs the Storage helper `storage.allow_only_operation(text)`. These instructions authorize changes only in `gqsvoioccvklzfmdmexy`; production follows its separate reviewed release process.
 
 ## Provision the isolated edition
 
@@ -49,6 +49,20 @@ node --test tests/member-authorization.test.cjs
 
 ## Download failure investigation — 13 November 2026
 
+The initial investigation notes below describe evidence available before the gateway logs were inspected. The confirmed diagnosis and correction are recorded in the next section.
+
+### Confirmed authenticated metadata precheck failure
+
+There were two successive blockers. Initially all four expected objects were absent. The owner uploaded the exact approved assets, and subsequent SQL showed all expected object paths. A Dashboard download also succeeded. The ordinary member's HTTP download still failed with HTTP 400, an 88-byte `NoSuchKey` response, despite successful Auth and `member_has_access=true`.
+
+The orchestrator inspected the real test-project Storage log for the member request displayed at 10:42:35 on 13 November 2026. The authenticated request reached `/object/info/authenticated/member-content/journal/2026-11/nl.json` with operation `object.get_authenticated_info`; Storage appVersion was `1.94.2`. The existing restrictive guard allowed only `object.get_authenticated`, so it hid the object during the gateway's authenticated metadata precheck. The SQL simulation had manually selected the allowed download operation and therefore did not reproduce this failing precheck.
+
+The correction in `20261113_member_download_info.sql` permits exactly the existing download operation and `object.get_authenticated_info`, with the same bucket, product-path and membership conditions. It uses two calls to the already-installed helper, avoiding any dependency on a different helper. Signing, batch signing, listing, missing operations, guest reads, writes and bucket changes remain outside the member allowlist. The original migration is retained unchanged; fresh installations must apply the follow-up too. Supabase documents the same pair of read operations in its [Storage access-control example](https://supabase.com/docs/guides/storage/security/access-control).
+
+Preparation of this correction is local evidence, not a completed remote acceptance test. After applying it only to the test project, rerun the complete interactive member/administrator acceptance runner and retain exact hashes plus denied signing/listing and guest results. No production migration, merge or deployment is authorized by this test correction.
+
+### Earlier investigation record
+
 The reported HTTP 400 with 88 bytes does not establish whether an object is missing or hidden by RLS. The old runner discarded the Storage error body. It now reports bounded Storage error fields and the actual digest on a successful response with unexpected bytes. Guest-only output explicitly leaves object existence unverified. No remote policy change is justified by the available evidence.
 
 The runner now also requires empty/denied bucket listings at the root and both product prefixes for guests, members and administrators. A successful empty list is an RLS-filtered result, not proof that the bucket is empty. Masked `Object not found` errors are explicitly marked ambiguous until both authenticated roles download the exact expected bytes. A non-JSON, malformed or unrelated gateway error cannot pass a denial check. Storage diagnostics exclude unknown fields and bound/control-strip the known error fields.
@@ -79,3 +93,20 @@ Release decision: NO-GO. Required manual evidence, exclusively on gqsvoioccvklzf
 3. On the dev host, start at a gated Journal article in the chosen language, register an unused test mailbox, open the actual confirmation email in the same browser context, and verify return to the requested article/page/language. User credential creation and email confirmation require manual interaction. Do not change production URL configuration.
 
 Only after authenticated object/policy evidence identifies the cause should missing approved assets be provisioned or a specific policy defect repaired. No merge, deployment or publication is authorized.
+
+## Confirmed gateway cause and test-only correction — 13 November 2026
+
+This entry supersedes the earlier outstanding object/log investigation above. The owner supplied object rows showing all four exact expected paths; Dashboard download succeeded. Authenticated browser access then became available to the orchestrator. Test Storage log 40e3517f-2e52-4d76-b1a9-fc1743062855 (2026-11-13T09:42:35.723Z) records authenticated role, object.get_authenticated_info, GET /object/info/authenticated/member-content/journal/2026-11/nl.json, NoSuchKey and 88 response bytes. This metadata request is not in the original operation allowlist. Official Supabase access-control documentation pairs get_authenticated_info with get_authenticated for object reads without listing.
+
+Applied the equivalent of supabase/migrations/20261113_member_download_info.sql through the authenticated Dashboard SQL Editor in project gqsvoioccvklzfmdmexy only. Re-read pg_policies confirmed both exact operations and retained bucket, name and membership predicates. Screenshot evidence: reports/member-policy-fix-proof.png. No production project, object content, CMS data, grant, signing/listing permission, main merge or deployment was changed. The new migration remains local/uncommitted, not pushed to PR #76; keep any operator migration register aligned before release.
+
+Independent regression fixture now uses the exported real storage.operation/allow_only_operation implementation and real GUC, reproduces the old metadata denial and proves the additive migration admits it while sign/list/guest/write denials remain. Combined targeted run: node --test tests/member-authorization.test.cjs tests/member-acceptance.test.cjs — 20 passed, zero failures. This is policy simulation, not the final live acceptance. The last required step for this download repair is one interactive run with existing member/admin passwords; these credentials were not available to the agents. Full release gates and real registration-email checks remain separate outstanding work. Status: waiting for user credential-dependent live test, agents finished this investigation; production NO-GO remains.
+
+
+## Live acceptance completed — 13 November 2026
+
+The owner supplied the interactive runner output ending in "Isolated real access tests passed." This supersedes the waiting status above. On gqsvoioccvklzfmdmexy, both the regular member and administrator authenticated, returned member_has_access=true, and returned cms_is_admin=false/true respectively. The member saw zero private CMS history rows; the administrator saw one existing row. Both roles were unable to enumerate the bucket root or either product prefix, downloaded all four exact expected assets with HTTP 200 and matching SHA-256, were denied signing for each object, and closed their own sessions with HTTP 204.
+
+Verified objects and byte counts: journal/2026-11/nl.json 30553; journal/2026-11/fr.json 32395; journal/2026-11/cartoon.webp 570376; radar/current.json 48740. Hashes match the acceptance runner's four pinned expectations. The object downloads now provide the positive existence/content evidence that the earlier masked not-found responses alone lacked. The submitted excerpt starts at Member authentication; its guest section is not included, although the runner's final success line indicates the complete invocation passed. Earlier guest-only output remains separately recorded.
+
+Conclusion: the reported member-download defect is resolved and live acceptance has passed for both authenticated roles. Two sequential blockers were identified: initially absent test assets, then the restrictive guard excluding the gateway's authenticated metadata operation. No additional user SQL work or repeat of this access test is needed. The local migration/test/documentation changes remain uncommitted and unpushed to PR #76. Production has not been modified. This acceptance closes the download incident, not the separate full release gates or real registration/recovery email acceptance. Work stopped after recording this evidence; no agents remain working on the incident.

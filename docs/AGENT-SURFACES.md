@@ -32,6 +32,7 @@ tests/**
 !tests/coherence-film-release.test.cjs
 !tests/cms-client.test.cjs
 !tests/performance-diagnostics.test.cjs
+!tests/coherence-dictionary.test.cjs
 !tests/hero-image.test.cjs
 !tests/browser/navigation-accessibility.spec.cjs
 !tests/server-compression.test.cjs
@@ -80,6 +81,9 @@ docs/EXECUTIVE-RADAR-NAV-DEV.md
 ```
 
 ```surface:performance
+scripts/coherence-dictionary.cjs
+scripts/coherence-dictionary.contract.json
+tests/coherence-dictionary.test.cjs
 scripts/performance-diagnostics.cjs
 tests/performance-diagnostics.test.cjs
 scripts/performance.cjs
@@ -133,6 +137,8 @@ tests/performance-fonts.test.cjs
 !scripts/load.cjs
 !scripts/performance.cjs
 !scripts/performance-diagnostics.cjs
+!scripts/coherence-dictionary.cjs
+!scripts/coherence-dictionary.contract.json
 !scripts/verify-production.cjs
 !baies-dev/**
 !executive-radar/**

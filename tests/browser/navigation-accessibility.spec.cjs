@@ -148,3 +148,37 @@ for(const legacy of [false,true])test('Coherence controller boots once with '+(l
  await page.evaluate(()=>new Promise((resolve,reject)=>{const script=document.createElement('script');script.src='/assets/coherence-layout.js?v=standalone';script.onload=resolve;script.onerror=reject;document.head.append(script)}));
  expect(await page.evaluate(()=>window.coherenceBindings)).toBe(1);
 });
+
+function completeTranslations(){const context={window:{}};require('node:vm').runInNewContext(require('node:fs').readFileSync('assets/i18n.js','utf8'),context);return context.window.I18N;}
+async function isolatedCoherenceConfig(page){await page.route('**/assets/cms-config.js*',route=>route.fulfill({contentType:'application/javascript',body:'window.GF_CMS_CONFIG={url:"https://gqsvoioccvklzfmdmexy.supabase.co",key:"sb_publishable_fixture"};'}));}
+async function switchCoherenceLanguage(page,language){await page.locator('.lang-btn').first().click();await page.locator('.lang-menu').first().locator('[data-lang="'+language+'"]').click();await expect(page.locator('html')).toHaveAttribute('lang',language);}
+for(const initial of ['nl','fr'])for(const cache of ['fresh','old-full-dictionary','old-chunk-query'])test('bounded Coherence dictionary preserves '+initial+' language flow with '+cache,async({page})=>{
+ const requests=[];page.on('request',request=>requests.push(new URL(request.url()).pathname));await isolatedCoherenceConfig(page);
+ await page.route('https://gqsvoioccvklzfmdmexy.supabase.co/**',route=>route.fulfill({contentType:'application/json',body:'[]',headers:{'access-control-allow-origin':'*'}}));
+ if(cache!=='fresh')await page.route('**/coherence.html*',async route=>{const response=await route.fetch();const body=(await response.text()).replace(/assets\/i18n-coherence\.js\?v=coherence-1-[a-f0-9]{12}/g,cache==='old-full-dictionary'?'assets/i18n.js?v=20261111-nl-audit':'assets/i18n-coherence.js?v=coherence-1-000000000000');await route.fulfill({response,body});});
+ await page.goto('/coherence.html?lang='+initial);await expect(page.locator('html')).toHaveClass(/i18n-ready/);await expect(page.locator('html')).toHaveAttribute('lang',initial);
+ const dictionary=completeTranslations(),titleKey=await page.locator('meta[name="seo-title"]').getAttribute('content');
+ await expect(page).toHaveTitle(dictionary[titleKey]?.[initial==='fr'?1:0]||titleKey);
+ await expect(page.locator('#consent [data-ih="cintro"]')).toContainText(initial==='fr'?'Le stockage nécessaire':'Noodzakelijke opslag');await page.locator('#c-none').click();
+ for(const language of [initial==='fr'?'nl':'fr',initial]){
+  await switchCoherenceLanguage(page,language);await expect(page).toHaveTitle(dictionary[titleKey]?.[language==='fr'?1:0]||titleKey);
+  await expect(page.locator('#coherence-film h2')).toHaveText(language==='fr'?'Voir la cohérence. Donner le mandat.':'Zie de samenhang. Geef het mandaat.');
+  const link=page.locator('.member-nav .member-login-link');await expect(link).toHaveText(language==='fr'?'Se connecter':'Aanmelden');expect(new URL(await link.getAttribute('href'),'https://example.test').searchParams.get('lang')).toBe(language);
+ }
+ const scripts=await page.locator('script[src]').evaluateAll(elements=>elements.map(element=>({path:new URL(element.src).pathname,defer:element.defer})));
+ const dictionaryPath=cache==='old-full-dictionary'?'/assets/i18n.js':'/assets/i18n-coherence.js';expect(requests.filter(path=>path===dictionaryPath)).toHaveLength(1);
+ expect(scripts.find(script=>script.path===dictionaryPath).defer).toBe(true);expect(scripts.findIndex(script=>script.path===dictionaryPath)).toBeLessThan(scripts.findIndex(script=>script.path==='/assets/site.js'));
+});
+for(const initial of ['nl','fr'])for(const timing of ['early','late'])test('bounded Coherence preserves '+timing+' published CMS locale overrides in '+initial,async({page})=>{
+ await isolatedCoherenceConfig(page);let release;const gate=new Promise(resolve=>{release=resolve});
+ const full=completeTranslations(),retained=require('../../scripts/coherence-dictionary.contract.json').retainedKeys;
+ const otherPageCopy=Object.keys(full).find(key=>key.length>100&&!retained.includes(key));expect(otherPageCopy).toBeTruthy();
+ const headline={nl:'CMS-kop Nederlands',fr:'Titre CMS français'},body={nl:otherPageCopy,fr:'Texte publié directement par le CMS français'};
+ await page.route('https://gqsvoioccvklzfmdmexy.supabase.co/**',async route=>{if(timing==='late')await gate;await route.fulfill({contentType:'application/json',body:JSON.stringify([{content:{settings:{fields:{'f02ea72a18222-0':{type:'text',...headline},'feb66bf68b536-0':{type:'text',...body}}}}}]),headers:{'access-control-allow-origin':'*'}});});
+ if(timing==='early')await page.route('**/assets/i18n-coherence.js*',async route=>{await page.waitForFunction(()=>document.querySelector('h1[data-cms="f02ea72a18222-0"]')?.textContent==='CMS-kop Nederlands');await route.continue();});
+ await page.goto('/coherence.html?lang='+initial);if(timing==='late')release();
+ const heading=page.locator('h1[data-cms="f02ea72a18222-0"]'),paragraph=page.locator('[data-cms="feb66bf68b536-0"]');
+ await expect(heading).toHaveText(headline[initial]);await expect(paragraph).toHaveText(body[initial]);await page.locator('#c-none').click();
+ const other=initial==='fr'?'nl':'fr';await switchCoherenceLanguage(page,other);await expect(heading).toHaveText(headline[other]);await expect(paragraph).toHaveText(body[other]);
+ await switchCoherenceLanguage(page,initial);await expect(heading).toHaveText(headline[initial]);await expect(paragraph).toHaveText(body[initial]);
+});

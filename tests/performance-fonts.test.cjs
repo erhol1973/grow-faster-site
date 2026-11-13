@@ -63,8 +63,8 @@ test('built pages inline only small styles while retaining exact standalone asse
    assert.equal(css,fs.readFileSync(path.join(root,'dist',name),'utf8'),route+' standalone '+name);
   }
   assert.doesNotMatch(html,/<link[^>]+href="\/?assets\/(navigation|home-hero|books|journal|coherence-film)\.css[?"#]/i,route);
-  const scripts=[...html.matchAll(/<script\b[^>]*>/gi)].map(x=>x[0]);const dictionaries=scripts.filter(tag=>/src="\/?assets\/i18n\.js[?"#]/.test(tag));
-  assert.equal(dictionaries.length,1,route);assert.match(dictionaries[0],/\bdefer\b/,route);assert.doesNotMatch(dictionaries[0],/fetchpriority=/i,route);
+  const scripts=[...html.matchAll(/<script\b[^>]*>/gi)].map(x=>x[0]);const dictionaries=scripts.filter(tag=>/src="\/?assets\/i18n(?:-coherence)?\.js[?"#]/.test(tag));
+  assert.equal(dictionaries.length,1,route);assert.match(dictionaries[0],route==='coherence.html'?/src="assets\/i18n-coherence\.js\?v=coherence-1-[a-f0-9]{12}"/:/src="assets\/i18n\.js\?v=20261111-nl-audit"/,route);assert.match(dictionaries[0],/\bdefer\b/,route);assert.doesNotMatch(dictionaries[0],/fetchpriority=/i,route);
   assert.ok(scripts.indexOf(dictionaries[0])<scripts.findIndex(tag=>/src="\/?assets\/site\.js[?"#]/.test(tag)),route);
  }
 });

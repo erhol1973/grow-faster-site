@@ -26,7 +26,44 @@ for(const lang of ['nl','fr']){
  });
 }
 
-test('44-second commercial plays to the end without subtitles',async({page})=>{test.setTimeout(70000);await page.goto('/coherence.html?lang=nl');const video=page.locator('#coherence-film video');await video.evaluate(v=>v.play());await expect.poll(()=>video.evaluate(v=>v.duration)).toBe(44);await expect.poll(()=>video.evaluate(v=>v.ended),{timeout:55000}).toBe(true);expect(await video.evaluate(v=>v.currentTime)).toBe(44);expect(await video.evaluate(v=>v.error)).toBeNull();expect(await video.evaluate(v=>v.textTracks.length)).toBe(0);await expect(video.locator('track')).toHaveCount(0)});
+test('44-second commercial plays to the end without subtitles',async({page,isMobile,browserName},testInfo)=>{
+ test.setTimeout(70000);
+ const mediaRequests=new Map();
+ page.on('request',request=>{if(request.resourceType()==='media')mediaRequests.set(request,{url:request.url(),method:request.method(),range:request.headers().range||null,started:Date.now()});});
+ page.on('requestfinished',request=>mediaRequests.delete(request));
+ page.on('requestfailed',request=>{const state=mediaRequests.get(request);if(state)state.failure=request.failure();});
+ try{
+ await page.goto('/coherence.html?lang=nl');
+ await expect(page.locator('html')).toHaveAttribute('lang','nl');
+ const video=page.locator('#coherence-film video');
+ await expect(video).toHaveAttribute('aria-label','Zie de samenhang. Geef het mandaat.');
+ await expect(video).toHaveAttribute('src','media/grow-faster-commercial-final-44s.mp4');
+ const rejectConsent=page.locator('#c-none');
+ if(await rejectConsent.isVisible())await rejectConsent.click();
+ await expect(page.locator('body')).not.toHaveClass(/locked/);
+ await video.scrollIntoViewIfNeeded();
+ await expect(video).toBeInViewport();
+ // Start the visible native player as a visitor would, rather than playing offscreen.
+ if(isMobile)await video.tap();else await video.click();
+ if(isMobile&&browserName==='chromium'&&await video.evaluate(v=>v.paused)){
+  // Chromium's first touch reveals controls; use the visible lower-left Play control.
+  await testInfo.attach('native-video-controls-before-play',{body:await video.screenshot(),contentType:'image/png'});
+  const box=await video.boundingBox();
+  await video.tap({position:{x:24,y:box.height-48}});
+ }
+ await expect.poll(()=>video.evaluate(v=>!v.paused&&v.currentTime>0)).toBe(true);
+ await expect.poll(()=>video.evaluate(v=>v.duration)).toBe(44);
+ await expect.poll(()=>video.evaluate(v=>v.ended),{timeout:55000}).toBe(true);
+ expect(await video.evaluate(v=>v.currentTime)).toBe(44);
+ expect(await video.evaluate(v=>v.error)).toBeNull();
+ expect(await video.evaluate(v=>v.textTracks.length)).toBe(0);
+ await expect(video.locator('track')).toHaveCount(0);
+ }catch(error){
+  const state=await page.locator('#coherence-film video').evaluate(v=>({paused:v.paused,currentTime:v.currentTime,duration:v.duration,readyState:v.readyState,networkState:v.networkState,ended:v.ended,error:v.error?{code:v.error.code,message:v.error.message}:null,buffered:Array.from({length:v.buffered.length},(_,i)=>[v.buffered.start(i),v.buffered.end(i)])})).catch(error=>({unavailable:String(error)}));
+  await testInfo.attach('native-video-failure-state',{body:JSON.stringify({state,pendingRequests:[...mediaRequests.values()]},null,2),contentType:'application/json'});
+  throw error;
+ }
+});
 
 for(const lang of ['nl','fr'])test('Coherence simulator resize cannot move an active next-page pointer target ('+lang+')',async({page})=>{
   await page.goto('/coherence.html?lang='+lang);

@@ -40,6 +40,10 @@ function walk(folder, relative, allowed) {
 }
 for (const [dir, allowed] of Object.entries(extensions)) walk(path.join(root, dir), dir, allowed);
 require('./radar-release.cjs').buildRadar(root,out);
+// The optional Coherence chunk is never required by other or cached documents.
+if(readRegularFile(path.join(out,'coherence.html')).toString('utf8').includes('assets/i18n-coherence.js?v=coherence-1')){
+  if(require('./coherence-dictionary.cjs').buildCoherenceDictionary(root,out))count++;
+}
 // Apply the same typography to every emitted document, including both Radar routes.
 for (const file of fs.readdirSync(out, { recursive: true }).filter(name => name.endsWith('.html'))) {
   const target = path.join(out, file);

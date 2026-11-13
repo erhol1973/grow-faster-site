@@ -33,6 +33,9 @@
     "tests/browser/radar-access.spec.cjs"
   ],
   "performance": [
+    "scripts/coherence-dictionary.cjs",
+    "scripts/coherence-dictionary.contract.json",
+    "tests/coherence-dictionary.test.cjs",
     "scripts/performance-diagnostics.cjs",
     "tests/performance-diagnostics.test.cjs",
     "scripts/performance.cjs",

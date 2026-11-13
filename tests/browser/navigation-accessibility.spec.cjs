@@ -52,3 +52,23 @@ test('home responsive hero preloads the selected AVIF once and preserves WebP fa
  await expect(image).toHaveAttribute('src','img/hero-executive-meeting-1774.webp');await expect(image).toHaveAttribute('width','1774');await expect(image).toHaveAttribute('height','887');
  expect(requests).toEqual([result.currentSrc]);expect(result.entries).toHaveLength(1);expect(result.entries[0].initiatorType).toBe('link');
 });
+
+
+test('the existing deferred translation request receives high network priority exactly once',async({page})=>{
+ const client=await page.context().newCDPSession(page);await client.send('Network.enable');
+ const dictionaries=[];
+ client.on('Network.requestWillBeSent',event=>{if(new URL(event.request.url).pathname==='/assets/i18n.js')dictionaries.push(event.request.initialPriority)});
+ await page.addInitScript(()=>{
+  localStorage.setItem('avs-lang','fr');localStorage.setItem('avs-consent',JSON.stringify({v:4,ext:false,ana:false,ts:Date.now()}));
+  window.translationEvents=[];
+  document.addEventListener('gf:language',event=>window.translationEvents.push({language:event.detail.language,loaded:typeof window.I18N==='object'}));
+ });
+ await page.goto('/index.html');await expect(page.locator('html')).toHaveClass(/i18n-ready/);
+ expect(dictionaries).toEqual(['High']);
+ const scripts=await page.locator('script[src]').evaluateAll(elements=>elements.map(script=>({src:new URL(script.src).pathname,defer:script.defer,priority:script.fetchPriority})));
+ const translation=scripts.filter(script=>script.src==='/assets/i18n.js');expect(translation).toEqual([{src:'/assets/i18n.js',defer:true,priority:'high'}]);
+ expect(scripts.findIndex(script=>script.src==='/assets/i18n.js')).toBeLessThan(scripts.findIndex(script=>script.src==='/assets/site.js'));
+ expect(await page.evaluate(()=>window.translationEvents)).toContainEqual({language:'fr',loaded:true});
+ await expect(page.locator('html')).toHaveAttribute('lang','fr');await expect(page.locator('#hero h1')).toBeVisible();
+ await client.detach();
+});

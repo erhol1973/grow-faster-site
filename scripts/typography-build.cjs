@@ -10,4 +10,17 @@ function typographyMarkup(css, {external = false} = {}) {
   return preload + (external ? '<link rel="stylesheet" href="/assets/typography.css">' :
     '<style data-gf-typography>' + css + '</style>');
 }
-module.exports = {typographyMarkup};
+// The chosen-language content cannot be revealed until this existing dictionary
+// has loaded. Raise its network priority without preloading a second request or
+// changing script order, defer/async semantics, URLs or translation bytes.
+function prioritizeTranslations(html) {
+  return html.replace(/<script\b[^>]*>/gi, tag => {
+    const source = tag.match(/\ssrc\s*=\s*(["'])(.*?)\1/i);
+    if (!source || !/^\/?assets\/i18n\.js(?:[?#]|$)/.test(source[2])) return tag;
+    if (/\sfetchpriority\s*=/i.test(tag)) {
+      return tag.replace(/(\sfetchpriority\s*=\s*)(["'])[^"']*\2/i, '$1"high"');
+    }
+    return tag.replace(/>$/, ' fetchpriority="high">');
+  });
+}
+module.exports = {typographyMarkup, prioritizeTranslations};

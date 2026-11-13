@@ -3,7 +3,7 @@ const {test}=require('node:test');
 const assert=require('node:assert/strict');
 const fs=require('node:fs');
 const path=require('node:path');
-const {typographyMarkup}=require('../scripts/typography-build.cjs');
+const {typographyMarkup,prioritizeTranslations}=require('../scripts/typography-build.cjs');
 const root=path.resolve(__dirname,'..');
 test('built pages receive the complete type contract without a blocking stylesheet request',()=>{
  const css=fs.readFileSync(path.join(root,'assets/typography.css'),'utf8');
@@ -34,4 +34,31 @@ test('inline type contract cannot close its HTML style container',()=>{
   assert.throws(()=>typographyMarkup(css),/Unsafe typography/);
  }
  assert.ok(typographyMarkup('body { color: navy; }').includes('body { color: navy; }'));
+});
+
+test('translation priority preserves existing script URLs, defer and execution order',()=>{
+ const tags=['<script defer src="assets/i18n.js?v=edition"></script>',
+  '<script defer src="assets/content.js"></script>',
+  '<script defer src="assets/site.js"></script>',
+  '<script data-src="assets/i18n.js" src="assets/other.js"></script>',
+  '<script defer src="https://example.com/assets/i18n.js"></script>'];
+ const original=tags.join('\n');const prioritized=prioritizeTranslations(original);
+ assert.equal(prioritized.replace(' fetchpriority="high"',''),original);
+ assert.equal((prioritized.match(/fetchpriority="high"/g)||[]).length,1);
+ assert.equal(prioritizeTranslations(prioritized),prioritized,'the hint is idempotent');
+ const account='<meta http-equiv="Content-Security-Policy" content="script-src self; style-src self"><script defer src="/assets/cms-config.js"></script><script defer src="/assets/member-auth.js"></script><script defer src="/assets/member-account.js"></script>';
+ assert.equal(prioritizeTranslations(account),account,'CSP account scripts and order remain unchanged');
+ assert.equal(prioritizeTranslations('<script defer src="/assets/i18n.js" fetchpriority="low"></script>'),
+  '<script defer src="/assets/i18n.js" fetchpriority="high"></script>');
+});
+test('built ordinary pages prioritize one existing deferred dictionary without adding a preload',()=>{
+ for(const route of ['index.html','books.html','insights.html','approach.html']){
+  const html=fs.readFileSync(path.join(root,'dist',route),'utf8');
+  const scripts=[...html.matchAll(/<script\b[^>]*>/gi)].map(x=>x[0]);
+  const dictionaries=scripts.filter(tag=>/src="\/?assets\/i18n\.js(?:[?"#])/.test(tag));
+  assert.equal(dictionaries.length,1,route);assert.match(dictionaries[0],/\bdefer\b/,route);
+  assert.match(dictionaries[0],/fetchpriority="high"/,route);
+  assert.ok(scripts.indexOf(dictionaries[0])<scripts.findIndex(tag=>/src="\/?assets\/site\.js(?:[?"#])/.test(tag)),route);
+  assert.doesNotMatch(html,/<link[^>]+(?:preload|modulepreload)[^>]+i18n\.js/i,route);
+ }
 });

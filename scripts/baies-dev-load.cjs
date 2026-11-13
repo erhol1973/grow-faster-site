@@ -4,6 +4,8 @@ const fs=require('node:fs'),path=require('node:path');
 const {performance,monitorEventLoopDelay}=require('node:perf_hooks'),os=require('node:os');
 const {createServer}=require('./server.cjs');
 const routes=[
+  {"route":"/assets/executive-radar-edition.js?v=20261113-ceo-pilot","status":200},
+  {"route":"/assets/baies-dev-edition.js?v=20261113-ceo-pilot","status":200},
   {"route":"/executive-radar/","status":200},
   {"route":"/executive-radar/?lang=fr","status":200},
   {"route":"/baies-dev/?lang=fr","status":200},

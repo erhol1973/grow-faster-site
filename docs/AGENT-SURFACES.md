@@ -1,10 +1,11 @@
-# Navigation and Executive Radar agent surfaces
+# Executive Radar agent surfaces
 
-Current task (13 November 2026): remove the internal Executive Radar About link, view and obsolete public runtime copy in NL/FR, with regression coverage. The owner requests correction of the public production page. Radar is the only dispatched builder; reviewer is independent and read-only. Orchestrator alone commits and publishes through the protected PR and tested-artifact release gates after successful review. No CMS/HubSpot writes, hosting configuration changes or threshold relaxation. All builders report paths, verification and limitations. Other surfaces below remain preservation-only in this task. The former dev navigation task is retained in Git history.
+Task 13 November 2026: one researched current CEO pilot edition in isolated dev. Sponsor retains content acceptance and production go/no-go. NO main merge, auto-merge, production deploy, external sending, paid services, hosting or CMS changes. Orchestrator alone commits and prepares gated dev preview. Research/radar write disjoint paths; reviewer is read-only. Other surfaces are preservation-only.
 
 ```roster
 navigation builder installed autonomous
 radar builder installed autonomous
+research builder installed autonomous
 branding builder installed autonomous
 repository builder planned escalates
 reviewer reviewer installed autonomous
@@ -19,9 +20,15 @@ tests/**
 !tests/baies-dev.test.cjs
 !tests/browser/baies-dev.spec.cjs
 !tests/brand-logo.test.cjs
+!tests/executive-radar-edition.test.cjs
 scripts/load.cjs
 scripts/performance.cjs
 scripts/verify-production.cjs
+```
+
+```surface:research
+assets/executive-radar-edition.js
+docs/EXECUTIVE-RADAR-RESEARCH.md
 ```
 
 ```surface:radar
@@ -32,6 +39,7 @@ scripts/baies-dev*
 scripts/build.cjs
 tests/baies-dev.test.cjs
 tests/browser/baies-dev.spec.cjs
+tests/executive-radar-edition.test.cjs
 ```
 
 ```surface:branding
@@ -47,6 +55,7 @@ scripts/agent-guard.mjs
 .github/workflows/dev-agent-surfaces.yml
 .github/workflows/baies-dev-quality.yml
 docs/EXECUTIVE-RADAR-NAV-DEV.md
+docs/EXECUTIVE-RADAR-PILOT.md
 ```
 
 ```surface:repository
@@ -72,6 +81,9 @@ docs/EXECUTIVE-RADAR-NAV-DEV.md
 !.github/workflows/dev-agent-surfaces.yml
 !.github/workflows/baies-dev-quality.yml
 !docs/EXECUTIVE-RADAR-NAV-DEV.md
+!docs/EXECUTIVE-RADAR-PILOT.md
+!assets/executive-radar-edition.js
+!docs/EXECUTIVE-RADAR-RESEARCH.md
 ```
 
-Navigation owns the ordinary site header and shared locale/rendering code, and updates existing menu/test contracts. Radar owns its dedicated product and legacy-compatible canonical route. Branding owns brand image files, including existing BAEIS image paths, without editing HTML. Repository is a non-dispatched preservation surface; it may not change in this task. Reviewer audits every producer independently. Root HTML includes admin only if its actual brand/header needs consistency; do not change CMS behavior.
+Research owns the dated edition and research evidence. Radar owns product rendering and regression tests. Reviewer independently audits facts, NL/FR parity and behavior, never edits. Orchestrator owns release evidence and sponsor acceptance handover. No other site/CMS/brand changes are dispatched.

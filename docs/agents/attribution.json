@@ -1,12 +1,23 @@
 {
+  "research": [
+    "assets/executive-radar-edition.js",
+    "docs/EXECUTIVE-RADAR-RESEARCH.md"
+  ],
   "orchestrator": [
+    ".github/workflows/baies-dev-quality.yml",
     "docs/AGENT-SURFACES.md",
+    "docs/EXECUTIVE-RADAR-PILOT.md",
+    "docs/agents/research.md",
     "docs/agents/attribution.json"
   ],
   "radar": [
-    "executive-radar/index.html",
     "assets/baies-dev-app.js",
+    "assets/baies-dev-edition.js",
+    "assets/baies-dev.css",
+    "executive-radar/index.html",
+    "scripts/baies-dev-load.cjs",
     "tests/baies-dev.test.cjs",
-    "tests/browser/baies-dev.spec.cjs"
+    "tests/browser/baies-dev.spec.cjs",
+    "tests/executive-radar-edition.test.cjs"
   ]
 }

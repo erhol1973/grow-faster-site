@@ -81,7 +81,7 @@ test('BAEIS dev: isolated NL/FR accessible markup and static asset linkage',()=>
   assert.doesNotMatch(html,/id="(?:about|heading-about|signup-[^"]+)"/);
   assert.match(html,/role="status"/);
   assert.match(html,/assets\/baies-dev\.css/);
-  for(const asset of ['baies-dev.css','baies-dev-core.js','baies-dev-data.js','baies-dev-app.js'])assert.ok(fs.statSync(path.join(root,'assets',asset)).isFile());
+  for(const asset of ['baies-dev.css','baies-dev-core.js','baies-dev-data.js','baies-dev-app.js','baies-dev-edition.js','executive-radar-edition.js'])assert.ok(fs.statSync(path.join(root,'assets',asset)).isFile());
 });
 test('BAEIS branding: exact solid four-bar transparent logo variants and favicon',()=>{
   for(const [variant,ink] of [['dark','#0B2545'],['white','#FFFFFF']]){
@@ -177,7 +177,7 @@ test('BAEIS production artifact: isolated public route, complete assets and no t
   const {createServer}=require('../scripts/server.cjs');const server=createServer();await new Promise(r=>server.listen(0,'127.0.0.1',r));const base='http://127.0.0.1:'+server.address().port;
   try{
     const canonical=await (await fetch(base+'/executive-radar/')).text();assert.match(canonical,/<title>Executive Radar \| Grow Faster<\/title>/);assert.doesNotMatch(canonical,/BAEIS|Belgian AI Economic Intelligence System/);assert.match(canonical,/class="identity" href="\.\.\/index\.html\?lang=nl"/);
-    for(const route of ['/executive-radar/','/executive-radar/?lang=nl','/executive-radar/?lang=fr','/baies-dev/','/baies-dev/?lang=nl','/baies-dev/?lang=fr']){const r=await fetch(base+route);assert.equal(r.status,200,route);const body=await r.text();assert.equal(body,canonical,'canonical and legacy route bytes');assert.match(body,/data-i18n="dev">DEMONSTRATIE/);assert.match(body,/id="heading-dashboard"/);assert.match(body,/id="company-size"/);assert.match(body,/noindex,nofollow,noarchive/);assert.doesNotMatch(body,/id="(?:about|heading-about|signup-[^"]+)"|href="#about"|roadmapKicker|signupTitle/);}
+    for(const route of ['/executive-radar/','/executive-radar/?lang=nl','/executive-radar/?lang=fr','/baies-dev/','/baies-dev/?lang=nl','/baies-dev/?lang=fr']){const r=await fetch(base+route);assert.equal(r.status,200,route);const body=await r.text();assert.equal(body,canonical,'canonical and legacy route bytes');assert.match(body,/data-i18n="dev">REDACTIONELE PILOTEDITIE/);assert.match(body,/id="heading-dashboard"/);assert.match(body,/id="company-size"/);assert.match(body,/noindex,nofollow,noarchive/);assert.doesNotMatch(body,/id="(?:about|heading-about|signup-[^"]+)"|href="#about"|roadmapKicker|signupTitle/);}
     for(const asset of ['baies-dev.css','baies-dev-core.js','baies-dev-data.js','baies-dev-app.js'])assert.equal((await fetch(base+'/assets/'+asset)).status,200,asset);
     for(const asset of ['logo-dark.svg','logo-white.svg','logo-dark.png','logo-white.png','favicon.svg','favicon.png'])assert.equal((await fetch(base+'/img/baies-dev-'+asset)).status,200,asset);
     for(const route of ['/docs/BAEIS-D-FOLLOWUP.md','/tests/baies-dev.test.cjs','/reports/unit.xml'])assert.equal((await fetch(base+route)).status,404,route);
@@ -188,9 +188,9 @@ test('BAEIS production artifact: isolated public route, complete assets and no t
 test('Executive Radar public surface excludes internal about and newsletter prototype',()=>{
   // Old cached app code still bound the removed signup form unconditionally.
   // Its URL must change with this DOM removal so existing visitors fetch the matching runtime.
-  assert.match(html,/<script defer src="\.\.\/assets\/baies-dev-app\.js\?v=20261113-public-about"><\/script>/);
+  assert.match(html,/<script defer src="\.\.\/assets\/baies-dev-app\.js\?v=20261113-ceo-pilot"><\/script>/);
   assert.doesNotMatch(html,/id="(?:about|heading-about|signup-[^"]+)"|href="#about"|data-view="about"|Over Executive Radar|Product Owner|sprint-grid|next-stage/);
   assert.doesNotMatch(app,/navModel|roadmapKicker|roadmapTitle|roadmapSub|s[1-4](?:Title|Text|Done)|nextTitle|nextBody|signupTitle|signupDesc|signupMessage|signup-form|signup-feedback|testSignup|toestemmingsprototype|test de consentement/);
   assert.match(app,/const views=\['overview','dashboard','radar','evidence','editorial'\]/);
-  assert.match(html,/Demonstratie · Vaste referentiedata/);
+  assert.match(html,/Redactionele pilot · Geen realtimefeed/);
 });

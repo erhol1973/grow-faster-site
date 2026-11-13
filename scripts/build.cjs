@@ -6,7 +6,7 @@ const {assertPublicArtifact}=require('./baies-dev-public-policy.cjs');
 const root = path.resolve(__dirname, '..');
 const destination = path.join(root, 'dist');
 const out = path.join(root, '.dist-build-'+process.pid);
-const files = ['executive-radar/index.html', 'boek/the-coherent-enterprise/index.html', 'boek/index.html', 'boek/page-flip-LICENSE.txt', '.nojekyll', 'CNAME', '404.html', 'admin.html', 'about.html', 'books.html', 'accessibility.html', 'approach.html', 'coherence-sim.html', 'coherence.html', 'eca.html', 'favicon.ico', 'index.html', 'insights-ai-pilot.html', 'insights.html', 'journal.html', 'journal-fr.html', 'operating-model.html', 'privacy.html', 'process.html', 'robots.txt', 'sitemap.xml', 'terms.html', 'value.html', 'transformation.html', 'workshop.html', ...require('../tests/legacy-redirects.json').map(r=>r.file)];
+const files = ['assets/hanken-grotesk-OFL.txt', 'assets/hanken-grotesk-latin.woff2', 'account.html', 'executive-radar/index.html', 'boek/the-coherent-enterprise/index.html', 'boek/index.html', 'boek/page-flip-LICENSE.txt', '.nojekyll', 'CNAME', '404.html', 'admin.html', 'about.html', 'books.html', 'accessibility.html', 'approach.html', 'coherence-sim.html', 'coherence.html', 'eca.html', 'favicon.ico', 'index.html', 'insights-ai-pilot.html', 'insights.html', 'journal.html', 'journal-fr.html', 'operating-model.html', 'privacy.html', 'process.html', 'robots.txt', 'sitemap.xml', 'terms.html', 'value.html', 'transformation.html', 'workshop.html', ...require('../tests/legacy-redirects.json').map(r=>r.file)];
 const extensions = { media: new Set(['.mp4', '.vtt']), boek: new Set(['.pdf']), assets: new Set(['.js', '.css']), img: new Set(['.jpg', '.jpeg', '.png', '.webp', '.avif', '.svg', '.ico']), books: new Set(['.pdf', '.jpg', '.jpeg', '.png', '.webp']) };
 if (destination !== path.join(root,'dist') || path.dirname(out)!==root || path.basename(out)!=='.dist-build-'+process.pid) throw new Error('Unsafe output directory');
 // No partially written or policy-rejected dist can become a deployable artifact.
@@ -16,7 +16,7 @@ fs.rmSync(out, { recursive: true, force: true });
 fs.mkdirSync(out);
 let count = 0;
 function copy(source, relative) {
-  const data=readRegularFile(source);
+  const data=require('./member-navigation.cjs').bundleMemberNavigation(readRegularFile(source), relative, root);
   const target = path.join(out, relative);
   fs.mkdirSync(path.dirname(target), { recursive: true });
   if(relative.replaceAll('\\','/')==='assets/i18n.js'){
@@ -39,6 +39,20 @@ function walk(folder, relative, allowed) {
   }
 }
 for (const [dir, allowed] of Object.entries(extensions)) walk(path.join(root, dir), dir, allowed);
+require('./radar-release.cjs').buildRadar(root,out);
+// The optional Coherence chunk is never required by other or cached documents.
+if(readRegularFile(path.join(out,'coherence.html')).toString('utf8').includes('assets/i18n-coherence.js?v=coherence-1')){
+  if(require('./coherence-dictionary.cjs').buildCoherenceDictionary(root,out))count++;
+}
+// Apply the same typography to every emitted document, including both Radar routes.
+for (const file of fs.readdirSync(out, { recursive: true }).filter(name => name.endsWith('.html'))) {
+  const target = path.join(out, file);
+  const page = fs.readFileSync(target, 'utf8');
+  if (/<meta[^>]+http-equiv=["']refresh/i.test(page)) continue;
+  const external = /<meta\b[^>]*http-equiv\s*=\s*["']Content-Security-Policy["']/i.test(page);
+  const style = require('./typography-build.cjs').typographyMarkup(readRegularFile(path.join(root,'assets/typography.css')).toString('utf8'),{external});
+  fs.writeFileSync(target, require('./typography-build.cjs').inlineComponentStyles(page, asset => readRegularFile(path.join(root,asset)).toString('utf8')).replace(/<\/head>/i, () => style + '</head>'));
+}
 assertPublicArtifact(out);
 fs.renameSync(out,destination);
 console.log(`Built ${count} website files in dist/ (public-content policy passed)`);

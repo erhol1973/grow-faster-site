@@ -30,3 +30,11 @@ test('both books share one structure and are shown as 3D book objects',()=>{cons
  for(const page of ['index.html','about.html','books.html'])if(fs2.readFileSync(dist+'/'+page,'utf8').includes('design-for-coherence-cover'))throw Error(`${page}: still shows the flat cover`);
  const png=fs2.readFileSync(dist+'/img/design-for-coherence-book-600.png');if(png[25]!==6)throw Error('3D book PNG must keep its transparent background (RGBA)');
 });
+
+test('only the first lazy book cover gets low priority while its approved image bytes and geometry remain unchanged',()=>{
+ const html=fs.readFileSync(path.join(root,'books.html'),'utf8');
+ const first=html.match(/<img\b[^>]*data-cms="fc3a07aae55df-0"[^>]*>/)[0],second=html.match(/<img\b[^>]*data-cms="f739d4882395d-0"[^>]*>/)[0];
+ assert.match(first,/loading="lazy"/);assert.match(first,/fetchpriority="low"/);assert.match(first,/width="600" height="869"/);assert.match(first,/src="img\/design-for-coherence-book-600\.png"/);
+ assert.match(second,/loading="lazy"/);assert.doesNotMatch(second,/fetchpriority=/);
+ for(const [file,digest] of [['design-for-coherence-book-300.webp','9a6ac38db560b42a0a9ad830e56590d0e34a57fcf10b6a84b239cb9667be50d3'],['design-for-coherence-book-600.webp','ed764350f7079de5a81677863c31b700f208fcef70a4e3ab0eafb6e913c7b049'],['design-for-coherence-book-600.png','cbe6a954da249778a13c92a255c8d59b9805c73e74b645c426d9e3abe99cc48c']])assert.equal(crypto.createHash('sha256').update(fs.readFileSync(path.join(root,'img',file))).digest('hex'),digest,file);
+});

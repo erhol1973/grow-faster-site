@@ -1,4 +1,33 @@
 const {test,expect}=require('playwright/test');
+const {edition,cartoon} = require('../../scripts/journal-archive.cjs');
+
+test('anonymous journal exposes the full opening article and no member pages or artwork', async ({page}) => {
+  for (const route of ['/journal.html','/journal-fr.html']) {
+    await page.goto(route + '#p14');
+    await expect(page.locator('[data-journal-join]')).toBeVisible();
+    await expect(page.locator('.sheet')).toHaveCount(3);
+    await expect(page.locator('#p4,#p14,#p15')).toHaveCount(0);
+    expect((await page.request.get('/img/journal-01-cartoon.webp')).status()).toBe(404);
+  }
+});
+
+test.describe('complete journal with a member entitlement', () => {
+  let payloads;
+  test.beforeAll(() => { payloads = {nl:edition('nl').payload,fr:edition('fr').payload,image:cartoon()}; });
+  test.beforeEach(async ({page}) => {
+    // Isolate editorial/UI regressions from live Auth; the companion DB tests exercise actual policies.
+    await page.route('**/assets/member-auth.js*', route => route.fulfill({
+      contentType:'application/javascript',
+      body:"window.GFMember={ready:async()=>({id:'journal-reader'}),accountUrl:()=>'/account.html',request:path=>fetch('/test-fixture/'+path.split('/').pop())};"
+    }));
+    await page.route('**/test-fixture/*', async route => {
+      const file = new URL(route.request().url()).pathname.split('/').pop();
+      if (file === 'cartoon.webp') return route.fulfill({contentType:'image/webp',body:payloads.image});
+      const lang = file === 'fr.json' ? 'fr' : 'nl';
+      return route.fulfill({contentType:'application/json', body:payloads[lang]});
+    });
+  });
+
 
 test('monthly journal opens from its menu and preserves page when switching language',async({page})=>{
  await page.addInitScript(()=>{localStorage.setItem('avs-lang','nl');localStorage.setItem('avs-consent',JSON.stringify({v:4,ext:false,ana:false,ts:Date.now()}))});
@@ -9,6 +38,7 @@ test('monthly journal opens from its menu and preserves page when switching lang
  await expect(page).toHaveURL(/insights\.html$/);
  await page.getByRole('link',{name:'Lees editie 01'}).click();
  await expect(page.locator('html')).toHaveAttribute('lang','nl');
+ await expect(page.locator('.book.enhanced')).toBeVisible();
  await expect(page.locator('.sheet:visible')).toHaveAttribute('id','p1');
  await page.getByRole('button',{name:/Volgende/}).click();
  await expect(page.locator('.sheet:visible')).toHaveAttribute('id','p2');
@@ -54,21 +84,37 @@ test('reader keeps controls and subscription visible around a landscape page',as
   }
  }
 });
-test('complete Dutch and French editions fit every landscape sheet without truncation',async({page})=>{
- await page.setViewportSize({width:1366,height:900});
+test('a signed-in reader follows a members-only table of contents link directly',async ({page})=>{
+  await page.goto('/journal.html#p2');
+  await expect(page.locator('#p9')).toHaveCount(1);
+  await page.locator('.routes a[data-member-target="#p9"]').click();
+  await expect(page.locator('#p9')).toBeVisible();
+  await expect(page.getByRole('dialog')).toHaveCount(0);
+});
+
+test('complete Dutch and French editions fit every landscape sheet without truncation',async({page,isMobile})=>{
+ await page.setViewportSize(isMobile ? {width:390,height:844} : {width:1366,height:900});
  for(const route of ['/journal.html','/journal-fr.html']){
   await page.goto(route);
+  await expect(page.locator('.sheet')).toHaveCount(15);
+  await page.evaluate(()=>document.fonts.ready);
   for(let n=1;n<=15;n++){
    await page.evaluate(index=>{location.hash='p'+index},n);
    const sheet=page.locator('#p'+n);
    await expect(sheet).toBeVisible();
+   if(n===14) await expect.poll(()=>sheet.locator('figure img').evaluate(img=>img.complete && img.naturalWidth>0)).toBe(true);
    const layout=await sheet.evaluate(e=>{
     const footer=e.querySelector('.paper-footer');
     const content=footer.previousElementSibling;
-    return {overflow:e.scrollHeight-e.clientHeight,overlap:content.getBoundingClientRect().bottom-footer.getBoundingClientRect().top};
+    return {
+     overflow:e.scrollHeight-e.clientHeight,
+     horizontal:e.scrollWidth-e.clientWidth,
+     overlap:content.getBoundingClientRect().bottom-footer.getBoundingClientRect().top
+    };
    });
-   expect(layout.overflow,route+' page '+n+' overflows').toBeLessThanOrEqual(1);
-   expect(layout.overlap,route+' page '+n+' overlaps its footer').toBeLessThanOrEqual(1);
+   expect.soft(layout.overflow,route+' page '+n+' overflows vertically').toBeLessThanOrEqual(1);
+   expect.soft(layout.horizontal,route+' page '+n+' overflows horizontally').toBeLessThanOrEqual(1);
+   expect.soft(layout.overlap,route+' page '+n+' overlaps its footer').toBeLessThanOrEqual(1);
   }
  }
 });
@@ -127,4 +173,37 @@ test('side arrows frame the page and text magnification stays usable',async({pag
   await next.click();await expect(page.locator('#p3')).toBeVisible();
   await page.locator('[data-zoom]').click();await expect(page.locator('[data-zoom]')).toHaveAttribute('aria-pressed','false');
  }
+});
+
+});
+test('forbidden and tampered edition responses leave only the public excerpt', async ({page}) => {
+  await page.route('**/assets/member-auth.js*', route => route.fulfill({
+    contentType:'application/javascript',
+    body:"window.GFMember={ready:async()=>({id:'reader'}),accountUrl:()=>'/account.html',request:()=>fetch('/test-fixture/content')}"
+  }));
+  for (const status of [403,200]) {
+    await page.route('**/test-fixture/content', route => route.fulfill({status,contentType:'application/json',body:'{"sheets":["untrusted"]}'}));
+    await page.goto('/journal.html#p14');
+    await expect(page.locator('[data-journal-status]')).toContainText('tijdelijk niet beschikbaar');
+    await expect(page.locator('.sheet')).toHaveCount(3);
+    await expect(page.locator('[data-journal-join]')).toBeVisible();
+    await page.unroute('**/test-fixture/content');
+  }
+});
+test('ending the member session removes all private sheets and resets the reader', async ({page}) => {
+  await page.route('**/assets/member-auth.js*', route => route.fulfill({
+    contentType:'application/javascript',
+    body:"window.GFMember={ready:async()=>window.loggedOut?null:{id:'reader'},accountUrl:()=>'/account.html',request:path=>fetch('/test-fixture/'+path.split('/').pop())}"
+  }));
+  await page.route('**/test-fixture/nl.json', route => route.fulfill({contentType:'application/json',body:edition('nl').payload}));
+  await page.route('**/test-fixture/cartoon.webp', route => route.fulfill({contentType:'image/webp',body:cartoon()}));
+  await page.goto('/journal.html#p14');
+  await expect(page.locator('#p14')).toBeVisible();
+  await page.evaluate(() => {
+    window.loggedOut=true;
+    window.dispatchEvent(new Event('gf-member-change'));
+  });
+  await expect(page.locator('.sheet')).toHaveCount(3);
+  await expect(page.locator('#p1')).toBeVisible();
+  await expect(page.locator('[data-journal-join]')).toBeVisible();
 });

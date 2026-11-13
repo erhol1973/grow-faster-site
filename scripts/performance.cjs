@@ -1,6 +1,7 @@
 const fs=require('node:fs'),path=require('node:path'),{createServer}=require('./server.cjs');
 const {chromium}=require('playwright');
 const median=xs=>[...xs].sort((a,b)=>a-b)[Math.floor(xs.length/2)];
+const {captureCoherenceDiagnostic,writeCoherenceDiagnostic}=require('./performance-diagnostics.cjs');
 async function main(){
   const production=process.argv.includes('--production'),baseline=process.argv.includes('--baseline');
   const {default:lighthouse}=await import('lighthouse'),launcher=await import('chrome-launcher');
@@ -10,7 +11,7 @@ async function main(){
   let modes=production?['mobile']:['mobile','desktop'];if(process.argv.includes('--mobile-only'))modes=['mobile'];
   if(process.argv.includes('--home-only'))routes.splice(1);
   const runs=production?1:3,out=path.resolve('reports/lighthouse'+(production?'/production':''));fs.mkdirSync(out,{recursive:true});
-  const summaries=[];let failures=[],working=null,finished=false;
+  const summaries=[];let failures=[],working=null,finished=false,diagnostic=null;
   const journal=status=>fs.writeFileSync(path.join(out,'summary.json'),JSON.stringify({status,production,baseline,summaries,working,failures,node:process.version,platform:process.platform},null,2));
   journal('running');process.once('exit',code=>{if(!finished){failures.push('Measurement interrupted before completion (exit '+code+')');journal('failed')}});
   try{
@@ -23,6 +24,7 @@ async function main(){
           if(mode==='desktop'){flags.screenEmulation={mobile:false,width:1350,height:940,deviceScaleFactor:1,disabled:false};flags.throttling={rttMs:40,throughputKbps:10240,cpuSlowdownMultiplier:1,requestLatencyMs:0,downloadThroughputKbps:0,uploadThroughputKbps:0}}
           const result=await lighthouse(base+route,flags);if(!result||result.lhr.runtimeError)throw Error(result?.lhr.runtimeError?.message||'No Lighthouse result');
           const lhr=result.lhr,a=lhr.audits,sample={accessibility:lhr.categories.accessibility.score*100,seo:lhr.categories.seo.score*100,score:lhr.categories.performance.score*100,lcp:a['largest-contentful-paint'].numericValue,cls:a['cumulative-layout-shift'].numericValue,tbt:a['total-blocking-time'].numericValue,fcp:a['first-contentful-paint'].numericValue};samples.push(sample);
+          if(!diagnostic)diagnostic=captureCoherenceDiagnostic(result,{production,mode,route,run:i+1});
           if(!Object.values(sample).every(Number.isFinite))throw Error(mode+' '+route+': incomplete Lighthouse metrics');
           journal('running');
           const name=mode+'-'+path.basename(route,'.html')+'-'+(i+1);fs.writeFileSync(path.join(out,name+'.json'),JSON.stringify(lhr));fs.writeFileSync(path.join(out,name+'.html'),result.report[1]);console.log(JSON.stringify({mode,route,run:i+1,...sample}));
@@ -35,6 +37,7 @@ async function main(){
   working=null;journal(failures.length?'failed':'passed');finished=true;
   const markdown='## Lighthouse '+(production?'public observation':'three-run medians')+'\n\n| Mode | Page | Score | Accessibility | SEO | LCP ms | CLS | TBT ms |\n|---|---|---:|---:|---:|---:|---:|---:|\n'+summaries.map(s=>`| ${s.mode} | ${s.route} | ${s.median.score} | ${s.median.accessibility} | ${s.median.seo} | ${Math.round(s.median.lcp)} | ${s.median.cls.toFixed(4)} | ${Math.round(s.median.tbt)} |`).join('\n')+'\n\n'+(failures.length?failures.join('\n'):'All configured assertions passed.')+'\n';
   fs.writeFileSync(path.join(out,'summary.md'),markdown);if(process.env.GITHUB_STEP_SUMMARY)fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY,markdown);
+  if(diagnostic){try{writeCoherenceDiagnostic(out,diagnostic)}catch(error){console.error('Supplementary Coherence diagnostic failed: '+error.message)}}
   if(failures.length){console.error(failures.join('\n'));process.exitCode=1}
 }
 // main closes every owned browser and server and writes reports before resolving.

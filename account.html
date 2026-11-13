@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Meld je aan voor het Executive Journal en de Executive Radar van Grow Faster.">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="referrer" content="no-referrer">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; connect-src 'self' https://dbooobckaqbkrmkpcuem.supabase.co https://gqsvoioccvklzfmdmexy.supabase.co; object-src 'none'; base-uri 'none'; form-action 'none'">
+  <title>Mijn account · Grow Faster</title>
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/assets/member-registration.css">
+  <script defer src="/assets/cms-config.js"></script>
+  <script defer src="/assets/member-auth.js"></script>
+  <script defer src="/assets/member-account.js"></script>
+</head>
+<body class="member-account">
+  <a class="skip-link" href="#top">Naar de inhoud</a>
+  <header class="masthead">
+    <a href="/"><img src="/img/grow-faster-logo-dark.svg" width="176" height="40" alt="Grow Faster"></a>
+    <nav aria-label="Taal / Langue"><a href="?lang=nl" lang="nl" data-lang="nl">NL</a><a href="?lang=fr" lang="fr" data-lang="fr">FR</a></nav>
+  </header>
+  <main id="top" tabindex="-1">
+    <section aria-labelledby="account-title">
+      <h1 id="account-title" tabindex="-1">Mijn account</h1>
+      <p id="intro"></p>
+      <form id="member-form" method="post" hidden>
+        <div id="email-field">
+          <label id="email-label" for="member-email">E-mailadres</label>
+          <input id="member-email" name="email" type="email" maxlength="254" autocomplete="username" autocapitalize="none" spellcheck="false" required>
+        </div>
+        <div id="email-review" hidden><span id="chosen-email"></span><button id="edit-email" type="button" class="text-action"></button></div>
+        <div id="password-field">
+          <label id="password-label" for="member-password">Wachtwoord</label>
+          <input id="member-password" name="password" type="password" autocomplete="current-password" required>
+        </div>
+        <button id="submit" type="submit"></button>
+      </form>
+      <p id="message" role="status" aria-live="polite" aria-atomic="true"></p>
+      <div id="account-actions"></div>
+      <p id="legal" hidden><span id="legal-prefix"></span> <a id="terms" href="/terms.html"></a> <span id="legal-join"></span> <a id="privacy" href="/privacy.html"></a>.</p>
+      <noscript>Activeer JavaScript om je aan te melden. Activez JavaScript pour vous connecter.</noscript>
+    </section>
+  </main>
+</body>
+</html>

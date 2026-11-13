@@ -1,0 +1,30 @@
+@font-face {
+  font-family: "Hanken Grotesk";
+  src: url("/assets/hanken-grotesk-latin.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --gf-font: "Hanken Grotesk", sans-serif;
+  --gf-body: 1.0625rem;
+  --gf-h1: clamp(2.25rem, 1.75rem + 2.3vw, 3.75rem);
+  --gf-h2: clamp(1.75rem, 1.5rem + 1.3vw, 2.5rem);
+  --gf-h3: clamp(1.375rem, 1.25rem + .6vw, 1.625rem);
+  --gf-h4: 1.125rem;
+}
+
+/* This layer owns typography across page-specific themes and authored CMS content. */
+@layer grow-faster-type {
+  body, body :where(*) { font-family: var(--gf-font) !important; }
+  @media screen {
+    body, p { font-size: var(--gf-body) !important; }
+    h1 { font-size: var(--gf-h1) !important; }
+    h2 { font-size: var(--gf-h2) !important; }
+    h3 { font-size: var(--gf-h3) !important; }
+    h4 { font-size: var(--gf-h4) !important; }
+    :where(h1,h2,h3,h4) { line-height: 1.15 !important; }
+    :where(h1,h2,h3,h4,p) :where(a,span,strong,em,b,i) { font-size: inherit !important; }
+  }
+}

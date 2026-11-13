@@ -1,5 +1,5 @@
-/* Executive Journal: editorial layer for insights, home and track record. Uses system serif only (no extra font request). */
-:root{--f-journal:Georgia,"Times New Roman",Times,serif}
+/* Executive Journal editorial layout. */
+:root{--f-journal:var(--gf-font,var(--f-sans))}
 .journal-label{margin:0 0 18px;font-family:var(--f-sans);font-size:13px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--ai-ink);border-bottom:2px solid var(--brand);padding-bottom:10px}
 .journal-grid{gap:0;border-top:0}
 .journal-grid .ins-card{border:0;border-bottom:1px solid var(--line);border-top:0;padding:22px 0;background:transparent}

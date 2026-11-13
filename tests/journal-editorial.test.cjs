@@ -48,9 +48,15 @@ test('track record lists dated roles, certifications and education with an acces
   assert.match(track[0],/class="career-certs" data-notr/);assert.match(track[0],/Ghent University/);
   assert.match(html,/<h1\b[^>]*>Transformation in practice<\/h1>/);
 });
-test('editorial pages load the journal stylesheet and every new visible text has Dutch and French',()=>{
-  for(const f of ['index.html','insights.html','transformation.html'])assert.match(read(f),/assets\/journal\.css\?v=20261106-journal/,f);
-  assert.doesNotMatch(read('assets/journal.css'),/@import|url\(/,'no external font or asset requests');
+test('editorial pages deliver the exact journal styles and every new visible text has Dutch and French',()=>{
+  const styles=fs.readFileSync(path.resolve(__dirname,'../assets/journal.css'),'utf8');
+  assert.equal(read('assets/journal.css'),styles,'the standalone stylesheet remains available unchanged');
+  for(const f of ['index.html','insights.html','transformation.html']){
+    const inline=read(f).match(/<style data-gf-component-style="assets\/journal\.css">([\s\S]*?)<\/style>/);
+    assert.ok(inline,f+' delivers the journal stylesheet without another blocking request');
+    assert.equal(inline[1],styles,f+' preserves every journal style rule');
+  }
+  assert.doesNotMatch(styles,/@import|url\(/,'no external font or asset requests');
   const I=I18N();
   for(const k of ['Executive Journal','Track record','In brief','The problem','Why it happens','What to do','See the track record','Leading the agentic enterprise','Latest articles','From the Executive Journal','All Executive Journal articles','Experience behind the perspective','Where this perspective comes from','Certifications','Education','Other assignments include','Tribe coach in an Agile transformation','Track Record in Enterprise Transformation | Erlend Hollebosch','Executive Journal on AI and Enterprise Coherence | Erlend Hollebosch'])
     assert.ok(Array.isArray(I[k])&&I[k][0]&&I[k][1],`missing translation: ${k}`);

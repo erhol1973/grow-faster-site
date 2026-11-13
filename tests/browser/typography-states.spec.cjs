@@ -100,15 +100,46 @@ async function nativeReadingKey(page,region,info,key,name){
   const a=document.activeElement,p=el.closest('.page'),stage=document.querySelector('#stage');
   return {timestamp:performance.now(),hash:location.hash,pgNow:document.querySelector('#pgNow').textContent,zoom:document.querySelector('#zoomVal').textContent,active:{tag:a.tagName,id:a.id,classes:a.className,regionFocused:a===el},page:{number:p?.dataset.p,classes:p?.className,transform:p?.style.transform,scrollTop:el.scrollTop,scrollHeight:el.scrollHeight,clientHeight:el.clientHeight,screenScaleX:el.getBoundingClientRect().width/el.offsetWidth},bookTransform:document.querySelector('#book').style.transform,stage:{scrollTop:stage.scrollTop,scrollLeft:stage.scrollLeft,scrollHeight:stage.scrollHeight,clientHeight:stage.clientHeight}};
  });
- const diagnostic={key,before:await read()};
+ const diagnostic={key,before:await read()};let handle;
  try{
   await region.focus();await expect(region,'native reading key target').toBeFocused();diagnostic.focused=await read();
+  handle=await region.elementHandle();
+  await handle.evaluate((el,key)=>{
+   const target=key==='End'?el.scrollHeight-el.clientHeight:0;
+   const state={key,armedAt:performance.now(),initialTop:el.scrollTop,target,movementNeeded:Math.abs(el.scrollTop-target)>1,scrollendSupported:'onscrollend' in el,keyDownSeen:false,keyUpSeen:false,completed:false,events:[]};
+   const onKey=event=>{
+    if(event.target!==el||event.key!==key)return;
+    if(event.type==='keydown')state.keyDownSeen=true;else state.keyUpSeen=true;
+    state.events.push({type:event.type,t:performance.now(),top:el.scrollTop,defaultPrevented:event.defaultPrevented});
+   };
+   const onEnd=event=>{
+    if(event.target!==el)return;
+    const atTarget=Math.abs(el.scrollTop-(key==='End'?el.scrollHeight-el.clientHeight:0))<=1;
+    // Instant native scrolling may finish before the keyup protocol event.
+    // Attribute completion to this keydown phase; require keyup in the poll.
+    const belongsToKey=state.keyDownSeen;
+    state.events.push({type:'scrollend',t:performance.now(),top:el.scrollTop,atTarget,belongsToKey});
+    if(belongsToKey&&atTarget)state.completed=true;
+   };
+   document.addEventListener('keydown',onKey);document.addEventListener('keyup',onKey);el.addEventListener('scrollend',onEnd);
+   el.__typographyNativeReadingKey={state,cleanup(){document.removeEventListener('keydown',onKey);document.removeEventListener('keyup',onKey);el.removeEventListener('scrollend',onEnd);delete el.__typographyNativeReadingKey;}};
+  },key);
   await page.keyboard.press(key);
-  await expect.poll(()=>region.evaluate((el,key)=>key==='End'?Math.abs(el.scrollHeight-el.clientHeight-el.scrollTop):Math.abs(el.scrollTop),key),name+' native '+key+' reaches reading boundary').toBeLessThanOrEqual(1);
+  // A first boundary observation can precede native compositor completion.
+  // Keep one key and the original single 5s poll; require both conditions.
+  await expect.poll(()=>handle.evaluate(el=>{
+   const state=el.__typographyNativeReadingKey?.state;
+   if(!el.isConnected||!state)return false;
+   const boundary=state.key==='End'?Math.abs(el.scrollHeight-el.clientHeight-el.scrollTop):Math.abs(el.scrollTop);
+   return boundary<=1&&state.keyUpSeen&&(!state.movementNeeded||(state.scrollendSupported&&state.completed));
+  }),name+' native '+key+' reaches reading boundary and completes').toBe(true);
  }finally{
-  diagnostic.after=await read();const body=JSON.stringify(diagnostic,null,2);await require('node:fs/promises').writeFile(info.outputPath(name+'-'+key+'.json'),body);await info.attach(name+'-'+key,{body,contentType:'application/json'});
+  try{if(handle)diagnostic.native=await handle.evaluate(el=>({connected:el.isConnected,...el.__typographyNativeReadingKey?.state}));diagnostic.after=await read();}
+  finally{if(handle){await handle.evaluate(el=>el.__typographyNativeReadingKey?.cleanup());await handle.dispose();}}
+  const body=JSON.stringify(diagnostic,null,2);await require('node:fs/promises').writeFile(info.outputPath(name+'-'+key+'.json'),body);await info.attach(name+'-'+key,{body,contentType:'application/json'});
  }
 }
+
 const htmlBooks=[{route:'/boek/index.html',pages:22},{route:'/boek/the-coherent-enterprise/index.html',pages:12}];
 async function bookEvidence(page,info,name,rootSelector){
  const result=await collect(page);

@@ -306,3 +306,13 @@ build. Standalone assets remain available to cached older documents.
 Four safety tests cover these boundaries. The full browser inventory, load and
 54-sample Lighthouse thresholds still apply to the resulting immutable build.
 Output-only experiments support the change but do not count as release gates.
+
+Native book-reader key checks retain one keypress, the original 1px boundary
+tolerance and one five-second poll. When movement is required, the same actual
+focused element must also report native scroll completion after the matching
+keydown; keyup must have been received by final acceptance. Completion may
+legitimately precede keyup. Already-at-boundary checks require no nonexistent
+scroll event. Observers are removed after each key. This is a stronger completion
+condition: controlled RAF observations showed the first boundary can precede
+scrollend. It does not prove the cause of the historical mobile Home failure;
+failed CI attempts, native-event diagnostics and subsequent gates stay separate.

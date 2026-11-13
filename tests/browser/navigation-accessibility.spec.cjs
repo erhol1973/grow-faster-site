@@ -54,21 +54,20 @@ test('home responsive hero preloads the selected AVIF once and preserves WebP fa
 });
 
 
-test('the existing deferred translation request receives high network priority exactly once',async({page})=>{
- const client=await page.context().newCDPSession(page);await client.send('Network.enable');
- const dictionaries=[];
- client.on('Network.requestWillBeSent',event=>{if(new URL(event.request.url).pathname==='/assets/i18n.js')dictionaries.push(event.request.initialPriority)});
+test('critical component styles are inline and the existing deferred dictionary loads once',async({page})=>{
+ const requests=[];page.on('request',request=>requests.push(new URL(request.url()).pathname));
  await page.addInitScript(()=>{
   localStorage.setItem('avs-lang','fr');localStorage.setItem('avs-consent',JSON.stringify({v:4,ext:false,ana:false,ts:Date.now()}));
   window.translationEvents=[];
   document.addEventListener('gf:language',event=>window.translationEvents.push({language:event.detail.language,loaded:typeof window.I18N==='object'}));
  });
  await page.goto('/index.html');await expect(page.locator('html')).toHaveClass(/i18n-ready/);
- expect(dictionaries).toEqual(['High']);
- const scripts=await page.locator('script[src]').evaluateAll(elements=>elements.map(script=>({src:new URL(script.src).pathname,defer:script.defer,priority:script.fetchPriority})));
- const translation=scripts.filter(script=>script.src==='/assets/i18n.js');expect(translation).toEqual([{src:'/assets/i18n.js',defer:true,priority:'high'}]);
+ expect(requests.filter(path=>path==='/assets/i18n.js')).toHaveLength(1);
+ expect(requests.filter(path=>/^\/assets\/(navigation|home-hero|books|journal)\.css$/.test(path))).toEqual([]);
+ await expect(page.locator('style[data-gf-component-style]')).toHaveCount(4);
+ const scripts=await page.locator('script[src]').evaluateAll(elements=>elements.map(script=>({src:new URL(script.src).pathname,defer:script.defer})));
+ expect(scripts.filter(script=>script.src==='/assets/i18n.js')).toEqual([{src:'/assets/i18n.js',defer:true}]);
  expect(scripts.findIndex(script=>script.src==='/assets/i18n.js')).toBeLessThan(scripts.findIndex(script=>script.src==='/assets/site.js'));
  expect(await page.evaluate(()=>window.translationEvents)).toContainEqual({language:'fr',loaded:true});
  await expect(page.locator('html')).toHaveAttribute('lang','fr');await expect(page.locator('#hero h1')).toBeVisible();
- await client.detach();
 });

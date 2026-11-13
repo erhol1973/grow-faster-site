@@ -47,7 +47,7 @@ for (const file of fs.readdirSync(out, { recursive: true }).filter(name => name.
   if (/<meta[^>]+http-equiv=["']refresh/i.test(page)) continue;
   const external = /<meta\b[^>]*http-equiv\s*=\s*["']Content-Security-Policy["']/i.test(page);
   const style = require('./typography-build.cjs').typographyMarkup(readRegularFile(path.join(root,'assets/typography.css')).toString('utf8'),{external});
-  fs.writeFileSync(target, require('./typography-build.cjs').prioritizeTranslations(page).replace(/<\/head>/i, () => style + '</head>'));
+  fs.writeFileSync(target, require('./typography-build.cjs').inlineComponentStyles(page, asset => readRegularFile(path.join(root,asset)).toString('utf8')).replace(/<\/head>/i, () => style + '</head>'));
 }
 assertPublicArtifact(out);
 fs.renameSync(out,destination);

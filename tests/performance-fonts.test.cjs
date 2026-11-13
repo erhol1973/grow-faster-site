@@ -3,7 +3,7 @@ const {test}=require('node:test');
 const assert=require('node:assert/strict');
 const fs=require('node:fs');
 const path=require('node:path');
-const {typographyMarkup,prioritizeTranslations}=require('../scripts/typography-build.cjs');
+const {typographyMarkup,inlineComponentStyles}=require('../scripts/typography-build.cjs');
 const root=path.resolve(__dirname,'..');
 test('built pages receive the complete type contract without a blocking stylesheet request',()=>{
  const css=fs.readFileSync(path.join(root,'assets/typography.css'),'utf8');
@@ -36,29 +36,35 @@ test('inline type contract cannot close its HTML style container',()=>{
  assert.ok(typographyMarkup('body { color: navy; }').includes('body { color: navy; }'));
 });
 
-test('translation priority preserves existing script URLs, defer and execution order',()=>{
- const tags=['<script defer src="assets/i18n.js?v=edition"></script>',
-  '<script defer src="assets/content.js"></script>',
-  '<script defer src="assets/site.js"></script>',
-  '<script data-src="assets/i18n.js" src="assets/other.js"></script>',
-  '<script defer src="https://example.com/assets/i18n.js"></script>'];
- const original=tags.join('\n');const prioritized=prioritizeTranslations(original);
- assert.equal(prioritized.replace(' fetchpriority="high"',''),original);
- assert.equal((prioritized.match(/fetchpriority="high"/g)||[]).length,1);
- assert.equal(prioritizeTranslations(prioritized),prioritized,'the hint is idempotent');
- const account='<meta http-equiv="Content-Security-Policy" content="script-src self; style-src self"><script defer src="/assets/cms-config.js"></script><script defer src="/assets/member-auth.js"></script><script defer src="/assets/member-account.js"></script>';
- assert.equal(prioritizeTranslations(account),account,'CSP account scripts and order remain unchanged');
- assert.equal(prioritizeTranslations('<script defer src="/assets/i18n.js" fetchpriority="low"></script>'),
-  '<script defer src="/assets/i18n.js" fetchpriority="high"></script>');
+test('small component styles retain exact bytes and their cascade positions',()=>{
+ const css={ 'assets/navigation.css':'.nav{color:navy}', 'assets/books.css':'.book{color:blue}' };
+ const page='<head><link rel="stylesheet" href="assets/navigation.css?v=1"><style>.middle{color:red}</style><link rel="stylesheet" href="/assets/books.css"></head>';
+ const result=inlineComponentStyles(page,name=>css[name]);
+ assert.equal(result,'<head><style data-gf-component-style="assets/navigation.css">.nav{color:navy}</style><style>.middle{color:red}</style><style data-gf-component-style="assets/books.css">.book{color:blue}</style></head>');
+ assert.equal(inlineComponentStyles(result,()=>assert.fail('inline output must be idempotent')),result);
 });
-test('built ordinary pages prioritize one existing deferred dictionary without adding a preload',()=>{
+test('component inlining preserves CSP, conditional styles and URL resolution',()=>{
+ const normal='<link rel="stylesheet" href="assets/navigation.css">';
+ const strict='<meta http-equiv="Content-Security-Policy" content="style-src self">'+normal;
+ assert.equal(inlineComponentStyles(strict,()=>assert.fail('strict CSP must stay external')),strict);
+ for(const link of [normal.replace('>',' media="print">'),normal.replace('>',' integrity="sha256-x">'),'<link rel="stylesheet" href="https://example.com/assets/navigation.css">',normal.replace('navigation','site')]){
+  assert.equal(inlineComponentStyles(link,()=>assert.fail('unapproved or conditional style must stay external')),link);
+ }
+ for(const css of ['.nav{background:url(../img/logo.svg)}','@import "other.css";'])assert.equal(inlineComponentStyles(normal,()=>css),normal);
+ assert.throws(()=>inlineComponentStyles(normal,()=>'<'+ '/style><script>bad()</script>'),/Unsafe component/);
+});
+test('built pages inline only small styles while retaining exact standalone assets',()=>{
  for(const route of ['index.html','books.html','insights.html','approach.html']){
   const html=fs.readFileSync(path.join(root,'dist',route),'utf8');
-  const scripts=[...html.matchAll(/<script\b[^>]*>/gi)].map(x=>x[0]);
-  const dictionaries=scripts.filter(tag=>/src="\/?assets\/i18n\.js(?:[?"#])/.test(tag));
-  assert.equal(dictionaries.length,1,route);assert.match(dictionaries[0],/\bdefer\b/,route);
-  assert.match(dictionaries[0],/fetchpriority="high"/,route);
-  assert.ok(scripts.indexOf(dictionaries[0])<scripts.findIndex(tag=>/src="\/?assets\/site\.js(?:[?"#])/.test(tag)),route);
-  assert.doesNotMatch(html,/<link[^>]+(?:preload|modulepreload)[^>]+i18n\.js/i,route);
+  const styles=[...html.matchAll(/<style data-gf-component-style="(assets\/[^"<>]+)">([\s\S]*?)<\/style>/g)];
+  assert.ok(styles.length>0,route);
+  for(const [,name,css] of styles){
+   assert.equal(css,fs.readFileSync(path.join(root,name),'utf8'),route+' inline '+name);
+   assert.equal(css,fs.readFileSync(path.join(root,'dist',name),'utf8'),route+' standalone '+name);
+  }
+  assert.doesNotMatch(html,/<link[^>]+href="\/?assets\/(navigation|home-hero|books|journal)\.css[?"#]/i,route);
+  const scripts=[...html.matchAll(/<script\b[^>]*>/gi)].map(x=>x[0]);const dictionaries=scripts.filter(tag=>/src="\/?assets\/i18n\.js[?"#]/.test(tag));
+  assert.equal(dictionaries.length,1,route);assert.match(dictionaries[0],/\bdefer\b/,route);assert.doesNotMatch(dictionaries[0],/fetchpriority=/i,route);
+  assert.ok(scripts.indexOf(dictionaries[0])<scripts.findIndex(tag=>/src="\/?assets\/site\.js[?"#]/.test(tag)),route);
  }
 });

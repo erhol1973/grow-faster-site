@@ -33,3 +33,8 @@ CI3a44413 early mobile homepage remained above2500ms (median2681.09,TBT0). New h
 
 
 The22b46e7 homepage preflight improved but still failed unchanged mobileLCP threshold:2431.93/2557.93/2554.20ms, median2554.20,TBT0. A further minimal build hint prioritizes only the existing same-origin deferred translation script; URL/order/dictionary/requestcount remain unchanged. Independent audit and5unitresource tests pass; nativeChromiumdesktop/mobile observe exactlyone High-priority dictionary fetch and successfulFrench translation. No claim of a performance pass until the next CI.
+
+Owner reports successful live Gmail registration and password recovery: account created, reset email received, new password chosen, authenticated. Screenshots document signup validation and recovery request; final authentication is owner-reported, not independently observed. No credential or confirmation link collected.
+
+522da5f final CI: Radar both green; Website push205unit/834browser/load pass, mobileLCP four routes fail unchanged2500ms; PR one Firefox CoherenceFR click flaky blocks. Next reviewed optimization inlines four exact small styles at original positions with strictCSP/URL fallback, preserving85KB budget (max82152). Six unit and two browser checks pass, independent review passed; final CI still required.
+

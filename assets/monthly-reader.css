@@ -126,9 +126,9 @@ figcaption{font:italic 1.3rem/1.4 Georgia,serif;text-align:center;margin:.7rem a
 .exact-edition .tenure-line .exit-label{align-self:center;padding-left:10px;color:#fff;font:700 18px/1.15 Georgia,serif}
 .exact-edition .stages{display:grid;grid-template-columns:15fr 25fr 30fr 30fr;gap:0;background:transparent;border:0;padding:0;font-size:11px;min-height:43px}
 .exact-edition .stages>span{display:flex;align-items:center;padding:7px;border-right:3px solid #123257;background:#2d5e90;position:relative;z-index:1}
-.exact-edition .stages>span:nth-child(2){background:#2f80bf}
-.exact-edition .stages>span:nth-child(3){background:#389fdd}
-.exact-edition .stages>span:nth-child(4){background:#65bff0;border-right:0}
+.exact-edition .stages>span:nth-child(2){background:#2c76b0;color:#fff}
+.exact-edition .stages>span:nth-child(3){background:#389fdd;color:var(--navy)}
+.exact-edition .stages>span:nth-child(4){background:#65bff0;color:var(--navy);border-right:0}
 .exact-edition .timeline-plot .value-note{color:#f8bb40;text-align:right;font-size:12px;font-weight:600;margin:9px 0 20px;position:relative;z-index:1}
 .exact-edition .years{display:flex;justify-content:space-between;position:relative;border-top:1px solid #9bbad5;margin:0!important;padding-top:10px;word-spacing:normal;font-size:10px;color:#a6c8e4}
 .exact-edition .years>span{position:relative;width:0;overflow:visible;white-space:nowrap;text-indent:-7px}

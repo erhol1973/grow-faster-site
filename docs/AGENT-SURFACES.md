@@ -21,7 +21,6 @@ reviewer reviewer installed autonomous
 !about.html
 assets/navigation.css
 assets/i18n.js
-assets/coherence-layout.js
 tests/**
 !tests/baies-dev.test.cjs
 !tests/browser/baies-dev.spec.cjs
@@ -80,6 +79,7 @@ docs/EXECUTIVE-RADAR-NAV-DEV.md
 ```
 
 ```surface:performance
+assets/coherence-layout.js
 tests/performance.test.cjs
 tests/coherence-film-release.test.cjs
 coherence.html

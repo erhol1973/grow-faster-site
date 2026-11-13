@@ -14,7 +14,7 @@ test('member controls share the models response and retain guarded post-DOM boot
  const models=bundleMemberNavigation(read('models.js'),'assets/models.js',sourceRoot);
  assert.ok(models.includes(standalone),'same complete config/auth/menu bytes');
  const noDocument={};vm.runInNewContext(models,noDocument);assert.ok(noDocument.GFModels,'models remain usable without a DOM');
- assert.equal(bundleMemberNavigation(read('site.js'),'assets/site.js',sourceRoot),read('site.js'),'site source needs no loader');
+ assert.ok(bundleMemberNavigation(read('site.js'),'assets/site.js',sourceRoot).endsWith(read('site.js')),'site source remains byte-identical after controller');
  assert.ok(Buffer.byteLength(models)<=18000);assert.ok(Buffer.byteLength(read('site.js'))<=55000);
  for(const [hostname,nav,available,state] of [['127.0.0.1',true,true,'interactive'],['unapproved.example',true,false,'interactive'],['127.0.0.1',false,false,'interactive'],['127.0.0.1',true,true,'complete'],['127.0.0.1',true,true,'late-interactive']]){
   const listeners=[],tasks=[],events=[],window={location:{hostname},addEventListener:(type,fn,options)=>listeners.push({type,fn,options})},context={window,location:{origin:'https://'+hostname},setTimeout:fn=>tasks.push(fn),document:{readyState:state==='late-interactive'?'interactive':state,querySelector:selector=>selector==='nav.nav-executive'&&nav?{}:null,addEventListener:(type,fn,options)=>listeners.push({type,fn,options})}};
@@ -24,7 +24,25 @@ test('member controls share the models response and retain guarded post-DOM boot
   assert.equal(tasks.length,nav?1:0);assert.equal(member,undefined,'wait for existing DOM listeners');
   if(nav){tasks[0]();assert.deepEqual(events,['config','auth']);assert.equal(member.available,available);assert.equal(config.url,'https://gqsvoioccvklzfmdmexy.supabase.co');const original=member;vm.runInNewContext(standalone,context);assert.equal(member,original);assert.deepEqual(events,['config','auth'],'cached standalone cannot reboot identity');}
  }
- for(const name of fs.readdirSync(root).filter(name=>name.endsWith('.html'))){const html=fs.readFileSync(path.join(root,name),'utf8');if(html.includes('nav-executive')&&/src="assets\/site\.js/.test(html)){assert.match(html,/src="assets\/models\.js\?[^"]*members=2/,name);assert.match(html,/src="assets\/site\.js\?[^"]*members=2/,name);}}
+ for(const name of fs.readdirSync(root).filter(name=>name.endsWith('.html'))){const html=fs.readFileSync(path.join(root,name),'utf8');if(html.includes('nav-executive')&&/src="assets\/site\.js/.test(html)){assert.match(html,/src="assets\/models\.js\?[^"]*members=2/,name);assert.match(html,new RegExp('src="assets/site\\.js\\?[^"]*members='+(name==='coherence.html'?'3':'2')),name);}}
  const page='<nav class="nav nav-executive"></nav><head></head><li class="nav-action"></li><script defer src="assets/models.js?v=old"></script><script defer src="assets/site.js?v=old"></script>';
  const html=bundleMemberNavigation(page,'about.html',sourceRoot);assert.match(html,/models\.js\?v=old&amp;members=2/);assert.match(html,/site\.js\?v=old&amp;members=2/);assert.equal((html.match(/data-member-placeholder/g)||[]).length,1);
+});
+
+test('Coherence controller shares site response once, before site code, with legacy-tag compatibility',()=>{
+ const vm=require('node:vm'),sourceRoot=path.join(__dirname,'..'),{bundleMemberNavigation}=require('../scripts/member-navigation.cjs'),controller=fs.readFileSync(path.join(sourceRoot,'assets/coherence-layout.js'),'utf8');
+ const output=bundleMemberNavigation('window.order.push("site");','assets/site.js',sourceRoot);assert.ok(output.includes(controller));
+ const noDOM={};vm.runInNewContext(controller,noDOM);
+ for(const legacy of [null,'assets/coherence-layout.js','/assets/coherence-layout.js?v=old','https://example.org/assets/coherence-layout.js']){
+  const listeners={},tasks=[],order=[],frame={style:{},contentWindow:{postMessage:()=>{}},contentDocument:{addEventListener:()=>order.push('child-listener')},addEventListener:()=>order.push('frame-listener')};
+  const context={window:{order,addEventListener:(name,fn)=>{listeners[name]=fn}},document:{scripts:legacy?[{getAttribute:()=>legacy}]:[],documentElement:{lang:'nl'},getElementById:()=>frame,addEventListener:(name,fn)=>{listeners[name]=fn;order.push(name)}},location:{origin:'https://example.org'},setTimeout:fn=>tasks.push(fn),MutationObserver:class{observe(){order.push('observer')}}};
+  vm.runInNewContext(output,context);
+  if(legacy){assert.deepEqual(order,['site']);continue;}
+  assert.equal(order.at(-1),'site');assert.ok(order.includes('pointerdown'));const initial=order.length;
+  vm.runInNewContext(controller,context);assert.equal(order.length,initial,'repeated standalone cannot install twice');
+  listeners.pointerdown({pointerId:1});listeners.message({source:frame.contentWindow,origin:'https://example.org',data:{type:'ec-sim-h',h:800}});assert.equal(frame.style.height,undefined);
+  listeners.pointerup({pointerId:1});assert.equal(frame.style.height,undefined);tasks.shift()();assert.equal(frame.style.height,'800px','height waits until native click task can finish');
+ }
+ const html=fs.readFileSync(path.join(root,'coherence.html'),'utf8');assert.doesNotMatch(html,/<script[^>]+src=["'][^"']*coherence-layout\.js/);assert.match(html,/site\.js\?[^"']*members=3/);
+ assert.equal(fs.readFileSync(path.join(root,'assets/coherence-layout.js'),'utf8'),controller,'standalone remains available');
 });

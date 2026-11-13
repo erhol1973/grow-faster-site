@@ -8,6 +8,16 @@ function bundleMemberNavigation(data, relative, root) {
   const file = relative.replaceAll('\\', '/');
   const menuBundle = () => "if (!window.GF_CMS_CONFIG) {" + asset('cms-config.js') + "}\n" +
     "if (!window.GFMember) {" + asset('member-auth.js') + "}\n" + asset('member-menu.js');
+  if (file === 'assets/site.js') {
+    // Cached HTML still runs its explicit controller, including older unmarked versions.
+    // New Coherence documents share this response and install the controller before site/UX.
+    return `(function () {
+  'use strict';
+  if (typeof document === 'undefined' || Array.from(document.scripts).some(script => /(?:^|\\/)coherence-layout\\.js(?:[?#]|$)/.test(script.getAttribute('src') || ''))) return;
+${asset('coherence-layout.js')}
+})();
+` + data.toString('utf8');
+  }
   if (file === 'assets/models.js') {
     // Share an existing response; execute after every DOMContentLoaded listener,
     // just as the former dynamically downloaded menu did, without a second fetch.
@@ -46,6 +56,9 @@ ${menuBundle()}
       .replace(/(src="(?:\.\/)?assets\/site\.js\?[^"]+)"/, '$1&amp;members=2"')
       .replace(/(src="(?:\.\/)?assets\/models\.js\?[^"]+)"/, '$1&amp;members=2"');
   }
+  if (file === 'coherence.html') html = html
+    .replace(/<script defer src="assets\/coherence-layout\.js"><\/script>/, '')
+    .replace(/(src="(?:\.\/)?assets\/site\.js\?[^"]*&amp;members=)2"/, (_, prefix) => prefix + '3"');
   const link = '<link rel="stylesheet" href="assets/cms-public.css">';
   return html.includes(link) ? html.replace(link, '<style data-cms-media>' + asset('cms-public.css').trim() + '</style>') : html;
 }

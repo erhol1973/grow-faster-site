@@ -137,3 +137,14 @@ for(const language of ['nl','fr'])test('bundled member navigation has no extra r
  await page.evaluate(()=>new Promise((resolve,reject)=>{const script=document.createElement('script');script.src='/assets/member-menu.js?v=members-1';script.onload=resolve;script.onerror=reject;document.head.append(script)}));
  expect(await page.evaluate(()=>window.memberBoots)).toBe(1);await expect(page.locator('.member-nav')).toHaveCount(1);
 });
+
+for(const legacy of [false,true])test('Coherence controller boots once with '+(legacy?'legacy HTML controller tag':'the shared site response'),async({page})=>{
+ const requests=[];page.on('request',request=>requests.push(new URL(request.url()).pathname));
+ await page.addInitScript(()=>{window.coherenceBindings=0;const original=window.addEventListener;window.addEventListener=function(type,listener,...rest){if(type==='message'&&String(listener).includes("'ec-sim-h'"))window.coherenceBindings++;return original.call(this,type,listener,...rest)};});
+ if(legacy)await page.route('**/coherence.html*',async route=>{const response=await route.fetch();const body=(await response.text()).replace(/<script defer src="assets\/site\.js/, '<script defer src="assets/coherence-layout.js?v=legacy"></script><script defer src="assets/site.js');await route.fulfill({response,body});});
+ await page.goto('/coherence.html?lang=fr');await expect(page.locator('html')).toHaveAttribute('lang','fr');
+ expect(await page.evaluate(()=>window.coherenceBindings)).toBe(1);expect(await page.locator('#ec-sim').evaluate(frame=>frame[Symbol.for('grow-faster.coherence-layout')])).toBe(true);
+ expect(requests.filter(path=>path==='/assets/coherence-layout.js')).toHaveLength(legacy?1:0);
+ await page.evaluate(()=>new Promise((resolve,reject)=>{const script=document.createElement('script');script.src='/assets/coherence-layout.js?v=standalone';script.onload=resolve;script.onerror=reject;document.head.append(script)}));
+ expect(await page.evaluate(()=>window.coherenceBindings)).toBe(1);
+});

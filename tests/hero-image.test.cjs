@@ -35,5 +35,5 @@ test('shared hero optimization retains the exact existing WebP photographs and m
   assert.match(html,/<source media="\(max-width:600px\)" type="image\/webp" srcset="img\/hero-640\.webp">/);
   assert.match(html,/<img src="img\/hero\.jpg" alt="" fetchpriority="high"/);
  }
- assert.match(fs.readFileSync(path.join(root,'dist/coherence.html'),'utf8'),/<script defer src="assets\/coherence-layout\.js"><\/script>/);
+ const controller=fs.readFileSync(path.join(root,'assets/coherence-layout.js'),'utf8');assert.ok(fs.readFileSync(path.join(root,'dist/assets/site.js'),'utf8').includes(controller),'exact layout controller remains before site initialization');assert.equal(fs.readFileSync(path.join(root,'dist/assets/coherence-layout.js'),'utf8'),controller);
 });

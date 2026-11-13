@@ -9,7 +9,6 @@
     ".github/workflows/baies-dev-quality.yml"
   ],
   "navigation": [
-    "assets/coherence-layout.js",
     "tests/browser/coherence-film-layout.spec.cjs",
     "admin.html",
     "journal.html",
@@ -35,6 +34,7 @@
     "tests/browser/radar-access.spec.cjs"
   ],
   "performance": [
+    "assets/coherence-layout.js",
     "tests/performance.test.cjs",
     "scripts/member-navigation.cjs",
     "tests/coherence-film-release.test.cjs",

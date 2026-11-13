@@ -2,8 +2,12 @@
 // Keep simulator resize messages from moving an outer-page pointer target
 // between pointerdown and the native click that follows pointerup.
 (() => {
+  if(typeof document==='undefined')return;
   const frame=document.getElementById('ec-sim');
   if(!frame)return;
+  const bound=Symbol.for('grow-faster.coherence-layout');
+  if(frame[bound])return;
+  frame[bound]=true;
   const pointers=new Set();
   let pendingHeight=null;
   function applyPendingHeight(){

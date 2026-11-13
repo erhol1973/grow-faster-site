@@ -31,7 +31,7 @@
   grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));
 }
 .pg .signal {min-width:0}
-.pg .signal h3 {overflow-wrap:normal;word-break:normal;hyphens:auto}
+.pg .signal h3 {overflow-wrap:normal;word-break:normal;hyphens:none}
 .page > .pg:focus-visible {outline-offset:-3px}
 .reading-affordance {
   position:absolute;

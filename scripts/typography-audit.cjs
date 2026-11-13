@@ -43,18 +43,69 @@ async function revealOffscreen(page){
  });
  return {offscreenReveal:true,offscreenRevealCount:count,measurementMode:'computed-content-visibility-auto-only; intentional hidden and closed states preserved'};
 }
+function headingReferenceCSS(spec){
+ if(!spec||!['min','vw','max'].every(key=>typeof spec[key]==='number'&&Number.isFinite(spec[key]))||spec.min<0||spec.vw<0||spec.max<spec.min)throw Error('Invalid numeric heading contract');
+ return 'clamp('+spec.min+'px,'+spec.vw+'vw,'+spec.max+'px)';
+}
+async function captureRouteScreenshots(page,info,name,{fullPage=false}={}){
+ if(!fullPage){await page.screenshot({path:info.outputPath(name+'.png')});return;}
+ const geometry=await page.evaluate(()=>({height:Math.max(document.documentElement.scrollHeight,document.body.scrollHeight),viewportHeight:innerHeight,width:innerWidth,dpr:devicePixelRatio,originalX:scrollX,originalY:scrollY}));
+ const tiles=[];
+ if(geometry.height*geometry.dpr<=30000){await page.screenshot({path:info.outputPath(name+'.png'),fullPage:true});tiles.push({file:name+'.png',from:0,to:geometry.height});}
+ else{
+  // Preserve native resolution below WebKit's 32767-physical-pixel image cap.
+  // Overlapping viewports also preserve text covered by a sticky page header.
+  const step=Math.max(1,Math.floor(geometry.viewportHeight*.75));
+  try{
+   for(let y=0;;y=Math.min(y+step,Math.max(0,geometry.height-geometry.viewportHeight))){
+    await page.evaluate(top=>scrollTo({left:0,top,behavior:'instant'}),y);
+    const position=await page.evaluate(()=>({y:scrollY,height:innerHeight}));
+    const file=name+'-tile-'+String(tiles.length+1).padStart(2,'0')+'.png';await page.screenshot({path:info.outputPath(file)});
+    tiles.push({file,requestedY:y,from:position.y,to:Math.min(geometry.height,position.y+position.height)});
+    if(position.y+position.height>=geometry.height-1)break;
+    if(tiles.length>1&&position.y<=tiles[tiles.length-2].from)throw Error('Full-document screenshot cannot advance to remaining content');
+   }
+  }finally{await page.evaluate(({x,y})=>scrollTo({left:x,top:y,behavior:'instant'}),{x:geometry.originalX,y:geometry.originalY});}
+ }
+ const finalDocumentHeight=await page.evaluate(()=>Math.max(document.documentElement.scrollHeight,document.body.scrollHeight));
+ const coverageComplete=tiles[0].from<=1&&tiles.at(-1).to>=finalDocumentHeight-1&&!tiles.some((tile,index)=>index&&tile.from>tiles[index-1].to+1);
+ const evidence={...geometry,finalDocumentHeight,coverageComplete,mode:tiles.length===1?'full-page':'overlapping-native-resolution-viewports',tiles};
+ const body=JSON.stringify(evidence,null,2);await fs.promises.writeFile(info.outputPath(name+'-coverage.json'),body);await info.attach(name+'-coverage',{body,contentType:'application/json'});
+ if(!coverageComplete)throw Error('Incomplete full-document screenshot coverage: covered '+tiles.at(-1).to+'px; final document '+finalDocumentHeight+'px');
+}
 async function collect(page){
  const reveal=await revealOffscreen(page);
  await page.evaluate(()=>document.fonts.ready);
  // Production SVG observers normalize after layout/visibility changes.
  await page.evaluate(()=>new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve))));
- const result=await page.evaluate(c=>{
-  const output=[],deviations=[],unclassified=[];
+ const headingCSS=Object.fromEntries(Object.entries(contract.headings).map(([level,spec])=>[level,headingReferenceCSS(spec)]));
+ const result=await page.evaluate(({c,headingCSS})=>{
+  // Independent native CSS references use only the numeric test contract.
+  // Engines quantize viewport and font units differently; do not infer their
+  // used values from integer innerWidth or from production custom properties.
+  const reference=document.createElement('span');reference.textContent='Hg';reference.style.cssText='position:fixed;left:0;top:0;visibility:hidden;display:block;height:auto;width:100vw';reference.style.setProperty('font-family',c.family,'important');reference.style.setProperty('transition','none','important');reference.style.setProperty('animation','none','important');document.body.append(reference);
+  const viewport={innerWidth,clientWidth:document.documentElement.clientWidth,visualWidth:visualViewport?.width??null,devicePixelRatio,cssViewportWidth:reference.getBoundingClientRect().width};
+  const headingReferences={};
+  for(const [level,expression]of Object.entries(headingCSS)){
+   reference.style.setProperty('font-size',expression,'important');const spec=c.headings[level];
+   const probeBox=reference.getBoundingClientRect();
+   headingReferences[level]={expression,analyticExpected:Math.min(spec.max,Math.max(spec.min,innerWidth*spec.vw/100)),resolvedFontSize:parseFloat(getComputedStyle(reference).fontSize),inlineFontSize:reference.style.getPropertyValue('font-size'),inlinePriority:reference.style.getPropertyPriority('font-size'),probeHeight:probeBox.height,transitionProperty:getComputedStyle(reference).transitionProperty,transitionDuration:getComputedStyle(reference).transitionDuration,animationName:getComputedStyle(reference).animationName};
+  }
+  reference.remove();
+  const referenceFailures=Object.entries(headingReferences).filter(([level,ref])=>!Number.isFinite(ref.resolvedFontSize)||ref.resolvedFontSize<c.headings[level].min-.06||ref.resolvedFontSize>c.headings[level].max+.06).map(([level,reference])=>({reason:'invalid-native-heading-reference',level,reference,min:c.headings[level].min,max:c.headings[level].max}));
+  if(referenceFailures.length)return {url:location.href,width:innerWidth,viewport,headingReferences,referenceValid:false,language:document.documentElement.lang,elements:[],deviations:referenceFailures,unclassified:[],overflow:document.documentElement.scrollWidth>innerWidth+1};
+  const output=[],deviations=[],unclassified=[],contentHidden=new WeakSet();
+  if(getComputedStyle(document.body).contentVisibility==='hidden'||getComputedStyle(document.documentElement).contentVisibility==='hidden')contentHidden.add(document.body);
   const family=s=>s.replaceAll('"','').replaceAll("'",'').replace(/\s+/g,'').toLowerCase();
   for(const el of document.body.querySelectorAll('*')){
+   // Hidden content-visibility suppresses the entire subtree even when a
+   // descendant retains cached/nonzero layout boxes and its own style is visible.
+   if(contentHidden.has(el.parentElement)){contentHidden.add(el);continue;}
    // Scaled thumbnail copies are decorative previews, never reading surfaces.
    if(el.closest('.thumb .mini[aria-hidden="true"],.thumb .pg[inert]'))continue;
-   const style=getComputedStyle(el),rect=el.getBoundingClientRect();
+   const style=getComputedStyle(el);
+   if(style.contentVisibility==='hidden'){contentHidden.add(el);continue;}
+   const rect=el.getBoundingClientRect();
    const control=el.matches('input,select,textarea');
    // Never capture entered form values or credentials in audit evidence.
    const text=control?(el.getAttribute('aria-label')||el.getAttribute('placeholder')||el.id||el.tagName):el.textContent.trim();
@@ -62,7 +113,7 @@ async function collect(page){
    const direct=control||[...el.childNodes].some(n=>n.nodeType===3&&n.textContent.trim());
    const heading=el.closest('h1,h2,h3,h4,[role=heading]');
    let role=null,expected=null;
-   if(heading){const level=Number(heading.getAttribute('aria-level')||heading.tagName.slice(1)),h=c.headings[level];if(h){role='h'+level;expected=Math.min(h.max,Math.max(h.min,innerWidth*h.vw/100));}}
+   if(heading){const level=Number(heading.getAttribute('aria-level')||heading.tagName.slice(1)),h=c.headings[level];if(h){role='h'+level;expected=headingReferences[level].resolvedFontSize;}}
    else if(el.closest([c.labelSelector,c.metadataSelector,c.controlSelector,c.metricSelector].join(','))){
     const nearest=el.closest([c.labelSelector,c.metadataSelector,c.controlSelector,c.metricSelector].join(','));
     const explicit=nearest.getAttribute('data-typography-role');
@@ -98,8 +149,8 @@ async function collect(page){
     if(family(placeholder.fontFamily)!==family(c.family)||Math.abs(parseFloat(placeholder.fontSize)-c.control)>.06)deviations.push({...record,reason:'placeholder',placeholderFamily:placeholder.fontFamily,placeholderSize:placeholder.fontSize,expected:c.control});
    }
   }
-  return {url:location.href,width:innerWidth,language:document.documentElement.lang,elements:output,deviations,unclassified,overflow:document.documentElement.scrollWidth>innerWidth+1};
- },contract);
+  return {url:location.href,width:innerWidth,viewport,headingReferences,referenceValid:true,language:document.documentElement.lang,elements:output,deviations,unclassified,overflow:document.documentElement.scrollWidth>innerWidth+1};
+ },{c:contract,headingCSS});
  return {...result,...reveal};
 }
 async function renderedFonts(page){
@@ -143,4 +194,4 @@ function deliveryIssues(html){
  const styles=[...head.matchAll(/<link\b[^>]*rel=["']stylesheet["'][^>]*>|<style\b[^>]*>[\s\S]*?<\/style>/gi)].map(m=>m[0]);
  return !styles.length||!/href=["'][^"']*assets\/typography\.css(?:\?[^"']*)?["']/i.test(styles.at(-1))?['typography policy must be the final head stylesheet']:[];
 }
-module.exports={routes,languageCases,prepareRoute,revealOffscreen,collect,renderedFonts,contract,deliveryIssues};
+module.exports={routes,languageCases,prepareRoute,revealOffscreen,headingReferenceCSS,captureRouteScreenshots,collect,renderedFonts,contract,deliveryIssues};

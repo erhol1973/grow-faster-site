@@ -211,7 +211,7 @@ all 96 measured foreign-object labels passed physical-size, glyph-bound and
 internal overflow assertions without retries or skips.
 An additional forced-Arial diagnostic checked the same 96 labels and found no
 clipped glyphs or internal overflow; it is retained separately from canonical
-font-family acceptance. The 12 source/delivery/geometry regression tests pass.
+font-family acceptance. The 15 source/delivery/geometry regression tests pass.
 
 A separate diagnostic with the already-approved Arial fallback reproduced the
 Linux Dutch journal page 11 overflow of 27px. Allocating more width to its
@@ -221,3 +221,38 @@ diagnostic geometry measurements across normal/forced-Arial, NL/FR and
 1366/1440px fit; forced Arial is diagnostic evidence, not a passing canonical
 font-family contract. The canonical 60-sheet browser geometry regression also
 passed. Final-head CI remains a separate required gate.
+
+## Engine values and responsive reading layout
+
+Firefox's native CSS viewport at the nominal 1349px test width resolves 6vw
+and the independent H1 clamp to 80.875px, while arithmetic based only on
+`innerWidth` predicts 80.94px. The audit therefore retains both analytic and
+native evidence and evaluates the independent numeric contract through the
+browser's own CSS engine. That reference is constructed only from contract
+min/vw/max numbers, without production variables or styles. The strict 0.06px
+threshold is unchanged. This is an engine used-value distinction, not a new
+route or breakpoint exception.
+
+Executive voice cards choose one, two or three columns from the actual book
+content width, preventing mobile text-view clipping at the same body size.
+Radar governance uses one reading column on tablets; workflow labels wrap at
+spaces. The overwide Dutch compound “Voorbeeldredactiedossier” and English
+“organisations” retain their heading roles, with discretionary breaks at
+compound/syllable boundaries rather than smaller type. Dutch compound-boundary
+breaks follow [Vlaanderen's spelling guidance](https://www.vlaanderen.be/team-taaladvies/spellingregels/woorden-afbreken/woorden-afbreken-1-regels).
+
+Book search now maps normalized query indices back to original UTF-16 DOM
+offsets. Snippets omit discretionary characters in their display copy, while
+actual-page highlights preserve the source text and its soft hyphens. Pure
+regressions cover both snippets and ranges, not merely finding a search hit.
+
+## Cached asset coherence
+
+Changed component assets and the shared typography/book-reading assets use
+the explicit `v=20261113-typography` tag in every public HTML reference. The
+finite source-and-build guard checks these versions without depending on Git
+trust settings. The real HTTP warm-cache regression loads fresh HTML while
+old component URLs remain cached, verifies new versioned asset requests, and checks
+that the actual updated diagram geometry executes. Previous cached asset bytes
+are synthetic markers; the new assets come from the tested build. This protects
+bundle coherence without treating already-open old documents as refreshed.

@@ -84,6 +84,8 @@ test('discretionary book title hyphenation preserves normalized search words',()
  assert.match(html,/<h1>Frag&shy;men&shy;ta&shy;tion lives between the parts<\/h1>/);
  const normalize=html.match(/const norm = s => [^\r\n]+/)?.[0];assert(normalize);
  assert.equal(vm.runInNewContext(normalize+'\nnorm("Frag\\u00admen\\u00adta\\u00adtion")'),'fragmentation');
+ assert.match(html,/<h1>Most or&shy;gan&shy;i&shy;sa&shy;tions are not failing<\/h1>/);
+ assert.equal(vm.runInNewContext(normalize+'\nnorm("or\\u00adgan\\u00adi\\u00adsa\\u00adtions")'),'organisations');
 });
 test('the graphic normalizer is the first deferred runtime on every source route',()=>{
  for(const route of routes()){
@@ -102,4 +104,44 @@ test('roomier BPMN label slots preserve lane canvases and connection centres',()
  assert.deepEqual(result.before.pos[0],{x:114,y:48});assert.deepEqual(result.before.pos[1],{x:222,y:150});assert.deepEqual(result.before.pos[9],{x:1086,y:48});
  assert.deepEqual(result.after.pos[3],{x:501,y:241});assert.deepEqual(result.after.pos[8],{x:501,y:511});assert.deepEqual(result.after.pos[13],{x:1005,y:604});
  assert.equal(result.smallWidth,118);assert.equal(result.smallHeight,54);
+});
+test('heading reference expressions depend only on the independent numeric contract',()=>{
+ const {headingReferenceCSS}=require('../scripts/typography-audit.cjs');
+ const allowed=new Set(['min','vw','max']);
+ const spec=new Proxy({min:40,vw:6,max:86},{get:(object,key)=>{assert(allowed.has(key),'must not read production styles or variables: '+String(key));return object[key];}});
+ assert.equal(headingReferenceCSS(spec),'clamp(40px,6vw,86px)');
+ assert.notEqual(headingReferenceCSS({min:17,vw:0,max:17,productionCSS:'var(--type-h1)'}),'clamp(40px,6vw,86px)','body contract cannot silently become H1');
+ assert.equal(headingReferenceCSS({min:40,vw:7,max:86,productionCSS:'clamp(40px,6vw,86px)'}),'clamp(40px,7vw,86px)','wrong slope is exposed rather than copied from production');
+ for(const bad of [{min:'var(--type-h1)',vw:6,max:86},{min:40,vw:-1,max:86},{min:90,vw:6,max:86},{min:40,vw:NaN,max:86}])assert.throws(()=>headingReferenceCSS(bad));
+});
+test('book search snippets and DOM ranges keep original soft-hyphen offsets',()=>{
+ const vm=require('node:vm');
+ for(const file of ['boek/index.html','boek/the-coherent-enterprise/index.html']){
+  const source=fs.readFileSync(file,'utf8'),begin=source.indexOf('const norm = s =>'),end=source.indexOf('\nfunction runSearch()',begin);assert(begin>=0&&end>begin);
+  const helpers=source.slice(begin,end);
+  const result=JSON.parse(JSON.stringify(vm.runInNewContext(helpers+'\n({word:searchMatch("Most or\\u00adgan\\u00adi\\u00adsa\\u00adtions are not failing","organisations"),fragment:searchMatch("Frag\\u00admen\\u00adta\\u00adtion lives", "fragmentation"),snippet:snippet("Most or\\u00adgan\\u00adi\\u00adsa\\u00adtions are not failing", "organisations"),accent:searchMatch("caf\\u0065\\u0301", "cafe")})')));
+  assert.deepEqual(result.word,{start:5,end:22});assert.deepEqual(result.fragment,{start:0,end:16});
+  assert.equal(result.snippet,'Most <mark>organisations</mark> are not failing');assert.deepEqual(result.accent,{start:0,end:5});
+ }
+});
+test('source and built HTML invalidate cached copies of the finite changed asset set',()=>{
+ const version='20261113-typography';
+ const changed=new Set(['assets/site.js','assets/site.css','assets/journal.css','assets/monthly-reader.css','assets/workshop.css','assets/baies-dev.css','assets/baies-dev-app.js','assets/typography.css','assets/typography.js','assets/book-reading.css']);
+ // Public source routes are filesystem content, not a Git trust operation.
+ // Include root pages, both readers, the radar source and legacy article routes.
+ const source=fs.readdirSync('.',{withFileTypes:true}).filter(entry=>entry.isFile()&&entry.name.endsWith('.html')).map(entry=>entry.name);
+ function sourceHTML(dir){for(const entry of fs.readdirSync(dir,{withFileTypes:true})){const full=path.join(dir,entry.name);if(entry.isDirectory())sourceHTML(full);else if(entry.isFile()&&entry.name.endsWith('.html'))source.push(full.replaceAll('\\','/'));}}
+ for(const dir of ['boek','executive-radar','articles-1'])sourceHTML(dir);
+ const built=[];function walk(dir){for(const entry of fs.readdirSync(dir,{withFileTypes:true})){const full=path.join(dir,entry.name);if(entry.isDirectory())walk(full);else if(entry.name.endsWith('.html'))built.push(path.relative('dist',full).replaceAll('\\','/'));}}walk('dist');
+ for(const [root,files]of [['.',source],['dist',built]]){
+  const seen=new Set();
+  for(const file of files)for(const match of fs.readFileSync(path.join(root,file),'utf8').matchAll(/\b(?:src|href)\s*=\s*(["'])([^"']+)\1/gi)){
+   const url=match[2].replace(/&amp;/g,'&');if(/^[a-z]+:/i.test(url))continue;
+   const [location]=url.split('#'),[base,query='']=location.split('?');
+   const target=base.startsWith('/')?base.slice(1):path.posix.normalize(path.posix.join(path.posix.dirname(file),base));
+   if(!changed.has(target))continue;seen.add(target);
+   assert.deepEqual(new URLSearchParams(query).getAll('v'),[version],root+'/'+file+' '+target+' must bypass its previous cached asset');
+  }
+  assert.deepEqual([...seen].sort(),[...changed].sort(),root+' covers every changed asset, including aliases/readers');
+ }
 });

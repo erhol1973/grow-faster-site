@@ -1,6 +1,6 @@
 'use strict';
 const {test,expect}=require('playwright/test');
-const {routes,languageCases,prepareRoute,collect,renderedFonts}=require('../../scripts/typography-audit.cjs');
+const {routes,languageCases,prepareRoute,captureRouteScreenshots,collect,renderedFonts}=require('../../scripts/typography-audit.cjs');
 const widths=process.env.TYPOGRAPHY_WIDTHS?process.env.TYPOGRAPHY_WIDTHS.split(',').map(Number):[320,390,768,1366];
 for(const route of routes())for(const {language,effectiveLanguage} of languageCases(route))for(const width of widths){
  test(`typography ${route} ${language} ${width}`,async({page,browserName},info)=>{
@@ -14,7 +14,7 @@ for(const route of routes())for(const {language,effectiveLanguage} of languageCa
   const result=await collect(page);
   if(browserName==='chromium')result.renderedFonts=await renderedFonts(page);
   await info.attach('computed-typography',{body:JSON.stringify(result,null,2),contentType:'application/json'});
-  await page.screenshot({path:info.outputPath(`route-${language}-${width}.png`),fullPage:route==='/transformation.html'});
+  await captureRouteScreenshots(page,info,`route-${language}-${width}`,{fullPage:route==='/transformation.html'});
   if(route==='/transformation.html')await page.locator('.career').screenshot({path:info.outputPath(`career-${language}-${width}.png`)});
   expect(result.elements.length,'route must produce measurable text').toBeGreaterThan(0);
   expect(result.deviations).toEqual([]);
@@ -78,8 +78,12 @@ for(const language of ['nl','fr'])test(`typography clamp boundaries ${language}`
  }
 });
 test('explicit supporting roles and nested heading/prose resist component specificity',async({page},info)=>{
+ await page.emulateMedia({reducedMotion:'reduce'});
  await page.addInitScript(()=>localStorage.setItem('avs-consent',JSON.stringify({v:4,ext:false,ana:false,ts:Date.now()})));
  await page.goto('/transformation.html');
+ // The readers apply this universal reduced-motion duration. Independent
+ // reference measurements must not animate from inherited body font size.
+ await page.addStyleTag({content:'@media(prefers-reduced-motion:reduce){*{transition-duration:.01ms!important;animation:none!important}}'});
  await page.evaluate(()=>{
   const fixture=document.createElement('section');fixture.id='typography-regression-fixture';
   fixture.innerHTML='<h2><a class="btn"><strong>Nested heading</strong></a></h2><p>Ordinary <span>nested prose</span> <span data-typography-role="label">Label</span> <span data-typography-role="metadata">Metadata</span></p><ul><li>List <span data-typography-role="label">Label</span> <span data-typography-role="metadata">Metadata</span></li></ul>';
@@ -91,6 +95,8 @@ test('explicit supporting roles and nested heading/prose resist component specif
  const fixture=page.locator('#typography-regression-fixture');
  const result=await collect(page);await info.attach('nested-role-computed-styles',{body:JSON.stringify(result,null,2),contentType:'application/json'});
  await page.screenshot({path:info.outputPath('nested-role-fixture.png')});
+ expect(result.referenceValid,'native reference ignores ambient transitions').toBe(true);
+ for(const reference of Object.values(result.headingReferences)){expect(reference.transitionProperty).toBe('none');expect(reference.animationName).toBe('none');}
  expect(result.offscreenReveal).toBe(true);expect(result.offscreenRevealCount).toBeGreaterThan(0);
  expect(result.elements.some(e=>e.id==='offscreen-auto-prose'),'optimized below-fold text is measured').toBe(true);
  expect(result.elements.some(e=>e.id==='intentional-hidden-fixture'||e.id==='intentional-hidden-prose'),'intentional content-visibility:hidden stays excluded').toBe(false);
@@ -118,9 +124,12 @@ for(const language of ['nl','fr'])for(const width of [390,768,1366]){
   await page.setViewportSize({width,height:900});await page.goto('/executive-radar/index.html');
   await page.locator(`[data-language="${language}"]`).click();
   for(const view of ['overview','dashboard','radar','evidence','editorial']){
+   const toggle=page.locator('#navigation-toggle');
+   if(await toggle.isVisible()&&await toggle.getAttribute('aria-expanded')==='false')await toggle.click();
    await page.locator(`a[data-view="${view}"]`).click();
    await expect(page.locator(`#${view}`)).toBeVisible();
    const result=await collect(page);await info.attach(`radar-${view}`,{body:JSON.stringify(result,null,2),contentType:'application/json'});
+   await page.screenshot({path:info.outputPath(`radar-${language}-${width}-${view}.png`)});
    expect(result.language,view+' effective language').toBe(language+'-BE');
    expect(result.deviations,view).toEqual([]);expect(result.overflow,view).toBe(false);
   }

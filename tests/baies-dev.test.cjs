@@ -188,7 +188,7 @@ test('BAEIS production artifact: isolated public route, complete assets and no t
 test('Executive Radar public surface excludes internal about and newsletter prototype',()=>{
   // Old cached app code still bound the removed signup form unconditionally.
   // Its URL must change with this DOM removal so existing visitors fetch the matching runtime.
-  assert.match(html,/<script defer src="\.\.\/assets\/baies-dev-app\.js\?v=20261113-public-about"><\/script>/);
+  assert.match(html,/<script defer src="\.\.\/assets\/baies-dev-app\.js\?v=20261113-typography"><\/script>/);
   assert.doesNotMatch(html,/id="(?:about|heading-about|signup-[^"]+)"|href="#about"|data-view="about"|Over Executive Radar|Product Owner|sprint-grid|next-stage/);
   assert.doesNotMatch(app,/navModel|roadmapKicker|roadmapTitle|roadmapSub|s[1-4](?:Title|Text|Done)|nextTitle|nextBody|signupTitle|signupDesc|signupMessage|signup-form|signup-feedback|testSignup|toestemmingsprototype|test de consentement/);
   assert.match(app,/const views=\['overview','dashboard','radar','evidence','editorial'\]/);

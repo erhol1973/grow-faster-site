@@ -95,6 +95,20 @@ for(const width of widths)test(`typography synthetic authenticated CMS and actua
 
 // Both readers contain HTML text on every internal sheet. Their English
 // publication language is independent of the saved/requested website language.
+async function nativeReadingKey(page,region,info,key,name){
+ const read=()=>region.evaluate(el=>{
+  const a=document.activeElement,p=el.closest('.page'),stage=document.querySelector('#stage');
+  return {timestamp:performance.now(),hash:location.hash,pgNow:document.querySelector('#pgNow').textContent,zoom:document.querySelector('#zoomVal').textContent,active:{tag:a.tagName,id:a.id,classes:a.className,regionFocused:a===el},page:{number:p?.dataset.p,classes:p?.className,transform:p?.style.transform,scrollTop:el.scrollTop,scrollHeight:el.scrollHeight,clientHeight:el.clientHeight,screenScaleX:el.getBoundingClientRect().width/el.offsetWidth},bookTransform:document.querySelector('#book').style.transform,stage:{scrollTop:stage.scrollTop,scrollLeft:stage.scrollLeft,scrollHeight:stage.scrollHeight,clientHeight:stage.clientHeight}};
+ });
+ const diagnostic={key,before:await read()};
+ try{
+  await region.focus();await expect(region,'native reading key target').toBeFocused();diagnostic.focused=await read();
+  await page.keyboard.press(key);
+  await expect.poll(()=>region.evaluate((el,key)=>key==='End'?Math.abs(el.scrollHeight-el.clientHeight-el.scrollTop):Math.abs(el.scrollTop),key),name+' native '+key+' reaches reading boundary').toBeLessThanOrEqual(1);
+ }finally{
+  diagnostic.after=await read();const body=JSON.stringify(diagnostic,null,2);await require('node:fs/promises').writeFile(info.outputPath(name+'-'+key+'.json'),body);await info.attach(name+'-'+key,{body,contentType:'application/json'});
+ }
+}
 const htmlBooks=[{route:'/boek/index.html',pages:22},{route:'/boek/the-coherent-enterprise/index.html',pages:12}];
 async function bookEvidence(page,info,name,rootSelector){
  const result=await collect(page);
@@ -129,7 +143,16 @@ async function bookEvidence(page,info,name,rootSelector){
     }
    }
   }
-  return {viewportWidth:innerWidth,selected:document.querySelector('#pgNow').textContent,root:summary(root),page:summary(root.parentElement),stage:summary(document.querySelector('#stage')),textview:summary(document.querySelector('#textview')),clipped};
+  const wordFragments=[];
+  for(const heading of root.querySelectorAll('.signals h3')){
+   const walker=document.createTreeWalker(heading,NodeFilter.SHOW_TEXT);let node;
+   while((node=walker.nextNode()))for(const match of node.textContent.matchAll(/\b(coordination|dependencies)\b/gi)){
+    const range=document.createRange();range.setStart(node,match.index);range.setEnd(node,match.index+match[0].length);
+    const fragments=[...range.getClientRects()].filter(r=>r.width&&r.height).map(r=>({left:r.left,top:r.top,right:r.right,bottom:r.bottom,width:r.width,height:r.height}));
+    wordFragments.push({word:match[0].toLowerCase(),heading:heading.textContent,fragments});
+   }
+  }
+  return {viewportWidth:innerWidth,wordFragments,selected:document.querySelector('#pgNow').textContent,root:summary(root),page:summary(root.parentElement),stage:summary(document.querySelector('#stage')),textview:summary(document.querySelector('#textview')),clipped};
  });
  const body=JSON.stringify(result,null,2);
  await require('node:fs/promises').writeFile(info.outputPath(name+'.json'),body);
@@ -137,8 +160,8 @@ async function bookEvidence(page,info,name,rootSelector){
  await page.screenshot({path:info.outputPath(name+'.png')});
  return {name,...result};
 }
-for(const book of htmlBooks)for(const width of widths)for(let first=1;first<=book.pages;first+=6){
- const last=Math.min(first+5,book.pages);
+for(const book of htmlBooks)for(const width of widths)for(let first=1;first<=book.pages;first+=1){
+ const last=first;
  test(`typography HTML book ${book.pages} pages ${first}-${last} ${width}`,async({page},info)=>{
   await page.setViewportSize({width,height:900});await page.emulateMedia({reducedMotion:'reduce'});
   const preference=width===768?'fr':'nl';await seed(page,preference);
@@ -149,7 +172,7 @@ for(const book of htmlBooks)for(const width of widths)for(let first=1;first<=boo
   const assigned=Array.from({length:last-first+1},(_,i)=>first+i);
   // Exercise the two independently reported content regressions first, while
   // retaining every assigned page and all existing geometry expectations.
-  const priority=book.pages===22&&first===13?16:book.pages===12&&first===7?10:null;
+  const priority=book.pages===22&&assigned.includes(16)?16:book.pages===12&&assigned.includes(10)?10:null;
   const ordered=priority?[priority,...assigned.filter(n=>n!==priority)]:assigned;
   for(const n of ordered){
    await page.evaluate(index=>{location.hash='page-'+index},n);
@@ -159,20 +182,18 @@ for(const book of htmlBooks)for(const width of widths)for(let first=1;first<=boo
    evidence.push(await bookEvidence(page,info,'book-page-'+n,root));
    const region=page.locator(root);
    await expect(region).toHaveAttribute('role','region');await expect(region).toHaveAttribute('tabindex','0');await expect(region).toHaveAttribute('aria-label',new RegExp('^Page '+n+':'));
-   await region.focus();await expect(region).toBeFocused();await page.keyboard.press('End');
-   await expect.poll(()=>region.evaluate(el=>Math.abs(el.scrollHeight-el.clientHeight-el.scrollTop)),'native End reaches page '+n+' bottom without flipping').toBeLessThanOrEqual(1);
+   await nativeReadingKey(page,region,info,'End','book-page-'+n+'-base');
    const keyboard=await bookEvidence(page,info,'book-page-'+n+'-keyboard-bottom',root);evidence.push(keyboard);
    await expect(page.locator('#pgNow')).toHaveText(expected);
-   await page.keyboard.press('Home');await expect.poll(()=>region.evaluate(el=>el.scrollTop),'native Home reaches page '+n+' start').toBeLessThanOrEqual(1);
+   await nativeReadingKey(page,region,info,'Home','book-page-'+n+'-base');
    await expect(page.locator('#pgNow')).toHaveText(expected);
    if(await page.locator('#btnZoomIn').isVisible())await page.locator('#btnZoomIn').click();else await page.keyboard.press('Shift+Equal');
    await expect(page.locator('#zoomVal')).toHaveText('125%');
    await expect.poll(()=>region.evaluate(el=>Math.abs(el.getBoundingClientRect().width/el.offsetWidth-1.25)),'actual page screen transform reaches 125%').toBeLessThanOrEqual(.01);
    const zoomed=await bookEvidence(page,info,'book-page-'+n+'-zoom',root);evidence.push(zoomed);
-   await region.focus();await page.keyboard.press('End');
-   await expect.poll(()=>region.evaluate(el=>Math.abs(el.scrollHeight-el.clientHeight-el.scrollTop)),'zoomed native page scrolling reaches bottom').toBeLessThanOrEqual(1);
+   await nativeReadingKey(page,region,info,'End','book-page-'+n+'-zoom');
    await expect(page.locator('#pgNow')).toHaveText(expected);
-   await page.keyboard.press('Home');await expect.poll(()=>region.evaluate(el=>el.scrollTop)).toBeLessThanOrEqual(1);
+   await nativeReadingKey(page,region,info,'Home','book-page-'+n+'-zoom');
    const scroll=zoomed.geometry.stage;
    if(scroll.scrollWidth>scroll.clientWidth+1||scroll.scrollHeight>scroll.clientHeight+1){
     expect(scroll.overflowX,'zoomed stage horizontal scroll affordance').toMatch(/auto|scroll/);
@@ -194,19 +215,29 @@ for(const book of htmlBooks)for(const width of widths)for(let first=1;first<=boo
    expect(state.unclassified,state.name+' classified roles').toEqual([]);
    expect(state.overflow,state.name+' document overflow').toBe(false);
    expect(state.geometry.clipped,state.name+' text hidden by internal page clipping').toEqual([]);
+   if(book.pages===12&&first===4){
+    expect(state.geometry.wordFragments.map(item=>item.word).sort(),state.name+' actual signal-card words').toEqual(['coordination','dependencies']);
+    for(const word of state.geometry.wordFragments)expect(word.fragments,state.name+' ordinary word stays on one line: '+word.word).toHaveLength(1);
+   }
   }
  });
 }
 for(const book of htmlBooks)for(const width of widths)test(`typography HTML book search ${book.pages} ${width}`,async({page},info)=>{
  await page.setViewportSize({width,height:900});await page.emulateMedia({reducedMotion:'reduce'});await seed(page,'nl');
  await page.addInitScript(()=>{localStorage.setItem('flip:hinted','1');localStorage.setItem('flip:mobilehint','1')});await page.goto(book.route+'?lang=nl#page-1');
- await page.locator('#btnSearch').click();await expect(page.locator('#drawerSearch')).toBeVisible();
- await page.locator('#q').fill(book.pages===22?'heatmap':'fragmentation lives');await expect(page.locator('#results .result').first()).toBeVisible();
- await checkpoint(page,info,'book-search-results','en');
- const target=book.pages===22?16:7;await page.locator('#results .result[data-go="'+target+'"]').click();await expect(page.locator('#drawerSearch')).toBeHidden();
- const expected=width<700?String(target):target%2===0?target+'–'+(target+1):(target-1)+'–'+target;
- await expect(page.locator('#pgNow')).toHaveText(expected);await expect(page.locator('#book .page[data-p="'+target+'"]')).toBeVisible();
- await checkpoint(page,info,'book-search-selected-page','en');
+ const queries=book.pages===22?[{query:'heatmap',target:16},{query:'fragmented organisation',target:7}]:[{query:'fragmentation lives',target:7},{query:'organisations',target:4}];
+ const normalized=text=>text.replace(/\u00ad/g,'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
+ for(const {query,target}of queries){
+  await page.locator('#btnSearch').click();await expect(page.locator('#drawerSearch')).toBeVisible();await page.locator('#q').fill(query);
+  const result=page.locator('#results .result[data-go="'+target+'"]');await expect(result).toBeVisible();
+  await checkpoint(page,info,'book-search-results-'+target,'en');
+  expect((await result.locator('.snip mark').allTextContents()).some(text=>normalized(text)===normalized(query)),'result snippet marks the complete normalized query').toBe(true);
+  await result.click();await expect(page.locator('#drawerSearch')).toBeHidden();
+  const expected=width<700?String(target):target%2===0?target+'–'+(target+1):(target-1)+'–'+target;
+  await expect(page.locator('#pgNow')).toHaveText(expected);const selected=page.locator('#book .page[data-p="'+target+'"]');await expect(selected).toBeVisible();
+  await expect.poll(async()=>(await selected.locator('mark.hit').allTextContents()).some(text=>normalized(text)===normalized(query)),'actual page highlights the complete normalized query').toBe(true);
+  await checkpoint(page,info,'book-search-selected-page-'+target,'en');
+ }
  await page.locator('#btnThumbs').click();await expect(page.locator('#sheetThumbs')).toBeVisible();await expect(page.locator('#thumbs .thumb')).toHaveCount(book.pages);
  await expect(page.locator('#thumbs .thumb .mini[aria-hidden="true"]>.thumb-canvas>.pg[inert]')).toHaveCount(book.pages);
  await checkpoint(page,info,'book-decorative-thumbnails','en');

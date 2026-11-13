@@ -15,6 +15,23 @@
   min-width:0;
   overflow-wrap:anywhere;
 }
+/* Executive voices remain readable at the canonical body size. Choose the
+   number of cards from the actual page width, including natural text view. */
+.pg .voices {
+  width:100%;
+  min-width:0;
+  grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr));
+}
+.pg .voice {min-width:0}
+/* Signal cards contain H3 text, so reserve a wider reading column than the
+   body-only voice cards. Ordinary heading words must not be chopped to fit. */
+.pg .signals {
+  width:100%;
+  min-width:0;
+  grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));
+}
+.pg .signal {min-width:0}
+.pg .signal h3 {overflow-wrap:normal;word-break:normal;hyphens:auto}
 .page > .pg:focus-visible {outline-offset:-3px}
 .reading-affordance {
   position:absolute;

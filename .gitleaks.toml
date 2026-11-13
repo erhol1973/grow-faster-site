@@ -33,3 +33,10 @@ condition = "AND"
 paths = ['''(^|/)scripts/accept-cms-storage\.cjs$''']
 regexTarget = "secret"
 regexes = ['''^sb_publishable_PrzDBgnoLtpUjOLnAM0lfw_up3URiTf$''']
+
+[[rules.allowlists]]
+description = "Exact reviewed canonical-LF SHA256 of the public membership source in the Coherence build contract"
+condition = "AND"
+paths = ['''^scripts/coherence-dictionary\.contract\.json$''']
+regexTarget = "line"
+regexes = ['''^\s*"member-auth\.js": "fa70b7ab581a623b406ef6ae06aa44570cb6db4ce3c5276c7b5e523737c4df9f",\s*$''']

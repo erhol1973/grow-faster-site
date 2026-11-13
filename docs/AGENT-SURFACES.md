@@ -81,6 +81,8 @@ docs/EXECUTIVE-RADAR-NAV-DEV.md
 ```
 
 ```surface:performance
+.gitleaks.toml
+scripts/nl-secret-guard.cjs
 scripts/coherence-dictionary.cjs
 scripts/coherence-dictionary.contract.json
 tests/coherence-dictionary.test.cjs
@@ -119,6 +121,8 @@ tests/performance-fonts.test.cjs
 
 ```surface:repository
 **
+!.gitleaks.toml
+!scripts/nl-secret-guard.cjs
 !*.html
 !assets/site.css
 !assets/home-hero.css

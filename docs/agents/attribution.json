@@ -33,6 +33,8 @@
     "tests/browser/radar-access.spec.cjs"
   ],
   "performance": [
+    ".gitleaks.toml",
+    "scripts/nl-secret-guard.cjs",
     "scripts/coherence-dictionary.cjs",
     "scripts/coherence-dictionary.contract.json",
     "tests/coherence-dictionary.test.cjs",

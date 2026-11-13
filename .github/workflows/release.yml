@@ -35,6 +35,7 @@ jobs:
       - name: Verify preinstalled Playwright browsers
         run: |
           node -e "const p = require('playwright'); for (const name of ['chromium', 'firefox', 'webkit']) require('node:fs').accessSync(p[name].executablePath(), require('node:fs').constants.X_OK)"
+          node scripts/verify-browser-runtime.cjs
       - run: npm run test:e2e
         env:
           # Firefox requires a home directory owned by the container user.
@@ -139,6 +140,9 @@ jobs:
     name: Verify public release
     needs: deploy
     runs-on: ubuntu-24.04
+    container:
+      # Same locked browsers as the pre-release gate; no apt/CDN browser install.
+      image: mcr.microsoft.com/playwright:v1.64.1-noble
     timeout-minutes: 10
     permissions:
       contents: read
@@ -149,10 +153,25 @@ jobs:
           node-version: '24.21.0'
       - run: npm install --global pnpm@11.25.0
       - run: pnpm install --frozen-lockfile --ignore-scripts
-      - run: npx playwright install --with-deps chromium
+      - name: Verify preinstalled Chromium launches
+        id: runtime
+        run: node scripts/verify-browser-runtime.cjs
       - run: npm run verify:production
+        id: smoke
       - name: Single public mobile speed measurement
+        id: speed
         run: node scripts/performance.cjs --production
+      - name: Record public verification outcomes
+        if: always()
+        env:
+          JOB_STATUS: ${{ job.status }}
+          RUNTIME_OUTCOME: ${{ steps.runtime.outcome }}
+          SMOKE_OUTCOME: ${{ steps.smoke.outcome }}
+          SPEED_OUTCOME: ${{ steps.speed.outcome }}
+        run: |
+          mkdir -p reports
+          printf 'Job: %s\nBrowser runtime: %s\nPublic smoke: %s\nPublic speed observation: %s\n' "$JOB_STATUS" "$RUNTIME_OUTCOME" "$SMOKE_OUTCOME" "$SPEED_OUTCOME" > reports/public-verification-status.txt
+          cat reports/public-verification-status.txt >> "$GITHUB_STEP_SUMMARY"
       - name: Save public verification
         if: always()
         uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2

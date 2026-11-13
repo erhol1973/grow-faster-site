@@ -2,11 +2,16 @@
 const fs = require('node:fs');
 const path = require('node:path');
 const {readRegularFile}=require('./file-reader.cjs');
+const {assertPublicArtifact}=require('./baies-dev-public-policy.cjs');
 const root = path.resolve(__dirname, '..');
-const out = path.join(root, 'dist');
-const files = ['assets/hanken-grotesk-OFL.txt', 'assets/hanken-grotesk-latin.woff2', 'baies-dev/index.html', 'boek/the-coherent-enterprise/index.html', 'boek/index.html', 'boek/page-flip-LICENSE.txt', '.nojekyll', 'CNAME', '404.html', 'admin.html', 'account.html', 'about.html', 'books.html', 'accessibility.html', 'approach.html', 'coherence-sim.html', 'coherence.html', 'eca.html', 'favicon.ico', 'index.html', 'insights-ai-pilot.html', 'insights.html', 'journal.html', 'journal-fr.html', 'operating-model.html', 'privacy.html', 'process.html', 'robots.txt', 'sitemap.xml', 'terms.html', 'value.html', 'transformation.html', 'workshop.html', ...require('../tests/legacy-redirects.json').map(r=>r.file)];
+const destination = path.join(root, 'dist');
+const out = path.join(root, '.dist-build-'+process.pid);
+const files = ['assets/hanken-grotesk-OFL.txt', 'assets/hanken-grotesk-latin.woff2', 'account.html', 'executive-radar/index.html', 'boek/the-coherent-enterprise/index.html', 'boek/index.html', 'boek/page-flip-LICENSE.txt', '.nojekyll', 'CNAME', '404.html', 'admin.html', 'about.html', 'books.html', 'accessibility.html', 'approach.html', 'coherence-sim.html', 'coherence.html', 'eca.html', 'favicon.ico', 'index.html', 'insights-ai-pilot.html', 'insights.html', 'journal.html', 'journal-fr.html', 'operating-model.html', 'privacy.html', 'process.html', 'robots.txt', 'sitemap.xml', 'terms.html', 'value.html', 'transformation.html', 'workshop.html', ...require('../tests/legacy-redirects.json').map(r=>r.file)];
 const extensions = { media: new Set(['.mp4', '.vtt']), boek: new Set(['.pdf']), assets: new Set(['.js', '.css']), img: new Set(['.jpg', '.jpeg', '.png', '.webp', '.avif', '.svg', '.ico']), books: new Set(['.pdf', '.jpg', '.jpeg', '.png', '.webp']) };
-if (out !== path.join(root, 'dist')) throw new Error('Unsafe output directory');
+if (destination !== path.join(root,'dist') || path.dirname(out)!==root || path.basename(out)!=='.dist-build-'+process.pid) throw new Error('Unsafe output directory');
+// No partially written or policy-rejected dist can become a deployable artifact.
+try {
+fs.rmSync(destination, { recursive: true, force: true });
 fs.rmSync(out, { recursive: true, force: true });
 fs.mkdirSync(out);
 let count = 0;
@@ -23,6 +28,8 @@ function copy(source, relative) {
   }else fs.writeFileSync(target,data);count++;
 }
 for (const file of files) copy(path.join(root, file), file);
+// One maintained product document; preserve existing NL/FR and hash links on the old route.
+copy(path.join(root,'executive-radar/index.html'),'baies-dev/index.html');
 function walk(folder, relative, allowed) {
   for (const item of fs.readdirSync(folder, { withFileTypes: true })) {
     const source = path.join(folder, item.name), rel = path.join(relative, item.name);
@@ -38,7 +45,14 @@ for (const file of fs.readdirSync(out, { recursive: true }).filter(name => name.
   const target = path.join(out, file);
   const page = fs.readFileSync(target, 'utf8');
   if (/<meta[^>]+http-equiv=["']refresh/i.test(page)) continue;
-  const style = '<link rel="preload" href="/assets/hanken-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin><link rel="stylesheet" href="/assets/typography.css">';
+  const external = /<meta\b[^>]*http-equiv\s*=\s*["']Content-Security-Policy["']/i.test(page);
+  const style = require('./typography-build.cjs').typographyMarkup(readRegularFile(path.join(root,'assets/typography.css')).toString('utf8'),{external});
   fs.writeFileSync(target, page.replace(/<\/head>/i, () => style + '</head>'));
 }
-console.log(`Built ${count} website files in dist/`);
+assertPublicArtifact(out);
+fs.renameSync(out,destination);
+console.log(`Built ${count} website files in dist/ (public-content policy passed)`);
+} catch(error) {
+  fs.rmSync(out,{recursive:true,force:true});
+  throw error;
+}

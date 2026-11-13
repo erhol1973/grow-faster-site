@@ -1,0 +1,46 @@
+{
+  "orchestrator": [
+    "docs/AGENT-SURFACES.md",
+    "docs/agents/attribution.json",
+    "docs/agents/performance.md",
+    "docs/agents/repository.md",
+    "docs/TESTPLAN.md",
+    "docs/RELEASE.md",
+    ".github/workflows/baies-dev-quality.yml"
+  ],
+  "navigation": [
+    "admin.html",
+    "journal.html",
+    "journal-fr.html",
+    "privacy.html",
+    "tests/contact-navigation.test.cjs",
+    "tests/browser/navigation.spec.cjs",
+    "tests/journal.test.cjs",
+    "tests/cms-client.test.cjs",
+    "tests/member-privacy.test.cjs"
+  ],
+  "radar": [
+    "assets/baies-dev-app.js",
+    "assets/radar-access.js",
+    "executive-radar/index.html",
+    "scripts/radar-release.cjs",
+    "scripts/radar-reference/template.html",
+    "scripts/radar-reference/data.cjs",
+    "scripts/radar-reference/copy.json",
+    "scripts/verify-production.cjs",
+    "tests/baies-dev.test.cjs",
+    "tests/browser/baies-dev.spec.cjs",
+    "tests/browser/radar-access.spec.cjs"
+  ],
+  "performance": [
+    "scripts/build.cjs",
+    "scripts/typography-build.cjs",
+    "tests/performance-fonts.test.cjs"
+  ],
+  "repository": [
+    "scripts/server.cjs",
+    "scripts/accept-member-test.cjs",
+    "tests/server-compression.test.cjs",
+    "docs/MEMBER-INTEGRATION-20261113.md"
+  ]
+}

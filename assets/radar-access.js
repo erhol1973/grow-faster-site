@@ -1,7 +1,9 @@
 'use strict';
 (async function () {
+  if (location.hash === '#about') history.replaceState(null,'',location.pathname+location.search+'#overview');
   const fr = new URL(location.href).searchParams.get('lang') === 'fr';
   document.documentElement.lang = fr ? 'fr-BE' : 'nl-BE';
+  document.querySelector('.site-header .identity')?.setAttribute('href','../index.html?lang='+(fr?'fr':'nl'));
   document.querySelectorAll('article[data-language]').forEach(el => {
     el.hidden = el.dataset.language !== (fr ? 'fr' : 'nl');
   });
@@ -40,7 +42,11 @@
     const requestGeneration = generation;
     const response = await auth.request('/storage/v1/object/authenticated/member-content/radar/current.json');
     if (!response.ok) throw new Error('Access unavailable');
-    const edition = await response.json();
+    const serialized = await response.text();
+    const payloadDigest = new Uint8Array(await crypto.subtle.digest('SHA-256',new TextEncoder().encode(serialized)));
+    const payloadSha = Array.from(payloadDigest, byte => byte.toString(16).padStart(2,'0')).join('');
+    if (payloadSha !== document.querySelector('meta[name="radar-edition"]').content) throw new Error('Edition mismatch');
+    const edition = JSON.parse(serialized);
     if (typeof edition.body !== 'string' || !Array.isArray(edition.data?.records) || !edition.copy?.nl || !edition.copy?.fr) throw new Error('Invalid edition');
     if (!edition.data.records.length || edition.data.records.some(record => !window.BAEIS_DEV_CORE.sourceIsApproved(record.url) || window.BAEIS_DEV_CORE.checkRecord(record).length)) throw new Error('Invalid records');
     // Only the audited release template may contribute markup. Records and translations

@@ -13,12 +13,13 @@ test('Radar preview never requests private data as a guest', async ({page}) => {
   await expect(page.locator('#dashboard')).toHaveCount(0);
   expect(attempts).toBe(0);
 });
-for(const scenario of ['denied','tampered template','unsafe source']) {
+for(const scenario of ['denied','tampered template','unsafe source','internal copy']) {
   test('Radar member reader fails closed for '+scenario, async ({page}) => {
     await page.route('**/assets/member-auth.js',route=>route.fulfill({contentType:'text/javascript',
       body:"window.GFMember={ready:async()=>({id:'member'}),accountUrl:()=>'/account.html',request:async()=>fetch('/__private_radar')};"}));
     const payload=structuredClone(edition());
     if(scenario==='tampered template') payload.body+='<img src=x onerror=alert(1)>';
+    if(scenario==='internal copy') payload.copy.nl.roadmapTitle='Internal owner roadmap';
     if(scenario==='unsafe source') payload.data.records[1].url='javascript:alert(1)';
     await page.route('**/__private_radar',route=>route.fulfill({status:scenario==='denied'?403:200,
       contentType:'application/json',body:JSON.stringify(payload)}));
@@ -57,3 +58,19 @@ for (const target of ['skip', 'main']) {
     }
   });
 }
+for(const lang of ['nl','fr'])test('Radar guest '+lang+' website return preserves locale and removed About safely falls back',async({page})=>{
+  await page.route('**/assets/member-auth.js',route=>route.fulfill({contentType:'text/javascript',body:"window.GFMember={ready:async()=>null,accountUrl:()=>'/account.html'};"}));
+  await page.goto('/executive-radar/?lang='+lang+'#about');
+  await expect(page).toHaveURL(new RegExp('lang='+lang+'#overview$'));
+  await expect(page.locator('.site-header .identity')).toHaveAttribute('href','../index.html?lang='+lang);
+  await expect(page.locator('article[data-language='+lang+']')).toBeVisible();
+  await expect(page.locator('#about,#dashboard,[id^=signup-]')).toHaveCount(0);
+});
+
+test('Radar public-surface verifier checks gated previews on both routes and languages',async({page,baseURL})=>{
+  await page.route('**/assets/member-auth.js',route=>route.fulfill({contentType:'text/javascript',body:"window.GFMember={ready:async()=>null,accountUrl:()=>'/account.html'};"}));
+  const {verifyRadarPublicSurface}=require('../../scripts/verify-production.cjs');
+  const result=await verifyRadarPublicSurface(page,baseURL);
+  expect(result.routes).toHaveLength(4);
+  expect(result.routes.every(route=>route.memberContentProtected&&route.featuredSignalAvailable)).toBe(true);
+});

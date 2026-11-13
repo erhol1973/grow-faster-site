@@ -13,8 +13,8 @@ window.openMemberRadar = function(){
   const localized=(obj)=>obj[state.lang]||obj.nl;
   function element(tag,cls,txt){const x=document.createElement(tag);if(cls)x.className=cls;if(txt!==undefined)x.textContent=txt;return x;}
   function clear(el){el.replaceChildren();}
-  const views=['overview','dashboard','radar','evidence','editorial','about'];
-  const viewLabels={overview:'navOverview',dashboard:'navDashboard',radar:'navRadar',evidence:'navEvidence',editorial:'navEditorial',about:'navModel'};
+  const views=['overview','dashboard','radar','evidence','editorial'];
+  const viewLabels={overview:'navOverview',dashboard:'navDashboard',radar:'navRadar',evidence:'navEvidence',editorial:'navEditorial'};
   const navigation=document.querySelector('.main-nav');
   const toggle=$('navigation-toggle');
   const mobileNavigation=window.matchMedia('(max-width:760px)');
@@ -26,9 +26,11 @@ window.openMemberRadar = function(){
     $('current-view-label').textContent=text(viewLabels[state.view]);
     navigation.setAttribute('aria-label',text('navLabel'));
     document.querySelector('.identity').setAttribute('aria-label',text('brandHome'));
+    document.querySelector('.identity').setAttribute('href','../index.html?lang='+state.lang);
+    document.querySelector('meta[name=description]').setAttribute('content',state.lang==='fr'?'Executive Radar de Grow Faster — économie belge et IA pour votre agenda de direction. Démonstration avec données de référence fixes.':'Executive Radar van Grow Faster — Belgische economie en AI voor jouw directieagenda. Demonstratie met vaste referentiedata.');
     $('language-switch').setAttribute('aria-label',text('langLabel'));
     toggle.setAttribute('aria-label',text(toggle.getAttribute('aria-expanded')==='true'?'navClose':'navOpen'));
-    document.title=text(viewLabels[state.view])+' | BAEIS · Grow Faster';
+    document.title=text(viewLabels[state.view])+' | Executive Radar · Grow Faster';
   }
   function setNavigationOpen(open,restoreFocus=false){
     const expanded=Boolean(open&&mobileNavigation.matches);
@@ -131,12 +133,11 @@ window.openMemberRadar = function(){
   function downloadBrief(){
     const selected=core.sortRecords(records.filter(r=>r.roles.includes(state.role))).slice(0,3);
     const sizeLabel=text({small:'sizeSmall',medium:'sizeMedium',large:'sizeLarge'}[state.size]);
-    const lines=['GROW FASTER · BAEIS DEMO · '+dataset.snapshotDate,text('audienceExport')+': '+state.role,text('companySize')+': '+sizeLabel,text('briefDisclaimer'),text('planNotice'),''];
+    const lines=['GROW FASTER · EXECUTIVE RADAR DEMO · '+dataset.snapshotDate,text('audienceExport')+': '+state.role,text('companySize')+': '+sizeLabel,text('briefDisclaimer'),text('planNotice'),''];
     selected.forEach((r,i)=>{lines.push((i+1)+'. '+r.id+' · '+localized(r.title),localized(r.claim),text('limit')+': '+localized(r.limit),text('decision')+': '+localized(r.decision));for(const [label,value] of planRows(core.decisionPlan(r,state.role,state.size)))lines.push(text(label)+': '+localized(value));lines.push(text('sourceExport')+': '+r.source+' · '+r.published+' · '+r.url,'');});
-    lines.push(text('downloadEnd'));const blob=new Blob([lines.join('\n')],{type:'text/plain;charset=utf-8'});const url=URL.createObjectURL(blob);const link=document.createElement('a');link.href=url;link.download='BAEIS_DEV_Executive_Brief_'+state.role+'.txt';document.body.append(link);link.click();link.remove();URL.revokeObjectURL(url);
+    lines.push(text('downloadEnd'));const blob=new Blob([lines.join('\n')],{type:'text/plain;charset=utf-8'});const url=URL.createObjectURL(blob);const link=document.createElement('a');link.href=url;link.download='Executive_Radar_Brief_'+state.role+'.txt';document.body.append(link);link.click();link.remove();URL.revokeObjectURL(url);
   }
   document.querySelector('.skip').addEventListener('click',event=>{event.preventDefault();setNavigationOpen(false);const main=$('main');main.focus({preventScroll:true});const top=main.getBoundingClientRect().top+window.scrollY-navigation.getBoundingClientRect().height;window.scrollTo({top:Math.max(0,top),behavior:'instant'});});
-  document.querySelector('.identity').addEventListener('click',e=>{if(e.button!==0||e.ctrlKey||e.metaKey||e.shiftKey||e.altKey)return;e.preventDefault();navigate('overview');});
   document.querySelectorAll('[data-view]').forEach(link=>link.addEventListener('click',event=>{if(event.button!==0||event.ctrlKey||event.metaKey||event.shiftKey||event.altKey)return;event.preventDefault();navigate(link.dataset.view);}));
   document.querySelectorAll('[data-goto]').forEach(b=>b.addEventListener('click',()=>navigate(b.dataset.goto)));
   document.querySelectorAll('[data-role]').forEach(b=>b.addEventListener('click',()=>{state.role=b.dataset.role;renderBrief();}));
@@ -162,7 +163,6 @@ window.openMemberRadar = function(){
   $('evidence-dialog').addEventListener('close',restoreEvidenceFocus);
   const closeDialog=()=>{const d=$('evidence-dialog');if(typeof d.close==='function')d.close();else{d.removeAttribute('open');restoreEvidenceFocus();}};
   $('dialog-close').addEventListener('click',closeDialog);$('dialog-done').addEventListener('click',closeDialog);
-  $('signup-form').addEventListener('submit',event=>{event.preventDefault();$('signup-feedback').textContent=text('signupMessage');$('signup-form').reset();});
   if(!evidenceReady){
     document.querySelectorAll('[data-goto="dashboard"],[data-view="dashboard"],[data-goto="radar"],[data-view="radar"],[data-goto="evidence"],[data-view="evidence"]').forEach(b=>{b.disabled=true;b.setAttribute('aria-disabled','true');});
     $('workflow-feedback').textContent='Evidence validation failed; blocked.';

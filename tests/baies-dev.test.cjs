@@ -5,9 +5,9 @@ const fs=require('node:fs');
 const path=require('node:path');
 const root=path.resolve(__dirname,'..');
 const core=require('../assets/baies-dev-core.js');
-const {edition,historicalFile}=require('../scripts/radar-release.cjs');
+const {edition,referenceFile,assertProtectedEdition,templateHash,payloadHash}=require('../scripts/radar-release.cjs');
 const data=edition().data;
-const html=historicalFile('baies-dev/index.html');
+const html=referenceFile('template.html');
 const app=fs.readFileSync(path.join(root,'assets/baies-dev-app.js'),'utf8');
 
 test('BAEIS dev: five unique, evidence-linked source records',()=>{
@@ -73,13 +73,13 @@ test('BAEIS dev: strategic and sector filters produce expected subsets',()=>{
 
 test('BAEIS dev: isolated NL/FR accessible markup and static asset linkage',()=>{
   assert.match(html,/lang="nl-BE"/);
-  for(const view of ['overview','dashboard','radar','evidence','editorial','about']){
+  for(const view of ['overview','dashboard','radar','evidence','editorial']){
     assert.match(html,new RegExp(`id="${view}"`));
     assert.match(html,new RegExp(`data-view="${view}"`));
   }
   assert.match(html,/<main id="main"/);
   assert.match(html,/id="language-switch"/);
-  assert.match(html,/id="signup-consent" required/);
+  assert.doesNotMatch(html,/id="(?:about|heading-about|signup-[^"]+)"/);
   assert.match(html,/role="status"/);
   assert.match(html,/assets\/baies-dev\.css/);
   for(const asset of ['baies-dev.css','baies-dev-core.js','radar-access.js','baies-dev-app.js'])assert.ok(fs.statSync(path.join(root,'assets',asset)).isFile());
@@ -87,8 +87,8 @@ test('BAEIS dev: isolated NL/FR accessible markup and static asset linkage',()=>
 test('BAEIS branding: exact solid four-bar transparent logo variants and favicon',()=>{
   for(const [variant,ink] of [['dark','#0B2545'],['white','#FFFFFF']]){
     const svg=fs.readFileSync(path.join(root,'img',`baies-dev-logo-${variant}.svg`),'utf8');
-    assert.equal((svg.match(/<rect /g)||[]).length,4);
-    assert.match(svg,/>Grow Faster<\/text>/);
+    const bars=svg.match(/<g id="grow-faster-bars"[^>]*>([\s\S]*?)<\/g>/);assert.ok(bars,'four-bar symbol group');assert.equal((bars[1].match(/<path /g)||[]).length,4);
+    assert.match(svg,/>Grow Faster<\/(?:text|title)>/);
     assert.ok(svg.includes(`fill="${ink}"`));
     assert.match(svg,/fill="#2189E1"/);
     assert.doesNotMatch(svg,/gradient|filter|opacity|<image|<script|stroke=/i);
@@ -106,7 +106,7 @@ test('BAEIS branding: exact solid four-bar transparent logo variants and favicon
 });
 
 test('BAEIS navigation: isolated native routes, explicit locale choice and safe disclosure',()=>{
-  for(const view of ['overview','dashboard','radar','evidence','editorial','about'])assert.match(html,new RegExp(`<a href="#${view}" data-view="${view}"`));
+  for(const view of ['overview','dashboard','radar','evidence','editorial'])assert.match(html,new RegExp(`<a href="#${view}" data-view="${view}"`));
   assert.match(html,/id="navigation-toggle"[^>]*aria-expanded="false"[^>]*aria-controls="product-links"/);
   for(const lang of ['nl','fr'])assert.match(html,new RegExp(`data-language="${lang}"`));
   assert.match(html,/baies-dev-logo-white\.svg/);
@@ -183,4 +183,121 @@ test('BAEIS production artifact: isolated public route, complete assets and no t
     for(const asset of ['logo-dark.svg','logo-white.svg','logo-dark.png','logo-white.png','favicon.svg','favicon.png'])assert.equal(await status('/img/baies-dev-'+asset),200,asset);
     for(const route of ['/assets/baies-dev-data.js','/scripts/radar-reference/data.cjs','/reports/member-content/radar/current.json','/radar/current.json','/docs/BAEIS-D-FOLLOWUP.md','/tests/baies-dev.test.cjs','/reports/unit.xml'])assert.equal(await status(route),404,route);
   }finally{server.closeAllConnections();await new Promise(r=>server.close(r));}
+});
+
+// The owner removed the internal product roadmap and newsletter consent prototype from public navigation.
+test('Executive Radar public surface excludes internal about and newsletter prototype',()=>{
+  // Old cached app code still bound the removed signup form unconditionally.
+  // Its URL must change with this DOM removal so existing visitors fetch the matching runtime.
+  assert.match(html,/<script defer src="\.\.\/assets\/baies-dev-app\.js\?v=20261113-public-about"><\/script>/);
+  assert.doesNotMatch(html,/id="(?:about|heading-about|signup-[^"]+)"|href="#about"|data-view="about"|Over Executive Radar|Product Owner|sprint-grid|next-stage/);
+  assert.doesNotMatch(app,/navModel|roadmapKicker|roadmapTitle|roadmapSub|s[1-4](?:Title|Text|Done)|nextTitle|nextBody|signupTitle|signupDesc|signupMessage|signup-form|signup-feedback|testSignup|toestemmingsprototype|test de consentement/);
+  assert.match(app,/const views=\['overview','dashboard','radar','evidence','editorial'\]/);
+  assert.match(html,/Demonstratie · Vaste referentiedata/);
+  const preview=fs.readFileSync(path.join(root,'executive-radar/index.html'),'utf8');
+  assert.match(preview,/baies-dev-app\.js\?v=20261113-member-main/);
+  assert.match(edition().copy.nl.devNote,/Vaste referentie-uitgave/);
+  assert.doesNotMatch(edition().copy.nl.devNote,/gegevensopslag|persoonsgegevens opgeslagen/);
+  assert.doesNotMatch(edition().copy.fr.devNote,/conservation de données|donnée personnelle conservée/);
+});
+
+const publicPolicy=require('../scripts/baies-dev-public-policy.cjs');
+const policyFs=require('node:fs'),policyOs=require('node:os'),policyPath=require('node:path'),policyCp=require('node:child_process');
+const policyRoot=policyPath.resolve(__dirname,'..');
+function policyTemp(t){const directory=policyFs.mkdtempSync(policyPath.join(policyOs.tmpdir(),'gf-radar-public-policy-'));t.after(()=>{const resolved=policyPath.resolve(directory),temp=policyPath.resolve(policyOs.tmpdir())+policyPath.sep;assert.ok(resolved.startsWith(temp)&&policyPath.basename(resolved).startsWith('gf-radar-public-policy-'));policyFs.rmSync(resolved,{recursive:true,force:true});});return directory;}
+
+test('Radar publication policy rejects old NL/FR internal About labels, routes, roadmap markup and escaped runtime copy under any filename',()=>{
+  const fixtures=[
+    ['executive-radar/index.html','<nav id="product-links"><a href="#about">Info</a></nav><section id="about"></section>'],
+    ['baies-dev/index.html','<section id="about">Legacy</section>'],
+    ['duplicate.html','<nav id=product-links><a href=#about>Info</a></nav><section id=about></section>'],
+    ['other.js',"const target='/baies-dev/?lang=fr#about';"],
+    ['old-override.js',"const x={nextBody:'Een werkende multi-agentruntime, automatische wetenschappelijke factchecking'};"],
+    ['archive/renamed.htm','<h1>Over Executive Radar</h1>'],
+    ['archive/renamed-fr.html','<h1>À propos d’Executive Radar</h1>'],
+    ['archive/earlier.html','<p>Over BAEIS</p>'],
+    ['archive/earlier-fr.html','<p>À propos de BAEIS</p>'],
+    ['duplicates/copy.html','<div class="sprint-grid"><article>SPRINT 01</article></div>'],
+    ['page.html','<p>Product Owner · 4 Sprint Proof of Concept</p>'],
+    ['page-fr.html','<p>Product Owner · Prototype en 4 sprints</p>'],
+    ['unknown-runtime.js',"const copy={roadmapTitle:'Van fundament tot gecontroleerde MVP.'};"],
+    ['bundle.data','<html><script>const copy={roadmapKicker:"Product Owner"};</script></html>'],
+    ['escaped.js',String.raw`const x={"roadmap\u0054itle":"hidden old title"};`],
+    ['encoded.html','<h1>Over Executive&#32;Radar</h1>'],
+    ['old-fr.js',"const x='Quatre incréments réunis dans un environnement isolé.';"],
+    ['old-nl.js',"const x='Vier doelgerichte increments binnen één geïsoleerde ontwikkelroute.';"],
+    ['assets/baies-dev-app.js',"const x={nextBody:'Internal future plan'};"],
+    ['another.js',"window.BAEIS_DEV_DATA={};const views=['overview','about'];"]
+  ];
+  for(const [name,text]of fixtures){assert.ok(publicPolicy.inspectPublicText(name,text).length>0,name);assert.ok(require('../scripts/security.cjs').inspectText(name,text).length>0,name+' security boundary');}
+});
+
+test('Radar publication policy permits normal company About pages, books about sprints and unused legacy CSS selectors',()=>{
+  for(const [name,text]of [
+    ['about.html','<main id="about" data-id="product-links"><h1>Over ons bedrijf</h1><a href="#about">Ons verhaal</a><p>Onze product owner begeleidt sprints.</p></main>'],
+    ['boek/index.html','<h1>Four sprints to a better operating model</h1><p>SPRINT 01: learn. De volgende sprint begint later.</p>'],
+    ['assets/book.js',"const nextTitle='Chapter 2';const views=['cover','about'];"],
+    ['assets/baies-dev.css','.sprint-grid{display:grid}.next-stage{color:navy}.signup form{display:grid}'],
+    ['executive-radar/index.html',html],['assets/baies-dev-app.js',app]
+  ])assert.deepEqual(publicPolicy.inspectPublicText(name,text),[],name);
+});
+
+test('Radar publication policy walks all artifact text, including renamed copies, extensionless payloads and post-build tampering',t=>{
+  const dir=policyTemp(t);policyFs.mkdirSync(policyPath.join(dir,'archive'),{recursive:true});policyFs.writeFileSync(policyPath.join(dir,'about.html'),'<h1>Our company</h1>');assert.deepEqual(publicPolicy.scanPublicArtifact(dir),[]);
+  const copy=policyPath.join(dir,'archive','old-copy.payload');policyFs.writeFileSync(copy,' '.repeat(5000)+'<html><h1>Over Executive Radar</h1></html>');
+  assert.ok(publicPolicy.scanPublicArtifact(dir).some(message=>message.includes('archive/old-copy.payload')));assert.throws(()=>publicPolicy.assertPublicArtifact(dir),{code:'RADAR_INTERNAL_CONTENT'});assert.ok(require('../scripts/security.cjs').scan(dir).length>0);
+  policyFs.rmSync(copy);policyFs.writeFileSync(policyPath.join(dir,'archive','renamed.mjs'),"const copy={roadmapSub:'old private process'};");assert.ok(publicPolicy.scanPublicArtifact(dir).some(message=>message.includes('renamed.mjs')));
+  assert.ok(publicPolicy.scanPublicArtifact(policyPath.join(dir,'missing')).length>0);
+  const linkedRoot=policyPath.join(dir,'linked-artifact'),privateDir=policyPath.join(dir,'non-public');policyFs.mkdirSync(linkedRoot);policyFs.mkdirSync(privateDir);policyFs.symlinkSync(privateDir,policyPath.join(linkedRoot,'escape'),'junction');assert.ok(publicPolicy.scanPublicArtifact(linkedRoot).some(message=>message.includes('symbolic link rejected')));assert.throws(()=>publicPolicy.assertPublicArtifact(linkedRoot),{code:'RADAR_INTERNAL_CONTENT'});
+});
+
+test('Radar build publishes only a complete policy-approved artifact and removes staged output on internal content rejection',t=>{
+  const fixture=policyTemp(t);policyFs.mkdirSync(policyPath.join(fixture,'scripts'));policyFs.mkdirSync(policyPath.join(fixture,'tests'));policyFs.writeFileSync(policyPath.join(fixture,'tests/legacy-redirects.json'),'[]');
+  for(const file of ['build.cjs','file-reader.cjs','baies-dev-public-policy.cjs','member-navigation.cjs','radar-release.cjs','typography-build.cjs'])policyFs.copyFileSync(policyPath.join(policyRoot,'scripts',file),policyPath.join(fixture,'scripts',file));
+  policyFs.cpSync(policyPath.join(policyRoot,'scripts/radar-reference'),policyPath.join(fixture,'scripts/radar-reference'),{recursive:true});
+  const publicPreview=policyFs.readFileSync(policyPath.join(policyRoot,'executive-radar/index.html'),'utf8');
+  // Use the real build allowlist to construct a minimal input tree; assertions exercise its actual CLI.
+  const source=policyFs.readFileSync(policyPath.join(policyRoot,'scripts/build.cjs'),'utf8'),expression=source.match(/^const files = (.+);$/m)[1];
+  const files=require('node:vm').runInNewContext(expression,{require:id=>{assert.equal(id,'../tests/legacy-redirects.json');return [];}});
+  for(const file of files){const dest=policyPath.join(fixture,file);policyFs.mkdirSync(policyPath.dirname(dest),{recursive:true});policyFs.writeFileSync(dest,file==='executive-radar/index.html'?publicPreview:'');}
+  for(const directory of ['assets','media','boek','img','books'])policyFs.mkdirSync(policyPath.join(fixture,directory),{recursive:true});policyFs.writeFileSync(policyPath.join(fixture,'assets/i18n.js'),'window.I18N={};\nwindow.I18N_HTML={};\n');
+  policyFs.copyFileSync(policyPath.join(policyRoot,'assets/typography.css'),policyPath.join(fixture,'assets/typography.css'));
+  const run=()=>policyCp.spawnSync(process.execPath,['scripts/build.cjs'],{cwd:fixture,encoding:'utf8'});
+  let result=run();assert.equal(result.status,0,result.stderr);const destination=policyPath.join(fixture,'dist');assert.ok(policyFs.existsSync(policyPath.join(destination,'executive-radar/index.html')));assert.equal(policyFs.readFileSync(policyPath.join(destination,'baies-dev/index.html'),'utf8'),policyFs.readFileSync(policyPath.join(destination,'executive-radar/index.html'),'utf8'));assert.match(policyFs.readFileSync(policyPath.join(destination,'baies-dev/index.html'),'utf8'),new RegExp(payloadHash));
+  const protectedCopy=policyPath.join(fixture,'scripts/radar-reference/copy.json'),originalCopy=policyFs.readFileSync(protectedCopy,'utf8');policyFs.writeFileSync(protectedCopy,originalCopy.replace('navDashboard','roadmapTitle'));result=run();assert.notEqual(result.status,0);assert.match(result.stderr,/protected-content policy rejected/);assert.equal(policyFs.existsSync(destination),false);policyFs.writeFileSync(protectedCopy,originalCopy);assert.equal(run().status,0);
+  const contaminated=policyPath.join(fixture,'assets','copy-of-old-runtime.js');policyFs.writeFileSync(contaminated,"const old={roadmapTitle:'Internal roadmap'};");result=run();assert.notEqual(result.status,0);assert.match(result.stderr,/public-content policy rejected/);assert.equal(policyFs.existsSync(destination),false,'rejected output must not remain deployable');assert.deepEqual(policyFs.readdirSync(fixture).filter(name=>name.startsWith('.dist-build-')),[],'failed staging is cleaned');
+  policyFs.rmSync(contaminated);policyFs.writeFileSync(policyPath.join(fixture,'executive-radar/index.html'),'<main id="product-links"><a href="#about">Private flow</a></main>');result=run();assert.notEqual(result.status,0);assert.equal(policyFs.existsSync(destination),false);assert.match(result.stderr,/removed Radar About route/);
+  policyFs.writeFileSync(policyPath.join(fixture,'executive-radar/index.html'),publicPreview);assert.equal(run().status,0);policyFs.rmSync(policyPath.join(fixture,'index.html'));result=run();assert.notEqual(result.status,0);assert.equal(policyFs.existsSync(destination),false,'a missing source must leave no deployable dist');assert.deepEqual(policyFs.readdirSync(fixture).filter(name=>name.startsWith('.dist-build-')),[]);
+});
+
+test('Radar public payload verification accepts a real same-origin response and rejects redirects before any foreign request',async t=>{
+  const http=require('node:http'),{request}=require('playwright'),{getRadarPublicPayload}=require('../scripts/verify-production.cjs');let foreignRequests=0,localRequests=0,api;
+  const foreign=http.createServer((req,res)=>{foreignRequests++;res.writeHead(200,{'Content-Type':'text/javascript'});res.end('window.foreign=true;');});
+  const primary=http.createServer((req,res)=>{localRequests++;if(req.url==='/redirect.js'){res.writeHead(302,{Location:'http://127.0.0.1:'+foreign.address().port+'/foreign.js'});return res.end();}res.writeHead(200,{'Content-Type':'text/javascript'});res.end('window.publicRadar=true;');});
+  t.after(async()=>{if(api)await api.dispose();for(const server of [primary,foreign]){server.closeAllConnections();await new Promise(resolve=>server.close(resolve));}});
+  await new Promise(resolve=>foreign.listen(0,'127.0.0.1',resolve));await new Promise(resolve=>primary.listen(0,'127.0.0.1',resolve));api=await request.newContext();const base='http://127.0.0.1:'+primary.address().port;
+  const safe=await getRadarPublicPayload(api,base+'/safe.js',base);assert.equal(await safe.text(),'window.publicRadar=true;');assert.equal(new URL(safe.url()).origin,base);
+  await assert.rejects(getRadarPublicPayload(api,base+'/redirect.js',base),/HTTP 302/);assert.equal(foreignRequests,0,'a rejected redirect must not have contacted its foreign destination');
+  await assert.rejects(getRadarPublicPayload(api,'http://127.0.0.1:'+foreign.address().port+'/foreign.js',base),/Unexpected external/);assert.equal(foreignRequests,0);assert.equal(localRequests,2);
+});
+
+test('Radar protected edition matches approved sanitized main template and complete payload hashes',()=>{
+  const crypto=require('node:crypto'),payload=edition(),sha=value=>crypto.createHash('sha256').update(value).digest('hex');
+  assert.equal(sha(payload.body),templateHash);
+  assert.equal(sha(JSON.stringify(payload)),payloadHash);
+  assert.equal(assertProtectedEdition(payload),true);
+  assert.equal(payload.data.records.length,5);
+  for(const name of ['template.html','data.cjs','copy.json'])assert.deepEqual(publicPolicy.inspectPublicText('executive-radar/'+name,referenceFile(name)),[]);
+  assert.throws(()=>referenceFile('../assets/baies-dev-app.js'),/Unknown Radar reference/);
+});
+
+test('Radar protected edition rejects removed internal content in decoded template, records and NL/FR copy',()=>{
+  const mutations=[
+    value=>{value.body+='<section id="about"><h1>Over Executive Radar</h1></section>';},
+    value=>{value.copy.nl.roadmapTitle='Internal owner roadmap';},
+    value=>{value.copy.fr.signupTitle='Internal signup';},
+    value=>{value.data.records[0].internal='Product Owner · 4 Sprint Proof of Concept';}
+  ];
+  for(const mutate of mutations){const payload=edition();mutate(payload);assert.throws(()=>assertProtectedEdition(payload),{code:'RADAR_INTERNAL_CONTENT'});}
+  const changed=edition();changed.copy.nl.heroLead='Unreviewed copy';assert.throws(()=>assertProtectedEdition(changed),/Unexpected protected Radar payload/);
 });

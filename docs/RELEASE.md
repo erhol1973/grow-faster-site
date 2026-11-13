@@ -33,3 +33,14 @@ Loadtests blijven lokaal. Ze meten het testpakket en de lokale server; ze voorsp
 Beoordeel dependency-updates en pas lockfile en browserinstallatie samen aan. Leg prestatiedrempels en uitzonderingen met reden vast. Houd nieuwe pagina’s en gebruikerspaden in de tests bij. Onderzoek mislukte tests eerst; herstarten is geen oplossing voor instabiele tests.
 
 Elke foutoplossing of nieuwe functionaliteit bevat passende blijvende regressietests. Werk de gedeelde navigatiegevallen en betrokken integratie-, end-to-end-, load- en prestatiecontroles in dezelfde pull request bij. Unit tests horen bij afzonderlijke logica; niet elk tekst- of layoutdetail heeft een unit test nodig. Behoud positieve en negatieve scenario’s. Breid de suite gericht uit en verwijder verouderde of dubbele tests alleen met onderbouwde reden. Zie TESTPLAN.md voor dekking en beperkingen.
+
+## Intrekken van interne Executive Radar-inhoud
+
+Een inhoudsintrekking is pas voltooid wanneer de huidige bron en het volledige geteste publicatiepakket vrij zijn van de interne About-/sprintpagina én eerder gedeelde onveilige previewdeployments zijn ingetrokken. De gedeelde inhoudspolicy wordt bij build en artifact-security uitgevoerd; de publieke nacontrole controleert beide Radar-routes in NL/FR, inclusief oude #about-ingangen. Een fout blokkeert publicatie. Normale bedrijfspagina’s Over Erlend en publiek toegestane sprintbesprekingen vallen buiten dit verbod.
+
+Cloudflare-preview-URL’s zijn historische momentopnamen. Alleen nieuwe bron publiceren of een alias verleggen verwijdert zo’n oude URL niet. Bewaar een intrekkingsregister met exacte deployment-ID, oorspronkelijke URL/alias, inhoudsbewijs en verificatie na intrekking. Verwijder uitsluitend bevestigde onveilige previews van dit project; verander geen productie-DNS, toegangsinstellingen of andere projecten. Bron- en goedkeuringsprocedures blijven verplicht. De inhoudelijke en productie-Go/No-go voor de nieuwe CEO-pilot blijft een afzonderlijke sponsorbeslissing.
+
+
+## Actuele leden-dev, 13 november 2026
+
+Deze integratie autoriseert uitsluitend de huidige dev-preview en growfaster-test. De volledige nieuwe revision moet alle bestaande gates doorlopen; lokale gedeeltelijke browserresultaten worden niet als volledige goedkeuring geteld. Productie, CEO-pilot en de afzonderlijke typografie-draft blijven buiten scope. Historische onveilige preview5ca5b0d7 moet na vervanging worden ingetrokken en gecontroleerd; een nieuwe alias maakt de immutable URL niet ongedaan. Testregistratie, bevestiging en herstel vragen echte mailbox-/credentialinteractie. Ledenlogin schrijft niet automatisch in voor nieuwsbrieven en er worden geen CRM- of marketingmutaties uitgevoerd.

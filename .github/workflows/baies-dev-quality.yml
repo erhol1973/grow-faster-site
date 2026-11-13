@@ -8,6 +8,7 @@ on:
       - 'assets/radar-*'
       - 'scripts/radar-release.cjs'
       - 'assets/member-auth.js'
+      - 'executive-radar/**'
       - 'assets/baies-dev*'
       - 'img/baies-dev*'
       - 'tests/baies-dev*'

@@ -237,16 +237,6 @@
       const wrap=nav.querySelector(".wrap");
       if(navlist.scrollWidth>navlist.clientWidth+1||wrap.scrollWidth>wrap.clientWidth+1)nav.classList.add("compact");
     }else if(nav.classList.contains("nav-executive"))nav.classList.add("compact");
-    if(nav.classList.contains("nav-executive")){
-      const action=navlist.querySelector(".nav-action");
-      if(action){
-        // Match DOM and visual order so keyboard users meet the mobile action first.
-        const narrow=nav.classList.contains("compact"),focused=action.contains(document.activeElement)?document.activeElement:null;
-        if(narrow&&navlist.firstElementChild!==action)navlist.prepend(action);
-        else if(!narrow&&navlist.lastElementChild!==action)navlist.append(action);
-        if(focused)focused.focus({preventScroll:true});
-      }
-    }
     if(!nav.classList.contains("compact")&&innerWidth>1100&&nav.classList.contains("open"))setMenu(false);
   }
   addEventListener("resize",fitNav);
@@ -396,6 +386,7 @@
     recs.forEach(r=>{r.n.nodeValue=r.pre+t(r.key)+r.post});
     ihs.forEach(o=>{o.el.innerHTML=l==="en"?o.orig:((((window.I18N_HTML||{})[o.el.dataset.ih])||[])[LIDX[l]]||o.orig)});
     refreshHubspotConsentCopy();
+    nav.querySelectorAll("a.nav-radar").forEach(a=>{a.href=l==="fr"?"executive-radar/?lang=fr":"executive-radar/?lang=nl"});
     document.querySelectorAll(".lang-cur").forEach(e=>e.textContent=e.closest(".lang-top")?({nl:"NL-BE",fr:"FR-BE"})[l]:NATIVE[l]);document.querySelectorAll(".lang-btn").forEach(b=>b.dataset.code=({nl:"NL-BE",fr:"FR-BE"})[l]);document.querySelectorAll(".lang-btn .flag").forEach(f=>f.className="flag flag-"+l);
     document.querySelectorAll(".lang-menu [data-lang]").forEach(b=>b.setAttribute("aria-checked",String(b.dataset.lang===l)));
     document.querySelectorAll(".lang-btn").forEach(b=>b.setAttribute("aria-label",t("Language")+": "+(b.closest(".lang-top")?({nl:"NL-BE",fr:"FR-BE"})[l]+" — ":"")+NATIVE[l]));
@@ -481,7 +472,7 @@
   const initial=Object.hasOwn(NATIVE,requested)?requested:Object.hasOwn(NATIVE,stored)?stored:(Object.hasOwn(NATIVE,nav0)?nav0:"nl");
   applyLang(initial,!!stored&&stored!==initial);
   const c0=readConsent();applyConsent(c0);
-  if(location.hash==="#privacy")openPrivacy(); 
+  if(location.hash==="#privacy")openPrivacy();
   if(!c0)openConsent(false);
 
   /* spotlight on final section */
@@ -489,4 +480,3 @@
   if(!reduce&&fin)fin.addEventListener("pointermove",e=>{const r=fin.getBoundingClientRect();fin.style.setProperty("--mx",(e.clientX-r.left)+"px");fin.style.setProperty("--my",(e.clientY-r.top)+"px")});
 
 })();
-

@@ -14,6 +14,9 @@ test('Monthly Issue 01 replaces the old reader in Dutch and French',()=>{
   assert.equal((preview.match(/<article class="sheet/g)||[]).length,3);
   assert.doesNotMatch(preview,/id="p4"|id="p15"|journal-01-cartoon\.webp/);
   assert.match(preview,/data-journal-join/);
+  assert.match(preview,/<img src="img\/grow-faster-logo-dark\.svg" width="1920" height="320" alt="Grow Faster">/);
+  for (const asset of ['member-auth.js','member-menu.js','journal.js']) assert.ok(preview.includes('assets/'+asset),file+' retains '+asset);
+  assert.match(preview,/id="navlist" class="reader-account"/);
   assert.ok(!fs.existsSync(path.resolve(__dirname,'../dist/img/journal-01-cartoon.webp')));
   assert.ok(cartoon().length>0);
   assert.match(html,new RegExp('<html lang="'+language+'"(?: class="[^"]*")?>'));

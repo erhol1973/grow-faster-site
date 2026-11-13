@@ -2,9 +2,10 @@
   "home": "index.html",
   "primary": [
     "index.html",
-    "insights.html",
     "coherence.html",
     "approach.html",
+    "executive-radar/",
+    "insights.html",
     "transformation.html"
   ],
   "action": "about.html",

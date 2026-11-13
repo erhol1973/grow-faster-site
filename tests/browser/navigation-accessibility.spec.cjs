@@ -23,3 +23,30 @@ test('opening the mobile menu changes text colours without low-contrast intermed
  });
  for(const frame of frames){expect(frame.transition).toBe('0s');expect(frame.colour).toBe('rgb(0, 106, 156)')}
 });
+
+test('header logo variants load at low priority and reuse native loaded images across background changes',async({page})=>{
+ const requests=[];page.on('request',request=>{const file=new URL(request.url()).pathname;if(file==='/img/grow-faster-logo-light.svg'||file==='/img/grow-faster-logo-dark.svg')requests.push(file)});
+ await page.addInitScript(()=>{localStorage.setItem('avs-lang','nl');localStorage.setItem('avs-consent',JSON.stringify({v:4,ext:false,ana:false,ts:Date.now()}))});
+ await page.goto('/index.html');await expect(page.locator('html')).toHaveClass(/nav-over/);
+ const onDark=page.locator('.nav .gf-wordmark-dark'),onLight=page.locator('.nav .gf-wordmark-light');
+ for(const logo of [onDark,onLight]){await expect(logo).toHaveAttribute('loading','lazy');await expect(logo).toHaveAttribute('decoding','async');await expect(logo).toHaveAttribute('fetchpriority','low');await expect(logo).toHaveAttribute('width','1920');await expect(logo).toHaveAttribute('height','320')}
+ await expect(onDark).toBeVisible();await expect.poll(()=>onDark.evaluate(e=>e.complete&&e.naturalWidth===1920&&e.naturalHeight===320)).toBe(true);
+ // Desktop may paint the initial white header before deferred site.js applies nav-over.
+ // Both native requests are low priority; the initial navy variant may load once, then must reuse its already loaded native image.
+ await expect(onLight).toBeHidden();expect(requests.filter(file=>file==='/img/grow-faster-logo-light.svg').length).toBeLessThanOrEqual(1);expect(requests.filter(file=>file==='/img/grow-faster-logo-dark.svg')).toHaveLength(1);
+ if(await page.locator('#burger').isVisible())await page.locator('#burger').click();else await page.locator('footer.foot').scrollIntoViewIfNeeded();
+ await expect(page.locator('html')).not.toHaveClass(/nav-over/);await expect(onLight).toBeVisible();await expect.poll(()=>onLight.evaluate(e=>e.complete&&e.naturalWidth===1920&&e.naturalHeight===320)).toBe(true);
+ await expect(onDark).toBeHidden();expect(requests.filter(file=>file==='/img/grow-faster-logo-light.svg')).toHaveLength(1);
+});
+
+test('home responsive hero preload fetches the selected WebP once from the document head',async({page},info)=>{
+ await page.setViewportSize({width:info.project.use.isMobile?390:1440,height:900});
+ const requests=[];page.on('request',request=>{if(/\/img\/hero-executive-meeting-\d+\.webp$/.test(new URL(request.url()).pathname))requests.push(request.url())});
+ await page.addInitScript(()=>{localStorage.setItem('avs-lang','nl');localStorage.setItem('avs-consent',JSON.stringify({v:4,ext:false,ana:false,ts:Date.now()}))});await page.goto('/index.html');
+ const image=page.locator('#hero .hero-bg picture img'),source=page.locator('#hero .hero-bg picture source'),preload=page.locator('head link[rel=preload][as=image]');
+ await expect(preload).toHaveCount(1);await expect(preload).toHaveAttribute('type','image/webp');await expect(preload).toHaveAttribute('fetchpriority','high');await expect(preload).toHaveAttribute('imagesrcset',await source.getAttribute('srcset'));await expect(preload).toHaveAttribute('imagesizes',await source.getAttribute('sizes'));
+ await expect.poll(()=>image.evaluate(e=>e.complete&&e.naturalWidth>0)).toBe(true);
+ const result=await image.evaluate(e=>({currentSrc:e.currentSrc,pixels:innerWidth*devicePixelRatio,entries:performance.getEntriesByName(e.currentSrc).map(x=>({initiatorType:x.initiatorType,transferSize:x.transferSize}))}));
+ const candidate=[640,1280,1774].find(width=>width>=result.pixels)||1774;expect(new URL(result.currentSrc).pathname).toBe('/img/hero-executive-meeting-'+candidate+'.webp');
+ expect(requests).toEqual([result.currentSrc]);expect(result.entries).toHaveLength(1);expect(result.entries[0].initiatorType).toBe('link');
+});

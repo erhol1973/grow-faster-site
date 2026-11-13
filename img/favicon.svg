@@ -1,8 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="-6 -2 182 212">
-  <g fill="none" stroke="#0A8FD0" stroke-width="14" stroke-linejoin="miter" stroke-linecap="square">
-    <path d="M10 196 V78 L58 50 V196"/>
-    <path d="M74 196 V12 H120 V196"/>
-    <path d="M40 196 V96 L92 126 V196"/>
-    <path d="M120 150 L160 128 V196"/>
-  </g>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 480" width="480" height="480" role="img" aria-labelledby="title"><title id="title">Grow Faster</title><g transform="translate(18 78)"><g id="grow-faster-bars" fill="#2189E1"><path d="M6 318V226a42 42 0 0 1 84 0V318Z"/><path d="M123 318V149a42 42 0 0 1 84 0V318Z"/><path d="M240 318V48a42 42 0 0 1 84 0V318Z"/><path d="M360 318V109a42 42 0 0 1 84 0V318Z"/></g></g></svg>

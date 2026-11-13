@@ -6,7 +6,7 @@ const assets = [
   ['journal/2026-11/nl.json','5a35b34a81051fcd869da297074b8fcced7e9299358fc068d081e191c716dad5'],
   ['journal/2026-11/fr.json','067e0e8436837517d0b6992a06c05c9f6baedd70883f695d21064765e42ec547'],
   ['journal/2026-11/cartoon.webp','4c8623eb81a4edbed7aa6102ba17681ad6c346ee89e31035e80531df50c7150d'],
-  ['radar/current.json','57109501dc37889daa7c143289a39f8b839efb51c03bb2e2e5dd9c4531d1600b']
+  ['radar/current.json','08b1f5a9ea12117f424fb9c0a0df0871a84f5c3ef8248aab0dcdc87945842d3b']
 ];
 
 function check(label, passed, info) {

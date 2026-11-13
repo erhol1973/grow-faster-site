@@ -28,7 +28,9 @@ tests/**
 !tests/brand-logo.test.cjs
 !tests/typography.test.cjs
 !tests/performance-fonts.test.cjs
+!tests/performance.test.cjs
 !tests/journal-editorial.test.cjs
+!tests/coherence-film-release.test.cjs
 !tests/hero-image.test.cjs
 !tests/browser/navigation-accessibility.spec.cjs
 !tests/server-compression.test.cjs
@@ -78,6 +80,8 @@ docs/EXECUTIVE-RADAR-NAV-DEV.md
 ```
 
 ```surface:performance
+tests/performance.test.cjs
+tests/coherence-film-release.test.cjs
 coherence.html
 insights.html
 about.html
@@ -89,6 +93,7 @@ img/hero-executive-meeting-*.avif
 tests/hero-image.test.cjs
 tests/browser/navigation-accessibility.spec.cjs
 scripts/build.cjs
+scripts/member-navigation.cjs
 scripts/typography-build.cjs
 assets/site.js
 tests/first-paint.test.cjs
@@ -128,6 +133,7 @@ tests/performance-fonts.test.cjs
 !assets/baies-dev*
 !scripts/baies-dev*
 !scripts/build.cjs
+!scripts/member-navigation.cjs
 !scripts/typography-build.cjs
 !scripts/security.cjs
 !img/**

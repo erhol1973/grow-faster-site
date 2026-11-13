@@ -35,6 +35,9 @@
     "tests/browser/radar-access.spec.cjs"
   ],
   "performance": [
+    "tests/performance.test.cjs",
+    "scripts/member-navigation.cjs",
+    "tests/coherence-film-release.test.cjs",
     "coherence.html",
     "insights.html",
     "about.html",

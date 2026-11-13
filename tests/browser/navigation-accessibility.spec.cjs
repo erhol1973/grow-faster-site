@@ -56,6 +56,8 @@ test('home responsive hero preloads the selected AVIF once and preserves WebP fa
 
 test('critical component styles are inline and the existing deferred dictionary loads once',async({page})=>{
  const requests=[];page.on('request',request=>requests.push(new URL(request.url()).pathname));
+ await page.route('**/assets/cms-config.js*',route=>route.fulfill({contentType:'application/javascript',body:'window.GF_CMS_CONFIG={url:"https://gqsvoioccvklzfmdmexy.supabase.co",key:"sb_publishable_fixture"};'}));
+ await page.route('https://gqsvoioccvklzfmdmexy.supabase.co/**',route=>route.fulfill({contentType:'application/json',body:'[]',headers:{'access-control-allow-origin':'*'}}));
  await page.addInitScript(()=>{
   localStorage.setItem('avs-lang','fr');localStorage.setItem('avs-consent',JSON.stringify({v:4,ext:false,ana:false,ts:Date.now()}));
   window.translationEvents=[];
@@ -118,4 +120,20 @@ test('a published CMS portrait replaces all fixed AVIF and JPEG picture sources'
  // decoder proves the unique replacement fixture's intrinsic pixel geometry.
  expect(await image.evaluate(async e=>{const probe=new Image();probe.src=e.currentSrc;await probe.decode();return [probe.naturalWidth,probe.naturalHeight];})).toEqual([400,500]);
  await expect(page.locator('picture:has(img[data-cms="f9e1d98ca6f92-0"]) source')).toHaveCount(0);
+});
+
+for(const language of ['nl','fr'])test('bundled member navigation has no extra request and keeps '+language+' account links',async({page})=>{
+ const requests=[];page.on('request',request=>requests.push(new URL(request.url()).pathname));
+ await page.route('**/assets/cms-config.js*',route=>route.fulfill({contentType:'application/javascript',body:'window.GF_CMS_CONFIG={url:"https://gqsvoioccvklzfmdmexy.supabase.co",key:"sb_publishable_fixture"};'}));
+ await page.route('https://gqsvoioccvklzfmdmexy.supabase.co/**',route=>route.fulfill({contentType:'application/json',body:'[]',headers:{'access-control-allow-origin':'*'}}));
+ await page.addInitScript(()=>{let value;window.memberBoots=0;Object.defineProperty(window,'GFMember',{configurable:true,get:()=>value,set:next=>{window.memberBoots++;value=next}});document.addEventListener('DOMContentLoaded',()=>{window.memberAtDOM=!!window.GFMember});});
+ await page.goto('/about.html?lang='+language);
+ const link=page.locator('.member-nav .member-login-link');await expect(link).toHaveText(language==='fr'?'Se connecter':'Aanmelden');
+ await expect(page.locator('[data-member-placeholder]')).toHaveCount(0);await expect(page.locator('.member-nav')).toHaveCount(1);
+ const result=await link.evaluate(element=>({href:element.href,boots:window.memberBoots,atDOM:window.memberAtDOM,available:window.GFMember.available,url:window.GF_CMS_CONFIG.url}));
+ expect(new URL(result.href).searchParams.get('lang')).toBe(language);expect(result.boots).toBe(1);expect(result.atDOM).toBe(false);expect(result.available).toBe(true);expect(result.url).toBe('https://gqsvoioccvklzfmdmexy.supabase.co');
+ expect(requests.filter(path=>path==='/assets/member-menu.js')).toHaveLength(0);expect(requests.filter(path=>path==='/assets/models.js')).toHaveLength(1);
+ // A cached older loader can still request the standalone asset without adding a second menu or identity.
+ await page.evaluate(()=>new Promise((resolve,reject)=>{const script=document.createElement('script');script.src='/assets/member-menu.js?v=members-1';script.onload=resolve;script.onerror=reject;document.head.append(script)}));
+ expect(await page.evaluate(()=>window.memberBoots)).toBe(1);await expect(page.locator('.member-nav')).toHaveCount(1);
 });

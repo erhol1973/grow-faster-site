@@ -188,7 +188,7 @@ test('BAEIS production artifact: isolated public route, complete assets and no t
 test('Executive Radar public surface excludes internal about and newsletter prototype',()=>{
   // Old cached app code still bound the removed signup form unconditionally.
   // Its URL must change with this DOM removal so existing visitors fetch the matching runtime.
-  assert.match(html,/<script defer src="\.\.\/assets\/baies-dev-app\.js\?v=20261113-public-about"><\/script>/);
+  assert.match(html,/<script defer src="\.\.\/assets\/baies-dev-app\.js\?v=20261113-typography"><\/script>/);
   assert.doesNotMatch(html,/id="(?:about|heading-about|signup-[^"]+)"|href="#about"|data-view="about"|Over Executive Radar|Product Owner|sprint-grid|next-stage/);
   assert.doesNotMatch(app,/navModel|roadmapKicker|roadmapTitle|roadmapSub|s[1-4](?:Title|Text|Done)|nextTitle|nextBody|signupTitle|signupDesc|signupMessage|signup-form|signup-feedback|testSignup|toestemmingsprototype|test de consentement/);
   assert.match(app,/const views=\['overview','dashboard','radar','evidence','editorial'\]/);
@@ -247,7 +247,7 @@ test('Radar publication policy walks all artifact text, including renamed copies
 
 test('Radar build publishes only a complete policy-approved artifact and removes staged output on internal content rejection',t=>{
   const fixture=policyTemp(t);policyFs.mkdirSync(policyPath.join(fixture,'scripts'));policyFs.mkdirSync(policyPath.join(fixture,'tests'));policyFs.writeFileSync(policyPath.join(fixture,'tests/legacy-redirects.json'),'[]');
-  for(const file of ['build.cjs','file-reader.cjs','baies-dev-public-policy.cjs'])policyFs.copyFileSync(policyPath.join(policyRoot,'scripts',file),policyPath.join(fixture,'scripts',file));
+  for(const file of ['build.cjs','file-reader.cjs','baies-dev-public-policy.cjs','component-style-delivery.cjs'])policyFs.copyFileSync(policyPath.join(policyRoot,'scripts',file),policyPath.join(fixture,'scripts',file));
   // Use the real build allowlist to construct a minimal input tree; assertions exercise its actual CLI.
   const source=policyFs.readFileSync(policyPath.join(policyRoot,'scripts/build.cjs'),'utf8'),expression=source.match(/^const files = (.+);$/m)[1];
   const files=require('node:vm').runInNewContext(expression,{require:id=>{assert.equal(id,'../tests/legacy-redirects.json');return [];}});

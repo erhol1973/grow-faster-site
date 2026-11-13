@@ -126,9 +126,9 @@ figcaption{font:italic 1.3rem/1.4 Georgia,serif;text-align:center;margin:.7rem a
 .exact-edition .tenure-line .exit-label{align-self:center;padding-left:10px;color:#fff;font:700 18px/1.15 Georgia,serif}
 .exact-edition .stages{display:grid;grid-template-columns:15fr 25fr 30fr 30fr;gap:0;background:transparent;border:0;padding:0;font-size:11px;min-height:43px}
 .exact-edition .stages>span{display:flex;align-items:center;padding:7px;border-right:3px solid #123257;background:#2d5e90;position:relative;z-index:1}
-.exact-edition .stages>span:nth-child(2){background:#2f80bf}
-.exact-edition .stages>span:nth-child(3){background:#389fdd}
-.exact-edition .stages>span:nth-child(4){background:#65bff0;border-right:0}
+.exact-edition .stages>span:nth-child(2){background:#2c76b0;color:#fff}
+.exact-edition .stages>span:nth-child(3){background:#389fdd;color:var(--navy)}
+.exact-edition .stages>span:nth-child(4){background:#65bff0;color:var(--navy);border-right:0}
 .exact-edition .timeline-plot .value-note{color:#f8bb40;text-align:right;font-size:12px;font-weight:600;margin:9px 0 20px;position:relative;z-index:1}
 .exact-edition .years{display:flex;justify-content:space-between;position:relative;border-top:1px solid #9bbad5;margin:0!important;padding-top:10px;word-spacing:normal;font-size:10px;color:#a6c8e4}
 .exact-edition .years>span{position:relative;width:0;overflow:visible;white-space:nowrap;text-indent:-7px}
@@ -148,3 +148,56 @@ figcaption{font:italic 1.3rem/1.4 Georgia,serif;text-align:center;margin:.7rem a
 @media(max-width:600px){.page-stage{grid-template-columns:34px minmax(0,1fr) 34px}.page-arrow{min-width:30px;min-height:48px;font-size:30px}.journal-header .return-link{font-size:.75rem}.reading-tools{gap:.2rem}.reading-tools button{padding:.3rem .45rem}}
 @media print{.page-arrow{display:none!important}.page-stage{display:block}}
 .exact-edition .sheet a[href^="#source-"]{display:inline-block;min-width:1.4em;text-align:center;touch-action:manipulation}
+
+/* The website's common role sizes also apply to the HTML journal. Recover
+   space from editorial padding and margins, never by shrinking the font or
+   changing the landscape canvas, reading scale, content or publication order. */
+.exact-edition .sheet{padding:5mm 7mm;line-height:1.2}
+.exact-edition .paper-content{padding-bottom:2rem}
+.exact-edition .sheet p{line-height:1.2;margin:.15rem 0 .35rem}
+.exact-edition .sheet h1,.exact-edition .sheet h2{line-height:1;margin:.15rem 0 .4rem}
+.exact-edition .sheet h3{line-height:1.1;margin:.45rem 0 .15rem}
+.exact-edition .split,.exact-edition .columns,.exact-edition .cards,.exact-edition .steps,.exact-edition .routes{gap:8px}
+.exact-edition .cards>section,.exact-edition .steps>div{padding:6px 8px}
+.exact-edition .callout{padding:6px 8px;margin:.35rem 0}
+.exact-edition .metrics{gap:8px;margin:6px 0}
+.exact-edition .metrics>div{padding:6px 8px}
+.exact-edition .cover h1{max-width:100%;margin-top:8px}
+.exact-edition .cover .deck{max-width:100%}
+.exact-edition .cover .folio{margin-bottom:8px}
+.exact-edition .cover-logo{width:140px;margin-bottom:6px}
+.exact-edition .cover .timeline{margin:10px 0;padding:8px}
+.exact-edition .cover-bottom{gap:16px;margin-top:8px}
+.exact-edition .folio{margin-bottom:6px}
+.exact-edition .paper-content{padding-bottom:1.65rem}
+.exact-edition .sheet table{line-height:1.15;margin:5px 0}
+.exact-edition .sheet th,.exact-edition .sheet td{padding:2px 4px;line-height:1.15}
+.exact-edition .matrix{gap:6px}
+.exact-edition .matrix>section{padding:6px 8px}
+.exact-edition .paired-row{margin:4px 0}
+.exact-edition .data-chart{margin:5px 0}
+.exact-edition #p3 .split{grid-template-columns:.8fr 1.2fr}
+.exact-edition #p14 figure img{max-height:125mm}
+.exact-edition .sheet a[href^="#source-"]{display:inline-block;min-width:1.4em;text-align:center;touch-action:manipulation}
+
+.exact-edition #p3 .metrics-four{grid-template-columns:repeat(4,minmax(0,1fr))}
+.exact-edition .bar-chart>div{margin:4px 0}
+.exact-edition blockquote{margin:5px 0}
+.exact-edition .paired-row{margin:2px 0}
+.exact-edition #p4 .cards{grid-template-columns:repeat(4,minmax(0,1fr))}
+.exact-edition .sheet p{margin:.1rem 0 .3rem}
+.exact-edition .sheet h1,.exact-edition .sheet h2{margin:.05rem 0 .25rem}
+.exact-edition .folio{margin-bottom:2px}
+.exact-edition blockquote{margin:1px 0}
+.exact-edition .cover h1{margin-top:2px}
+.exact-edition .cover .folio{margin-bottom:4px}
+.exact-edition .cover .timeline{margin:5px 0}
+.exact-edition .cover-logo{width:120px}
+.exact-edition .bar-chart>div{margin:3px 0}
+.exact-edition .paired-row{margin:1px 0}
+
+/* Keep the longer legal-risk card legible across approved fallback fonts. */
+.exact-edition #p11 .cards{grid-template-columns:1.35fr 1fr 1fr}
+.exact-edition #p11 .cards>section{padding-block:2px}
+.exact-edition #p11 .data-chart figcaption{margin-bottom:4px}
+.exact-edition #p11 .paired-bars{gap:2px}

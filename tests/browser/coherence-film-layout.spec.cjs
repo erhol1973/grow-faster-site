@@ -1,5 +1,17 @@
 const {test,expect}=require('playwright/test');
 test.beforeEach(async({page})=>{await page.addInitScript(()=>localStorage.setItem('avs-consent',JSON.stringify({v:4,ext:false,ana:false,ts:Date.now()}))) });
+async function readySimulatorFrame(page){
+  const iframe=page.locator('#ec-sim');
+  await iframe.scrollIntoViewIfNeeded();
+  const handle=await iframe.elementHandle();
+  const frame=await handle.contentFrame();
+  await handle.dispose();
+  const origin=new URL(page.url()).origin;
+  // about:blank already has a body; it is not the lazy-loaded simulator.
+  await frame.waitForURL(url=>url.origin===origin&&/^\/coherence-sim(?:\.html)?$/.test(url.pathname));
+  await frame.locator('body').waitFor();
+  return frame;
+}
 test('Coherence implicit route scrolling settles before pointer activation',async({page})=>{await page.goto('/coherence.html?lang=fr');await expect(page.locator('html')).toHaveAttribute('lang','fr');const visible=await page.locator('.next-pg a').evaluate(el=>{el.scrollIntoView({block:'center'});const r=el.getBoundingClientRect();return r.top>=0&&r.bottom<=innerHeight});expect(visible).toBe(true);await page.locator('.next-pg a').click();await expect(page).toHaveURL(/\/approach\.html$/);});
 for(const lang of ['nl','fr']){
  test(`left alignment and requested next-page route (${lang})`,async({page})=>{
@@ -19,9 +31,7 @@ test('44-second commercial plays to the end without subtitles',async({page})=>{t
 for(const lang of ['nl','fr'])test('Coherence simulator resize cannot move an active next-page pointer target ('+lang+')',async({page})=>{
   await page.goto('/coherence.html?lang='+lang);
   await expect(page.locator('html')).toHaveAttribute('lang',lang);
-  const frame=page.frameLocator('#ec-sim');
-  await page.locator('#ec-sim').scrollIntoViewIfNeeded();
-  await frame.locator('body').waitFor();
+  const frame=await readySimulatorFrame(page);
   await frame.locator('body').evaluate(()=>document.fonts.ready);
   const link=page.locator('.next-pg a');
   await link.scrollIntoViewIfNeeded();
@@ -44,9 +54,8 @@ for(const lang of ['nl','fr'])test('Coherence simulator resize cannot move an ac
 
 test('Coherence simulator height resumes after an outer pointer is released inside its iframe',async({page})=>{
   await page.goto('/coherence.html?lang=fr');
-  await page.locator('#ec-sim').scrollIntoViewIfNeeded();
-  const child=page.frameLocator('#ec-sim').locator('body');
-  await child.waitFor();
+  const frame=await readySimulatorFrame(page);
+  const child=frame.locator('body');
   await child.evaluate(()=>document.fonts.ready);
   const box=await page.locator('#ec-sim').boundingBox();
   const y=Math.max(120,Math.min(page.viewportSize().height-120,box.y+box.height/2));

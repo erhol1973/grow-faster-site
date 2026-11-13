@@ -30,6 +30,8 @@ tests/**
 !tests/performance.test.cjs
 !tests/journal-editorial.test.cjs
 !tests/coherence-film-release.test.cjs
+!tests/cms-client.test.cjs
+!tests/performance-diagnostics.test.cjs
 !tests/hero-image.test.cjs
 !tests/browser/navigation-accessibility.spec.cjs
 !tests/server-compression.test.cjs
@@ -38,7 +40,6 @@ tests/**
 !tests/browser/radar-access.spec.cjs
 !tests/radar*
 scripts/load.cjs
-scripts/performance.cjs
 ```
 
 ```surface:radar
@@ -79,6 +80,10 @@ docs/EXECUTIVE-RADAR-NAV-DEV.md
 ```
 
 ```surface:performance
+scripts/performance-diagnostics.cjs
+tests/performance-diagnostics.test.cjs
+scripts/performance.cjs
+tests/cms-client.test.cjs
 assets/coherence-layout.js
 tests/performance.test.cjs
 tests/coherence-film-release.test.cjs
@@ -127,6 +132,7 @@ tests/performance-fonts.test.cjs
 !tests/**
 !scripts/load.cjs
 !scripts/performance.cjs
+!scripts/performance-diagnostics.cjs
 !scripts/verify-production.cjs
 !baies-dev/**
 !executive-radar/**

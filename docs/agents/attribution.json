@@ -17,7 +17,6 @@
     "tests/contact-navigation.test.cjs",
     "tests/browser/navigation.spec.cjs",
     "tests/journal.test.cjs",
-    "tests/cms-client.test.cjs",
     "tests/member-privacy.test.cjs"
   ],
   "radar": [
@@ -34,6 +33,10 @@
     "tests/browser/radar-access.spec.cjs"
   ],
   "performance": [
+    "scripts/performance-diagnostics.cjs",
+    "tests/performance-diagnostics.test.cjs",
+    "scripts/performance.cjs",
+    "tests/cms-client.test.cjs",
     "assets/coherence-layout.js",
     "tests/performance.test.cjs",
     "scripts/member-navigation.cjs",

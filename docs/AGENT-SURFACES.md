@@ -1,6 +1,6 @@
 # Navigation and Executive Radar agent surfaces
 
-Current task (13 November 2026): remove the internal Executive Radar About link, view and obsolete public runtime copy in NL/FR, with regression coverage. The owner requests correction of the public production page. Radar is the only dispatched builder; reviewer is independent and read-only. Orchestrator alone commits and publishes through the protected PR and tested-artifact release gates after successful review. No CMS/HubSpot writes, hosting configuration changes or threshold relaxation. All builders report paths, verification and limitations. Other surfaces below remain preservation-only in this task. The former dev navigation task is retained in Git history.
+Current task: prevent internal Executive Radar sprint/About content from ever entering new public artifacts and retire the confirmed old Cloudflare dev preview3126e2e7. Radar owns policy/build/security/live-check source and regression tests; reviewer is read-only. Orchestrator alone commits. The CEO pilot PR78 remains draft with sponsor acceptance and production Go/No-go OPEN; do not publish that edition. No hosting-wide settings, CMS/HubSpot writes or gate relaxation.
 
 ```roster
 navigation builder installed autonomous
@@ -21,7 +21,6 @@ tests/**
 !tests/brand-logo.test.cjs
 scripts/load.cjs
 scripts/performance.cjs
-scripts/verify-production.cjs
 ```
 
 ```surface:radar
@@ -30,6 +29,8 @@ executive-radar/**
 assets/baies-dev*
 scripts/baies-dev*
 scripts/build.cjs
+scripts/security.cjs
+scripts/verify-production.cjs
 tests/baies-dev.test.cjs
 tests/browser/baies-dev.spec.cjs
 ```
@@ -42,6 +43,9 @@ tests/brand-logo.test.cjs
 
 ```surface:orchestrator
 docs/AGENT-SURFACES.md
+AGENTS.md
+docs/RELEASE.md
+docs/TESTPLAN.md
 docs/agents/**
 scripts/agent-guard.mjs
 .github/workflows/dev-agent-surfaces.yml
@@ -64,9 +68,13 @@ docs/EXECUTIVE-RADAR-NAV-DEV.md
 !assets/baies-dev*
 !scripts/baies-dev*
 !scripts/build.cjs
+!scripts/security.cjs
 !img/**
 !favicon.ico
 !docs/AGENT-SURFACES.md
+!AGENTS.md
+!docs/RELEASE.md
+!docs/TESTPLAN.md
 !docs/agents/**
 !scripts/agent-guard.mjs
 !.github/workflows/dev-agent-surfaces.yml

@@ -194,3 +194,79 @@ test('Executive Radar public surface excludes internal about and newsletter prot
   assert.match(app,/const views=\['overview','dashboard','radar','evidence','editorial'\]/);
   assert.match(html,/Demonstratie · Vaste referentiedata/);
 });
+
+const publicPolicy=require('../scripts/baies-dev-public-policy.cjs');
+const policyFs=require('node:fs'),policyOs=require('node:os'),policyPath=require('node:path'),policyCp=require('node:child_process');
+const policyRoot=policyPath.resolve(__dirname,'..');
+function policyTemp(t){const directory=policyFs.mkdtempSync(policyPath.join(policyOs.tmpdir(),'gf-radar-public-policy-'));t.after(()=>{const resolved=policyPath.resolve(directory),temp=policyPath.resolve(policyOs.tmpdir())+policyPath.sep;assert.ok(resolved.startsWith(temp)&&policyPath.basename(resolved).startsWith('gf-radar-public-policy-'));policyFs.rmSync(resolved,{recursive:true,force:true});});return directory;}
+
+test('Radar publication policy rejects old NL/FR internal About labels, routes, roadmap markup and escaped runtime copy under any filename',()=>{
+  const fixtures=[
+    ['executive-radar/index.html','<nav id="product-links"><a href="#about">Info</a></nav><section id="about"></section>'],
+    ['baies-dev/index.html','<section id="about">Legacy</section>'],
+    ['duplicate.html','<nav id=product-links><a href=#about>Info</a></nav><section id=about></section>'],
+    ['other.js',"const target='/baies-dev/?lang=fr#about';"],
+    ['old-override.js',"const x={nextBody:'Een werkende multi-agentruntime, automatische wetenschappelijke factchecking'};"],
+    ['archive/renamed.htm','<h1>Over Executive Radar</h1>'],
+    ['archive/renamed-fr.html','<h1>À propos d’Executive Radar</h1>'],
+    ['archive/earlier.html','<p>Over BAEIS</p>'],
+    ['archive/earlier-fr.html','<p>À propos de BAEIS</p>'],
+    ['duplicates/copy.html','<div class="sprint-grid"><article>SPRINT 01</article></div>'],
+    ['page.html','<p>Product Owner · 4 Sprint Proof of Concept</p>'],
+    ['page-fr.html','<p>Product Owner · Prototype en 4 sprints</p>'],
+    ['unknown-runtime.js',"const copy={roadmapTitle:'Van fundament tot gecontroleerde MVP.'};"],
+    ['bundle.data','<html><script>const copy={roadmapKicker:"Product Owner"};</script></html>'],
+    ['escaped.js',String.raw`const x={"roadmap\u0054itle":"hidden old title"};`],
+    ['encoded.html','<h1>Over Executive&#32;Radar</h1>'],
+    ['old-fr.js',"const x='Quatre incréments réunis dans un environnement isolé.';"],
+    ['old-nl.js',"const x='Vier doelgerichte increments binnen één geïsoleerde ontwikkelroute.';"],
+    ['assets/baies-dev-app.js',"const x={nextBody:'Internal future plan'};"],
+    ['another.js',"window.BAEIS_DEV_DATA={};const views=['overview','about'];"]
+  ];
+  for(const [name,text]of fixtures){assert.ok(publicPolicy.inspectPublicText(name,text).length>0,name);assert.ok(require('../scripts/security.cjs').inspectText(name,text).length>0,name+' security boundary');}
+});
+
+test('Radar publication policy permits normal company About pages, books about sprints and unused legacy CSS selectors',()=>{
+  for(const [name,text]of [
+    ['about.html','<main id="about" data-id="product-links"><h1>Over ons bedrijf</h1><a href="#about">Ons verhaal</a><p>Onze product owner begeleidt sprints.</p></main>'],
+    ['boek/index.html','<h1>Four sprints to a better operating model</h1><p>SPRINT 01: learn. De volgende sprint begint later.</p>'],
+    ['assets/book.js',"const nextTitle='Chapter 2';const views=['cover','about'];"],
+    ['assets/baies-dev.css','.sprint-grid{display:grid}.next-stage{color:navy}.signup form{display:grid}'],
+    ['executive-radar/index.html',html],['assets/baies-dev-app.js',app]
+  ])assert.deepEqual(publicPolicy.inspectPublicText(name,text),[],name);
+});
+
+test('Radar publication policy walks all artifact text, including renamed copies, extensionless payloads and post-build tampering',t=>{
+  const dir=policyTemp(t);policyFs.mkdirSync(policyPath.join(dir,'archive'),{recursive:true});policyFs.writeFileSync(policyPath.join(dir,'about.html'),'<h1>Our company</h1>');assert.deepEqual(publicPolicy.scanPublicArtifact(dir),[]);
+  const copy=policyPath.join(dir,'archive','old-copy.payload');policyFs.writeFileSync(copy,' '.repeat(5000)+'<html><h1>Over Executive Radar</h1></html>');
+  assert.ok(publicPolicy.scanPublicArtifact(dir).some(message=>message.includes('archive/old-copy.payload')));assert.throws(()=>publicPolicy.assertPublicArtifact(dir),{code:'RADAR_INTERNAL_CONTENT'});assert.ok(require('../scripts/security.cjs').scan(dir).length>0);
+  policyFs.rmSync(copy);policyFs.writeFileSync(policyPath.join(dir,'archive','renamed.mjs'),"const copy={roadmapSub:'old private process'};");assert.ok(publicPolicy.scanPublicArtifact(dir).some(message=>message.includes('renamed.mjs')));
+  assert.ok(publicPolicy.scanPublicArtifact(policyPath.join(dir,'missing')).length>0);
+  const linkedRoot=policyPath.join(dir,'linked-artifact'),privateDir=policyPath.join(dir,'non-public');policyFs.mkdirSync(linkedRoot);policyFs.mkdirSync(privateDir);policyFs.symlinkSync(privateDir,policyPath.join(linkedRoot,'escape'),'junction');assert.ok(publicPolicy.scanPublicArtifact(linkedRoot).some(message=>message.includes('symbolic link rejected')));assert.throws(()=>publicPolicy.assertPublicArtifact(linkedRoot),{code:'RADAR_INTERNAL_CONTENT'});
+});
+
+test('Radar build publishes only a complete policy-approved artifact and removes staged output on internal content rejection',t=>{
+  const fixture=policyTemp(t);policyFs.mkdirSync(policyPath.join(fixture,'scripts'));policyFs.mkdirSync(policyPath.join(fixture,'tests'));policyFs.writeFileSync(policyPath.join(fixture,'tests/legacy-redirects.json'),'[]');
+  for(const file of ['build.cjs','file-reader.cjs','baies-dev-public-policy.cjs'])policyFs.copyFileSync(policyPath.join(policyRoot,'scripts',file),policyPath.join(fixture,'scripts',file));
+  // Use the real build allowlist to construct a minimal input tree; assertions exercise its actual CLI.
+  const source=policyFs.readFileSync(policyPath.join(policyRoot,'scripts/build.cjs'),'utf8'),expression=source.match(/^const files = (.+);$/m)[1];
+  const files=require('node:vm').runInNewContext(expression,{require:id=>{assert.equal(id,'../tests/legacy-redirects.json');return [];}});
+  for(const file of files){const dest=policyPath.join(fixture,file);policyFs.mkdirSync(policyPath.dirname(dest),{recursive:true});policyFs.writeFileSync(dest,file==='executive-radar/index.html'?html:'');}
+  for(const directory of ['assets','media','boek','img','books'])policyFs.mkdirSync(policyPath.join(fixture,directory),{recursive:true});policyFs.writeFileSync(policyPath.join(fixture,'assets/i18n.js'),'window.I18N={};\nwindow.I18N_HTML={};\n');
+  const run=()=>policyCp.spawnSync(process.execPath,['scripts/build.cjs'],{cwd:fixture,encoding:'utf8'});
+  let result=run();assert.equal(result.status,0,result.stderr);const destination=policyPath.join(fixture,'dist');assert.ok(policyFs.existsSync(policyPath.join(destination,'executive-radar/index.html')));assert.equal(policyFs.readFileSync(policyPath.join(destination,'baies-dev/index.html'),'utf8'),html);
+  const contaminated=policyPath.join(fixture,'assets','copy-of-old-runtime.js');policyFs.writeFileSync(contaminated,"const old={roadmapTitle:'Internal roadmap'};");result=run();assert.notEqual(result.status,0);assert.match(result.stderr,/public-content policy rejected/);assert.equal(policyFs.existsSync(destination),false,'rejected output must not remain deployable');assert.deepEqual(policyFs.readdirSync(fixture).filter(name=>name.startsWith('.dist-build-')),[],'failed staging is cleaned');
+  policyFs.rmSync(contaminated);policyFs.writeFileSync(policyPath.join(fixture,'executive-radar/index.html'),'<main id="product-links"><a href="#about">Private flow</a></main>');result=run();assert.notEqual(result.status,0);assert.equal(policyFs.existsSync(destination),false);assert.match(result.stderr,/removed Radar About route/);
+  policyFs.writeFileSync(policyPath.join(fixture,'executive-radar/index.html'),html);assert.equal(run().status,0);policyFs.rmSync(policyPath.join(fixture,'index.html'));result=run();assert.notEqual(result.status,0);assert.equal(policyFs.existsSync(destination),false,'a missing source must leave no deployable dist');assert.deepEqual(policyFs.readdirSync(fixture).filter(name=>name.startsWith('.dist-build-')),[]);
+});
+
+test('Radar public payload verification accepts a real same-origin response and rejects redirects before any foreign request',async t=>{
+  const http=require('node:http'),{request}=require('playwright'),{getRadarPublicPayload}=require('../scripts/verify-production.cjs');let foreignRequests=0,localRequests=0,api;
+  const foreign=http.createServer((req,res)=>{foreignRequests++;res.writeHead(200,{'Content-Type':'text/javascript'});res.end('window.foreign=true;');});
+  const primary=http.createServer((req,res)=>{localRequests++;if(req.url==='/redirect.js'){res.writeHead(302,{Location:'http://127.0.0.1:'+foreign.address().port+'/foreign.js'});return res.end();}res.writeHead(200,{'Content-Type':'text/javascript'});res.end('window.publicRadar=true;');});
+  t.after(async()=>{if(api)await api.dispose();for(const server of [primary,foreign]){server.closeAllConnections();await new Promise(resolve=>server.close(resolve));}});
+  await new Promise(resolve=>foreign.listen(0,'127.0.0.1',resolve));await new Promise(resolve=>primary.listen(0,'127.0.0.1',resolve));api=await request.newContext();const base='http://127.0.0.1:'+primary.address().port;
+  const safe=await getRadarPublicPayload(api,base+'/safe.js',base);assert.equal(await safe.text(),'window.publicRadar=true;');assert.equal(new URL(safe.url()).origin,base);
+  await assert.rejects(getRadarPublicPayload(api,base+'/redirect.js',base),/HTTP 302/);assert.equal(foreignRequests,0,'a rejected redirect must not have contacted its foreign destination');
+  await assert.rejects(getRadarPublicPayload(api,'http://127.0.0.1:'+foreign.address().port+'/foreign.js',base),/Unexpected external/);assert.equal(foreignRequests,0);assert.equal(localRequests,2);
+});

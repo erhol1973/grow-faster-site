@@ -53,7 +53,7 @@ for(const lang of ['nl','fr'])test('Executive Radar: '+lang+' removed internal a
     await expect(page).toHaveURL(new RegExp('/'+route+'/[?]lang='+(lang==='fr'?'nl':'fr')+'#overview$'));
     await expect(page.locator('#overview')).toBeVisible();
     await page.reload();await expect(page.locator('#overview')).toBeVisible();
-    await expect(page.locator('[data-i18n=footer]')).toContainText(lang==='fr'?'Vaste referentiedata':'Données de référence fixes');
+    await expect(page.locator('[data-i18n=footer]')).toContainText(lang==='fr'?'Geen realtimefeed':'Aucun flux en temps réel');
     // Restore a legacy history entry, then verify both directions retain the locale.
     const activeLang=lang==='fr'?'nl':'fr';
     await page.evaluate(()=>{const old=new URL(location.href);old.hash='about';history.pushState(null,'',old);});
@@ -87,8 +87,8 @@ for(const lang of ['nl-BE','fr-BE'])test('BAEIS branding: all '+lang+' views mee
   await page.goto('/executive-radar/');
   if(lang==='fr-BE')await language(page,'fr');
   await expect(page.locator('html')).toHaveAttribute('lang',lang);
-  await expect(page.locator('.dev-strip strong')).toHaveText(lang==='fr-BE'?'DÉMONSTRATION':'DEMONSTRATIE');
-  await expect(page.locator('[data-i18n=footer]')).toContainText(lang==='fr-BE'?'Données de référence fixes':'Vaste referentiedata');
+  await expect(page.locator('.dev-strip strong')).toHaveText(lang==='fr-BE'?'ÉDITION PILOTE ÉDITORIALE':'REDACTIONELE PILOTEDITIE');
+  await expect(page.locator('[data-i18n=footer]')).toContainText(lang==='fr-BE'?'Aucun flux en temps réel':'Geen realtimefeed');
   for(const view of ['overview','dashboard','radar','evidence','editorial']){
     await navigate(page,view);
     const scan=await new AxeBuilder({page}).withTags(['wcag2a','wcag2aa','wcag21aa','wcag22aa']).analyze();
@@ -325,4 +325,70 @@ for(const lang of ['nl','fr'])test('Executive Radar: '+lang+' legacy deep link a
   await home.click();
   await expect(page).toHaveURL(new RegExp('/index[.]html[?]lang='+lang+'$'));
   await expect(page.locator('html')).toHaveAttribute('lang',lang);
+});
+// The researched current edition is distinct from all five archived reference records.
+const currentEdition=require('../../assets/executive-radar-edition.js');
+for(const lang of ['nl','fr'])test('Executive Radar pilot: '+lang+' dated CEO edition, context, source handoff and current download',async({page})=>{
+  await page.clock.install({time:new Date('2026-11-13T12:00:00Z')});
+  await page.goto('/executive-radar/?lang='+lang+'#dashboard');
+  const panel=page.locator('#edition-dashboard');await expect(panel).toHaveAttribute('data-status','current');
+  await expect(panel.locator('.edition-signal')).toHaveCount(3);
+  await expect(panel.locator('.edition-dates')).toContainText(currentEdition.asOf);await expect(panel.locator('.edition-dates')).toContainText(currentEdition.reviewDue);
+  await expect(page.locator('#edition-size-dashboard')).toHaveValue('medium');
+  await page.locator('#edition-size-dashboard').selectOption('large');
+  await language(page,lang==='nl'?'fr':'nl');await expect(page.locator('#edition-size-dashboard')).toHaveValue('large');await language(page,lang);
+  await panel.locator('.edition-assessment summary').first().click();
+  await expect(panel.locator('.edition-assessment').first()).toContainText(currentEdition.signals[0].contexts.large[lang]);
+  const promise=page.waitForEvent('download');await panel.locator('[data-edition-download]').click();const download=await promise;
+  expect(download.suggestedFilename()).toBe('Executive_Radar_'+currentEdition.asOf+'_'+lang+'.txt');
+  const brief=require('node:fs').readFileSync(await download.path(),'utf8');expect(brief).toContain(currentEdition.signals[0].changed[lang]);expect(brief).toContain(currentEdition.sources[0].url);expect(brief).not.toContain('BE-AI-001');
+  await expect(page.locator('#dashboard-records')).toHaveText('5');await expect(page.locator('#dashboard [data-edition-background]')).toContainText('11.11.2026');
+  await navigate(page,'radar');await expect(page.locator('#edition-radar .edition-signal')).toHaveCount(3);await expect(page.locator('#signal-grid .signal-card')).toHaveCount(5);
+  await page.locator('#edition-radar [data-edition-sources]').first().click();await expect(page.locator('#evidence')).toBeVisible();
+  const ids=await page.locator('#edition-evidence .edition-source').evaluateAll(xs=>xs.map(x=>x.dataset.editionSource));expect(ids.sort()).toEqual([...currentEdition.signals[0].sourceIds].sort());
+  await expect(page.locator('#edition-evidence .edition-source').first()).toContainText('2026');
+  await page.locator('#edition-evidence button.text-btn').click();await expect(page.locator('#edition-evidence .edition-source')).toHaveCount(currentEdition.sources.length);
+  await expect(page.locator('#edition-evidence .edition-priority-research article')).toHaveCount(2);await expect(page.locator('#evidence-rows .evidence-record')).toHaveCount(5);
+});
+
+test('Executive Radar pilot: review status automatically changes at Brussels review date and is carried into export',async({page})=>{
+  await page.clock.install({time:new Date('2026-11-19T22:59:30Z')});await page.goto('/executive-radar/?lang=nl');
+  await expect(page.locator('#edition-overview')).toHaveAttribute('data-status','current');
+  await page.clock.fastForward(60000);await expect(page.locator('#edition-overview')).toHaveAttribute('data-status','overdue');
+  await expect(page.locator('#edition-overview .edition-status')).toContainText('verstreken');
+  const promise=page.waitForEvent('download');await page.locator('#edition-overview [data-edition-download]').click();const d=await promise;
+  expect(require('node:fs').readFileSync(await d.path(),'utf8')).toContain('Beoordelingstermijn verstreken');
+});
+
+for(const mode of ['missing','empty','invalid'])test('Executive Radar pilot: '+mode+' edition fails visibly closed while dated reference tools remain usable',async({page})=>{
+  await page.clock.install({time:new Date('2026-11-13T12:00:00Z')});
+  await page.addInitScript(mode=>{let value;Object.defineProperty(window,'GF_RADAR_EDITION',{configurable:true,get:()=>value,set:data=>{if(mode==='missing'){value=undefined;return;}value=structuredClone(data);if(mode==='empty')value.signals=[];else value.reviewDue='2026-02-31';}});},mode);
+  const errors=[];page.on('pageerror',e=>errors.push(e.message));await page.goto('/executive-radar/?lang=fr#dashboard');
+  await expect(page.locator('#edition-dashboard')).toHaveAttribute('data-status',mode==='empty'?'empty':'invalid');
+  await expect(page.locator('#edition-dashboard')).toContainText('Aucune édition contrôlée disponible');await expect(page.locator('#edition-dashboard .edition-signal')).toHaveCount(0);await expect(page.locator('#edition-dashboard [data-edition-download]')).toHaveCount(0);
+  await expect(page.locator('#dashboard-records')).toHaveText('5');await expect(page.locator('#dashboard [data-edition-background]')).toContainText('11.11.2026');
+  await navigate(page,'radar');await expect(page.locator('#signal-grid .signal-card')).toHaveCount(5);await expect(page.locator('#edition-radar .edition-signal')).toHaveCount(0);expect(errors).toEqual([]);
+});
+
+test('Executive Radar pilot: future-dated content is not presented or downloadable as a current edition',async({page})=>{
+  await page.clock.install({time:new Date('2026-11-12T12:00:00Z')});await page.goto('/executive-radar/?lang=nl');
+  await expect(page.locator('#edition-overview')).toHaveAttribute('data-status','scheduled');await expect(page.locator('#edition-overview')).toContainText('toekomstig');await expect(page.locator('#edition-overview .edition-signal')).toHaveCount(0);await expect(page.locator('#edition-overview [data-edition-download]')).toHaveCount(0);
+  await page.clock.setSystemTime(new Date('2026-11-13T12:00:00Z'));await page.clock.fastForward(60000);
+  await expect(page.locator('#edition-overview')).toHaveAttribute('data-status','current');await expect(page.locator('#edition-overview .edition-signal')).toHaveCount(3);await expect(page.locator('#edition-overview [data-edition-download]')).toBeEnabled();
+});
+
+test('Executive Radar pilot: source strings render as inert text, never injected HTML',async({page})=>{
+  await page.clock.install({time:new Date('2026-11-13T12:00:00Z')});await page.addInitScript(()=>{let value;Object.defineProperty(window,'GF_RADAR_EDITION',{configurable:true,get:()=>value,set:data=>{value=structuredClone(data);value.signals[0].title.nl='<img src=x onerror="window.__editionXss=true">';}});});
+  await page.goto('/executive-radar/?lang=nl');await expect(page.locator('#edition-overview .edition-signal h3').first()).toHaveText('<img src=x onerror="window.__editionXss=true">');await expect(page.locator('#edition-overview .edition-signal img')).toHaveCount(0);expect(await page.evaluate(()=>window.__editionXss)).toBeUndefined();
+});
+
+test('Executive Radar pilot: an unchanged clock tick retains open assessment, keyboard focus and silent status',async({page})=>{
+  await page.clock.install({time:new Date('2026-11-13T12:00:00Z')});await page.goto('/executive-radar/?lang=nl#dashboard');
+  const panel=page.locator('#edition-dashboard'),assessment=panel.locator('.edition-assessment').first();
+  await assessment.locator('summary').click();await expect(assessment).toHaveAttribute('open','');
+  const context=page.locator('#edition-size-dashboard');await context.focus();
+  await panel.locator('[data-edition-status]').evaluate(node=>{window.__editionStatusMutations=0;new MutationObserver(records=>{window.__editionStatusMutations+=records.length;}).observe(node,{childList:true,characterData:true,subtree:true});});
+  await page.clock.runFor(60000);
+  await expect(panel).toHaveAttribute('data-status','current');await expect(assessment).toHaveAttribute('open','');await expect(context).toBeFocused();await expect(context).toHaveValue('medium');
+  expect(await page.evaluate(()=>window.__editionStatusMutations)).toBe(0);
 });

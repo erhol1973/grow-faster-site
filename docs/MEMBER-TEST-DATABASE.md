@@ -46,3 +46,36 @@ The PostgreSQL policy suite uses the real migrations against local PGlite with s
 ```text
 node --test tests/member-authorization.test.cjs
 ```
+
+## Download failure investigation — 13 November 2026
+
+The reported HTTP 400 with 88 bytes does not establish whether an object is missing or hidden by RLS. The old runner discarded the Storage error body. It now reports bounded Storage error fields and the actual digest on a successful response with unexpected bytes. Guest-only output explicitly leaves object existence unverified. No remote policy change is justified by the available evidence.
+
+The runner now also requires empty/denied bucket listings at the root and both product prefixes for guests, members and administrators. A successful empty list is an RLS-filtered result, not proof that the bucket is empty. Masked `Object not found` errors are explicitly marked ambiguous until both authenticated roles download the exact expected bytes. A non-JSON, malformed or unrelated gateway error cannot pass a denial check. Storage diagnostics exclude unknown fields and bound/control-strip the known error fields.
+
+CMS checks use read-only `cms_versions?select=id&limit=1`: members must see no private history, and the administrator must see an existing version. The isolated project already has CMS publication-history evidence; if no history exists, this positive proof remains blocked rather than passing an empty result. No test draft is saved or published by this runner. Local policy regressions separately exercise denied member save/publish and self-promotion.
+
+The operation name object.get_authenticated is documented by Supabase; do not broaden the policy to permit signing or listing as a workaround. Local PGlite policy coverage uses a simulated Storage helper and cannot establish the deployed helper implementation or object existence.
+
+Run docs/member-test-diagnose.sql read-only in the SQL Editor of gqsvoioccvklzfmdmexy, then rerun the updated scripts/accept-member-test.cjs interactively with the two test accounts. Return the object_exists results, policy/helper definitions and sanitized failure line. A missing object requires provisioning the exact approved asset at the expected path; an existing object requires comparing deployed policies/helper and the actual gateway error before applying a targeted correction. Do not rerun the bucket-creation migration against an existing bucket.
+
+Local validation: node --test tests/member-acceptance.test.cjs tests/member-authorization.test.cjs — 17 passed, 0 failed. This validates diagnostic classifications and simulated policy behavior; it does not establish deployed object presence or authenticated gateway rights. The previous remote attempt failed with UNABLE_TO_VERIFY_LEAF_SIGNATURE; no authenticated Supabase operator session was available then. No production changes, remote migration, upload, merge or deployment was performed by this diagnostic work.
+
+## Orchestrated continuation — 13 November 2026
+
+Resumed the existing checkout, retained the previous diagnostic changes, and fast-forwarded dev/member-access from 5f71e34 to the existing PR #76 head 7c84b23. No duplicate pull request. Roles: read-only root-cause investigator; implementation/security writer restricted to the acceptance runner, regression tests and diagnostic documentation; independent read-only QA; orchestrator integrates and commits.
+
+Live anonymous evidence on all four paths: public GET HTTP 400 / 98 bytes, NoSuchBucket (Bucket not found); authenticated-object GET without a session and signing HTTP 400 / 88 bytes, NoSuchKey (Object not found). These are masked non-delivery responses, not evidence of object existence or correct member access. The actual member error remains unobserved here. Node --use-system-ca resolved the certificate trust error without disabling TLS verification; a later guest-only attempt hit UND_ERR_CONNECT_TIMEOUT. No logged-in operator/browser session or interactive account credentials were available. No remote corrective mutation is justified yet.
+
+Validation on the current source: build and artifact security scan passed. Independent authorization/session/diagnostic tests: 30 passed. Full local unit suite: 177/179 passed; two failures were ECONNRESET in books.test.cjs and server.test.cjs. Initial local load: 432 requests, 16 timeouts, p95 1716ms (limit 1500ms); this overlapped other checks and is not a clean performance measurement. Local Lighthouse could not launch (spawn EPERM). Retain reports; none of these gates is marked passed.
+
+Independent browser checks: both complete 15-sheet NL/FR layout cases passed using the existing protected-content fixture and the specified landscape viewport. This does not validate real Storage delivery. Radar skip-link focus passed in WebKit. Broader focused Chromium/mobile run: 34 passed, 8 failed, predominantly Journal page-load timeouts plus a missing translated CTA. A separate local port reproduced load timeouts; no proven product repair was inferred from those results. Existing registration browser tests use mocked Auth; real email confirmation and return remain outstanding.
+
+Existing remote head 7c84b23: JavaScript security, Secrets history, CodeQL and BAEIS dev quality succeeded; Website quality gate failed at Lighthouse mobile and desktop medians. Production deployment/verification were skipped. These are results for the old remote head, not approval of this diagnostic commit.
+
+Release decision: NO-GO. Required manual evidence, exclusively on gqsvoioccvklzfmdmexy:
+1. Sign into the test-project Dashboard and run docs/member-test-diagnose.sql in SQL Editor; return bucket privacy, four object_exists rows and deployed policy/helper definitions. This is read-only. Do not rerun the creation migration.
+2. In this checkout run node --use-system-ca scripts/accept-member-test.cjs jochenhollebosch1@gmail.com erlend.hollebosch@proximus.be. Enter each existing test password only at its hidden prompt. Return sanitized output, never passwords/tokens. If the installed Node version lacks --use-system-ca, use the normal command with a correctly configured trust store, never disable TLS validation.
+3. On the dev host, start at a gated Journal article in the chosen language, register an unused test mailbox, open the actual confirmation email in the same browser context, and verify return to the requested article/page/language. User credential creation and email confirmation require manual interaction. Do not change production URL configuration.
+
+Only after authenticated object/policy evidence identifies the cause should missing approved assets be provisioned or a specific policy defect repaired. No merge, deployment or publication is authorized.

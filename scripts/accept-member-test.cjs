@@ -23,14 +23,45 @@ function request(path, token, body) {
     redirect:'error',cache:'no-store',signal:AbortSignal.timeout(30000)
   });
 }
+function storageFailure(data) {
+  let body;
+  try { body = JSON.parse(data.toString('utf8')); } catch { return 'non-JSON error'; }
+  if (!body || typeof body !== 'object' || Array.isArray(body)) return 'non-object JSON error';
+  // Only known Storage error fields, bounded and stripped of control characters.
+  return ['statusCode','code','error','message'].filter(k => typeof body[k] === 'string' || typeof body[k] === 'number')
+    .map(k => k + '=' + String(body[k]).replace(/[\r\n\x00-\x1f]/g,' ').slice(0,200)).join(', ');
+}
 async function assertDenied(label, response) {
-  const body = await response.json().catch(() => ({}));
-  const reason = [body.code,body.error,body.message].join(' ');
+  const data = Buffer.from(await response.arrayBuffer());
+  const reason = storageFailure(data);
   check(label, [400,401,403,404].includes(response.status) &&
     /not[ _-]?found|no.?such.?key|unauthori[sz]ed|permission|not allowed|forbidden|denied|missing authorization/i.test(reason),
-    'HTTP ' + response.status);
+    'HTTP ' + response.status + ', ' + reason +
+    (/not[ _-]?found|no.?such.?key/i.test(reason) ? '; missing object or RLS masking, not independent access proof' : ''));
+}
+async function assertNoListing(label, response) {
+  // Storage SELECT policies often filter the list to [] rather than return 403.
+  if (response.status !== 200) return assertDenied(label, response);
+  const body = await response.json().catch(() => null);
+  check(label, Array.isArray(body) && body.length === 0, 'HTTP 200, expected empty list');
+}
+async function noListing(role, token) {
+  for (const prefix of ['', 'journal/2026-11', 'radar']) {
+    await assertNoListing(role + ' cannot enumerate ' + (prefix || 'bucket root'),
+      await request('/storage/v1/object/list/member-content',token,{prefix,limit:100,offset:0}));
+  }
+}
+async function cmsReadRights(role, token, admin) {
+  // Read IDs only: no draft content, writes, publication or synthetic CMS changes.
+  const response = await request('/rest/v1/cms_versions?select=id&limit=1',token);
+  const rows = await response.json().catch(() => null);
+  check(role + (admin ? ' can read existing private CMS history' : ' cannot read private CMS history'),
+    response.status === 200 && Array.isArray(rows) && (admin ? rows.length === 1 : rows.length === 0),
+    'HTTP ' + response.status + ', ' + (Array.isArray(rows) ? rows.length + ' visible history rows' : 'invalid response') +
+    (admin && Array.isArray(rows) && rows.length === 0 ? '; existing test CMS history required for positive proof' : ''));
 }
 async function anonymousStorage() {
+  await noListing('Guest',null);
   for (const [name] of assets) {
     for (const mode of ['public','authenticated']) {
       const response = await request('/storage/v1/object/' + mode + '/member-content/' + name);
@@ -53,12 +84,15 @@ async function memberOrAdmin(email,admin) {
       const response = await request('/rest/v1/rpc/' + rpc,token,{});
       check(role + ' ' + rpc,response.ok && (await response.json()) === expected,'expected ' + expected + ', HTTP ' + response.status);
     }
+    await cmsReadRights(role,token,admin);
+    await noListing(role,token);
     for (const [name,hash] of assets) {
       const response = await request('/storage/v1/object/authenticated/member-content/' + name,token);
       const data = Buffer.from(await response.arrayBuffer());
       const digest = createHash('sha256').update(data).digest('hex');
       check(role + ' downloads exact ' + name,response.status === 200 && digest === hash,
-        'HTTP ' + response.status + ', ' + data.length + ' bytes');
+        'HTTP ' + response.status + ', ' + data.length + ' bytes' +
+        (response.status === 200 ? ', SHA256 ' + digest : ', ' + storageFailure(data)));
       await assertDenied(role + ' signing ' + name,await request('/storage/v1/object/sign/member-content/' + name,token,{expiresIn:60}));
     }
   } finally {
@@ -86,9 +120,10 @@ async function main() {
     await memberOrAdmin(args[0],false);
     await memberOrAdmin(args[1],true);
   }
-  console.log(guestOnly ? 'Guest checks passed; member and administrator checks outstanding.' : 'Isolated real access tests passed.');
+  console.log(guestOnly ? 'Guest requests returned no content; object existence and member/administrator checks outstanding.' : 'Isolated real access tests passed.');
 }
-main().catch(error => {
+module.exports = {storageFailure, assertDenied, assertNoListing, cmsReadRights};
+if (require.main === module) main().catch(error => {
   console.error(error.message, error.cause?.code || '');
   process.exitCode = 1;
 });

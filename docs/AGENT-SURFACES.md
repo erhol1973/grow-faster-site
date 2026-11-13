@@ -2,6 +2,8 @@
 
 Current task: integrate approved main navigation/branding and permanent Radar publication boundary into dev/member-access, preserve member authorization and sanitized private editions, repair mobile performance, validate one current dev preview. No main merge/deployment, production database or CMS/CRM writes. Root commits; producers do not. Reviewer audits producers after implementation. Prior retired unsafe previews remain retired. CEO pilot stays draft and outside this integration.
 
+This map coordinates this task and checkout only. It does not reserve shared project files against other workstreams. Review shared HTML, build and asset changes against current main and typography PR79 before any future integration; keep stable CMS IDs and fail-closed environment selection.
+
 ```roster
 navigation builder installed autonomous
 radar builder installed autonomous
@@ -14,14 +16,19 @@ reviewer reviewer installed autonomous
 ```surface:navigation
 *.html
 !index.html
+!coherence.html
+!insights.html
+!about.html
 assets/navigation.css
 assets/i18n.js
+assets/coherence-layout.js
 tests/**
 !tests/baies-dev.test.cjs
 !tests/browser/baies-dev.spec.cjs
 !tests/brand-logo.test.cjs
 !tests/typography.test.cjs
 !tests/performance-fonts.test.cjs
+!tests/journal-editorial.test.cjs
 !tests/hero-image.test.cjs
 !tests/browser/navigation-accessibility.spec.cjs
 !tests/server-compression.test.cjs
@@ -52,6 +59,8 @@ tests/browser/baies-dev.spec.cjs
 ```surface:branding
 img/**
 !img/hero-executive-meeting-*.avif
+!img/hero-*.avif
+!img/author-retouched-*.avif
 favicon.ico
 tests/brand-logo.test.cjs
 ```
@@ -69,6 +78,12 @@ docs/EXECUTIVE-RADAR-NAV-DEV.md
 ```
 
 ```surface:performance
+coherence.html
+insights.html
+about.html
+img/hero-*.avif
+img/author-retouched-*.avif
+tests/journal-editorial.test.cjs
 index.html
 img/hero-executive-meeting-*.avif
 tests/hero-image.test.cjs
@@ -103,6 +118,7 @@ tests/performance-fonts.test.cjs
 !assets/navigation.css
 !assets/site.js
 !assets/i18n.js
+!assets/coherence-layout.js
 !tests/**
 !scripts/load.cjs
 !scripts/performance.cjs

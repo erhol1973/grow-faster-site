@@ -13,6 +13,25 @@ test('Radar preview never requests private data as a guest', async ({page}) => {
   await expect(page.locator('#dashboard')).toHaveCount(0);
   expect(attempts).toBe(0);
 });
+
+test('Radar member account follows the selected language and current view',async({page})=>{
+  await page.route('**/assets/member-auth.js',route=>route.fulfill({contentType:'text/javascript',body:"window.GFMember={ready:async()=>({id:'member'}),accountUrl:()=>'/account?'+new URLSearchParams({return:location.pathname+location.search+location.hash,lang:document.documentElement.lang.startsWith('fr')?'fr':'nl'}),request:async()=>fetch('/__private_radar')};"}));
+  await page.route('**/__private_radar',route=>route.fulfill({contentType:'application/json',body:JSON.stringify(edition())}));
+  await page.goto('/executive-radar/?lang=nl');
+  const account=page.locator('.radar-account');
+  await expect(account).toHaveText('Mijn account');
+  await page.locator('[data-language="fr"]').click();
+  await page.getByRole('button',{name:'Explorer le Radar IA',exact:true}).click();
+  await expect(account).toHaveText('Mon compte');
+  let target=new URL(await account.getAttribute('href'),'https://example.test');
+  expect(target.searchParams.get('lang')).toBe('fr');
+  expect(target.searchParams.get('return')).toBe('/executive-radar/?lang=fr#radar');
+  await page.locator('[data-language="nl"]').click();
+  await expect(account).toHaveText('Mijn account');
+  target=new URL(await account.getAttribute('href'),'https://example.test');
+  expect(target.searchParams.get('lang')).toBe('nl');
+  expect(target.searchParams.get('return')).toBe('/executive-radar/?lang=nl#radar');
+});
 for(const scenario of ['denied','tampered template','unsafe source','internal copy']) {
   test('Radar member reader fails closed for '+scenario, async ({page}) => {
     await page.route('**/assets/member-auth.js',route=>route.fulfill({contentType:'text/javascript',

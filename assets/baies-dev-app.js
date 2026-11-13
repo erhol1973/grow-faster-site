@@ -27,6 +27,8 @@ window.openMemberRadar = function(){
     navigation.setAttribute('aria-label',text('navLabel'));
     document.querySelector('.identity').setAttribute('aria-label',text('brandHome'));
     document.querySelector('.identity').setAttribute('href','../index.html?lang='+state.lang);
+    const account=document.querySelector('.radar-account');
+    if(account&&window.GFMember){account.textContent=state.lang==='fr'?'Mon compte':'Mijn account';account.href=window.GFMember.accountUrl();}
     document.querySelector('meta[name=description]').setAttribute('content',state.lang==='fr'?'Executive Radar de Grow Faster — économie belge et IA pour votre agenda de direction. Démonstration avec données de référence fixes.':'Executive Radar van Grow Faster — Belgische economie en AI voor jouw directieagenda. Demonstratie met vaste referentiedata.');
     $('language-switch').setAttribute('aria-label',text('langLabel'));
     toggle.setAttribute('aria-label',text(toggle.getAttribute('aria-expanded')==='true'?'navClose':'navOpen'));

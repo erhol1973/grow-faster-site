@@ -10,7 +10,7 @@ function typographyMarkup(css, {external = false} = {}) {
   return preload + (external ? '<link rel="stylesheet" href="/assets/typography.css">' :
     '<style data-gf-typography>' + css + '</style>');
 }
-// Inline only the four small local component styles, at their original cascade
+// Inline only the small local component styles, at their original cascade
 // positions. Keep standalone assets for cached documents and strict-CSP pages.
 // Styles with imports/URLs stay external so URL resolution never changes.
 function inlineComponentStyles(html, loadCSS) {
@@ -20,7 +20,7 @@ function inlineComponentStyles(html, loadCSS) {
     const href = tag.match(/\shref\s*=\s*(["'])(.*?)\1/i);
     if (!relation || relation[2].toLowerCase() !== 'stylesheet' || !href ||
         /\s(?:media|disabled|integrity|onload)\b/i.test(tag)) return tag;
-    const asset = href[2].match(/^\/?assets\/(navigation|home-hero|books|journal)\.css(?:[?][^#]*)?$/);
+    const asset = href[2].match(/^\/?assets\/(navigation|home-hero|books|journal|coherence-film)\.css(?:[?][^#]*)?$/);
     if (!asset) return tag;
     const name = 'assets/' + asset[1] + '.css';
     const css = loadCSS(name);

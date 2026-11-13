@@ -54,7 +54,7 @@ test('component inlining preserves CSP, conditional styles and URL resolution',(
  assert.throws(()=>inlineComponentStyles(normal,()=>'<'+ '/style><script>bad()</script>'),/Unsafe component/);
 });
 test('built pages inline only small styles while retaining exact standalone assets',()=>{
- for(const route of ['index.html','books.html','insights.html','approach.html']){
+ for(const route of ['index.html','books.html','insights.html','approach.html','coherence.html']){
   const html=fs.readFileSync(path.join(root,'dist',route),'utf8');
   const styles=[...html.matchAll(/<style data-gf-component-style="(assets\/[^"<>]+)">([\s\S]*?)<\/style>/g)];
   assert.ok(styles.length>0,route);
@@ -62,7 +62,7 @@ test('built pages inline only small styles while retaining exact standalone asse
    assert.equal(css,fs.readFileSync(path.join(root,name),'utf8'),route+' inline '+name);
    assert.equal(css,fs.readFileSync(path.join(root,'dist',name),'utf8'),route+' standalone '+name);
   }
-  assert.doesNotMatch(html,/<link[^>]+href="\/?assets\/(navigation|home-hero|books|journal)\.css[?"#]/i,route);
+  assert.doesNotMatch(html,/<link[^>]+href="\/?assets\/(navigation|home-hero|books|journal|coherence-film)\.css[?"#]/i,route);
   const scripts=[...html.matchAll(/<script\b[^>]*>/gi)].map(x=>x[0]);const dictionaries=scripts.filter(tag=>/src="\/?assets\/i18n\.js[?"#]/.test(tag));
   assert.equal(dictionaries.length,1,route);assert.match(dictionaries[0],/\bdefer\b/,route);assert.doesNotMatch(dictionaries[0],/fetchpriority=/i,route);
   assert.ok(scripts.indexOf(dictionaries[0])<scripts.findIndex(tag=>/src="\/?assets\/site\.js[?"#]/.test(tag)),route);

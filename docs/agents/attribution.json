@@ -9,6 +9,8 @@
     ".github/workflows/baies-dev-quality.yml"
   ],
   "navigation": [
+    "assets/coherence-layout.js",
+    "tests/browser/coherence-film-layout.spec.cjs",
     "admin.html",
     "journal.html",
     "journal-fr.html",
@@ -33,6 +35,12 @@
     "tests/browser/radar-access.spec.cjs"
   ],
   "performance": [
+    "coherence.html",
+    "insights.html",
+    "about.html",
+    "img/author-retouched-400.avif",
+    "img/author-retouched-720.avif",
+    "tests/journal-editorial.test.cjs",
     "scripts/build.cjs",
     "scripts/typography-build.cjs",
     "tests/performance-fonts.test.cjs",

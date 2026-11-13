@@ -71,3 +71,51 @@ test('critical component styles are inline and the existing deferred dictionary 
  expect(await page.evaluate(()=>window.translationEvents)).toContainEqual({language:'fr',loaded:true});
  await expect(page.locator('html')).toHaveAttribute('lang','fr');await expect(page.locator('#hero h1')).toBeVisible();
 });
+
+for(const route of ['coherence.html','insights.html'])test(route+' preloads the original responsive hero exactly once',async({page},info)=>{
+ await page.setViewportSize({width:info.project.use.isMobile?390:1440,height:900});
+ const requests=[];page.on('request',request=>{if(/\/img\/hero-\d+\.webp$/.test(new URL(request.url()).pathname))requests.push(request.url())});
+ await page.addInitScript(()=>{localStorage.setItem('avs-lang','nl');localStorage.setItem('avs-consent',JSON.stringify({v:4,ext:false,ana:false,ts:Date.now()}))});
+ await page.goto('/'+route);
+ const image=page.locator('.hero-bg picture img');await expect.poll(()=>image.evaluate(e=>e.complete&&e.naturalWidth>0)).toBe(true);
+ const result=await image.evaluate(e=>({src:e.currentSrc,mobile:innerWidth<=600,pixels:innerWidth*devicePixelRatio,entries:performance.getEntriesByName(e.currentSrc).map(x=>x.initiatorType)}));
+ const width=result.mobile?640:([640,1280,1920,2400].find(w=>w>=result.pixels)||2400);
+ expect(new URL(result.src).pathname).toBe('/img/hero-'+width+'.webp');expect(requests).toEqual([result.src]);expect(result.entries).toEqual(['link']);
+ const preloads=await page.locator('head link[rel=preload][as=image]').evaluateAll(els=>els.filter(e=>matchMedia(e.media).matches).map(e=>({type:e.type,priority:e.fetchPriority})));
+ expect(preloads).toEqual([{type:'image/webp',priority:'high'}]);
+ if(route==='coherence.html'){
+  await expect(page.locator('link[href="assets/coherence-film.css"]')).toHaveCount(0);
+  await expect(page.locator('style[data-gf-component-style="assets/coherence-film.css"]')).toHaveCount(1);
+ }
+});
+test('About preloads one selected AVIF portrait and keeps its JPEG fallback geometry',async({page},info)=>{
+ await page.setViewportSize({width:info.project.use.isMobile?390:1440,height:900});
+ const requests=[];page.on('request',request=>{if(/\/img\/author-retouched-\d+\.(avif|jpg)$/.test(new URL(request.url()).pathname))requests.push(request.url())});
+ await page.addInitScript(()=>{localStorage.setItem('avs-consent',JSON.stringify({v:4,ext:false,ana:false,ts:Date.now()}))});await page.goto('/about.html');
+ const image=page.locator('img[data-cms="f9e1d98ca6f92-0"]');await expect.poll(()=>image.evaluate(e=>e.complete&&e.naturalWidth>0)).toBe(true);
+ const src=await image.evaluate(e=>e.currentSrc);expect(src).toMatch(/author-retouched-(400|720)\.avif$/);expect(requests).toEqual([src]);
+ const preload=page.locator('head link[rel=preload][as=image]');const source=page.locator('picture:has(img[data-cms="f9e1d98ca6f92-0"]) source[type="image/avif"]');
+ await expect(preload).toHaveAttribute('type','image/avif');await expect(preload).toHaveAttribute('imagesrcset',await source.getAttribute('srcset'));await expect(preload).toHaveAttribute('imagesizes',await source.getAttribute('sizes'));
+ await expect(image).toHaveAttribute('src','img/author-retouched-720.jpg');await expect(image).toHaveAttribute('width','720');await expect(image).toHaveAttribute('height','900');
+ await expect(page.locator('picture:has(img[data-cms="f9e1d98ca6f92-0"]) source[type="image/jpeg"]')).toHaveCount(1);
+});
+test('a published CMS portrait replaces all fixed AVIF and JPEG picture sources',async({page})=>{
+ const base='https://gqsvoioccvklzfmdmexy.supabase.co';const object='00000000-0000-4000-8000-000000000099.jpg';
+ await page.route('**/assets/cms-config.js*',route=>route.fulfill({contentType:'application/javascript',body:'window.GF_CMS_CONFIG={url:'+JSON.stringify(base)+',key:"public-test-key"};'}));
+ await page.route(base+'/**',async route=>{
+  const request=route.request(),url=new URL(request.url());const headers={'access-control-allow-origin':'*','access-control-allow-headers':'*','access-control-allow-methods':'GET,POST,OPTIONS'};
+  const json=data=>route.fulfill({contentType:'application/json',headers,body:JSON.stringify(data)});
+  if(request.method()==='OPTIONS')return json({});
+  if(url.pathname==='/rest/v1/cms_publications')return json([{content:{settings:{fields:{'f9e1d98ca6f92-0':{type:'media',path:object,alt:{nl:'CMS-testportret',fr:'Portrait test CMS'}}}}}}]);
+  if(request.method()==='POST'&&url.pathname==='/storage/v1/object/sign/cms-media/'+object)return json({signedURL:'/object/sign/cms-media/'+object+'?token=synthetic'});
+  if(url.pathname==='/storage/v1/object/sign/cms-media/'+object)return route.fulfill({body:'<svg xmlns="http://www.w3.org/2000/svg" width="400" height="500"><rect width="400" height="500" fill="#f03a6d"/><circle cx="200" cy="250" r="100" fill="#10457a"/></svg>',contentType:'image/svg+xml',headers});
+  return route.fulfill({status:400,headers,body:'Unexpected fixture request'});
+ });
+ await page.goto('/about.html?lang=nl');const image=page.locator('img[data-cms="f9e1d98ca6f92-0"]');
+ await expect(image).toHaveAttribute('src',base+'/storage/v1/object/sign/cms-media/'+object+'?token=synthetic');await expect(image).toHaveAttribute('alt','CMS-testportret');await expect.poll(()=>image.evaluate(e=>({complete:e.complete,decoded:e.naturalWidth>0&&e.naturalHeight>0,aspect:e.naturalWidth/e.naturalHeight,current:e.currentSrc,sources:e.closest('picture').querySelectorAll('source').length}))).toEqual({complete:true,decoded:true,aspect:0.8,current:base+'/storage/v1/object/sign/cms-media/'+object+'?token=synthetic',sources:0});
+ await image.evaluate(e=>e.decode());await expect(image).toBeVisible();
+ // Responsive candidates can retain a density-corrected natural size. An independent
+ // decoder proves the unique replacement fixture's intrinsic pixel geometry.
+ expect(await image.evaluate(async e=>{const probe=new Image();probe.src=e.currentSrc;await probe.decode();return [probe.naturalWidth,probe.naturalHeight];})).toEqual([400,500]);
+ await expect(page.locator('picture:has(img[data-cms="f9e1d98ca6f92-0"]) source')).toHaveCount(0);
+});

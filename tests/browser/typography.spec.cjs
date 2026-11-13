@@ -1,15 +1,12 @@
 'use strict';
 const {test,expect}=require('playwright/test');
-const {routes,collect,renderedFonts}=require('../../scripts/typography-audit.cjs');
+const {routes,languageCases,prepareRoute,collect,renderedFonts}=require('../../scripts/typography-audit.cjs');
 const widths=process.env.TYPOGRAPHY_WIDTHS?process.env.TYPOGRAPHY_WIDTHS.split(',').map(Number):[320,390,768,1366];
-const fixedLanguages={'/journal.html':'nl','/journal-fr.html':'fr','/admin.html':'nl','/boek/index.html':'en','/boek/the-coherent-enterprise/index.html':'en'};
-for(const route of routes())for(const language of (fixedLanguages[route]?[fixedLanguages[route]]:['nl','fr']))for(const width of widths){
+for(const route of routes())for(const {language,effectiveLanguage} of languageCases(route))for(const width of widths){
  test(`typography ${route} ${language} ${width}`,async({page,browserName},info)=>{
   await page.setViewportSize({width,height:900});
   await page.addInitScript(lang=>{localStorage.setItem('avs-lang',lang);localStorage.setItem('avs-consent',JSON.stringify({v:4,ext:false,ana:false,ts:Date.now()}));},language);
-  await page.goto(`${route}?lang=${language}`);
-  if(['/executive-radar/index.html','/baies-dev/index.html'].includes(route))await page.locator('[data-language="'+language+'"]').click();
-  const effectiveLanguage=['/executive-radar/index.html','/baies-dev/index.html'].includes(route)?language+'-BE':language;
+  await prepareRoute(page,route,language);
   await expect(page.locator('html')).toHaveAttribute('lang',effectiveLanguage);
   await expect(page.locator('body')).toBeVisible();
   await expect(page.locator('body')).toHaveCSS('font-size','17px');
@@ -87,10 +84,18 @@ test('explicit supporting roles and nested heading/prose resist component specif
   const fixture=document.createElement('section');fixture.id='typography-regression-fixture';
   fixture.innerHTML='<h2><a class="btn"><strong>Nested heading</strong></a></h2><p>Ordinary <span>nested prose</span> <span data-typography-role="label">Label</span> <span data-typography-role="metadata">Metadata</span></p><ul><li>List <span data-typography-role="label">Label</span> <span data-typography-role="metadata">Metadata</span></li></ul>';
   fixture.innerHTML+='<p data-typography-role="label">Outer label <span id="nested-metadata" data-typography-role="metadata">Inner metadata <b>Nested emphasis</b></span></p><p data-typography-role="metadata">Outer metadata <span id="nested-label" data-typography-role="label">Inner label <b>Nested emphasis</b></span></p><button type="button">Control <span id="control-label" data-typography-role="label">Control label</span> <span id="control-metadata" data-typography-role="metadata">Control metadata</span></button><div data-typography-role="metadata">Supporting container <input id="nested-native-control" placeholder="Synthetic placeholder" aria-label="Synthetic control"></div>';
+  fixture.innerHTML+='<figure><figcaption id="caption-wrapper"><p id="caption-prose">Caption prose <span id="caption-label" data-typography-role="label">Caption label <span id="caption-nested-metadata" data-typography-role="metadata">Inner caption metadata</span></span></p><button id="caption-control" type="button">Caption control <span>Nested control text</span></button><h3 id="caption-heading">Caption heading <strong>Nested heading text</strong></h3></figcaption></figure>';
+  fixture.innerHTML+='<section id="offscreen-auto-fixture" style="content-visibility:auto;contain-intrinsic-size:100px;margin-top:5000px"><p id="offscreen-auto-prose">Optimized offscreen prose</p></section><section id="intentional-hidden-fixture" style="content-visibility:hidden;height:40px">Closed text<p id="intentional-hidden-prose">Intentionally hidden prose</p></section>';
   document.querySelector('main').append(fixture);
  });
  const fixture=page.locator('#typography-regression-fixture');
- await expect(fixture.locator('[data-typography-role=label]')).toHaveCount(5);
+ const result=await collect(page);await info.attach('nested-role-computed-styles',{body:JSON.stringify(result,null,2),contentType:'application/json'});
+ await page.screenshot({path:info.outputPath('nested-role-fixture.png')});
+ expect(result.offscreenReveal).toBe(true);expect(result.offscreenRevealCount).toBeGreaterThan(0);
+ expect(result.elements.some(e=>e.id==='offscreen-auto-prose'),'optimized below-fold text is measured').toBe(true);
+ expect(result.elements.some(e=>e.id==='intentional-hidden-fixture'||e.id==='intentional-hidden-prose'),'intentional content-visibility:hidden stays excluded').toBe(false);
+ await expect(fixture.locator('#intentional-hidden-fixture')).toHaveCSS('content-visibility','hidden');
+ await expect(fixture.locator('[data-typography-role=label]')).toHaveCount(6);
  for(const label of await fixture.locator('[data-typography-role=label]').all())await expect(label).toHaveCSS('font-size','12px');
  for(const meta of await fixture.locator('[data-typography-role=metadata]').all())await expect(meta).toHaveCSS('font-size','14px');
  const size=await fixture.locator('h2').evaluate(e=>getComputedStyle(e).fontSize);
@@ -99,8 +104,13 @@ test('explicit supporting roles and nested heading/prose resist component specif
  await expect(fixture.locator('#nested-metadata b')).toHaveCSS('font-size','14px');
  await expect(fixture.locator('#nested-label b')).toHaveCSS('font-size','12px');
  await expect(fixture.locator('#nested-native-control')).toHaveCSS('font-size','15px');
- const result=await collect(page);await info.attach('nested-role-computed-styles',{body:JSON.stringify(result,null,2),contentType:'application/json'});
- await page.screenshot({path:info.outputPath('nested-role-fixture.png')});
+ await expect(fixture.locator('#caption-prose')).toHaveCSS('font-size','14px');
+ await expect(fixture.locator('#caption-label')).toHaveCSS('font-size','12px');
+ await expect(fixture.locator('#caption-nested-metadata')).toHaveCSS('font-size','14px');
+ await expect(fixture.locator('#caption-control')).toHaveCSS('font-size','15px');
+ await expect(fixture.locator('#caption-control span')).toHaveCSS('font-size','15px');
+ await expect(fixture.locator('#caption-heading')).toHaveCSS('font-size','24px');
+ await expect(fixture.locator('#caption-heading strong')).toHaveCSS('font-size','24px');
  expect(result.deviations).toEqual([]);
 });
 for(const language of ['nl','fr'])for(const width of [390,768,1366]){

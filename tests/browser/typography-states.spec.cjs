@@ -92,3 +92,210 @@ for(const width of widths)test(`typography synthetic authenticated CMS and actua
  }
  expect(calls.filter(call=>/cms_save_section|cms_publish_section/.test(call.path)||call.path.endsWith('/page_sections')&&call.method!=='GET')).toEqual([]);
 });
+
+// Both readers contain HTML text on every internal sheet. Their English
+// publication language is independent of the saved/requested website language.
+const htmlBooks=[{route:'/boek/index.html',pages:22},{route:'/boek/the-coherent-enterprise/index.html',pages:12}];
+async function bookEvidence(page,info,name,rootSelector){
+ const result=await collect(page);
+ result.geometry=await page.locator(rootSelector).evaluate(root=>{
+  const box=e=>{const r=e.getBoundingClientRect();return {left:r.left,top:r.top,right:r.right,bottom:r.bottom,width:r.width,height:r.height}};
+  const summary=e=>{const s=getComputedStyle(e);return {tag:e.tagName,id:e.id,classes:e.className?.baseVal??e.className,box:box(e),offsetWidth:e.offsetWidth,offsetHeight:e.offsetHeight,screenScaleX:e.offsetWidth?e.getBoundingClientRect().width/e.offsetWidth:null,clientWidth:e.clientWidth,clientHeight:e.clientHeight,scrollWidth:e.scrollWidth,scrollHeight:e.scrollHeight,overflowX:s.overflowX,overflowY:s.overflowY}};
+  const clipped=[];
+  // Test actual text fragments against clipping ancestors inside the page.
+  // The stage/text-view outer scrollports intentionally reveal content by
+  // scrolling and therefore are recorded separately, not called clipping.
+  for(const el of [root,...root.querySelectorAll('*')]){
+   if(el.closest('[aria-hidden="true"]')||getComputedStyle(el).visibility==='hidden')continue;
+   for(const node of el.childNodes){
+    if(node.nodeType!==3||!node.textContent.trim())continue;
+    // Element boxes can fit while glyph runs paint outside (notably heatmap
+    // cells). Range rectangles inspect the actual direct-text line fragments.
+    const range=document.createRange();range.selectNodeContents(node);
+    for(const rect of range.getClientRects()){
+     if(!rect.width||!rect.height)continue;
+     let reachableX=false,reachableY=false;
+     for(let ancestor=el;ancestor&&ancestor!==root.parentElement.parentElement;ancestor=ancestor.parentElement){
+      const style=getComputedStyle(ancestor),r=ancestor.getBoundingClientRect();
+      const scrollX=/auto|scroll/.test(style.overflowX)&&ancestor.scrollWidth>ancestor.clientWidth+1;
+      const scrollY=/auto|scroll/.test(style.overflowY)&&ancestor.scrollHeight>ancestor.clientHeight+1;
+      const cutX=!reachableX&&/hidden|clip/.test(style.overflowX)&&(rect.left<r.left-1||rect.right>r.right+1);
+      const cutY=!reachableY&&/hidden|clip/.test(style.overflowY)&&(rect.top<r.top-1||rect.bottom>r.bottom+1);
+      // Stop at the first hidden/clip loss: a later outer auto scrollport
+      // cannot recover text already clipped by an inner ancestor.
+      if(cutX||cutY){clipped.push({text:node.textContent.trim().slice(0,80),element:el.tagName,ancestor:summary(ancestor),cutX,cutY,textBox:{left:rect.left,top:rect.top,right:rect.right,bottom:rect.bottom}});break;}
+      reachableX=reachableX||scrollX;reachableY=reachableY||scrollY;
+     }
+    }
+   }
+  }
+  return {viewportWidth:innerWidth,selected:document.querySelector('#pgNow').textContent,root:summary(root),page:summary(root.parentElement),stage:summary(document.querySelector('#stage')),textview:summary(document.querySelector('#textview')),clipped};
+ });
+ const body=JSON.stringify(result,null,2);
+ await require('node:fs/promises').writeFile(info.outputPath(name+'.json'),body);
+ await info.attach(name,{body,contentType:'application/json'});
+ await page.screenshot({path:info.outputPath(name+'.png')});
+ return {name,...result};
+}
+for(const book of htmlBooks)for(const width of widths)for(let first=1;first<=book.pages;first+=6){
+ const last=Math.min(first+5,book.pages);
+ test(`typography HTML book ${book.pages} pages ${first}-${last} ${width}`,async({page},info)=>{
+  await page.setViewportSize({width,height:900});await page.emulateMedia({reducedMotion:'reduce'});
+  const preference=width===768?'fr':'nl';await seed(page,preference);
+  await page.addInitScript(()=>{localStorage.setItem('flip:hinted','1');localStorage.setItem('flip:mobilehint','1')});
+  await page.goto(book.route+'?lang='+preference+'#page-'+first);
+  await expect(page.locator('#book .page')).toHaveCount(book.pages);
+  const evidence=[];
+  const assigned=Array.from({length:last-first+1},(_,i)=>first+i);
+  // Exercise the two independently reported content regressions first, while
+  // retaining every assigned page and all existing geometry expectations.
+  const priority=book.pages===22&&first===13?16:book.pages===12&&first===7?10:null;
+  const ordered=priority?[priority,...assigned.filter(n=>n!==priority)]:assigned;
+  for(const n of ordered){
+   await page.evaluate(index=>{location.hash='page-'+index},n);
+   const expected=width<700||n===1||n===book.pages?String(n):n%2===0?n+'–'+(n+1):(n-1)+'–'+n;
+   await expect(page.locator('#pgNow')).toBeVisible();await expect(page.locator('#pgNow')).toHaveText(expected);
+   const root='#book .page[data-p="'+n+'"]>.pg';await expect(page.locator(root)).toBeVisible();
+   evidence.push(await bookEvidence(page,info,'book-page-'+n,root));
+   const region=page.locator(root);
+   await expect(region).toHaveAttribute('role','region');await expect(region).toHaveAttribute('tabindex','0');await expect(region).toHaveAttribute('aria-label',new RegExp('^Page '+n+':'));
+   await region.focus();await expect(region).toBeFocused();await page.keyboard.press('End');
+   await expect.poll(()=>region.evaluate(el=>Math.abs(el.scrollHeight-el.clientHeight-el.scrollTop)),'native End reaches page '+n+' bottom without flipping').toBeLessThanOrEqual(1);
+   const keyboard=await bookEvidence(page,info,'book-page-'+n+'-keyboard-bottom',root);evidence.push(keyboard);
+   await expect(page.locator('#pgNow')).toHaveText(expected);
+   await page.keyboard.press('Home');await expect.poll(()=>region.evaluate(el=>el.scrollTop),'native Home reaches page '+n+' start').toBeLessThanOrEqual(1);
+   await expect(page.locator('#pgNow')).toHaveText(expected);
+   if(await page.locator('#btnZoomIn').isVisible())await page.locator('#btnZoomIn').click();else await page.keyboard.press('Shift+Equal');
+   await expect(page.locator('#zoomVal')).toHaveText('125%');
+   await expect.poll(()=>region.evaluate(el=>Math.abs(el.getBoundingClientRect().width/el.offsetWidth-1.25)),'actual page screen transform reaches 125%').toBeLessThanOrEqual(.01);
+   const zoomed=await bookEvidence(page,info,'book-page-'+n+'-zoom',root);evidence.push(zoomed);
+   await region.focus();await page.keyboard.press('End');
+   await expect.poll(()=>region.evaluate(el=>Math.abs(el.scrollHeight-el.clientHeight-el.scrollTop)),'zoomed native page scrolling reaches bottom').toBeLessThanOrEqual(1);
+   await expect(page.locator('#pgNow')).toHaveText(expected);
+   await page.keyboard.press('Home');await expect.poll(()=>region.evaluate(el=>el.scrollTop)).toBeLessThanOrEqual(1);
+   const scroll=zoomed.geometry.stage;
+   if(scroll.scrollWidth>scroll.clientWidth+1||scroll.scrollHeight>scroll.clientHeight+1){
+    expect(scroll.overflowX,'zoomed stage horizontal scroll affordance').toMatch(/auto|scroll/);
+    expect(scroll.overflowY,'zoomed stage vertical scroll affordance').toMatch(/auto|scroll/);
+   }
+   if(await page.locator('#btnFitPage').isVisible())await page.locator('#btnFitPage').click();else await page.keyboard.press('0');
+   await expect(page.locator('#zoomVal')).toHaveText('100%');
+   await expect.poll(()=>region.evaluate(el=>Math.abs(el.getBoundingClientRect().width/el.offsetWidth-1)),'actual page screen transform returns to fit').toBeLessThanOrEqual(.01);
+   await page.locator('#btnText').click();await expect(page.locator('#textview')).toBeVisible();await expect(page.locator('#textview .tv-page')).toHaveCount(book.pages);
+   const textRoot='#tv-'+n+'>.pg';await page.locator('#tv-'+n).scrollIntoViewIfNeeded();await expect(page.locator(textRoot)).toBeVisible();
+   const text=await bookEvidence(page,info,'book-page-'+n+'-text',textRoot);evidence.push(text);
+   expect(text.geometry.textview.overflowY,'text view preserves intentional vertical scrolling').toMatch(/auto|scroll/);
+   await page.locator('#btnText').click();await expect(page.locator('#textview')).toBeHidden();
+  }
+  // Preserve every assigned page/state before enforcing the complete inventory.
+  for(const state of evidence){
+   expect(state.language,state.name+' preserves English publication').toBe('en');
+   expect(state.deviations,state.name+' computed typography').toEqual([]);
+   expect(state.unclassified,state.name+' classified roles').toEqual([]);
+   expect(state.overflow,state.name+' document overflow').toBe(false);
+   expect(state.geometry.clipped,state.name+' text hidden by internal page clipping').toEqual([]);
+  }
+ });
+}
+for(const book of htmlBooks)for(const width of widths)test(`typography HTML book search ${book.pages} ${width}`,async({page},info)=>{
+ await page.setViewportSize({width,height:900});await page.emulateMedia({reducedMotion:'reduce'});await seed(page,'nl');
+ await page.addInitScript(()=>{localStorage.setItem('flip:hinted','1');localStorage.setItem('flip:mobilehint','1')});await page.goto(book.route+'?lang=nl#page-1');
+ await page.locator('#btnSearch').click();await expect(page.locator('#drawerSearch')).toBeVisible();
+ await page.locator('#q').fill(book.pages===22?'heatmap':'fragmentation lives');await expect(page.locator('#results .result').first()).toBeVisible();
+ await checkpoint(page,info,'book-search-results','en');
+ const target=book.pages===22?16:7;await page.locator('#results .result[data-go="'+target+'"]').click();await expect(page.locator('#drawerSearch')).toBeHidden();
+ const expected=width<700?String(target):target%2===0?target+'–'+(target+1):(target-1)+'–'+target;
+ await expect(page.locator('#pgNow')).toHaveText(expected);await expect(page.locator('#book .page[data-p="'+target+'"]')).toBeVisible();
+ await checkpoint(page,info,'book-search-selected-page','en');
+ await page.locator('#btnThumbs').click();await expect(page.locator('#sheetThumbs')).toBeVisible();await expect(page.locator('#thumbs .thumb')).toHaveCount(book.pages);
+ await expect(page.locator('#thumbs .thumb .mini[aria-hidden="true"]>.thumb-canvas>.pg[inert]')).toHaveCount(book.pages);
+ await checkpoint(page,info,'book-decorative-thumbnails','en');
+ const canvases=await page.locator('#thumbs .thumb .mini>.thumb-canvas').evaluateAll(elements=>elements.map(canvas=>{
+  const mini=canvas.parentElement.getBoundingClientRect(),rendered=canvas.getBoundingClientRect(),style=getComputedStyle(canvas),pg=canvas.querySelector('.pg');
+  return {page:canvas.closest('.thumb').dataset.go,width:parseFloat(style.width),height:parseFloat(style.height),transform:style.transform,mini:{left:mini.left,top:mini.top,width:mini.width,height:mini.height},rendered:{left:rendered.left,top:rendered.top,width:rendered.width,height:rendered.height},pageWidth:pg.clientWidth,pageHeight:pg.clientHeight};
+ }));
+ const canvasJSON=JSON.stringify(canvases,null,2);await require('node:fs/promises').writeFile(info.outputPath('book-thumbnail-canvases.json'),canvasJSON);await info.attach('book-thumbnail-canvases',{body:canvasJSON,contentType:'application/json'});
+ expect(canvases).toHaveLength(book.pages);
+ for(const canvas of canvases){
+  expect(canvas.width,'full-size backing canvas page '+canvas.page).toBe(600);expect(canvas.height).toBeCloseTo(848.52,1);
+  expect(canvas.pageWidth).toBe(600);expect(Math.abs(canvas.pageHeight-848.52)).toBeLessThanOrEqual(1);
+  expect(canvas.transform,'thumbnail uses visual scaling').not.toBe('none');
+  expect(Math.abs(canvas.rendered.width-canvas.mini.width),'scaled canvas fills thumbnail width').toBeLessThanOrEqual(1);
+  expect(Math.abs(canvas.rendered.height-canvas.mini.height),'scaled canvas fills thumbnail height').toBeLessThanOrEqual(1);
+  expect(Math.abs(canvas.rendered.left-canvas.mini.left)).toBeLessThanOrEqual(1);expect(Math.abs(canvas.rendered.top-canvas.mini.top)).toBeLessThanOrEqual(1);
+ }
+});
+
+test('typography SVG labels convert layout units after insertion resize transforms and user zoom',async({page},info)=>{
+ await page.setViewportSize({width:1366,height:900});await seed(page,'nl');await page.goto('/transformation.html?lang=nl');
+ // Scope the coordinate-conversion fixture below the accessible production
+ // diagram minimum; this alters test geometry, never a font-size token.
+ await page.addStyleTag({content:'#svg-coordinate-canvas{min-width:0!important;max-width:none!important}'});
+ await page.evaluate(()=>{
+  const fixture=document.createElement('section');fixture.id='svg-coordinate-fixture';fixture.style.cssText='width:700px;height:350px;transform-origin:top left';
+  fixture.innerHTML='<svg id="svg-coordinate-canvas" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 50" width="600" height="300" style="width:600px!important;height:300px!important;min-width:0!important;max-width:none!important"><text id="svg-coordinate-label" x="4" y="10">Label ABC</text><foreignObject x="4" y="20" width="90" height="15"><div xmlns="http://www.w3.org/1999/xhtml" class="bp-lbl" id="svg-coordinate-html-label">Foreign label ABC</div></foreignObject></svg>';
+  document.querySelector('main').append(fixture);
+ });
+ async function sample(name,scale,groupScale=1){
+  const result=await collect(page);
+  const geometry=await page.locator('#svg-coordinate-canvas').evaluate(svg=>{
+   const r=svg.getBoundingClientRect(),glyphs=[];
+   for(const el of svg.querySelectorAll('text,.bp-lbl'))for(const node of el.childNodes){if(node.nodeType!==3||!node.textContent.trim())continue;const range=document.createRange();range.selectNodeContents(node);for(const box of range.getClientRects())glyphs.push({id:el.id,left:box.left,top:box.top,right:box.right,bottom:box.bottom});}
+   return {cssWidth:parseFloat(getComputedStyle(svg).width),viewBoxWidth:svg.viewBox.baseVal.width,box:{left:r.left,top:r.top,right:r.right,bottom:r.bottom,width:r.width,height:r.height},glyphs};
+  });
+  const body=JSON.stringify({result,geometry},null,2);await require('node:fs/promises').writeFile(info.outputPath(name+'.json'),body);await info.attach(name,{body,contentType:'application/json'});await page.screenshot({path:info.outputPath(name+'.png')});
+  expect(result.deviations,name).toEqual([]);
+  expect(geometry.cssWidth/geometry.viewBoxWidth,'independent viewport/viewBox unit conversion').toBe(scale);
+  for(const id of ['svg-coordinate-label','svg-coordinate-html-label',...(name==='svg-initial'?[]:['svg-coordinate-added'])]){
+   const record=result.elements.find(e=>e.id===id);expect(record,'measured '+id).toBeDefined();
+   const units=scale*(id==='svg-coordinate-added'?groupScale:1);
+   expect(record.layoutUnitScale,id+' layout scale').toBeCloseTo(units,5);expect(record.rawFontSize,id+' raw drawing-unit size').toBeCloseTo(12/units,4);expect(record.effectiveBaseFontSize,id+' physical base label size').toBeCloseTo(12,4);
+  }
+  for(const glyph of geometry.glyphs){expect(glyph.left,name+' glyph left '+glyph.id).toBeGreaterThanOrEqual(geometry.box.left-1);expect(glyph.right,name+' glyph right '+glyph.id).toBeLessThanOrEqual(geometry.box.right+1);expect(glyph.top,name+' glyph top '+glyph.id).toBeGreaterThanOrEqual(geometry.box.top-1);expect(glyph.bottom,name+' glyph bottom '+glyph.id).toBeLessThanOrEqual(geometry.box.bottom+1);}
+  return {result,geometry};
+ }
+ await sample('svg-initial',6);
+ await page.locator('#svg-coordinate-canvas').evaluate(svg=>{const group=document.createElementNS('http://www.w3.org/2000/svg','g');group.id='svg-coordinate-group';group.setAttribute('transform','scale(2)');group.innerHTML='<text id="svg-coordinate-added" x="2" y="23">Added label</text>';svg.append(group);});
+ await sample('svg-mutated',6,2);
+ await page.locator('#svg-coordinate-canvas').evaluate(svg=>{svg.style.setProperty('width','300px','important');svg.style.setProperty('height','150px','important');});
+ await sample('svg-resized',3,2);
+ await page.locator('#svg-coordinate-group').evaluate(group=>group.setAttribute('transform','scale(1)'));
+ const before=await sample('svg-group-transform',3);
+ await page.locator('#svg-coordinate-fixture').evaluate(fixture=>fixture.style.transform='scale(1.25)');
+ const zoomed=await sample('svg-user-zoom',3);
+ expect(zoomed.result.elements.find(e=>e.id==='svg-coordinate-label').rawFontSize,'user zoom preserves base raw font').toBe(before.result.elements.find(e=>e.id==='svg-coordinate-label').rawFontSize);
+ expect(zoomed.geometry.box.width/before.geometry.box.width,'user zoom enlarges screen geometry').toBeCloseTo(1.25,5);
+});
+
+for(const language of ['nl','fr'])for(const width of [390,1366])test(`typography real BPMN label fit ${language} ${width}`,async({page},info)=>{
+ await page.setViewportSize({width,height:900});await page.emulateMedia({reducedMotion:'reduce'});await seed(page,language);await page.goto('/process.html?lang='+language);
+ await page.locator('.ba').scrollIntoViewIfNeeded();
+ const evidence=[];
+ for(const state of [{button:'#b-before',panel:'#p-before',svg:'#bpmn-b',name:'traditional'},{button:'#b-after',panel:'#p-after',svg:'#bpmn-a',name:'agentic'}]){
+  await page.locator(state.button).click();await expect(page.locator(state.panel)).toBeVisible();await page.locator(state.svg).scrollIntoViewIfNeeded();
+  const computed=await collect(page); // Includes observer settling after panel visibility.
+  const labels=await page.locator(state.svg+' foreignObject .bp-lbl').evaluateAll(elements=>elements.flatMap(label=>{
+   const rect=label.getBoundingClientRect(),style=getComputedStyle(label);if(!rect.width||!rect.height||style.visibility==='hidden')return [];
+   const fo=label.closest('foreignObject'),bounds=fo.getBoundingClientRect(),matrix=fo.getCTM(),glyphs=[];
+   const walker=document.createTreeWalker(label,NodeFilter.SHOW_TEXT);let node;
+   while((node=walker.nextNode())){if(!node.textContent.trim()||getComputedStyle(node.parentElement).visibility==='hidden')continue;const range=document.createRange();range.selectNodeContents(node);for(const r of range.getClientRects())if(r.width&&r.height)glyphs.push({text:node.textContent.trim(),left:r.left,top:r.top,right:r.right,bottom:r.bottom});}
+   return [{text:label.textContent.trim(),foreignObject:{left:bounds.left,top:bounds.top,right:bounds.right,bottom:bounds.bottom,width:bounds.width,height:bounds.height},clientHeight:label.clientHeight,scrollHeight:label.scrollHeight,clientWidth:label.clientWidth,scrollWidth:label.scrollWidth,rawFontSize:parseFloat(style.fontSize),layoutUnitScale:Math.hypot(matrix.c,matrix.d),glyphs}];
+  }));
+  const name='bpmn-'+state.name+'-'+language+'-'+width,body=JSON.stringify({computed,labels},null,2);
+  await require('node:fs/promises').writeFile(info.outputPath(name+'.json'),body);await info.attach(name,{body,contentType:'application/json'});await page.screenshot({path:info.outputPath(name+'.png')});evidence.push({name,computed,labels});
+ }
+ for(const state of evidence){
+  expect(state.computed.language,state.name+' effective language').toBe(language);expect(state.computed.deviations,state.name+' independent computed contract').toEqual([]);
+  expect(state.labels.length,state.name+' rendered foreign-object labels').toBeGreaterThan(0);
+  for(const label of state.labels){
+   expect(label.rawFontSize*label.layoutUnitScale,state.name+' physical label token: '+label.text).toBeCloseTo(12,1);
+   expect(label.scrollHeight-label.clientHeight,state.name+' internal text height: '+label.text).toBeLessThanOrEqual(1);
+   expect(label.scrollWidth-label.clientWidth,state.name+' internal text width: '+label.text).toBeLessThanOrEqual(1);
+   expect(label.glyphs.length,state.name+' measurable glyphs: '+label.text).toBeGreaterThan(0);
+   for(const glyph of label.glyphs){
+    expect(glyph.left,state.name+' glyph left: '+label.text).toBeGreaterThanOrEqual(label.foreignObject.left-1);expect(glyph.right,state.name+' glyph right: '+label.text).toBeLessThanOrEqual(label.foreignObject.right+1);
+    expect(glyph.top,state.name+' glyph top: '+label.text).toBeGreaterThanOrEqual(label.foreignObject.top-1);expect(glyph.bottom,state.name+' glyph bottom: '+label.text).toBeLessThanOrEqual(label.foreignObject.bottom+1);
+   }
+  }
+ }
+});

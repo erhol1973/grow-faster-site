@@ -9,17 +9,56 @@ function routes(root=path.resolve(__dirname,'../dist')){
   else if(item.name.endsWith('.html')&&!/http-equiv=["']refresh/i.test(fs.readFileSync(full,'utf8')))result.push('/'+path.relative(root,full).replaceAll('\\','/'));
  }}walk(root);return result.sort((a,b)=>(a.includes('transformation')?-1:b.includes('transformation')?1:a.localeCompare(b)));
 }
+// Supported UI locales are distinct from the fixed-language publications and
+// administrator page. Both browser inventories consume this single contract.
+function languageCases(route){
+ const fixed={'/journal.html':'nl','/journal-fr.html':'fr','/admin.html':'nl','/boek/index.html':'en','/boek/the-coherent-enterprise/index.html':'en'};
+ const radar=['/executive-radar/index.html','/baies-dev/index.html'].includes(route);
+ return (fixed[route]?[fixed[route]]:['nl','fr']).map(language=>({language,effectiveLanguage:radar?language+'-BE':language}));
+}
+async function prepareRoute(page,route,language){
+ const locale=languageCases(route).find(item=>item.language===language);
+ if(!locale)throw Error('Unsupported route locale: '+route+' '+language);
+ await page.goto(route+'?lang='+language);
+ if(['/executive-radar/index.html','/baies-dev/index.html'].includes(route))await page.locator('[data-language="'+language+'"]').click();
+ return locale;
+}
+// Reveal only author-designated offscreen optimizations, never intentionally
+// hidden/closed content. Serve this test-only sheet from the page's own origin
+// so style-src 'self' remains enforced (including the administrator page).
+async function revealOffscreen(page){
+ if(!await page.locator('link[data-typography-reveal-style]').count()){
+  const owner=typeof page.page==='function'?page.page():page;
+  const url=new URL('/__typography-audit-offscreen.css',page.url()).href;
+  await owner.route(url,route=>route.fulfill({contentType:'text/css',body:'[data-typography-reveal-auto]{content-visibility:visible!important}'}),{times:1});
+  const link=await page.addStyleTag({url});await link.evaluate(el=>el.setAttribute('data-typography-reveal-style',''));
+ }
+ const count=await page.evaluate(()=>{
+  // Recheck author state on subsequent dynamic checkpoints: an auto element
+  // may since have become intentionally hidden, and must then stay hidden.
+  document.querySelectorAll('[data-typography-reveal-auto]').forEach(el=>el.removeAttribute('data-typography-reveal-auto'));
+  const auto=[...document.querySelectorAll('*')].filter(el=>getComputedStyle(el).contentVisibility==='auto');
+  auto.forEach(el=>el.setAttribute('data-typography-reveal-auto',''));
+  return auto.length;
+ });
+ return {offscreenReveal:true,offscreenRevealCount:count,measurementMode:'computed-content-visibility-auto-only; intentional hidden and closed states preserved'};
+}
 async function collect(page){
+ const reveal=await revealOffscreen(page);
  await page.evaluate(()=>document.fonts.ready);
- return page.evaluate(c=>{
+ // Production SVG observers normalize after layout/visibility changes.
+ await page.evaluate(()=>new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve))));
+ const result=await page.evaluate(c=>{
   const output=[],deviations=[],unclassified=[];
   const family=s=>s.replaceAll('"','').replaceAll("'",'').replace(/\s+/g,'').toLowerCase();
   for(const el of document.body.querySelectorAll('*')){
+   // Scaled thumbnail copies are decorative previews, never reading surfaces.
+   if(el.closest('.thumb .mini[aria-hidden="true"],.thumb .pg[inert]'))continue;
    const style=getComputedStyle(el),rect=el.getBoundingClientRect();
    const control=el.matches('input,select,textarea');
    // Never capture entered form values or credentials in audit evidence.
    const text=control?(el.getAttribute('aria-label')||el.getAttribute('placeholder')||el.id||el.tagName):el.textContent.trim();
-   if(!rect.width||!rect.height||style.visibility==='hidden'||!text||['SCRIPT','STYLE','NOSCRIPT','IFRAME'].includes(el.tagName))continue;
+   if(!rect.width||!rect.height||style.visibility==='hidden'||style.contentVisibility==='hidden'||!text||['SCRIPT','STYLE','NOSCRIPT','IFRAME'].includes(el.tagName))continue;
    const direct=control||[...el.childNodes].some(n=>n.nodeType===3&&n.textContent.trim());
    const heading=el.closest('h1,h2,h3,h4,[role=heading]');
    let role=null,expected=null;
@@ -38,10 +77,22 @@ async function collect(page){
    if(!role&&direct){role='body';expected=c.body;}
    if(!direct&&!role)continue;
    const record={tag:el.tagName,id:el.id,classes:el.className?.baseVal??el.className,role:role||'unclassified',text:text.replace(/\s+/g,' ').slice(0,80),family:style.fontFamily,size:parseFloat(style.fontSize),weight:style.fontWeight,lineHeight:style.lineHeight};
+   let expectedSize=expected;
+   const svgLabel=role==='label'&&el.closest('svg text,svg foreignObject .bp-lbl');
+   if(svgLabel){
+    const coordinateElement=typeof el.getCTM==='function'?el:svgLabel.matches('text')?svgLabel:svgLabel.closest('foreignObject');
+    const matrix=coordinateElement?.getCTM();
+    const scale=matrix?Math.hypot(matrix.c,matrix.d):NaN;
+    record.rawFontSize=record.size;record.layoutUnitScale=scale;
+    record.expectedRawFontSize=Number.isFinite(scale)&&scale>0?c.label/scale:null;
+    record.effectiveBaseFontSize=record.size*scale;
+    expectedSize=record.expectedRawFontSize;
+    if(expectedSize===null||!Number.isFinite(record.effectiveBaseFontSize)||Math.abs(record.effectiveBaseFontSize-c.label)>.06)deviations.push({...record,reason:'svg-effective-label-size',expected:c.label});
+   }
    output.push(record);
    if(!role&&direct)unclassified.push(record);
    if(family(style.fontFamily)!==family(c.family))deviations.push({...record,reason:'family',expected:c.family});
-   if(expected!==null&&Math.abs(record.size-expected)>.06)deviations.push({...record,reason:'size',expected});
+   if(expectedSize!==null&&Math.abs(record.size-expectedSize)>.06)deviations.push({...record,reason:svgLabel?'svg-raw-label-size':'size',expected:expectedSize});
    if(control&&el.hasAttribute('placeholder')){
     const placeholder=getComputedStyle(el,'::placeholder');
     if(family(placeholder.fontFamily)!==family(c.family)||Math.abs(parseFloat(placeholder.fontSize)-c.control)>.06)deviations.push({...record,reason:'placeholder',placeholderFamily:placeholder.fontFamily,placeholderSize:placeholder.fontSize,expected:c.control});
@@ -49,6 +100,7 @@ async function collect(page){
   }
   return {url:location.href,width:innerWidth,language:document.documentElement.lang,elements:output,deviations,unclassified,overflow:document.documentElement.scrollWidth>innerWidth+1};
  },contract);
+ return {...result,...reveal};
 }
 async function renderedFonts(page){
  // Controlled Latin probes isolate the face chosen for the common script from
@@ -91,4 +143,4 @@ function deliveryIssues(html){
  const styles=[...head.matchAll(/<link\b[^>]*rel=["']stylesheet["'][^>]*>|<style\b[^>]*>[\s\S]*?<\/style>/gi)].map(m=>m[0]);
  return !styles.length||!/href=["'][^"']*assets\/typography\.css(?:\?[^"']*)?["']/i.test(styles.at(-1))?['typography policy must be the final head stylesheet']:[];
 }
-module.exports={routes,collect,renderedFonts,contract,deliveryIssues};
+module.exports={routes,languageCases,prepareRoute,revealOffscreen,collect,renderedFonts,contract,deliveryIssues};

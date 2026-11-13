@@ -330,7 +330,7 @@ input[type=range]{width:100%;accent-color:var(--brand)}
 .in input[type=number]{font:inherit;font-variant-numeric:tabular-nums;padding:9px 10px;border:1px solid var(--line);background:var(--bg2);color:var(--ink);width:100%}
 .in .rg{display:grid;grid-template-columns:minmax(0,1fr) 54px;gap:10px;align-items:center}
 .in .rg output{font-family:var(--f-mono);font-size:13px;text-align:right;color:var(--ai-ink)}
-.inputs h4{margin:8px 0 0;font-family:var(--f-mono);font-weight:500;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--warn);border-top:1px solid var(--line);padding-top:14px}
+.inputs h3,.inputs h4{margin:8px 0 0;font-family:var(--f-mono);font-weight:500;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--warn);border-top:1px solid var(--line);padding-top:14px}
 .scen{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
 @media(max-width:760px){.scen{grid-template-columns:minmax(0,1fr)}}
 .sc{border:1px solid var(--line);background:var(--bg);padding:22px;display:grid;gap:16px;align-content:start}

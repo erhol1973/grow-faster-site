@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<script defer src="../assets/typography.js?v=20261113"></script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Turning AI Potential into Enterprise Value</title>
@@ -16,6 +17,7 @@ html, body { margin: 0; } [hidden] { display: none !important; }
 .order-link:hover { background: var(--chip); }
 .noscript { padding: 24px; font-family: system-ui, sans-serif; }
 </style>
+<link rel="stylesheet" href="../assets/book-reading.css?v=20261113">
 <link rel="stylesheet" href="../assets/typography.css?v=20261113">
 </head>
 <body>
@@ -488,7 +490,7 @@ body.present .stage::before { display: none; }
     <div class="zoomwrap" id="zoomwrap"><div id="book" role="region" aria-roledescription="flipbook" aria-label="Turning AI Potential into Enterprise Value, executive preview"></div></div>
     <div id="textview" hidden aria-label="Text view"></div>
     <button class="edge next" id="edgeNext" aria-label="Next page"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m9 18 6-6-6-6"/></svg></button>
-    <div class="hint" id="hint" hidden><span>Drag a page corner, use the arrows, or press → to turn</span><button id="hintClose">Got it</button></div>
+    <div class="hint" id="hint" hidden><span>Scroll inside a page to read; use the arrows or press → to turn</span><button id="hintClose">Got it</button></div>
   </main>
 
   <footer class="bar bottom">
@@ -561,7 +563,8 @@ body.present .stage::before { display: none; }
     <h2 id="keysTitle">Keyboard shortcuts</h2>
     <dl>
       <dt><kbd>←</kbd> <kbd>→</kbd></dt><dd>Previous or next page</dd>
-      <dt><kbd>Home</kbd> <kbd>End</kbd></dt><dd>First or last page</dd>
+      <dt><kbd>Home</kbd> <kbd>End</kbd></dt><dd>First or last page when page text is not focused</dd>
+      <dt><kbd>↑</kbd> <kbd>↓</kbd> <kbd>Home</kbd> <kbd>End</kbd></dt><dd>Scroll the focused page text</dd>
       <dt><kbd>+</kbd> <kbd>−</kbd> <kbd>0</kbd></dt><dd>Zoom in, zoom out, fit page</dd>
       <dt><kbd>C</kbd> <kbd>T</kbd> <kbd>/</kbd></dt><dd>Contents, thumbnails, search</dd>
       <dt><kbd>N</kbd> <kbd>P</kbd> <kbd>F</kbd></dt><dd>Night, presentation, fullscreen</dd>
@@ -792,7 +795,7 @@ body.present .stage::before { display: none; }
 <div class="head"><span class="chno" data-n="06" aria-hidden="true"></span><div class="kicker">Chapter 06 · Agentic AI</div><h1>AI amplifies the system it enters</h1><div class="rule"></div></div>
 <p>AI brings no way of working of its own. It accelerates the one it finds.</p>
 <div class="quote">The technology is the amplifier; the enterprise is the signal.<cite>Introduction</cite></div>
-<figure style="margin:0"><svg class="fig" viewBox="0 0 100 50" role="img" aria-label="Illustrative chart: enterprise value over 36 months rises to about 4.6 in a coherent enterprise and drifts below 1 in a fragmented one">
+<figure style="margin:0"><div class="diagram-scroll" tabindex="0" role="region" aria-label="Illustrative enterprise value chart. Scroll horizontally to read all labels."><svg class="fig" viewBox="0 0 100 50" role="img" aria-label="Illustrative chart: enterprise value over 36 months rises to about 4.6 in a coherent enterprise and drifts below 1 in a fragmented one">
 <text x="12" y="3.6" class="t-ink" font-size="2.4" font-weight="700">Same AI, different system — enterprise value index</text>
 <line x1="12" x2="94" y1="40.00" y2="40.00" class="s-rule" stroke-width=".2"/><text x="10.4" y="40.80" text-anchor="end" class="t-muted" font-size="2">0</text><line x1="12" x2="94" y1="33.40" y2="33.40" class="s-rule" stroke-width=".2"/><text x="10.4" y="34.20" text-anchor="end" class="t-muted" font-size="2">1</text><line x1="12" x2="94" y1="26.80" y2="26.80" class="s-rule" stroke-width=".2"/><text x="10.4" y="27.60" text-anchor="end" class="t-muted" font-size="2">2</text><line x1="12" x2="94" y1="20.20" y2="20.20" class="s-rule" stroke-width=".2"/><text x="10.4" y="21.00" text-anchor="end" class="t-muted" font-size="2">3</text><line x1="12" x2="94" y1="13.60" y2="13.60" class="s-rule" stroke-width=".2"/><text x="10.4" y="14.40" text-anchor="end" class="t-muted" font-size="2">4</text><line x1="12" x2="94" y1="7.00" y2="7.00" class="s-rule" stroke-width=".2"/><text x="10.4" y="7.80" text-anchor="end" class="t-muted" font-size="2">5</text><text x="12.00" y="44" text-anchor="middle" class="t-muted" font-size="2">0</text><text x="25.67" y="44" text-anchor="middle" class="t-muted" font-size="2">6</text><text x="39.33" y="44" text-anchor="middle" class="t-muted" font-size="2">12</text><text x="53.00" y="44" text-anchor="middle" class="t-muted" font-size="2">18</text><text x="66.67" y="44" text-anchor="middle" class="t-muted" font-size="2">24</text><text x="80.33" y="44" text-anchor="middle" class="t-muted" font-size="2">30</text><text x="94.00" y="44" text-anchor="middle" class="t-muted" font-size="2">36</text>
 <text x="53" y="48.4" text-anchor="middle" class="t-muted" font-size="2">Months after deployment</text>
@@ -803,7 +806,7 @@ body.present .stage::before { display: none; }
 <circle cx="94.00" cy="34.39" r=".8" class="f-muted"/>
 <text x="92.40" y="7.64" text-anchor="end" class="t-azi" font-size="2.2" font-weight="700">Coherent enterprise</text>
 <text x="92.40" y="32.39" text-anchor="end" class="t-muted" font-size="2.2" font-weight="600">Fragmented enterprise</text>
-</svg><figcaption class="cap">Illustrative trajectory, as shown in the book. The technology is identical; only the system differs.</figcaption></figure>
+</svg></div><figcaption class="cap">Illustrative trajectory, as shown in the book. The technology is identical; only the system differs.</figcaption></figure>
 <p>For decades incoherence was expensive but survivable, because competitors carried the same burden. AI ends that truce. Agentic AI raises the stakes from advice to action: an agent that places orders or moves money must know who owns the outcome, where its authority ends and what it may never do. That is why agentic initiatives stall between demo and production — the technology is ready, but the organisation has not yet decided what it is allowed to decide.</p>
 <div class="foot"><span>06 · Agentic AI</span><b>13</b></div>
 </article></div>
@@ -846,6 +849,7 @@ body.present .stage::before { display: none; }
 <article style="--k:1.08" class="pg" aria-label="Page 16: Implementation roadmap, the diagnostic">
 <div class="head"><div class="kicker">Chapter 07 · Implementation Roadmap</div><h1>Diagnose first: fifteen working days</h1><div class="rule"></div></div>
 <p>Five domains are scored against the three signals on a heatmap. Every cell needs an artefact: <strong>a red without evidence is a grievance; an amber without evidence is a hope.</strong> The reddest, costliest cell is where you start.</p>
+<div class="heat-scroll" tabindex="0" role="region" aria-label="Illustrative coherence heatmap. Scroll horizontally to read all columns.">
 <div class="heat" aria-label="Illustrative coherence heatmap">
 <div class="hd">Domain</div><div class="hd">Waiting decisions</div><div class="hd">Travelling work</div><div class="hd">Competing priorities</div>
 <div class="row">Business</div><div class="c r">Red</div><div class="c a">Amber</div><div class="c a">Amber</div>
@@ -853,7 +857,7 @@ body.present .stage::before { display: none; }
 <div class="row">Technology</div><div class="c g">Green</div><div class="c r">Red</div><div class="c a">Amber</div>
 <div class="row">Governance</div><div class="c r">Red</div><div class="c a">Amber</div><div class="c r">Red</div>
 <div class="row">People</div><div class="c a">Amber</div><div class="c g">Green</div><div class="c r">Red</div>
-</div>
+</div></div>
 <p class="cap">Illustrative scoring. Your heatmap comes from your own artefacts: decision logs, workflow walks, data lineage, allocation maps.</p>
 <p>A companion <strong>gap map</strong> makes three recurring gaps undeniable: the <em>ownership gap</em>, the <em>boundary gap</em> and the <em>capacity gap</em>.</p>
 <div class="take"><div class="lbl">Key takeaways</div><ul>
@@ -1034,7 +1038,15 @@ function measure() {
 function initBook(startPage) {
   const m = measure();
   lastSize = m.pw + 'x' + m.landscape;
-  if (pf) { try { pf.destroy(); } catch (e) {} pf = null; }
+  if (pf) {
+    try {
+      // PageFlip 2.0.7 leaves this listener behind when mouse handlers are off.
+      const ui = pf.getUI && pf.getUI();
+      if (ui && ui.onResize) removeEventListener('resize', ui.onResize);
+      pf.destroy();
+    } catch (e) {}
+    pf = null;
+  }
   const holder = $('#zoomwrap');
   holder.innerHTML = '';
   const nb = document.createElement('div');
@@ -1046,12 +1058,22 @@ function initBook(startPage) {
   dims = { w: m.landscape ? m.pw * 2 : m.pw, h: m.ph, landscape: m.landscape };
   nb.style.width = dims.w + 'px';
   nb.style.height = dims.h + 'px';
-  const pages = tplPages.map(n => uniq(n.cloneNode(true)));
+  const pages = tplPages.map(n => {
+    const page = uniq(n.cloneNode(true)), reading = page.querySelector('.pg');
+    reading.tabIndex = 0;
+    reading.setAttribute('role', 'region');
+    reading.setAttribute('lang', 'en');
+    reading.setAttribute('aria-label', 'Page ' + n.dataset.p + ': ' + n.dataset.title + '. Scroll within this page to read all text.');
+    const hint = document.createElement('span');
+    hint.className = 'reading-affordance'; hint.setAttribute('aria-hidden', 'true'); hint.dataset.typographyRole = 'label';
+    hint.textContent = 'Scroll within page ↓'; page.appendChild(hint);
+    return page;
+  });
   pages.forEach(p => nb.appendChild(p));
   if (!window.St || !window.St.PageFlip) { fallbackBook(nb, pages, startPage); return; }
   pf = new St.PageFlip(nb, {
     width: m.pw, height: m.ph, size: 'fixed', autoSize: false, showCover: true, usePortrait: true,
-    maxShadowOpacity: 0.5, flippingTime: reduced ? 1 : 700, drawShadow: !reduced, mobileScrollSupport: false,
+    maxShadowOpacity: 0.5, flippingTime: reduced ? 1 : 700, drawShadow: !reduced, mobileScrollSupport: true, useMouseEvents: false,
     startPage: Math.max(0, startPage - 1), disableFlipByClick: true, clickEventForward: true, showPageCorners: true, swipeDistance: 30
   });
   pf.loadFromHTML(pages);
@@ -1157,11 +1179,12 @@ const fitWidth = () => { const st = $('#stage'); setZoom((st.clientWidth - 40) /
 (function pan() {
   const st = $('#stage'); let down = null;
   st.addEventListener('pointerdown', e => {
-    if (!st.classList.contains('zoomed') || e.target.closest('button, a, .edge')) return;
+    if (!st.classList.contains('zoomed') || e.target.closest('button, a, .edge, .pg')) return;
     down = { x: e.clientX, y: e.clientY, l: st.scrollLeft, t: st.scrollTop }; st.classList.add('panning');
   });
   addEventListener('pointermove', e => { if (!down) return; st.scrollLeft = down.l - (e.clientX - down.x); st.scrollTop = down.t - (e.clientY - down.y); });
-  addEventListener('pointerup', () => { down = null; st.classList.remove('panning'); });
+  const stopPan = () => { down = null; st.classList.remove('panning'); };
+  addEventListener('pointerup', stopPan); addEventListener('pointercancel', stopPan);
 })();
 
 /* ---------- text view ---------- */
@@ -1304,7 +1327,8 @@ function buildThumbs() {
     b.className = 'thumb'; b.dataset.go = n.dataset.p; b.setAttribute('aria-label', 'Page ' + n.dataset.p + ': ' + n.dataset.title);
     const mini = document.createElement('div'); mini.className = 'mini'; mini.setAttribute('aria-hidden', 'true');
     const pg = uniq(n.querySelector('.pg').cloneNode(true)); pg.setAttribute('inert', ''); pg.removeAttribute('aria-label');
-    mini.appendChild(pg);
+    const canvas = document.createElement('div'); canvas.className = 'thumb-canvas';
+    canvas.appendChild(pg); mini.appendChild(canvas);
     const s = document.createElement('span'); s.textContent = n.dataset.p;
     b.append(mini, s); $('#thumbs').appendChild(b);
   });
@@ -1313,7 +1337,7 @@ function buildThumbs() {
 function openThumbs() { if (!thumbsBuilt) buildThumbs(); openDrawer('sheetThumbs'); }
 
 /* ---------- search ---------- */
-const norm = s => s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
+const norm = s => s.replace(/\u00ad/g, '').normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
 const esc = s => s.replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 let filter = 'all';
 function snippet(text, q) {
@@ -1458,6 +1482,10 @@ document.addEventListener('keydown', e => {
   if (e.target.closest('input, textarea') && e.key !== 'Escape') return;
   if (e.metaKey || e.ctrlKey || e.altKey) return;
   const k = e.key;
+  // A focused chart owns horizontal navigation; ordinary page text does not.
+  if (e.target.closest('.heat-scroll,.diagram-scroll,.typography-diagram-scroll') && ['ArrowLeft', 'ArrowRight', 'ArrowDown', 'ArrowUp', 'PageDown', 'PageUp', 'Home', 'End', ' '].includes(k)) return;
+  // Native scrolling wins while reading; Left/Right still turn the book.
+  if (e.target.closest('#book .pg') && ['ArrowDown', 'ArrowUp', 'PageDown', 'PageUp', 'Home', 'End', ' '].includes(k)) return;
   if (k === 'Escape') {
     if (openPanel) return closeAll();
     if (document.body.classList.contains('present')) return setPresent(false);

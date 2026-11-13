@@ -195,3 +195,9 @@ figcaption{font:italic 1.3rem/1.4 Georgia,serif;text-align:center;margin:.7rem a
 .exact-edition .cover-logo{width:120px}
 .exact-edition .bar-chart>div{margin:3px 0}
 .exact-edition .paired-row{margin:1px 0}
+
+/* Keep the longer legal-risk card legible across approved fallback fonts. */
+.exact-edition #p11 .cards{grid-template-columns:1.35fr 1fr 1fr}
+.exact-edition #p11 .cards>section{padding-block:2px}
+.exact-edition #p11 .data-chart figcaption{margin-bottom:4px}
+.exact-edition #p11 .paired-bars{gap:2px}

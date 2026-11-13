@@ -23,7 +23,7 @@ html,body,body *,body *::before,body *::after {
 }
 /* Unclassified ordinary text starts in the body role. Larger/smaller roles
    below are an explicit, finite inventory rather than inherited accidents. */
-body * {font-size:inherit!important}
+body :where(:not(svg,svg *)) {font-size:inherit!important}
 body {font-size:var(--type-body)!important}
 :root body :is(h1,[role="heading"][aria-level="1"]) {font-size:var(--type-h1)!important}
 :root body :is(h2,[role="heading"][aria-level="2"]) {font-size:var(--type-h2)!important}
@@ -36,16 +36,43 @@ body {font-size:var(--type-body)!important}
   font-size:inherit!important;
 }
 /* Ordinary prose is one role, including introductory and card paragraphs. */
-:root body :where(p,main li,main dt,main dd,main td,.career-r,.career-list b,.skip-link) {
+:root body :where(p,main li,main dt,main dd,main td,main th[scope="row"],.career-r,.career-list b,.skip-link) {
   font-size:var(--type-body)!important;
 }
+/* Descendant prose follows its nearest supporting wrapper. Keep this rule at
+   the body rule's specificity: its later position wins over default prose,
+   while an element's own label/control/metric/heading token still wins.
+   SVG drawing-unit labels retain their independent normalization/fallback. */
+:root body :where(
+ .eyebrow,.kicker,.part,.folio,.in-brief__k,.author-box__k,.author-box__n,
+ .journal-label,.exhibit,.tag,.route-k,.lens-k,.executive-eyebrow,
+ .executive-signature,.brief-label,.subtle-label,.product-title,.signal-cat,
+ small,sup,sub,.pg .heat .hd,.pg .heat .c,.bar-chart b,.bar-chart span,
+ .paired-row>span,.paired-bars span,.legend,.tenure-line,.stages,.years,
+ .matrix-axes,.practice-number,.lang-cur,th:not([scope="row"]),
+ [data-typography-role="label"],.note,.byline,.career-y,.route-note,
+ .hero-avail,.brief-disclaimer,.pg .foot,.drawer .result .meta,.method-note,
+ .reader-links,.author-box__links,.proof-link,.paper-footer,figcaption,cite,
+ footer p,footer a,footer li,footer span,footer button,.journal-header p,
+ .signup p,[data-typography-role="metadata"],
+ .ws-eyebrow,.ws-sample-tag,.ws-result-no,.ws-steps li>span,.ws-plan-day,
+ .flow-scale,.spec-axis,.par .lbl,.lane .who,.mrow .risk,.lvl .ln,
+ .lvl .label,.metric>span:not(.pot),.kv dt,.verdict dt,
+ .ws-cta-note,.ws-author-line,.ws-plan-owner,.ws-price-caption,.ws-practical,
+ .ws-contact-help,.est-note,.exhibit-note,.gov-note,.ins-meta
+) :where(:not(svg,svg *)) {font-size:inherit!important}
 /* Supporting roles: labels are not prose and retain a smaller explicit token. */
 :root body :is(.eyebrow,.kicker,.part,.folio,.in-brief__k,.author-box__k,.author-box__n,
  .journal-label,.exhibit,.tag,.route-k,.lens-k,.executive-eyebrow,
  .executive-signature,.brief-label,.subtle-label,.product-title,.signal-cat,
- svg text,.bar-chart b,.bar-chart span,.paired-row>span,.paired-bars span,.legend,.tenure-line,.stages,.years,.matrix-axes,.practice-number,.lang-cur,th,[data-typography-role="label"]):not(:where(h1,h2,h3,h4,[role="heading"])) {font-size:var(--type-label)!important}
+ :where(.ws-eyebrow,.ws-sample-tag,.ws-result-no,.ws-steps li>span,.ws-plan-day,
+ .flow-scale,.spec-axis,.par .lbl,.lane .who,.mrow .risk,.lvl .ln,
+ .lvl .label,.metric>span:not(.pot),.kv dt,.verdict dt),
+ small,sup,sub,:where(.pg .heat .hd),:where(.pg .heat .c),.bar-chart b,.bar-chart span,.paired-row>span,.paired-bars span,.legend,.tenure-line,.stages,.years,.matrix-axes,.practice-number,.lang-cur,th:not([scope="row"]),[data-typography-role="label"]):not(:where(h1,h2,h3,h4,[role="heading"])) {font-size:var(--type-label)!important}
 :root body :is(.note,.byline,.career-y,.route-note,.hero-avail,.brief-disclaimer,
- .method-note,.reader-links,.author-box__links,.proof-link,.paper-footer,figcaption,cite,footer p,footer a,footer li,footer span,footer button,.journal-header p,.signup p,[data-typography-role="metadata"]):not(:where(h1,h2,h3,h4,[role="heading"])) {
+ :where(.ws-cta-note,.ws-author-line,.ws-plan-owner,.ws-price-caption,.ws-practical,
+ .ws-contact-help,.est-note,.exhibit-note,.gov-note,.ins-meta),
+ :where(.pg .foot),:where(.drawer .result .meta),.method-note,.reader-links,.author-box__links,.proof-link,.paper-footer,figcaption,cite,footer p,footer a,footer li,footer span,footer button,.journal-header p,.signup p,[data-typography-role="metadata"]):not(:where(h1,h2,h3,h4,[role="heading"])) {
   font-size:var(--type-meta)!important;
 }
 :root body :is(button,input,select,textarea,label,.btn,nav a,.nav a,.main-nav a,.topic-links a):not(:where(h1,h2,h3,h4,[role="heading"])) {font-size:var(--type-control)!important}
@@ -53,3 +80,15 @@ body {font-size:var(--type-body)!important}
 :root body footer :is(a,button,li,span,.linkbtn) {font-size:var(--type-meta)!important}
 :root body :is(.metric b,.bar-top b,.ec-tile b,.dg-out .bn,.snapshot-stat strong,.signal-metric,.radar-summary strong,.exact-edition .metrics strong,.ec-operator):not(:where(h1,h2,h3,h4,[role="heading"])) {font-size:var(--type-metric)!important}
 :root:root body :is(h1,h2,h3,h4,[role="heading"]) * {font-size:inherit!important}
+/* Physical label size stays the shared token across SVG coordinate systems.
+   The runtime computes drawing units from layout CTM, excluding user zoom. */
+:root body svg :is(text,.bp-lbl)[data-typography-svg] {font-size:var(--svg-label-font-size)!important}
+.typography-diagram-scroll {
+  width:100%;
+  min-width:0;
+  max-width:100%;
+  overflow:auto;
+  overscroll-behavior:contain;
+  touch-action:pan-x pan-y pinch-zoom;
+}
+.typography-diagram-scroll > svg {display:block;height:auto}

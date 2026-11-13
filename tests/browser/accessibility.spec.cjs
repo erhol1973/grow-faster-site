@@ -1,6 +1,6 @@
 const {test,expect}=require('playwright/test');
 const AxeBuilder=require('@axe-core/playwright').default;
-const routes=[...new Set([...require('../navigation-cases.json').pages,'transformation.html','workshop.html'])];
+const {routes,languageCases,prepareRoute,revealOffscreen}=require('../../scripts/typography-audit.cjs');
 async function audit(page,info,label){
   // Render all offscreen chapters for a complete contrast audit.
   await page.addStyleTag({content:'*{content-visibility:visible!important}'});
@@ -9,7 +9,18 @@ async function audit(page,info,label){
   expect(result.violations.map(v=>({id:v.id,impact:v.impact,nodes:v.nodes.map(n=>({target:n.target,summary:n.failureSummary}))}))).toEqual([]);
 }
 test.beforeEach(async({page})=>{await page.addInitScript(()=>{localStorage.setItem('avs-consent',JSON.stringify({v:4,ext:false,ana:false,ts:Date.now()}));localStorage.setItem('avs-lang','nl')})});
-for(const route of routes)test(`WCAG automatic scan ${route}`,async({page},info)=>{await page.goto('/'+route);await page.locator('footer').scrollIntoViewIfNeeded();await page.locator('h1').scrollIntoViewIfNeeded();await audit(page,info,route)});
+for(const route of routes())for(const {language,effectiveLanguage} of languageCases(route))test(`WCAG automatic scan ${route} ${language}`,async({page},info)=>{
+ await prepareRoute(page,route,language);
+ await expect(page.locator('html')).toHaveAttribute('lang',effectiveLanguage);
+ await expect(page.locator('body')).toBeVisible();
+ if(await page.locator('main').count())await expect(page.locator('main').first()).toBeVisible();
+ // Keep the original footer/heading traversal where the route provides them.
+ // Readers, journals and the standalone simulator have different landmarks.
+ const footer=page.locator('footer:visible').last();if(await footer.count())await footer.scrollIntoViewIfNeeded();
+ const heading=page.locator('h1:visible').first();if(await heading.count())await heading.scrollIntoViewIfNeeded();
+ await page.screenshot({path:info.outputPath('wcag-'+language+'.png')});
+ await audit(page,info,route+'-'+language);
+});
 test('consent dialog labels, focus cycle and WCAG checks',async({page},info)=>{
   await page.goto('/index.html');await page.locator('.open-consent').first().click();await audit(page,info,'consent');
   const buttons=page.locator('#consent button:visible');await buttons.last().focus();await page.keyboard.press('Tab');

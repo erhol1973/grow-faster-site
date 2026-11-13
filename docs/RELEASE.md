@@ -40,6 +40,8 @@ Typography work is isolated on `fix/sitewide-typography`, based on main `1dc94c5
 
 Release remains NO-GO until the final revision passes all original gates plus the new typography contract, independent visual/release review, and the requested reachable-state coverage. Supporting report files preserve failed and interrupted attempts; neither a source fix nor an initial passing unit/load check is release approval.
 
+The previous combined browser run exhausted its 45-minute CI limit and is not acceptance evidence. The replacement mandatory partitions retain the full 2021-case inventory and all original limits. Every partition consumes the same verified build; the protected Website quality gate explicitly rejects failed or skipped prerequisites. No deployment condition or publication permission is broadened. Final-head results, including all 54 Lighthouse samples, remain required. Earlier local performance failures are retained; an unchanged-baseline mobile run also failed, which does not establish absence of regression.
+
 ### Verified external form divergence
 
 A read-only local-browser probe of the real NL and FR HubSpot embed on 13 November 2026 found Helvetica at 16px for visible labels/prose/text inputs/submit buttons, with Arial 13.3333px checkbox-control styling. These are provider iframe styles at `https://js-eu1.hsforms.net`, not the website's canonical family/body17/control15 rules. No contact details were entered, no form was submitted and no provider settings were changed. Sanitized evidence is retained in `reports/typography/provider-fonts.json` and provider screenshots. The initial NL probe recorded evidence before encountering an empty-frame URL parsing error; a corrected FR probe completed and retained that NL evidence.

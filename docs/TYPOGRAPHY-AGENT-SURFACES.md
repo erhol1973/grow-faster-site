@@ -38,6 +38,9 @@ docs/TYPOGRAPHY.md
 !tests/typography*
 !tests/browser/typography*
 !docs/TYPOGRAPHY.md
+!tests/browser/accessibility.spec.cjs
+!.github/workflows/release.yml
+!playwright.config.cjs
 ```
 
 ## Additional test producer
@@ -50,6 +53,7 @@ state_tests builder installed autonomous
 ```
 
 ```surface:state_tests
+tests/browser/accessibility.spec.cjs
 tests/browser/typography-states.spec.cjs
 scripts/typography-audit.cjs
 tests/browser/typography.spec.cjs
@@ -57,3 +61,18 @@ tests/typography-contract.json
 ```
 
 The state-test producer additionally owns the audit helper, contract JSON and main typography browser spec; the integrator confirmed transfer before dispatch. CSS, HTML, typography delivery unit test and typography documentation remain with the integrator.
+
+The existing accessibility browser spec is also assigned to the state-test producer for full built-route/actual-locale WCAG coverage; all other existing accessibility scenarios are preserved.
+
+## CI partition producer
+
+```roster
+ci_checks builder installed autonomous
+```
+
+```surface:ci_checks
+.github/workflows/release.yml
+playwright.config.cjs
+```
+
+CI producer owns only the release workflow and browser partition configuration. Orchestrator verifies the case-set union and independent reviewer audits gate dependencies. Existing thresholds and protected check names remain authoritative.

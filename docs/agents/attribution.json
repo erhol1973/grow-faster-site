@@ -35,7 +35,13 @@
   "performance": [
     "scripts/build.cjs",
     "scripts/typography-build.cjs",
-    "tests/performance-fonts.test.cjs"
+    "tests/performance-fonts.test.cjs",
+    "index.html",
+    "img/hero-executive-meeting-640.avif",
+    "img/hero-executive-meeting-1280.avif",
+    "img/hero-executive-meeting-1774.avif",
+    "tests/hero-image.test.cjs",
+    "tests/browser/navigation-accessibility.spec.cjs"
   ],
   "repository": [
     "scripts/server.cjs",

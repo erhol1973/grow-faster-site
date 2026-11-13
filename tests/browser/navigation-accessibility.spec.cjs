@@ -39,14 +39,16 @@ test('header logo variants load at low priority and reuse native loaded images a
  await expect(onDark).toBeHidden();expect(requests.filter(file=>file==='/img/grow-faster-logo-light.svg')).toHaveLength(1);
 });
 
-test('home responsive hero preload fetches the selected WebP once from the document head',async({page},info)=>{
+test('home responsive hero preloads the selected AVIF once and preserves WebP fallback',async({page},info)=>{
  await page.setViewportSize({width:info.project.use.isMobile?390:1440,height:900});
- const requests=[];page.on('request',request=>{if(/\/img\/hero-executive-meeting-\d+\.webp$/.test(new URL(request.url()).pathname))requests.push(request.url())});
+ const requests=[];page.on('request',request=>{if(/\/img\/hero-executive-meeting-\d+\.(?:avif|webp)$/.test(new URL(request.url()).pathname))requests.push(request.url())});
  await page.addInitScript(()=>{localStorage.setItem('avs-lang','nl');localStorage.setItem('avs-consent',JSON.stringify({v:4,ext:false,ana:false,ts:Date.now()}))});await page.goto('/index.html');
- const image=page.locator('#hero .hero-bg picture img'),source=page.locator('#hero .hero-bg picture source'),preload=page.locator('head link[rel=preload][as=image]');
- await expect(preload).toHaveCount(1);await expect(preload).toHaveAttribute('type','image/webp');await expect(preload).toHaveAttribute('fetchpriority','high');await expect(preload).toHaveAttribute('imagesrcset',await source.getAttribute('srcset'));await expect(preload).toHaveAttribute('imagesizes',await source.getAttribute('sizes'));
+ const image=page.locator('#hero .hero-bg picture img'),source=page.locator('#hero .hero-bg picture source[type="image/avif"]'),preload=page.locator('head link[rel=preload][as=image]');
+ await expect(preload).toHaveCount(1);await expect(preload).toHaveAttribute('type','image/avif');await expect(preload).toHaveAttribute('fetchpriority','high');await expect(preload).toHaveAttribute('imagesrcset',await source.getAttribute('srcset'));await expect(preload).toHaveAttribute('imagesizes',await source.getAttribute('sizes'));
  await expect.poll(()=>image.evaluate(e=>e.complete&&e.naturalWidth>0)).toBe(true);
  const result=await image.evaluate(e=>({currentSrc:e.currentSrc,pixels:innerWidth*devicePixelRatio,entries:performance.getEntriesByName(e.currentSrc).map(x=>({initiatorType:x.initiatorType,transferSize:x.transferSize}))}));
- const candidate=[640,1280,1774].find(width=>width>=result.pixels)||1774;expect(new URL(result.currentSrc).pathname).toBe('/img/hero-executive-meeting-'+candidate+'.webp');
+ const candidate=[640,1280,1774].find(width=>width>=result.pixels)||1774;expect(new URL(result.currentSrc).pathname).toBe('/img/hero-executive-meeting-'+candidate+'.avif');
+ await expect(page.locator('#hero .hero-bg picture source[type="image/webp"]')).toHaveAttribute('srcset','img/hero-executive-meeting-640.webp 640w, img/hero-executive-meeting-1280.webp 1280w, img/hero-executive-meeting-1774.webp 1774w');
+ await expect(image).toHaveAttribute('src','img/hero-executive-meeting-1774.webp');await expect(image).toHaveAttribute('width','1774');await expect(image).toHaveAttribute('height','887');
  expect(requests).toEqual([result.currentSrc]);expect(result.entries).toHaveLength(1);expect(result.entries[0].initiatorType).toBe('link');
 });

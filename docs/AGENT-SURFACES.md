@@ -13,6 +13,7 @@ reviewer reviewer installed autonomous
 
 ```surface:navigation
 *.html
+!index.html
 assets/navigation.css
 assets/i18n.js
 tests/**
@@ -21,6 +22,8 @@ tests/**
 !tests/brand-logo.test.cjs
 !tests/typography.test.cjs
 !tests/performance-fonts.test.cjs
+!tests/hero-image.test.cjs
+!tests/browser/navigation-accessibility.spec.cjs
 !tests/server-compression.test.cjs
 !tests/first-paint.test.cjs
 !tests/browser/first-paint.spec.cjs
@@ -48,6 +51,7 @@ tests/browser/baies-dev.spec.cjs
 
 ```surface:branding
 img/**
+!img/hero-executive-meeting-*.avif
 favicon.ico
 tests/brand-logo.test.cjs
 ```
@@ -65,6 +69,10 @@ docs/EXECUTIVE-RADAR-NAV-DEV.md
 ```
 
 ```surface:performance
+index.html
+img/hero-executive-meeting-*.avif
+tests/hero-image.test.cjs
+tests/browser/navigation-accessibility.spec.cjs
 scripts/build.cjs
 scripts/typography-build.cjs
 assets/site.js

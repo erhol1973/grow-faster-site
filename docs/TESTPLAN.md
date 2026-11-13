@@ -295,8 +295,8 @@ De publieke release-smoke gebruikt dezelfde vastgezette Playwright-container als
 De bestaande `verify:production`-controles, inclusief de permanente Radar-inhoudsgrens, en de afzonderlijke publieke mobiele Lighthouse-meting blijven behouden. De job houdt uitsluitend leesrechten en de bestaande tijdslimiet van tien minuten. Installatie-, runtime- en controleresultaten worden als rapport en samenvatting bewaard; een mislukt onderdeel blijft de job doen falen. Container-/registry-, pakketdownload- en publieke netwerkstoringen blijven mogelijke expliciete fouten. De lokale load- en Lighthouse-vrijgavegrenzen veranderen niet.
 ## Component stylesheet delivery regression
 
-The build may inline only the exact bytes of the small, URL-free navigation and
-books stylesheets at their original link positions. This removes blocking
+The build may inline only the exact bytes of the small, URL-free navigation,
+books and cms-public stylesheets at their original link positions. This removes blocking
 requests without changing the cascade or creating another typography policy.
 The final shared typography stylesheet remains external and versioned. Documents
 with a meta CSP, links with additional attributes, CSS imports/URLs and styles

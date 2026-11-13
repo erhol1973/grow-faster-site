@@ -3,9 +3,12 @@ const assert=require('node:assert/strict');
 const {inlineComponentStyles}=require('../scripts/component-style-delivery.cjs');
 
 test('component delivery preserves exact CSS bytes and cascade positions before the external type policy',()=>{
-  const css='nav { color: navy; }\n';
-  const input='<head><style>nav{color:red}</style><link rel="stylesheet" href="assets/navigation.css?v=1"><style>nav{color:blue}</style><link rel="stylesheet" href="assets/typography.css?v=2"></head>';
-  assert.equal(inlineComponentStyles(input,name=>{assert.equal(name,'assets/navigation.css');return css}),input.replace('<link rel="stylesheet" href="assets/navigation.css?v=1">','<style data-gf-component-style="assets/navigation.css">'+css+'</style>'));
+  for(const component of ['navigation','books','cms-public']){
+    const css='nav { color: navy; }\n';
+    const link='<link rel="stylesheet" href="assets/'+component+'.css?v=1">';
+    const input='<head><style>nav{color:red}</style>'+link+'<style>nav{color:blue}</style><link rel="stylesheet" href="assets/typography.css?v=2"></head>';
+    assert.equal(inlineComponentStyles(input,name=>{assert.equal(name,'assets/'+component+'.css');return css}),input.replace(link,'<style data-gf-component-style="assets/'+component+'.css">'+css+'</style>'));
+  }
 });
 
 test('strict CSP and links with media, integrity, identity or behavior remain external',()=>{

@@ -31,6 +31,10 @@ jobs:
         env:
           AGENT_MAP: docs/TYPOGRAPHY-AGENT-SURFACES.md
           AGENT_DIR: docs/typography-agents
+          # Git ownership differs inside the container; trust this checkout only.
+          GIT_CONFIG_COUNT: "1"
+          GIT_CONFIG_KEY_0: safe.directory
+          GIT_CONFIG_VALUE_0: ${{ github.workspace }}
       - run: npm run build
       - run: npm test
       - run: npm run security

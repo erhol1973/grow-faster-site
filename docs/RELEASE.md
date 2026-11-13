@@ -33,3 +33,15 @@ Loadtests blijven lokaal. Ze meten het testpakket en de lokale server; ze voorsp
 Beoordeel dependency-updates en pas lockfile en browserinstallatie samen aan. Leg prestatiedrempels en uitzonderingen met reden vast. Houd nieuwe pagina’s en gebruikerspaden in de tests bij. Onderzoek mislukte tests eerst; herstarten is geen oplossing voor instabiele tests.
 
 Elke foutoplossing of nieuwe functionaliteit bevat passende blijvende regressietests. Werk de gedeelde navigatiegevallen en betrokken integratie-, end-to-end-, load- en prestatiecontroles in dezelfde pull request bij. Unit tests horen bij afzonderlijke logica; niet elk tekst- of layoutdetail heeft een unit test nodig. Behoud positieve en negatieve scenario’s. Breid de suite gericht uit en verwijder verouderde of dubbele tests alleen met onderbouwde reden. Zie TESTPLAN.md voor dekking en beperkingen.
+
+## Typography audit release boundary, 13 November 2026
+
+Typography work is isolated on `fix/sitewide-typography`, based on main `1dc94c52ad7175999bce141bcc1b21deedc3bcac`. PRs 57, 58 and 60 were already merged at inventory time and are not modified. Existing unrelated checkout changes and open development branches remain untouched. A draft PR and CI are authorized; merge, production deployment, preview publication, CMS writes and account changes are not authorized by this typography task. Commits use `[CF-Pages-Skip]` to retain the existing no-preview convention.
+
+Release remains NO-GO until the final revision passes all original gates plus the new typography contract, independent visual/release review, and the requested reachable-state coverage. Supporting report files preserve failed and interrupted attempts; neither a source fix nor an initial passing unit/load check is release approval.
+
+### Verified external form divergence
+
+A read-only local-browser probe of the real NL and FR HubSpot embed on 13 November 2026 found Helvetica at 16px for visible labels/prose/text inputs/submit buttons, with Arial 13.3333px checkbox-control styling. These are provider iframe styles at `https://js-eu1.hsforms.net`, not the website's canonical family/body17/control15 rules. No contact details were entered, no form was submitted and no provider settings were changed. Sanitized evidence is retained in `reports/typography/provider-fonts.json` and provider screenshots. The initial NL probe recorded evidence before encountering an empty-frame URL parsing error; a corrected FR probe completed and retained that NL evidence.
+
+The synthetic provider fixture in browser tests verifies host/status flow only. It must never be counted as native provider-form typography acceptance. Cross-origin iframe styling is an explicit release blocker pending a separately reviewable provider-side change and actual NL/FR remeasurement. Website CSS cannot establish zero deviations inside this iframe. Production provider configuration/publication is not authorized by the current code-only audit mandate.

@@ -1,5 +1,5 @@
 const {defineConfig,devices}=require('playwright/test');
-const critical=['**/cms-recovery.spec.cjs','**/cms.spec.cjs','**/coherence-film-layout.spec.cjs','**/book-reader.spec.cjs','**/books.spec.cjs','**/navigation.spec.cjs','**/workshop.spec.cjs','**/refinements.spec.cjs','**/eca.spec.cjs','**/smoke.spec.cjs','**/contact.spec.cjs','**/site.spec.cjs','**/critical-flows.spec.cjs','**/cache-transition.spec.cjs','**/transformation.spec.cjs','**/editorial.spec.cjs'];
+const critical=['**/typography-states.spec.cjs','**/typography.spec.cjs','**/cms-recovery.spec.cjs','**/cms.spec.cjs','**/coherence-film-layout.spec.cjs','**/book-reader.spec.cjs','**/books.spec.cjs','**/navigation.spec.cjs','**/workshop.spec.cjs','**/refinements.spec.cjs','**/eca.spec.cjs','**/smoke.spec.cjs','**/contact.spec.cjs','**/site.spec.cjs','**/critical-flows.spec.cjs','**/cache-transition.spec.cjs','**/transformation.spec.cjs','**/editorial.spec.cjs'];
 module.exports=defineConfig({
   testDir:'./tests/browser',timeout:45000,fullyParallel:true,
   forbidOnly:!!process.env.CI,failOnFlakyTests:!!process.env.CI,retries:process.env.CI?1:0,
@@ -14,5 +14,3 @@ module.exports=defineConfig({
     {name:'mobile',use:{...devices['iPhone 13'],defaultBrowserType:'chromium'}}
   ]
 });
-
-

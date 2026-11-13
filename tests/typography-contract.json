@@ -1,0 +1,34 @@
+{
+  "family": "Aptos, \"Hanken Grotesk\", \"Segoe UI\", Helvetica, Arial, sans-serif",
+  "body": 17,
+  "headings": {
+    "1": {
+      "min": 40,
+      "vw": 6,
+      "max": 86
+    },
+    "2": {
+      "min": 32,
+      "vw": 4,
+      "max": 54
+    },
+    "3": {
+      "min": 24,
+      "vw": 0,
+      "max": 24
+    },
+    "4": {
+      "min": 20,
+      "vw": 0,
+      "max": 20
+    }
+  },
+  "label": 12,
+  "metadata": 14,
+  "labelSelector": ".eyebrow,.kicker,.part,.folio,.in-brief__k,.author-box__k,.author-box__n,.journal-label,.exhibit,.tag,.route-k,.lens-k,.executive-eyebrow,.executive-signature,.brief-label,.subtle-label,.product-title,.signal-cat,[data-typography-role=label],.practice-number,.lang-cur,th,svg text,.paired-row>span,.paired-bars span,.legend,.tenure-line,.stages,.years,.matrix-axes,.bar-chart b,.bar-chart span",
+  "metadataSelector": ".note,.byline,.career-y,.route-note,.hero-avail,.brief-disclaimer,.method-note,.reader-links,.author-box__links,.proof-link,footer p,.journal-header p,.signup p,[data-typography-role=metadata],footer a,footer li,footer span,footer button,.paper-footer,figcaption,cite",
+  "control": 15,
+  "controlSelector": "button,input,select,textarea,label,.btn,nav a,.nav a,.main-nav a,.topic-links a",
+  "metric": 32,
+  "metricSelector": ".metric b,.bar-top b,.ec-tile b,.dg-out .bn,.snapshot-stat strong,.signal-metric,.radar-summary strong,.exact-edition .metrics strong,.ec-operator"
+}

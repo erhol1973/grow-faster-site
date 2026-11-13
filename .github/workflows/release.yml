@@ -27,6 +27,10 @@ jobs:
         run: npm install --global pnpm@11.25.0
       - name: Install locked dependencies
         run: pnpm install --frozen-lockfile --ignore-scripts
+      - run: node scripts/agent-guard.mjs check
+        env:
+          AGENT_MAP: docs/TYPOGRAPHY-AGENT-SURFACES.md
+          AGENT_DIR: docs/typography-agents
       - run: npm run build
       - run: npm test
       - run: npm run security
@@ -159,4 +163,3 @@ jobs:
         with:
           name: production-verification
           path: reports/
-

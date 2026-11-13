@@ -1,0 +1,55 @@
+/* Website typography contract. Load after component styles.
+   These deliberate invariants outrank legacy component declarations; components
+   own spacing, colour and weight, never a second font or semantic role size. */
+:root {
+  --font-family:"Aptos","Hanken Grotesk","Segoe UI",Helvetica,Arial,sans-serif;
+  --f-sans:var(--font-family);
+  --f-display:var(--font-family);
+  --f-mono:var(--font-family);
+  --f-journal:var(--font-family);
+  --type-body:17px;
+  --type-h1:clamp(40px,6vw,86px);
+  --type-h2:clamp(32px,4vw,54px);
+  --type-h3:24px;
+  --type-h4:20px;
+  --type-label:12px;
+  --type-meta:14px;
+  --type-control:15px;
+  --type-metric:32px;
+}
+/* Includes controls, SVG text, pseudo-elements and nested heading emphasis. */
+html,body,body *,body *::before,body *::after {
+  font-family:var(--font-family)!important;
+}
+/* Unclassified ordinary text starts in the body role. Larger/smaller roles
+   below are an explicit, finite inventory rather than inherited accidents. */
+body * {font-size:inherit!important}
+body {font-size:var(--type-body)!important}
+:root body :is(h1,[role="heading"][aria-level="1"]) {font-size:var(--type-h1)!important}
+:root body :is(h2,[role="heading"][aria-level="2"]) {font-size:var(--type-h2)!important}
+:root body :is(h3,[role="heading"][aria-level="3"]) {font-size:var(--type-h3)!important}
+:root body :is(h4,[role="heading"][aria-level="4"]) {font-size:var(--type-h4)!important}
+:root body :is(h1,h2,h3,h4,[role="heading"]) * {font-size:inherit!important}
+/* Inline emphasis/links in prose inherit its role rather than a component's
+   unrelated inline-text size. Explicit supporting roles below still win. */
+:where(p,main li,.career-r,.practice-questions dd,.in-brief dd) :where(span,a,b,strong,em,i,code) {
+  font-size:inherit!important;
+}
+/* Ordinary prose is one role, including introductory and card paragraphs. */
+:root body :where(p,main li,main dt,main dd,main td,.career-r,.career-list b,.skip-link) {
+  font-size:var(--type-body)!important;
+}
+/* Supporting roles: labels are not prose and retain a smaller explicit token. */
+:root body :is(.eyebrow,.kicker,.part,.folio,.in-brief__k,.author-box__k,.author-box__n,
+ .journal-label,.exhibit,.tag,.route-k,.lens-k,.executive-eyebrow,
+ .executive-signature,.brief-label,.subtle-label,.product-title,.signal-cat,
+ svg text,.bar-chart b,.bar-chart span,.paired-row>span,.paired-bars span,.legend,.tenure-line,.stages,.years,.matrix-axes,.practice-number,.lang-cur,th,[data-typography-role="label"]):not(:where(h1,h2,h3,h4,[role="heading"])) {font-size:var(--type-label)!important}
+:root body :is(.note,.byline,.career-y,.route-note,.hero-avail,.brief-disclaimer,
+ .method-note,.reader-links,.author-box__links,.proof-link,.paper-footer,figcaption,cite,footer p,footer a,footer li,footer span,footer button,.journal-header p,.signup p,[data-typography-role="metadata"]):not(:where(h1,h2,h3,h4,[role="heading"])) {
+  font-size:var(--type-meta)!important;
+}
+:root body :is(button,input,select,textarea,label,.btn,nav a,.nav a,.main-nav a,.topic-links a):not(:where(h1,h2,h3,h4,[role="heading"])) {font-size:var(--type-control)!important}
+/* Footer controls are secondary metadata; main controls stay 15px. */
+:root body footer :is(a,button,li,span,.linkbtn) {font-size:var(--type-meta)!important}
+:root body :is(.metric b,.bar-top b,.ec-tile b,.dg-out .bn,.snapshot-stat strong,.signal-metric,.radar-summary strong,.exact-edition .metrics strong,.ec-operator):not(:where(h1,h2,h3,h4,[role="heading"])) {font-size:var(--type-metric)!important}
+:root:root body :is(h1,h2,h3,h4,[role="heading"]) * {font-size:inherit!important}

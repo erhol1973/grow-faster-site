@@ -1147,14 +1147,14 @@ html.nav-over .nav a.l{color:rgba(255,255,255,.92)}
 
 
 .lang .lang-cur{display:inline!important}
-.lang .lang-btn{font-size:12.5px!important;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:6px 4px!important;gap:6px!important;white-space:nowrap}
+.lang .lang-btn{font-size:12.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:6px 4px!important;gap:6px!important;white-space:nowrap}
 .lang .lang-menu:not([hidden]){display:block!important;min-width:210px;padding:10px!important;border-radius:14px;background:var(--bg)!important;border:1px solid var(--line)!important;box-shadow:0 16px 40px rgba(7,16,30,.18)}
 .lang .lang-menu li{display:block}
-.lang .lang-menu button{display:flex!important;justify-content:flex-start!important;align-items:center;width:100%;padding:10px 14px!important;font-size:15px!important;color:var(--muted)!important;border-radius:8px;box-shadow:none!important;background:transparent!important}
+.lang .lang-menu button{display:flex!important;justify-content:flex-start!important;align-items:center;width:100%;padding:10px 14px!important;font-size:15px;color:var(--muted)!important;border-radius:8px;box-shadow:none!important;background:transparent!important}
 .lang .lang-menu button:hover,.lang .lang-menu button:focus-visible{background:var(--tint)!important;color:var(--brand)!important}
 .lang .lang-menu button[aria-checked="true"]{color:var(--brand)!important;font-weight:600}
 .lang .lang-menu button[aria-checked="true"]::after{content:"✓"!important;margin-left:auto;color:var(--ai-ink)}
-.lang .lang-menu .ln{position:static!important;width:auto!important;height:auto!important;overflow:visible!important;clip:auto!important;font-family:var(--f-sans)!important;font-size:inherit!important;letter-spacing:0!important;text-transform:none!important;color:inherit!important}
+.lang .lang-menu .ln{position:static!important;width:auto!important;height:auto!important;overflow:visible!important;clip:auto!important;font-family:var(--f-sans);font-size:inherit;letter-spacing:0!important;text-transform:none!important;color:inherit!important}
 .lang-modal .lang-btn{color:var(--brand)!important}
 
 @media(max-width:480px){.lang-top .lang-cur{display:none!important}.lang-top .lang-btn::before{content:attr(data-code)}}

@@ -17,7 +17,9 @@ test('revalidated typography HTML bypasses warm old component assets and execute
     const normalize=value=>value.replace(/["'\s]/g,'').toLowerCase();expect(normalize(family)).toBe(normalize(require('../typography-contract.json').family));
     expect(await page.evaluate(()=>window.__cachedTypographyFixture)).toBeUndefined();
     const current=fixture.requests.filter(request=>request.version===2&&request.file==='assets/site.js');
-    expect(current.some(request=>request.url==='/assets/site.js?v=20261114-integration')).toBe(true);
+    const currentURL='/assets/site.js?v=20261114-integration&members=2';
+    await expect(page.locator('script[src^="assets/site.js?"]')).toHaveAttribute('src',currentURL.slice(1));
+    expect(current.some(request=>request.url===currentURL)).toBe(true);
     expect(fixture.requests.filter(request=>request.url===oldURL)).toHaveLength(1);
   }finally{try{await info.attach('typography-cache-requests',{body:JSON.stringify({previousAssetBytes:'synthetic cache marker; current assets are the real tested build',requests:fixture.requests},null,2),contentType:'application/json'})}finally{await page.close();fixture.server.closeAllConnections();await new Promise(r=>fixture.server.close(r))}}
 });

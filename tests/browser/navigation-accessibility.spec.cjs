@@ -65,8 +65,11 @@ test('critical component styles are inline and the existing deferred dictionary 
  });
  await page.goto('/index.html');await expect(page.locator('html')).toHaveClass(/i18n-ready/);
  expect(requests.filter(path=>path==='/assets/i18n.js')).toHaveLength(1);
- expect(requests.filter(path=>/^\/assets\/(navigation|home-hero|books|journal)\.css$/.test(path))).toEqual([]);
- await expect(page.locator('style[data-gf-component-style]')).toHaveCount(4);
+ const components=['assets/navigation.css','assets/journal.css','assets/books.css','assets/home-hero.css','assets/cms-public.css'];
+ expect(requests.filter(path=>components.includes(path.slice(1)))).toEqual([]);
+ const inline=await page.locator('style[data-gf-component-style]').evaluateAll(elements=>elements.map(el=>({asset:el.dataset.gfComponentStyle,css:el.textContent})));
+ expect(inline.map(item=>item.asset)).toEqual(components);
+ for(const item of inline)expect(item.css,'exact original component bytes: '+item.asset).toBe(require('node:fs').readFileSync(item.asset,'utf8'));
  const scripts=await page.locator('script[src]').evaluateAll(elements=>elements.map(script=>({src:new URL(script.src).pathname,defer:script.defer})));
  expect(scripts.filter(script=>script.src==='/assets/i18n.js')).toEqual([{src:'/assets/i18n.js',defer:true}]);
  expect(scripts.findIndex(script=>script.src==='/assets/i18n.js')).toBeLessThan(scripts.findIndex(script=>script.src==='/assets/site.js'));

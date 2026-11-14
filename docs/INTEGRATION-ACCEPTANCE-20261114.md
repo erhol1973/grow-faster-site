@@ -208,3 +208,36 @@ engine/extraction errors. It reports108 new identities:65 match old text/rule/
 offset/length tuples at new locations,43 are new tuples requiring context or
 editorial review. All3,668 prior finding records remain exactly unchanged in
 the3,776-record candidate. No register promotion or human review is invented.
+
+## Second CI and bounded follow-up
+
+Head49af4d9 run43583710440 passed all five typography partitions and the128
+journey cases. The base suite passed961, failed11 and retained13 existing skips;
+Linux load/performance consequently did not run. Five failures expected an old
+site.js URL without the existing members=2 parameter; two expected four inline
+component styles rather than the actual five. The repaired tests require the
+exact current script URL and ordered component identities with original CSS
+bytes, retaining real cache, diagram, dictionary and no-CSS-request assertions.
+Four Journal axe failures exposed a real visible-name mismatch. The NL/FR
+accessible names now include the visible A−/A+ prefixes and descriptive action.
+No authentication fixture or axe exclusion hides this anonymous-reader defect.
+
+A separate Books diagnostic associated a late three-line section movement with
+the ordinary test-CMS replacement of its longer fallback introduction by shorter
+published copy. The finite component fix reserves2/3/4/5 relative lines according
+to viewport width on that exact introduction field. It does not constrain longer
+copy, hide content, change font tokens or disable the CMS. Five source pages
+version the shared component URL; the existing build inlines its complete bytes.
+Regression cases cover delayed short copy, locale/resize and readable long copy
+including200% text. This is no guarantee of zero CLS at every enlargement.
+
+The first combined local browser/unit attempts overlapped resource-intensive
+processes and produced timeouts; these reports are retained as failed evidence.
+The original thresholds, timeouts, retries and full release gates are unchanged.
+Targeted and independent source review do not replace fresh complete CI.
+
+The candidate daily Dutch CI43583710419 also completed with108 FINDINGS and441
+checked blocks. Its testmerge dd5e7cf has the same Git tree as49af4d9. The scan is
+technically complete, with no official language approval or baseline promotion.
+Main and production remain unchanged; native provider typography, hosted Auth
+acceptance and editorial decisions remain separately evidenced dependencies.

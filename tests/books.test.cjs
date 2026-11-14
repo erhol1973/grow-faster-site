@@ -38,3 +38,18 @@ test('only the first lazy book cover gets low priority while its approved image 
  assert.match(second,/loading="lazy"/);assert.doesNotMatch(second,/fetchpriority=/);
  for(const [file,digest] of [['design-for-coherence-book-300.webp','9a6ac38db560b42a0a9ad830e56590d0e34a57fcf10b6a84b239cb9667be50d3'],['design-for-coherence-book-600.webp','ed764350f7079de5a81677863c31b700f208fcef70a4e3ab0eafb6e913c7b049'],['design-for-coherence-book-600.png','cbe6a954da249778a13c92a255c8d59b9805c73e74b645c426d9e3abe99cc48c']])assert.equal(crypto.createHash('sha256').update(fs.readFileSync(path.join(root,'img',file))).digest('hex'),digest,file);
 });
+
+test('the finite Books intro reservation ships exact component CSS and invalidates its prior stylesheet URL',()=>{
+ const css=fs.readFileSync('assets/books.css','utf8'),source=fs.readFileSync('books.html','utf8'),built=fs.readFileSync(path.join(root,'books.html'),'utf8');
+ for(const file of ['books.html','about.html','coherence.html','index.html','workshop.html']){
+  const page=fs.readFileSync(file,'utf8');
+  assert.match(page,/<link rel="stylesheet" href="assets\/books\.css\?v=20261114-cms-intro-space">/,file);
+  assert.doesNotMatch(page,/assets\/books\.css\?v=202611(?:03-book-order|11-book-actions)/,file);
+  assert.ok(fs.readFileSync(path.join(root,file),'utf8').includes('<style data-gf-component-style="assets/books.css">'+css+'</style>'),file+' exact shared component delivery');
+ }
+ assert.equal(fs.readFileSync(path.join(root,'assets/books.css'),'utf8'),css);
+ assert.ok(built.includes('<style data-gf-component-style="assets/books.css">'+css+'</style>'),'actual delivery contains the complete new CSS at its authored position');
+ const selector='.books-hero > .wrap > p[data-cms="f02f49f236c81-0"]';
+ assert.ok(css.includes(selector+'{min-block-size:2lh}'));
+ for(const [width,lines]of [[640,3],[440,4],[375,5]])assert.ok(css.includes('@media(width < '+width+'px){'+selector+'{min-block-size:'+lines+'lh}}'));
+});

@@ -1,8 +1,8 @@
 {
   "schema": 1,
   "origin": "Existing ChatGPT Library baseline/register not accessible in this environment; no prior reviews imported.",
-  "sourceCommit": "ef238a2013b87953a6accf3414ff3e0644aa6e00",
-  "parentBaseline": "80cb7588361496d8d80c98e15250968c7a283bcc58953ff2f607855bb1bbbad5",
+  "sourceCommit": "fc9785f055cc0063edd47515ba0070e3fe76ecaf",
+  "parentBaseline": "77826a8956a18c06793149ee7bcc6566e092dfc6144e59da052a5b7194e68d64",
   "coverage": [
     {
       "file": "404.html",
@@ -210,6 +210,10 @@
     {
       "sourceCommit": "61759d211eb80c5445a16d533b74f52dc3330300",
       "digest": "80cb7588361496d8d80c98e15250968c7a283bcc58953ff2f607855bb1bbbad5"
+    },
+    {
+      "sourceCommit": "ef238a2013b87953a6accf3414ff3e0644aa6e00",
+      "digest": "77826a8956a18c06793149ee7bcc6566e092dfc6144e59da052a5b7194e68d64"
     }
   ],
   "blocks": [
@@ -19382,8 +19386,8 @@
       "id": "approach.html#text:body:2>main:3>section:3>div:1>div:2>div:2>div:1>svg:1>text:8",
       "page": "approach.html",
       "kind": "text",
-      "text": "AI-AGENTS LATEN COÖRDINEREN",
-      "sha256": "6f82270ee209f6ad207baf70e73c33fdda6add380605abd38ae86483c6fbcbb6",
+      "text": "AI-AGENTEN LATEN COÖRDINEREN",
+      "sha256": "b6c1efe3e8ee9b60b312e00b7edb051ac7b15bb9f8da996537b964b1b9cf3947",
       "engine": {
         "name": "LanguageTool",
         "version": "6.6",
@@ -58957,8 +58961,8 @@
       "id": "dictionary:I18N:Agent-enable",
       "page": "404.html",
       "kind": "dictionary:I18N:Agent-enable",
-      "text": "AI-agents laten coördineren",
-      "sha256": "8e7884414fe75fe8fdbb38edbff378c9b4e51b0b483f07153553739babf8d88d",
+      "text": "AI-agenten laten coördineren",
+      "sha256": "74884527e0c6590f90352921e43fa3a6bba41201128deba2a8e740f042d3a6b2",
       "engine": {
         "name": "LanguageTool",
         "version": "6.6",
@@ -330628,6 +330632,31 @@
       "context": "INTERN SIGNAAL Orderuitzonderingen blijven tussen teams liggen Kies dit voorbeeld →",
       "status": "open",
       "firstSeen": "ef238a2013b87953a6accf3414ff3e0644aa6e00"
+    },
+    {
+      "id": "77bbe33e80d5f4a02215f03909fa637e31ac828ec61278ac1545ff3a523ab441",
+      "blockId": "approach.html#text:body:2>main:3>section:3>div:1>div:2>div:2>div:1>svg:1>text:8",
+      "textHash": "b6c1efe3e8ee9b60b312e00b7edb051ac7b15bb9f8da996537b964b1b9cf3947",
+      "rule": "MORFOLOGIK_RULE_NL_NL",
+      "offset": 0,
+      "length": 10,
+      "message": "Er is een mogelijke spelfout gevonden.",
+      "replacements": [
+        "FBI-agenten",
+        "CIA-agenten",
+        "EX-AGENTEN",
+        "MI6-agenten",
+        "ME-agenten",
+        "ANP-agenten",
+        "NAZI-AGENTEN",
+        "PR-AGENTEN",
+        "VS-agenten",
+        "TV-AGENTEN",
+        "VN-agenten"
+      ],
+      "context": "AI-AGENTEN LATEN COÖRDINEREN",
+      "status": "open",
+      "firstSeen": "fc9785f055cc0063edd47515ba0070e3fe76ecaf"
     }
   ]
 }

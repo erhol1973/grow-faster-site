@@ -374,3 +374,13 @@ Artifact security also passes. Test-only CRLF normalization after that run is
 proved reversible with identical LF-normalized code; it changes no public byte.
 The complete204-file candidate is52,607,437bytes. New committed-source language
 and exact-head full Linux evidence are still required before global acceptance.
+
+The complete final committed-source scan on fc9785f checks the two remaining
+changed blocks with no engine error. One expected uppercase `AI-AGENTEN`
+suggestion is retained after a separate full-context agent assessment and
+independent review; neither case nor rule is altered to remove it. Its complete
+candidate retains all3,781 prior records plus that record, with verified ancestry,
+parent digest and append-only history. The explicit3,782-record machine
+checkpoint is not human language approval or a zero-linguistic-error claim.
+The next clean PR scan must validate unchanged content and the reviewed
+extraction contract; all original full Linux gates remain required.

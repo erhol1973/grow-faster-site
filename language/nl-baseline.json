@@ -1,28 +1,28 @@
 {
   "schema": 1,
   "origin": "Existing ChatGPT Library baseline/register not accessible in this environment; no prior reviews imported.",
-  "sourceCommit": "fc9785f055cc0063edd47515ba0070e3fe76ecaf",
-  "parentBaseline": "77826a8956a18c06793149ee7bcc6566e092dfc6144e59da052a5b7194e68d64",
+  "sourceCommit": "596060e48ed556ec3cbb3f2b77d2bfe6d47472d6",
+  "parentBaseline": "342c1b25a4565e12752d01cbd55c341efa3faa339eb2656f487cebfecd62699c",
   "coverage": [
     {
       "file": "404.html",
       "status": "scanned",
-      "blocks": 1444
+      "blocks": 1445
     },
     {
       "file": "about-the-author.html",
       "status": "scanned",
-      "blocks": 1550
+      "blocks": 1551
     },
     {
       "file": "about.html",
       "status": "scanned",
-      "blocks": 1550
+      "blocks": 1551
     },
     {
       "file": "accessibility.html",
       "status": "scanned",
-      "blocks": 1471
+      "blocks": 1472
     },
     {
       "file": "account.html",
@@ -37,32 +37,32 @@
     {
       "file": "all-articles.html",
       "status": "scanned",
-      "blocks": 1067
+      "blocks": 1070
     },
     {
       "file": "approach.html",
       "status": "scanned",
-      "blocks": 1783
+      "blocks": 1786
     },
     {
       "file": "articles-1/enterprise-architecture-needs-enterprise-coherence.html",
       "status": "scanned",
-      "blocks": 925
+      "blocks": 926
     },
     {
       "file": "articles-1/index.html",
       "status": "scanned",
-      "blocks": 1067
+      "blocks": 1070
     },
     {
       "file": "articles-1/the-evolution-of-enterprise-management.html",
       "status": "scanned",
-      "blocks": 1067
+      "blocks": 1070
     },
     {
       "file": "baies-dev/index.html",
       "status": "scanned",
-      "blocks": 14
+      "blocks": 16
     },
     {
       "file": "boek/index.html",
@@ -77,7 +77,7 @@
     {
       "file": "books.html",
       "status": "scanned",
-      "blocks": 1528
+      "blocks": 1529
     },
     {
       "file": "coherence-sim.html",
@@ -87,17 +87,17 @@
     {
       "file": "coherence.html",
       "status": "scanned",
-      "blocks": 925
+      "blocks": 926
     },
     {
       "file": "coordination-overload-1.html",
       "status": "scanned",
-      "blocks": 1067
+      "blocks": 1070
     },
     {
       "file": "de-rol-van-leiderschap.html",
       "status": "scanned",
-      "blocks": 1067
+      "blocks": 1070
     },
     {
       "file": "decision-journey/index.html",
@@ -107,7 +107,7 @@
     {
       "file": "decision-latency.html",
       "status": "scanned",
-      "blocks": 925
+      "blocks": 926
     },
     {
       "file": "eca.html",
@@ -117,22 +117,22 @@
     {
       "file": "executive-radar/index.html",
       "status": "scanned",
-      "blocks": 14
+      "blocks": 16
     },
     {
       "file": "index.html",
       "status": "scanned",
-      "blocks": 1566
+      "blocks": 1567
     },
     {
       "file": "insights-ai-pilot.html",
       "status": "scanned",
-      "blocks": 1067
+      "blocks": 1070
     },
     {
       "file": "insights.html",
       "status": "scanned",
-      "blocks": 1067
+      "blocks": 1070
     },
     {
       "file": "journal-fr.html",
@@ -142,52 +142,52 @@
     {
       "file": "journal.html",
       "status": "scanned",
-      "blocks": 98
+      "blocks": 100
     },
     {
       "file": "operating-model.html",
       "status": "scanned",
-      "blocks": 1539
+      "blocks": 1540
     },
     {
       "file": "privacy.html",
       "status": "scanned",
-      "blocks": 1543
+      "blocks": 1544
     },
     {
       "file": "process.html",
       "status": "scanned",
-      "blocks": 1524
+      "blocks": 1525
     },
     {
       "file": "terms.html",
       "status": "scanned",
-      "blocks": 1478
+      "blocks": 1479
     },
     {
       "file": "the-coherence-model-1.html",
       "status": "scanned",
-      "blocks": 925
+      "blocks": 926
     },
     {
       "file": "the-enterprise-paradox-1.html",
       "status": "scanned",
-      "blocks": 925
+      "blocks": 926
     },
     {
       "file": "transformation.html",
       "status": "scanned",
-      "blocks": 1556
+      "blocks": 1557
     },
     {
       "file": "value.html",
       "status": "scanned",
-      "blocks": 1517
+      "blocks": 1518
     },
     {
       "file": "workshop.html",
       "status": "scanned",
-      "blocks": 1582
+      "blocks": 1583
     }
   ],
   "history": [
@@ -214,6 +214,10 @@
     {
       "sourceCommit": "ef238a2013b87953a6accf3414ff3e0644aa6e00",
       "digest": "77826a8956a18c06793149ee7bcc6566e092dfc6144e59da052a5b7194e68d64"
+    },
+    {
+      "sourceCommit": "fc9785f055cc0063edd47515ba0070e3fe76ecaf",
+      "digest": "342c1b25a4565e12752d01cbd55c341efa3faa339eb2656f487cebfecd62699c"
     }
   ],
   "blocks": [
@@ -1913,6 +1917,19 @@
       "kind": "text",
       "text": "Coherentiescan (ECA)",
       "sha256": "c220a725c3c90527449e6aacdf7a4e99af8fdc55008a19942bbf5391c28e6088",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "6406620afa7a514fc6f66cc982091dce060d62483677c2cc828bf3a3e2657601"
+      }
+    },
+    {
+      "id": "404.html#text:body:2>nav:2>div:1>ul:2>li:3>ul:2>li:4",
+      "page": "404.html",
+      "kind": "text",
+      "text": "Beslisreis",
+      "sha256": "18340515e523cfb198b73e7be7afd0ed04ff2ef196921a2bdd41af033a724397",
       "engine": {
         "name": "LanguageTool",
         "version": "6.6",
@@ -4518,6 +4535,19 @@
       "kind": "text",
       "text": "Coherentiescan (ECA)",
       "sha256": "c220a725c3c90527449e6aacdf7a4e99af8fdc55008a19942bbf5391c28e6088",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "6406620afa7a514fc6f66cc982091dce060d62483677c2cc828bf3a3e2657601"
+      }
+    },
+    {
+      "id": "about-the-author.html#text:body:2>nav:2>div:1>ul:2>li:3>ul:2>li:4",
+      "page": "about-the-author.html",
+      "kind": "text",
+      "text": "Beslisreis",
+      "sha256": "18340515e523cfb198b73e7be7afd0ed04ff2ef196921a2bdd41af033a724397",
       "engine": {
         "name": "LanguageTool",
         "version": "6.6",
@@ -7761,6 +7791,19 @@
       }
     },
     {
+      "id": "about.html#text:body:2>nav:2>div:1>ul:2>li:3>ul:2>li:4",
+      "page": "about.html",
+      "kind": "text",
+      "text": "Beslisreis",
+      "sha256": "18340515e523cfb198b73e7be7afd0ed04ff2ef196921a2bdd41af033a724397",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "6406620afa7a514fc6f66cc982091dce060d62483677c2cc828bf3a3e2657601"
+      }
+    },
+    {
       "id": "about.html#text:body:2>nav:2>div:1>ul:2>li:4",
       "page": "about.html",
       "kind": "text",
@@ -9919,6 +9962,19 @@
       }
     },
     {
+      "id": "accessibility.html#text:body:2>nav:2>div:1>ul:2>li:3>ul:2>li:4",
+      "page": "accessibility.html",
+      "kind": "text",
+      "text": "Beslisreis",
+      "sha256": "18340515e523cfb198b73e7be7afd0ed04ff2ef196921a2bdd41af033a724397",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "6406620afa7a514fc6f66cc982091dce060d62483677c2cc828bf3a3e2657601"
+      }
+    },
+    {
       "id": "accessibility.html#text:body:2>nav:2>div:1>ul:2>li:4",
       "page": "accessibility.html",
       "kind": "text",
@@ -11978,6 +12034,32 @@
       "kind": "text",
       "text": "Lees editie 01 →",
       "sha256": "d0f922bc490b87c8da6d5c0d30eb6e2cf1155ca54e8809cd235f19d868acc2bb",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "6406620afa7a514fc6f66cc982091dce060d62483677c2cc828bf3a3e2657601"
+      }
+    },
+    {
+      "id": "all-articles.html#text:body:2>main:3>section:3>div:1>div:1>div:1>div:4>div:2>a:1",
+      "page": "all-articles.html",
+      "kind": "text",
+      "text": "Open de fictieve beslisreis →",
+      "sha256": "d1ae4abf1b3ebb5ca7bf6d48019952c726b73bd963b4abc372fdf80b36d94ef9",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "6406620afa7a514fc6f66cc982091dce060d62483677c2cc828bf3a3e2657601"
+      }
+    },
+    {
+      "id": "all-articles.html#text:body:2>main:3>section:3>div:1>div:1>div:1>div:4>div:2>p:2",
+      "page": "all-articles.html",
+      "kind": "text",
+      "text": "Los fictief voorbeeld. Het gelezen artikel of signaal wordt niet overgenomen. Zonder aanmelden.",
+      "sha256": "a990f244a6e05482e567e94b5ba5870cab5c8aefc2e81560b14bfbaf0d4d362e",
       "engine": {
         "name": "LanguageTool",
         "version": "6.6",
@@ -14500,6 +14582,19 @@
       "kind": "text",
       "text": "Coherentiescan (ECA)",
       "sha256": "c220a725c3c90527449e6aacdf7a4e99af8fdc55008a19942bbf5391c28e6088",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "6406620afa7a514fc6f66cc982091dce060d62483677c2cc828bf3a3e2657601"
+      }
+    },
+    {
+      "id": "all-articles.html#text:body:2>nav:2>div:1>ul:2>li:3>ul:2>li:4",
+      "page": "all-articles.html",
+      "kind": "text",
+      "text": "Beslisreis",
+      "sha256": "18340515e523cfb198b73e7be7afd0ed04ff2ef196921a2bdd41af033a724397",
       "engine": {
         "name": "LanguageTool",
         "version": "6.6",
@@ -18330,6 +18425,19 @@
       }
     },
     {
+      "id": "approach.html#text:body:2>main:3>header:1>div:1>div:2>nav:5>a:4",
+      "page": "approach.html",
+      "kind": "text",
+      "text": "Beslisreis",
+      "sha256": "18340515e523cfb198b73e7be7afd0ed04ff2ef196921a2bdd41af033a724397",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "6406620afa7a514fc6f66cc982091dce060d62483677c2cc828bf3a3e2657601"
+      }
+    },
+    {
       "id": "approach.html#text:body:2>main:3>header:1>div:1>div:2>p:3",
       "page": "approach.html",
       "kind": "text",
@@ -21921,8 +22029,21 @@
       "id": "approach.html#text:body:2>main:3>section:7>p:2",
       "page": "approach.html",
       "kind": "text",
-      "text": "Verken een fictieve casus, maak een afweging, plan 90 dagen en beoordeel ingevoerde resultaten. Geen echte bedrijfsgegevens of opslag.",
-      "sha256": "e25f3fbbd99a118ad110f9c3fb682163d81b2149f09c7f23a39c1c7118397639",
+      "text": "Oefen met een fictief voorbeeld: maak een afweging, werk een plan voor 90 dagen uit en beoordeel ingevoerde resultaten.",
+      "sha256": "6947d6fd45a4c7aca184fe5b8ffc578392200926a7eb233a0226db65cc3abe18",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "6406620afa7a514fc6f66cc982091dce060d62483677c2cc828bf3a3e2657601"
+      }
+    },
+    {
+      "id": "approach.html#text:body:2>main:3>section:7>p:4",
+      "page": "approach.html",
+      "kind": "text",
+      "text": "Los fictief voorbeeld. Het gelezen artikel of signaal wordt niet overgenomen. Zonder aanmelden.",
+      "sha256": "a990f244a6e05482e567e94b5ba5870cab5c8aefc2e81560b14bfbaf0d4d362e",
       "engine": {
         "name": "LanguageTool",
         "version": "6.6",
@@ -22079,6 +22200,19 @@
       "kind": "text",
       "text": "Coherentiescan (ECA)",
       "sha256": "c220a725c3c90527449e6aacdf7a4e99af8fdc55008a19942bbf5391c28e6088",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "6406620afa7a514fc6f66cc982091dce060d62483677c2cc828bf3a3e2657601"
+      }
+    },
+    {
+      "id": "approach.html#text:body:2>nav:2>div:1>ul:2>li:3>ul:2>li:4",
+      "page": "approach.html",
+      "kind": "text",
+      "text": "Beslisreis",
+      "sha256": "18340515e523cfb198b73e7be7afd0ed04ff2ef196921a2bdd41af033a724397",
       "engine": {
         "name": "LanguageTool",
         "version": "6.6",
@@ -25324,6 +25458,19 @@
       }
     },
     {
+      "id": "articles-1/enterprise-architecture-needs-enterprise-coherence.html#text:body:2>nav:2>div:1>ul:2>li:3>ul:2>li:4",
+      "page": "articles-1/enterprise-architecture-needs-enterprise-coherence.html",
+      "kind": "text",
+      "text": "Beslisreis",
+      "sha256": "18340515e523cfb198b73e7be7afd0ed04ff2ef196921a2bdd41af033a724397",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "6406620afa7a514fc6f66cc982091dce060d62483677c2cc828bf3a3e2657601"
+      }
+    },
+    {
       "id": "articles-1/enterprise-architecture-needs-enterprise-coherence.html#text:body:2>nav:2>div:1>ul:2>li:4",
       "page": "articles-1/enterprise-architecture-needs-enterprise-coherence.html",
       "kind": "text",
@@ -27188,6 +27335,32 @@
       "kind": "text",
       "text": "Lees editie 01 →",
       "sha256": "d0f922bc490b87c8da6d5c0d30eb6e2cf1155ca54e8809cd235f19d868acc2bb",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "6406620afa7a514fc6f66cc982091dce060d62483677c2cc828bf3a3e2657601"
+      }
+    },
+    {
+      "id": "articles-1/index.html#text:body:2>main:3>section:3>div:1>div:1>div:1>div:4>div:2>a:1",
+      "page": "articles-1/index.html",
+      "kind": "text",
+      "text": "Open de fictieve beslisreis →",
+      "sha256": "d1ae4abf1b3ebb5ca7bf6d48019952c726b73bd963b4abc372fdf80b36d94ef9",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "6406620afa7a514fc6f66cc982091dce060d62483677c2cc828bf3a3e2657601"
+      }
+    },
+    {
+      "id": "articles-1/index.html#text:body:2>main:3>section:3>div:1>div:1>div:1>div:4>div:2>p:2",
+      "page": "articles-1/index.html",
+      "kind": "text",
+      "text": "Los fictief voorbeeld. Het gelezen artikel of signaal wordt niet overgenomen. Zonder aanmelden.",
+      "sha256": "a990f244a6e05482e567e94b5ba5870cab5c8aefc2e81560b14bfbaf0d4d362e",
       "engine": {
         "name": "LanguageTool",
         "version": "6.6",
@@ -29718,6 +29891,19 @@
       }
     },
     {
+      "id": "articles-1/index.html#text:body:2>nav:2>div:1>ul:2>li:3>ul:2>li:4",
+      "page": "articles-1/index.html",
+      "kind": "text",
+      "text": "Beslisreis",
+      "sha256": "18340515e523cfb198b73e7be7afd0ed04ff2ef196921a2bdd41af033a724397",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "6406620afa7a514fc6f66cc982091dce060d62483677c2cc828bf3a3e2657601"
+      }
+    },
+    {
       "id": "articles-1/index.html#text:body:2>nav:2>div:1>ul:2>li:4",
       "page": "articles-1/index.html",
       "kind": "text",
@@ -31569,6 +31755,32 @@
       "kind": "text",
       "text": "Lees editie 01 →",
       "sha256": "d0f922bc490b87c8da6d5c0d30eb6e2cf1155ca54e8809cd235f19d868acc2bb",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "6406620afa7a514fc6f66cc982091dce060d62483677c2cc828bf3a3e2657601"
+      }
+    },
+    {
+      "id": "articles-1/the-evolution-of-enterprise-management.html#text:body:2>main:3>section:3>div:1>div:1>div:1>div:4>div:2>a:1",
+      "page": "articles-1/the-evolution-of-enterprise-management.html",
+      "kind": "text",
+      "text": "Open de fictieve beslisreis →",
+      "sha256": "d1ae4abf1b3ebb5ca7bf6d48019952c726b73bd963b4abc372fdf80b36d94ef9",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "6406620afa7a514fc6f66cc982091dce060d62483677c2cc828bf3a3e2657601"
+      }
+    },
+    {
+      "id": "articles-1/the-evolution-of-enterprise-management.html#text:body:2>main:3>section:3>div:1>div:1>div:1>div:4>div:2>p:2",
+      "page": "articles-1/the-evolution-of-enterprise-management.html",
+      "kind": "text",
+      "text": "Los fictief voorbeeld. Het gelezen artikel of signaal wordt niet overgenomen. Zonder aanmelden.",
+      "sha256": "a990f244a6e05482e567e94b5ba5870cab5c8aefc2e81560b14bfbaf0d4d362e",
       "engine": {
         "name": "LanguageTool",
         "version": "6.6",
@@ -34099,6 +34311,19 @@
       }
     },
     {
+      "id": "articles-1/the-evolution-of-enterprise-management.html#text:body:2>nav:2>div:1>ul:2>li:3>ul:2>li:4",
+      "page": "articles-1/the-evolution-of-enterprise-management.html",
+      "kind": "text",
+      "text": "Beslisreis",
+      "sha256": "18340515e523cfb198b73e7be7afd0ed04ff2ef196921a2bdd41af033a724397",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "6406620afa7a514fc6f66cc982091dce060d62483677c2cc828bf3a3e2657601"
+      }
+    },
+    {
       "id": "articles-1/the-evolution-of-enterprise-management.html#text:body:2>nav:2>div:1>ul:2>li:4",
       "page": "articles-1/the-evolution-of-enterprise-management.html",
       "kind": "text",
@@ -34351,6 +34576,32 @@
       "kind": "text",
       "text": "Bron: Statbel, 2 december 2025",
       "sha256": "fa5c764cf6bbda007b72584591bd4b2785a77bb89ff455cf09e7a40e8a32a6c0",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "6406620afa7a514fc6f66cc982091dce060d62483677c2cc828bf3a3e2657601"
+      }
+    },
+    {
+      "id": "baies-dev/index.html#text:body:2>main:3>aside:4>div:1>a:1",
+      "page": "baies-dev/index.html",
+      "kind": "text",
+      "text": "Open de fictieve beslisreis →",
+      "sha256": "d1ae4abf1b3ebb5ca7bf6d48019952c726b73bd963b4abc372fdf80b36d94ef9",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "6406620afa7a514fc6f66cc982091dce060d62483677c2cc828bf3a3e2657601"
+      }
+    },
+    {
+      "id": "baies-dev/index.html#text:body:2>main:3>aside:4>div:1>p:2",
+      "page": "baies-dev/index.html",
+      "kind": "text",
+      "text": "Los fictief voorbeeld. Het gelezen artikel of signaal wordt niet overgenomen. Zonder aanmelden.",
+      "sha256": "a990f244a6e05482e567e94b5ba5870cab5c8aefc2e81560b14bfbaf0d4d362e",
       "engine": {
         "name": "LanguageTool",
         "version": "6.6",
@@ -36914,6 +37165,19 @@
       "kind": "text",
       "text": "Coherentiescan (ECA)",
       "sha256": "c220a725c3c90527449e6aacdf7a4e99af8fdc55008a19942bbf5391c28e6088",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "6406620afa7a514fc6f66cc982091dce060d62483677c2cc828bf3a3e2657601"
+      }
+    },
+    {
+      "id": "books.html#text:body:2>nav:2>div:1>ul:2>li:3>ul:2>li:4",
+      "page": "books.html",
+      "kind": "text",
+      "text": "Beslisreis",
+      "sha256": "18340515e523cfb198b73e7be7afd0ed04ff2ef196921a2bdd41af033a724397",
       "engine": {
         "name": "LanguageTool",
         "version": "6.6",
@@ -43195,6 +43459,19 @@
       }
     },
     {
+      "id": "coherence.html#text:body:2>nav:2>div:1>ul:2>li:3>ul:2>li:4",
+      "page": "coherence.html",
+      "kind": "text",
+      "text": "Beslisreis",
+      "sha256": "18340515e523cfb198b73e7be7afd0ed04ff2ef196921a2bdd41af033a724397",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "6406620afa7a514fc6f66cc982091dce060d62483677c2cc828bf3a3e2657601"
+      }
+    },
+    {
       "id": "coherence.html#text:body:2>nav:2>div:1>ul:2>li:4",
       "page": "coherence.html",
       "kind": "text",
@@ -45059,6 +45336,32 @@
       "kind": "text",
       "text": "Lees editie 01 →",
       "sha256": "d0f922bc490b87c8da6d5c0d30eb6e2cf1155ca54e8809cd235f19d868acc2bb",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "6406620afa7a514fc6f66cc982091dce060d62483677c2cc828bf3a3e2657601"
+      }
+    },
+    {
+      "id": "coordination-overload-1.html#text:body:2>main:3>section:3>div:1>div:1>div:1>div:4>div:2>a:1",
+      "page": "coordination-overload-1.html",
+      "kind": "text",
+      "text": "Open de fictieve beslisreis →",
+      "sha256": "d1ae4abf1b3ebb5ca7bf6d48019952c726b73bd963b4abc372fdf80b36d94ef9",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "6406620afa7a514fc6f66cc982091dce060d62483677c2cc828bf3a3e2657601"
+      }
+    },
+    {
+      "id": "coordination-overload-1.html#text:body:2>main:3>section:3>div:1>div:1>div:1>div:4>div:2>p:2",
+      "page": "coordination-overload-1.html",
+      "kind": "text",
+      "text": "Los fictief voorbeeld. Het gelezen artikel of signaal wordt niet overgenomen. Zonder aanmelden.",
+      "sha256": "a990f244a6e05482e567e94b5ba5870cab5c8aefc2e81560b14bfbaf0d4d362e",
       "engine": {
         "name": "LanguageTool",
         "version": "6.6",
@@ -47589,6 +47892,19 @@
       }
     },
     {
+      "id": "coordination-overload-1.html#text:body:2>nav:2>div:1>ul:2>li:3>ul:2>li:4",
+      "page": "coordination-overload-1.html",
+      "kind": "text",
+      "text": "Beslisreis",
+      "sha256": "18340515e523cfb198b73e7be7afd0ed04ff2ef196921a2bdd41af033a724397",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "6406620afa7a514fc6f66cc982091dce060d62483677c2cc828bf3a3e2657601"
+      }
+    },
+    {
       "id": "coordination-overload-1.html#text:body:2>nav:2>div:1>ul:2>li:4",
       "page": "coordination-overload-1.html",
       "kind": "text",
@@ -49440,6 +49756,32 @@
       "kind": "text",
       "text": "Lees editie 01 →",
       "sha256": "d0f922bc490b87c8da6d5c0d30eb6e2cf1155ca54e8809cd235f19d868acc2bb",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "6406620afa7a514fc6f66cc982091dce060d62483677c2cc828bf3a3e2657601"
+      }
+    },
+    {
+      "id": "de-rol-van-leiderschap.html#text:body:2>main:3>section:3>div:1>div:1>div:1>div:4>div:2>a:1",
+      "page": "de-rol-van-leiderschap.html",
+      "kind": "text",
+      "text": "Open de fictieve beslisreis →",
+      "sha256": "d1ae4abf1b3ebb5ca7bf6d48019952c726b73bd963b4abc372fdf80b36d94ef9",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "6406620afa7a514fc6f66cc982091dce060d62483677c2cc828bf3a3e2657601"
+      }
+    },
+    {
+      "id": "de-rol-van-leiderschap.html#text:body:2>main:3>section:3>div:1>div:1>div:1>div:4>div:2>p:2",
+      "page": "de-rol-van-leiderschap.html",
+      "kind": "text",
+      "text": "Los fictief voorbeeld. Het gelezen artikel of signaal wordt niet overgenomen. Zonder aanmelden.",
+      "sha256": "a990f244a6e05482e567e94b5ba5870cab5c8aefc2e81560b14bfbaf0d4d362e",
       "engine": {
         "name": "LanguageTool",
         "version": "6.6",
@@ -51962,6 +52304,19 @@
       "kind": "text",
       "text": "Coherentiescan (ECA)",
       "sha256": "c220a725c3c90527449e6aacdf7a4e99af8fdc55008a19942bbf5391c28e6088",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "6406620afa7a514fc6f66cc982091dce060d62483677c2cc828bf3a3e2657601"
+      }
+    },
+    {
+      "id": "de-rol-van-leiderschap.html#text:body:2>nav:2>div:1>ul:2>li:3>ul:2>li:4",
+      "page": "de-rol-van-leiderschap.html",
+      "kind": "text",
+      "text": "Beslisreis",
+      "sha256": "18340515e523cfb198b73e7be7afd0ed04ff2ef196921a2bdd41af033a724397",
       "engine": {
         "name": "LanguageTool",
         "version": "6.6",
@@ -56012,6 +56367,19 @@
       "kind": "text",
       "text": "Coherentiescan (ECA)",
       "sha256": "c220a725c3c90527449e6aacdf7a4e99af8fdc55008a19942bbf5391c28e6088",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "6406620afa7a514fc6f66cc982091dce060d62483677c2cc828bf3a3e2657601"
+      }
+    },
+    {
+      "id": "decision-latency.html#text:body:2>nav:2>div:1>ul:2>li:3>ul:2>li:4",
+      "page": "decision-latency.html",
+      "kind": "text",
+      "text": "Beslisreis",
+      "sha256": "18340515e523cfb198b73e7be7afd0ed04ff2ef196921a2bdd41af033a724397",
       "engine": {
         "name": "LanguageTool",
         "version": "6.6",
@@ -77418,6 +77786,32 @@
       }
     },
     {
+      "id": "executive-radar/index.html#text:body:2>main:3>aside:4>div:1>a:1",
+      "page": "executive-radar/index.html",
+      "kind": "text",
+      "text": "Open de fictieve beslisreis →",
+      "sha256": "d1ae4abf1b3ebb5ca7bf6d48019952c726b73bd963b4abc372fdf80b36d94ef9",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "6406620afa7a514fc6f66cc982091dce060d62483677c2cc828bf3a3e2657601"
+      }
+    },
+    {
+      "id": "executive-radar/index.html#text:body:2>main:3>aside:4>div:1>p:2",
+      "page": "executive-radar/index.html",
+      "kind": "text",
+      "text": "Los fictief voorbeeld. Het gelezen artikel of signaal wordt niet overgenomen. Zonder aanmelden.",
+      "sha256": "a990f244a6e05482e567e94b5ba5870cab5c8aefc2e81560b14bfbaf0d4d362e",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "6406620afa7a514fc6f66cc982091dce060d62483677c2cc828bf3a3e2657601"
+      }
+    },
+    {
       "id": "executive-radar/index.html#text:body:2>main:3>h1:1",
       "page": "executive-radar/index.html",
       "kind": "text",
@@ -81070,6 +81464,19 @@
       }
     },
     {
+      "id": "index.html#text:body:2>nav:2>div:1>ul:2>li:3>ul:2>li:4",
+      "page": "index.html",
+      "kind": "text",
+      "text": "Beslisreis",
+      "sha256": "18340515e523cfb198b73e7be7afd0ed04ff2ef196921a2bdd41af033a724397",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "6406620afa7a514fc6f66cc982091dce060d62483677c2cc828bf3a3e2657601"
+      }
+    },
+    {
       "id": "index.html#text:body:2>nav:2>div:1>ul:2>li:4",
       "page": "index.html",
       "kind": "text",
@@ -82921,6 +83328,32 @@
       "kind": "text",
       "text": "Lees editie 01 →",
       "sha256": "d0f922bc490b87c8da6d5c0d30eb6e2cf1155ca54e8809cd235f19d868acc2bb",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "6406620afa7a514fc6f66cc982091dce060d62483677c2cc828bf3a3e2657601"
+      }
+    },
+    {
+      "id": "insights-ai-pilot.html#text:body:2>main:3>section:3>div:1>div:1>div:1>div:4>div:2>a:1",
+      "page": "insights-ai-pilot.html",
+      "kind": "text",
+      "text": "Open de fictieve beslisreis →",
+      "sha256": "d1ae4abf1b3ebb5ca7bf6d48019952c726b73bd963b4abc372fdf80b36d94ef9",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "6406620afa7a514fc6f66cc982091dce060d62483677c2cc828bf3a3e2657601"
+      }
+    },
+    {
+      "id": "insights-ai-pilot.html#text:body:2>main:3>section:3>div:1>div:1>div:1>div:4>div:2>p:2",
+      "page": "insights-ai-pilot.html",
+      "kind": "text",
+      "text": "Los fictief voorbeeld. Het gelezen artikel of signaal wordt niet overgenomen. Zonder aanmelden.",
+      "sha256": "a990f244a6e05482e567e94b5ba5870cab5c8aefc2e81560b14bfbaf0d4d362e",
       "engine": {
         "name": "LanguageTool",
         "version": "6.6",
@@ -85443,6 +85876,19 @@
       "kind": "text",
       "text": "Coherentiescan (ECA)",
       "sha256": "c220a725c3c90527449e6aacdf7a4e99af8fdc55008a19942bbf5391c28e6088",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "6406620afa7a514fc6f66cc982091dce060d62483677c2cc828bf3a3e2657601"
+      }
+    },
+    {
+      "id": "insights-ai-pilot.html#text:body:2>nav:2>div:1>ul:2>li:3>ul:2>li:4",
+      "page": "insights-ai-pilot.html",
+      "kind": "text",
+      "text": "Beslisreis",
+      "sha256": "18340515e523cfb198b73e7be7afd0ed04ff2ef196921a2bdd41af033a724397",
       "engine": {
         "name": "LanguageTool",
         "version": "6.6",
@@ -91342,6 +91788,32 @@
       }
     },
     {
+      "id": "insights.html#text:body:2>main:3>section:3>div:1>div:1>div:1>div:4>div:2>a:1",
+      "page": "insights.html",
+      "kind": "text",
+      "text": "Open de fictieve beslisreis →",
+      "sha256": "d1ae4abf1b3ebb5ca7bf6d48019952c726b73bd963b4abc372fdf80b36d94ef9",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "6406620afa7a514fc6f66cc982091dce060d62483677c2cc828bf3a3e2657601"
+      }
+    },
+    {
+      "id": "insights.html#text:body:2>main:3>section:3>div:1>div:1>div:1>div:4>div:2>p:2",
+      "page": "insights.html",
+      "kind": "text",
+      "text": "Los fictief voorbeeld. Het gelezen artikel of signaal wordt niet overgenomen. Zonder aanmelden.",
+      "sha256": "a990f244a6e05482e567e94b5ba5870cab5c8aefc2e81560b14bfbaf0d4d362e",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "6406620afa7a514fc6f66cc982091dce060d62483677c2cc828bf3a3e2657601"
+      }
+    },
+    {
       "id": "insights.html#text:body:2>main:3>section:3>div:1>div:1>div:1>h2:2",
       "page": "insights.html",
       "kind": "text",
@@ -93864,6 +94336,19 @@
       }
     },
     {
+      "id": "insights.html#text:body:2>nav:2>div:1>ul:2>li:3>ul:2>li:4",
+      "page": "insights.html",
+      "kind": "text",
+      "text": "Beslisreis",
+      "sha256": "18340515e523cfb198b73e7be7afd0ed04ff2ef196921a2bdd41af033a724397",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "6406620afa7a514fc6f66cc982091dce060d62483677c2cc828bf3a3e2657601"
+      }
+    },
+    {
       "id": "insights.html#text:body:2>nav:2>div:1>ul:2>li:4",
       "page": "insights.html",
       "kind": "text",
@@ -93981,7 +94466,7 @@
       }
     },
     {
-      "id": "journal.html#alt:body:2>main:3>div:3>div:2>div:1>article:1>div:1>img:2",
+      "id": "journal.html#alt:body:2>main:3>div:4>div:2>div:1>article:1>div:1>img:2",
       "page": "journal.html",
       "kind": "alt",
       "text": "Grow Faster",
@@ -94059,7 +94544,7 @@
       }
     },
     {
-      "id": "journal.html#aria-label:body:2>main:3>div:3>button:1",
+      "id": "journal.html#aria-label:body:2>main:3>div:4>button:1",
       "page": "journal.html",
       "kind": "aria-label",
       "text": "Vorige",
@@ -94072,7 +94557,7 @@
       }
     },
     {
-      "id": "journal.html#aria-label:body:2>main:3>div:3>button:3",
+      "id": "journal.html#aria-label:body:2>main:3>div:4>button:3",
       "page": "journal.html",
       "kind": "aria-label",
       "text": "Volgende",
@@ -94085,7 +94570,7 @@
       }
     },
     {
-      "id": "journal.html#aria-label:body:2>main:3>div:3>div:2>div:1>article:3>div:1>div:5>div:1>div:2",
+      "id": "journal.html#aria-label:body:2>main:3>div:4>div:2>div:1>article:3>div:1>div:5>div:1>div:2",
       "page": "journal.html",
       "kind": "aria-label",
       "text": "2021 en 2023: 8,3 jaar; 2024: 7,4 jaar; 2025: 7,1 jaar",
@@ -94176,6 +94661,32 @@
       }
     },
     {
+      "id": "journal.html#text:body:2>main:3>aside:3>a:1",
+      "page": "journal.html",
+      "kind": "text",
+      "text": "Open de fictieve beslisreis →",
+      "sha256": "d1ae4abf1b3ebb5ca7bf6d48019952c726b73bd963b4abc372fdf80b36d94ef9",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "6406620afa7a514fc6f66cc982091dce060d62483677c2cc828bf3a3e2657601"
+      }
+    },
+    {
+      "id": "journal.html#text:body:2>main:3>aside:3>p:2",
+      "page": "journal.html",
+      "kind": "text",
+      "text": "Los fictief voorbeeld. Het gelezen artikel of signaal wordt niet overgenomen. Zonder aanmelden.",
+      "sha256": "a990f244a6e05482e567e94b5ba5870cab5c8aefc2e81560b14bfbaf0d4d362e",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "6406620afa7a514fc6f66cc982091dce060d62483677c2cc828bf3a3e2657601"
+      }
+    },
+    {
       "id": "journal.html#text:body:2>main:3>div:1>div:2>button:1",
       "page": "journal.html",
       "kind": "text",
@@ -94228,7 +94739,7 @@
       }
     },
     {
-      "id": "journal.html#text:body:2>main:3>div:3>button:1",
+      "id": "journal.html#text:body:2>main:3>div:4>button:1",
       "page": "journal.html",
       "kind": "text",
       "text": "‹",
@@ -94241,7 +94752,7 @@
       }
     },
     {
-      "id": "journal.html#text:body:2>main:3>div:3>button:3",
+      "id": "journal.html#text:body:2>main:3>div:4>button:3",
       "page": "journal.html",
       "kind": "text",
       "text": "›",
@@ -94254,7 +94765,7 @@
       }
     },
     {
-      "id": "journal.html#text:body:2>main:3>div:3>div:2>div:1>article:1>div:1>div:1",
+      "id": "journal.html#text:body:2>main:3>div:4>div:2>div:1>article:1>div:1>div:1",
       "page": "journal.html",
       "kind": "text",
       "text": "Maandnummer 01 · 13 november 2026 · België · Bestuurseditie01 / 15",
@@ -94267,7 +94778,7 @@
       }
     },
     {
-      "id": "journal.html#text:body:2>main:3>div:3>div:2>div:1>article:1>div:1>div:6>div:1>div:2",
+      "id": "journal.html#text:body:2>main:3>div:4>div:2>div:1>article:1>div:1>div:6>div:1>div:2",
       "page": "journal.html",
       "kind": "text",
       "text": "WittebroodswekenHet tijdvenster van de CEO7,1 jaar → vertrek",
@@ -94280,7 +94791,7 @@
       }
     },
     {
-      "id": "journal.html#text:body:2>main:3>div:3>div:2>div:1>article:1>div:1>div:6>div:1>div:4",
+      "id": "journal.html#text:body:2>main:3>div:4>div:2>div:1>article:1>div:1>div:6>div:1>div:4",
       "page": "journal.html",
       "kind": "text",
       "text": "ExperimenterenOpschalenHet operating model herontwerpenVerankerde waarde",
@@ -94293,7 +94804,7 @@
       }
     },
     {
-      "id": "journal.html#text:body:2>main:3>div:3>div:2>div:1>article:1>div:1>div:6>div:1>div:6",
+      "id": "journal.html#text:body:2>main:3>div:4>div:2>div:1>article:1>div:1>div:6>div:1>div:6",
       "page": "journal.html",
       "kind": "text",
       "text": "J0J1J2J3J4J5J6J7J8J9J10",
@@ -94306,7 +94817,7 @@
       }
     },
     {
-      "id": "journal.html#text:body:2>main:3>div:3>div:2>div:1>article:1>div:1>div:6>div:1>h3:1",
+      "id": "journal.html#text:body:2>main:3>div:4>div:2>div:1>article:1>div:1>div:6>div:1>h3:1",
       "page": "journal.html",
       "kind": "text",
       "text": "Gemiddelde ambtstermijn van vertrekkende CEO’s, wereldwijd, 2025 [1]",
@@ -94319,7 +94830,7 @@
       }
     },
     {
-      "id": "journal.html#text:body:2>main:3>div:3>div:2>div:1>article:1>div:1>div:6>div:1>h3:3",
+      "id": "journal.html#text:body:2>main:3>div:4>div:2>div:1>article:1>div:1>div:6>div:1>h3:3",
       "page": "journal.html",
       "kind": "text",
       "text": "Typische AI-transformatie (illustratief)",
@@ -94332,7 +94843,7 @@
       }
     },
     {
-      "id": "journal.html#text:body:2>main:3>div:3>div:2>div:1>article:1>div:1>div:6>div:1>p:5",
+      "id": "journal.html#text:body:2>main:3>div:4>div:2>div:1>article:1>div:1>div:6>div:1>p:5",
       "page": "journal.html",
       "kind": "text",
       "text": "Hier ontstaat de waarde. Hier verschijnt ook de opvolger.",
@@ -94345,7 +94856,7 @@
       }
     },
     {
-      "id": "journal.html#text:body:2>main:3>div:3>div:2>div:1>article:1>div:1>div:7>p:1",
+      "id": "journal.html#text:body:2>main:3>div:4>div:2>div:1>article:1>div:1>div:7>p:1",
       "page": "journal.html",
       "kind": "text",
       "text": "Executive AI & Enterprise Coherence JOURNAL · REDACTIE ERLEND HOLLEBOSCH",
@@ -94358,7 +94869,7 @@
       }
     },
     {
-      "id": "journal.html#text:body:2>main:3>div:3>div:2>div:1>article:1>div:1>div:7>p:2",
+      "id": "journal.html#text:body:2>main:3>div:4>div:2>div:1>article:1>div:1>div:7>p:2",
       "page": "journal.html",
       "kind": "text",
       "text": "Deel 1 · De angst van de CEO en het mandaatprobleem · 03–05 Deel 2 · De kmo-waarheid · 06–08 Deel 3 · De organisatorische realiteit · 09–11 Deel 4 · De weg vooruit · 12–13 · Laatste woord · 14",
@@ -94371,7 +94882,7 @@
       }
     },
     {
-      "id": "journal.html#text:body:2>main:3>div:3>div:2>div:1>article:1>div:1>footer:8",
+      "id": "journal.html#text:body:2>main:3>div:4>div:2>div:1>article:1>div:1>footer:8",
       "page": "journal.html",
       "kind": "text",
       "text": "GROW FASTER / EXECUTIVE AI JOURNAL 01 / 15",
@@ -94384,7 +94895,7 @@
       }
     },
     {
-      "id": "journal.html#text:body:2>main:3>div:3>div:2>div:1>article:1>div:1>h1:3",
+      "id": "journal.html#text:body:2>main:3>div:4>div:2>div:1>article:1>div:1>h1:3",
       "page": "journal.html",
       "kind": "text",
       "text": "De CEO van zeven jaar en de transformatie van tien jaar.",
@@ -94397,7 +94908,7 @@
       }
     },
     {
-      "id": "journal.html#text:body:2>main:3>div:3>div:2>div:1>article:1>div:1>p:4",
+      "id": "journal.html#text:body:2>main:3>div:4>div:2>div:1>article:1>div:1>p:4",
       "page": "journal.html",
       "kind": "text",
       "text": "Wat Belgische CEO’s, bestuurders en kmo-eigenaars zelden hardop zeggen over agentische AI, generatieve AI en machinaal leren, en hoe u de AI-agenda langer laat meegaan dan degene die de leiding heeft.",
@@ -94410,7 +94921,7 @@
       }
     },
     {
-      "id": "journal.html#text:body:2>main:3>div:3>div:2>div:1>article:1>div:1>p:5",
+      "id": "journal.html#text:body:2>main:3>div:4>div:2>div:1>article:1>div:1>p:5",
       "page": "journal.html",
       "kind": "text",
       "text": "DE EDITIE OVER DE PIJNLIJKE WAARHEID",
@@ -94423,7 +94934,7 @@
       }
     },
     {
-      "id": "journal.html#text:body:2>main:3>div:3>div:2>div:1>article:2>div:1>aside:5>h3:1",
+      "id": "journal.html#text:body:2>main:3>div:4>div:2>div:1>article:2>div:1>aside:5>h3:1",
       "page": "journal.html",
       "kind": "text",
       "text": "BESLISSING VAN DE MAAND",
@@ -94436,7 +94947,7 @@
       }
     },
     {
-      "id": "journal.html#text:body:2>main:3>div:3>div:2>div:1>article:2>div:1>aside:5>p:2",
+      "id": "journal.html#text:body:2>main:3>div:4>div:2>div:1>article:2>div:1>aside:5>p:2",
       "page": "journal.html",
       "kind": "text",
       "text": "Maak de AI-agenda onafhankelijk van wie CEO is. Laat de raad eigenaar zijn van een meerjarig AI-waardeplan, uitgevoerd door een klein waardeteam en elk kwartaal beoordeeld. Neem het op in het opvolgingsdossier van de CEO. Kmo-eigenaars: reserveer één kwartaal lang een halve dag per week en herontwerp één duur proces vóór u het automatiseert. Checklist op pagina 13.",
@@ -94449,7 +94960,7 @@
       }
     },
     {
-      "id": "journal.html#text:body:2>main:3>div:3>div:2>div:1>article:2>div:1>div:1",
+      "id": "journal.html#text:body:2>main:3>div:4>div:2>div:1>article:2>div:1>div:1",
       "page": "journal.html",
       "kind": "text",
       "text": "Maandnummer 01 · 13 november 2026 · Begin hier02 / 15",
@@ -94462,7 +94973,7 @@
       }
     },
     {
-      "id": "journal.html#text:body:2>main:3>div:3>div:2>div:1>article:2>div:1>div:10>p:1",
+      "id": "journal.html#text:body:2>main:3>div:4>div:2>div:1>article:2>div:1>div:10>p:1",
       "page": "journal.html",
       "kind": "text",
       "text": "CEO & raad · 03–05 Ambtstermijn, persoonlijke angsten en vijf bestuursvragen",
@@ -94475,7 +94986,7 @@
       }
     },
     {
-      "id": "journal.html#text:body:2>main:3>div:3>div:2>div:1>article:2>div:1>div:10>p:2",
+      "id": "journal.html#text:body:2>main:3>div:4>div:2>div:1>article:2>div:1>div:10>p:2",
       "page": "journal.html",
       "kind": "text",
       "text": "Kmo-eigenaar · 06–08 Omvangskloof, schaduw-AI en familiale opvolging",
@@ -94488,7 +94999,7 @@
       }
     },
     {
-      "id": "journal.html#text:body:2>main:3>div:3>div:2>div:1>article:2>div:1>div:10>p:3",
+      "id": "journal.html#text:body:2>main:3>div:4>div:2>div:1>article:2>div:1>div:10>p:3",
       "page": "journal.html",
       "kind": "text",
       "text": "COO, CIO & HR · 09–11 Illusies, beslissingsrechten en de AI-verordening",
@@ -94501,7 +95012,7 @@
       }
     },
     {
-      "id": "journal.html#text:body:2>main:3>div:3>div:2>div:1>article:2>div:1>div:10>p:4",
+      "id": "journal.html#text:body:2>main:3>div:4>div:2>div:1>article:2>div:1>div:10>p:4",
       "page": "journal.html",
       "kind": "text",
       "text": "Iedereen · 12–14 Organisatievermogen, coherentietoets, satire",
@@ -94514,7 +95025,7 @@
       }
     },
     {
-      "id": "journal.html#text:body:2>main:3>div:3>div:2>div:1>article:2>div:1>div:6>div:1",
+      "id": "journal.html#text:body:2>main:3>div:4>div:2>div:1>article:2>div:1>div:6>div:1",
       "page": "journal.html",
       "kind": "text",
       "text": "7,1 jaar",
@@ -94527,7 +95038,7 @@
       }
     },
     {
-      "id": "journal.html#text:body:2>main:3>div:3>div:2>div:1>article:2>div:1>div:6>div:1>p:2",
+      "id": "journal.html#text:body:2>main:3>div:4>div:2>div:1>article:2>div:1>div:6>div:1>p:2",
       "page": "journal.html",
       "kind": "text",
       "text": "Gemiddelde ambtstermijn van vertrekkende CEO’s wereldwijd in 2025, tegenover 8,3 in 2021 [1]",
@@ -94540,7 +95051,7 @@
       }
     },
     {
-      "id": "journal.html#text:body:2>main:3>div:3>div:2>div:1>article:2>div:1>div:6>div:2",
+      "id": "journal.html#text:body:2>main:3>div:4>div:2>div:1>article:2>div:1>div:6>div:2",
       "page": "journal.html",
       "kind": "text",
       "text": "43,4 pp",
@@ -94553,7 +95064,7 @@
       }
     },
     {
-      "id": "journal.html#text:body:2>main:3>div:3>div:2>div:1>article:2>div:1>div:6>div:2>p:2",
+      "id": "journal.html#text:body:2>main:3>div:4>div:2>div:1>article:2>div:1>div:6>div:2>p:2",
       "page": "journal.html",
       "kind": "text",
       "text": "Verschil in AI-gebruik tussen Belgische kmo’s (33,0%) en grote ondernemingen (76,4%), 2025 [4]",
@@ -94566,7 +95077,7 @@
       }
     },
     {
-      "id": "journal.html#text:body:2>main:3>div:3>div:2>div:1>article:2>div:1>div:6>div:3",
+      "id": "journal.html#text:body:2>main:3>div:4>div:2>div:1>article:2>div:1>div:6>div:3",
       "page": "journal.html",
       "kind": "text",
       "text": ">40%",
@@ -94579,7 +95090,7 @@
       }
     },
     {
-      "id": "journal.html#text:body:2>main:3>div:3>div:2>div:1>article:2>div:1>div:6>div:3>p:2",
+      "id": "journal.html#text:body:2>main:3>div:4>div:2>div:1>article:2>div:1>div:6>div:3>p:2",
       "page": "journal.html",
       "kind": "text",
       "text": "Agentische AI-projecten die volgens Gartner tegen eind 2027 worden stopgezet [11]",
@@ -94592,7 +95103,7 @@
       }
     },
     {
-      "id": "journal.html#text:body:2>main:3>div:3>div:2>div:1>article:2>div:1>footer:12",
+      "id": "journal.html#text:body:2>main:3>div:4>div:2>div:1>article:2>div:1>footer:12",
       "page": "journal.html",
       "kind": "text",
       "text": "GROW FASTER / EXECUTIVE AI JOURNAL 02 / 15",
@@ -94605,7 +95116,7 @@
       }
     },
     {
-      "id": "journal.html#text:body:2>main:3>div:3>div:2>div:1>article:2>div:1>h2:4",
+      "id": "journal.html#text:body:2>main:3>div:4>div:2>div:1>article:2>div:1>h2:4",
       "page": "journal.html",
       "kind": "text",
       "text": "Het moeilijkste aan AI is niet de technologie.",
@@ -94618,7 +95129,7 @@
       }
     },
     {
-      "id": "journal.html#text:body:2>main:3>div:3>div:2>div:1>article:2>div:1>h3:7",
+      "id": "journal.html#text:body:2>main:3>div:4>div:2>div:1>article:2>div:1>h3:7",
       "page": "journal.html",
       "kind": "text",
       "text": "HET ARGUMENT VAN DE REDACTEUR",
@@ -94631,7 +95142,7 @@
       }
     },
     {
-      "id": "journal.html#text:body:2>main:3>div:3>div:2>div:1>article:2>div:1>h3:9",
+      "id": "journal.html#text:body:2>main:3>div:4>div:2>div:1>article:2>div:1>h3:9",
       "page": "journal.html",
       "kind": "text",
       "text": "KIES UW LEESROUTE",
@@ -94644,7 +95155,7 @@
       }
     },
     {
-      "id": "journal.html#text:body:2>main:3>div:3>div:2>div:1>article:2>div:1>p:11",
+      "id": "journal.html#text:body:2>main:3>div:4>div:2>div:1>article:2>div:1>p:11",
       "page": "journal.html",
       "kind": "text",
       "text": "Verwijzingen zoals [4] verwijzen naar de genummerde bronnen op pagina 15.",
@@ -94657,7 +95168,7 @@
       }
     },
     {
-      "id": "journal.html#text:body:2>main:3>div:3>div:2>div:1>article:2>div:1>p:2",
+      "id": "journal.html#text:body:2>main:3>div:4>div:2>div:1>article:2>div:1>p:2",
       "page": "journal.html",
       "kind": "text",
       "text": "Een maandelijkse briefing van vijftien minuten voor Belgische raden van bestuur en directies. Ons uitgangspunt: AI creëert pas waarde wanneer strategie, besturing, werk en technologie samenhangen. Elk cijfer heeft een bron en een datum. Geen hype.",
@@ -94670,7 +95181,7 @@
       }
     },
     {
-      "id": "journal.html#text:body:2>main:3>div:3>div:2>div:1>article:2>div:1>p:3",
+      "id": "journal.html#text:body:2>main:3>div:4>div:2>div:1>article:2>div:1>p:3",
       "page": "journal.html",
       "kind": "text",
       "text": "Erlend Hollebosch, redacteur · Enterprise Coherence & AI Transformation Lead; meer dan 20 jaar ervaring met operating models, agile en bedrijfstransformatie",
@@ -94683,7 +95194,7 @@
       }
     },
     {
-      "id": "journal.html#text:body:2>main:3>div:3>div:2>div:1>article:2>div:1>p:8",
+      "id": "journal.html#text:body:2>main:3>div:4>div:2>div:1>article:2>div:1>p:8",
       "page": "journal.html",
       "kind": "text",
       "text": "AI opschalen vraagt meerdere begrotingscycli, terwijl de sponsor vroeger vertrekt dan voorheen. Pilots financieren en het herontwerp aan een opvolger overlaten is de rationele keuze, waardoor grote ondernemingen vastlopen. Belgische kmo-eigenaars blijven decennialang, maar hebben weinig tijd. In familiebedrijven valt de overdracht aan de volgende generatie nu samen met de AI-beslissing.",
@@ -94696,7 +95207,7 @@
       }
     },
     {
-      "id": "journal.html#text:body:2>main:3>div:3>div:2>div:1>article:3>div:1>aside:10>h3:1",
+      "id": "journal.html#text:body:2>main:3>div:4>div:2>div:1>article:3>div:1>aside:10>h3:1",
       "page": "journal.html",
       "kind": "text",
       "text": "BESTUURSVRAAG",
@@ -94709,7 +95220,7 @@
       }
     },
     {
-      "id": "journal.html#text:body:2>main:3>div:3>div:2>div:1>article:3>div:1>aside:10>p:2",
+      "id": "journal.html#text:body:2>main:3>div:4>div:2>div:1>article:3>div:1>aside:10>p:2",
       "page": "journal.html",
       "kind": "text",
       "text": "Als onze CEO morgen vertrekt, welke delen van het AI-programma lopen dan zonder wijzigingen door? Als het eerlijke antwoord ‘heel weinig’ is, hangt het programma af van één persoon en is het nog geen institutionele capaciteit.",
@@ -94722,7 +95233,7 @@
       }
     },
     {
-      "id": "journal.html#text:body:2>main:3>div:3>div:2>div:1>article:3>div:1>blockquote:6",
+      "id": "journal.html#text:body:2>main:3>div:4>div:2>div:1>article:3>div:1>blockquote:6",
       "page": "journal.html",
       "kind": "text",
       "text": "‘Die wittebroodsweken zijn sterk ingekort.’Laura Sanderson, Russell Reynolds Associates, over de eerste jaren van een CEO-mandaat [1]",
@@ -94735,7 +95246,7 @@
       }
     },
     {
-      "id": "journal.html#text:body:2>main:3>div:3>div:2>div:1>article:3>div:1>div:1",
+      "id": "journal.html#text:body:2>main:3>div:4>div:2>div:1>article:3>div:1>div:1",
       "page": "journal.html",
       "kind": "text",
       "text": "Maandnummer 01 · 13 november 2026 · Het mandaatprobleem03 / 15",
@@ -94748,7 +95259,7 @@
       }
     },
     {
-      "id": "journal.html#text:body:2>main:3>div:3>div:2>div:1>article:3>div:1>div:5>div:1>div:2>div:1",
+      "id": "journal.html#text:body:2>main:3>div:4>div:2>div:1>article:3>div:1>div:5>div:1>div:2>div:1",
       "page": "journal.html",
       "kind": "text",
       "text": "20218,3 jaar",
@@ -94761,7 +95272,7 @@
       }
     },
     {
-      "id": "journal.html#text:body:2>main:3>div:3>div:2>div:1>article:3>div:1>div:5>div:1>div:2>div:2",
+      "id": "journal.html#text:body:2>main:3>div:4>div:2>div:1>article:3>div:1>div:5>div:1>div:2>div:2",
       "page": "journal.html",
       "kind": "text",
       "text": "20238,3 jaar",
@@ -94774,7 +95285,7 @@
       }
     },
     {
-      "id": "journal.html#text:body:2>main:3>div:3>div:2>div:1>article:3>div:1>div:5>div:1>div:2>div:3",
+      "id": "journal.html#text:body:2>main:3>div:4>div:2>div:1>article:3>div:1>div:5>div:1>div:2>div:3",
       "page": "journal.html",
       "kind": "text",
       "text": "20247,4 jaar",
@@ -94787,7 +95298,7 @@
       }
     },
     {
-      "id": "journal.html#text:body:2>main:3>div:3>div:2>div:1>article:3>div:1>div:5>div:1>div:2>div:4",
+      "id": "journal.html#text:body:2>main:3>div:4>div:2>div:1>article:3>div:1>div:5>div:1>div:2>div:4",
       "page": "journal.html",
       "kind": "text",
       "text": "20257,1 jaar",
@@ -94800,7 +95311,7 @@
       }
     },
     {
-      "id": "journal.html#text:body:2>main:3>div:3>div:2>div:1>article:3>div:1>div:5>div:1>h3:1",
+      "id": "journal.html#text:body:2>main:3>div:4>div:2>div:1>article:3>div:1>div:5>div:1>h3:1",
       "page": "journal.html",
       "kind": "text",
       "text": "GEMIDDELDE AMBTSTERMIJN VAN VERTREKKENDE CEO’S, WERELDWIJDE INDICES [1]",
@@ -94813,7 +95324,7 @@
       }
     },
     {
-      "id": "journal.html#text:body:2>main:3>div:3>div:2>div:1>article:3>div:1>div:5>div:1>p:3",
+      "id": "journal.html#text:body:2>main:3>div:4>div:2>div:1>article:3>div:1>div:5>div:1>p:3",
       "page": "journal.html",
       "kind": "text",
       "text": "Russell Reynolds Associates, Global CEO Turnover Index. In de eerste helft van 2025 daalde de termijn tot 6,8 jaar, het laagste niveau sinds de metingen in 2018 begonnen [2].",
@@ -94826,7 +95337,7 @@
       }
     },
     {
-      "id": "journal.html#text:body:2>main:3>div:3>div:2>div:1>article:3>div:1>div:5>div:2>div:1",
+      "id": "journal.html#text:body:2>main:3>div:4>div:2>div:1>article:3>div:1>div:5>div:2>div:1",
       "page": "journal.html",
       "kind": "text",
       "text": "234",
@@ -94839,7 +95350,7 @@
       }
     },
     {
-      "id": "journal.html#text:body:2>main:3>div:3>div:2>div:1>article:3>div:1>div:5>div:2>div:1>p:2",
+      "id": "journal.html#text:body:2>main:3>div:4>div:2>div:1>article:3>div:1>div:5>div:2>div:1>p:2",
       "page": "journal.html",
       "kind": "text",
       "text": "CEO-vertrekken in 2025, +16% tegenover een jaar eerder [1]",
@@ -94852,7 +95363,7 @@
       }
     },
     {
-      "id": "journal.html#text:body:2>main:3>div:3>div:2>div:1>article:3>div:1>div:5>div:2>div:2",
+      "id": "journal.html#text:body:2>main:3>div:4>div:2>div:1>article:3>div:1>div:5>div:2>div:2",
       "page": "journal.html",
       "kind": "text",
       "text": "11",
@@ -94865,7 +95376,7 @@
       }
     },
     {
-      "id": "journal.html#text:body:2>main:3>div:3>div:2>div:1>article:3>div:1>div:5>div:2>div:2>p:2",
+      "id": "journal.html#text:body:2>main:3>div:4>div:2>div:1>article:3>div:1>div:5>div:2>div:2>p:2",
       "page": "journal.html",
       "kind": "text",
       "text": "CEO-benoemingen in 2025 die minder dan een jaar duurden [1]",
@@ -94878,7 +95389,7 @@
       }
     },
     {
-      "id": "journal.html#text:body:2>main:3>div:3>div:2>div:1>article:3>div:1>div:5>div:2>div:3",
+      "id": "journal.html#text:body:2>main:3>div:4>div:2>div:1>article:3>div:1>div:5>div:2>div:3",
       "page": "journal.html",
       "kind": "text",
       "text": "86%",
@@ -94891,7 +95402,7 @@
       }
     },
     {
-      "id": "journal.html#text:body:2>main:3>div:3>div:2>div:1>article:3>div:1>div:5>div:2>div:3>p:2",
+      "id": "journal.html#text:body:2>main:3>div:4>div:2>div:1>article:3>div:1>div:5>div:2>div:3>p:2",
       "page": "journal.html",
       "kind": "text",
       "text": "Van de in 2025 benoemde CEO’s vervulden die rol voor het eerst [1]",
@@ -94904,7 +95415,7 @@
       }
     },
     {
-      "id": "journal.html#text:body:2>main:3>div:3>div:2>div:1>article:3>div:1>div:5>div:2>div:4",
+      "id": "journal.html#text:body:2>main:3>div:4>div:2>div:1>article:3>div:1>div:5>div:2>div:4",
       "page": "journal.html",
       "kind": "text",
       "text": "~40%",
@@ -94917,7 +95428,7 @@
       }
     },
     {
-      "id": "journal.html#text:body:2>main:3>div:3>div:2>div:1>article:3>div:1>div:5>div:2>div:4>p:2",
+      "id": "journal.html#text:body:2>main:3>div:4>div:2>div:1>article:3>div:1>div:5>div:2>div:4>p:2",
       "page": "journal.html",
       "kind": "text",
       "text": "Van de CEO’s in de S&P 1500 vertrekken binnen vijf jaar [3]",
@@ -94930,7 +95441,7 @@
       }
     },
     {
-      "id": "journal.html#text:body:2>main:3>div:3>div:2>div:1>article:3>div:1>footer:11",
+      "id": "journal.html#text:body:2>main:3>div:4>div:2>div:1>article:3>div:1>footer:11",
       "page": "journal.html",
       "kind": "text",
       "text": "GROW FASTER / EXECUTIVE AI JOURNAL 03 / 15",
@@ -94943,7 +95454,7 @@
       }
     },
     {
-      "id": "journal.html#text:body:2>main:3>div:3>div:2>div:1>article:3>div:1>h2:2",
+      "id": "journal.html#text:body:2>main:3>div:4>div:2>div:1>article:3>div:1>h2:2",
       "page": "journal.html",
       "kind": "text",
       "text": "De CEO van zeven jaar en de transformatie van tien jaar.",
@@ -94956,7 +95467,7 @@
       }
     },
     {
-      "id": "journal.html#text:body:2>main:3>div:3>div:2>div:1>article:3>div:1>h3:7",
+      "id": "journal.html#text:body:2>main:3>div:4>div:2>div:1>article:3>div:1>h3:7",
       "page": "journal.html",
       "kind": "text",
       "text": "WAAROM DIT VOOR AI VAN BELANG IS",
@@ -94969,7 +95480,7 @@
       }
     },
     {
-      "id": "journal.html#text:body:2>main:3>div:3>div:2>div:1>article:3>div:1>p:3",
+      "id": "journal.html#text:body:2>main:3>div:4>div:2>div:1>article:3>div:1>p:3",
       "page": "journal.html",
       "kind": "text",
       "text": "De ambtstermijn van CEO’s wordt korter, terwijl AI pas rendeert wanneer het operating model is veranderd. Wie is eigenaar van het programma na het vertrek van de sponsor?",
@@ -94982,7 +95493,7 @@
       }
     },
     {
-      "id": "journal.html#text:body:2>main:3>div:3>div:2>div:1>article:3>div:1>p:4",
+      "id": "journal.html#text:body:2>main:3>div:4>div:2>div:1>article:3>div:1>p:4",
       "page": "journal.html",
       "kind": "text",
       "text": "DEEL 1 · DE ANGST VAN DE CEO EN HET MANDAATPROBLEEM",
@@ -94995,7 +95506,7 @@
       }
     },
     {
-      "id": "journal.html#text:body:2>main:3>div:3>div:2>div:1>article:3>div:1>p:8",
+      "id": "journal.html#text:body:2>main:3>div:4>div:2>div:1>article:3>div:1>p:8",
       "page": "journal.html",
       "kind": "text",
       "text": "AI opschalen betekent workflows, beslissingsrechten, rollen en data-eigenaarschap herontwerpen. Dat werk veroorzaakt vroeg zichtbare kosten en interne frictie, terwijl ondernemingswaarde later volgt. Een CEO die binnen het eerste jaar wordt beoordeeld, heeft alle reden om snelle resultaten te verkiezen.",
@@ -95008,7 +95519,7 @@
       }
     },
     {
-      "id": "journal.html#text:body:2>main:3>div:3>div:2>div:1>article:3>div:1>p:9",
+      "id": "journal.html#text:body:2>main:3>div:4>div:2>div:1>article:3>div:1>p:9",
       "page": "journal.html",
       "kind": "text",
       "text": "Deze cijfers betreffen grote beursgenoteerde ondernemingen. In België zijn ze vooral van toepassing op BEL20-groepen en dochterbedrijven van multinationals, waar lokale CEO’s eveneens volgens groepsschema’s rouleren.",
@@ -95034,7 +95545,7 @@
       }
     },
     {
-      "id": "journal.html#text:body:2>main:3>section:4>h2:1",
+      "id": "journal.html#text:body:2>main:3>section:5>h2:1",
       "page": "journal.html",
       "kind": "text",
       "text": "Ontvang het maandnummer per e-mail",
@@ -95047,7 +95558,7 @@
       }
     },
     {
-      "id": "journal.html#text:body:2>main:3>section:4>p:2",
+      "id": "journal.html#text:body:2>main:3>section:5>p:2",
       "page": "journal.html",
       "kind": "text",
       "text": "Lezen is gratis. Inschrijven is vrijwillig.",
@@ -95060,7 +95571,7 @@
       }
     },
     {
-      "id": "journal.html#text:body:2>main:3>section:4>p:3",
+      "id": "journal.html#text:body:2>main:3>section:5>p:3",
       "page": "journal.html",
       "kind": "text",
       "text": "Open het inschrijfformulier",
@@ -95073,7 +95584,7 @@
       }
     },
     {
-      "id": "journal.html#title:body:2>main:3>div:3>div:2>div:1>article:1>div:1>div:6>div:1>h3:1>a:1",
+      "id": "journal.html#title:body:2>main:3>div:4>div:2>div:1>article:1>div:1>div:6>div:1>h3:1>a:1",
       "page": "journal.html",
       "kind": "title",
       "text": "[ 1 ] Russell Reynolds Associates Global CEO Turnover Index, jaarverslag 2025 (februari 2026)",
@@ -95086,7 +95597,7 @@
       }
     },
     {
-      "id": "journal.html#title:body:2>main:3>div:3>div:2>div:1>article:2>div:1>div:6>div:1>p:2>a:1",
+      "id": "journal.html#title:body:2>main:3>div:4>div:2>div:1>article:2>div:1>div:6>div:1>p:2>a:1",
       "page": "journal.html",
       "kind": "title",
       "text": "[ 1 ] Russell Reynolds Associates Global CEO Turnover Index, jaarverslag 2025 (februari 2026)",
@@ -95099,7 +95610,7 @@
       }
     },
     {
-      "id": "journal.html#title:body:2>main:3>div:3>div:2>div:1>article:2>div:1>div:6>div:2>p:2>a:1",
+      "id": "journal.html#title:body:2>main:3>div:4>div:2>div:1>article:2>div:1>div:6>div:2>p:2>a:1",
       "page": "journal.html",
       "kind": "title",
       "text": "[ 4 ] Europese Commissie / Eurostat Digital Decade 2026, België; AI-gebruik naar bedrijfsgrootte, 2025",
@@ -95112,7 +95623,7 @@
       }
     },
     {
-      "id": "journal.html#title:body:2>main:3>div:3>div:2>div:1>article:2>div:1>div:6>div:3>p:2>a:1",
+      "id": "journal.html#title:body:2>main:3>div:4>div:2>div:1>article:2>div:1>div:6>div:3>p:2>a:1",
       "page": "journal.html",
       "kind": "title",
       "text": "[ 11 ] Gartner Prognose over agentische AI, 25 juni 2025",
@@ -95125,7 +95636,7 @@
       }
     },
     {
-      "id": "journal.html#title:body:2>main:3>div:3>div:2>div:1>article:2>div:1>p:11>a:1",
+      "id": "journal.html#title:body:2>main:3>div:4>div:2>div:1>article:2>div:1>p:11>a:1",
       "page": "journal.html",
       "kind": "title",
       "text": "[ 4 ] Europese Commissie / Eurostat Digital Decade 2026, België; AI-gebruik naar bedrijfsgrootte, 2025",
@@ -95138,7 +95649,7 @@
       }
     },
     {
-      "id": "journal.html#title:body:2>main:3>div:3>div:2>div:1>article:3>div:1>blockquote:6>cite:1>a:1",
+      "id": "journal.html#title:body:2>main:3>div:4>div:2>div:1>article:3>div:1>blockquote:6>cite:1>a:1",
       "page": "journal.html",
       "kind": "title",
       "text": "[ 1 ] Russell Reynolds Associates Global CEO Turnover Index, jaarverslag 2025 (februari 2026)",
@@ -95151,7 +95662,7 @@
       }
     },
     {
-      "id": "journal.html#title:body:2>main:3>div:3>div:2>div:1>article:3>div:1>div:5>div:1>h3:1>a:1",
+      "id": "journal.html#title:body:2>main:3>div:4>div:2>div:1>article:3>div:1>div:5>div:1>h3:1>a:1",
       "page": "journal.html",
       "kind": "title",
       "text": "[ 1 ] Russell Reynolds Associates Global CEO Turnover Index, jaarverslag 2025 (februari 2026)",
@@ -95164,7 +95675,7 @@
       }
     },
     {
-      "id": "journal.html#title:body:2>main:3>div:3>div:2>div:1>article:3>div:1>div:5>div:1>p:3>a:1",
+      "id": "journal.html#title:body:2>main:3>div:4>div:2>div:1>article:3>div:1>div:5>div:1>p:3>a:1",
       "page": "journal.html",
       "kind": "title",
       "text": "[ 2 ] Russell Reynolds Associates via BCG CEO-ambtstermijn eerste helft 2025, 2025",
@@ -95177,7 +95688,7 @@
       }
     },
     {
-      "id": "journal.html#title:body:2>main:3>div:3>div:2>div:1>article:3>div:1>div:5>div:2>div:1>p:2>a:1",
+      "id": "journal.html#title:body:2>main:3>div:4>div:2>div:1>article:3>div:1>div:5>div:2>div:1>p:2>a:1",
       "page": "journal.html",
       "kind": "title",
       "text": "[ 1 ] Russell Reynolds Associates Global CEO Turnover Index, jaarverslag 2025 (februari 2026)",
@@ -95190,7 +95701,7 @@
       }
     },
     {
-      "id": "journal.html#title:body:2>main:3>div:3>div:2>div:1>article:3>div:1>div:5>div:2>div:2>p:2>a:1",
+      "id": "journal.html#title:body:2>main:3>div:4>div:2>div:1>article:3>div:1>div:5>div:2>div:2>p:2>a:1",
       "page": "journal.html",
       "kind": "title",
       "text": "[ 1 ] Russell Reynolds Associates Global CEO Turnover Index, jaarverslag 2025 (februari 2026)",
@@ -95203,7 +95714,7 @@
       }
     },
     {
-      "id": "journal.html#title:body:2>main:3>div:3>div:2>div:1>article:3>div:1>div:5>div:2>div:3>p:2>a:1",
+      "id": "journal.html#title:body:2>main:3>div:4>div:2>div:1>article:3>div:1>div:5>div:2>div:3>p:2>a:1",
       "page": "journal.html",
       "kind": "title",
       "text": "[ 1 ] Russell Reynolds Associates Global CEO Turnover Index, jaarverslag 2025 (februari 2026)",
@@ -95216,7 +95727,7 @@
       }
     },
     {
-      "id": "journal.html#title:body:2>main:3>div:3>div:2>div:1>article:3>div:1>div:5>div:2>div:4>p:2>a:1",
+      "id": "journal.html#title:body:2>main:3>div:4>div:2>div:1>article:3>div:1>div:5>div:2>div:4>p:2>a:1",
       "page": "journal.html",
       "kind": "title",
       "text": "[ 3 ] Spencer Stuart 2025 CEO Transitions Report, S&P 1500",
@@ -98999,6 +99510,19 @@
       }
     },
     {
+      "id": "operating-model.html#text:body:2>nav:2>div:1>ul:2>li:3>ul:2>li:4",
+      "page": "operating-model.html",
+      "kind": "text",
+      "text": "Beslisreis",
+      "sha256": "18340515e523cfb198b73e7be7afd0ed04ff2ef196921a2bdd41af033a724397",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "6406620afa7a514fc6f66cc982091dce060d62483677c2cc828bf3a3e2657601"
+      }
+    },
+    {
       "id": "operating-model.html#text:body:2>nav:2>div:1>ul:2>li:4",
       "page": "operating-model.html",
       "kind": "text",
@@ -102085,6 +102609,19 @@
       "kind": "text",
       "text": "Coherentiescan (ECA)",
       "sha256": "c220a725c3c90527449e6aacdf7a4e99af8fdc55008a19942bbf5391c28e6088",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "6406620afa7a514fc6f66cc982091dce060d62483677c2cc828bf3a3e2657601"
+      }
+    },
+    {
+      "id": "privacy.html#text:body:2>nav:2>div:1>ul:2>li:3>ul:2>li:4",
+      "page": "privacy.html",
+      "kind": "text",
+      "text": "Beslisreis",
+      "sha256": "18340515e523cfb198b73e7be7afd0ed04ff2ef196921a2bdd41af033a724397",
       "engine": {
         "name": "LanguageTool",
         "version": "6.6",
@@ -105331,6 +105868,19 @@
       "kind": "text",
       "text": "Coherentiescan (ECA)",
       "sha256": "c220a725c3c90527449e6aacdf7a4e99af8fdc55008a19942bbf5391c28e6088",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "6406620afa7a514fc6f66cc982091dce060d62483677c2cc828bf3a3e2657601"
+      }
+    },
+    {
+      "id": "process.html#text:body:2>nav:2>div:1>ul:2>li:3>ul:2>li:4",
+      "page": "process.html",
+      "kind": "text",
+      "text": "Beslisreis",
+      "sha256": "18340515e523cfb198b73e7be7afd0ed04ff2ef196921a2bdd41af033a724397",
       "engine": {
         "name": "LanguageTool",
         "version": "6.6",
@@ -113572,6 +114122,19 @@
       }
     },
     {
+      "id": "terms.html#text:body:2>nav:2>div:1>ul:2>li:3>ul:2>li:4",
+      "page": "terms.html",
+      "kind": "text",
+      "text": "Beslisreis",
+      "sha256": "18340515e523cfb198b73e7be7afd0ed04ff2ef196921a2bdd41af033a724397",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "6406620afa7a514fc6f66cc982091dce060d62483677c2cc828bf3a3e2657601"
+      }
+    },
+    {
       "id": "terms.html#text:body:2>nav:2>div:1>ul:2>li:4",
       "page": "terms.html",
       "kind": "text",
@@ -116801,6 +117364,19 @@
       "kind": "text",
       "text": "Coherentiescan (ECA)",
       "sha256": "c220a725c3c90527449e6aacdf7a4e99af8fdc55008a19942bbf5391c28e6088",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "6406620afa7a514fc6f66cc982091dce060d62483677c2cc828bf3a3e2657601"
+      }
+    },
+    {
+      "id": "the-coherence-model-1.html#text:body:2>nav:2>div:1>ul:2>li:3>ul:2>li:4",
+      "page": "the-coherence-model-1.html",
+      "kind": "text",
+      "text": "Beslisreis",
+      "sha256": "18340515e523cfb198b73e7be7afd0ed04ff2ef196921a2bdd41af033a724397",
       "engine": {
         "name": "LanguageTool",
         "version": "6.6",
@@ -120051,6 +120627,19 @@
       "kind": "text",
       "text": "Coherentiescan (ECA)",
       "sha256": "c220a725c3c90527449e6aacdf7a4e99af8fdc55008a19942bbf5391c28e6088",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "6406620afa7a514fc6f66cc982091dce060d62483677c2cc828bf3a3e2657601"
+      }
+    },
+    {
+      "id": "the-enterprise-paradox-1.html#text:body:2>nav:2>div:1>ul:2>li:3>ul:2>li:4",
+      "page": "the-enterprise-paradox-1.html",
+      "kind": "text",
+      "text": "Beslisreis",
+      "sha256": "18340515e523cfb198b73e7be7afd0ed04ff2ef196921a2bdd41af033a724397",
       "engine": {
         "name": "LanguageTool",
         "version": "6.6",
@@ -123475,6 +124064,19 @@
       "kind": "text",
       "text": "Coherentiescan (ECA)",
       "sha256": "c220a725c3c90527449e6aacdf7a4e99af8fdc55008a19942bbf5391c28e6088",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "6406620afa7a514fc6f66cc982091dce060d62483677c2cc828bf3a3e2657601"
+      }
+    },
+    {
+      "id": "transformation.html#text:body:2>nav:2>div:1>ul:2>li:3>ul:2>li:4",
+      "page": "transformation.html",
+      "kind": "text",
+      "text": "Beslisreis",
+      "sha256": "18340515e523cfb198b73e7be7afd0ed04ff2ef196921a2bdd41af033a724397",
       "engine": {
         "name": "LanguageTool",
         "version": "6.6",
@@ -127050,6 +127652,19 @@
       "kind": "text",
       "text": "Coherentiescan (ECA)",
       "sha256": "c220a725c3c90527449e6aacdf7a4e99af8fdc55008a19942bbf5391c28e6088",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "6406620afa7a514fc6f66cc982091dce060d62483677c2cc828bf3a3e2657601"
+      }
+    },
+    {
+      "id": "value.html#text:body:2>nav:2>div:1>ul:2>li:3>ul:2>li:4",
+      "page": "value.html",
+      "kind": "text",
+      "text": "Beslisreis",
+      "sha256": "18340515e523cfb198b73e7be7afd0ed04ff2ef196921a2bdd41af033a724397",
       "engine": {
         "name": "LanguageTool",
         "version": "6.6",
@@ -131072,6 +131687,19 @@
       "kind": "text",
       "text": "Coherentiescan (ECA)",
       "sha256": "c220a725c3c90527449e6aacdf7a4e99af8fdc55008a19942bbf5391c28e6088",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "6406620afa7a514fc6f66cc982091dce060d62483677c2cc828bf3a3e2657601"
+      }
+    },
+    {
+      "id": "workshop.html#text:body:2>nav:2>div:1>ul:2>li:3>ul:2>li:4",
+      "page": "workshop.html",
+      "kind": "text",
+      "text": "Beslisreis",
+      "sha256": "18340515e523cfb198b73e7be7afd0ed04ff2ef196921a2bdd41af033a724397",
       "engine": {
         "name": "LanguageTool",
         "version": "6.6",
@@ -330657,6 +331285,1063 @@
       "context": "AI-AGENTEN LATEN COÖRDINEREN",
       "status": "open",
       "firstSeen": "fc9785f055cc0063edd47515ba0070e3fe76ecaf"
+    },
+    {
+      "id": "60fc9085eb07994716d44c0b530c8694e8b228c62ede228727eba1b74d76db7d",
+      "blockId": "404.html#text:body:2>nav:2>div:1>ul:2>li:3>ul:2>li:4",
+      "textHash": "18340515e523cfb198b73e7be7afd0ed04ff2ef196921a2bdd41af033a724397",
+      "rule": "MORFOLOGIK_RULE_NL_NL",
+      "offset": 0,
+      "length": 10,
+      "message": "Er is een mogelijke spelfout gevonden.",
+      "replacements": [
+        "Beslisrijp"
+      ],
+      "context": "Beslisreis",
+      "status": "open",
+      "firstSeen": "596060e48ed556ec3cbb3f2b77d2bfe6d47472d6"
+    },
+    {
+      "id": "6bf961a8e262b18244627f39cd3cd8ad248fe68c578c1e7782bb932fc56289f6",
+      "blockId": "about-the-author.html#text:body:2>nav:2>div:1>ul:2>li:3>ul:2>li:4",
+      "textHash": "18340515e523cfb198b73e7be7afd0ed04ff2ef196921a2bdd41af033a724397",
+      "rule": "MORFOLOGIK_RULE_NL_NL",
+      "offset": 0,
+      "length": 10,
+      "message": "Er is een mogelijke spelfout gevonden.",
+      "replacements": [
+        "Beslisrijp"
+      ],
+      "context": "Beslisreis",
+      "status": "open",
+      "firstSeen": "596060e48ed556ec3cbb3f2b77d2bfe6d47472d6"
+    },
+    {
+      "id": "4bf497b663e305e1aa267ffa424709b9b71b00b2f400a8da23214722a76ed573",
+      "blockId": "about.html#text:body:2>nav:2>div:1>ul:2>li:3>ul:2>li:4",
+      "textHash": "18340515e523cfb198b73e7be7afd0ed04ff2ef196921a2bdd41af033a724397",
+      "rule": "MORFOLOGIK_RULE_NL_NL",
+      "offset": 0,
+      "length": 10,
+      "message": "Er is een mogelijke spelfout gevonden.",
+      "replacements": [
+        "Beslisrijp"
+      ],
+      "context": "Beslisreis",
+      "status": "open",
+      "firstSeen": "596060e48ed556ec3cbb3f2b77d2bfe6d47472d6"
+    },
+    {
+      "id": "59ab21aebf7e6f21694be2c9646a502ed9ef9fb9c5f4b87d3ef1a394b2313c35",
+      "blockId": "accessibility.html#text:body:2>nav:2>div:1>ul:2>li:3>ul:2>li:4",
+      "textHash": "18340515e523cfb198b73e7be7afd0ed04ff2ef196921a2bdd41af033a724397",
+      "rule": "MORFOLOGIK_RULE_NL_NL",
+      "offset": 0,
+      "length": 10,
+      "message": "Er is een mogelijke spelfout gevonden.",
+      "replacements": [
+        "Beslisrijp"
+      ],
+      "context": "Beslisreis",
+      "status": "open",
+      "firstSeen": "596060e48ed556ec3cbb3f2b77d2bfe6d47472d6"
+    },
+    {
+      "id": "5fc4e22b8a19658c9bc097eaac4f687556ee9efc2cba742750ffb048a635b265",
+      "blockId": "all-articles.html#text:body:2>main:3>section:3>div:1>div:1>div:1>div:4>div:2>a:1",
+      "textHash": "d1ae4abf1b3ebb5ca7bf6d48019952c726b73bd963b4abc372fdf80b36d94ef9",
+      "rule": "MORFOLOGIK_RULE_NL_NL",
+      "offset": 17,
+      "length": 10,
+      "message": "Er is een mogelijke spelfout gevonden.",
+      "replacements": [
+        "beslisrijp"
+      ],
+      "context": "Open de fictieve beslisreis →",
+      "status": "open",
+      "firstSeen": "596060e48ed556ec3cbb3f2b77d2bfe6d47472d6"
+    },
+    {
+      "id": "2f45d2b7e5a201f4904b62b989d21b88e06be047b0ab589cf0cc4beee9c9c28a",
+      "blockId": "all-articles.html#text:body:2>nav:2>div:1>ul:2>li:3>ul:2>li:4",
+      "textHash": "18340515e523cfb198b73e7be7afd0ed04ff2ef196921a2bdd41af033a724397",
+      "rule": "MORFOLOGIK_RULE_NL_NL",
+      "offset": 0,
+      "length": 10,
+      "message": "Er is een mogelijke spelfout gevonden.",
+      "replacements": [
+        "Beslisrijp"
+      ],
+      "context": "Beslisreis",
+      "status": "open",
+      "firstSeen": "596060e48ed556ec3cbb3f2b77d2bfe6d47472d6"
+    },
+    {
+      "id": "e2ccbbafd38018364e6d8e625dd63ac25ad9aac0ae2987ad26d5e45c237e233b",
+      "blockId": "approach.html#text:body:2>main:3>header:1>div:1>div:2>nav:5>a:4",
+      "textHash": "18340515e523cfb198b73e7be7afd0ed04ff2ef196921a2bdd41af033a724397",
+      "rule": "MORFOLOGIK_RULE_NL_NL",
+      "offset": 0,
+      "length": 10,
+      "message": "Er is een mogelijke spelfout gevonden.",
+      "replacements": [
+        "Beslisrijp"
+      ],
+      "context": "Beslisreis",
+      "status": "open",
+      "firstSeen": "596060e48ed556ec3cbb3f2b77d2bfe6d47472d6"
+    },
+    {
+      "id": "135372d5b90945c862f92467c1074a5c032d5f171b7057ffe7bcb5155a61e77d",
+      "blockId": "approach.html#text:body:2>nav:2>div:1>ul:2>li:3>ul:2>li:4",
+      "textHash": "18340515e523cfb198b73e7be7afd0ed04ff2ef196921a2bdd41af033a724397",
+      "rule": "MORFOLOGIK_RULE_NL_NL",
+      "offset": 0,
+      "length": 10,
+      "message": "Er is een mogelijke spelfout gevonden.",
+      "replacements": [
+        "Beslisrijp"
+      ],
+      "context": "Beslisreis",
+      "status": "open",
+      "firstSeen": "596060e48ed556ec3cbb3f2b77d2bfe6d47472d6"
+    },
+    {
+      "id": "dc389cbd8bea7be632cb5337c55a9d2be805b6b8bc6ed0c559fca800b8cbd6fd",
+      "blockId": "articles-1/enterprise-architecture-needs-enterprise-coherence.html#text:body:2>nav:2>div:1>ul:2>li:3>ul:2>li:4",
+      "textHash": "18340515e523cfb198b73e7be7afd0ed04ff2ef196921a2bdd41af033a724397",
+      "rule": "MORFOLOGIK_RULE_NL_NL",
+      "offset": 0,
+      "length": 10,
+      "message": "Er is een mogelijke spelfout gevonden.",
+      "replacements": [
+        "Beslisrijp"
+      ],
+      "context": "Beslisreis",
+      "status": "open",
+      "firstSeen": "596060e48ed556ec3cbb3f2b77d2bfe6d47472d6"
+    },
+    {
+      "id": "1aae8cc41fd91079fd73bb7b844f0c6d1a7d95f139e4abd01a37f6fc2701b456",
+      "blockId": "articles-1/index.html#text:body:2>main:3>section:3>div:1>div:1>div:1>div:4>div:2>a:1",
+      "textHash": "d1ae4abf1b3ebb5ca7bf6d48019952c726b73bd963b4abc372fdf80b36d94ef9",
+      "rule": "MORFOLOGIK_RULE_NL_NL",
+      "offset": 17,
+      "length": 10,
+      "message": "Er is een mogelijke spelfout gevonden.",
+      "replacements": [
+        "beslisrijp"
+      ],
+      "context": "Open de fictieve beslisreis →",
+      "status": "open",
+      "firstSeen": "596060e48ed556ec3cbb3f2b77d2bfe6d47472d6"
+    },
+    {
+      "id": "2f51aefeae57339770e724bb01fa5cbc64078ee549d98b6606cf681c099fc6b7",
+      "blockId": "articles-1/index.html#text:body:2>nav:2>div:1>ul:2>li:3>ul:2>li:4",
+      "textHash": "18340515e523cfb198b73e7be7afd0ed04ff2ef196921a2bdd41af033a724397",
+      "rule": "MORFOLOGIK_RULE_NL_NL",
+      "offset": 0,
+      "length": 10,
+      "message": "Er is een mogelijke spelfout gevonden.",
+      "replacements": [
+        "Beslisrijp"
+      ],
+      "context": "Beslisreis",
+      "status": "open",
+      "firstSeen": "596060e48ed556ec3cbb3f2b77d2bfe6d47472d6"
+    },
+    {
+      "id": "180851eb7186ac89d3dd3c8b5c964c81f6e5390700668c0b61b8b5868b700881",
+      "blockId": "articles-1/the-evolution-of-enterprise-management.html#text:body:2>main:3>section:3>div:1>div:1>div:1>div:4>div:2>a:1",
+      "textHash": "d1ae4abf1b3ebb5ca7bf6d48019952c726b73bd963b4abc372fdf80b36d94ef9",
+      "rule": "MORFOLOGIK_RULE_NL_NL",
+      "offset": 17,
+      "length": 10,
+      "message": "Er is een mogelijke spelfout gevonden.",
+      "replacements": [
+        "beslisrijp"
+      ],
+      "context": "Open de fictieve beslisreis →",
+      "status": "open",
+      "firstSeen": "596060e48ed556ec3cbb3f2b77d2bfe6d47472d6"
+    },
+    {
+      "id": "bfa3d96ae2579def10241af63e0350d7922df4e884ac0f94bb3d0852b926c850",
+      "blockId": "articles-1/the-evolution-of-enterprise-management.html#text:body:2>nav:2>div:1>ul:2>li:3>ul:2>li:4",
+      "textHash": "18340515e523cfb198b73e7be7afd0ed04ff2ef196921a2bdd41af033a724397",
+      "rule": "MORFOLOGIK_RULE_NL_NL",
+      "offset": 0,
+      "length": 10,
+      "message": "Er is een mogelijke spelfout gevonden.",
+      "replacements": [
+        "Beslisrijp"
+      ],
+      "context": "Beslisreis",
+      "status": "open",
+      "firstSeen": "596060e48ed556ec3cbb3f2b77d2bfe6d47472d6"
+    },
+    {
+      "id": "6b2547aa8449855417f5e16f7c266a905958c5bfbf8b1095dfa0355359f410fe",
+      "blockId": "baies-dev/index.html#text:body:2>main:3>aside:4>div:1>a:1",
+      "textHash": "d1ae4abf1b3ebb5ca7bf6d48019952c726b73bd963b4abc372fdf80b36d94ef9",
+      "rule": "MORFOLOGIK_RULE_NL_NL",
+      "offset": 17,
+      "length": 10,
+      "message": "Er is een mogelijke spelfout gevonden.",
+      "replacements": [
+        "beslisrijp"
+      ],
+      "context": "Open de fictieve beslisreis →",
+      "status": "open",
+      "firstSeen": "596060e48ed556ec3cbb3f2b77d2bfe6d47472d6"
+    },
+    {
+      "id": "2f2e85b8b5efa7cf785c91f9a60ec8b4760dcfca55fb1108358159e3eedfa9ee",
+      "blockId": "books.html#text:body:2>nav:2>div:1>ul:2>li:3>ul:2>li:4",
+      "textHash": "18340515e523cfb198b73e7be7afd0ed04ff2ef196921a2bdd41af033a724397",
+      "rule": "MORFOLOGIK_RULE_NL_NL",
+      "offset": 0,
+      "length": 10,
+      "message": "Er is een mogelijke spelfout gevonden.",
+      "replacements": [
+        "Beslisrijp"
+      ],
+      "context": "Beslisreis",
+      "status": "open",
+      "firstSeen": "596060e48ed556ec3cbb3f2b77d2bfe6d47472d6"
+    },
+    {
+      "id": "4fe14b4d3e6944e4e19b7dc0d18b8cff3145b2e9738ae4c86c9dfb40650e39fe",
+      "blockId": "coherence.html#text:body:2>nav:2>div:1>ul:2>li:3>ul:2>li:4",
+      "textHash": "18340515e523cfb198b73e7be7afd0ed04ff2ef196921a2bdd41af033a724397",
+      "rule": "MORFOLOGIK_RULE_NL_NL",
+      "offset": 0,
+      "length": 10,
+      "message": "Er is een mogelijke spelfout gevonden.",
+      "replacements": [
+        "Beslisrijp"
+      ],
+      "context": "Beslisreis",
+      "status": "open",
+      "firstSeen": "596060e48ed556ec3cbb3f2b77d2bfe6d47472d6"
+    },
+    {
+      "id": "c88c56427b0aa9c41cc7c5e2db8af1ba4a4d1e0e9e423e6cae8defb8f92937db",
+      "blockId": "coordination-overload-1.html#text:body:2>main:3>section:3>div:1>div:1>div:1>div:4>div:2>a:1",
+      "textHash": "d1ae4abf1b3ebb5ca7bf6d48019952c726b73bd963b4abc372fdf80b36d94ef9",
+      "rule": "MORFOLOGIK_RULE_NL_NL",
+      "offset": 17,
+      "length": 10,
+      "message": "Er is een mogelijke spelfout gevonden.",
+      "replacements": [
+        "beslisrijp"
+      ],
+      "context": "Open de fictieve beslisreis →",
+      "status": "open",
+      "firstSeen": "596060e48ed556ec3cbb3f2b77d2bfe6d47472d6"
+    },
+    {
+      "id": "59328c584361faa05988b2391f02db93e4c53b8ecdfd46f8a8122e37429b45b1",
+      "blockId": "coordination-overload-1.html#text:body:2>nav:2>div:1>ul:2>li:3>ul:2>li:4",
+      "textHash": "18340515e523cfb198b73e7be7afd0ed04ff2ef196921a2bdd41af033a724397",
+      "rule": "MORFOLOGIK_RULE_NL_NL",
+      "offset": 0,
+      "length": 10,
+      "message": "Er is een mogelijke spelfout gevonden.",
+      "replacements": [
+        "Beslisrijp"
+      ],
+      "context": "Beslisreis",
+      "status": "open",
+      "firstSeen": "596060e48ed556ec3cbb3f2b77d2bfe6d47472d6"
+    },
+    {
+      "id": "b4ec69d9f6b44e60287769b4222dc1ab5ca7070184c5dea564f4884e8233581c",
+      "blockId": "de-rol-van-leiderschap.html#text:body:2>main:3>section:3>div:1>div:1>div:1>div:4>div:2>a:1",
+      "textHash": "d1ae4abf1b3ebb5ca7bf6d48019952c726b73bd963b4abc372fdf80b36d94ef9",
+      "rule": "MORFOLOGIK_RULE_NL_NL",
+      "offset": 17,
+      "length": 10,
+      "message": "Er is een mogelijke spelfout gevonden.",
+      "replacements": [
+        "beslisrijp"
+      ],
+      "context": "Open de fictieve beslisreis →",
+      "status": "open",
+      "firstSeen": "596060e48ed556ec3cbb3f2b77d2bfe6d47472d6"
+    },
+    {
+      "id": "2371efa2bcf7af445a402968dc923311c0691690a232b6f08a56f7b04fa006d3",
+      "blockId": "de-rol-van-leiderschap.html#text:body:2>nav:2>div:1>ul:2>li:3>ul:2>li:4",
+      "textHash": "18340515e523cfb198b73e7be7afd0ed04ff2ef196921a2bdd41af033a724397",
+      "rule": "MORFOLOGIK_RULE_NL_NL",
+      "offset": 0,
+      "length": 10,
+      "message": "Er is een mogelijke spelfout gevonden.",
+      "replacements": [
+        "Beslisrijp"
+      ],
+      "context": "Beslisreis",
+      "status": "open",
+      "firstSeen": "596060e48ed556ec3cbb3f2b77d2bfe6d47472d6"
+    },
+    {
+      "id": "c0c37590038a8e2a6d5baa988127f3f8be2fc0034c65bd36764253ee5b6342b4",
+      "blockId": "decision-latency.html#text:body:2>nav:2>div:1>ul:2>li:3>ul:2>li:4",
+      "textHash": "18340515e523cfb198b73e7be7afd0ed04ff2ef196921a2bdd41af033a724397",
+      "rule": "MORFOLOGIK_RULE_NL_NL",
+      "offset": 0,
+      "length": 10,
+      "message": "Er is een mogelijke spelfout gevonden.",
+      "replacements": [
+        "Beslisrijp"
+      ],
+      "context": "Beslisreis",
+      "status": "open",
+      "firstSeen": "596060e48ed556ec3cbb3f2b77d2bfe6d47472d6"
+    },
+    {
+      "id": "eeb7e6738a69b7ee38a133681801eb011fd31ae335534ebc1dd6c46b43cee2b4",
+      "blockId": "executive-radar/index.html#text:body:2>main:3>aside:4>div:1>a:1",
+      "textHash": "d1ae4abf1b3ebb5ca7bf6d48019952c726b73bd963b4abc372fdf80b36d94ef9",
+      "rule": "MORFOLOGIK_RULE_NL_NL",
+      "offset": 17,
+      "length": 10,
+      "message": "Er is een mogelijke spelfout gevonden.",
+      "replacements": [
+        "beslisrijp"
+      ],
+      "context": "Open de fictieve beslisreis →",
+      "status": "open",
+      "firstSeen": "596060e48ed556ec3cbb3f2b77d2bfe6d47472d6"
+    },
+    {
+      "id": "2ac973ef1e85917977243b6b5ab9bf4e5cb94f706b644a17c8dfd0c5e8f62f2a",
+      "blockId": "index.html#text:body:2>nav:2>div:1>ul:2>li:3>ul:2>li:4",
+      "textHash": "18340515e523cfb198b73e7be7afd0ed04ff2ef196921a2bdd41af033a724397",
+      "rule": "MORFOLOGIK_RULE_NL_NL",
+      "offset": 0,
+      "length": 10,
+      "message": "Er is een mogelijke spelfout gevonden.",
+      "replacements": [
+        "Beslisrijp"
+      ],
+      "context": "Beslisreis",
+      "status": "open",
+      "firstSeen": "596060e48ed556ec3cbb3f2b77d2bfe6d47472d6"
+    },
+    {
+      "id": "f198e75e1b290cb065ca3f9f7274794efb29bcceaddabab5b3ad92781ccae023",
+      "blockId": "insights-ai-pilot.html#text:body:2>main:3>section:3>div:1>div:1>div:1>div:4>div:2>a:1",
+      "textHash": "d1ae4abf1b3ebb5ca7bf6d48019952c726b73bd963b4abc372fdf80b36d94ef9",
+      "rule": "MORFOLOGIK_RULE_NL_NL",
+      "offset": 17,
+      "length": 10,
+      "message": "Er is een mogelijke spelfout gevonden.",
+      "replacements": [
+        "beslisrijp"
+      ],
+      "context": "Open de fictieve beslisreis →",
+      "status": "open",
+      "firstSeen": "596060e48ed556ec3cbb3f2b77d2bfe6d47472d6"
+    },
+    {
+      "id": "a546a1889cf97a9424bbcad6050255928329431edcb279154f89207a02d65511",
+      "blockId": "insights-ai-pilot.html#text:body:2>nav:2>div:1>ul:2>li:3>ul:2>li:4",
+      "textHash": "18340515e523cfb198b73e7be7afd0ed04ff2ef196921a2bdd41af033a724397",
+      "rule": "MORFOLOGIK_RULE_NL_NL",
+      "offset": 0,
+      "length": 10,
+      "message": "Er is een mogelijke spelfout gevonden.",
+      "replacements": [
+        "Beslisrijp"
+      ],
+      "context": "Beslisreis",
+      "status": "open",
+      "firstSeen": "596060e48ed556ec3cbb3f2b77d2bfe6d47472d6"
+    },
+    {
+      "id": "dac11c9c709934379812092efc0b9ab8a360b5ac5ce0aa0d3db81f8e3fc2f25e",
+      "blockId": "insights.html#text:body:2>main:3>section:3>div:1>div:1>div:1>div:4>div:2>a:1",
+      "textHash": "d1ae4abf1b3ebb5ca7bf6d48019952c726b73bd963b4abc372fdf80b36d94ef9",
+      "rule": "MORFOLOGIK_RULE_NL_NL",
+      "offset": 17,
+      "length": 10,
+      "message": "Er is een mogelijke spelfout gevonden.",
+      "replacements": [
+        "beslisrijp"
+      ],
+      "context": "Open de fictieve beslisreis →",
+      "status": "open",
+      "firstSeen": "596060e48ed556ec3cbb3f2b77d2bfe6d47472d6"
+    },
+    {
+      "id": "791d855dfad524888cf61c9387dcc2ebe2195fea708a70c3371fc3c082b7beec",
+      "blockId": "insights.html#text:body:2>nav:2>div:1>ul:2>li:3>ul:2>li:4",
+      "textHash": "18340515e523cfb198b73e7be7afd0ed04ff2ef196921a2bdd41af033a724397",
+      "rule": "MORFOLOGIK_RULE_NL_NL",
+      "offset": 0,
+      "length": 10,
+      "message": "Er is een mogelijke spelfout gevonden.",
+      "replacements": [
+        "Beslisrijp"
+      ],
+      "context": "Beslisreis",
+      "status": "open",
+      "firstSeen": "596060e48ed556ec3cbb3f2b77d2bfe6d47472d6"
+    },
+    {
+      "id": "a17c0e421fe5fec261654c5aa13346e56fb487615b519f258fb773fa64892f35",
+      "blockId": "journal.html#text:body:2>main:3>aside:3>a:1",
+      "textHash": "d1ae4abf1b3ebb5ca7bf6d48019952c726b73bd963b4abc372fdf80b36d94ef9",
+      "rule": "MORFOLOGIK_RULE_NL_NL",
+      "offset": 17,
+      "length": 10,
+      "message": "Er is een mogelijke spelfout gevonden.",
+      "replacements": [
+        "beslisrijp"
+      ],
+      "context": "Open de fictieve beslisreis →",
+      "status": "open",
+      "firstSeen": "596060e48ed556ec3cbb3f2b77d2bfe6d47472d6"
+    },
+    {
+      "id": "fd332cc763bde4dee7ffa05a6405530913521e22957398dfccfa779075cc0132",
+      "blockId": "journal.html#text:body:2>main:3>div:4>div:2>div:1>article:1>div:1>div:1",
+      "textHash": "1454c12d80dda6091b0a37bbb4d9947b78d69f7757cd33d789a4d3e07ba4fed5",
+      "rule": "MORFOLOGIK_RULE_NL_NL",
+      "offset": 45,
+      "length": 16,
+      "message": "Er is een mogelijke spelfout gevonden.",
+      "replacements": [],
+      "context": "Maandnummer 01 · 13 november 2026 · België · Bestuurseditie01 / 15",
+      "status": "open",
+      "firstSeen": "596060e48ed556ec3cbb3f2b77d2bfe6d47472d6"
+    },
+    {
+      "id": "76320f66707356fd196b1197729fcd5f9abcffcdd858fc99122f7c7c3cfd7dca",
+      "blockId": "journal.html#text:body:2>main:3>div:4>div:2>div:1>article:1>div:1>div:6>div:1>div:2",
+      "textHash": "0006936f3df3ae3e6de25559b2a0f856aa6290670ce19d3f092e423ccc9bb499",
+      "rule": "MORFOLOGIK_RULE_NL_NL",
+      "offset": 0,
+      "length": 19,
+      "message": "Er is een mogelijke spelfout gevonden.",
+      "replacements": [
+        "Wittebroodsweken"
+      ],
+      "context": "WittebroodswekenHet tijdvenster van de CEO7,1 jaar → vertrek",
+      "status": "open",
+      "firstSeen": "596060e48ed556ec3cbb3f2b77d2bfe6d47472d6"
+    },
+    {
+      "id": "98ebd31da7ba247da94732dfcef6d05a3fd754d36e19c68e01b4ad76092ec625",
+      "blockId": "journal.html#text:body:2>main:3>div:4>div:2>div:1>article:1>div:1>div:6>div:1>div:4",
+      "textHash": "1803a3f3c2cd9dd48c34637ed5cc78b0831dd19e89dc61fd3505851ed4c706e3",
+      "rule": "MORFOLOGIK_RULE_NL_NL",
+      "offset": 0,
+      "length": 26,
+      "message": "Er is een mogelijke spelfout gevonden.",
+      "replacements": [],
+      "context": "ExperimenterenOpschalenHet operating model herontwerpenVerankerde waarde",
+      "status": "open",
+      "firstSeen": "596060e48ed556ec3cbb3f2b77d2bfe6d47472d6"
+    },
+    {
+      "id": "83021823a3a826933cb0fccb9a3e7c908b5b0d8a5529649b69519f897f86c85d",
+      "blockId": "journal.html#text:body:2>main:3>div:4>div:2>div:1>article:1>div:1>div:6>div:1>div:4",
+      "textHash": "1803a3f3c2cd9dd48c34637ed5cc78b0831dd19e89dc61fd3505851ed4c706e3",
+      "rule": "MORFOLOGIK_RULE_NL_NL",
+      "offset": 43,
+      "length": 22,
+      "message": "Er is een mogelijke spelfout gevonden.",
+      "replacements": [],
+      "context": "ExperimenterenOpschalenHet operating model herontwerpenVerankerde waarde",
+      "status": "open",
+      "firstSeen": "596060e48ed556ec3cbb3f2b77d2bfe6d47472d6"
+    },
+    {
+      "id": "674f2f12d31be4242a8021a64e236623bf06862e8e0e16eb55aba03b61bab2fe",
+      "blockId": "journal.html#text:body:2>main:3>div:4>div:2>div:1>article:1>div:1>div:6>div:1>div:6",
+      "textHash": "bc9a230cb38be27d5ad9460fac98bd81b0d236893e7eabcfa1de4758ca3eb112",
+      "rule": "MORFOLOGIK_RULE_NL_NL",
+      "offset": 0,
+      "length": 23,
+      "message": "Er is een mogelijke spelfout gevonden.",
+      "replacements": [],
+      "context": "J0J1J2J3J4J5J6J7J8J9J10",
+      "status": "open",
+      "firstSeen": "596060e48ed556ec3cbb3f2b77d2bfe6d47472d6"
+    },
+    {
+      "id": "a5c7a289de2d576dba5e789a7e95f34e03444237d4e6a97a9637c11eb1d2c4d4",
+      "blockId": "journal.html#text:body:2>main:3>div:4>div:2>div:1>article:1>div:1>div:7>p:1",
+      "textHash": "01828db294ab32570f98afc3695159237eba5b597c2dd198b1dd91e0a2438659",
+      "rule": "MORFOLOGIK_RULE_NL_NL",
+      "offset": 26,
+      "length": 9,
+      "message": "Er is een mogelijke spelfout gevonden.",
+      "replacements": [
+        "Coherente"
+      ],
+      "context": "Executive AI & Enterprise Coherence JOURNAL · REDACTIE ERLEND HOLLEBOSCH",
+      "status": "open",
+      "firstSeen": "596060e48ed556ec3cbb3f2b77d2bfe6d47472d6"
+    },
+    {
+      "id": "2d77db240076b236382f97f53b2b91db89a4e909f92eb56a1f9f8b2b42f42102",
+      "blockId": "journal.html#text:body:2>main:3>div:4>div:2>div:1>article:1>div:1>div:7>p:2",
+      "textHash": "f015d51c77d2549091bae651590695827b7b8c314786d2738444572afa543220",
+      "rule": "MORFOLOGIK_RULE_NL_NL",
+      "offset": 72,
+      "length": 12,
+      "message": "Er is een mogelijke spelfout gevonden.",
+      "replacements": [
+        "kookwaarheid"
+      ],
+      "context": "Deel 1 · De angst van de CEO en het mandaatprobleem · 03–05 Deel 2 · De kmo-waarheid · 06–08 Deel 3 · De organisatorische realiteit · 09–11 Deel 4 · De weg vooruit · 12–13 · Laatste woord · 14",
+      "status": "open",
+      "firstSeen": "596060e48ed556ec3cbb3f2b77d2bfe6d47472d6"
+    },
+    {
+      "id": "842d9b325687bb163cbf297b1ac91a5af7d6ea6a072767730ae8090598f16243",
+      "blockId": "journal.html#text:body:2>main:3>div:4>div:2>div:1>article:1>div:1>p:4",
+      "textHash": "4a196beafaa05851877382642007e26d0f32f760ba4aad8ae822ca99cfcd552f",
+      "rule": "MORFOLOGIK_RULE_NL_NL",
+      "offset": 36,
+      "length": 13,
+      "message": "Er is een mogelijke spelfout gevonden.",
+      "replacements": [
+        "koteigenaars",
+        "co-eigenaars"
+      ],
+      "context": "Wat Belgische CEO’s, bestuurders en kmo-eigenaars zelden hardop zeggen over agentische AI, generatieve AI en machinaal leren, en hoe u de AI-agenda langer laat meegaan dan degene die de leiding heeft.",
+      "status": "open",
+      "firstSeen": "596060e48ed556ec3cbb3f2b77d2bfe6d47472d6"
+    },
+    {
+      "id": "05388eb6ada8e793da141aa68ffc214ff383c3db662899bf953b47a06736ad79",
+      "blockId": "journal.html#text:body:2>main:3>div:4>div:2>div:1>article:1>div:1>p:4",
+      "textHash": "4a196beafaa05851877382642007e26d0f32f760ba4aad8ae822ca99cfcd552f",
+      "rule": "MORFOLOGIK_RULE_NL_NL",
+      "offset": 76,
+      "length": 10,
+      "message": "Er is een mogelijke spelfout gevonden.",
+      "replacements": [
+        "genetische",
+        "magnetische",
+        "aseptische",
+        "bentische"
+      ],
+      "context": "Wat Belgische CEO’s, bestuurders en kmo-eigenaars zelden hardop zeggen over agentische AI, generatieve AI en machinaal leren, en hoe u de AI-agenda langer laat meegaan dan degene die de leiding heeft.",
+      "status": "open",
+      "firstSeen": "596060e48ed556ec3cbb3f2b77d2bfe6d47472d6"
+    },
+    {
+      "id": "b38b9b4054a3f3a33f7197c9faa6f8490e0d98eb39d85b6e5c3eabb7a8ae729c",
+      "blockId": "journal.html#text:body:2>main:3>div:4>div:2>div:1>article:2>div:1>aside:5>p:2",
+      "textHash": "f095a3d29f4908e9af66b4e283a952a89af8d64593a4afb2101769fd97f21b67",
+      "rule": "MORFOLOGIK_RULE_NL_NL",
+      "offset": 222,
+      "length": 13,
+      "message": "Er is een mogelijke spelfout gevonden.",
+      "replacements": [
+        "Koteigenaars",
+        "Co-eigenaars"
+      ],
+      "context": "Maak de AI-agenda onafhankelijk van wie CEO is. Laat de raad eigenaar zijn van een meerjarig AI-waardeplan, uitgevoerd door een klein waardeteam en elk kwartaal beoordeeld. Neem het op in het opvolgingsdossier van de CEO. Kmo-eigenaars: reserveer één kwartaal lang een halve dag per week en herontwerp één duur proces vóór u het automatiseert. Checklist op pagina 13.",
+      "status": "open",
+      "firstSeen": "596060e48ed556ec3cbb3f2b77d2bfe6d47472d6"
+    },
+    {
+      "id": "c7a064f2147e74e869aa5efbb5ca35618b20e001e91306e1505560d0c9fef6ad",
+      "blockId": "journal.html#text:body:2>main:3>div:4>div:2>div:1>article:2>div:1>div:1",
+      "textHash": "d59e9aba7a757944f652536fc8ba0d36a4f6ba42ff18e184f7bff1917899e698",
+      "rule": "MORFOLOGIK_RULE_NL_NL",
+      "offset": 42,
+      "length": 6,
+      "message": "Er is een mogelijke spelfout gevonden.",
+      "replacements": [
+        "hier",
+        "hierin",
+        "hierna",
+        "hierop",
+        "hierom",
+        "hiero",
+        "hieraf",
+        "hierzo",
+        "hier-",
+        "Hyrum",
+        "Hierck",
+        "Hiera",
+        "Hierl",
+        "Hjerm",
+        "Hiert",
+        "Hierls",
+        "Hierts"
+      ],
+      "context": "Maandnummer 01 · 13 november 2026 · Begin hier02 / 15",
+      "status": "open",
+      "firstSeen": "596060e48ed556ec3cbb3f2b77d2bfe6d47472d6"
+    },
+    {
+      "id": "7bfdbc87670cd9806c4d023896643d091a1139f0970daf3d886cd55e946fe645",
+      "blockId": "journal.html#text:body:2>main:3>div:4>div:2>div:1>article:2>div:1>div:10>p:2",
+      "textHash": "d50d8c0f01567aaa1625b475107e37e8fd2a495926c2aab6d3f0188590450446",
+      "rule": "MORFOLOGIK_RULE_NL_NL",
+      "offset": 0,
+      "length": 12,
+      "message": "Er is een mogelijke spelfout gevonden.",
+      "replacements": [
+        "Co-eigenaar",
+        "ADO-eigenaar",
+        "BMW-eigenaar",
+        "Koteigenaar"
+      ],
+      "context": "Kmo-eigenaar · 06–08 Omvangskloof, schaduw-AI en familiale opvolging",
+      "status": "open",
+      "firstSeen": "596060e48ed556ec3cbb3f2b77d2bfe6d47472d6"
+    },
+    {
+      "id": "38e13ccb0b9a8a342ce6bde11c3d2155e4bd9775b41592b0f34ddff17db82ad2",
+      "blockId": "journal.html#text:body:2>main:3>div:4>div:2>div:1>article:2>div:1>div:10>p:2",
+      "textHash": "d50d8c0f01567aaa1625b475107e37e8fd2a495926c2aab6d3f0188590450446",
+      "rule": "MORFOLOGIK_RULE_NL_NL",
+      "offset": 21,
+      "length": 12,
+      "message": "Er is een mogelijke spelfout gevonden.",
+      "replacements": [
+        "Toegangskloof",
+        "Omgangskoor"
+      ],
+      "context": "Kmo-eigenaar · 06–08 Omvangskloof, schaduw-AI en familiale opvolging",
+      "status": "open",
+      "firstSeen": "596060e48ed556ec3cbb3f2b77d2bfe6d47472d6"
+    },
+    {
+      "id": "229ba7534d7d9f422bd1437a8daab8ea2c85333e1765813a1de09441b8c85b1b",
+      "blockId": "journal.html#text:body:2>main:3>div:4>div:2>div:1>article:2>div:1>div:10>p:2",
+      "textHash": "d50d8c0f01567aaa1625b475107e37e8fd2a495926c2aab6d3f0188590450446",
+      "rule": "MORFOLOGIK_RULE_NL_NL",
+      "offset": 35,
+      "length": 10,
+      "message": "Er is een mogelijke spelfout gevonden.",
+      "replacements": [
+        "schaduw-",
+        "schaduwval",
+        "schaduwkat",
+        "schaduwkas"
+      ],
+      "context": "Kmo-eigenaar · 06–08 Omvangskloof, schaduw-AI en familiale opvolging",
+      "status": "open",
+      "firstSeen": "596060e48ed556ec3cbb3f2b77d2bfe6d47472d6"
+    },
+    {
+      "id": "1ed897ef0895b2949ad5bcd9bba4a5bece850a83d4796f0a587bae1f8864b5e4",
+      "blockId": "journal.html#text:body:2>main:3>div:4>div:2>div:1>article:2>div:1>div:6>div:2",
+      "textHash": "a8721b165c3b51127d6fc5bee57f101513dc38656dc4c6385d8195e07786d0a1",
+      "rule": "NL_SIMPLE_REPLACE_PP",
+      "offset": 5,
+      "length": 2,
+      "message": "‘pp’ zou fout kunnen zijn. Misschien bedoelt u: “p.p.”",
+      "replacements": [
+        "P.p."
+      ],
+      "context": "43,4 pp",
+      "status": "open",
+      "firstSeen": "596060e48ed556ec3cbb3f2b77d2bfe6d47472d6"
+    },
+    {
+      "id": "0ab85378294ec19acfc53fc8a394b3352167f5f0f3ed8f4fb5c5d89afa35b35f",
+      "blockId": "journal.html#text:body:2>main:3>div:4>div:2>div:1>article:2>div:1>div:6>div:3>p:2",
+      "textHash": "53ad457347f930ff9e7b80bc927fe15f9fa232b64e3b8830236f8e38c78b6697",
+      "rule": "MORFOLOGIK_RULE_NL_NL",
+      "offset": 0,
+      "length": 10,
+      "message": "Er is een mogelijke spelfout gevonden.",
+      "replacements": [
+        "Genetische",
+        "Magnetische",
+        "Aseptische",
+        "Bentische"
+      ],
+      "context": "Agentische AI-projecten die volgens Gartner tegen eind 2027 worden stopgezet [11]",
+      "status": "open",
+      "firstSeen": "596060e48ed556ec3cbb3f2b77d2bfe6d47472d6"
+    },
+    {
+      "id": "e354b7f797b80d2a6a0108f127b2f0af385d0fac0f261b7f0cd628bae5902372",
+      "blockId": "journal.html#text:body:2>main:3>div:4>div:2>div:1>article:2>div:1>p:3",
+      "textHash": "ef4b003688a334aebc45cccc658ad51dc05676086cf549ab615ebd83c134d94e",
+      "rule": "MORFOLOGIK_RULE_NL_NL",
+      "offset": 42,
+      "length": 9,
+      "message": "Er is een mogelijke spelfout gevonden.",
+      "replacements": [
+        "Coherente"
+      ],
+      "context": "Erlend Hollebosch, redacteur · Enterprise Coherence & AI Transformation Lead; meer dan 20 jaar ervaring met operating models, agile en bedrijfstransformatie",
+      "status": "open",
+      "firstSeen": "596060e48ed556ec3cbb3f2b77d2bfe6d47472d6"
+    },
+    {
+      "id": "81868c57ed9e92089fd9ab395e12e983916c5c8147c6ed6c75761bc084322f99",
+      "blockId": "journal.html#text:body:2>main:3>div:4>div:2>div:1>article:2>div:1>p:3",
+      "textHash": "ef4b003688a334aebc45cccc658ad51dc05676086cf549ab615ebd83c134d94e",
+      "rule": "MORFOLOGIK_RULE_NL_NL",
+      "offset": 57,
+      "length": 14,
+      "message": "Er is een mogelijke spelfout gevonden.",
+      "replacements": [
+        "Transformatie",
+        "Transformaties",
+        "Transformator",
+        "Transformatie-",
+        "Transformatief",
+        "Transformatiepunt",
+        "Transformatieven"
+      ],
+      "context": "Erlend Hollebosch, redacteur · Enterprise Coherence & AI Transformation Lead; meer dan 20 jaar ervaring met operating models, agile en bedrijfstransformatie",
+      "status": "open",
+      "firstSeen": "596060e48ed556ec3cbb3f2b77d2bfe6d47472d6"
+    },
+    {
+      "id": "8f8d9cc329455f979549dac886fef692ca84bf3f1f1fa3a102ac7ef10947a1f3",
+      "blockId": "journal.html#text:body:2>main:3>div:4>div:2>div:1>article:2>div:1>p:8",
+      "textHash": "dc6b220ade1bcaddae7057afd96d42a14d28739ba2462a7204037f8ef94690fe",
+      "rule": "MORFOLOGIK_RULE_NL_NL",
+      "offset": 233,
+      "length": 13,
+      "message": "Er is een mogelijke spelfout gevonden.",
+      "replacements": [
+        "koteigenaars",
+        "co-eigenaars"
+      ],
+      "context": "AI opschalen vraagt meerdere begrotingscycli, terwijl de sponsor vroeger vertrekt dan voorheen. Pilots financieren en het herontwerp aan een opvolger overlaten is de rationele keuze, waardoor grote ondernemingen vastlopen. Belgische kmo-eigenaars blijven decennialang, maar hebben weinig tijd. In familiebedrijven valt de overdracht aan de volgende generatie nu samen met de AI-beslissing.",
+      "status": "open",
+      "firstSeen": "596060e48ed556ec3cbb3f2b77d2bfe6d47472d6"
+    },
+    {
+      "id": "00f7e5030261d24247f2688afc1d11c0006a651e04302ab089e3f0ba14804f56",
+      "blockId": "journal.html#text:body:2>main:3>div:4>div:2>div:1>article:3>div:1>aside:10>h3:1",
+      "textHash": "5875d26d482b30c6ed406b82bc1b88dfbf1cb61f5d3df9be102172366df930af",
+      "rule": "MORFOLOGIK_RULE_NL_NL",
+      "offset": 0,
+      "length": 13,
+      "message": "Er is een mogelijke spelfout gevonden.",
+      "replacements": [
+        "BESTUURSLAAG",
+        "BESTUURSRAAD",
+        "BESTUURSDRANG",
+        "BESTUURSRANG",
+        "BESTUURSVLAG"
+      ],
+      "context": "BESTUURSVRAAG",
+      "status": "open",
+      "firstSeen": "596060e48ed556ec3cbb3f2b77d2bfe6d47472d6"
+    },
+    {
+      "id": "4c43150bbe7465f876c3dec8329733c2776f2a7a2907ddc2af9c64eb0071d336",
+      "blockId": "journal.html#text:body:2>main:3>div:4>div:2>div:1>article:3>div:1>blockquote:6",
+      "textHash": "666d80fb7f509c938f2e86d12103b2f3b921e5639bbe46728b2984d4a24c9c42",
+      "rule": "SENTENCE_WHITESPACE",
+      "offset": 43,
+      "length": 5,
+      "message": "Tussen zinnen hoort witruimte",
+      "replacements": [
+        " Laura"
+      ],
+      "context": "‘Die wittebroodsweken zijn sterk ingekort.’Laura Sanderson, Russell Reynolds Associates, over de eerste jaren van een CEO-mandaat [1]",
+      "status": "open",
+      "firstSeen": "596060e48ed556ec3cbb3f2b77d2bfe6d47472d6"
+    },
+    {
+      "id": "a24f0d4deeef7839480f03817ed0877984f14ed624c61ac11a27eda579ea9619",
+      "blockId": "journal.html#text:body:2>main:3>div:4>div:2>div:1>article:3>div:1>div:1",
+      "textHash": "31096481c7cc052027e6b220e2b8539019419a680cff444c2a48874f452939ea",
+      "rule": "MORFOLOGIK_RULE_NL_NL",
+      "offset": 40,
+      "length": 17,
+      "message": "Er is een mogelijke spelfout gevonden.",
+      "replacements": [
+        "mandaatprobleem"
+      ],
+      "context": "Maandnummer 01 · 13 november 2026 · Het mandaatprobleem03 / 15",
+      "status": "open",
+      "firstSeen": "596060e48ed556ec3cbb3f2b77d2bfe6d47472d6"
+    },
+    {
+      "id": "13bded78b1de752e64c9f35b060db0be1a08b17a70222ffdd25648ce45471197",
+      "blockId": "journal.html#text:body:2>main:3>div:4>div:2>div:1>article:3>div:1>div:5>div:1>h3:1",
+      "textHash": "ae76af212419d1c4354ddc9c985e0f1a98f86a143b59338fba613a7130e64563",
+      "rule": "MORFOLOGIK_RULE_NL_NL",
+      "offset": 41,
+      "length": 5,
+      "message": "Er is een mogelijke spelfout gevonden.",
+      "replacements": [
+        "CEO's",
+        "CAO'S",
+        "LEO'S",
+        "DEO'S",
+        "CLEO'S",
+        "CO'S",
+        "BEO'S",
+        "NEO'S",
+        "TEO'S",
+        "CHO'S",
+        "SEO'S",
+        "CLÉO'S",
+        "CFO's"
+      ],
+      "context": "GEMIDDELDE AMBTSTERMIJN VAN VERTREKKENDE CEO’S, WERELDWIJDE INDICES [1]",
+      "status": "open",
+      "firstSeen": "596060e48ed556ec3cbb3f2b77d2bfe6d47472d6"
+    },
+    {
+      "id": "1003e584db6dfeee3c4b9da96788a8e54f1e5d39ab3e46e61a0454e3fa63c0ae",
+      "blockId": "journal.html#text:body:2>main:3>div:4>div:2>div:1>article:3>div:1>div:5>div:2>div:4>p:2",
+      "textHash": "07a39580d4d3209c1bbb36c9a39c33bf696ad242d91b4af57edc3e2a9c0cd61f",
+      "rule": "MORFOLOGIK_RULE_NL_NL",
+      "offset": 19,
+      "length": 3,
+      "message": "Er is een mogelijke spelfout gevonden.",
+      "replacements": [
+        "SP",
+        "SGP",
+        "SAP",
+        "SCP",
+        "SEP",
+        "SOP",
+        "SIP",
+        "SNP",
+        "SUP",
+        "SÁP",
+        "D&P"
+      ],
+      "context": "Van de CEO’s in de S&P 1500 vertrekken binnen vijf jaar [3]",
+      "status": "open",
+      "firstSeen": "596060e48ed556ec3cbb3f2b77d2bfe6d47472d6"
+    },
+    {
+      "id": "ac33fac7b8edb9799a8fc5640971eb8ab76509178fc2822621564ea1a1ba29b4",
+      "blockId": "journal.html#text:body:2>main:3>div:4>div:2>div:1>article:3>div:1>p:9",
+      "textHash": "66d66adff745f2e788740403eddb9a347d0f13ea05cd8919e0b3547c43368f5f",
+      "rule": "MORFOLOGIK_RULE_NL_NL",
+      "offset": 103,
+      "length": 13,
+      "message": "Er is een mogelijke spelfout gevonden.",
+      "replacements": [
+        "Belanggroepen",
+        "Belgroepen",
+        "Beleggroepen",
+        "Beleidgroepen",
+        "Bellengroepen"
+      ],
+      "context": "Deze cijfers betreffen grote beursgenoteerde ondernemingen. In België zijn ze vooral van toepassing op BEL20-groepen en dochterbedrijven van multinationals, waar lokale CEO’s eveneens volgens groepsschema’s rouleren.",
+      "status": "open",
+      "firstSeen": "596060e48ed556ec3cbb3f2b77d2bfe6d47472d6"
+    },
+    {
+      "id": "e1ebc5577bcb089663670434cfd2330a2405ef6feb5ea3417395996eed7a79cd",
+      "blockId": "journal.html#title:body:2>main:3>div:4>div:2>div:1>article:2>div:1>div:6>div:3>p:2>a:1",
+      "textHash": "ff3b725e989a00b4080fb634e5b1fe0fcc5aa6060e22ee306cf4b7cc3ee78c18",
+      "rule": "MORFOLOGIK_RULE_NL_NL",
+      "offset": 29,
+      "length": 10,
+      "message": "Er is een mogelijke spelfout gevonden.",
+      "replacements": [
+        "genetische",
+        "magnetische",
+        "aseptische",
+        "bentische"
+      ],
+      "context": "[ 11 ] Gartner Prognose over agentische AI, 25 juni 2025",
+      "status": "open",
+      "firstSeen": "596060e48ed556ec3cbb3f2b77d2bfe6d47472d6"
+    },
+    {
+      "id": "9e85e5508b449afbea0bc71fbe39956702635c488cfafc1007ec4008bfb840b9",
+      "blockId": "journal.html#title:body:2>main:3>div:4>div:2>div:1>article:3>div:1>div:5>div:2>div:4>p:2>a:1",
+      "textHash": "7d1b8b5648d88cc56a931a1d73c9519e63b13ceac18187b827c64128e9ea681c",
+      "rule": "MORFOLOGIK_RULE_NL_NL",
+      "offset": 30,
+      "length": 11,
+      "message": "Er is een mogelijke spelfout gevonden.",
+      "replacements": [
+        "Transities",
+        "Transitzone",
+        "Transitzones",
+        "Transitiehuis",
+        "Transitiepunt",
+        "Transsions",
+        "Transitiefs",
+        "Transito's",
+        "Transitoirs",
+        "Transitiekans"
+      ],
+      "context": "[ 3 ] Spencer Stuart 2025 CEO Transitions Report, S&P 1500",
+      "status": "open",
+      "firstSeen": "596060e48ed556ec3cbb3f2b77d2bfe6d47472d6"
+    },
+    {
+      "id": "a454a5eb00f1d16bc958a8dfed26bf87c0fd07e9b1cf31256435e8cab030690f",
+      "blockId": "journal.html#title:body:2>main:3>div:4>div:2>div:1>article:3>div:1>div:5>div:2>div:4>p:2>a:1",
+      "textHash": "7d1b8b5648d88cc56a931a1d73c9519e63b13ceac18187b827c64128e9ea681c",
+      "rule": "MORFOLOGIK_RULE_NL_NL",
+      "offset": 50,
+      "length": 3,
+      "message": "Er is een mogelijke spelfout gevonden.",
+      "replacements": [
+        "SP",
+        "SGP",
+        "SAP",
+        "SCP",
+        "SEP",
+        "SOP",
+        "SIP",
+        "SNP",
+        "SUP",
+        "SÁP",
+        "D&P"
+      ],
+      "context": "[ 3 ] Spencer Stuart 2025 CEO Transitions Report, S&P 1500",
+      "status": "open",
+      "firstSeen": "596060e48ed556ec3cbb3f2b77d2bfe6d47472d6"
+    },
+    {
+      "id": "9c02ce217e068377cf7543c23aabbf9d2034e5000beb84106e6fc62adda8be0e",
+      "blockId": "operating-model.html#text:body:2>nav:2>div:1>ul:2>li:3>ul:2>li:4",
+      "textHash": "18340515e523cfb198b73e7be7afd0ed04ff2ef196921a2bdd41af033a724397",
+      "rule": "MORFOLOGIK_RULE_NL_NL",
+      "offset": 0,
+      "length": 10,
+      "message": "Er is een mogelijke spelfout gevonden.",
+      "replacements": [
+        "Beslisrijp"
+      ],
+      "context": "Beslisreis",
+      "status": "open",
+      "firstSeen": "596060e48ed556ec3cbb3f2b77d2bfe6d47472d6"
+    },
+    {
+      "id": "9a4e685056a0557cf44760eceb6395845241f059bc527322dc9bfd695914f95c",
+      "blockId": "privacy.html#text:body:2>nav:2>div:1>ul:2>li:3>ul:2>li:4",
+      "textHash": "18340515e523cfb198b73e7be7afd0ed04ff2ef196921a2bdd41af033a724397",
+      "rule": "MORFOLOGIK_RULE_NL_NL",
+      "offset": 0,
+      "length": 10,
+      "message": "Er is een mogelijke spelfout gevonden.",
+      "replacements": [
+        "Beslisrijp"
+      ],
+      "context": "Beslisreis",
+      "status": "open",
+      "firstSeen": "596060e48ed556ec3cbb3f2b77d2bfe6d47472d6"
+    },
+    {
+      "id": "59d1fb81e33fe6428aba052de0d58d02dbf63451325404d03a4016355e58dd1b",
+      "blockId": "process.html#text:body:2>nav:2>div:1>ul:2>li:3>ul:2>li:4",
+      "textHash": "18340515e523cfb198b73e7be7afd0ed04ff2ef196921a2bdd41af033a724397",
+      "rule": "MORFOLOGIK_RULE_NL_NL",
+      "offset": 0,
+      "length": 10,
+      "message": "Er is een mogelijke spelfout gevonden.",
+      "replacements": [
+        "Beslisrijp"
+      ],
+      "context": "Beslisreis",
+      "status": "open",
+      "firstSeen": "596060e48ed556ec3cbb3f2b77d2bfe6d47472d6"
+    },
+    {
+      "id": "5f8ebe170c7562da969c710017e83a7fe120751f349bfd3ecd6eb7494af11096",
+      "blockId": "terms.html#text:body:2>nav:2>div:1>ul:2>li:3>ul:2>li:4",
+      "textHash": "18340515e523cfb198b73e7be7afd0ed04ff2ef196921a2bdd41af033a724397",
+      "rule": "MORFOLOGIK_RULE_NL_NL",
+      "offset": 0,
+      "length": 10,
+      "message": "Er is een mogelijke spelfout gevonden.",
+      "replacements": [
+        "Beslisrijp"
+      ],
+      "context": "Beslisreis",
+      "status": "open",
+      "firstSeen": "596060e48ed556ec3cbb3f2b77d2bfe6d47472d6"
+    },
+    {
+      "id": "352da5f69d6b575ec86d50467c95e50e63dbfec774ee6a04d8bcdbfef5eae9d2",
+      "blockId": "the-coherence-model-1.html#text:body:2>nav:2>div:1>ul:2>li:3>ul:2>li:4",
+      "textHash": "18340515e523cfb198b73e7be7afd0ed04ff2ef196921a2bdd41af033a724397",
+      "rule": "MORFOLOGIK_RULE_NL_NL",
+      "offset": 0,
+      "length": 10,
+      "message": "Er is een mogelijke spelfout gevonden.",
+      "replacements": [
+        "Beslisrijp"
+      ],
+      "context": "Beslisreis",
+      "status": "open",
+      "firstSeen": "596060e48ed556ec3cbb3f2b77d2bfe6d47472d6"
+    },
+    {
+      "id": "b49168b978a65c685fb7f9ace8aa03ee6bb3bd636adb5708210d9a646e822c96",
+      "blockId": "the-enterprise-paradox-1.html#text:body:2>nav:2>div:1>ul:2>li:3>ul:2>li:4",
+      "textHash": "18340515e523cfb198b73e7be7afd0ed04ff2ef196921a2bdd41af033a724397",
+      "rule": "MORFOLOGIK_RULE_NL_NL",
+      "offset": 0,
+      "length": 10,
+      "message": "Er is een mogelijke spelfout gevonden.",
+      "replacements": [
+        "Beslisrijp"
+      ],
+      "context": "Beslisreis",
+      "status": "open",
+      "firstSeen": "596060e48ed556ec3cbb3f2b77d2bfe6d47472d6"
+    },
+    {
+      "id": "a72e881c5cdef52aa8b5ff9558fb96887ffdc006de60b7895a257b3519b30557",
+      "blockId": "transformation.html#text:body:2>nav:2>div:1>ul:2>li:3>ul:2>li:4",
+      "textHash": "18340515e523cfb198b73e7be7afd0ed04ff2ef196921a2bdd41af033a724397",
+      "rule": "MORFOLOGIK_RULE_NL_NL",
+      "offset": 0,
+      "length": 10,
+      "message": "Er is een mogelijke spelfout gevonden.",
+      "replacements": [
+        "Beslisrijp"
+      ],
+      "context": "Beslisreis",
+      "status": "open",
+      "firstSeen": "596060e48ed556ec3cbb3f2b77d2bfe6d47472d6"
+    },
+    {
+      "id": "2563f360561564b7c9e3e867987952bd43114ba1f7c2959fe87cf8e21fae5e67",
+      "blockId": "value.html#text:body:2>nav:2>div:1>ul:2>li:3>ul:2>li:4",
+      "textHash": "18340515e523cfb198b73e7be7afd0ed04ff2ef196921a2bdd41af033a724397",
+      "rule": "MORFOLOGIK_RULE_NL_NL",
+      "offset": 0,
+      "length": 10,
+      "message": "Er is een mogelijke spelfout gevonden.",
+      "replacements": [
+        "Beslisrijp"
+      ],
+      "context": "Beslisreis",
+      "status": "open",
+      "firstSeen": "596060e48ed556ec3cbb3f2b77d2bfe6d47472d6"
+    },
+    {
+      "id": "28b2959e44ed902c71e285868791a55ca6ebf76fdcc44035cf983e1812e92053",
+      "blockId": "workshop.html#text:body:2>nav:2>div:1>ul:2>li:3>ul:2>li:4",
+      "textHash": "18340515e523cfb198b73e7be7afd0ed04ff2ef196921a2bdd41af033a724397",
+      "rule": "MORFOLOGIK_RULE_NL_NL",
+      "offset": 0,
+      "length": 10,
+      "message": "Er is een mogelijke spelfout gevonden.",
+      "replacements": [
+        "Beslisrijp"
+      ],
+      "context": "Beslisreis",
+      "status": "open",
+      "firstSeen": "596060e48ed556ec3cbb3f2b77d2bfe6d47472d6"
     }
   ]
 }

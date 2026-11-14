@@ -1,6 +1,7 @@
 'use strict';
 const {test,expect}=require('playwright/test');
 const {routes,languageCases,prepareRoute,captureRouteScreenshots,collect,renderedFonts}=require('../../scripts/typography-audit.cjs');
+const {memberEdition}=require('../support/typography-member.cjs');
 const widths=process.env.TYPOGRAPHY_WIDTHS?process.env.TYPOGRAPHY_WIDTHS.split(',').map(Number):[320,390,768,1366];
 for(const route of routes())for(const {language,effectiveLanguage} of languageCases(route))for(const width of widths){
  test(`typography ${route} ${language} ${width}`,async({page,browserName},info)=>{
@@ -45,6 +46,7 @@ for(const route of routes())for(const {language,effectiveLanguage} of languageCa
  });
 }
 test('journal geometry inventory records every sheet before enforcing fit',async({page},info)=>{
+ const member=await memberEdition(page,'journal',info);
  const inventory=[];
  for(const width of [1366,1440]){
  await page.setViewportSize({width,height:900});
@@ -60,6 +62,7 @@ test('journal geometry inventory records every sheet before enforcing fit',async
  }
  await info.attach('all-journal-geometry',{body:JSON.stringify(inventory,null,2),contentType:'application/json'});
  console.log('JOURNAL_GEOMETRY '+JSON.stringify(inventory));
+ await member.assertRead();
  expect(inventory.filter(p=>p.overflow>1||p.overlap>1)).toEqual([]);
 });
 test('legacy English language preference falls back without changing typography',async({page})=>{
@@ -91,6 +94,10 @@ test('explicit supporting roles and nested heading/prose resist component specif
   fixture.innerHTML+='<figure><figcaption id="caption-wrapper"><p id="caption-prose">Caption prose <span id="caption-label" data-typography-role="label">Caption label <span id="caption-nested-metadata" data-typography-role="metadata">Inner caption metadata</span></span></p><button id="caption-control" type="button">Caption control <span>Nested control text</span></button><h3 id="caption-heading">Caption heading <strong>Nested heading text</strong></h3></figcaption></figure>';
   fixture.innerHTML+='<section id="offscreen-auto-fixture" style="content-visibility:auto;contain-intrinsic-size:100px;margin-top:5000px"><p id="offscreen-auto-prose">Optimized offscreen prose</p></section><section id="intentional-hidden-fixture" style="content-visibility:hidden;height:40px">Closed text<p id="intentional-hidden-prose">Intentionally hidden prose</p></section>';
   document.querySelector('main').append(fixture);
+  document.body.classList.add('decision-journey-page');
+  const cases=document.createElement('section');cases.id='typography-case-card-fixture';
+  cases.innerHTML='<button class="case-card"><span id="case-control-text">Control text</span><p id="case-prose">Case explanation <span id="case-nested-prose">Nested explanation</span> <span id="case-label" data-typography-role="label">Label</span> <span id="case-metadata" data-typography-role="metadata">Metadata</span></p></button><div class="case-card"><p>Explanation with <button id="case-nested-control" type="button">Nested control <span id="case-nested-control-text">Text</span></button></p></div>';
+  document.querySelector('main').append(cases);
  });
  const fixture=page.locator('#typography-regression-fixture');
  const result=await collect(page);await info.attach('nested-role-computed-styles',{body:JSON.stringify(result,null,2),contentType:'application/json'});
@@ -118,9 +125,24 @@ test('explicit supporting roles and nested heading/prose resist component specif
  await expect(fixture.locator('#caption-heading')).toHaveCSS('font-size','24px');
  await expect(fixture.locator('#caption-heading strong')).toHaveCSS('font-size','24px');
  expect(result.deviations).toEqual([]);
+ for(const id of ['case-prose','case-nested-prose']){
+  await expect(page.locator('#'+id)).toHaveCSS('font-size','17px');
+  expect(result.elements.find(e=>e.id===id)?.role,id+' is prose despite ancestor button').toBe('body');
+ }
+ for(const id of ['case-control-text','case-nested-control','case-nested-control-text'])await expect(page.locator('#'+id)).toHaveCSS('font-size','15px');
+ await expect(page.locator('#case-label')).toHaveCSS('font-size','12px');
+ await expect(page.locator('#case-metadata')).toHaveCSS('font-size','14px');
+ await page.locator('#case-prose').evaluate(el=>el.style.setProperty('font-size','15px','important'));
+ await page.locator('#case-nested-control').evaluate(el=>el.style.setProperty('font-size','17px','important'));
+ const wrong=await collect(page);
+ expect(wrong.deviations.some(e=>e.id==='case-prose'&&e.reason==='size'&&e.expected===17),'undersized prose remains a failure').toBe(true);
+ expect(wrong.deviations.some(e=>e.id==='case-nested-control'&&e.reason==='size'&&e.expected===15),'oversized control remains a failure').toBe(true);
+ await page.locator('#case-prose,#case-nested-control').evaluateAll(elements=>elements.forEach(el=>el.style.removeProperty('font-size')));
+ expect((await collect(page)).deviations).toEqual([]);
 });
 for(const language of ['nl','fr'])for(const width of [390,768,1366]){
  test(`typography radar five views ${language} ${width}`,async({page},info)=>{
+  const member=await memberEdition(page,'radar',info);
   await page.setViewportSize({width,height:900});await page.goto('/executive-radar/index.html');
   await page.locator(`[data-language="${language}"]`).click();
   for(const view of ['overview','dashboard','radar','evidence','editorial']){
@@ -133,8 +155,10 @@ for(const language of ['nl','fr'])for(const width of [390,768,1366]){
    expect(result.language,view+' effective language').toBe(language+'-BE');
    expect(result.deviations,view).toEqual([]);expect(result.overflow,view).toBe(false);
   }
+  await member.assertRead();
  });
  test(`typography journal every page and zoom ${language} ${width}`,async({page},info)=>{
+  const member=await memberEdition(page,'journal',info);
   await page.setViewportSize({width,height:900});await page.goto(language==='nl'?'/journal.html':'/journal-fr.html');
   for(let n=1;n<=15;n++){
    await page.evaluate(index=>{location.hash='p'+index},n);await expect(page.locator('#p'+n)).toBeVisible();
@@ -145,6 +169,7 @@ for(const language of ['nl','fr'])for(const width of [390,768,1366]){
    expect(geometry.overflow,'page '+n+' internal overflow').toBeLessThanOrEqual(1);expect(geometry.overlap,'page '+n+' footer overlap').toBeLessThanOrEqual(1);
   }
   await page.locator('[data-bigger]').click();expect((await collect(page)).deviations).toEqual([]);
+  await member.assertRead();
  });
  test(`typography open navigation and consent ${language} ${width}`,async({page},info)=>{
   await page.setViewportSize({width,height:900});

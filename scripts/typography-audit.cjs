@@ -114,10 +114,10 @@ async function collect(page){
    const heading=el.closest('h1,h2,h3,h4,[role=heading]');
    let role=null,expected=null;
    if(heading){const level=Number(heading.getAttribute('aria-level')||heading.tagName.slice(1)),h=c.headings[level];if(h){role='h'+level;expected=headingReferences[level].resolvedFontSize;}}
-   else if(el.closest([c.labelSelector,c.metadataSelector,c.controlSelector,c.metricSelector].join(','))){
-    const nearest=el.closest([c.labelSelector,c.metadataSelector,c.controlSelector,c.metricSelector].join(','));
+   else if(el.closest([c.bodySelector,c.labelSelector,c.metadataSelector,c.controlSelector,c.metricSelector].filter(Boolean).join(','))){
+    const nearest=el.closest([c.bodySelector,c.labelSelector,c.metadataSelector,c.controlSelector,c.metricSelector].filter(Boolean).join(','));
     const explicit=nearest.getAttribute('data-typography-role');
-    role=['label','metadata'].includes(explicit)?explicit:nearest.matches(c.metadataSelector)?'metadata':nearest.matches(c.controlSelector)?'control':nearest.matches(c.metricSelector)?'metric':'label';
+    role=['label','metadata'].includes(explicit)?explicit:nearest.matches(c.metadataSelector)?'metadata':c.bodySelector&&nearest.matches(c.bodySelector)?'body':nearest.matches(c.controlSelector)?'control':nearest.matches(c.metricSelector)?'metric':'label';
     expected=c[role];
    }
    else if(el.closest('p,main li,.career-r,.career-list b,.practice-questions dd,.in-brief dd')){

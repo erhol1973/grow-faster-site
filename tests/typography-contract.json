@@ -1,6 +1,7 @@
 {
   "family": "Aptos, \"Hanken Grotesk\", \"Segoe UI\", Helvetica, Arial, sans-serif",
   "body": 17,
+  "bodySelector": "body.decision-journey-page .case-card p",
   "headings": {
     "1": {
       "min": 40,

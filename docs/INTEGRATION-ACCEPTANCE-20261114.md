@@ -173,3 +173,38 @@ as new exercise sources; that repair still needs a fresh complete scan.
 
 Production remains on its existing release. No main merge or deployment is
 authorized by this candidate.
+
+## First exact-head CI and scoped repair
+
+Draft PR82 head8787006 completed run43580965630. Build preparation, Secrets
+history gate, JavaScript security gate and the complete128-case journey passed.
+Each of the five typography profiles passed324 and failed the same21 cases;
+the mandatory Website quality gate correctly blocked before base/performance.
+The failed run is retained rather than retried as acceptance.
+
+Eight cases classified two explanatory case-card paragraphs as their ancestor
+button's15px control text. The approved prose role is17px; the finite scoped
+body selector preserves that role and nearer control/metadata precedence.
+Thirteen deep Journal/Radar cases lacked a synthetic member entitlement after
+the content became gated. Only those deep-content tests now use the existing,
+previously public historical publication fixture through ordinary fetch,
+integrity validation and rendering. Anonymous inventory, real cache and access
+denial tests remain separate and unchanged. The typography checkout retrieves
+full history for that already-pinned archive. No public style or access rule is
+changed. All21 repaired cases plus the strengthened existing nested-role case
+passed in Chromium;15 targeted units passed. Inventory remains2,838; fresh full
+CI on the repair commit is required.
+
+Independent artifact comparison verified the original CI tar checksum and203
+manifest entries. CI is52,469,693bytes; local v3 is52,469,697bytes. Four files
+each have exactly one local CRLF versus CI LF: member-menu.js,
+member-registration.css, bundled models.js and radar-preview.css. Their
+normalized bytes/hashes match exactly;199 other raw hashes match. Local v3 is
+not claimed raw-byte-identical to CI. CI's own immutable-artifact checks remain
+authoritative for release.
+
+The complete local Dutch scan on8787006 checked441 changed/new blocks without
+engine/extraction errors. It reports108 new identities:65 match old text/rule/
+offset/length tuples at new locations,43 are new tuples requiring context or
+editorial review. All3,668 prior finding records remain exactly unchanged in
+the3,776-record candidate. No register promotion or human review is invented.

@@ -486,3 +486,13 @@ mutations. Focused19/19 and full346/346 sequential Windows tests pass. No websit
 protected payload, dictionary, engine version or public artifact byte changes.
 Fresh full Linux checks and the committed-source rescan remain required; additional legitimate suggestions in
 the corrected contexts are assessed and preserved rather than suppressed.
+
+The subsequent complete scan on committed504702c passes:26 changed contexts
+checked, zero new suggestions and zero engine errors. The full inventory has
+9,558 blocks;9,532 unchanged contexts reuse their existing machine receipts.
+Independent review confirms all3,847 complete historical records are identical,
+correct parent/history/source ancestry, the current extractor fingerprint and
+26 lossless public semantic parts. The new candidate changes no finding status
+or human-review field. This bounded public Dutch result is not official language
+approval, exhaustive French review or a scan of live CMS/private content. Fresh
+full-head Linux evidence and the previously named release holds remain separate.

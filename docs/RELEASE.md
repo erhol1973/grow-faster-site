@@ -34,12 +34,44 @@ Beoordeel dependency-updates en pas lockfile en browserinstallatie samen aan. Le
 
 Elke foutoplossing of nieuwe functionaliteit bevat passende blijvende regressietests. Werk de gedeelde navigatiegevallen en betrokken integratie-, end-to-end-, load- en prestatiecontroles in dezelfde pull request bij. Unit tests horen bij afzonderlijke logica; niet elk tekst- of layoutdetail heeft een unit test nodig. Behoud positieve en negatieve scenario’s. Breid de suite gericht uit en verwijder verouderde of dubbele tests alleen met onderbouwde reden. Zie TESTPLAN.md voor dekking en beperkingen.
 
+## Typography audit release boundary, 13 November 2026
+
+Typography work is isolated on `fix/sitewide-typography`, based on main `1dc94c52ad7175999bce141bcc1b21deedc3bcac`. PRs 57, 58 and 60 were already merged at inventory time and are not modified. Existing unrelated checkout changes and open development branches remain untouched. A draft PR and CI are authorized; merge, production deployment, preview publication, CMS writes and account changes are not authorized by this typography task. Commits use `[CF-Pages-Skip]` to retain the existing no-preview convention.
+
+Release remains NO-GO until the final revision passes all original gates plus the new typography contract, independent visual/release review, and the requested reachable-state coverage. Supporting report files preserve failed and interrupted attempts; neither a source fix nor an initial passing unit/load check is release approval.
+
+The previous combined browser run exhausted its 45-minute CI limit and is not acceptance evidence. The replacement mandatory partitions retain the full 2446-case inventory and all original limits. Every partition consumes the same verified build; the protected Website quality gate explicitly rejects failed or skipped prerequisites. No deployment condition or publication permission is broadened. Final-head results, including all 54 Lighthouse samples, remain required. Earlier local performance failures are retained; an unchanged-baseline mobile run also failed, which does not establish absence of regression.
+
+### Verified external form divergence
+
+A read-only local-browser probe of the real NL and FR HubSpot embed on 13 November 2026 found Helvetica at 16px for visible labels/prose/text inputs/submit buttons, with Arial 13.3333px checkbox-control styling. These are provider iframe styles at `https://js-eu1.hsforms.net`, not the website's canonical family/body17/control15 rules. No contact details were entered, no form was submitted and no provider settings were changed. Sanitized evidence is retained in `reports/typography/provider-fonts.json` and provider screenshots. The initial NL probe recorded evidence before encountering an empty-frame URL parsing error; a corrected FR probe completed and retained that NL evidence.
+
+The synthetic provider fixture in browser tests verifies host/status flow only. It must never be counted as native provider-form typography acceptance. Cross-origin iframe styling is an explicit release blocker pending a separately reviewable provider-side change and actual NL/FR remeasurement. Website CSS cannot establish zero deviations inside this iframe. Production provider configuration/publication is not authorized by the current code-only audit mandate.
+
+The current standard iframe is not the only supported HubSpot renderer. [HubSpot's developer-embed instructions](https://knowledge.hubspot.com/forms/set-up-and-style-your-form-on-an-external-site) describe an externally styled alternative requiring Marketing Hub or Content Hub Professional/Enterprise; the [official CSS reference](https://developers.hubspot.com/docs/cms/start-building/features/forms/forms) lists global, field and button typography variables. Entitlement and the actual generated developer embed have not been verified here. That alternative requires separate integration and actual native-form acceptance, preserving existing population, consent and submission semantics. It is a possible remediation, not evidence that this iframe already conforms or that the blocker is permanent.
+
 ## Intrekken van interne Executive Radar-inhoud
 
 Een inhoudsintrekking is pas voltooid wanneer de huidige bron en het volledige geteste publicatiepakket vrij zijn van de interne About-/sprintpagina én eerder gedeelde onveilige previewdeployments zijn ingetrokken. De gedeelde inhoudspolicy wordt bij build en artifact-security uitgevoerd; de publieke nacontrole controleert beide Radar-routes in NL/FR, inclusief oude #about-ingangen. Een fout blokkeert publicatie. Normale bedrijfspagina’s Over Erlend en publiek toegestane sprintbesprekingen vallen buiten dit verbod.
 
 Cloudflare-preview-URL’s zijn historische momentopnamen. Alleen nieuwe bron publiceren of een alias verleggen verwijdert zo’n oude URL niet. Bewaar een intrekkingsregister met exacte deployment-ID, oorspronkelijke URL/alias, inhoudsbewijs en verificatie na intrekking. Verwijder uitsluitend bevestigde onveilige previews van dit project; verander geen productie-DNS, toegangsinstellingen of andere projecten. Bron- en goedkeuringsprocedures blijven verplicht. De inhoudelijke en productie-Go/No-go voor de nieuwe CEO-pilot blijft een afzonderlijke sponsorbeslissing.
 
+
+## Actuele leden-dev, 13 november 2026
+
+Deze integratie autoriseert uitsluitend de huidige dev-preview en growfaster-test. De volledige nieuwe revision moet alle bestaande gates doorlopen; lokale gedeeltelijke browserresultaten worden niet als volledige goedkeuring geteld. Productie, CEO-pilot en de afzonderlijke typografie-draft blijven buiten scope. Historische onveilige preview5ca5b0d7 moet na vervanging worden ingetrokken en gecontroleerd; een nieuwe alias maakt de immutable URL niet ongedaan. Testregistratie, bevestiging en herstel vragen echte mailbox-/credentialinteractie. Ledenlogin schrijft niet automatisch in voor nieuwsbrieven en er worden geen CRM- of marketingmutaties uitgevoerd.
+
 ## Browserruntime publieke nacontrole, 13 november 2026
 
 De publieke nacontrole gebruikt de vooraf geïnstalleerde Chromium-browser uit dezelfde vastgezette Playwright-image als de geteste release. Houd de imageversie gelijk aan de vergrendelde Playwright-packageversie. De netwerkvrije startproef draait zowel vóór vrijgave als in de nacontrole; daarna blijven de bestaande publieke functionele controles en mobiele Lighthouse-observatie verplicht. Geen APT/browserdownload, automatische retry, ruimere timeout of versoepelde assertie wordt toegevoegd. Een infrastructuurfout moet herkenbaar worden gerapporteerd en geldt niet als geslaagde publieke verificatie. Beoordeel de actuele PR-gates vóór samenvoegen en volg de eerste main-nacontrole tot de eindstatus. Deze wijziging wijzigt geen afzonderlijke sponsoracceptatie of productie-Go/No-go van onvrijgegeven productedities.
+
+## Integratiecontrole, 14 november 2026
+
+De sponsor autoriseert kwaliteitsherstel en veilige integratie van de geaccepteerde
+V3-beslisreis in één kandidaat. Dit is geen productie-Go. Behoud de leden- en
+CMS-toegangsgrenzen, private publicatiehashes, alle bestaande gates en het
+taalbevindingenregister. De nieuwe route gebruikt uitsluitend fictieve lokale
+gegevens en NL/FR als URL-parameter. Zie DECISION-JOURNEY-INTEGRATION.md voor
+contracten en bewijsgrenzen. Een bijgewerkte extractie-inventaris is technische
+dekking; zij is geen taalkundige goedkeuring. Productie blijft ongewijzigd tot
+afzonderlijke expliciete sponsorautorisatie.

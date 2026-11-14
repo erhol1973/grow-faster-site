@@ -2,18 +2,26 @@
   "schema": 1,
   "scope": "rendered_local_nl_runtime_dictionaries_static_cms_and_mail",
   "technicalReview": {
-    "date": "2026-11-11",
-    "reason": "Reviewed CMS-main integration, read-only catalog/mail adapters and separate SVG labels; no language approval",
+    "date": "2026-11-14",
+    "reason": "Reviewed integrated member and canonical typography runtimes; all five journey scripts plus inert NL interface-copy adapter; unchanged private publication exclusions; generated case/plan/report states excluded. No baseline promotion or language approval.",
     "officialApproval": false
   },
   "javascript": [
+    {
+      "file": "assets/baies-dev-app.js",
+      "sha256": "bd7608ebd180330e5e91b2e9a025e4e936cc7eee95dd4a2673ec9750ac5a31f2"
+    },
+    {
+      "file": "assets/baies-dev-core.js",
+      "sha256": "12cb4044992b11884899dc1f91d8655df751a6099cd9e66bebc891b68d27881a"
+    },
     {
       "file": "assets/book-reader.js",
       "sha256": "a42ed03bc91a891387db047031803c0de04d78f0950da1f5d7c79b63ca931bc6"
     },
     {
       "file": "assets/cms-admin.js",
-      "sha256": "0ad372e2844c9cd8ce787e02e67163209f8159ba42bf01d73666d8eee78c3ed7"
+      "sha256": "294defff9391eda8fc2b74503a04c3684b8fadcde67ac4f728b8f56658dd2e1a"
     },
     {
       "file": "assets/cms-catalog.js",
@@ -25,7 +33,7 @@
     },
     {
       "file": "assets/cms-config.js",
-      "sha256": "9db9aa02f7cf8fd9dd0acfddecb0bf6dffea3fd28e5d8b63c25b352c08d73a38"
+      "sha256": "66eb2149afe37a64fe8f0e46d88a4502a7986684bccd7f4cd9b75a4b62c3f89c"
     },
     {
       "file": "assets/cms-public.js",
@@ -34,6 +42,10 @@
     {
       "file": "assets/coherence-film.js",
       "sha256": "66d554253113aa940a8a9abd6d76438cde558ccbfcd82a723f705edd2d6a2279"
+    },
+    {
+      "file": "assets/coherence-layout.js",
+      "sha256": "6cdfd167260a0443a00a63a0a19144c9857987e744a70b14e31021410d5f9241"
     },
     {
       "file": "assets/consent.js",
@@ -60,20 +72,44 @@
       "sha256": "0be40d0ebd318364882270371357756c3a150aa8229e721b1f6eeecd89e8b9c8"
     },
     {
+      "file": "assets/i18n-coherence.js",
+      "sha256": "3679a466ee6a6495acb98999262a46e717471b00e72fd0cca8d725eedb292ad7"
+    },
+    {
       "file": "assets/i18n.js",
-      "sha256": "3387f79f5d7f674195276ff379987adf8fc2ccb5e5aa33573c3945d41aa84a42"
+      "sha256": "0e721329ce34801021836ccce221121ff381f20fdaf5b8cef7e7504a86d08e73"
     },
     {
       "file": "assets/journal.js",
-      "sha256": "292c0bbaa1b1c15ebac85e2df23c3e601c5172dbb1d7981cfe2b7778d88db47f"
+      "sha256": "c78691a3fa94d4ffb861e8d59b5bdebd133cc48b2ac82a394c5682e147822753"
+    },
+    {
+      "file": "assets/member-account.js",
+      "sha256": "20961d514372caaf0a08ad62cee03acfd9fc6022120d6b99ef1793aadfc288f3"
+    },
+    {
+      "file": "assets/member-auth.js",
+      "sha256": "fa70b7ab581a623b406ef6ae06aa44570cb6db4ce3c5276c7b5e523737c4df9f"
+    },
+    {
+      "file": "assets/member-invitation.js",
+      "sha256": "dc42682ff6ec871b2711992d5baf347d0f2e4fccde6970cdcb3ac82f8e63c9d4"
+    },
+    {
+      "file": "assets/member-menu.js",
+      "sha256": "65dc1f6b79e3e559ee037860da385130bf34bc7e83bde9e7c8813bc90c7f61b2"
     },
     {
       "file": "assets/models.js",
-      "sha256": "f559c785bba371d7129be18a6a5f35a4eb5e3b6eeeaf87a07be0e3c687576ace"
+      "sha256": "96302623a80368fd4960b588fabe08e954f5f8e282c04a39a9a1a2e977cc863f"
     },
     {
       "file": "assets/page-flip-2.0.7.js",
       "sha256": "bbaca0bbef57a22bb66a3fc69d67baf9a17fb9a9c89ec9ed35e2b91abe4bd1e7"
+    },
+    {
+      "file": "assets/radar-access.js",
+      "sha256": "1d3bac73e8a785f737562bd133fe67edceaf6de3b69ef60d578a8fea13aa49b0"
     },
     {
       "file": "assets/refinements.js",
@@ -81,7 +117,11 @@
     },
     {
       "file": "assets/site.js",
-      "sha256": "13b620570b45b2d7ff293d9dc32209b2a82a5a59da3781eaf6ac9d1e859a4c90"
+      "sha256": "d52f030c2517a3d1a3521fba0d8c80522b27dc33fc0d9cf790dd5777d4e8d3cb"
+    },
+    {
+      "file": "assets/typography.js",
+      "sha256": "ac043d964272fff638360ce77253bdd007d43247cdc9da7a5843be197daa9ed3"
     },
     {
       "file": "assets/ux.js",
@@ -90,12 +130,32 @@
     {
       "file": "assets/workshop.js",
       "sha256": "a19e4d86bce237f8f3eaec64bcaf7f2022e19a38cdf6e9f74136779da04c3ec0"
+    },
+    {
+      "file": "decision-journey/assets/app.js",
+      "sha256": "c468e4cc2d1e668acb3b2a276c884045f587a080a877795ec1da141c4c88e1d0"
+    },
+    {
+      "file": "decision-journey/assets/cases.js",
+      "sha256": "3aa323883079187402334b0ee7decf45b4b83dcdf649246ca5bb59319e825c81"
+    },
+    {
+      "file": "decision-journey/assets/model.js",
+      "sha256": "394343a4ed16e5cfe51e6832837acd27d5d7102e1ccc0a9973ac903dbe5bac20"
+    },
+    {
+      "file": "decision-journey/assets/roadmap.js",
+      "sha256": "ccf0cf1bb4480fb25d98dfe3c2198d8a566114569a76904811fc32e92954bea7"
+    },
+    {
+      "file": "decision-journey/assets/value-review.js",
+      "sha256": "0d7a56d1fd16e8a0115d3bf17e7aa40e8ab5cd97483e49d8a8aada9eabb14cb4"
     }
   ],
   "inline": [
     {
       "file": "404.html",
-      "sha256": "545c38b0922de19734fbffde62792c37c2aef6a3216cfa472449173165220f7d"
+      "sha256": "7c370d9536d7d0d6a0f7cd7f9826692acd93e4fb05ba46f7b630b879740343d3"
     },
     {
       "file": "about-the-author.html",
@@ -103,15 +163,19 @@
     },
     {
       "file": "about.html",
-      "sha256": "28f4aac4989cb89b32e664c3ded9cba69aa59e7f8408f00c568d02754d40682e"
+      "sha256": "455c4b75f2da1e8d522d44b0f4404722478527a8b537a5898c0020f72338556f"
     },
     {
       "file": "accessibility.html",
-      "sha256": "d471083ac75a0c3966c07716aaf17ca1b9f77a721e97f7d3d5319bbbc7bdfdc1"
+      "sha256": "db07509ebc983d1ec25605b89771104d9cfde48f6e9668103ab5f8ebdfce3ed9"
+    },
+    {
+      "file": "account.html",
+      "sha256": "6a3cf5192354f71615ac51034b3e97c20eda99643fcaf5bbe6d41ad59bd12167"
     },
     {
       "file": "admin.html",
-      "sha256": "6a3cf5192354f71615ac51034b3e97c20eda99643fcaf5bbe6d41ad59bd12167"
+      "sha256": "7c370d9536d7d0d6a0f7cd7f9826692acd93e4fb05ba46f7b630b879740343d3"
     },
     {
       "file": "all-articles.html",
@@ -119,7 +183,7 @@
     },
     {
       "file": "approach.html",
-      "sha256": "538d6440534fa5f615e8a26932792a82a2e4a33a97886e2d815eab8fc216d415"
+      "sha256": "79488488398f5f5aed236dd6e9f914599370d04dfe70fda61b8c83bf739b1088"
     },
     {
       "file": "articles-1/enterprise-architecture-needs-enterprise-coherence.html",
@@ -134,24 +198,28 @@
       "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
     },
     {
+      "file": "baies-dev/index.html",
+      "sha256": "d088784b7ecb87f1ea17e6f982fa968ffefcc07b79de6ecc548fc00242868da6"
+    },
+    {
       "file": "boek/index.html",
-      "sha256": "8930ecfa36af4ec4e3548720eebb76805de93506d17cd4aebdfd96d7b1ce2fe4"
+      "sha256": "629132bbc2b7c98cc3eafcb624de65bdfb444d7a920d1deb059e97d6c63416e8"
     },
     {
       "file": "boek/the-coherent-enterprise/index.html",
-      "sha256": "3ed192a021c0ebaf18f74c6ef5a1d6abf74c27c8064c9d7b9df8437c67c22315"
+      "sha256": "e17b3ace9d2fb4e88159ad9c27cd58dcc59afe58001775c05d97a66136ab9150"
     },
     {
       "file": "books.html",
-      "sha256": "2f5428f4e13f39414190852df9c76d037c7e0f538da6fd926cca3c4c0c5cb7a6"
+      "sha256": "4745a023a055a568e34154456680c073d9d86a093ad7cede55148aaf085aed5d"
     },
     {
       "file": "coherence-sim.html",
-      "sha256": "392eed35f66b6737014daedfab21f893779ed23ea763001b9df3411a8a0fa989"
+      "sha256": "c7abc9b8d00fd88052bce1d2536f22acc95b80b181cd96a57f8907eef38e27fb"
     },
     {
       "file": "coherence.html",
-      "sha256": "e747f3687e3b5b89d6a68cec36d392a6a66d459f9cac5955d3ce6e804d507002"
+      "sha256": "5c210454b1facc1e317a759f6059324f793841eb23d1f549179b64d1584c55f8"
     },
     {
       "file": "coordination-overload-1.html",
@@ -162,16 +230,24 @@
       "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
     },
     {
+      "file": "decision-journey/index.html",
+      "sha256": "7c370d9536d7d0d6a0f7cd7f9826692acd93e4fb05ba46f7b630b879740343d3"
+    },
+    {
       "file": "decision-latency.html",
       "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
     },
     {
       "file": "eca.html",
-      "sha256": "545c38b0922de19734fbffde62792c37c2aef6a3216cfa472449173165220f7d"
+      "sha256": "7c370d9536d7d0d6a0f7cd7f9826692acd93e4fb05ba46f7b630b879740343d3"
+    },
+    {
+      "file": "executive-radar/index.html",
+      "sha256": "d088784b7ecb87f1ea17e6f982fa968ffefcc07b79de6ecc548fc00242868da6"
     },
     {
       "file": "index.html",
-      "sha256": "13d78b95576434d274f799aabbc17d84849bae30b5e5ad44adcb5e3b73a66059"
+      "sha256": "bd7adc615085a390d9e512391064c474701a44a113d1abe4b16fb0b6bc7aae96"
     },
     {
       "file": "insights-ai-pilot.html",
@@ -179,31 +255,31 @@
     },
     {
       "file": "insights.html",
-      "sha256": "04550110ad74df06a33f4f22200c529dde88c435c3627d14de06948eb3b6bc98"
+      "sha256": "2323ffc91bc873d37ec30c58ca3ff793697d69cd6685fccfef29ba6bff31fa4f"
     },
     {
       "file": "journal-fr.html",
-      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      "sha256": "7c370d9536d7d0d6a0f7cd7f9826692acd93e4fb05ba46f7b630b879740343d3"
     },
     {
       "file": "journal.html",
-      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      "sha256": "7c370d9536d7d0d6a0f7cd7f9826692acd93e4fb05ba46f7b630b879740343d3"
     },
     {
       "file": "operating-model.html",
-      "sha256": "538d6440534fa5f615e8a26932792a82a2e4a33a97886e2d815eab8fc216d415"
+      "sha256": "79488488398f5f5aed236dd6e9f914599370d04dfe70fda61b8c83bf739b1088"
     },
     {
       "file": "privacy.html",
-      "sha256": "d471083ac75a0c3966c07716aaf17ca1b9f77a721e97f7d3d5319bbbc7bdfdc1"
+      "sha256": "db07509ebc983d1ec25605b89771104d9cfde48f6e9668103ab5f8ebdfce3ed9"
     },
     {
       "file": "process.html",
-      "sha256": "538d6440534fa5f615e8a26932792a82a2e4a33a97886e2d815eab8fc216d415"
+      "sha256": "79488488398f5f5aed236dd6e9f914599370d04dfe70fda61b8c83bf739b1088"
     },
     {
       "file": "terms.html",
-      "sha256": "d471083ac75a0c3966c07716aaf17ca1b9f77a721e97f7d3d5319bbbc7bdfdc1"
+      "sha256": "db07509ebc983d1ec25605b89771104d9cfde48f6e9668103ab5f8ebdfce3ed9"
     },
     {
       "file": "the-coherence-model-1.html",
@@ -215,15 +291,15 @@
     },
     {
       "file": "transformation.html",
-      "sha256": "18b2f11891e52280598086d8a2b5d9510588fea66dad3b87071d80ab4ca462a1"
+      "sha256": "e96c93aa2ba224fb2bd36933a4851874120aee9eaaff219b709a804cbf6dc152"
     },
     {
       "file": "value.html",
-      "sha256": "538d6440534fa5f615e8a26932792a82a2e4a33a97886e2d815eab8fc216d415"
+      "sha256": "79488488398f5f5aed236dd6e9f914599370d04dfe70fda61b8c83bf739b1088"
     },
     {
       "file": "workshop.html",
-      "sha256": "8023426b7186377817eabd5ab75912535c266859c3c197eabc41d8f2d4779397"
+      "sha256": "bd786a7cbc3204af7a4bdbba939394686f0a70685382d4abeae6aa11100d48a2"
     }
   ]
 }

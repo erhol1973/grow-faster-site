@@ -3,11 +3,22 @@ const {test}=require('node:test');
 const assert=require('node:assert/strict');
 const fs=require('node:fs');
 const path=require('node:path');
+const {edition,cartoon}=require('../scripts/journal-archive.cjs');
 const read=file=>fs.readFileSync(path.resolve(__dirname,'../dist',file),'utf8');
 
 test('Monthly Issue 01 replaces the old reader in Dutch and French',()=>{
  for(const [file,language,other] of [['journal.html','nl','journal-fr.html'],['journal-fr.html','fr','journal.html']]){
-  const html=read(file);
+  const preview=read(file);
+  const {source:html,digest}=edition(language);
+  assert.match(preview,new RegExp('data-edition-digest="'+digest+'"'));
+  assert.equal((preview.match(/<article class="sheet/g)||[]).length,3);
+  assert.doesNotMatch(preview,/id="p4"|id="p15"|journal-01-cartoon\.webp/);
+  assert.match(preview,/data-journal-join/);
+  assert.match(preview,/<img src="img\/grow-faster-logo-dark\.svg" width="1920" height="320" alt="Grow Faster">/);
+  for (const asset of ['member-auth.js','member-menu.js','journal.js']) assert.ok(preview.includes('assets/'+asset),file+' retains '+asset);
+  assert.match(preview,/id="navlist" class="reader-account"/);
+  assert.ok(!fs.existsSync(path.resolve(__dirname,'../dist/img/journal-01-cartoon.webp')));
+  assert.ok(cartoon().length>0);
   assert.match(html,new RegExp('<html lang="'+language+'"(?: class="[^"]*")?>'));
   assert.equal([...html.matchAll(/<article class="sheet[^"]*" id="p(\d+)"/g)].length,15);
   assert.match(html,new RegExp('data-alternate[^>]*href="'+other+'"'));
@@ -26,7 +37,7 @@ test('Monthly Issue 01 replaces the old reader in Dutch and French',()=>{
 test('complete translations retain every source-page number, table and source entry',()=>{
  const fixture=require('./journal-source-numbers.json');
  for(const file of ['journal.html','journal-fr.html']){
-  const html=read(file);
+  const {source:html}=edition(file==='journal.html'?'nl':'fr');
   const pages=[...html.matchAll(/<article\b[\s\S]*?<\/article>/g)].map(m=>m[0]);
   assert.equal(pages.length,15);
   for(const [index,required] of Object.entries(fixture.pages)){

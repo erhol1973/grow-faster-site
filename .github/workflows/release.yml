@@ -2,7 +2,7 @@ name: Website release
 on:
   pull_request:
   push:
-    branches: [main]
+    branches: [main, dev/member-access]
   workflow_dispatch:
 permissions:
   contents: read
@@ -10,16 +10,14 @@ concurrency:
   group: website-${{ github.ref }}
   cancel-in-progress: true
 jobs:
-  checks:
-    name: Website quality gate
+  buildprep:
+    name: Prepare tested website
     runs-on: ubuntu-24.04
-    container:
-      # Keep the image version aligned with the locked Playwright dependency.
-      image: mcr.microsoft.com/playwright:v1.64.1-noble
     timeout-minutes: 45
     steps:
-      # Action commits verified against their official release pages.
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
       - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
         with:
           node-version: '24.21.0'
@@ -28,6 +26,160 @@ jobs:
       - name: Install locked dependencies
         run: pnpm install --frozen-lockfile --ignore-scripts
       - run: npm run build
+      - name: Preserve the exact public build including hidden files
+        run: |
+          find dist -type f -print0 | sort -z | xargs -0 sha256sum > tested-website.files.sha256
+          tar -cf tested-website.tar dist
+          sha256sum tested-website.tar > tested-website.tar.sha256
+      - name: Save the single build for all test partitions
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: tested-website
+          path: |
+            tested-website.tar
+            tested-website.tar.sha256
+            tested-website.files.sha256
+          if-no-files-found: error
+  typography:
+    name: Typography (${{ matrix.profile }})
+    needs: buildprep
+    runs-on: ubuntu-24.04
+    container:
+      image: mcr.microsoft.com/playwright:v1.64.1-noble
+    timeout-minutes: 45
+    strategy:
+      fail-fast: false
+      matrix:
+        profile: [firefox, webkit, mobile-webkit, chromium, mobile]
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          # Deep member-reader fixtures reuse the pinned historical archive.
+          fetch-depth: 0
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: '24.21.0'
+      - name: Install pinned package manager
+        run: npm install --global pnpm@11.25.0
+      - name: Install locked dependencies
+        run: pnpm install --frozen-lockfile --ignore-scripts
+      - name: Download the current run's tested website
+        uses: actions/download-artifact@37930b1c2abaa49bbe596cd826c3c89aef350131 # v7.0.0
+        with:
+          name: tested-website
+      - name: Verify and restore the single build
+        run: |
+          sha256sum --check tested-website.tar.sha256
+          tar -xf tested-website.tar
+      - name: Verify preinstalled Playwright browsers
+        run: |
+          node -e "const p = require('playwright'); for (const name of ['chromium', 'firefox', 'webkit']) require('node:fs').accessSync(p[name].executablePath(), require('node:fs').constants.X_OK)"
+      - name: Audit typography and reachable states
+        run: npm run test:e2e -- tests/browser/typography.spec.cjs tests/browser/typography-states.spec.cjs --project=${{ matrix.profile }}
+        env:
+          HOME: /root
+      - name: Verify tests preserved every public artifact byte
+        run: |
+          sha256sum --check tested-website.files.sha256
+          test "$(find dist -type f | wc -l)" -eq "$(wc -l < tested-website.files.sha256)"
+          test -z "$(find dist ! -type f ! -type d -print -quit)"
+      - name: Save typography reports
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: typography-reports-${{ matrix.profile }}
+          path: |
+            reports/
+            playwright-report/
+            test-results/
+          if-no-files-found: warn
+  journey:
+    name: Decision journey
+    needs: buildprep
+    runs-on: ubuntu-24.04
+    container:
+      image: mcr.microsoft.com/playwright:v1.64.1-noble
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: '24.21.0'
+      - name: Install pinned package manager
+        run: npm install --global pnpm@11.25.0
+      - name: Install locked dependencies
+        run: pnpm install --frozen-lockfile --ignore-scripts
+      - name: Download the current run's tested website
+        uses: actions/download-artifact@37930b1c2abaa49bbe596cd826c3c89aef350131 # v7.0.0
+        with:
+          name: tested-website
+      - name: Verify and restore the single build
+        run: |
+          sha256sum --check tested-website.tar.sha256
+          tar -xf tested-website.tar
+      - name: Verify preinstalled Playwright browsers
+        run: |
+          node -e "const p = require('playwright'); for (const name of ['chromium', 'firefox', 'webkit']) require('node:fs').accessSync(p[name].executablePath(), require('node:fs').constants.X_OK)"
+      - name: Verify the integrated journey on all five profiles
+        run: npm run test:e2e -- tests/browser/decision-journey
+        env:
+          HOME: /root
+      - name: Verify tests preserved every public artifact byte
+        run: |
+          sha256sum --check tested-website.files.sha256
+          test "$(find dist -type f | wc -l)" -eq "$(wc -l < tested-website.files.sha256)"
+          test -z "$(find dist ! -type f ! -type d -print -quit)"
+      - name: Save journey reports
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: quality-reports-journey
+          path: |
+            reports/
+            playwright-report/
+            test-results/
+          if-no-files-found: warn
+  checks:
+    name: Website quality gate
+    needs: [buildprep, typography, journey]
+    if: always()
+    runs-on: ubuntu-24.04
+    container:
+      # Keep the image version aligned with the locked Playwright dependency.
+      image: mcr.microsoft.com/playwright:v1.64.1-noble
+    timeout-minutes: 45
+    steps:
+      - name: Require the tested build before collecting base evidence
+        env:
+          BUILD_RESULT: ${{ needs.buildprep.result }}
+        run: test "$BUILD_RESULT" = success
+      # Action commits verified against their official release pages.
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: '24.21.0'
+      - name: Install pinned package manager
+        run: npm install --global pnpm@11.25.0
+      - name: Install locked dependencies
+        run: pnpm install --frozen-lockfile --ignore-scripts
+      - run: node scripts/agent-guard.mjs check
+        env:
+          AGENT_MAP: docs/AGENT-SURFACES.md
+          AGENT_DIR: docs/agents
+          # Git ownership differs inside the container; trust this checkout only.
+          GIT_CONFIG_COUNT: "1"
+          GIT_CONFIG_KEY_0: safe.directory
+          GIT_CONFIG_VALUE_0: ${{ github.workspace }}
+      - name: Download the current run's tested website
+        uses: actions/download-artifact@37930b1c2abaa49bbe596cd826c3c89aef350131 # v7.0.0
+        with:
+          name: tested-website
+      - name: Verify and restore the single build
+        run: |
+          sha256sum --check tested-website.tar.sha256
+          tar -xf tested-website.tar
       - run: npm test
       - run: npm run security
       - name: Dependency vulnerabilities
@@ -38,21 +190,37 @@ jobs:
           node scripts/verify-browser-runtime.cjs
       - run: npm run test:e2e
         env:
+          # Typography and journey have mandatory partitions over the same build.
+          TEST_E2E_PARTITION: base
           # Firefox requires a home directory owned by the container user.
           HOME: /root
       - run: npm run test:load
       - name: Lighthouse mobile and desktop medians
         run: npm run test:performance
+      - name: Verify tests preserved every public artifact byte
+        run: |
+          sha256sum --check tested-website.files.sha256
+          test "$(find dist -type f | wc -l)" -eq "$(wc -l < tested-website.files.sha256)"
+          test -z "$(find dist ! -type f ! -type d -print -quit)"
       - name: Save reports
         if: always()
         uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
-          name: quality-reports
+          name: quality-reports-base
           path: |
             reports/
             playwright-report/
             test-results/
           if-no-files-found: warn
+      # Collect base evidence even when another partition fails. This final
+      # mandatory assertion still blocks packaging and the protected release.
+      - name: Require every build, typography and journey partition to succeed
+        if: always()
+        env:
+          BUILD_RESULT: ${{ needs.buildprep.result }}
+          TYPOGRAPHY_RESULT: ${{ needs.typography.result }}
+          JOURNEY_RESULT: ${{ needs.journey.result }}
+        run: test "$BUILD_RESULT" = success && test "$TYPOGRAPHY_RESULT" = success && test "$JOURNEY_RESULT" = success
       - name: Package tested website
         if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
         uses: actions/upload-pages-artifact@7b1f4a764d45c48632c6b24a0339c27f5614fb0b # v4.0.0
@@ -178,4 +346,3 @@ jobs:
         with:
           name: production-verification
           path: reports/
-

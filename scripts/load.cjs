@@ -3,11 +3,12 @@ const fs=require('node:fs'),path=require('node:path');
 const {performance,monitorEventLoopDelay}=require('node:perf_hooks'),os=require('node:os');
 const {createServer}=require('./server.cjs');
 const routes=require('../tests/navigation-cases.json').pages.map(p=>({route:'/'+p,status:200})).concat([
+  ...['decision-journey/','decision-journey/assets/cases.js','decision-journey/assets/model.js','decision-journey/assets/roadmap.js','decision-journey/assets/value-review.js','decision-journey/assets/app.js','decision-journey/assets/canvas.css','decision-journey/assets/logo.svg'].map(file=>({route:'/'+file,status:200})),
   {route:'/executive-radar/',status:200},{route:'/baies-dev/',status:200},
   ...['boek/the-coherent-enterprise/index.html','boek/the-coherent-enterprise/pdf/the-coherent-enterprise-executive-preview.pdf','boek/the-coherent-enterprise/pdf/chapter-07.pdf','books/the-coherent-enterprise-executive-preview.pdf'].map(file=>({route:'/'+file,status:200})),
   ...['boek/index.html','assets/book-reader.js','assets/book-reader.css','assets/page-flip-2.0.7.js','boek/pdf/turning-ai-potential-executive-preview.pdf','boek/pdf/chapter-10.pdf','assets/workshop.js','assets/workshop.css','eca.html','assets/eca.js','assets/eca-locales.js','assets/eca-ui.js','assets/eca-hubspot.js','assets/navigation.css','assets/journal.css','assets/books.css','books/turning-ai-potential-executive-preview.pdf'].map(file=>({route:'/'+file,status:200})),
   ...['admin.html','assets/cms-client.js','assets/cms-public.js','assets/cms-public.css','assets/cms-admin.js','assets/cms-admin.css','assets/cms-catalog.js','assets/cms-config.js'].map(file=>({route:'/'+file,status:200})),
-  {route:'/journal.html',status:200},{route:'/journal-fr.html',status:200},{route:'/assets/monthly-reader.css',status:200},{route:'/assets/journal.js',status:200},{route:'/img/journal-01-cartoon.webp',status:200},{route:'/workshop.html',status:200},{route:'/coherence-sim.html',status:200},{route:'/assets/site.css',status:200},
+  {route:'/journal.html',status:200},{route:'/journal-fr.html',status:200},{route:'/assets/monthly-reader.css',status:200},{route:'/assets/journal.js',status:200},{route:'/img/journal-01-cartoon.webp',status:404},{route:'/workshop.html',status:200},{route:'/coherence-sim.html',status:200},{route:'/assets/site.css',status:200},
   ...['assets/coherence-film.js','assets/coherence-film.css','media/commercial-nl.vtt','media/commercial-fr.vtt','img/grow-faster-commercial.webp'].map(file=>({route:'/'+file,status:200})),{route:'/assets/site.js',status:200},{route:'/missing-load-test.html',status:404}
 ]);
 const P95_LIMIT_MS=1500;

@@ -1,0 +1,43 @@
+.member-invitation {
+  box-sizing: border-box;
+  width: min(51rem, calc(100vw - 2rem));
+  max-height: calc(100dvh - 2rem);
+  margin: auto;
+  padding: 0;
+  border: 1px solid #c7d8e7;
+  border-radius: 1rem;
+  color: #102d4b;
+  background: #fff;
+  box-shadow: 0 1.25rem 5rem #071c3a33;
+  font: 1rem/1.55 system-ui, sans-serif;
+  text-align: left;
+  overflow: auto;
+}
+.member-invitation[open] { display: grid; grid-template-columns: 44% 1fr; align-items: center; }
+.member-invitation::backdrop { background: rgb(8 28 57 / 63%); }
+.member-invitation .invitation-art {
+  display: block; width: 100%; height: 100%; min-height: 14rem; object-fit: contain; background: #edf3f8;
+}
+.member-invitation .invitation-copy { padding: 3.5rem 2rem 2.25rem; }
+.member-invitation h2 { margin: 0 0 .75rem; color: #0c2949; font: 650 clamp(1.5rem, 3vw, 2rem)/1.17 system-ui, sans-serif; letter-spacing: -.035em; }
+.member-invitation p { margin: 0 0 1.5rem; color: #38516b; font-size: 1rem; line-height: 1.55; }
+.member-invitation .invitation-actions { display: flex; flex-wrap: wrap; align-items: center; gap: .6rem 1.2rem; }
+.member-invitation .invitation-primary, .member-invitation .invitation-secondary {
+  display: inline-flex; align-items: center; min-height: 44px; font: 600 1rem/1.25 system-ui, sans-serif;
+}
+.member-invitation .invitation-primary { background: #103c68; color: white; padding: .65rem 1rem; border-radius: .45rem; text-decoration: none; }
+.member-invitation .invitation-primary:hover { background: #092947; }
+.member-invitation .invitation-secondary { color: #164c76; text-underline-offset: .2em; }
+.member-invitation .invitation-close {
+  position: absolute; top: .45rem; right: .45rem; width: 44px; height: 44px;
+  background: #fff; color: #123b63; border: 1px solid #c3d5e5; border-radius: 50%; cursor: pointer;
+  padding: 0; font: 1.55rem/1 system-ui, sans-serif;
+}
+.member-invitation :is(button, a):focus-visible { outline: 3px solid #0875b9; outline-offset: 3px; }
+@media (max-width: 640px) {
+  .member-invitation[open] { display: block; }
+  .member-invitation .invitation-art { min-height: 0; height: clamp(6rem, 23dvh, 12rem); }
+  .member-invitation .invitation-copy { padding: 1.25rem; }
+}
+@media print { .member-invitation { display: none !important; } }
+.member-invitation .invitation-devices { margin: -.75rem 0 1.25rem; color: #435d73; font-size: .9rem; }

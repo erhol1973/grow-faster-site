@@ -264,7 +264,23 @@ De afzonderlijke read-only workflow gebruikt de lokaal gebouwde site en een eige
 
 Vervolg met onafhankelijke agents: actuele CMS-main is geïntegreerd met behoud van beide testplannen. De extractie neemt 610 vastgelegde Nederlandse CMS-defaults en Nederlandse mailonderwerpen/-alinea's mee; er zijn geen auth-, publicatie-, signing- of schrijfverzoeken. De beheerpagina wordt uitgesloten. Tests bewaken ongeldige JSON/URI, ontbrekende NL-waarden, dubbele sleutels/componenten, netwerkmethoden, gescheiden SVG-labels en botsingsvrije nieuwe bevinding-ID's met behoud van oude IDs. `tests/nl-editorial.test.cjs` bewaakt de kleine NL-correcties en consistente CMS-defaults. Alle eerdere bevindingen blijven in het register; een verdwenen extractorruismelding geldt niet als gecorrigeerde taal. Live CMS-overlays en algemene teller-/ECA-toestandscompositie blijven expliciete beperkingen.
 
-De secretsgate voert aanvullend `scripts/nl-secret-guard.cjs` uit met de echte vastgezette Gitleaks 8.24.3. Vier fixtures bewijzen dat de precieze publieke DOM-ID-uitzondering werkt en dat gewone sleutelwaarden in hetzelfde bestand, dezelfde identifier elders en extra inhoud op de regel nog worden gedetecteerd. De 109 oorspronkelijke meldingen blijven als CI-bewijs beschikbaar; hun publieke catalogusherkomst is onafhankelijk gecontroleerd. Geen complete bestands- of scanneruitsluiting.
+De secretsgate voert aanvullend `scripts/nl-secret-guard.cjs` uit met de echte vastgezette Gitleaks 8.24.3. De vier oorspronkelijke DOM-fixtures blijven behouden. Zes extra checksumfixtures bewaken één exacte publieke bronhashregel in het Coherence-contract: een andere hash, ander of genest pad, echte sleutel in hetzelfde bestand en extra regelinhoud blijven geblokkeerd. De goedgekeurde hash moet overeenkomen met zowel de gevolgde HEAD-bron als het werkbestand na uitsluitend CRLF/LF-normalisatie. De 109 oorspronkelijke meldingen blijven als CI-bewijs beschikbaar; hun publieke catalogusherkomst is onafhankelijk gecontroleerd. Geen complete bestands- of scanneruitsluiting; standaardregels blijven actief.
+
+## Website-wide typography, 13 November 2026
+
+The isolated `fix/sitewide-typography` branch adds a final shared family and role-size policy, independent computed-style contract and full built-document inventory. See `TYPOGRAPHY.md` for evidence, consolidation choices, finite supporting roles and coverage limits. Both languages, legacy English preference fallback, actual rendered Latin font probes, nested-role specificity, dynamic navigation/consent, Executive Radar views and every journal sheet receive permanent browser regressions. The typography spec is included in every existing browser profile; browser cases record computed styles and screenshots before assertions.
+
+Local concurrent checkouts must use distinct `PORT` and `TEST_BASE_URL` values. Book/workshop no-external-request assertions compare against that configured origin, and their no-JavaScript contexts visit that same origin. This preserves the original network restriction while preventing checks from silently visiting another checkout on port 4173.
+
+No failing threshold, journal aspect-ratio assertion, accessibility case or protected release gate is relaxed. A partial or interrupted run is retained as failed/incomplete evidence. Local family/size checks do not prove real authenticated member coverage, third-party form internals, all glyph fallback, physical-device behavior or final CI. Zero unintended deviations must not be inferred from a narrower passing subset.
+
+The final browser inventory contains 2446 cases: 801 base cases plus 1645 typography cases distributed over the five existing profiles. Independent list comparison verifies an exact union, with no missing, extra or duplicate cases. CI builds once and distributes the same hash-verified website artifact to each partition. The required Website quality gate explicitly fails unless build preparation and every typography partition succeed. It then runs the base browser cases and the original security, dependency, load and performance checks. Artifact file hashes are checked again after testing; independent negative fixtures reject changed and additional files. Original retries, flaky-test rejection, timeouts and performance thresholds remain intact.
+
+Reader checks include every book page in normal, settled 125% zoom and text modes, native scrolling and clipping geometry. SVG checks distinguish viewBox units from the physical 12px supporting-label token and verify resizing, dynamic insertion, transformed groups and user zoom. Process-diagram checks additionally measure glyph bounds inside their foreignObject boxes. Content-visibility:auto regions are revealed for measurement without revealing intentionally hidden content; this distinction has a regression fixture.
+
+Each book page has its own bounded case; every reading mode, native End/Home assertion and geometry checkpoint is retained. Native-resolution screenshots of exceptionally long pages are tiled with overlap and final-height coverage verification. The independent numeric heading reference disables transitions only on its own invisible probe, so ambient reduced-motion rules cannot animate its measurements.
+
+Changed component assets and the new typography assets use the explicit `20261113-typography` delivery version in every source and built HTML reference. A real HTTP warm-cache regression retains a synthetic old script/style response in browser cache, publishes the actual current HTML, and verifies that new URLs fetch the actual current script, render the new 82px process-task geometry and apply the shared body font. No browser routing mock is used; the previous bytes are an explicitly synthetic cache fixture, not a claim of complete historical-browser compatibility.
 
 ## Permanente grens voor interne Radar-sprintinhoud
 
@@ -272,8 +288,64 @@ Positieve fixtures bewaken gewone about.html-pagina’s, veilige Radar-pagina’
 
 Historische previewretirement wordt afzonderlijk live gecontroleerd; nieuwe code of een groene build verwijdert geen bestaande historische deployment. Bewaar bewijs van vóór/na voor immutable URL en alias. De gebruikelijke build-, unit-, browser/axe-, load-, performance- en securitydrempels blijven ongewijzigd.
 
+
+## Geïntegreerde ledenomgeving, 13 november 2026
+
+De ontwikkeltak brengt goedgekeurde navigatie/logo en de permanente Radar-inhoudsgrens samen met ledenautorisatie. De private beginuitgave wordt uit gecontroleerde, opgeschoonde referenties opgebouwd en op volledige payload- en templatehash gecontroleerd. Regressies blijven zowel gedecodeerde interne inhoud als gekopieerde publieke payloads weigeren. De kleine typografiestijl wordt alleen op pagina’s zonder strikte CSP ingevoegd; account en beheer houden hun externe stijl zonder versoepelde policy. Echte HTTP-proeven bewaken Brotli/gzip/identity, inhoudsgelijkheid, HEAD en invalidatie bij herbouw. De lokale preview volgt daarmee de geverifieerde Brotli-levering van de dev-host; alle prestatiedrempels blijven gelijk. Zie MEMBER-INTEGRATION-20261113.md voor actuele resultaten en de afzonderlijke live-e-mailacceptatie.
+
+### Begrensde Coherence-vertalingen en bestaande gebruikersflows
+
+Alleen Coherence gebruikt de kleinere, inhoudsgehashte dictionary-URL. De volledige oorspronkelijke dictionary blijft bytegelijk beschikbaar voor andere en oudere documenten. Het expliciete contract bewaart alle oorspronkelijke 666 geselecteerde sleutels en de negen HTML-vertalingen; bronhashes worden uitsluitend voor CRLF/LF genormaliseerd. Een nieuwe runtimefamilie, onbekende syntax of noodzakelijke nieuwe sleutel vereist een bewuste contractreview. Werk hashes niet blind bij om een gate te laten slagen: behoud alle eerder goedgekeurde sleutels en verhoog de volledige goedgekeurde retentievloer alleen na regressiecontrole.
+
+Test NL↔FR met metadata, consent, accountmenu en filmkopie; test vroege en late CMS-overlays met hun eigen localevelden. Oude volledige documenten, oudere chunkqueries en de bestaande echte HTTP-revalidation/BFcache-proeven blijven afzonderlijke controles. De videoproef gebruikt zichtbare native bediening, met ongewijzigde 44 seconden, eindcontrole van 55 seconden en mediabestandhash. Pointerproeven wachten eerst op het echte same-origin simulatorframe. De zelfstandige CMS-login controleert `cms_is_admin` zonder een nieuwe lidmaatschapseis; de ledenbrug blijft optioneel.
+
+De volledige exact-head build-, unit-, browser-, load-, security- en Lighthouse-gates blijven verplicht. Een offline replay of lokale groenstatus vervangt geen CI-acceptatie. Deze ontwikkelverificatie autoriseert geen productie- of CRM-wijziging.
+
 ## Publieke nacontrole zonder browserinstallatie, 13 november 2026
 
 De publieke release-smoke gebruikt dezelfde vastgezette Playwright-container als de Website quality gate. Chromium en de systeembibliotheken zijn daarin aanwezig; de nacontrole voert geen `playwright install --with-deps` of APT uit. Een lokale, netwerkvrije browserproef controleert de echte executable, browserstart en DOM-uitvoering vóór de publieke controles; dezelfde proef draait vóór vrijgave in de PR-gate. Een ontbrekende of onbruikbare browser faalt zichtbaar en wordt niet met retries of ruimere tijdslimieten verborgen.
 
 De bestaande `verify:production`-controles, inclusief de permanente Radar-inhoudsgrens, en de afzonderlijke publieke mobiele Lighthouse-meting blijven behouden. De job houdt uitsluitend leesrechten en de bestaande tijdslimiet van tien minuten. Installatie-, runtime- en controleresultaten worden als rapport en samenvatting bewaard; een mislukt onderdeel blijft de job doen falen. Container-/registry-, pakketdownload- en publieke netwerkstoringen blijven mogelijke expliciete fouten. De lokale load- en Lighthouse-vrijgavegrenzen veranderen niet.
+
+### Ledeninterface en taalregister, 13 november 2026
+
+De publieke Nederlandse taalcontrole leest ook de statische account-, uitnodigings-, menu- en foutteksten zonder JavaScript uit te voeren of Auth aan te roepen. De vier inlinefragmenten van de juridische regel vormen één volledige zin. Negatieve fixtures weigeren uitvoerbare data en commentaar-/stringlookalikes. Private Journal/Radar-inhoud, interactieve Radar-besliscopy en live CMS blijven expliciet buiten deze publieke taalscan. Een complete, onafhankelijk beoordeelde machinecheckpoint mag via de bestaande nl-promote-procedure worden vastgelegd met alle eerdere en nieuwe bevindingen open; dit is geen menselijke of officiële taalgoedkeuring. Geen automatische baselinepromotie of sluiting van bevindingen.
+### Books-laadprioriteit, 13 november 2026
+
+De eerste reeds lazy geladen boekcover krijgt expliciet lage requestprioriteit. De bestaande beeldbestanden, geometrie, CMS-identiteit en tweede cover blijven behouden. Unitfixtures controleren de drie oorspronkelijke beeldhashes. Een afzonderlijke browserproef op een eigen lokale server controleert de echte Chromium-prioriteit met een standaardcontrole en de geleverde lage prioriteit onder vaste netwerk-/CPU-condities; andere engines controleren hint, beelddecodering en geometrie zonder een overgeslagen geval. Deze mechanismeproef vervangt geen volledige Lighthouse-acceptatie. De mobiele LCP-grens van2500ms, alle samples en eerdere mislukkingen blijven behouden.
+
+## Component stylesheet delivery regression
+
+The build may inline only the exact bytes of the small, URL-free navigation,
+books and cms-public stylesheets at their original link positions. This removes blocking
+requests without changing the cascade or creating another typography policy.
+The final shared typography stylesheet remains external and versioned. Documents
+with a meta CSP, links with additional attributes, CSS imports/URLs and styles
+larger than 16KB retain external delivery. Style-container injection fails the
+build. Standalone assets remain available to cached older documents.
+
+Four safety tests cover these boundaries. The full browser inventory, load and
+54-sample Lighthouse thresholds still apply to the resulting immutable build.
+Output-only experiments support the change but do not count as release gates.
+
+Native book-reader key checks retain one keypress, the original 1px boundary
+tolerance and one five-second poll. When movement is required, the same actual
+focused element must also report native scroll completion after the matching
+keydown; keyup must have been received by final acceptance. Completion may
+legitimately precede keyup. Already-at-boundary checks require no nonexistent
+scroll event. Observers are removed after each key. This is a stronger completion
+condition: controlled RAF observations showed the first boundary can precede
+scrollend. It does not prove the cause of the historical mobile Home failure;
+failed CI attempts, native-event diagnostics and subsequent gates stay separate.
+
+## Integrated decision journey, 14 November 2026
+
+See DECISION-JOURNEY-INTEGRATION.md for the selected canonical typography and
+runtime/dictionary review, exact accepted V3 byte/hash comparison, new-route
+budgets and extraction exclusions. Retain all original 54 Lighthouse samples and
+add six journey samples at identical thresholds. Keep the original 113 journey
+browser cases plus 15 website-entry/type cases; tablet cases remain desktop-only.
+The producer's 115 passing targeted tests are not the full frozen-build release
+matrix. Parent verification must complete full units, browser/cache/load,
+60-sample performance, the reviewed extraction inventory and LanguageTool scan.
+Production and the historical language register remain unchanged.

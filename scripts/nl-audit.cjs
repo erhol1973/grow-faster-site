@@ -1,6 +1,8 @@
 'use strict';
 const fs=require('node:fs'),path=require('node:path'),crypto=require('node:crypto');
 const {execFileSync}=require('node:child_process');
+const {memberCopy}=require('./nl-member-copy.cjs');
+const {decisionCopy}=require('./nl-decision-copy.cjs');
 const root=path.resolve(__dirname,'..');
 const hash=value=>crypto.createHash('sha256').update(value).digest('hex');
 const baselineDigest=value=>hash(String(value).replaceAll('\r\n','\n'));
@@ -159,7 +161,9 @@ async function inventory(){
     const catalogFile=path.join(root,'dist/assets/cms-catalog.js');
     const catalog=fs.existsSync(catalogFile)?catalogBlocks(fs.readFileSync(catalogFile,'utf8')):[];
     if(catalog.some(b=>!builtPages.includes(b.page)))throw Error('Static CMS catalog references an unbuilt page');
-    blocks.push(...catalog);
+    const interfaceCopy=memberCopy(file=>fs.readFileSync(path.join(root,'dist',file),'utf8'));
+    const decisionInterface=decisionCopy(fs.readFileSync(path.join(root,'dist/decision-journey/assets/app.js'),'utf8'));
+    blocks.push(...catalog,...interfaceCopy,...decisionInterface);
     browser=await chromium.launch({executablePath:process.env.TEST_BROWSER_EXECUTABLE||undefined});
     for(const file of builtPages){
       const exclusions={'admin.html':'Authenticated Contentstudio; public scan does not open auth or editorial controls','journal-fr.html':'Dedicated French publication','boek/index.html':'English book reader and book text','boek/the-coherent-enterprise/index.html':'English book reader and book text'};
@@ -187,13 +191,13 @@ async function inventory(){
       for(const row of rows){const id=row.kind.startsWith('dictionary:')?row.kind:file+'#'+row.kind+':'+row.location;const previous=blocks.find(b=>b.id===id);if(previous&&previous.text!==row.text)throw Error('Conflicting dictionary values: '+id);if(!previous)blocks.push({id,page:file,kind:row.kind,text:row.text,sha256:hash(row.text),...(row.source?{source:row.source}:{})});}
       coverage.push({file,status:'scanned',blocks:rows.length});await context.close();
     }
-    return {blocks:blocks.sort((a,b)=>a.id.localeCompare(b.id,'en')),coverage,adapters:{network:'local-get-head-only',staticCmsCatalog:{source:'assets/cms-catalog.js',scope:'committed-defaults-not-live-CMS',blocks:catalog.length},dutchMailTemplates:{source:'data-mail-nl',blocks:blocks.filter(b=>b.kind.startsWith('mail:')).length}}};
+    return {blocks:blocks.sort((a,b)=>a.id.localeCompare(b.id,'en')),coverage,adapters:{network:'local-get-head-only',staticCmsCatalog:{source:'assets/cms-catalog.js',scope:'committed-defaults-not-live-CMS',blocks:catalog.length},staticDecisionCopy:{adapter:'inert-decision-copy',blocks:decisionInterface.length,scope:'committed-public-interface-only-not-all-case-plan-report-states'},staticMemberCopy:{adapter:'inert-member-copy',blocks:interfaceCopy.length,scope:'committed-public-interface-copy-no-auth'},dutchMailTemplates:{source:'data-mail-nl',blocks:blocks.filter(b=>b.kind.startsWith('mail:')).length}}};
   }finally{await browser?.close();await new Promise(resolve=>server.close(resolve));}
 }
 async function run(){
   const out=path.join(root,'reports/nl-audit');fs.mkdirSync(out,{recursive:true});
   fs.rmSync(path.join(out,'candidate-baseline.json'),{force:true});
-  const report={schema:1,status:'FAILED',sourceCommit:git('rev-parse','HEAD'),officialApproval:false,errors:[],findings:[],limitations:['Local built website, not live CMS/HubSpot, PDF/image text or all interactive states.','LanguageTool suggestions require human assessment against Taalunie and Belgian Standard Dutch.']};
+  const report={schema:1,status:'FAILED',sourceCommit:git('rev-parse','HEAD'),officialApproval:false,errors:[],findings:[],limitations:['Local built website, not live CMS/HubSpot, PDF/image text or all interactive states. Decision journey includes inert public interface labels and initial DOM, not every generated case/plan/report or user-entered state.','Authenticated Journal/Radar publication bodies and private Radar interactions (including core decision copy) are outside this public scan; no login, private download or signing is performed. Static committed account, invitation, menu and outage interface copy is included without exercising Auth.','LanguageTool suggestions require human assessment against Taalunie and Belgian Standard Dutch.']};
   try{
     const contract=json('language/nl-extraction.json');const currentSources=sources();
     validateContract(contract.javascript,currentSources,'JavaScript');

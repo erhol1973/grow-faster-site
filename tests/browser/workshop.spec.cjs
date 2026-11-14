@@ -35,7 +35,7 @@ for(const [lang,copy]of Object.entries(cases)){
   expect(errors).toEqual([]);
  });
  test('voluntary workshop request is local, encoded and language-correct in '+lang,async({page})=>{
-  await seed(page,lang);const external=[];page.on('request',r=>{const url=r.url();if(/^https?:\/\//.test(url)&&!url.startsWith('http://127.0.0.1:4173/'))external.push(url)});
+  await seed(page,lang);const external=[];page.on('request',r=>{const url=r.url();if(/^https?:\/\//.test(url)&&!url.startsWith(((process.env.TEST_BASE_URL||'http://127.0.0.1:4173')+'/')))external.push(url)});
   await page.goto('/workshop.html?lang='+lang);await page.locator('.ws-hero .ws-btn').click();
   await expect(page).toHaveURL(new RegExp('lang='+lang+'#kennismaking$'));
   await page.locator('#request-form button[type="submit"]').click();
@@ -62,7 +62,7 @@ for(const [lang,copy]of Object.entries(cases)){
  });
 }
 test('anonymous ECA profile offers a paid workshop without transferring answers or scores',async({page})=>{
- await seed(page);const requests=[];page.on('request',r=>{if(new URL(r.url()).origin!=='http://127.0.0.1:4173')requests.push(r.url())});
+ await seed(page);const requests=[];page.on('request',r=>{if(new URL(r.url()).origin!==new URL(process.env.TEST_BASE_URL||'http://127.0.0.1:4173').origin)requests.push(r.url())});
  await page.goto('/eca.html?lang=nl');for(const prefix of ['S','O','D','T','C'])for(let n=1;n<=4;n++)await page.locator(`input[name="${prefix+n}"][value="4"]`).check();
  await page.locator('#ecaForm button[type="submit"]').click();await expect(page.locator('#overall')).toHaveText('75/100');
  for(const lang of ['nl','fr']){await page.locator('#ecaLanguage').selectOption(lang);await expect(page.locator('#ecaWorkshop')).toHaveAttribute('href','workshop.html?lang='+lang);}
@@ -77,7 +77,7 @@ test('workshop example, agenda, skip link and privacy choices support keyboard u
 });
 test('workshop retains direct email and native disclosures without JavaScript',async({browser})=>{
  const context=await browser.newContext({javaScriptEnabled:false});const page=await context.newPage();
- try{await page.goto('http://127.0.0.1:4173/workshop.html');await expect(page.locator('#request-form')).toBeHidden();await expect(page.locator('#kennismaking>a')).toHaveCount(0);await expect(page.locator('#kennismaking a[href^="mailto:"]').first()).toBeVisible();await page.locator('#voorbeeldplan>summary').click();await expect(page.locator('#voorbeeldplan')).toHaveAttribute('open','');}finally{await context.close()}
+ try{await page.goto((process.env.TEST_BASE_URL||'http://127.0.0.1:4173')+'/workshop.html');await expect(page.locator('#request-form')).toBeHidden();await expect(page.locator('#kennismaking>a')).toHaveCount(0);await expect(page.locator('#kennismaking a[href^="mailto:"]').first()).toBeVisible();await page.locator('#voorbeeldplan>summary').click();await expect(page.locator('#voorbeeldplan')).toHaveAttribute('open','');}finally{await context.close()}
 });
 test('explicit workshop language survives unavailable preference storage',async({page})=>{
  await seed(page,'nl');

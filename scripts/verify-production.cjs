@@ -25,11 +25,11 @@ async function verifyRadarPublicSurface(page,origin='https://grow-faster.be'){
         scriptCache.set(script.href,{path:script.pathname+script.search,sha256:require('node:crypto').createHash('sha256').update(text).digest('hex')});
       }}
       const current=new URL(page.url());if(current.pathname!=='/'+route+'/'||current.searchParams.get('lang')!==lang||current.hash!=='#overview')throw Error('Removed Radar About route did not safely preserve locale: '+route+' '+lang);
-      if(await page.locator('html').getAttribute('lang')!==lang+'-BE'||!await page.locator('#overview').isVisible())throw Error('Radar overview fallback unavailable: '+route+' '+lang);
-      if(await page.locator('#about,#heading-about,[data-view=about],[href="#about"],[id^=signup-]').count())throw Error('Internal Radar About DOM remains public');
-      const views=await page.locator('#product-links .nav-link').evaluateAll(links=>links.map(link=>link.dataset.view));
-      if(JSON.stringify(views)!==JSON.stringify(['overview','dashboard','radar','evidence','editorial']))throw Error('Expected exactly five public Radar views');
-      results.push({route:route+'/',language:lang,internalAboutAbsent:true,legacyHashFallback:'overview',publicViews:views,rawSha256:require('node:crypto').createHash('sha256').update(raw).digest('hex')});
+      if(await page.locator('html').getAttribute('lang')!==lang+'-BE'||!await page.locator('article[data-language="'+lang+'"]').isVisible())throw Error('Radar featured signal unavailable: '+route+' '+lang);
+      if(await page.locator('#about,#heading-about,[data-view=about],[href="#about"],[id^=signup-],#dashboard,#radar,#evidence,#editorial').count())throw Error('Private or removed Radar DOM remains public');
+      if(!await page.locator('meta[name="radar-template"]').count()||!await page.locator('meta[name="radar-edition"]').count())throw Error('Protected Radar edition integrity markers missing');
+      if(await page.locator('.site-header .identity').getAttribute('href')!=='../index.html?lang='+lang)throw Error('Radar website return lost locale');
+      results.push({route:route+'/',language:lang,internalAboutAbsent:true,legacyHashFallback:'overview',memberContentProtected:true,featuredSignalAvailable:true,rawSha256:require('node:crypto').createHash('sha256').update(raw).digest('hex')});
     }
     if(writes.length)throw Error('Unexpected Radar write request: '+writes.join(', '));
     return {routes:results,scripts:[...scriptCache.values()],readOnly:true,writes:0};

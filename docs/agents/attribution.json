@@ -79,6 +79,7 @@
     "tests/browser/cache-transition.spec.cjs",
     "tests/browser/navigation-accessibility.spec.cjs",
     "tests/browser/typography.spec.cjs",
+    "tests/ci-partition-gate.test.cjs",
     "tests/cms-style-delivery.test.cjs",
     "tests/component-style-delivery.test.cjs",
     "tests/decision-journey-model.test.cjs",

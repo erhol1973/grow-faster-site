@@ -149,12 +149,10 @@ jobs:
       image: mcr.microsoft.com/playwright:v1.64.1-noble
     timeout-minutes: 45
     steps:
-      - name: Require every build, typography and journey partition to succeed
+      - name: Require the tested build before collecting base evidence
         env:
           BUILD_RESULT: ${{ needs.buildprep.result }}
-          TYPOGRAPHY_RESULT: ${{ needs.typography.result }}
-          JOURNEY_RESULT: ${{ needs.journey.result }}
-        run: test "$BUILD_RESULT" = success && test "$TYPOGRAPHY_RESULT" = success && test "$JOURNEY_RESULT" = success
+        run: test "$BUILD_RESULT" = success
       # Action commits verified against their official release pages.
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
@@ -214,6 +212,15 @@ jobs:
             playwright-report/
             test-results/
           if-no-files-found: warn
+      # Collect base evidence even when another partition fails. This final
+      # mandatory assertion still blocks packaging and the protected release.
+      - name: Require every build, typography and journey partition to succeed
+        if: always()
+        env:
+          BUILD_RESULT: ${{ needs.buildprep.result }}
+          TYPOGRAPHY_RESULT: ${{ needs.typography.result }}
+          JOURNEY_RESULT: ${{ needs.journey.result }}
+        run: test "$BUILD_RESULT" = success && test "$TYPOGRAPHY_RESULT" = success && test "$JOURNEY_RESULT" = success
       - name: Package tested website
         if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
         uses: actions/upload-pages-artifact@7b1f4a764d45c48632c6b24a0339c27f5614fb0b # v4.0.0

@@ -241,3 +241,23 @@ checked blocks. Its testmerge dd5e7cf has the same Git tree as49af4d9. The scan 
 technically complete, with no official language approval or baseline promotion.
 Main and production remain unchanged; native provider typography, hosted Auth
 acceptance and editorial decisions remain separately evidenced dependencies.
+
+## Diagnostic collection without a release waiver
+
+Head a0dd4ab run43588146446 passed build, security, journey and four typography
+profiles. The mobile Chromium profile had344 clean cases and one flaky case:
+HTML book12/page3/1366 at125% zoom. Its first native End action left the focused
+reading region at0 despite a138 target; the retry reached138. This is a real
+intermittent movement failure, not merely a missing event. Original diagnostics
+and trace are retained; the root cause is not established. One instrumented
+immediate-versus-focus-settled pair passed both variants, so no speculative key,
+focus or timeout change is claimed to fix it. No case is excluded or waived.
+
+Previously the quality job rejected any failed typography/journey prerequisite
+before testing the base suite. It now requires a successful tested build first,
+collects the unchanged base/load/performance evidence, then executes the SAME
+mandatory build/typography/journey success assertion with always() before
+packaging. Earlier base failures remain job failures; packaging retains its
+implicit success condition and deployment still requires the quality gate.
+The45-minute budget, artifacts, thresholds and required test partitions remain.
+This sequencing improvement is not a repair of the observed flaky reader case.

@@ -46,11 +46,17 @@ require('./radar-release.cjs').buildRadar(root,out);
 if(readRegularFile(path.join(out,'coherence.html')).toString('utf8').includes('assets/i18n-coherence.js?v=coherence-1')){
   if(require('./coherence-dictionary.cjs').buildCoherenceDictionary(root,out))count++;
 }
+if(readRegularFile(path.join(out,'insights.html')).toString('utf8').includes('assets/i18n-insights.js?v=insights-1')){
+  if(require('./coherence-dictionary.cjs').buildInsightsDictionary(root,out))count++;
+}
 // Every document uses the one external canonical policy; strict CSP remains unchanged.
 for (const file of fs.readdirSync(out, { recursive: true }).filter(name=>name.endsWith('.html'))) {
   const target=path.join(out,file);
   fs.writeFileSync(target,require('./component-style-delivery.cjs').finalTypography(readRegularFile(target).toString('utf8')));
 }
+// Validate the emitted executable inventory after every HTML finalizer, not just
+// the source page: a builder cannot silently add an unclassified shipped runtime.
+require('./coherence-dictionary.cjs').assertInsightsArtifact(root,out);
 assertPublicArtifact(out);
 fs.renameSync(out,destination);
 console.log(`Built ${count} website files in dist/ (public-content policy passed)`);

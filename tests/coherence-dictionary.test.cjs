@@ -13,7 +13,8 @@ test('Coherence chunk preserves its monotone retention floor, all original tuple
  assert.deepEqual([...labels].sort(),['Agent-enable','Augment','Automate','Prepare first','Reinvent'].sort());for(const label of labels)assert.deepEqual(chunk.I18N[label],full.I18N[label],label+' finite model key');
  assert.ok(zlib.brotliCompressSync(chunkText,{params:{[zlib.constants.BROTLI_PARAM_QUALITY]:7}}).length<zlib.brotliCompressSync(fullText,{params:{[zlib.constants.BROTLI_PARAM_QUALITY]:7}}).length*.6);
  const html=fs.readFileSync('dist/coherence.html','utf8');assert.match(html,/i18n-coherence\.js\?v=coherence-1-[a-f0-9]{12}/);assert.doesNotMatch(html,/src="assets\/i18n\.js/);
- for(const name of ['index.html','about.html','insights.html'])assert.match(fs.readFileSync('dist/'+name,'utf8'),/src="assets\/i18n\.js\?v=20261111-nl-audit"/);
+ for(const name of ['index.html','about.html'])assert.match(fs.readFileSync('dist/'+name,'utf8'),/src="assets\/i18n\.js\?v=20261111-nl-audit"/);
+ assert.match(fs.readFileSync('dist/insights.html','utf8'),/src="assets\/i18n-insights\.js\?v=insights-1-[a-f0-9]{12}"/);
  for(const change of [contract.retainedKeys.slice(1),[contract.retainedKeys[1],contract.retainedKeys[0],...contract.retainedKeys.slice(2)]])assert.throws(()=>helper.assertRetentionFloor({...contract,retainedKeys:change}),/retention floor/);
  assert.throws(()=>helper.assertRetentionFloor({...contract,retainedKeys:[...contract.retainedKeys,'future reviewed key']}),/retention floor/,'new keys also require an explicit approved-floor advance');
 });

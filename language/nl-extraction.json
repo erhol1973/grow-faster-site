@@ -3,7 +3,7 @@
   "scope": "rendered_local_nl_runtime_dictionaries_static_cms_and_mail",
   "technicalReview": {
     "date": "2026-11-14",
-    "reason": "Reviewed integrated member and canonical typography runtimes; all five journey scripts plus inert NL interface-copy adapter; unchanged private publication exclusions; generated case/plan/report states excluded. No baseline promotion or language approval.",
+    "reason": "Reviewed integrated member and canonical typography runtimes; all five journey scripts plus inert NL interface-copy adapter; unchanged private publication exclusions; generated case/plan/report states excluded. No baseline promotion or language approval. Prospective Insights721 is data-only:55 existing tuples appended to the unchanged666 floor, all9 maps identical, one shared13-runtime policy; generated asset inventoried without baseline promotion or human language approval.",
     "officialApproval": false
   },
   "javascript": [
@@ -74,6 +74,10 @@
     {
       "file": "assets/i18n-coherence.js",
       "sha256": "3679a466ee6a6495acb98999262a46e717471b00e72fd0cca8d725eedb292ad7"
+    },
+    {
+      "file": "assets/i18n-insights.js",
+      "sha256": "3316f60b9545f6a695016ea348f6301d54e1626591b356c77d30e20f85f13aab"
     },
     {
       "file": "assets/i18n.js",

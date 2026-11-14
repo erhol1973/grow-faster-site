@@ -3,6 +3,7 @@ const fs=require('node:fs'),path=require('node:path');
 const {performance,monitorEventLoopDelay}=require('node:perf_hooks'),os=require('node:os');
 const {createServer}=require('./server.cjs');
 const routes=require('../tests/navigation-cases.json').pages.map(p=>({route:'/'+p,status:200})).concat([
+  {route:'/assets/i18n-insights.js',status:200},
   ...['decision-journey/','decision-journey/assets/cases.js','decision-journey/assets/model.js','decision-journey/assets/roadmap.js','decision-journey/assets/value-review.js','decision-journey/assets/app.js','decision-journey/assets/canvas.css','decision-journey/assets/logo.svg'].map(file=>({route:'/'+file,status:200})),
   {route:'/executive-radar/',status:200},{route:'/baies-dev/',status:200},
   ...['boek/the-coherent-enterprise/index.html','boek/the-coherent-enterprise/pdf/the-coherent-enterprise-executive-preview.pdf','boek/the-coherent-enterprise/pdf/chapter-07.pdf','books/the-coherent-enterprise-executive-preview.pdf'].map(file=>({route:'/'+file,status:200})),

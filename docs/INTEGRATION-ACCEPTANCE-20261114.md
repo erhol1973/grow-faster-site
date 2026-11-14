@@ -261,3 +261,47 @@ packaging. Earlier base failures remain job failures; packaging retains its
 implicit success condition and deployment still requires the quality gate.
 The45-minute budget, artifacts, thresholds and required test partitions remain.
 This sequencing improvement is not a repair of the observed flaky reader case.
+
+## Experimental data-delivery follow-up
+
+The final complete run on8658a07 passed334 units and2,875 browser cases with13
+documented existing skips. Its60 Lighthouse samples retained one blocker:
+Insights mobile medianLCP2,554.223ms exceeds2,500ms. Coherence passes at2,487ms;
+its narrow margin remains relevant. CodeQL, secrets, build and partition checks
+passed; the daily Dutch scan is technically complete with109 open FINDINGS.
+Deployment and public verification were skipped. These are dated results for
+that exact head, not acceptance of later working-tree changes.
+
+The separate Insights721 hypothesis preserves the Coherence666 data/HTML/hash
+and the full1296 dictionary. Only Insights' deferred data URL and one added
+data-only asset differ among204 public files. The retained fixed Windows trial
+is still STOP: modeledLCP2,594.281ms remains above2,500; TBT and observedLCP also
+regressed. A prospective draft-only full Linux validation is authorized without
+waiving that negative evidence or any original quality limit. See
+INSIGHTS-DICTIONARY-EXPERIMENT.md for the shared generator, exact provenance,
+source/emitted-script inventory, cache and CMS proof boundaries.
+
+Initial new browser checks passed46/50: two WebKit total-duration failures and
+two dependency-load EBUSY failures are retained. The equivalent bounded parity
+structure passed29/30; all40 unchanged cache/CMS cases passed separately. One
+WebKit FR group2 still crossed the unchanged45s test limit. Its trace completed
+all snapshots/native actions and equality before the limit; final execution
+proof crossed it. This is not yet a green test or an established application
+defect. The fixed old-versus-sequential fixture diagnostic passed both cases:
+29.597s versus16.352s. A single successful pair does not prove the original
+failure's cause or any application-performance improvement. The equivalent
+fixture now closes the completed actual tab after preserving all its proof,
+then opens the full-data reference in the same context. All native actions,
+snapshots, locale/consent and execution checks remain. The one fresh changed
+parity run passed30/30 across all five profiles,0 flaky/skip/retry. The40 cache/
+CMS cases remain earlier unchanged evidence; this is not one fresh70-case run.
+The final four guard units also pass. Source/emitted-page guards reject the
+reviewed encoded/unknown/unterminated-entity cases without changing public bytes.
+No timeout/retry/coverage or source-runtime waiver is authorized. The204-file
+52,606,470-byte local public artifact is unchanged. Full frozen-head Linux
+validation, including every original check and60 samples, is still required.
+
+The CPO remains sole committer. Internal product strategy and user-research
+material stay outside this public technical review. Production and main remain
+unchanged; provider typography and native hosted mail-flow acceptance remain
+separately evidenced open conditions.

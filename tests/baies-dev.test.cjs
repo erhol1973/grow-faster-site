@@ -253,7 +253,7 @@ test('Radar publication policy walks all artifact text, including renamed copies
 
 test('Radar build publishes only a complete policy-approved artifact and removes staged output on internal content rejection',t=>{
   const fixture=policyTemp(t);policyFs.mkdirSync(policyPath.join(fixture,'scripts'));policyFs.mkdirSync(policyPath.join(fixture,'tests'));policyFs.writeFileSync(policyPath.join(fixture,'tests/legacy-redirects.json'),'[]');
-  for(const file of ['build.cjs','file-reader.cjs','baies-dev-public-policy.cjs','member-navigation.cjs','radar-release.cjs','typography-build.cjs','component-style-delivery.cjs','coherence-dictionary.cjs','coherence-dictionary.contract.json'])policyFs.copyFileSync(policyPath.join(policyRoot,'scripts',file),policyPath.join(fixture,'scripts',file));
+  for(const file of ['build.cjs','file-reader.cjs','baies-dev-public-policy.cjs','member-navigation.cjs','radar-release.cjs','typography-build.cjs','component-style-delivery.cjs','coherence-dictionary.cjs','coherence-dictionary.contract.json','insights-dictionary.contract.json'])policyFs.copyFileSync(policyPath.join(policyRoot,'scripts',file),policyPath.join(fixture,'scripts',file));
   policyFs.cpSync(policyPath.join(policyRoot,'scripts/radar-reference'),policyPath.join(fixture,'scripts/radar-reference'),{recursive:true});
   const publicPreview=policyFs.readFileSync(policyPath.join(policyRoot,'executive-radar/index.html'),'utf8');
 

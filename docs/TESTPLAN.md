@@ -349,3 +349,15 @@ The producer's 115 passing targeted tests are not the full frozen-build release
 matrix. Parent verification must complete full units, browser/cache/load,
 60-sample performance, the reviewed extraction inventory and LanguageTool scan.
 Production and the historical language register remain unchanged.
+
+## Prospective Insights data experiment,14 November2026
+
+See INSIGHTS-DICTIONARY-EXPERIMENT.md for the draft-only721 profile. The common
+generator preserves Coherence666/HTML/hash and full1296 byte-for-byte. New data
+has a140000B budget and explicit local-load/extraction inventory; old limits,
+findings and review records stay. Permanent unit/HTTP cases reject unreviewed
+lookup/inventory/entity changes and prove nonconsumer byte preservation. Seventy
+new browser cases cover exact NL/FR full-reference copy/meta/ARIA/type and six
+articles, real warm HTTP cache, one deferred data execution and early/late
+synthetic CMS language overrides. The failed Windows experiment remains STOP;
+these checks do not substitute for the original full Linux gates and60 samples.

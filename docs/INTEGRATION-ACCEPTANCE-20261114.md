@@ -305,3 +305,46 @@ The CPO remains sole committer. Internal product strategy and user-research
 material stay outside this public technical review. Production and main remain
 unchanged; provider typography and native hosted mail-flow acceptance remain
 separately evidenced open conditions.
+
+## Complete language review and subsequent candidate repair
+
+The subsequent exact-head61759 run43605296089 finished with338 passing units,
+all five typography partitions and128 journey cases passing. The base suite
+recorded1,091 passes,13 existing skips and one failed mobile book-reader axe
+case on both attempts. Its toast opacity transition caused intermediate contrast
+violations; load and the60 Lighthouse samples did not execute in that run.
+CodeQL separately found `js/bad-tag-filter` in the new dictionary guard. Both
+failures remain retained evidence; earlier performance results do not verify
+this later candidate. Deployment and public verification were skipped.
+
+At the sponsor's explicit request, a separate producer reviewed all109 Dutch
+finding identities and an independent agent verified every original ID, full
+context, rule, range and disposition against the retained complete report.
+There are73 contextual retain decisions,14 source-correction identities and22
+primary extraction-context identities. All65 initially relocated findings were
+assessed on their actual meaning. The finite14 journey/title contexts and11 SVG
+wrap contexts overlap source corrections and are not extra109 findings.
+
+Machine checkpoints preserve all3,668 old records plus the original109,
+append-only history and actual source ancestry. They neither invent human
+approval nor mark disappeared findings corrected. The separate documentary
+assessment, source implementation, rendering, new scan and final-head CI are
+distinct evidence layers. No scanner suppression, global text joining, reduced
+font, weaker threshold, deleted case or production change is authorized.
+
+The reviewed follow-up builds204 public files. Its unchanged-font NL13 label
+wrap passes20 geometry/visible-port cases over NL/FR,390/1366 and five browser
+profiles; five first-paint toast/axe/focus cases also pass. Twelve actual simulator
+label states fit their node and visible port at canonical physical12px. Fifteen
+ECA locale cases and five original reader cases passed on unchanged respective
+files. The original Firefox blank-page viewport setup timeout is retained; the
+new toast fixture declares the same390x844 viewport before page creation.
+
+The default parallel Windows unit invocation passed336/341 and failed five
+existing browser/local-connection cases. One fixed sequential invocation of ALL
+341 cases passed, with no case, assertion, timeout or CI invocation changed.
+This comparison does not establish the original cause or replace the required
+clean Linux checks. Artifact security passes within its stated heuristic scope.
+The final formatting build changes only one ECA line-ending byte relative to
+the native-tested package; the other203 public files are byte-identical.
+The complete post-correction engine scan and fresh exact-head CI remain required.

@@ -121,7 +121,7 @@
   }
   function drawQuad(x,y,cls){
     const L=44,T=10,S=280;const cx=L+x*S, cy=T+(1-y)*S;
-    const cell=(qx,qy,name,on,reinv)=>`<rect x="${L+qx*S/2}" y="${T+qy*S/2}" width="${S/2}" height="${S/2}" fill="${reinv?'var(--ai-soft)':'var(--bg2)'}" stroke="var(--line)"/><text x="${L+qx*S/2+12}" y="${T+qy*S/2+24}" font-family="Aptos, Hanken Grotesk, Segoe UI, sans-serif" font-size="11" letter-spacing="1" fill="${on?(reinv?'var(--ai-ink)':'var(--brand)'):'var(--muted)'}" font-weight="${on?600:400}">${t(name).toUpperCase()}</text>`;
+    const cell=(qx,qy,name,on,reinv)=>`<rect x="${L+qx*S/2}" y="${T+qy*S/2}" width="${S/2}" height="${S/2}" fill="${reinv?'var(--ai-soft)':'var(--bg2)'}" stroke="var(--line)"/><text x="${L+qx*S/2+12}" y="${T+qy*S/2+24}" font-family="Aptos, Hanken Grotesk, Segoe UI, sans-serif" font-size="11" letter-spacing="1" fill="${on?(reinv?'var(--ai-ink)':'var(--brand)'):'var(--muted)'}" font-weight="${on?600:400}">${name==='Agent-enable'&&LANG==='nl'?`<tspan x="${L+qx*S/2+12}" dy="0">AI-AGENTS LATEN</tspan> <tspan x="${L+qx*S/2+12}" dy="1.4em">COÖRDINEREN</tspan>`:t(name).toUpperCase()}</text>`;
     quad.innerHTML=
       cell(0,0,"Augment",cls==="Augment")+cell(1,0,"Reinvent",cls==="Reinvent",true)+cell(0,1,"Automate",cls==="Automate")+cell(1,1,"Agent-enable",cls==="Agent-enable")+
       `<text x="${L+S/2}" y="${T+S+26}" text-anchor="middle" font-family="Aptos, Hanken Grotesk, Segoe UI, sans-serif" font-size="10.5" letter-spacing="1" fill="var(--muted)">${t("Workflow coordination").toUpperCase()} →</text>`+
@@ -395,7 +395,7 @@
     pick(curSpec);evalP();sim();renderBPMN();coh();if(typeof fitNav==="function")fitNav();
     if(save)store.set("avs-lang",l);
     root.classList.add("i18n-ready");
-    const journeyEntry=document.getElementById('decision-journey-entry');if(journeyEntry){journeyEntry.querySelector('h2').textContent=l==='fr'?'Du signal à un dossier de décision':'Van signaal naar een beslisdossier';journeyEntry.querySelector('p').textContent=l==='fr'?'Explorez un cas fictif, formulez un choix, planifiez 90 jours et examinez les résultats saisis. Aucune donnée réelle ni stockage.':'Verken een fictieve casus, maak een afweging, plan 90 dagen en beoordeel ingevoerde resultaten. Geen echte bedrijfsgegevens of opslag.';const link=journeyEntry.querySelector('#decision-journey-open');link.textContent=l==='fr'?'Ouvrir le parcours executive →':'Open de executive oefenreis →';link.href='decision-journey/?lang='+(l==='fr'?'fr':'nl');}
+    const journeyEntry=document.getElementById('decision-journey-entry');if(journeyEntry){journeyEntry.querySelector('h2').textContent=l==='fr'?'Du signal à un dossier de décision':'Van signaal naar een beslisdossier';journeyEntry.querySelector('p').textContent=l==='fr'?'Explorez un cas fictif, formulez un choix, planifiez 90 jours et examinez les résultats saisis. Aucune donnée réelle ni stockage.':'Verken een fictieve casus, maak een afweging, plan 90 dagen en beoordeel ingevoerde resultaten. Geen echte bedrijfsgegevens of opslag.';const link=journeyEntry.querySelector('#decision-journey-open');link.textContent=l==='fr'?'Ouvrir le parcours executive →':'Open de fictieve beslisreis →';link.href='decision-journey/?lang='+(l==='fr'?'fr':'nl');}
     document.dispatchEvent(new CustomEvent("gf:language",{detail:{language:l}}));
   }
   /* language menus */

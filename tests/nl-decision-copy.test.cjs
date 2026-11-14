@@ -8,7 +8,10 @@ test('static decision interface extractor includes complete Dutch declarations a
  assert.match(find('reviewCopy.nl.noMeasurements'),/Meetwaarden mogen nog ontbreken/);
  assert.match(find('reviewCopy.nl.statuses.unmeasured'),/Geen waarde ingevoerd; meting niet bevestigd/);
  assert.match(find('reviewCopy.nl.percentHint'),/absolute waarde/);
- assert.match(find('copy.nl.languageNotice'),/getalstrings/);
+ assert.match(find('copy.nl.languageNotice'),/ingevoerde getallen.*precies behouden/);
+ assert.equal(find('copy.nl.title'),'Van signaal naar een onderbouwde keuze.');
+ assert.equal(find('copy.nl.title.0'),undefined);assert.equal(find('copy.nl.title.1'),undefined);
+ assert.deepEqual(blocks.find(b=>b.id==='static-decision-nl:copy.nl.title').source.composedFrom,['static-decision-nl:copy.nl.title.0','static-decision-nl:copy.nl.title.1']);
   assert.equal(find('copy.nl.count'),'{n} van 6 geselecteerd');
  assert(blocks.every(b=>b.source.language==='nl'&&b.page==='decision-journey/index.html'));
 });
@@ -20,6 +23,10 @@ test('static decision data fails closed for executable values, changed boundary 
   for(const mutation of ["copy.nl.title='Invisible new text';","copy.nl['title']='Computed mutation';","Object.assign(copy['nl'],{title:'Other'});"])
     assert.throws(()=>decisionCopy(s.replace('\nlet state,dirty=false,errors=[];','\n'+mutation+'\nlet state,dirty=false,errors=[];')),/Unsupported decision/);
   assert.throws(()=>decisionCopy(s.replace('nl:{skip:', 'other:{skip:')),/Missing decision NL\/FR/);
+ const title="title:['Van signaal naar','een onderbouwde keuze.']";assert.ok(s.includes(title));
+ for(const shape of ["title:['Van signaal naar']","title:['Van signaal naar','een onderbouwde keuze.','Nieuwe tekst']","title:['Van signaal naar',{}]","title:'Van signaal naar een onderbouwde keuze.'"])
+  assert.throws(()=>decisionCopy(s.replace(title,shape)),/whole-title composition/);
+ assert.throws(()=>decisionCopy(s.replace(title,"title:['Van signaal naar',null]")),/Only inert/,'null is rejected by the existing inert-data parser before title composition');
 });
 
 test('built JavaScript inventory covers every journey module and rejects an unreviewed new script',()=>{

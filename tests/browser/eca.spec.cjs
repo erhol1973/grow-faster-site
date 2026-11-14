@@ -31,6 +31,15 @@ test('language changes preserve answers and the scored profile without contactin
 });
 test('English is no longer offered and falls back to Dutch',async({page})=>{
  await page.goto('/eca.html?lang=en');await expect(page.locator('html')).toHaveAttribute('lang','nl');await expect(page.locator('#ecaLanguage option')).toHaveCount(2);await expect(page.locator('#ecaLanguage option[value="en"]')).toHaveCount(0);await expect(page.locator('#ecaLanguage')).toHaveValue('nl');
+ await expect(page.locator('meta[name="description"]')).toHaveAttribute('content','Verken hoe je onderneming strategie omzet in samenhangende uitvoering en meetbare waarde, vanuit vijf dimensies van samenhang.');
+});
+
+test('ECA default metadata and NL→FR→NL changes preserve answers using the existing locale control',async({page})=>{
+ const descriptions={nl:'Verken hoe je onderneming strategie omzet in samenhangende uitvoering en meetbare waarde, vanuit vijf dimensies van samenhang.',fr:'Explorez comment votre entreprise traduit sa stratégie en une mise en œuvre cohérente et une valeur mesurable, selon cinq dimensions de cohérence.'};
+ const response=await page.request.get('/eca.html');expect(await response.text()).toContain('<meta name="description" content="'+descriptions.nl+'">');
+ await page.addInitScript(()=>localStorage.setItem('avs-lang','fr'));await page.goto('/eca.html?lang=nl');await expect(page.locator('html')).toHaveAttribute('lang','nl');await page.locator('input[name="S1"][value="5"]').check();
+ for(const lang of ['nl','fr','nl']){if(await page.locator('#ecaLanguage').inputValue()!==lang)await page.locator('#ecaLanguage').selectOption(lang);await expect(page.locator('html')).toHaveAttribute('lang',lang);await expect(page.locator('meta[name="description"]')).toHaveAttribute('content',descriptions[lang]);await expect(page.locator('input[name="S1"][value="5"]')).toBeChecked();}
+ await page.goto('/eca.html?lang=unknown');await expect(page.locator('html')).toHaveAttribute('lang','fr');await expect(page.locator('meta[name="description"]')).toHaveAttribute('content',descriptions.fr);
 });
 test('the site reading route leads to an ungated assessment in the saved site language',async({page})=>{
  await page.addInitScript(()=>{localStorage.setItem('avs-lang','fr');localStorage.setItem('avs-consent',JSON.stringify({v:4,ext:false,ana:false,ts:Date.now()}))});

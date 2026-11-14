@@ -110,6 +110,56 @@ function domBlocks(){
   const result=[];const excluded=e=>e.closest('script,style,noscript,template,[lang="fr"],[lang="fr-BE"],[data-lang="fr"],[lang="en"]:not(html)');
   const location=el=>{const parts=[];while(el&&el!==document.documentElement){parts.unshift(el.tagName.toLowerCase()+':'+([...el.parentNode.children].indexOf(el)+1));el=el.parentElement;}return parts.join('>')};
   const selector='p,h1,h2,h3,h4,h5,h6,li,button,label,legend,figcaption,blockquote,td,th,dt,dd,option,output';
+  // Reviewed finite semantic boundaries of reviewed journey labels only.
+  const journeyLabels=new Map();
+  const journeyRoute=['/decision-journey/','/decision-journey/index.html'].includes(window.location.pathname),journeyScope=document.body.matches('.decision-journey-page');
+  if(journeyRoute&&!journeyScope)throw Error('Journey language boundary scope class missing; review adapter');
+  if(journeyRoute||journeyScope){
+    const fail=()=>{throw Error('Journey language boundary shape changed; review adapter');};
+    function container(node,tag,count){if(!node||node.tagName!==tag||node.children.length!==count)fail();for(const child of node.childNodes)if(child.nodeType===3&&child.textContent.trim())fail();}
+    function leaf(node,tag,className){if(!node||node.tagName!==tag||(className&&!node.classList.contains(className))||node.children.length||excluded(node))fail();const text=node.textContent.replace(/\s+/g,' ').trim();if(!text)fail();return text;}
+    const owners=[...document.querySelectorAll('.step-button,.case-card,.method-caption,.info-block.source')].filter(owner=>!excluded(owner));
+    const steps=owners.filter(owner=>owner.matches('.step-button')),cards=owners.filter(owner=>owner.matches('.case-card')),methods=owners.filter(owner=>owner.matches('.method-caption')),sources=owners.filter(owner=>owner.matches('.info-block.source'));
+    const navs=document.querySelectorAll('#journey'),stages=document.querySelectorAll('#stage'),grids=document.querySelectorAll('#stage .case-grid');
+    if(owners.length!==10||steps.length!==6||cards.length!==2||methods.length!==1||sources.length!==1||navs.length!==1||stages.length!==1||grids.length!==1)fail();
+    container(navs[0],'NAV',6);container(grids[0],'DIV',2);
+    if(steps.some(owner=>owner.parentElement!==navs[0])||cards.some(owner=>owner.parentElement!==grids[0])||!stages[0].contains(sources[0])||!sources[0].parentElement.classList.contains('signal-details')||!methods[0].parentElement.classList.contains('page-intro'))fail();
+    for(const owner of owners){
+      if(excluded(owner))continue;let parts=[],values=[];
+      if(owner.classList.contains('step-button')){
+        container(owner,'BUTTON',2);const number=owner.children[0],copy=owner.children[1];if(!copy.classList.contains('step-copy')||owner.parentElement.id!=='journey')fail();container(copy,'SPAN',2);
+        parts=[number,...copy.children];values=[leaf(number,'SPAN','step-number'),leaf(parts[1],'STRONG'),leaf(parts[2],'SMALL')];
+      }else if(owner.classList.contains('case-card')){
+        container(owner,'BUTTON',4);const [kind,title,paragraph,selection]=owner.children;if(paragraph.tagName!=='P'||!owner.parentElement.classList.contains('case-grid'))fail();
+        parts=[kind,title,selection];values=[leaf(kind,'SPAN','case-kind'),leaf(title,'STRONG'),leaf(selection,'SPAN','case-selected')];
+      }else if(owner.classList.contains('method-caption')){
+        container(owner,'DIV',3);const [label,brand,paragraph]=owner.children;if(label.id!=='method-label'||paragraph.tagName!=='P'||paragraph.id!=='method-description')fail();
+        parts=[label,brand];values=[leaf(label,'SPAN'),leaf(brand,'STRONG')];
+      }else{
+        container(owner,'DIV',3);const [label,paragraph,date]=owner.children;if(paragraph.tagName!=='P')fail();
+        parts=[label,date];values=[leaf(label,'SPAN','info-label'),leaf(date,'TIME','source-date')];
+      }
+      journeyLabels.set(owner,{text:values.join(' '),source:{adapter:'reviewed-journey-label-parts',scope:'committed-initial-public-interface',language:'nl',partLocations:parts.map(location)}});
+    }
+  }
+  const svgLabels=new Map();
+  if(window.location.pathname==='/coherence-sim.html'){
+    const fail=()=>{throw Error('Coherence SVG word-wrap shape changed; review adapter');};
+    const diagrams=document.querySelector('#diagrams'),svgs=[...document.querySelectorAll('svg.bpmn')];
+    if(!diagrams||!svgs.length||svgs.some(svg=>!diagrams.contains(svg))||[...diagrams.querySelectorAll('svg')].some(svg=>!svg.classList.contains('bpmn')))fail();
+    if([...document.querySelectorAll('svg text tspan[x],svg text tspan[dy]')].some(span=>!svgs.includes(span.closest('svg'))))fail();
+    for(const owner of svgs.flatMap(svg=>[...svg.querySelectorAll('text')])){
+      if(excluded(owner))continue;const spans=[...owner.children],hasSpans=spans.some(span=>span.tagName.toLowerCase()==='tspan'),known=owner.classList.contains('lane-t')||owner.parentElement.matches('g.node'),positioned=!!owner.querySelector('tspan[x],tspan[dy]');
+      if(!hasSpans){if(positioned||(known&&spans.length))fail();continue;}
+      if(!known){if(positioned)fail();continue;}
+      if(spans.some(span=>span.tagName.toLowerCase()!=='tspan'||span.children.length||excluded(span)||!span.hasAttribute('x')||!span.hasAttribute('dy'))||[...owner.childNodes].some(node=>node.nodeType===3&&node.textContent.trim()))fail();
+      if(!owner.getAttribute('x')?.trim()||spans.some(span=>!span.getAttribute('x')?.trim()||!span.getAttribute('dy')?.trim()))fail();
+      const x=Number(owner.getAttribute('x')),xs=spans.map(span=>Number(span.getAttribute('x'))),ys=spans.map(span=>Number(span.getAttribute('dy')));
+      if(!owner.hasAttribute('x')||!Number.isFinite(x)||xs.some(value=>!Number.isFinite(value)||value!==x)||ys[0]!==0||ys.slice(1).some(value=>![12,13,14].includes(value)||value!==ys[1]))fail();
+      const parts=spans.map(span=>span.textContent.replace(/\s+/g,' ').trim());if(parts.some(part=>!part))fail();
+      svgLabels.set(owner,{text:parts.join(' '),source:{adapter:'coherence-svg-space-wordwrap',scope:'reviewed-public-wrapText-producers',language:'nl',partLocations:spans.map(location),x,dy:ys}});
+    }
+  }
   const selected=new Map();
   const walker=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT|NodeFilter.SHOW_ELEMENT);
   while(walker.nextNode()){
@@ -119,7 +169,7 @@ function domBlocks(){
     if(owner){if(!selected.has(owner))selected.set(owner,[]);selected.get(owner).push(node.nodeType===1?' ':node.textContent);}
   }
   for(const [el,nodes] of selected){
-    const text=nodes.join('').replace(/\s+/g,' ').trim();if(text)result.push({kind:'text',location:location(el),text});
+    const composition=journeyLabels.get(el)||svgLabels.get(el),text=(composition?composition.text:nodes.join('')).replace(/\s+/g,' ').trim();if(text)result.push({kind:'text',location:location(el),text,...(composition?{source:composition.source}:{})});
   }
   for(const el of document.querySelectorAll('[alt],[title],[aria-label],[placeholder],meta[name="description"],title')){
     if(excluded(el))continue;

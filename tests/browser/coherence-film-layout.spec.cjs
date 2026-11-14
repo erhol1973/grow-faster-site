@@ -1,4 +1,24 @@
 const {test,expect}=require('playwright/test');
+
+for(const width of [390,1366])test.describe('approved NL13 quadrant label at '+width,()=>{
+ test.use({viewport:{width,height:900}});
+ for(const lang of ['nl','fr'])test('whole wording and canonical glyphs fit their cell ('+lang+')',async({page},info)=>{
+  await page.addInitScript(l=>localStorage.setItem('avs-lang',l),lang);
+  await page.goto('/approach.html?lang='+lang);await expect(page.locator('html')).toHaveAttribute('lang',lang);
+  const svg=page.locator('#quad');await svg.scrollIntoViewIfNeeded();await page.evaluate(()=>document.fonts.ready);
+  await expect.poll(()=>svg.locator('text').nth(3).evaluate(n=>parseFloat(getComputedStyle(n).fontSize)*Math.hypot(n.getScreenCTM().c,n.getScreenCTM().d))).toBeCloseTo(12,1);
+  // The canonical diagram remains horizontally scrollable on a narrow screen.
+  await svg.evaluate(n=>{n.parentElement.scrollLeft=n.parentElement.scrollWidth-n.parentElement.clientWidth;});
+  const evidence=await svg.evaluate(n=>{
+   const text=n.querySelectorAll('text')[3],cell=n.querySelectorAll('rect')[3],port=n.parentElement,style=getComputedStyle(text),matrix=text.getScreenCTM(),bounds=r=>({left:r.left,top:r.top,right:r.right,bottom:r.bottom,width:r.width,height:r.height});
+   const glyphs=Array.from({length:text.getNumberOfChars()},(_,i)=>{const b=text.getExtentOfChar(i),corners=[[b.x,b.y],[b.x+b.width,b.y],[b.x,b.y+b.height],[b.x+b.width,b.y+b.height]].map(([x,y])=>new DOMPoint(x,y).matrixTransform(matrix));return{char:text.textContent[i],left:Math.min(...corners.map(p=>p.x)),right:Math.max(...corners.map(p=>p.x)),top:Math.min(...corners.map(p=>p.y)),bottom:Math.max(...corners.map(p=>p.y))};});
+   return{text:text.textContent,parts:[...text.querySelectorAll('tspan')].map(p=>p.textContent),fontSize:parseFloat(style.fontSize),fontFamily:style.fontFamily,physicalFontSize:parseFloat(style.fontSize)*Math.hypot(matrix.c,matrix.d),screenCTM:{a:matrix.a,b:matrix.b,c:matrix.c,d:matrix.d,e:matrix.e,f:matrix.f},cell:bounds(cell.getBoundingClientRect()),clip:bounds(port.getBoundingClientRect()),svg:bounds(n.getBoundingClientRect()),glyphs};
+  });
+  expect(evidence.text).toBe(lang==='nl'?'AI-AGENTS LATEN COÖRDINEREN':'CONFIER AUX AGENTS');expect(evidence.parts).toEqual(lang==='nl'?['AI-AGENTS LATEN','COÖRDINEREN']:[]);expect(evidence.fontFamily).toContain('Aptos');expect(evidence.physicalFontSize).toBeCloseTo(12,1);
+  for(const glyph of evidence.glyphs){expect(glyph.left).toBeGreaterThanOrEqual(evidence.cell.left-.5);expect(glyph.right).toBeLessThanOrEqual(evidence.cell.right+.5);expect(glyph.top).toBeGreaterThanOrEqual(evidence.cell.top-.5);expect(glyph.bottom).toBeLessThanOrEqual(evidence.cell.bottom+.5);expect(glyph.left).toBeGreaterThanOrEqual(evidence.clip.left-.5);expect(glyph.right).toBeLessThanOrEqual(evidence.clip.right+.5);}
+  await info.attach('actual-label-fit',{body:JSON.stringify(evidence,null,2),contentType:'application/json'});await page.screenshot({path:info.outputPath('nl13-'+lang+'-'+width+'.png')});
+ });
+});
 test.beforeEach(async({page})=>{await page.addInitScript(()=>localStorage.setItem('avs-consent',JSON.stringify({v:4,ext:false,ana:false,ts:Date.now()}))) });
 async function readySimulatorFrame(page){
   const iframe=page.locator('#ec-sim');

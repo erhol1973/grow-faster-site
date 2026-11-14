@@ -43,12 +43,16 @@ function assertInsightsProfile(profile,contract,html,built=false){
  const decoded=entities(html),unterminatedNumeric=[...html.matchAll(/&#(?:x[0-9a-f]+|[0-9]+);?/gi)].some(match=>!match[0].endsWith(';'));
  if(decoded.unknown||unterminatedNumeric)throw Error('Unknown entity in Insights protected source or artifact');
  if(/\bon[a-z]+\s*=/i.test(decoded.value)||/\bjavascript\s*:/i.test(decoded.value.replace(/[\t\n\r]/g,'')))throw Error('Insights unclassified executable HTML');
- const scripts=[...html.matchAll(/<script\b([^>]*)>([\s\S]*?)<\/script\s*>/gi)].map(([,attributes,body])=>{
+ // Recognize even browser-ignored closing attributes before rejecting them.
+ // This is a conservative inventory assertion, never an HTML sanitizer.
+ const endTags=[...html.matchAll(/<\/script\b[^>]*>/gi)];
+ if(endTags.some(([tag])=>tag.slice(2,-1).toLowerCase().replace(/[\t\n\f\r ]+$/,'')!=='script'))throw Error('Insights page script inventory contains a noncanonical end tag');
+ const scripts=[...html.matchAll(/<script\b([^>]*)>([\s\S]*?)<\/script\b[^>]*>/gi)].map(([,attributes,body])=>{
   attributes=attributes.replace(/\s+/g,' ').trim();
   if(built)attributes=attributes.replace(/(assets\/(?:models|site)\.js\?[^"<>]*)&amp;members=2(?=")/g,'$1').replace(/(assets\/i18n-insights\.js\?v=insights-1)-[a-f0-9]{12}(?=")/g,'$1');
   return{attributes,sha256:hash(body.replace(/\r\n/g,'\n'))};
  });
- if([...html.matchAll(/<script\b/gi)].length!==scripts.length||[...html.matchAll(/<\/script\s*>/gi)].length!==scripts.length)throw Error('Insights page script inventory contains an unmatched opener or closer');
+ if([...html.matchAll(/<script\b/gi)].length!==scripts.length||[...html.matchAll(/<\/script\b/gi)].length!==endTags.length||endTags.length!==scripts.length)throw Error('Insights page script inventory contains an unmatched opener or closer');
  if(JSON.stringify(scripts)!==JSON.stringify(profile.scripts))throw Error('Insights page script inventory changed: review inline and runtime lookup coverage');
 }
 function assertInsightsArtifact(root,out){

@@ -3,7 +3,7 @@ const {test}=require('node:test'),assert=require('node:assert/strict'),fs=requir
 const H=require('../scripts/coherence-dictionary.cjs'),floor=require('../scripts/coherence-dictionary.contract.json'),profile=require('../scripts/insights-dictionary.contract.json');
 const root=path.resolve(__dirname,'..'),hash=x=>crypto.createHash('sha256').update(x).digest('hex');
 function parse(text){const m=text.match(/^window\.I18N=(\{[\s\S]*\});\s*window\.I18N_HTML=(\{[\s\S]*\});\s*$/);assert.ok(m);return{I18N:JSON.parse(m[1]),I18N_HTML:JSON.parse(m[2])};}
-test('Insights721 preserves exactly the reviewed55 additions, full tuples/maps and unchanged Coherence666 data',()=>{
+test('Insights721 preserves reviewed55 additions and all tuples/maps, allowing only the reviewed NL13 wording in existing profiles',()=>{
  const fullText=fs.readFileSync(path.join(root,'dist/assets/i18n.js'),'utf8'),text=fs.readFileSync(path.join(root,'dist/assets/i18n-insights.js'),'utf8'),full=parse(fullText),data=parse(text);
  H.assertRetentionFloor(floor);H.assertInsightsProfile(profile,floor,fs.readFileSync(path.join(root,'insights.html'),'utf8'));
  assert.equal(Object.keys(data.I18N).length,721);assert.equal(profile.additionalKeys.length,55);
@@ -11,8 +11,12 @@ test('Insights721 preserves exactly the reviewed55 additions, full tuples/maps a
  assert.deepEqual(Object.keys(data.I18N).sort(),[...floor.retainedKeys,...profile.additionalKeys].sort());
  for(const key of Object.keys(data.I18N))assert.deepEqual(data.I18N[key],full.I18N[key],key);
  assert.deepEqual(data.I18N_HTML,full.I18N_HTML);assert.equal(Object.keys(data.I18N_HTML).length,9);
- assert.equal(hash(fullText),'0e721329ce34801021836ccce221121ff381f20fdaf5b8cef7e7504a86d08e73');
- assert.equal(hash(fs.readFileSync(path.join(root,'dist/assets/i18n-coherence.js'))),'3679a466ee6a6495acb98999262a46e717471b00e72fd0cca8d725eedb292ad7');
+ const coherence=fs.readFileSync(path.join(root,'dist/assets/i18n-coherence.js'),'utf8');
+ for(const [body,expected,previous]of [[fullText,'65cb62da1b6dee7118ebfff37bf94b6d94dfb23f33289e14238642eda1dcd63b','0e721329ce34801021836ccce221121ff381f20fdaf5b8cef7e7504a86d08e73'],[coherence,'26b49b3f6f4f3b956520be2817963ab8686182d055dd17e89497d0ea51f61cfd','3679a466ee6a6495acb98999262a46e717471b00e72fd0cca8d725eedb292ad7'],[text,'2787ab9a989ee8a982894c609178f302539ebd0df9c544547b1d7370f59f82f0','3316f60b9545f6a695016ea348f6301d54e1626591b356c77d30e20f85f13aab']]){
+  assert.equal(hash(body),expected,'reviewed serialized output profile');assert.equal(body.split('AI-agents laten coördineren').length,2);
+  assert.equal(hash(body.replace('AI-agents laten coördineren','Agent-enablen')),previous,'reversing only the approved NL13 literal reconstructs the complete previous bytes');
+  assert.deepEqual(parse(body).I18N['Agent-enable'],['AI-agents laten coördineren','Confier aux agents']);
+ }
  assert.ok(Buffer.byteLength(text)<=140000,'new scoped asset budget140KB; reviewed baseline133620B');
  const html=fs.readFileSync(path.join(root,'dist/insights.html'),'utf8'),tags=[...html.matchAll(/<script\b[^>]*src="([^"<>]+)"[^>]*>/g)].map(m=>m[0]);
  const dictionaries=tags.filter(t=>/i18n[^/]*\.js/.test(t));assert.equal(dictionaries.length,1);assert.match(dictionaries[0],new RegExp('defer src="assets/i18n-insights\\.js\\?v=insights-1-'+hash(text).slice(0,12)+'"'));
@@ -27,6 +31,11 @@ test('Insights fails closed for unreviewed append changes, computed inline looku
  assert.throws(()=>H.assertInsightsProfile(profile,floor,html.replace('<body','<body onload="t(remote)"')),/unclassified executable/);
  for(const scheme of ['java&#x73;cript:t(remoteKey)','java&#115;cript:t(remoteKey)','java&#x09;script:t(remoteKey)','java&#10;script:t(remoteKey)','java&#13;script:t(remoteKey)'])assert.throws(()=>H.assertInsightsProfile(profile,floor,html.replace('</body>','<a href="'+scheme+'">Unclassified lookup</a></body>')),/unclassified executable/,'entity-encoded executable URL must fail before selection');
  const built=fs.readFileSync(path.join(root,'dist/insights.html'),'utf8');assert.doesNotThrow(()=>H.assertInsightsProfile(profile,floor,built,true));
+ for(const [page,isBuilt]of [[html,false],[built,true]]){
+  for(const closer of ['</ScRiPt>','</script >','</script\t>','</script\n>','</script\r>','</script\f>','</ScRiPt\t\n\r\f >'])assert.doesNotThrow(()=>H.assertInsightsProfile(profile,floor,page.replaceAll('</script>',closer),isBuilt),'canonical HTML whitespace/case must preserve all11 pinned blocks');
+  for(const closer of ['</script\t\n bar>','</SCRIPT foo="bar">','</script foo=">">','</script/>','</script / >','</scriptx>','</ script>','</script\u00a0>','</script','</script\t\n'])assert.throws(()=>H.assertInsightsProfile(profile,floor,page.replace('</script>',closer),isBuilt),/script inventory/,'unreviewed/malformed closing syntax must not disappear from inventory');
+  for(const orphan of ['</script>','</script\t\n bar>','</script\t','<script/>','<script>'])assert.throws(()=>H.assertInsightsProfile(profile,floor,page+orphan,isBuilt),/script inventory/,'orphan/incomplete tokens must remain accounted for');
+ }
  for(const unsafe of ['java&#115cript:t(remoteKey)','java&#x73cript:t(remoteKey)'])for(const [page,isBuilt]of [[html,false],[built,true]])assert.throws(()=>H.assertInsightsProfile(profile,floor,page.replace('</body>','<a href="'+unsafe+'">Unclassified lookup</a></body>'),isBuilt),/Unknown entity/,'unsupported semicolonless numeric references must fail closed');
  assert.doesNotThrow(()=>H.assertInsightsProfile(profile,floor,built.replace('</body>','<p>&#115;afe &#x74;ext</p></body>'),true),'supported terminated numeric references remain valid');
  assert.throws(()=>H.assertInsightsProfile(profile,floor,built+' &futureUnknown;',true),/Unknown entity/,'built output must fail even when a finalizer introduced an unclassified entity');

@@ -3,7 +3,7 @@
   "scope": "rendered_local_nl_runtime_dictionaries_static_cms_and_mail",
   "technicalReview": {
     "date": "2026-11-14",
-    "reason": "Reviewed integrated member and canonical typography runtimes; all five journey scripts plus inert NL interface-copy adapter; unchanged private publication exclusions; generated case/plan/report states excluded. No baseline promotion or language approval. Prospective Insights721 is data-only:55 existing tuples appended to the unchanged666 floor, all9 maps identical, one shared13-runtime policy; generated asset inventoried without baseline promotion or human language approval.",
+    "reason": "Reviewed integrated member and canonical typography runtimes; all five journey scripts plus inert NL interface-copy adapter; unchanged private publication exclusions; generated case/plan/report states excluded. No baseline promotion or language approval. Prospective Insights721 is data-only:55 existing tuples appended to the unchanged666 floor, all9 maps identical, one shared13-runtime policy; generated asset inventoried without baseline promotion or human language approval. Reviewed approved NL wording and existing ECA locale metadata updates; exact one-tuple NL13 data profile derivations; finite14 journey and11 SVG context corrections with old finding/part provenance. No suppression, baseline promotion or official language approval. Reviewed approved NL wording and existing ECA locale metadata updates; exact one-tuple NL13 data profile derivations; finite14 journey and11 SVG context corrections with old finding/part provenance. No suppression, baseline promotion or official language approval.",
     "officialApproval": false
   },
   "javascript": [
@@ -61,7 +61,7 @@
     },
     {
       "file": "assets/eca-locales.js",
-      "sha256": "6f32ec7630e6873de8380833d1279a00c792513fe04c7fcf371c0bd56bb0bc90"
+      "sha256": "685e36700a9c222365ea7c19916b51f9ee14064fc3be66d4cc1b3e2ba9fc32aa"
     },
     {
       "file": "assets/eca-ui.js",
@@ -73,15 +73,15 @@
     },
     {
       "file": "assets/i18n-coherence.js",
-      "sha256": "3679a466ee6a6495acb98999262a46e717471b00e72fd0cca8d725eedb292ad7"
+      "sha256": "26b49b3f6f4f3b956520be2817963ab8686182d055dd17e89497d0ea51f61cfd"
     },
     {
       "file": "assets/i18n-insights.js",
-      "sha256": "3316f60b9545f6a695016ea348f6301d54e1626591b356c77d30e20f85f13aab"
+      "sha256": "2787ab9a989ee8a982894c609178f302539ebd0df9c544547b1d7370f59f82f0"
     },
     {
       "file": "assets/i18n.js",
-      "sha256": "0e721329ce34801021836ccce221121ff381f20fdaf5b8cef7e7504a86d08e73"
+      "sha256": "65cb62da1b6dee7118ebfff37bf94b6d94dfb23f33289e14238642eda1dcd63b"
     },
     {
       "file": "assets/journal.js",
@@ -121,7 +121,7 @@
     },
     {
       "file": "assets/site.js",
-      "sha256": "d52f030c2517a3d1a3521fba0d8c80522b27dc33fc0d9cf790dd5777d4e8d3cb"
+      "sha256": "69fa99160d2e0feabed6ba4409d66b978467625309a2aa2eb3319a659e6d7efd"
     },
     {
       "file": "assets/typography.js",
@@ -137,11 +137,11 @@
     },
     {
       "file": "decision-journey/assets/app.js",
-      "sha256": "c468e4cc2d1e668acb3b2a276c884045f587a080a877795ec1da141c4c88e1d0"
+      "sha256": "cca3905eb2d5606b124e1374df3e72412f437cdd756f227b18e00100afad6cee"
     },
     {
       "file": "decision-journey/assets/cases.js",
-      "sha256": "3aa323883079187402334b0ee7decf45b4b83dcdf649246ca5bb59319e825c81"
+      "sha256": "b9eb893ec616325391b7131f7c3573823550546f120229dc38a683be96dae724"
     },
     {
       "file": "decision-journey/assets/model.js",
@@ -219,7 +219,7 @@
     },
     {
       "file": "coherence-sim.html",
-      "sha256": "c7abc9b8d00fd88052bce1d2536f22acc95b80b181cd96a57f8907eef38e27fb"
+      "sha256": "f658b062f3cdfd9a934ccba62fc8eeb82f63d9ec1dfe5b8334394a615d8be109"
     },
     {
       "file": "coherence.html",

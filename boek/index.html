@@ -419,7 +419,7 @@ mark.hit { background: var(--mark); color: var(--mark-ink); border-radius: 2px; 
 .pop .incl { display: flex; align-items: center; gap: 8px; padding: 4px 8px 8px; font-size: 12.5px; color: var(--muted); }
 .pop .incl input { width: 18px; height: 18px; accent-color: var(--azure); }
 
-.toast { position: fixed; left: 50%; bottom: calc(84px + env(safe-area-inset-bottom, 0px)); transform: translate(-50%, 12px); background: var(--navy); color: #fff; padding: 10px 16px; border-radius: 999px; font-size: 13px; font-weight: 500; z-index: 50; opacity: 0; transition: opacity .2s ease, transform .2s ease; pointer-events: none; box-shadow: var(--shadow); max-width: calc(100vw - 32px); text-align: center; }
+.toast { position: fixed; left: 50%; bottom: calc(84px + env(safe-area-inset-bottom, 0px)); transform: translate(-50%, 12px); background: var(--navy); color: #fff; padding: 10px 16px; border-radius: 999px; font-size: 13px; font-weight: 500; z-index: 50; opacity: 0; transition: transform .2s ease; pointer-events: none; box-shadow: var(--shadow); max-width: calc(100vw - 32px); text-align: center; }
 .toast.show { opacity: 1; transform: translate(-50%, 0); }
 .kbd { position: fixed; inset: 0; display: grid; place-items: center; z-index: 45; padding: 16px; }
 .kbd .card { background: var(--paper); color: var(--ink); border-radius: 16px; box-shadow: var(--shadow); padding: 20px 22px; width: min(440px, 100%); }

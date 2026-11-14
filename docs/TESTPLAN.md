@@ -361,3 +361,61 @@ new browser cases cover exact NL/FR full-reference copy/meta/ARIA/type and six
 articles, real warm HTTP cache, one deferred data execution and early/late
 synthetic CMS language overrides. The failed Windows experiment remains STOP;
 these checks do not substitute for the original full Linux gates and60 samples.
+
+## GF-09 DEV entry integration,14 November2026
+
+The fourth final Approach submenu entry links to the existing decision-journey
+section; that section, both Insights Journal introductions, both reader shells
+and the public Radar host identify the same fictional exercise. Only lang=nl/fr
+is passed; no article, signal, account, return or private data is imported.
+
+Permanent entry tests cover NL/FR menu/anchor/exercise/return, public3 versus
+verified-fixture15 Journal pages, the same Radar host/focus through validated
+private-body replacement, all five member views, language changes, logout,
+no-JavaScript links and320px geometry. Component axe checks and actual native
+pointer/keyboard actions retain canonical control15/metadata14 styling. Existing
+Radar denied/tampered-template/unsafe-record/internal-copy cases keep their full
+negative assertions and also verify the public exercise host survives on the
+legacy alias. Test accounts are synthetic; these do not prove native Auth.
+
+Exactly six changed asset families use the finite20261114-gf09 cache query,
+including the separately reviewed Journal readiness correction.
+Real HTTP cache fixtures preserve old unmarked Approach localization and the old
+four-row Journal shell with current assets, then publish current marked HTML
+using new URLs. The reader's fifth row applies only to reader-with-journey;
+legacy markup keeps the original four rows. Existing revalidation/BFCache and
+version/inline-byte assertions remain. The common13-runtime guard advances only
+the reviewed site.js delta; original666/721/1296 keys/data and9HTML maps stay.
+
+These focused checks do not replace the final frozen-head full browser,security,
+load,language and60-sample performance gates. Existing272cd16 mobile LCP failures,
+Approach contrast observation and native provider/CMS acceptance remain separate.
+No production or backend publication is authorized by this DEV increment.
+
+### Bounded pre-existing layout corrections exposed during GF-09
+
+A fixed comparison against the actual272cd16 tested artifact showed the same
+narrow Radar logo/account overlap and the same guest Journal cover collapse in
+both baseline and candidate. The public host stylesheet now wraps header actions
+below480px; it never hides account/language or shrinks their canonical fonts.
+New geometry cases require non-overlap and visible controls at320/390 NL/FR in
+guest and validated-member states.
+
+Measured per-pass evidence found Journal fit callbacks running before its CSS:
+the intrinsic1920px logo produced constant1546px overflow while requested sheet
+width was repeatedly cached up to13506px. Once CSS arrived, that stale width
+persisted. A readiness latch now waits for window load (or an already-complete
+document) and a fresh document.fonts.ready before the first measurement. The
+original fitting algorithm,297x210mm canvas, iteration bounds, scale controls,
+subsequent image/ResizeObserver callbacks and all edition/auth behavior remain.
+
+Controlled native fixtures deliberately bootstrap the exact real controller
+before held CSS, retain a separate initial-load gate, select another current
+page, then release resources. They verify no early width cache, correct current
+page, natural297mm cover, complete-load late bootstrap, stable real resizing and
+paging, native zoom and genuine1800px content overflow. Existing oldHTML cache,
+protected edition integrity and full reader tests remain. An original failed
+Safari navigation assertion occurred before its destination styles completed;
+new menu-flow tests synchronize ordinary destination load before the same5s
+15px assertion. Existing Journal promo expectations now assert the exact two
+approved links in order, preserving read-edition/title/locale/return proof.

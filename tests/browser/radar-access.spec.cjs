@@ -46,6 +46,8 @@ for(const scenario of ['denied','tampered template','unsafe source','internal co
     await expect(page.getByRole('status')).toContainText('niet beschikbaar');
     await expect(page.locator('#dashboard')).toHaveCount(0);
     await expect(page.locator('article:visible')).toHaveCount(1);
+    await expect(page.locator('#radar-journey-entry')).toHaveCount(1);
+    await expect(page.locator('#radar-journey-entry a.journey-action:visible')).toHaveAttribute('href','/decision-journey/?lang=nl');
   });
 }
 

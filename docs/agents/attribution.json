@@ -21,7 +21,8 @@
     "tests/browser/decision-journey/roadmap.spec.cjs",
     "tests/browser/decision-journey/site.spec.cjs",
     "tests/browser/decision-journey/tablet.spec.cjs",
-    "tests/browser/decision-journey/value-review.spec.cjs"
+    "tests/browser/decision-journey/value-review.spec.cjs",
+    "docs/DECISION-LOG.md"
   ],
   "repository": [
     "404.html",
@@ -113,7 +114,16 @@
     "tests/typography.test.cjs",
     "transformation.html",
     "value.html",
-    "workshop.html"
+    "workshop.html",
+    "assets/radar-access.js",
+    "assets/radar-preview.css",
+    "assets/site.css",
+    "tests/browser/radar-access.spec.cjs",
+    "tests/navigation-cases.json",
+    "tests/browser/journey-entry.spec.cjs",
+    "tests/journey-entry.test.cjs",
+    "assets/journal.js",
+    "tests/browser/journal.spec.cjs"
   ],
   "performance": [
     "assets/typography.css",

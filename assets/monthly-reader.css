@@ -232,3 +232,13 @@ figcaption{font:italic 1.3rem/1.4 Georgia,serif;text-align:center;margin:.7rem a
 @media screen {
   .enhanced-reader .sheet { width: var(--sheet-width, 297mm); height: var(--sheet-height, 210mm); }
 }
+
+/* Public exercise entry stays outside every protected sheet. */
+.reader-journey{width:min(100% - 2rem,68rem);margin:.15rem auto;padding:.3rem .6rem;border-left:3px solid var(--blue);background:white}
+.reader-journey .journey-action{display:inline-block;padding:.2rem 0;font-weight:600;text-underline-offset:.2em}
+.reader-journey .journey-context{margin:.1rem 0;line-height:1.4}
+@media print{.reader-journey{display:none!important}}
+
+.reader-journey .journey-action{white-space:normal;max-width:100%;overflow-wrap:anywhere}
+
+.enhanced-reader .reader.reader-with-journey{grid-template-rows:auto auto auto minmax(0,1fr) auto}

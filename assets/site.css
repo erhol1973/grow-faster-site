@@ -1450,6 +1450,9 @@ body:has(#operating) .shift{font-size:clamp(22px,2.6vw,34px);max-width:36ch;marg
 @supports(content-visibility:auto){#decide,#simulator{content-visibility:auto;contain-intrinsic-block-size:auto 55rem}}
 
 @supports (-moz-appearance:none) or (-webkit-hyphens:none){#summary,#why,#coherence,#final,#decide,#simulator,.ec-page .ec-sec:not(.ec-simbox){content-visibility:visible;contain-intrinsic-block-size:none}}
+/* Resolve the native journey fragment against measured upstream sections. */
+body:has(#decision-journey-entry:target) #decide,body:has(#decision-journey-entry:target) #simulator{content-visibility:visible;contain-intrinsic-block-size:none}
+
 
 
 .lvl.l3 .stack .a{color:#38BDF2}
@@ -1553,3 +1556,11 @@ body:has(#operating) .shift{font-size:clamp(22px,2.6vw,34px);max-width:36ch;marg
 .practice-main section>.wrap.practice-prose{max-width:1240px}
 .practice-main section>.wrap.practice-prose>p,.practice-main section>.wrap.practice-prose>ul{max-width:74ch;margin-left:0;margin-right:0}
 body:has(#operating) .shift{text-align:left;margin-left:0;margin-right:0}
+
+/* Public fictional exercise entries reuse the canonical type roles. */
+#decision-journey-entry{scroll-margin-top:100px;margin-block:3rem;padding:2rem;border-left:4px solid var(--brand);background:var(--bg2)}
+.journey-entry-compact{margin-top:1rem;padding-top:.75rem;border-top:1px solid var(--line)}
+.journey-entry .journey-context{margin:.65rem 0 0;max-width:70ch;line-height:1.5}
+.journey-entry-compact .journey-action{background:transparent;color:var(--brand);border-color:var(--line)}
+
+.journey-entry .journey-action{white-space:normal;max-width:100%;overflow-wrap:anywhere}

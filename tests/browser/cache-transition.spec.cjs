@@ -17,7 +17,7 @@ test('revalidated typography HTML bypasses warm old component assets and execute
     const normalize=value=>value.replace(/["'\s]/g,'').toLowerCase();expect(normalize(family)).toBe(normalize(require('../typography-contract.json').family));
     expect(await page.evaluate(()=>window.__cachedTypographyFixture)).toBeUndefined();
     const current=fixture.requests.filter(request=>request.version===2&&request.file==='assets/site.js');
-    const currentURL='/assets/site.js?v=20261114-integration&members=2';
+    const currentURL='/assets/site.js?v=20261114-gf09&members=2';
     await expect(page.locator('script[src^="assets/site.js?"]')).toHaveAttribute('src',currentURL.slice(1));
     expect(current.some(request=>request.url===currentURL)).toBe(true);
     expect(fixture.requests.filter(request=>request.url===oldURL)).toHaveLength(1);
@@ -52,4 +52,16 @@ test('HTTP revalidation and Back Forward restore remain functional across a rele
     const contact=page.locator('.nav a[href="about.html"]');if(!await contact.isVisible())await page.locator('#burger').click();await contact.click();await page.goBack();await expect(page.locator('#ai-pilot')).toBeVisible();
     const restored=await page.evaluate(()=>window.__restored===true);await info.attach('cache-evidence',{body:JSON.stringify({restoredFromBFCache:restored,requests:fixture.requests},null,2),contentType:'application/json'});
   }finally{await page.close();fixture.server.closeAllConnections();await new Promise(r=>fixture.server.close(r))}
+});
+
+for(const lang of ['nl','fr'])test('old journey and four-row reader markup remain compatible with current assets and finite GF09 URLs '+lang,async({page},info)=>{
+ const fixture=createCacheServer({journeyTransition:true});await new Promise(r=>fixture.server.listen(0,'127.0.0.1',r));const base='http://127.0.0.1:'+fixture.server.address().port;
+ try{
+  await page.addInitScript(l=>{localStorage.setItem('avs-lang',l);localStorage.setItem('avs-consent',JSON.stringify({v:4,ext:false,ana:false,ts:Date.now()}));},lang);
+  const old=await page.goto(base+'/approach.html?lang='+lang+'#decision-journey-entry');expect(await old.text()).toContain('<h2 data-notr>Van signaal');await expect(page.locator('#decision-journey-entry h2')).toHaveText(lang==='fr'?'Du signal à un dossier de décision':'Van signaal naar een beslisdossier');await expect(page.locator('#decision-journey-open')).toHaveAttribute('href','decision-journey/?lang='+lang);
+  const reader=lang==='fr'?'journal-fr.html':'journal.html';await page.goto(base+'/'+reader);await expect(page.locator('.reader-journey')).toHaveCount(0);await expect(page.locator('.sheet')).toHaveCount(3);await expect(page.locator('.reader')).not.toHaveClass(/reader-with-journey/);const before=await page.locator('.page-window').boundingBox();expect(before.height).toBeGreaterThan(50);await expect(page.locator('.signup')).toBeInViewport();
+  fixture.publish();await page.goto(base+'/approach.html?lang='+lang+'#decision-journey-entry');await expect(page.locator('#decision-journey-open')).toHaveText(lang==='fr'?'Ouvrir le parcours de décision fictif →':'Open de fictieve beslisreis →');await expect(page.locator('#decision-journey-open')).toHaveAttribute('href','/decision-journey/?lang='+lang);
+  await page.goto(base+'/'+reader);await expect(page.locator('.reader-journey')).toBeVisible();await expect(page.locator('.reader')).toHaveClass(/reader-with-journey/);await expect(page.locator('.sheet')).toHaveCount(3);expect((await page.locator('.page-window').boundingBox()).height).toBeGreaterThan(50);await expect(page.locator('.signup')).toBeInViewport();
+  for(const asset of ['site.js','monthly-reader.css']){expect(fixture.requests.some(r=>r.file==='assets/'+asset&&r.url.includes('?v=20261114-integration'))).toBe(true);expect(fixture.requests.some(r=>r.file==='assets/'+asset&&r.version===2&&r.url.includes('?v=20261114-gf09'))).toBe(true);}
+ }finally{await info.attach('GF09-real-HTTP-cache-requests',{body:JSON.stringify({fixture:'bounded old component markup with current asset responses; no browser routing mocks',requests:fixture.requests},null,2),contentType:'application/json'});await page.close();fixture.server.closeAllConnections();await new Promise(r=>fixture.server.close(r));}
 });

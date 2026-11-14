@@ -8,7 +8,11 @@ test('integrated public decision route has current self-only controls, shared fi
  assert.doesNotMatch(html,/cms-config|cms-public|member-auth|hsforms|analytics|hubspot/i);
  assert.equal((html.match(/href=["'][^"']*typography\.css[^"']*["']/g)||[]).length,1);
  const app=read('decision-journey/assets/app.js');assert.match(app,/new URLSearchParams\(location\.search\)\.get\('lang'\)/);assert.match(app,/requestedLanguage==='fr'\?'fr':'nl'/);assert.match(app,/siteReturn\.href='\.\.\/approach\.html\?lang='\+state\.lang/);
- const entry=read('approach.html');assert.match(entry,/id="decision-journey-entry"/);assert.match(entry,/id="decision-journey-open"[^>]*href="decision-journey\/\?lang=nl"/);
+ const entry=read('approach.html');assert.match(entry,/id="decision-journey-entry"/);
+ const links=[...entry.matchAll(/<a\b[^>]*>/g)].map(match=>match[0]).filter(tag=>/\sid=(["'])decision-journey-open\1(?:\s|>)/.test(tag));
+ assert.equal(links.length,1,'the public entry link has one unique identity');
+ const hrefs=[...links[0].matchAll(/\shref=(["'])([^"']*)\1/g)];
+ assert.equal(hrefs.length,1);assert.equal(hrefs[0][2],'/decision-journey/?lang=nl');
 });
 test('integrated pure models use exactly the source bytes tested by the independent model fixtures',()=>{
  for(const name of ['cases.js','model.js','roadmap.js','value-review.js']){

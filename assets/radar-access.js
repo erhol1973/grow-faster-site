@@ -15,6 +15,14 @@
     event.preventDefault();
     document.getElementById('main').focus();
   });
+  const journeyEntry = document.getElementById('radar-journey-entry');
+  function syncJourney() {
+    journeyEntry?.querySelectorAll('[data-journey-locale]').forEach(node => {
+      node.hidden = node.dataset.journeyLocale !== (document.documentElement.lang.startsWith('fr') ? 'fr' : 'nl');
+    });
+  }
+  syncJourney();
+  new MutationObserver(syncJourney).observe(document.documentElement,{attributes:true,attributeFilter:['lang']});
   const auth = window.GFMember;
   if (!auth) return;
   document.querySelectorAll('[data-member-link]').forEach(a => { a.href = auth.accountUrl(); });
@@ -63,14 +71,18 @@
     template.content.querySelector('noscript')?.remove();
     // Keep the focused skip link connected while the private edition replaces the preview.
     const wasInMain = document.activeElement === document.getElementById('main');
+    const journeyFocus = journeyEntry?.contains(document.activeElement) ? document.activeElement : null;
+    journeyEntry?.remove();
     template.content.querySelector('.skip').remove();
     for (const child of Array.from(document.body.childNodes)) {
       if (child !== skip) child.remove();
     }
     document.body.append(template.content);
     document.querySelector('.header-right').prepend(account);
+    if (journeyEntry) document.querySelector('.site-header').after(journeyEntry);
     window.openMemberRadar();
     if (wasInMain) document.getElementById('main').focus({preventScroll:true});
+    if (journeyFocus?.isConnected) journeyFocus.focus({preventScroll:true});
   } catch {
     const status = document.getElementById('radar-status');
     if (status) status.textContent = fr ? 'L’édition complète est momentanément indisponible.' : 'De volledige ledeneditie is momenteel niet beschikbaar.';

@@ -395,7 +395,10 @@
     pick(curSpec);evalP();sim();renderBPMN();coh();if(typeof fitNav==="function")fitNav();
     if(save)store.set("avs-lang",l);
     root.classList.add("i18n-ready");
-    const journeyEntry=document.getElementById('decision-journey-entry');if(journeyEntry){journeyEntry.querySelector('h2').textContent=l==='fr'?'Du signal à un dossier de décision':'Van signaal naar een beslisdossier';journeyEntry.querySelector('p').textContent=l==='fr'?'Explorez un cas fictif, formulez un choix, planifiez 90 jours et examinez les résultats saisis. Aucune donnée réelle ni stockage.':'Verken een fictieve casus, maak een afweging, plan 90 dagen en beoordeel ingevoerde resultaten. Geen echte bedrijfsgegevens of opslag.';const link=journeyEntry.querySelector('#decision-journey-open');link.textContent=l==='fr'?'Ouvrir le parcours executive →':'Open de fictieve beslisreis →';link.href='decision-journey/?lang='+(l==='fr'?'fr':'nl');}
+    const journeyEntry=document.getElementById('decision-journey-entry');if(journeyEntry&&!journeyEntry.querySelector('[data-journey-copy]')){journeyEntry.querySelector('h2').textContent=l==='fr'?'Du signal à un dossier de décision':'Van signaal naar een beslisdossier';journeyEntry.querySelector('p').textContent=l==='fr'?'Explorez un cas fictif, formulez un choix, planifiez 90 jours et examinez les résultats saisis. Aucune donnée réelle ni stockage.':'Verken een fictieve casus, maak een afweging, plan 90 dagen en beoordeel ingevoerde resultaten. Geen echte bedrijfsgegevens of opslag.';const link=journeyEntry.querySelector('#decision-journey-open');link.textContent=l==='fr'?'Ouvrir le parcours executive →':'Open de fictieve beslisreis →';link.href='decision-journey/?lang='+(l==='fr'?'fr':'nl');}
+    document.querySelectorAll('[data-journey-copy]').forEach(n=>n.textContent=n.dataset[l==='fr'?'journeyFr':'journeyNl']);
+    document.querySelectorAll('[data-journey-menu]').forEach(a=>a.href='approach.html?lang='+l+'#decision-journey-entry');
+    document.querySelectorAll('[data-journey-link]').forEach(a=>a.href='/decision-journey/?lang='+l);
     document.dispatchEvent(new CustomEvent("gf:language",{detail:{language:l}}));
   }
   /* language menus */

@@ -146,7 +146,11 @@ test('journal promotion follows selected language and return link restores it',a
   const promo=page.locator('#executive-journal');
   await expect(promo.getByText(title,{exact:true})).toBeVisible();
   await expect(promo.locator('[data-article-lang]:visible')).toHaveCount(1);
-  await expect(promo.locator('a:visible')).toHaveCount(1);
+  await expect(promo.locator('a:visible')).toHaveCount(2);
+  await expect(promo.locator('a:visible').first()).toHaveText(cta+' →');
+  await expect(promo.locator('a:visible').first()).toHaveAttribute('href',route);
+  await expect(promo.locator('a:visible').nth(1)).toHaveText(lang==='fr'?'Ouvrir le parcours de décision fictif →':'Open de fictieve beslisreis →');
+  await expect(promo.locator('a:visible').nth(1)).toHaveAttribute('href','/decision-journey/?lang='+lang);
   await promo.getByRole('link',{name:cta}).click();
   await expect(page).toHaveURL(new RegExp(route+'$'));
   await page.locator('.return-link').click();

@@ -384,3 +384,87 @@ parent digest and append-only history. The explicit3,782-record machine
 checkpoint is not human language approval or a zero-linguistic-error claim.
 The next clean PR scan must validate unchanged content and the reviewed
 extraction contract; all original full Linux gates remain required.
+
+## Verified baseline and DEV discoverability increment
+
+The subsequent exact-head272cd16 checks completed:341 units,1,127 base browser
+passes with13 existing skips,1,725 typography passes and128 journey passes.
+The local load run completed520 requests without errors (p95 27.236ms).
+All60 Lighthouse samples completed, with four mobile LCP medians above the
+unchanged2,500ms limit: Home2,539.330ms, Coherence2,504.711ms, About2,511.133ms
+and Books2,509.144ms. The full quality run43617174998 failed; deployment and
+public verification were skipped. The separate Dutch scan43617175033 passed
+with no new findings or engine errors and retained all3,782 records. This
+baseline evidence does not accept later source changes.
+
+The sponsor subsequently authorized DEV discoverability: a decision-journey
+section link under Approach and public exercise links from Journal and Radar,
+including the persistent reader/member shells. The finite example remains
+independent: only the active NL/FR locale may cross the link. No source article,
+signal, membership data or personal dossier is transferred. Existing private
+edition bytes, hashes, access controls and the exercise return route remain.
+This increment requires its own lasting route, locale, reader-layout,
+verified-member-mount, accessibility and negative regression evidence before
+acceptance. It does not close the previous performance or native acceptance
+conditions. Production remains unchanged.
+
+### GF-09 implementation and local verification
+
+Approach now exposes the existing exercise as its fourth submenu/topic route.
+The Journal introduction, both reader shells and Radar guest/member shell link
+to the same explicitly fictional exercise. Links transfer only lang=nl/fr;
+article/signal data and account state are not imported. Journal sheets and all
+four protected publication digests remain exact. Radar retains the same public
+host and focused link across its verified private-body replacement.
+
+Image review exposed two defects also present in the exact272 baseline:
+narrow Radar account/logo overlap and an unstyled Journal measurement poisoning
+the cached cover width. Bounded header wrapping and a load/current-fonts latch
+correct them without changing type, paper aspect, fitting algorithm, zoom,
+edition content or access controls. A separate cold-anchor regression then found
+four genuine Chromium failures previously masked by focusing the CTA. Fixed
+NL/FR A/B measurements isolate the preceding deferred-layout estimates; the CSS
+override applies only while the journey entry is the active fragment target.
+Ordinary-target layout policy, same-document fragments and Back/Forward remain
+covered before test-driven focus or scrolling.
+
+The final local public artifact contains204 files,52,618,490bytes; its explicit
+sorted-row manifest is fdd8fa00bb3b3028bcae01bdbb41c15d8543aaba720e059052bfab74da90c02a.
+All204 current hashes were independently checked. The final formatting change
+is exactly one CR byte removed from native-tested build4, with inverse proof;
+the other203 public files remain exact. Eight live loopback responses, including
+the changed stylesheet/controller, match the final artifact. No production,
+provider, database, Storage publication or account operation was performed.
+
+Verification scope and retained failures:
+
+- All344 general units pass in one fixed sequential Windows invocation. The
+  earlier343/344 run retained an obsolete relative-URL/attribute-order fixture;
+  its repair asserts one unique link and the exact approved destination.
+- The195-case integration round retains192 passes and three failures. The
+  subsequent87-case targeted round retains81 passes and six failures. Traces
+  distinguish premature resource assertions, exact-link fixture mistakes and
+  a responsive Firefox renderer with an unacknowledged native resize command.
+  Corrected22 cases pass on the unchanged implementation. This is combined
+  scoped evidence, not a newly executed clean87-case run.
+- The root entry/return/type and cold-anchor/history suite passes25/25 across
+  five profiles after the actual landing correction. Its earlier21/25 failure
+  remains preserved. Visual review opens49 actual images, including two retained
+  unusable blanks; it does not invent a physical-device or full-WCAG result.
+- The final registration inventory contains3,113 unique browser identities,
+  retaining all2,993 identities from the actual272 CI evidence. There are120
+  additions:100 entry/reader/header cases,10 HTTP cache cases and10 cold-anchor
+  cases. No existing test, threshold, retry or skip policy was removed.
+- The local-only load run completes520 requests with zero errors and
+  p95=151.7734ms against the unchanged1,500ms limit. Artifact security/public
+  policy checks pass within their heuristic scope; this is not production
+  capacity or Core Web Vitals evidence.
+
+The Dutch extraction review keeps all37 JavaScript and37 inline-source
+identities. Only the reviewed site, Radar-access and Journal-controller JS
+fingerprints advance; no inline script, global dictionary key/tuple/map or
+historical3,782-record ledger is silently changed. The complete committed-source
+engine scan and fresh full-head Linux checks remain separate required evidence.
+The four old mobile LCP failures, Approach contrast observation and native
+HubSpot/Auth/CMS owner conditions are not implicitly cleared by this increment.
+Production and main remain on hold.

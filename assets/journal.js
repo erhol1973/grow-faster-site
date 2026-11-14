@@ -24,7 +24,9 @@ function sizeSheet(sheet, width) {
   sheet.style.setProperty('--sheet-height', width / pageAspect + 'px');
 }
 
+let layoutReady = false;
 function fitPage() {
+  if (!layoutReady) return;
   const sheet = sheets[current];
   if (!sheet || sheet.hidden) return;
   let width = measuredWidth.get(sheet) || baseWidth;
@@ -50,7 +52,14 @@ function fitPage() {
 document.documentElement.classList.add('enhanced-reader');
 new ResizeObserver(fitPage).observe(windowArea);
 book.addEventListener('load', fitPage, true);
-document.fonts.ready.then(fitPage);
+function enableLayout() {
+  document.fonts.ready.then(() => {
+    layoutReady = true;
+    fitPage();
+  });
+}
+if (document.readyState === 'complete') enableLayout();
+else window.addEventListener('load', enableLayout, {once:true});
 zoom.addEventListener('click', () => {
   enlarged = !enlarged;
   readingScale = 1;

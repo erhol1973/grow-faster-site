@@ -128,7 +128,8 @@ test('book search snippets and DOM ranges keep original soft-hyphen offsets',()=
 });
 test('source and built HTML invalidate cached copies of the finite changed asset set',()=>{
  const version='20261114-integration';
- const changed=new Set(['assets/site.js','assets/site.css','assets/journal.css','assets/monthly-reader.css','assets/workshop.css','assets/baies-dev.css','assets/baies-dev-app.js','assets/typography.css','assets/typography.js','assets/book-reading.css']);
+ const gf09=new Set(['assets/site.js','assets/site.css','assets/monthly-reader.css','assets/radar-access.js','assets/radar-preview.css','assets/journal.js']);
+ const changed=new Set(['assets/site.js','assets/site.css','assets/journal.css','assets/monthly-reader.css','assets/workshop.css','assets/baies-dev.css','assets/baies-dev-app.js','assets/typography.css','assets/typography.js','assets/book-reading.css',...gf09]);
  // Public source routes are filesystem content, not a Git trust operation.
  // Include root pages, both readers, the radar source and legacy article routes.
  const source=fs.readdirSync('.',{withFileTypes:true}).filter(entry=>entry.isFile()&&entry.name.endsWith('.html')).map(entry=>entry.name);
@@ -142,7 +143,7 @@ test('source and built HTML invalidate cached copies of the finite changed asset
    const [location]=url.split('#'),[base,query='']=location.split('?');
    const target=base.startsWith('/')?base.slice(1):path.posix.normalize(path.posix.join(path.posix.dirname(file),base));
    if(!changed.has(target))continue;seen.add(target);
-   assert.deepEqual(new URLSearchParams(query).getAll('v'),[version],root+'/'+file+' '+target+' must bypass its previous cached asset');
+   assert.deepEqual(new URLSearchParams(query).getAll('v'),[gf09.has(target)?'20261114-gf09':version],root+'/'+file+' '+target+' must bypass its previous cached asset');
   }
   // New HTML can deliver the exact component bytes inline; those bytes cannot
   // be a stale cached stylesheet response. Standalone fallback is still present.

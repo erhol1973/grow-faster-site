@@ -348,3 +348,29 @@ clean Linux checks. Artifact security passes within its stated heuristic scope.
 The final formatting build changes only one ECA line-ending byte relative to
 the native-tested package; the other203 public files are byte-identical.
 The complete post-correction engine scan and fresh exact-head CI remain required.
+
+The complete committed-source scan on ef238a2 checked35 changed blocks, retained
+all3,777 earlier records and reported four additional suggestions with no engine
+errors. An independent full-context review retains the Dutch compounds
+`beslisreis` and `Orderuitzonderingen` and the intact English lane caption
+`BUSINESS & STRATEGY`. It recommends the clearer Dutch label `AI-agenten laten
+coördineren` as an editorial choice, without asserting that the borrowed plural
+is universally forbidden. Uppercase detector suggestions are not hidden by
+changing case. The historical checkpoint preserves all3,781 full records.
+
+The finite follow-up changes only that NL dictionary tuple, its shared renderer
+and dependent proof/inventory. The renderer reads the existing translated value
+once, splits only the exact approved NL caption and retains the original
+translation fallback for other values. FR, all other tuples, nine maps and the
+original retention floor remain intact. New native fit/override checks, the
+actual committed-source scan and final-head CI remain separate required proof.
+
+The final Dutch-label candidate passes seven focused data/cache/guard units and
+one25-case native run:20 actual geometry cases and five real FR/NL control-toggle
+cases proving that custom translated values retain the original fallback.
+All deadlines/assertions stay; no toast/ECA rerun substitutes for their retained
+evidence. Twenty geometry records and scoped native screenshots are preserved.
+Artifact security also passes. Test-only CRLF normalization after that run is
+proved reversible with identical LF-normalized code; it changes no public byte.
+The complete204-file candidate is52,607,437bytes. New committed-source language
+and exact-head full Linux evidence are still required before global acceptance.

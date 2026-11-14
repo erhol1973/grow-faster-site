@@ -3,7 +3,7 @@
   "scope": "rendered_local_nl_runtime_dictionaries_static_cms_and_mail",
   "technicalReview": {
     "date": "2026-11-14",
-    "reason": "Reviewed integrated member and canonical typography runtimes; all five journey scripts plus inert NL interface-copy adapter; unchanged private publication exclusions; generated case/plan/report states excluded. No baseline promotion or language approval. Prospective Insights721 is data-only:55 existing tuples appended to the unchanged666 floor, all9 maps identical, one shared13-runtime policy; generated asset inventoried without baseline promotion or human language approval. Reviewed approved NL wording and existing ECA locale metadata updates; exact one-tuple NL13 data profile derivations; finite14 journey and11 SVG context corrections with old finding/part provenance. No suppression, baseline promotion or official language approval. Reviewed approved NL wording and existing ECA locale metadata updates; exact one-tuple NL13 data profile derivations; finite14 journey and11 SVG context corrections with old finding/part provenance. No suppression, baseline promotion or official language approval.",
+    "reason": "Reviewed integrated member and canonical typography runtimes; all five journey scripts plus inert NL interface-copy adapter; unchanged private publication exclusions; generated case/plan/report states excluded. No baseline promotion or language approval. Prospective Insights721 is data-only:55 existing tuples appended to the unchanged666 floor, all9 maps identical, one shared13-runtime policy; generated asset inventoried without baseline promotion or human language approval. Reviewed approved NL wording and existing ECA locale metadata updates; exact one-tuple NL13 data profile derivations; finite14 journey and11 SVG context corrections with old finding/part provenance. No suppression, baseline promotion or official language approval. Reviewed approved NL wording and existing ECA locale metadata updates; exact one-tuple NL13 data profile derivations; finite14 journey and11 SVG context corrections with old finding/part provenance. No suppression, baseline promotion or official language approval. Preferred Dutch AI-agenten one-tuple wording and existing-dictionary-aware NL13 producer; other tuples/maps and coverage unchanged; historical checkpoint is not language approval.",
     "officialApproval": false
   },
   "javascript": [
@@ -73,15 +73,15 @@
     },
     {
       "file": "assets/i18n-coherence.js",
-      "sha256": "26b49b3f6f4f3b956520be2817963ab8686182d055dd17e89497d0ea51f61cfd"
+      "sha256": "c02690e90711593ccc2380f6a1ba8762f067fb0a9e08e65698a5a84b7131ddf7"
     },
     {
       "file": "assets/i18n-insights.js",
-      "sha256": "2787ab9a989ee8a982894c609178f302539ebd0df9c544547b1d7370f59f82f0"
+      "sha256": "99e019e823b5dd9e8cdad221daaee99a750f4ca94588e7c362093ecb3ecca92d"
     },
     {
       "file": "assets/i18n.js",
-      "sha256": "65cb62da1b6dee7118ebfff37bf94b6d94dfb23f33289e14238642eda1dcd63b"
+      "sha256": "abba28169e8b02803652e9d0ed682fe21c8fd3c353c046f6939ff8c43bd4a6ce"
     },
     {
       "file": "assets/journal.js",
@@ -121,7 +121,7 @@
     },
     {
       "file": "assets/site.js",
-      "sha256": "69fa99160d2e0feabed6ba4409d66b978467625309a2aa2eb3319a659e6d7efd"
+      "sha256": "af0730d779ae58c34b268d1ec188ce57560a7c0fafc20b89c7f73f0f0d827178"
     },
     {
       "file": "assets/typography.js",

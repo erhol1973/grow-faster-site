@@ -12,10 +12,11 @@ test('Insights721 preserves reviewed55 additions and all tuples/maps, allowing o
  for(const key of Object.keys(data.I18N))assert.deepEqual(data.I18N[key],full.I18N[key],key);
  assert.deepEqual(data.I18N_HTML,full.I18N_HTML);assert.equal(Object.keys(data.I18N_HTML).length,9);
  const coherence=fs.readFileSync(path.join(root,'dist/assets/i18n-coherence.js'),'utf8');
- for(const [body,expected,previous]of [[fullText,'65cb62da1b6dee7118ebfff37bf94b6d94dfb23f33289e14238642eda1dcd63b','0e721329ce34801021836ccce221121ff381f20fdaf5b8cef7e7504a86d08e73'],[coherence,'26b49b3f6f4f3b956520be2817963ab8686182d055dd17e89497d0ea51f61cfd','3679a466ee6a6495acb98999262a46e717471b00e72fd0cca8d725eedb292ad7'],[text,'2787ab9a989ee8a982894c609178f302539ebd0df9c544547b1d7370f59f82f0','3316f60b9545f6a695016ea348f6301d54e1626591b356c77d30e20f85f13aab']]){
-  assert.equal(hash(body),expected,'reviewed serialized output profile');assert.equal(body.split('AI-agents laten coördineren').length,2);
-  assert.equal(hash(body.replace('AI-agents laten coördineren','Agent-enablen')),previous,'reversing only the approved NL13 literal reconstructs the complete previous bytes');
-  assert.deepEqual(parse(body).I18N['Agent-enable'],['AI-agents laten coördineren','Confier aux agents']);
+ for(const [body,expected,previous]of [[fullText,'abba28169e8b02803652e9d0ed682fe21c8fd3c353c046f6939ff8c43bd4a6ce','0e721329ce34801021836ccce221121ff381f20fdaf5b8cef7e7504a86d08e73'],[coherence,'c02690e90711593ccc2380f6a1ba8762f067fb0a9e08e65698a5a84b7131ddf7','3679a466ee6a6495acb98999262a46e717471b00e72fd0cca8d725eedb292ad7'],[text,'99e019e823b5dd9e8cdad221daaee99a750f4ca94588e7c362093ecb3ecca92d','3316f60b9545f6a695016ea348f6301d54e1626591b356c77d30e20f85f13aab']]){
+  assert.equal(hash(body),expected,'reviewed serialized output profile');assert.equal(body.split('AI-agenten laten coördineren').length,2);
+  assert.equal(hash(body.replace("AI-agenten laten coördineren","AI-agents laten coördineren")),{"abba28169e8b02803652e9d0ed682fe21c8fd3c353c046f6939ff8c43bd4a6ce":"65cb62da1b6dee7118ebfff37bf94b6d94dfb23f33289e14238642eda1dcd63b","c02690e90711593ccc2380f6a1ba8762f067fb0a9e08e65698a5a84b7131ddf7":"26b49b3f6f4f3b956520be2817963ab8686182d055dd17e89497d0ea51f61cfd","99e019e823b5dd9e8cdad221daaee99a750f4ca94588e7c362093ecb3ecca92d":"2787ab9a989ee8a982894c609178f302539ebd0df9c544547b1d7370f59f82f0"}[expected],'one wording reversal reconstructs exact ef238a2 serialized profile');
+  assert.equal(hash(body.replace('AI-agenten laten coördineren','Agent-enablen')),previous,'reversing only the approved NL13 literal reconstructs the complete previous bytes');
+  assert.deepEqual(parse(body).I18N['Agent-enable'],['AI-agenten laten coördineren','Confier aux agents']);
  }
  assert.ok(Buffer.byteLength(text)<=140000,'new scoped asset budget140KB; reviewed baseline133620B');
  const html=fs.readFileSync(path.join(root,'dist/insights.html'),'utf8'),tags=[...html.matchAll(/<script\b[^>]*src="([^"<>]+)"[^>]*>/g)].map(m=>m[0]);

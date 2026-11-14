@@ -14,11 +14,24 @@ for(const width of [390,1366])test.describe('approved NL13 quadrant label at '+w
    const glyphs=Array.from({length:text.getNumberOfChars()},(_,i)=>{const b=text.getExtentOfChar(i),corners=[[b.x,b.y],[b.x+b.width,b.y],[b.x,b.y+b.height],[b.x+b.width,b.y+b.height]].map(([x,y])=>new DOMPoint(x,y).matrixTransform(matrix));return{char:text.textContent[i],left:Math.min(...corners.map(p=>p.x)),right:Math.max(...corners.map(p=>p.x)),top:Math.min(...corners.map(p=>p.y)),bottom:Math.max(...corners.map(p=>p.y))};});
    return{text:text.textContent,parts:[...text.querySelectorAll('tspan')].map(p=>p.textContent),fontSize:parseFloat(style.fontSize),fontFamily:style.fontFamily,physicalFontSize:parseFloat(style.fontSize)*Math.hypot(matrix.c,matrix.d),screenCTM:{a:matrix.a,b:matrix.b,c:matrix.c,d:matrix.d,e:matrix.e,f:matrix.f},cell:bounds(cell.getBoundingClientRect()),clip:bounds(port.getBoundingClientRect()),svg:bounds(n.getBoundingClientRect()),glyphs};
   });
-  expect(evidence.text).toBe(lang==='nl'?'AI-AGENTS LATEN COÖRDINEREN':'CONFIER AUX AGENTS');expect(evidence.parts).toEqual(lang==='nl'?['AI-AGENTS LATEN','COÖRDINEREN']:[]);expect(evidence.fontFamily).toContain('Aptos');expect(evidence.physicalFontSize).toBeCloseTo(12,1);
+  expect(evidence.text).toBe(lang==='nl'?'AI-AGENTEN LATEN COÖRDINEREN':'CONFIER AUX AGENTS');expect(evidence.parts).toEqual(lang==='nl'?['AI-AGENTEN LATEN','COÖRDINEREN']:[]);expect(evidence.fontFamily).toContain('Aptos');expect(evidence.physicalFontSize).toBeCloseTo(12,1);
   for(const glyph of evidence.glyphs){expect(glyph.left).toBeGreaterThanOrEqual(evidence.cell.left-.5);expect(glyph.right).toBeLessThanOrEqual(evidence.cell.right+.5);expect(glyph.top).toBeGreaterThanOrEqual(evidence.cell.top-.5);expect(glyph.bottom).toBeLessThanOrEqual(evidence.cell.bottom+.5);expect(glyph.left).toBeGreaterThanOrEqual(evidence.clip.left-.5);expect(glyph.right).toBeLessThanOrEqual(evidence.clip.right+.5);}
-  await info.attach('actual-label-fit',{body:JSON.stringify(evidence,null,2),contentType:'application/json'});await page.screenshot({path:info.outputPath('nl13-'+lang+'-'+width+'.png')});
+  const evidencePath=info.outputPath('actual-label-fit.json');await require('node:fs/promises').writeFile(evidencePath,JSON.stringify(evidence,null,2)+'\n');await info.attach('actual-label-fit',{path:evidencePath,contentType:'application/json'});await page.screenshot({path:info.outputPath('nl13-'+lang+'-'+width+'.png')});
  });
 });
+
+test('quadrant uses the current translated label and preserves custom NL fallback through real FR and NL controls',async({page})=>{
+ await page.addInitScript(()=>localStorage.setItem('avs-lang','nl'));await page.goto('/approach.html?lang=nl');
+ const target=page.locator('#quad text').nth(3);await expect(target).toHaveText('AI-AGENTEN LATEN COÖRDINEREN');
+ const initial=await page.locator('#quad text').evaluateAll(nodes=>nodes.slice(0,3).map(n=>n.textContent));
+ const french=await page.evaluate(()=>{const pair=window.I18N['Agent-enable'];const original=pair[1];pair[0]='Eigen NL-label';return original.toUpperCase();});
+ async function select(lang){await page.locator('#lang-btn-top').click();await page.locator('.lang-top [data-lang="'+lang+'"]').click();await expect(page.locator('html')).toHaveAttribute('lang',lang);}
+ await select('fr');await expect(target).toHaveText(french);await expect(target.locator('tspan')).toHaveCount(0);
+ await select('nl');await expect(target).toHaveText('EIGEN NL-LABEL');await expect(target.locator('tspan')).toHaveCount(0);expect(await page.locator('#quad text').evaluateAll(nodes=>nodes.slice(0,3).map(n=>n.textContent))).toEqual(initial);
+ await expect.poll(()=>target.evaluate(n=>parseFloat(getComputedStyle(n).fontSize)*Math.hypot(n.getScreenCTM().c,n.getScreenCTM().d))).toBeCloseTo(12,1);
+ await page.evaluate(()=>{window.I18N['Agent-enable'][0]='AI-agenten laten coördineren';});await select('fr');await expect(target).toHaveText(french);await select('nl');await expect(target).toHaveText('AI-AGENTEN LATEN COÖRDINEREN');expect(await target.locator('tspan').allTextContents()).toEqual(['AI-AGENTEN LATEN','COÖRDINEREN']);
+});
+
 test.beforeEach(async({page})=>{await page.addInitScript(()=>localStorage.setItem('avs-consent',JSON.stringify({v:4,ext:false,ana:false,ts:Date.now()}))) });
 async function readySimulatorFrame(page){
   const iframe=page.locator('#ec-sim');

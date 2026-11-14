@@ -468,3 +468,21 @@ engine scan and fresh full-head Linux checks remain separate required evidence.
 The four old mobile LCP failures, Approach contrast observation and native
 HubSpot/Auth/CMS owner conditions are not implicitly cleared by this increment.
 Production and main remain on hold.
+
+The subsequent complete source596060e Dutch run checks129 changed blocks and
+preserves all3,782 earlier records. It reports65 new suggestions with zero
+engine errors. Every identity, full context, offset and range receives an agent
+assessment independently checked against the actual report:57 contextual retain
+decisions and8 finite extraction artifacts, with no necessary publication-text
+correction. The exact3,847-record checkpoint9f1faa7 is committed before any
+extractor correction; statuses/history are not rewritten as human approval.
+
+Seven public Journal owners were fusing separate folio, timeline, stage, year
+and quote/citation text. The finite Dutch three-page adapter now exposes their
+26 existing semantic parts with original-owner/part provenance. Unknown shapes
+fail closed. Its fixtures preserve the eight actual historical tuples, every
+unhandled row and all original character order, and reject36 structural/private
+mutations. Focused19/19 and full346/346 sequential Windows tests pass. No website,
+protected payload, dictionary, engine version or public artifact byte changes.
+Fresh full Linux checks and the committed-source rescan remain required; additional legitimate suggestions in
+the corrected contexts are assessed and preserved rather than suppressed.

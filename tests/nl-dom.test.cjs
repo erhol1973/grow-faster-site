@@ -2,6 +2,18 @@
 const {test}=require('node:test'),assert=require('node:assert/strict');
 const {chromium}=require('playwright');
 const {domBlocks,inlineScripts}=require('../scripts/nl-audit.cjs');
+const fs=require('node:fs'),path=require('node:path');
+const journalFindingFixture=require('./support/public-journal-boundary-findings.json');
+
+async function journalFixturePage(browser,html){
+ const page=await browser.newPage(),requests=[];
+ await page.route('http://journal-fixture.test/**',route=>{
+  requests.push({url:route.request().url(),method:route.request().method()});
+  if(!['/journal.html','/generic.html','/other.html'].includes(new URL(route.request().url()).pathname))return route.abort();
+  return route.fulfill({contentType:'text/html; charset=utf-8',headers:{'Content-Security-Policy':"default-src 'none'; script-src 'none'"},body:html});
+ });
+ return {page,requests};
+}
 test('DOM extraction retains sentence context, hidden NL, metadata and dictionary; excludes French',async()=>{
   const browser=await chromium.launch({executablePath:process.env.TEST_BROWSER_EXECUTABLE||undefined});
   try{
@@ -84,5 +96,82 @@ test('journey extraction composes only reviewed semantic label parts and fails c
   // Route identity prevents deleting the scope class to bypass the finite contract.
   await page.route('http://127.0.0.1/**',route=>route.fulfill({contentType:'text/html',body:html.replace('class="decision-journey-page"','')}));
   await page.goto('http://127.0.0.1/decision-journey/index.html');await assert.rejects(page.evaluate(domBlocks),/scope class missing/);
+ }finally{await browser.close();}
+});
+
+test('public Journal preserves every non-owner context and redirects seven fused owners into twenty-six original parts',async()=>{
+ const browser=await chromium.launch({executablePath:process.env.TEST_BROWSER_EXECUTABLE||undefined});
+ try{
+  const html=fs.readFileSync(path.join(__dirname,'../journal.html'),'utf8'),{page,requests}=await journalFixturePage(browser,html);
+  await page.goto('http://journal-fixture.test/generic.html');const generic=await page.evaluate(domBlocks);
+  await page.goto('http://journal-fixture.test/journal.html');const rows=await page.evaluate(domBlocks),parts=rows.filter(row=>row.source?.adapter==='public-journal-semantic-parts');
+  assert.equal(parts.length,26);assert.equal(new Set(parts.map(row=>row.location)).size,26);
+  const owners=new Set(journalFindingFixture.findings.map(f=>f.blockId));assert.equal(owners.size,7);assert.equal(journalFindingFixture.findings.length,8);
+  const blockId=row=>'journal.html#'+row.kind+':'+row.location;
+  for(const finding of journalFindingFixture.findings){
+   const previous=generic.find(row=>blockId(row)===finding.blockId);assert.ok(previous,finding.blockId);assert.equal(previous.text,finding.context);assert.equal(require('../scripts/nl-audit.cjs').hash(previous.text),finding.textHash);assert.ok(finding.offset+finding.length<=finding.context.length);
+  }
+  // The inactive-route extraction is the unchanged generic reference on exactly
+  // the same inert public HTML, not a reconstructed copy of the new algorithm.
+  assert.deepEqual(rows.filter(row=>!parts.includes(row)),generic.filter(row=>!owners.has(blockId(row))));
+  for(const owner of owners){
+   const original=generic.find(row=>blockId(row)===owner),derived=parts.filter(row=>row.source.formerBlockId===owner);
+   assert.ok(derived.length>=2);assert.equal(derived.map(row=>row.text).join('').replace(/\s/g,''),original.text.replace(/\s/g,''));
+   assert.ok(derived.every(row=>row.source.ownerLocation===original.location&&row.source.partLocations.length===1&&row.source.partLocations[0]===row.location&&row.source.scope==='committed-public-opening-three-pages'&&row.source.language==='nl'));
+   assert.ok(!rows.some(row=>row.text===original.text),'old fused context must be replaced, never retained alongside parts');
+  }
+  for(const text of ['Wittebroodsweken','Het tijdvenster van de CEO','7,1 jaar → vertrek','Experimenteren','Opschalen','Het operating model herontwerpen','Verankerde waarde',...Array.from({length:11},(_,i)=>'J'+i),'‘Die wittebroodsweken zijn sterk ingekort.’','Laura Sanderson, Russell Reynolds Associates, over de eerste jaren van een CEO-mandaat [1]'])assert.ok(parts.some(row=>row.text===text),text);
+  assert.equal(await page.locator('.sheet').count(),3);assert.equal(await page.evaluate(()=>typeof window.GFMember),'undefined');assert.ok(requests.every(r=>r.method==='GET'&&!/auth|storage|rpc|member-content/.test(r.url)));
+ }finally{await browser.close();}
+});
+
+test('public Journal shape loss, unknown labels, nesting and private editions fail closed without changing generic text extraction',async()=>{
+ const browser=await chromium.launch({executablePath:process.env.TEST_BROWSER_EXECUTABLE||undefined});
+ try{
+  const source=fs.readFileSync(path.join(__dirname,'../journal.html'),'utf8'),{page}=await journalFixturePage(browser,source);await page.goto('http://journal-fixture.test/journal.html');
+  const good=await page.content();
+  const mutations=[
+   ()=>document.documentElement.classList.remove('exact-edition'),
+   ()=>document.documentElement.lang='fr',
+   ()=>document.querySelector('#journal-content').classList.remove('reader'),
+   ()=>document.querySelector('.book').remove(),
+   ()=>document.querySelector('.book').removeAttribute('data-edition-digest'),
+   ()=>document.querySelector('.page-window').classList.remove('page-window'),
+   ()=>document.querySelector('#p3').remove(),
+   ()=>document.querySelector('#p3').id='p4',
+   ()=>{const n=document.querySelector('#p3').cloneNode(true);n.id='p4';document.querySelector('.book').append(n);},
+   ()=>{for(let i=4;i<=15;i++){const n=document.querySelector('#p3').cloneNode(true);n.id='p'+i;document.querySelector('.book').append(n);}},
+   ()=>document.querySelector('#p2 .paper-content').classList.remove('paper-content'),
+   ()=>document.querySelector('#p1 .folio').classList.remove('folio'),
+   ()=>document.querySelector('#p2 .folio').remove(),
+   ()=>document.querySelector('#p3 .folio').append(document.createElement('span')),
+   ()=>document.querySelector('#p1 .folio').prepend('Extra visible label'),
+   ()=>document.querySelector('#p2 .folio span:last-child').textContent='03 / 15',
+   ()=>document.querySelector('.timeline').classList.remove('timeline'),
+   ()=>document.querySelector('.timeline-plot').classList.remove('timeline-plot'),
+   ()=>document.querySelector('.tenure-line').classList.remove('tenure-line'),
+   ()=>document.querySelector('.tenure-line .grace').classList.remove('grace'),
+   ()=>document.querySelector('.tenure-line').append(document.createElement('span')),
+   ()=>document.querySelector('.stages').classList.remove('stages'),
+   ()=>document.querySelector('.stages span').append(document.createElement('strong')),
+   ()=>document.querySelector('.stages span').textContent='',
+   ()=>document.querySelector('.stages').append('Extra visible label'),
+   ()=>document.querySelector('.years').classList.remove('years'),
+   ()=>document.querySelector('.years span:last-child').remove(),
+   ()=>document.querySelector('.years span').textContent='J11',
+   ()=>document.querySelector('.departure-marker').textContent='Unexpected visible text',
+   ()=>document.querySelector('blockquote').remove(),
+   ()=>document.querySelector('blockquote cite').remove(),
+   ()=>document.querySelector('blockquote').append(document.querySelector('cite').cloneNode(true)),
+   ()=>document.querySelector('blockquote').append(document.createElement('br')),
+   ()=>document.querySelector('cite a').append(document.createElement('strong')),
+   ()=>document.querySelector('cite a').setAttribute('data-member-ref','#source-2'),
+   ()=>document.querySelector('#p2 .paper-content').append(document.querySelector('blockquote')),
+  ];
+  for(const mutate of mutations){await page.setContent(good);await page.evaluate(mutate);await assert.rejects(page.evaluate(domBlocks),/Public Journal semantic boundary shape changed/,mutate.toString());}
+  await page.setContent(good);await page.locator('#p3 .paper-content').evaluate(node=>{const p=document.createElement('p');p.innerHTML='woord<strong>deel</strong>, A<span>−</span>. Een <em>volledige</em> zin.';node.append(p);const hidden=document.createElement('p');hidden.hidden=true;hidden.textContent='Verborgen Nederlandse tekst.';node.append(hidden);const fr=document.createElement('section');fr.lang='fr';fr.innerHTML='<p>Texte français.</p>';node.append(fr);});
+  const rows=await page.evaluate(domBlocks);assert.ok(rows.some(row=>row.text==='woorddeel, A−. Een volledige zin.'));assert.ok(rows.some(row=>row.text==='Verborgen Nederlandse tekst.'));assert.ok(!rows.some(row=>row.text==='Texte français.'));assert.ok(rows.some(row=>row.kind==='content'&&row.text==='De CEO van zeven jaar en de transformatie van tien jaar.'));
+  // Another producer remains completely generic, including its inline words.
+  await page.goto('http://journal-fixture.test/other.html');const generic=await page.evaluate(domBlocks);assert.equal(generic.filter(row=>row.source?.adapter==='public-journal-semantic-parts').length,0);
  }finally{await browser.close();}
 });

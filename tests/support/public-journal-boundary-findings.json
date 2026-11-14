@@ -1,0 +1,79 @@
+{
+  "sourceCommit": "596060e48ed556ec3cbb3f2b77d2bfe6d47472d6",
+  "reportSHA256": "e5fea1ff8d891c9e34121eb773d4e29b2771cec9135d2c3501cfb2f1b47a35a2",
+  "scope": "Eight actual machine finding tuples on seven committed public opening-page owners; historical provenance only, no approval or suppression",
+  "findings": [
+    {
+      "id": "fd332cc763bde4dee7ffa05a6405530913521e22957398dfccfa779075cc0132",
+      "blockId": "journal.html#text:body:2>main:3>div:4>div:2>div:1>article:1>div:1>div:1",
+      "textHash": "1454c12d80dda6091b0a37bbb4d9947b78d69f7757cd33d789a4d3e07ba4fed5",
+      "rule": "MORFOLOGIK_RULE_NL_NL",
+      "offset": 45,
+      "length": 16,
+      "context": "Maandnummer 01 · 13 november 2026 · België · Bestuurseditie01 / 15"
+    },
+    {
+      "id": "76320f66707356fd196b1197729fcd5f9abcffcdd858fc99122f7c7c3cfd7dca",
+      "blockId": "journal.html#text:body:2>main:3>div:4>div:2>div:1>article:1>div:1>div:6>div:1>div:2",
+      "textHash": "0006936f3df3ae3e6de25559b2a0f856aa6290670ce19d3f092e423ccc9bb499",
+      "rule": "MORFOLOGIK_RULE_NL_NL",
+      "offset": 0,
+      "length": 19,
+      "context": "WittebroodswekenHet tijdvenster van de CEO7,1 jaar → vertrek"
+    },
+    {
+      "id": "98ebd31da7ba247da94732dfcef6d05a3fd754d36e19c68e01b4ad76092ec625",
+      "blockId": "journal.html#text:body:2>main:3>div:4>div:2>div:1>article:1>div:1>div:6>div:1>div:4",
+      "textHash": "1803a3f3c2cd9dd48c34637ed5cc78b0831dd19e89dc61fd3505851ed4c706e3",
+      "rule": "MORFOLOGIK_RULE_NL_NL",
+      "offset": 0,
+      "length": 26,
+      "context": "ExperimenterenOpschalenHet operating model herontwerpenVerankerde waarde"
+    },
+    {
+      "id": "83021823a3a826933cb0fccb9a3e7c908b5b0d8a5529649b69519f897f86c85d",
+      "blockId": "journal.html#text:body:2>main:3>div:4>div:2>div:1>article:1>div:1>div:6>div:1>div:4",
+      "textHash": "1803a3f3c2cd9dd48c34637ed5cc78b0831dd19e89dc61fd3505851ed4c706e3",
+      "rule": "MORFOLOGIK_RULE_NL_NL",
+      "offset": 43,
+      "length": 22,
+      "context": "ExperimenterenOpschalenHet operating model herontwerpenVerankerde waarde"
+    },
+    {
+      "id": "674f2f12d31be4242a8021a64e236623bf06862e8e0e16eb55aba03b61bab2fe",
+      "blockId": "journal.html#text:body:2>main:3>div:4>div:2>div:1>article:1>div:1>div:6>div:1>div:6",
+      "textHash": "bc9a230cb38be27d5ad9460fac98bd81b0d236893e7eabcfa1de4758ca3eb112",
+      "rule": "MORFOLOGIK_RULE_NL_NL",
+      "offset": 0,
+      "length": 23,
+      "context": "J0J1J2J3J4J5J6J7J8J9J10"
+    },
+    {
+      "id": "c7a064f2147e74e869aa5efbb5ca35618b20e001e91306e1505560d0c9fef6ad",
+      "blockId": "journal.html#text:body:2>main:3>div:4>div:2>div:1>article:2>div:1>div:1",
+      "textHash": "d59e9aba7a757944f652536fc8ba0d36a4f6ba42ff18e184f7bff1917899e698",
+      "rule": "MORFOLOGIK_RULE_NL_NL",
+      "offset": 42,
+      "length": 6,
+      "context": "Maandnummer 01 · 13 november 2026 · Begin hier02 / 15"
+    },
+    {
+      "id": "4c43150bbe7465f876c3dec8329733c2776f2a7a2907ddc2af9c64eb0071d336",
+      "blockId": "journal.html#text:body:2>main:3>div:4>div:2>div:1>article:3>div:1>blockquote:6",
+      "textHash": "666d80fb7f509c938f2e86d12103b2f3b921e5639bbe46728b2984d4a24c9c42",
+      "rule": "SENTENCE_WHITESPACE",
+      "offset": 43,
+      "length": 5,
+      "context": "‘Die wittebroodsweken zijn sterk ingekort.’Laura Sanderson, Russell Reynolds Associates, over de eerste jaren van een CEO-mandaat [1]"
+    },
+    {
+      "id": "a24f0d4deeef7839480f03817ed0877984f14ed624c61ac11a27eda579ea9619",
+      "blockId": "journal.html#text:body:2>main:3>div:4>div:2>div:1>article:3>div:1>div:1",
+      "textHash": "31096481c7cc052027e6b220e2b8539019419a680cff444c2a48874f452939ea",
+      "rule": "MORFOLOGIK_RULE_NL_NL",
+      "offset": 40,
+      "length": 17,
+      "context": "Maandnummer 01 · 13 november 2026 · Het mandaatprobleem03 / 15"
+    }
+  ]
+}

@@ -71,3 +71,38 @@ Until a candidate is promoted, the same differences remain pending and will be r
 Regression tests cover full sentence context, hidden Dutch text, exclusion of French, metadata, changed/unchanged/deleted blocks, missing review evidence/receipts, divergent history, public API rejection, malformed/failed/oversized engine requests, stale promotion and preserved findings. The independent daily workflow also exercises the real local engine and browser inventory on PRs touching its files. Existing build/unit/security/browser/load/performance and CI release gates remain required before any publication. No production publication is part of this change.
 
 Sources: [GitHub scheduled workflow semantics](https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows#schedule), [LanguageTool public API automation restriction](https://dev.languagetool.org/public-http-api.html), [own LanguageTool server](https://dev.languagetool.org/http-server).
+
+
+## Finite public Journal semantic parts
+
+Only /journal.html with a Dutch html.exact-edition and the committed public
+opening of exactly three sheets p1,p2,p3 admits this adapter. It never loads a
+private edition, executes an editorial/Auth controller or expands coverage to
+member pages4–15. Missing scope, a changed owner/parent/class/count, extra public
+sheets, new labels, nesting or malformed citation/year shapes fail closed.
+
+Seven existing owners are redirected to26 independent existing text parts:
+three folios each retain their caption and page marker separately; the cover
+keeps three tenure labels,four phase labels and eleven year ticks; the p3 quote
+and its complete direct citation are separate contexts. The original text nodes
+are assigned to these semantic owners. Generic inline joining remains unchanged:
+no global inserted spaces, dictionary whitelist, text suppression or Journal
+exemption. Citation source-link text and existing title/ARIA/metadata extraction
+remain intact. Each part records its former complete block identity,owner/part
+locations,role and the committed-public scope.
+
+The self-contained Git fixture preserves eight actual prior finding tuples on
+these seven owners. Tests load the real public Git HTML under an inert CSP and
+compare adapted output with the unchanged generic extractor on the identical
+other-route DOM. Every unaffected row stays equal; each owner's derived parts
+preserve its characters/order. Additional fixtures reject missing/extra/malformed
+owners,private15-sheet DOM and unsupported nesting while retaining ordinary
+inline compounds,hidden Dutch,French exclusions,metadata and the existing
+SVG/journey adapters.
+
+The exact3847-record machine checkpoint precedes this extraction correction;
+all prior finding records/history remain. Changed part contexts may produce new
+engine findings. This adapter is not a language approval or automatic closure.
+It changes only the local audit and its tests/docs: public assets,37JavaScript/
+37inline fingerprints,private publication payloads and production stay unchanged.
+A fresh committed-source engine scan and review remain the CPO's responsibility.

@@ -37,3 +37,12 @@ Reader proposal authorized after per-pass evidence and independent review: early
 - B: disable deferred layout generally or add a separate imperative scroll mechanism.
 
 Resolved A. The target-scoped body:has selector changes only the existing stylesheet; JavaScript, fonts, route data and general layout policy stay. Cold entry, same-document fragment changes, ordinary-target policy and native Back/Forward pass the subsequent25-case five-profile run without test-driven scrolling. Build4 differs from build3 only in site.css; all203 other public files remain exact. Final build5 removes exactly one CR byte, with independently verified inverse proof. The original four failures and blank captures are retained. Full-head CI and remaining native acceptance conditions remain separate. Production remains unchanged.
+
+## D005 — preserve findings before correcting public Journal scan boundaries
+
+14 November 2026. The complete596060e scan checks129 changed blocks and reports65 new findings with no engine error. Every full identity/context receives a separate agent assessment independently checked against the report:57 retain decisions,8 extraction artifacts, no necessary website wording correction.
+
+- A (recommended): preserve the exact complete3,847-record checkpoint first, then split only seven audited public Journal owners into their26 existing semantic parts.
+- B: add global whitespace, filter scanner rules, change publication text to satisfy the engine, or discard the malformed historical contexts.
+
+Resolved A. Checkpoint9f1faa7 preserves all3,782 old full records and65 new records, real ancestry and append-only history without invented approval. The finite adapter admits only the Dutch public three-page opening; it redirects existing text nodes, records owner/part provenance and fails on unknown shape. Differential and36 negative mutations preserve every unaffected row and original character order. No website, private edition, dictionary or engine-version change. Focused19/19 and full346/346 sequential Windows tests pass; the fresh committed-source scan and full Linux checks remain separate evidence. Old extraction artifacts stay in history rather than being marked corrected by disappearance. Production remains unchanged.

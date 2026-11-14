@@ -123,7 +123,8 @@
     "tests/browser/journey-entry.spec.cjs",
     "tests/journey-entry.test.cjs",
     "assets/journal.js",
-    "tests/browser/journal.spec.cjs"
+    "tests/browser/journal.spec.cjs",
+    "tests/support/public-journal-boundary-findings.json"
   ],
   "performance": [
     "assets/typography.css",

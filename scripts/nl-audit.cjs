@@ -160,16 +160,58 @@ function domBlocks(){
       svgLabels.set(owner,{text:parts.join(' '),source:{adapter:'coherence-svg-space-wordwrap',scope:'reviewed-public-wrapText-producers',language:'nl',partLocations:spans.map(location),x,dy:ys}});
     }
   }
+  // Only the committed Dutch public opening of Journal issue 01 is admitted.
+  // Redirect its existing text nodes to semantic labels; never invent spaces.
+  const journalNodeOwners=new Map(),journalParts=new Map();
+  if(window.location.pathname==='/journal.html'){
+    const fail=()=>{throw Error('Public Journal semantic boundary shape changed; review adapter');};
+    const readers=document.querySelectorAll('#journal-content.reader'),books=document.querySelectorAll('.book');
+    if(!/^nl(?:-BE)?$/i.test(document.documentElement.lang)||!document.documentElement.classList.contains('exact-edition')||readers.length!==1||books.length!==1)fail();
+    const reader=readers[0],book=books[0],windows=reader.querySelectorAll('.page-window');
+    if(windows.length!==1||book.parentElement!==windows[0]||!windows[0].parentElement.classList.contains('page-stage')||!reader.contains(windows[0])||!/^[a-f0-9]{64}$/.test(book.getAttribute('data-edition-digest')||''))fail();
+    function container(node,tag,count){if(!node||node.tagName!==tag||node.children.length!==count)fail();for(const child of node.childNodes)if(child.nodeType===3&&child.textContent.trim())fail();}
+    function leaf(node,tag,className){if(!node||node.tagName!==tag||(className&&!node.classList.contains(className))||node.children.length||excluded(node)||!node.textContent.trim())fail();return node.textContent.replace(/\s+/g,' ').trim();}
+    function part(node,owner,role,nodes){
+      if(journalParts.has(node)||excluded(node))fail();
+      journalParts.set(node,{adapter:'public-journal-semantic-parts',scope:'committed-public-opening-three-pages',language:'nl',role,ownerLocation:location(owner),formerBlockId:'journal.html#text:'+location(owner),partLocations:[location(node)]});
+      const texts=nodes||(()=>{const list=[],walker=document.createTreeWalker(node,NodeFilter.SHOW_TEXT);while(walker.nextNode())list.push(walker.currentNode);return list;})();
+      if(!texts.some(text=>text.textContent.trim()))fail();
+      for(const text of texts){if(excluded(text.parentElement)||journalNodeOwners.has(text))fail();journalNodeOwners.set(text,node);}
+    }
+    container(book,'DIV',3);const sheets=[...book.children],papers=[];
+    if(document.querySelectorAll('.sheet').length!==3)fail();
+    for(const [index,sheet]of sheets.entries()){
+      if(sheet.tagName!=='ARTICLE'||!sheet.classList.contains('sheet')||sheet.id!=='p'+(index+1)||document.querySelectorAll('#'+sheet.id).length!==1)fail();
+      container(sheet,'ARTICLE',1);const paper=sheet.firstElementChild;if(paper.tagName!=='DIV'||!paper.classList.contains('paper-content'))fail();papers.push(paper);
+      const folio=paper.firstElementChild;container(folio,'DIV',2);if(!folio.classList.contains('folio'))fail();
+      leaf(folio.children[0],'SPAN');const marker=leaf(folio.children[1],'SPAN');if(!new RegExp('^0'+(index+1)+'\\s*/\\s*15$').test(marker))fail();
+      part(folio.children[0],folio,'folio-caption');part(folio.children[1],folio,'folio-page');
+    }
+    if(book.querySelectorAll('.folio').length!==3||book.querySelectorAll('.tenure-line,.stages,.years').length!==3)fail();
+    const timelines=papers[0].querySelectorAll(':scope > .timeline');if(timelines.length!==1)fail();const timeline=timelines[0];container(timeline,'DIV',1);const plot=timeline.firstElementChild;container(plot,'DIV',7);if(!plot.classList.contains('timeline-plot'))fail();
+    const [firstHeading,tenure,secondHeading,stages,note,years,marker]=plot.children;
+    if(firstHeading.tagName!=='H3'||secondHeading.tagName!=='H3'||note.tagName!=='P'||!note.classList.contains('value-note')||marker.tagName!=='SPAN'||!marker.classList.contains('departure-marker')||marker.getAttribute('aria-hidden')!=='true'||marker.children.length||marker.textContent.trim())fail();
+    container(tenure,'DIV',3);if(!tenure.classList.contains('tenure-line'))fail();
+    for(const [index,spec]of [['SPAN','grace'],['SPAN','ceo-window'],['STRONG','exit-label']].entries()){leaf(tenure.children[index],...spec);part(tenure.children[index],tenure,'tenure-'+spec[1]);}
+    container(stages,'DIV',4);if(!stages.classList.contains('stages'))fail();for(const [index,node]of [...stages.children].entries()){leaf(node,'SPAN');part(node,stages,'stage-'+index);}
+    container(years,'DIV',11);if(!years.classList.contains('years'))fail();for(const [index,node]of [...years.children].entries()){if(leaf(node,'SPAN')!=='J'+index)fail();part(node,years,'year-'+index);}
+    const quotes=book.querySelectorAll('blockquote');if(quotes.length!==1||quotes[0].parentElement!==papers[2])fail();const quote=quotes[0];
+    if(quote.children.length!==1||quote.firstElementChild.tagName!=='CITE')fail();const cite=quote.firstElementChild,quoteNodes=[...quote.childNodes].filter(node=>node.nodeType===3);
+    if([...quote.childNodes].some(node=>node!==cite&&node.nodeType!==3&&node.nodeType!==8)||[...quote.childNodes].slice([...quote.childNodes].indexOf(cite)+1).some(node=>node.nodeType===3&&node.textContent.trim()))fail();
+    if(cite.children.length!==1||cite.firstElementChild.tagName!=='A'||!cite.textContent.trim()||excluded(cite))fail();
+    const reference=cite.firstElementChild;const referenceText=leaf(reference,'A');if(!/^\d+$/.test(referenceText)||reference.getAttribute('data-member-ref')!=='#source-'+referenceText||reference.getAttribute('href')!=='#journal-source')fail();
+    part(quote,quote,'quotation',quoteNodes);part(cite,quote,'citation');if(journalParts.size!==26)fail();
+  }
   const selected=new Map();
   const walker=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT|NodeFilter.SHOW_ELEMENT);
   while(walker.nextNode()){
     const node=walker.currentNode;if(node.nodeType===1&&node.tagName!=='BR')continue;
     if(excluded(node.nodeType===1?node:node.parentElement))continue;
-    const owner=node.parentElement.closest('svg text')||node.parentElement.closest(selector)||node.parentElement.closest('a,div,section,main,header,footer,nav,body');
+    const owner=journalNodeOwners.get(node)||node.parentElement.closest('svg text')||node.parentElement.closest(selector)||node.parentElement.closest('a,div,section,main,header,footer,nav,body');
     if(owner){if(!selected.has(owner))selected.set(owner,[]);selected.get(owner).push(node.nodeType===1?' ':node.textContent);}
   }
   for(const [el,nodes] of selected){
-    const composition=journeyLabels.get(el)||svgLabels.get(el),text=(composition?composition.text:nodes.join('')).replace(/\s+/g,' ').trim();if(text)result.push({kind:'text',location:location(el),text,...(composition?{source:composition.source}:{})});
+    const composition=journeyLabels.get(el)||svgLabels.get(el),text=(composition?composition.text:nodes.join('')).replace(/\s+/g,' ').trim(),source=journalParts.get(el)||composition?.source;if(text)result.push({kind:'text',location:location(el),text,...(source?{source}:{})});
   }
   for(const el of document.querySelectorAll('[alt],[title],[aria-label],[placeholder],meta[name="description"],title')){
     if(excluded(el))continue;

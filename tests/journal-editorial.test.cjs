@@ -57,6 +57,7 @@ test('editorial pages deliver the exact journal styles and every new visible tex
     assert.equal(inline[1],styles,f+' preserves every journal style rule');
   }
   assert.doesNotMatch(styles,/@import|url\(/,'no external font or asset requests');
+
   const I=I18N();
   for(const k of ['Executive Journal','Track record','In brief','The problem','Why it happens','What to do','See the track record','Leading the agentic enterprise','Latest articles','From the Executive Journal','All Executive Journal articles','Experience behind the perspective','Where this perspective comes from','Certifications','Education','Other assignments include','Tribe coach in an Agile transformation','Track Record in Enterprise Transformation | Erlend Hollebosch','Executive Journal on AI and Enterprise Coherence | Erlend Hollebosch'])
     assert.ok(Array.isArray(I[k])&&I[k][0]&&I[k][1],`missing translation: ${k}`);

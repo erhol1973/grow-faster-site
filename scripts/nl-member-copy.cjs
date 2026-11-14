@@ -29,4 +29,4 @@ function memberCopy(read){const blocks=[],ids=new Set();function add(file,page,k
  for(const [file,page,key,anchor,text]of explicit){const source=read(file);if(anchorCount(source,anchor)!==1)throw Error('Explicit Dutch copy contract changed: '+file+':'+key);add(file,page,key,text);}
  return blocks;
 }
-module.exports={literal,declaration,memberCopy};
+module.exports={literal,declaration,anchorCount,codeTokens,memberCopy};

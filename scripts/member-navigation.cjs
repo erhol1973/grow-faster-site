@@ -59,8 +59,7 @@ ${menuBundle()}
   if (file === 'coherence.html') html = html
     .replace(/<script defer src="assets\/coherence-layout\.js"><\/script>/, '')
     .replace(/(src="(?:\.\/)?assets\/site\.js\?[^"]*&amp;members=)2"/, (_, prefix) => prefix + '3"');
-  const link = '<link rel="stylesheet" href="assets/cms-public.css">';
-  return html.includes(link) ? html.replace(link, '<style data-cms-media>' + asset('cms-public.css').trim() + '</style>') : html;
+  return html;
 }
 
 module.exports = { bundleMemberNavigation };

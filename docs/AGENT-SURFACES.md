@@ -1,177 +1,45 @@
-# Navigation and Executive Radar agent surfaces
+# Integrated quality and decision journey agent surfaces
 
-Current task: integrate approved main navigation/branding and permanent Radar publication boundary into dev/member-access, preserve member authorization and sanitized private editions, repair mobile performance, validate one current dev preview. No main merge/deployment, production database or CMS/CRM writes. Root commits; producers do not. Reviewer audits producers after implementation. Prior retired unsafe previews remain retired. CEO pilot stays draft and outside this integration.
+Sponsor approves V3 and authorizes quality fixes plus safe website integration. Production unchanged. One candidate integration/decision-journey-quality from member3ccf89e plus typography9f3462a, commonbase mainb1831e2. Root alone commits. No mainmerge/deploy, provideraccount/productionDB/role changes, form submissions, costs or weakened tests. Historical role charters archived in docs/agents/archive/20261114.
 
-This map coordinates this task and checkout only. It does not reserve shared project files against other workstreams. Review shared HTML, build and asset changes against current main and typography PR79 before any future integration; keep stable CMS IDs and fail-closed environment selection.
+The software integrator owns all implementation except the exact design and orchestrator exclusions. One canonical approved font/semantic policy; one builder/dictionary/runtime. Preserve666originalretentionkeys, original54Lighthouse samples plus6newroute samples, realHTTPcache, CSP, privatepayload and Radar publication guards. Unknown provider/native-role evidence remains explicit; fixtures cannot substitute.
 
 ```roster
-navigation builder installed autonomous
-radar builder installed autonomous
-branding builder installed autonomous
 repository builder installed autonomous
 performance builder installed autonomous
 reviewer reviewer installed autonomous
 ```
 
-```surface:navigation
-*.html
-!index.html
-!coherence.html
-!insights.html
-!about.html
-!books.html
-assets/navigation.css
-assets/i18n.js
-tests/**
-!tests/baies-dev.test.cjs
-!tests/browser/baies-dev.spec.cjs
-!tests/brand-logo.test.cjs
-!tests/typography.test.cjs
-!tests/performance-fonts.test.cjs
-!tests/performance.test.cjs
-!tests/journal-editorial.test.cjs
-!tests/coherence-film-release.test.cjs
-!tests/cms-client.test.cjs
-!tests/performance-diagnostics.test.cjs
-!tests/coherence-dictionary.test.cjs
-!tests/hero-image.test.cjs
-!tests/browser/navigation-accessibility.spec.cjs
-!tests/server-compression.test.cjs
-!tests/books.test.cjs
-!tests/browser/books.spec.cjs
-!tests/nl-member-copy.test.cjs
-!tests/first-paint.test.cjs
-!tests/browser/first-paint.spec.cjs
-!tests/browser/radar-access.spec.cjs
-!tests/radar*
-scripts/load.cjs
-```
-
-```surface:radar
-baies-dev/**
-executive-radar/**
-assets/baies-dev*
-scripts/baies-dev*
-scripts/radar-release.cjs
-scripts/radar-reference/**
-assets/radar-access.js
-tests/browser/radar-access.spec.cjs
-tests/radar*
-scripts/security.cjs
-scripts/verify-production.cjs
-tests/baies-dev.test.cjs
-tests/browser/baies-dev.spec.cjs
-```
-
-```surface:branding
-img/**
-!img/hero-executive-meeting-*.avif
-!img/hero-*.avif
-!img/author-retouched-*.avif
-favicon.ico
-tests/brand-logo.test.cjs
-```
-
-```surface:orchestrator
-docs/AGENT-SURFACES.md
-AGENTS.md
-docs/RELEASE.md
-docs/TESTPLAN.md
-docs/agents/**
-scripts/agent-guard.mjs
-.github/workflows/dev-agent-surfaces.yml
-.github/workflows/baies-dev-quality.yml
-docs/EXECUTIVE-RADAR-NAV-DEV.md
+```surface:repository
+**
+!assets/typography.css
+!docs/TYPOGRAPHY.md
+!decision-journey/assets/canvas.css
+!.github/**
+!AGENTS.md
+!docs/AGENT-SURFACES.md
+!docs/agents/**
+!docs/DECISION-LOG.md
+!scripts/agent-guard.mjs
+!docs/INTEGRATION-ACCEPTANCE-20261114.md
+!tests/browser/decision-journey/**
 ```
 
 ```surface:performance
-books.html
-tests/books.test.cjs
-tests/browser/books.spec.cjs
-.gitleaks.toml
-scripts/nl-secret-guard.cjs
-scripts/coherence-dictionary.cjs
-scripts/coherence-dictionary.contract.json
-tests/coherence-dictionary.test.cjs
-scripts/performance-diagnostics.cjs
-tests/performance-diagnostics.test.cjs
-scripts/performance.cjs
-tests/cms-client.test.cjs
-assets/coherence-layout.js
-tests/performance.test.cjs
-tests/coherence-film-release.test.cjs
-coherence.html
-insights.html
-about.html
-img/hero-*.avif
-img/author-retouched-*.avif
-tests/journal-editorial.test.cjs
-index.html
-img/hero-executive-meeting-*.avif
-tests/hero-image.test.cjs
-tests/browser/navigation-accessibility.spec.cjs
-scripts/build.cjs
-scripts/member-navigation.cjs
-scripts/typography-build.cjs
-assets/site.js
-tests/first-paint.test.cjs
-tests/browser/first-paint.spec.cjs
-assets/site.css
-assets/home-hero.css
-assets/books.css
-assets/journal.css
 assets/typography.css
-assets/fonts/**
-tests/typography.test.cjs
-tests/performance-fonts.test.cjs
+docs/TYPOGRAPHY.md
+decision-journey/assets/canvas.css
 ```
 
-```surface:repository
-**
-!.gitleaks.toml
-!scripts/nl-secret-guard.cjs
-!*.html
-!assets/site.css
-!assets/home-hero.css
-!assets/books.css
-!assets/journal.css
-!assets/typography.css
-!assets/fonts/**
-!assets/radar-access.js
-!scripts/radar-release.cjs
-!scripts/radar-reference/**
-!assets/navigation.css
-!assets/site.js
-!assets/i18n.js
-!assets/coherence-layout.js
-!tests/**
-!scripts/load.cjs
-!scripts/performance.cjs
-!scripts/performance-diagnostics.cjs
-!scripts/coherence-dictionary.cjs
-!scripts/coherence-dictionary.contract.json
-!scripts/verify-production.cjs
-!baies-dev/**
-!executive-radar/**
-!assets/baies-dev*
-!scripts/baies-dev*
-!scripts/build.cjs
-!scripts/member-navigation.cjs
-!scripts/typography-build.cjs
-!scripts/security.cjs
-!img/**
-!favicon.ico
-!docs/AGENT-SURFACES.md
-!AGENTS.md
-!docs/RELEASE.md
-!docs/TESTPLAN.md
-!docs/agents/**
-!scripts/agent-guard.mjs
-!.github/workflows/dev-agent-surfaces.yml
-!.github/workflows/baies-dev-quality.yml
-!docs/EXECUTIVE-RADAR-NAV-DEV.md
-tests/server-compression.test.cjs
-tests/nl-member-copy.test.cjs
+```surface:orchestrator
+.github/**
+AGENTS.md
+docs/AGENT-SURFACES.md
+docs/agents/**
+docs/DECISION-LOG.md
+scripts/agent-guard.mjs
+docs/INTEGRATION-ACCEPTANCE-20261114.md
+tests/browser/decision-journey/**
 ```
 
-Navigation owns the ordinary site header and shared locale/rendering code, and updates existing menu/test contracts. Radar owns its dedicated product and legacy-compatible canonical route. Branding owns brand image files, including existing BAEIS image paths, without editing HTML. Repository surface is handled by the orchestrator for acceptance-runner hashes, provisioning and registration verification; no credentials are stored. Performance owns the listed CSS/font files and the temporarily reassigned shared site renderer plus first-paint tests. Reviewer audits every producer independently. Root HTML includes admin only if its actual brand/header needs consistency; do not change CMS behavior.
+Reviewer owns no candidate source. Its independent audit lives outside the repository under output/product-governance/integration-2026-11-14. No two builders hold a file. A local mechanical merge imports existing branch changes before producer attribution; new producer path receipts are checked with AGENT_PATHS before rootcommits. Both upstream histories remain auditable. GitHubCI checks mapcoverage with docs/agents; it does not authorize publication.

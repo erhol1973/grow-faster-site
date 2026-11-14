@@ -6,6 +6,7 @@ window.openMemberRadar = function(){
   if(!dataset||!core){document.body.prepend(document.createTextNode('Prototype dependencies unavailable.'));return;}
   const $=id=>document.getElementById(id);
   const dict=window.BAEIS_MEMBER_COPY;
+
   const state={lang:'nl',view:'overview',role:'CEO',size:'small',stage:'intake',audit:[]};
   const records=dataset.records;
   const editorRecord=records.find(r=>r.id==='BE-EC-003');
@@ -173,5 +174,13 @@ window.openMemberRadar = function(){
   window.history.scrollRestoration='manual';
   window.addEventListener('popstate',()=>syncRoute());
   window.addEventListener('hashchange',()=>syncRoute());
+  function enhanceWorkflowRails(){
+    document.querySelectorAll('.workflow-rail').forEach((rail,index)=>{
+      const heading=rail.closest('section')?.querySelector('h1,h2,h3');
+      rail.tabIndex=0;rail.setAttribute('role','region');
+      if(heading){if(!heading.id)heading.id='workflow-heading-'+index;rail.setAttribute('aria-labelledby',heading.id);}
+    });
+  }
+  enhanceWorkflowRails();
   syncRoute(false);logEvent(text('auditInit'));
 };

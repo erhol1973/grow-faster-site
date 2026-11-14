@@ -2,7 +2,7 @@
 // Bounded, data-only build optimization. No runtime translation API changes.
 const fs=require('node:fs'),path=require('node:path'),crypto=require('node:crypto');
 const {readRegularFile}=require('./file-reader.cjs');
-const RUNTIME=['site.js','models.js','consent.js','ux.js','refinements.js','coherence-film.js','coherence-layout.js','cms-config.js','cms-client.js','cms-public.js','member-auth.js','member-menu.js'];
+const RUNTIME=['site.js','models.js','consent.js','ux.js','refinements.js','coherence-film.js','coherence-layout.js','cms-config.js','cms-client.js','cms-public.js','member-auth.js','member-menu.js','typography.js'];
 const SOURCE_URL='assets/i18n-coherence.js?v=coherence-1';
 const ORIGINAL_COUNT=666,ORIGINAL_HASH='86d82e745e11fb30056fb0b4a25d35c2a5065b97e72cff9d71350833802d6017';
 // Advance only after an explicit append-only contract review; the original floor stays fixed.

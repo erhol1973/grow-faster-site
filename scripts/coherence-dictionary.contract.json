@@ -11,7 +11,7 @@
     "published CMS text/alt comes from explicit locale fields and is reapplied on gf:language"
   ],
   "runtimeHashes": {
-    "site.js": "3dbeca0ed6f4c006ecb33a68e5733b9e212a0c801ebae6268395110485311cb9",
+    "site.js": "b47021e2ab26c58317fe8e566b50beb7cf5490b6899cc37e593ba6f8304faef2",
     "models.js": "f559c785bba371d7129be18a6a5f35a4eb5e3b6eeeaf87a07be0e3c687576ace",
     "consent.js": "0ddf242a710aa9272140f2ca2c33261f3abd7d501f4b523e22b28239fb17c5ca",
     "ux.js": "86d835968ecad2c25d019fa0d2c2d266652a7829fc215fcd7952171bd2de7d94",
@@ -22,7 +22,8 @@
     "cms-client.js": "d5bb29e182e568037d2f633dfdf58c8aa1a75723752872243fa7f63caf9de0ad",
     "cms-public.js": "ef3be989cbb61adb1402ba08c26c026b5ff90a2f59035c92509f6cdd9c9e078b",
     "member-auth.js": "fa70b7ab581a623b406ef6ae06aa44570cb6db4ce3c5276c7b5e523737c4df9f",
-    "member-menu.js": "61df83498553cabeea7ac8dd9f97420c7aa7924d5d45c05a45420b00ddbedfac"
+    "member-menu.js": "61df83498553cabeea7ac8dd9f97420c7aa7924d5d45c05a45420b00ddbedfac",
+    "typography.js": "ac043d964272fff638360ce77253bdd007d43247cdc9da7a5843be197daa9ed3"
   },
   "retainedKeys": [
     "Bekijk de film",

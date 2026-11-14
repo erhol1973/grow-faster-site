@@ -2,14 +2,14 @@
   "schema": 1,
   "scope": "rendered_local_nl_runtime_dictionaries_static_cms_and_mail",
   "technicalReview": {
-    "date": "2026-11-13",
-    "reason": "Reviewed member runtime and Coherence bundle/cache changes; inert closed Dutch interface-copy adapter; private Journal/Radar bodies and interactions excluded, no auth or language approval",
+    "date": "2026-11-14",
+    "reason": "Reviewed integrated member and canonical typography runtimes; all five journey scripts plus inert NL interface-copy adapter; unchanged private publication exclusions; generated case/plan/report states excluded. No baseline promotion or language approval.",
     "officialApproval": false
   },
   "javascript": [
     {
       "file": "assets/baies-dev-app.js",
-      "sha256": "0322fdf154d06f93b8fad7b813c69ad1d0d2f43ae5478c6b8c30d16186fe3c94"
+      "sha256": "bd7608ebd180330e5e91b2e9a025e4e936cc7eee95dd4a2673ec9750ac5a31f2"
     },
     {
       "file": "assets/baies-dev-core.js",
@@ -117,7 +117,11 @@
     },
     {
       "file": "assets/site.js",
-      "sha256": "edd76f224caf23e08e0a476dcb3e15dda6a38c6e3d660feea8d6916985f38b04"
+      "sha256": "d52f030c2517a3d1a3521fba0d8c80522b27dc33fc0d9cf790dd5777d4e8d3cb"
+    },
+    {
+      "file": "assets/typography.js",
+      "sha256": "ac043d964272fff638360ce77253bdd007d43247cdc9da7a5843be197daa9ed3"
     },
     {
       "file": "assets/ux.js",
@@ -126,12 +130,32 @@
     {
       "file": "assets/workshop.js",
       "sha256": "a19e4d86bce237f8f3eaec64bcaf7f2022e19a38cdf6e9f74136779da04c3ec0"
+    },
+    {
+      "file": "decision-journey/assets/app.js",
+      "sha256": "c468e4cc2d1e668acb3b2a276c884045f587a080a877795ec1da141c4c88e1d0"
+    },
+    {
+      "file": "decision-journey/assets/cases.js",
+      "sha256": "3aa323883079187402334b0ee7decf45b4b83dcdf649246ca5bb59319e825c81"
+    },
+    {
+      "file": "decision-journey/assets/model.js",
+      "sha256": "394343a4ed16e5cfe51e6832837acd27d5d7102e1ccc0a9973ac903dbe5bac20"
+    },
+    {
+      "file": "decision-journey/assets/roadmap.js",
+      "sha256": "ccf0cf1bb4480fb25d98dfe3c2198d8a566114569a76904811fc32e92954bea7"
+    },
+    {
+      "file": "decision-journey/assets/value-review.js",
+      "sha256": "0d7a56d1fd16e8a0115d3bf17e7aa40e8ab5cd97483e49d8a8aada9eabb14cb4"
     }
   ],
   "inline": [
     {
       "file": "404.html",
-      "sha256": "545c38b0922de19734fbffde62792c37c2aef6a3216cfa472449173165220f7d"
+      "sha256": "7c370d9536d7d0d6a0f7cd7f9826692acd93e4fb05ba46f7b630b879740343d3"
     },
     {
       "file": "about-the-author.html",
@@ -139,19 +163,19 @@
     },
     {
       "file": "about.html",
-      "sha256": "28f4aac4989cb89b32e664c3ded9cba69aa59e7f8408f00c568d02754d40682e"
+      "sha256": "455c4b75f2da1e8d522d44b0f4404722478527a8b537a5898c0020f72338556f"
     },
     {
       "file": "accessibility.html",
-      "sha256": "d471083ac75a0c3966c07716aaf17ca1b9f77a721e97f7d3d5319bbbc7bdfdc1"
+      "sha256": "db07509ebc983d1ec25605b89771104d9cfde48f6e9668103ab5f8ebdfce3ed9"
     },
     {
       "file": "account.html",
-      "sha256": "75a11da44c802486bc6f65640aa48a730f0f684c5c07a42ba3cd1735eb3fb070"
+      "sha256": "6a3cf5192354f71615ac51034b3e97c20eda99643fcaf5bbe6d41ad59bd12167"
     },
     {
       "file": "admin.html",
-      "sha256": "545c38b0922de19734fbffde62792c37c2aef6a3216cfa472449173165220f7d"
+      "sha256": "7c370d9536d7d0d6a0f7cd7f9826692acd93e4fb05ba46f7b630b879740343d3"
     },
     {
       "file": "all-articles.html",
@@ -159,7 +183,7 @@
     },
     {
       "file": "approach.html",
-      "sha256": "538d6440534fa5f615e8a26932792a82a2e4a33a97886e2d815eab8fc216d415"
+      "sha256": "79488488398f5f5aed236dd6e9f914599370d04dfe70fda61b8c83bf739b1088"
     },
     {
       "file": "articles-1/enterprise-architecture-needs-enterprise-coherence.html",
@@ -175,27 +199,27 @@
     },
     {
       "file": "baies-dev/index.html",
-      "sha256": "7c370d9536d7d0d6a0f7cd7f9826692acd93e4fb05ba46f7b630b879740343d3"
+      "sha256": "d088784b7ecb87f1ea17e6f982fa968ffefcc07b79de6ecc548fc00242868da6"
     },
     {
       "file": "boek/index.html",
-      "sha256": "8930ecfa36af4ec4e3548720eebb76805de93506d17cd4aebdfd96d7b1ce2fe4"
+      "sha256": "629132bbc2b7c98cc3eafcb624de65bdfb444d7a920d1deb059e97d6c63416e8"
     },
     {
       "file": "boek/the-coherent-enterprise/index.html",
-      "sha256": "3ed192a021c0ebaf18f74c6ef5a1d6abf74c27c8064c9d7b9df8437c67c22315"
+      "sha256": "e17b3ace9d2fb4e88159ad9c27cd58dcc59afe58001775c05d97a66136ab9150"
     },
     {
       "file": "books.html",
-      "sha256": "2f5428f4e13f39414190852df9c76d037c7e0f538da6fd926cca3c4c0c5cb7a6"
+      "sha256": "4745a023a055a568e34154456680c073d9d86a093ad7cede55148aaf085aed5d"
     },
     {
       "file": "coherence-sim.html",
-      "sha256": "392eed35f66b6737014daedfab21f893779ed23ea763001b9df3411a8a0fa989"
+      "sha256": "c7abc9b8d00fd88052bce1d2536f22acc95b80b181cd96a57f8907eef38e27fb"
     },
     {
       "file": "coherence.html",
-      "sha256": "1e135afb54bf948ed616b7e518ea9f59c8edad95a2d1dfbae8adc60b167c5f6c"
+      "sha256": "5c210454b1facc1e317a759f6059324f793841eb23d1f549179b64d1584c55f8"
     },
     {
       "file": "coordination-overload-1.html",
@@ -206,20 +230,24 @@
       "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
     },
     {
+      "file": "decision-journey/index.html",
+      "sha256": "7c370d9536d7d0d6a0f7cd7f9826692acd93e4fb05ba46f7b630b879740343d3"
+    },
+    {
       "file": "decision-latency.html",
       "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
     },
     {
       "file": "eca.html",
-      "sha256": "545c38b0922de19734fbffde62792c37c2aef6a3216cfa472449173165220f7d"
-    },
-    {
-      "file": "executive-radar/index.html",
       "sha256": "7c370d9536d7d0d6a0f7cd7f9826692acd93e4fb05ba46f7b630b879740343d3"
     },
     {
+      "file": "executive-radar/index.html",
+      "sha256": "d088784b7ecb87f1ea17e6f982fa968ffefcc07b79de6ecc548fc00242868da6"
+    },
+    {
       "file": "index.html",
-      "sha256": "13d78b95576434d274f799aabbc17d84849bae30b5e5ad44adcb5e3b73a66059"
+      "sha256": "bd7adc615085a390d9e512391064c474701a44a113d1abe4b16fb0b6bc7aae96"
     },
     {
       "file": "insights-ai-pilot.html",
@@ -227,31 +255,31 @@
     },
     {
       "file": "insights.html",
-      "sha256": "04550110ad74df06a33f4f22200c529dde88c435c3627d14de06948eb3b6bc98"
+      "sha256": "2323ffc91bc873d37ec30c58ca3ff793697d69cd6685fccfef29ba6bff31fa4f"
     },
     {
       "file": "journal-fr.html",
-      "sha256": "545c38b0922de19734fbffde62792c37c2aef6a3216cfa472449173165220f7d"
+      "sha256": "7c370d9536d7d0d6a0f7cd7f9826692acd93e4fb05ba46f7b630b879740343d3"
     },
     {
       "file": "journal.html",
-      "sha256": "545c38b0922de19734fbffde62792c37c2aef6a3216cfa472449173165220f7d"
+      "sha256": "7c370d9536d7d0d6a0f7cd7f9826692acd93e4fb05ba46f7b630b879740343d3"
     },
     {
       "file": "operating-model.html",
-      "sha256": "538d6440534fa5f615e8a26932792a82a2e4a33a97886e2d815eab8fc216d415"
+      "sha256": "79488488398f5f5aed236dd6e9f914599370d04dfe70fda61b8c83bf739b1088"
     },
     {
       "file": "privacy.html",
-      "sha256": "d471083ac75a0c3966c07716aaf17ca1b9f77a721e97f7d3d5319bbbc7bdfdc1"
+      "sha256": "db07509ebc983d1ec25605b89771104d9cfde48f6e9668103ab5f8ebdfce3ed9"
     },
     {
       "file": "process.html",
-      "sha256": "538d6440534fa5f615e8a26932792a82a2e4a33a97886e2d815eab8fc216d415"
+      "sha256": "79488488398f5f5aed236dd6e9f914599370d04dfe70fda61b8c83bf739b1088"
     },
     {
       "file": "terms.html",
-      "sha256": "d471083ac75a0c3966c07716aaf17ca1b9f77a721e97f7d3d5319bbbc7bdfdc1"
+      "sha256": "db07509ebc983d1ec25605b89771104d9cfde48f6e9668103ab5f8ebdfce3ed9"
     },
     {
       "file": "the-coherence-model-1.html",
@@ -263,15 +291,15 @@
     },
     {
       "file": "transformation.html",
-      "sha256": "18b2f11891e52280598086d8a2b5d9510588fea66dad3b87071d80ab4ca462a1"
+      "sha256": "e96c93aa2ba224fb2bd36933a4851874120aee9eaaff219b709a804cbf6dc152"
     },
     {
       "file": "value.html",
-      "sha256": "538d6440534fa5f615e8a26932792a82a2e4a33a97886e2d815eab8fc216d415"
+      "sha256": "79488488398f5f5aed236dd6e9f914599370d04dfe70fda61b8c83bf739b1088"
     },
     {
       "file": "workshop.html",
-      "sha256": "8023426b7186377817eabd5ab75912535c266859c3c197eabc41d8f2d4779397"
+      "sha256": "bd786a7cbc3204af7a4bdbba939394686f0a70685382d4abeae6aa11100d48a2"
     }
   ]
 }

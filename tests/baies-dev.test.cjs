@@ -195,7 +195,7 @@ test('Executive Radar public surface excludes internal about and newsletter prot
   assert.match(app,/const views=\['overview','dashboard','radar','evidence','editorial'\]/);
   assert.match(html,/Demonstratie · Vaste referentiedata/);
   const preview=fs.readFileSync(path.join(root,'executive-radar/index.html'),'utf8');
-  assert.match(preview,/baies-dev-app\.js\?v=20261113-member-main/);
+  assert.match(preview,/baies-dev-app\.js\?v=20261114-integration/);
   assert.match(edition().copy.nl.devNote,/Vaste referentie-uitgave/);
   assert.doesNotMatch(edition().copy.nl.devNote,/gegevensopslag|persoonsgegevens opgeslagen/);
   assert.doesNotMatch(edition().copy.fr.devNote,/conservation de données|donnée personnelle conservée/);
@@ -253,9 +253,10 @@ test('Radar publication policy walks all artifact text, including renamed copies
 
 test('Radar build publishes only a complete policy-approved artifact and removes staged output on internal content rejection',t=>{
   const fixture=policyTemp(t);policyFs.mkdirSync(policyPath.join(fixture,'scripts'));policyFs.mkdirSync(policyPath.join(fixture,'tests'));policyFs.writeFileSync(policyPath.join(fixture,'tests/legacy-redirects.json'),'[]');
-  for(const file of ['build.cjs','file-reader.cjs','baies-dev-public-policy.cjs','member-navigation.cjs','radar-release.cjs','typography-build.cjs'])policyFs.copyFileSync(policyPath.join(policyRoot,'scripts',file),policyPath.join(fixture,'scripts',file));
+  for(const file of ['build.cjs','file-reader.cjs','baies-dev-public-policy.cjs','member-navigation.cjs','radar-release.cjs','typography-build.cjs','component-style-delivery.cjs','coherence-dictionary.cjs','coherence-dictionary.contract.json'])policyFs.copyFileSync(policyPath.join(policyRoot,'scripts',file),policyPath.join(fixture,'scripts',file));
   policyFs.cpSync(policyPath.join(policyRoot,'scripts/radar-reference'),policyPath.join(fixture,'scripts/radar-reference'),{recursive:true});
   const publicPreview=policyFs.readFileSync(policyPath.join(policyRoot,'executive-radar/index.html'),'utf8');
+
   // Use the real build allowlist to construct a minimal input tree; assertions exercise its actual CLI.
   const source=policyFs.readFileSync(policyPath.join(policyRoot,'scripts/build.cjs'),'utf8'),expression=source.match(/^const files = (.+);$/m)[1];
   const files=require('node:vm').runInNewContext(expression,{require:id=>{assert.equal(id,'../tests/legacy-redirects.json');return [];}});

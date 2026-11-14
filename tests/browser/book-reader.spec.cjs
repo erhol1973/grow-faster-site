@@ -1,5 +1,35 @@
 const {test,expect}=require('playwright/test');
 
+test.describe('first-use narrow reader',()=>{
+test.use({viewport:{width:390,height:844}});
+test('first-use mobile toast is opaque from its first paint, retains its movement and announces without stealing focus',async({page})=>{
+ await page.addInitScript(()=>{
+  localStorage.removeItem('flip:mobilehint');localStorage.removeItem('flip:hinted');
+  window.toastPaint={frames:[],shown:null,hidden:null,focus:null};
+  const observer=new MutationObserver(()=>{
+   const t=document.querySelector('#toast');if(!t||t.dataset.paintObserved)return;t.dataset.paintObserved='true';
+   const classes=new MutationObserver(()=>{
+    const probe=window.toastPaint;if(!t.classList.contains('show')){if(probe.shown!==null)probe.hidden=performance.now();return;}
+    if(probe.shown!==null)return;probe.shown=performance.now();probe.focus=document.activeElement?.id||document.activeElement?.tagName;
+    function sample(){if(!t.classList.contains('show'))return;const s=getComputedStyle(t);probe.frames.push({time:performance.now()-probe.shown,opacity:s.opacity,transform:s.transform,color:s.color,background:s.backgroundColor,fontSize:s.fontSize,fontFamily:s.fontFamily,transition:s.transitionProperty,text:t.textContent,role:t.getAttribute('role'),live:t.getAttribute('aria-live')});requestAnimationFrame(sample);}
+    sample();
+   });classes.observe(t,{attributes:true,attributeFilter:['class']});
+  });observer.observe(document,{childList:true,subtree:true});
+ });
+ await page.goto('/boek/index.html#page-1');
+ const toast=page.locator('#toast');await expect(toast).toHaveClass(/show/);await expect(toast).toHaveText('Tip: Text view is easier to read on a phone');
+ const AxeBuilder=require('@axe-core/playwright').default;
+ const axe=await new AxeBuilder({page}).include('#toast').withTags(['wcag2a','wcag2aa','wcag21a','wcag21aa','wcag22aa']).analyze();expect(axe.violations.map(v=>v.id)).toEqual([]);
+ await expect(toast).not.toHaveClass(/show/);
+ const probe=await page.evaluate(()=>window.toastPaint);expect(probe.shown).not.toBeNull();expect(probe.hidden).not.toBeNull();expect(probe.frames.length).toBeGreaterThan(2);
+ for(const frame of probe.frames){expect(frame.opacity).toBe('1');expect(frame.fontSize).toBe('17px');expect(frame.fontFamily).toContain('Aptos');expect(frame.transition).toBe('transform');expect(frame.role).toBe('status');expect(frame.live).toBe('polite');expect(frame.text).toBe('Tip: Text view is easier to read on a phone');}
+ expect(probe.frames.some(frame=>frame.time>200&&frame.time<2000)).toBe(true);
+ expect(new Set(probe.frames.map(frame=>frame.transform)).size).toBeGreaterThan(1);
+ expect(await page.evaluate(()=>document.activeElement?.id||document.activeElement?.tagName)).toBe(probe.focus);
+ await page.locator('#btnText').focus();await page.keyboard.press('Enter');await expect(page.locator('#textview')).toBeVisible();await expect(toast).toHaveText('Text view on');await expect(page.locator('#btnText')).toBeFocused();
+});
+});
+
 test('The Coherent Enterprise buttons on Books and About open the 12-page HTML flipbook',async({page,context,isMobile})=>{
  const manifest=require('../coherent-preview.json'),crypto=require('node:crypto');
  await page.addInitScript(()=>{localStorage.setItem('avs-lang','nl');localStorage.setItem('avs-consent',JSON.stringify({v:4,ext:false,ana:false,ts:Date.now()}));localStorage.setItem('flip:hinted','1');localStorage.setItem('flip:mobilehint','1')});
@@ -20,7 +50,7 @@ test('The Coherent Enterprise buttons on Books and About open the 12-page HTML f
 });
 
 test('The Coherent Enterprise flipbook keeps every page readable if the flip library fails',async({page})=>{
- const external=[];page.on('request',r=>{if(!r.url().startsWith('http://127.0.0.1:4173/'))external.push(r.url())});
+ const external=[];page.on('request',r=>{if(!r.url().startsWith(((process.env.TEST_BASE_URL||'http://127.0.0.1:4173')+'/')))external.push(r.url())});
  await page.addInitScript(()=>{localStorage.setItem('flip:hinted','1');localStorage.setItem('flip:mobilehint','1')});
  await page.route('**/page-flip-2.0.7.js',r=>r.abort());await page.goto('/boek/the-coherent-enterprise/index.html#page-1');await expect(page.locator('#pgNow')).toHaveText('1');
  await page.locator('#btnNext').click();await expect(page.locator('#pgNow')).toHaveText('2');await expect(page.locator('#book .page[data-p="2"]')).toBeVisible();expect(external).toEqual([]);
@@ -40,7 +70,7 @@ test('home preview opens the HTML flipbook, flips, searches and reaches its fina
  const AxeBuilder=require('@axe-core/playwright').default;const result=await new AxeBuilder({page:reader}).withTags(['wcag2a','wcag2aa','wcag21a','wcag21aa','wcag22aa']).analyze();expect(result.violations.map(v=>v.id)).toEqual([]);
 });
 test('flipbook works without external services and keeps every page readable when its script is unavailable',async({page})=>{
- const external=[];page.on('request',r=>{if(!r.url().startsWith('http://127.0.0.1:4173/'))external.push(r.url())});
+ const external=[];page.on('request',r=>{if(!r.url().startsWith(((process.env.TEST_BASE_URL||'http://127.0.0.1:4173')+'/')))external.push(r.url())});
  await page.addInitScript(()=>{localStorage.setItem('flip:hinted','1');localStorage.setItem('flip:mobilehint','1')});
  await page.route('**/page-flip-2.0.7.js',r=>r.abort());await page.goto('/boek/index.html#page-1');await expect(page.locator('#pgNow')).toHaveText('1');
  await page.locator('#btnNext').click();await expect(page.locator('#pgNow')).toHaveText('2');await expect(page.locator('#book .page[data-p="2"]')).toBeVisible();expect(external).toEqual([]);

@@ -1,6 +1,8 @@
 const {test,expect}=require('playwright/test');
 async function seed(page,c={v:4,ext:false,ana:false,ts:Date.now()}){await page.addInitScript(c=>{localStorage.setItem('avs-lang','nl');if(c)localStorage.setItem('avs-consent',JSON.stringify(c));else localStorage.removeItem('avs-consent')},c)}
 async function stubs(page){
+  // This suite exercises GoatCounter consent. Keep the separate HubSpot integration offline.
+  await page.route('https://js-eu1.hs-scripts.com/**',route=>route.fulfill({status:200,contentType:'text/javascript',body:''}));
   await page.route('https://fonts.googleapis.com/**',r=>r.fulfill({status:200,contentType:'text/css',body:''}));
   await page.route('https://gc.zgo.at/count.js',r=>r.fulfill({status:200,contentType:'text/javascript',body:`window.__analyticsLoaded=(window.__analyticsLoaded||0)+1;window.goatcounter.count=function(){window.__counts=(window.__counts||0)+1};if(!window.goatcounter.no_onload)window.goatcounter.count();`}));
 }

@@ -1,0 +1,35 @@
+{
+  "family": "Aptos, \"Hanken Grotesk\", \"Segoe UI\", Helvetica, Arial, sans-serif",
+  "body": 17,
+  "bodySelector": "body.decision-journey-page .case-card p",
+  "headings": {
+    "1": {
+      "min": 40,
+      "vw": 6,
+      "max": 86
+    },
+    "2": {
+      "min": 32,
+      "vw": 4,
+      "max": 54
+    },
+    "3": {
+      "min": 24,
+      "vw": 0,
+      "max": 24
+    },
+    "4": {
+      "min": 20,
+      "vw": 0,
+      "max": 20
+    }
+  },
+  "label": 12,
+  "metadata": 14,
+  "labelSelector": ".eyebrow,.kicker,.part,.folio,.in-brief__k,.author-box__k,.author-box__n,.journal-label,.exhibit,.tag,.route-k,.lens-k,.executive-eyebrow,.executive-signature,.brief-label,.subtle-label,.product-title,.signal-cat,[data-typography-role=label],.practice-number,.lang-cur,th:not([scope=row]),svg text,.paired-row>span,.paired-bars span,.legend,.tenure-line,.stages,.years,.matrix-axes,.bar-chart b,.bar-chart span,small,sup,sub,.pg .heat .hd,.pg .heat .c,svg foreignObject .bp-lbl,.ws-eyebrow,.ws-sample-tag,.ws-result-no,.ws-steps li>span,.ws-plan-day,.flow-scale,.spec-axis,.par .lbl,.lane .who,.mrow .risk,.lvl .ln,.lvl .label,.metric>span:not(.pot),.kv dt,.verdict dt,body.decision-journey-page .stage-kicker,body.decision-journey-page .step-number,body.decision-journey-page .case-kind,body.decision-journey-page .demo-label,body.decision-journey-page .phase-label,body.decision-journey-page .action-number,body.decision-journey-page .info-label,body.decision-journey-page .step-copy small,body.decision-journey-page .method-caption>span",
+  "metadataSelector": ".note,.byline,.career-y,.route-note,.hero-avail,.brief-disclaimer,.method-note,.reader-links,.author-box__links,.proof-link,footer p,.journal-header p,.signup p,[data-typography-role=metadata],footer a,footer li,footer span,footer button,.paper-footer,figcaption,cite,.pg .foot,.drawer .result .meta,.ws-cta-note,.ws-author-line,.ws-plan-owner,.ws-price-caption,.ws-practical,.ws-contact-help,.est-note,.exhibit-note,.gov-note,.ins-meta,body.decision-journey-page .product-name,body.decision-journey-page .prototype-notice p,body.decision-journey-page .method-caption p,body.decision-journey-page .status,body.decision-journey-page .case-selected,body.decision-journey-page .source-date,body.decision-journey-page .context-dl dt,body.decision-journey-page .context-dl dd,body.decision-journey-page .context-footer,body.decision-journey-page .context-status,body.decision-journey-page .group-intro,body.decision-journey-page .field-hint,body.decision-journey-page .field-error,body.decision-journey-page .readonly-field small,body.decision-journey-page .inline-note,body.decision-journey-page .action-dates,body.decision-journey-page .action-status,body.decision-journey-page .phase-review,body.decision-journey-page .plan-phase p,body.decision-journey-page .plan-counter span,body.decision-journey-page .observation-status,body.decision-journey-page .value-calculations dt,body.decision-journey-page .value-evaluation>p,body.decision-journey-page .site-footer p",
+  "control": 15,
+  "controlSelector": "button,input,select,textarea,label,.btn,nav a,.nav a,.main-nav a,.topic-links a",
+  "metric": 32,
+  "metricSelector": ".metric b,.bar-top b,.ec-tile b,.dg-out .bn,.snapshot-stat strong,.signal-metric,.radar-summary strong,.exact-edition .metrics strong,.ec-operator,body.decision-journey-page .plan-counter strong"
+}

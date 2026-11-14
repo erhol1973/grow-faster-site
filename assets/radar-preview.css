@@ -1,0 +1,12 @@
+.radar-preview{max-width:52rem;margin:auto;padding:clamp(2rem,6vw,5rem) 1.5rem}.radar-preview h1{font-size:clamp(2rem,5vw,3.5rem);margin:0 0 2rem}.radar-preview h2{font-size:clamp(1.5rem,3vw,2.25rem)}.radar-preview p{line-height:1.65;max-width:68ch}.radar-cta{display:inline-block;margin-top:1rem;padding:.9rem 1.25rem;border-radius:.5rem;background:#123860;color:white;text-decoration:none}.radar-cta:focus-visible,.site-header nav a:focus-visible{outline:3px solid #49b9ff;outline-offset:4px}.site-header nav a{color:white;padding:.5rem}.radar-account{color:white;text-decoration:underline;text-underline-offset:.2em;font-weight:600}
+
+/* First-party exercise entry; retained outside the protected edition. */
+#radar-journey-entry{max-width:75rem;margin:1rem auto;padding:1rem 1.5rem;border-left:3px solid #006a9c;background:#edf4fa;color:#182d45}
+#radar-journey-entry .journey-action{display:inline-block;padding:.35rem 0;color:#006a9c;font-weight:600;text-underline-offset:.2em}
+#radar-journey-entry .journey-context{margin:.35rem 0 0;line-height:1.5}
+#radar-journey-entry a:focus-visible{outline:3px solid #0874a9;outline-offset:3px}
+
+#radar-journey-entry .journey-action{white-space:normal;max-width:100%;overflow-wrap:anywhere}
+
+/* Keep both public and verified member header actions readable on narrow screens. */
+@media(max-width:480px){.site-header .header-inner{flex-wrap:wrap}.site-header .header-right{margin-left:auto}}

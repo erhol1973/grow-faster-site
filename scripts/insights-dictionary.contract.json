@@ -1,0 +1,107 @@
+{
+  "version": 1,
+  "review": "Prospective experimental Insights data profile only. Shared original666 floor and sole13 runtime hash policy remain in coherence-dictionary.contract.json. Exactly55 existing tuples; both inline blocks have no global dictionary lookup. No performance-fix or production approval.",
+  "additionalKeys": [
+    "In brief",
+    "The problem",
+    "Why it happens",
+    "What to do",
+    "Enterprise & AI Transformation Lead. More than 20 years in programme management, PMO, governance and transformation.",
+    "Available now in Belgium for a permanent role or a long-term assignment.",
+    "See the track record",
+    "Almost every large organisation uses AI, yet only about 6% attribute 5% or more of their EBIT to it.",
+    "AI lands in fragmented systems where cases still wait in the same queues. Agents amplify that friction.",
+    "Before choosing the next tool, ask where your work loses coherence today.",
+    "Business cases measure task time, while most cycle time is waiting.",
+    "Information, approvals and handoffs between teams dominate the flow.",
+    "Measure decision time, handoffs, waiting and rework. Remove friction first, then add agents.",
+    "Once an agent acts on its own, accountability for what it does is often unclear.",
+    "Organisations assume that whoever owns the model also owns the decision.",
+    "Settle five decision rights before go-live and keep final accountability singular and human.",
+    "Leading the agentic enterprise",
+    "Perspectives for CEOs, CIOs and leadership teams on turning AI potential into enterprise value. One clear argument per article, readable in minutes.",
+    "Executive Journal on AI and Enterprise Coherence | Erlend Hollebosch",
+    "Agents",
+    "Governed autonomy",
+    "Decision rights",
+    "minutes",
+    "Decision rights for every agent",
+    "Business case",
+    "Latest articles",
+    "26 October 2026",
+    "2 min read",
+    "Share on LinkedIn",
+    "Why most companies still see no AI impact",
+    "The technology is rarely the problem. The system it lands in usually is.",
+    "Almost every large organization now uses AI. Yet only about 6% attribute 5% or more of their EBIT to it. The usual explanation is that the technology is not mature enough. In most cases, that is not the problem.",
+    "AI lands in an existing system. In many organizations, that system is fragmented: decisions wait for several committees, work changes hands many times, and every incident adds another layer of control. A copilot makes individual tasks faster, but the case still waits in the same queues.",
+    "Agents raise the stakes. They do not just assist, they act. In a coherent organization they amplify value. In a fragmented one they amplify friction, at machine speed.",
+    "The first question for an executive is therefore not which AI tool to buy. It is: where does our work lose coherence today, and what will happen when we accelerate it?",
+    "Read chapter 02: The coherence lens",
+    "Reduce friction before you accelerate",
+    "Most cycle time is waiting, not working. Measure that first.",
+    "Most AI business cases measure the time a task takes. But in most processes, the task itself is a small part of the cycle time. The rest is waiting: for information, for an approval, for the next team.",
+    "Before you add agents, measure four things for one process: how long a decision takes, how often a case changes hands, which share of the cycle time is pure waiting, and how much work is done twice.",
+    "Those numbers show where the value really sits. Remove a handoff, give one person ownership of the whole flow, make an approval proportional to the risk. Often that alone shortens the cycle time noticeably, before any AI is involved.",
+    "Then add agents to a process that is ready for speed. That is the difference between automating the old process and designing a better one.",
+    "Try it in the value simulator",
+    "Who decides when an agent acts?",
+    "Owning the model is not the same as owning the decision.",
+    "As soon as an agent can act on its own, a new question appears: who is accountable for what it does? Many organizations assume that whoever owns the model also owns the decision. That is a dangerous shortcut.",
+    "Settle five decision rights before an agent goes live: who approves its deployment, who monitors its behavior, who can stop it, who owns the handoff between teams, and who is accountable for the business outcome.",
+    "The answers can differ by risk. Low-risk agents can act within clear boundaries. For critical decisions, the agent recommends and a person decides.",
+    "One principle does not change: final accountability stays singular and human. Autonomy works when everyone knows who decides.",
+    "Read chapter 07: Decision rights for every agent",
+    "Explore transformation in practice",
+    "Explore how shared planning, working processes and collaboration across teams shape my perspective on transformation.",
+    "How the enterprise moves as a whole",
+    "Discuss a role or assignment",
+    "Enterprise & AI Transformation Lead"
+  ],
+  "scripts": [
+    {
+      "attributes": "defer src=\"assets/typography.js?v=20261114-integration\"",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "attributes": "defer src=\"assets/cms-config.js\"",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "attributes": "defer src=\"assets/cms-client.js\"",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "attributes": "defer src=\"assets/cms-public.js\"",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "attributes": "defer src=\"assets/i18n-insights.js?v=insights-1\"",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "attributes": "defer src=\"assets/models.js?v=20261029-quality\"",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "attributes": "defer src=\"assets/consent.js?v=20261029-quality\"",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "attributes": "defer src=\"assets/site.js?v=20261114-gf09\"",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "attributes": "",
+      "sha256": "b42abfe162543c5a137448921b605972ed56dc1ba7034cf6c5098c891f18c1f5"
+    },
+    {
+      "attributes": "id=\"insights-selection\"",
+      "sha256": "1932714d5b6722ad38e24d6d46adce47d26293c9074efea51d308a687395c122"
+    },
+    {
+      "attributes": "defer src=\"assets/ux.js?v=20261103-book-order\"",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ]
+}

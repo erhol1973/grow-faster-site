@@ -3,7 +3,7 @@ const assert=require('node:assert/strict');
 const fs=require('node:fs'),path=require('node:path');
 const {createServer}=require('../scripts/server.cjs');
 const navigation=require('./navigation-cases.json');
-const routes=[navigation.home,...navigation.primary.flatMap(route=>[route,...(navigation.groups[route]||[])]),navigation.action];
+const routes=[navigation.home,...navigation.primary.flatMap(route=>[route,...(navigation.groups[route]||[])])];
 const root=path.resolve(__dirname,'../dist');let server,base;
 before(async()=>{server=createServer();await new Promise(resolve=>server.listen(0,'127.0.0.1',resolve));base=`http://127.0.0.1:${server.address().port}`});
 after(async()=>{server.closeIdleConnections();await new Promise(resolve=>server.close(resolve))});
@@ -13,7 +13,8 @@ test('served ordinary pages have complete menus and Contact opens without a frag
     const response=await fetch(base+'/'+file),html=await response.text();assert.equal(response.status,200,file);
     const nav=html.match(/<nav\b[^>]*class="nav [\s\S]*?<\/nav>/i);if(!nav)continue;pages++;
     const actual=[...nav[0].matchAll(/<a\b[^>]*href="([^"]+)"/g)].map(m=>m[1]);
-    assert.deepEqual(actual,routes,`${file}: shared navigation cases must match the complete menu`);
+    const memberRoute = "/account?return=" + encodeURIComponent("/" + file);
+    assert.deepEqual(actual,[...routes,memberRoute,navigation.action],`${file}: shared navigation cases must match the complete menu`);
     assert.deepEqual([...nav[0].matchAll(/<a\b[^>]*class="[^"]*\bl\b[^"]*"[^>]*href="([^"]+)"/g)].map(m=>m[1]),[...navigation.primary,navigation.action],`${file}: Home, five categories and the Work with me action`);
     assert.match(nav[0],/class="l(?: cur on)? nav-work" href="about\.html"(?: aria-current="page")?>Work with me <span aria-hidden="true">→<\/span><\/a>/,file);
     assert.doesNotMatch(nav[0],/href="workshop\.html"/,`${file}: the workshop is an offer on Approach, Home and About, not a main-menu action`);

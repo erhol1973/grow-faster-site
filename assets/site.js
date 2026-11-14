@@ -121,7 +121,7 @@
   }
   function drawQuad(x,y,cls){
     const L=44,T=10,S=280;const cx=L+x*S, cy=T+(1-y)*S;
-    const cell=(qx,qy,name,on,reinv)=>`<rect x="${L+qx*S/2}" y="${T+qy*S/2}" width="${S/2}" height="${S/2}" fill="${reinv?'var(--ai-soft)':'var(--bg2)'}" stroke="var(--line)"/><text x="${L+qx*S/2+12}" y="${T+qy*S/2+24}" font-family="Aptos, Hanken Grotesk, Segoe UI, sans-serif" font-size="11" letter-spacing="1" fill="${on?(reinv?'var(--ai-ink)':'var(--brand)'):'var(--muted)'}" font-weight="${on?600:400}">${t(name).toUpperCase()}</text>`;
+    const cell=(qx,qy,name,on,reinv)=>{const label=t(name).toUpperCase(),split=name==='Agent-enable'&&LANG==='nl'&&label==='AI-AGENTEN LATEN COÖRDINEREN'?label.lastIndexOf(' '):-1;return`<rect x="${L+qx*S/2}" y="${T+qy*S/2}" width="${S/2}" height="${S/2}" fill="${reinv?'var(--ai-soft)':'var(--bg2)'}" stroke="var(--line)"/><text x="${L+qx*S/2+12}" y="${T+qy*S/2+24}" font-family="Aptos, Hanken Grotesk, Segoe UI, sans-serif" font-size="11" letter-spacing="1" fill="${on?(reinv?'var(--ai-ink)':'var(--brand)'):'var(--muted)'}" font-weight="${on?600:400}">${split>=0?`<tspan x="${L+qx*S/2+12}" dy="0">${label.slice(0,split)}</tspan> <tspan x="${L+qx*S/2+12}" dy="1.4em">${label.slice(split+1)}</tspan>`:label}</text>`;};
     quad.innerHTML=
       cell(0,0,"Augment",cls==="Augment")+cell(1,0,"Reinvent",cls==="Reinvent",true)+cell(0,1,"Automate",cls==="Automate")+cell(1,1,"Agent-enable",cls==="Agent-enable")+
       `<text x="${L+S/2}" y="${T+S+26}" text-anchor="middle" font-family="Aptos, Hanken Grotesk, Segoe UI, sans-serif" font-size="10.5" letter-spacing="1" fill="var(--muted)">${t("Workflow coordination").toUpperCase()} →</text>`+
@@ -166,8 +166,8 @@
       {h:a*1+(1-a)*H,w:a*CT*CY*W+(1-a)*CT*W,d:a*TD*CY+(1-a)*TD,ct:pot[1].ct},
       {h:a*1+(1-a)*H*(1-D),w:a*CT*CY*W+(1-a)*CT*W*(1-D),d:a*TD*CY+(1-a)*TD*(1-D),ct:pot[2].ct}];
     const fl=[today].concat(fp.map((x,i)=>{const f=CO.f[i],o={};for(const k in today)o[k]=today[k]-(today[k]-x[k])*f;return o}));
-    const head=`<thead><tr><th></th><th>${t("Today")}</th>${sc.map(x=>`<th>${t(x.n)}</th>`).join("")}</tr></thead>`;
-    const row=(lbl,f,cls)=>`<tr${cls?` class="${cls}"`:""}><td>${t(lbl)}</td>${fl.map((x,i)=>`<td${i===3?' class="top"':''}>${f(x)}</td>`).join("")}</tr>`;
+    const head=`<thead><tr><td></td><th scope="col">${t("Today")}</th>${sc.map(x=>`<th scope="col">${t(x.n)}</th>`).join("")}</tr></thead>`;
+    const row=(lbl,f,cls)=>`<tr${cls?` class="${cls}"`:""}><th scope="row">${t(lbl)}</th>${fl.map((x,i)=>`<td${i===3?' class="top"':''}>${f(x)}</td>`).join("")}</tr>`;
     $("#flow-t").innerHTML=`<table>${head}<tbody>${row("Handoffs per case",x=>fmtD(x.h))}${row("Waiting time (days)",x=>fmtD(x.w))}${row("Time to decision (days)",x=>fmtD(x.d))}${row("Cycle time (days)",x=>fmtD(x.ct),"key")}</tbody></table>`;
     /* business case */
     const F=g("cons")/100,RR=g("real")/100;
@@ -176,8 +176,8 @@
     const cell=v=>{v=Math.round(v/1000)*1000;return `<span${v<0?' class="neg"':''}>${fmtM(v)}</span>`};
     const calc=(h,i,f)=>GFModels.businessCase({h,C,F,RUN,V,a,f,I:cost[i][0],R0:cost[i][1],RR,i});
     const bc=sc.map((x,i)=>calc(x.h,i,x.f));
-    const brow=(lbl,f,cls)=>`<tr${cls?` class="${cls}"`:""}><td>${t(lbl)}</td>${bc.map((x,i)=>`<td${i===2?' class="top"':''}>${f(x)}</td>`).join("")}</tr>`;
-    $("#bc-t").innerHTML=`<table><thead><tr><th></th>${sc.map(x=>`<th>${t(x.n)}</th>`).join("")}</tr></thead><tbody>
+    const brow=(lbl,f,cls)=>`<tr${cls?` class="${cls}"`:""}><th scope="row">${t(lbl)}</th>${bc.map((x,i)=>`<td${i===2?' class="top"':''}>${f(x)}</td>`).join("")}</tr>`;
+    $("#bc-t").innerHTML=`<table><thead><tr><td></td>${sc.map(x=>`<th scope="col">${t(x.n)}</th>`).join("")}</tr></thead><tbody>
       ${brow("Benefit per year · conservative",x=>cell(x.B))}
       ${brow("Net value · year 1",x=>cell(x.y1))}
       ${brow("Net value per year · from year 2",x=>cell(x.yN))}
@@ -265,14 +265,14 @@
     agent:'<path d="M6 .8l4.5 2.6v5.2L6 11.2 1.5 8.6V3.4z"/><circle cx="6" cy="6" r="1.5"/>',
     clock:'<circle cx="6" cy="6" r="5"/><path d="M6 3.2V6l2 1.4"/>'
   };
-  const B_CFG={id:"bb",colW:108,TW:94,TH:60,num:true,
+  const B_CFG={id:"bb",colW:108,TW:94,TH:82,num:true,
     lanes:[{n:"Customer",h:96},{n:"Case handler",h:108},{n:"Other department",h:100},{n:"Systems",h:100}],
     nodes:[{k:"start",l:0,c:0,t:"Customer request"},{k:"task",l:1,c:1,t:"Employee receives case",m:"user"},{k:"task",l:1,c:2,t:"Search information",m:"user"},
       {k:"task",l:1,c:3,t:"Request missing data",m:"clock",w:1},{k:"task",l:1,c:4,t:"Analyze",m:"user"},{k:"task",l:2,c:5,t:"Ask another department",m:"user"},
       {k:"timer",l:1,c:6,t:"Wait for reply",w:1},{k:"xor",l:1,c:7,t:"Decide",lab:"up"},{k:"task",l:3,c:8,t:"Update system",m:"manual",cls:"svc"},{k:"end",l:0,c:9,t:"Contact customer",lab:"left"}],
     edges:[[0,1,"ho"],[1,2],[2,3],[3,4],[4,5,"ho"],[5,6],[6,7],[7,8,"ho"],[8,9,"ho"]]};
   const SIX=["Retrieve customer data","Check policies","Search knowledge","Analyze history","Identify missing information","Calculate possible resolution"];
-  const A_CFG={id:"ab",colW:126,TW:106,TH:60,rowH:54,
+  const A_CFG={id:"ab",colW:126,TW:106,TH:82,rowH:54,
     lanes:[{n:"Customer",h:96},{n:"AI agent",h:108},{n:"Systems & data",h:6*54+20,rows:6},{n:"Human expert",h:112}],
     nodes:[{k:"start",l:0,c:0,t:"Customer request"},{k:"task",l:1,c:1,t:"AI agent understands intent",m:"agent",cls:"agent",a:0},{k:"and",l:1,c:2,t:"In parallel",lab:"up",a:1}]
       .concat(SIX.map((t,r)=>({k:"task",l:2,c:3,r,t,m:"service",cls:"svc small",a:1})))
@@ -288,8 +288,8 @@
     return{lt,H,W,pos};
   }
   const isTask=n=>n.k==="task", isGw=n=>n.k==="xor"||n.k==="and";
-  function hw(cfg,n){return isTask(n)?cfg.TW/2:isGw(n)?19:15}
-  function hh(cfg,n){return isTask(n)?(n.cls&&n.cls.includes("small")?22:n.cls&&n.cls.includes("tall")?39:cfg.TH/2):isGw(n)?19:15}
+  function hw(cfg,n){return isTask(n)?(cfg.TW+(n.cls&&n.cls.includes("small")?12:0))/2:isGw(n)?19:15}
+  function hh(cfg,n){return isTask(n)?(n.cls&&n.cls.includes("small")?27:n.cls&&n.cls.includes("tall")?52:cfg.TH/2):isGw(n)?19:15}
   function fo(x,y,w,h,txt,cls){return `<foreignObject x="${x}" y="${y}" width="${w}" height="${h}"><div xmlns="http://www.w3.org/1999/xhtml" class="bp-lbl ${cls||""}">${txt}</div></foreignObject>`}
   function esc2(s){return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;")}
   function buildBPMN(cfg){
@@ -309,7 +309,7 @@
     });
     cfg.nodes.forEach((n,i)=>{
       const p=pos[i],da=n.a!==undefined?` data-a="${n.a}"`:"",cls=`bp-n ${n.k} ${n.cls||""} ${n.w?"wait":""}`;
-      if(isTask(n)){const h=hh(cfg,n)*2,w=cfg.TW,x=p.x-w/2,y=p.y-h/2,small=n.cls&&n.cls.includes("small");
+      if(isTask(n)){const h=hh(cfg,n)*2,w=hw(cfg,n)*2,x=p.x-w/2,y=p.y-h/2,small=n.cls&&n.cls.includes("small");
         s+=`<g class="${cls}" data-i="${i}"${da}><rect x="${x}" y="${y}" width="${w}" height="${h}" rx="8"/>`;
         if(small){s+=`<g class="bp-ic" transform="translate(${x+6} ${p.y-6})">${ICON[n.m]}</g>`+fo(x+20,y+2,w-24,h-4,esc2(t(n.t)),"sm")}
         else{s+=`<g class="bp-ic" transform="translate(${x+7} ${y+6})">${ICON[n.m]}</g>`+(cfg.num?`<text class="bp-num" x="${x+w-7}" y="${y+14}" text-anchor="end">${String(i+1).padStart(2,"0")}</text>`:"")+fo(x+4,y+19,w-8,h-22,esc2(t(n.t)))}
@@ -395,6 +395,10 @@
     pick(curSpec);evalP();sim();renderBPMN();coh();if(typeof fitNav==="function")fitNav();
     if(save)store.set("avs-lang",l);
     root.classList.add("i18n-ready");
+    const journeyEntry=document.getElementById('decision-journey-entry');if(journeyEntry&&!journeyEntry.querySelector('[data-journey-copy]')){journeyEntry.querySelector('h2').textContent=l==='fr'?'Du signal à un dossier de décision':'Van signaal naar een beslisdossier';journeyEntry.querySelector('p').textContent=l==='fr'?'Explorez un cas fictif, formulez un choix, planifiez 90 jours et examinez les résultats saisis. Aucune donnée réelle ni stockage.':'Verken een fictieve casus, maak een afweging, plan 90 dagen en beoordeel ingevoerde resultaten. Geen echte bedrijfsgegevens of opslag.';const link=journeyEntry.querySelector('#decision-journey-open');link.textContent=l==='fr'?'Ouvrir le parcours executive →':'Open de fictieve beslisreis →';link.href='decision-journey/?lang='+(l==='fr'?'fr':'nl');}
+    document.querySelectorAll('[data-journey-copy]').forEach(n=>n.textContent=n.dataset[l==='fr'?'journeyFr':'journeyNl']);
+    document.querySelectorAll('[data-journey-menu]').forEach(a=>a.href='approach.html?lang='+l+'#decision-journey-entry');
+    document.querySelectorAll('[data-journey-link]').forEach(a=>a.href='/decision-journey/?lang='+l);
     document.dispatchEvent(new CustomEvent("gf:language",{detail:{language:l}}));
   }
   /* language menus */

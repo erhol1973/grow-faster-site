@@ -1,85 +1,45 @@
-# Navigation and Executive Radar agent surfaces
+# Integrated quality and decision journey agent surfaces
 
-Current task: prevent internal Executive Radar sprint/About content from ever entering new public artifacts and retire the confirmed old Cloudflare dev preview3126e2e7. Radar owns policy/build/security/live-check source and regression tests; reviewer is read-only. Orchestrator alone commits. The CEO pilot PR78 remains draft with sponsor acceptance and production Go/No-go OPEN; do not publish that edition. No hosting-wide settings, CMS/HubSpot writes or gate relaxation.
+Sponsor approves V3 and authorizes quality fixes plus safe website integration. Production unchanged. One candidate integration/decision-journey-quality from member3ccf89e plus typography9f3462a, commonbase mainb1831e2. Root alone commits. No mainmerge/deploy, provideraccount/productionDB/role changes, form submissions, costs or weakened tests. Historical role charters archived in docs/agents/archive/20261114.
+
+The software integrator owns all implementation except the exact design and orchestrator exclusions. One canonical approved font/semantic policy; one builder/dictionary/runtime. Preserve666originalretentionkeys, original54Lighthouse samples plus6newroute samples, realHTTPcache, CSP, privatepayload and Radar publication guards. Unknown provider/native-role evidence remains explicit; fixtures cannot substitute.
 
 ```roster
-navigation builder installed autonomous
-radar builder installed autonomous
-branding builder installed autonomous
-repository builder planned escalates
+repository builder installed autonomous
+performance builder installed autonomous
 reviewer reviewer installed autonomous
-```
-
-```surface:navigation
-*.html
-assets/navigation.css
-assets/site.js
-assets/i18n.js
-tests/**
-!tests/baies-dev.test.cjs
-!tests/browser/baies-dev.spec.cjs
-!tests/brand-logo.test.cjs
-scripts/load.cjs
-scripts/performance.cjs
-```
-
-```surface:radar
-baies-dev/**
-executive-radar/**
-assets/baies-dev*
-scripts/baies-dev*
-scripts/build.cjs
-scripts/security.cjs
-scripts/verify-production.cjs
-tests/baies-dev.test.cjs
-tests/browser/baies-dev.spec.cjs
-```
-
-```surface:branding
-img/**
-favicon.ico
-tests/brand-logo.test.cjs
-```
-
-```surface:orchestrator
-docs/AGENT-SURFACES.md
-AGENTS.md
-docs/RELEASE.md
-docs/TESTPLAN.md
-docs/agents/**
-scripts/agent-guard.mjs
-.github/workflows/dev-agent-surfaces.yml
-.github/workflows/baies-dev-quality.yml
-docs/EXECUTIVE-RADAR-NAV-DEV.md
 ```
 
 ```surface:repository
 **
-!*.html
-!assets/navigation.css
-!assets/site.js
-!assets/i18n.js
-!tests/**
-!scripts/load.cjs
-!scripts/performance.cjs
-!scripts/verify-production.cjs
-!baies-dev/**
-!executive-radar/**
-!assets/baies-dev*
-!scripts/baies-dev*
-!scripts/build.cjs
-!scripts/security.cjs
-!img/**
-!favicon.ico
-!docs/AGENT-SURFACES.md
+!assets/typography.css
+!docs/TYPOGRAPHY.md
+!decision-journey/assets/canvas.css
+!.github/**
 !AGENTS.md
-!docs/RELEASE.md
-!docs/TESTPLAN.md
+!docs/AGENT-SURFACES.md
 !docs/agents/**
+!docs/DECISION-LOG.md
 !scripts/agent-guard.mjs
-!.github/workflows/dev-agent-surfaces.yml
-!.github/workflows/baies-dev-quality.yml
-!docs/EXECUTIVE-RADAR-NAV-DEV.md
+!docs/INTEGRATION-ACCEPTANCE-20261114.md
+!tests/browser/decision-journey/**
 ```
 
-Navigation owns the ordinary site header and shared locale/rendering code, and updates existing menu/test contracts. Radar owns its dedicated product and legacy-compatible canonical route. Branding owns brand image files, including existing BAEIS image paths, without editing HTML. Repository is a non-dispatched preservation surface; it may not change in this task. Reviewer audits every producer independently. Root HTML includes admin only if its actual brand/header needs consistency; do not change CMS behavior.
+```surface:performance
+assets/typography.css
+docs/TYPOGRAPHY.md
+decision-journey/assets/canvas.css
+```
+
+```surface:orchestrator
+.github/**
+AGENTS.md
+docs/AGENT-SURFACES.md
+docs/agents/**
+docs/DECISION-LOG.md
+scripts/agent-guard.mjs
+docs/INTEGRATION-ACCEPTANCE-20261114.md
+tests/browser/decision-journey/**
+```
+
+Reviewer owns no candidate source. Its independent audit lives outside the repository under output/product-governance/integration-2026-11-14. No two builders hold a file. A local mechanical merge imports existing branch changes before producer attribution; new producer path receipts are checked with AGENT_PATHS before rootcommits. Both upstream histories remain auditable. GitHubCI checks mapcoverage with docs/agents; it does not authorize publication.

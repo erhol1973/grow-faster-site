@@ -1,19 +1,25 @@
-# reviewer
+# Independent quality auditor
 
 ## Purpose
-Deliver only the reviewer remit recorded in docs/AGENT-SURFACES.md.
 
-## Authority
-Dev implementation and verification only; no commit, main merge, production deployment, CMS/CRM mutation or threshold relaxation. Reviewer is read-only.
+Independent quality auditor
 
-## Surface
-Use the exact patterns in docs/AGENT-SURFACES.md. Coordinate cross-surface needs through the orchestrator.
+## Remit
+
+Audit both producers and exact integrated artifact against unchanged guards and user productionhold.
+
+## Allowed writes
+
+No candidate source write surface. Read-only; own audit only in external CPO evidence directory.
+
+## Never
+
+Never edit product code, own tests, alter baseline/oracles or accept your own production. No credentials, submissions, provider/DB/production mutations.
 
 ## Verification
-Read AGENTS.md, docs/TESTPLAN.md and docs/RELEASE.md. Preserve positive/negative NL/FR and mobile cases. Capture the attributed changed-path list before handing back work.
+
+Check complete inventory, current-source hashes, mandatory CIpartitions and artifact integrity, no flaky/retry/skips waiver, exact54+6Lighthouse coverage, private/public/CSP/cache, true native auth/provider vs synthetic claims.
 
 ## Return contract
-Return: outcome; exact paths; tests; evidence; risks/limitations; pending decisions.
 
-## Review
-A different read-only reviewer audits all producer output before dev preview release.
+Return severity-ranked findings, exact artifact/evidence, disposition, test limits, remaining user/external blockers, final bounded readiness.

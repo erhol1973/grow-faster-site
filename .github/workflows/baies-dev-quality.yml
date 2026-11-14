@@ -1,13 +1,19 @@
 name: BAEIS dev quality
 on:
+  push:
+    branches: [dev/member-access]
   pull_request:
     paths:
       - 'baies-dev/**'
+      - 'assets/radar-*'
+      - 'scripts/radar-release.cjs'
+      - 'assets/member-auth.js'
       - 'executive-radar/**'
       - 'assets/baies-dev*'
       - 'img/baies-dev*'
       - 'tests/baies-dev*'
       - 'tests/browser/baies-dev*'
+      - 'tests/browser/radar-access*'
       - 'scripts/baies-dev*'
       - 'playwright.baies-dev.config.cjs'
       - '.github/workflows/baies-dev-quality.yml'
@@ -25,6 +31,8 @@ jobs:
     timeout-minutes: 20
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          fetch-depth: 0
       - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1
         with:
           node-version: '24.21.0'

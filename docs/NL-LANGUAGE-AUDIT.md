@@ -34,6 +34,24 @@ New finding IDs hash an unambiguous JSON tuple. Exact prior findings retain thei
 
 The initial expanded checkpoint caused 109 `generic-api-key` history findings. Independent comparison proved that every match was a generated public CMS DOM identifier in catalog-source metadata, present in the same commit's public catalog. The existing catalog policy is extended only to the exact `language/nl-baseline.json` path **and** the fully anchored generated-identifier line pattern; no file or scanner is skipped. `scripts/nl-secret-guard.cjs` runs the real pinned Gitleaks 8.24.3 in the secrets job: that metadata line is allowed, while an ordinary secret-shaped key in the same file, an identifier elsewhere, and extra content on the same line remain findings. Fixture values are synthetic, redacted and never printed. Default rules and the existing secret-history gate remain active.
 
+### Reviewed membership interface extension, 13 November 2026
+
+The exact `810bb24` PR merge (`a272ace`, parents main `b1831e2` and `810bb24`) stopped before inventory because nine added and six changed built JavaScript files differed from the reviewed contract. This was a fail-closed extraction guard, not an engine failure or loss of the language ledger. Independent review covered the new Coherence subset dictionary, unchanged global dictionary identities, member/bootstrap/controller bundles and public/private Radar boundary before refreshing the 30 JavaScript and 36 inline-script fingerprints.
+
+`scripts/nl-member-copy.cjs` now reads committed closed Dutch account/registration and invitation dictionaries as inert string/object/array data. It never executes JavaScript. It also checks explicit token-bound menu and Journal/Radar outage-copy anchors, rejecting changed, duplicate, executable, commented-out or quoted lookalike contracts. The four inline registration legal fragments are composed into their actual complete interface sentence; they are not checked as invented standalone sentences. The adapter contributes 47 stable file/key identities. Existing I18N/I18N_HTML/ECA extraction, 610 static CMS defaults, `admin.html` exclusion and local GET/HEAD-only policy remain intact. No account is created, no Auth session is mocked, and no private publication or signed URL is fetched. Authenticated Journal/Radar bodies and private Radar interactions, including decision copy in the shipped core, remain explicitly outside this public scan.
+
+The first real cached LanguageTool 6.6 scan checked 774 changed/new blocks and produced 155 new finding identities. Of these, 126 repeat an existing exact text-hash/rule/offset/length tuple at a changed DOM identity; none are new dictionary findings. The other 29 comprise three Journal citation-title suggestions, eighteen privacy-copy suggestions and eight static member-copy suggestions. One suggestion on isolated `en het` exposed the legal-fragment context issue above; its original report is retained before the corrected scan. The fresh complete scan with the corrected adapter checked 771 blocks and reports **FINDINGS: 154**, comprising the same 126 relocated existing-text suggestions, three citation suggestions, eighteen privacy suggestions and seven member-interface suggestions. It produces a candidate with 3,668 entries: every one of the 3,514 previous entries unchanged plus 154 open suggestions, and no invented review receipts. The existing baseline is not modified by this scan.
+
+Brand/source names and technical terms such as Supabase, sessionStorage, Contentstudio and herstellink require contextual assessment, not bulk replacement. These categories are diagnostic triage, not suppressions or human language approval. All 3,514 prior language-ledger entries and their IDs remain preserved. The separate 109 historical secret-scanner findings concern public generated identifiers, not 109 language findings. Any complete reviewed checkpoint must use the existing explicit promotion procedure below and keep every open finding; the scanner never promotes automatically.
+
+### Reviewed finite context corrections, 14 November 2026
+
+The Decision journey adapter composes six step labels, two case labels, one method label and one fictional-source label from their explicit renderer parts. Summaries and source paragraphs remain separate complete blocks. Its initial ten-owner inventory, parent identities and leaf shapes fail closed if changed or missing. The two static Dutch title fragments form one complete heading with their former fragment IDs retained as provenance. These finite changes address 14 reviewed finding contexts; they do not insert spaces into arbitrary inline text or extend coverage to generated plan/report states.
+
+On `coherence-sim.html` only, reviewed `.bpmn` SVG producers regain the spaces removed by the existing `wrapText` word-wrapping function. Direct leaf `tspan` parts must preserve the reviewed x/dy pattern and producer identity; unclassified positioned spans, lost producer classes and malformed shapes fail closed. Eleven retained finding contexts were matched to these wrapped labels. Part locations and positions remain in extraction provenance. Generic inline compounds, separate SVG labels, symbols, hidden Dutch text, metadata, dictionaries and French exclusions keep their existing behavior.
+
+Dutch wording corrections and bilingual ECA metadata are separate source changes. Revised executable fingerprints document their actual built inventory; they are not language approval. Prior findings and fragment identities remain historical evidence rather than being deleted or automatically closed. The original frozen 61759 report/candidate and the semantic decisions for all 109 findings are retained separately. Post-correction build, browser and engine results must be recorded before claiming verification; no official approval or production publication follows from these adapters.
+
 ## Versioned baseline and register
 
 The earlier ChatGPT Library baseline and register were not accessible as attachments, repository files or connected tools. No reviews or findings from that register have been guessed or overwritten. The repository starts a separate machine baseline with an explicit provenance note. Import the earlier register by a reviewed PR when its actual file is available; preserve its original evidence and distinguish human review from machine results.
@@ -53,3 +71,38 @@ Until a candidate is promoted, the same differences remain pending and will be r
 Regression tests cover full sentence context, hidden Dutch text, exclusion of French, metadata, changed/unchanged/deleted blocks, missing review evidence/receipts, divergent history, public API rejection, malformed/failed/oversized engine requests, stale promotion and preserved findings. The independent daily workflow also exercises the real local engine and browser inventory on PRs touching its files. Existing build/unit/security/browser/load/performance and CI release gates remain required before any publication. No production publication is part of this change.
 
 Sources: [GitHub scheduled workflow semantics](https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows#schedule), [LanguageTool public API automation restriction](https://dev.languagetool.org/public-http-api.html), [own LanguageTool server](https://dev.languagetool.org/http-server).
+
+
+## Finite public Journal semantic parts
+
+Only /journal.html with a Dutch html.exact-edition and the committed public
+opening of exactly three sheets p1,p2,p3 admits this adapter. It never loads a
+private edition, executes an editorial/Auth controller or expands coverage to
+member pages4–15. Missing scope, a changed owner/parent/class/count, extra public
+sheets, new labels, nesting or malformed citation/year shapes fail closed.
+
+Seven existing owners are redirected to26 independent existing text parts:
+three folios each retain their caption and page marker separately; the cover
+keeps three tenure labels,four phase labels and eleven year ticks; the p3 quote
+and its complete direct citation are separate contexts. The original text nodes
+are assigned to these semantic owners. Generic inline joining remains unchanged:
+no global inserted spaces, dictionary whitelist, text suppression or Journal
+exemption. Citation source-link text and existing title/ARIA/metadata extraction
+remain intact. Each part records its former complete block identity,owner/part
+locations,role and the committed-public scope.
+
+The self-contained Git fixture preserves eight actual prior finding tuples on
+these seven owners. Tests load the real public Git HTML under an inert CSP and
+compare adapted output with the unchanged generic extractor on the identical
+other-route DOM. Every unaffected row stays equal; each owner's derived parts
+preserve its characters/order. Additional fixtures reject missing/extra/malformed
+owners,private15-sheet DOM and unsupported nesting while retaining ordinary
+inline compounds,hidden Dutch,French exclusions,metadata and the existing
+SVG/journey adapters.
+
+The exact3847-record machine checkpoint precedes this extraction correction;
+all prior finding records/history remain. Changed part contexts may produce new
+engine findings. This adapter is not a language approval or automatic closure.
+It changes only the local audit and its tests/docs: public assets,37JavaScript/
+37inline fingerprints,private publication payloads and production stay unchanged.
+A fresh committed-source engine scan and review remain the CPO's responsibility.

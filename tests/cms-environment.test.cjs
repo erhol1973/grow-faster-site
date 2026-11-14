@@ -8,9 +8,24 @@ test('CMS branch preview is bound to the isolated project for every page and ign
   assert.equal(c.url,'https://gqsvoioccvklzfmdmexy.supabase.co');assert.equal(c.recoveryEnabled,false);assert.ok(Object.isFrozen(c));
  }
 });
-test('production configuration remains production and lookalike hosts cannot select the test project',()=>{
- for(const hostname of ['grow-faster.be','www.grow-faster.be','feature-secure-supabase-cms.grow-faster-site.pages.dev.attacker.test']){
+test('member preview and local development use the isolated project',()=>{
+ for(const hostname of ['dev-member-access.grow-faster-site.pages.dev','localhost','127.0.0.1','[::1]']){
+  const c=config(hostname,'?cms-prod=1');assert.equal(c.url,'https://gqsvoioccvklzfmdmexy.supabase.co');
+  assert.match(c.key,/^sb_publishable_/);assert.equal(c.recoveryEnabled,false);
+ }
+});
+test('production domains keep the production configuration',()=>{
+ for(const hostname of ['grow-faster.be','www.grow-faster.be']){
   const c=config(hostname,'?cms-test=1');assert.equal(c.url,'https://dbooobckaqbkrmkpcuem.supabase.co');assert.equal(c.recoveryEnabled,true);
+ }
+});
+test('unknown deployments and lookalike domains cannot connect to either backend',async()=>{
+ const {createClient}=require('../assets/cms-client.js');
+ for(const hostname of ['1a2b3c4d.grow-faster-site.pages.dev','grow-faster.be.attacker.test','dev-member-access.grow-faster-site.pages.dev.attacker.test']){
+  const c=config(hostname,'?cms-test=1');assert.equal(c.key,'');assert.equal(c.recoveryEnabled,false);
+  let requests=0;
+  await assert.rejects(createClient(c,()=>{requests++;}).published('home'));
+  assert.equal(requests,0);
  }
 });
 test('admin CSP permits isolated Auth and media without wildcard Supabase origins',()=>{

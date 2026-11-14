@@ -40,12 +40,14 @@ test('resizing keeps the same ordered menu with a single final Work with me acti
 });
 for(const reducedMotion of ['no-preference','reduce'])test('overview pages retain the grouped reading routes without JavaScript and '+reducedMotion+' motion',async({browser,baseURL})=>{
  const context=await browser.newContext({javaScriptEnabled:false,reducedMotion,viewport:{width:390,height:844}});const page=await context.newPage();try{
- await page.goto(baseURL+'/index.html');await expect(page.locator('main')).toHaveCSS('visibility','visible');await expect(page.locator('#navlist a[href="coherence.html"]')).toBeVisible();await page.locator('#navlist a[href="coherence.html"]').click();
+ await page.goto(baseURL+'/index.html');
+ const guestLink=page.locator('#navlist').getByRole('link',{name:'Aanmelden',exact:true});
+ await expect(guestLink).toBeVisible();await expect(guestLink).toHaveAttribute('href','/account?return=%2Findex.html');await expect(page.locator('main')).toHaveCSS('visibility','visible');await expect(page.locator('#navlist a[href="coherence.html"]')).toBeVisible();await page.locator('#navlist a[href="coherence.html"]').click();
  await expect(page.locator('.topic-links a')).toHaveCount(4);await page.locator('.topic-links a[href="value.html"]').click();await expect(page).toHaveURL(/\/value\.html$/);
  await page.locator('.nav .brand').click();await page.locator('#navlist a[href="approach.html"]').click();await expect(page.locator('main')).toHaveCSS('visibility','visible');await expect(page.locator('.topic-links a[href="eca.html"]')).toBeVisible();await page.locator('.topic-links a[href="eca.html"]').click();await expect(page).toHaveURL(/\/eca\.html$/);
  }finally{await context.close()}
 });
 
 for(const lang of ['nl','fr'])test('Executive Radar menu route and logo return preserve '+lang,async({page},info)=>{
- await seed(page,lang);await page.goto('/index.html');await openMenu(page,info);await expect(page.locator('#navlist a.l')).toHaveText([...copy[lang].primary,copy[lang].work+' →']);await page.locator('#navlist a.nav-radar').click();await expect(page).toHaveURL(new RegExp('/executive-radar/[?]lang='+lang));await expect(page.locator('html')).toHaveAttribute('lang',lang+'-BE');await expect(page.locator('.product-identity > strong')).toContainText('Executive Radar');await page.locator('.site-header .identity').click();await expect(page).toHaveURL(new RegExp('/index.html[?]lang='+lang));await expect(page.locator('html')).toHaveAttribute('lang',lang);
+ await seed(page,lang);await page.goto('/index.html');await openMenu(page,info);await expect(page.locator('#navlist a.l')).toHaveText([...copy[lang].primary,copy[lang].work+' →']);await page.locator('#navlist a.nav-radar').click();await expect(page).toHaveURL(new RegExp('/executive-radar/[?]lang='+lang));await expect(page.locator('html')).toHaveAttribute('lang',lang+'-BE');await expect(page.locator('main h1')).toHaveText('Executive Radar');await expect(page.locator('article[data-language="'+lang+'"]')).toBeVisible();await expect(page.locator('#dashboard')).toHaveCount(0);await expect(page.locator('.site-header .identity')).toHaveAttribute('href','../index.html?lang='+lang);await page.locator('.site-header .identity').click();await expect(page).toHaveURL(new RegExp('/index.html[?]lang='+lang));await expect(page.locator('html')).toHaveAttribute('lang',lang);
 });

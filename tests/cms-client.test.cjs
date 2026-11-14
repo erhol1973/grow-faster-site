@@ -5,6 +5,25 @@ const config={url:'https://dbooobckaqbkrmkpcuem.supabase.co',key:'public-test-ke
 const response=(value,status=200)=>({ok:status<400,status,json:async()=>value});
 test('CMS refuses absent configuration and private requests without a session',async()=>{const client=createClient({...config,key:''},()=>{throw Error('must not send')});await assert.rejects(client.list(),/sleutel/);await assert.rejects(createClient(config).list(),/sessie/);assert.throws(()=>createClient({...config,url:'http://attacker.test'}));});
 test('password sign-in checks admin membership; ordinary users cannot retain the session',async()=>{const calls=[];const client=createClient(config,async(url,options)=>{calls.push([url,options]);return response(url.includes('/token')?{access_token:'test-token',expires_in:60}:false);});await assert.rejects(client.login('reader@example.test','synthetic'),/beheerdersrechten/);await assert.rejects(client.list(),/sessie/);assert.equal(calls.length,2);assert.equal(calls[1][1].headers.Authorization,'Bearer test-token');});
+test('direct CMS sign-in requires the admin role without a member bridge or membership RPC',async()=>{
+ const context={window:{},AbortSignal};vm.runInNewContext(fs.readFileSync('assets/cms-client.js','utf8'),context);
+ assert.equal(context.window.GFMember,undefined,'direct CMS login has no optional member bridge');
+ for(const admin of [true,false]){
+  const calls=[];const client=context.window.GFCms.createClient(config,async(url,options)=>{
+   calls.push([url,options]);
+   if(url.endsWith('/auth/v1/token?grant_type=password'))return response({access_token:'direct-cms-token',expires_in:60});
+   if(url.endsWith('/rest/v1/rpc/cms_is_admin'))return response(admin);
+   if(url.endsWith('/rest/v1/rpc/member_has_access'))return response(false);
+   if(url.includes('/rest/v1/page_sections?'))return response([]);
+   throw Error('unexpected request: '+url);
+  });
+  if(admin){await client.login('owner@example.test','synthetic');await client.list();assert.equal(calls.length,3);assert.equal(calls[2][1].headers.Authorization,'Bearer direct-cms-token');}
+  else{await assert.rejects(client.login('member@example.test','synthetic'),/beheerdersrechten/);await assert.rejects(client.list(),/sessie/);assert.equal(calls.length,2);}
+  assert.equal(calls[1][0],config.url+'/rest/v1/rpc/cms_is_admin');assert.equal(calls[1][1].headers.Authorization,'Bearer direct-cms-token');
+  assert.equal(calls.filter(([url])=>url.endsWith('/rest/v1/rpc/member_has_access')).length,0,'membership is not a new CMS prerequisite');
+ }
+});
+
 test('draft save and publish are separate authenticated operations with a revision precondition',async()=>{const calls=[];const client=createClient(config,async(url,options)=>{calls.push([url,options]);return response(url.includes('/token')?{access_token:'test-token',expires_in:60}:true);});await client.login('admin@example.test','synthetic');await client.save('id','revision',{settings:{fields:{}}});assert.ok(calls.at(-1)[0].endsWith('cms_save_section'));assert.deepEqual(JSON.parse(calls.at(-1)[1].body),{section_id:'id',expected_updated_at:'revision',content:{settings:{fields:{}}}});await client.publish('id','revision');assert.ok(calls.at(-1)[0].endsWith('cms_publish_section'));await client.published('home');assert.equal(calls.at(-1)[1].headers.Authorization,undefined);await client.logout();await assert.rejects(client.list(),/sessie/);});
 test('conflicts are actionable and rejected media never reaches storage',async()=>{const client=createClient(config,async()=>response({code:'40001'},400));await assert.rejects(client.request('/test'),/elders gewijzigd/);for(const file of [{type:'image/svg+xml',size:100},{type:'video/mp4',size:26214401},{type:'image/jpeg',size:0}])await assert.rejects(client.upload(file),/maximaal/);await assert.rejects(client.media('../private.pdf'),/mediapad/);});
 test('accepted uploads use distinct immutable paths, authenticated writes and no overwrite header',async()=>{const calls=[];const client=createClient(config,async(url,options)=>{calls.push([url,options]);return response(url.includes('/token')?{access_token:'upload-test',expires_in:60}:true);});await client.login('admin@example.test','synthetic');const first=await client.upload({type:'image/jpeg',size:100}),second=await client.upload({type:'video/mp4',size:200});assert.match(first,/^[a-f0-9-]+\.jpg$/);assert.match(second,/^[a-f0-9-]+\.mp4$/);assert.notEqual(first,second);for(const [url,options]of calls.slice(-2)){assert.ok(url.includes('/object/cms-media/'));assert.equal(options.method,'POST');assert.equal(options.headers.Authorization,'Bearer upload-test');assert.equal(options.headers['x-upsert'],undefined);}});
@@ -16,6 +35,7 @@ test('CMS admin uses Grow Faster logo and searchable fields while retaining save
  const script=fs.readFileSync('assets/cms-admin.js','utf8');
  assert.match(html,/src="img\/grow-faster-logo-light\.svg" alt="Grow Faster" width="192" height="32"/);
  assert.match(css,/\.top\{[^}]*background:#fff/);
+ assert.ok(html.indexOf('assets/member-auth.js')>0 && html.indexOf('assets/member-auth.js')<html.indexOf('assets/cms-client.js'),'shared member identity is available before CMS client');
  assert.match(html,/id="field-search"/);
  assert.match(html,/id="field-count"/);
  for(const id of ['save','preview','publish'])assert.match(html,new RegExp('id="'+id+'"'));

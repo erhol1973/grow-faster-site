@@ -43,7 +43,7 @@ jobs:
           try:
               with urllib.request.urlopen(req,timeout=15) as r:
                   data=json.loads(r.read())
-                  print(json.dumps({k:data.get(k) for k in ('html_url','status','cname','https_enforced','public','source')},indent=2))
+                  print(json.dumps({k:data.get(k) for k in ('html_url','status','cname','build_type','custom_404','https_enforced','protected_domain_state','pending_domain_unverified_at','https_certificate','public','source')},indent=2))
           except urllib.error.HTTPError as e: print('Pages API HTTP status:',e.code)
           except Exception as e: print('Pages API error:',str(e))
           PY

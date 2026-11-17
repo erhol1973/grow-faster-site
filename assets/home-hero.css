@@ -22,3 +22,6 @@
 @media(min-width:821px){html:lang(fr) .hero-minimal .hero-top::after{background:linear-gradient(90deg,rgba(6,27,52,.95),rgba(6,27,52,.87) 42%,rgba(6,27,52,.64) 74%,rgba(6,27,52,.12) 100%)}}
 
 html:not(.i18n-ready) .hero-minimal .hero-bg[aria-hidden="true"] { visibility: visible; }
+
+/* Homepage film: same box in every language; no eager poster (homepage mobile LCP budget). */
+.home-film{margin:2.5rem 0 0;max-width:960px}.home-film video{display:block;width:100%;height:auto;aspect-ratio:16/9;background:#060a12;border-radius:12px}

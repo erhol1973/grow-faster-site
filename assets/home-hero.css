@@ -23,5 +23,5 @@
 
 html:not(.i18n-ready) .hero-minimal .hero-bg[aria-hidden="true"] { visibility: visible; }
 
-/* Homepage film below "Where coherence becomes visible". The film carries Dutch on-screen text, so it is shown to Dutch visitors only. */
-.home-film{margin:2.5rem 0 0;max-width:960px}.home-film video{display:block;width:100%;height:auto;aspect-ratio:16/9;background:#060a12;border-radius:12px}html:lang(fr) .home-film{display:none}
+/* Homepage film below "Where coherence becomes visible". Its box is identical in every language: hiding it per language after the runtime language switch moved the page under an already-scrolled #final anchor in Firefox. */
+.home-film{margin:2.5rem 0 0;max-width:960px}.home-film video{display:block;width:100%;height:auto;aspect-ratio:16/9;background:#060a12;border-radius:12px}

@@ -20,7 +20,7 @@ test('The Coherent Enterprise buttons on Books and About open the 12-page HTML f
 });
 
 test('The Coherent Enterprise flipbook keeps every page readable if the flip library fails',async({page})=>{
- const external=[];page.on('request',r=>{if(!r.url().startsWith('http://127.0.0.1:4173/'))external.push(r.url())});
+ const external=[];page.on('request',r=>{if(!r.url().startsWith(((process.env.TEST_BASE_URL||'http://127.0.0.1:4173')+'/')))external.push(r.url())});
  await page.addInitScript(()=>{localStorage.setItem('flip:hinted','1');localStorage.setItem('flip:mobilehint','1')});
  await page.route('**/page-flip-2.0.7.js',r=>r.abort());await page.goto('/boek/the-coherent-enterprise/index.html#page-1');await expect(page.locator('#pgNow')).toHaveText('1');
  await page.locator('#btnNext').click();await expect(page.locator('#pgNow')).toHaveText('2');await expect(page.locator('#book .page[data-p="2"]')).toBeVisible();expect(external).toEqual([]);
@@ -40,7 +40,7 @@ test('home preview opens the HTML flipbook, flips, searches and reaches its fina
  const AxeBuilder=require('@axe-core/playwright').default;const result=await new AxeBuilder({page:reader}).withTags(['wcag2a','wcag2aa','wcag21a','wcag21aa','wcag22aa']).analyze();expect(result.violations.map(v=>v.id)).toEqual([]);
 });
 test('flipbook works without external services and keeps every page readable when its script is unavailable',async({page})=>{
- const external=[];page.on('request',r=>{if(!r.url().startsWith('http://127.0.0.1:4173/'))external.push(r.url())});
+ const external=[];page.on('request',r=>{if(!r.url().startsWith(((process.env.TEST_BASE_URL||'http://127.0.0.1:4173')+'/')))external.push(r.url())});
  await page.addInitScript(()=>{localStorage.setItem('flip:hinted','1');localStorage.setItem('flip:mobilehint','1')});
  await page.route('**/page-flip-2.0.7.js',r=>r.abort());await page.goto('/boek/index.html#page-1');await expect(page.locator('#pgNow')).toHaveText('1');
  await page.locator('#btnNext').click();await expect(page.locator('#pgNow')).toHaveText('2');await expect(page.locator('#book .page[data-p="2"]')).toBeVisible();expect(external).toEqual([]);

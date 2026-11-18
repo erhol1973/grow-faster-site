@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<script defer src="../../assets/typography.js?v=20261113-typography"></script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>The Coherent Enterprise</title>
@@ -16,6 +17,8 @@ html, body { margin: 0; } [hidden] { display: none !important; }
 .order-link:hover { background: var(--chip); }
 .noscript { padding: 24px; font-family: system-ui, sans-serif; }
 </style>
+<link rel="stylesheet" href="../../assets/book-reading.css?v=20261113-typography">
+<link rel="stylesheet" href="../../assets/typography.css?v=20261113-typography">
 </head>
 <body>
 <noscript><div class="noscript">This flipbook needs JavaScript. Read the preview as a PDF instead: <a href="pdf/the-coherent-enterprise-executive-preview.pdf">download the executive preview</a> or <a href="../../about.html#foundation-book">request the manuscript</a>.</div></noscript>
@@ -487,7 +490,7 @@ body.present .stage::before { display: none; }
     <div class="zoomwrap" id="zoomwrap"><div id="book" role="region" aria-roledescription="flipbook" aria-label="The Coherent Enterprise, executive preview"></div></div>
     <div id="textview" hidden aria-label="Text view"></div>
     <button class="edge next" id="edgeNext" aria-label="Next page"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m9 18 6-6-6-6"/></svg></button>
-    <div class="hint" id="hint" hidden><span>Drag a page corner, use the arrows, or press → to turn</span><button id="hintClose">Got it</button></div>
+    <div class="hint" id="hint" hidden><span>Scroll inside a page to read; use the arrows or press → to turn</span><button id="hintClose">Got it</button></div>
   </main>
 
   <footer class="bar bottom">
@@ -560,7 +563,8 @@ body.present .stage::before { display: none; }
     <h2 id="keysTitle">Keyboard shortcuts</h2>
     <dl>
       <dt><kbd>←</kbd> <kbd>→</kbd></dt><dd>Previous or next page</dd>
-      <dt><kbd>Home</kbd> <kbd>End</kbd></dt><dd>First or last page</dd>
+      <dt><kbd>Home</kbd> <kbd>End</kbd></dt><dd>First or last page when page text is not focused</dd>
+      <dt><kbd>↑</kbd> <kbd>↓</kbd> <kbd>Home</kbd> <kbd>End</kbd></dt><dd>Scroll the focused page text</dd>
       <dt><kbd>+</kbd> <kbd>−</kbd> <kbd>0</kbd></dt><dd>Zoom in, zoom out, fit page</dd>
       <dt><kbd>C</kbd> <kbd>T</kbd> <kbd>/</kbd></dt><dd>Contents, thumbnails, search</dd>
       <dt><kbd>N</kbd> <kbd>P</kbd> <kbd>F</kbd></dt><dd>Night, presentation, fullscreen</dd>
@@ -620,7 +624,7 @@ body.present .stage::before { display: none; }
 
 <div class="page" data-p="4" data-ch="01" data-title="Executive Introduction" data-tags="concept:coherence;concept:capability;concept:structural condition">
 <article style="--k:1.08" class="pg" aria-label="Page 4: Executive Introduction">
-<div class="head"><span class="chno" data-n="01" aria-hidden="true"></span><div class="kicker">Chapter 01 · Executive Introduction</div><h1>Most organisations are not failing</h1><div class="rule"></div></div>
+<div class="head"><span class="chno" data-n="01" aria-hidden="true"></span><div class="kicker">Chapter 01 · Executive Introduction</div><h1>Most or&shy;gan&shy;i&shy;sa&shy;tions are not failing</h1><div class="rule"></div></div>
 <p class="lead">They continue investing in technology, transformation, governance, talent and growth. Many remain profitable, continue expanding and appear successful by conventional measures. Yet beneath that success, a quieter pattern is emerging.</p>
 <div class="signals">
 <div class="signal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2 2 7l10 5 10-5-10-5z"/><path d="m2 17 10 5 10-5"/><path d="m2 12 10 5 10-5"/></svg><h3>More coordination</h3><p>Decisions require more coordination.</p></div>
@@ -679,7 +683,7 @@ body.present .stage::before { display: none; }
 
 <div class="page" data-p="7" data-ch="04" data-title="Why Enterprises Fragment" data-tags="concept:fragmentation;concept:relationships;concept:dependencies;concept:synchronisation;concept:decision paths">
 <article style="--k:1.08" class="pg" aria-label="Page 7: Why Enterprises Fragment">
-<div class="head"><span class="chno" data-n="04" aria-hidden="true"></span><div class="kicker">Chapter 04 · Why Enterprises Fragment</div><h1>Fragmentation lives between the parts</h1><div class="rule"></div></div>
+<div class="head"><span class="chno" data-n="04" aria-hidden="true"></span><div class="kicker">Chapter 04 · Why Enterprises Fragment</div><h1>Frag&shy;men&shy;ta&shy;tion lives between the parts</h1><div class="rule"></div></div>
 <p class="lead">Organisations rarely fragment because individual teams fail. They fragment because growing complexity makes the connections between teams, systems and stakeholders harder to manage.</p>
 <div class="frame"><div class="frame-label">Illustration · Connections grow faster than parts</div>
 <div class="tiles three">
@@ -842,7 +846,15 @@ function measure() {
 function initBook(startPage) {
   const m = measure();
   lastSize = m.pw + 'x' + m.landscape;
-  if (pf) { try { pf.destroy(); } catch (e) {} pf = null; }
+  if (pf) {
+    try {
+      // PageFlip 2.0.7 leaves this listener behind when mouse handlers are off.
+      const ui = pf.getUI && pf.getUI();
+      if (ui && ui.onResize) removeEventListener('resize', ui.onResize);
+      pf.destroy();
+    } catch (e) {}
+    pf = null;
+  }
   const holder = $('#zoomwrap');
   holder.innerHTML = '';
   const nb = document.createElement('div');
@@ -854,12 +866,22 @@ function initBook(startPage) {
   dims = { w: m.landscape ? m.pw * 2 : m.pw, h: m.ph, landscape: m.landscape };
   nb.style.width = dims.w + 'px';
   nb.style.height = dims.h + 'px';
-  const pages = tplPages.map(n => uniq(n.cloneNode(true)));
+  const pages = tplPages.map(n => {
+    const page = uniq(n.cloneNode(true)), reading = page.querySelector('.pg');
+    reading.tabIndex = 0;
+    reading.setAttribute('role', 'region');
+    reading.setAttribute('lang', 'en');
+    reading.setAttribute('aria-label', 'Page ' + n.dataset.p + ': ' + n.dataset.title + '. Scroll within this page to read all text.');
+    const hint = document.createElement('span');
+    hint.className = 'reading-affordance'; hint.setAttribute('aria-hidden', 'true'); hint.dataset.typographyRole = 'label';
+    hint.textContent = 'Scroll within page ↓'; page.appendChild(hint);
+    return page;
+  });
   pages.forEach(p => nb.appendChild(p));
   if (!window.St || !window.St.PageFlip) { fallbackBook(nb, pages, startPage); return; }
   pf = new St.PageFlip(nb, {
     width: m.pw, height: m.ph, size: 'fixed', autoSize: false, showCover: true, usePortrait: true,
-    maxShadowOpacity: 0.5, flippingTime: reduced ? 1 : 700, drawShadow: !reduced, mobileScrollSupport: false,
+    maxShadowOpacity: 0.5, flippingTime: reduced ? 1 : 700, drawShadow: !reduced, mobileScrollSupport: true, useMouseEvents: false,
     startPage: Math.max(0, startPage - 1), disableFlipByClick: true, clickEventForward: true, showPageCorners: true, swipeDistance: 30
   });
   pf.loadFromHTML(pages);
@@ -965,11 +987,12 @@ const fitWidth = () => { const st = $('#stage'); setZoom((st.clientWidth - 40) /
 (function pan() {
   const st = $('#stage'); let down = null;
   st.addEventListener('pointerdown', e => {
-    if (!st.classList.contains('zoomed') || e.target.closest('button, a, .edge')) return;
+    if (!st.classList.contains('zoomed') || e.target.closest('button, a, .edge, .pg')) return;
     down = { x: e.clientX, y: e.clientY, l: st.scrollLeft, t: st.scrollTop }; st.classList.add('panning');
   });
   addEventListener('pointermove', e => { if (!down) return; st.scrollLeft = down.l - (e.clientX - down.x); st.scrollTop = down.t - (e.clientY - down.y); });
-  addEventListener('pointerup', () => { down = null; st.classList.remove('panning'); });
+  const stopPan = () => { down = null; st.classList.remove('panning'); };
+  addEventListener('pointerup', stopPan); addEventListener('pointercancel', stopPan);
 })();
 
 /* ---------- text view ---------- */
@@ -1112,7 +1135,8 @@ function buildThumbs() {
     b.className = 'thumb'; b.dataset.go = n.dataset.p; b.setAttribute('aria-label', 'Page ' + n.dataset.p + ': ' + n.dataset.title);
     const mini = document.createElement('div'); mini.className = 'mini'; mini.setAttribute('aria-hidden', 'true');
     const pg = uniq(n.querySelector('.pg').cloneNode(true)); pg.setAttribute('inert', ''); pg.removeAttribute('aria-label');
-    mini.appendChild(pg);
+    const canvas = document.createElement('div'); canvas.className = 'thumb-canvas';
+    canvas.appendChild(pg); mini.appendChild(canvas);
     const s = document.createElement('span'); s.textContent = n.dataset.p;
     b.append(mini, s); $('#thumbs').appendChild(b);
   });
@@ -1121,14 +1145,31 @@ function buildThumbs() {
 function openThumbs() { if (!thumbsBuilt) buildThumbs(); openDrawer('sheetThumbs'); }
 
 /* ---------- search ---------- */
-const norm = s => s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
+const norm = s => s.replace(/\u00ad/g, '').normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
+/* Map folded search indices back to UTF-16 DOM offsets, preserving soft hyphens. */
+function searchMatch(text, term) {
+  const needle = norm(term), folded = norm(text);
+  if (!needle) return null;
+  const index = folded.indexOf(needle);
+  if (index < 0) return null;
+  const starts = [], ends = []; let offset = 0;
+  for (const character of text) {
+    const piece = norm(character), end = offset + character.length;
+    if (!piece && ends.length) ends[ends.length - 1] = end;
+    for (let i = 0; i < piece.length; i++) { starts.push(offset); ends.push(end); }
+    offset = end;
+  }
+  if (starts.length !== folded.length) return null;
+  return { start: starts[index], end: ends[index + needle.length - 1] };
+}
 const esc = s => s.replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 let filter = 'all';
 function snippet(text, q) {
-  const i = norm(text).indexOf(norm(q));
-  if (i < 0) return esc(text.slice(0, 140)) + '…';
-  const a = Math.max(0, i - 60), b = Math.min(text.length, i + q.length + 80);
-  return (a > 0 ? '…' : '') + esc(text.slice(a, i)) + '<mark>' + esc(text.slice(i, i + q.length)) + '</mark>' + esc(text.slice(i + q.length, b)) + (b < text.length ? '…' : '');
+  text = text.replace(/\u00ad/g, '');
+  const match = searchMatch(text, q);
+  if (!match) return esc(text.slice(0, 140)) + '…';
+  const a = Math.max(0, match.start - 60), b = Math.min(text.length, match.end + 80);
+  return (a > 0 ? '…' : '') + esc(text.slice(a, match.start)) + '<mark>' + esc(text.slice(match.start, match.end)) + '</mark>' + esc(text.slice(match.end, b)) + (b < text.length ? '…' : '');
 }
 function runSearch() {
   const q = $('#q').value.trim();
@@ -1161,15 +1202,14 @@ function highlight(term) {
   if (!root) return;
   $$('mark.hit', root).forEach(m => { const t = document.createTextNode(m.textContent); m.replaceWith(t); t.parentNode && t.parentNode.normalize(); });
   if (!term) return;
-  const nt = norm(term);
   const targets = textMode ? $$('.tv-page', root) : $$('.page', root).filter(p => visible(cur).includes(+p.dataset.p));
   targets.forEach(pg => {
     const w = document.createTreeWalker(pg, NodeFilter.SHOW_TEXT, { acceptNode: n => n.nodeValue.trim() && !n.parentNode.closest('svg, script, style') ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_REJECT });
     const nodes = []; while (w.nextNode()) nodes.push(w.currentNode);
     nodes.forEach(n => {
-      const v = n.nodeValue, i = norm(v).indexOf(nt);
-      if (i < 0 || norm(v).length !== v.length) return;
-      const r = document.createRange(); r.setStart(n, i); r.setEnd(n, i + term.length);
+      const match = searchMatch(n.nodeValue, term);
+      if (!match) return;
+      const r = document.createRange(); r.setStart(n, match.start); r.setEnd(n, match.end);
       const m = document.createElement('mark'); m.className = 'hit'; r.surroundContents(m);
     });
   });
@@ -1266,6 +1306,10 @@ document.addEventListener('keydown', e => {
   if (e.target.closest('input, textarea') && e.key !== 'Escape') return;
   if (e.metaKey || e.ctrlKey || e.altKey) return;
   const k = e.key;
+  // A focused chart owns horizontal navigation; ordinary page text does not.
+  if (e.target.closest('.heat-scroll,.diagram-scroll,.typography-diagram-scroll') && ['ArrowLeft', 'ArrowRight', 'ArrowDown', 'ArrowUp', 'PageDown', 'PageUp', 'Home', 'End', ' '].includes(k)) return;
+  // Native scrolling wins while reading; Left/Right still turn the book.
+  if (e.target.closest('#book .pg') && ['ArrowDown', 'ArrowUp', 'PageDown', 'PageUp', 'Home', 'End', ' '].includes(k)) return;
   if (k === 'Escape') {
     if (openPanel) return closeAll();
     if (document.body.classList.contains('present')) return setPresent(false);

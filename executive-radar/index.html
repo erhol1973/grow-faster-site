@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="nl-BE">
 <head>
+<script defer src="../assets/typography.js?v=20261113-typography"></script>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="theme-color" content="#0B2545">
@@ -9,10 +10,11 @@
   <title>Executive Radar | Grow Faster</title>
   <link rel="icon" type="image/svg+xml" href="../img/baies-dev-favicon.svg">
   <link rel="icon" type="image/png" sizes="512x512" href="../img/baies-dev-favicon.png">
-  <link rel="stylesheet" href="../assets/baies-dev.css">
+  <link rel="stylesheet" href="../assets/baies-dev.css?v=20261113-typography">
   <script defer src="../assets/baies-dev-data.js"></script>
   <script defer src="../assets/baies-dev-core.js"></script>
-  <script defer src="../assets/baies-dev-app.js?v=20261113-public-about"></script>
+  <script defer src="../assets/baies-dev-app.js?v=20261113-typography"></script>
+<link rel="stylesheet" href="../assets/typography.css?v=20261113-typography">
 </head>
 <body>
 <a class="skip" href="#main" tabindex="0" data-i18n="skip">Ga naar inhoud</a>
@@ -25,8 +27,8 @@
     <div class="header-right">
       <span class="label-chip"><span aria-hidden="true">●</span> <span data-i18n="isolated">Demonstratie</span></span>
       <div id="language-switch" class="language-picker" role="group" aria-label="Taal">
-        <button type="button" data-language="nl" lang="nl" aria-label="Nederlands" aria-pressed="true">NL</button>
-        <button type="button" data-language="fr" lang="fr" aria-label="Français" aria-pressed="false">FR</button>
+        <button type="button" data-language="nl" lang="nl" aria-label="NL — Nederlands" aria-pressed="true">NL</button>
+        <button type="button" data-language="fr" lang="fr" aria-label="FR — Français" aria-pressed="false">FR</button>
       </div>
     </div>
   </div>
@@ -105,7 +107,7 @@
   </section>
   <section id="editorial" class="view" hidden aria-labelledby="heading-editorial">
     <div class="container section-pad pad-top"><p class="kicker" data-i18n="editorialKicker">Sprint 3 · Controlled Workflow</p><div class="section-intro"><div><h1 id="heading-editorial" data-i18n="editorialTitle">Redactie & Governance</h1><p data-i18n="editorialSub">Onafhankelijke controlefasen, zichtbare blokkeringen en een menselijk goedkeuringsmoment.</p></div><span class="inline-notice" data-i18n="sessionOnly">Simulatie · status alleen in deze browsersessie</span></div>
-      <div class="workflow-rail"><div><span>01</span><b data-i18n="stageDiscover">Discover</b></div><i aria-hidden="true">→</i><div><span>02</span><b data-i18n="stageEvidence">Evidence</b></div><i aria-hidden="true">→</i><div><span>03</span><b data-i18n="stageChallenge">Challenge</b></div><i aria-hidden="true">→</i><div><span>04</span><b data-i18n="stageApproval">Internal approval</b></div></div>
+      <div class="workflow-rail" tabindex="0" role="region" aria-labelledby="heading-editorial"><div><span>01</span><b data-i18n="stageDiscover">Discover</b></div><i aria-hidden="true">→</i><div><span>02</span><b data-i18n="stageEvidence">Evidence</b></div><i aria-hidden="true">→</i><div><span>03</span><b data-i18n="stageChallenge">Challenge</b></div><i aria-hidden="true">→</i><div><span>04</span><b data-i18n="stageApproval">Internal approval</b></div></div>
       <div class="governance-grid"><div class="queue-panel"><div class="queue-head"><h2 data-i18n="queueTitle">Voorbeeldredactiedossier</h2><p data-i18n="queueSub">De knoppen simuleren controles; ze vervangen geen onafhankelijke menselijke of wetenschappelijke verificatie.</p></div><div class="queue-body"><div class="queue-record"><span class="subtle-label" data-i18n="queueRecord">Geselecteerd onderzoeksrecord</span><strong id="queue-title"></strong><span id="queue-source"></span></div><div class="queue-steps" id="queue-steps"></div><div class="queue-actions"><button class="btn primary" type="button" id="advance-review"></button><button class="btn quiet" type="button" id="reset-review" data-i18n="reset">Reset demo</button></div><p id="workflow-feedback" class="workflow-feedback" role="status"></p><button class="btn locked" type="button" id="external-publish" disabled aria-disabled="true" data-i18n="blockedPublish">Externe publicatie geblokkeerd</button></div></div><aside class="governance-side"><h2 data-i18n="guardrailTitle">Autonomiegrenzen</h2><div class="guardrail-item"><span class="guardrail-icon">L0–L2</span><p data-i18n="autoInternal">Agenten mogen interne signalen onderzoeken, structureren en concepten voorbereiden.</p></div><div class="guardrail-item"><span class="guardrail-icon violet">L3</span><p data-i18n="requiresHuman">Onafhankelijke beoordeling en interne goedkeuring vereisen aantoonbare rollen en auditgegevens.</p></div><div class="guardrail-item"><span class="guardrail-icon blocked">L4</span><p data-i18n="noPublish">Publicatie, mailing, betalingen en productiereleases zijn niet beschikbaar in deze dev-MVP.</p></div><div class="audit"><h3 data-i18n="auditTitle">Sessielog</h3><ol id="audit-events" aria-live="polite"></ol></div></aside></div>
     </div>
   </section>

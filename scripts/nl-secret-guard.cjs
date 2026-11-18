@@ -13,7 +13,13 @@ function verify(binary){
   const generated='  "key": "'+identifier+'",';
   // Deterministic balanced fixture material has no account/service; never print the value.
   const ordinary=Array.from({length:64},(_,i)=>'0123456789abcdef'[(i*7+Math.floor(i/16))%16]).join('');
+  const historicalSha='fa70b7ab581a623b406ef6ae06aa44570cb6db4ce3c5276c7b5e523737c4df9f';
+  const historicalLine='  "member-auth.js": "'+historicalSha+'",';
   const cases=[
+    {name:'historical-public-runtime-sha256',file:'scripts/coherence-dictionary.contract.json',text:historicalLine,detect:false},
+    {name:'historical-runtime-sha256-other-path',file:'other.json',text:historicalLine,detect:true},
+    {name:'historical-runtime-sha256-modified',file:'scripts/coherence-dictionary.contract.json',text:historicalLine.replace(historicalSha,historicalSha.slice(0,-1)+'0'),detect:true},
+    {name:'historical-runtime-sha256-extra-content',file:'scripts/coherence-dictionary.contract.json',text:historicalLine+' "api_key": "'+ordinary+'"',detect:true},
     {name:'public-identifier-in-baseline',file:'language/nl-baseline.json',text:generated,detect:false},
     {name:'ordinary-key-in-baseline',file:'language/nl-baseline.json',text:'  "key": "'+ordinary+'",',detect:true},
     {name:'identifier-outside-allowed-path',file:'other.json',text:generated,detect:true},

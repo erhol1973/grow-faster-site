@@ -1,12 +1,10 @@
 const {test,expect}=require('playwright/test');
 
-test('monthly journal opens from its menu and preserves page when switching language',async({page})=>{
+// Sprint 1 (22 Nov 2026): Executive Journal left the customer menu; the published Insights page still opens the monthly issue.
+test('monthly journal opens from Insights and preserves page when switching language',async({page})=>{
  await page.addInitScript(()=>{localStorage.setItem('avs-lang','nl');localStorage.setItem('avs-consent',JSON.stringify({v:4,ext:false,ana:false,ts:Date.now()}))});
- await page.goto('/index.html');
- const burger=page.locator('#burger');
- if(await burger.isVisible())await burger.click();
- await page.locator('#navlist a[href="insights.html"]').click();
- await expect(page).toHaveURL(/insights\.html$/);
+ await page.goto('/insights.html');
+ await expect(page.locator('#navlist a[href="insights.html"]')).toHaveCount(0);
  await page.getByRole('link',{name:'Lees editie 01'}).click();
  await expect(page.locator('html')).toHaveAttribute('lang','nl');
  await expect(page.locator('.sheet:visible')).toHaveAttribute('id','p1');

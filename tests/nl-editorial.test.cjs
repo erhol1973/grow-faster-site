@@ -45,7 +45,7 @@ test('Every built page referencing changed Dutch translations requests the curre
       const url=new URL(match[2],'https://fixture.invalid/');
       if(!url.pathname.endsWith('/i18n.js'))continue;
       references++;
-      assert.equal(url.searchParams.get('v'),'20261111-nl-audit',file+' translation delivery version');
+      assert.equal(url.searchParams.get('v'),'20261122-klantsite',file+' translation delivery version');
     }
   }
   assert.ok(references>0,'The built site still includes its shared translation data');

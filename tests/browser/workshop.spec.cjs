@@ -10,13 +10,15 @@ for(const [lang,copy]of Object.entries(cases)){
  test('workshop stays discoverable without being a main-menu action in '+lang,async({page})=>{
   await seed(page,lang);await page.goto('/index.html');
   await expect(page.locator('#navlist a[href="workshop.html"]')).toHaveCount(0);
-  await expect(page.locator('footer a[href="workshop.html"]').first()).toBeAttached();
+  // Sprint 1: the customer footer lists the new offer; the existing content pages keep the workshop footer link.
+  await page.goto('/about.html');await expect(page.locator('footer a[href="workshop.html"]').first()).toBeAttached();
   await page.goto('/approach.html');expect(await page.evaluate(()=>scrollY)).toBeLessThan(8);await expect(page.locator('#approach-workshop-cta')).toBeInViewport({ratio:1});await page.locator('#approach-workshop-cta').click();await expect(page.locator('h1')).toContainText(copy.title);
-  await expect(page.locator('#navlist a.l[href="approach.html"]')).toHaveClass(/\bcur\b/);
+  await expect(page.locator('#navlist [aria-current="page"]')).toHaveCount(0);
  });
  test('workshop entry routes and shared navigation in '+lang,async({page})=>{
   await seed(page,lang);const errors=[];page.on('pageerror',e=>errors.push(e.message));
-  await page.goto('/index.html');await page.locator('#workshop-entry a').click();
+  // Sprint 1: the workshop band left the customer homepage; Books keeps an in-content workshop entry.
+  await page.goto('/books.html');await page.locator('main a.btn[href="workshop.html"]').first().click();
   await expect(page).toHaveURL(/\/workshop\.html$/);await expect(page.locator('h1')).toContainText(copy.title);
   await expect(page.locator('html')).toHaveAttribute('lang',lang);
   await expect(page.locator('.ws-hero .ws-btn')).toContainText(copy.cta);await expect(page.locator('.ws-result')).toHaveCount(3);

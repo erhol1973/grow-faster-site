@@ -8,13 +8,15 @@ const root=path.resolve(__dirname,'..','dist');
 const read=f=>fs.readFileSync(path.join(root,f),'utf8');
 const dict=()=>{const ctx={window:{}};for(const f of ['i18n.js','content.js'])vm.runInNewContext(read('assets/'+f),ctx);return ctx.window.I18N;};
 const decode=s=>s.replaceAll('&amp;','&');
-const main=['index.html','coherence.html','value.html','process.html','operating-model.html','approach.html','insights.html','about.html','books.html'];
+const main=['index.html','orion.html','veiligheid.html','coherence.html','value.html','process.html','operating-model.html','approach.html','insights.html','about.html','books.html'];
 
 test('main pages carry a search title that matches <title>, og:title and is translated',()=>{const I=dict();
  for(const f of main){const h=read(f);const seo=decode((h.match(/<meta name="seo-title" content="([^"]+)"/)||[])[1]||'');assert.ok(seo,`${f}: seo-title missing`);
   assert.equal(decode(h.match(/<title>([^<]+)<\/title>/)[1]),seo,`${f}: <title> differs from seo-title`);
   assert.equal(decode(h.match(/<meta property="og:title" content="([^"]+)"/)[1]),seo,`${f}: og:title differs`);
-  assert.ok(seo.length<=70,`${f}: title too long for search results (${seo.length})`);assert.match(seo,/Erlend Hollebosch/,f);
+  assert.ok(seo.length<=70,`${f}: title too long for search results (${seo.length})`);
+  // Customer pages (sprint 1) carry the Grow Faster brand; the existing author pages keep the author name.
+  assert.match(seo,['index.html','orion.html','veiligheid.html'].includes(f)?/\| Grow Faster$/:/Erlend Hollebosch/,f);
   const tr=I[seo];assert.ok(Array.isArray(tr)&&tr.slice(0,2).every(Boolean),`${f}: missing nl/fr translation for title`);}
 });
 test('structured data describes the author, the book and the site',()=>{

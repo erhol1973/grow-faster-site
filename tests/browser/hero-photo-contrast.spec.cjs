@@ -4,7 +4,8 @@ const {test,expect}=require('playwright/test');
 // Sample the rendered background under the complete headline/subtitle boxes.
 // This deliberately conservative check uses a screenshot, not a duplicated CSS gradient.
 // Sprint 1: the customer pages share the same photographic hero, so each page gets its own sampled case.
-for(const route of ['index.html','oplossingen.html','orion.html','automatisering.html'])test('photographic hero retains readable NL and FR text at four widths on '+route,async({page},info)=>{
+// v3: every page with a new hero photo, including Coherence, is sampled.
+for(const route of ['index.html','oplossingen.html','orion.html','automatisering.html','coherence.html'])test('photographic hero retains readable NL and FR text at four widths on '+route,async({page},info)=>{
   test.skip(info.project.name!=='chromium','Photographic pixel contrast is a dedicated Chromium rendering check; the existing hero layout cases cover all browser profiles');
   await page.emulateMedia({reducedMotion:'reduce'});
   await page.addInitScript(()=>localStorage.setItem('avs-consent',JSON.stringify({v:4,ext:false,ana:false,ts:Date.now()})));

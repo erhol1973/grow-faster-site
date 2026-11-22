@@ -66,7 +66,7 @@ test('customer homepage follows the approved mockup sections and keeps consent, 
   // v2: the pyramid "Van fundament tot AI" replaces the former "Drie manieren om sneller te werken" section (moved to Oplossingen).
   const order=['id="hero"','id="proof"','id="herkenbaar"','id="hoe"','id="fundament"','id="vertrouwelijk"','id="final"'].map(id=>home.indexOf(id));
   assert.ok(order.every((v,i)=>v>0&&(i===0||v>order[i-1])),'section order');
-  assert.match(home,/<img src="img\/hero-executive-meeting-1774\.webp" alt="" width="1774" height="887" fetchpriority="high"/);
+  assert.match(home,/<img src="img\/hero-kwaliteit-productielijn-1774\.webp" alt="" width="1774" height="887" fetchpriority="high"/);
   assert.match(home,/<body data-cms-page="home"/);assert.match(home,/id="consent" role="dialog"/);assert.match(home,/assets\/consent\.js/);
   assert.doesNotMatch(home,/id="aanbod"/);assert.match(home,/<h1 data-ih="home-orion-value"[^>]*>Sneller werken met AI en automatisering\.<\/h1>/);
   const confidential=home.match(/<section id="vertrouwelijk"[\s\S]*?<\/section>/)[0];assert.doesNotMatch(confidential,/<a\b|<ul\b/);
@@ -91,4 +91,22 @@ test('Oplossingen overview repeats its submenu, keeps the three offer cards and 
   assert.deepEqual([...html.match(/<nav class="topic-links"[\s\S]*?<\/nav>/)[0].matchAll(/href="([^"]+)"/g)].map(m=>m[1]),['orion.html','automatisering.html','coherence.html']);
   assert.deepEqual([...html.match(/<section id="aanbod"[\s\S]*?<\/section>/)[0].matchAll(/<article class="gf-feature">[\s\S]*?<a href="([^"]+)"/g)].map(m=>m[1]),['orion.html','automatisering.html','coherence.html']);
   assert.match(html,/<section id="final" class="tinted">/);
+});
+
+// v3: every customer page and Coherence has its own decorative 2:1 hero photo in the 640/1280/1774 WebP pattern,
+// preloaded with the same srcset, and a page-specific object-position that keeps the subject in view on mobile.
+test('each hero uses its own preloaded 2:1 photo, stays decorative and keeps the subject in view',()=>{
+  const heroes={'index.html':['hero-kwaliteit-productielijn','70%'],'oplossingen.html':['hero-oplossingen-workflow','58%'],'orion.html':['hero-orion-specificaties','82%'],'automatisering.html':['hero-automatisering-kantoor','78%'],'coherence.html':['hero-coherentie-samenwerking','74%']};
+  for(const [file,[name,pos]] of Object.entries(heroes)){const html=read(file);
+    const set=[640,1280,1774].map(w=>`img/${name}-${w}.webp ${w}w`).join(', ');
+    for(const w of [640,1280,1774]){const st=fs.statSync(path.join(root,`img/${name}-${w}.webp`));assert.ok(st.size>0&&st.size<=700000,`${name}-${w}`);}
+    const bg=html.match(/<div class="hero-bg" aria-hidden="true"><picture>[\s\S]*?<\/picture><\/div>/);assert.ok(bg,file);
+    assert.ok(bg[0].includes(`srcset="${set}" sizes="100vw"`),`${file}: srcset`);assert.match(bg[0],new RegExp(`<img src="img/${name}-1774\\.webp" alt="" width="1774" height="887" fetchpriority="high"`),file);
+    const preload=html.match(/<link rel="preload" as="image" type="image\/webp" href="([^"]+)" imagesrcset="([^"]+)" imagesizes="100vw" fetchpriority="high">/);assert.ok(preload,`${file}: preload`);
+    assert.equal(preload[1],`img/${name}-1774.webp`,file);assert.equal(preload[2],set,file);
+    assert.match(html.match(/<style data-hero>[^<]*<\/style>/)[0],new RegExp(`object-position:${pos}`),file);
+    assert.doesNotMatch(html,/hero-executive-meeting/,file);
+  }
+  // The retired boardroom photo is no longer published.
+  assert.equal(fs.existsSync(path.join(root,'img/hero-executive-meeting-1774.webp')),false);
 });

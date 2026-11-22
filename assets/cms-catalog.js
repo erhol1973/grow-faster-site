@@ -16,10 +16,10 @@ window.GF_CMS_CATALOG=[
       {
         "key": "f7a4946dfd792-0",
         "type": "media",
-        "label": "img/hero-executive-meeting-1774.webp",
-        "nl": "img/hero-executive-meeting-1774.webp",
-        "fr": "img/hero-executive-meeting-1774.webp",
-        "src": "img/hero-executive-meeting-1774.webp",
+        "label": "img/hero-kwaliteit-productielijn-1774.webp",
+        "nl": "img/hero-kwaliteit-productielijn-1774.webp",
+        "fr": "img/hero-kwaliteit-productielijn-1774.webp",
+        "src": "img/hero-kwaliteit-productielijn-1774.webp",
         "alt": {
           "nl": "",
           "fr": ""
@@ -1597,10 +1597,10 @@ window.GF_CMS_CATALOG=[
       {
         "key": "f9e64ee949244-0",
         "type": "media",
-        "label": "img/hero.jpg",
-        "nl": "img/hero.jpg",
-        "fr": "img/hero.jpg",
-        "src": "img/hero.jpg",
+        "label": "img/hero-coherentie-samenwerking-1774.webp",
+        "nl": "img/hero-coherentie-samenwerking-1774.webp",
+        "fr": "img/hero-coherentie-samenwerking-1774.webp",
+        "src": "img/hero-coherentie-samenwerking-1774.webp",
         "alt": {
           "nl": "",
           "fr": ""

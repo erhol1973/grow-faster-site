@@ -12,8 +12,8 @@ importers:
         specifier: 4.14.0
         version: 4.14.0(playwright-core@1.65.1)
       '@electric-sql/pglite':
-        specifier: 0.5.16
-        version: 0.5.16
+        specifier: 0.5.17
+        version: 0.5.17
       chrome-launcher:
         specifier: 1.2.3
         version: 1.2.3(supports-color@8.1.1)
@@ -32,8 +32,8 @@ packages:
     peerDependencies:
       playwright-core: '>= 1.0.0'
 
-  '@electric-sql/pglite@0.5.16':
-    resolution: {integrity: sha512-Nj8KcIsJL748W408U2N8q4+9IlONdpRIU8MJypIAAINMJ5nqKyqpX7Mgg/5XKkXiAib3AoZGR6hnJFlrlLBrcg==}
+  '@electric-sql/pglite@0.5.17':
+    resolution: {integrity: sha512-8SvKjiUjaU+0O0dbxjOfN+jXz14TEqDWbwDkYOW1aQ11y/ph2JvFVI27ABBo5nfw+ZfSqy4hKCNlbnbB1TDE+g==}
 
   '@formatjs/ecma402-abstract@2.3.6':
     resolution: {integrity: sha512-HJnTFeRM2kVFVr5gr5kH1XP6K0JcJtE7Lzvtr3FS/so5f1kpsqqqxy5JF+FRaO6H2qmcMfAUIox7AJteieRtVw==}
@@ -618,7 +618,7 @@ snapshots:
       axe-core: 4.14.0
       playwright-core: 1.65.1
 
-  '@electric-sql/pglite@0.5.16': {}
+  '@electric-sql/pglite@0.5.17': {}
 
   '@formatjs/ecma402-abstract@2.3.6':
     dependencies:

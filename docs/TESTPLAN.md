@@ -30,6 +30,10 @@ Op beslissing van de eigenaar is de commercial van 44 seconden van coherence.htm
 
 In drie van de vier CI-runs haalde de mobiele LCP van about.html 2.556 ms, boven de ongewijzigde grens van 2.500 ms. Het LCP-element onder de Lighthouse-mobielconfiguratie is de introductietekst van de cookiedialoog. Die verschijnt pas nadat de uitgestelde scripts geladen zijn, en de vertaaldata (`i18n.js`, 83,6 KB gzip) was daarvan het grootste deel. Er zijn 296 vertalingen en 3 HTML-vertalingen verwijderd die in geen enkel bestand van de repository, de tests inbegrepen, nog voorkomen. Daarmee daalt de payload naar 61,2 KB gzip. Lokale medianen voor about: 2.309 / 2.360 / 2.315 ms (was 2.440 tot 2.605). Het consentgedrag en de privacygaranties zijn ongewijzigd. Een nieuw gzip-transferbudget van 65 KB bewaakt de payload; het bestaande raw-budget van 260 KB en alle Lighthouse-drempels blijven gelijk.
 
+### Release 1: Firefox-klik op Coherence, 22 november 2026
+
+CI-run 45069794845 markeerde in Firefox de bestaande casus "left alignment and requested next-page route (nl)" als instabiel. De klik op de next-page-link van coherence.html navigeerde niet. Oorzaak: in Firefox start het scrollen naar de link de lui geladen simulator-iframe, waarvan de hoogte daarna verandert terwijl de klik loopt. Dat is hetzelfde patroon dat eerder in WebKit is opgelost. Firefox laadt de simulator nu ook samen met het document; Chromium (en dus Lighthouse) houdt het luie laden. De casus, de timeouts en de retries zijn ongewijzigd. Een unit-test bewaakt de voorwaarde.
+
 ## Contentstudio, 8 november 2026
 
 Het CMS voegt afzonderlijke concepten en gepubliceerde snapshots toe aan de bestaande Supabase-structuur. De blijvende clienttests controleren sessies, beheerderscontrole, revisieconflicten en uploads. PostgreSQL-tests voeren de werkelijke migratie en RLS uit met nagebootste Supabase Auth-claims en Storage-metadata: geen conceptlek, geen zelfpromotie, geen publicatie door gewone gebruikers, behoud van de vorige publicatie en onveranderlijke uploadpaden. Dit bewijst nog geen live Auth- of Storage-werking.

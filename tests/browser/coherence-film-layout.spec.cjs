@@ -11,12 +11,10 @@ for(const lang of ['nl','fr']){
   await page.goto('/index.html?lang='+lang);await expect(page.locator('.next-pg')).toHaveCount(0);
   for(const [route,dest]of Object.entries({'insights.html':'coherence.html','coherence.html':'approach.html','approach.html':'about.html'})){await page.goto('/'+route+'?lang='+lang);await expect(page.locator('html')).toHaveAttribute('lang',lang);await expect(page.locator('.next-pg a')).toHaveAttribute('href',dest);await page.locator('.next-pg a').click();await expect(page).toHaveURL(new RegExp('/'+dest.replace('.','\\.')+'$'))}
  });
- test(`film language, lazy loading, playback and poster (${lang})`,async({page})=>{
-  await page.goto('/coherence.html?lang='+lang);const video=page.locator('#coherence-film video');await expect(video).toHaveAttribute('src','media/grow-faster-commercial-final-44s.mp4');await expect(video).toHaveAttribute('poster','img/grow-faster-commercial.webp');await expect(video.locator('track')).toHaveCount(0);await expect(video).toHaveAttribute('preload','none');expect(await video.evaluate(v=>v.paused&&!v.autoplay)).toBe(true);await video.evaluate(v=>v.play());await expect.poll(()=>video.evaluate(v=>v.currentTime)).toBeGreaterThan(0);await video.evaluate(v=>v.pause());const x=await page.locator('#coherence-film h2').evaluate(e=>e.getBoundingClientRect().left);expect(Math.abs((await video.boundingBox()).x-x)).toBeLessThan(2);expect((await video.boundingBox()).width).toBeLessThanOrEqual(840);const schema=JSON.parse(await page.locator('#coherence-video-schema').textContent());expect(schema.inLanguage).toBe('en');expect(schema.duration).toBe('PT44S');expect(schema.contentUrl).toContain('grow-faster-commercial-final-44s.mp4');
- });
 }
 
-test('44-second commercial plays to the end without subtitles',async({page})=>{test.setTimeout(70000);await page.goto('/coherence.html?lang=nl');const video=page.locator('#coherence-film video');await video.evaluate(v=>v.play());await expect.poll(()=>video.evaluate(v=>v.duration)).toBe(44);await expect.poll(()=>video.evaluate(v=>v.ended),{timeout:55000}).toBe(true);expect(await video.evaluate(v=>v.currentTime)).toBe(44);expect(await video.evaluate(v=>v.error)).toBeNull();expect(await video.evaluate(v=>v.textTracks.length)).toBe(0);await expect(video.locator('track')).toHaveCount(0)});
+// Release 1: the 44-second commercial and its per-language/playback/schema cases were removed from coherence.html by owner decision;
+// the essentie film cases below cover language, lazy loading, playback, poster and the text alternative.
 // Release 1: the blue Enterprise Coherence essentie film (NL/FR from closed PR #84) sits after the website argument on coherence.html.
 for(const [lang,src,poster,summary] of [['nl','media/enterprise-coherence-essentie-nl.mp4','img/enterprise-coherence-essentie.webp','Tekst in beeld'],['fr','media/enterprise-coherence-essentie-fr.mp4','img/enterprise-coherence-essentie-fr.webp','Texte à l’écran']])test(`Enterprise Coherence film uses the ${lang} edition, plays on request and offers its text`,async({page})=>{
  await page.goto('/coherence.html?lang='+lang);await expect(page.locator('html')).toHaveAttribute('lang',lang);
@@ -30,4 +28,8 @@ test('Enterprise Coherence film switches edition with the language without reloa
  await page.goto('/coherence.html?lang=nl');const video=page.locator('#home-film video');await expect(video.locator('source')).toHaveAttribute('src','media/enterprise-coherence-essentie-nl.mp4');
  await page.locator('#lang-btn-top').click();await page.locator('.lang-top [data-lang="fr"]').click();await expect(page.locator('html')).toHaveAttribute('lang','fr');
  await expect(video.locator('source')).toHaveAttribute('src','media/enterprise-coherence-essentie-fr.mp4');await expect(video).toHaveAttribute('poster','img/enterprise-coherence-essentie-fr.webp');await expect(page.locator('#ec-film-h')).toHaveText('Pas de valeur business de l’IA sans Enterprise Coherence');
+});
+for(const [lang,label] of [['nl','Bekijk de film'],['fr','Voir le film']])test(`workshop and ECA film links open the essentie film in ${lang}`,async({page})=>{
+ for(const route of ['workshop.html','eca.html']){await page.goto('/'+route+'?lang='+lang);const link=page.locator('[data-film-link]');await expect(link).toHaveText(label);await expect(link).toHaveAttribute('href','coherence.html?lang='+lang+'#ec-film');
+  await link.click();await expect(page).toHaveURL(new RegExp('/coherence\\.html\\?lang='+lang+'#ec-film$'));await expect(page.locator('#ec-film')).toBeInViewport();await expect(page.locator('#home-film video source')).toHaveAttribute('src','media/enterprise-coherence-essentie-'+lang+'.mp4')}
 });

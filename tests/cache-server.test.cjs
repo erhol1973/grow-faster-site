@@ -13,6 +13,7 @@ test('cache fixture serves old markup without deferred support modules and resto
     fixture.publish();
     const current=await (await fetch(url)).text();
     for(const name of ['models','consent'])assert.match(current,new RegExp('<script defer src="assets/'+name+'\\.js'));
-    assert.ok(current.includes('href="about.html">Contact</a>'));
+    // The current footer's Contact column opens about.html without a fragment.
+    assert.ok(current.includes('href="about.html">Over Erlend Hollebosch</a>'));
   }finally{fixture.server.closeAllConnections();await new Promise(resolve=>fixture.server.close(resolve))}
 });

@@ -17,7 +17,8 @@ test('Monthly Issue 01 replaces the old reader in Dutch and French',()=>{
   assert.doesNotMatch(html,/\bweekly\b|week 45/i);
  }
  const insights=read('insights.html');
- assert.match(insights,/href="insights\.html"[^>]*>Executive Journal/);
+ // Sprint 1 (22 Nov 2026): Executive Journal left the customer menu; the page itself stays published with its monthly promotion.
+ assert.doesNotMatch(insights.match(/<ul id="navlist">[\s\S]*?<\/ul>/)[0],/insights\.html/);
  assert.match(insights,/id="executive-journal"[\s\S]*De Maandelijkse Executive Journal[\s\S]*href="journal\.html" lang="nl"[\s\S]*href="journal-fr\.html" lang="fr"/);
  assert.doesNotMatch(insights,/Weekly executive journal/i);
 });

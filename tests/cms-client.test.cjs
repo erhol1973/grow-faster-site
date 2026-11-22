@@ -39,10 +39,13 @@ test('CMS page selector preserves all field values while showing one homepage se
  assert.match(script,/const match=textMatch&&\(term\?true:groupMatch\)/);
  assert.match(script,/section\.hidden=!match/);
  assert.match(script,/for\(const field of definition\.fields\)/);
+ // Customer homepage (sprint 1): hero, experience, problems, steps, offer, confidentiality, pilot and the optional video slot.
  const groups=[
-  [0,1,[44]],[2,9,[]],[10,17,[47]],[18,24,[]],
-  [25,35,[45,46]],[36,38,[]],[39,41,[]],[42,43,[]],[48,48,[]]
+  [0,2,[]],[3,4,[]],[5,11,[]],[12,20,[]],
+  [21,27,[]],[28,29,[]],[30,31,[]],[32,32,[]]
  ];
+ const declared=[...script.slice(script.indexOf('const homeGroups=['),script.indexOf('];',script.indexOf('const homeGroups=['))).matchAll(/from:(\d+),to:(\d+)(?:,extra:\[([\d,]*)\])?/g)].map(m=>[+m[1],+m[2],m[3]?m[3].split(',').map(Number):[]]);
+ assert.deepEqual(declared,groups,'the editor declares exactly the tested homepage groups');
  const indices=groups.flatMap(([start,end,extra])=>[...Array.from({length:end-start+1},(_,i)=>start+i),...extra]);
  assert.equal(new Set(indices).size,home.fields.length,'every homepage field must appear in precisely one group');
  assert.deepEqual(indices.slice().sort((a,b)=>a-b),Array.from({length:home.fields.length},(_,i)=>i));

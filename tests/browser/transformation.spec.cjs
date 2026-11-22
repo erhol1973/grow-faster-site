@@ -2,7 +2,8 @@ const {test,expect}=require('playwright/test');
 test('practice reading route works in both languages, with six perspectives and Contact',async({page})=>{
  const errors=[];page.on('pageerror',e=>errors.push(e.message));
  await page.addInitScript(()=>{if(!localStorage.getItem('avs-lang'))localStorage.setItem('avs-lang','nl');localStorage.setItem('avs-consent',JSON.stringify({v:4,ext:false,ana:false,ts:Date.now()}))});
- await page.goto('/index.html');await page.locator('main a[href="transformation.html"]').first().click();
+ // Sprint 1: the practice route left the customer homepage; About keeps the in-content link to it.
+ await page.goto('/about.html');await page.locator('main a[href="transformation.html"]').first().click();
  await expect(page).toHaveURL(/\/transformation\.html$/);
  for(const [language,heading,lens,title]of [['nl','Transformatie in de praktijk','Strategie en keuzes','Trackrecord in bedrijfstransformatie | Erlend Hollebosch'],['fr','La transformation en pratique','Stratégie et choix','Parcours en transformation d’entreprise | Erlend Hollebosch']]){
    if(language!=='nl'){await page.locator('#lang-btn-top').click();await page.locator('.lang-top [data-lang="'+language+'"]').click()}
@@ -12,7 +13,8 @@ test('practice reading route works in both languages, with six perspectives and 
    await expect(page.locator('.practice-questions dt').first()).toHaveText(lens);await expect(page).toHaveTitle(title);
    expect(await page.locator('meta[name="description"]').getAttribute('content')).not.toBe('');
    expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1)).toBe(true);
-   await expect(page.locator('[aria-current="page"]')).toHaveCount(1);await expect(page.locator('#navlist a.l[href="transformation.html"]')).toHaveAttribute('aria-current','page');
+   // Sprint 1: Track record left the customer menu, so no menu item is current on this page.
+   await expect(page.locator('#navlist [aria-current="page"]')).toHaveCount(0);await expect(page.locator('#navlist a[href="transformation.html"]')).toHaveCount(0);
    await expect(page.locator('#track-record .career-list li')).toHaveCount(5);
  }
  await page.locator('.practice-index a[href="#working-chain"]').click();await expect(page).toHaveURL(/#working-chain$/);
@@ -26,8 +28,9 @@ test('practice reading route works in both languages, with six perspectives and 
 
 test('manuscript vision links AI, coherence, credited Ross sources and the manuscript request',async({page})=>{
  await page.addInitScript(()=>{localStorage.setItem('avs-consent',JSON.stringify({v:4,ext:false,ana:false,ts:Date.now()}));if(!localStorage.getItem('avs-lang'))localStorage.setItem('avs-lang','nl')});
- await page.goto('/index.html');await expect(page.locator('#hero h1')).toHaveText('Van AI-investering naar bedrijfswaarde.');
- await page.locator('#reading-route a[href="coherence.html#book-thesis"]').click();
+ // Sprint 1: the book-thesis reading route now starts from About (the customer homepage no longer carries it).
+ await page.goto('/about.html');
+ await page.locator('main a[href="coherence.html#book-thesis"]').first().click();
  await expect(page.locator('#book-thesis-h')).toBeInViewport();
  for(const [language,title]of [['nl','Een snellere taak maakt nog geen betere onderneming'],['fr','Une tâche plus rapide ne suffit pas à améliorer l’entreprise']]){
    if(language!=='nl'){await page.locator('#lang-btn-top').click();await page.locator('.lang-top [data-lang="'+language+'"]').click()}

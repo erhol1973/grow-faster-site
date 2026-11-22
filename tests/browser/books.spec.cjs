@@ -1,12 +1,14 @@
 const {test,expect}=require('playwright/test');
 const fs=require('node:fs'),crypto=require('node:crypto');
 const publication=require('../book-publication.json');
-const copy={nl:{menu:'Boeken',download:'Lees de executive preview'},fr:{menu:'Livres',download:'Lire l’aperçu pour les dirigeants'}};
+const copy={nl:{menu:'Boeken',coherence:'Coherentie',download:'Lees de executive preview'},fr:{menu:'Livres',coherence:'Cohérence',download:'Lire l’aperçu pour les dirigeants'}};
 for(const [language,text]of Object.entries(copy))test('free book download and workshop reading route in '+language,async({page},info)=>{
  const errors=[],external=[],pdfs=[];page.on('pageerror',e=>errors.push(e.message));page.on('request',r=>{if(/hubspot|hsforms|goatcounter|fonts\.google/i.test(r.url()))external.push(r.url());if(r.url().includes(publication.file))pdfs.push(r.url())});
  await page.addInitScript(l=>{localStorage.setItem('avs-lang',l);localStorage.setItem('avs-consent',JSON.stringify({v:4,ext:false,ana:false,ts:Date.now()}))},language);
- await page.goto('/index.html');if(await page.locator('#burger').isVisible())await page.locator('#burger').click();await page.locator('[aria-controls="nav-coherence"]').click();const book=page.locator('#nav-coherence a[href="books.html"]');await expect(book).toHaveText(text.menu);await book.click();
- await expect(page).toHaveURL(/\/books\.html$/);await expect(page.locator('html')).toHaveAttribute('lang',language);await expect(page.locator('#nav-coherence a[href="books.html"]')).toHaveAttribute('aria-current','page');
+ // Sprint 1: no submenus. Books is reached through the Coherentie menu link and the overview's topic links.
+ await page.goto('/index.html');if(await page.locator('#burger').isVisible())await page.locator('#burger').click();const coherence=page.locator('#navlist a.l[href="coherence.html"]');await expect(coherence).toHaveText(text.coherence);await coherence.click();
+ await expect(page).toHaveURL(/\/coherence\.html$/);const book=page.locator('.topic-links a[href="books.html"]');await expect(book).toHaveText(text.menu);await book.click();
+ await expect(page).toHaveURL(/\/books\.html$/);await expect(page.locator('html')).toHaveAttribute('lang',language);await expect(page.locator('#navlist a.l[href="coherence.html"]')).toHaveClass(/\bcur\b/);
  const feature=page.locator('#design-for-coherence');await expect(feature.locator('h2')).toHaveText(publication.title);await expect(feature.locator('.books-subtitle')).toHaveText(publication.subtitle);await expect(feature.locator('.book-actions a')).toHaveCount(2);await expect(feature.locator('form,input')).toHaveCount(0);await expect(feature.locator('.books-meta')).toContainText(language==='nl'?'Online flipbook · preview van 22':'Livre feuilletable en ligne');
  const typography=await feature.evaluate(el=>({title:parseFloat(getComputedStyle(el.querySelector('h2 cite')).fontSize),label:parseFloat(getComputedStyle(el.querySelector('.eyebrow')).fontSize)}));expect(typography.title).toBeGreaterThan(typography.label);
  expect(pdfs,'The PDF must not load before the visitor chooses the download').toEqual([]);expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1)).toBe(true);

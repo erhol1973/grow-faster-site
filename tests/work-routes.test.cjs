@@ -2,12 +2,12 @@
 const {test}=require('node:test');const assert=require('node:assert/strict');const fs=require('node:fs');const path=require('node:path');const vm=require('node:vm');
 const root=path.resolve(__dirname,'..','dist');const read=f=>fs.readFileSync(path.join(root,f),'utf8');
 const I18N=()=>{const c={window:{}};vm.runInNewContext(read('assets/i18n.js'),c);return c.window.I18N};
-test('minimal home hero keeps one primary introduction and one approach action',()=>{const h=read('index.html');
- assert.match(h,/<h1\b[^>]*\bdata-ih="home-minimal-value"[^>]*>From AI investment <br>to business value\.<\/h1>/);
- assert.match(h,/href="approach.html" class="btn ghost"/);
+// Sprint 1 (22 Nov 2026): the customer hero has one primary pilot action (mailto, no form) and one route to Orion.
+test('minimal home hero keeps one primary pilot action and one Orion action',()=>{const h=read('index.html');
+ assert.match(h,/<h1\b[^>]*\bdata-ih="home-orion-value"[^>]*>Minder tijd aan vragenlijsten\. <br>Meer tijd voor kwaliteit\.<\/h1>/);
  assert.doesNotMatch(h,/<p class="hero-avail">/);
  const ctas=h.match(/<div class="ctas">([\s\S]*?)<\/div>/)[1];const links=[...ctas.matchAll(/<a href="([^"]+)" class="btn (\w+)"/g)].map(m=>[m[1],m[2]]);
- assert.deepEqual(links[0],['about.html#work-with-me','primary'],'primary hero action must be the role/assignment route');assert.equal(links.filter(l=>l[1]==='primary').length,1,'one primary hero action');});
+ assert.deepEqual(links,[['mailto:erlendhollebosch@gmail.com?subject=Pilot%20Orion','primary'],['orion.html','ghost']]);assert.doesNotMatch(h.match(/<main[\s\S]*<\/main>/)[0],/<form\b/);});
 test('About offers both routes with a localised email template each',()=>{const a=read('about.html');assert.match(a,/<section id="work-with-me"/);
  for(const [id,en,nl,fr] of [['route-role','Permanent role','Vaste rol','Poste permanent'],['route-assignment','Long-term assignment','Langdurige opdracht','Mission de longue durée']]){
   const tag=a.match(new RegExp(`<a[^>]*id="${id}"[^>]*>`))[0];

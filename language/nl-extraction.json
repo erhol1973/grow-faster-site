@@ -2,22 +2,34 @@
   "schema": 1,
   "scope": "rendered_local_nl_runtime_dictionaries_static_cms_and_mail",
   "technicalReview": {
-    "date": "2026-11-11",
-    "reason": "Reviewed CMS-main integration, read-only catalog/mail adapters and separate SVG labels; no language approval",
+    "date": "2026-11-22",
+    "reason": "Customer site sprint 1: new orion/automatisering pages and customer homepage are discovered by the existing DOM adapter; changed i18n.js (runtime dictionary adapter), cms-catalog.js (static catalog adapter) and cms-admin.js (excluded admin). Also records assets/baies-dev-*.js and the i18n/site.js changes merged on 12 Nov (PR #74/#75) without a contract update, which made every daily run since 13 Nov fail closed; their Executive Radar text is covered only as rendered in the initial NL DOM. No adapter code changed; no language approval",
     "officialApproval": false
   },
   "javascript": [
+    {
+      "file": "assets/baies-dev-app.js",
+      "sha256": "4511815da8c29003072b525e1e5101ca3f250aab83adbca3f6a9e95ef059768b"
+    },
+    {
+      "file": "assets/baies-dev-core.js",
+      "sha256": "12cb4044992b11884899dc1f91d8655df751a6099cd9e66bebc891b68d27881a"
+    },
+    {
+      "file": "assets/baies-dev-data.js",
+      "sha256": "27ce1c4311acdf76fc02e91a71a8af4b1072035777353b6786d90912dbc6d5c6"
+    },
     {
       "file": "assets/book-reader.js",
       "sha256": "a42ed03bc91a891387db047031803c0de04d78f0950da1f5d7c79b63ca931bc6"
     },
     {
       "file": "assets/cms-admin.js",
-      "sha256": "0ad372e2844c9cd8ce787e02e67163209f8159ba42bf01d73666d8eee78c3ed7"
+      "sha256": "4190d61a67aa0c70e19050f33e4ce4736d0771b1a2aadb07066f0d6702e78497"
     },
     {
       "file": "assets/cms-catalog.js",
-      "sha256": "106babfb06d55b748a615d46c2ca277adf1e51daf20600f843df3d76f6457a3b"
+      "sha256": "3bf437951e97e2b42f8306236baed08ffeec7b3efb1120bcb05dcfde2870c9dd"
     },
     {
       "file": "assets/cms-client.js",
@@ -61,7 +73,7 @@
     },
     {
       "file": "assets/i18n.js",
-      "sha256": "3387f79f5d7f674195276ff379987adf8fc2ccb5e5aa33573c3945d41aa84a42"
+      "sha256": "3b99dc4af90eedadc0ce92e019d3e44f8eee55e5253d82de0ae6f0a0c6344d87"
     },
     {
       "file": "assets/journal.js",
@@ -81,7 +93,7 @@
     },
     {
       "file": "assets/site.js",
-      "sha256": "13b620570b45b2d7ff293d9dc32209b2a82a5a59da3781eaf6ac9d1e859a4c90"
+      "sha256": "3dbeca0ed6f4c006ecb33a68e5733b9e212a0c801ebae6268395110485311cb9"
     },
     {
       "file": "assets/ux.js",
@@ -134,6 +146,14 @@
       "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
     },
     {
+      "file": "automatisering.html",
+      "sha256": "b52df84d6113cca55ef54ffd59c30f1ffda23ea1afd46ae2d0e744ebf739b228"
+    },
+    {
+      "file": "baies-dev/index.html",
+      "sha256": "75a11da44c802486bc6f65640aa48a730f0f684c5c07a42ba3cd1735eb3fb070"
+    },
+    {
       "file": "boek/index.html",
       "sha256": "8930ecfa36af4ec4e3548720eebb76805de93506d17cd4aebdfd96d7b1ce2fe4"
     },
@@ -170,8 +190,12 @@
       "sha256": "545c38b0922de19734fbffde62792c37c2aef6a3216cfa472449173165220f7d"
     },
     {
+      "file": "executive-radar/index.html",
+      "sha256": "75a11da44c802486bc6f65640aa48a730f0f684c5c07a42ba3cd1735eb3fb070"
+    },
+    {
       "file": "index.html",
-      "sha256": "13d78b95576434d274f799aabbc17d84849bae30b5e5ad44adcb5e3b73a66059"
+      "sha256": "32bc212980df42143010b5a6d4bd6eaeb0ab40aa2dccfb5acec21513e3ad44e4"
     },
     {
       "file": "insights-ai-pilot.html",
@@ -192,6 +216,10 @@
     {
       "file": "operating-model.html",
       "sha256": "538d6440534fa5f615e8a26932792a82a2e4a33a97886e2d815eab8fc216d415"
+    },
+    {
+      "file": "orion.html",
+      "sha256": "d0d1bf9f13d348c6dfe2b36264a1f0da3fa960a33b21fc7d2e4a6b4a81de45b2"
     },
     {
       "file": "privacy.html",

@@ -32,15 +32,14 @@ test('journal index leads with one feature and lists the newest articles after i
   assert.match(html,/<h2 id="ins-h" class="journal-label"[^>]*>Latest articles<\/h2>/,'aria-labelledby="ins-h" resolves');
   assert.match(html,/<h1\b[^>]*>Leading the agentic enterprise<\/h1>/);
 });
-test('home shows experience proof and three journal articles that resolve to real article panels',()=>{
-  const home=read('index.html'),insights=read('insights.html');
-  const proof=home.match(/<section id="proof"[\s\S]*?<\/section>/);assert.ok(proof);assert.match(proof[0],/href="transformation\.html#track-record"/);
-  assert.ok(home.indexOf('id="proof"')<home.indexOf('id="author-lens"'),'proof follows the hero');
-  const latest=home.match(/<section id="journal-latest"[\s\S]*?<\/section>/);assert.ok(latest);
-  const ids=[...latest[0].matchAll(/href="insights\.html#([^"]+)"/g)].map(m=>m[1]);assert.equal(ids.length,3);
-  for(const id of ids)assert.ok(insights.includes(`id="${id}"`),id);
-  assert.match(latest[0],/href="insights\.html">All Executive Journal articles/);
-  assert.equal((home.match(/<section id="selected-insight"[\s\S]*?<\/section>/)[0].match(/<a\b/g)||[]).length,1,'selected insight keeps one link');
+// Sprint 1 (22 Nov 2026): the customer homepage keeps the experience proof directly after the hero, now linking to About;
+// the three journal teasers and the selected insight left the homepage. Journal articles keep their own coverage above.
+test('home shows experience proof directly after the hero and no longer lists journal teasers',()=>{
+  const home=read('index.html');
+  const proof=home.match(/<section id="proof"[\s\S]*?<\/section>/);assert.ok(proof);assert.match(proof[0],/href="about\.html">Over Erlend Hollebosch/);
+  assert.ok(home.indexOf('</header>')<home.indexOf('id="proof"')&&home.indexOf('id="proof"')<home.indexOf('id="herkenbaar"'),'proof follows the hero');
+  for(const org of ['Colruyt Group','Volvo Group','Solvay','ArcelorMittal','Telenet','Ericsson'])assert.ok(proof[0].includes('<li>'+org+'</li>'),org);
+  assert.doesNotMatch(home,/id="journal-latest"|id="selected-insight"/);
 });
 test('track record lists dated roles, certifications and education with an accessible anchor',()=>{
   const html=read('transformation.html'),track=html.match(/<section class="career" id="track-record"[\s\S]*?<\/section>/);assert.ok(track);
@@ -52,6 +51,7 @@ test('editorial pages load the journal stylesheet and every new visible text has
   for(const f of ['index.html','insights.html','transformation.html'])assert.match(read(f),/assets\/journal\.css\?v=20261106-journal/,f);
   assert.doesNotMatch(read('assets/journal.css'),/@import|url\(/,'no external font or asset requests');
   const I=I18N();
-  for(const k of ['Executive Journal','Track record','In brief','The problem','Why it happens','What to do','See the track record','Leading the agentic enterprise','Latest articles','From the Executive Journal','All Executive Journal articles','Experience behind the perspective','Where this perspective comes from','Certifications','Education','Other assignments include','Tribe coach in an Agile transformation','Track Record in Enterprise Transformation | Erlend Hollebosch','Executive Journal on AI and Enterprise Coherence | Erlend Hollebosch'])
+  // Sprint 1: three homepage-only journal teaser labels left with the old homepage; the new proof strip labels replace them.
+  for(const k of ['Executive Journal','Track record','In brief','The problem','Why it happens','What to do','See the track record','Leading the agentic enterprise','Latest articles','Ervaring uit de praktijk','Over Erlend Hollebosch','Where this perspective comes from','Certifications','Education','Other assignments include','Tribe coach in an Agile transformation','Track Record in Enterprise Transformation | Erlend Hollebosch','Executive Journal on AI and Enterprise Coherence | Erlend Hollebosch'])
     assert.ok(Array.isArray(I[k])&&I[k][0]&&I[k][1],`missing translation: ${k}`);
 });

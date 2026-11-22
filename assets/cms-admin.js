@@ -11,15 +11,14 @@
   return content;
  }
  const homeGroups=[
-  {id:'hero',label:'Hero & introductie',from:0,to:1,extra:[44]},
-  {id:'experience',label:'Ervaring & trackrecord',from:2,to:9},
-  {id:'coherence',label:'Enterprise Coherence',from:10,to:17,extra:[47]},
-  {id:'explore',label:'Verdieping & perspectief',from:18,to:24},
-  {id:'books',label:'Boeken & previews',from:25,to:35,extra:[45,46]},
-  {id:'journal',label:'Executive Journal',from:36,to:38},
-  {id:'workshop',label:'Workshop & aanbod',from:39,to:41},
-  {id:'contact',label:'Contact',from:42,to:43},
-  {id:'video',label:'Video',from:48,to:48}
+  {id:'hero',label:'Hero & introductie',from:0,to:2},
+  {id:'experience',label:'Ervaring',from:3,to:4},
+  {id:'problem',label:'Herkenbare problemen',from:5,to:11},
+  {id:'steps',label:'Zo werkt Orion',from:12,to:20},
+  {id:'offer',label:'Aanbod',from:21,to:27},
+  {id:'trust',label:'Vertrouwelijkheid',from:28,to:29},
+  {id:'pilot',label:'Pilotgesprek',from:30,to:31},
+  {id:'video',label:'Video',from:32,to:32}
  ];
  function fieldGroup(index,field){
   if(definition.page!=='home')return field.type==='media'?'media':'text';

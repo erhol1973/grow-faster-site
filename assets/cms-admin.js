@@ -15,10 +15,9 @@
   {id:'experience',label:'Ervaring',from:3,to:4},
   {id:'problem',label:'Herkenbare problemen',from:5,to:11},
   {id:'steps',label:'Zo werkt Orion',from:12,to:20},
-  {id:'offer',label:'Aanbod',from:21,to:27},
-  {id:'trust',label:'Vertrouwelijkheid',from:28,to:29},
-  {id:'pilot',label:'Pilotgesprek',from:30,to:31},
-  {id:'video',label:'Video',from:32,to:32}
+  {id:'trust',label:'Vertrouwelijkheid',from:21,to:22},
+  {id:'pilot',label:'Pilotgesprek',from:23,to:24},
+  {id:'video',label:'Video',from:25,to:25}
  ];
  function fieldGroup(index,field){
   if(definition.page!=='home')return field.type==='media'?'media':'text';

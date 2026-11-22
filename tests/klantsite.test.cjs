@@ -1,4 +1,4 @@
-// Customer site sprint 1 (22 Nov 2026): Orion entry product, Automatisering stub, customer homepage.
+// Customer site sprint 1 (22 Nov 2026): Orion entry product, Automatisering stub, customer homepage, Oplossingen overview with the pyramid.
 // The Veiligheid page is deliberately excluded from this release (branch feature/veiligheid-pagina).
 const {test}=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),vm=require('node:vm');
 const root=path.resolve(__dirname,'..','dist');const read=f=>fs.readFileSync(path.join(root,f),'utf8');
@@ -9,7 +9,8 @@ const text=html=>decode(html.replace(/<script[\s\S]*?<\/script>|<style[\s\S]*?<\
 const pages={
   'orion.html':['Uw klantvragenlijsten, ingevuld vanuit uw eigen documenten.','Orion zoekt de antwoorden in uw specificaties, certificaten en eerdere lijsten. Uw medewerker kijkt na en verstuurt.','Dezelfde vragen, telkens opnieuw','Dat kost uren die niet naar kwaliteitswerk gaan. En wie overtypt, maakt fouten.','Zo werkt Orion','U laadt de vragenlijst op','Orion zoekt de antwoorden','U kijkt na.','U keurt goed en verstuurt.','U krijgt de lijst terug in hetzelfde formaat. Orion verstuurt nooit zelf iets.','Elk antwoord dat u goedkeurt, onthoudt Orion. De volgende vragenlijst gaat daardoor sneller.','Wat is Orion?','Wat het is','Het doel','Wat het u oplevert','Uw kwaliteitsdienst verlossen van zoek- en overtypwerk, zodat er meer tijd overblijft voor kwaliteit.','Voor wie','Voedingsbedrijven die regelmatig vragenlijsten en specificaties van klanten moeten invullen. We starten in West-Vlaanderen.','Veelgestelde vragen','Wat als Orion een fout antwoord geeft?','We gebruiken al ChatGPT. Wat is het verschil?','Wat zegt onze IT-verantwoordelijke ervan?','Voor de pilot start, bespreken we met uw IT-verantwoordelijke hoe Orion met uw gegevens omgaat, en bezorgen we vooraf alle informatie die hij nodig heeft.','Wat kost het?','Moeten we een groot project opstarten?','Nee. U levert een paar vragenlijsten en uw documenten aan. De rest doen wij.','Test Orion op uw eigen vragenlijsten','We starten met een paar vragenlijsten die u echt gekregen hebt. We meten hoeveel tijd ze vandaag kosten en hoeveel met Orion. Ziet u geen verschil, dan stoppen we.'],
   'automatisering.html':['Workflow-automatisering','Wat uw team vandaag overtypt of met de hand doorstuurt, kan automatisch. Deze pagina wordt binnenkort uitgebreid.'],
-  'index.html':['Orion vult de vragenlijsten van uw klanten in op basis van uw eigen documenten. Uw kwaliteitsverantwoordelijke kijkt na en verstuurt.','Herkenbaar?','Drie manieren om sneller te werken','Vertrouwelijk blijft vertrouwelijk','Recepturen en specificaties zijn gevoelig. Voor de pilot start, bespreken we met uw IT-verantwoordelijke hoe Orion met uw gegevens omgaat.','Test Orion op uw eigen vragenlijsten']
+  'oplossingen.html':['Sneller werken met AI en automatisering','Vier lagen, één doel: winst in tijd en geld.','Van fundament tot AI','AI levert pas tijd en geld op als wat eronder ligt klopt. Daarom bouwen we van onder naar boven: eerst samenhang in de organisatie, dan heldere processen, dan automatisering, dan AI.','Enterprise coherentie','Mensen, teams en systemen trekken in dezelfde richting.','Procesreview','Workflowscan','We brengen in kaart waar tijd en geld weglekt.','Repetitief werk loopt vanzelf.','AI neemt zoek- en schrijfwerk over.','Winst in tijd en geld','Drie manieren om sneller te werken','Test Orion op uw eigen vragenlijsten'],
+  'index.html':['Orion vult de vragenlijsten van uw klanten in op basis van uw eigen documenten. Uw kwaliteitsverantwoordelijke kijkt na en verstuurt.','Herkenbaar?','Van fundament tot AI','Winst in tijd en geld','Vertrouwelijk blijft vertrouwelijk','Recepturen en specificaties zijn gevoelig. Voor de pilot start, bespreken we met uw IT-verantwoordelijke hoe Orion met uw gegevens omgaat.','Test Orion op uw eigen vragenlijsten']
 };
 test('approved Dutch texts are published and every one has a Dutch and French translation',()=>{const {I18N:I}=I18N();
   for(const [file,phrases]of Object.entries(pages)){const body=text(read(file));
@@ -25,7 +26,7 @@ test('French copy uses formal vous and Belgian typography for questions and colo
   assert.match(I['Wat als Orion een fout antwoord geeft?'][1],/\u00a0\?$/);
 });
 test('customer pages carry title, description, canonical, og tags and NL/FR language handling',()=>{const {I18N:I}=I18N();
-  for(const file of ['index.html','orion.html','automatisering.html']){const html=read(file);
+  for(const file of ['index.html','oplossingen.html','orion.html','automatisering.html']){const html=read(file);
     const title=decode(html.match(/<title>([^<]+)<\/title>/)[1]);assert.match(title,/\| Grow Faster$/,file);assert.ok(title.length<=70,file);
     assert.equal(decode(html.match(/<meta name="seo-title" content="([^"]+)"/)[1]),title,file);assert.equal(decode(html.match(/<meta property="og:title" content="([^"]+)"/)[1]),title,file);
     assert.ok(I[title]?.[1],`${file}: French title`);
@@ -38,10 +39,10 @@ test('customer pages carry title, description, canonical, og tags and NL/FR lang
     assert.match(html,/<script defer src="assets\/i18n\.js\?v=20261122-klantsite"><\/script>[\s\S]*<script defer src="assets\/site\.js/);
     assert.ok(JSON.parse(html.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/)[1])['@graph'].some(x=>x['@type']==='WebSite'),file);
   }
-  for(const file of ['orion.html','automatisering.html'])assert.match(read('sitemap.xml'),new RegExp(`<loc>https://grow-faster\\.be/${file.replace('.','\\.')}</loc>`));
+  for(const file of ['oplossingen.html','orion.html','automatisering.html'])assert.match(read('sitemap.xml'),new RegExp(`<loc>https://grow-faster\\.be/${file.replace('.','\\.')}</loc>`));
 });
 test('the single call to action is the pilot mailto everywhere, without forms or other contact paths',()=>{
-  for(const file of ['index.html','orion.html','automatisering.html']){const html=read(file),main=html.match(/<main[\s\S]*?<\/main>/)[0];
+  for(const file of ['index.html','oplossingen.html','orion.html','automatisering.html']){const html=read(file),main=html.match(/<main[\s\S]*?<\/main>/)[0];
     assert.doesNotMatch(html,/<form\b|hsforms|hbspt\./i,file);
     const mails=[...html.matchAll(/href="(mailto:[^"]+)"/g)].map(m=>decode(m[1]));assert.ok(mails.length>=3,file);for(const m of mails)assert.equal(m,PILOT,file);
     assert.match(main,new RegExp(`<a href="${PILOT.replace(/[.?]/g,'\\$&')}" class="btn primary"[^>]*>Plan een pilotgesprek <span aria-hidden="true">→</span></a>`),file);
@@ -58,15 +59,36 @@ test('Orion lists four steps and five FAQ disclosures; released pages make no un
   assert.equal(fs.existsSync(path.join(root,'veiligheid.html')),false);assert.doesNotMatch(read('sitemap.xml'),/veiligheid/);
   for(const file of fs.readdirSync(root).filter(f=>f.endsWith('.html')))assert.doesNotMatch(read(file),/href="veiligheid\.html"/,file);
   assert.equal(H['orion-faq-it'],undefined);
-  const released=[...['index.html','orion.html','automatisering.html'].map(f=>text(read(f))),...Object.entries(I).filter(([k])=>/Orion|vragenlijst/.test(k)).flat(2)].join('\n');
+  const released=[...['index.html','oplossingen.html','orion.html','automatisering.html'].map(f=>text(read(f))),...Object.entries(I).filter(([k])=>/Orion|vragenlijst/.test(k)).flat(2)].join('\n');
   for(const claim of [/bewaard in de (EU|Europese Unie)/,/blijven in de EU/,/niet gebruikt om AI(-modellen)? te trainen/,/afgeschermde omgeving/,/conservés dans l’(UE|Union)/,/entraîner (l’IA|des modèles)/,/Uw recepturen blijven van u/])assert.doesNotMatch(released,claim);
 }); 
 test('customer homepage follows the approved mockup sections and keeps consent, CMS and the hero photo',()=>{const home=read('index.html');
-  const order=['id="hero"','id="proof"','id="herkenbaar"','id="hoe"','id="aanbod"','id="vertrouwelijk"','id="final"'].map(id=>home.indexOf(id));
+  // v2: the pyramid "Van fundament tot AI" replaces the former "Drie manieren om sneller te werken" section (moved to Oplossingen).
+  const order=['id="hero"','id="proof"','id="herkenbaar"','id="hoe"','id="fundament"','id="vertrouwelijk"','id="final"'].map(id=>home.indexOf(id));
   assert.ok(order.every((v,i)=>v>0&&(i===0||v>order[i-1])),'section order');
   assert.match(home,/<img src="img\/hero-executive-meeting-1774\.webp" alt="" width="1774" height="887" fetchpriority="high"/);
   assert.match(home,/<body data-cms-page="home"/);assert.match(home,/id="consent" role="dialog"/);assert.match(home,/assets\/consent\.js/);
-  const aanbod=home.match(/<section id="aanbod"[\s\S]*?<\/section>/)[0];assert.deepEqual([...aanbod.matchAll(/<a href="([^"]+)"/g)].map(m=>m[1]),['orion.html','automatisering.html','coherence.html']);
+  assert.doesNotMatch(home,/id="aanbod"/);assert.match(home,/<h1 data-ih="home-orion-value"[^>]*>Sneller werken met AI en automatisering\.<\/h1>/);
   const confidential=home.match(/<section id="vertrouwelijk"[\s\S]*?<\/section>/)[0];assert.doesNotMatch(confidential,/<a\b|<ul\b/);
   assert.equal((home.match(/class="vcard in"/g)||[]).length,7);
+});
+
+// v2: HTML/CSS pyramid (no SVG text) shared by the homepage and Oplossingen; reading order runs from the foundation upward.
+test('pyramid is a semantic ordered list from foundation to AI, visually reversed with inline CSS and linked to the offer',()=>{
+  for(const [file,id]of [['index.html','fundament'],['oplossingen.html','lagen']]){const html=read(file);
+    const section=html.match(new RegExp(`<section id="${id}"[\\s\\S]*?</section>`))[0];
+    assert.doesNotMatch(section,/<svg\b/,file);
+    assert.match(section,new RegExp(`<figure class="pyr" aria-labelledby="${id}-h" aria-describedby="${id}-d">`),file);
+    assert.match(text(section.match(new RegExp(`<p class="sr" id="${id}-d">[^<]+`))[0]),/van onder naar boven/,file);
+    const layers=[...section.matchAll(/<li class="pyr-l pyr-(\d)"><span class="pyr-shape">([^<]+)<\/span><div class="pyr-text"><span class="pyr-n"><span>Laag<\/span> \d<\/span><h3><a href="([^"]+)">([^<]+)<\/a><\/h3><p>([^<]+)<\/p>/g)].map(m=>[m[1],m[2],m[3],m[4]]);
+    assert.deepEqual(layers,[['1','Enterprise coherentie','coherence.html','Coherentie'],['2','Procesreview','automatisering.html','Workflowscan'],['3','Automatisering','automatisering.html','Workflow-automatisering'],['4','AI','orion.html','Orion']],file);
+    assert.ok(section.indexOf('class="pyr-result"')<section.indexOf('<ol class="pyr-layers">'),file);assert.match(section,/<span class="pyr-arrow" aria-hidden="true">↑<\/span><strong>Winst in tijd en geld<\/strong>/);
+    const css=html.match(/<style data-pyramid>[\s\S]*?<\/style>/)[0];assert.match(css,/\.pyr-layers\{[^}]*flex-direction:column-reverse/);assert.match(css,/clip-path:polygon/);
+    assert.doesNotMatch(html,/<link rel="stylesheet" href="assets\/pyramid/,file);
+  }
+});
+test('Oplossingen overview repeats its submenu, keeps the three offer cards and the pilot closing',()=>{const html=read('oplossingen.html');
+  assert.deepEqual([...html.match(/<nav class="topic-links"[\s\S]*?<\/nav>/)[0].matchAll(/href="([^"]+)"/g)].map(m=>m[1]),['orion.html','automatisering.html','coherence.html']);
+  assert.deepEqual([...html.match(/<section id="aanbod"[\s\S]*?<\/section>/)[0].matchAll(/<article class="gf-feature">[\s\S]*?<a href="([^"]+)"/g)].map(m=>m[1]),['orion.html','automatisering.html','coherence.html']);
+  assert.match(html,/<section id="final" class="tinted">/);
 });

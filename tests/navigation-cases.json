@@ -2,14 +2,18 @@
   "home": "index.html",
   "primary": [
     "index.html",
-    "orion.html",
-    "automatisering.html",
-    "coherence.html",
+    "oplossingen.html",
     "about.html"
   ],
   "action": "mailto:erlendhollebosch@gmail.com?subject=Pilot%20Orion",
   "contact": "about.html",
-  "groups": {},
+  "groups": {
+    "oplossingen.html": [
+      "orion.html",
+      "automatisering.html",
+      "coherence.html"
+    ]
+  },
   "secondary": {
     "coherence.html": [
       "books.html",
@@ -31,6 +35,7 @@
   ],
   "pages": [
     "index.html",
+    "oplossingen.html",
     "orion.html",
     "automatisering.html",
     "coherence.html",

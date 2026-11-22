@@ -2,8 +2,8 @@ const {test,expect}=require('playwright/test');
 
 // Sprint 1 (22 Nov 2026): the customer hero has one pilot action (mailto) and one route to Orion.
 for(const [language,heading,primary,secondary] of [
- ['nl','Minder tijd aan vragenlijsten. Meer tijd voor kwaliteit.','Plan een pilotgesprek','Zo werkt Orion'],
- ['fr','Moins de temps pour les questionnaires. Plus de temps pour la qualité.','Planifier un entretien pilote','Comment fonctionne Orion']
+ ['nl','Sneller werken met AI en automatisering.','Plan een pilotgesprek','Zo werkt Orion'],
+ ['fr','Travailler plus vite grâce à l’IA et à l’automatisation.','Planifier un entretien pilote','Comment fonctionne Orion']
 ])test('minimal hero layout and Orion keyboard action in '+language,async({page})=>{
  await page.addInitScript(l=>{localStorage.setItem('avs-lang',l);localStorage.setItem('avs-consent',JSON.stringify({v:4,ext:false,ana:false,ts:Date.now()}))},language);
  for(const width of [390,768,1024,1440]){
@@ -19,23 +19,30 @@ for(const [language,heading,primary,secondary] of [
  await page.locator('#hero-orion').focus();await page.keyboard.press('Enter');await expect(page).toHaveURL(/orion\.html$/);await expect(page.locator('html')).toHaveAttribute('lang',language);
 });
 
-// Replaces the former three editorial reading routes: the customer homepage offers three offer routes and a neutral confidentiality note.
-for(const [language,heading,choices,headings]of [
- ['nl','Drie manieren om sneller te werken',['Product','Dienst en software','Begeleiding'],{'orion.html':'Uw klantvragenlijsten, ingevuld vanuit uw eigen documenten.','automatisering.html':'Workflow-automatisering'}],
- ['fr','Trois façons de travailler plus vite',['Produit','Service et logiciel','Accompagnement'],{'orion.html':'Vos questionnaires clients, remplis à partir de vos propres documents.','automatisering.html':'Automatisation des workflows'}]
-])test(`customer home gives working offer routes in ${language}`,async({page})=>{
- const errors=[];page.on('pageerror',e=>errors.push(e.message));
- await page.addInitScript(l=>{if(!localStorage.getItem('avs-lang'))localStorage.setItem('avs-lang',l);localStorage.setItem('avs-consent',JSON.stringify({v:4,ext:false,ana:false,ts:Date.now()}))},language);
-  await page.goto('/index.html');await page.locator('#lang-btn-top').click();await page.locator('.lang-top [data-lang="'+language+'"]').click();
-  await expect(page.locator('html')).toHaveAttribute('lang',language);await expect(page.locator('#aanbod h2')).toHaveText(heading);
-  await expect(page.locator('#aanbod .eyebrow')).toHaveText(choices);await expect(page.locator('.lang-top [data-lang]')).toHaveCount(2);await expect(page.locator('[data-lang="de"], [lang="de"]')).toHaveCount(0);
-  expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1)).toBe(true);
-  for(const [href,h1] of Object.entries(headings)){
-   await page.locator('#aanbod a[href="'+href+'"]').click();await expect(page.locator('h1')).toHaveText(h1);await expect(page.locator('html')).toHaveAttribute('lang',language);
-   await page.goto('/index.html');
-  }
-  await page.locator('#aanbod a[href="coherence.html"]').click();await expect(page).toHaveURL(/coherence\.html$/);await expect(page.locator('html')).toHaveAttribute('lang',language);
- await page.goto('/index.html#final');await expect(page.locator('#fn-h')).toBeInViewport();
+// v2 (22 Nov 2026): the pyramid "Van fundament tot AI" replaces the offer cards on the homepage; the cards moved to oplossingen.html.
+// Layers are a list in reading order from the foundation; CSS shows layer 1 at the bottom. Every layer links to its offer.
+for(const [language,heading,result,layers,headings]of [
+ ['nl','Van fundament tot AI','Winst in tijd en geld',['Enterprise coherentie','Procesreview','Automatisering','AI'],{'coherence.html':null,'automatisering.html':'Workflow-automatisering','orion.html':'Uw klantvragenlijsten, ingevuld vanuit uw eigen documenten.'}],
+ ['fr','Des fondations à l’IA','Gain de temps et d’argent',['Cohérence d’entreprise','Revue des processus','Automatisation','IA'],{'coherence.html':null,'automatisering.html':'Automatisation des workflows','orion.html':'Vos questionnaires clients, remplis à partir de vos propres documents.'}]
+])for(const page of ['index.html','oplossingen.html'])test(`pyramid builds from foundation to AI and routes to the offer on ${page} in ${language}`,async({page:browserPage},info)=>{
+ const p=browserPage,errors=[];p.on('pageerror',e=>errors.push(e.message));
+ await p.addInitScript(l=>{localStorage.setItem('avs-lang',l);localStorage.setItem('avs-consent',JSON.stringify({v:4,ext:false,ana:false,ts:Date.now()}))},language);
+ const widths=info.project.use.isMobile?[390,320]:[1366];
+ for(const width of widths){
+  await p.setViewportSize({width,height:900});await p.goto('/'+page);await expect(p.locator('html')).toHaveAttribute('lang',language);
+  const section=p.locator('.pyr').locator('xpath=ancestor::section');await expect(section.locator('h2')).toHaveText(heading);
+  await expect(p.locator('.pyr-shape')).toHaveText(layers);await expect(p.locator('.pyr-result strong')).toHaveText(result);
+  await expect(p.locator('.pyr-layers > li')).toHaveCount(4);
+  const ys=await p.locator('.pyr-shape').evaluateAll(els=>els.map(e=>{const r=e.getBoundingClientRect();return{y:r.y,w:r.width}}));
+  for(let i=1;i<4;i++){expect(ys[i].y,'layer '+(i+1)+' sits above layer '+i).toBeLessThan(ys[i-1].y);expect(ys[i].w).toBeLessThan(ys[i-1].w)}
+  const resultBox=await p.locator('.pyr-result').boundingBox();expect(resultBox.y+resultBox.height).toBeLessThanOrEqual(ys[3].y+1);
+  expect(await p.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1)).toBe(true);
+ }
+ for(const [href,h1] of Object.entries(headings)){
+  await p.locator('.pyr a[href="'+href+'"]').first().click();await expect(p).toHaveURL(new RegExp(href.replace('.','\\.')+'$'));await expect(p.locator('html')).toHaveAttribute('lang',language);if(h1)await expect(p.locator('h1')).toHaveText(h1);
+  await p.goto('/'+page);
+ }
+ await p.goto('/'+page+'#final');await expect(p.locator('#fn-h')).toBeInViewport();
  expect(errors).toEqual([]);
 });
 // The former "late book cover" scroll-anchoring regression is retired: the book covers and the selected-article link it

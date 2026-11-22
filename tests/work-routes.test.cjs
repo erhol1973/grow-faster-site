@@ -4,7 +4,8 @@ const root=path.resolve(__dirname,'..','dist');const read=f=>fs.readFileSync(pat
 const I18N=()=>{const c={window:{}};vm.runInNewContext(read('assets/i18n.js'),c);return c.window.I18N};
 // Sprint 1 (22 Nov 2026): the customer hero has one primary pilot action (mailto, no form) and one route to Orion.
 test('minimal home hero keeps one primary pilot action and one Orion action',()=>{const h=read('index.html');
- assert.match(h,/<h1\b[^>]*\bdata-ih="home-orion-value"[^>]*>Minder tijd aan vragenlijsten\. <br>Meer tijd voor kwaliteit\.<\/h1>/);
+ // v2: approved new hero title.
+ assert.match(h,/<h1\b[^>]*\bdata-ih="home-orion-value"[^>]*>Sneller werken met AI en automatisering\.<\/h1>/);
  assert.doesNotMatch(h,/<p class="hero-avail">/);
  const ctas=h.match(/<div class="ctas">([\s\S]*?)<\/div>/)[1];const links=[...ctas.matchAll(/<a href="([^"]+)" class="btn (\w+)"/g)].map(m=>[m[1],m[2]]);
  assert.deepEqual(links,[['mailto:erlendhollebosch@gmail.com?subject=Pilot%20Orion','primary'],['orion.html','ghost']]);assert.doesNotMatch(h.match(/<main[\s\S]*<\/main>/)[0],/<form\b/);});

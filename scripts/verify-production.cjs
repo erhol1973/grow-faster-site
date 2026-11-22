@@ -47,13 +47,15 @@ async function main(){
       await page.locator('.nav a[href="about.html"]').click();await page.waitForURL('https://grow-faster.be/about.html');
       if(await page.evaluate(()=>scrollY)>8)throw Error('Contact scrolled from '+route);results.push({route,contactTop:true});
     }
-    // Customer menu (sprint 1): four direct links and one pilot mailto action; no Veiligheid page in this release.
+    // Customer menu (sprint 1 v2): Home, Oplossingen with three submenu links, Over and one pilot mailto action; no Veiligheid page.
     await page.goto('https://grow-faster.be/index.html');
-    if(await page.locator('#navlist a.l:not(.nav-work)').count()!==4)throw Error('Expected four direct navigation links');
+    if(await page.locator('#navlist a.l:not(.nav-work)').count()!==3)throw Error('Expected Home, Oplossingen and Over');
+    if(await page.locator('#nav-oplossingen a').count()!==3)throw Error('Expected three Oplossingen submenu links');
     if(await page.locator('#navlist a.nav-work[href="mailto:erlendhollebosch@gmail.com?subject=Pilot%20Orion"]').count()!==1)throw Error('Expected one pilot action');
     if(await page.locator('a[href="veiligheid.html"]').count())throw Error('Veiligheid is not part of this release');
     if(await page.locator('#burger').isVisible())await page.locator('#burger').click();
-    await page.locator('#navlist a[href="orion.html"]').click();await page.waitForURL('https://grow-faster.be/orion.html');
+    await page.locator('[aria-controls="nav-oplossingen"]').click();
+    await page.locator('#nav-oplossingen a[href="orion.html"]').click();await page.waitForURL('https://grow-faster.be/orion.html');
     if(!await page.locator('#hero h1').isVisible())throw Error('Orion page unavailable from navigation');
     results.push({route:'orion.html',fromMenu:true});
     await page.goto('https://grow-faster.be/books.html');
@@ -79,7 +81,8 @@ async function main(){
     results.push({route:'approach.html',workshopAboveFold:true});
     await page.goto('https://grow-faster.be/index.html');
     if(await page.locator('#burger').isVisible())await page.locator('#burger').click();
-    await page.locator('#navlist a[href="coherence.html"]').click();await page.waitForURL('https://grow-faster.be/coherence.html');
+    await page.locator('[aria-controls="nav-oplossingen"]').click();
+    await page.locator('#nav-oplossingen a[href="coherence.html"]').click();await page.waitForURL('https://grow-faster.be/coherence.html');
     await page.locator('.topic-links a[href="books.html"]').click();await page.waitForURL('https://grow-faster.be/books.html');
     for(const [lang,label]of [['fr','Lire l’aperçu pour les dirigeants'],['nl','Lees de executive preview']]){
       if(await page.locator('html').getAttribute('lang')!==lang){await page.locator('#lang-btn-top').click();await page.locator('.lang-top [data-lang="'+lang+'"]').click()}

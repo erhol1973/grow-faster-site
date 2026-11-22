@@ -3,7 +3,7 @@
   "scope": "rendered_local_nl_runtime_dictionaries_static_cms_and_mail",
   "technicalReview": {
     "date": "2026-11-22",
-    "reason": "Customer site sprint 1: new orion/automatisering pages and customer homepage are discovered by the existing DOM adapter; changed i18n.js (runtime dictionary adapter), cms-catalog.js (static catalog adapter) and cms-admin.js (excluded admin). Also records assets/baies-dev-*.js and the i18n/site.js changes merged on 12 Nov (PR #74/#75) without a contract update, which made every daily run since 13 Nov fail closed; their Executive Radar text is covered only as rendered in the initial NL DOM. No adapter code changed; no language approval",
+    "reason": "Customer site sprint 1: new oplossingen/orion/automatisering pages and customer homepage are discovered by the existing DOM adapter; changed i18n.js (runtime dictionary adapter), cms-catalog.js (static catalog adapter) and cms-admin.js (excluded admin). Also records assets/baies-dev-*.js and the i18n/site.js changes merged on 12 Nov (PR #74/#75) without a contract update, which made every daily run since 13 Nov fail closed; their Executive Radar text is covered only as rendered in the initial NL DOM. No adapter code changed; no language approval",
     "officialApproval": false
   },
   "javascript": [
@@ -25,11 +25,11 @@
     },
     {
       "file": "assets/cms-admin.js",
-      "sha256": "4190d61a67aa0c70e19050f33e4ce4736d0771b1a2aadb07066f0d6702e78497"
+      "sha256": "a93d451dae56fd30cefef0c8bcdd7895e407144f1d52099f11179e5702bf8f97"
     },
     {
       "file": "assets/cms-catalog.js",
-      "sha256": "3bf437951e97e2b42f8306236baed08ffeec7b3efb1120bcb05dcfde2870c9dd"
+      "sha256": "22ab61b57c2de8d5b1f71cb86461143c7053d23e3d6988eba2bfd2ff9c5ca232"
     },
     {
       "file": "assets/cms-client.js",
@@ -73,7 +73,7 @@
     },
     {
       "file": "assets/i18n.js",
-      "sha256": "3b99dc4af90eedadc0ce92e019d3e44f8eee55e5253d82de0ae6f0a0c6344d87"
+      "sha256": "c7fa49ac23c16d74751b4f54c2570d85af07d347351ace9d4cb3e6120cf64676"
     },
     {
       "file": "assets/journal.js",
@@ -216,6 +216,10 @@
     {
       "file": "operating-model.html",
       "sha256": "538d6440534fa5f615e8a26932792a82a2e4a33a97886e2d815eab8fc216d415"
+    },
+    {
+      "file": "oplossingen.html",
+      "sha256": "1973a9389518d72e907ffa85f7ab77c056ccf2b496e49a6756e9986a32900b0a"
     },
     {
       "file": "orion.html",

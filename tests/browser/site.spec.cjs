@@ -18,7 +18,7 @@ test('old indexed SITE123 addresses land on the new page and article',async({pag
 test('search title, brand line and French typography follow the language',async({page})=>{
   await page.addInitScript(()=>{if(!localStorage.getItem('avs-lang'))localStorage.setItem('avs-lang','nl')});
   // Sprint 1: the customer homepage title and hero.
-  await page.goto('/index.html');await expect(page).toHaveTitle('Orion vult uw klantvragenlijsten in | Grow Faster');await expect(page.locator('#hero h1')).toHaveText('Minder tijd aan vragenlijsten. Meer tijd voor kwaliteit.');
+  await page.goto('/index.html');await expect(page).toHaveTitle('Orion vult uw klantvragenlijsten in | Grow Faster');await expect(page.locator('#hero h1')).toHaveText('Sneller werken met AI en automatisering.');
   for(const [language,title]of [['fr','Orion remplit vos questionnaires clients | Grow Faster']]){
     await page.locator('#lang-btn-top').click();await page.locator('.lang-top .lang-menu [data-lang="'+language+'"]').click();await expect(page).toHaveTitle(title);
   }

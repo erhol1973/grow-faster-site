@@ -1,7 +1,7 @@
 const {test,expect}=require('playwright/test');
 const navigation=require('../navigation-cases.json'),routes=navigation.pages;
-// Sprint 1: pages outside the five-link customer menu are opened via the logo (Home) or directly; every page still returns to Contact (Over) at the top.
-async function open(page,route){if(navigation.primary.includes(route))return clickMenu(page,route);if(route===navigation.home)return page.locator('.nav .brand').click();await page.goto('/'+route);}
+// Sprint 1: pages outside the customer menu (Home, Oplossingen and its submenu, Over) are opened via the logo (Home) or directly; every page still returns to Contact (Over) at the top.
+async function open(page,route){if([...navigation.primary,...Object.values(navigation.groups).flat()].includes(route))return clickMenu(page,route);if(route===navigation.home)return page.locator('.nav .brand').click();await page.goto('/'+route);}
 test.beforeEach(async({page})=>{
   await page.addInitScript(()=>{
     localStorage.setItem('avs-consent',JSON.stringify({v:4,ext:false,ana:false,ts:Date.now()}));

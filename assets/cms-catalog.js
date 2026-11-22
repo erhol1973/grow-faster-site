@@ -10,8 +10,8 @@ window.GF_CMS_CATALOG=[
         "type": "text",
         "source": "heading",
         "label": "Hoofdtitel · nieuwe regel = regeleinde",
-        "nl": "Minder tijd aan vragenlijsten.\nMeer tijd voor kwaliteit.",
-        "fr": "Moins de temps pour les questionnaires.\nPlus de temps pour la qualité."
+        "nl": "Sneller werken met AI en automatisering.",
+        "fr": "Travailler plus vite grâce à l’IA et à l’automatisation."
       },
       {
         "key": "f7a4946dfd792-0",
@@ -157,55 +157,6 @@ window.GF_CMS_CATALOG=[
         "label": "Uw medewerker keurt goed en verstuurt. Orion verstuurt nooit zelf iets.",
         "nl": "Uw medewerker keurt goed en verstuurt. Orion verstuurt nooit zelf iets.",
         "fr": "Votre collaborateur valide et envoie. Orion n’envoie jamais rien lui-même."
-      },
-      {
-        "key": "home-orion-offer-h",
-        "type": "text",
-        "label": "Drie manieren om sneller te werken",
-        "nl": "Drie manieren om sneller te werken",
-        "fr": "Trois façons de travailler plus vite"
-      },
-      {
-        "key": "home-orion-offer-orion-h",
-        "type": "text",
-        "label": "Orion",
-        "nl": "Orion",
-        "fr": "Orion"
-      },
-      {
-        "key": "home-orion-offer-orion-p",
-        "type": "text",
-        "label": "Vult klantvragenlijsten en specificaties in, met de bron bij elk antwoord.",
-        "nl": "Vult klantvragenlijsten en specificaties in, met de bron bij elk antwoord.",
-        "fr": "Remplit les questionnaires et spécifications clients, avec la source de chaque réponse."
-      },
-      {
-        "key": "home-orion-offer-automation-h",
-        "type": "text",
-        "label": "Workflow-automatisering",
-        "nl": "Workflow-automatisering",
-        "fr": "Automatisation des workflows"
-      },
-      {
-        "key": "home-orion-offer-automation-p",
-        "type": "text",
-        "label": "Wat uw team vandaag overtypt of met de hand doorstuurt, gebeurt automatisch.",
-        "nl": "Wat uw team vandaag overtypt of met de hand doorstuurt, gebeurt automatisch.",
-        "fr": "Ce que votre équipe retape ou transfère aujourd’hui à la main se fait automatiquement."
-      },
-      {
-        "key": "home-orion-offer-coherence-h",
-        "type": "text",
-        "label": "Coherentie",
-        "nl": "Coherentie",
-        "fr": "Cohérence"
-      },
-      {
-        "key": "home-orion-offer-coherence-p",
-        "type": "text",
-        "label": "Mensen, processen en systemen trekken in dezelfde richting, zodat het hele bedrijf sneller",
-        "nl": "Mensen, processen en systemen trekken in dezelfde richting, zodat het hele bedrijf sneller gaat.",
-        "fr": "Personnes, processus et systèmes tirent dans la même direction, pour que toute l’entreprise avance plus vite."
       },
       {
         "key": "home-orion-trust-h",

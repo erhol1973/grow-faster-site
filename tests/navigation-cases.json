@@ -1,6 +1,7 @@
 {
   "home": "index.html",
   "primary": [
+    "index.html",
     "orion.html",
     "automatisering.html",
     "coherence.html",

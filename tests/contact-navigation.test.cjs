@@ -16,7 +16,7 @@ test('served ordinary pages have complete menus and Contact opens without a frag
     const nav=html.match(/<nav\b[^>]*class="nav [\s\S]*?<\/nav>/i);if(!nav)continue;pages++;
     const actual=[...nav[0].matchAll(/<a\b[^>]*href="([^"]+)"/g)].map(m=>m[1]);
     assert.deepEqual(actual,routes,`${file}: shared navigation cases must match the complete menu`);
-    assert.deepEqual([...nav[0].matchAll(/<a\b[^>]*class="[^"]*\bl\b[^"]*"[^>]*href="([^"]+)"/g)].map(m=>m[1]),[...navigation.primary,navigation.action],`${file}: four direct links and the pilot action`);
+    assert.deepEqual([...nav[0].matchAll(/<a\b[^>]*class="[^"]*\bl\b[^"]*"[^>]*href="([^"]+)"/g)].map(m=>m[1]),[...navigation.primary,navigation.action],`${file}: Home, four direct links and the pilot action`);
     assert.match(nav[0],/<li class="nav-action"><a tabindex="0" class="l nav-work" href="mailto:erlendhollebosch@gmail\.com\?subject=Pilot%20Orion">Plan een pilotgesprek <span aria-hidden="true">→<\/span><\/a><\/li>\s*<\/ul>/,file);
     assert.doesNotMatch(nav[0],/Work with me|href="workshop\.html"|executive-radar|insights\.html|transformation\.html|approach\.html/,`${file}: removed menu routes stay out of the menu`);
     assert.equal((nav[0].match(/class="nav-toggle"|class="nav-sub"/g)||[]).length,0,`${file}: no submenus`);

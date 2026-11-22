@@ -1,18 +1,18 @@
 const {test,expect}=require('playwright/test');
-// Customer menu, sprint 1 (22 Nov 2026): four direct links without submenus and one pilot mailto action.
+// Customer menu, sprint 1 (22 Nov 2026): Home plus four direct links without submenus and one pilot mailto action.
 // The former grouped-disclosure cases are replaced by direct-link, keyboard, resize and no-JavaScript cases below.
 const PILOT='mailto:erlendhollebosch@gmail.com?subject=Pilot%20Orion';
-const copy={nl:{primary:['Orion','Automatisering','Coherentie','Over'],work:'Plan een pilotgesprek',orion:'Uw klantvragenlijsten, ingevuld vanuit uw eigen documenten.'},fr:{primary:['Orion','Automatisation','Cohérence','À propos'],work:'Planifier un entretien pilote',orion:'Vos questionnaires clients, remplis à partir de vos propres documents.'}};
+const copy={nl:{primary:['Home','Orion','Automatisering','Coherentie','Over'],work:'Plan een pilotgesprek',orion:'Uw klantvragenlijsten, ingevuld vanuit uw eigen documenten.'},fr:{primary:['Accueil','Orion','Automatisation','Cohérence','À propos'],work:'Planifier un entretien pilote',orion:'Vos questionnaires clients, remplis à partir de vos propres documents.'}};
 async function seed(page,lang='nl'){await page.addInitScript(l=>{localStorage.setItem('avs-lang',l);localStorage.setItem('avs-consent',JSON.stringify({v:4,ext:false,ana:false,ts:Date.now()}))},lang)}
 async function activate(locator,info){if(info.project.use.isMobile)await locator.tap();else await locator.click()}
 async function openMenu(page,info){if(await page.locator('#burger').isVisible()&&!await page.locator('#navlist').isVisible())await activate(page.locator('#burger'),info)}
-for(const [lang,text]of Object.entries(copy))test('four direct menu links and the pilot action route correctly in '+lang,async({page},info)=>{
+for(const [lang,text]of Object.entries(copy))test('Home, four direct menu links and the pilot action route correctly in '+lang,async({page},info)=>{
  await seed(page,lang);await page.goto('/index.html');await openMenu(page,info);
  await expect(page.locator('#navlist a.l:not(.nav-work)')).toHaveText(text.primary);
  await expect(page.locator('#navlist .nav-work')).toHaveAccessibleName(text.work);await expect(page.locator('#navlist .nav-work')).toHaveAttribute('href',PILOT);
- await expect(page.locator('#navlist .nav-toggle, #navlist .nav-sub')).toHaveCount(0);await expect(page.locator('#navlist [aria-current]')).toHaveCount(0);
+ await expect(page.locator('#navlist .nav-toggle, #navlist .nav-sub')).toHaveCount(0);await expect(page.locator('#navlist [aria-current]')).toHaveCount(1);await expect(page.locator('#navlist a.l[href="index.html"]')).toHaveAttribute('aria-current','page');
  await expect(page.locator('.nav .brand')).toHaveAttribute('href','index.html');
- if(await page.locator('.nav').evaluate(e=>e.classList.contains('open')))await expect.poll(()=>page.locator('.nav').evaluate(e=>getComputedStyle(e).backgroundColor)).toBe('rgb(255, 255, 255)');else{await expect(page.locator('html')).toHaveClass(/nav-over/);await expect.poll(()=>page.locator('#navlist a.l').first().evaluate(e=>getComputedStyle(e).color)).toBe('rgb(255, 255, 255)');}
+ if(await page.locator('.nav').evaluate(e=>e.classList.contains('open')))await expect.poll(()=>page.locator('.nav').evaluate(e=>getComputedStyle(e).backgroundColor)).toBe('rgb(255, 255, 255)');else{await expect(page.locator('html')).toHaveClass(/nav-over/);await expect.poll(()=>page.locator('#navlist a.l:not(.cur):not(.nav-work)').first().evaluate(e=>getComputedStyle(e).color)).toBe('rgb(255, 255, 255)');}
  await activate(page.locator('#navlist a.l[href="orion.html"]'),info);
  await expect(page).toHaveURL(/\/orion\.html$/);await expect(page.locator('html')).toHaveAttribute('lang',lang);await expect(page.locator('h1')).toHaveText(text.orion);
  await expect(page.locator('#navlist a.l[href="orion.html"]')).toHaveAttribute('aria-current','page');await expect(page.locator('#navlist a.l[href="orion.html"]')).toHaveClass(/\bcur\b/);
@@ -25,7 +25,7 @@ for(const [lang,text]of Object.entries(copy))test('four direct menu links and th
 test('keyboard order, Escape, outside click and language choice close predictably',async({page},info)=>{
  await seed(page);await page.goto('/index.html');await openMenu(page,info);
  const links=page.locator('#navlist a');await links.first().focus();
- for(const href of ['automatisering.html','coherence.html','about.html',PILOT]){await page.keyboard.press('Tab');await expect(page.locator('#navlist a[href="'+href+'"]')).toBeFocused();}
+ for(const href of ['orion.html','automatisering.html','coherence.html','about.html',PILOT]){await page.keyboard.press('Tab');await expect(page.locator('#navlist a[href="'+href+'"]')).toBeFocused();}
  await page.locator('#lang-btn-top').click();await page.locator('.lang-top [data-lang="fr"]').click();await expect(page.locator('html')).toHaveAttribute('lang','fr');await expect(page.locator('#navlist a.l[href="about.html"]')).toHaveText('À propos');
  if(await page.locator('#burger').isVisible()){
   await openMenu(page,info);await page.mouse.click(4,page.viewportSize().height-4);await expect(page.locator('#navlist')).toBeHidden();
@@ -34,7 +34,7 @@ test('keyboard order, Escape, outside click and language choice close predictabl
 });
 test('resizing keeps the same ordered menu with a single final pilot action on mobile and desktop',async({page})=>{
  await seed(page,'fr');await page.setViewportSize({width:1440,height:900});await page.goto('/index.html');
- await expect(page.locator('#burger')).toBeHidden();await expect(page.locator('#navlist >li').last()).toHaveClass('nav-action');await expect(page.locator('#navlist >li')).toHaveCount(5);
+ await expect(page.locator('#burger')).toBeHidden();await expect(page.locator('#navlist >li').last()).toHaveClass('nav-action');await expect(page.locator('#navlist >li')).toHaveCount(6);
  for(const link of await page.locator('#navlist a').all())await expect(link).toBeInViewport();
  await page.setViewportSize({width:320,height:568});await expect(page.locator('#burger')).toBeVisible();await page.locator('#burger').click();
  await expect(page.locator('#navlist >li').last()).toHaveClass('nav-action');await expect(page.locator('#navlist .nav-work')).toHaveCount(1);

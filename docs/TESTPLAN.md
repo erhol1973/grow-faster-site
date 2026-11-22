@@ -1,5 +1,28 @@
 # Testplan en kwaliteitsbeleid
 
+## Release 1.1: pagina Over voor klanten, 22 november 2026
+
+about.html is herschreven voor klanten (goedgekeurde tekst, NL/FR met "vous"). Het portret is behouden. De pagina bevat een pilotknop, "Waarom Grow Faster", "Hoe ik werk" (3 stappen), "Wat ik meebreng", "Oplossingen" met de link "Alle oplossingen" en een contactblok (`#contact`, `tabindex="-1"`) met pilotgesprek en LinkedIn. Ze gebruikt de klantfooter.
+
+Verwijderd van About:
+- de twee boeken en de ingesloten books.css
+- de werkroutes "Work with me" met e-mailsjablonen voor werkgevers
+- het trackrecord en het blok met intellectuele fundamenten
+- de links naar transformation.html en de boeklezer
+
+Die pagina's blijven op hun URL bestaan. Links die naar verdwenen ankers op About wezen, zijn omgeleid:
+- de auteurskaders op Insights en Trackrecord → `about.html#contact`
+- de boeklink op Coherence → `books.html#the-coherent-enterprise`
+- de manuscriptlink in de lezer van The Coherent Enterprise → de e-bookbestelling op Books
+
+De About-sectie in de CMS-catalogus heeft nieuwe sleutels (`about-klant-*`; 20 velden). 30 vertalingen die alleen de oude About-inhoud dienden, zijn verwijderd. Het gzip-budget van 65 KB blijft groen.
+
+Tests:
+- Nieuw: `tests/over.test.cjs` dekt de goedgekeurde tekst met FR, de pilot- en contactacties zonder responstijdbelofte, de afwezigheid van boek- en trackrecordlinks, en de metadata.
+- Verplaatst: de e-mailsjabloontaalwissel naar de e-bookbestelling op Books, de lezerroute naar Books, de praktijkroute naar Insights en de boekthese-route naar Coherence → Books.
+- De werkroutetests zijn vervangen door een negatieve test (geen werkgeversroutes op About).
+- Lighthouse meet About ongewijzigd; de drempels zijn niet aangepast.
+
 ## Klantsite sprint 1: Orion en nieuw menu, 22 november 2026
 
 De site spreekt alleen nog klanten aan (kmo's, eerst West-Vlaamse voedingsbedrijven). Het hoofdmenu op alle zeventien gewone pagina's bevat vier directe links zonder submenu's (Orion, Automatisering, Coherentie, Over) en één actie: Plan een pilotgesprek, een `mailto:` met onderwerp `Pilot Orion`. Executive Radar, Executive Journal, Trackrecord en Aanpak staan niet meer in het menu; hun URL's blijven werken en worden getest (`retained` in `navigation-cases.json`). De vroegere submenuroutes blijven bereikbaar via de topic-links op Coherence en Aanpak (`secondary`). Over opent about.html bovenaan; dat is de Contact-route.

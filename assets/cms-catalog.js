@@ -206,229 +206,142 @@ window.GF_CMS_CATALOG=[
     "label": "Erlend Hollebosch",
     "fields": [
       {
-        "key": "f5828e9e52aaa-0",
+        "key": "about-klant-hero-h",
         "type": "text",
-        "label": "I explore how organisations turn strategic ambition into coherent action, and how AI can c",
-        "nl": "Ik onderzoek hoe organisaties strategische ambitie omzetten in samenhangend handelen en hoe AI kan bijdragen wanneer mensen, processen, beslissingen en technologie samenwerken.",
-        "fr": "J’examine comment les organisations traduisent leurs ambitions stratégiques en actions cohérentes et comment l’IA peut y contribuer lorsque personnes, processus, décisions et technologie fonctionnent ensemble."
-      },
-      {
-        "key": "f96d81ec488e1-0",
-        "type": "text",
-        "label": "Author of The Coherent Enterprise and Design for Coherence",
-        "nl": "Auteur van The Coherent Enterprise en Design for Coherence",
-        "fr": "Auteur de The Coherent Enterprise et de Design for Coherence"
-      },
-      {
-        "key": "f29222a59cef9-0",
-        "type": "text",
-        "label": "Connecting direction with execution",
-        "nl": "Richting verbinden met uitvoering",
-        "fr": "Relier l’orientation à l’exécution"
-      },
-      {
-        "key": "fc537108c9c64-0",
-        "type": "text",
-        "label": "My background spans project management, PMO and business transformation. It shapes a persp",
-        "nl": "Mijn achtergrond ligt in projectmanagement, PMO en bedrijfstransformatie. Die ervaring vormt een perspectief dat strategische richting verbindt met het werk dat mensen samen moeten realiseren, over organisatiegrenzen heen.",
-        "fr": "Mon parcours associe gestion de projets, PMO et transformation des entreprises. Cette expérience nourrit une perspective qui relie le cap stratégique au travail que les personnes doivent accomplir ensemble, au-delà des frontières organisationnelles."
-      },
-      {
-        "key": "fdb526c54c092-0",
-        "type": "text",
-        "label": "My focus is enterprise coherence: how strategy, governance, decisions, processes, data and",
-        "nl": "Mijn aandacht gaat naar enterprise coherence: hoe strategie, governance, beslissingen, processen, data en leren elkaar versterken. Vanuit die lens onderzoek ik AI, waarbij technologie en organisatie samen worden ontwikkeld.",
-        "fr": "Je m’intéresse à la cohérence de l’entreprise : comment stratégie, gouvernance, décisions, processus, données et apprentissage se renforcent. J’examine l’IA sous cet angle, en développant ensemble technologie et organisation."
-      },
-      {
-        "key": "f6e561262044f-0",
-        "type": "text",
-        "label": "AI can accelerate a task while decisions, handoffs and responsibilities still hold back th",
-        "nl": "AI kan een taak versnellen terwijl beslissingen, overdrachten en verantwoordelijkheden het resultaat blijven afremmen. Dit handboek helpt je leiderschapsteam het systeem rond één AI-toepassing te onderzoeken.",
-        "fr": "L’IA peut accélérer une tâche alors que les décisions, les transferts et les responsabilités freinent encore le résultat. Ce guide aide votre équipe dirigeante à examiner le système autour d’une application d’IA."
-      },
-      {
-        "key": "fceb71014d7cb-0",
-        "type": "text",
-        "label": "Online flipbook · 22-page preview · 82-page book · November 2026",
-        "nl": "Online flipbook · preview van 22 pagina’s · boek van 82 pagina’s · november 2026",
-        "fr": "Livre feuilletable en ligne · aperçu de 22 pages · livre de 82 pages · novembre 2026"
-      },
-      {
-        "key": "f6c505bc7600c-0",
-        "type": "text",
-        "label": "The broader manuscript explores how strategy, governance, decisions, operations, technolog",
-        "nl": "Het uitgebreidere manuscript onderzoekt hoe strategie, governance, beslissingen, uitvoering, technologie en leren elkaar versterken wanneer een organisatie verandert.",
-        "fr": "Le manuscrit de fond examine comment la stratégie, la gouvernance, les décisions, les opérations, la technologie et l’apprentissage se renforcent lorsque l’organisation évolue."
-      },
-      {
-        "key": "fc9c4c0bbbff6-0",
-        "type": "text",
-        "label": "Understand why capable organisations become harder to move as complexity grows.",
-        "nl": "Begrijp waarom bekwame organisaties moeilijker in beweging komen naarmate de complexiteit groeit.",
-        "fr": "Comprendre pourquoi des organisations compétentes deviennent plus difficiles à faire évoluer à mesure que la complexité augmente."
-      },
-      {
-        "key": "f12abc47fb8a3-0",
-        "type": "text",
-        "label": "Diagnose where coherence erodes with the Coherence Diagnostic Model.",
-        "nl": "Breng met het Coherence Diagnostic Model in kaart waar de samenhang afbrokkelt.",
-        "fr": "Identifier où la cohérence s’érode grâce au Coherence Diagnostic Model."
-      },
-      {
-        "key": "f2604f2888195-0",
-        "type": "text",
-        "label": "Redesign governance, decisions and flow with the Coherent Transformation Playbook.",
-        "nl": "Herontwerp governance, beslissingen en flow met het Coherent Transformation Playbook.",
-        "fr": "Repenser la gouvernance, les décisions et le flux avec le Coherent Transformation Playbook."
-      },
-      {
-        "key": "f58b6e7e9aacb-0",
-        "type": "text",
-        "label": "Online flipbook · 12-page preview · 281-page manuscript on request",
-        "nl": "Online flipbook · preview van 12 pagina’s · manuscript van 281 pagina’s op aanvraag",
-        "fr": "Livre à feuilleter en ligne · aperçu de 12 pages · manuscrit de 281 pages sur demande"
-      },
-      {
-        "key": "f3732e763f5e5-0",
-        "type": "text",
-        "label": "Two ways to work together",
-        "nl": "Twee manieren om samen te werken",
-        "fr": "Deux façons de travailler ensemble"
-      },
-      {
-        "key": "fd921b418e593-0",
-        "type": "text",
-        "label": "I am available now in Belgium, on-site or hybrid, in English, Dutch and French.",
-        "nl": "Ik ben nu beschikbaar in België, ter plaatse of hybride, in het Nederlands, Frans en Engels.",
-        "fr": "Je suis disponible dès maintenant en Belgique, sur site ou en mode hybride, en français, néerlandais et anglais."
-      },
-      {
-        "key": "fb945fffbef00-0",
-        "type": "text",
-        "label": "Enterprise & AI Transformation Lead",
-        "nl": "Enterprise & AI Transformation Lead",
-        "fr": "Enterprise & AI Transformation Lead"
-      },
-      {
-        "key": "f501f2bd31399-0",
-        "type": "text",
-        "label": "For organisations that want AI to improve business outcomes, not only individual productiv",
-        "nl": "Voor organisaties die met AI betere bedrijfsresultaten willen, niet alleen individuele productiviteit. Ik verbind strategie, processen, beslisrechten, data en AI tot één transformatie die resultaat oplevert.",
-        "fr": "Pour les organisations qui attendent de l’IA de meilleurs résultats d’entreprise, pas seulement une productivité individuelle. Je relie stratégie, processus, droits de décision, données et IA en une seule transformation qui produit des résultats."
-      },
-      {
-        "key": "ff100957d3228-0",
-        "type": "text",
-        "label": "Lead enterprise-wide AI and business transformation",
-        "nl": "Organisatiebrede AI- en bedrijfstransformatie leiden",
-        "fr": "Piloter la transformation de l’entreprise et de l’IA à l’échelle de l’organisation"
-      },
-      {
-        "key": "f515786712e3c-0",
-        "type": "text",
-        "label": "Build the portfolio, governance and operating model to scale AI",
-        "nl": "Portfolio, governance en operating model opbouwen om AI op te schalen",
-        "fr": "Construire le portefeuille, la gouvernance et le modèle opérationnel pour déployer l’IA à grande échelle"
-      },
-      {
-        "key": "f8a525f621ad4-0",
-        "type": "text",
-        "label": "26 years in project, programme, portfolio and transformation leadership",
-        "nl": "26 jaar leiderschap in project-, programma-, portfolio- en transformatiebeheer",
-        "fr": "26 ans de leadership en gestion de projets, de programmes, de portefeuilles et de transformation"
-      },
-      {
-        "key": "fd4de1a5c1fd3-0",
-        "type": "text",
-        "label": "Interim or freelance, for the longer term",
-        "nl": "Interim of freelance, voor langere tijd",
-        "fr": "Intérim ou freelance, sur la durée"
-      },
-      {
-        "key": "fe6ff7c81fefe-0",
-        "type": "text",
-        "label": "For a transformation or AI programme that has to deliver, where I take ownership of the re",
-        "nl": "Voor een transformatie- of AI-programma dat moet opleveren, waarbij ik samen met je teams verantwoordelijkheid neem voor het resultaat.",
-        "fr": "Pour un programme de transformation ou d’IA qui doit produire des résultats, où je prends la responsabilité du résultat aux côtés de vos équipes."
-      },
-      {
-        "key": "f0a3df2134953-0",
-        "type": "text",
-        "label": "Lead or turn around an AI or transformation programme",
-        "nl": "Een AI- of transformatieprogramma leiden of bijsturen",
-        "fr": "Piloter ou redresser un programme d’IA ou de transformation"
-      },
-      {
-        "key": "fda2458cabd27-0",
-        "type": "text",
-        "label": "Redesign one end-to-end process for people and AI agents",
-        "nl": "Eén end-to-end proces herontwerpen voor mensen en AI-agents",
-        "fr": "Repenser un processus de bout en bout pour les humains et les agents IA"
-      },
-      {
-        "key": "f4f3a44d29dd2-0",
-        "type": "text",
-        "label": "Set up decision rights, governance and portfolio steering",
-        "nl": "Beslisrechten, governance en portfoliosturing inrichten",
-        "fr": "Mettre en place les droits de décision, la gouvernance et le pilotage du portefeuille"
-      },
-      {
-        "key": "f30f1f8682cb1-0",
-        "type": "text",
-        "label": "Each button opens your email with a short, ready-made template.",
-        "nl": "Elke knop opent je e-mail met een kort, kant-en-klaar sjabloon.",
-        "fr": "Chaque bouton ouvre votre messagerie avec un court modèle prêt à l’emploi."
-      },
-      {
-        "key": "f2bfe2bd85ea8-0",
-        "type": "text",
-        "label": "Intellectual foundations",
-        "nl": "Intellectuele fundamenten",
-        "fr": "Fondements intellectuels"
-      },
-      {
-        "key": "f4d468731fcc7-0",
-        "type": "text",
-        "label": "Research on enterprise design informs this perspective: reliable shared operations, reusab",
-        "nl": "Onderzoek naar organisatieontwerp voedt dit perspectief: betrouwbare gedeelde processen, herbruikbare digitale mogelijkheden en duidelijke verantwoordelijkheid. Het hier beschreven coherentieperspectief is mijn eigen synthese.",
-        "fr": "Les recherches sur la conception des entreprises nourrissent cette perspective : opérations partagées fiables, capacités numériques réutilisables et responsabilités claires. L’argument de cohérence présenté ici est ma propre synthèse."
+        "label": "Erlend Hollebosch, oprichter van Grow Faster",
+        "nl": "Erlend Hollebosch, oprichter van Grow Faster",
+        "fr": "Erlend Hollebosch, fondateur de Grow Faster"
       },
       {
         "key": "f9e1d98ca6f92-0",
         "type": "media",
-        "label": "Portrait of Erlend Hollebosch",
-        "nl": "Portrait of Erlend Hollebosch",
-        "fr": "Portrait of Erlend Hollebosch",
+        "label": "Portret van Erlend Hollebosch",
+        "nl": "Portret van Erlend Hollebosch",
+        "fr": "Portrait d’Erlend Hollebosch",
         "src": "img/author-retouched-720.jpg",
         "alt": {
-          "nl": "Portrait of Erlend Hollebosch",
-          "fr": "Portrait of Erlend Hollebosch"
+          "nl": "Portret van Erlend Hollebosch",
+          "fr": "Portrait d’Erlend Hollebosch"
         }
       },
       {
-        "key": "f34c8c508f4d2-0",
-        "type": "media",
-        "label": "Cover of Turning AI Potential into Enterprise Value by Erlend Hollebosch",
-        "nl": "Omslag van Turning AI Potential into Enterprise Value van Erlend Hollebosch",
-        "fr": "Couverture de Turning AI Potential into Enterprise Value d’Erlend Hollebosch",
-        "src": "img/design-for-coherence-book-600.png",
-        "alt": {
-          "nl": "Cover of Turning AI Potential into Enterprise Value by Erlend Hollebosch",
-          "fr": "Cover of Turning AI Potential into Enterprise Value by Erlend Hollebosch"
-        }
+        "key": "about-klant-hero-p",
+        "type": "text",
+        "label": "Meer dan twintig jaar heb ik grote bedrijven geholpen sneller en beter te werken. Nu breng",
+        "nl": "Meer dan twintig jaar heb ik grote bedrijven geholpen sneller en beter te werken. Nu breng ik die aanpak naar kmo’s, met AI en automatisering.",
+        "fr": "Pendant plus de vingt ans, j’ai aidé de grandes entreprises à travailler plus vite et mieux. Aujourd’hui, j’apporte cette approche aux PME, avec l’IA et l’automatisation."
       },
       {
-        "key": "f5322634b0b3d-0",
-        "type": "media",
-        "label": "Cover of the book The Coherent Enterprise by Erlend Hollebosch",
-        "nl": "Cover of the book The Coherent Enterprise by Erlend Hollebosch",
-        "fr": "Cover of the book The Coherent Enterprise by Erlend Hollebosch",
-        "src": "img/the-coherent-enterprise-book-600.png",
-        "alt": {
-          "nl": "Cover of the book The Coherent Enterprise by Erlend Hollebosch",
-          "fr": "Cover of the book The Coherent Enterprise by Erlend Hollebosch"
-        }
+        "key": "about-klant-why-h",
+        "type": "text",
+        "label": "Waarom Grow Faster",
+        "nl": "Waarom Grow Faster",
+        "fr": "Pourquoi Grow Faster"
+      },
+      {
+        "key": "about-klant-why-p1",
+        "type": "text",
+        "label": "Bij Volvo, Colruyt, Solvay, Telenet en ArcelorMittal zag ik hetzelfde: mensen verliezen ur",
+        "nl": "Bij Volvo, Colruyt, Solvay, Telenet en ArcelorMittal zag ik hetzelfde: mensen verliezen uren aan zoeken, overtypen en afstemmen. Grote bedrijven hebben teams en budget om dat aan te pakken. Een kmo heeft die vaak niet, terwijl het probleem er net zo groot is.",
+        "fr": "Chez Volvo, Colruyt, Solvay, Telenet et ArcelorMittal, j’ai constaté la même chose : les collaborateurs perdent des heures à chercher, à retaper et à se coordonner. Les grandes entreprises disposent d’équipes et de budgets pour s’y attaquer. Une PME n’en a souvent pas, alors que le problème y est tout aussi important."
+      },
+      {
+        "key": "about-klant-why-p2",
+        "type": "text",
+        "label": "Grow Faster brengt de aanpak van grote bedrijven op kmo-maat. We starten met één taak die ",
+        "nl": "Grow Faster brengt de aanpak van grote bedrijven op kmo-maat. We starten met één taak die vandaag te veel tijd kost, meten wat het oplevert en breiden pas uit als het werkt.",
+        "fr": "Grow Faster adapte l’approche des grandes entreprises à la taille d’une PME. Nous commençons par une seule tâche qui prend aujourd’hui trop de temps, nous mesurons ce qu’elle rapporte et nous n’élargissons que lorsque cela fonctionne."
+      },
+      {
+        "key": "about-klant-how-h",
+        "type": "text",
+        "label": "Hoe ik werk",
+        "nl": "Hoe ik werk",
+        "fr": "Ma façon de travailler"
+      },
+      {
+        "key": "about-klant-step-1-h",
+        "type": "text",
+        "label": "Klein starten.",
+        "nl": "Klein starten.",
+        "fr": "Commencer petit."
+      },
+      {
+        "key": "about-klant-step-1-p",
+        "type": "text",
+        "label": "Eén concrete taak, zoals de vragenlijsten van uw klanten.",
+        "nl": "Eén concrete taak, zoals de vragenlijsten van uw klanten.",
+        "fr": "Une tâche concrète, comme les questionnaires de vos clients."
+      },
+      {
+        "key": "about-klant-step-2-h",
+        "type": "text",
+        "label": "Meten.",
+        "nl": "Meten.",
+        "fr": "Mesurer."
+      },
+      {
+        "key": "about-klant-step-2-p",
+        "type": "text",
+        "label": "Hoeveel tijd kost het vandaag, en hoeveel na de verandering?",
+        "nl": "Hoeveel tijd kost het vandaag, en hoeveel na de verandering?",
+        "fr": "Combien de temps cela prend-il aujourd’hui, et combien après le changement ?"
+      },
+      {
+        "key": "about-klant-step-3-h",
+        "type": "text",
+        "label": "Uitbreiden.",
+        "nl": "Uitbreiden.",
+        "fr": "Élargir."
+      },
+      {
+        "key": "about-klant-step-3-p",
+        "type": "text",
+        "label": "Pas als het resultaat er is, pakken we de volgende stap aan.",
+        "nl": "Pas als het resultaat er is, pakken we de volgende stap aan.",
+        "fr": "Ce n’est qu’une fois le résultat obtenu que nous passons à l’étape suivante."
+      },
+      {
+        "key": "about-klant-exp-h",
+        "type": "text",
+        "label": "Wat ik meebreng",
+        "nl": "Wat ik meebreng",
+        "fr": "Ce que j’apporte"
+      },
+      {
+        "key": "about-klant-exp-1",
+        "type": "text",
+        "label": "Meer dan twintig jaar programma- en projectmanagement, procesverbetering en transformatie.",
+        "nl": "Meer dan twintig jaar programma- en projectmanagement, procesverbetering en transformatie.",
+        "fr": "Plus de vingt ans de gestion de programmes et de projets, d’amélioration des processus et de transformation."
+      },
+      {
+        "key": "about-klant-exp-2",
+        "type": "text",
+        "label": "Ervaring in voeding en retail, industrie, telecom en technologie, onder meer bij Colruyt G",
+        "nl": "Ervaring in voeding en retail, industrie, telecom en technologie, onder meer bij Colruyt Group, Volvo Group, Solvay, ArcelorMittal, Telenet en Ericsson.",
+        "fr": "Une expérience dans l’alimentation et la distribution, l’industrie, les télécoms et la technologie, notamment chez Colruyt Group, Volvo Group, Solvay, ArcelorMittal, Telenet et Ericsson."
+      },
+      {
+        "key": "about-klant-exp-3",
+        "type": "text",
+        "label": "Gecertificeerd in AI-operating models en AI-leiderschap (IBM), organisatieverandering (ILE",
+        "nl": "Gecertificeerd in AI-operating models en AI-leiderschap (IBM), organisatieverandering (ILE) en verandertrajecten (ICAgile, SAFe SPC).",
+        "fr": "Certifié en modèles opérationnels d’IA et en leadership de l’IA (IBM), en changement organisationnel (ILE) et en trajectoires de changement (ICAgile, SAFe SPC)."
+      },
+      {
+        "key": "about-klant-contact-h",
+        "type": "text",
+        "label": "Laten we kennismaken",
+        "nl": "Laten we kennismaken",
+        "fr": "Faisons connaissance"
+      },
+      {
+        "key": "about-klant-contact-p",
+        "type": "text",
+        "label": "Vertel me welke taak bij u vandaag te veel tijd kost.",
+        "nl": "Vertel me welke taak bij u vandaag te veel tijd kost.",
+        "fr": "Dites-moi quelle tâche vous prend aujourd’hui trop de temps."
       },
       {
         "key": "cms-video-about",

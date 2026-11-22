@@ -104,8 +104,8 @@
     "Articles d’Erlend Hollebosch sur la fragmentation, la cohérence de l’entreprise, la refonte des processus et l’IA."
   ],
   "about.html": [
-    "Over Erlend Hollebosch, zijn ervaring met transformatie, het boek The Coherent Enterprise en contact.",
-    "À propos d’Erlend Hollebosch, de son expérience en transformation, du livre The Coherent Enterprise et des moyens de le contacter."
+    "Erlend Hollebosch, oprichter van Grow Faster, brengt de aanpak van grote bedrijven naar kmo’s: klein starten, meten en uitbreiden met AI en automatisering.",
+    "Erlend Hollebosch, fondateur de Grow Faster, apporte l’approche des grandes entreprises aux PME : commencer petit, mesurer et élargir avec l’IA et l’automatisation."
   ],
   "accessibility.html": [
     "Toegankelijkheidsverklaring van grow-faster.be: voorzieningen, bekende beperkingen en feedback.",

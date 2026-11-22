@@ -23,7 +23,9 @@ test('structured data describes the author, the book and the site',()=>{
  const graph=f=>{const m=read(f).match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/);assert.ok(m,`${f}: no JSON-LD`);const j=JSON.parse(m[1]);assert.equal(j['@context'],'https://schema.org');return j['@graph'];};
  const about=graph('about.html'),home=graph('index.html');
  const person=about.find(x=>x['@type']==='Person');assert.equal(person.name,'Erlend Hollebosch');assert.match(person.sameAs[0],/^https:\/\/www\.linkedin\.com\/in\//);
- const book=about.find(x=>x['@type']==='Book');assert.equal(book.name,'The Coherent Enterprise');assert.equal(book.author['@id'],person['@id']);
+ // Release 1.1: About describes the founder of Grow Faster; the book's structured data lives on Books.
+ assert.equal(person.jobTitle,'Oprichter van Grow Faster');assert.equal(person.worksFor.name,'Grow Faster');assert.ok(about.some(x=>x['@type']==='AboutPage'));
+ const book=graph('books.html').find(x=>x['@type']==='Book'&&x.name==='The Coherent Enterprise');assert.ok(book,'Books keeps the book structured data');
  assert.ok(home.some(x=>x['@type']==='WebSite'&&x.url==='https://grow-faster.be/'));
 });
 test('fixed language errors do not return',()=>{const all=['assets/i18n.js','assets/content.js','assets/ux.js','assets/site.js',...main].map(read).join('\n');

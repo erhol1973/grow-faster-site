@@ -2,8 +2,8 @@ const {test,expect}=require('playwright/test');
 test('practice reading route works in both languages, with six perspectives and Contact',async({page})=>{
  const errors=[];page.on('pageerror',e=>errors.push(e.message));
  await page.addInitScript(()=>{if(!localStorage.getItem('avs-lang'))localStorage.setItem('avs-lang','nl');localStorage.setItem('avs-consent',JSON.stringify({v:4,ext:false,ana:false,ts:Date.now()}))});
- // Sprint 1: the practice route left the customer homepage; About keeps the in-content link to it.
- await page.goto('/about.html');await page.locator('main a[href="transformation.html"]').first().click();
+ // Release 1.1: About no longer links the practice route; Insights keeps the in-content link to it.
+ await page.goto('/insights.html');await page.locator('.practice-entry a[href="transformation.html"]').click();
  await expect(page).toHaveURL(/\/transformation\.html$/);
  for(const [language,heading,lens,title]of [['nl','Transformatie in de praktijk','Strategie en keuzes','Trackrecord in bedrijfstransformatie | Erlend Hollebosch'],['fr','La transformation en pratique','Stratégie et choix','Parcours en transformation d’entreprise | Erlend Hollebosch']]){
    if(language!=='nl'){await page.locator('#lang-btn-top').click();await page.locator('.lang-top [data-lang="'+language+'"]').click()}
@@ -19,18 +19,17 @@ test('practice reading route works in both languages, with six perspectives and 
  }
  await page.locator('.practice-index a[href="#working-chain"]').click();await expect(page).toHaveURL(/#working-chain$/);
  await expect(page.locator('#working-chain-h')).toBeInViewport();
- await page.goto('/about.html');await expect(page.locator('main a[href="transformation.html"]')).toHaveCount(1);
+ await page.goto('/about.html');await expect(page.locator('a[href^="transformation.html"]')).toHaveCount(0);
  await page.goto('/insights.html');await page.locator('.practice-entry a[href="transformation.html"]').click();await expect(page.locator('h1')).toHaveText('La transformation en pratique');
  if(await page.locator('#burger').isVisible())await page.locator('#burger').click();await page.locator('#navlist a[href="about.html"]').click();
  await expect(page).toHaveURL(/\/about\.html$/);await expect(page.locator('.au-photo')).toBeInViewport();
  expect(errors).toEqual([]);
 });
 
-test('manuscript vision links AI, coherence, credited Ross sources and the manuscript request',async({page})=>{
+// Release 1.1: the book-thesis route starts on Coherence; its book link now opens the book on Books (About no longer shows books).
+test('manuscript vision links AI, coherence, credited Ross sources and the book on Books',async({page})=>{
  await page.addInitScript(()=>{localStorage.setItem('avs-consent',JSON.stringify({v:4,ext:false,ana:false,ts:Date.now()}));if(!localStorage.getItem('avs-lang'))localStorage.setItem('avs-lang','nl')});
- // Sprint 1: the book-thesis reading route now starts from About (the customer homepage no longer carries it).
- await page.goto('/about.html');
- await page.locator('main a[href="coherence.html#book-thesis"]').first().click();
+ await page.goto('/coherence.html#book-thesis');
  await expect(page.locator('#book-thesis-h')).toBeInViewport();
  for(const [language,title]of [['nl','Een snellere taak maakt nog geen betere onderneming'],['fr','Une tâche plus rapide ne suffit pas à améliorer l’entreprise']]){
    if(language!=='nl'){await page.locator('#lang-btn-top').click();await page.locator('.lang-top [data-lang="'+language+'"]').click()}
@@ -40,29 +39,29 @@ test('manuscript vision links AI, coherence, credited Ross sources and the manus
    await expect(page.locator('#book-thesis .book-sources a').first()).toHaveAttribute('href','https://cisr.mit.edu/publication/2016_0401_DigitalDesign_RossSebastianBeath');
    expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1)).toBe(true);
  }
- await page.locator('#book-thesis .book-reading').click();await expect(page).toHaveURL(/\/about\.html#book$/);
- await expect(page.locator('#book')).toBeInViewport();
- // The 'Read the full book' card with the full-manuscript template was removed on request; the foundation-book link remains the manuscript request.
- const request=page.locator('#foundation-book a[data-mail]');await expect(request).toHaveCount(1);await expect(request).toHaveAttribute('href',/^mailto:/);
- const message=new URL(await request.getAttribute('href'));expect(message.pathname).toBe('erlendhollebosch@gmail.com');expect(message.searchParams.get('subject')).toBe('The Coherent Enterprise');
- await expect(page.locator('#intellectual-foundation a')).toHaveAttribute('href','coherence.html#book-thesis');await expect(page.locator('#intellectual-foundation')).not.toContainText('Jeanne Ross');
+ await page.locator('#book-thesis .book-reading').click();await expect(page).toHaveURL(/\/books\.html#the-coherent-enterprise$/);
+ await expect(page.locator('#the-coherent-enterprise')).toBeInViewport();
+ const order=page.locator('#order-coherent-enterprise a.ebook-order');await expect(order).toHaveCount(1);
+ const message=new URL(await order.getAttribute('href'));expect(message.pathname).toBe('erlendhollebosch@gmail.com');expect(message.searchParams.get('subject')).toContain('The Coherent Enterprise');
 });
 
-test('executive contact presents identity and working contact and book actions in three languages',async({page})=>{
+// Release 1.1: About presents the founder of Grow Faster to customers (portrait, approach, contact), without books or work routes.
+test('customer About presents identity, portrait and a working contact block in both languages',async({page})=>{
  await page.addInitScript(()=>{if(!localStorage.getItem('avs-lang'))localStorage.setItem('avs-lang','nl');localStorage.setItem('avs-consent',JSON.stringify({v:4,ext:false,ana:false,ts:Date.now()}))});
  await page.goto('/about.html');
- for(const [language,eyebrow]of [['nl','Perspectieven op bedrijfstransformatie'],['fr','Perspectives sur la transformation des entreprises']]){
+ for(const [language,heading,how,contact]of [['nl','Erlend Hollebosch, oprichter van Grow Faster','Hoe ik werk','Laten we kennismaken'],['fr','Erlend Hollebosch, fondateur de Grow Faster','Ma façon de travailler','Faisons connaissance']]){
    if(language!=='nl'){await page.locator('#lang-btn-top').click();await page.locator('.lang-top [data-lang="'+language+'"]').click()}
-   await expect(page.locator('h1')).toHaveText('Erlend Hollebosch');await expect(page.locator('.executive-eyebrow')).toHaveText(eyebrow);
+   await expect(page.locator('html')).toHaveAttribute('lang',language);await expect(page.locator('h1')).toHaveText(heading);
+   await expect(page.locator('#werkwijze h2')).toHaveText(how);await expect(page.locator('#werkwijze .vcard')).toHaveCount(3);await expect(page.locator('#contact h2')).toHaveText(contact);
    await expect(page.locator('.executive-portrait img')).toBeVisible();expect(await page.locator('.executive-portrait img').evaluate(e=>e.complete&&e.naturalWidth>0)).toBe(true);
+   await expect(page.locator('.executive-portrait img')).toHaveAttribute('alt',language==='nl'?'Portret van Erlend Hollebosch':'Portrait d’Erlend Hollebosch');
    expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1)).toBe(true);
  }
- // The 'Let's connect' block was removed on request; #contact remains as an anchor just above the work routes.
- await page.locator('.executive-hero a[href="#contact"]').click();await expect(page).toHaveURL(/#contact$/);await expect(page.locator('#work-h')).toBeInViewport();await expect(page.locator('.au-reads, .au-contact, #au-copy')).toHaveCount(0);
- const role=page.locator('#route-role');await expect(role).toHaveAttribute('href',/^mailto:/);
- await page.goto('/about.html');await page.locator('.executive-book-link').click();await expect(page.locator('#book')).toBeInViewport();
- await expect(page.locator('a[href="boek/the-coherent-enterprise/index.html"]').first()).toBeVisible();
- if(await page.locator('#burger').isVisible())await page.locator('#burger').click();await page.locator('#navlist a[href="about.html"]').click();await expect(page).toHaveURL(/\/about\.html$/);await expect(page.locator('h1')).toBeInViewport();
+ await expect(page.locator('#work-with-me, #route-role, .publication-feature, a[href^="books.html"], a[href^="boek/"]')).toHaveCount(0);
+ await page.goto('/about.html#contact');await expect(page.locator('#contact')).toBeInViewport();
+ await expect(page.locator('#contact-pilot')).toHaveAttribute('href','mailto:erlendhollebosch@gmail.com?subject=Pilot%20Orion');await expect(page.locator('#contact-linkedin')).toHaveAttribute('href','https://www.linkedin.com/in/erlend-hollebosch-053361181/');
+ await page.locator('#oplossingen a[href="oplossingen.html"]').click();await expect(page).toHaveURL(/\/oplossingen\.html$/);
+ await page.goto('/about.html');if(await page.locator('#burger').isVisible())await page.locator('#burger').click();await page.locator('#navlist a[href="about.html"]').click();await expect(page).toHaveURL(/\/about\.html$/);await expect(page.locator('h1')).toBeInViewport();
 });
 
 test('initialise the scorecard and decision matrix once in the saved language and update on language change',async({page})=>{

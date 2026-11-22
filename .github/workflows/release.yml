@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-24.04
     container:
       # Keep the image version aligned with the locked Playwright dependency.
-      image: mcr.microsoft.com/playwright:v1.64.1-noble
+      image: mcr.microsoft.com/playwright:v1.65.1-noble
     timeout-minutes: 45
     steps:
       # Action commits verified against their official release pages.
@@ -55,7 +55,7 @@ jobs:
           if-no-files-found: warn
       - name: Package tested website
         if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
-        uses: actions/upload-pages-artifact@7b1f4a764d45c48632c6b24a0339c27f5614fb0b # v4.0.0
+        uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5.0.0
         with:
           path: dist
   secrets:
@@ -89,7 +89,7 @@ jobs:
       security-events: write
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-      - uses: github/codeql-action/init@9b3254085494b55a0f7c4c2b3d2d52cc712ce370 # v4.39.1
+      - uses: github/codeql-action/init@33d7b85da1a04171e211befe2c739303b9a4c066 # v4.39.3
         with:
           languages: javascript-typescript
           queries: security-extended
@@ -98,7 +98,7 @@ jobs:
               - node_modules
               - dist
               - tests
-      - uses: github/codeql-action/analyze@9b3254085494b55a0f7c4c2b3d2d52cc712ce370 # v4.39.1
+      - uses: github/codeql-action/analyze@33d7b85da1a04171e211befe2c739303b9a4c066 # v4.39.3
         with:
           output: codeql-results
       - name: Block security findings
@@ -142,7 +142,7 @@ jobs:
     runs-on: ubuntu-24.04
     container:
       # Same locked browsers as the pre-release gate; no apt/CDN browser install.
-      image: mcr.microsoft.com/playwright:v1.64.1-noble
+      image: mcr.microsoft.com/playwright:v1.65.1-noble
     timeout-minutes: 10
     permissions:
       contents: read

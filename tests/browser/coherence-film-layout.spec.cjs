@@ -17,3 +17,17 @@ for(const lang of ['nl','fr']){
 }
 
 test('44-second commercial plays to the end without subtitles',async({page})=>{test.setTimeout(70000);await page.goto('/coherence.html?lang=nl');const video=page.locator('#coherence-film video');await video.evaluate(v=>v.play());await expect.poll(()=>video.evaluate(v=>v.duration)).toBe(44);await expect.poll(()=>video.evaluate(v=>v.ended),{timeout:55000}).toBe(true);expect(await video.evaluate(v=>v.currentTime)).toBe(44);expect(await video.evaluate(v=>v.error)).toBeNull();expect(await video.evaluate(v=>v.textTracks.length)).toBe(0);await expect(video.locator('track')).toHaveCount(0)});
+// Release 1: the blue Enterprise Coherence essentie film (NL/FR from closed PR #84) sits after the website argument on coherence.html.
+for(const [lang,src,poster,summary] of [['nl','media/enterprise-coherence-essentie-nl.mp4','img/enterprise-coherence-essentie.webp','Tekst in beeld'],['fr','media/enterprise-coherence-essentie-fr.mp4','img/enterprise-coherence-essentie-fr.webp','Texte à l’écran']])test(`Enterprise Coherence film uses the ${lang} edition, plays on request and offers its text`,async({page})=>{
+ await page.goto('/coherence.html?lang='+lang);await expect(page.locator('html')).toHaveAttribute('lang',lang);
+ const video=page.locator('#home-film video');await expect(video).toHaveAttribute('preload','none');await expect(video).toHaveAttribute('poster',poster);await expect(video.locator('source')).toHaveAttribute('src',src);
+ expect(await video.evaluate(v=>v.paused&&!v.autoplay)).toBe(true);await expect(video).toHaveAccessibleName('Enterprise Coherence');
+ await video.scrollIntoViewIfNeeded();await video.evaluate(v=>v.play());await expect.poll(()=>video.evaluate(v=>v.currentTime)).toBeGreaterThan(0);await video.evaluate(v=>v.pause());
+ const text=page.locator('#ec-film-text');await expect(text.locator('summary')).toHaveText(summary);await text.locator('summary').click();await expect(text.locator('li')).toHaveCount(5);await expect(text.locator('li').first()).toBeVisible();
+ expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1)).toBe(true);
+});
+test('Enterprise Coherence film switches edition with the language without reloading the page',async({page})=>{
+ await page.goto('/coherence.html?lang=nl');const video=page.locator('#home-film video');await expect(video.locator('source')).toHaveAttribute('src','media/enterprise-coherence-essentie-nl.mp4');
+ await page.locator('#lang-btn-top').click();await page.locator('.lang-top [data-lang="fr"]').click();await expect(page.locator('html')).toHaveAttribute('lang','fr');
+ await expect(video.locator('source')).toHaveAttribute('src','media/enterprise-coherence-essentie-fr.mp4');await expect(video).toHaveAttribute('poster','img/enterprise-coherence-essentie-fr.webp');await expect(page.locator('#ec-film-h')).toHaveText('Pas de valeur business de l’IA sans Enterprise Coherence');
+});

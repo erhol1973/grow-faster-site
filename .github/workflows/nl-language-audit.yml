@@ -20,7 +20,7 @@ jobs:
     runs-on: ubuntu-24.04
     container:
       # Same locked browser environment as the release gate; no daily apt mirror dependency.
-      image: mcr.microsoft.com/playwright:v1.64.1-noble
+      image: mcr.microsoft.com/playwright:v1.65.1-noble
     timeout-minutes: 35
     outputs:
       artifact_id: ${{ steps.save.outputs.artifact-id }}

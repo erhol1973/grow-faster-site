@@ -69,3 +69,16 @@ test('initialise the scorecard and decision matrix once in the saved language an
  await page.goto('/approach.html');await expect(page.locator('#dg-rows .dg-row')).toHaveCount(8);await expect(page.locator('#dg-rows')).toContainText('Strategisch');expect(await page.evaluate(()=>window.scorecardRenders)).toBe(1);expect(await page.evaluate(()=>window.matrixRenders)).toBe(1);
  await page.locator('#lang-btn-top').click();await page.locator('.lang-top [data-lang="fr"]').click();await expect(page.locator('#dg-rows')).toContainText('Stratégique');expect(await page.evaluate(()=>window.scorecardRenders)).toBe(2);expect(await page.evaluate(()=>window.matrixRenders)).toBe(2);
 });
+test('cross-page fragment landing stays on its target after late translation, and respects a visitor scroll',async({page})=>{
+ // Regression for Firefox CI: the browser jumped to books.html#the-coherent-enterprise while main was still hidden and untranslated,
+ // so later layout changes left the target out of view. Delaying i18n.js reproduces that ordering in every engine.
+ await page.addInitScript(()=>{localStorage.setItem('avs-consent',JSON.stringify({v:4,ext:false,ana:false,ts:Date.now()}));localStorage.setItem('avs-lang','fr')});
+ await page.route(/\/assets\/i18n\.js/,async route=>{await new Promise(r=>setTimeout(r,800));await route.continue()});
+ await page.goto('/books.html#the-coherent-enterprise');
+ await expect(page.locator('html')).toHaveClass(/i18n-ready/);await page.waitForLoadState('load');
+ await expect(page.locator('#the-coherent-enterprise')).toBeInViewport();
+ await page.unroute(/\/assets\/i18n\.js/);
+ await page.goto('/books.html#the-coherent-enterprise');await expect(page.locator('html')).toHaveClass(/i18n-ready/);await page.waitForLoadState('load');
+ await page.mouse.wheel(0,-100000);await expect.poll(()=>page.evaluate(()=>scrollY)).toBe(0);
+ await page.waitForTimeout(300);expect(await page.evaluate(()=>scrollY)).toBe(0);
+});

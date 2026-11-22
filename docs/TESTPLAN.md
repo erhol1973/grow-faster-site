@@ -22,6 +22,7 @@ Tests:
 - Verplaatst: de e-mailsjabloontaalwissel naar de e-bookbestelling op Books, de lezerroute naar Books, de praktijkroute naar Insights en de boekthese-route naar Coherence → Books.
 - De werkroutetests zijn vervangen door een negatieve test (geen werkgeversroutes op About).
 - Lighthouse meet About ongewijzigd; de drempels zijn niet aangepast.
+- Fragmentlanding (Firefox-CI-fout op PR #94): de browser sprong naar `books.html#the-coherent-enterprise` terwijl `main` nog verborgen en onvertaald was, waarna latere lay-outwijzigingen het doel uit beeld schoven. `site.js` zet de pagina nu na de eerste taaltoepassing en na `load` opnieuw op het fragmentdoel, tenzij de bezoeker al zelf scrolde (wiel, aanraking, toets of aanwijzer). De test `cross-page fragment landing ...` in `transformation.spec.cjs` vertraagt `i18n.js` met 800 ms, zodat de foute volgorde in elke engine optreedt; zonder de fix faalt hij in Chromium. Hij controleert ook dat een scroll van de bezoeker gerespecteerd wordt. De bestaande test met `toBeInViewport()` is niet versoepeld.
 
 ## Klantsite sprint 1: Orion en nieuw menu, 22 november 2026
 

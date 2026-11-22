@@ -6,362 +6,185 @@ window.GF_CMS_CATALOG=[
     "label": "Homepage",
     "fields": [
       {
-        "key": "home-hero-heading",
+        "key": "home-orion-hero-heading",
         "type": "text",
         "source": "heading",
         "label": "Hoofdtitel · nieuwe regel = regeleinde",
-        "nl": "Van AI-investering\nnaar bedrijfswaarde.",
-        "fr": "De l’investissement en IA\nà la valeur pour l’entreprise."
-      },
-      {
-        "key": "f3c1fc5b6f45d-0",
-        "type": "text",
-        "label": "Bring strategy, people, processes and technology into coherence.",
-        "nl": "Breng strategie, mensen, processen en technologie in samenhang. Maak AI-transformatie uitvoerbaar en bedrijfsresultaten meetbaar.",
-        "fr": "Alignez stratégie, personnes, processus et technologie. Rendez la transformation IA réalisable et les résultats de l’entreprise mesurables.",
-        "source": "body"
-      },
-      {
-        "key": "f8fa0899b12db-0",
-        "type": "text",
-        "label": "Experience behind the perspective",
-        "nl": "Ervaring achter het perspectief",
-        "fr": "L’expérience derrière la perspective"
-      },
-      {
-        "key": "f427f4933cdee-0",
-        "type": "text",
-        "label": "More than 20 years in programme management, PMO, governance and transformation across comp",
-        "nl": "Meer dan 20 jaar ervaring in programmamanagement, PMO, governance en transformatie in complexe internationale organisaties.",
-        "fr": "Plus de 20 ans d’expérience en gestion de programmes, PMO, gouvernance et transformation dans des organisations internationales complexes."
-      },
-      {
-        "key": "f83258b2e2cb6-0",
-        "type": "text",
-        "label": "Ericsson",
-        "nl": "Ericsson",
-        "fr": "Ericsson"
-      },
-      {
-        "key": "f9f1a1d1f91ed-0",
-        "type": "text",
-        "label": "Volvo Group",
-        "nl": "Volvo Group",
-        "fr": "Volvo Group"
-      },
-      {
-        "key": "f4aa86cb438c3-0",
-        "type": "text",
-        "label": "Telenet",
-        "nl": "Telenet",
-        "fr": "Telenet"
-      },
-      {
-        "key": "f1955d6c8410a-0",
-        "type": "text",
-        "label": "Solvay",
-        "nl": "Solvay",
-        "fr": "Solvay"
-      },
-      {
-        "key": "f8b204674262b-0",
-        "type": "text",
-        "label": "ArcelorMittal",
-        "nl": "ArcelorMittal",
-        "fr": "ArcelorMittal"
-      },
-      {
-        "key": "fa6d38933b7f0-0",
-        "type": "text",
-        "label": "Colruyt Group",
-        "nl": "Colruyt Group",
-        "fr": "Colruyt Group"
-      },
-      {
-        "key": "f97b1cce0845b-0",
-        "type": "text",
-        "label": "Where coherence becomes visible",
-        "nl": "Waar samenhang zichtbaar wordt",
-        "fr": "Là où la cohérence devient visible"
-      },
-      {
-        "key": "f6fe5fff32f24-0",
-        "type": "text",
-        "label": "Decisions keep waiting",
-        "nl": "Decisions keep waiting",
-        "fr": "Decisions keep waiting"
-      },
-      {
-        "key": "fd262adf3a42f-0",
-        "type": "text",
-        "label": "Several people are involved, but it is unclear who can make the trade-off.",
-        "nl": "Verschillende mensen zijn betrokken, maar het is onduidelijk wie de afweging kan maken.",
-        "fr": "Plusieurs personnes sont impliquées, mais personne ne sait clairement qui peut arbitrer."
-      },
-      {
-        "key": "f9436db345689-0",
-        "type": "text",
-        "label": "Work repeatedly changes hands",
-        "nl": "Work repeatedly changes hands",
-        "fr": "Work repeatedly changes hands"
-      },
-      {
-        "key": "ffd27b6f8ca6e-0",
-        "type": "text",
-        "label": "Each department completes its part while the shared outcome remains out of reach.",
-        "nl": "Iedere afdeling voltooit haar deel, terwijl het gezamenlijke resultaat op zich laat wachten.",
-        "fr": "Chaque service termine sa partie, tandis que le résultat commun tarde à se concrétiser."
-      },
-      {
-        "key": "f97c5aa2a7f66-0",
-        "type": "text",
-        "label": "Priorities compete for the same capacity",
-        "nl": "Prioriteiten botsen op dezelfde capaciteit",
-        "fr": "Les priorités se disputent les mêmes capacités"
-      },
-      {
-        "key": "f8dee2adcd8c1-0",
-        "type": "text",
-        "label": "Initiatives accumulate and ask for changes from the same people, systems and information a",
-        "nl": "Initiatieven stapelen zich op en vragen tegelijk iets van dezelfde mensen, systemen en informatie.",
-        "fr": "Les initiatives s’accumulent et sollicitent en même temps les mêmes personnes, systèmes et informations."
-      },
-      {
-        "key": "f59367efc791c-0",
-        "type": "text",
-        "label": "I examine what happens between those parts. Which choices make sense separately but work p",
-        "nl": "Ik onderzoek wat er tussen die onderdelen gebeurt. Welke keuzes passen afzonderlijk goed, maar werken samen verkeerd uit? Wat moet gezamenlijk worden geregeld, en waar is ruimte voor verschil nodig?",
-        "fr": "J’examine ce qui se passe entre ces composantes. Quels choix sont pertinents séparément, mais fonctionnent mal ensemble ? Quels sujets nécessitent une approche commune et où faut-il préserver des différences ?"
-      },
-      {
-        "key": "ff8ace596f283-0",
-        "type": "text",
-        "label": "Choose a deeper look",
-        "nl": "Kies een verdieping",
-        "fr": "Choisissez un angle d’approfondissement"
-      },
-      {
-        "key": "f079c01496082-0",
-        "type": "text",
-        "label": "How an enterprise can move as a whole",
-        "nl": "Hoe een onderneming als geheel kan bewegen",
-        "fr": "Comment une entreprise peut évoluer dans son ensemble"
-      },
-      {
-        "key": "fb443f017c091-0",
-        "type": "text",
-        "label": "The central argument of my book: how enterprise design connects strategic ambition with ex",
-        "nl": "De centrale gedachte uit mijn boek: hoe het ontwerp van de onderneming ambitie verbindt met uitvoering en leren.",
-        "fr": "L’idée centrale de mon livre : comment la conception de l’entreprise relie ambition stratégique, exécution et apprentissage."
-      },
-      {
-        "key": "f5abc3986348b-0",
-        "type": "text",
-        "label": "Where choices meet",
-        "nl": "Waar keuzes elkaar raken",
-        "fr": "Là où les choix se rencontrent"
-      },
-      {
-        "key": "fd1cc598e88dd-0",
-        "type": "text",
-        "label": "Three anonymised reflections on shared planning, international supply chains and collabora",
-        "nl": "Drie geanonimiseerde reflecties over gedeelde planning, internationale ketens en samenwerking tussen teams laten zien hoe een besluit op één plaats het werk elders verandert.",
-        "fr": "Trois réflexions anonymisées sur la planification partagée, les chaînes logistiques internationales et la collaboration entre équipes explorent comment une décision prise à un endroit modifie le travail ailleurs."
-      },
-      {
-        "key": "f26b7bc3b1390-0",
-        "type": "text",
-        "label": "Questions for a concrete transformation",
-        "nl": "Vragen voor een concrete veranderopgave",
-        "fr": "Des questions pour une transformation concrète"
-      },
-      {
-        "key": "f4f1427befe4f-0",
-        "type": "text",
-        "label": "Explore a workflow, the decisions it requires and the organisational conditions around it.",
-        "nl": "Verken een werkstroom, de benodigde besluiten en de organisatorische voorwaarden. De hulpmiddelen ondersteunen het gesprek; de uitkomsten zijn afhankelijk van gekozen aannames.",
-        "fr": "Explorez un flux de travail, les décisions qu’il exige et les conditions organisationnelles qui l’entourent. Les outils soutiennent la discussion ; leurs résultats dépendent des hypothèses retenues."
-      },
-      {
-        "key": "fdcc7e3228323-0",
-        "type": "text",
-        "label": "Two books. A shared perspective.",
-        "nl": "Twee boeken. Een gedeelde visie.",
-        "fr": "Deux livres. Une perspective commune."
-      },
-      {
-        "key": "ff8fa7bb37363-0",
-        "type": "text",
-        "label": "The broader manuscript explores how strategy, governance, decisions, operations, technolog",
-        "nl": "Het uitgebreidere manuscript onderzoekt hoe strategie, governance, beslissingen, uitvoering, technologie en leren elkaar versterken wanneer een organisatie verandert.",
-        "fr": "Le manuscrit de fond examine comment la stratégie, la gouvernance, les décisions, les opérations, la technologie et l’apprentissage se renforcent lorsque l’organisation évolue."
-      },
-      {
-        "key": "f560dfe1a9e7c-0",
-        "type": "text",
-        "label": "Understand why capable organisations become harder to move as complexity grows.",
-        "nl": "Begrijp waarom bekwame organisaties moeilijker in beweging komen naarmate de complexiteit groeit.",
-        "fr": "Comprendre pourquoi des organisations compétentes deviennent plus difficiles à faire évoluer à mesure que la complexité augmente."
-      },
-      {
-        "key": "fc0bbbca43d69-0",
-        "type": "text",
-        "label": "Diagnose where coherence erodes with the Coherence Diagnostic Model.",
-        "nl": "Breng met het Coherence Diagnostic Model in kaart waar de samenhang afbrokkelt.",
-        "fr": "Identifier où la cohérence s’érode grâce au Coherence Diagnostic Model."
-      },
-      {
-        "key": "f6b6cd05f1bb4-0",
-        "type": "text",
-        "label": "Redesign governance, decisions and flow with the Coherent Transformation Playbook.",
-        "nl": "Herontwerp governance, beslissingen en flow met het Coherent Transformation Playbook.",
-        "fr": "Repenser la gouvernance, les décisions et le flux avec le Coherent Transformation Playbook."
-      },
-      {
-        "key": "fea262a2b6155-0",
-        "type": "text",
-        "label": "Online flipbook · 12-page preview · 281-page manuscript on request",
-        "nl": "Online flipbook · preview van 12 pagina’s · manuscript van 281 pagina’s op aanvraag",
-        "fr": "Livre à feuilleter en ligne · aperçu de 12 pages · manuscrit de 281 pages sur demande"
-      },
-      {
-        "key": "ff8b740ad6d3f-0",
-        "type": "text",
-        "label": "AI can accelerate a task while decisions, handoffs and responsibilities still hold back th",
-        "nl": "AI kan een taak versnellen terwijl beslissingen, overdrachten en verantwoordelijkheden het resultaat blijven afremmen. Dit handboek helpt je leiderschapsteam het systeem rond één AI-toepassing te onderzoeken.",
-        "fr": "L’IA peut accélérer une tâche alors que les décisions, les transferts et les responsabilités freinent encore le résultat. Ce guide aide votre équipe dirigeante à examiner le système autour d’une application d’IA."
-      },
-      {
-        "key": "ffdc056040c7e-0",
-        "type": "text",
-        "label": "Diagnose where the workflow loses coherence.",
-        "nl": "Onderzoek waar de werkstroom samenhang verliest.",
-        "fr": "Repérez où le flux de travail perd sa cohérence."
-      },
-      {
-        "key": "f92de9ecc1cfc-0",
-        "type": "text",
-        "label": "Clarify decisions, roles and the business value at stake.",
-        "nl": "Verhelder beslissingen, rollen en de beoogde bedrijfswaarde.",
-        "fr": "Clarifiez les décisions, les rôles et la valeur métier visée."
-      },
-      {
-        "key": "f2bea21c0f774-0",
-        "type": "text",
-        "label": "Turn the discussion into the first fifteen working days.",
-        "nl": "Vertaal het gesprek naar de eerste vijftien werkdagen.",
-        "fr": "Traduisez la discussion en quinze premiers jours de travail."
-      },
-      {
-        "key": "f5bfd164f0c9d-0",
-        "type": "text",
-        "label": "Online flipbook · 22-page preview · 82-page book · November 2026",
-        "nl": "Online flipbook · preview van 22 pagina’s · boek van 82 pagina’s · november 2026",
-        "fr": "Livre feuilletable en ligne · aperçu de 22 pages · livre de 82 pages · novembre 2026"
-      },
-      {
-        "key": "f4fe8d6d6d39b-0",
-        "type": "text",
-        "label": "From the Executive Journal",
-        "nl": "Uit de Executive Journal",
-        "fr": "Extrait de l’Executive Journal"
-      },
-      {
-        "key": "ffd9ba6ad5b27-0",
-        "type": "text",
-        "label": "Your AI pilot works. Why is the organisation not changing?",
-        "nl": "Je AI-pilot werkt. Waarom verandert de organisatie niet?",
-        "fr": "Votre pilote IA fonctionne. Pourquoi l’organisation ne change-t-elle pas ?"
-      },
-      {
-        "key": "f748e42bce415-0",
-        "type": "text",
-        "label": "An application can accelerate a task while information is missing, approval keeps waiting ",
-        "nl": "Een toepassing kan een taak versnellen terwijl informatie ontbreekt, goedkeuring blijft wachten en niemand de volledige werkstroom overziet. Wat vertelt dat over het ontwerp van de organisatie?",
-        "fr": "Une application peut accélérer une tâche alors que des informations manquent, que l’approbation se fait attendre et que personne ne voit le flux de travail complet. Que révèle cette situation sur la conception de l’organisation ?"
-      },
-      {
-        "key": "fa0a0f7679923-0",
-        "type": "text",
-        "label": "From AI pilot to business value",
-        "nl": "Van AI-pilot naar bedrijfswaarde",
-        "fr": "Du pilote IA à la valeur pour l’entreprise"
-      },
-      {
-        "key": "f8419fbbef6ad-0",
-        "type": "text",
-        "label": "Bring one AI application, the people who own the work and a real business question. Leave ",
-        "nl": "Breng één AI-toepassing, de verantwoordelijken voor het werk en een concreet bedrijfsvraagstuk samen. Werk afspraken over beslissingen en een eerste 90-dagenplan uit.",
-        "fr": "Réunissez une application IA, les responsables du travail et une question métier concrète. Élaborez des accords de décision et un premier plan à 90 jours."
-      },
-      {
-        "key": "f1c0050f2f183-0",
-        "type": "text",
-        "label": "3.5 hours · 4–8 participants · €2,750 excluding VAT per team",
-        "nl": "3,5 uur · 4–8 deelnemers · € 2.750 exclusief btw per team",
-        "fr": "3,5 heures · 4 à 8 participants · 2 750 € HT par équipe"
-      },
-      {
-        "key": "f20b586ef40be-0",
-        "type": "text",
-        "label": "Let’s connect",
-        "nl": "Laten we kennismaken",
-        "fr": "Faisons connaissance"
-      },
-      {
-        "key": "f37dbcf9f5d9c-0",
-        "type": "text",
-        "label": "I welcome thoughtful conversations about enterprise transformation, coherent organisations",
-        "nl": "Ik wissel graag van gedachten over bedrijfstransformatie, coherente organisaties en de voorwaarden waaronder AI duurzame waarde kan creëren.",
-        "fr": "J’échange volontiers sur la transformation des entreprises, les organisations cohérentes et les conditions permettant à l’IA de créer une valeur durable."
+        "nl": "Sneller werken met AI en automatisering.",
+        "fr": "Travailler plus vite grâce à l’IA et à l’automatisation."
       },
       {
         "key": "f7a4946dfd792-0",
         "type": "media",
-        "label": "img/hero-executive-meeting-1774.webp",
-        "nl": "img/hero-executive-meeting-1774.webp",
-        "fr": "img/hero-executive-meeting-1774.webp",
-        "src": "img/hero-executive-meeting-1774.webp",
+        "label": "img/hero-kwaliteit-productielijn-1774.webp",
+        "nl": "img/hero-kwaliteit-productielijn-1774.webp",
+        "fr": "img/hero-kwaliteit-productielijn-1774.webp",
+        "src": "img/hero-kwaliteit-productielijn-1774.webp",
         "alt": {
           "nl": "",
           "fr": ""
         }
       },
       {
-        "key": "fa813ddcdca87-0",
-        "type": "media",
-        "label": "Cover of the book The Coherent Enterprise by Erlend Hollebosch",
-        "nl": "Cover of the book The Coherent Enterprise by Erlend Hollebosch",
-        "fr": "Cover of the book The Coherent Enterprise by Erlend Hollebosch",
-        "src": "img/the-coherent-enterprise-book-600.png",
-        "alt": {
-          "nl": "Cover of the book The Coherent Enterprise by Erlend Hollebosch",
-          "fr": "Cover of the book The Coherent Enterprise by Erlend Hollebosch"
-        }
+        "key": "home-orion-hero-sub",
+        "type": "text",
+        "label": "Orion vult de vragenlijsten van uw klanten in op basis van uw eigen documenten. Uw kwalite",
+        "nl": "Orion vult de vragenlijsten van uw klanten in op basis van uw eigen documenten. Uw kwaliteitsverantwoordelijke kijkt na en verstuurt.",
+        "fr": "Orion remplit les questionnaires de vos clients à partir de vos propres documents. Votre responsable qualité vérifie et envoie."
       },
       {
-        "key": "f183f236026d3-0",
-        "type": "media",
-        "label": "Cover of Turning AI Potential into Enterprise Value by Erlend Hollebosch",
-        "nl": "Omslag van Turning AI Potential into Enterprise Value van Erlend Hollebosch",
-        "fr": "Couverture de Turning AI Potential into Enterprise Value d’Erlend Hollebosch",
-        "src": "img/design-for-coherence-book-600.png",
-        "alt": {
-          "nl": "Cover of Turning AI Potential into Enterprise Value by Erlend Hollebosch",
-          "fr": "Cover of Turning AI Potential into Enterprise Value by Erlend Hollebosch"
-        }
+        "key": "home-orion-proof-h",
+        "type": "text",
+        "label": "Ervaring uit de praktijk",
+        "nl": "Ervaring uit de praktijk",
+        "fr": "Une expérience de terrain"
       },
       {
-        "key": "fd39c24600ed0-0",
-        "type": "media",
-        "label": "Executives discussing a business decision around a table",
-        "nl": "Leidinggevenden bespreken een zakelijke beslissing rond de tafel",
-        "fr": "Des dirigeants discutent d’une décision d’entreprise autour d’une table",
-        "src": "img/band-humans.jpg",
-        "alt": {
-          "nl": "Executives discussing a business decision around a table",
-          "fr": "Executives discussing a business decision around a table"
-        }
+        "key": "home-orion-proof-p",
+        "type": "text",
+        "label": "Meer dan twintig jaar procesverbetering, programmamanagement en transformatie, onder meer ",
+        "nl": "Meer dan twintig jaar procesverbetering, programmamanagement en transformatie, onder meer in retail, industrie en telecom.",
+        "fr": "Plus de vingt ans d’amélioration des processus, de gestion de programmes et de transformation, notamment dans la distribution, l’industrie et les télécoms."
+      },
+      {
+        "key": "home-orion-problem-h",
+        "type": "text",
+        "label": "Herkenbaar?",
+        "nl": "Herkenbaar?",
+        "fr": "Cela vous parle ?"
+      },
+      {
+        "key": "home-orion-problem-1-h",
+        "type": "text",
+        "label": "Elke klant een eigen lijst",
+        "nl": "Elke klant een eigen lijst",
+        "fr": "Chaque client, son propre questionnaire"
+      },
+      {
+        "key": "home-orion-problem-1-p",
+        "type": "text",
+        "label": "Retailers en industriële afnemers vragen dezelfde informatie, telkens in een ander formaat",
+        "nl": "Retailers en industriële afnemers vragen dezelfde informatie, telkens in een ander formaat.",
+        "fr": "Distributeurs et clients industriels demandent les mêmes informations, chaque fois dans un autre format."
+      },
+      {
+        "key": "home-orion-problem-2-h",
+        "type": "text",
+        "label": "Antwoorden overal verspreid",
+        "nl": "Antwoorden overal verspreid",
+        "fr": "Des réponses éparpillées partout"
+      },
+      {
+        "key": "home-orion-problem-2-p",
+        "type": "text",
+        "label": "Specificaties, certificaten en oude lijsten zitten in mappen en mails. Iemand zoekt ze tel",
+        "nl": "Specificaties, certificaten en oude lijsten zitten in mappen en mails. Iemand zoekt ze telkens opnieuw.",
+        "fr": "Spécifications, certificats et anciens questionnaires se trouvent dans des dossiers et des e-mails. Quelqu’un doit les rechercher à chaque fois."
+      },
+      {
+        "key": "home-orion-problem-3-h",
+        "type": "text",
+        "label": "Overtypen kost uren",
+        "nl": "Overtypen kost uren",
+        "fr": "Retaper coûte des heures"
+      },
+      {
+        "key": "home-orion-problem-3-p",
+        "type": "text",
+        "label": "Dezelfde gegevens gaan met de hand van het ene document naar het andere, en daar sluipen f",
+        "nl": "Dezelfde gegevens gaan met de hand van het ene document naar het andere, en daar sluipen fouten in.",
+        "fr": "Les mêmes données passent à la main d’un document à l’autre, et des erreurs s’y glissent."
+      },
+      {
+        "key": "home-orion-steps-h",
+        "type": "text",
+        "label": "Zo werkt Orion",
+        "nl": "Zo werkt Orion",
+        "fr": "Comment fonctionne Orion"
+      },
+      {
+        "key": "home-orion-step-1-h",
+        "type": "text",
+        "label": "Opladen",
+        "nl": "Opladen",
+        "fr": "Charger"
+      },
+      {
+        "key": "home-orion-step-1-p",
+        "type": "text",
+        "label": "U laadt de vragenlijst op zoals u ze kreeg, in Excel of Word.",
+        "nl": "U laadt de vragenlijst op zoals u ze kreeg, in Excel of Word.",
+        "fr": "Vous chargez le questionnaire tel que vous l’avez reçu, en Excel ou en Word."
+      },
+      {
+        "key": "home-orion-step-2-h",
+        "type": "text",
+        "label": "Zoeken",
+        "nl": "Zoeken",
+        "fr": "Rechercher"
+      },
+      {
+        "key": "home-orion-step-2-p",
+        "type": "text",
+        "label": "Orion zoekt de antwoorden in uw eigen specificaties en certificaten.",
+        "nl": "Orion zoekt de antwoorden in uw eigen specificaties en certificaten.",
+        "fr": "Orion recherche les réponses dans vos propres spécifications et certificats."
+      },
+      {
+        "key": "home-orion-step-3-h",
+        "type": "text",
+        "label": "Nakijken",
+        "nl": "Nakijken",
+        "fr": "Vérifier"
+      },
+      {
+        "key": "home-orion-step-3-p",
+        "type": "text",
+        "label": "Bij elk antwoord staat de bron. Gevoelige vragen, zoals allergenen, zijn gemarkeerd.",
+        "nl": "Bij elk antwoord staat de bron. Gevoelige vragen, zoals allergenen, zijn gemarkeerd.",
+        "fr": "Chaque réponse indique sa source. Les questions sensibles, comme les allergènes, sont signalées."
+      },
+      {
+        "key": "home-orion-step-4-h",
+        "type": "text",
+        "label": "Versturen",
+        "nl": "Versturen",
+        "fr": "Envoyer"
+      },
+      {
+        "key": "home-orion-step-4-p",
+        "type": "text",
+        "label": "Uw medewerker keurt goed en verstuurt. Orion verstuurt nooit zelf iets.",
+        "nl": "Uw medewerker keurt goed en verstuurt. Orion verstuurt nooit zelf iets.",
+        "fr": "Votre collaborateur valide et envoie. Orion n’envoie jamais rien lui-même."
+      },
+      {
+        "key": "home-orion-trust-h",
+        "type": "text",
+        "label": "Vertrouwelijk blijft vertrouwelijk",
+        "nl": "Vertrouwelijk blijft vertrouwelijk",
+        "fr": "Ce qui est confidentiel reste confidentiel"
+      },
+      {
+        "key": "home-orion-trust-p",
+        "type": "text",
+        "label": "Recepturen en specificaties zijn gevoelig. Voor de pilot start, bespreken we met uw IT-ver",
+        "nl": "Recepturen en specificaties zijn gevoelig. Voor de pilot start, bespreken we met uw IT-verantwoordelijke hoe Orion met uw gegevens omgaat.",
+        "fr": "Recettes et spécifications sont sensibles. Avant le début du pilote, nous examinons avec votre responsable informatique la manière dont Orion traite vos données."
+      },
+      {
+        "key": "home-orion-pilot-h",
+        "type": "text",
+        "label": "Test Orion op uw eigen vragenlijsten",
+        "nl": "Test Orion op uw eigen vragenlijsten",
+        "fr": "Testez Orion sur vos propres questionnaires"
+      },
+      {
+        "key": "home-orion-pilot-p",
+        "type": "text",
+        "label": "We starten klein, met een paar vragenlijsten die u echt gekregen hebt. We meten hoeveel ti",
+        "nl": "We starten klein, met een paar vragenlijsten die u echt gekregen hebt. We meten hoeveel tijd ze vandaag kosten en hoeveel met Orion. Ziet u geen verschil, dan stoppen we.",
+        "fr": "Nous commençons petit, avec quelques questionnaires que vous avez réellement reçus. Nous mesurons le temps qu’ils prennent aujourd’hui et avec Orion. Si vous ne voyez pas de différence, nous arrêtons."
       },
       {
         "key": "cms-video-home",
@@ -1774,10 +1597,10 @@ window.GF_CMS_CATALOG=[
       {
         "key": "f9e64ee949244-0",
         "type": "media",
-        "label": "img/hero.jpg",
-        "nl": "img/hero.jpg",
-        "fr": "img/hero.jpg",
-        "src": "img/hero.jpg",
+        "label": "img/hero-coherentie-samenwerking-1774.webp",
+        "nl": "img/hero-coherentie-samenwerking-1774.webp",
+        "fr": "img/hero-coherentie-samenwerking-1774.webp",
+        "src": "img/hero-coherentie-samenwerking-1774.webp",
         "alt": {
           "nl": "",
           "fr": ""

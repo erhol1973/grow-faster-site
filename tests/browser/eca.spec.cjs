@@ -34,7 +34,8 @@ test('English is no longer offered and falls back to Dutch',async({page})=>{
 });
 test('the site reading route leads to an ungated assessment in the saved site language',async({page})=>{
  await page.addInitScript(()=>{localStorage.setItem('avs-lang','fr');localStorage.setItem('avs-consent',JSON.stringify({v:4,ext:false,ana:false,ts:Date.now()}))});
- await page.goto('/index.html');await page.locator('main a[href="eca.html"]').click();await expect(page.locator('html')).toHaveAttribute('lang','fr');await expect(page.locator('#questions fieldset')).toHaveCount(20);await expect(page.locator('#openDiagnostic')).toBeHidden();
+ // Sprint 1: the ECA reading route moved off the customer homepage; Aanpak keeps it in its topic links.
+ await page.goto('/approach.html');await page.locator('.topic-links a[href="eca.html"]').click();await expect(page.locator('html')).toHaveAttribute('lang','fr');await expect(page.locator('#questions fieldset')).toHaveCount(20);await expect(page.locator('#openDiagnostic')).toBeHidden();
 });
 
  test('all twenty responses are required, explicit N/A remains possible, and labels are compact',async({page})=>{

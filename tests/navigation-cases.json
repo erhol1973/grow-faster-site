@@ -2,14 +2,19 @@
   "home": "index.html",
   "primary": [
     "index.html",
-    "coherence.html",
-    "approach.html",
-    "executive-radar/",
-    "insights.html",
-    "transformation.html"
+    "oplossingen.html",
+    "about.html"
   ],
-  "action": "about.html",
+  "action": "mailto:erlendhollebosch@gmail.com?subject=Pilot%20Orion",
+  "contact": "about.html",
   "groups": {
+    "oplossingen.html": [
+      "orion.html",
+      "automatisering.html",
+      "coherence.html"
+    ]
+  },
+  "secondary": {
     "coherence.html": [
       "books.html",
       "value.html",
@@ -22,16 +27,25 @@
       "eca.html"
     ]
   },
+  "retained": [
+    "executive-radar/",
+    "insights.html",
+    "transformation.html",
+    "approach.html"
+  ],
   "pages": [
     "index.html",
-    "insights.html",
+    "oplossingen.html",
+    "orion.html",
+    "automatisering.html",
     "coherence.html",
+    "about.html",
+    "insights.html",
     "value.html",
     "process.html",
     "operating-model.html",
     "approach.html",
     "transformation.html",
-    "about.html",
     "books.html"
   ]
 }

@@ -3,7 +3,8 @@ test.beforeEach(async({page})=>{await page.addInitScript(()=>{localStorage.setIt
 // Sprint 1: the customer homepage ends with the pilot action; the forward route now starts at Insights.
 test('home has a forward route and authors are credited in sources instead of promotional copy',async({page})=>{
  await page.goto('/index.html');await expect(page.locator('main')).not.toContainText('Jeanne Ross');await expect(page.locator('#final a[href^="mailto:"]')).toHaveCount(1);await page.goto('/insights.html');await page.locator('.next-pg a').click();await expect(page).toHaveURL(/coherence\.html$/);
- await expect(page.locator('.book-foundation h3')).toHaveText('Onderzoeksbasis');await expect(page.locator('.book-sources')).toContainText('Jeanne');
+ // Coherence for kmo's (23 Nov 2026): the research foundations left Coherentie; its figures credit their authors in the source line.
+ await expect(page.locator('.book-foundation')).toHaveCount(0);await expect(page.locator('#cijfers .bron').first()).toContainText('Sull');
  // Release 1.1: About no longer has the intellectual-foundations block; it must not name researchers in promotional copy either.
  await page.goto('/about.html');await expect(page.locator('main')).not.toContainText('Jeanne Ross');await expect(page.locator('#intellectual-foundation')).toHaveCount(0);
 });

@@ -28,7 +28,7 @@ for(const [lang,src,poster,summary] of [['nl','media/enterprise-coherence-essent
 test('Enterprise Coherence film switches edition with the language without reloading the page',async({page})=>{
  await page.goto('/coherence.html?lang=nl');const video=page.locator('#home-film video');await expect(video.locator('source')).toHaveAttribute('src','media/enterprise-coherence-essentie-nl.mp4');
  await page.locator('#lang-btn-top').click();await page.locator('.lang-top [data-lang="fr"]').click();await expect(page.locator('html')).toHaveAttribute('lang','fr');
- await expect(video.locator('source')).toHaveAttribute('src','media/enterprise-coherence-essentie-fr.mp4');await expect(video).toHaveAttribute('poster','img/enterprise-coherence-essentie-fr.webp');await expect(page.locator('#ec-film-h')).toHaveText('Pas de valeur business de l’IA sans Enterprise Coherence');
+ await expect(video.locator('source')).toHaveAttribute('src','media/enterprise-coherence-essentie-fr.mp4');await expect(video).toHaveAttribute('poster','img/enterprise-coherence-essentie-fr.webp');await expect(page.locator('#ec-film-h')).toHaveText('Pas de valeur de l’IA sans cohérence');
 });
 for(const [lang,label] of [['nl','Bekijk de film'],['fr','Voir le film']])test(`workshop and ECA film links open the essentie film in ${lang}`,async({page})=>{
  for(const route of ['workshop.html','eca.html']){await page.goto('/'+route+'?lang='+lang);const link=page.locator('[data-film-link]');await expect(link).toHaveText(label);await expect(link).toHaveAttribute('href','coherence.html?lang='+lang+'#ec-film');

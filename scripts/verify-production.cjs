@@ -83,7 +83,9 @@ async function main(){
     if(await page.locator('#burger').isVisible())await page.locator('#burger').click();
     await page.locator('[aria-controls="nav-oplossingen"]').click();
     await page.locator('#nav-oplossingen a[href="coherence.html"]').click();await page.waitForURL('https://grow-faster.be/coherence.html');
-    await page.locator('.topic-links a[href="books.html"]').click();await page.waitForURL('https://grow-faster.be/books.html');
+    // Coherence for kmo's (23 Nov 2026): Coherentie ends in a conversation mail and no longer links Books; Books stays a direct route.
+    if(await page.locator('#contact-gesprek').getAttribute('href')!=='mailto:erlendhollebosch@gmail.com?subject=Coherentie')throw Error('Coherentie call to action missing');
+    await page.goto('https://grow-faster.be/books.html');
     for(const [lang,label]of [['fr','Lire l’aperçu pour les dirigeants'],['nl','Lees de executive preview']]){
       if(await page.locator('html').getAttribute('lang')!==lang){await page.locator('#lang-btn-top').click();await page.locator('.lang-top [data-lang="'+lang+'"]').click()}
       if(!(await page.locator('.book-download').innerText()).includes(label))throw Error('Book download language mismatch: '+lang);

@@ -46,7 +46,7 @@ const TEXT = {
 async function sendMails(v: any, id: string) {
   const from = env('MAIL_FROM', 'info@grow-faster.be'), owner = env('OWNER_EMAIL', 'erlend@grow-faster.be');
   // Belgian Hosting mail server for grow-faster.be (owner, 23 Nov 2026). Only the password is a secret.
-  const host = env('SMTP_HOST', 'v031.belgianhosting.be'), user = env('SMTP_USER', from), pass = env('SMTP_PASS');
+  const host = env('SMTP_HOST', 'v031.belgianhosting.be'), user = env('SMTP_USER', from).trim(), pass = env('SMTP_PASS').replace(/[\r\n]+$/, '');
   if (!pass) return false;
   const port = Number(env('SMTP_PORT', '465'));
   const t = nodemailer.createTransport({ host, port, secure: port === 465, auth: { user, pass }, connectionTimeout: 10000 });

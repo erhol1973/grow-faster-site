@@ -15,17 +15,16 @@ De live site gebruikt project growfaster-prod. Elke andere host (branch previews
 
 ## Eenmalig instellen per project
 
-De functie verstuurt pas mails als deze geheime instellingen bestaan. Zet ze in het Supabase-dashboard onder Edge Functions, Secrets. Ze horen nooit in de repository of in een chat.
+De functie verstuurt pas mails als SMTP_PASS bestaat. Zet ze in het Supabase-dashboard onder Edge Functions, Secrets. Ze horen nooit in de repository of in een chat.
 
 | Naam | Waarde |
 |---|---|
-| SMTP_HOST | uitgaande mailserver van de domeinhost |
-| SMTP_PORT | 465 (Supabase blokkeert uitgaand verkeer op 25 en 587) |
-| SMTP_USER | info@grow-faster.be |
-| SMTP_PASS | wachtwoord van die mailbox |
-| MAIL_FROM | info@grow-faster.be |
-| OWNER_EMAIL | erlend@grow-faster.be |
-| IP_SALT | willekeurige tekst van minstens 32 tekens |
+| SMTP_PASS | wachtwoord van de mailbox info@grow-faster.be (verplicht, het enige geheim) |
+| SMTP_HOST | optioneel, standaard v031.belgianhosting.be (Belgian Hosting, opgegeven door Erlend) |
+| SMTP_PORT | optioneel, standaard 465 met SSL (Supabase blokkeert uitgaand verkeer op 25 en 587) |
+| SMTP_USER, MAIL_FROM | optioneel, standaard info@grow-faster.be |
+| OWNER_EMAIL | optioneel, standaard erlend@grow-faster.be |
+| IP_SALT | aanbevolen: willekeurige tekst van minstens 32 tekens |
 
 Zonder deze instellingen wordt de afspraak wel opgeslagen, en toont de beheerpagina "de bevestigingsmail is niet verstuurd".
 

@@ -1,9 +1,9 @@
 // Public booking endpoint for afspraak.html.
 // GET  -> free one-hour slots (no personal data).
 // POST -> stores the appointment and mails client and owner, with a calendar invitation.
-// Secrets (set by the owner in the Supabase dashboard, never in the repository):
-//   SMTP_HOST, SMTP_PORT (465), SMTP_USER, SMTP_PASS, MAIL_FROM (info@grow-faster.be),
-//   OWNER_EMAIL (erlend@grow-faster.be), IP_SALT (random text).
+// Secret, set by the owner in the Supabase dashboard and never in the repository: SMTP_PASS (mailbox info@).
+// Optional overrides: SMTP_HOST (v031.belgianhosting.be), SMTP_PORT (465), SMTP_USER and MAIL_FROM (info@grow-faster.be),
+// OWNER_EMAIL (erlend@grow-faster.be), IP_SALT (random text).
 import nodemailer from 'npm:nodemailer@6.9.16';
 import { freeSlots, isBookable, validate, invitation, when, LABELS } from './rules.js';
 
@@ -44,9 +44,10 @@ const TEXT = {
 };
 
 async function sendMails(v: any, id: string) {
-  const host = env('SMTP_HOST'), user = env('SMTP_USER'), pass = env('SMTP_PASS');
-  if (!host || !user || !pass) return false;
   const from = env('MAIL_FROM', 'info@grow-faster.be'), owner = env('OWNER_EMAIL', 'erlend@grow-faster.be');
+  // Belgian Hosting mail server for grow-faster.be (owner, 23 Nov 2026). Only the password is a secret.
+  const host = env('SMTP_HOST', 'v031.belgianhosting.be'), user = env('SMTP_USER', from), pass = env('SMTP_PASS');
+  if (!pass) return false;
   const port = Number(env('SMTP_PORT', '465'));
   const t = nodemailer.createTransport({ host, port, secure: port === 465, auth: { user, pass }, connectionTimeout: 10000 });
   const ics = invitation({ id, ...v }, from, owner);

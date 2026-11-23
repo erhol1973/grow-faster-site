@@ -473,8 +473,8 @@
   applyLang(initial,!!stored&&stored!==initial);
   const c0=readConsent();applyConsent(c0);
   if(location.hash==="#privacy")openPrivacy();
-  /* fragment landing: the browser may scroll to the fragment while main is still hidden and untranslated; re-anchor once translated and once loaded, unless the visitor already scrolled */
-  (()=>{let id="";try{id=decodeURIComponent(location.hash.slice(1))}catch(e){}if(!id||id==="privacy")return;const tgt=document.getElementById(id);if(!tgt)return;let moved=false;const stop=()=>{moved=true};["wheel","touchstart","keydown","pointerdown"].forEach(ev=>addEventListener(ev,stop,{once:true,passive:true}));const anchor=()=>{if(!moved&&location.hash.slice(1)===tgt.id)tgt.scrollIntoView({block:"start",behavior:"instant"})};requestAnimationFrame(anchor);if(document.readyState==="complete")setTimeout(anchor,0);else addEventListener("load",()=>setTimeout(anchor,0),{once:true})})();
+  /* fragment landing: the browser may scroll to the fragment while main is still hidden and untranslated; anchor synchronously once translated (before the reveal paints) and again once loaded, unless the visitor already scrolled */
+  (()=>{let id="";try{id=decodeURIComponent(location.hash.slice(1))}catch(e){}if(!id||id==="privacy")return;const tgt=document.getElementById(id);if(!tgt)return;let moved=false;const stop=()=>{moved=true};["wheel","touchstart","keydown","pointerdown"].forEach(ev=>addEventListener(ev,stop,{once:true,passive:true}));const anchor=()=>{if(!moved&&location.hash.slice(1)===tgt.id)tgt.scrollIntoView({block:"start",behavior:"instant"})};anchor();if(document.readyState==="complete")setTimeout(anchor,0);else addEventListener("load",()=>setTimeout(anchor,0),{once:true})})();
   if(!c0)openConsent(false);
 
   /* spotlight on final section */

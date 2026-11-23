@@ -11,7 +11,8 @@ for(const [lang,copy]of Object.entries(cases)){
   await seed(page,lang);await page.goto('/index.html');
   await expect(page.locator('#navlist a[href="workshop.html"]')).toHaveCount(0);
   // Sprint 1: the customer footer lists the new offer; the existing content pages keep the workshop footer link.
-  await page.goto('/about.html');await expect(page.locator('footer a[href="workshop.html"]').first()).toBeAttached();
+  // Release 1.1: About now uses the customer footer; the content pages with the original footer (e.g. Coherence) keep the workshop link.
+  await page.goto('/coherence.html');await expect(page.locator('footer a[href="workshop.html"]').first()).toBeAttached();
   await page.goto('/approach.html');expect(await page.evaluate(()=>scrollY)).toBeLessThan(8);await expect(page.locator('#approach-workshop-cta')).toBeInViewport({ratio:1});await page.locator('#approach-workshop-cta').click();await expect(page.locator('h1')).toContainText(copy.title);
   await expect(page.locator('#navlist [aria-current="page"]')).toHaveCount(0);
  });
@@ -33,7 +34,8 @@ for(const [lang,copy]of Object.entries(cases)){
   await page.goto('/approach.html');await page.locator('#workshop-entry a').click();await expect(page.locator('h1')).toContainText(copy.title);
   if(await page.locator('#burger').isVisible())await page.locator('#burger').click();await page.locator('#navlist a[href="about.html"]').click();
   await expect(page).toHaveURL(/\/about\.html$/);await expect(page.locator('h1')).toBeInViewport();
-  await page.locator('footer a[href="workshop.html"]').first().click();await expect(page.locator('h1')).toContainText(copy.title);
+  // Release 1.1: About uses the customer footer; the shared footer route back to the workshop is exercised from Coherence.
+  await page.goto('/coherence.html');await page.locator('footer a[href="workshop.html"]').first().click();await expect(page.locator('h1')).toContainText(copy.title);
   expect(errors).toEqual([]);
  });
  test('voluntary workshop request is local, encoded and language-correct in '+lang,async({page})=>{

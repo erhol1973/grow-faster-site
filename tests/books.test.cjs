@@ -15,8 +15,9 @@ test('only the approved executive preview is public and the full book is not ser
 });
 test('publication reading routes, translations and local performance coverage are retained',()=>{
  const context={window:{}};vm.runInNewContext(fs.readFileSync(path.join(root,'assets/i18n.js'),'utf8'),context);
- // The customer homepage (sprint 1, 22 Nov 2026) no longer presents the books; About and Books keep both reading routes.
- for(const file of ['books.html','about.html']){
+ // Release 1.1 (22 Nov 2026): About is customer-facing and no longer presents or links the books; Books keeps both reading routes.
+ assert.doesNotMatch(fs.readFileSync(path.join(root,'about.html'),'utf8'),/books\.html|boek\/|publication-feature|book-download/);
+ for(const file of ['books.html']){
   const html=fs.readFileSync(path.join(root,file),'utf8');assert.match(html,/href="boek\/index\.html" target="_blank" rel="noopener">Read the executive preview/,file);if(file==='books.html')assert.match(html,/class="book-actions" id="order"/);else assert.match(html,/href="books\.html#order">Buy the full book/,file);assert.doesNotMatch(html,/design-for-coherence\.pdf/,file);assert.match(html,/boek\/the-coherent-enterprise\/index\.html/,file);
  }
  const html=fs.readFileSync(path.join(root,'books.html'),'utf8');

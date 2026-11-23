@@ -20,7 +20,8 @@ test('every journal article opens with an In brief summary and closes with an au
       assert.equal((brief[0].match(/<dt>/g)||[]).length,3,`${id}/${lang}: problem, cause and action`);
       assert.ok(block.indexOf('class="in-brief"')<block.indexOf('<h3>')||!block.includes('<h3>'),`${id}/${lang}: In brief precedes the body`);
       const author=block.match(/<aside class="author-box"[\s\S]*?<\/aside>/);assert.ok(author,`${id}/${lang}: author box missing`);
-      assert.match(author[0],/href="about\.html#work-with-me"/);assert.match(author[0],/href="transformation\.html#track-record"/);
+      // Release 1.1: About no longer has work routes; the author box links to its contact block.
+      assert.match(author[0],/href="about\.html#contact"/);assert.match(author[0],/href="transformation\.html#track-record"/);
       assert.ok(block.indexOf('class="author-box"')<block.indexOf('class="ins-foot"'),`${id}/${lang}: author box precedes the share row`);
     }
   }

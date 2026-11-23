@@ -8,10 +8,10 @@ test('The Coherent Enterprise serves its 12-page HTML flipbook, the flipbook PDF
  for(const [name,sha]of Object.entries(manifest.flipbookPdfs))assert.equal(hash(fs.readFileSync(path.join(directory,name))),sha,name);
  const html=fs.readFileSync(path.join(root,'boek/the-coherent-enterprise/index.html'),'utf8');assert.equal(manifest.pageCount,12);
  assert.equal((html.match(/class="page[^"]*" data-density="(?:soft|hard)"|class="page[^"]*" data-p="/g)||[]).length,12);
- assert.match(html,/<h1>The Coherent Enterprise<\/h1>/);assert.match(html,/<script src="\.\.\/\.\.\/assets\/page-flip-2\.0\.7\.js"><\/script>/);assert.match(html,/href="\.\.\/\.\.\/about.html#foundation-book"/);assert.match(html,/<noscript>/);assert.doesNotMatch(html,/(?:src|href)="https?:/);
- // Sprint 1 (22 Nov 2026): the customer homepage no longer presents the book; About and Books keep the 12-page preview route.
- for(const name of ['about.html','books.html']){const text=fs.readFileSync(path.join(root,name),'utf8');assert.match(text,/href="boek\/the-coherent-enterprise\/index.html"/);assert.match(text,/12-page preview/);assert.doesNotMatch(text,/href="books\/the-coherent-enterprise-executive-preview.pdf"/)}
- // The separate Executive Preview cards were removed from About on request; the foundation-book feature above still links the 12-page preview (checked in the loop above).
- assert.doesNotMatch(fs.readFileSync(path.join(root,'about.html'),'utf8'),/class="au-reads"/);
+ assert.match(html,/<h1>The Coherent Enterprise<\/h1>/);assert.match(html,/<script src="\.\.\/\.\.\/assets\/page-flip-2\.0\.7\.js"><\/script>/);assert.match(html,/href="\.\.\/\.\.\/books.html#order-coherent-enterprise"/);assert.doesNotMatch(html,/about\.html#foundation-book/);assert.match(html,/<noscript>/);assert.doesNotMatch(html,/(?:src|href)="https?:/);
+ // Release 1.1: the homepage and About no longer present the book; Books keeps the 12-page preview route and the reader's
+ // manuscript link now opens the e-book order on Books.
+ for(const name of ['books.html']){const text=fs.readFileSync(path.join(root,name),'utf8');assert.match(text,/href="boek\/the-coherent-enterprise\/index.html"/);assert.match(text,/12-page preview/);assert.doesNotMatch(text,/href="books\/the-coherent-enterprise-executive-preview.pdf"/)}
+ assert.doesNotMatch(fs.readFileSync(path.join(root,'about.html'),'utf8'),/class="au-reads"|boek\/the-coherent-enterprise/);
  const {routes}=require('../scripts/load.cjs');for(const route of ['/'+manifest.file,'/boek/the-coherent-enterprise/index.html','/boek/the-coherent-enterprise/pdf/the-coherent-enterprise-executive-preview.pdf'])assert.ok(routes.some(r=>r.route===route));
 });

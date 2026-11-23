@@ -3,14 +3,15 @@ const {test,expect}=require('playwright/test');
 test('The Coherent Enterprise buttons on Books and About open the 12-page HTML flipbook',async({page,context,isMobile})=>{
  const manifest=require('../coherent-preview.json'),crypto=require('node:crypto');
  await page.addInitScript(()=>{localStorage.setItem('avs-lang','nl');localStorage.setItem('avs-consent',JSON.stringify({v:4,ext:false,ana:false,ts:Date.now()}));localStorage.setItem('flip:hinted','1');localStorage.setItem('flip:mobilehint','1')});
- for(const source of ['/books.html','/about.html']){
+ // Release 1.1: About no longer presents the book; Books keeps the reader entry and the reader links back to the e-book order.
+ for(const source of ['/books.html']){
   await page.goto(source);const button=page.locator('a[href="boek/the-coherent-enterprise/index.html"]').first();await expect(button).toBeVisible();
   const popup=context.waitForEvent('page');await button.click();const reader=await popup;const errors=[];reader.on('pageerror',e=>errors.push(e.message));await reader.waitForLoadState();
   await expect(reader).toHaveURL(/\/boek\/the-coherent-enterprise\/index.html(#page-\d+)?$/);await reader.goto('/boek/the-coherent-enterprise/index.html#page-1');await reader.reload();
   await expect(reader.locator('#book .page')).toHaveCount(12);await expect(reader.locator('#pgNow')).toHaveText('1');await expect(reader.locator('#pgAll')).toHaveText('12');
   await reader.locator('#btnNext').click();await expect(reader.locator('#pgNow')).toHaveText(isMobile?'2':'2–3');
   await reader.locator('#btnSearch').click();await reader.locator('#q').fill('fragmentation');await reader.locator('#results .result[data-go="7"]').click();await expect(reader.locator('#pgNow')).toContainText('7');
-  await expect(reader.locator('.order-link')).toHaveAttribute('href','../../about.html#foundation-book');
+  await expect(reader.locator('.order-link')).toHaveAttribute('href','../../books.html#order-coherent-enterprise');
   expect(await reader.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1)).toBe(true);expect(errors).toEqual([]);
   const AxeBuilder=require('@axe-core/playwright').default;const result=await new AxeBuilder({page:reader}).withTags(['wcag2a','wcag2aa','wcag21a','wcag21aa','wcag22aa']).analyze();expect(result.violations.map(v=>v.id)).toEqual([]);
   await reader.close();

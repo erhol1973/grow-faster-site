@@ -2,9 +2,8 @@
   "schema": 1,
   "scope": "rendered_local_nl_runtime_dictionaries_static_cms_and_mail",
   "technicalReview": {
-    "date": "2026-11-22",
-    "reason": "Release 1.1: site.js fragment re-anchor (no text, no adapter change); customer About page (rendered DOM + about-klant CMS catalog) and the reader link to Books; release 1: new oplossingen/orion/automatisering pages, assets/home-film.js (source/poster switch only, no text) and the coherence film text block (rendered DOM) and customer homepage are discovered by the existing DOM adapter; changed i18n.js (runtime dictionary adapter), cms-catalog.js (static catalog adapter) and cms-admin.js (excluded admin). Also records assets/baies-dev-*.js and the i18n/site.js changes merged on 12 Nov (PR #74/#75) without a contract update, which made every daily run since 13 Nov fail closed; their Executive Radar text is covered only as rendered in the initial NL DOM. No adapter code changed; no language approval",
-    "officialApproval": false
+    "date": "2026-11-23",
+    "reason": "Coherentie voor kmo’s: coherence.html herschreven (rendered DOM + coherence CMS catalog met coh-kmo-sleutels), Orion-bronregel; changed i18n.js (runtime dictionary adapter), cms-catalog.js (static catalog adapter) and ux.js (page description only). Geen adapterwijziging. Release 1.1: site.js fragment re-anchor (no text, no adapter change); customer About page (rendered DOM + about-klant CMS catalog) and the reader link to Books; release 1: new oplossingen/orion/automatisering pages, assets/home-film.js (source/poster switch only, no text) and the coherence film text block (rendered DOM) and customer homepage are discovered by the existing DOM adapter; changed i18n.js (runtime dictionary adapter), cms-catalog.js (static catalog adapter) and cms-admin.js (excluded admin). Also records assets/baies-dev-*.js and the i18n/site.js changes merged on 12 Nov (PR #74/#75) without a contract update, which made every daily run since 13 Nov fail closed; their Executive Radar text is covered only as rendered in the initial NL DOM. No adapter code changed; no language approval"
   },
   "javascript": [
     {
@@ -29,7 +28,7 @@
     },
     {
       "file": "assets/cms-catalog.js",
-      "sha256": "41d137bec5ad7807eedc644e846105769f204a39b724ffff06869b55169f24fd"
+      "sha256": "16a811704c8c2d7d87d1e0fc6c6c0948abf713e5a72289c5390ca788a10f692a"
     },
     {
       "file": "assets/cms-client.js",
@@ -77,7 +76,7 @@
     },
     {
       "file": "assets/i18n.js",
-      "sha256": "f85b25a4d3f95f3193bb1516d29d15723db02a0a04395d3914774ca8b919f6d8"
+      "sha256": "85c548ba19d1a22aa9b30d932962a557439d4185ac0397429867506e0fa81df5"
     },
     {
       "file": "assets/journal.js",
@@ -101,7 +100,7 @@
     },
     {
       "file": "assets/ux.js",
-      "sha256": "797ff53e2cd5df2d5f60423b751256007b5b06ddbf68fd725c4b278740ded3a7"
+      "sha256": "3bf69258dac10d29b6f3e7bd7f0665cb58635735c9b9a5dcf707fe96880a733c"
     },
     {
       "file": "assets/workshop.js",
@@ -175,7 +174,7 @@
     },
     {
       "file": "coherence.html",
-      "sha256": "e747f3687e3b5b89d6a68cec36d392a6a66d459f9cac5955d3ce6e804d507002"
+      "sha256": "d48acdcdafb139621b2e29b1ccc7a85f67af1f10cbc4d6795f97df18cd3e3147"
     },
     {
       "file": "coordination-overload-1.html",

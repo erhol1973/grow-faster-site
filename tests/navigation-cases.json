@@ -15,12 +15,6 @@
     ]
   },
   "secondary": {
-    "coherence.html": [
-      "books.html",
-      "value.html",
-      "process.html",
-      "operating-model.html"
-    ],
     "approach.html": [
       "approach.html#roadmap",
       "approach.html#decide",
@@ -31,7 +25,11 @@
     "executive-radar/",
     "insights.html",
     "transformation.html",
-    "approach.html"
+    "approach.html",
+    "books.html",
+    "value.html",
+    "process.html",
+    "operating-model.html"
   ],
   "pages": [
     "index.html",

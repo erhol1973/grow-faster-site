@@ -80,8 +80,8 @@
     "Erlend Hollebosch sur la fragmentation, la cohérence de l’entreprise et les conditions d’une valeur durable de l’IA."
   ],
   "coherence.html": [
-    "Enterprise coherence en AI-waarde: onderzoeksbronnen, duiding en een illustratieve processimulatie.",
-    "Cohérence de l’entreprise et valeur de l’IA : sources de recherche, analyse et simulation illustrative des processus."
+    "Voor zaakvoerders en directie van kmo’s: breng samenhang tussen beslissingen, processen en systemen, zodat AI en automatisering echt tijd en geld opleveren.",
+    "Pour les dirigeants de PME : alignez décisions, processus et systèmes, pour que l’IA et l’automatisation fassent vraiment gagner du temps et de l’argent."
   ],
   "value.html": [
     "Waar AI waarde kan creëren: taken, werkstromen en processen, met een kader voor kansen.",

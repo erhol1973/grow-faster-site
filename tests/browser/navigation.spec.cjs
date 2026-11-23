@@ -54,7 +54,8 @@ for(const reducedMotion of ['no-preference','reduce'])test('overview pages retai
  const context=await browser.newContext({javaScriptEnabled:false,reducedMotion,viewport:{width:390,height:844}});const page=await context.newPage();try{
  await page.goto(baseURL+'/index.html');await expect(page.locator('main')).toHaveCSS('visibility','visible');await expect(page.locator('#navlist a[href="oplossingen.html"]')).toBeVisible();await page.locator('#navlist a[href="oplossingen.html"]').click();
  await expect(page).toHaveURL(/\/oplossingen\.html$/);await expect(page.locator('main')).toHaveCSS('visibility','visible');await expect(page.locator('.topic-links a')).toHaveCount(3);await page.locator('.topic-links a[href="orion.html"]').click();await expect(page).toHaveURL(/\/orion\.html$/);
- await page.goto(baseURL+'/coherence.html');await expect(page.locator('.topic-links a')).toHaveCount(4);await page.locator('.topic-links a[href="value.html"]').click();await expect(page).toHaveURL(/\/value\.html$/);
+ // Coherence for kmo's (23 Nov 2026): Coherentie has no topic links; value.html stays a published route.
+ await page.goto(baseURL+'/coherence.html');await expect(page.locator('.topic-links')).toHaveCount(0);expect((await page.request.get(baseURL+'/value.html')).status()).toBe(200);
  await page.goto(baseURL+'/approach.html');await expect(page.locator('main')).toHaveCSS('visibility','visible');await expect(page.locator('.topic-links a[href="eca.html"]')).toBeVisible();await page.locator('.topic-links a[href="eca.html"]').click();await expect(page).toHaveURL(/\/eca\.html$/);
  }finally{await context.close()}
 });

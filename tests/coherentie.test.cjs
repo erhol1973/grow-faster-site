@@ -15,6 +15,8 @@ test('Coherence has a conversation mail with subject Coherentie and the profile 
   const contact=main.match(/<section id="contact" class="tinted" tabindex="-1"[\s\S]*?<\/section>/);assert.ok(contact);assert.match(contact[0],/id="contact-gesprek"/);
   for(const m of main.matchAll(/href="(mailto:[^"]+)"/g))assert.equal(m[1],MAIL);
   assert.doesNotMatch(main,/<form\b|topic-links|book-thesis|class="lgx"|ec-sim/);
+  // 23 Nov 2026 (owner): the film section has no "De film" label above its title.
+  assert.doesNotMatch(main.match(/<section id="ec-film"[\s\S]*?<\/section>/)[0],/class="eyebrow"|De film/);
 });
 test('Coherence figures name their sources; supplier surveys are not used',()=>{const main=read('coherence.html').match(/<section id="cijfers"[\s\S]*?<\/section>/)[0];
   assert.equal((main.match(/<article class="cijfer">/g)||[]).length,3);

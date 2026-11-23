@@ -50,7 +50,7 @@ test('customer About presents identity, portrait and a working contact block in 
  }
  await expect(page.locator('#work-with-me, #route-role, .publication-feature, a[href^="books.html"], a[href^="boek/"]')).toHaveCount(0);
  await page.goto('/about.html#contact');await expect(page.locator('#contact')).toBeInViewport();
- await expect(page.locator('#contact-pilot')).toHaveAttribute('href','mailto:erlendhollebosch@gmail.com?subject=Pilot%20Orion');await expect(page.locator('#contact-linkedin')).toHaveAttribute('href','https://www.linkedin.com/in/erlend-hollebosch-053361181/');
+ await expect(page.locator('#contact-pilot')).toHaveAttribute('href','afspraak.html');await expect(page.locator('#contact-linkedin')).toHaveAttribute('href','https://www.linkedin.com/in/erlend-hollebosch-053361181/');
  await page.locator('#oplossingen a[href="oplossingen.html"]').click();await expect(page).toHaveURL(/\/oplossingen\.html$/);
  await page.goto('/about.html');await page.locator('footer a[href="about.html"]').last().click();await expect(page).toHaveURL(/\/about\.html$/);await expect(page.locator('h1')).toBeInViewport();
 });

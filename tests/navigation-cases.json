@@ -9,7 +9,7 @@
     "journal.html",
     "insights.html"
   ],
-  "action": "mailto:erlendhollebosch@gmail.com?subject=Pilot%20Orion",
+  "action": "afspraak.html",
   "contact": "about.html",
   "groups": {},
   "secondary": {
@@ -38,6 +38,7 @@
     "coherence.html",
     "training.html",
     "journal.html",
+    "afspraak.html",
     "about.html",
     "insights.html",
     "value.html",

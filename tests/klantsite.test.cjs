@@ -3,7 +3,9 @@
 const {test}=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),vm=require('node:vm');
 const root=path.resolve(__dirname,'..','dist');const read=f=>fs.readFileSync(path.join(root,f),'utf8');
 const I18N=()=>{const c={window:{}};vm.runInNewContext(read('assets/i18n.js'),c);return c.window};
-const PILOT='mailto:erlendhollebosch@gmail.com?subject=Pilot%20Orion';
+// Appointment page (23 Nov 2026, owner decision): conversation buttons open afspraak.html with the topic preselected
+// instead of a mail; the Google booking page sends the confirmations.
+const PILOT='afspraak.html?onderwerp=vragenlijsten';
 const decode=s=>s.replaceAll('&amp;','&').replaceAll('&quot;','"');
 const text=html=>decode(html.replace(/<script[\s\S]*?<\/script>|<style[\s\S]*?<\/style>/g,'').replace(/<[^>]+>/g,' ')).replace(/\s+/g,' ');
 const pages={
@@ -43,18 +45,18 @@ test('customer pages carry title, description, canonical, og tags and NL/FR lang
   for(const file of ['oplossingen.html','orion.html','automatisering.html'])assert.match(read('sitemap.xml'),new RegExp(`<loc>https://grow-faster\\.be/${file.replace('.','\\.')}</loc>`));
 });
 // Release 2 (23 Nov 2026): each offer page has its own conversation mail so requests can be told apart; the menu keeps the pilot mail.
-const OWN={'automatisering.html':'mailto:erlendhollebosch@gmail.com?subject=Workflow-automatisering'};
+const OWN={'automatisering.html':'afspraak.html?onderwerp=workflow'};
 test('the single call to action is the pilot mailto everywhere, without forms or other contact paths',()=>{
   for(const file of ['index.html','oplossingen.html','orion.html']){const html=read(file),main=html.match(/<main[\s\S]*?<\/main>/)[0];
     assert.doesNotMatch(html,/<form\b|hsforms|hbspt\./i,file);
-    const mails=[...html.matchAll(/href="(mailto:[^"]+)"/g)].map(m=>decode(m[1]));assert.ok(mails.length>=3,file);for(const m of mails)assert.equal(m,PILOT,file);
+    assert.doesNotMatch(html,/href="mailto:/,file);const ctas=[...main.matchAll(/href="(afspraak\.html[^"]*)"/g)].map(m=>decode(m[1]));assert.ok(ctas.length>=2,file);for(const m of ctas)assert.equal(m,PILOT,file);
     assert.match(main,new RegExp(`<a href="${PILOT.replace(/[.?]/g,'\\$&')}" class="btn primary"[^>]*>Plan een pilotgesprek <span aria-hidden="true">→</span></a>`),file);
     assert.doesNotMatch(main,/about\.html#work-with-me|Work with me/,file);
   }
   for(const [file,own] of Object.entries(OWN)){const html=read(file),main=html.match(/<main[\s\S]*?<\/main>/)[0];
     assert.doesNotMatch(html,/<form\b|hsforms|hbspt\./i,file);
-    for(const m of [...html.matchAll(/href="(mailto:[^"]+)"/g)].map(m=>decode(m[1])))assert.ok([PILOT,own].includes(m),file+': '+m);
-    for(const m of [...main.matchAll(/href="(mailto:[^"]+)"/g)].map(m=>decode(m[1])))assert.equal(m,own,file);
+    assert.doesNotMatch(html,/href="mailto:/,file);
+    for(const m of [...main.matchAll(/href="(afspraak\.html[^"]*)"/g)].map(m=>decode(m[1])))assert.equal(m,own,file);
     assert.match(main,new RegExp(`<a href="${own.replace(/[.?]/g,'\\$&')}" class="btn primary"[^>]*>Plan een gesprek <span aria-hidden="true">→</span></a>`),file);
   }
   const orion=read('orion.html');assert.match(orion,/href="#werking" class="btn ghost"[^>]*>Bekijk hoe het werkt/);

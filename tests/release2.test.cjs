@@ -10,13 +10,13 @@ const visible=html=>html.replace(/<script[\s\S]*?<\/script>|<style[\s\S]*?<\/sty
 const NAMES=new Set(['Orion','Grow Faster','LinkedIn','Workflowscan']);
 const translated=(file,I)=>{for(const m of visible(main(file)).matchAll(/>([^<]*[A-Za-zÀ-ÿ][^<]*)</g)){const k=m[1].trim().replace(/\s+/g,' ');if(NAMES.has(k))continue;assert.ok(I[k]?.[1]&&I[k][1]!==k,`${file}: FR missing: ${k}`);assert.doesNotMatch(I[k][1],/\b(tu|ton|ta|tes|toi)\b/i,k);assert.doesNotMatch(I[k][1],/\S[?:;](\s|$)/,'FR typography: '+I[k][1])}};
 
-test('Training offers three trainings on site or online, price on request, with its own mail',()=>{
+test('Training offers three trainings on site or online, price on request, with its own appointment topic',()=>{
   const html=read('training.html'),m=main('training.html');
   assert.match(m,/<h1>Uw mensen leren werken met AI en automatisering\.<\/h1>/);
   const tr=m.match(/<section id="trainingen"[\s\S]*?<\/section>/)[0];
   assert.deepEqual([...tr.matchAll(/<h3>([^<]+)<\/h3>/g)].map(x=>x[1]),['Orion in de praktijk','Workflow-automatisering','Bedrijfsontwikkeling: naar een adaptief bedrijf']);
   assert.match(m,/Ter plaatse of online, in het Nederlands of het Frans\. Prijs op aanvraag\./);
-  for(const x of m.matchAll(/href="(mailto:[^"]+)"/g))assert.equal(x[1],'mailto:erlendhollebosch@gmail.com?subject=Training');
+  assert.doesNotMatch(m,/href="mailto:/);assert.equal((m.match(/href="afspraak\.html\?onderwerp=training" class="btn primary"/g)||[]).length,2);
   assert.doesNotMatch(m,/<form\b/);
   assert.match(html,/<img src="img\/hero-training-team-1774\.webp"/);for(const w of [640,1280,1774])assert.ok(fs.statSync(path.join(root,`img/hero-training-team-${w}.webp`)).size<60000,w);
   assert.match(read('sitemap.xml'),/<loc>https:\/\/grow-faster\.be\/training\.html<\/loc>/);

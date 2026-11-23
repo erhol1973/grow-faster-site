@@ -9,7 +9,7 @@ before(async()=>{server=createServer();await new Promise(resolve=>server.listen(
 after(async()=>{server.closeIdleConnections();await new Promise(resolve=>server.close(resolve))});
 // Release 2 (23 Nov 2026, owner decision): one flat menu without dropdowns: Home · Orion · Workflow-automatisering ·
 // Bedrijfsontwikkeling · Training · Maandelijks Magazine · Insights, plus the pilot mailto action. Over moved to the footer.
-const customerFooter=['index.html','oplossingen.html','orion.html','automatisering.html','about.html','coherence.html','training.html','journal.html','insights.html'];
+const customerFooter=['index.html','oplossingen.html','orion.html','automatisering.html','about.html','coherence.html','training.html','journal.html','insights.html','afspraak.html'];
 test('served ordinary pages have complete menus and Contact opens without a fragment',async()=>{
   let pages=0;
   for(const file of fs.readdirSync(root).filter(f=>f.endsWith('.html'))){
@@ -18,7 +18,7 @@ test('served ordinary pages have complete menus and Contact opens without a frag
     const actual=[...nav[0].matchAll(/<a\b[^>]*href="([^"]+)"/g)].map(m=>m[1]);
     assert.deepEqual(actual,routes,`${file}: shared navigation cases must match the complete menu`);
     assert.deepEqual([...nav[0].matchAll(/<a\b[^>]*class="[^"]*\bl\b[^"]*"[^>]*href="([^"]+)"/g)].map(m=>m[1]),[...navigation.primary,navigation.action],`${file}: the seven menu items and the pilot action`);
-    assert.match(nav[0],/<li class="nav-action"><a tabindex="0" class="l nav-work" href="mailto:erlendhollebosch@gmail\.com\?subject=Pilot%20Orion">Plan een pilotgesprek <span aria-hidden="true">→<\/span><\/a><\/li>\s*<\/ul>/,file);
+    assert.match(nav[0],/<li class="nav-action"><a tabindex="0" class="l nav-work" href="afspraak\.html">Plan een pilotgesprek <span aria-hidden="true">→<\/span><\/a><\/li>\s*<\/ul>/,file);
     assert.doesNotMatch(nav[0],/Work with me|href="workshop\.html"|executive-radar|transformation\.html|approach\.html|href="about\.html"|href="oplossingen\.html"/,`${file}: routes outside the menu stay out of it`);
     assert.doesNotMatch(nav[0],/class="nav-toggle"|class="nav-sub"|nav-group/,`${file}: no dropdowns`);
     assert.doesNotMatch(nav[0],/about\.html#/,file);
@@ -34,7 +34,7 @@ test('served ordinary pages have complete menus and Contact opens without a frag
       assert.match(footer[0],/href="about\.html">Over Erlend Hollebosch<\/a>/,file);
       assert.match(footer[0],/<b data-notr>Grow Faster<\/b> · <span class="fb-tag">Sneller werken met AI en automatisering<\/span>/,file);
     }else assert.match(footer[0],/href="about\.html">Contact<\/a>/,file);
-  }assert.equal(pages,20);
+  }assert.equal(pages,21);
   // The Veiligheid page is deliberately not part of this release (branch feature/veiligheid-pagina).
   assert.equal(fs.existsSync(path.join(root,'veiligheid.html')),false);
 });

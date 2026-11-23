@@ -52,7 +52,7 @@ async function main(){
     const menu=await page.locator('#navlist a.l:not(.nav-work)').evaluateAll(a=>a.map(x=>x.getAttribute('href')));
     if(JSON.stringify(menu)!==JSON.stringify(['index.html','orion.html','automatisering.html','coherence.html','training.html','journal.html','insights.html']))throw Error('Unexpected menu: '+menu.join(', '));
     if(await page.locator('#navlist .nav-toggle, #navlist .nav-sub').count())throw Error('The menu must not have dropdowns');
-    if(await page.locator('#navlist a.nav-work[href="mailto:erlendhollebosch@gmail.com?subject=Pilot%20Orion"]').count()!==1)throw Error('Expected one pilot action');
+    if(await page.locator('#navlist a.nav-work[href="afspraak.html"]').count()!==1)throw Error('Expected one pilot action to the appointment page');
     if(await page.locator('a[href="veiligheid.html"]').count())throw Error('Veiligheid is not part of this release');
     if(await page.locator('#burger').isVisible())await page.locator('#burger').click();
     await page.locator('#navlist a.l[href="orion.html"]').click();await page.waitForURL('https://grow-faster.be/orion.html');
@@ -83,7 +83,7 @@ async function main(){
     if(await page.locator('#burger').isVisible())await page.locator('#burger').click();
     await page.locator('#navlist a.l[href="coherence.html"]').click();await page.waitForURL('https://grow-faster.be/coherence.html');
     // Release 2: Bedrijfsontwikkeling (coherence.html) ends in its own conversation mail; Books stays a direct route.
-    if(await page.locator('#contact-gesprek').getAttribute('href')!=='mailto:erlendhollebosch@gmail.com?subject=Bedrijfsontwikkeling')throw Error('Bedrijfsontwikkeling call to action missing');
+    if(await page.locator('#contact-gesprek').getAttribute('href')!=='afspraak.html?onderwerp=organisatie')throw Error('Bedrijfsontwikkeling call to action missing');
     await page.goto('https://grow-faster.be/books.html');
     for(const [lang,label]of [['fr','Lire l’aperçu pour les dirigeants'],['nl','Lees de executive preview']]){
       if(await page.locator('html').getAttribute('lang')!==lang){await page.locator('#lang-btn-top').click();await page.locator('.lang-top [data-lang="'+lang+'"]').click()}

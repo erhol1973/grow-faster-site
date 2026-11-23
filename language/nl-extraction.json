@@ -3,7 +3,7 @@
   "scope": "rendered_local_nl_runtime_dictionaries_static_cms_and_mail",
   "technicalReview": {
     "date": "2026-11-23",
-    "reason": "Coherentie voor kmo’s: coherence.html herschreven (rendered DOM + coherence CMS catalog met coh-kmo-sleutels), Orion-bronregel; changed i18n.js (runtime dictionary adapter), cms-catalog.js (static catalog adapter) and ux.js (page description only). Geen adapterwijziging. Release 1.1: site.js fragment re-anchor (no text, no adapter change); customer About page (rendered DOM + about-klant CMS catalog) and the reader link to Books; release 1: new oplossingen/orion/automatisering pages, assets/home-film.js (source/poster switch only, no text) and the coherence film text block (rendered DOM) and customer homepage are discovered by the existing DOM adapter; changed i18n.js (runtime dictionary adapter), cms-catalog.js (static catalog adapter) and cms-admin.js (excluded admin). Also records assets/baies-dev-*.js and the i18n/site.js changes merged on 12 Nov (PR #74/#75) without a contract update, which made every daily run since 13 Nov fail closed; their Executive Radar text is covered only as rendered in the initial NL DOM. No adapter code changed; no language approval"
+    "reason": "Coherentie: label \"De film\" verwijderd (rendered DOM, i18n.js). Coherentie voor kmo’s: coherence.html herschreven (rendered DOM + coherence CMS catalog met coh-kmo-sleutels), Orion-bronregel; changed i18n.js (runtime dictionary adapter), cms-catalog.js (static catalog adapter) and ux.js (page description only). Geen adapterwijziging. Release 1.1: site.js fragment re-anchor (no text, no adapter change); customer About page (rendered DOM + about-klant CMS catalog) and the reader link to Books; release 1: new oplossingen/orion/automatisering pages, assets/home-film.js (source/poster switch only, no text) and the coherence film text block (rendered DOM) and customer homepage are discovered by the existing DOM adapter; changed i18n.js (runtime dictionary adapter), cms-catalog.js (static catalog adapter) and cms-admin.js (excluded admin). Also records assets/baies-dev-*.js and the i18n/site.js changes merged on 12 Nov (PR #74/#75) without a contract update, which made every daily run since 13 Nov fail closed; their Executive Radar text is covered only as rendered in the initial NL DOM. No adapter code changed; no language approval"
   },
   "javascript": [
     {
@@ -76,7 +76,7 @@
     },
     {
       "file": "assets/i18n.js",
-      "sha256": "85c548ba19d1a22aa9b30d932962a557439d4185ac0397429867506e0fa81df5"
+      "sha256": "5fae32645d280e9c165cc82ffc923094e9ecc87f741c5f26a1eeb84d1fdcf8f9"
     },
     {
       "file": "assets/journal.js",

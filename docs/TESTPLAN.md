@@ -1,5 +1,18 @@
 # Testplan en kwaliteitsbeleid
 
+## Release 2: nieuw menu en pagina's voor kmo's, 23 november 2026
+
+Beslissingen van de eigenaar (23 november): één platte menubalk zonder uitklapmenu's (Home · Orion · Workflow-automatisering · Bedrijfsontwikkeling · Training · Maandelijks Magazine · Insights) met rechts de knop "Plan een pilotgesprek"; Over staat in de footer. Bedrijfsontwikkeling vervangt Coherentie (adres coherence.html blijft). Het Maandelijks Magazine vervangt het Executive Journal (eerst "Monthly Journal" genoemd; op vraag van de eigenaar hernoemd). Insights is herschreven voor kmo's.
+
+- Workflow-automatisering: volledige pagina met eigen mail (onderwerp "Workflow-automatisering") en het blok "Wat kmo's tegenhoudt" (Oldemeyer e.a. 2025).
+- Bedrijfsontwikkeling: blok "Van samenhang naar een adaptief bedrijf", mail met onderwerp "Bedrijfsontwikkeling", JSON-LD Service in plaats van de per vergissing gekopieerde Orion-gegevens.
+- Training (training.html, nieuw): drie trainingen, ter plaatse of online, prijs op aanvraag, eigen hero-afbeelding, OESO-cijfers.
+- Home: blok "Grote bedrijven werken al met AI" (Statbel 2025, OESO). Orion: blok "Orion bereidt voor. U beslist." (Dell'Acqua e.a., Organization Science 2025; de eerder voorgestelde bron Nassiri en El Mzabi was niet terug te vinden en is niet gebruikt).
+- Maandelijks Magazine (journal.html): nieuwe pagina, mail in plaats van HubSpot-formulieren; journal-fr.html is een doorverwijzing naar journal.html?lang=fr.
+- Insights: drie herschreven artikels in de u-vorm, zonder de werkgeversgerichte auteursbox. Oude ankers (#friction-first, #who-decides) verwijzen naar de nieuwe artikels. Vertalingen die alleen op Insights staan, zitten in assets/i18n-insights.js, zodat assets/i18n.js onder het gzip-budget van 65 000 bytes blijft.
+
+Tests: nieuw tests/release2.test.cjs; tests/journal.test.cjs, tests/browser/journal.spec.cjs, de Insights-tests en de navigatietests herschreven voor de nieuwe pagina's. Weg, met de inhoud die ze dekten: de Monthly Issue 01-fixture (journal-source-numbers.json), de Oplossingen-uitklaptests, de zes Insights-panelen en de Executive Journal-titeltest. Testregex voor redirect-links ontsnapt nu ook "?" en de doelcontrole negeert een querystring. Drempel in tests/cms-client.test.cjs: 427 bewerkbare CMS-velden (Insights heeft er 66 in plaats van 203); ondergrens van 550 naar 400. Deze wijziging vraagt expliciete goedkeuring van de eigenaar.
+
 ## Coherentie voor kmo's, 23 november 2026
 
 coherence.html is herschreven voor zaakvoerders en directie van kmo's (goedgekeurde tekst, NL/FR met "vous"). De pagina bevat: hero "Sneller groeien begint bij samenhang." met de knoppen "Plan een gesprek" (mail met onderwerp "Coherentie") en "Ontdek uw coherentieprofiel" (eca.html), "Herkenbaar voor een groeiende kmo?", "Wat onderzoek laat zien" (drie cijfers met bron: Sull e.a. HBR 2015, McKinsey 2019, Federaal Planbureau 2024), "Wat coherentie is", de blauwe film met de titel "Geen AI-waarde zonder samenhang", "Zo pakken we het aan" (4 stappen), "Wat het u oplevert" en het contactblok `#contact`. De pagina gebruikt de klantfooter. Orion vermeldt in "Het probleem" het foutpercentage bij overtypen met twee peer-reviewed bronnen.

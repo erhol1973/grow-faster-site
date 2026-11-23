@@ -16,7 +16,7 @@ test('main pages carry a search title that matches <title>, og:title and is tran
   assert.equal(decode(h.match(/<meta property="og:title" content="([^"]+)"/)[1]),seo,`${f}: og:title differs`);
   assert.ok(seo.length<=70,`${f}: title too long for search results (${seo.length})`);
   // Customer pages (sprint 1) carry the Grow Faster brand; the existing author pages keep the author name.
-  assert.match(seo,['index.html','orion.html','coherence.html'].includes(f)?/\| Grow Faster$/:/Erlend Hollebosch/,f);
+  assert.match(seo,['index.html','orion.html','coherence.html','insights.html'].includes(f)?/\| Grow Faster$/:/Erlend Hollebosch/,f);
   const tr=I[seo];assert.ok(Array.isArray(tr)&&tr.slice(0,2).every(Boolean),`${f}: missing nl/fr translation for title`);}
 });
 test('structured data describes the author, the book and the site',()=>{

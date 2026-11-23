@@ -8,7 +8,8 @@ const decode=s=>s.replaceAll('&amp;','&').replaceAll('&quot;','"');
 const text=html=>decode(html.replace(/<script[\s\S]*?<\/script>|<style[\s\S]*?<\/style>/g,'').replace(/<[^>]+>/g,' ')).replace(/\s+/g,' ');
 const pages={
   'orion.html':['Uw klantvragenlijsten, ingevuld vanuit uw eigen documenten.','Orion zoekt de antwoorden in uw specificaties, certificaten en eerdere lijsten. Uw medewerker kijkt na en verstuurt.','Dezelfde vragen, telkens opnieuw','Dat kost uren die niet naar kwaliteitswerk gaan. En wie overtypt, maakt fouten.','Zo werkt Orion','U laadt de vragenlijst op','Orion zoekt de antwoorden','U kijkt na.','U keurt goed en verstuurt.','U krijgt de lijst terug in hetzelfde formaat. Orion verstuurt nooit zelf iets.','Elk antwoord dat u goedkeurt, onthoudt Orion. De volgende vragenlijst gaat daardoor sneller.','Wat is Orion?','Wat het is','Het doel','Wat het u oplevert','Uw kwaliteitsdienst verlossen van zoek- en overtypwerk, zodat er meer tijd overblijft voor kwaliteit.','Voor wie','Voedingsbedrijven die regelmatig vragenlijsten en specificaties van klanten moeten invullen. We starten in West-Vlaanderen.','Veelgestelde vragen','Wat als Orion een fout antwoord geeft?','We gebruiken al ChatGPT. Wat is het verschil?','Wat zegt onze IT-verantwoordelijke ervan?','Voor de pilot start, bespreken we met uw IT-verantwoordelijke hoe Orion met uw gegevens omgaat, en bezorgen we vooraf alle informatie die hij nodig heeft.','Wat kost het?','Moeten we een groot project opstarten?','Nee. U levert een paar vragenlijsten en uw documenten aan. De rest doen wij.','Test Orion op uw eigen vragenlijsten','We starten met een paar vragenlijsten die u echt gekregen hebt. We meten hoeveel tijd ze vandaag kosten en hoeveel met Orion. Ziet u geen verschil, dan stoppen we.'],
-  'automatisering.html':['Workflow-automatisering','Wat uw team vandaag overtypt of met de hand doorstuurt, kan automatisch. Deze pagina wordt binnenkort uitgebreid.'],
+  // Release 2 (23 Nov 2026): the approved full Workflow-automatisering text replaces the placeholder.
+  'automatisering.html':['Wat uw team overtypt, gebeurt voortaan vanzelf.','We automatiseren het handwerk tussen uw mails, Excel-lijsten en systemen. Uw mensen houden tijd over voor het werk dat telt.','Herkenbaar?','Voorbeelden','Zo pakken we het aan','Wat kmo’s tegenhoudt, en hoe wij dat oplossen','Dienst of software','Wat u wint','Veelgestelde vragen','Welke taak typt uw team vandaag nog over?'],
   'oplossingen.html':['Sneller werken met AI en automatisering','Vier lagen, één doel: winst in tijd en geld.','Van fundament tot AI','AI levert pas tijd en geld op als wat eronder ligt klopt. Daarom bouwen we van onder naar boven: eerst samenhang in de organisatie, dan heldere processen, dan automatisering, dan AI.','Enterprise coherentie','Mensen, teams en systemen trekken in dezelfde richting.','Procesanalyse','Workflowscan','We brengen in kaart waar tijd en geld weglekt.','Repetitief werk loopt vanzelf.','AI neemt zoek- en schrijfwerk over.','Winst in tijd en geld','Drie manieren om sneller te werken','Test Orion op uw eigen vragenlijsten'],
   'index.html':['Orion vult de vragenlijsten van uw klanten in op basis van uw eigen documenten. Uw kwaliteitsverantwoordelijke kijkt na en verstuurt.','Herkenbaar?','Van fundament tot AI','Winst in tijd en geld','Vertrouwelijk blijft vertrouwelijk','Recepturen en specificaties zijn gevoelig. Voor de pilot start, bespreken we met uw IT-verantwoordelijke hoe Orion met uw gegevens omgaat.','Test Orion op uw eigen vragenlijsten']
 };
@@ -36,17 +37,25 @@ test('customer pages carry title, description, canonical, og tags and NL/FR lang
     assert.match(html,/<meta property="og:description" content="[^"]+">/);assert.match(html,/<meta property="og:image" content="https:\/\/grow-faster\.be\/img\/og-image\.jpg">/);
     assert.match(html,/<html lang="nl">/);assert.match(html,/<meta property="og:locale" content="nl_BE">\s*<meta property="og:locale:alternate" content="fr_BE">/);
     assert.match(html,/data-lang="nl"[\s\S]*data-lang="fr"/);assert.doesNotMatch(html,/data-lang="en"/);
-    assert.match(html,/<script defer src="assets\/i18n\.js\?v=20261122-klantsite"><\/script>[\s\S]*<script defer src="assets\/site\.js/);
+    assert.match(html,/<script defer src="assets\/i18n\.js\?v=20261123-release2"><\/script>[\s\S]*<script defer src="assets\/site\.js/);
     assert.ok(JSON.parse(html.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/)[1])['@graph'].some(x=>x['@type']==='WebSite'),file);
   }
   for(const file of ['oplossingen.html','orion.html','automatisering.html'])assert.match(read('sitemap.xml'),new RegExp(`<loc>https://grow-faster\\.be/${file.replace('.','\\.')}</loc>`));
 });
+// Release 2 (23 Nov 2026): each offer page has its own conversation mail so requests can be told apart; the menu keeps the pilot mail.
+const OWN={'automatisering.html':'mailto:erlendhollebosch@gmail.com?subject=Workflow-automatisering'};
 test('the single call to action is the pilot mailto everywhere, without forms or other contact paths',()=>{
-  for(const file of ['index.html','oplossingen.html','orion.html','automatisering.html']){const html=read(file),main=html.match(/<main[\s\S]*?<\/main>/)[0];
+  for(const file of ['index.html','oplossingen.html','orion.html']){const html=read(file),main=html.match(/<main[\s\S]*?<\/main>/)[0];
     assert.doesNotMatch(html,/<form\b|hsforms|hbspt\./i,file);
     const mails=[...html.matchAll(/href="(mailto:[^"]+)"/g)].map(m=>decode(m[1]));assert.ok(mails.length>=3,file);for(const m of mails)assert.equal(m,PILOT,file);
     assert.match(main,new RegExp(`<a href="${PILOT.replace(/[.?]/g,'\\$&')}" class="btn primary"[^>]*>Plan een pilotgesprek <span aria-hidden="true">→</span></a>`),file);
     assert.doesNotMatch(main,/about\.html#work-with-me|Work with me/,file);
+  }
+  for(const [file,own] of Object.entries(OWN)){const html=read(file),main=html.match(/<main[\s\S]*?<\/main>/)[0];
+    assert.doesNotMatch(html,/<form\b|hsforms|hbspt\./i,file);
+    for(const m of [...html.matchAll(/href="(mailto:[^"]+)"/g)].map(m=>decode(m[1])))assert.ok([PILOT,own].includes(m),file+': '+m);
+    for(const m of [...main.matchAll(/href="(mailto:[^"]+)"/g)].map(m=>decode(m[1])))assert.equal(m,own,file);
+    assert.match(main,new RegExp(`<a href="${own.replace(/[.?]/g,'\\$&')}" class="btn primary"[^>]*>Plan een gesprek <span aria-hidden="true">→</span></a>`),file);
   }
   const orion=read('orion.html');assert.match(orion,/href="#werking" class="btn ghost"[^>]*>Bekijk hoe het werkt/);
   assert.match(read('index.html'),/href="orion\.html" class="btn ghost"[^>]*>Zo werkt Orion/);

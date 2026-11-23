@@ -2,8 +2,8 @@ const {test,expect}=require('playwright/test');
 test('practice reading route works in both languages, with six perspectives and Contact',async({page})=>{
  const errors=[];page.on('pageerror',e=>errors.push(e.message));
  await page.addInitScript(()=>{if(!localStorage.getItem('avs-lang'))localStorage.setItem('avs-lang','nl');localStorage.setItem('avs-consent',JSON.stringify({v:4,ext:false,ana:false,ts:Date.now()}))});
- // Release 1.1: About no longer links the practice route; Insights keeps the in-content link to it.
- await page.goto('/insights.html');await page.locator('.practice-entry a[href="transformation.html"]').click();
+ // Release 2: the practice route is no longer linked from Insights (rewritten for kmo's); the page stays a published route.
+ await page.goto('/transformation.html');
  await expect(page).toHaveURL(/\/transformation\.html$/);
  for(const [language,heading,lens,title]of [['nl','Transformatie in de praktijk','Strategie en keuzes','Trackrecord in bedrijfstransformatie | Erlend Hollebosch'],['fr','La transformation en pratique','Stratégie et choix','Parcours en transformation d’entreprise | Erlend Hollebosch']]){
    if(language!=='nl'){await page.locator('#lang-btn-top').click();await page.locator('.lang-top [data-lang="'+language+'"]').click()}
@@ -20,8 +20,8 @@ test('practice reading route works in both languages, with six perspectives and 
  await page.locator('.practice-index a[href="#working-chain"]').click();await expect(page).toHaveURL(/#working-chain$/);
  await expect(page.locator('#working-chain-h')).toBeInViewport();
  await page.goto('/about.html');await expect(page.locator('a[href^="transformation.html"]')).toHaveCount(0);
- await page.goto('/insights.html');await page.locator('.practice-entry a[href="transformation.html"]').click();await expect(page.locator('h1')).toHaveText('La transformation en pratique');
- if(await page.locator('#burger').isVisible())await page.locator('#burger').click();await page.locator('#navlist a[href="about.html"]').click();
+ await page.goto('/transformation.html');await expect(page.locator('h1')).toHaveText('La transformation en pratique');
+ await page.locator('footer a[href="about.html"]').last().click();
  await expect(page).toHaveURL(/\/about\.html$/);await expect(page.locator('.au-photo')).toBeInViewport();
  expect(errors).toEqual([]);
 });
@@ -52,7 +52,7 @@ test('customer About presents identity, portrait and a working contact block in 
  await page.goto('/about.html#contact');await expect(page.locator('#contact')).toBeInViewport();
  await expect(page.locator('#contact-pilot')).toHaveAttribute('href','mailto:erlendhollebosch@gmail.com?subject=Pilot%20Orion');await expect(page.locator('#contact-linkedin')).toHaveAttribute('href','https://www.linkedin.com/in/erlend-hollebosch-053361181/');
  await page.locator('#oplossingen a[href="oplossingen.html"]').click();await expect(page).toHaveURL(/\/oplossingen\.html$/);
- await page.goto('/about.html');if(await page.locator('#burger').isVisible())await page.locator('#burger').click();await page.locator('#navlist a[href="about.html"]').click();await expect(page).toHaveURL(/\/about\.html$/);await expect(page.locator('h1')).toBeInViewport();
+ await page.goto('/about.html');await page.locator('footer a[href="about.html"]').last().click();await expect(page).toHaveURL(/\/about\.html$/);await expect(page.locator('h1')).toBeInViewport();
 });
 
 test('initialise the scorecard and decision matrix once in the saved language and update on language change',async({page})=>{

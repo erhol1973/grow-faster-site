@@ -41,7 +41,7 @@
 .pilot-box{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:40px;align-items:end}
 @media(max-width:900px){#steps.cards6{grid-template-columns:1fr}.pilot-box{grid-template-columns:1fr;gap:20px}}
 </style>
-<style data-cms-media>[data-cms-video-section] video{display:block;width:100%;max-width:960px;height:auto;margin:0 auto 2rem}[data-cms-video-section][hidden]{display:none}</style><script defer src="assets/i18n.js?v=20261122-klantsite"></script>
+<style data-cms-media>[data-cms-video-section] video{display:block;width:100%;max-width:960px;height:auto;margin:0 auto 2rem}[data-cms-video-section][hidden]{display:none}</style><script defer src="assets/i18n.js?v=20261123-release2"></script>
 <script defer src="assets/content.js?v=20261030-editorial-three"></script>
 <script defer src="assets/models.js?v=20261029-quality"></script>
 <script defer src="assets/consent.js?v=20261029-quality"></script>
@@ -64,6 +64,21 @@
 @media(max-width:700px){.pyr-result{width:100%}.pyr-l{grid-template-columns:minmax(0,1fr);gap:8px;margin-bottom:10px}.pyr-shape{height:64px;font-size:15px;padding:0 9%}.pyr-text{text-align:center}}
 </style>
 <style data-hero>.hero.hero-customer .hero-bg img{object-position:70% center}</style>
+<style data-bewijs>
+.cijfers{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;margin-top:28px}
+.cijfers.twee{grid-template-columns:repeat(2,minmax(0,1fr))}
+.cijfer{padding:24px;border:1px solid var(--line);background:var(--bg)}
+.cijfer .getal{display:block;font-size:44px;line-height:1.1;font-weight:700;color:var(--brand)}
+.cijfer p{margin:12px 0 0;font-size:18px;line-height:1.5}
+.cijfer .bron{margin-top:14px;font-size:14px;line-height:1.5;color:var(--muted,#5b6472)}
+.cijfer .bron a,.bewijs-bron a{color:inherit}
+.bewijs-bron{font-size:15px;line-height:1.6;max-width:70ch;color:var(--muted,#5b6472);margin-top:16px}
+.fases{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));margin-top:28px;border:1px solid var(--line);background:var(--bg)}
+.fase{padding:22px;border-right:1px solid var(--line)}.fase:last-child{border-right:0}
+.fase .tag{font:600 12px/1.4 var(--f-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--ai-ink)}
+.fase h3{margin:10px 0 8px;font-size:20px}.fase p{margin:0;font-size:17px;line-height:1.55}
+@media(max-width:900px){.cijfers,.cijfers.twee,.fases{grid-template-columns:1fr}.fase{border-right:0;border-bottom:1px solid var(--line)}.fase:last-child{border-bottom:0}}
+</style>
 </head>
 <body data-cms-page="home" class="editorial-home">
 <a class="skip-link" href="#top">Naar de inhoud</a>
@@ -72,8 +87,12 @@
     <a tabindex="0" class="brand" href="index.html" aria-label="Grow Faster – home"><picture><img class="logo gf-wordmark gf-wordmark-light" src="img/grow-faster-logo-light.svg" alt="Grow Faster" loading="lazy" decoding="async" fetchpriority="low" width="1920" height="320"><img class="logo gf-wordmark gf-wordmark-dark" src="img/grow-faster-logo-dark.svg" alt="" aria-hidden="true" loading="lazy" decoding="async" fetchpriority="low" width="1920" height="320"></picture></a>
     <ul id="navlist">
       <li><a tabindex="0" class="l cur on" href="index.html" aria-current="page">Home</a></li>
-      <li class="nav-group"><div class="nav-parent"><a tabindex="0" id="nav-oplossingen-link" class="l" href="oplossingen.html">Oplossingen</a><button type="button" class="nav-toggle" aria-controls="nav-oplossingen" aria-expanded="false" aria-labelledby="nav-oplossingen-link nav-oplossingen-more"><span class="sr" id="nav-oplossingen-more">submenu</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button></div><ul class="nav-sub" id="nav-oplossingen" hidden><li><a tabindex="0" href="orion.html">Orion</a></li><li><a tabindex="0" href="automatisering.html">Workflow-automatisering</a></li><li><a tabindex="0" href="coherence.html">Coherentie</a></li></ul></li>
-      <li><a tabindex="0" class="l" href="about.html">Over</a></li>
+      <li><a tabindex="0" class="l" href="orion.html">Orion</a></li>
+      <li><a tabindex="0" class="l" href="automatisering.html">Workflow-automatisering</a></li>
+      <li><a tabindex="0" class="l" href="coherence.html">Bedrijfsontwikkeling</a></li>
+      <li><a tabindex="0" class="l" href="training.html">Training</a></li>
+      <li><a tabindex="0" class="l" href="journal.html">Maandelijks Magazine</a></li>
+      <li><a tabindex="0" class="l" href="insights.html">Insights</a></li>
       <li class="nav-action"><a tabindex="0" class="l nav-work" href="mailto:erlendhollebosch@gmail.com?subject=Pilot%20Orion">Plan een pilotgesprek <span aria-hidden="true">→</span></a></li>
     </ul>
     <div class="lang lang-top" data-notr>
@@ -120,6 +139,12 @@
   </figure>
 </div></section>
 
+<section id="kloof" aria-labelledby="kloof-h"><div class="wrap"><div class="head"><h2 id="kloof-h">Grote bedrijven werken al met AI. De meeste kmo’s nog niet.</h2><p class="lede">Bij Belgische bedrijven met meer dan 250 medewerkers gebruiken er drie op de vier AI. Bij kleinere bedrijven is dat er nog geen een op de drie.</p></div><div class="cijfers">
+  <article class="cijfer"><span class="getal" data-notr>76%</span><p>van de grote Belgische bedrijven gebruikt AI.</p><p class="bron">Bron: <a href="https://statbel.fgov.be/en/themes/enterprises/ict-and-e-commerce-enterprises" target="_blank" rel="noopener" data-notr>Statbel, 2025</a></p></article>
+  <article class="cijfer"><span class="getal" data-notr>29%</span><p>van de kleinere Belgische bedrijven gebruikt AI.</p><p class="bron">Bron: <a href="https://statbel.fgov.be/en/themes/enterprises/ict-and-e-commerce-enterprises" target="_blank" rel="noopener" data-notr>Statbel, 2025</a></p></article>
+  <article class="cijfer"><span class="getal">1 op 3</span><p>kmo’s die generatieve AI gebruiken, ziet de werkdruk dalen.</p><p class="bron">Bron: <a href="https://www.oecd.org/en/publications/generative-ai-and-the-sme-workforce_2d08b99d-en" target="_blank" rel="noopener" data-notr>OECD, 2025</a></p></article>
+</div></div></section>
+
 <section id="vertrouwelijk"><div class="wrap"><div class="head"><h2 data-cms="home-orion-trust-h">Vertrouwelijk blijft vertrouwelijk</h2><p class="lede" data-cms="home-orion-trust-p">Recepturen en specificaties zijn gevoelig. Voor de pilot start, bespreken we met uw IT-verantwoordelijke hoe Orion met uw gegevens omgaat.</p></div>
 </div></section>
 
@@ -131,7 +156,7 @@
 
 <footer class="foot">
   <div class="wrap foot-grid foot-3">
-    <div class="fcol"><h3>Oplossingen</h3><ul><li><a href="oplossingen.html">Alle oplossingen</a></li><li><a href="orion.html">Orion</a></li><li><a href="automatisering.html">Workflow-automatisering</a></li><li><a href="coherence.html">Coherentie</a></li></ul></div>
+    <div class="fcol"><h3>Oplossingen</h3><ul><li><a href="oplossingen.html">Alle oplossingen</a></li><li><a href="orion.html">Orion</a></li><li><a href="automatisering.html">Workflow-automatisering</a></li><li><a href="coherence.html">Bedrijfsontwikkeling</a></li><li><a href="training.html">Training</a></li></ul></div>
     <div class="fcol"><h3>Vertrouwen</h3><ul><li><a href="privacy.html">Privacybeleid</a></li><li><a href="terms.html">Gebruiksvoorwaarden</a></li><li><a href="accessibility.html">Toegankelijkheid</a></li><li><button type="button" class="linkbtn open-consent">Cookie-instellingen</button></li></ul></div>
     <div class="fcol"><h3>Contact</h3><ul><li><a href="mailto:erlendhollebosch@gmail.com?subject=Pilot%20Orion">Plan een pilotgesprek</a></li><li><a href="about.html">Over Erlend Hollebosch</a></li><li><a href="https://www.linkedin.com/in/erlend-hollebosch-053361181/" target="_blank" rel="noopener" data-notr>LinkedIn</a></li></ul></div>
   </div>

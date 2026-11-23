@@ -1,7 +1,7 @@
 const {test,expect}=require('playwright/test');
 test.beforeEach(async({page})=>{await page.addInitScript(()=>localStorage.setItem('avs-consent',JSON.stringify({v:4,ext:false,ana:false,ts:Date.now()}))) });
 // Coherence for kmo's (23 Nov 2026): coherence.html ends with its own call to action instead of a next-page link.
-test('Coherence ends with the conversation call to action and no next-page link',async({page})=>{await page.goto('/coherence.html?lang=fr');await expect(page.locator('html')).toHaveAttribute('lang','fr');await expect(page.locator('.next-pg')).toHaveCount(0);await expect(page.locator('#contact-gesprek')).toHaveAttribute('href','mailto:erlendhollebosch@gmail.com?subject=Coherentie');});
+test('Coherence ends with the conversation call to action and no next-page link',async({page})=>{await page.goto('/coherence.html?lang=fr');await expect(page.locator('html')).toHaveAttribute('lang','fr');await expect(page.locator('.next-pg')).toHaveCount(0);await expect(page.locator('#contact-gesprek')).toHaveAttribute('href','mailto:erlendhollebosch@gmail.com?subject=Bedrijfsontwikkeling');});
 for(const lang of ['nl','fr']){
  test(`left alignment and requested next-page route (${lang})`,async({page})=>{
   for(const route of ['transformation.html','operating-model.html','eca.html']){
@@ -10,7 +10,8 @@ for(const lang of ['nl','fr']){
   }
   // Sprint 1: the customer homepage ends with the pilot call to action; the remaining three next-page steps stay covered.
   await page.goto('/index.html?lang='+lang);await expect(page.locator('.next-pg')).toHaveCount(0);
-  for(const [route,dest]of Object.entries({'insights.html':'coherence.html','approach.html':'about.html'})){await page.goto('/'+route+'?lang='+lang);await expect(page.locator('html')).toHaveAttribute('lang',lang);await expect(page.locator('.next-pg a')).toHaveAttribute('href',dest);await page.locator('.next-pg a').click();await expect(page).toHaveURL(new RegExp('/'+dest.replace('.','\\.')+'$'))}
+  // Release 2: Insights ends with its own contact block instead of a next-page link.
+  for(const [route,dest]of Object.entries({'approach.html':'about.html'})){await page.goto('/'+route+'?lang='+lang);await expect(page.locator('html')).toHaveAttribute('lang',lang);await expect(page.locator('.next-pg a')).toHaveAttribute('href',dest);await page.locator('.next-pg a').click();await expect(page).toHaveURL(new RegExp('/'+dest.replace('.','\\.')+'$'))}
  });
 }
 

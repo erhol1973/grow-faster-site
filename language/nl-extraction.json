@@ -3,7 +3,7 @@
   "scope": "rendered_local_nl_runtime_dictionaries_static_cms_and_mail",
   "technicalReview": {
     "date": "2026-11-23",
-    "reason": "Coherentie: label \"De film\" verwijderd (rendered DOM, i18n.js). Coherentie voor kmo’s: coherence.html herschreven (rendered DOM + coherence CMS catalog met coh-kmo-sleutels), Orion-bronregel; changed i18n.js (runtime dictionary adapter), cms-catalog.js (static catalog adapter) and ux.js (page description only). Geen adapterwijziging. Release 1.1: site.js fragment re-anchor (no text, no adapter change); customer About page (rendered DOM + about-klant CMS catalog) and the reader link to Books; release 1: new oplossingen/orion/automatisering pages, assets/home-film.js (source/poster switch only, no text) and the coherence film text block (rendered DOM) and customer homepage are discovered by the existing DOM adapter; changed i18n.js (runtime dictionary adapter), cms-catalog.js (static catalog adapter) and cms-admin.js (excluded admin). Also records assets/baies-dev-*.js and the i18n/site.js changes merged on 12 Nov (PR #74/#75) without a contract update, which made every daily run since 13 Nov fail closed; their Executive Radar text is covered only as rendered in the initial NL DOM. No adapter code changed; no language approval"
+    "reason": "Release 2: platte menubalk (rendered DOM), nieuwe pagina’s training.html en journal.html (Monthly Journal), herschreven insights.html, automatisering.html en coherence.html (Bedrijfsontwikkeling); journal-fr.html wordt een doorverwijzing. Nieuwe runtime-dictionary assets/i18n-insights.js (zelfde adapter als i18n.js, alleen op insights.html). Gewijzigd: i18n.js, cms-catalog.js (static catalog adapter). Geen adapterwijziging in de extractor. Coherentie: label \"De film\" verwijderd (rendered DOM, i18n.js). Coherentie voor kmo’s: coherence.html herschreven (rendered DOM + coherence CMS catalog met coh-kmo-sleutels), Orion-bronregel; changed i18n.js (runtime dictionary adapter), cms-catalog.js (static catalog adapter) and ux.js (page description only). Geen adapterwijziging. Release 1.1: site.js fragment re-anchor (no text, no adapter change); customer About page (rendered DOM + about-klant CMS catalog) and the reader link to Books; release 1: new oplossingen/orion/automatisering pages, assets/home-film.js (source/poster switch only, no text) and the coherence film text block (rendered DOM) and customer homepage are discovered by the existing DOM adapter; changed i18n.js (runtime dictionary adapter), cms-catalog.js (static catalog adapter) and cms-admin.js (excluded admin). Also records assets/baies-dev-*.js and the i18n/site.js changes merged on 12 Nov (PR #74/#75) without a contract update, which made every daily run since 13 Nov fail closed; their Executive Radar text is covered only as rendered in the initial NL DOM. No adapter code changed; no language approval"
   },
   "javascript": [
     {
@@ -28,7 +28,7 @@
     },
     {
       "file": "assets/cms-catalog.js",
-      "sha256": "16a811704c8c2d7d87d1e0fc6c6c0948abf713e5a72289c5390ca788a10f692a"
+      "sha256": "c869e8c032bd1613817f3a7c97fc4f9cf2954a28ed6c680f8dc76dcf52fcf887"
     },
     {
       "file": "assets/cms-client.js",
@@ -75,8 +75,12 @@
       "sha256": "3bb45468eddad3d1c9c0e0908580c216aef48c09d63b3f3dd0256f479fd6f19a"
     },
     {
+      "file": "assets/i18n-insights.js",
+      "sha256": "ffbd10397662efec400ed48f8c7c807dae54a416ea063e245ae0d7f388b30940"
+    },
+    {
       "file": "assets/i18n.js",
-      "sha256": "5fae32645d280e9c165cc82ffc923094e9ecc87f741c5f26a1eeb84d1fdcf8f9"
+      "sha256": "7ce902ee224aae06b237751e90646c3ae7de618114d1dfc33cfc499024bfbe9b"
     },
     {
       "file": "assets/journal.js",
@@ -174,7 +178,7 @@
     },
     {
       "file": "coherence.html",
-      "sha256": "d48acdcdafb139621b2e29b1ccc7a85f67af1f10cbc4d6795f97df18cd3e3147"
+      "sha256": "daa55de1502b6cd5f456d8df9f6d9a47af16d2212f3acac2e20f317bb4cc167f"
     },
     {
       "file": "coordination-overload-1.html",
@@ -206,7 +210,7 @@
     },
     {
       "file": "insights.html",
-      "sha256": "04550110ad74df06a33f4f22200c529dde88c435c3627d14de06948eb3b6bc98"
+      "sha256": "54e4adc37cf35861fbbe7eceef1866ef8c11812c6f5bbce23fab87a3de606d97"
     },
     {
       "file": "journal-fr.html",
@@ -214,7 +218,7 @@
     },
     {
       "file": "journal.html",
-      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      "sha256": "3ed969b346a66f8b03bb6f094fe916a44269f5d4f66543ff2be5f76e6b2ca5ca"
     },
     {
       "file": "operating-model.html",
@@ -247,6 +251,10 @@
     {
       "file": "the-enterprise-paradox-1.html",
       "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "training.html",
+      "sha256": "8d68d607423593eb9736f3d7fa2c8162ef13b27169d594dbb432913480a3d664"
     },
     {
       "file": "transformation.html",

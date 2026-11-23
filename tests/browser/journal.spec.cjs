@@ -10,7 +10,7 @@ test('Maandelijks Magazine opens from the menu and switches language without los
  await page.locator('#lang-btn-top').click();await page.locator('.lang-top [data-lang="fr"]').click();
  await expect(page.locator('html')).toHaveAttribute('lang','fr');await expect(page).toHaveURL(/\/journal\.html$/);
  await expect(page.locator('#editie-1 h2')).toHaveText('La ressaisie, le gaspillage que personne ne voit');
- await expect(page.locator('#hero-abo')).toHaveAttribute('href','mailto:erlendhollebosch@gmail.com?subject=Magazine');
+ await expect(page.locator('#hero-abo')).toHaveAttribute('href','mailto:info@grow-faster.be?subject=Magazine');
  await expect(page.locator('main form')).toHaveCount(0);
  expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1)).toBe(true);
 });

@@ -460,7 +460,7 @@
   document.addEventListener("keydown",e=>{if(e.key==="Escape")closeMenus()});
 
   /* e-mail address assembled at runtime (anti-spam) */
-  (function(){const a=["erlend","hollebosch"].join("")+String.fromCharCode(64)+["gmail","com"].join(".");
+  (function(){const a="info"+String.fromCharCode(64)+["grow-faster","be"].join(".");
     document.querySelectorAll("[data-em]").forEach(e=>e.textContent=a);
     const mailFor=e=>{const l=document.documentElement.lang,v=(l==="nl"&&e.dataset.mailNl)||(l==="fr"&&e.dataset.mailFr)||e.dataset.mail;return "mailto:"+a+v.replace(/&amp;/g,"&")};
     const syncMail=()=>document.querySelectorAll("a[data-mail]").forEach(e=>{e.href=mailFor(e)});syncMail();

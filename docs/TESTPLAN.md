@@ -10,6 +10,8 @@ Tests:
 - tests/browser/afspraak.spec.cjs (herschreven): boeken van dag tot bevestiging, foutmeldingen zonder verzending, een uur dat intussen bezet is, een agenda die niet laadt, taalwissel, en de beheerpagina (aanmelden, afspraak zien, blokkeren in Brusselse tijd, annuleren in twee stappen). De boekingsfunctie wordt in de browser vervangen door een lokale nep, zodat de test geen echte boekingen maakt en zonder netwerk draait. Dit is geen cachetest.
 - Database: in growfaster-test is in een teruggedraaide transactie nagegaan dat een tweede boeking op hetzelfde uur "taken" geeft, een boeking binnen 24 uur "slot", en dat anonieme en niet-beheerders geen toegang krijgen.
 
+Ontwerp C (keuze van de eigenaar, 23 november 2026): dagkaarten die opzij schuiven met het aantal vrije uren, uren per voormiddag en namiddag, en een vaste balk met de keuze en de knop Verder. De browsertest controleert kaarten, tellingen, de lege dagdelen, de balk en de Franse versie. Op smalle schermen kreeg de stapkolom `minmax(0,1fr)`, zodat de schuifstrook de pagina niet breder maakt.
+
 De beheerpagina neemt de publieke projectsleutels over uit assets/cms-config.js (nieuw: `GF_SUPABASE_PROJECTS`), zodat ze maar op één plek staan en de bestaande gitleaks-uitzondering niet verruimd hoeft te worden. tests/cms-environment.test.cjs controleert dat die lijst gelijk is aan de CMS-configuratie en alleen publishable keys bevat. De lokale testserver levert in CMS-testmodus ook die lijst, met een niet-bruikbare testwaarde als sleutel.
 
 Niet automatisch getest: het echte versturen van mails (vraagt de SMTP-instellingen van de eigenaar) en de aankomst in Outlook. Dat gebeurt met een echte testboeking voor de release.

@@ -5,7 +5,7 @@
   var PROD = 'https://dbooobckaqbkrmkpcuem.supabase.co/functions/v1/booking';
   var TEST = 'https://gqsvoioccvklzfmdmexy.supabase.co/functions/v1/booking';
   var ENDPOINT = window.GF_BOOKING_ENDPOINT || (host === 'grow-faster.be' || host === 'www.grow-faster.be' ? PROD : TEST);
-  var TZ = 'Europe/Brussels', FIRST_DAYS = 10;
+  
   var T = {
     nl: {
       loading: 'De vrije momenten worden geladen.', none: 'Er zijn de komende weken geen vrije momenten. Mail ons gerust op info@grow-faster.be.',
@@ -15,6 +15,7 @@
       rate: 'Er zijn te veel aanvragen verstuurd. Probeer het binnen een uur opnieuw of mail ons.',
       error: 'Het boeken is niet gelukt. Probeer het opnieuw of mail ons op info@grow-faster.be.', sending: 'Bezig met boeken…',
       done: 'U hebt een gesprek op {d} om {t}. Onderwerp: {o}.',
+      free1: '1 uur vrij', freeN: '{n} uren vrij', back: 'Vorige dagen', next: 'Volgende dagen', noAm: 'Geen vrij uur in de voormiddag.', noPm: 'Geen vrij uur in de namiddag.',
     },
     fr: {
       loading: 'Chargement des créneaux disponibles.', none: 'Aucun créneau n’est disponible dans les prochaines semaines. Écrivez-nous à info@grow-faster.be.',
@@ -24,12 +25,13 @@
       rate: 'Trop de demandes ont été envoyées. Réessayez dans une heure ou écrivez-nous.',
       error: 'La réservation n’a pas abouti. Réessayez ou écrivez-nous à info@grow-faster.be.', sending: 'Réservation en cours…',
       done: 'Votre entretien est prévu le {d} à {t}. Sujet : {o}.',
+      free1: '1 heure libre', freeN: '{n} heures libres', back: 'Jours précédents', next: 'Jours suivants', noAm: 'Pas de créneau libre le matin.', noPm: 'Pas de créneau libre l’après-midi.',
     },
   };
   var $ = function (id) { return document.getElementById(id); };
   var lang = function () { return document.documentElement.lang === 'fr' ? 'fr' : 'nl'; };
   var t = function (k) { return T[lang()][k]; };
-  var slots = [], day = null, chosen = null, shownDays = FIRST_DAYS, opened = Date.now(), state = 'loading';
+  var slots = [], day = null, chosen = null, opened = Date.now(), state = 'loading';
 
   // Step 1: topic, preselected from ?onderwerp=
   var radios = document.querySelectorAll('input[data-topic]'), echo = $('gekozen-onderwerp');
@@ -45,38 +47,57 @@
   function longDay(date) { return dayLabel(date, { weekday: 'long', day: 'numeric', month: 'long' }); }
 
   function status(text) { var s = $('planner-status'); s.textContent = text || ''; s.hidden = !text; }
+  function endTime(time) { return String(Number(time.slice(0, 2)) + 1).padStart(2, '0') + ':00'; }
   function render() {
     status(state === 'loading' ? t('loading') : state === 'failed' ? t('failed') : !slots.length ? t('none') : day ? '' : t('pickDay'));
-    var days = [], seen = {};
-    slots.forEach(function (s) { if (!seen[s.date]) { seen[s.date] = 1; days.push(s.date); } });
+    var days = [], count = {};
+    slots.forEach(function (s) { if (!count[s.date]) { count[s.date] = 0; days.push(s.date); } count[s.date]++; });
     $('dagen').hidden = !days.length;
-    var box = $('dag-knoppen'); box.replaceChildren();
-    days.slice(0, shownDays).forEach(function (d) {
-      var b = document.createElement('button'); b.type = 'button'; b.className = 'dag-knop'; b.dataset.date = d;
+    var box = $('dag-knoppen'), keep = box.scrollLeft; box.replaceChildren();
+    days.forEach(function (d) {
+      var b = document.createElement('button'); b.type = 'button'; b.className = 'dag-kaart'; b.dataset.date = d;
       b.setAttribute('aria-pressed', String(d === day));
-      b.append(dayLabel(d, { weekday: 'long' }));
-      var sm = document.createElement('small'); sm.textContent = dayLabel(d, { day: 'numeric', month: 'long' }); b.append(sm);
-      b.addEventListener('click', function () { day = d; chosen = null; render(); var f = $('uur-knoppen').querySelector('button'); if (f) f.focus(); });
+      var top = document.createElement('span'); top.className = 'dk-boven';
+      top.textContent = dayLabel(d, { weekday: 'long' });
+      var nr = document.createElement('span'); nr.className = 'dk-nr'; nr.textContent = dayLabel(d, { day: 'numeric' });
+      var mon = document.createElement('small'); mon.textContent = dayLabel(d, { month: 'short' }).replace('.', ''); nr.append(mon);
+      var free = document.createElement('span'); free.className = 'dk-vrij'; free.textContent = count[d] === 1 ? t('free1') : t('freeN').replace('{n}', count[d]);
+      b.setAttribute('aria-label', longDay(d) + ', ' + free.textContent);
+      b.append(top, nr, free);
+      b.addEventListener('click', function () { day = d; chosen = null; render(); var f = document.querySelector('#uren .uurknop'); if (f) f.focus({ preventScroll: true }); });
       box.append(b);
     });
-    $('meer-dagen').hidden = days.length <= shownDays;
+    box.scrollLeft = keep; arrows();
     var hours = slots.filter(function (s) { return s.date === day; });
-    $('uren').hidden = !hours.length;
-    var ub = $('uur-knoppen'); ub.replaceChildren();
+    $('uren').hidden = !day || !hours.length;
+    var am = $('uren-vm'), pm = $('uren-nm'); am.replaceChildren(); pm.replaceChildren();
     hours.forEach(function (s) {
-      var b = document.createElement('button'); b.type = 'button'; b.textContent = s.time; b.dataset.start = s.start;
-      b.setAttribute('aria-pressed', String(chosen && chosen.start === s.start));
-      b.addEventListener('click', function () { chosen = s; render(); $('f-naam').focus({ preventScroll: true }); $('gegevens').scrollIntoView({ behavior: 'smooth', block: 'start' }); });
-      ub.append(b);
+      var b = document.createElement('button'); b.type = 'button'; b.className = 'uurknop'; b.textContent = s.time; b.dataset.start = s.start;
+      b.setAttribute('aria-pressed', String(!!chosen && chosen.start === s.start));
+      b.addEventListener('click', function () { chosen = s; render(); });
+      (Number(s.time.slice(0, 2)) < 12 ? am : pm).append(b);
     });
+    [[am, 'noAm'], [pm, 'noPm']].forEach(function (x) { if (!x[0].children.length) { var p = document.createElement('p'); p.className = 'leeg'; p.textContent = t(x[1]); x[0].append(p); } });
+    var bar = $('keuze-balk'); bar.hidden = !chosen;
+    if (chosen) $('keuze-tekst').textContent = dayLabel(chosen.date, { weekday: 'short', day: 'numeric', month: 'short' }).replace(/\./g, '') + ' · ' + chosen.time + ' - ' + endTime(chosen.time);
+    $('dagen-terug').setAttribute('aria-label', t('back')); $('dagen-verder').setAttribute('aria-label', t('next'));
     showMoment();
   }
+  function arrows() {
+    var box = $('dag-knoppen');
+    $('dagen-terug').disabled = box.scrollLeft <= 2;
+    $('dagen-verder').disabled = box.scrollLeft + box.clientWidth >= box.scrollWidth - 2;
+  }
+  function step(dir) { var box = $('dag-knoppen'); box.scrollBy({ left: dir * Math.max(240, box.clientWidth * 0.8), behavior: 'smooth' }); }
+  $('dagen-terug').addEventListener('click', function () { step(-1); });
+  $('dagen-verder').addEventListener('click', function () { step(1); });
+  $('dag-knoppen').addEventListener('scroll', arrows, { passive: true });
+  $('keuze-verder').addEventListener('click', function () { $('gegevens').scrollIntoView({ behavior: 'smooth', block: 'start' }); $('f-naam').focus({ preventScroll: true }); });
   function showMoment() {
     var box = $('gekozen-moment'); if (!box) return;
     box.hidden = !chosen;
     if (chosen) $('moment-tekst').textContent = longDay(chosen.date) + ' ' + t('at') + ' ' + chosen.time + ' · ' + topicLabel();
   }
-  $('meer-dagen').addEventListener('click', function () { shownDays += 10; render(); });
 
   function load() {
     state = 'loading'; render();
@@ -101,7 +122,7 @@
       if (id === 'f-tel') ok = ok && (el.value.match(/\d/g) || []).length >= 6;
       el.setAttribute('aria-invalid', String(!ok)); if (!ok) bad.push(el);
     });
-    if (!chosen) { message(t('pickFirst')); var d = $('dag-knoppen').querySelector('button'); if (d) d.focus(); return; }
+    if (!chosen) { message(t('pickFirst')); var d = $('dag-knoppen').querySelector('button'); if (d) d.focus({ preventScroll: true }); $('tijdstip').scrollIntoView({ behavior: 'smooth' }); return; }
     if (bad.length) { message(t('fields')); bad[0].focus(); return; }
     var data = new FormData(form), btn = $('boek'), label = btn.innerHTML;
     btn.disabled = true; btn.textContent = t('sending');
@@ -112,7 +133,7 @@
       .then(function (res) {
         if (res.status === 200 && res.body.ok) {
           var done = chosen;
-          form.hidden = true; $('gekozen-moment').hidden = true; $('tijdstip').hidden = true; $('onderwerp').hidden = true;
+          form.hidden = true; $('gekozen-moment').hidden = true; $('keuze-balk').hidden = true; $('tijdstip').hidden = true; $('onderwerp').hidden = true;
           $('bevestigd-tekst').textContent = t('done').replace('{d}', longDay(done.date)).replace('{t}', done.time).replace('{o}', topicLabel());
           $('bevestigd').hidden = false; $('bevestigd').focus();
           return;

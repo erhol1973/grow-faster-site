@@ -28,17 +28,24 @@ test('the menu action opens the planner with a general question selected',async(
  await page.goto('/index.html');if(await page.locator('#burger').isVisible())await page.locator('#burger').click();
  await page.locator('#navlist .nav-work').click();await expect(page).toHaveURL(/\/afspraak\.html$/);
  await expect(page.locator('input[value="algemeen"]')).toBeChecked();await expect(page.locator('#gekozen-onderwerp')).toHaveText('Algemene vraag');
- await expect(page.locator('#dag-knoppen button')).toHaveCount(10);await expect(page.locator('#meer-dagen')).toBeVisible();
- await page.locator('#meer-dagen').click();await expect(page.locator('#dag-knoppen button')).toHaveCount(14);await expect(page.locator('#meer-dagen')).toBeHidden();
+ await expect(page.locator('#dag-knoppen .dag-kaart')).toHaveCount(14,{timeout:10000});
+ const first=page.locator('#dag-knoppen .dag-kaart').first();
+ await expect(first.locator('.dk-nr')).toHaveText('8jan');await expect(first.locator('.dk-boven')).toHaveText('dinsdag');await expect(first.locator('.dk-vrij')).toHaveText('2 uren vrij');
+ await expect(page.locator('#dag-knoppen .dag-kaart').nth(1).locator('.dk-vrij')).toHaveText('1 uur vrij');
+ await expect(first).toHaveAttribute('aria-label','dinsdag 8 januari, 2 uren vrij');
+ await expect(page.locator('#uren')).toBeHidden();await expect(page.locator('#keuze-balk')).toBeHidden();
+ expect(await page.locator('#dag-knoppen').evaluate(e=>getComputedStyle(e).overflowX)).toBe('auto');
  expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1)).toBe(true);
 });
 
 test('book a slot: day, hour, details, confirmation with the chosen topic',async({page})=>{
  const sent=await fake(page);
  await page.goto('/afspraak.html?onderwerp=training');await expect(page.locator('input[value="training"]')).toBeChecked();
- await page.locator('#dag-knoppen button').first().click();await expect(page.locator('#dag-knoppen button').first()).toHaveAttribute('aria-pressed','true');
- await expect(page.locator('#uur-knoppen button')).toHaveText(['09:00','10:00']);
- await page.locator('#uur-knoppen button',{hasText:'10:00'}).click();
+ await page.locator('#dag-knoppen .dag-kaart').first().click();await expect(page.locator('#dag-knoppen .dag-kaart').first()).toHaveAttribute('aria-pressed','true');
+ await expect(page.locator('#uren-vm .uurknop')).toHaveText(['09:00','10:00']);await expect(page.locator('#uren-nm')).toHaveText('Geen vrij uur in de namiddag.');
+ await page.locator('#uren-vm .uurknop',{hasText:'10:00'}).click();
+ await expect(page.locator('#keuze-balk')).toBeVisible();await expect(page.locator('#keuze-tekst')).toHaveText('di 8 jan · 10:00 - 11:00');
+ await page.locator('#keuze-verder').click();await expect(page.locator('#f-naam')).toBeFocused();
  await expect(page.locator('#moment-tekst')).toHaveText('dinsdag 8 januari om 10:00 · Training');
  await fill(page);await page.waitForTimeout(3100);await page.locator('#boek').click();
  await expect(page.locator('#bevestigd')).toBeVisible();await expect(page.locator('#bevestigd')).toBeFocused();
@@ -51,10 +58,10 @@ test('book a slot: day, hour, details, confirmation with the chosen topic',async
 
 test('missing choices and fields are explained and nothing is sent',async({page})=>{
  const sent=await fake(page);
- await page.goto('/afspraak.html');await expect(page.locator('#dag-knoppen button').first()).toBeVisible();
+ await page.goto('/afspraak.html');await expect(page.locator('#dag-knoppen .dag-kaart').first()).toBeVisible();
  await fill(page);await page.locator('#boek').click();
  await expect(page.locator('#boek-melding')).toHaveText('Kies eerst een dag en een uur.');
- await page.locator('#dag-knoppen button').nth(1).click();await page.locator('#uur-knoppen button').first().click();
+ await page.locator('#dag-knoppen .dag-kaart').nth(1).click();await expect(page.locator('#uren-vm')).toHaveText('Geen vrij uur in de voormiddag.');await page.locator('#uren-nm .uurknop').first().click();
  await page.locator('#f-mail').fill('geen-adres');await page.locator('#f-tel').fill('12');await page.locator('#boek').click();
  await expect(page.locator('#boek-melding')).toHaveText('Vul de gemarkeerde velden in.');
  await expect(page.locator('#f-mail')).toHaveAttribute('aria-invalid','true');await expect(page.locator('#f-tel')).toHaveAttribute('aria-invalid','true');
@@ -64,10 +71,10 @@ test('missing choices and fields are explained and nothing is sent',async({page}
 
 test('a slot taken in the meantime asks for another hour and reloads the agenda',async({page})=>{
  await fake(page,{post:()=>[409,{error:'taken'}]});
- await page.goto('/afspraak.html');await page.locator('#dag-knoppen button').first().click();await page.locator('#uur-knoppen button').first().click();
+ await page.goto('/afspraak.html');await page.locator('#dag-knoppen .dag-kaart').first().click();await page.locator('#uren-vm .uurknop').first().click();
  await fill(page);await page.locator('#boek').click();
  await expect(page.locator('#boek-melding')).toHaveText('Dat uur is intussen geboekt. Kies een ander uur.');
- await expect(page.locator('#gekozen-moment')).toBeHidden();await expect(page.locator('#boek')).toBeEnabled();
+ await expect(page.locator('#gekozen-moment')).toBeHidden();await expect(page.locator('#keuze-balk')).toBeHidden();await expect(page.locator('#boek')).toBeEnabled();
 });
 
 test('when the agenda cannot be loaded the visitor gets the mail address',async({page})=>{
@@ -82,10 +89,11 @@ test('topic and planner follow the language switch',async({page})=>{
  await expect(page.locator('#gekozen-onderwerp')).toHaveText('Vragenlijsten automatisch invullen met AI');
  await page.locator('label').filter({hasText:'Training'}).click();await expect(page.locator('#gekozen-onderwerp')).toHaveText('Training');
  await page.locator('input[value="workflow"]').focus();await page.keyboard.press('Space');await expect(page.locator('#gekozen-onderwerp')).toHaveText('Workflow-automatisering');
- await page.locator('#dag-knoppen button').first().click();
+ await page.locator('#dag-knoppen .dag-kaart').first().click();await page.locator('#uren-vm .uurknop').first().click();
  await page.locator('#lang-btn-top').click();await page.locator('.lang-top [data-lang="fr"]').click();
  await expect(page.locator('#gekozen-onderwerp')).toHaveText('Automatisation des workflows');
- await expect(page.locator('#dag-knoppen button').first()).toContainText('mardi');
+ await expect(page.locator('#dag-knoppen .dag-kaart').first()).toHaveAttribute('aria-label','mardi 8 janvier, 2 heures libres');
+ await expect(page.locator('#keuze-tekst')).toHaveText('mar 8 janv · 09:00 - 10:00');await expect(page.locator('#keuze-verder')).toContainText('Continuer');await expect(page.locator('.dagdeel h4').first()).toHaveText('Matin');
  await expect(page.locator('#boek')).toContainText('Confirmer le rendez-vous');await expect(page.locator('#stap3-h')).toHaveText('Vos coordonnées');
 });
 

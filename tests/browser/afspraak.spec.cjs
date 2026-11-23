@@ -121,3 +121,13 @@ test('administration: sign in, see appointments, block a period in Brussels time
  await expect(page.locator('#notice')).toContainText('Afspraak geannuleerd');
  expect(calls.find(c=>c[0]==='booking_admin_cancel')[1]).toEqual({appointment_id:'x1'});
 });
+
+test('loading the free hours does not shift the page (footer links stay where they are)',async({page})=>{
+ let release;const gate=new Promise(r=>release=r);
+ await page.route('**/functions/v1/booking',async r=>{await gate;r.fulfill({status:200,contentType:'application/json',body:JSON.stringify({slots:SLOTS})})});
+ await page.goto('/afspraak.html');await expect(page.locator('#planner-status')).toHaveText('De vrije momenten worden geladen.');
+ const before=await page.evaluate(()=>document.documentElement.scrollHeight);
+ release();await expect(page.locator('.dag-kaart').first()).toBeVisible();
+ const after=await page.evaluate(()=>document.documentElement.scrollHeight);
+ expect(Math.abs(after-before)).toBeLessThanOrEqual(4);
+});

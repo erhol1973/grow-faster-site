@@ -12,6 +12,8 @@ Tests:
 
 Ontwerp C (keuze van de eigenaar, 23 november 2026): dagkaarten die opzij schuiven met het aantal vrije uren, uren per voormiddag en namiddag, en een vaste balk met de keuze en de knop Verder. De browsertest controleert kaarten, tellingen, de lege dagdelen, de balk en de Franse versie. Op smalle schermen kreeg de stapkolom `minmax(0,1fr)`, zodat de schuifstrook de pagina niet breder maakt.
 
+CI-bevinding 24 november 2026: op mobiele WebKit verschoof de pagina toen de dagkaarten laadden, waardoor de test die onderaan op Contact klikt mis klikte. De planner reserveert nu zijn hoogte (min-height 232px); een nieuwe browsertest houdt de antwoorden van de boekingsfunctie tegen tot na de eerste meting en eist dat de paginahoogte hooguit 4 pixels verandert.
+
 De beheerpagina neemt de publieke projectsleutels over uit assets/cms-config.js (nieuw: `GF_SUPABASE_PROJECTS`), zodat ze maar op één plek staan en de bestaande gitleaks-uitzondering niet verruimd hoeft te worden. tests/cms-environment.test.cjs controleert dat die lijst gelijk is aan de CMS-configuratie en alleen publishable keys bevat. De lokale testserver levert in CMS-testmodus ook die lijst, met een niet-bruikbare testwaarde als sleutel.
 
 Niet automatisch getest: het echte versturen van mails (vraagt de SMTP-instellingen van de eigenaar) en de aankomst in Outlook. Dat gebeurt met een echte testboeking voor de release.

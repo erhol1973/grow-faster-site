@@ -18,3 +18,10 @@ test('admin CSP permits isolated Auth and media without wildcard Supabase origin
  for(const directive of ['connect-src','img-src','media-src'])assert.ok(policy.split(';').find(p=>p.trim().startsWith(directive+' ')).includes('https://gqsvoioccvklzfmdmexy.supabase.co'));
  assert.ok(!policy.includes('*.supabase.co'));
 });
+test('shared project list matches the CMS configuration and holds only publishable keys',()=>{
+ const context={window:{location:{hostname:'grow-faster.be',search:''}}};vm.runInNewContext(source,context);
+ const p=context.window.GF_SUPABASE_PROJECTS;assert.ok(Object.isFrozen(p)&&Object.isFrozen(p.prod)&&Object.isFrozen(p.test));
+ assert.equal(p.prod.url,context.window.GF_CMS_CONFIG.url);assert.equal(p.prod.key,context.window.GF_CMS_CONFIG.key);
+ assert.equal(p.test.url,'https://gqsvoioccvklzfmdmexy.supabase.co');
+ for(const k of [p.prod.key,p.test.key])assert.match(k,/^sb_publishable_/);
+});

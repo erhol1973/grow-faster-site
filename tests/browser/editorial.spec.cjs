@@ -9,7 +9,7 @@ for(const [language,heading,primary,secondary] of [
  for(const width of [390,768,1024,1440]){
   await page.setViewportSize({width,height:1000});await page.goto('/index.html');
   await expect(page.locator('#consent')).toBeHidden();await expect(page.locator('#hero h1')).toHaveText(heading);
-  await expect(page.locator('#hero-pilot')).toContainText(primary);await expect(page.locator('#hero-pilot')).toHaveAttribute('href','mailto:erlendhollebosch@gmail.com?subject=Pilot%20Orion');await expect(page.locator('#hero-orion')).toContainText(secondary);
+  await expect(page.locator('#hero-pilot')).toContainText(primary);await expect(page.locator('#hero-pilot')).toHaveAttribute('href','afspraak.html?onderwerp=vragenlijsten');await expect(page.locator('#hero-orion')).toContainText(secondary);
   expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1)).toBe(true);
   expect(await page.locator('#hero img').evaluate(async image=>{await image.decode();return image.naturalWidth>0})).toBe(true);
   const bounds=await page.locator('#hero h1,#hero .sub,#hero .btn').evaluateAll(els=>els.map(el=>{const r=el.getBoundingClientRect();return{x:r.x,right:r.right,width:r.width,height:r.height,bottom:r.bottom}}));

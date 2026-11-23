@@ -2,7 +2,8 @@ const {test,expect}=require('playwright/test');
 // Release 2 (23 Nov 2026, owner decision): one flat menu without dropdowns: Home · Orion · Workflow-automatisering ·
 // Bedrijfsontwikkeling · Training · Maandelijks Magazine · Insights, plus one pilot mailto action. The Oplossingen disclosure
 // cases left with the dropdown; keyboard, resize and contrast coverage now applies to the flat list.
-const PILOT='mailto:erlendhollebosch@gmail.com?subject=Pilot%20Orion';
+// Appointment page (23 Nov 2026): the pilot action opens afspraak.html instead of a mail.
+const PILOT='afspraak.html';
 const copy={nl:{primary:['Home','Orion','Workflow-automatisering','Bedrijfsontwikkeling','Training','Maandelijks Magazine','Insights'],work:'Plan een pilotgesprek',orion:'Uw klantvragenlijsten, ingevuld vanuit uw eigen documenten.',training:'Uw mensen leren werken met AI en automatisering.'},fr:{primary:['Accueil','Orion','Automatisation des workflows','Développement d’entreprise','Formation','Magazine mensuel','Insights'],work:'Planifier un entretien pilote',orion:'Vos questionnaires clients, remplis à partir de vos propres documents.',training:'Vos collaborateurs apprennent à travailler avec l’IA et l’automatisation.'}};
 async function seed(page,lang='nl'){await page.addInitScript(l=>{localStorage.setItem('avs-lang',l);localStorage.setItem('avs-consent',JSON.stringify({v:4,ext:false,ana:false,ts:Date.now()}))},lang)}
 async function activate(locator,info){if(info.project.use.isMobile)await locator.tap();else await locator.click()}

@@ -2,7 +2,9 @@
 const {test}=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),vm=require('node:vm');
 const root=path.resolve(__dirname,'..','dist');const read=f=>fs.readFileSync(path.join(root,f),'utf8');
 const I18N=()=>{const c={window:{}};vm.runInNewContext(read('assets/i18n.js'),c);return c.window.I18N};
-const PILOT='mailto:erlendhollebosch@gmail.com?subject=Pilot%20Orion';
+// Appointment page (23 Nov 2026, owner decision): conversation buttons open afspraak.html with the topic preselected
+// instead of a mail; the Google booking page sends the confirmations.
+const PILOT='afspraak.html';
 const text=html=>html.replace(/<script[\s\S]*?<\/script>|<style[\s\S]*?<\/style>/g,'').replace(/<[^>]+>/g,' ').replaceAll('&amp;','&').replace(/\s+/g,' ');
 const approved=['Erlend Hollebosch, oprichter van Grow Faster','Meer dan twintig jaar heb ik grote bedrijven geholpen sneller en beter te werken. Nu breng ik die aanpak naar kmo’s, met AI en automatisering.','Waarom Grow Faster','Bij Volvo, Colruyt, Solvay, Telenet en ArcelorMittal zag ik hetzelfde: mensen verliezen uren aan zoeken, overtypen en afstemmen. Grote bedrijven hebben teams en budget om dat aan te pakken. Een kmo heeft die vaak niet, terwijl het probleem er net zo groot is.','Grow Faster brengt de aanpak van grote bedrijven op kmo-maat. We starten met één taak die vandaag te veel tijd kost, meten wat het oplevert en breiden pas uit als het werkt.','Hoe ik werk','Klein starten.','Eén concrete taak, zoals de vragenlijsten van uw klanten.','Meten.','Hoeveel tijd kost het vandaag, en hoeveel na de verandering?','Uitbreiden.','Pas als het resultaat er is, pakken we de volgende stap aan.','Wat ik meebreng','Meer dan twintig jaar programma- en projectmanagement, procesverbetering en transformatie.','Ervaring in voeding en retail, industrie, telecom en technologie, onder meer bij Colruyt Group, Volvo Group, Solvay, ArcelorMittal, Telenet en Ericsson.','Gecertificeerd in AI-operating models en AI-leiderschap (IBM), organisatieverandering (ILE) en verandertrajecten (ICAgile, SAFe SPC).','Oplossingen','Alle oplossingen','Laten we kennismaken','Vertel me welke taak bij u vandaag te veel tijd kost.'];
 test('About publishes the approved customer text with a French translation for every line',()=>{const body=text(read('about.html')),I=I18N();
@@ -15,7 +17,7 @@ test('About keeps the portrait and has one pilot action in the hero and in the c
   const contact=html.match(/<section id="contact" class="tinted" tabindex="-1"[\s\S]*?<\/section>/);assert.ok(contact,'contact block keeps id and tabindex');
   assert.match(contact[0],/id="contact-pilot"/);assert.match(contact[0],/href="https:\/\/www\.linkedin\.com\/in\/erlend-hollebosch-053361181\/" class="btn ghost" id="contact-linkedin" target="_blank" rel="noopener"/);
   assert.doesNotMatch(contact[0],/binnen|uur|dagen|werkdag/i,'no response-time promise');
-  for(const m of main.matchAll(/href="(mailto:[^"]+)"/g))assert.equal(m[1].replaceAll('&amp;','&'),PILOT);
+  assert.doesNotMatch(main,/href="mailto:/);
   assert.doesNotMatch(main,/<form\b/);
 });
 test('About links the solutions and no longer links books, track record or the reader',()=>{const html=read('about.html'),main=html.match(/<main[\s\S]*?<\/main>/)[0];

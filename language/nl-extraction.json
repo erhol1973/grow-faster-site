@@ -3,7 +3,7 @@
   "scope": "rendered_local_nl_runtime_dictionaries_static_cms_and_mail",
   "technicalReview": {
     "date": "2026-11-23",
-    "reason": "Release 2: platte menubalk (rendered DOM), nieuwe pagina’s training.html en journal.html (Monthly Journal), herschreven insights.html, automatisering.html en coherence.html (Bedrijfsontwikkeling); journal-fr.html wordt een doorverwijzing. Nieuwe runtime-dictionary assets/i18n-insights.js (zelfde adapter als i18n.js, alleen op insights.html). Gewijzigd: i18n.js, cms-catalog.js (static catalog adapter). Geen adapterwijziging in de extractor. Coherentie: label \"De film\" verwijderd (rendered DOM, i18n.js). Coherentie voor kmo’s: coherence.html herschreven (rendered DOM + coherence CMS catalog met coh-kmo-sleutels), Orion-bronregel; changed i18n.js (runtime dictionary adapter), cms-catalog.js (static catalog adapter) and ux.js (page description only). Geen adapterwijziging. Release 1.1: site.js fragment re-anchor (no text, no adapter change); customer About page (rendered DOM + about-klant CMS catalog) and the reader link to Books; release 1: new oplossingen/orion/automatisering pages, assets/home-film.js (source/poster switch only, no text) and the coherence film text block (rendered DOM) and customer homepage are discovered by the existing DOM adapter; changed i18n.js (runtime dictionary adapter), cms-catalog.js (static catalog adapter) and cms-admin.js (excluded admin). Also records assets/baies-dev-*.js and the i18n/site.js changes merged on 12 Nov (PR #74/#75) without a contract update, which made every daily run since 13 Nov fail closed; their Executive Radar text is covered only as rendered in the initial NL DOM. No adapter code changed; no language approval"
+    "reason": "Afspraakpagina: nieuwe pagina afspraak.html (rendered DOM, inline script zonder tekst), gespreksknoppen verwijzen ernaar, privacybeleid aangevuld; i18n.js bijgewerkt. Geen adapterwijziging. Release 2: platte menubalk (rendered DOM), nieuwe pagina’s training.html en journal.html (Monthly Journal), herschreven insights.html, automatisering.html en coherence.html (Bedrijfsontwikkeling); journal-fr.html wordt een doorverwijzing. Nieuwe runtime-dictionary assets/i18n-insights.js (zelfde adapter als i18n.js, alleen op insights.html). Gewijzigd: i18n.js, cms-catalog.js (static catalog adapter). Geen adapterwijziging in de extractor. Coherentie: label \"De film\" verwijderd (rendered DOM, i18n.js). Coherentie voor kmo’s: coherence.html herschreven (rendered DOM + coherence CMS catalog met coh-kmo-sleutels), Orion-bronregel; changed i18n.js (runtime dictionary adapter), cms-catalog.js (static catalog adapter) and ux.js (page description only). Geen adapterwijziging. Release 1.1: site.js fragment re-anchor (no text, no adapter change); customer About page (rendered DOM + about-klant CMS catalog) and the reader link to Books; release 1: new oplossingen/orion/automatisering pages, assets/home-film.js (source/poster switch only, no text) and the coherence film text block (rendered DOM) and customer homepage are discovered by the existing DOM adapter; changed i18n.js (runtime dictionary adapter), cms-catalog.js (static catalog adapter) and cms-admin.js (excluded admin). Also records assets/baies-dev-*.js and the i18n/site.js changes merged on 12 Nov (PR #74/#75) without a contract update, which made every daily run since 13 Nov fail closed; their Executive Radar text is covered only as rendered in the initial NL DOM. No adapter code changed; no language approval"
   },
   "javascript": [
     {
@@ -80,7 +80,7 @@
     },
     {
       "file": "assets/i18n.js",
-      "sha256": "7ce902ee224aae06b237751e90646c3ae7de618114d1dfc33cfc499024bfbe9b"
+      "sha256": "8b91b6a801d51274b00dbb3a494a4e1ebefebe3b4becf40c0aa940a7d0284510"
     },
     {
       "file": "assets/journal.js",
@@ -131,6 +131,10 @@
     {
       "file": "admin.html",
       "sha256": "6a3cf5192354f71615ac51034b3e97c20eda99643fcaf5bbe6d41ad59bd12167"
+    },
+    {
+      "file": "afspraak.html",
+      "sha256": "3408587b672dde4fd4e501a58271d737aabc207850ab80d4a6e9d9e9243f8ce8"
     },
     {
       "file": "all-articles.html",

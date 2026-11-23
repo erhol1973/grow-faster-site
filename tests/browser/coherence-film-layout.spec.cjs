@@ -1,7 +1,7 @@
 const {test,expect}=require('playwright/test');
 test.beforeEach(async({page})=>{await page.addInitScript(()=>localStorage.setItem('avs-consent',JSON.stringify({v:4,ext:false,ana:false,ts:Date.now()}))) });
 // Coherence for kmo's (23 Nov 2026): coherence.html ends with its own call to action instead of a next-page link.
-test('Coherence ends with the conversation call to action and no next-page link',async({page})=>{await page.goto('/coherence.html?lang=fr');await expect(page.locator('html')).toHaveAttribute('lang','fr');await expect(page.locator('.next-pg')).toHaveCount(0);await expect(page.locator('#contact-gesprek')).toHaveAttribute('href','mailto:erlendhollebosch@gmail.com?subject=Bedrijfsontwikkeling');});
+test('Coherence ends with the conversation call to action and no next-page link',async({page})=>{await page.goto('/coherence.html?lang=fr');await expect(page.locator('html')).toHaveAttribute('lang','fr');await expect(page.locator('.next-pg')).toHaveCount(0);await expect(page.locator('#contact-gesprek')).toHaveAttribute('href','afspraak.html?onderwerp=organisatie');});
 for(const lang of ['nl','fr']){
  test(`left alignment and requested next-page route (${lang})`,async({page})=>{
   for(const route of ['transformation.html','operating-model.html','eca.html']){

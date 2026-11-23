@@ -8,7 +8,7 @@ test('minimal home hero keeps one primary pilot action and one Orion action',()=
  assert.match(h,/<h1\b[^>]*\bdata-ih="home-orion-value"[^>]*>Sneller werken met AI en automatisering\.<\/h1>/);
  assert.doesNotMatch(h,/<p class="hero-avail">/);
  const ctas=h.match(/<div class="ctas">([\s\S]*?)<\/div>/)[1];const links=[...ctas.matchAll(/<a href="([^"]+)" class="btn (\w+)"/g)].map(m=>[m[1],m[2]]);
- assert.deepEqual(links,[['mailto:erlendhollebosch@gmail.com?subject=Pilot%20Orion','primary'],['orion.html','ghost']]);assert.doesNotMatch(h.match(/<main[\s\S]*<\/main>/)[0],/<form\b/);});
+ assert.deepEqual(links,[['afspraak.html?onderwerp=vragenlijsten','primary'],['orion.html','ghost']]);assert.doesNotMatch(h.match(/<main[\s\S]*<\/main>/)[0],/<form\b/);});
 // Release 1.1 (22 Nov 2026): About is rewritten for customers. The two employer work routes (permanent role, long-term
 // assignment) and their e-mail templates are removed on purpose; tests/over.test.cjs covers the new About page instead.
 test('About no longer offers employer work routes or hire-me wording',()=>{const a=read('about.html');

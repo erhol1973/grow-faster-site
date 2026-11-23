@@ -9,7 +9,7 @@ before(async()=>{server=createServer();await new Promise(resolve=>server.listen(
 after(async()=>{server.closeIdleConnections();await new Promise(resolve=>server.close(resolve))});
 // Customer menu (sprint 1 v2, 22 Nov 2026): Home · Oplossingen (submenu Orion, Workflow-automatisering, Coherentie) · Over
 // and one pilot mailto action instead of Work with me.
-const customerFooter=['index.html','oplossingen.html','orion.html','automatisering.html','about.html'];
+const customerFooter=['index.html','oplossingen.html','orion.html','automatisering.html','about.html','coherence.html'];
 const children=navigation.groups['oplossingen.html'];
 test('served ordinary pages have complete menus and Contact opens without a fragment',async()=>{
   let pages=0;

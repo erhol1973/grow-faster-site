@@ -987,526 +987,8 @@ window.GF_CMS_CATALOG=[
     "page": "coherence",
     "route": "coherence.html",
     "section": "website",
-    "label": "Enterprise Coherence",
+    "label": "Coherentie",
     "fields": [
-      {
-        "key": "f02ea72a18222-0",
-        "type": "text",
-        "label": "Coherence decides what AI amplifies",
-        "nl": "Samenhang bepaalt wat AI versterkt",
-        "fr": "La cohérence détermine ce que l’IA amplifie"
-      },
-      {
-        "key": "feb66bf68b536-0",
-        "type": "text",
-        "label": "Research on organisational change and AI value, interpreted through the coherence perspect",
-        "nl": "Onderzoek naar organisatieverandering en AI-waarde, geduid vanuit het coherentieperspectief, met een illustratieve processimulatie.",
-        "fr": "Des recherches sur le changement organisationnel et la valeur de l’IA, interprétées à travers la perspective de cohérence, avec une simulation illustrative des processus."
-      },
-      {
-        "key": "f2f519737e3c8-0",
-        "type": "text",
-        "label": "A faster task is not automatically a better enterprise",
-        "nl": "Een snellere taak maakt nog geen betere onderneming",
-        "fr": "Une tâche plus rapide ne suffit pas à améliorer l’entreprise"
-      },
-      {
-        "key": "f4df6589482ac-0",
-        "type": "text",
-        "label": "Enterprise coherence is the ability to make the organisation’s choices reinforce one anoth",
-        "nl": "Enterprise coherence is het vermogen om de keuzes binnen een organisatie elkaar te laten versterken. Strategie, governance, beslisrechten, structuren, uitvoering, transformatie, technologie en leren moeten dezelfde richting ondersteunen. De relaties daartussen bepalen hoe de onderneming in beweging kan komen.",
-        "fr": "La cohérence de l’entreprise est la capacité à faire en sorte que ses choix se renforcent mutuellement. Stratégie, gouvernance, droits de décision, structures, opérations, transformation, technologie et apprentissage doivent soutenir une même direction. Leurs relations déterminent la capacité de l’entreprise à évoluer."
-      },
-      {
-        "key": "faaca1b36726a-0",
-        "type": "text",
-        "label": "AI can improve a task while the wider workflow still waits for information, approval or a ",
-        "nl": "AI kan een taak verbeteren terwijl de bredere werkstroom blijft wachten op informatie, goedkeuring of een overdracht. Een agent kan in seconden een voorstel maken en toch afhankelijk blijven van een besluit dat dagen duurt. Mijn centrale vraag is hoe een lokale winst door de organisatie reist en een beter resultaat voor de onderneming wordt.",
-        "fr": "L’IA peut améliorer une tâche alors que le flux de travail attend encore une information, une validation ou un passage de relais. Un agent peut produire une proposition en quelques secondes et dépendre d’une décision qui prend plusieurs jours. Ma question centrale est de comprendre comment un gain local traverse l’organisation et améliore le résultat de l’entreprise."
-      },
-      {
-        "key": "f96fb2abe4071-0",
-        "type": "text",
-        "label": "AI and organisational redesign belong in the same effort. Start with a meaningful workflow",
-        "nl": "AI en organisatieontwerp horen in dezelfde beweging. Begin bij een betekenisvolle werkstroom, onderzoek de besluiten en afhankelijkheden eromheen en ontwikkel technologie, rollen, processen en feedback samen. Coherentie groeit door dat werk; je hoeft de hele onderneming niet eerst opnieuw te ontwerpen voordat je met AI leert.",
-        "fr": "L’IA et la conception de l’organisation relèvent d’un même effort. Partez d’un flux de travail important, examinez les décisions et dépendances qui l’entourent, puis développez ensemble technologie, rôles, processus et retours d’expérience. La cohérence se construit ainsi, sans devoir repenser toute l’entreprise avant d’apprendre avec l’IA."
-      },
-      {
-        "key": "f04e734554146-0",
-        "type": "text",
-        "label": "This is the proposition developed in my manuscript. The research I draw on supports parts ",
-        "nl": "Dit is de stelling die ik in mijn manuscript ontwikkel. Het onderzoek waarop ik voortbouw ondersteunt onderdelen van de redenering; het bewijst niet dat mijn coherentiemodel AI-waarde op ondernemingsniveau veroorzaakt.",
-        "fr": "C’est la proposition que je développe dans mon manuscrit. Les recherches sur lesquelles je m’appuie soutiennent certains éléments du raisonnement ; elles ne prouvent pas que mon modèle de cohérence cause une création de valeur de l’IA à l’échelle de l’entreprise."
-      },
-      {
-        "key": "f9e48937dcdbd-0",
-        "type": "text",
-        "label": "Research foundations",
-        "nl": "Onderzoeksbasis",
-        "fr": "Fondements de recherche"
-      },
-      {
-        "key": "fe2fd0b81af98-0",
-        "type": "text",
-        "label": "Research on enterprise design informs this perspective: reliable shared operations, reusab",
-        "nl": "Onderzoek naar organisatieontwerp voedt dit perspectief: betrouwbare gedeelde processen, herbruikbare digitale mogelijkheden en duidelijke verantwoordelijkheid. Het hier beschreven coherentieperspectief is mijn eigen synthese.",
-        "fr": "Les recherches sur la conception des entreprises nourrissent cette perspective : opérations partagées fiables, capacités numériques réutilisables et responsabilités claires. L’argument de cohérence présenté ici est ma propre synthèse."
-      },
-      {
-        "key": "f8caf430c8c1e-0",
-        "type": "text",
-        "label": "I draw on those foundations to explore a broader question: how do strategic choices, gover",
-        "nl": "Op die fundamenten bouw ik voort met een bredere vraag: hoe versterken strategische keuzes, governance, beslisrechten, verandervermogen en leren elkaar terwijl de onderneming evolueert? Dat is de coherence-visie die ik in The Coherent Enterprise ontwikkel en hier op AI toepas.",
-        "fr": "Je m’appuie sur ces fondements pour explorer une question plus large : comment choix stratégiques, gouvernance, droits de décision, capacité de changement et apprentissage se renforcent-ils au fil de l’évolution de l’entreprise ? C’est la perspective de cohérence que je développe dans The Coherent Enterprise et que j’applique ici à l’IA."
-      },
-      {
-        "key": "f5cf652d3b8ff-0",
-        "type": "text",
-        "label": "Related books: Enterprise Architecture as Strategy — Jeanne Ross, Peter Weill and David Ro",
-        "nl": "Verwante boeken: Enterprise Architecture as Strategy — Jeanne Ross, Peter Weill en David Robertson; Designed for Digital — Jeanne Ross, Cynthia Beath en Martin Mocker.",
-        "fr": "Ouvrages associés : Enterprise Architecture as Strategy — Jeanne Ross, Peter Weill et David Robertson ; Designed for Digital — Jeanne Ross, Cynthia Beath et Martin Mocker."
-      },
-      {
-        "key": "f013f02bb1e7f-0",
-        "type": "text",
-        "label": "A free executive handbook on turning AI potential into enterprise value. Start with one wo",
-        "nl": "Een gratis handboek voor leiderschapsteams om AI-potentieel om te zetten in bedrijfswaarde. Begin met één werkstroom, de beslissingen eromheen en de eerste vijftien werkdagen.",
-        "fr": "Un guide gratuit pour les équipes dirigeantes qui veulent transformer le potentiel de l’IA en valeur pour l’entreprise. Commencez par un flux de travail, les décisions qui l’entourent et les quinze premiers jours."
-      },
-      {
-        "key": "f630eec497adf-0",
-        "type": "text",
-        "label": "Wat onderzoek laat zien over organisatieverandering en AI-waarde",
-        "nl": "Wat onderzoek laat zien over organisatieverandering en AI-waarde",
-        "fr": "Wat onderzoek laat zien over organisatieverandering en AI-waarde"
-      },
-      {
-        "key": "ffaa4a92b9f06-0",
-        "type": "text",
-        "label": "AI-adoptie is bijna universeel, maar financiële impact blijft zeldzaam. De organisaties di",
-        "nl": "AI-adoptie is bijna universeel, maar financiële impact blijft zeldzaam. De organisaties die wél waarde halen, hebben één ding gemeen: ze veranderen hoe de onderneming werkt, niet alleen welke tools ze gebruikt.",
-        "fr": "AI-adoptie is bijna universeel, maar financiële impact blijft zeldzaam. De organisaties die wél waarde halen, hebben één ding gemeen: ze veranderen hoe de onderneming werkt, niet alleen welke tools ze gebruikt."
-      },
-      {
-        "key": "f1bb00a9b49c9-0",
-        "type": "text",
-        "label": "van de organisaties schrijft 5% of meer van de EBIT toe aan AI.",
-        "nl": "van de organisaties schrijft 5% of meer van de EBIT toe aan AI.",
-        "fr": "van de organisaties schrijft 5% of meer van de EBIT toe aan AI."
-      },
-      {
-        "key": "f2934c3c7d20b-0",
-        "type": "text",
-        "label": "ziet een betekenisvolle EBIT-impact van AI, onveranderd tegenover vorig jaar.",
-        "nl": "ziet een betekenisvolle EBIT-impact van AI, onveranderd tegenover vorig jaar.",
-        "fr": "ziet een betekenisvolle EBIT-impact van AI, onveranderd tegenover vorig jaar."
-      },
-      {
-        "key": "ff4521d6530f4-0",
-        "type": "text",
-        "label": "van de bedrijven haalt AI-waarde op schaal. 60% haalt geen wezenlijke waarde.",
-        "nl": "van de bedrijven haalt AI-waarde op schaal. 60% haalt geen wezenlijke waarde.",
-        "fr": "van de bedrijven haalt AI-waarde op schaal. 60% haalt geen wezenlijke waarde."
-      },
-      {
-        "key": "f9de54f1c5b81-0",
-        "type": "text",
-        "label": "van de eigen ontwikkelde AI-tools van ondernemingen haalt de productie.",
-        "nl": "van de eigen ontwikkelde AI-tools van ondernemingen haalt de productie.",
-        "fr": "van de eigen ontwikkelde AI-tools van ondernemingen haalt de productie."
-      },
-      {
-        "key": "f9b421cc530d0-0",
-        "type": "text",
-        "label": "van de organisaties mist AI-ready datapraktijken of twijfelt eraan.",
-        "nl": "van de organisaties mist AI-ready datapraktijken of twijfelt eraan.",
-        "fr": "van de organisaties mist AI-ready datapraktijken of twijfelt eraan."
-      },
-      {
-        "key": "ffabe396c9f78-0",
-        "type": "text",
-        "label": "van de agentische AI-projecten wordt naar verwachting stopgezet tegen eind 2027.",
-        "nl": "van de agentische AI-projecten wordt naar verwachting stopgezet tegen eind 2027.",
-        "fr": "van de agentische AI-projecten wordt naar verwachting stopgezet tegen eind 2027."
-      },
-      {
-        "key": "f5048dc3bb196-0",
-        "type": "text",
-        "label": "Wat AI-leiders onderscheidt van de rest",
-        "nl": "Wat AI-leiders onderscheidt van de rest",
-        "fr": "Wat AI-leiders onderscheidt van de rest"
-      },
-      {
-        "key": "ffee479821e6b-0",
-        "type": "text",
-        "label": "Leiders zijn de AI high performers van McKinsey of de future-built bedrijven van BCG. Waar",
-        "nl": "Leiders zijn de AI high performers van McKinsey of de future-built bedrijven van BCG. Waarden met ≈ of > zijn afgerond zoals de bronnen ze rapporteren.",
-        "fr": "Leiders zijn de AI high performers van McKinsey of de future-built bedrijven van BCG. Waarden met ≈ of > zijn afgerond zoals de bronnen ze rapporteren."
-      },
-      {
-        "key": "f5724654a685f-0",
-        "type": "text",
-        "label": "De opbrengst: future-built bedrijven tegenover achterblijvers",
-        "nl": "De opbrengst: future-built bedrijven tegenover achterblijvers",
-        "fr": "De opbrengst: future-built bedrijven tegenover achterblijvers"
-      },
-      {
-        "key": "fb5709a4deb22-0",
-        "type": "text",
-        "label": "BCG, The Widening AI Value Gap, 2025 · │ = achterblijvers (1×)",
-        "nl": "BCG, The Widening AI Value Gap, 2025 · │ = achterblijvers (1×)",
-        "fr": "BCG, The Widening AI Value Gap, 2025 · │ = achterblijvers (1×)"
-      },
-      {
-        "key": "f36d1a1e03475-0",
-        "type": "text",
-        "label": "Waar leiders hun inspanning leggen: de 10-20-70-regel van BCG",
-        "nl": "Waar leiders hun inspanning leggen: de 10-20-70-regel van BCG",
-        "fr": "Waar leiders hun inspanning leggen: de 10-20-70-regel van BCG"
-      },
-      {
-        "key": "f6f84ee3382f3-0",
-        "type": "text",
-        "label": "BCG, 2024–2025",
-        "nl": "BCG, 2024–2025",
-        "fr": "BCG, 2024–2025"
-      },
-      {
-        "key": "f4cf013ee22a8-0",
-        "type": "text",
-        "label": "Vijf bronnen, één patroon",
-        "nl": "Vijf bronnen, één patroon",
-        "fr": "Vijf bronnen, één patroon"
-      },
-      {
-        "key": "f43f2e0b05daf-0",
-        "type": "text",
-        "label": "Sylvain Duranton, wereldwijd leider van BCG X",
-        "nl": "Sylvain Duranton, wereldwijd leider van BCG X",
-        "fr": "Sylvain Duranton, wereldwijd leider van BCG X"
-      },
-      {
-        "key": "f8513f1d03f36-0",
-        "type": "text",
-        "label": "Bedrijven worstelen omdat “too much focus is placed on the technology itself and not enoug",
-        "nl": "Bedrijven worstelen omdat “too much focus is placed on the technology itself and not enough on transforming how people work.” De leiders bij BCG steken 70% van hun inspanning in mensen en processen, en concentreren zich op enkele initiatieven met hoge impact.",
-        "fr": "Bedrijven worstelen omdat “too much focus is placed on the technology itself and not enough on transforming how people work.” De leiders bij BCG steken 70% van hun inspanning in mensen en processen, en concentreren zich op enkele initiatieven met hoge impact."
-      },
-      {
-        "key": "f672eca92b65d-0",
-        "type": "text",
-        "label": "Michael Chui en co-auteurs",
-        "nl": "Michael Chui en co-auteurs",
-        "fr": "Michael Chui en co-auteurs"
-      },
-      {
-        "key": "f53c847fcbc83-0",
-        "type": "text",
-        "label": "Slechts 1% van de leidinggevenden noemt het eigen bedrijf matuur in AI. De grootste rem op",
-        "nl": "Slechts 1% van de leidinggevenden noemt het eigen bedrijf matuur in AI. De grootste rem op opschaling zijn niet de medewerkers, maar leiders die niet snel genoeg sturen. Bijna drie kwart van de AI high performers heeft workflows fundamenteel herontworpen.",
-        "fr": "Slechts 1% van de leidinggevenden noemt het eigen bedrijf matuur in AI. De grootste rem op opschaling zijn niet de medewerkers, maar leiders die niet snel genoeg sturen. Bijna drie kwart van de AI high performers heeft workflows fundamenteel herontworpen."
-      },
-      {
-        "key": "ffd15439d31d8-0",
-        "type": "text",
-        "label": "Chuck Whitten en co-auteurs",
-        "nl": "Chuck Whitten en co-auteurs",
-        "fr": "Chuck Whitten en co-auteurs"
-      },
-      {
-        "key": "fac5dac0142e9-0",
-        "type": "text",
-        "label": "“Tech-forward enterprises are already turning their focus from automating tasks to redesig",
-        "nl": "“Tech-forward enterprises are already turning their focus from automating tasks to redesigning entire workflows.” Hun advies: herontwerp volledige workflows, geen losse activiteiten of use cases.",
-        "fr": "“Tech-forward enterprises are already turning their focus from automating tasks to redesigning entire workflows.” Hun advies: herontwerp volledige workflows, geen losse activiteiten of use cases."
-      },
-      {
-        "key": "fa565cdef37b7-0",
-        "type": "text",
-        "label": "Aditya Challapally, hoofdauteur",
-        "nl": "Aditya Challapally, hoofdauteur",
-        "fr": "Aditya Challapally, hoofdauteur"
-      },
-      {
-        "key": "f0d02ad89e535-0",
-        "type": "text",
-        "label": "Slechts 5% van de eigen ontwikkelde AI-tools haalt de productie. De oorzaak is een leerklo",
-        "nl": "Slechts 5% van de eigen ontwikkelde AI-tools haalt de productie. De oorzaak is een leerkloof bij tools en organisaties die zich niet aanpassen aan hoe het werk gebeurt, niet de kwaliteit van de modellen.",
-        "fr": "Slechts 5% van de eigen ontwikkelde AI-tools haalt de productie. De oorzaak is een leerkloof bij tools en organisaties die zich niet aanpassen aan hoe het werk gebeurt, niet de kwaliteit van de modellen."
-      },
-      {
-        "key": "f21facf5492ac-0",
-        "type": "text",
-        "label": "Anushree Verma en Roxane Edjlali",
-        "nl": "Anushree Verma en Roxane Edjlali",
-        "fr": "Anushree Verma en Roxane Edjlali"
-      },
-      {
-        "key": "f90e7249d742c-0",
-        "type": "text",
-        "label": "Meer dan 40% van de agentische AI-projecten wordt tegen eind 2027 stopgezet door stijgende",
-        "nl": "Meer dan 40% van de agentische AI-projecten wordt tegen eind 2027 stopgezet door stijgende kosten, onduidelijke bedrijfswaarde of zwakke risicocontroles. Tot en met 2026 laten organisaties 60% van de AI-projecten zonder AI-ready data vallen.",
-        "fr": "Meer dan 40% van de agentische AI-projecten wordt tegen eind 2027 stopgezet door stijgende kosten, onduidelijke bedrijfswaarde of zwakke risicocontroles. Tot en met 2026 laten organisaties 60% van de AI-projecten zonder AI-ready data vallen."
-      },
-      {
-        "key": "f8b3927018c69-0",
-        "type": "text",
-        "label": "Erlend Hollebosch, auteur",
-        "nl": "Erlend Hollebosch, auteur",
-        "fr": "Erlend Hollebosch, auteur"
-      },
-      {
-        "key": "ff5c7d9a15961-0",
-        "type": "text",
-        "label": "Mijn lens: AI versterkt het systeem waarin het terechtkomt. Ik onderzoek hoe strategie, be",
-        "nl": "Mijn lens: AI versterkt het systeem waarin het terechtkomt. Ik onderzoek hoe strategie, beslissingen, processen, data, governance en leren elkaar versterken of hinderen en waar die interacties ondernemingswaarde beperken.",
-        "fr": "Mijn lens: AI versterkt het systeem waarin het terechtkomt. Ik onderzoek hoe strategie, beslissingen, processen, data, governance en leren elkaar versterken of hinderen en waar die interacties ondernemingswaarde beperken."
-      },
-      {
-        "key": "f4274d95157c9-0",
-        "type": "text",
-        "label": "Wat het samen betekent",
-        "nl": "Wat het samen betekent",
-        "fr": "Wat het samen betekent"
-      },
-      {
-        "key": "f5dca1dd2222d-0",
-        "type": "text",
-        "label": "Ik lees deze studies door de lens van enterprise coherence. Ze onderzoeken verschillende o",
-        "nl": "Ik lees deze studies door de lens van enterprise coherence. Ze onderzoeken verschillende organisatiepraktijken en resultaten en valideren niet mijn model met acht dimensies. Verbanden in enquêtes helpen vragen te formuleren; ze bewijzen niet dat coherentie AI-waarde veroorzaakt.",
-        "fr": "Ik lees deze studies door de lens van enterprise coherence. Ze onderzoeken verschillende organisatiepraktijken en resultaten en valideren niet mijn model met acht dimensies. Verbanden in enquêtes helpen vragen te formuleren; ze bewijzen niet dat coherentie AI-waarde veroorzaakt."
-      },
-      {
-        "key": "f4b75e3f3ac44-0",
-        "type": "text",
-        "label": "Dezelfde AI. Een ander resultaat.",
-        "nl": "Dezelfde AI. Een ander resultaat.",
-        "fr": "Dezelfde AI. Een ander resultaat."
-      },
-      {
-        "key": "f27da9bc78df2-0",
-        "type": "text",
-        "label": "Ontdek hoe één use case door twee organisatieontwerpen beweegt. Zie waar het werk stroomt,",
-        "nl": "Ontdek hoe één use case door twee organisatieontwerpen beweegt. Zie waar het werk stroomt, wacht of terugkeert.",
-        "fr": "Ontdek hoe één use case door twee organisatieontwerpen beweegt. Zie waar het werk stroomt, wacht of terugkeert."
-      },
-      {
-        "key": "f9338839929ac-0",
-        "type": "text",
-        "label": "Ce que la recherche montre sur le changement organisationnel et la valeur de l’IA",
-        "nl": "Ce que la recherche montre sur le changement organisationnel et la valeur de l’IA",
-        "fr": "Ce que la recherche montre sur le changement organisationnel et la valeur de l’IA"
-      },
-      {
-        "key": "f1d86a3d4a2c3-0",
-        "type": "text",
-        "label": "L’adoption de l’IA est quasi universelle, mais l’impact financier reste rare. Les organisa",
-        "nl": "L’adoption de l’IA est quasi universelle, mais l’impact financier reste rare. Les organisations qui en tirent de la valeur ont un point commun : elles changent la façon dont l’entreprise fonctionne, pas seulement les outils qu’elle utilise.",
-        "fr": "L’adoption de l’IA est quasi universelle, mais l’impact financier reste rare. Les organisations qui en tirent de la valeur ont un point commun : elles changent la façon dont l’entreprise fonctionne, pas seulement les outils qu’elle utilise."
-      },
-      {
-        "key": "f57631ddc25bc-0",
-        "type": "text",
-        "label": "des organisations attribuent 5 % ou plus de leur EBIT à l’IA.",
-        "nl": "des organisations attribuent 5 % ou plus de leur EBIT à l’IA.",
-        "fr": "des organisations attribuent 5 % ou plus de leur EBIT à l’IA."
-      },
-      {
-        "key": "f3873af965f5c-0",
-        "type": "text",
-        "label": "constatent un impact significatif de l’IA sur l’EBIT, inchangé sur un an.",
-        "nl": "constatent un impact significatif de l’IA sur l’EBIT, inchangé sur un an.",
-        "fr": "constatent un impact significatif de l’IA sur l’EBIT, inchangé sur un an."
-      },
-      {
-        "key": "f90f68004a4a3-0",
-        "type": "text",
-        "label": "des entreprises obtiennent de la valeur de l’IA à grande échelle. 60 % n’en obtiennent auc",
-        "nl": "des entreprises obtiennent de la valeur de l’IA à grande échelle. 60 % n’en obtiennent aucune de significative.",
-        "fr": "des entreprises obtiennent de la valeur de l’IA à grande échelle. 60 % n’en obtiennent aucune de significative."
-      },
-      {
-        "key": "f805be78f217b-0",
-        "type": "text",
-        "label": "des outils d’IA développés sur mesure par les entreprises arrivent en production.",
-        "nl": "des outils d’IA développés sur mesure par les entreprises arrivent en production.",
-        "fr": "des outils d’IA développés sur mesure par les entreprises arrivent en production."
-      },
-      {
-        "key": "f90a2138daeab-0",
-        "type": "text",
-        "label": "des organisations n’ont pas de pratiques de données adaptées à l’IA, ou n’en sont pas sûre",
-        "nl": "des organisations n’ont pas de pratiques de données adaptées à l’IA, ou n’en sont pas sûres.",
-        "fr": "des organisations n’ont pas de pratiques de données adaptées à l’IA, ou n’en sont pas sûres."
-      },
-      {
-        "key": "f3874e29c712e-0",
-        "type": "text",
-        "label": "des projets d’IA agentique devraient être abandonnés d’ici fin 2027.",
-        "nl": "des projets d’IA agentique devraient être abandonnés d’ici fin 2027.",
-        "fr": "des projets d’IA agentique devraient être abandonnés d’ici fin 2027."
-      },
-      {
-        "key": "f20c21ae1ce56-0",
-        "type": "text",
-        "label": "Ce qui distingue les leaders de l’IA des autres",
-        "nl": "Ce qui distingue les leaders de l’IA des autres",
-        "fr": "Ce qui distingue les leaders de l’IA des autres"
-      },
-      {
-        "key": "fc60cfb8430d3-0",
-        "type": "text",
-        "label": "Les leaders sont les « AI high performers » de McKinsey ou les entreprises « future-built ",
-        "nl": "Les leaders sont les « AI high performers » de McKinsey ou les entreprises « future-built » du BCG. Les valeurs marquées ≈ ou > sont arrondies comme dans les sources.",
-        "fr": "Les leaders sont les « AI high performers » de McKinsey ou les entreprises « future-built » du BCG. Les valeurs marquées ≈ ou > sont arrondies comme dans les sources."
-      },
-      {
-        "key": "f00443a34e8ab-0",
-        "type": "text",
-        "label": "Le gain : entreprises « future-built » face aux retardataires",
-        "nl": "Le gain : entreprises « future-built » face aux retardataires",
-        "fr": "Le gain : entreprises « future-built » face aux retardataires"
-      },
-      {
-        "key": "ffe3cdf415b92-0",
-        "type": "text",
-        "label": "BCG, The Widening AI Value Gap, 2025 · │ = retardataires (1×)",
-        "nl": "BCG, The Widening AI Value Gap, 2025 · │ = retardataires (1×)",
-        "fr": "BCG, The Widening AI Value Gap, 2025 · │ = retardataires (1×)"
-      },
-      {
-        "key": "fef0cc624b117-0",
-        "type": "text",
-        "label": "Où les leaders mettent leurs efforts : la règle 10-20-70 du BCG",
-        "nl": "Où les leaders mettent leurs efforts : la règle 10-20-70 du BCG",
-        "fr": "Où les leaders mettent leurs efforts : la règle 10-20-70 du BCG"
-      },
-      {
-        "key": "f6f84ee3382f3-1",
-        "type": "text",
-        "label": "BCG, 2024–2025",
-        "nl": "BCG, 2024–2025",
-        "fr": "BCG, 2024–2025"
-      },
-      {
-        "key": "f5b169e6ef03e-0",
-        "type": "text",
-        "label": "Cinq sources, un même schéma",
-        "nl": "Cinq sources, un même schéma",
-        "fr": "Cinq sources, un même schéma"
-      },
-      {
-        "key": "fb304f3dbbef6-0",
-        "type": "text",
-        "label": "Sylvain Duranton, responsable mondial de BCG X",
-        "nl": "Sylvain Duranton, responsable mondial de BCG X",
-        "fr": "Sylvain Duranton, responsable mondial de BCG X"
-      },
-      {
-        "key": "f27be33278632-0",
-        "type": "text",
-        "label": "Les entreprises peinent parce que « too much focus is placed on the technology itself and ",
-        "nl": "Les entreprises peinent parce que « too much focus is placed on the technology itself and not enough on transforming how people work ». Les leaders identifiés par le BCG consacrent 70 % de leurs efforts aux personnes et aux processus et se concentrent sur quelques initiatives à fort impact.",
-        "fr": "Les entreprises peinent parce que « too much focus is placed on the technology itself and not enough on transforming how people work ». Les leaders identifiés par le BCG consacrent 70 % de leurs efforts aux personnes et aux processus et se concentrent sur quelques initiatives à fort impact."
-      },
-      {
-        "key": "f94f33854d1b4-0",
-        "type": "text",
-        "label": "Michael Chui et coauteurs",
-        "nl": "Michael Chui et coauteurs",
-        "fr": "Michael Chui et coauteurs"
-      },
-      {
-        "key": "fc00db3b76f6d-0",
-        "type": "text",
-        "label": "Seuls 1 % des dirigeants jugent leur entreprise mature en IA. Le principal frein au passag",
-        "nl": "Seuls 1 % des dirigeants jugent leur entreprise mature en IA. Le principal frein au passage à l’échelle n’est pas les employés, mais des dirigeants qui ne pilotent pas assez vite. Près des trois quarts des « AI high performers » ont fondamentalement repensé leurs flux de travail.",
-        "fr": "Seuls 1 % des dirigeants jugent leur entreprise mature en IA. Le principal frein au passage à l’échelle n’est pas les employés, mais des dirigeants qui ne pilotent pas assez vite. Près des trois quarts des « AI high performers » ont fondamentalement repensé leurs flux de travail."
-      },
-      {
-        "key": "fbeec0154cb62-0",
-        "type": "text",
-        "label": "Chuck Whitten et coauteurs",
-        "nl": "Chuck Whitten et coauteurs",
-        "fr": "Chuck Whitten et coauteurs"
-      },
-      {
-        "key": "fb447e476cc03-0",
-        "type": "text",
-        "label": "« Tech-forward enterprises are already turning their focus from automating tasks to redesi",
-        "nl": "« Tech-forward enterprises are already turning their focus from automating tasks to redesigning entire workflows. » Leur conseil : repenser des flux de travail complets, pas des activités ou cas d’usage isolés.",
-        "fr": "« Tech-forward enterprises are already turning their focus from automating tasks to redesigning entire workflows. » Leur conseil : repenser des flux de travail complets, pas des activités ou cas d’usage isolés."
-      },
-      {
-        "key": "f3decf0629eb6-0",
-        "type": "text",
-        "label": "Aditya Challapally, auteur principal",
-        "nl": "Aditya Challapally, auteur principal",
-        "fr": "Aditya Challapally, auteur principal"
-      },
-      {
-        "key": "f40faf77e8b89-0",
-        "type": "text",
-        "label": "Seuls 5 % des outils d’IA développés sur mesure arrivent en production. La cause est un dé",
-        "nl": "Seuls 5 % des outils d’IA développés sur mesure arrivent en production. La cause est un déficit d’apprentissage des outils et des organisations qui ne s’adaptent pas à la façon de travailler, pas la qualité des modèles.",
-        "fr": "Seuls 5 % des outils d’IA développés sur mesure arrivent en production. La cause est un déficit d’apprentissage des outils et des organisations qui ne s’adaptent pas à la façon de travailler, pas la qualité des modèles."
-      },
-      {
-        "key": "fad47016d7a4f-0",
-        "type": "text",
-        "label": "Anushree Verma et Roxane Edjlali",
-        "nl": "Anushree Verma et Roxane Edjlali",
-        "fr": "Anushree Verma et Roxane Edjlali"
-      },
-      {
-        "key": "f49361496bce4-0",
-        "type": "text",
-        "label": "Plus de 40 % des projets d’IA agentique seront abandonnés d’ici fin 2027 en raison de coût",
-        "nl": "Plus de 40 % des projets d’IA agentique seront abandonnés d’ici fin 2027 en raison de coûts croissants, d’une valeur métier floue ou de contrôles des risques insuffisants. Jusqu’en 2026, les organisations abandonneront 60 % des projets d’IA sans données adaptées.",
-        "fr": "Plus de 40 % des projets d’IA agentique seront abandonnés d’ici fin 2027 en raison de coûts croissants, d’une valeur métier floue ou de contrôles des risques insuffisants. Jusqu’en 2026, les organisations abandonneront 60 % des projets d’IA sans données adaptées."
-      },
-      {
-        "key": "f8b3927018c69-1",
-        "type": "text",
-        "label": "Erlend Hollebosch, auteur",
-        "nl": "Erlend Hollebosch, auteur",
-        "fr": "Erlend Hollebosch, auteur"
-      },
-      {
-        "key": "f157c23bda3c0-0",
-        "type": "text",
-        "label": "Mon regard : l’IA amplifie le système dans lequel elle s’insère. J’examine comment stratég",
-        "nl": "Mon regard : l’IA amplifie le système dans lequel elle s’insère. J’examine comment stratégie, décisions, processus, données, gouvernance et apprentissage se renforcent ou se freinent, et où ces interactions limitent la valeur pour l’entreprise.",
-        "fr": "Mon regard : l’IA amplifie le système dans lequel elle s’insère. J’examine comment stratégie, décisions, processus, données, gouvernance et apprentissage se renforcent ou se freinent, et où ces interactions limitent la valeur pour l’entreprise."
-      },
-      {
-        "key": "fe5b18e6bdfb9-0",
-        "type": "text",
-        "label": "Ce que cela signifie",
-        "nl": "Ce que cela signifie",
-        "fr": "Ce que cela signifie"
-      },
-      {
-        "key": "f60ba583b1022-0",
-        "type": "text",
-        "label": "Je lis ces études à travers le prisme de la cohérence de l’entreprise. Elles examinent dif",
-        "nl": "Je lis ces études à travers le prisme de la cohérence de l’entreprise. Elles examinent différentes pratiques et différents résultats organisationnels sans valider mon modèle à huit dimensions. Les associations observées dans les enquêtes aident à formuler des questions ; elles ne prouvent pas que la cohérence cause la valeur de l’IA.",
-        "fr": "Je lis ces études à travers le prisme de la cohérence de l’entreprise. Elles examinent différentes pratiques et différents résultats organisationnels sans valider mon modèle à huit dimensions. Les associations observées dans les enquêtes aident à formuler des questions ; elles ne prouvent pas que la cohérence cause la valeur de l’IA."
-      },
-      {
-        "key": "f5306f506d4e1-0",
-        "type": "text",
-        "label": "Même IA. Une autre entreprise.",
-        "nl": "Même IA. Une autre entreprise.",
-        "fr": "Même IA. Une autre entreprise."
-      },
-      {
-        "key": "f4690cbf90520-0",
-        "type": "text",
-        "label": "Explorez le parcours d’un même cas d’usage dans deux organisations. Repérez les flux, les ",
-        "nl": "Explorez le parcours d’un même cas d’usage dans deux organisations. Repérez les flux, les attentes et les retours.",
-        "fr": "Explorez le parcours d’un même cas d’usage dans deux organisations. Repérez les flux, les attentes et les retours."
-      },
       {
         "key": "f9e64ee949244-0",
         "type": "media",
@@ -1518,6 +1000,223 @@ window.GF_CMS_CATALOG=[
           "nl": "",
           "fr": ""
         }
+      },
+      {
+        "key": "coh-kmo-01",
+        "type": "text",
+        "label": "Sneller groeien begint bij samenhang.",
+        "nl": "Sneller groeien begint bij samenhang.",
+        "fr": "Grandir plus vite commence par la cohérence."
+      },
+      {
+        "key": "coh-kmo-02",
+        "type": "text",
+        "label": "AI en automatisering versnellen wat er al is. Werken uw mensen, processen en systemen langs elkaar heen, dan versnelt u vooral de verwarring. Coherentie zorgt dat alles in dezelfde richting trekt.",
+        "nl": "AI en automatisering versnellen wat er al is. Werken uw mensen, processen en systemen langs elkaar heen, dan versnelt u vooral de verwarring. Coherentie zorgt dat alles in dezelfde richting trekt.",
+        "fr": "L’IA et l’automatisation accélèrent ce qui existe déjà. Si vos équipes, vos processus et vos systèmes ne travaillent pas ensemble, vous accélérez surtout la confusion. La cohérence fait que tout va dans la même direction."
+      },
+      {
+        "key": "coh-kmo-03",
+        "type": "text",
+        "label": "Herkenbaar voor een groeiende kmo?",
+        "nl": "Herkenbaar voor een groeiende kmo?",
+        "fr": "Cela vous parle, dans une PME en croissance ?"
+      },
+      {
+        "key": "coh-kmo-04",
+        "type": "text",
+        "label": "Beslissingen blijven liggen.",
+        "nl": "Beslissingen blijven liggen.",
+        "fr": "Les décisions traînent."
+      },
+      {
+        "key": "coh-kmo-05",
+        "type": "text",
+        "label": "Iedereen wacht op de zaakvoerder, omdat niet duidelijk is wie wat mag beslissen.",
+        "nl": "Iedereen wacht op de zaakvoerder, omdat niet duidelijk is wie wat mag beslissen.",
+        "fr": "Tout le monde attend le dirigeant, parce qu’il n’est pas clair qui peut décider de quoi."
+      },
+      {
+        "key": "coh-kmo-06",
+        "type": "text",
+        "label": "Elke afdeling haar eigen werkwijze.",
+        "nl": "Elke afdeling haar eigen werkwijze.",
+        "fr": "Chaque service a sa propre façon de travailler."
+      },
+      {
+        "key": "coh-kmo-07",
+        "type": "text",
+        "label": "Verkoop, productie en kwaliteit werken met eigen lijsten en systemen, en stemmen af via mails en vergaderingen.",
+        "nl": "Verkoop, productie en kwaliteit werken met eigen lijsten en systemen, en stemmen af via mails en vergaderingen.",
+        "fr": "La vente, la production et la qualité utilisent leurs propres listes et systèmes, et se coordonnent par e-mails et réunions."
+      },
+      {
+        "key": "coh-kmo-08",
+        "type": "text",
+        "label": "Nieuwe tools, oude problemen.",
+        "nl": "Nieuwe tools, oude problemen.",
+        "fr": "Nouveaux outils, vieux problèmes."
+      },
+      {
+        "key": "coh-kmo-09",
+        "type": "text",
+        "label": "Een nieuw systeem of een AI-tool lost weinig op als het werk eromheen niet mee verandert.",
+        "nl": "Een nieuw systeem of een AI-tool lost weinig op als het werk eromheen niet mee verandert.",
+        "fr": "Un nouveau système ou un outil d’IA règle peu de choses si le travail autour ne change pas avec lui."
+      },
+      {
+        "key": "coh-kmo-10",
+        "type": "text",
+        "label": "Wat onderzoek laat zien",
+        "nl": "Wat onderzoek laat zien",
+        "fr": "Ce que montre la recherche"
+      },
+      {
+        "key": "coh-kmo-11",
+        "type": "text",
+        "label": "De meeste cijfers komen uit grotere bedrijven. In een eerste traject meten we wat het bij u kost.",
+        "nl": "De meeste cijfers komen uit grotere bedrijven. In een eerste traject meten we wat het bij u kost.",
+        "fr": "La plupart de ces chiffres viennent de grandes entreprises. Lors d’un premier accompagnement, nous mesurons ce que cela vous coûte."
+      },
+      {
+        "key": "coh-kmo-12",
+        "type": "text",
+        "label": "van de managers kan altijd rekenen op collega’s van andere afdelingen. Op de eigen leidinggevende en het eigen team rekent 84%.",
+        "nl": "van de managers kan altijd rekenen op collega’s van andere afdelingen. Op de eigen leidinggevende en het eigen team rekent 84%.",
+        "fr": "des managers peuvent toujours compter sur leurs collègues d’autres services. Ils sont 84 % à pouvoir compter sur leur supérieur et leur propre équipe."
+      },
+      {
+        "key": "coh-kmo-13",
+        "type": "text",
+        "label": "van de managers zegt dat het grootste deel van hun tijd voor beslissingen niet goed besteed is.",
+        "nl": "van de managers zegt dat het grootste deel van hun tijd voor beslissingen niet goed besteed is.",
+        "fr": "des managers estiment que la plus grande partie du temps consacré aux décisions est mal utilisée."
+      },
+      {
+        "key": "coh-kmo-14",
+        "type": "text",
+        "label": "kostten administratieve verplichtingen de Belgische bedrijven en zelfstandigen in 2022, of 1,08% van het bbp.",
+        "nl": "kostten administratieve verplichtingen de Belgische bedrijven en zelfstandigen in 2022, of 1,08% van het bbp.",
+        "fr": "ont coûté les obligations administratives aux entreprises et indépendants belges en 2022, soit 1,08 % du PIB."
+      },
+      {
+        "key": "coh-kmo-15",
+        "type": "text",
+        "label": "Wat coherentie is",
+        "nl": "Wat coherentie is",
+        "fr": "Ce qu’est la cohérence"
+      },
+      {
+        "key": "coh-kmo-16",
+        "type": "text",
+        "label": "Coherentie betekent dat de keuzes in uw bedrijf elkaar versterken: wat u wilt bereiken, hoe u beslist, hoe het werk loopt, welke systemen u gebruikt en wat uw mensen kunnen. Zit daar samenhang in, dan levert elke verbetering meer op, ook AI en automatisering. Daarom is coherentie het fundament van onze aanpak.",
+        "nl": "Coherentie betekent dat de keuzes in uw bedrijf elkaar versterken: wat u wilt bereiken, hoe u beslist, hoe het werk loopt, welke systemen u gebruikt en wat uw mensen kunnen. Zit daar samenhang in, dan levert elke verbetering meer op, ook AI en automatisering. Daarom is coherentie het fundament van onze aanpak.",
+        "fr": "La cohérence signifie que les choix de votre entreprise se renforcent mutuellement : ce que vous voulez atteindre, la façon dont vous décidez, le déroulement du travail, les systèmes que vous utilisez et les compétences de vos équipes. Quand ces éléments s’accordent, chaque amélioration rapporte davantage, y compris l’IA et l’automatisation. C’est pourquoi la cohérence est le fondement de notre approche."
+      },
+      {
+        "key": "coh-kmo-17",
+        "type": "text",
+        "label": "Zo pakken we het aan",
+        "nl": "Zo pakken we het aan",
+        "fr": "Notre approche"
+      },
+      {
+        "key": "coh-kmo-18",
+        "type": "text",
+        "label": "Coherentiescan.",
+        "nl": "Coherentiescan.",
+        "fr": "Scan de cohérence."
+      },
+      {
+        "key": "coh-kmo-19",
+        "type": "text",
+        "label": "In een gesprek en een korte vragenlijst brengen we in kaart waar beslissingen, processen en systemen botsen.",
+        "nl": "In een gesprek en een korte vragenlijst brengen we in kaart waar beslissingen, processen en systemen botsen.",
+        "fr": "Par un entretien et un court questionnaire, nous identifions où les décisions, les processus et les systèmes se heurtent."
+      },
+      {
+        "key": "coh-kmo-20",
+        "type": "text",
+        "label": "Eén knelpunt kiezen.",
+        "nl": "Eén knelpunt kiezen.",
+        "fr": "Choisir un point de blocage."
+      },
+      {
+        "key": "coh-kmo-21",
+        "type": "text",
+        "label": "Samen kiezen we het knelpunt dat vandaag de meeste tijd en geld kost.",
+        "nl": "Samen kiezen we het knelpunt dat vandaag de meeste tijd en geld kost.",
+        "fr": "Ensemble, nous choisissons le point de blocage qui coûte aujourd’hui le plus de temps et d’argent."
+      },
+      {
+        "key": "coh-kmo-22",
+        "type": "text",
+        "label": "Aanpakken en meten.",
+        "nl": "Aanpakken en meten.",
+        "fr": "Agir et mesurer."
+      },
+      {
+        "key": "coh-kmo-23",
+        "type": "text",
+        "label": "We passen afspraken, processen of systemen aan en meten wat het oplevert.",
+        "nl": "We passen afspraken, processen of systemen aan en meten wat het oplevert.",
+        "fr": "Nous adaptons les accords, les processus ou les systèmes et mesurons ce que cela rapporte."
+      },
+      {
+        "key": "coh-kmo-24",
+        "type": "text",
+        "label": "Dan pas automatiseren.",
+        "nl": "Dan pas automatiseren.",
+        "fr": "Automatiser ensuite seulement."
+      },
+      {
+        "key": "coh-kmo-25",
+        "type": "text",
+        "label": "Automatisering en AI komen daarna, op een fundament dat klopt.",
+        "nl": "Automatisering en AI komen daarna, op een fundament dat klopt.",
+        "fr": "L’automatisation et l’IA viennent après, sur des fondations solides."
+      },
+      {
+        "key": "coh-kmo-26",
+        "type": "text",
+        "label": "Wat het u oplevert",
+        "nl": "Wat het u oplevert",
+        "fr": "Ce que vous y gagnez"
+      },
+      {
+        "key": "coh-kmo-27",
+        "type": "text",
+        "label": "Snellere beslissingen en minder wachten op één persoon.",
+        "nl": "Snellere beslissingen en minder wachten op één persoon.",
+        "fr": "Des décisions plus rapides et moins d’attente sur une seule personne."
+      },
+      {
+        "key": "coh-kmo-28",
+        "type": "text",
+        "label": "Minder afstemmingsoverleg en minder dubbel werk.",
+        "nl": "Minder afstemmingsoverleg en minder dubbel werk.",
+        "fr": "Moins de réunions de coordination et moins de travail en double."
+      },
+      {
+        "key": "coh-kmo-29",
+        "type": "text",
+        "label": "Automatisering en AI die blijven werken, omdat het werk eromheen klopt.",
+        "nl": "Automatisering en AI die blijven werken, omdat het werk eromheen klopt.",
+        "fr": "Une automatisation et une IA qui continuent de fonctionner, parce que le travail autour est cohérent."
+      },
+      {
+        "key": "coh-kmo-30",
+        "type": "text",
+        "label": "Waar wringt het in uw bedrijf?",
+        "nl": "Waar wringt het in uw bedrijf?",
+        "fr": "Où cela coince-t-il dans votre entreprise ?"
+      },
+      {
+        "key": "coh-kmo-31",
+        "type": "text",
+        "label": "Vertel ons waar het vandaag stroef loopt. In een eerste gesprek kijken we samen waar tijd en geld weglekt.",
+        "nl": "Vertel ons waar het vandaag stroef loopt. In een eerste gesprek kijken we samen waar tijd en geld weglekt.",
+        "fr": "Dites-nous où cela coince aujourd’hui. Lors d’un premier entretien, nous regardons ensemble où le temps et l’argent se perdent."
       },
       {
         "key": "cms-video-coherence",

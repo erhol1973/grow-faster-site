@@ -45,9 +45,7 @@ for(const language of ['nl','fr']){
     await page.goBack();await expect(page).toHaveURL(/\/insights\.html#who-decides$/);
     await clickMenu(page,'about.html');await expectTop(page);
     await page.goto('/coherence.html');
-    // In WebKit the simulator must finish its initial layout before a footer
-    // click. Do not scroll it into view here: that would hide lazy-load races.
-    if(browserName==='webkit')await expect(page.frameLocator('#ec-sim').locator('#b-play')).toBeAttached();
+    // Coherence for kmo's (23 Nov 2026): the page no longer embeds the simulator and uses the customer footer.
     await page.locator('footer .fcol').last().locator('a[href="about.html"]').click();
     await expectTop(page);await expect(page.locator('html')).toHaveAttribute('lang',language);
     // The new customer footer: its Contact column (last) opens About at the top as well.

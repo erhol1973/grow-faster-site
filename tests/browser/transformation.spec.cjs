@@ -26,20 +26,11 @@ test('practice reading route works in both languages, with six perspectives and 
  expect(errors).toEqual([]);
 });
 
-// Release 1.1: the book-thesis route starts on Coherence; its book link now opens the book on Books (About no longer shows books).
-test('manuscript vision links AI, coherence, credited Ross sources and the book on Books',async({page})=>{
+// Coherence for kmo's (23 Nov 2026): the manuscript argument left coherence.html; Transformation links the book on Books directly.
+test('Transformation opens the book on Books with its order route',async({page})=>{
  await page.addInitScript(()=>{localStorage.setItem('avs-consent',JSON.stringify({v:4,ext:false,ana:false,ts:Date.now()}));if(!localStorage.getItem('avs-lang'))localStorage.setItem('avs-lang','nl')});
- await page.goto('/coherence.html#book-thesis');
- await expect(page.locator('#book-thesis-h')).toBeInViewport();
- for(const [language,title]of [['nl','Een snellere taak maakt nog geen betere onderneming'],['fr','Une tâche plus rapide ne suffit pas à améliorer l’entreprise']]){
-   if(language!=='nl'){await page.locator('#lang-btn-top').click();await page.locator('.lang-top [data-lang="'+language+'"]').click()}
-   await expect(page.locator('#book-thesis-h')).toHaveText(title);
-   await expect(page.locator('#book-thesis')).toContainText('Jeanne Ross');
-   await expect(page.locator('#book-thesis .book-sources a')).toHaveCount(2);
-   await expect(page.locator('#book-thesis .book-sources a').first()).toHaveAttribute('href','https://cisr.mit.edu/publication/2016_0401_DigitalDesign_RossSebastianBeath');
-   expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1)).toBe(true);
- }
- await page.locator('#book-thesis .book-reading').click();await expect(page).toHaveURL(/\/books\.html#the-coherent-enterprise$/);
+ await page.goto('/transformation.html');
+ await page.locator('a.book-reading').click();await expect(page).toHaveURL(/\/books\.html#the-coherent-enterprise$/);
  await expect(page.locator('#the-coherent-enterprise')).toBeInViewport();
  const order=page.locator('#order-coherent-enterprise a.ebook-order');await expect(order).toHaveCount(1);
  const message=new URL(await order.getAttribute('href'));expect(message.pathname).toBe('erlendhollebosch@gmail.com');expect(message.searchParams.get('subject')).toContain('The Coherent Enterprise');

@@ -1,5 +1,13 @@
 # Testplan en kwaliteitsbeleid
 
+## Coherentie voor kmo's, 23 november 2026
+
+coherence.html is herschreven voor zaakvoerders en directie van kmo's (goedgekeurde tekst, NL/FR met "vous"). De pagina bevat: hero "Sneller groeien begint bij samenhang." met de knoppen "Plan een gesprek" (mail met onderwerp "Coherentie") en "Ontdek uw coherentieprofiel" (eca.html), "Herkenbaar voor een groeiende kmo?", "Wat onderzoek laat zien" (drie cijfers met bron: Sull e.a. HBR 2015, McKinsey 2019, Federaal Planbureau 2024), "Wat coherentie is", de blauwe film met de titel "Geen AI-waarde zonder samenhang", "Zo pakken we het aan" (4 stappen), "Wat het u oplevert" en het contactblok `#contact`. De pagina gebruikt de klantfooter. Orion vermeldt in "Het probleem" het foutpercentage bij overtypen met twee peer-reviewed bronnen.
+
+Verwijderd van Coherentie: het onderzoeksblok, de boekthese en bronnen, de boekenverwijzingen, de ingesloten simulatie, de subnavigatie (Books, Value, Process, Operating model) en de volgende-paginalink naar Approach. coherence-sim.html, books.html, value.html, process.html en operating-model.html blijven gepubliceerd; de laatste vier staan in `retained` van tests/navigation-cases.json. De boeklink op Transformation gaat rechtstreeks naar Books.
+
+Tests: nieuw tests/coherentie.test.cjs. Aangepast aan de nieuwe pagina: filmpositie en titel, volgende-paginaroute, simulatortest (nu op coherence-sim.html), klantfooter, paginatitel, boek- en workshoproutes (via Insights en Value). De test van de 10/20/70-grafiek is weg samen met de grafiek. Drempel in tests/cms-client.test.cjs: het totaal aantal bewerkbare CMS-velden daalt van 605 naar 562 omdat Coherentie 33 velden heeft in plaats van 76; de ondergrens gaat van 600 naar 550. Deze wijziging vraagt expliciete goedkeuring van de eigenaar.
+
 ## Release 1.1: pagina Over voor klanten, 22 november 2026
 
 about.html is herschreven voor klanten (goedgekeurde tekst, NL/FR met "vous"). Het portret is behouden. De pagina bevat een pilotknop, "Waarom Grow Faster", "Hoe ik werk" (3 stappen), "Wat ik meebreng", "Oplossingen" met de link "Alle oplossingen" en een contactblok (`#contact`, `tabindex="-1"`) met pilotgesprek en LinkedIn. Ze gebruikt de klantfooter.

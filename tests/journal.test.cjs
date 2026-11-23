@@ -20,7 +20,7 @@ test('Maandelijks Magazine uses mail instead of forms and is the current menu pa
  const html=read('journal.html'),main=html.match(/<main[\s\S]*?<\/main>/)[0];
  assert.doesNotMatch(main,/<form\b|hsforms|hubspot/i);
  const mails=[...main.matchAll(/href="(mailto:[^"]+)"/g)].map(m=>m[1]);assert.ok(mails.length>=2);
- for(const m of mails)assert.match(m,/^mailto:erlendhollebosch@gmail\.com\?subject=Magazine/);
+ for(const m of mails)assert.match(m,/^mailto:info@grow-faster\.be\?subject=Magazine/);
  assert.match(html,/<a tabindex="0" class="l cur on" href="journal\.html" aria-current="page">Maandelijks Magazine<\/a>/);
  assert.match(html,/<title>Maandelijks Magazine voor kmo’s \| Grow Faster<\/title>/);
 });

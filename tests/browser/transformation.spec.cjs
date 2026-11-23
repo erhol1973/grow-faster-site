@@ -33,7 +33,7 @@ test('Transformation opens the book on Books with its order route',async({page})
  await page.locator('a.book-reading').click();await expect(page).toHaveURL(/\/books\.html#the-coherent-enterprise$/);
  await expect(page.locator('#the-coherent-enterprise')).toBeInViewport();
  const order=page.locator('#order-coherent-enterprise a.ebook-order');await expect(order).toHaveCount(1);
- const message=new URL(await order.getAttribute('href'));expect(message.pathname).toBe('erlendhollebosch@gmail.com');expect(message.searchParams.get('subject')).toContain('The Coherent Enterprise');
+ const message=new URL(await order.getAttribute('href'));expect(message.pathname).toBe('info@grow-faster.be');expect(message.searchParams.get('subject')).toContain('The Coherent Enterprise');
 });
 
 // Release 1.1: About presents the founder of Grow Faster to customers (portrait, approach, contact), without books or work routes.

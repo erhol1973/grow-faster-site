@@ -50,7 +50,7 @@ for(const [lang,copy]of Object.entries(cases)){
   await page.locator('#request-name').fill("Nina D'Haene");await page.locator('#request-company').fill('A&B / Équipe');await page.locator('#request-question').fill(question);
   await page.locator('#request-form button[type="submit"]').click();await expect(page.locator('#request-result')).toBeVisible();
   const mails=await page.evaluate(()=>window.workshopMails);expect(mails).toHaveLength(1);const mail=new URL(mails[0]);
-  expect(mail.pathname).toBe('erlendhollebosch@gmail.com');expect(mail.searchParams.get('subject')).toBe(copy.subject);expect(mail.searchParams.get('body')).toContain(copy.greeting);expect(mail.searchParams.get('body')).toContain(question);expect(mail.searchParams.get('body')).toContain('A&B / Équipe');
+  expect(mail.pathname).toBe('info@grow-faster.be');expect(mail.searchParams.get('subject')).toBe(copy.subject);expect(mail.searchParams.get('body')).toContain(copy.greeting);expect(mail.searchParams.get('body')).toContain(question);expect(mail.searchParams.get('body')).toContain('A&B / Équipe');
   await expect(page.locator('#request-preview script')).toHaveCount(0);
   expect(new URL(page.url()).searchParams.toString()).toBe('lang='+lang);
   expect(await page.evaluate(()=>Object.keys(localStorage).sort())).toEqual(['avs-consent','avs-lang']);expect(await page.evaluate(()=>sessionStorage.length)).toBe(0);

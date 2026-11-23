@@ -31,12 +31,8 @@ test('Dutch workshop amounts retain the space after € while English keys and F
   }
   assert.deepEqual([...seen].sort(),[...priceKeys].sort(),'Both workshop price forms remain present in CMS defaults');
 });
-test('Dutch Executive Journal title and footer spell the month in lowercase',()=>{
-  const html=fs.readFileSync(path.join(root,'journal.html'),'utf8');
-  assert.match(html,/<title>Executive Journal · Maandnummer 01 · november 2026<\/title>/);
-  assert.match(html,/<p>Executive Journal · november 2026<\/p>/);
-  assert.doesNotMatch(html,/November 2026/);
-});
+// Release 2 (23 Nov 2026): the Executive Journal (Maandnummer 01) left journal.html; the Maandelijks Magazine for kmo's is covered
+// in tests/journal.test.cjs and has no month in its title.
 test('Every built page referencing changed Dutch translations requests the current delivery version',()=>{
   let references=0;
   for(const file of fs.readdirSync(root,{recursive:true}).filter(file=>file.endsWith('.html'))){
@@ -45,7 +41,7 @@ test('Every built page referencing changed Dutch translations requests the curre
       const url=new URL(match[2],'https://fixture.invalid/');
       if(!url.pathname.endsWith('/i18n.js'))continue;
       references++;
-      assert.equal(url.searchParams.get('v'),'20261122-klantsite',file+' translation delivery version');
+      assert.equal(url.searchParams.get('v'),'20261123-release2',file+' translation delivery version');
     }
   }
   assert.ok(references>0,'The built site still includes its shared translation data');

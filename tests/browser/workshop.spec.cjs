@@ -32,7 +32,7 @@ for(const [lang,copy]of Object.entries(cases)){
   await expect(page.locator('.ws-eca-link')).toHaveAttribute('href','eca.html?lang='+lang);
   await page.locator('.ws-eca-link').click();await expect(page.locator('html')).toHaveAttribute('lang',lang);await expect(page.locator('#assessment')).toBeVisible();
   await page.goto('/approach.html');await page.locator('#workshop-entry a').click();await expect(page.locator('h1')).toContainText(copy.title);
-  if(await page.locator('#burger').isVisible())await page.locator('#burger').click();await page.locator('#navlist a[href="about.html"]').click();
+  await page.locator('footer a[href="about.html"]').last().click();
   await expect(page).toHaveURL(/\/about\.html$/);await expect(page.locator('h1')).toBeInViewport();
   // Release 1.1: About uses the customer footer; the shared footer route back to the workshop is exercised from Value (Coherentie uses the customer footer since 23 Nov 2026).
   await page.goto('/value.html');await page.locator('footer a[href="workshop.html"]').first().click();await expect(page.locator('h1')).toContainText(copy.title);

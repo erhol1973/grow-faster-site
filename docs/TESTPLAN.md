@@ -11,6 +11,8 @@ Tests:
 - tests/browser/home-hero-video.spec.cjs (nieuw): de juiste variant per schermbreedte, pauzeknop wisselt en bedekt de hoofdknop niet, minder beweging laadt geen video, kaarten in leesvolgorde en in het Frans.
 - Aangepast met reden: klantsite (goedgekeurde teksten, sectievolgorde met #toepassingen en zonder #herkenbaar, nieuw stilbeeld met object-position 50%, de hero-container mag de video na de picture bevatten), journal-editorial (bewijsstrook volgt nu de kaarten), cms-client (homepagegroepen: hero, toepassingen, ervaring, stappen, systemen en beslissingen, pilot, video), navigation-accessibility (nieuwe bestandsnaam van het stilbeeld). De oude foto hero-kwaliteit-productielijn is verwijderd omdat geen pagina ze nog gebruikt.
 
+Feedback eigenaar (24 november 2026, 10:00): het donkerblauw was te donker. De video en het stilbeeld zijn lichter gemaakt (gamma 1,35) en alleen de homepage krijgt een lichter verloop dat rechts openloopt; Orion en Workflow-automatisering houden hun eigen verloop. hero-photo-contrast bleef op alle breedtes boven 4,5:1 (een eerste, te lichte poging zakte op 1024 px naar 4,24 en is bijgestuurd).
+
 Beperking: Chromium in Playwright speelt geen H.264 af, dus het echte afspelen en de mobiele laadtijd worden op de Cloudflare-preview gecontroleerd.
 
 ## Afspraakpagina, 23 november 2026

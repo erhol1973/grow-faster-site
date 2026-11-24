@@ -25,3 +25,7 @@ html:not(.i18n-ready) .hero-minimal .hero-bg[aria-hidden="true"] { visibility: v
 
 /* Homepage film: same box in every language; no eager poster (homepage mobile LCP budget). */
 .home-film{margin:2.5rem 0 0;max-width:960px}.home-film video{display:block;width:100%;height:auto;aspect-ratio:16/9;background:#060a12;border-radius:12px}
+/* Homepage 24 Nov 2026: the hero video already carries its own blue overlay, so the homepage uses a lighter gradient that keeps the people visible on the right. Other pages keep the overlay above. */
+body[data-cms-page="home"] .hero-minimal .hero-top::after{background:linear-gradient(90deg,rgba(6,27,52,.80),rgba(6,27,52,.68) 45%,rgba(6,27,52,.45) 62%,rgba(6,27,52,.06) 82%,rgba(6,27,52,0))}
+@media(max-width:820px){body[data-cms-page="home"] .hero-minimal .hero-top::after{background:linear-gradient(90deg,rgba(6,27,52,.74),rgba(6,27,52,.56))}}
+@media(min-width:821px){html:lang(fr) body[data-cms-page="home"] .hero-minimal .hero-top::after{background:linear-gradient(90deg,rgba(6,27,52,.80),rgba(6,27,52,.64) 42%,rgba(6,27,52,.40) 74%,rgba(6,27,52,.06) 100%)}}

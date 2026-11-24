@@ -495,6 +495,17 @@
     btn.addEventListener("click",()=>{if(v.paused){v.play();set(false)}else{v.pause();set(true)}});
   })();
 
+  /* homepage Orion film: Dutch and French editions; only source and poster follow the page language */
+  (function orionFilm(){
+    const v=document.querySelector("#orion-film video");if(!v)return;
+    let current="nl";
+    const source=v.querySelector("source");
+    // Switch the source without calling load() while the film is untouched, so nothing downloads before the visitor presses play.
+    const update=()=>{const l=document.documentElement.lang==="fr"?"fr":"nl";if(l===current)return;current=l;v.poster=v.dataset["poster"+(l==="fr"?"Fr":"Nl")];source.src=v.dataset["src"+(l==="fr"?"Fr":"Nl")];if(v.readyState>0||!v.paused){v.pause();v.load()}};
+    v.addEventListener("play",()=>{if(v.currentSrc&&v.currentSrc!==source.src){v.load();v.play()}});
+    new MutationObserver(update).observe(document.documentElement,{attributes:true,attributeFilter:["lang"]});update();
+  })();
+
   /* spotlight on final section */
   const fin=document.getElementById("final");
   if(!reduce&&fin)fin.addEventListener("pointermove",e=>{const r=fin.getBoundingClientRect();fin.style.setProperty("--mx",(e.clientX-r.left)+"px");fin.style.setProperty("--my",(e.clientY-r.top)+"px")});

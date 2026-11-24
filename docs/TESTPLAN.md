@@ -1,5 +1,18 @@
 # Testplan en kwaliteitsbeleid
 
+## Homepage: toepassingen, hero-video en vertrouwen, 24 november 2026
+
+Bron: overdracht van Erlend (OVERDRACHT.md, INHOUD.md, 4K-video en stilbeeld). Beslissingen van de eigenaar: vier toepassingskaarten direct onder de hero met Orion eerst, "Herkenbaar?" verdwijnt van de homepage (de kaarten nemen die rol over, de sterkste twee kaarten staan nu op orion.html bij "Dezelfde vragen, telkens opnieuw"), "Zo werkt Orion" blijft. Het vertrouwensblok belooft geen alleen-lezen toegang: dat wordt pas gepubliceerd als technische garantie na verificatie per koppeling. De Veiligheid-pagina blijft offline.
+
+Media: de 4K-master (16 MB, 16 Mbit/s) wordt niet gepubliceerd. Webvarianten: 1280 px (ongeveer 285 KB) voor schermen smaller dan 900 px en 1920 px (ongeveer 555 KB) daarboven, H.264 zonder geluid. Het stilbeeld volgt het bestaande 640/1280/1774-patroon in 2:1 en blijft het CMS-veld f7a4946dfd792-0. Bij minder beweging of databesparing laadt de video niet; anders is er een pauzeknop (WCAG 2.2.2).
+
+Tests:
+- tests/home-hero-video.test.cjs (nieuw): budgetten voor video en stilbeeld, geen 4K-bestand in de site, video-attributen (muted, loop, playsinline, preload none, geen autoplay of src in de HTML), pauzeknop, volgorde en doelen van de kaarten, systemen enkel als mogelijke bronnen, geen alleen-lezen belofte, verhuisde inhoud op orion.html.
+- tests/browser/home-hero-video.spec.cjs (nieuw): de juiste variant per schermbreedte, pauzeknop wisselt en bedekt de hoofdknop niet, minder beweging laadt geen video, kaarten in leesvolgorde en in het Frans.
+- Aangepast met reden: klantsite (goedgekeurde teksten, sectievolgorde met #toepassingen en zonder #herkenbaar, nieuw stilbeeld met object-position 50%, de hero-container mag de video na de picture bevatten), journal-editorial (bewijsstrook volgt nu de kaarten), cms-client (homepagegroepen: hero, toepassingen, ervaring, stappen, systemen en beslissingen, pilot, video), navigation-accessibility (nieuwe bestandsnaam van het stilbeeld). De oude foto hero-kwaliteit-productielijn is verwijderd omdat geen pagina ze nog gebruikt.
+
+Beperking: Chromium in Playwright speelt geen H.264 af, dus het echte afspelen en de mobiele laadtijd worden op de Cloudflare-preview gecontroleerd.
+
 ## Eigen afspraakmodule, 23 november 2026
 
 Beslissing van de eigenaar: Google Agenda verlaten (bevestigingen kwamen van het Gmail-adres) en een eigen module bouwen. Keuzes: momenten blokkeert Erlend zelf in de beheerpagina, boeken kan ma-vr met starturen 09:00 tot 16:00, mails vertrekken via de mailserver van het domein vanaf info@. Ontwerp en instellingen: docs/BOOKING.md.

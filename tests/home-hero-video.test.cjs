@@ -1,0 +1,37 @@
+'use strict';
+// Homepage 24 Nov 2026: silent hero video (overlay baked into the MP4) on top of the decorative still.
+// The 4K master (16 MB) is not published; two web variants within budget are. Readers who prefer less motion or save data
+// keep the still image; everyone else gets a pause button (WCAG 2.2.2, the loop lasts longer than five seconds).
+const {test}=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path');
+const root=path.resolve(__dirname,'..','dist');const read=f=>fs.readFileSync(path.join(root,f),'utf8');
+
+test('hero video variants and still images stay within their budgets and the 4K master is not published',()=>{
+  for(const [file,max] of [['media/hero-toepassingen-1280.mp4',800*1024],['media/hero-toepassingen-1920.mp4',1536*1024],['img/hero-toepassingen-1774.webp',120*1024]]){
+    const size=fs.statSync(path.join(root,file)).size;assert.ok(size>0&&size<=max,`${file}: ${size} bytes`);}
+  const all=fs.readdirSync(path.join(root,'media'));assert.ok(!all.some(f=>/4k/i.test(f)),'no 4K master in the site');
+});
+
+test('hero video is decorative, silent, looping, inline, lazy and paired with a pause button',()=>{
+  const home=read('index.html');
+  const v=home.match(/<video class="hero-video"[^>]*>/)[0];
+  for(const a of ['muted','loop','playsinline','preload="none"','hidden','data-small="media/hero-toepassingen-1280.mp4"','data-large="media/hero-toepassingen-1920.mp4"'])assert.ok(v.includes(a),a);
+  assert.doesNotMatch(v,/\bautoplay\b|\bcontrols\b|\bsrc=/,'the script decides whether and which video loads');
+  assert.doesNotMatch(v,/\bposter=/,'the preloaded still under the video is the poster; a second image would be downloaded twice');
+  assert.match(home,/<div class="hero-bg" aria-hidden="true"><picture>[\s\S]*?<\/picture><video class="hero-video"/);
+  assert.match(home,/<button type="button" class="hero-pauze" id="hero-pauze" aria-pressed="false" hidden><span class="hp-pauze">Video pauzeren<\/span><span class="hp-speel" hidden>Video afspelen<\/span><\/button>/);
+  const js=read('assets/site.js');
+  assert.match(js,/if\(reduce\|\|save\)return;/,'reduced motion and data saver keep the still');
+  assert.match(js,/v\.src=innerWidth<900\?v\.dataset\.small:v\.dataset\.large;/);
+});
+
+test('application cards: Orion first, the other three lead to workflow automation, the trust block makes no read-only promise',()=>{
+  const home=read('index.html');const sec=home.match(/<section id="toepassingen"[\s\S]*?<\/section>/)[0];
+  const cards=[...sec.matchAll(/<a class="toep-kaart[^"]*" href="([^"]+)" id="([^"]+)">[\s\S]*?<h3[^>]*>([^<]+)<\/h3>/g)].map(m=>[m[1],m[2],m[3]]);
+  assert.deepEqual(cards,[['orion.html','toep-kwaliteit','Kwaliteit in de voedingsproductie'],['automatisering.html','toep-onderhoud','Technisch onderhoud'],['automatisering.html','toep-administratie','Administratie'],['automatisering.html','toep-logistiek','Logistiek']]);
+  const trust=home.match(/<section id="vertrouwelijk"[\s\S]*?<\/section>/)[0];
+  for(const sys of ['SAP','Dynamics 365','Business Central','Salesforce','SharePoint'])assert.ok(trust.includes(sys),sys);
+  assert.match(trust,/Of en hoe we koppelen, beoordelen we per klant\./);
+  assert.doesNotMatch(trust,/alleen-lezen|garantie|nooit/i);
+  for(const id of ['hero-pilot','final-pilot'])assert.match(home,new RegExp(`href="afspraak\\.html\\?onderwerp=vragenlijsten"[^>]*id="${id}"|id="${id}"`));
+  const orion=read('orion.html');assert.match(orion.match(/<section id="probleem"[\s\S]*?<\/section>/)[0],/Elke klant een eigen lijst[\s\S]*Antwoorden overal verspreid/,'strongest "Herkenbaar?" content moved to Orion');
+});

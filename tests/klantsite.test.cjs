@@ -13,7 +13,9 @@ const pages={
   // Release 2 (23 Nov 2026): the approved full Workflow-automatisering text replaces the placeholder.
   'automatisering.html':['Wat uw team overtypt, gebeurt voortaan vanzelf.','We automatiseren het handwerk tussen uw mails, Excel-lijsten en systemen. Uw mensen houden tijd over voor het werk dat telt.','Herkenbaar?','Voorbeelden','Zo pakken we het aan','Wat kmo’s tegenhoudt, en hoe wij dat oplossen','Dienst of software','Wat u wint','Veelgestelde vragen','Welke taak typt uw team vandaag nog over?'],
   'oplossingen.html':['Sneller werken met AI en automatisering','Vier lagen, één doel: winst in tijd en geld.','Van fundament tot AI','AI levert pas tijd en geld op als wat eronder ligt klopt. Daarom bouwen we van onder naar boven: eerst samenhang in de organisatie, dan heldere processen, dan automatisering, dan AI.','Enterprise coherentie','Mensen, teams en systemen trekken in dezelfde richting.','Procesanalyse','Workflowscan','We brengen in kaart waar tijd en geld weglekt.','Repetitief werk loopt vanzelf.','AI neemt zoek- en schrijfwerk over.','Winst in tijd en geld','Drie manieren om sneller te werken','Test Orion op uw eigen vragenlijsten'],
-  'index.html':['Orion vult de vragenlijsten van uw klanten in op basis van uw eigen documenten. Uw kwaliteitsverantwoordelijke kijkt na en verstuurt.','Herkenbaar?','Van fundament tot AI','Winst in tijd en geld','Vertrouwelijk blijft vertrouwelijk','Recepturen en specificaties zijn gevoelig. Voor de pilot start, bespreken we met uw IT-verantwoordelijke hoe Orion met uw gegevens omgaat.','Test Orion op uw eigen vragenlijsten']
+  // Homepage 24 Nov 2026 (owner decisions): new hero line, four application cards replace "Herkenbaar?", the confidentiality block
+  // becomes "Uw systemen en uw beslissingen blijven bij u" without a read-only guarantee (that waits for per-connection verification).
+  'index.html':['Grow Faster helpt u terugkerend werk te vereenvoudigen met de systemen die u al gebruikt. Met Orion vult uw kwaliteitsteam klantvragenlijsten sneller in op basis van eigen documenten.','Welk terugkerend werk kost uw team tijd?','Kwaliteit in de voedingsproductie','Technisch onderhoud','Haal gegevens uit binnenkomende documenten en bereid een conceptaanvraag voor. Uw medewerker controleert en registreert die in uw eigen systeem.','Logistiek','Verbeter één werkproces met de systemen die u al gebruikt.','Van fundament tot AI','Winst in tijd en geld','Uw systemen en uw beslissingen blijven bij u','Uw medewerker controleert het en zet de laatste stap: versturen, registreren of importeren.','Test Orion op uw eigen vragenlijsten']
 };
 test('approved Dutch texts are published and every one has a Dutch and French translation',()=>{const {I18N:I}=I18N();
   for(const [file,phrases]of Object.entries(pages)){const body=text(read(file));
@@ -75,9 +77,11 @@ test('Orion lists four steps and five FAQ disclosures; released pages make no un
 }); 
 test('customer homepage follows the approved mockup sections and keeps consent, CMS and the hero photo',()=>{const home=read('index.html');
   // v2: the pyramid "Van fundament tot AI" replaces the former "Drie manieren om sneller te werken" section (moved to Oplossingen).
-  const order=['id="hero"','id="proof"','id="herkenbaar"','id="hoe"','id="fundament"','id="vertrouwelijk"','id="final"'].map(id=>home.indexOf(id));
+  const order=['id="hero"','id="toepassingen"','id="proof"','id="hoe"','id="fundament"','id="vertrouwelijk"','id="final"'].map(id=>home.indexOf(id));
+  assert.doesNotMatch(home,/id="herkenbaar"/);
   assert.ok(order.every((v,i)=>v>0&&(i===0||v>order[i-1])),'section order');
-  assert.match(home,/<img src="img\/hero-kwaliteit-productielijn-1774\.webp" alt="" width="1774" height="887" fetchpriority="high"/);
+  assert.match(home,/<img src="img\/hero-toepassingen-1774\.webp" alt="" width="1774" height="887" fetchpriority="high"/);
+  assert.doesNotMatch(home,/alleen-lezen|lecture seule|read-only/i,'no read-only guarantee before per-connection verification');
   assert.match(home,/<body data-cms-page="home"/);assert.match(home,/id="consent" role="dialog"/);assert.match(home,/assets\/consent\.js/);
   assert.doesNotMatch(home,/id="aanbod"/);assert.match(home,/<h1 data-ih="home-orion-value"[^>]*>Sneller werken met AI en automatisering\.<\/h1>/);
   const confidential=home.match(/<section id="vertrouwelijk"[\s\S]*?<\/section>/)[0];assert.doesNotMatch(confidential,/<a\b|<ul\b/);
@@ -107,11 +111,12 @@ test('Oplossingen overview repeats its submenu, keeps the three offer cards and 
 // v3: every customer page and Coherence has its own decorative 2:1 hero photo in the 640/1280/1774 WebP pattern,
 // preloaded with the same srcset, and a page-specific object-position that keeps the subject in view on mobile.
 test('each hero uses its own preloaded 2:1 photo, stays decorative and keeps the subject in view',()=>{
-  const heroes={'index.html':['hero-kwaliteit-productielijn','70%'],'oplossingen.html':['hero-oplossingen-workflow','58%'],'orion.html':['hero-orion-specificaties','82%'],'automatisering.html':['hero-automatisering-kantoor','78%'],'coherence.html':['hero-coherentie-samenwerking','74%']};
+  const heroes={'index.html':['hero-toepassingen','50%'],'oplossingen.html':['hero-oplossingen-workflow','58%'],'orion.html':['hero-orion-specificaties','82%'],'automatisering.html':['hero-automatisering-kantoor','78%'],'coherence.html':['hero-coherentie-samenwerking','74%']};
   for(const [file,[name,pos]] of Object.entries(heroes)){const html=read(file);
     const set=[640,1280,1774].map(w=>`img/${name}-${w}.webp ${w}w`).join(', ');
     for(const w of [640,1280,1774]){const st=fs.statSync(path.join(root,`img/${name}-${w}.webp`));assert.ok(st.size>0&&st.size<=700000,`${name}-${w}`);}
-    const bg=html.match(/<div class="hero-bg" aria-hidden="true"><picture>[\s\S]*?<\/picture><\/div>/);assert.ok(bg,file);
+    // The homepage may add its silent video after the picture inside the same decorative container.
+    const bg=html.match(/<div class="hero-bg" aria-hidden="true"><picture>[\s\S]*?<\/picture>(?:<video class="hero-video"[^>]*><\/video>)?<\/div>/);assert.ok(bg,file);
     assert.ok(bg[0].includes(`srcset="${set}" sizes="100vw"`),`${file}: srcset`);assert.match(bg[0],new RegExp(`<img src="img/${name}-1774\\.webp" alt="" width="1774" height="887" fetchpriority="high"`),file);
     const preload=html.match(/<link rel="preload" as="image" type="image\/webp" href="([^"]+)" imagesrcset="([^"]+)" imagesizes="100vw" fetchpriority="high">/);assert.ok(preload,`${file}: preload`);
     assert.equal(preload[1],`img/${name}-1774.webp`,file);assert.equal(preload[2],set,file);

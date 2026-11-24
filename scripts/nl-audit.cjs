@@ -100,8 +100,12 @@ function batches(blocks){
 }
 function distribute(batch,data){
   const cache=new Map(batch.spans.map(s=>[s.hash,{...data,matches:[]}]));
-  for(const m of data.matches){const span=batch.spans.find(s=>m.offset>=s.start&&m.offset+m.length<=s.end);if(!span)throw Error('Engine match crosses paragraph boundary');cache.get(span.hash).matches.push({...m,offset:m.offset-span.start});}
-  return cache;
+  // A match belongs to the paragraph it starts in. The engine may extend a whitespace or punctuation match into the
+  // two-newline separator between paragraphs; that tail is clipped, the finding itself is kept. A match that starts
+  // inside the separator concerns nothing a reader sees, so it is counted and dropped instead of failing the whole scan.
+  let artefacts=0;
+  for(const m of data.matches){const span=batch.spans.find(s=>m.offset>=s.start&&m.offset<s.end);if(!span){artefacts++;continue;}const length=Math.min(m.length,span.end-m.offset);cache.get(span.hash).matches.push({...m,length,offset:m.offset-span.start});}
+  cache.artefacts=artefacts;return cache;
 }
 // Executed inside Chromium, also unit-tested in a DOM fixture. Inline nodes stay in their paragraph.
 function domBlocks(){
@@ -216,7 +220,7 @@ async function run(){
       console.log(`LanguageTool batch ${index+1}/${grouped.length}`);
       const data=await check(batch.text,url);
       if(data.software.version!==report.engine.version)throw Error('LanguageTool changed version during scan');
-      for(const [key,value] of distribute(batch,data))cache.set(key,value);
+      const mapped=distribute(batch,data);report.separatorArtefacts=(report.separatorArtefacts||0)+mapped.artefacts;for(const [key,value] of mapped)cache.set(key,value);
     }
     for(const block of pending){
       let data=cache.get(block.sha256);if(!data){data=await check(block.text,url);cache.set(block.sha256,data);}

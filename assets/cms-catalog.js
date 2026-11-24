@@ -6,6 +6,18 @@ window.GF_CMS_CATALOG=[
     "label": "Homepage",
     "fields": [
       {
+        "key": "f7a4946dfd792-0",
+        "type": "media",
+        "label": "img/hero-toepassingen-1774.webp",
+        "nl": "img/hero-toepassingen-1774.webp",
+        "fr": "img/hero-toepassingen-1774.webp",
+        "src": "img/hero-toepassingen-1774.webp",
+        "alt": {
+          "nl": "",
+          "fr": ""
+        }
+      },
+      {
         "key": "home-orion-hero-heading",
         "type": "text",
         "source": "heading",
@@ -14,23 +26,95 @@ window.GF_CMS_CATALOG=[
         "fr": "Travailler plus vite grâce à l’IA et à l’automatisation."
       },
       {
-        "key": "f7a4946dfd792-0",
-        "type": "media",
-        "label": "img/hero-kwaliteit-productielijn-1774.webp",
-        "nl": "img/hero-kwaliteit-productielijn-1774.webp",
-        "fr": "img/hero-kwaliteit-productielijn-1774.webp",
-        "src": "img/hero-kwaliteit-productielijn-1774.webp",
-        "alt": {
-          "nl": "",
-          "fr": ""
-        }
-      },
-      {
         "key": "home-orion-hero-sub",
         "type": "text",
-        "label": "Orion vult de vragenlijsten van uw klanten in op basis van uw eigen documenten. Uw kwalite",
-        "nl": "Orion vult de vragenlijsten van uw klanten in op basis van uw eigen documenten. Uw kwaliteitsverantwoordelijke kijkt na en verstuurt.",
-        "fr": "Orion remplit les questionnaires de vos clients à partir de vos propres documents. Votre responsable qualité vérifie et envoie."
+        "label": "Grow Faster helpt u terugkerend werk te vereenvoudigen met de systemen die u al gebruikt. ",
+        "nl": "Grow Faster helpt u terugkerend werk te vereenvoudigen met de systemen die u al gebruikt. Met Orion vult uw kwaliteitsteam klantvragenlijsten sneller in op basis van eigen documenten.",
+        "fr": "Grow Faster vous aide à simplifier le travail répétitif avec les systèmes que vous utilisez déjà. Avec Orion, votre équipe qualité remplit plus vite les questionnaires clients à partir de vos propres documents."
+      },
+      {
+        "key": "home-apps-h",
+        "type": "text",
+        "label": "Welk terugkerend werk kost uw team tijd?",
+        "nl": "Welk terugkerend werk kost uw team tijd?",
+        "fr": "Quel travail répétitif coûte du temps à votre équipe ?"
+      },
+      {
+        "key": "home-apps-p",
+        "type": "text",
+        "label": "Grow Faster helpt teams om informatie sneller terug te vinden, minder gegevens over te typ",
+        "nl": "Grow Faster helpt teams om informatie sneller terug te vinden, minder gegevens over te typen en terugkerende taken te automatiseren.",
+        "fr": "Grow Faster aide les équipes à retrouver plus vite l’information, à ressaisir moins de données et à automatiser les tâches répétitives."
+      },
+      {
+        "key": "home-apps-1-h",
+        "type": "text",
+        "label": "Kwaliteit in de voedingsproductie",
+        "nl": "Kwaliteit in de voedingsproductie",
+        "fr": "Qualité dans la production alimentaire"
+      },
+      {
+        "key": "home-apps-1-p",
+        "type": "text",
+        "label": "Orion vult klantvragenlijsten in op basis van uw specificaties en certificaten. Uw kwalite",
+        "nl": "Orion vult klantvragenlijsten in op basis van uw specificaties en certificaten. Uw kwaliteitsverantwoordelijke kijkt na en verstuurt.",
+        "fr": "Orion remplit les questionnaires clients à partir de vos spécifications et certificats. Votre responsable qualité vérifie et envoie."
+      },
+      {
+        "key": "home-apps-2-h",
+        "type": "text",
+        "label": "Technisch onderhoud",
+        "nl": "Technisch onderhoud",
+        "fr": "Maintenance technique"
+      },
+      {
+        "key": "home-apps-2-p",
+        "type": "text",
+        "label": "Bereid een conceptwerkbon voor uit een inspectieverslag. Uw onderhoudsteam beslist welke a",
+        "nl": "Bereid een conceptwerkbon voor uit een inspectieverslag. Uw onderhoudsteam beslist welke acties het registreert.",
+        "fr": "Préparez un projet de bon de travail à partir d’un rapport d’inspection. Votre équipe de maintenance décide des actions qu’elle enregistre."
+      },
+      {
+        "key": "home-apps-3-h",
+        "type": "text",
+        "label": "Administratie",
+        "nl": "Administratie",
+        "fr": "Administration"
+      },
+      {
+        "key": "home-apps-3-p",
+        "type": "text",
+        "label": "Haal gegevens uit binnenkomende documenten en bereid een conceptaanvraag voor. Uw medewerk",
+        "nl": "Haal gegevens uit binnenkomende documenten en bereid een conceptaanvraag voor. Uw medewerker controleert en registreert die in uw eigen systeem.",
+        "fr": "Extrayez les données des documents entrants et préparez un projet de demande. Votre collaborateur le vérifie et l’enregistre dans votre propre système."
+      },
+      {
+        "key": "home-apps-4-h",
+        "type": "text",
+        "label": "Logistiek",
+        "nl": "Logistiek",
+        "fr": "Logistique"
+      },
+      {
+        "key": "home-apps-4-p",
+        "type": "text",
+        "label": "Verwerk gegevens uit leveringsdocumenten en leg afwijkingen voor aan de medewerker die ze ",
+        "nl": "Verwerk gegevens uit leveringsdocumenten en leg afwijkingen voor aan de medewerker die ze kan opvolgen.",
+        "fr": "Traitez les données des documents de livraison et soumettez les écarts au collaborateur qui peut les suivre."
+      },
+      {
+        "key": "home-apps-pilot-h",
+        "type": "text",
+        "label": "Verbeter één werkproces met de systemen die u al gebruikt.",
+        "nl": "Verbeter één werkproces met de systemen die u al gebruikt.",
+        "fr": "Améliorez un processus de travail avec les systèmes que vous utilisez déjà."
+      },
+      {
+        "key": "home-apps-pilot-p",
+        "type": "text",
+        "label": "We beginnen met een taak die uw team vaak herhaalt. In een pilot meten we hoeveel tijd die",
+        "nl": "We beginnen met een taak die uw team vaak herhaalt. In een pilot meten we hoeveel tijd die vandaag vraagt, hoeveel tijd u wint en waar uw medewerkers moeten blijven nakijken.",
+        "fr": "Nous commençons par une tâche que votre équipe répète souvent. Lors d’un pilote, nous mesurons le temps qu’elle demande aujourd’hui, le temps que vous gagnez et les points que vos collaborateurs doivent continuer à vérifier."
       },
       {
         "key": "home-orion-proof-h",
@@ -45,55 +129,6 @@ window.GF_CMS_CATALOG=[
         "label": "Meer dan twintig jaar procesverbetering, programmamanagement en transformatie, onder meer ",
         "nl": "Meer dan twintig jaar procesverbetering, programmamanagement en transformatie, onder meer in retail, industrie en telecom.",
         "fr": "Plus de vingt ans d’amélioration des processus, de gestion de programmes et de transformation, notamment dans la distribution, l’industrie et les télécoms."
-      },
-      {
-        "key": "home-orion-problem-h",
-        "type": "text",
-        "label": "Herkenbaar?",
-        "nl": "Herkenbaar?",
-        "fr": "Cela vous parle ?"
-      },
-      {
-        "key": "home-orion-problem-1-h",
-        "type": "text",
-        "label": "Elke klant een eigen lijst",
-        "nl": "Elke klant een eigen lijst",
-        "fr": "Chaque client, son propre questionnaire"
-      },
-      {
-        "key": "home-orion-problem-1-p",
-        "type": "text",
-        "label": "Retailers en industriële afnemers vragen dezelfde informatie, telkens in een ander formaat",
-        "nl": "Retailers en industriële afnemers vragen dezelfde informatie, telkens in een ander formaat.",
-        "fr": "Distributeurs et clients industriels demandent les mêmes informations, chaque fois dans un autre format."
-      },
-      {
-        "key": "home-orion-problem-2-h",
-        "type": "text",
-        "label": "Antwoorden overal verspreid",
-        "nl": "Antwoorden overal verspreid",
-        "fr": "Des réponses éparpillées partout"
-      },
-      {
-        "key": "home-orion-problem-2-p",
-        "type": "text",
-        "label": "Specificaties, certificaten en oude lijsten zitten in mappen en mails. Iemand zoekt ze tel",
-        "nl": "Specificaties, certificaten en oude lijsten zitten in mappen en mails. Iemand zoekt ze telkens opnieuw.",
-        "fr": "Spécifications, certificats et anciens questionnaires se trouvent dans des dossiers et des e-mails. Quelqu’un doit les rechercher à chaque fois."
-      },
-      {
-        "key": "home-orion-problem-3-h",
-        "type": "text",
-        "label": "Overtypen kost uren",
-        "nl": "Overtypen kost uren",
-        "fr": "Retaper coûte des heures"
-      },
-      {
-        "key": "home-orion-problem-3-p",
-        "type": "text",
-        "label": "Dezelfde gegevens gaan met de hand van het ene document naar het andere, en daar sluipen f",
-        "nl": "Dezelfde gegevens gaan met de hand van het ene document naar het andere, en daar sluipen fouten in.",
-        "fr": "Les mêmes données passent à la main d’un document à l’autre, et des erreurs s’y glissent."
       },
       {
         "key": "home-orion-steps-h",
@@ -161,16 +196,58 @@ window.GF_CMS_CATALOG=[
       {
         "key": "home-orion-trust-h",
         "type": "text",
-        "label": "Vertrouwelijk blijft vertrouwelijk",
-        "nl": "Vertrouwelijk blijft vertrouwelijk",
-        "fr": "Ce qui est confidentiel reste confidentiel"
+        "label": "Uw systemen en uw beslissingen blijven bij u",
+        "nl": "Uw systemen en uw beslissingen blijven bij u",
+        "fr": "Vos systèmes et vos décisions restent chez vous"
       },
       {
         "key": "home-orion-trust-p",
         "type": "text",
-        "label": "Recepturen en specificaties zijn gevoelig. Voor de pilot start, bespreken we met uw IT-ver",
-        "nl": "Recepturen en specificaties zijn gevoelig. Voor de pilot start, bespreken we met uw IT-verantwoordelijke hoe Orion met uw gegevens omgaat.",
-        "fr": "Recettes et spécifications sont sensibles. Avant le début du pilote, nous examinons avec votre responsable informatique la manière dont Orion traite vos données."
+        "label": "Tijdens de intake bepalen we waar uw actuele gegevens staan en welke toegang nodig is.",
+        "nl": "Tijdens de intake bepalen we waar uw actuele gegevens staan en welke toegang nodig is.",
+        "fr": "Lors de l’intake, nous déterminons où se trouvent vos données actuelles et quel accès est nécessaire."
+      },
+      {
+        "key": "home-trust-1-h",
+        "type": "text",
+        "label": "Toegang in overleg",
+        "nl": "Toegang in overleg",
+        "fr": "Un accès convenu ensemble"
+      },
+      {
+        "key": "home-trust-1-p",
+        "type": "text",
+        "label": "Als een koppeling nodig is, spreken we met uw IT-team af welke brongegevens Grow Faster ma",
+        "nl": "Als een koppeling nodig is, spreken we met uw IT-team af welke brongegevens Grow Faster mag raadplegen. Bronnen zoals SAP, Dynamics 365, Business Central, Salesforce of SharePoint zijn mogelijk. Of en hoe we koppelen, beoordelen we per klant.",
+        "fr": "Si une connexion est nécessaire, nous convenons avec votre équipe IT des données sources que Grow Faster peut consulter. Des sources comme SAP, Dynamics 365, Business Central, Salesforce ou SharePoint sont possibles. Nous évaluons pour chaque client si et comment nous nous connectons."
+      },
+      {
+        "key": "home-trust-2-h",
+        "type": "text",
+        "label": "Een voorstel dat u kunt controleren",
+        "nl": "Een voorstel dat u kunt controleren",
+        "fr": "Une proposition que vous pouvez vérifier"
+      },
+      {
+        "key": "home-trust-2-p",
+        "type": "text",
+        "label": "Grow Faster bereidt een concept voor, zoals een ingevulde vragenlijst of een werkbon op ba",
+        "nl": "Grow Faster bereidt een concept voor, zoals een ingevulde vragenlijst of een werkbon op basis van een inspectieverslag.",
+        "fr": "Grow Faster prépare un projet, comme un questionnaire rempli ou un bon de travail établi à partir d’un rapport d’inspection."
+      },
+      {
+        "key": "home-trust-3-h",
+        "type": "text",
+        "label": "Uw medewerker zet de laatste stap",
+        "nl": "Uw medewerker zet de laatste stap",
+        "fr": "Votre collaborateur fait le dernier pas"
+      },
+      {
+        "key": "home-trust-3-p",
+        "type": "text",
+        "label": "Uw medewerker controleert het en zet de laatste stap: versturen, registreren of importeren",
+        "nl": "Uw medewerker controleert het en zet de laatste stap: versturen, registreren of importeren.",
+        "fr": "Votre collaborateur le vérifie et fait le dernier pas : envoyer, enregistrer ou importer."
       },
       {
         "key": "home-orion-pilot-h",

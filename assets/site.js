@@ -477,6 +477,24 @@
   (()=>{let id="";try{id=decodeURIComponent(location.hash.slice(1))}catch(e){}if(!id||id==="privacy")return;const tgt=document.getElementById(id);if(!tgt)return;let moved=false;const stop=()=>{moved=true};["wheel","touchstart","keydown","pointerdown"].forEach(ev=>addEventListener(ev,stop,{once:true,passive:true}));const anchor=()=>{if(!moved&&location.hash.slice(1)===tgt.id)tgt.scrollIntoView({block:"start",behavior:"instant"})};anchor();if(document.readyState==="complete")setTimeout(anchor,0);else addEventListener("load",()=>setTimeout(anchor,0),{once:true})})();
   if(!c0)openConsent(false);
 
+  /* homepage hero video: silent loop, still image for reduced motion or data saver, pause button */
+  (function heroVideo(){
+    const v=document.getElementById("hero-video"),btn=document.getElementById("hero-pauze");
+    if(!v||!btn)return;
+    const save=navigator.connection&&navigator.connection.saveData;
+    if(reduce||save)return;
+    // 4K only where it shows: wide, sharp screens on a fast connection; 1920 px elsewhere, 1280 px on small screens.
+    const net=navigator.connection&&navigator.connection.effectiveType,px=innerWidth*(devicePixelRatio||1);
+    v.src=innerWidth<900?v.dataset.small:(px>=2400&&(!net||net==="4g")?v.dataset.uhd:v.dataset.large);
+    v.muted=true;v.hidden=false;
+    const top=v.closest(".hero-top");if(top)top.classList.add("has-video");
+    const set=paused=>{btn.setAttribute("aria-pressed",String(paused));btn.querySelector(".hp-pauze").hidden=paused;btn.querySelector(".hp-speel").hidden=!paused};
+    v.addEventListener("error",()=>{v.hidden=true;btn.hidden=true;if(top)top.classList.remove("has-video")},{once:true});
+    const p=v.play();if(p&&p.catch)p.catch(()=>set(true));
+    btn.hidden=false;set(false);
+    btn.addEventListener("click",()=>{if(v.paused){v.play();set(false)}else{v.pause();set(true)}});
+  })();
+
   /* spotlight on final section */
   const fin=document.getElementById("final");
   if(!reduce&&fin)fin.addEventListener("pointermove",e=>{const r=fin.getBoundingClientRect();fin.style.setProperty("--mx",(e.clientX-r.left)+"px");fin.style.setProperty("--my",(e.clientY-r.top)+"px")});

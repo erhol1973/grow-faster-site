@@ -16,6 +16,8 @@ Tests: tests/journal.test.cjs (vijf delen, vier stappen, drie meetrijen, beide D
 
 ## Orion-film op de homepage, 24 november 2026
 
+Na release #105 (24 november 2026, 13:06) controleert scripts/verify-production.cjs op de live site ook de film onder "Zo werkt Orion" (bron, Franse editie, poster, zeven tekstregels), de vier toepassingskaarten en de bereikbaarheid van de film- en hero-videobestanden. Aanleiding: de publieke controle keek tot dan alleen naar navigatie, en het webfetch-hulpmiddel in de werkomgeving ziet geen attributen, dus de live film kon niet van buitenaf bevestigd worden.
+
 Vraag van de eigenaar: onder "Zo werkt Orion" de Nederlandstalige film, en de Franstalige film (eigen voice-over) zodra de bezoeker in het Frans leest. Beide films zijn de aangeleverde 4K-bestanden (3840 x 2160, 35 seconden, ongeveer 3,6 MB elk), ongewijzigd behalve faststart. Ze starten enkel op klik (controls, preload none, geen autoplay), zoals de Coherence-film. De zeven tekstkaarten uit de film staan als tekstalternatief onder de speler, met de Franse bewoording uit de Franse editie.
 
 Tests:

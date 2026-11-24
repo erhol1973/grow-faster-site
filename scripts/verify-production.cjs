@@ -58,6 +58,15 @@ async function main(){
     await page.locator('#navlist a.l[href="orion.html"]').click();await page.waitForURL('https://grow-faster.be/orion.html');
     if(!await page.locator('#hero h1').isVisible())throw Error('Orion page unavailable from navigation');
     results.push({route:'orion.html',fromMenu:true});
+    // Homepage films (24 Nov 2026): the Orion film under "Zo werkt Orion" with both editions, and the hero video variants, must be served.
+    await page.goto('https://grow-faster.be/index.html');
+    const film=await page.locator('#orion-film video').evaluate(v=>({poster:v.getAttribute('poster'),src:v.querySelector('source').getAttribute('src'),fr:v.dataset.srcFr}));
+    if(film.src!=='media/orion-werking-nl.mp4'||film.fr!=='media/orion-werking-fr.mp4'||film.poster!=='img/orion-werking-nl.webp')throw Error('Orion film markup unexpected: '+JSON.stringify(film));
+    if(await page.locator('#orion-film-text li').count()!==7)throw Error('Orion film text alternative incomplete');
+    if(await page.locator('#toepassingen .toep-kaart').count()!==4)throw Error('Expected four application cards');
+    for(const file of ['media/orion-werking-nl.mp4','media/orion-werking-fr.mp4','media/hero-toepassingen-1920.mp4','media/hero-toepassingen-4k.mp4']){
+      const head=await page.request.head('https://grow-faster.be/'+file);if(head.status()!==200)throw Error(file+' returned '+head.status());}
+    results.push({route:'index.html',films:true});
     await page.goto('https://grow-faster.be/books.html');
     await page.locator('main a.btn[href="workshop.html"]').first().click();
     await page.waitForURL('https://grow-faster.be/workshop.html');

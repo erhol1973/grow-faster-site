@@ -483,7 +483,9 @@
     if(!v||!btn)return;
     const save=navigator.connection&&navigator.connection.saveData;
     if(reduce||save)return;
-    v.src=innerWidth<900?v.dataset.small:v.dataset.large;
+    // 4K only where it shows: wide, sharp screens on a fast connection; 1920 px elsewhere, 1280 px on small screens.
+    const net=navigator.connection&&navigator.connection.effectiveType,px=innerWidth*(devicePixelRatio||1);
+    v.src=innerWidth<900?v.dataset.small:(px>=2400&&(!net||net==="4g")?v.dataset.uhd:v.dataset.large);
     v.muted=true;v.hidden=false;
     const top=v.closest(".hero-top");if(top)top.classList.add("has-video");
     const set=paused=>{btn.setAttribute("aria-pressed",String(paused));btn.querySelector(".hp-pauze").hidden=paused;btn.querySelector(".hp-speel").hidden=!paused};

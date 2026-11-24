@@ -5,23 +5,23 @@
 const {test}=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path');
 const root=path.resolve(__dirname,'..','dist');const read=f=>fs.readFileSync(path.join(root,f),'utf8');
 
-test('hero video variants and still images stay within their budgets and the 4K master is not published',()=>{
-  for(const [file,max] of [['media/hero-toepassingen-1280.mp4',800*1024],['media/hero-toepassingen-1920.mp4',1536*1024],['img/hero-toepassingen-1774.webp',120*1024]]){
+test('hero video variants (1280, 1920 and a premium 4K) and still images stay within their budgets',()=>{
+  for(const [file,max] of [['media/hero-toepassingen-1280.mp4',800*1024],['media/hero-toepassingen-1920.mp4',1536*1024],['media/hero-toepassingen-4k.mp4',5*1024*1024],['img/hero-toepassingen-1774.webp',120*1024]]){
     const size=fs.statSync(path.join(root,file)).size;assert.ok(size>0&&size<=max,`${file}: ${size} bytes`);}
-  const all=fs.readdirSync(path.join(root,'media'));assert.ok(!all.some(f=>/4k/i.test(f)),'no 4K master in the site');
+  const all=fs.readdirSync(path.join(root,'media'));assert.ok(!all.includes('grow-faster-hero-variant-2-4k.mp4'),'the 16 MB master is not published, only the compressed 4K web variant');
 });
 
 test('hero video is decorative, silent, looping, inline, lazy and paired with a pause button',()=>{
   const home=read('index.html');
   const v=home.match(/<video class="hero-video"[^>]*>/)[0];
-  for(const a of ['muted','loop','playsinline','preload="none"','hidden','data-small="media/hero-toepassingen-1280.mp4"','data-large="media/hero-toepassingen-1920.mp4"'])assert.ok(v.includes(a),a);
+  for(const a of ['muted','loop','playsinline','preload="none"','hidden','data-small="media/hero-toepassingen-1280.mp4"','data-large="media/hero-toepassingen-1920.mp4"','data-uhd="media/hero-toepassingen-4k.mp4"'])assert.ok(v.includes(a),a);
   assert.doesNotMatch(v,/\bautoplay\b|\bcontrols\b|\bsrc=/,'the script decides whether and which video loads');
   assert.doesNotMatch(v,/\bposter=/,'the preloaded still under the video is the poster; a second image would be downloaded twice');
   assert.match(home,/<div class="hero-bg" aria-hidden="true"><picture>[\s\S]*?<\/picture><video class="hero-video"/);
   assert.match(home,/<button type="button" class="hero-pauze" id="hero-pauze" aria-pressed="false" hidden><span class="hp-pauze">Video pauzeren<\/span><span class="hp-speel" hidden>Video afspelen<\/span><\/button>/);
   const js=read('assets/site.js');
   assert.match(js,/if\(reduce\|\|save\)return;/,'reduced motion and data saver keep the still');
-  assert.match(js,/v\.src=innerWidth<900\?v\.dataset\.small:v\.dataset\.large;/);
+  assert.match(js,/v\.src=innerWidth<900\?v\.dataset\.small:\(px>=2400&&\(!net\|\|net==="4g"\)\?v\.dataset\.uhd:v\.dataset\.large\);/);
 });
 
 test('application cards: Orion first, the other three lead to workflow automation, the trust block makes no read-only promise',()=>{

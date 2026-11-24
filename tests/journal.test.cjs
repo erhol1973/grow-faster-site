@@ -35,7 +35,11 @@ test('the French Executive Journal address forwards to the Maandelijks Magazine 
 test('edition 1 is published in full with its four parts, sourced figures and French translations',()=>{
  const html=read('journal.html'),sec=html.match(/<section id="editie-1"[\s\S]*?<\/section>/)[0];
  assert.doesNotMatch(sec,/verschijnt binnenkort/,'no longer announced');
- assert.deepEqual([...sec.matchAll(/<h3>([^<]+)<\/h3>/g)].map(m=>m[1]),['De verspilling','Eén voorbeeld','De aanpak','Wat het oplevert','Bronnen']);
+ assert.deepEqual([...sec.matchAll(/<h3>([^<]+)<\/h3>/g)].map(m=>m[1]),['De verspilling','Eén voorbeeld','De aanpak','Wat het oplevert','Bronnen','Colofon','Herkent u deze verspilling?'],'the four parts, sources, colophon and next step each open a page');
+ assert.equal((sec.match(/<div class="fb-pagina /g)||[]).length,8,'eight pages on four sheets');assert.equal((sec.match(/<div class="fb-blad">/g)||[]).length,4);
+ assert.match(sec,/<div class="fb-pagina fb-voor fb-omslag" data-pagina="1">[\s\S]*?<h3 class="fb-titel">Overtypen, de verspilling die niemand ziet<\/h3>/,'cover');
+ assert.match(sec,/<button type="button" class="fb-knop" id="fb-vorige"[^>]*>← Vorige<\/button>[\s\S]*<button type="button" class="fb-knop" id="fb-volgende"[^>]*>Volgende →<\/button>/);
+ assert.match(html,/<script defer src="assets\/flipboek\.js\?v=[^"]+"><\/script>/);
  assert.equal((sec.match(/<ol class="editie-stappen">[\s\S]*?<\/ol>/)[0].match(/<li>/g)||[]).length,4);
  assert.equal((sec.match(/<tbody>[\s\S]*?<\/tbody>/)[0].match(/<tr>/g)||[]).length,3);
  assert.match(sec,/2,8 fouten per 100/);assert.match(sec,/6,4 per 100/);
@@ -44,7 +48,7 @@ test('edition 1 is published in full with its four parts, sourced figures and Fr
  assert.match(html,/<script defer src="assets\/i18n\.js\?v=[^"]+"><\/script><script defer src="assets\/i18n-journal\.js\?v=[^"]+"><\/script>/);
  const c={window:{}};vm.runInNewContext(read('assets/i18n.js')+'\n'+read('assets/i18n-journal.js'),c);const I=c.window.I18N;
  const text=sec.replace(/<script[\s\S]*?<\/script>/g,'');
- const lines=[...text.matchAll(/<(?:h3|p(?: class="[^"]*")?|li|strong|th scope="col"|td|span)>([^<]+)</g)].map(m=>m[1].trim()).filter(t=>t&&!/^[\d\s%,.:]+$/.test(t));
+ const lines=[...text.matchAll(/<(?:h3(?: class="[^"]*")?|p(?: class="[^"]*")?|li|strong|th scope="col"|td|span|blockquote class="fb-citaat"|button[^>]*)>([^<]+)</g)].map(m=>m[1].trim()).filter(t=>t&&!/^[\d\s%,.:]+$/.test(t));
  assert.ok(lines.length>=30,'edition lines found: '+lines.length);
  for(const t of lines)assert.ok(I[t]?.[1]&&I[t][1]!==t,'FR missing: '+t);
  assert.equal(I['De verspilling'][1],'Le gaspillage');

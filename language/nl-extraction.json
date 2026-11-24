@@ -3,7 +3,7 @@
   "scope": "rendered_local_nl_runtime_dictionaries_static_cms_and_mail",
   "technicalReview": {
     "date": "2026-11-24",
-    "reason": "Magazine editie 1: volledige tekst op journal.html (rendered DOM) en nieuwe runtime-dictionary assets/i18n-journal.js (zelfde adapter als i18n-insights.js, alleen op journal.html); i18n.js bijgewerkt. Ook vastgelegd: homepage-releases #104 en #105 van 24 november (toepassingskaarten, hero-video, Orion-film; index.html inline hero-stijl, site.js, cms-catalog.js, cms-admin.js) die zonder contractupdate gemerged werden. Geen adapterwijziging in de extractor. Contactadres info@grow-faster.be in plaats van het Gmail-adres (site.js, pagina’s); geen tekst- of adapterwijziging. Afspraakpagina: nieuwe pagina afspraak.html (rendered DOM, inline script zonder tekst), gespreksknoppen verwijzen ernaar, privacybeleid aangevuld; i18n.js bijgewerkt. Geen adapterwijziging. Release 2: platte menubalk (rendered DOM), nieuwe pagina’s training.html en journal.html (Monthly Journal), herschreven insights.html, automatisering.html en coherence.html (Bedrijfsontwikkeling); journal-fr.html wordt een doorverwijzing. Nieuwe runtime-dictionary assets/i18n-insights.js (zelfde adapter als i18n.js, alleen op insights.html). Gewijzigd: i18n.js, cms-catalog.js (static catalog adapter). Geen adapterwijziging in de extractor. Coherentie: label \"De film\" verwijderd (rendered DOM, i18n.js). Coherentie voor kmo’s: coherence.html herschreven (rendered DOM + coherence CMS catalog met coh-kmo-sleutels), Orion-bronregel; changed i18n.js (runtime dictionary adapter), cms-catalog.js (static catalog adapter) and ux.js (page description only). Geen adapterwijziging. Release 1.1: site.js fragment re-anchor (no text, no adapter change); customer About page (rendered DOM + about-klant CMS catalog) and the reader link to Books; release 1: new oplossingen/orion/automatisering pages, assets/home-film.js (source/poster switch only, no text) and the coherence film text block (rendered DOM) and customer homepage are discovered by the existing DOM adapter; changed i18n.js (runtime dictionary adapter), cms-catalog.js (static catalog adapter) and cms-admin.js (excluded admin). Also records assets/baies-dev-*.js and the i18n/site.js changes merged on 12 Nov (PR #74/#75) without a contract update, which made every daily run since 13 Nov fail closed; their Executive Radar text is covered only as rendered in the initial NL DOM. No adapter code changed; no language approval"
+    "reason": "Magazine editie 1 als flipboek op journal.html: nieuw script assets/flipboek.js (bladert door acht pagina’s; bevat enkel paginanummers, geen tekst), uitgebreide runtime-dictionary assets/i18n-journal.js (zelfde adapter als eerder), gewijzigde rendered DOM van journal.html. Geen adapterwijziging in de extractor. Eerdere reden: Magazine editie 1: volledige tekst op journal.html (rendered DOM) en nieuwe runtime-dictionary assets/i18n-journal.js (zelfde adapter als i18n-insights.js, alleen op journal.html); i18n.js bijgewerkt. Ook vastgelegd: homepage-releases #104 en #105 van 24 november (toepassingskaarten, hero-video, Ori…"
   },
   "javascript": [
     {
@@ -71,6 +71,10 @@
       "sha256": "0be40d0ebd318364882270371357756c3a150aa8229e721b1f6eeecd89e8b9c8"
     },
     {
+      "file": "assets/flipboek.js",
+      "sha256": "bbbab37323f6a1a154071c0110cdc4ec8ac4684fbe81071338b5e5d5cfdb0ee2"
+    },
+    {
       "file": "assets/home-film.js",
       "sha256": "3bb45468eddad3d1c9c0e0908580c216aef48c09d63b3f3dd0256f479fd6f19a"
     },
@@ -80,7 +84,7 @@
     },
     {
       "file": "assets/i18n-journal.js",
-      "sha256": "c93be8b081474087ee6335cea78b85a8c9b200bd61a0609f9500dc28c59a05dc"
+      "sha256": "c5b156f526ba3c4ffbe5ef1ccc612e57a47edb3c1e3202b22347c0f812f1af80"
     },
     {
       "file": "assets/i18n.js",
@@ -226,7 +230,7 @@
     },
     {
       "file": "journal.html",
-      "sha256": "369c5872b9111d5878b40cc54ccd79505d0dc27922424b1ac45fe953f42515d4"
+      "sha256": "a9618ec5348db4e809b90bce8249121a8ff0253a11f32f9c6bd3029f497eb20e"
     },
     {
       "file": "operating-model.html",

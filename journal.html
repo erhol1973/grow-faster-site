@@ -49,12 +49,13 @@
 .pilot-box{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:40px;align-items:end}
 @media(max-width:900px){#werking .cards6{grid-template-columns:1fr}.trust-list{grid-template-columns:1fr}.pilot-box{grid-template-columns:1fr;gap:20px}}
 </style>
-<script defer src="assets/i18n.js?v=20261123-release2"></script>
+<script defer src="assets/i18n.js?v=20261123-release2"></script><script defer src="assets/i18n-journal.js?v=20261124-editie1"></script>
 <script defer src="assets/content.js?v=20261030-editorial-three"></script>
 <script defer src="assets/models.js?v=20261029-quality"></script>
 <script defer src="assets/consent.js?v=20261029-quality"></script>
 <script defer src="assets/site.js?v=20261103-book-order"></script>
 <style data-hero>.hero.hero-customer .hero-bg img{object-position:58% center}</style>
+<style data-editie>.editie{max-width:72ch;margin-top:8px}.editie h3{font-size:24px;line-height:1.25;margin:36px 0 12px;color:var(--brand)}.editie p{font-size:18px;line-height:1.65;margin:0 0 16px}.editie .fine{font-size:15px;color:var(--muted,#5b6472)}.editie-stappen{padding-left:1.3em;margin:0 0 16px;display:grid;gap:12px;font-size:18px;line-height:1.6}.editie-stappen strong{color:var(--brand)}.tabel-wrap{overflow-x:auto;margin:0 0 16px}.editie-tabel{width:100%;border-collapse:collapse;font-size:16px;line-height:1.5}.editie-tabel th,.editie-tabel td{text-align:left;vertical-align:top;padding:10px 12px;border-bottom:1px solid var(--line)}.editie-tabel th{font-family:var(--f-mono);font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--ai-ink)}.editie-bronnen{list-style:none;padding:0;margin:0;display:grid;gap:10px;font-size:16px;line-height:1.5}.editie-bronnen a{font-weight:600}@media(max-width:600px){.editie p,.editie-stappen{font-size:17px}}</style>
 </head>
 <body class="editorial-home">
 <a class="skip-link" href="#top">Naar de inhoud</a>
@@ -94,9 +95,43 @@
   <article class="vcard in"><span class="step-n" data-notr>04</span><h3>Wat het oplevert.</h3><p>Hoeveel tijd en geld u terugwint, en hoe u dat meet.</p></article>
 </div></div></section>
 
-<section id="editie-1" class="alt"><div class="wrap"><div class="head"><span class="eyebrow">Eerste editie</span><h2>Overtypen, de verspilling die niemand ziet</h2></div><div class="page-copy">
-  <p>Over bestellingen, specificaties en vragenlijsten die iemand van het ene document naar het andere overtypt. Onderzoek vindt 2 tot 4 fouten per 100 overgetypte velden. De eerste editie verschijnt binnenkort op deze pagina.</p>
-</div></div></section>
+<section id="editie-1" class="alt" aria-labelledby="editie-1-h"><div class="wrap"><div class="head"><span class="eyebrow">Eerste editie, november 2026</span><h2 id="editie-1-h">Overtypen, de verspilling die niemand ziet</h2><p class="lede">Over bestellingen, specificaties en vragenlijsten die iemand van het ene document naar het andere overtypt. Vijf minuten lezen.</p></div>
+<article class="editie">
+  <h3>De verspilling</h3>
+  <p>Overtypen is gegevens die al ergens staan, met de hand opnieuw invoeren in een ander document of systeem. Een bestelling uit een mail in het ERP. Een leveringsbon in Excel. De samenstelling van een product uit de specificatie in de vragenlijst van een klant.</p>
+  <p>Niemand noemt het werk. Het staat op geen enkele functieomschrijving en op geen enkele factuur. Het zit tussen twee taken in, en daarom ziet niemand hoeveel het kost. Vraag een medewerker hoeveel tijd hij overtypt, en hij schat te laag. Hij telt de grote blokken, niet de tientallen minuten per dag.</p>
+  <p>Overtypen kost twee keer. Eerst de tijd om te typen. Daarna de tijd om de fouten te vinden die erin slopen, en de tijd van de klant of de collega die ze als eerste opmerkt.</p>
+  <h3>Eén voorbeeld</h3>
+  <p>Een voedingsbedrijf levert aan vijf retailers. Elke retailer stuurt jaarlijks zijn eigen vragenlijst: allergenen, herkomst, certificaten, samenstelling. Dezelfde vragen, telkens in een ander formaat. Een medewerker van de kwaliteitsdienst zoekt de antwoorden in de specificaties en de oude lijsten, en typt ze over in het nieuwe formulier.</p>
+  <p>Reken mee. Vijf retailers, elk een lijst van 150 vragen, en per vraag gemiddeld drie minuten zoeken en typen. Dat is 37 uur per jaar aan overtypen, alleen voor die vijf lijsten. Komt er een nieuwe klant bij, of een nieuwe versie van een product, dan begint het opnieuw.</p>
+  <p>En dan de fouten. Onderzoek in de zorg, waar overgetypte gegevens nauwkeurig worden nagekeken, vindt gemiddeld 2,8 fouten per 100 overgetypte velden. Bij vrije tekst loopt dat op tot 6,4 per 100. Bij 750 velden per jaar zijn dat 21 fouten, waarvan een deel over allergenen gaat. Eén verkeerd allergeen in een klantdossier kost meer dan alle uren samen.</p>
+  <p class="fine">Het rekenvoorbeeld is een illustratie. De foutpercentages komen uit de bronnen onderaan.</p>
+  <h3>De aanpak</h3>
+  <ol class="editie-stappen">
+    <li><strong>Tel het eerst.</strong> Laat één medewerker twee weken bijhouden wanneer hij gegevens overtypt, en hoelang. Niet schatten, maar noteren. Het cijfer verrast bijna altijd.</li>
+    <li><strong>Zoek de bron.</strong> Elk overgetypt gegeven staat al ergens: in een mail, een pdf, een specificatie, een ander systeem. Noteer per taak waar het vandaan komt en waar het naartoe moet.</li>
+    <li><strong>Laat de computer lezen.</strong> Voor gegevens die in documenten zitten, haalt software ze eruit en zet ze klaar in het doelformaat. Voor vragenlijsten zoekt AI het antwoord in uw eigen documenten en toont bij elk antwoord de bron. Dat is wat Orion doet.</li>
+    <li><strong>Een mens kijkt na en beslist.</strong> De medewerker controleert het voorstel en verstuurt, registreert of importeert het zelf. Niets vertrekt zonder zijn goedkeuring. Zijn werk verschuift van typen naar nakijken.</li>
+  </ol>
+  <p>Begin met één taak die vaak terugkomt, niet met het hele bedrijf. Een pilot van een paar weken toont of de aanpak werkt, voor u verder investeert.</p>
+  <h3>Wat het oplevert</h3>
+  <p>Meet drie dingen, voor en na.</p>
+  <div class="tabel-wrap"><table class="editie-tabel">
+    <thead><tr><th scope="col">Wat u meet</th><th scope="col">Hoe</th><th scope="col">Wat u mag verwachten</th></tr></thead>
+    <tbody>
+    <tr><td>Tijd per taak</td><td>Stopwatch bij tien taken, voor en na</td><td>Typen verdwijnt, nakijken blijft. Reken op een halvering of meer per taak.</td></tr>
+    <tr><td>Fouten</td><td>Steekproef van 100 velden, nagekeken door een collega</td><td>Van enkele fouten per 100 velden naar bijna nul, omdat elk antwoord een bron toont.</td></tr>
+    <tr><td>Doorlooptijd</td><td>Datum van aanvraag tot verzending</td><td>Een vragenlijst die een week bleef liggen, is dezelfde dag klaar.</td></tr>
+    </tbody>
+  </table></div>
+  <p>De winst in uren is het makkelijkst te tonen. De winst in fouten is het grootst. Een kwaliteitsmedewerker die niet meer typt, heeft tijd voor het werk waarvoor hij is aangenomen: controleren, verbeteren, de klant antwoorden.</p>
+  <h3>Bronnen</h3>
+  <ul class="editie-bronnen">
+    <li><a href="https://doi.org/10.1136/bmjopen-2012-002406" target="_blank" rel="noopener" data-notr>Hong et al., BMJ Open, 2013</a><span>: 2,8 % fouten over alle velden, per veld 0,5 tot 6,4 %. Tekstvelden zijn foutgevoeliger dan cijfers.</span></li>
+    <li><a href="https://doi.org/10.1093/jamia/ocy170" target="_blank" rel="noopener" data-notr>Mays en Mathias, JAMIA, 2019</a><span>: de meeste studies meten foutpercentages van enkele procenten bij handmatig overtypen.</span></li>
+  </ul>
+</article>
+</div></section>
 
 <section id="boek"><div class="wrap"><div class="head"><h2>Het boek</h2></div><div class="page-copy">
   <p>De edities vormen samen het boek dat Erlend Hollebosch schrijft over procesautomatisering en AI in de kmo.</p>

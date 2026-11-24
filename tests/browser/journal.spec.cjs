@@ -18,3 +18,19 @@ test('the old French Executive Journal address lands on the Maandelijks Magazine
  await page.goto('/journal-fr.html');await expect(page).toHaveURL(/\/journal\.html\?lang=fr$/);await expect(page.locator('html')).toHaveAttribute('lang','fr');
  await expect(page.locator('h1')).toHaveText('Grow Faster Magazine');
 });
+
+// Edition 1 (24 Nov 2026): the full article renders in both languages, including the keys loaded from i18n-journal.js.
+test('edition 1 reads in Dutch and French, table and sources included, without horizontal overflow',async({page})=>{
+ await page.goto('/journal.html');
+ await expect(page.locator('#editie-1 .editie h3')).toHaveText(['De verspilling','Eén voorbeeld','De aanpak','Wat het oplevert','Bronnen']);
+ await expect(page.locator('#editie-1 .editie-stappen li')).toHaveCount(4);
+ await expect(page.locator('#editie-1 .editie-tabel tbody tr')).toHaveCount(3);
+ await expect(page.locator('#editie-1 .editie-bronnen a').first()).toHaveAttribute('href','https://doi.org/10.1136/bmjopen-2012-002406');
+ expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1)).toBe(true);
+ await page.locator('#lang-btn-top').click();await page.locator('.lang-top [data-lang="fr"]').click();
+ await expect(page.locator('#editie-1 .editie h3')).toHaveText(['Le gaspillage','Un exemple','L’approche','Ce que cela rapporte','Sources']);
+ await expect(page.locator('#editie-1 .editie-stappen strong').first()).toHaveText('Comptez d’abord.');
+ await expect(page.locator('#editie-1 .editie-tabel th').first()).toHaveText('Ce que vous mesurez');
+ await expect(page.locator('#editie-1 .eyebrow')).toHaveText('Première édition, novembre 2026');
+ expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1)).toBe(true);
+});

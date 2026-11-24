@@ -33,10 +33,11 @@ test('Insights speaks to customers only and every line has a French translation'
 });
 // Sprint 1 (22 Nov 2026): the customer homepage keeps the experience proof directly after the hero, now linking to About;
 // the three journal teasers and the selected insight left the homepage. Journal articles keep their own coverage above.
-test('home shows experience proof directly after the hero and no longer lists journal teasers',()=>{
+test('home shows experience proof after the application cards and no longer lists journal teasers',()=>{
   const home=read('index.html');
   const proof=home.match(/<section id="proof"[\s\S]*?<\/section>/);assert.ok(proof);assert.match(proof[0],/href="about\.html">Over Erlend Hollebosch/);
-  assert.ok(home.indexOf('</header>')<home.indexOf('id="proof"')&&home.indexOf('id="proof"')<home.indexOf('id="herkenbaar"'),'proof follows the hero');
+  // 24 Nov 2026: the application cards sit directly under the hero, then the experience proof.
+  assert.ok(home.indexOf('</header>')<home.indexOf('id="toepassingen"')&&home.indexOf('id="toepassingen"')<home.indexOf('id="proof"')&&home.indexOf('id="proof"')<home.indexOf('id="hoe"'),'proof follows the application cards');
   for(const org of ['Colruyt Group','Volvo Group','Solvay','ArcelorMittal','Telenet','Ericsson'])assert.ok(proof[0].includes('<li>'+org+'</li>'),org);
   assert.doesNotMatch(home,/id="journal-latest"|id="selected-insight"/);
 });

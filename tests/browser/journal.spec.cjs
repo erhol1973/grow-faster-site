@@ -22,15 +22,41 @@ test('the old French Executive Journal address lands on the Maandelijks Magazine
 // Edition 1 (24 Nov 2026): the full article renders in both languages, including the keys loaded from i18n-journal.js.
 test('edition 1 reads in Dutch and French, table and sources included, without horizontal overflow',async({page})=>{
  await page.goto('/journal.html');
- await expect(page.locator('#editie-1 .editie h3')).toHaveText(['De verspilling','Eén voorbeeld','De aanpak','Wat het oplevert','Bronnen']);
+ await expect(page.locator('#editie-1 .editie h3')).toHaveText(['Overtypen, de verspilling die niemand ziet','De verspilling','Eén voorbeeld','De aanpak','Wat het oplevert','Bronnen','Colofon','Herkent u deze verspilling?','December 2026']);
  await expect(page.locator('#editie-1 .editie-stappen li')).toHaveCount(4);
  await expect(page.locator('#editie-1 .editie-tabel tbody tr')).toHaveCount(3);
  await expect(page.locator('#editie-1 .editie-bronnen a').first()).toHaveAttribute('href','https://doi.org/10.1136/bmjopen-2012-002406');
  expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1)).toBe(true);
  await page.locator('#lang-btn-top').click();await page.locator('.lang-top [data-lang="fr"]').click();
- await expect(page.locator('#editie-1 .editie h3')).toHaveText(['Le gaspillage','Un exemple','L’approche','Ce que cela rapporte','Sources']);
+ await expect(page.locator('#editie-1 .editie h3')).toHaveText(['La ressaisie, le gaspillage que personne ne voit','Le gaspillage','Un exemple','L’approche','Ce que cela rapporte','Sources','Colophon','Reconnaissez-vous ce gaspillage ?','Décembre 2026']);
  await expect(page.locator('#editie-1 .editie-stappen strong').first()).toHaveText('Comptez d’abord.');
  await expect(page.locator('#editie-1 .editie-tabel th').first()).toHaveText('Ce que vous mesurez');
  await expect(page.locator('#editie-1 .eyebrow')).toHaveText('Première édition, novembre 2026');
+ expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1)).toBe(true);
+});
+
+// Flipboek (24 Nov 2026, owner request): the edition reads as a magazine with pages that turn, two pages side by side on a wide
+// screen and one page on a phone. Pages that are not shown are inert, so links on them cannot take keyboard focus.
+test('edition 1 turns its pages with the buttons and the arrow keys, and every page fits its sheet',async({page},info)=>{
+ await page.goto('/journal.html');
+ const nr=page.locator('#fb-nr'),mobile=info.project.name.startsWith('mobile');
+ await expect(nr).toHaveText('1 / 8');
+ await expect(page.locator('#fb-vorige')).toBeDisabled();
+ await expect(page.locator('[data-pagina="1"] .fb-titel')).toBeVisible();
+ await page.locator('#fb-volgende').click();
+ await expect(nr).toHaveText(mobile?'2 / 8':'2 - 3 / 8');
+ await expect(page.locator('[data-pagina="2"] h3')).toBeVisible();
+ await expect(page.locator('[data-pagina="7"]')).toHaveAttribute('inert','');
+ await page.locator('#fb-volgende').focus();await page.keyboard.press('ArrowRight');
+ await expect(nr).toHaveText(mobile?'3 / 8':'4 - 5 / 8');
+ await page.keyboard.press('ArrowLeft');
+ await expect(nr).toHaveText(mobile?'2 / 8':'2 - 3 / 8');
+ for(let i=0;i<8;i++)await page.locator('#fb-volgende').click({force:true}).catch(()=>{});
+ await expect(nr).toHaveText('8 / 8');
+ await expect(page.locator('#fb-volgende')).toBeDisabled();
+ await expect(page.locator('[data-pagina="8"] .fb-titel')).toHaveText('December 2026');
+ // No page may need to scroll: text that falls off a sheet is unreadable.
+ const overflow=await page.evaluate(()=>[...document.querySelectorAll('.fb-pagina')].map(p=>{const r=p.getBoundingClientRect();let max=0;for(const e of p.querySelectorAll('h3,p,li,td,th,a'))max=Math.max(max,e.getBoundingClientRect().bottom-r.bottom);return p.dataset.pagina+':'+Math.round(max)}).filter(s=>+s.split(':')[1]>0));
+ expect(overflow).toEqual([]);
  expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1)).toBe(true);
 });

@@ -49,13 +49,13 @@
 .pilot-box{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:40px;align-items:end}
 @media(max-width:900px){#werking .cards6{grid-template-columns:1fr}.trust-list{grid-template-columns:1fr}.pilot-box{grid-template-columns:1fr;gap:20px}}
 </style>
-<script defer src="assets/i18n.js?v=20261123-release2"></script><script defer src="assets/i18n-journal.js?v=20261124-editie1"></script>
+<script defer src="assets/i18n.js?v=20261123-release2"></script><script defer src="assets/i18n-journal.js?v=20261124-flipboek"></script><script defer src="assets/flipboek.js?v=20261124-flipboek"></script>
 <script defer src="assets/content.js?v=20261030-editorial-three"></script>
 <script defer src="assets/models.js?v=20261029-quality"></script>
 <script defer src="assets/consent.js?v=20261029-quality"></script>
 <script defer src="assets/site.js?v=20261103-book-order"></script>
 <style data-hero>.hero.hero-customer .hero-bg img{object-position:58% center}</style>
-<style data-editie>.editie{max-width:72ch;margin-top:8px}.editie h3{font-size:24px;line-height:1.25;margin:36px 0 12px;color:var(--brand)}.editie p{font-size:18px;line-height:1.65;margin:0 0 16px}.editie .fine{font-size:15px;color:var(--muted,#5b6472)}.editie-stappen{padding-left:1.3em;margin:0 0 16px;display:grid;gap:12px;font-size:18px;line-height:1.6}.editie-stappen strong{color:var(--brand)}.tabel-wrap{overflow-x:auto;margin:0 0 16px}.editie-tabel{width:100%;border-collapse:collapse;font-size:16px;line-height:1.5}.editie-tabel th,.editie-tabel td{text-align:left;vertical-align:top;padding:10px 12px;border-bottom:1px solid var(--line)}.editie-tabel th{font-family:var(--f-mono);font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--ai-ink)}.editie-bronnen{list-style:none;padding:0;margin:0;display:grid;gap:10px;font-size:16px;line-height:1.5}.editie-bronnen a{font-weight:600}@media(max-width:600px){.editie p,.editie-stappen{font-size:17px}}</style>
+<style data-editie>.flipboek{--fb-navy:#0B2545;--fb-navy2:#143a6b;--fb-paper:#fff;--fb-ink:#14181F;--fb-muted:#5b6472;--fb-line:#d9e0ea;--fb-pale:#eef3f9;--fb-accent:#0A8FD0;margin-top:28px;max-width:1040px}.fb-boek{position:relative;width:100%;aspect-ratio:2/1.28;--k:1;perspective:3000px;margin:0 auto;filter:drop-shadow(0 18px 40px rgba(11,37,69,.18))}.fb-blad{position:absolute;top:0;left:50%;width:50%;height:100%;transform-origin:left center;transform-style:preserve-3d;transition:transform .95s cubic-bezier(.45,.05,.2,1)}.fb-blad.om{transform:rotateY(-180deg)}.fb-pagina{position:absolute;inset:0;background:var(--fb-paper);color:var(--fb-ink);backface-visibility:hidden;-webkit-backface-visibility:hidden;overflow:hidden;container-type:inline-size;padding:calc(6cqw*var(--k)) calc(6.5cqw*var(--k)) calc(9cqw*var(--k));display:flex;flex-direction:column;gap:0;box-shadow:inset 0 0 0 1px var(--fb-line)}.fb-achter{transform:rotateY(180deg)}.fb-voor::before{content:"";position:absolute;left:0;top:0;bottom:0;width:7%;background:linear-gradient(90deg,rgba(11,37,69,.12),rgba(11,37,69,0));pointer-events:none}.fb-achter::before{content:"";position:absolute;right:0;top:0;bottom:0;width:7%;background:linear-gradient(270deg,rgba(11,37,69,.12),rgba(11,37,69,0));pointer-events:none}.fb-pagina h3{font-family:var(--f-display);font-size:calc(5.8cqw*var(--k));line-height:1.15;letter-spacing:-.02em;margin:0 0 calc(2.6cqw*var(--k));color:var(--fb-navy)}.fb-pagina p{font-size:calc(3.3cqw*var(--k));line-height:1.55;margin:0 0 calc(2.6cqw*var(--k))}.fb-pagina .fine{font-size:calc(2.7cqw*var(--k));color:var(--fb-muted)}.fb-kop{display:flex;justify-content:space-between;font-family:var(--f-mono);font-size:calc(2cqw*var(--k));letter-spacing:.14em;text-transform:uppercase;color:var(--fb-accent);border-bottom:1px solid var(--fb-line);padding-bottom:calc(2cqw*var(--k));margin-bottom:calc(4cqw*var(--k))}.fb-voet{position:absolute;left:calc(6.5cqw*var(--k));right:calc(6.5cqw*var(--k));bottom:calc(3.4cqw*var(--k));display:flex;justify-content:space-between;font-family:var(--f-mono);font-size:calc(1.9cqw*var(--k));letter-spacing:.12em;text-transform:uppercase;color:var(--fb-muted)}.fb-citaat{margin:calc(1.5cqw*var(--k)) 0 calc(3.5cqw*var(--k));padding:calc(1cqw*var(--k)) 0 calc(1cqw*var(--k)) calc(3.5cqw*var(--k));border-left:calc(.7cqw*var(--k)) solid var(--fb-accent);font-family:var(--f-display);font-size:calc(4.4cqw*var(--k));line-height:1.25;color:var(--fb-navy2)}.fb-cijfers{display:grid;grid-template-columns:repeat(3,1fr);gap:calc(2cqw*var(--k));margin:calc(1cqw*var(--k)) 0 calc(3cqw*var(--k))}.fb-cijfers div{background:var(--fb-pale);padding:calc(2.6cqw*var(--k)) calc(2.4cqw*var(--k));display:flex;flex-direction:column;gap:calc(.8cqw*var(--k))}.fb-cijfers strong{font-family:var(--f-display);font-size:calc(6.6cqw*var(--k));line-height:1;color:var(--fb-navy);letter-spacing:-.02em}.fb-cijfers span{font-size:calc(2.6cqw*var(--k));line-height:1.35;color:var(--fb-muted)}.fb-pagina .editie-stappen{padding:0;margin:0 0 calc(2.5cqw*var(--k));list-style:none;counter-reset:stap;display:grid;gap:calc(2.6cqw*var(--k));font-size:calc(3.15cqw*var(--k));line-height:1.5}.fb-pagina .editie-stappen li{counter-increment:stap;position:relative;padding-left:calc(9cqw*var(--k));min-height:calc(6cqw*var(--k))}.fb-pagina .editie-stappen li::before{content:counter(stap,decimal-leading-zero);position:absolute;left:0;top:calc(.2cqw*var(--k));width:calc(6.4cqw*var(--k));height:calc(6.4cqw*var(--k));display:grid;place-items:center;background:var(--fb-navy);color:#fff;font-family:var(--f-mono);font-size:calc(2.4cqw*var(--k));letter-spacing:.06em}.fb-pagina .editie-stappen strong{color:var(--fb-navy);display:block;font-size:calc(3.4cqw*var(--k));margin-bottom:calc(.4cqw*var(--k))}.fb-pagina .tabel-wrap{margin:0 0 calc(3cqw*var(--k));overflow:visible}.fb-pagina .editie-tabel{width:100%;border-collapse:collapse;font-size:calc(2.9cqw*var(--k));line-height:1.4}.fb-pagina .editie-tabel th,.fb-pagina .editie-tabel td{text-align:left;vertical-align:top;padding:calc(1.8cqw*var(--k)) calc(1.6cqw*var(--k));border-bottom:1px solid var(--fb-line)}.fb-pagina .editie-tabel th{font-family:var(--f-mono);font-size:calc(2.2cqw*var(--k));letter-spacing:.08em;text-transform:uppercase;color:var(--fb-accent);background:var(--fb-pale)}.fb-pagina .editie-tabel td:first-child{font-weight:600;color:var(--fb-navy)}.fb-pagina .editie-bronnen{list-style:none;padding:0;margin:0 0 calc(3cqw*var(--k));display:grid;gap:calc(2.4cqw*var(--k));font-size:calc(3.1cqw*var(--k));line-height:1.45}.fb-pagina .editie-bronnen a{font-weight:600;color:var(--fb-navy)}.fb-knop-cta{font-size:calc(3.1cqw*var(--k));padding:calc(2.4cqw*var(--k)) calc(4cqw*var(--k));background:var(--fb-navy);color:#fff;border-color:var(--fb-navy)}.fb-knop-cta:hover{background:var(--fb-navy2)}.fb-omslag{background:linear-gradient(150deg,#0B2545 0%,#123461 55%,#1a4a85 100%);color:#fff;justify-content:space-between;box-shadow:none}.fb-omslag::before{display:none}.fb-omslag .fb-kop{color:#c9d8ec;border-color:rgba(255,255,255,.25)}.fb-omslag .fb-label{font-family:var(--f-mono);font-size:calc(2.1cqw*var(--k));letter-spacing:.16em;text-transform:uppercase;color:#9fc3ee;margin:0 0 calc(2cqw*var(--k))}.fb-omslag .fb-titel{font-size:calc(9.6cqw*var(--k));line-height:1.02;letter-spacing:-.035em;color:#fff;margin:0 0 calc(3.5cqw*var(--k));max-width:92%}.fb-achterkant .fb-titel{font-size:calc(7cqw*var(--k))}.fb-omslag .fb-lede{font-size:calc(3.5cqw*var(--k));line-height:1.5;color:#d6e2f3;max-width:88%}.fb-omslag-midden{margin:auto 0}.fb-omslag-voet{display:flex;justify-content:space-between;align-items:flex-end;gap:calc(3cqw*var(--k))}.fb-inhoud{list-style:none;margin:0;padding:0;display:grid;gap:calc(1cqw*var(--k));font-size:calc(2.8cqw*var(--k));min-width:40%}.fb-inhoud li{display:flex;justify-content:space-between;gap:calc(3cqw*var(--k));border-bottom:1px solid rgba(255,255,255,.18);padding-bottom:calc(.6cqw*var(--k));color:#e3ecf8}.fb-inhoud li span:last-child{font-family:var(--f-mono);color:#9fc3ee}.fb-auteur{font-family:var(--f-mono);font-size:calc(2cqw*var(--k));letter-spacing:.12em;text-transform:uppercase;color:#9fc3ee;margin:0}.fb-omslag .fb-knop-cta{background:#fff;color:var(--fb-navy);border-color:#fff}.fb-nav{display:flex;align-items:center;justify-content:center;gap:18px;margin-top:22px}.fb-knop{font-family:var(--f-sans);font-size:15px;font-weight:500;padding:11px 18px;border:1px solid var(--brand);background:var(--bg);color:var(--brand);cursor:pointer;transition:background .2s,color .2s}.fb-knop:hover,.fb-knop:focus-visible{background:var(--brand);color:#fff}.fb-knop[disabled]{opacity:.35;cursor:default;background:var(--bg);color:var(--brand)}.fb-teller{margin:0;font-family:var(--f-mono);font-size:14px;letter-spacing:.08em;color:var(--muted,#5b6472);min-width:6ch;text-align:center}.fb-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}.fb-hint{text-align:center;margin:10px 0 0;font-size:14px;color:var(--muted,#5b6472)}.fb-boek.enkel{aspect-ratio:auto;--k:1.38;perspective:none;filter:drop-shadow(0 10px 24px rgba(11,37,69,.16))}.fb-boek.enkel .fb-blad{position:static;width:100%;transform:none;transition:none;transform-style:flat}.fb-boek.enkel .fb-blad:not(.fb-blad-zicht){display:none}.fb-boek.enkel .fb-pagina{position:static;transform:none;min-height:calc(100cqw*1.3)}.fb-boek.enkel .fb-pagina:not(.fb-zicht){display:none}.fb-boek.enkel .fb-pagina::before{display:none}.fb-boek.enkel .fb-voet{position:static;margin-top:auto;padding-top:calc(4cqw*var(--k))}.fb-boek.enkel .fb-omslag{min-height:calc(100cqw*1.45)}@media(prefers-reduced-motion:reduce){.fb-blad{transition:none}.fb-boek.enkel .fb-pagina{transition:none}}@media(max-width:640px){.fb-nav{gap:10px}.fb-knop{padding:10px 12px;font-size:14px}}.fb-kader{background:var(--fb-navy);color:#fff;padding:calc(3.4cqw*var(--k)) calc(3.6cqw*var(--k));margin:calc(1cqw*var(--k)) 0 calc(3cqw*var(--k))}.fb-kader p{margin:0;color:#fff}.fb-kader .fb-label{font-family:var(--f-mono);font-size:calc(2.1cqw*var(--k));letter-spacing:.16em;text-transform:uppercase;color:#9fc3ee;margin:0 0 calc(1.4cqw*var(--k))}.fb-kort{list-style:none;padding:0;margin:0 0 calc(3.5cqw*var(--k));display:grid;gap:calc(1.4cqw*var(--k));font-size:calc(3.2cqw*var(--k));line-height:1.4;counter-reset:kort}.fb-kort li{counter-increment:kort;display:flex;gap:calc(2.4cqw*var(--k));align-items:baseline;padding-bottom:calc(1.4cqw*var(--k));border-bottom:1px solid var(--fb-line);font-weight:600;color:var(--fb-navy)}.fb-kort li::before{content:counter(kort,decimal-leading-zero);font-family:var(--f-mono);font-size:calc(2.3cqw*var(--k));color:var(--fb-accent);letter-spacing:.06em}.fb-boek:not(.enkel){transition:transform .95s cubic-bezier(.45,.05,.2,1)}.fb-boek.fb-begin:not(.enkel){transform:translateX(-25%)}.fb-boek.fb-einde:not(.enkel){transform:translateX(25%)}.fb-pagina .fb-label{font-family:var(--f-mono);font-size:calc(2.1cqw*var(--k));letter-spacing:.16em;text-transform:uppercase;color:var(--fb-accent);margin:0 0 calc(1.6cqw*var(--k))}</style>
 </head>
 <body class="editorial-home">
 <a class="skip-link" href="#top">Naar de inhoud</a>
@@ -96,16 +96,37 @@
 </div></div></section>
 
 <section id="editie-1" class="alt" aria-labelledby="editie-1-h"><div class="wrap"><div class="head"><span class="eyebrow">Eerste editie, november 2026</span><h2 id="editie-1-h">Overtypen, de verspilling die niemand ziet</h2><p class="lede">Over bestellingen, specificaties en vragenlijsten die iemand van het ene document naar het andere overtypt. Vijf minuten lezen.</p></div>
-<article class="editie">
+<article class="editie flipboek" id="flipboek" aria-label="Magazine, editie 1">
+<div class="fb-boek" id="fb-boek">
+<div class="fb-blad">
+ <div class="fb-pagina fb-voor fb-omslag" data-pagina="1">
+  <div class="fb-kop"><span data-notr>Grow Faster</span><span>Magazine · editie 1 · november 2026</span></div>
+  <div class="fb-omslag-midden"><p class="fb-label">Elke maand één verspilling</p><h3 class="fb-titel">Overtypen, de verspilling die niemand ziet</h3><p class="fb-lede">Over bestellingen, specificaties en vragenlijsten die iemand van het ene document naar het andere overtypt. Vijf minuten lezen.</p></div>
+  <div class="fb-omslag-voet"><div><p class="fb-label">Inhoud</p><ol class="fb-inhoud"><li><span>De verspilling</span><span data-notr>2</span></li><li><span>Eén voorbeeld</span><span data-notr>3</span></li><li><span>De aanpak</span><span data-notr>4</span></li><li><span>Wat het oplevert</span><span data-notr>5</span></li><li><span>Bronnen</span><span data-notr>6</span></li></ol></div><p class="fb-auteur">Tekst: Erlend Hollebosch</p></div>
+ </div>
+ <div class="fb-pagina fb-achter" data-pagina="2">
+  <div class="fb-kop"><span>Deel 1</span><span data-notr>2 / 8</span></div>
   <h3>De verspilling</h3>
   <p>Overtypen is gegevens die al ergens staan, met de hand opnieuw invoeren in een ander document of systeem. Een bestelling uit een mail in het ERP. Een leveringsbon in Excel. De samenstelling van een product uit de specificatie in de vragenlijst van een klant.</p>
+  <blockquote class="fb-citaat">Het staat op geen enkele functieomschrijving en op geen enkele factuur.</blockquote>
   <p>Niemand noemt het werk. Het staat op geen enkele functieomschrijving en op geen enkele factuur. Het zit tussen twee taken in, en daarom ziet niemand hoeveel het kost. Vraag een medewerker hoeveel tijd hij overtypt, en hij schat te laag. Hij telt de grote blokken, niet de tientallen minuten per dag.</p>
   <p>Overtypen kost twee keer. Eerst de tijd om te typen. Daarna de tijd om de fouten te vinden die erin slopen, en de tijd van de klant of de collega die ze als eerste opmerkt.</p>
+  <div class="fb-voet"><span data-notr>Grow Faster Magazine</span><span>Editie 1</span></div>
+ </div>
+</div>
+<div class="fb-blad">
+ <div class="fb-pagina fb-voor" data-pagina="3">
+  <div class="fb-kop"><span>Deel 2</span><span data-notr>3 / 8</span></div>
   <h3>Eén voorbeeld</h3>
   <p>Een voedingsbedrijf levert aan vijf retailers. Elke retailer stuurt jaarlijks zijn eigen vragenlijst: allergenen, herkomst, certificaten, samenstelling. Dezelfde vragen, telkens in een ander formaat. Een medewerker van de kwaliteitsdienst zoekt de antwoorden in de specificaties en de oude lijsten, en typt ze over in het nieuwe formulier.</p>
   <p>Reken mee. Vijf retailers, elk een lijst van 150 vragen, en per vraag gemiddeld drie minuten zoeken en typen. Dat is 37 uur per jaar aan overtypen, alleen voor die vijf lijsten. Komt er een nieuwe klant bij, of een nieuwe versie van een product, dan begint het opnieuw.</p>
+  <div class="fb-cijfers"><div><strong data-notr>37 u</strong><span>per jaar overtypen, voor vijf lijsten</span></div><div><strong data-notr>2,8</strong><span>fouten per 100 overgetypte velden</span></div><div><strong data-notr>21</strong><span>fouten per jaar bij 750 velden</span></div></div>
   <p>En dan de fouten. Onderzoek in de zorg, waar overgetypte gegevens nauwkeurig worden nagekeken, vindt gemiddeld 2,8 fouten per 100 overgetypte velden. Bij vrije tekst loopt dat op tot 6,4 per 100. Bij 750 velden per jaar zijn dat 21 fouten, waarvan een deel over allergenen gaat. Eén verkeerd allergeen in een klantdossier kost meer dan alle uren samen.</p>
-  <p class="fine">Het rekenvoorbeeld is een illustratie. De foutpercentages komen uit de bronnen onderaan.</p>
+  <p class="fine">Het rekenvoorbeeld is een illustratie. De foutpercentages komen uit de bronnen op pagina 6.</p>
+  <div class="fb-voet"><span data-notr>Grow Faster Magazine</span><span>Editie 1</span></div>
+ </div>
+ <div class="fb-pagina fb-achter" data-pagina="4">
+  <div class="fb-kop"><span>Deel 3</span><span data-notr>4 / 8</span></div>
   <h3>De aanpak</h3>
   <ol class="editie-stappen">
     <li><strong>Tel het eerst.</strong> Laat één medewerker twee weken bijhouden wanneer hij gegevens overtypt, en hoelang. Niet schatten, maar noteren. Het cijfer verrast bijna altijd.</li>
@@ -114,6 +135,12 @@
     <li><strong>Een mens kijkt na en beslist.</strong> De medewerker controleert het voorstel en verstuurt, registreert of importeert het zelf. Niets vertrekt zonder zijn goedkeuring. Zijn werk verschuift van typen naar nakijken.</li>
   </ol>
   <p>Begin met één taak die vaak terugkomt, niet met het hele bedrijf. Een pilot van een paar weken toont of de aanpak werkt, voor u verder investeert.</p>
+  <div class="fb-voet"><span data-notr>Grow Faster Magazine</span><span>Editie 1</span></div>
+ </div>
+</div>
+<div class="fb-blad">
+ <div class="fb-pagina fb-voor" data-pagina="5">
+  <div class="fb-kop"><span>Deel 4</span><span data-notr>5 / 8</span></div>
   <h3>Wat het oplevert</h3>
   <p>Meet drie dingen, voor en na.</p>
   <div class="tabel-wrap"><table class="editie-tabel">
@@ -124,12 +151,41 @@
     <tr><td>Doorlooptijd</td><td>Datum van aanvraag tot verzending</td><td>Een vragenlijst die een week bleef liggen, is dezelfde dag klaar.</td></tr>
     </tbody>
   </table></div>
-  <p>De winst in uren is het makkelijkst te tonen. De winst in fouten is het grootst. Een kwaliteitsmedewerker die niet meer typt, heeft tijd voor het werk waarvoor hij is aangenomen: controleren, verbeteren, de klant antwoorden.</p>
+  <div class="fb-kader"><p class="fb-label">Conclusie</p><p>De winst in uren is het makkelijkst te tonen. De winst in fouten is het grootst. Een kwaliteitsmedewerker die niet meer typt, heeft tijd voor het werk waarvoor hij is aangenomen: controleren, verbeteren, de klant antwoorden.</p></div>
+  <div class="fb-voet"><span data-notr>Grow Faster Magazine</span><span>Editie 1</span></div>
+ </div>
+ <div class="fb-pagina fb-achter" data-pagina="6">
+  <div class="fb-kop"><span>Bronnen en colofon</span><span data-notr>6 / 8</span></div>
   <h3>Bronnen</h3>
   <ul class="editie-bronnen">
     <li><a href="https://doi.org/10.1136/bmjopen-2012-002406" target="_blank" rel="noopener" data-notr>Hong et al., BMJ Open, 2013</a><span>: 2,8 % fouten over alle velden, per veld 0,5 tot 6,4 %. Tekstvelden zijn foutgevoeliger dan cijfers.</span></li>
     <li><a href="https://doi.org/10.1093/jamia/ocy170" target="_blank" rel="noopener" data-notr>Mays en Mathias, JAMIA, 2019</a><span>: de meeste studies meten foutpercentages van enkele procenten bij handmatig overtypen.</span></li>
   </ul>
+  <p class="fine">De foutpercentages komen uit de zorg, waar overgetypte gegevens systematisch worden nagekeken. Voor de kmo is geen vergelijkbare Belgische meting gevonden. Tel het daarom eerst in uw eigen bedrijf.</p>
+  <h3>Colofon</h3>
+  <p class="fine">Grow Faster Magazine verschijnt elke maand en behandelt telkens één verspilling in de kmo. Tekst: Erlend Hollebosch. Reacties en voorbeelden uit uw bedrijf zijn welkom via info@grow-faster.be.</p>
+  <div class="fb-voet"><span data-notr>Grow Faster Magazine</span><span>Editie 1</span></div>
+ </div>
+</div>
+<div class="fb-blad">
+ <div class="fb-pagina fb-voor" data-pagina="7">
+  <div class="fb-kop"><span>Volgende stap</span><span data-notr>7 / 8</span></div>
+  <p class="fb-label">In het kort</p><ol class="fb-kort"><li>Tel het eerst.</li><li>Zoek de bron.</li><li>Laat de computer lezen.</li><li>Een mens kijkt na en beslist.</li></ol><h3>Herkent u deze verspilling?</h3>
+  <p>Vertel ons waar uw team vandaag tijd verliest. In een eerste gesprek van een half uur kijken we welke taak u het eerst aanpakt en wat u terugwint.</p>
+  <p>We beginnen met één taak die vaak terugkomt, meten de tijd en de fouten van vandaag, en testen de aanpak een paar weken. Ziet u geen verschil, dan stoppen we.</p>
+  <p><a class="btn fb-knop-cta" href="afspraak.html">Plan een gesprek</a></p>
+  <p class="fine">Liever mailen? <a href="mailto:info@grow-faster.be?subject=Magazine%20editie%201" data-notr>info@grow-faster.be</a></p>
+  <div class="fb-voet"><span data-notr>Grow Faster Magazine</span><span>Editie 1</span></div>
+ </div>
+ <div class="fb-pagina fb-achter fb-omslag fb-achterkant" data-pagina="8">
+  <div class="fb-kop"><span data-notr>Grow Faster</span><span data-notr>8 / 8</span></div>
+  <div class="fb-omslag-midden"><p class="fb-label">Volgende editie</p><h3 class="fb-titel">December 2026</h3><p class="fb-lede">Opnieuw één verspilling, één voorbeeld, één aanpak. Wilt u een mail bij een nieuwe editie?</p><p><a class="btn fb-knop-cta" href="mailto:info@grow-faster.be?subject=Magazine%20abonnement">Mail me bij een nieuwe editie</a></p></div>
+  <div class="fb-omslag-voet"><p class="fb-auteur" data-notr>grow-faster.be</p></div>
+ </div>
+</div>
+</div>
+<div class="fb-nav"><button type="button" class="fb-knop" id="fb-vorige" aria-controls="fb-boek">← Vorige</button><p class="fb-teller" aria-live="polite"><span class="fb-sr">Pagina</span> <output id="fb-nr" data-notr>1 / 8</output></p><button type="button" class="fb-knop" id="fb-volgende" aria-controls="fb-boek">Volgende →</button></div>
+<p class="fine fb-hint">Blader met de knoppen, de pijltjestoetsen of een veeg over de pagina.</p>
 </article>
 </div></section>
 

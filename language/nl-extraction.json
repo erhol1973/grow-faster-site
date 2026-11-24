@@ -2,8 +2,8 @@
   "schema": 1,
   "scope": "rendered_local_nl_runtime_dictionaries_static_cms_and_mail",
   "technicalReview": {
-    "date": "2026-11-23",
-    "reason": "Contactadres info@grow-faster.be in plaats van het Gmail-adres (site.js, pagina’s); geen tekst- of adapterwijziging. Afspraakpagina: nieuwe pagina afspraak.html (rendered DOM, inline script zonder tekst), gespreksknoppen verwijzen ernaar, privacybeleid aangevuld; i18n.js bijgewerkt. Geen adapterwijziging. Release 2: platte menubalk (rendered DOM), nieuwe pagina’s training.html en journal.html (Monthly Journal), herschreven insights.html, automatisering.html en coherence.html (Bedrijfsontwikkeling); journal-fr.html wordt een doorverwijzing. Nieuwe runtime-dictionary assets/i18n-insights.js (zelfde adapter als i18n.js, alleen op insights.html). Gewijzigd: i18n.js, cms-catalog.js (static catalog adapter). Geen adapterwijziging in de extractor. Coherentie: label \"De film\" verwijderd (rendered DOM, i18n.js). Coherentie voor kmo’s: coherence.html herschreven (rendered DOM + coherence CMS catalog met coh-kmo-sleutels), Orion-bronregel; changed i18n.js (runtime dictionary adapter), cms-catalog.js (static catalog adapter) and ux.js (page description only). Geen adapterwijziging. Release 1.1: site.js fragment re-anchor (no text, no adapter change); customer About page (rendered DOM + about-klant CMS catalog) and the reader link to Books; release 1: new oplossingen/orion/automatisering pages, assets/home-film.js (source/poster switch only, no text) and the coherence film text block (rendered DOM) and customer homepage are discovered by the existing DOM adapter; changed i18n.js (runtime dictionary adapter), cms-catalog.js (static catalog adapter) and cms-admin.js (excluded admin). Also records assets/baies-dev-*.js and the i18n/site.js changes merged on 12 Nov (PR #74/#75) without a contract update, which made every daily run since 13 Nov fail closed; their Executive Radar text is covered only as rendered in the initial NL DOM. No adapter code changed; no language approval"
+    "date": "2026-11-24",
+    "reason": "Magazine editie 1: volledige tekst op journal.html (rendered DOM) en nieuwe runtime-dictionary assets/i18n-journal.js (zelfde adapter als i18n-insights.js, alleen op journal.html); i18n.js bijgewerkt. Ook vastgelegd: homepage-releases #104 en #105 van 24 november (toepassingskaarten, hero-video, Orion-film; index.html inline hero-stijl, site.js, cms-catalog.js, cms-admin.js) die zonder contractupdate gemerged werden. Geen adapterwijziging in de extractor. Contactadres info@grow-faster.be in plaats van het Gmail-adres (site.js, pagina’s); geen tekst- of adapterwijziging. Afspraakpagina: nieuwe pagina afspraak.html (rendered DOM, inline script zonder tekst), gespreksknoppen verwijzen ernaar, privacybeleid aangevuld; i18n.js bijgewerkt. Geen adapterwijziging. Release 2: platte menubalk (rendered DOM), nieuwe pagina’s training.html en journal.html (Monthly Journal), herschreven insights.html, automatisering.html en coherence.html (Bedrijfsontwikkeling); journal-fr.html wordt een doorverwijzing. Nieuwe runtime-dictionary assets/i18n-insights.js (zelfde adapter als i18n.js, alleen op insights.html). Gewijzigd: i18n.js, cms-catalog.js (static catalog adapter). Geen adapterwijziging in de extractor. Coherentie: label \"De film\" verwijderd (rendered DOM, i18n.js). Coherentie voor kmo’s: coherence.html herschreven (rendered DOM + coherence CMS catalog met coh-kmo-sleutels), Orion-bronregel; changed i18n.js (runtime dictionary adapter), cms-catalog.js (static catalog adapter) and ux.js (page description only). Geen adapterwijziging. Release 1.1: site.js fragment re-anchor (no text, no adapter change); customer About page (rendered DOM + about-klant CMS catalog) and the reader link to Books; release 1: new oplossingen/orion/automatisering pages, assets/home-film.js (source/poster switch only, no text) and the coherence film text block (rendered DOM) and customer homepage are discovered by the existing DOM adapter; changed i18n.js (runtime dictionary adapter), cms-catalog.js (static catalog adapter) and cms-admin.js (excluded admin). Also records assets/baies-dev-*.js and the i18n/site.js changes merged on 12 Nov (PR #74/#75) without a contract update, which made every daily run since 13 Nov fail closed; their Executive Radar text is covered only as rendered in the initial NL DOM. No adapter code changed; no language approval"
   },
   "javascript": [
     {
@@ -24,11 +24,11 @@
     },
     {
       "file": "assets/cms-admin.js",
-      "sha256": "a93d451dae56fd30cefef0c8bcdd7895e407144f1d52099f11179e5702bf8f97"
+      "sha256": "978ce9d726ec5560914110287663e94bf792d05a0c461c1bf59fbfd3dd721de9"
     },
     {
       "file": "assets/cms-catalog.js",
-      "sha256": "c869e8c032bd1613817f3a7c97fc4f9cf2954a28ed6c680f8dc76dcf52fcf887"
+      "sha256": "f230f6af3bd42bae31a6621a3f621c31e579b9e739310c4588e444faa5eadbad"
     },
     {
       "file": "assets/cms-client.js",
@@ -79,8 +79,12 @@
       "sha256": "ffbd10397662efec400ed48f8c7c807dae54a416ea063e245ae0d7f388b30940"
     },
     {
+      "file": "assets/i18n-journal.js",
+      "sha256": "c93be8b081474087ee6335cea78b85a8c9b200bd61a0609f9500dc28c59a05dc"
+    },
+    {
       "file": "assets/i18n.js",
-      "sha256": "8b91b6a801d51274b00dbb3a494a4e1ebefebe3b4becf40c0aa940a7d0284510"
+      "sha256": "01ee25d699626543a804981b54f03a437b8abed86b01af48d914a43da6412767"
     },
     {
       "file": "assets/journal.js",
@@ -100,7 +104,7 @@
     },
     {
       "file": "assets/site.js",
-      "sha256": "4f910770bf2ba81afffaf00a0dbe36ed92a98de2bcc7822b1aad70ee84d9dd3b"
+      "sha256": "da75216727244124a3bc9e5e49c87dd099e4e0432daeb921fde5bf9b4f0fcca4"
     },
     {
       "file": "assets/ux.js",
@@ -222,7 +226,7 @@
     },
     {
       "file": "journal.html",
-      "sha256": "3ed969b346a66f8b03bb6f094fe916a44269f5d4f66543ff2be5f76e6b2ca5ca"
+      "sha256": "369c5872b9111d5878b40cc54ccd79505d0dc27922424b1ac45fe953f42515d4"
     },
     {
       "file": "operating-model.html",

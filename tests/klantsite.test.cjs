@@ -77,15 +77,15 @@ test('Orion lists four steps and five FAQ disclosures; released pages make no un
 }); 
 test('customer homepage follows the approved mockup sections and keeps consent, CMS and the hero photo',()=>{const home=read('index.html');
   // v2: the pyramid "Van fundament tot AI" replaces the former "Drie manieren om sneller te werken" section (moved to Oplossingen).
-  const order=['id="hero"','id="toepassingen"','id="proof"','id="hoe"','id="fundament"','id="vertrouwelijk"','id="final"'].map(id=>home.indexOf(id));
-  assert.doesNotMatch(home,/id="herkenbaar"/);
+  const order=['id="hero"','id="toepassingen"','id="proof"','id="fundament"','id="vertrouwelijk"','id="final"'].map(id=>home.indexOf(id));
+  assert.doesNotMatch(home,/id="herkenbaar"|id="hoe"|orion-film/,'the Orion steps and film live on orion.html (owner decision, 24 Nov 2026)');
   assert.ok(order.every((v,i)=>v>0&&(i===0||v>order[i-1])),'section order');
   assert.match(home,/<img src="img\/hero-toepassingen-1774\.webp" alt="" width="1774" height="887" fetchpriority="high"/);
   assert.doesNotMatch(home,/alleen-lezen|lecture seule|read-only/i,'no read-only guarantee before per-connection verification');
   assert.match(home,/<body data-cms-page="home"/);assert.match(home,/id="consent" role="dialog"/);assert.match(home,/assets\/consent\.js/);
   assert.doesNotMatch(home,/id="aanbod"/);assert.match(home,/<h1 data-ih="home-orion-value"[^>]*>Sneller werken met AI en automatisering\.<\/h1>/);
   const confidential=home.match(/<section id="vertrouwelijk"[\s\S]*?<\/section>/)[0];assert.doesNotMatch(confidential,/<a\b|<ul\b/);
-  assert.equal((home.match(/class="vcard in"/g)||[]).length,7);
+  assert.equal((home.match(/class="vcard in"/g)||[]).length,3,"three trust cards; the four step cards moved to orion.html");
 });
 
 // v2: HTML/CSS pyramid (no SVG text) shared by the homepage and Oplossingen; reading order runs from the foundation upward.

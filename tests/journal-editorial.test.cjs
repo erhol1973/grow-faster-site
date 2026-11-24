@@ -37,7 +37,7 @@ test('home shows experience proof after the application cards and no longer list
   const home=read('index.html');
   const proof=home.match(/<section id="proof"[\s\S]*?<\/section>/);assert.ok(proof);assert.match(proof[0],/href="about\.html">Over Erlend Hollebosch/);
   // 24 Nov 2026: the application cards sit directly under the hero, then the experience proof.
-  assert.ok(home.indexOf('</header>')<home.indexOf('id="toepassingen"')&&home.indexOf('id="toepassingen"')<home.indexOf('id="proof"')&&home.indexOf('id="proof"')<home.indexOf('id="hoe"'),'proof follows the application cards');
+  assert.ok(home.indexOf('</header>')<home.indexOf('id="toepassingen"')&&home.indexOf('id="toepassingen"')<home.indexOf('id="proof"')&&home.indexOf('id="proof"')<home.indexOf('id="fundament"'),'proof follows the application cards');
   for(const org of ['Colruyt Group','Volvo Group','Solvay','ArcelorMittal','Telenet','Ericsson'])assert.ok(proof[0].includes('<li>'+org+'</li>'),org);
   assert.doesNotMatch(home,/id="journal-latest"|id="selected-insight"/);
 });

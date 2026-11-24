@@ -3,7 +3,7 @@
   "scope": "rendered_local_nl_runtime_dictionaries_static_cms_and_mail",
   "technicalReview": {
     "date": "2026-11-24",
-    "reason": "Magazine editie 1 als flipboek op journal.html: nieuw script assets/flipboek.js (bladert door acht pagina’s; bevat enkel paginanummers, geen tekst), uitgebreide runtime-dictionary assets/i18n-journal.js (zelfde adapter als eerder), gewijzigde rendered DOM van journal.html. Geen adapterwijziging in de extractor. Eerdere reden: Magazine editie 1: volledige tekst op journal.html (rendered DOM) en nieuwe runtime-dictionary assets/i18n-journal.js (zelfde adapter als i18n-insights.js, alleen op journal.html); i18n.js bijgewerkt. Ook vastgelegd: homepage-releases #104 en #105 van 24 november (toepassingskaarten, hero-video, Ori…"
+    "reason": "Orion-film en de vier stappen van Zo werkt Orion verhuisd van index.html naar orion.html (eigenaarsbeslissing 24 november): rendered DOM van beide pagina’s en inline JSON-LD ongewijzigd in betekenis; assets/cms-catalog.js zonder de negen stapvelden; assets/cms-admin.js met hernummerde groepen. Geen adapterwijziging. Eerdere reden: Magazine editie 1 als flipboek op journal.html: nieuw script assets/flipboek.js (bladert door acht pagina’s; bevat enkel paginanummers, geen tekst), uitgebreide runtime-dictionary assets/i18n-journal.…"
   },
   "javascript": [
     {
@@ -24,11 +24,11 @@
     },
     {
       "file": "assets/cms-admin.js",
-      "sha256": "978ce9d726ec5560914110287663e94bf792d05a0c461c1bf59fbfd3dd721de9"
+      "sha256": "e2a0ceddb239ffa12891a407cf5773566d03f094204513c8dc6cdda4025fffae"
     },
     {
       "file": "assets/cms-catalog.js",
-      "sha256": "f230f6af3bd42bae31a6621a3f621c31e579b9e739310c4588e444faa5eadbad"
+      "sha256": "e5de177455bb9bd6aed4ecb647634bfd585580ff68d2d36c6f51808d522434a9"
     },
     {
       "file": "assets/cms-client.js",

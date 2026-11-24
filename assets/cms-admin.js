@@ -14,10 +14,9 @@
   {id:'hero',label:'Hero & introductie',from:0,to:2},
   {id:'apps',label:'Toepassingen',from:3,to:14},
   {id:'experience',label:'Ervaring',from:15,to:16},
-  {id:'steps',label:'Zo werkt Orion',from:17,to:25},
-  {id:'trust',label:'Uw systemen en beslissingen',from:26,to:33},
-  {id:'pilot',label:'Pilotgesprek',from:34,to:35},
-  {id:'video',label:'Video',from:36,to:36}
+  {id:'trust',label:'Uw systemen en beslissingen',from:17,to:24},
+  {id:'pilot',label:'Pilotgesprek',from:25,to:26},
+  {id:'video',label:'Video',from:27,to:27}
  ];
  function fieldGroup(index,field){
   if(definition.page!=='home')return field.type==='media'?'media':'text';

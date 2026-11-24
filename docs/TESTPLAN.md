@@ -13,6 +13,8 @@ Tests:
 
 Feedback eigenaar (24 november 2026, 10:00): het donkerblauw was te donker. De video en het stilbeeld zijn lichter gemaakt (gamma 1,35) en alleen de homepage krijgt een lichter verloop dat rechts openloopt; Orion en Workflow-automatisering houden hun eigen verloop. hero-photo-contrast bleef op alle breedtes boven 4,5:1 (een eerste, te lichte poging zakte op 1024 px naar 4,24 en is bijgestuurd).
 
+Keuze eigenaar (24 november 2026, 10:16): variant B in premiumversie. Homepage: verloop links 62 % in plaats van 80 % plus een zachte halo rond titel en ondertitel; afgesteld tot hero-photo-contrast op alle breedtes in NL en FR boven 4,5:1 bleef (de eerste B-versie zakte op 1024 px naar 4,12). Premium 4K-webvariant (4032 x 2048, ongeveer 3 MB) alleen voor schermen met minstens 2400 fysieke pixels breed op een snelle verbinding; budget 5 MiB in home-hero-video.test.cjs, browsertest met deviceScaleFactor 2.
+
 Beperking: Chromium in Playwright speelt geen H.264 af, dus het echte afspelen en de mobiele laadtijd worden op de Cloudflare-preview gecontroleerd.
 
 ## Afspraakpagina, 23 november 2026

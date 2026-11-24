@@ -20,6 +20,13 @@ test('the video variant follows the viewport and the pause button is labelled an
   expect(box.y>=cta.y+cta.height||box.x>=cta.x+cta.width,'pause button does not cover the main button').toBe(true);
 });
 
+test('wide, sharp screens get the premium 4K variant',async({browser},info)=>{
+  test.skip(info.project.use.isMobile,'desktop case');
+  const ctx=await browser.newContext({viewport:{width:1440,height:900},deviceScaleFactor:2});const page=await ctx.newPage();await init(page);
+  await page.goto('/index.html');await expect(page.locator('#hero-video')).toHaveAttribute('src','media/hero-toepassingen-4k.mp4');
+  await ctx.close();
+});
+
 test('reduced motion keeps the still image and loads no video',async({browser})=>{
   const ctx=await browser.newContext({reducedMotion:'reduce'});const page=await ctx.newPage();await init(page);
   const videos=[];page.on('request',r=>{if(r.url().endsWith('.mp4'))videos.push(r.url())});

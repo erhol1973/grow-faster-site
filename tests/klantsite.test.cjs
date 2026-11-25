@@ -4,7 +4,7 @@ const {test}=require('node:test'),assert=require('node:assert/strict'),fs=requir
 const root=path.resolve(__dirname,'..','dist');const read=f=>fs.readFileSync(path.join(root,f),'utf8');
 // 25 Nov 2026: homepage-only strings live in assets/i18n-home.js (Object.assign onto window.I18N, loaded after i18n.js on index.html);
 // both run in one context, in that order, as in the browser.
-const I18N=()=>{const c={window:{}};vm.runInNewContext(read('assets/i18n.js'),c);vm.runInNewContext(read('assets/i18n-home.js'),c);vm.runInNewContext(read('assets/i18n-orion.js'),c);return c.window};
+const I18N=()=>{const c={window:{}};vm.runInNewContext(read('assets/i18n.js'),c);vm.runInNewContext(read('assets/i18n-home.js'),c);vm.runInNewContext(read('assets/i18n-orion.js'),c);vm.runInNewContext(read('assets/i18n-training.js'),c);return c.window};
 // Appointment page (23 Nov 2026, owner decision): conversation buttons open afspraak.html with the topic preselected
 // instead of a mail; the Google booking page sends the confirmations.
 const PILOT='afspraak.html?onderwerp=vragenlijsten';

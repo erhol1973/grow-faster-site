@@ -3,7 +3,7 @@
   "scope": "rendered_local_nl_runtime_dictionaries_static_cms_and_mail",
   "technicalReview": {
     "date": "2026-11-25",
-    "reason": "Magazinepagina journal.html (eigenaarsbeslissing 25 november): schuivende hero met vijf beelden, archief van alle edities en de delen van editie 1; blokken Het boek en Herkent u deze verspilling? weg; nieuw assets/magazine.js en deeplinks in assets/flipboek.js. Vertalingen in assets/i18n-journal.js. Geen adapterwijziging. Eerdere reden: Homepage herwerkt (opdracht sponsor 25 november): nieuwe blokken Terugkerend werk en Zo starten we, rijkere toepassingskaarten; nieuwe runtime-dictionary assets/i18n-home.js (zelfde patroon als i18n-j…"
+    "reason": "Magazinepagina journal.html (eigenaarsbeslissing 25 november): schuivende hero met vijf beelden, archief van alle edities en de delen van editie 1; blokken Het boek en Herkent u deze verspilling? weg; nieuw assets/magazine.js en deeplinks in assets/flipboek.js. Vertalingen in assets/i18n-journal.js. Geen adapterwijziging. Eerdere reden: Contentstudio herwerkt (sponsorbesluit 25 november): catalogus beperkt tot de menupagina’s (Home, Orion, Workflow-automatisering, Bedrijfsontwikkeling, Training, Insights, Over), zeven oude Engelstali…"
   },
   "javascript": [
     {
@@ -28,7 +28,7 @@
     },
     {
       "file": "assets/cms-catalog.js",
-      "sha256": "af71fa4f8713c01f8578fedd70b1104fb871192684cfac7c122bd829a522b86a"
+      "sha256": "8f54c0acdd590059835502d5dfc9ffc9756612dd019d4e00912fa3dae14a5464"
     },
     {
       "file": "assets/cms-client.js",
@@ -36,7 +36,7 @@
     },
     {
       "file": "assets/cms-config.js",
-      "sha256": "9db9aa02f7cf8fd9dd0acfddecb0bf6dffea3fd28e5d8b63c25b352c08d73a38"
+      "sha256": "6575f4184f2cc82de32fd08a204955444ab5b8346a139c553ea668c53aa60906"
     },
     {
       "file": "assets/cms-public.js",
@@ -174,7 +174,7 @@
     },
     {
       "file": "automatisering.html",
-      "sha256": "b52df84d6113cca55ef54ffd59c30f1ffda23ea1afd46ae2d0e744ebf739b228"
+      "sha256": "9b3726bea5414c9ce0add306334903d3693a95a364d2dfef5b70189c84b5d5b4"
     },
     {
       "file": "baies-dev/index.html",
@@ -198,7 +198,7 @@
     },
     {
       "file": "coherence.html",
-      "sha256": "daa55de1502b6cd5f456d8df9f6d9a47af16d2212f3acac2e20f317bb4cc167f"
+      "sha256": "8ae7169070075abfe4bb642b63cdcfca6fed76aa8961c1aac8aab43a938d39ff"
     },
     {
       "file": "coordination-overload-1.html",
@@ -230,7 +230,7 @@
     },
     {
       "file": "insights.html",
-      "sha256": "54e4adc37cf35861fbbe7eceef1866ef8c11812c6f5bbce23fab87a3de606d97"
+      "sha256": "893145708e6d3c5b88be682a8a0c01380f443a135e2ea5171f069a9cc64d0ed3"
     },
     {
       "file": "journal-fr.html",
@@ -250,7 +250,7 @@
     },
     {
       "file": "orion.html",
-      "sha256": "d0d1bf9f13d348c6dfe2b36264a1f0da3fa960a33b21fc7d2e4a6b4a81de45b2"
+      "sha256": "23aa0d7c55db5dedd1a059b19be6712897a2c81990d01529f5d740f8cc2ccd5d"
     },
     {
       "file": "privacy.html",
@@ -274,7 +274,7 @@
     },
     {
       "file": "training.html",
-      "sha256": "8d68d607423593eb9736f3d7fa2c8162ef13b27169d594dbb432913480a3d664"
+      "sha256": "ee875ec7fdf01d132d90f0aa7f87b72c4a3902b33412639e8c3d17706a751d87"
     },
     {
       "file": "transformation.html",

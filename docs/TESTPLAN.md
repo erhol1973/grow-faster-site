@@ -8,6 +8,16 @@ Nieuwe opmaak: pagina's in A4-verhouding, zo groot als het scherm toelaat (minst
 
 Tests: tests/journal.test.cjs bewaakt de paginatelling (20 tot 35, even), omslagfoto, drie openingsfoto's met alt-tekst, zeven figuren, rubriekkoppen, de vier stappen over twee pagina's, beide tabellen en de vertaling van elke regel (nu ook h4, figuren en bijschriften); tests/browser/journal.spec.cjs bladert door 32 pagina's op desktop en mobiel en controleert dat geen tekst onder de voetregel van een pagina komt, in NL en FR. Taalcontract opnieuw gegenereerd.
 
+## Contentstudio herwerkt voor de nieuwe Grow Faster, 25 november 2026
+
+Sponsorbesluit: de contentstudio bevat precies de menupagina's (Homepage, Orion, Workflow-automatisering, Bedrijfsontwikkeling, Training, Insights, Over Erlend Hollebosch). De zeven oude Engelstalige pagina's (Books, Approach, Operating model, Process, Value, Transformation, Workshop) zijn uit de catalogus; die pagina's zelf blijven ongewijzigd online. Het Maandelijks Magazine volgt na samenvoeging van PR #112, die journal.html herwerkt.
+
+Orion, Workflow-automatisering en Training krijgen data-cms-sleutels (ori-, aut-, trn-) op platte tekstelementen met een NL/FR-vertaling, een herofoto als mediaveld en een videoslot. Gevonden defect: coherence.html en insights.html stonden in de catalogus maar misten sinds 23 november de publieke CMS-loader, waardoor gepubliceerde wijzigingen nooit verschenen; die loader is terug. Testomgeving: elke Cloudflare Pages-preview (branchalias en deployment-hash) gebruikt nu het geïsoleerde testproject growfaster-test; alleen het live domein bereikt productiegegevens.
+
+Tests: cms-client (exacte paginalijst en negatieve gevallen voor de oude pagina's; ondergrens 300 velden in plaats van 400 met reden; nieuw: elke cataloguspagina heeft data-cms-page, loader na site.js in de juiste volgorde en een videoslot), cms-environment (nieuw: elke preview-host gebruikt het testproject, lookalikes en geneste subdomeinen blijven productie), nl-editorial (workshopprijzen zijn geen CMS-standaard meer), release2 (koppen van training.html mogen een data-cms-attribuut dragen). language/nl-extraction.json bijgewerkt; geen adapterwijziging.
+
+Secrets history gate: scripts/nl-secret-guard.cjs koos zijn echte-scanner-fixture uit de catalogus; met de oude pagina's verdween het sterkste publieke ID, waardoor 'identifier-outside-allowed-path' niet meer detecteerde. De guard kiest nu uit catalogus én taalregister (beide onder dezelfde smalle uitzondering) en neemt nog steeds het ID met de hoogste entropie; alle acht scenario's lokaal geverifieerd met Gitleaks 8.24.3 (vóór de fix: dezelfde fout als CI).
+
 ## Homepage herwerkt: terugkerend werk en aanpak, 25 november 2026
 
 Opdracht van de eigenaar: betere structuur, modernere en professionelere vormgeving en uitgebreidere tekst over terugkerend werk. Nieuwe volgorde: hero, toepassingen (vandaag / wij bereiden voor / uw medewerker), terugkerend (nieuw, met gelabeld rekenvoorbeeld en herkenningslijst), aanpak (nieuw, drie fases), fundament, kloof, vertrouwelijk, proof, final. Vormgeving in assets/home.css; homepagevertalingen in assets/i18n-home.js (zelfde patroon als i18n-journal.js), zodat de gedeelde i18n.js binnen het gzip-budget van 65000 bytes blijft. Geen bestaande drempel verhoogd.

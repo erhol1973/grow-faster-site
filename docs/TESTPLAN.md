@@ -1,5 +1,11 @@
 # Testplan en kwaliteitsbeleid
 
+## Orion-film en stappen van de homepage naar orion.html, 24 november 2026
+
+Beslissing van de eigenaar: "Zo werkt Orion" (vier stappen en film) verdwijnt van de homepage; de film staat op orion.html onder de vier stappen en de zin "Elk antwoord dat u goedkeurt, onthoudt Orion." De homepage houdt hero, vier toepassingskaarten, ervaring, piramide, kloof, vertrouwen en pilot. CMS: de negen stapvelden van de homepage zijn uit de catalogus; de groepen in de beheerpagina zijn hernummerd (28 velden). Het uitklapblok "Tekst in beeld" blijft bij de film als tekstalternatief.
+
+Tests: tests/orion-film.test.cjs en tests/browser/orion-film.spec.cjs lezen orion.html; tests/klantsite.test.cjs (sectievolgorde zonder #hoe, drie vertrouwenskaarten, geen film op de homepage) en tests/cms-client.test.cjs (groepen) aangepast. scripts/verify-production.cjs controleert na elke release de film op orion.html, de afwezigheid op de homepage, de vier kaarten en de mediabestanden (vervangt PR #106). Taalcontract opnieuw gegenereerd.
+
 ## Magazine editie 1 als flipboek, 24 november 2026
 
 Beslissing van de eigenaar: de editie leest als een magazine waarvan de pagina's omslaan, zoals het vroegere Executive Journal (pdf, issue 02), niet als doorlopende webtekst. Uitvoering zonder externe dienst: acht pagina's op vier bladen in journal.html (omslag, vier delen, bronnen en colofon, volgende stap, achterkant), assets/flipboek.js voor het bladeren (knoppen, pijltjestoetsen, veeg), twee pagina's naast elkaar vanaf 761 px en één pagina eronder. Verborgen pagina's zijn inert. Teksten en vertalingen zijn dezelfde als in de vorige versie, met 35 nieuwe sleutels in assets/i18n-journal.js (kop- en voetregels, cijferkaarten, colofon, knoppen).

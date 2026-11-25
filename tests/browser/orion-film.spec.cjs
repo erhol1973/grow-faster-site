@@ -3,7 +3,7 @@ const {test,expect}=require('playwright/test');
 test('Orion film switches between the Dutch and French editions with the language',async({page})=>{
   await page.addInitScript(()=>{localStorage.setItem('avs-lang','nl');localStorage.setItem('avs-consent',JSON.stringify({v:4,ext:false,ana:false,ts:Date.now()}))});
   const films=[];page.on('request',r=>{if(/orion-werking-(nl|fr)\.mp4/.test(r.url()))films.push(r.url())});
-  await page.goto('/index.html');
+  await page.goto('/orion.html');
   const v=page.locator('#orion-film video');await v.scrollIntoViewIfNeeded();await expect(v).toBeVisible();
   await expect(v.locator('source')).toHaveAttribute('src','media/orion-werking-nl.mp4');
   await page.locator('#lang-btn-top').click();await page.locator('.lang-top [data-lang="fr"]').click();

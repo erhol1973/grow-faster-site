@@ -42,11 +42,11 @@ test('CMS page selector preserves all field values while showing one homepage se
  assert.match(script,/const match=textMatch&&\(term\?true:groupMatch\)/);
  assert.match(script,/section\.hidden=!match/);
  assert.match(script,/for\(const field of definition\.fields\)/);
- // Customer homepage (24 Nov 2026): hero, four application cards, experience, steps, systems and decisions, pilot (the pyramid is fixed markup, not CMS-editable) and the optional video slot.
- // "Herkenbaar?" left the homepage on the owner's decision; the application cards take over that role.
+ // Customer homepage (24 Nov 2026): hero, four application cards, experience, systems and decisions, pilot (the pyramid is fixed markup, not CMS-editable) and the optional video slot.
+ // "Herkenbaar?" and "Zo werkt Orion" left the homepage on the owner's decision; the application cards link to orion.html, where the steps and the film live.
  const groups=[
-  [0,2,[]],[3,14,[]],[15,16,[]],[17,25,[]],
-  [26,33,[]],[34,35,[]],[36,36,[]]
+  [0,2,[]],[3,14,[]],[15,16,[]],
+  [17,24,[]],[25,26,[]],[27,27,[]]
  ];
  const declared=[...script.slice(script.indexOf('const homeGroups=['),script.indexOf('];',script.indexOf('const homeGroups=['))).matchAll(/from:(\d+),to:(\d+)(?:,extra:\[([\d,]*)\])?/g)].map(m=>[+m[1],+m[2],m[3]?m[3].split(',').map(Number):[]]);
  assert.deepEqual(declared,groups,'the editor declares exactly the tested homepage groups');

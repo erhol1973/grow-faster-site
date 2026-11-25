@@ -60,6 +60,7 @@ test('Main navigation has a Dutch accessible name on every built Dutch page; Eng
   }
   assert.ok(dutch>=9,'customer pages carry the Dutch label');
   const ux=fs.readFileSync(path.join(root,'assets/ux.js'),'utf8');assert.match(ux,/"Sections": \[\s*"Hoofdnavigatie",\s*"Navigation principale"/);
+});
 
 // Owner decision 25 Nov 2026 17:02: the homepage uses the polished "nog niet één op de drie" instead of informal "nog geen een op de drie".
 test('homepage figure sentence uses "nog niet één op de drie" in HTML and in the translation key',()=>{

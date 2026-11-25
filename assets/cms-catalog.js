@@ -42,9 +42,9 @@ window.GF_CMS_CATALOG=[
       {
         "key": "home-v2-apps-eyebrow",
         "type": "text",
-        "label": "Toepassingen",
-        "nl": "Toepassingen",
-        "fr": "Applications"
+        "label": "Toepassingsdomeinen",
+        "nl": "Toepassingsdomeinen",
+        "fr": "Domaines d’application"
       },
       {
         "key": "home-v2-apps-h",
@@ -631,315 +631,455 @@ window.GF_CMS_CATALOG=[
         }
       },
       {
-        "key": "ori-01",
+        "key": "orx-01",
         "type": "text",
-        "label": "Uw klantvragenlijsten, ingevuld vanuit uw eigen documenten.",
-        "nl": "Uw klantvragenlijsten, ingevuld vanuit uw eigen documenten.",
-        "fr": "Vos questionnaires clients, remplis à partir de vos propres documents."
+        "label": "Vragenlijsten en dossiers, voorbereid vanuit uw eigen documenten.",
+        "nl": "Vragenlijsten en dossiers, voorbereid vanuit uw eigen documenten.",
+        "fr": "Questionnaires et dossiers, préparés à partir de vos propres documents."
       },
       {
-        "key": "ori-02",
+        "key": "orx-02",
         "type": "text",
-        "label": "Orion zoekt de antwoorden in uw specificaties, certificaten en eerdere lijsten. Uw medewer",
-        "nl": "Orion zoekt de antwoorden in uw specificaties, certificaten en eerdere lijsten. Uw medewerker kijkt na en verstuurt.",
-        "fr": "Orion recherche les réponses dans vos spécifications, vos certificats et vos questionnaires précédents. Votre collaborateur vérifie et envoie."
+        "label": "Orion zoekt de antwoorden in uw specificaties, certificaten, fiches en eerdere dossiers, e",
+        "nl": "Orion zoekt de antwoorden in uw specificaties, certificaten, fiches en eerdere dossiers, en toont bij elk antwoord de bron. Uw medewerker kijkt na en beslist.",
+        "fr": "Orion recherche les réponses dans vos spécifications, certificats, fiches et dossiers précédents, et indique la source de chaque réponse. Votre collaborateur vérifie et décide."
       },
       {
-        "key": "ori-03",
+        "key": "orx-03",
         "type": "text",
-        "label": "Wat is Orion?",
-        "nl": "Wat is Orion?",
-        "fr": "Qu’est-ce qu’Orion ?"
+        "label": "In het kort",
+        "nl": "In het kort",
+        "fr": "En bref"
       },
       {
-        "key": "ori-04",
+        "key": "orx-04",
         "type": "text",
-        "label": "Wat het is",
-        "nl": "Wat het is",
-        "fr": "Ce que c’est"
+        "label": "Klanten, auditors en overheden vragen dezelfde informatie, telkens in een ander formaat. H",
+        "nl": "Klanten, auditors en overheden vragen dezelfde informatie, telkens in een ander formaat. Het antwoord staat al in uw documenten.",
+        "fr": "Clients, auditeurs et pouvoirs publics demandent les mêmes informations, chaque fois dans un autre format. La réponse se trouve déjà dans vos documents."
       },
       {
-        "key": "ori-05",
+        "key": "orx-05",
         "type": "text",
-        "label": "Een AI-assistent die vragenlijsten en specificaties van uw klanten invult op basis van uw ",
-        "nl": "Een AI-assistent die vragenlijsten en specificaties van uw klanten invult op basis van uw eigen documenten. U hebt er geen IT-project of AI-kennis voor nodig.",
-        "fr": "Un assistant IA qui remplit les questionnaires et les spécifications de vos clients à partir de vos propres documents. Aucun projet informatique ni connaissance en IA n’est nécessaire."
+        "label": "Orion zoekt die antwoorden op, vult ze in het gevraagde formaat in en toont bij elk antwoo",
+        "nl": "Orion zoekt die antwoorden op, vult ze in het gevraagde formaat in en toont bij elk antwoord uit welk document het komt.",
+        "fr": "Orion retrouve ces réponses, les remplit dans le format demandé et indique pour chaque réponse le document dont elle provient."
       },
       {
-        "key": "ori-06",
+        "key": "orx-06",
         "type": "text",
-        "label": "Het doel",
-        "nl": "Het doel",
-        "fr": "L’objectif"
+        "label": "Uw medewerker kijkt na en beslist. Orion verstuurt nooit zelf iets en onthoudt elk antwoor",
+        "nl": "Uw medewerker kijkt na en beslist. Orion verstuurt nooit zelf iets en onthoudt elk antwoord dat u goedkeurt.",
+        "fr": "Votre collaborateur vérifie et décide. Orion n’envoie jamais rien lui-même et retient chaque réponse que vous validez."
       },
       {
-        "key": "ori-07",
-        "type": "text",
-        "label": "Uw kwaliteitsdienst verlossen van zoek- en overtypwerk, zodat er meer tijd overblijft voor",
-        "nl": "Uw kwaliteitsdienst verlossen van zoek- en overtypwerk, zodat er meer tijd overblijft voor kwaliteit.",
-        "fr": "Libérer votre service qualité des recherches et des ressaisies, pour qu’il ait plus de temps pour la qualité."
-      },
-      {
-        "key": "ori-08",
-        "type": "text",
-        "label": "Wat het u oplevert",
-        "nl": "Wat het u oplevert",
-        "fr": "Ce que vous y gagnez"
-      },
-      {
-        "key": "ori-09",
-        "type": "text",
-        "label": "Uren per week terug, sneller antwoord aan uw klanten en dezelfde, correcte informatie in e",
-        "nl": "Uren per week terug, sneller antwoord aan uw klanten en dezelfde, correcte informatie in elke lijst.",
-        "fr": "Des heures récupérées chaque semaine, des réponses plus rapides à vos clients et la même information correcte dans chaque questionnaire."
-      },
-      {
-        "key": "ori-10",
+        "key": "orx-08",
         "type": "text",
         "label": "Dezelfde vragen, telkens opnieuw",
         "nl": "Dezelfde vragen, telkens opnieuw",
         "fr": "Les mêmes questions, encore et encore"
       },
       {
-        "key": "ori-11",
+        "key": "orx-09",
+        "type": "text",
+        "label": "Wie levert aan retailers, industriële klanten of de overheid, krijgt vragenlijsten. Het an",
+        "nl": "Wie levert aan retailers, industriële klanten of de overheid, krijgt vragenlijsten. Het antwoord bestaat meestal al. Alleen weet niemand meer precies waar.",
+        "fr": "Qui livre à des distributeurs, à des clients industriels ou aux pouvoirs publics reçoit des questionnaires. La réponse existe généralement déjà. Seulement, plus personne ne sait exactement où."
+      },
+      {
+        "key": "orx-10",
         "type": "text",
         "label": "Elke klant een eigen lijst",
         "nl": "Elke klant een eigen lijst",
         "fr": "Chaque client, son propre questionnaire"
       },
       {
-        "key": "ori-12",
+        "key": "orx-11",
         "type": "text",
-        "label": "Retailers en industriële afnemers vragen dezelfde informatie, telkens in een ander formaat",
-        "nl": "Retailers en industriële afnemers vragen dezelfde informatie, telkens in een ander formaat.",
-        "fr": "Distributeurs et clients industriels demandent les mêmes informations, chaque fois dans un autre format."
+        "label": "Klanten, auditors en afnemers vragen dezelfde informatie, telkens in een ander formaat.",
+        "nl": "Klanten, auditors en afnemers vragen dezelfde informatie, telkens in een ander formaat.",
+        "fr": "Clients, auditeurs et acheteurs demandent les mêmes informations, chaque fois dans un autre format."
       },
       {
-        "key": "ori-13",
+        "key": "orx-12",
         "type": "text",
         "label": "Antwoorden overal verspreid",
         "nl": "Antwoorden overal verspreid",
         "fr": "Des réponses éparpillées partout"
       },
       {
-        "key": "ori-14",
+        "key": "orx-13",
         "type": "text",
-        "label": "Specificaties, certificaten en oude lijsten zitten in mappen en mails. Iemand zoekt ze tel",
-        "nl": "Specificaties, certificaten en oude lijsten zitten in mappen en mails. Iemand zoekt ze telkens opnieuw.",
-        "fr": "Spécifications, certificats et anciens questionnaires se trouvent dans des dossiers et des e-mails. Quelqu’un doit les rechercher à chaque fois."
+        "label": "Specificaties, certificaten, fiches en oude lijsten zitten in mappen en mails. Iemand zoek",
+        "nl": "Specificaties, certificaten, fiches en oude lijsten zitten in mappen en mails. Iemand zoekt ze telkens opnieuw.",
+        "fr": "Spécifications, certificats, fiches et anciens questionnaires se trouvent dans des dossiers et des e-mails. Quelqu’un doit les rechercher à chaque fois."
       },
       {
-        "key": "ori-15",
+        "key": "orx-14",
         "type": "text",
-        "label": "Elke retailer en elke industriële afnemer wil weten wat er in uw product zit. Allergenen, ",
-        "nl": "Elke retailer en elke industriële afnemer wil weten wat er in uw product zit. Allergenen, samenstelling, herkomst, certificaten. De informatie bestaat al, maar ze zit verspreid over specificaties, mails en vragenlijsten van vorig jaar. Iemand van uw kwaliteitsdienst zoekt ze telkens opnieuw op en typt ze over, in het formaat dat die ene klant vraagt.",
-        "fr": "Chaque distributeur et chaque client industriel veut savoir ce que contient votre produit. Allergènes, composition, origine, certificats. L’information existe déjà, mais elle est dispersée entre spécifications, e-mails et questionnaires de l’an dernier. Quelqu’un de votre service qualité la recherche à chaque fois et la retape, dans le format demandé par ce client précis."
+        "label": "In de voeding gaat het over samenstelling en allergenen, in het technisch onderhoud over v",
+        "nl": "In de voeding gaat het over samenstelling en allergenen, in het technisch onderhoud over veiligheid en keuringen, in de administratie over voorwaarden en attesten, in de logistiek over transport en opslag. Iemand zoekt de informatie op en typt ze over, in het formaat dat die ene vrager wil.",
+        "fr": "Dans l’alimentaire, il s’agit de composition et d’allergènes, dans la maintenance technique de sécurité et de contrôles, dans l’administration de conditions et d’attestations, dans la logistique de transport et de stockage. Quelqu’un recherche l’information et la retape, dans le format exigé par ce demandeur précis."
       },
       {
-        "key": "ori-16",
+        "key": "orx-15",
         "type": "text",
-        "label": "Dat kost uren die niet naar kwaliteitswerk gaan. En wie overtypt, maakt fouten.",
-        "nl": "Dat kost uren die niet naar kwaliteitswerk gaan. En wie overtypt, maakt fouten.",
-        "fr": "Ce sont des heures qui ne vont pas au travail de qualité. Et qui retape fait des erreurs."
+        "label": "Dat kost uren die niet naar het eigenlijke werk gaan. En wie overtypt, maakt fouten.",
+        "nl": "Dat kost uren die niet naar het eigenlijke werk gaan. En wie overtypt, maakt fouten.",
+        "fr": "Ce sont des heures qui ne vont pas au vrai travail. Et qui retape fait des erreurs."
       },
       {
-        "key": "ori-17",
+        "key": "orx-16",
         "type": "text",
         "label": "Onderzoek in de zorg, waar overgetypte gegevens nauwkeurig worden nagekeken, vindt 2 tot 4",
         "nl": "Onderzoek in de zorg, waar overgetypte gegevens nauwkeurig worden nagekeken, vindt 2 tot 4 fouten per 100 overgetypte velden. In vrije tekstvelden zijn dat er meer.",
         "fr": "Des études dans le secteur des soins, où les données ressaisies sont vérifiées avec précision, trouvent 2 à 4 erreurs pour 100 champs ressaisis. Dans les champs de texte libre, il y en a davantage."
       },
       {
-        "key": "ori-18",
+        "key": "orx-18",
         "type": "text",
         "label": "Zo werkt Orion",
         "nl": "Zo werkt Orion",
         "fr": "Comment fonctionne Orion"
       },
       {
-        "key": "ori-19",
+        "key": "orx-19",
+        "type": "text",
+        "label": "Vier stappen. Orion doet het zoek- en overtypwerk, uw medewerker houdt de beslissing.",
+        "nl": "Vier stappen. Orion doet het zoek- en overtypwerk, uw medewerker houdt de beslissing.",
+        "fr": "Quatre étapes. Orion fait les recherches et les ressaisies, votre collaborateur garde la décision."
+      },
+      {
+        "key": "orx-20",
         "type": "text",
         "label": "U laadt de vragenlijst op",
         "nl": "U laadt de vragenlijst op",
         "fr": "Vous chargez le questionnaire"
       },
       {
-        "key": "ori-20",
+        "key": "orx-21",
         "type": "text",
         "label": "zoals u ze gekregen hebt, in Excel of Word.",
         "nl": "zoals u ze gekregen hebt, in Excel of Word.",
         "fr": "tel que vous l’avez reçu, en Excel ou en Word."
       },
       {
-        "key": "ori-21",
+        "key": "orx-22",
         "type": "text",
         "label": "Orion zoekt de antwoorden",
         "nl": "Orion zoekt de antwoorden",
         "fr": "Orion recherche les réponses"
       },
       {
-        "key": "ori-22",
+        "key": "orx-23",
         "type": "text",
         "label": "in de documenten die u eerder opgeladen hebt: specificaties, certificaten, technische fich",
-        "nl": "in de documenten die u eerder opgeladen hebt: specificaties, certificaten, technische fiches, goedgekeurde antwoorden van vroeger.",
-        "fr": "dans les documents que vous avez chargés auparavant : spécifications, certificats, fiches techniques, réponses validées précédemment."
+        "nl": "in de documenten die u eerder opgeladen hebt: specificaties, certificaten, technische fiches, procedures en goedgekeurde antwoorden van vroeger.",
+        "fr": "dans les documents que vous avez chargés auparavant : spécifications, certificats, fiches techniques, procédures et réponses validées précédemment."
       },
       {
-        "key": "ori-23",
+        "key": "orx-24",
         "type": "text",
         "label": "U kijkt na.",
         "nl": "U kijkt na.",
         "fr": "Vous vérifiez."
       },
       {
-        "key": "ori-24",
+        "key": "orx-25",
         "type": "text",
         "label": "Bij elk antwoord staat uit welk document het komt. Vragen waar een fout zwaar weegt, zoals",
-        "nl": "Bij elk antwoord staat uit welk document het komt. Vragen waar een fout zwaar weegt, zoals allergenen, staan apart gemarkeerd. Vindt Orion geen bron, dan zegt het dat.",
-        "fr": "Chaque réponse indique le document dont elle provient. Les questions où une erreur pèse lourd, comme les allergènes, sont signalées à part. Si Orion ne trouve pas de source, il le dit."
+        "nl": "Bij elk antwoord staat uit welk document het komt. Vragen waar een fout zwaar weegt, zoals allergenen of veiligheidsgegevens, staan apart gemarkeerd. Vindt Orion geen bron, dan zegt het dat.",
+        "fr": "Chaque réponse indique le document dont elle provient. Les questions où une erreur pèse lourd, comme les allergènes ou les données de sécurité, sont signalées à part. Si Orion ne trouve pas de source, il le dit."
       },
       {
-        "key": "ori-25",
+        "key": "orx-26",
         "type": "text",
         "label": "U keurt goed en verstuurt.",
         "nl": "U keurt goed en verstuurt.",
         "fr": "Vous validez et envoyez."
       },
       {
-        "key": "ori-26",
+        "key": "orx-27",
         "type": "text",
         "label": "U krijgt de lijst terug in hetzelfde formaat. Orion verstuurt nooit zelf iets.",
         "nl": "U krijgt de lijst terug in hetzelfde formaat. Orion verstuurt nooit zelf iets.",
         "fr": "Vous récupérez le questionnaire dans le même format. Orion n’envoie jamais rien lui-même."
       },
       {
-        "key": "ori-27",
+        "key": "orx-28",
         "type": "text",
         "label": "Elk antwoord dat u goedkeurt, onthoudt Orion. De volgende vragenlijst gaat daardoor snelle",
         "nl": "Elk antwoord dat u goedkeurt, onthoudt Orion. De volgende vragenlijst gaat daardoor sneller.",
         "fr": "Orion retient chaque réponse que vous validez. Le questionnaire suivant va donc plus vite."
       },
       {
-        "key": "ori-28",
+        "key": "orx-30",
+        "type": "text",
+        "label": "Niet enkel voor de voedingsindustrie",
+        "nl": "Niet enkel voor de voedingsindustrie",
+        "fr": "Pas seulement pour l’industrie alimentaire"
+      },
+      {
+        "key": "orx-31",
+        "type": "text",
+        "label": "Orion werkt overal waar iemand informatie opvraagt die al in uw documenten staat.",
+        "nl": "Orion werkt overal waar iemand informatie opvraagt die al in uw documenten staat.",
+        "fr": "Orion fonctionne partout où quelqu’un demande des informations qui figurent déjà dans vos documents."
+      },
+      {
+        "key": "orx-38",
+        "type": "text",
+        "label": "Kwaliteit in de voedingsproductie",
+        "nl": "Kwaliteit in de voedingsproductie",
+        "fr": "Qualité dans la production alimentaire"
+      },
+      {
+        "key": "orx-39",
+        "type": "text",
+        "label": "Retailers en industriële afnemers",
+        "nl": "Retailers en industriële afnemers",
+        "fr": "Distributeurs et clients industriels"
+      },
+      {
+        "key": "orx-40",
+        "type": "text",
+        "label": "Klantvragenlijsten en productspecificaties",
+        "nl": "Klantvragenlijsten en productspecificaties",
+        "fr": "Questionnaires clients et spécifications produit"
+      },
+      {
+        "key": "orx-41",
+        "type": "text",
+        "label": "Specificaties, allergenenmatrix, certificaten",
+        "nl": "Specificaties, allergenenmatrix, certificaten",
+        "fr": "Spécifications, matrice des allergènes, certificats"
+      },
+      {
+        "key": "orx-42",
+        "type": "text",
+        "label": "Technisch onderhoud",
+        "nl": "Technisch onderhoud",
+        "fr": "Maintenance technique"
+      },
+      {
+        "key": "orx-43",
+        "type": "text",
+        "label": "Klanten, verzekeraars en auditors",
+        "nl": "Klanten, verzekeraars en auditors",
+        "fr": "Clients, assureurs et auditeurs"
+      },
+      {
+        "key": "orx-44",
+        "type": "text",
+        "label": "Vragenlijsten over veiligheid en onderhoud",
+        "nl": "Vragenlijsten over veiligheid en onderhoud",
+        "fr": "Questionnaires sur la sécurité et la maintenance"
+      },
+      {
+        "key": "orx-45",
+        "type": "text",
+        "label": "Technische fiches, onderhoudsrapporten, keuringsattesten",
+        "nl": "Technische fiches, onderhoudsrapporten, keuringsattesten",
+        "fr": "Fiches techniques, rapports de maintenance, attestations de contrôle"
+      },
+      {
+        "key": "orx-46",
+        "type": "text",
+        "label": "Administratie",
+        "nl": "Administratie",
+        "fr": "Administration"
+      },
+      {
+        "key": "orx-47",
+        "type": "text",
+        "label": "Klanten, aankopers en overheden",
+        "nl": "Klanten, aankopers en overheden",
+        "fr": "Clients, acheteurs et pouvoirs publics"
+      },
+      {
+        "key": "orx-48",
+        "type": "text",
+        "label": "Leveranciersformulieren en aanbestedingsvragen",
+        "nl": "Leveranciersformulieren en aanbestedingsvragen",
+        "fr": "Formulaires fournisseurs et questions de marchés publics"
+      },
+      {
+        "key": "orx-49",
+        "type": "text",
+        "label": "Algemene voorwaarden, attesten, eerdere offertes",
+        "nl": "Algemene voorwaarden, attesten, eerdere offertes",
+        "fr": "Conditions générales, attestations, offres précédentes"
+      },
+      {
+        "key": "orx-50",
+        "type": "text",
+        "label": "Logistiek",
+        "nl": "Logistiek",
+        "fr": "Logistique"
+      },
+      {
+        "key": "orx-51",
+        "type": "text",
+        "label": "Verladers en klanten",
+        "nl": "Verladers en klanten",
+        "fr": "Chargeurs et clients"
+      },
+      {
+        "key": "orx-52",
+        "type": "text",
+        "label": "Vragenlijsten over transport en opslag",
+        "nl": "Vragenlijsten over transport en opslag",
+        "fr": "Questionnaires sur le transport et le stockage"
+      },
+      {
+        "key": "orx-53",
+        "type": "text",
+        "label": "Procedures, certificaten, contracten",
+        "nl": "Procedures, certificaten, contracten",
+        "fr": "Procédures, certificats, contrats"
+      },
+      {
+        "key": "orx-55",
         "type": "text",
         "label": "Orion bereidt voor. U beslist.",
         "nl": "Orion bereidt voor. U beslist.",
         "fr": "Orion prépare. Vous décidez."
       },
       {
-        "key": "ori-29",
+        "key": "orx-56",
         "type": "text",
         "label": "In een experiment met 758 consultants werkten wie AI gebruikte sneller en beter bij taken ",
         "nl": "In een experiment met 758 consultants werkten wie AI gebruikte sneller en beter bij taken die AI aankan. Bij een taak buiten het bereik van AI vonden ze 19% minder vaak de juiste oplossing, en vooraf zag je dat verschil niet.",
         "fr": "Dans une expérience menée auprès de 758 consultants, ceux qui utilisaient l’IA travaillaient plus vite et mieux sur les tâches que l’IA maîtrise. Sur une tâche hors de sa portée, ils trouvaient 19 % moins souvent la bonne solution, et cette différence ne se voyait pas à l’avance."
       },
       {
-        "key": "ori-30",
+        "key": "orx-57",
+        "type": "text",
+        "label": "AI helpt sterk",
+        "nl": "AI helpt sterk",
+        "fr": "L’IA aide beaucoup"
+      },
+      {
+        "key": "orx-58",
         "type": "text",
         "label": "Zoeken en samenvatten",
         "nl": "Zoeken en samenvatten",
         "fr": "Chercher et résumer"
       },
       {
-        "key": "ori-31",
+        "key": "orx-59",
         "type": "text",
         "label": "Orion zoekt antwoorden en bronnen in uw documenten. Hier wint u de meeste tijd.",
         "nl": "Orion zoekt antwoorden en bronnen in uw documenten. Hier wint u de meeste tijd.",
         "fr": "Orion cherche les réponses et les sources dans vos documents. C’est là que vous gagnez le plus de temps."
       },
       {
-        "key": "ori-32",
+        "key": "orx-60",
+        "type": "text",
+        "label": "Orion zegt het",
+        "nl": "Orion zegt het",
+        "fr": "Orion le signale"
+      },
+      {
+        "key": "orx-61",
         "type": "text",
         "label": "Twijfelgevallen",
         "nl": "Twijfelgevallen",
         "fr": "Cas douteux"
       },
       {
-        "key": "ori-33",
+        "key": "orx-62",
         "type": "text",
-        "label": "Vindt Orion geen bron, of weegt een fout zwaar, zoals bij allergenen, dan staat de vraag g",
-        "nl": "Vindt Orion geen bron, of weegt een fout zwaar, zoals bij allergenen, dan staat de vraag gemarkeerd.",
-        "fr": "Si Orion ne trouve pas de source, ou si une erreur pèse lourd, comme pour les allergènes, la question est signalée."
+        "label": "Vindt Orion geen bron, of weegt een fout zwaar, dan staat de vraag gemarkeerd.",
+        "nl": "Vindt Orion geen bron, of weegt een fout zwaar, dan staat de vraag gemarkeerd.",
+        "fr": "Si Orion ne trouve pas de source, ou si une erreur pèse lourd, la question est signalée."
       },
       {
-        "key": "ori-34",
+        "key": "orx-63",
+        "type": "text",
+        "label": "Altijd een mens",
+        "nl": "Altijd een mens",
+        "fr": "Toujours un humain"
+      },
+      {
+        "key": "orx-64",
         "type": "text",
         "label": "Beslissen",
         "nl": "Beslissen",
         "fr": "Décider"
       },
       {
-        "key": "ori-35",
+        "key": "orx-65",
         "type": "text",
         "label": "Uw medewerker kijkt na en keurt goed. Orion verstuurt nooit zelf iets.",
         "nl": "Uw medewerker kijkt na en keurt goed. Orion verstuurt nooit zelf iets.",
         "fr": "Votre collaborateur vérifie et valide. Orion n’envoie jamais rien lui-même."
       },
       {
-        "key": "ori-36",
+        "key": "orx-67",
         "type": "text",
-        "label": "Voor wie",
-        "nl": "Voor wie",
-        "fr": "Pour qui"
+        "label": "Kmo’s die vaak dezelfde vragen beantwoorden",
+        "nl": "Kmo’s die vaak dezelfde vragen beantwoorden",
+        "fr": "Les PME qui répondent souvent aux mêmes questions"
       },
       {
-        "key": "ori-37",
+        "key": "orx-68",
         "type": "text",
-        "label": "Voedingsbedrijven die regelmatig vragenlijsten en specificaties van klanten moeten invulle",
-        "nl": "Voedingsbedrijven die regelmatig vragenlijsten en specificaties van klanten moeten invullen. We starten in West-Vlaanderen.",
-        "fr": "Les entreprises alimentaires qui doivent régulièrement remplir des questionnaires et des spécifications pour leurs clients. Nous commençons en Flandre occidentale."
+        "label": "Bedrijven die regelmatig vragenlijsten, specificaties of dossiers moeten invullen voor kla",
+        "nl": "Bedrijven die regelmatig vragenlijsten, specificaties of dossiers moeten invullen voor klanten, auditors of overheden, in de voeding, de industrie, het onderhoud, de administratie of de logistiek. We starten in West-Vlaanderen.",
+        "fr": "Les entreprises qui doivent régulièrement remplir des questionnaires, des spécifications ou des dossiers pour des clients, des auditeurs ou les pouvoirs publics, dans l’alimentaire, l’industrie, la maintenance, l’administration ou la logistique. Nous commençons en Flandre occidentale."
       },
       {
-        "key": "ori-38",
+        "key": "orx-70",
         "type": "text",
         "label": "Veelgestelde vragen",
         "nl": "Veelgestelde vragen",
         "fr": "Questions fréquentes"
       },
       {
-        "key": "ori-39",
+        "key": "orx-71",
+        "type": "text",
+        "label": "Ja. Orion werkt overal waar klanten, auditors of overheden informatie opvragen die al in u",
+        "nl": "Ja. Orion werkt overal waar klanten, auditors of overheden informatie opvragen die al in uw documenten staat. In de pilot testen we het op vragenlijsten uit uw eigen sector.",
+        "fr": "Oui. Orion fonctionne partout où des clients, des auditeurs ou les pouvoirs publics demandent des informations qui figurent déjà dans vos documents. Pendant le pilote, nous le testons sur des questionnaires de votre propre secteur."
+      },
+      {
+        "key": "orx-72",
         "type": "text",
         "label": "Elk antwoord toont zijn bron en gevoelige vragen worden gemarkeerd. Uw medewerker keurt al",
         "nl": "Elk antwoord toont zijn bron en gevoelige vragen worden gemarkeerd. Uw medewerker keurt alles goed voor het vertrekt.",
         "fr": "Chaque réponse affiche sa source et les questions sensibles sont signalées. Votre collaborateur valide tout avant l’envoi."
       },
       {
-        "key": "ori-40",
+        "key": "orx-73",
         "type": "text",
         "label": "Met ChatGPT zoekt uw medewerker nog altijd zelf de informatie op en kopieert hij elk antwo",
-        "nl": "Met ChatGPT zoekt uw medewerker nog altijd zelf de informatie op en kopieert hij elk antwoord. Orion werkt met uw eigen documenten, toont de bron en geeft de lijst terug in het formaat van uw klant.",
-        "fr": "Avec ChatGPT, votre collaborateur recherche toujours lui-même l’information et copie chaque réponse. Orion travaille avec vos propres documents, indique la source et vous rend le questionnaire dans le format de votre client."
+        "nl": "Met ChatGPT zoekt uw medewerker nog altijd zelf de informatie op en kopieert hij elk antwoord. Orion werkt met uw eigen documenten, toont de bron en geeft de lijst terug in het formaat van de vrager.",
+        "fr": "Avec ChatGPT, votre collaborateur recherche toujours lui-même l’information et copie chaque réponse. Orion travaille avec vos propres documents, indique la source et vous rend le questionnaire dans le format du demandeur."
       },
       {
-        "key": "ori-41",
+        "key": "orx-74",
         "type": "text",
         "label": "Voor de pilot start, bespreken we met uw IT-verantwoordelijke hoe Orion met uw gegevens om",
         "nl": "Voor de pilot start, bespreken we met uw IT-verantwoordelijke hoe Orion met uw gegevens omgaat, en bezorgen we vooraf alle informatie die hij nodig heeft.",
         "fr": "Avant le début du pilote, nous examinons avec votre responsable informatique la manière dont Orion traite vos données, et nous lui transmettons au préalable toutes les informations dont il a besoin."
       },
       {
-        "key": "ori-42",
+        "key": "orx-75",
         "type": "text",
-        "label": "Dat hangt af van het aantal vragenlijsten. In de pilot meten we eerst hoeveel tijd u wint.",
-        "nl": "Dat hangt af van het aantal vragenlijsten. In de pilot meten we eerst hoeveel tijd u wint. Dan weten we allebei of het de moeite waard is.",
-        "fr": "Cela dépend du nombre de questionnaires. Pendant le pilote, nous mesurons d’abord le temps que vous gagnez. Nous saurons alors tous les deux si cela en vaut la peine."
+        "label": "Dat hangt af van het aantal vragenlijsten. U start zonder groot project: in de pilot meten",
+        "nl": "Dat hangt af van het aantal vragenlijsten. U start zonder groot project: in de pilot meten we eerst hoeveel tijd u wint. Dan weten we allebei of het de moeite waard is.",
+        "fr": "Cela dépend du nombre de questionnaires. Vous commencez sans grand projet : pendant le pilote, nous mesurons d’abord le temps que vous gagnez. Nous saurons alors tous les deux si cela en vaut la peine."
       },
       {
-        "key": "ori-43",
-        "type": "text",
-        "label": "Nee. U levert een paar vragenlijsten en uw documenten aan. De rest doen wij.",
-        "nl": "Nee. U levert een paar vragenlijsten en uw documenten aan. De rest doen wij.",
-        "fr": "Non. Vous fournissez quelques questionnaires et vos documents. Nous faisons le reste."
-      },
-      {
-        "key": "ori-44",
+        "key": "orx-77",
         "type": "text",
         "label": "Test Orion op uw eigen vragenlijsten",
         "nl": "Test Orion op uw eigen vragenlijsten",
         "fr": "Testez Orion sur vos propres questionnaires"
       },
       {
-        "key": "ori-45",
+        "key": "orx-78",
         "type": "text",
         "label": "We starten met een paar vragenlijsten die u echt gekregen hebt. We meten hoeveel tijd ze v",
         "nl": "We starten met een paar vragenlijsten die u echt gekregen hebt. We meten hoeveel tijd ze vandaag kosten en hoeveel met Orion. Ziet u geen verschil, dan stoppen we.",
@@ -991,11 +1131,67 @@ window.GF_CMS_CATALOG=[
         "fr": "Nous automatisons le travail manuel entre vos e-mails, vos listes Excel et vos systèmes. Vos collaborateurs gagnent du temps pour le travail qui compte."
       },
       {
+        "key": "awx-01",
+        "type": "text",
+        "label": "In het kort",
+        "nl": "In het kort",
+        "fr": "En bref"
+      },
+      {
+        "key": "awx-02",
+        "type": "text",
+        "label": "Het handwerk",
+        "nl": "Het handwerk",
+        "fr": "Le travail manuel"
+      },
+      {
+        "key": "awx-03",
+        "type": "text",
+        "label": "Uw team typt over, kopieert en plakt, en volgt op met herinneringen. Dat kost elke week ur",
+        "nl": "Uw team typt over, kopieert en plakt, en volgt op met herinneringen. Dat kost elke week uren.",
+        "fr": "Votre équipe ressaisit, copie-colle et assure le suivi à coups de rappels. Cela coûte des heures chaque semaine."
+      },
+      {
+        "key": "awx-04",
+        "type": "text",
+        "label": "Eén workflow tegelijk",
+        "nl": "Eén workflow tegelijk",
+        "fr": "Un workflow à la fois"
+      },
+      {
+        "key": "awx-05",
+        "type": "text",
+        "label": "We starten met de workflow die het meeste tijd kost, en bouwen waar het kan op de systemen",
+        "nl": "We starten met de workflow die het meeste tijd kost, en bouwen waar het kan op de systemen die u al hebt.",
+        "fr": "Nous commençons par le workflow qui prend le plus de temps et, dans la mesure du possible, nous nous appuyons sur les systèmes que vous avez déjà."
+      },
+      {
+        "key": "awx-06",
+        "type": "text",
+        "label": "U beslist",
+        "nl": "U beslist",
+        "fr": "Vous décidez"
+      },
+      {
+        "key": "awx-07",
+        "type": "text",
+        "label": "Bij gevoelige stappen keurt een medewerker eerst goed. We meten de tijd vóór en na.",
+        "nl": "Bij gevoelige stappen keurt een medewerker eerst goed. We meten de tijd vóór en na.",
+        "fr": "Pour les étapes sensibles, un collaborateur valide d’abord. Nous mesurons le temps avant et après."
+      },
+      {
         "key": "aut-03",
         "type": "text",
         "label": "Herkenbaar?",
         "nl": "Herkenbaar?",
         "fr": "Cela vous parle ?"
+      },
+      {
+        "key": "awx-08",
+        "type": "text",
+        "label": "Vier soorten handwerk die uw mensen elke week tijd kosten.",
+        "nl": "Vier soorten handwerk die uw mensen elke week tijd kosten.",
+        "fr": "Quatre types de travail manuel qui coûtent du temps à vos collaborateurs chaque semaine."
       },
       {
         "key": "aut-04",
@@ -1054,11 +1250,53 @@ window.GF_CMS_CATALOG=[
         "fr": "Chaque mois, quelqu’un compose à la main le même rapport."
       },
       {
+        "key": "awx-09",
+        "type": "text",
+        "label": "Rekenvoorbeeld",
+        "nl": "Rekenvoorbeeld",
+        "fr": "Exemple de calcul"
+      },
+      {
+        "key": "awx-10",
+        "type": "text",
+        "label": "€ 3.795",
+        "nl": "€ 3.795",
+        "fr": "3 795 €"
+      },
+      {
+        "key": "awx-11",
+        "type": "text",
+        "label": "per medewerker per jaar",
+        "nl": "per medewerker per jaar",
+        "fr": "par collaborateur et par an"
+      },
+      {
+        "key": "awx-12",
+        "type": "text",
+        "label": "Wie één uur per dag overtypt, besteedt daar bij € 17,25 per uur en 220 werkdagen zoveel aa",
+        "nl": "Wie één uur per dag overtypt, besteedt daar bij € 17,25 per uur en 220 werkdagen zoveel aan. Die tijd kan naar klanten, kwaliteit of groei gaan.",
+        "fr": "Qui ressaisit une heure par jour y consacre ce montant, à 17,25 € de l’heure et sur 220 jours ouvrables. Ce temps peut aller aux clients, à la qualité ou à la croissance."
+      },
+      {
         "key": "aut-12",
         "type": "text",
         "label": "Voorbeelden",
         "nl": "Voorbeelden",
         "fr": "Exemples"
+      },
+      {
+        "key": "awx-13",
+        "type": "text",
+        "label": "Wat we automatiseren, van de eerste mail tot het rapport.",
+        "nl": "Wat we automatiseren, van de eerste mail tot het rapport.",
+        "fr": "Ce que nous automatisons, du premier e-mail jusqu’au rapport."
+      },
+      {
+        "key": "awx-14",
+        "type": "text",
+        "label": "Bestellingen",
+        "nl": "Bestellingen",
+        "fr": "Commandes"
       },
       {
         "key": "aut-13",
@@ -1068,11 +1306,25 @@ window.GF_CMS_CATALOG=[
         "fr": "Lire les commandes dans les e-mails ou les PDF et les préparer dans votre système de commandes."
       },
       {
+        "key": "awx-15",
+        "type": "text",
+        "label": "Aankoopfacturen",
+        "nl": "Aankoopfacturen",
+        "fr": "Factures d’achat"
+      },
+      {
         "key": "aut-14",
         "type": "text",
         "label": "Aankoopfacturen inlezen en voorbereiden voor de boekhouding.",
         "nl": "Aankoopfacturen inlezen en voorbereiden voor de boekhouding.",
         "fr": "Lire les factures d’achat et les préparer pour la comptabilité."
+      },
+      {
+        "key": "awx-16",
+        "type": "text",
+        "label": "Nieuwe klanten",
+        "nl": "Nieuwe klanten",
+        "fr": "Nouveaux clients"
       },
       {
         "key": "aut-15",
@@ -1082,11 +1334,25 @@ window.GF_CMS_CATALOG=[
         "fr": "Encoder un nouveau client une seule fois, puis retrouver ses données dans votre CRM, votre comptabilité et votre planning."
       },
       {
+        "key": "awx-17",
+        "type": "text",
+        "label": "Wekelijkse cijfers",
+        "nl": "Wekelijkse cijfers",
+        "fr": "Chiffres hebdomadaires"
+      },
+      {
         "key": "aut-16",
         "type": "text",
         "label": "Wekelijkse cijfers die vanzelf in één overzicht samenkomen.",
         "nl": "Wekelijkse cijfers die vanzelf in één overzicht samenkomen.",
         "fr": "Des chiffres hebdomadaires qui se rassemblent tout seuls dans un seul aperçu."
+      },
+      {
+        "key": "awx-18",
+        "type": "text",
+        "label": "Herinneringen",
+        "nl": "Herinneringen",
+        "fr": "Rappels"
       },
       {
         "key": "aut-17",
@@ -1101,6 +1367,13 @@ window.GF_CMS_CATALOG=[
         "label": "Zo pakken we het aan",
         "nl": "Zo pakken we het aan",
         "fr": "Notre approche"
+      },
+      {
+        "key": "awx-19",
+        "type": "text",
+        "label": "Vier stappen. Klein beginnen, meten, en pas dan verder.",
+        "nl": "Vier stappen. Klein beginnen, meten, en pas dan verder.",
+        "fr": "Quatre étapes. Commencer petit, mesurer, et seulement ensuite aller plus loin."
       },
       {
         "key": "aut-19",
@@ -1173,18 +1446,88 @@ window.GF_CMS_CATALOG=[
         "fr": "Dans 71 études sur l’IA dans les PME, les mêmes freins reviennent sans cesse."
       },
       {
-        "key": "aut-29",
+        "key": "awx-20",
         "type": "text",
-        "label": "Dienst of software",
-        "nl": "Dienst of software",
-        "fr": "Service ou logiciel"
+        "label": "Geen kennis in huis",
+        "nl": "Geen kennis in huis",
+        "fr": "Pas de compétences en interne"
       },
       {
-        "key": "aut-30",
+        "key": "awx-21",
         "type": "text",
-        "label": "Grow Faster bouwt de automatisering voor u. Voor vragenlijsten en specificaties van klante",
-        "nl": "Grow Faster bouwt de automatisering voor u. Voor vragenlijsten en specificaties van klanten is er Orion, onze eigen software.",
-        "fr": "Grow Faster construit l’automatisation pour vous. Pour les questionnaires et spécifications des clients, il y a Orion, notre propre logiciel."
+        "label": "Wij brengen de kennis mee en trainen uw mensen op hun eigen taken.",
+        "nl": "Wij brengen de kennis mee en trainen uw mensen op hun eigen taken.",
+        "fr": "Nous apportons les compétences et formons vos collaborateurs sur leurs propres tâches."
+      },
+      {
+        "key": "awx-22",
+        "type": "text",
+        "label": "Te duur",
+        "nl": "Te duur",
+        "fr": "Trop cher"
+      },
+      {
+        "key": "awx-23",
+        "type": "text",
+        "label": "We starten met één proces en meten wat het oplevert. Werkt het niet, dan stoppen we.",
+        "nl": "We starten met één proces en meten wat het oplevert. Werkt het niet, dan stoppen we.",
+        "fr": "Nous commençons par un seul processus et mesurons ce qu’il rapporte. Si cela ne fonctionne pas, nous arrêtons."
+      },
+      {
+        "key": "awx-24",
+        "type": "text",
+        "label": "Onze IT is er niet klaar voor",
+        "nl": "Onze IT is er niet klaar voor",
+        "fr": "Notre informatique n’est pas prête"
+      },
+      {
+        "key": "awx-25",
+        "type": "text",
+        "label": "Waar het kan, werken we met de systemen die u al hebt.",
+        "nl": "Waar het kan, werken we met de systemen die u al hebt.",
+        "fr": "Là où c’est possible, nous travaillons avec les systèmes que vous avez déjà."
+      },
+      {
+        "key": "awx-26",
+        "type": "text",
+        "label": "Onze data zijn niet op orde",
+        "nl": "Onze data zijn niet op orde",
+        "fr": "Nos données ne sont pas en ordre"
+      },
+      {
+        "key": "awx-27",
+        "type": "text",
+        "label": "We starten met wat elke kmo heeft: mails, Excel-lijsten en documenten.",
+        "nl": "We starten met wat elke kmo heeft: mails, Excel-lijsten en documenten.",
+        "fr": "Nous commençons par ce que chaque PME possède : e-mails, listes Excel et documents."
+      },
+      {
+        "key": "awx-28",
+        "type": "text",
+        "label": "Wie houdt de controle?",
+        "nl": "Wie houdt de controle?",
+        "fr": "Qui garde le contrôle ?"
+      },
+      {
+        "key": "awx-29",
+        "type": "text",
+        "label": "De AI bereidt voor. Een medewerker of de zaakvoerder beslist.",
+        "nl": "De AI bereidt voor. Een medewerker of de zaakvoerder beslist.",
+        "fr": "L’IA prépare. Un collaborateur ou le dirigeant décide."
+      },
+      {
+        "key": "awx-30",
+        "type": "text",
+        "label": "Levert het iets op?",
+        "nl": "Levert het iets op?",
+        "fr": "Est-ce que ça rapporte ?"
+      },
+      {
+        "key": "awx-31",
+        "type": "text",
+        "label": "We meten de tijd vóór en na, per proces.",
+        "nl": "We meten de tijd vóór en na, per proces.",
+        "fr": "Nous mesurons le temps avant et après, par processus."
       },
       {
         "key": "aut-31",
@@ -1194,11 +1537,32 @@ window.GF_CMS_CATALOG=[
         "fr": "Ce que vous gagnez"
       },
       {
+        "key": "awx-32",
+        "type": "text",
+        "label": "Wat een geautomatiseerde workflow u oplevert.",
+        "nl": "Wat een geautomatiseerde workflow u oplevert.",
+        "fr": "Ce qu’un workflow automatisé vous rapporte."
+      },
+      {
+        "key": "awx-33",
+        "type": "text",
+        "label": "Tijd terug",
+        "nl": "Tijd terug",
+        "fr": "Du temps retrouvé"
+      },
+      {
         "key": "aut-32",
         "type": "text",
         "label": "Uren per week terug voor uw team.",
         "nl": "Uren per week terug voor uw team.",
         "fr": "Des heures récupérées chaque semaine pour votre équipe."
+      },
+      {
+        "key": "awx-34",
+        "type": "text",
+        "label": "Minder fouten",
+        "nl": "Minder fouten",
+        "fr": "Moins d’erreurs"
       },
       {
         "key": "aut-33",
@@ -1208,6 +1572,13 @@ window.GF_CMS_CATALOG=[
         "fr": "Moins d’erreurs de ressaisie."
       },
       {
+        "key": "awx-35",
+        "type": "text",
+        "label": "Sneller antwoord",
+        "nl": "Sneller antwoord",
+        "fr": "Des réponses plus rapides"
+      },
+      {
         "key": "aut-34",
         "type": "text",
         "label": "Sneller antwoord aan klanten en leveranciers.",
@@ -1215,11 +1586,53 @@ window.GF_CMS_CATALOG=[
         "fr": "Des réponses plus rapides aux clients et fournisseurs."
       },
       {
+        "key": "awx-36",
+        "type": "text",
+        "label": "Overzicht",
+        "nl": "Overzicht",
+        "fr": "Une vue d’ensemble"
+      },
+      {
         "key": "aut-35",
         "type": "text",
         "label": "Zicht op wat er loopt, zonder dat iemand het moet bijhouden.",
         "nl": "Zicht op wat er loopt, zonder dat iemand het moet bijhouden.",
         "fr": "Une vue sur ce qui est en cours, sans que personne ne doive le tenir à jour."
+      },
+      {
+        "key": "aut-29",
+        "type": "text",
+        "label": "Dienst of software",
+        "nl": "Dienst of software",
+        "fr": "Service ou logiciel"
+      },
+      {
+        "key": "awx-37",
+        "type": "text",
+        "label": "Dienst",
+        "nl": "Dienst",
+        "fr": "Service"
+      },
+      {
+        "key": "awx-38",
+        "type": "text",
+        "label": "Grow Faster bouwt de automatisering voor u, op de systemen die u al gebruikt.",
+        "nl": "Grow Faster bouwt de automatisering voor u, op de systemen die u al gebruikt.",
+        "fr": "Grow Faster construit l’automatisation pour vous, sur les systèmes que vous utilisez déjà."
+      },
+      {
+        "key": "awx-39",
+        "type": "text",
+        "label": "Software: Orion",
+        "nl": "Software: Orion",
+        "fr": "Logiciel : Orion"
+      },
+      {
+        "key": "awx-40",
+        "type": "text",
+        "label": "Voor vragenlijsten en specificaties van klanten is er Orion, onze eigen software.",
+        "nl": "Voor vragenlijsten en specificaties van klanten is er Orion, onze eigen software.",
+        "fr": "Pour les questionnaires et les spécifications de vos clients, il y a Orion, notre propre logiciel."
       },
       {
         "key": "aut-36",
@@ -1307,6 +1720,34 @@ window.GF_CMS_CATALOG=[
         "label": "AI en automatisering versnellen wat er al is. Werken uw mensen, processen en systemen langs elkaar heen, dan versnelt u vooral de verwarring. Coherentie zorgt dat alles in dezelfde richting trekt.",
         "nl": "AI en automatisering versnellen wat er al is. Werken uw mensen, processen en systemen langs elkaar heen, dan versnelt u vooral de verwarring. Coherentie zorgt dat alles in dezelfde richting trekt.",
         "fr": "L’IA et l’automatisation accélèrent ce qui existe déjà. Si vos équipes, vos processus et vos systèmes ne travaillent pas ensemble, vous accélérez surtout la confusion. La cohérence fait que tout va dans la même direction."
+      },
+      {
+        "key": "coh-kmo-kort-h",
+        "type": "text",
+        "label": "In het kort",
+        "nl": "In het kort",
+        "fr": "En bref"
+      },
+      {
+        "key": "coh-kmo-k1",
+        "type": "text",
+        "label": "AI en automatisering versterken wat er al is. Trekken mensen, processen en systemen in dezelfde richting, dan versterken ze de waarde.",
+        "nl": "AI en automatisering versterken wat er al is. Trekken mensen, processen en systemen in dezelfde richting, dan versterken ze de waarde.",
+        "fr": "L’IA et l’automatisation renforcent ce qui existe déjà. Si les personnes, les processus et les systèmes tirent dans la même direction, elles renforcent la valeur."
+      },
+      {
+        "key": "coh-kmo-k2",
+        "type": "text",
+        "label": "We starten bij het knelpunt dat vandaag de meeste tijd en geld kost, en meten wat de aanpak oplevert.",
+        "nl": "We starten bij het knelpunt dat vandaag de meeste tijd en geld kost, en meten wat de aanpak oplevert.",
+        "fr": "Nous commençons par le point de blocage qui coûte aujourd’hui le plus de temps et d’argent, et nous mesurons ce que l’approche rapporte."
+      },
+      {
+        "key": "coh-kmo-k3",
+        "type": "text",
+        "label": "Daarna leert uw bedrijf zelf bijsturen wanneer klanten, markt of regels veranderen.",
+        "nl": "Daarna leert uw bedrijf zelf bijsturen wanneer klanten, markt of regels veranderen.",
+        "fr": "Ensuite, votre entreprise apprend à s’ajuster elle-même lorsque les clients, le marché ou les règles changent."
       },
       {
         "key": "coh-kmo-03",
@@ -1428,6 +1869,13 @@ window.GF_CMS_CATALOG=[
         "fr": "Notre approche"
       },
       {
+        "key": "coh-kmo-17b",
+        "type": "text",
+        "label": "Vier stappen. We beginnen bij één knelpunt en meten wat elke stap oplevert.",
+        "nl": "Vier stappen. We beginnen bij één knelpunt en meten wat elke stap oplevert.",
+        "fr": "Quatre étapes. Nous commençons par un seul point de blocage et mesurons ce que chaque étape rapporte."
+      },
+      {
         "key": "coh-kmo-18",
         "type": "text",
         "label": "Coherentiescan.",
@@ -1512,6 +1960,62 @@ window.GF_CMS_CATALOG=[
         "fr": "Une automatisation et une IA qui continuent de fonctionner, parce que le travail autour est cohérent."
       },
       {
+        "key": "coh-kmo-vw-h",
+        "type": "text",
+        "label": "Voor zaakvoerders en directie van groeiende kmo’s",
+        "nl": "Voor zaakvoerders en directie van groeiende kmo’s",
+        "fr": "Pour les dirigeants de PME en croissance"
+      },
+      {
+        "key": "coh-kmo-vw-p",
+        "type": "text",
+        "label": "Uw bedrijf groeit, maar beslissingen, processen en systemen volgen niet meer mee. Of u wilt AI en automatisering invoeren en eerst weten waar het fundament wringt.",
+        "nl": "Uw bedrijf groeit, maar beslissingen, processen en systemen volgen niet meer mee. Of u wilt AI en automatisering invoeren en eerst weten waar het fundament wringt.",
+        "fr": "Votre entreprise grandit, mais les décisions, les processus et les systèmes ne suivent plus. Ou vous voulez introduire l’IA et l’automatisation, et savoir d’abord où les fondations coincent."
+      },
+      {
+        "key": "coh-kmo-faq-h",
+        "type": "text",
+        "label": "Veelgestelde vragen",
+        "nl": "Veelgestelde vragen",
+        "fr": "Questions fréquentes"
+      },
+      {
+        "key": "coh-kmo-f1",
+        "type": "text",
+        "label": "We starten niet met een groot rapport. We kiezen één knelpunt, pakken het aan en meten wat het oplevert. Pas daarna kiest u de volgende stap.",
+        "nl": "We starten niet met een groot rapport. We kiezen één knelpunt, pakken het aan en meten wat het oplevert. Pas daarna kiest u de volgende stap.",
+        "fr": "Nous ne commençons pas par un épais rapport. Nous choisissons un point de blocage, le traitons et mesurons ce que cela rapporte. Ce n’est qu’ensuite que vous choisissez l’étape suivante."
+      },
+      {
+        "key": "coh-kmo-f2",
+        "type": "text",
+        "label": "Ja, voor het proces dat u wilt automatiseren. Botsen daar beslissingen, processen of systemen, dan automatiseert u vooral de verwarring. Daarom kijken we eerst naar dat fundament.",
+        "nl": "Ja, voor het proces dat u wilt automatiseren. Botsen daar beslissingen, processen of systemen, dan automatiseert u vooral de verwarring. Daarom kijken we eerst naar dat fundament.",
+        "fr": "Oui, pour le processus que vous voulez automatiser. Si les décisions, les processus ou les systèmes s’y heurtent, vous automatisez surtout la confusion. C’est pourquoi nous examinons d’abord ces fondations."
+      },
+      {
+        "key": "coh-kmo-f3",
+        "type": "text",
+        "label": "Een online vragenlijst van 20 vragen, in ongeveer 5 minuten en zonder registratie. U ziet waar de samenhang in uw bedrijf het meest ontbreekt.",
+        "nl": "Een online vragenlijst van 20 vragen, in ongeveer 5 minuten en zonder registratie. U ziet waar de samenhang in uw bedrijf het meest ontbreekt.",
+        "fr": "Un questionnaire en ligne de 20 questions, en 5 minutes environ et sans inscription. Vous voyez où la cohérence manque le plus dans votre entreprise."
+      },
+      {
+        "key": "coh-kmo-f4",
+        "type": "text",
+        "label": "Dat hangt af van het knelpunt. In het eerste gesprek spreken we af wie betrokken is en hoeveel tijd dat vraagt.",
+        "nl": "Dat hangt af van het knelpunt. In het eerste gesprek spreken we af wie betrokken is en hoeveel tijd dat vraagt.",
+        "fr": "Cela dépend du point de blocage. Lors du premier entretien, nous convenons de qui est impliqué et du temps que cela demande."
+      },
+      {
+        "key": "coh-kmo-f5",
+        "type": "text",
+        "label": "Dat hangt af van het knelpunt dat we aanpakken. Na het eerste gesprek krijgt u een voorstel met een duidelijke prijs.",
+        "nl": "Dat hangt af van het knelpunt dat we aanpakken. Na het eerste gesprek krijgt u een voorstel met een duidelijke prijs.",
+        "fr": "Cela dépend du point de blocage que nous traitons. Après le premier entretien, vous recevez une proposition avec un prix clair."
+      },
+      {
         "key": "coh-kmo-30",
         "type": "text",
         "label": "Waar wringt het in uw bedrijf?",
@@ -1545,16 +2049,11 @@ window.GF_CMS_CATALOG=[
     "label": "Training",
     "fields": [
       {
-        "key": "trn-hero-img",
-        "type": "media",
-        "label": "img/hero-training-team-1774.webp",
-        "nl": "img/hero-training-team-1774.webp",
-        "fr": "img/hero-training-team-1774.webp",
-        "src": "img/hero-training-team-1774.webp",
-        "alt": {
-          "nl": "",
-          "fr": ""
-        }
+        "key": "trn-26",
+        "type": "text",
+        "label": "Training voor kmo’s",
+        "nl": "Training voor kmo’s",
+        "fr": "Formation pour les PME"
       },
       {
         "key": "trn-01",
@@ -1571,6 +2070,18 @@ window.GF_CMS_CATALOG=[
         "fr": "Sur leurs propres tâches, chez vous ou en ligne. Ainsi, le gain de temps reste après le pilote."
       },
       {
+        "key": "trn-hero-img",
+        "type": "media",
+        "label": "img/hero-training-team-1774.webp",
+        "nl": "img/hero-training-team-1774.webp",
+        "fr": "img/hero-training-team-1774.webp",
+        "src": "img/hero-training-team-1774.webp",
+        "alt": {
+          "nl": "",
+          "fr": ""
+        }
+      },
+      {
         "key": "trn-03",
         "type": "text",
         "label": "Waarom training",
@@ -1585,25 +2096,11 @@ window.GF_CMS_CATALOG=[
         "fr": "Un nouvel outil ou un workflow automatisé ne rapporte que si vos collaborateurs savent l’utiliser. Qui ne sait pas bien comment il fonctionne revient à l’ancienne méthode. C’est pourquoi nous formons avec vos propres documents et tâches, pas avec des exemples tirés d’un manuel."
       },
       {
-        "key": "trn-05",
+        "key": "trn-27",
         "type": "text",
-        "label": "AI vervangt uw mensen niet. Het maakt hun werk lichter.",
-        "nl": "AI vervangt uw mensen niet. Het maakt hun werk lichter.",
-        "fr": "L’IA ne remplace pas vos collaborateurs. Elle allège leur travail."
-      },
-      {
-        "key": "trn-06",
-        "type": "text",
-        "label": "van de kmo’s die generatieve AI gebruiken, heeft evenveel personeel nodig als voordien. 6%",
-        "nl": "van de kmo’s die generatieve AI gebruiken, heeft evenveel personeel nodig als voordien. 6% heeft meer mensen nodig, 9% minder.",
-        "fr": "des PME utilisant l’IA générative ont besoin d’autant de personnel qu’avant. 6 % ont besoin de plus de monde, 9 % de moins."
-      },
-      {
-        "key": "trn-07",
-        "type": "text",
-        "label": "kmo’s die nog geen generatieve AI gebruiken, noemt een tekort aan vaardigheden als belangr",
-        "nl": "kmo’s die nog geen generatieve AI gebruiken, noemt een tekort aan vaardigheden als belangrijkste reden.",
-        "fr": "PME n’utilisant pas encore l’IA générative cite le manque de compétences comme raison principale."
+        "label": "Elke training is kort en praktisch, met één doel: uw team doet het nieuwe werk daarna zelf, zonder ons.",
+        "nl": "Elke training is kort en praktisch, met één doel: uw team doet het nieuwe werk daarna zelf, zonder ons.",
+        "fr": "Chaque formation est courte et pratique, avec un seul objectif : votre équipe fait ensuite elle-même le nouveau travail, sans nous."
       },
       {
         "key": "trn-08",
@@ -1611,6 +2108,41 @@ window.GF_CMS_CATALOG=[
         "label": "Drie trainingen",
         "nl": "Drie trainingen",
         "fr": "Trois formations"
+      },
+      {
+        "key": "trn-28",
+        "type": "text",
+        "label": "Elk programma kan apart, of als vervolg op een pilot. We stemmen de inhoud af op uw team en uw taken.",
+        "nl": "Elk programma kan apart, of als vervolg op een pilot. We stemmen de inhoud af op uw team en uw taken.",
+        "fr": "Chaque programme peut être suivi séparément ou comme suite à un pilote. Nous adaptons le contenu à votre équipe et à vos tâches."
+      },
+      {
+        "key": "trn-29",
+        "type": "text",
+        "label": "Op uw eigen werk",
+        "nl": "Op uw eigen werk",
+        "fr": "Sur votre propre travail"
+      },
+      {
+        "key": "trn-30",
+        "type": "text",
+        "label": "Uw mensen oefenen op uw vragenlijsten, uw workflows en uw beslissingen. Wat ze leren, gebruiken ze de dag nadien.",
+        "nl": "Uw mensen oefenen op uw vragenlijsten, uw workflows en uw beslissingen. Wat ze leren, gebruiken ze de dag nadien.",
+        "fr": "Vos collaborateurs s’exercent sur vos questionnaires, vos workflows et vos décisions. Ce qu’ils apprennent, ils l’utilisent dès le lendemain."
+      },
+      {
+        "key": "trn-31",
+        "type": "text",
+        "label": "Mens en AI samen",
+        "nl": "Mens en AI samen",
+        "fr": "L’humain et l’IA ensemble"
+      },
+      {
+        "key": "trn-32",
+        "type": "text",
+        "label": "AI bereidt voor, uw mensen kijken na en beslissen. In elke training oefenen we precies die rolverdeling.",
+        "nl": "AI bereidt voor, uw mensen kijken na en beslissen. In elke training oefenen we precies die rolverdeling.",
+        "fr": "L’IA prépare, vos collaborateurs vérifient et décident. Chaque formation entraîne précisément cette répartition des rôles."
       },
       {
         "key": "trn-09",
@@ -1655,11 +2187,39 @@ window.GF_CMS_CATALOG=[
         "fr": "Pour les dirigeants et la direction. Comment décisions, processus et systèmes évoluent ensemble quand le marché change."
       },
       {
+        "key": "trn-05",
+        "type": "text",
+        "label": "AI vervangt uw mensen niet. Het maakt hun werk lichter.",
+        "nl": "AI vervangt uw mensen niet. Het maakt hun werk lichter.",
+        "fr": "L’IA ne remplace pas vos collaborateurs. Elle allège leur travail."
+      },
+      {
+        "key": "trn-06",
+        "type": "text",
+        "label": "van de kmo’s die generatieve AI gebruiken, heeft evenveel personeel nodig als voordien. 6%",
+        "nl": "van de kmo’s die generatieve AI gebruiken, heeft evenveel personeel nodig als voordien. 6% heeft meer mensen nodig, 9% minder.",
+        "fr": "des PME utilisant l’IA générative ont besoin d’autant de personnel qu’avant. 6 % ont besoin de plus de monde, 9 % de moins."
+      },
+      {
+        "key": "trn-07",
+        "type": "text",
+        "label": "kmo’s die nog geen generatieve AI gebruiken, noemt een tekort aan vaardigheden als belangr",
+        "nl": "kmo’s die nog geen generatieve AI gebruiken, noemt een tekort aan vaardigheden als belangrijkste reden.",
+        "fr": "PME n’utilisant pas encore l’IA générative cite le manque de compétences comme raison principale."
+      },
+      {
         "key": "trn-15",
         "type": "text",
         "label": "Zo werkt het",
         "nl": "Zo werkt het",
         "fr": "Comment ça marche"
+      },
+      {
+        "key": "trn-33",
+        "type": "text",
+        "label": "Leren, toepassen, volhouden. Daarom stopt een training niet na de laatste sessie.",
+        "nl": "Leren, toepassen, volhouden. Daarom stopt een training niet na de laatste sessie.",
+        "fr": "Apprendre, appliquer, ancrer. C’est pourquoi une formation ne s’arrête pas à la dernière session."
       },
       {
         "key": "trn-16",
@@ -1704,6 +2264,27 @@ window.GF_CMS_CATALOG=[
         "fr": "Après quelques semaines, nous regardons ensemble ce qui est utilisé en pratique et ce qui peut encore être amélioré."
       },
       {
+        "key": "trn-34",
+        "type": "text",
+        "label": "Uw trainer",
+        "nl": "Uw trainer",
+        "fr": "Votre formateur"
+      },
+      {
+        "key": "trn-35",
+        "type": "text",
+        "label": "Oprichter van Grow Faster",
+        "nl": "Oprichter van Grow Faster",
+        "fr": "Fondateur de Grow Faster"
+      },
+      {
+        "key": "trn-36",
+        "type": "text",
+        "label": "Meer dan twintig jaar procesverbetering bij grote bedrijven zoals Volvo, Colruyt en Telenet. Nu breng ik die aanpak naar kmo’s, in het Nederlands en het Frans.",
+        "nl": "Meer dan twintig jaar procesverbetering bij grote bedrijven zoals Volvo, Colruyt en Telenet. Nu breng ik die aanpak naar kmo’s, in het Nederlands en het Frans.",
+        "fr": "Plus de vingt ans d’amélioration des processus dans de grandes entreprises comme Volvo, Colruyt et Telenet. J’apporte aujourd’hui cette approche aux PME, en néerlandais et en français."
+      },
+      {
         "key": "trn-22",
         "type": "text",
         "label": "Praktisch",
@@ -1716,6 +2297,13 @@ window.GF_CMS_CATALOG=[
         "label": "Ter plaatse of online, in het Nederlands of het Frans. Prijs op aanvraag.",
         "nl": "Ter plaatse of online, in het Nederlands of het Frans. Prijs op aanvraag.",
         "fr": "Sur place ou en ligne, en néerlandais ou en français. Prix sur demande."
+      },
+      {
+        "key": "trn-37",
+        "type": "text",
+        "label": "Verder lezen",
+        "nl": "Verder lezen",
+        "fr": "Pour aller plus loin"
       },
       {
         "key": "trn-24",
@@ -1733,6 +2321,373 @@ window.GF_CMS_CATALOG=[
       },
       {
         "key": "cms-video-training",
+        "type": "media",
+        "kind": "video",
+        "label": "Video bij deze pagina",
+        "src": "",
+        "alt": {
+          "nl": "",
+          "fr": ""
+        }
+      }
+    ]
+  },
+  {
+    "page": "journal",
+    "route": "journal.html",
+    "section": "website",
+    "label": "Maandelijks Magazine",
+    "fields": [
+      {
+        "key": "mag-01",
+        "type": "text",
+        "label": "Maandelijks magazine voor kmo's",
+        "nl": "Maandelijks magazine voor kmo's",
+        "fr": "Magazine mensuel pour les PME"
+      },
+      {
+        "key": "mag-02",
+        "type": "text",
+        "label": "Grow Faster Magazine",
+        "nl": "Grow Faster Magazine",
+        "fr": "Grow Faster Magazine"
+      },
+      {
+        "key": "mag-03",
+        "type": "text",
+        "label": "Elke maand één verspilling in uw bedrijf, en hoe automatisering en AI ze wegnemen. Een kwa",
+        "nl": "Elke maand één verspilling in uw bedrijf, en hoe automatisering en AI ze wegnemen. Een kwartier lezen.",
+        "fr": "Chaque mois, un gaspillage dans votre entreprise, et comment l’automatisation et l’IA l’éliminent. Un quart d’heure de lecture."
+      },
+      {
+        "key": "mag-04",
+        "type": "text",
+        "label": "Nr. 1 · november 2026",
+        "nl": "Nr. 1 · november 2026",
+        "fr": "N° 1 · novembre 2026"
+      },
+      {
+        "key": "mag-05",
+        "type": "text",
+        "label": "Overtypen, de verspilling die niemand ziet",
+        "nl": "Overtypen, de verspilling die niemand ziet",
+        "fr": "La ressaisie, le gaspillage que personne ne voit"
+      },
+      {
+        "key": "mag-hero-img",
+        "type": "media",
+        "label": "img/magazine-editie-1-omslag-700.webp",
+        "nl": "img/magazine-editie-1-omslag-700.webp",
+        "fr": "img/magazine-editie-1-omslag-700.webp",
+        "src": "img/magazine-editie-1-omslag-700.webp",
+        "alt": {
+          "nl": "Omslag van editie 1: verpakkingslijn in een voedingsbedrijf",
+          "fr": "Omslag van editie 1: verpakkingslijn in een voedingsbedrijf"
+        }
+      },
+      {
+        "key": "mag-06",
+        "type": "text",
+        "label": "Editie 1 · deel 1",
+        "nl": "Editie 1 · deel 1",
+        "fr": "Édition 1 · partie 1"
+      },
+      {
+        "key": "mag-07",
+        "type": "text",
+        "label": "Werk dat niets toevoegt, en toch elke dag gebeurt",
+        "nl": "Werk dat niets toevoegt, en toch elke dag gebeurt",
+        "fr": "Un travail qui n’apporte rien, et pourtant fait chaque jour"
+      },
+      {
+        "key": "mag-08",
+        "type": "text",
+        "label": "Editie 1 · deel 2",
+        "nl": "Editie 1 · deel 2",
+        "fr": "Édition 1 · partie 2"
+      },
+      {
+        "key": "mag-09",
+        "type": "text",
+        "label": "Vijf retailers, vijf vragenlijsten, dezelfde antwoorden",
+        "nl": "Vijf retailers, vijf vragenlijsten, dezelfde antwoorden",
+        "fr": "Cinq distributeurs, cinq questionnaires, les mêmes réponses"
+      },
+      {
+        "key": "mag-10",
+        "type": "text",
+        "label": "Editie 1 · deel 3",
+        "nl": "Editie 1 · deel 3",
+        "fr": "Édition 1 · partie 3"
+      },
+      {
+        "key": "mag-11",
+        "type": "text",
+        "label": "Vier stappen, geen nieuw systeem",
+        "nl": "Vier stappen, geen nieuw systeem",
+        "fr": "Quatre étapes, aucun nouveau système"
+      },
+      {
+        "key": "mag-12",
+        "type": "text",
+        "label": "Nr. 2 · december 2026",
+        "nl": "Nr. 2 · december 2026",
+        "fr": "N° 2 · décembre 2026"
+      },
+      {
+        "key": "mag-13",
+        "type": "text",
+        "label": "Het verschil tussen bon en levering",
+        "nl": "Het verschil tussen bon en levering",
+        "fr": "L’écart entre le bon et la livraison"
+      },
+      {
+        "key": "mag-14",
+        "type": "text",
+        "label": "Archief",
+        "nl": "Archief",
+        "fr": "Archives"
+      },
+      {
+        "key": "mag-15",
+        "type": "text",
+        "label": "Alle edities",
+        "nl": "Alle edities",
+        "fr": "Toutes les éditions"
+      },
+      {
+        "key": "mag-16",
+        "type": "text",
+        "label": "Elke maand één verspilling, één voorbeeld en één aanpak. De nieuwste editie staat eerst.",
+        "nl": "Elke maand één verspilling, één voorbeeld en één aanpak. De nieuwste editie staat eerst.",
+        "fr": "Chaque mois, un gaspillage, un exemple et une approche. La dernière édition apparaît en premier."
+      },
+      {
+        "key": "mag-17",
+        "type": "text",
+        "label": "Verschijnt in december",
+        "nl": "Verschijnt in december",
+        "fr": "Parution en décembre"
+      },
+      {
+        "key": "mag-18",
+        "type": "text",
+        "label": "Nr. 2 · december 2026",
+        "nl": "Nr. 2 · december 2026",
+        "fr": "N° 2 · décembre 2026"
+      },
+      {
+        "key": "mag-19",
+        "type": "text",
+        "label": "Het verschil tussen bon en levering",
+        "nl": "Het verschil tussen bon en levering",
+        "fr": "L’écart entre le bon et la livraison"
+      },
+      {
+        "key": "mag-20",
+        "type": "text",
+        "label": "Op de bon staan 24 dozen, op de kade staan er 22. Wie merkt het, wanneer, en wat kost het ",
+        "nl": "Op de bon staan 24 dozen, op de kade staan er 22. Wie merkt het, wanneer, en wat kost het als niemand het merkt?",
+        "fr": "Le bon indique 24 cartons, le quai en compte 22. Qui le remarque, quand, et combien cela coûte-t-il si personne ne le remarque ?"
+      },
+      {
+        "key": "mag-21",
+        "type": "text",
+        "label": "Nr. 1 · november 2026",
+        "nl": "Nr. 1 · november 2026",
+        "fr": "N° 1 · novembre 2026"
+      },
+      {
+        "key": "mag-22",
+        "type": "text",
+        "label": "Overtypen, de verspilling die niemand ziet",
+        "nl": "Overtypen, de verspilling die niemand ziet",
+        "fr": "La ressaisie, le gaspillage que personne ne voit"
+      },
+      {
+        "key": "mag-23",
+        "type": "text",
+        "label": "Bestellingen, specificaties en vragenlijsten die iemand van het ene document naar het ande",
+        "nl": "Bestellingen, specificaties en vragenlijsten die iemand van het ene document naar het andere overtypt. 32 pagina's.",
+        "fr": "Des commandes, des spécifications et des questionnaires que quelqu’un ressaisit d’un document à l’autre. 32 pages."
+      },
+      {
+        "key": "mag-24",
+        "type": "text",
+        "label": "Elke maand",
+        "nl": "Elke maand",
+        "fr": "Chaque mois"
+      },
+      {
+        "key": "mag-25",
+        "type": "text",
+        "label": "Nooit een editie missen",
+        "nl": "Nooit een editie missen",
+        "fr": "Ne manquez aucune édition"
+      },
+      {
+        "key": "mag-26",
+        "type": "text",
+        "label": "Eén mail per maand, op de dag dat een nieuwe editie verschijnt. Geen reclame.",
+        "nl": "Eén mail per maand, op de dag dat een nieuwe editie verschijnt. Geen reclame.",
+        "fr": "Un mail par mois, le jour de la parution d’une nouvelle édition. Pas de publicité."
+      },
+      {
+        "key": "mag-27",
+        "type": "text",
+        "label": "In editie 1",
+        "nl": "In editie 1",
+        "fr": "Dans l’édition 1"
+      },
+      {
+        "key": "mag-28",
+        "type": "text",
+        "label": "Vier delen, één verspilling",
+        "nl": "Vier delen, één verspilling",
+        "fr": "Quatre parties, un gaspillage"
+      },
+      {
+        "key": "mag-29",
+        "type": "text",
+        "label": "De verspilling",
+        "nl": "De verspilling",
+        "fr": "Le gaspillage"
+      },
+      {
+        "key": "mag-30",
+        "type": "text",
+        "label": "Werk dat niets toevoegt en op geen enkele functieomschrijving staat.",
+        "nl": "Werk dat niets toevoegt en op geen enkele functieomschrijving staat.",
+        "fr": "Un travail qui n’apporte rien et ne figure dans aucune description de fonction."
+      },
+      {
+        "key": "mag-31",
+        "type": "text",
+        "label": "Eén voorbeeld",
+        "nl": "Eén voorbeeld",
+        "fr": "Un exemple"
+      },
+      {
+        "key": "mag-32",
+        "type": "text",
+        "label": "Een voedingsbedrijf dat dezelfde gegevens overtypt voor vijf retailers.",
+        "nl": "Een voedingsbedrijf dat dezelfde gegevens overtypt voor vijf retailers.",
+        "fr": "Une entreprise alimentaire qui ressaisit les mêmes données pour cinq distributeurs."
+      },
+      {
+        "key": "mag-33",
+        "type": "text",
+        "label": "De aanpak",
+        "nl": "De aanpak",
+        "fr": "L’approche"
+      },
+      {
+        "key": "mag-34",
+        "type": "text",
+        "label": "Tel het, zoek de bron, laat de computer lezen en laat een mens beslissen.",
+        "nl": "Tel het, zoek de bron, laat de computer lezen en laat een mens beslissen.",
+        "fr": "Comptez, trouvez la source, laissez l’ordinateur lire et un humain décider."
+      },
+      {
+        "key": "mag-35",
+        "type": "text",
+        "label": "Wat het oplevert",
+        "nl": "Wat het oplevert",
+        "fr": "Ce que cela rapporte"
+      },
+      {
+        "key": "mag-36",
+        "type": "text",
+        "label": "Wat u meet voor en na: tijd, fouten en doorlooptijd.",
+        "nl": "Wat u meet voor en na: tijd, fouten en doorlooptijd.",
+        "fr": "Ce que vous mesurez avant et après : temps, erreurs et délai."
+      },
+      {
+        "key": "mag-37",
+        "type": "text",
+        "label": "Eerste editie, november 2026",
+        "nl": "Eerste editie, november 2026",
+        "fr": "Première édition, novembre 2026"
+      },
+      {
+        "key": "mag-38",
+        "type": "text",
+        "label": "Overtypen, de verspilling die niemand ziet",
+        "nl": "Overtypen, de verspilling die niemand ziet",
+        "fr": "La ressaisie, le gaspillage que personne ne voit"
+      },
+      {
+        "key": "mag-39",
+        "type": "text",
+        "label": "Over bestellingen, specificaties en vragenlijsten die iemand van het ene document naar het",
+        "nl": "Over bestellingen, specificaties en vragenlijsten die iemand van het ene document naar het andere overtypt. Tweeëndertig pagina's, een kwartier lezen.",
+        "fr": "Sur les commandes, les spécifications et les questionnaires que quelqu’un ressaisit d’un document à l’autre. Trente-deux pages, un quart d’heure de lecture."
+      },
+      {
+        "key": "mag-40",
+        "type": "text",
+        "label": "Opbouw van elke editie",
+        "nl": "Opbouw van elke editie",
+        "fr": "Structure de chaque édition"
+      },
+      {
+        "key": "mag-41",
+        "type": "text",
+        "label": "Eén verspilling.",
+        "nl": "Eén verspilling.",
+        "fr": "Un gaspillage."
+      },
+      {
+        "key": "mag-42",
+        "type": "text",
+        "label": "Een verspilling die u in bijna elke kmo terugvindt.",
+        "nl": "Een verspilling die u in bijna elke kmo terugvindt.",
+        "fr": "Un gaspillage que l’on retrouve dans presque chaque PME."
+      },
+      {
+        "key": "mag-43",
+        "type": "text",
+        "label": "Eén voorbeeld.",
+        "nl": "Eén voorbeeld.",
+        "fr": "Un exemple."
+      },
+      {
+        "key": "mag-44",
+        "type": "text",
+        "label": "Hoe die verspilling eruitziet in een kmo, met één cijfer en de bron.",
+        "nl": "Hoe die verspilling eruitziet in een kmo, met één cijfer en de bron.",
+        "fr": "À quoi ressemble ce gaspillage dans une PME, avec un chiffre et sa source."
+      },
+      {
+        "key": "mag-45",
+        "type": "text",
+        "label": "De aanpak.",
+        "nl": "De aanpak.",
+        "fr": "L’approche."
+      },
+      {
+        "key": "mag-46",
+        "type": "text",
+        "label": "De stappen om ze weg te werken, met automatisering en AI waar het helpt.",
+        "nl": "De stappen om ze weg te werken, met automatisering en AI waar het helpt.",
+        "fr": "Les étapes pour l’éliminer, avec l’automatisation et l’IA là où elles aident."
+      },
+      {
+        "key": "mag-47",
+        "type": "text",
+        "label": "Wat het oplevert.",
+        "nl": "Wat het oplevert.",
+        "fr": "Ce que cela rapporte."
+      },
+      {
+        "key": "mag-48",
+        "type": "text",
+        "label": "Hoeveel tijd en geld u terugwint, en hoe u dat meet.",
+        "nl": "Hoeveel tijd en geld u terugwint, en hoe u dat meet.",
+        "fr": "Combien de temps et d’argent vous récupérez, et comment le mesurer."
+      },
+      {
+        "key": "cms-video-journal",
         "type": "media",
         "kind": "video",
         "label": "Video bij deze pagina",

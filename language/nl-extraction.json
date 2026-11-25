@@ -3,7 +3,7 @@
   "scope": "rendered_local_nl_runtime_dictionaries_static_cms_and_mail",
   "technicalReview": {
     "date": "2026-11-25",
-    "reason": "Eigen afspraakmodule (PR #101, samengevoegd met main op 25 november 2026): nieuwe assets/booking.js en assets/booking-admin.js (formulier en beheer; zichtbare tekst via i18n.js), afspraak.html herwerkt en nieuwe beheerpagina admin-afspraken.html (inline script zonder tekst), assets/cms-config.js deelt de publieke projectlijst (geen tekst), i18n.js aangevuld met de boekingsteksten en ontdaan van de drie Google Agenda-zinnen. Geen adapterwijziging. Eerdere reden: Magazinepagina journal.html (eigenaarsbeslissing 25 november): schuivende hero met vijf beelden, archief van alle edities en de delen van editie 1; blokken Het boek en Herkent u deze verspilling? weg; nieuw assets/magazine.js en deeplinks in assets/flipboek.js. Vertalingen in assets/i18n-journal.js. Geen adapterwijziging. Eerdere reden: Contentstudio herwerkt (sponsorbesluit 25 november): catalogus beperkt tot de menupagina’s (Home, Orion, Workflow-automatisering, Bedrijfsontwikkeling, Training, Insights, Over), zeven oude Engelstali…"
+    "reason": "Merge main in Eigen afspraakmodule (release-wachtrij) (assets/booking-admin.js, assets/booking.js, assets/cms-config.js, assets/i18n.js, inline admin-afspraken.html, inline afspraak.html). Geen adapterwijziging. Eerdere reden: Merge main in fix/over-kleur-terug-20261125 (release-wachtrij) (assets/i18n-about.js, inline about.html). Geen adapterwijziging. Eerdere reden: Merge main in Bedrijfsontwikkeling premium (release-wachtrij) (assets/cms-catalog.js, assets/i18n-coherence.js, inline coherence.html). Geen adapterwijziging. Eerdere reden: Merge main in Workflow-automatisering premium (release-wachtrij) (assets/cms-catalog.js, assets/i18n-automatisering.js, assets/i18n.js, inline automatisering.html). Geen adapterwijziging. Eerdere reden: Merge main in Training-pagina (release-wachtrij) (assets/cms-catalog.js, assets/i18n-training.js, inline training.html). Geen adapterwijziging. Eerdere reden: Contentstudio: Maandelijks Magazine (journal.html) bewerkbaar; cms-catalog.js en inline-script journal.html. Geen adapterwijziging. Eerdere reden: Eigenaarsbeslissing 25 november 17:02: homepagezin \"nog niet één op de dr…"
   },
   "javascript": [
     {
@@ -36,7 +36,7 @@
     },
     {
       "file": "assets/cms-catalog.js",
-      "sha256": "8f54c0acdd590059835502d5dfc9ffc9756612dd019d4e00912fa3dae14a5464"
+      "sha256": "4b0e12af37aee2c0f6d082944dffd10880db9883fe1324faaa45b4fc0b90754a"
     },
     {
       "file": "assets/cms-client.js",
@@ -87,6 +87,18 @@
       "sha256": "3bb45468eddad3d1c9c0e0908580c216aef48c09d63b3f3dd0256f479fd6f19a"
     },
     {
+      "file": "assets/i18n-about.js",
+      "sha256": "69c9ce6dc306a400085b37f233d18454fff1f6d60b5d9cd1af4f1e1af5d02a9a"
+    },
+    {
+      "file": "assets/i18n-automatisering.js",
+      "sha256": "0fdb55146583fd809125978e6cae786568ed840485210eadfb0af9eb243fc959"
+    },
+    {
+      "file": "assets/i18n-coherence.js",
+      "sha256": "a56962e6ac0df1eb2c1b44d66743ed924de20bc850d61915a3c4020064fdbc1e"
+    },
+    {
       "file": "assets/i18n-home.js",
       "sha256": "d01c52555ec867bd578f40417490b49a1b5300fd21a0c126d03e9fcbb8ee5e88"
     },
@@ -99,8 +111,16 @@
       "sha256": "d6b4245632bf02758c86eff263056487f80383905e4b6c7ecb23c79b9322c98e"
     },
     {
+      "file": "assets/i18n-orion.js",
+      "sha256": "357e655136e97914be881fddd23389b6450ea97e0500a18bae1fc674ae47ef38"
+    },
+    {
+      "file": "assets/i18n-training.js",
+      "sha256": "84e6b990db8befda934af7807178a89d96b17b7f68bfd4b51efa22206fa18720"
+    },
+    {
       "file": "assets/i18n.js",
-      "sha256": "643aac01535f8d835d6d8e95faa55d2a3a390680d09a8f67fae56f984b09b309"
+      "sha256": "1d2a332dd0fe3c46e5d3a61370e8bcb27559b02fefc9295d5fa9fd905665eada"
     },
     {
       "file": "assets/journal.js",
@@ -124,7 +144,7 @@
     },
     {
       "file": "assets/site.js",
-      "sha256": "da75216727244124a3bc9e5e49c87dd099e4e0432daeb921fde5bf9b4f0fcca4"
+      "sha256": "a085b4bd99cd9beeea778bbae8c932cc2bf901ae4b981aa9545a4132f072a262"
     },
     {
       "file": "assets/ux.js",
@@ -146,7 +166,7 @@
     },
     {
       "file": "about.html",
-      "sha256": "9c0b50dfc706d05010f93392482c10c430984bd3adbc77afd857ef68da833ac6"
+      "sha256": "65eed885c9713835e9d70e248d76a6a84b425a3ee6d856bb2823c573ef2c675a"
     },
     {
       "file": "accessibility.html",
@@ -186,7 +206,7 @@
     },
     {
       "file": "automatisering.html",
-      "sha256": "9b3726bea5414c9ce0add306334903d3693a95a364d2dfef5b70189c84b5d5b4"
+      "sha256": "3f44a70b4e0b9b92713f9944d82cd1fc6223f3c9a257da0dd6c526715655d1b8"
     },
     {
       "file": "baies-dev/index.html",
@@ -210,7 +230,7 @@
     },
     {
       "file": "coherence.html",
-      "sha256": "8ae7169070075abfe4bb642b63cdcfca6fed76aa8961c1aac8aab43a938d39ff"
+      "sha256": "e0465c92f9d48bf79cac4524d76c1cd0f657b6acf555c5a87637674a3a341e59"
     },
     {
       "file": "coordination-overload-1.html",
@@ -250,7 +270,7 @@
     },
     {
       "file": "journal.html",
-      "sha256": "f7480d3b95e87053f6ae9ca1e850d69299ea45ab2317401ff21f187c97b70f47"
+      "sha256": "b657952775471fd2e90a54a8636c9d869aba431108820458c6d37c14db21fec8"
     },
     {
       "file": "operating-model.html",
@@ -262,7 +282,7 @@
     },
     {
       "file": "orion.html",
-      "sha256": "23aa0d7c55db5dedd1a059b19be6712897a2c81990d01529f5d740f8cc2ccd5d"
+      "sha256": "e1732484864fae17df624b42a37b63a6a6bd5b5df7eb519a26f0dd677976d3ef"
     },
     {
       "file": "privacy.html",
@@ -286,7 +306,7 @@
     },
     {
       "file": "training.html",
-      "sha256": "ee875ec7fdf01d132d90f0aa7f87b72c4a3902b33412639e8c3d17706a751d87"
+      "sha256": "9a0520b937f9618a5ee2ad783d4de29225b54e72a976048b1109701567e35492"
     },
     {
       "file": "transformation.html",

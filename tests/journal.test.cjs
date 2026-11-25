@@ -9,7 +9,8 @@ const read=file=>fs.readFileSync(path.resolve(__dirname,'../dist',file),'utf8');
 const I18N=()=>{const c={window:{}};vm.runInNewContext(read('assets/i18n.js'),c);return c.window.I18N};
 test('Maandelijks Magazine explains the monthly format, shows a sliding hero and the archive of editions',()=>{
  const html=read('journal.html'),main=html.match(/<main[\s\S]*?<\/main>/)[0],I=Object.assign(I18N(),(()=>{const c={window:{}};vm.runInNewContext(read('assets/i18n-journal.js'),c);return c.window.I18N})());
- assert.match(main,/<h1>Grow Faster Magazine<\/h1>/);
+ // 25 Nov 2026 (sponsor decision: every menu page is editable in the content studio): page-level texts carry a data-cms key as last attribute.
+ assert.match(main,/<h1(?: data-cms="mag-\d\d")?>Grow Faster Magazine<\/h1>/);
  assert.match(main,/Elke maand één verspilling in uw bedrijf/);assert.doesNotMatch(main,/\bwekelijks|\bweekly/i);
  assert.equal((main.match(/<article class="vcard in">/g)||[]).length,4,'four parts per edition');
  assert.match(main,/<section id="editie-1"[\s\S]*Overtypen, de verspilling die niemand ziet/);
@@ -21,7 +22,7 @@ test('Maandelijks Magazine explains the monthly format, shows a sliding hero and
  assert.match(html,/<link rel="preload" as="image" type="image\/webp" href="img\/magazine-editie-1-omslag-700\.webp"/);
  assert.match(html,/<script defer src="assets\/magazine\.js\?v=[^"]+"><\/script>/);
  const archief=main.match(/<section id="edities"[\s\S]*?<\/section>/)[0];
- assert.deepEqual([...archief.matchAll(/<span class="mz-nummer-label">([^<]+)</g)].map(m=>m[1]),['Nr. 2 · december 2026','Nr. 1 · november 2026','Elke maand'],'newest edition first');
+ assert.deepEqual([...archief.matchAll(/<span class="mz-nummer-label"(?: data-cms="mag-\d\d")?>([^<]+)</g)].map(m=>m[1]),['Nr. 2 · december 2026','Nr. 1 · november 2026','Elke maand'],'newest edition first');
  assert.match(archief,/href="#editie-1"/);
  for(const p of [...main.matchAll(/data-fb-pagina="(\d+)"/g)].map(m=>m[1]))assert.match(main,new RegExp('data-pagina="'+p+'"'),'deep link to page '+p);
  for(const t of ['Grow Faster Magazine','Opbouw van elke editie','Overtypen, de verspilling die niemand ziet','Alle edities','Vier delen, één verspilling','Pauzeer de dia\'s','Mail me bij een nieuwe editie'])assert.ok(I[t]?.[1],'FR missing: '+t);
@@ -33,6 +34,22 @@ test('Maandelijks Magazine uses mail instead of forms and is the current menu pa
  for(const m of mails)assert.match(m,/^mailto:info@grow-faster\.be\?subject=Magazine/);
  assert.match(html,/<a tabindex="0" class="l cur on" href="journal\.html" aria-current="page">Maandelijks Magazine<\/a>/);
  assert.match(html,/<title>Maandelijks Magazine voor kmo’s \| Grow Faster<\/title>/);
+});
+// Content studio (sponsor decision 25 Nov 2026): the page around the magazine is editable (mag- keys), the edition itself is not.
+// The 32 pages pass the editorial process with sponsor gates (sources, translation, GO); a CMS edit would bypass it.
+test('content studio edits the magazine page but never the pages of an edition',()=>{
+ const html=read('journal.html'),main=html.match(/<main[\s\S]*?<\/main>/)[0],c={window:{}};vm.runInNewContext(read('assets/cms-catalog.js'),c);
+ const book=main.match(/<article class="editie flipboek"[\s\S]*?<\/article>/)[0];
+ assert.doesNotMatch(book,/data-cms=/,'no CMS key inside the flipbook');
+ const def=c.window.GF_CMS_CATALOG.find(p=>p.page==='journal');assert.ok(def,'journal in catalog');assert.equal(def.label,'Maandelijks Magazine');
+ const keys=[...main.matchAll(/data-cms="([^"]+)"/g)].map(m=>m[1]);
+ for(const k of keys)assert.match(k,/^(mag-\d\d|mag-hero-img|cms-video-journal)$/,k);
+ assert.ok(keys.includes('mag-hero-img')&&keys.includes('cms-video-journal'));
+ for(const f of def.fields.filter(f=>f.type==='text')){
+  const m=main.match(new RegExp('<([a-z0-9]+)\\b[^>]*data-cms="'+f.key+'">([^<]*)</\\1>'));assert.ok(m,'plain-text element with the key last: '+f.key);
+  assert.equal(m[2].replace(/\s+/g,' ').trim(),f.nl,f.key);assert.ok(f.fr,'FR '+f.key);
+ }
+ assert.match(main,/<img [^>]*fetchpriority="high"[^>]*data-cms="mag-hero-img">/,'the eager cover of the first slide is the hero image');
 });
 test('the French Executive Journal address forwards to the Maandelijks Magazine in French',()=>{
  const html=read('journal-fr.html');

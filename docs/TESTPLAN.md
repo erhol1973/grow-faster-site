@@ -1,5 +1,9 @@
 # Testplan en kwaliteitsbeleid
 
+## Plan een gesprek zonder kleurlaag; homepagezin verzorgd, 25 november 2026
+
+Eigenaarsbeslissing (17:02): afspraak.html laadt assets/kleur.css niet meer en krijgt zijn originele kleuren terug, zoals Home, Orion, Workflow-automatisering en Bedrijfsontwikkeling (#117). Op de homepage wordt "nog geen een op de drie" "nog niet één op de drie" (sleutel in i18n.js mee hernoemd, Franse vertaling ongewijzigd). Tests: kleur.test.cjs (afspraak.html van de positieve naar de negatieve lijst), nl-editorial.test.cjs (nieuw: nieuwe zin aanwezig, oude zin en oude sleutel weg). language/nl-extraction.json bijgewerkt; geen adapterwijziging.
+
 ## Analytics-heracceptatie zonder herdownload, 25 november 2026
 
 Aanleiding: `critical-flows.spec.cjs` "accept, withdraw and accept analytics again" faalde vandaag drie keer (Firefox op main en PR #119, Chromium op PR #119), telkens op de laatste stap: na heracceptatie bleef de telling op 1 in plaats van 2. Lokaal (zonder internet) was de fout niet te reproduceren in 120 herhalingen onder CPU-belasting. De heracceptatie hing af van een tweede download van count.js en de `onload` daarvan; de test laadde bovendien het echte HubSpot-script, dat in CI wel bereikbaar is en lokaal niet.

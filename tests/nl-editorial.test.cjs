@@ -1,5 +1,6 @@
 'use strict';
 const {test}=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path');
+const vm=require('node:vm');
 const root=path.resolve(__dirname,'../dist');
 function dictionary(){
   const source=fs.readFileSync(path.join(root,'assets/i18n.js'),'utf8');
@@ -47,4 +48,15 @@ test('Every built page referencing changed Dutch translations requests the curre
     }
   }
   assert.ok(references>0,'The built site still includes its shared translation data');
+});
+
+// Owner decision 25 Nov 2026 17:02: the homepage uses the polished "nog niet één op de drie" instead of informal "nog geen een op de drie".
+test('homepage figure sentence uses "nog niet één op de drie" in HTML and in the translation key',()=>{
+  const home=fs.readFileSync(path.join(__dirname,'..','index.html'),'utf8');
+  assert.match(home,/Bij kleinere bedrijven is dat er nog niet één op de drie\./);
+  assert.doesNotMatch(home,/nog geen een op de drie/);
+  const c={window:{}};vm.runInNewContext(fs.readFileSync(path.join(__dirname,'..','assets/i18n.js'),'utf8'),c);
+  const key=Object.keys(c.window.I18N).find(k=>k.includes('nog niet één op de drie'));
+  assert.ok(key&&c.window.I18N[key][1].includes('moins d’une sur trois'),'French translation kept');
+  assert.ok(!Object.keys(c.window.I18N).some(k=>k.includes('nog geen een op de drie')),'old key removed');
 });

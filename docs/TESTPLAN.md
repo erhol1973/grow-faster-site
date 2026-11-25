@@ -1,5 +1,15 @@
 # Testplan en kwaliteitsbeleid
 
+## Analytics-heracceptatie zonder herdownload, 25 november 2026
+
+Aanleiding: `critical-flows.spec.cjs` "accept, withdraw and accept analytics again" faalde vandaag drie keer (Firefox op main en PR #119, Chromium op PR #119), telkens op de laatste stap: na heracceptatie bleef de telling op 1 in plaats van 2. Lokaal (zonder internet) was de fout niet te reproduceren in 120 herhalingen onder CPU-belasting. De heracceptatie hing af van een tweede download van count.js en de `onload` daarvan; de test laadde bovendien het echte HubSpot-script, dat in CI wel bereikbaar is en lokaal niet.
+
+Productherstel (assets/site.js): `window.goatcounter` is één instellingenobject met toestemmingsgebonden accessors. De setter bewaart de echte telfunctie die count.js toekent; de getter geeft ze alleen terug zolang analytics-toestemming bewaard is, anders een lege functie. `bind_events` is altijd leeg. Heracceptatie na een eerder uitgevoerd script telt meteen één pageview, zonder nieuwe download en zonder `onload`. Een scriptelement dat bij intrekking is verwijderd telt nooit, ook als de download nadien nog binnenkomt (`isConnected`-controle). Daarmee is ook een bestaand gat gedicht: een download die na intrekking afrondde, liet vroeger een werkende telfunctie achter.
+
+Tests: HubSpot wordt in deze flows lokaal beantwoord (geen live derde partij in de test). De heracceptatietest controleert nu direct, zonder wachtlus: twee pageviews, één download, één scriptuitvoering en geen herladen pagina. Nieuw: "a download finishing after withdrawal stays inert and re-acceptance counts exactly once". Beide tests falen op de oude code (één met een tweede scriptuitvoering, de andere met een telling zonder toestemming) en slagen met het herstel. Geen retries, skips of ruimere timeouts.
+
+Bewijs: de vier consenttests 30× herhaald in chromium en mobile: 240/240 groen. Firefox en WebKit zijn lokaal niet geïnstalleerd; die profielen lopen in CI. `language/nl-extraction.json`: hashes bijgewerkt voor assets/site.js en voor de op main ontbrekende of verouderde contractregels (assets/cms-catalog.js, assets/i18n.js, nieuw assets/i18n-orion.js uit #121).
+
 ## Kleurlaag terug van vier pagina's, 25 november 2026
 
 Eigenaarsbeslissing: Home, Orion, Workflow-automatisering en Bedrijfsontwikkeling krijgen opnieuw hun eerdere look; assets/kleur.css wordt daar niet meer geladen. De andere klantpagina's houden de kleurlaag. tests/kleur.test.cjs controleert beide kanten (positief op de overige pagina's, negatief op de vier teruggedraaide).

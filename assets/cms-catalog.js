@@ -1131,11 +1131,67 @@ window.GF_CMS_CATALOG=[
         "fr": "Nous automatisons le travail manuel entre vos e-mails, vos listes Excel et vos systèmes. Vos collaborateurs gagnent du temps pour le travail qui compte."
       },
       {
+        "key": "awx-01",
+        "type": "text",
+        "label": "In het kort",
+        "nl": "In het kort",
+        "fr": "En bref"
+      },
+      {
+        "key": "awx-02",
+        "type": "text",
+        "label": "Het handwerk",
+        "nl": "Het handwerk",
+        "fr": "Le travail manuel"
+      },
+      {
+        "key": "awx-03",
+        "type": "text",
+        "label": "Uw team typt over, kopieert en plakt, en volgt op met herinneringen. Dat kost elke week ur",
+        "nl": "Uw team typt over, kopieert en plakt, en volgt op met herinneringen. Dat kost elke week uren.",
+        "fr": "Votre équipe ressaisit, copie-colle et assure le suivi à coups de rappels. Cela coûte des heures chaque semaine."
+      },
+      {
+        "key": "awx-04",
+        "type": "text",
+        "label": "Eén workflow tegelijk",
+        "nl": "Eén workflow tegelijk",
+        "fr": "Un workflow à la fois"
+      },
+      {
+        "key": "awx-05",
+        "type": "text",
+        "label": "We starten met de workflow die het meeste tijd kost, en bouwen waar het kan op de systemen",
+        "nl": "We starten met de workflow die het meeste tijd kost, en bouwen waar het kan op de systemen die u al hebt.",
+        "fr": "Nous commençons par le workflow qui prend le plus de temps et, dans la mesure du possible, nous nous appuyons sur les systèmes que vous avez déjà."
+      },
+      {
+        "key": "awx-06",
+        "type": "text",
+        "label": "U beslist",
+        "nl": "U beslist",
+        "fr": "Vous décidez"
+      },
+      {
+        "key": "awx-07",
+        "type": "text",
+        "label": "Bij gevoelige stappen keurt een medewerker eerst goed. We meten de tijd vóór en na.",
+        "nl": "Bij gevoelige stappen keurt een medewerker eerst goed. We meten de tijd vóór en na.",
+        "fr": "Pour les étapes sensibles, un collaborateur valide d’abord. Nous mesurons le temps avant et après."
+      },
+      {
         "key": "aut-03",
         "type": "text",
         "label": "Herkenbaar?",
         "nl": "Herkenbaar?",
         "fr": "Cela vous parle ?"
+      },
+      {
+        "key": "awx-08",
+        "type": "text",
+        "label": "Vier soorten handwerk die uw mensen elke week tijd kosten.",
+        "nl": "Vier soorten handwerk die uw mensen elke week tijd kosten.",
+        "fr": "Quatre types de travail manuel qui coûtent du temps à vos collaborateurs chaque semaine."
       },
       {
         "key": "aut-04",
@@ -1194,11 +1250,53 @@ window.GF_CMS_CATALOG=[
         "fr": "Chaque mois, quelqu’un compose à la main le même rapport."
       },
       {
+        "key": "awx-09",
+        "type": "text",
+        "label": "Rekenvoorbeeld",
+        "nl": "Rekenvoorbeeld",
+        "fr": "Exemple de calcul"
+      },
+      {
+        "key": "awx-10",
+        "type": "text",
+        "label": "€ 3.795",
+        "nl": "€ 3.795",
+        "fr": "3 795 €"
+      },
+      {
+        "key": "awx-11",
+        "type": "text",
+        "label": "per medewerker per jaar",
+        "nl": "per medewerker per jaar",
+        "fr": "par collaborateur et par an"
+      },
+      {
+        "key": "awx-12",
+        "type": "text",
+        "label": "Wie één uur per dag overtypt, besteedt daar bij € 17,25 per uur en 220 werkdagen zoveel aa",
+        "nl": "Wie één uur per dag overtypt, besteedt daar bij € 17,25 per uur en 220 werkdagen zoveel aan. Die tijd kan naar klanten, kwaliteit of groei gaan.",
+        "fr": "Qui ressaisit une heure par jour y consacre ce montant, à 17,25 € de l’heure et sur 220 jours ouvrables. Ce temps peut aller aux clients, à la qualité ou à la croissance."
+      },
+      {
         "key": "aut-12",
         "type": "text",
         "label": "Voorbeelden",
         "nl": "Voorbeelden",
         "fr": "Exemples"
+      },
+      {
+        "key": "awx-13",
+        "type": "text",
+        "label": "Wat we automatiseren, van de eerste mail tot het rapport.",
+        "nl": "Wat we automatiseren, van de eerste mail tot het rapport.",
+        "fr": "Ce que nous automatisons, du premier e-mail jusqu’au rapport."
+      },
+      {
+        "key": "awx-14",
+        "type": "text",
+        "label": "Bestellingen",
+        "nl": "Bestellingen",
+        "fr": "Commandes"
       },
       {
         "key": "aut-13",
@@ -1208,11 +1306,25 @@ window.GF_CMS_CATALOG=[
         "fr": "Lire les commandes dans les e-mails ou les PDF et les préparer dans votre système de commandes."
       },
       {
+        "key": "awx-15",
+        "type": "text",
+        "label": "Aankoopfacturen",
+        "nl": "Aankoopfacturen",
+        "fr": "Factures d’achat"
+      },
+      {
         "key": "aut-14",
         "type": "text",
         "label": "Aankoopfacturen inlezen en voorbereiden voor de boekhouding.",
         "nl": "Aankoopfacturen inlezen en voorbereiden voor de boekhouding.",
         "fr": "Lire les factures d’achat et les préparer pour la comptabilité."
+      },
+      {
+        "key": "awx-16",
+        "type": "text",
+        "label": "Nieuwe klanten",
+        "nl": "Nieuwe klanten",
+        "fr": "Nouveaux clients"
       },
       {
         "key": "aut-15",
@@ -1222,11 +1334,25 @@ window.GF_CMS_CATALOG=[
         "fr": "Encoder un nouveau client une seule fois, puis retrouver ses données dans votre CRM, votre comptabilité et votre planning."
       },
       {
+        "key": "awx-17",
+        "type": "text",
+        "label": "Wekelijkse cijfers",
+        "nl": "Wekelijkse cijfers",
+        "fr": "Chiffres hebdomadaires"
+      },
+      {
         "key": "aut-16",
         "type": "text",
         "label": "Wekelijkse cijfers die vanzelf in één overzicht samenkomen.",
         "nl": "Wekelijkse cijfers die vanzelf in één overzicht samenkomen.",
         "fr": "Des chiffres hebdomadaires qui se rassemblent tout seuls dans un seul aperçu."
+      },
+      {
+        "key": "awx-18",
+        "type": "text",
+        "label": "Herinneringen",
+        "nl": "Herinneringen",
+        "fr": "Rappels"
       },
       {
         "key": "aut-17",
@@ -1241,6 +1367,13 @@ window.GF_CMS_CATALOG=[
         "label": "Zo pakken we het aan",
         "nl": "Zo pakken we het aan",
         "fr": "Notre approche"
+      },
+      {
+        "key": "awx-19",
+        "type": "text",
+        "label": "Vier stappen. Klein beginnen, meten, en pas dan verder.",
+        "nl": "Vier stappen. Klein beginnen, meten, en pas dan verder.",
+        "fr": "Quatre étapes. Commencer petit, mesurer, et seulement ensuite aller plus loin."
       },
       {
         "key": "aut-19",
@@ -1313,18 +1446,88 @@ window.GF_CMS_CATALOG=[
         "fr": "Dans 71 études sur l’IA dans les PME, les mêmes freins reviennent sans cesse."
       },
       {
-        "key": "aut-29",
+        "key": "awx-20",
         "type": "text",
-        "label": "Dienst of software",
-        "nl": "Dienst of software",
-        "fr": "Service ou logiciel"
+        "label": "Geen kennis in huis",
+        "nl": "Geen kennis in huis",
+        "fr": "Pas de compétences en interne"
       },
       {
-        "key": "aut-30",
+        "key": "awx-21",
         "type": "text",
-        "label": "Grow Faster bouwt de automatisering voor u. Voor vragenlijsten en specificaties van klante",
-        "nl": "Grow Faster bouwt de automatisering voor u. Voor vragenlijsten en specificaties van klanten is er Orion, onze eigen software.",
-        "fr": "Grow Faster construit l’automatisation pour vous. Pour les questionnaires et spécifications des clients, il y a Orion, notre propre logiciel."
+        "label": "Wij brengen de kennis mee en trainen uw mensen op hun eigen taken.",
+        "nl": "Wij brengen de kennis mee en trainen uw mensen op hun eigen taken.",
+        "fr": "Nous apportons les compétences et formons vos collaborateurs sur leurs propres tâches."
+      },
+      {
+        "key": "awx-22",
+        "type": "text",
+        "label": "Te duur",
+        "nl": "Te duur",
+        "fr": "Trop cher"
+      },
+      {
+        "key": "awx-23",
+        "type": "text",
+        "label": "We starten met één proces en meten wat het oplevert. Werkt het niet, dan stoppen we.",
+        "nl": "We starten met één proces en meten wat het oplevert. Werkt het niet, dan stoppen we.",
+        "fr": "Nous commençons par un seul processus et mesurons ce qu’il rapporte. Si cela ne fonctionne pas, nous arrêtons."
+      },
+      {
+        "key": "awx-24",
+        "type": "text",
+        "label": "Onze IT is er niet klaar voor",
+        "nl": "Onze IT is er niet klaar voor",
+        "fr": "Notre informatique n’est pas prête"
+      },
+      {
+        "key": "awx-25",
+        "type": "text",
+        "label": "Waar het kan, werken we met de systemen die u al hebt.",
+        "nl": "Waar het kan, werken we met de systemen die u al hebt.",
+        "fr": "Là où c’est possible, nous travaillons avec les systèmes que vous avez déjà."
+      },
+      {
+        "key": "awx-26",
+        "type": "text",
+        "label": "Onze data zijn niet op orde",
+        "nl": "Onze data zijn niet op orde",
+        "fr": "Nos données ne sont pas en ordre"
+      },
+      {
+        "key": "awx-27",
+        "type": "text",
+        "label": "We starten met wat elke kmo heeft: mails, Excel-lijsten en documenten.",
+        "nl": "We starten met wat elke kmo heeft: mails, Excel-lijsten en documenten.",
+        "fr": "Nous commençons par ce que chaque PME possède : e-mails, listes Excel et documents."
+      },
+      {
+        "key": "awx-28",
+        "type": "text",
+        "label": "Wie houdt de controle?",
+        "nl": "Wie houdt de controle?",
+        "fr": "Qui garde le contrôle ?"
+      },
+      {
+        "key": "awx-29",
+        "type": "text",
+        "label": "De AI bereidt voor. Een medewerker of de zaakvoerder beslist.",
+        "nl": "De AI bereidt voor. Een medewerker of de zaakvoerder beslist.",
+        "fr": "L’IA prépare. Un collaborateur ou le dirigeant décide."
+      },
+      {
+        "key": "awx-30",
+        "type": "text",
+        "label": "Levert het iets op?",
+        "nl": "Levert het iets op?",
+        "fr": "Est-ce que ça rapporte ?"
+      },
+      {
+        "key": "awx-31",
+        "type": "text",
+        "label": "We meten de tijd vóór en na, per proces.",
+        "nl": "We meten de tijd vóór en na, per proces.",
+        "fr": "Nous mesurons le temps avant et après, par processus."
       },
       {
         "key": "aut-31",
@@ -1334,11 +1537,32 @@ window.GF_CMS_CATALOG=[
         "fr": "Ce que vous gagnez"
       },
       {
+        "key": "awx-32",
+        "type": "text",
+        "label": "Wat een geautomatiseerde workflow u oplevert.",
+        "nl": "Wat een geautomatiseerde workflow u oplevert.",
+        "fr": "Ce qu’un workflow automatisé vous rapporte."
+      },
+      {
+        "key": "awx-33",
+        "type": "text",
+        "label": "Tijd terug",
+        "nl": "Tijd terug",
+        "fr": "Du temps retrouvé"
+      },
+      {
         "key": "aut-32",
         "type": "text",
         "label": "Uren per week terug voor uw team.",
         "nl": "Uren per week terug voor uw team.",
         "fr": "Des heures récupérées chaque semaine pour votre équipe."
+      },
+      {
+        "key": "awx-34",
+        "type": "text",
+        "label": "Minder fouten",
+        "nl": "Minder fouten",
+        "fr": "Moins d’erreurs"
       },
       {
         "key": "aut-33",
@@ -1348,6 +1572,13 @@ window.GF_CMS_CATALOG=[
         "fr": "Moins d’erreurs de ressaisie."
       },
       {
+        "key": "awx-35",
+        "type": "text",
+        "label": "Sneller antwoord",
+        "nl": "Sneller antwoord",
+        "fr": "Des réponses plus rapides"
+      },
+      {
         "key": "aut-34",
         "type": "text",
         "label": "Sneller antwoord aan klanten en leveranciers.",
@@ -1355,11 +1586,53 @@ window.GF_CMS_CATALOG=[
         "fr": "Des réponses plus rapides aux clients et fournisseurs."
       },
       {
+        "key": "awx-36",
+        "type": "text",
+        "label": "Overzicht",
+        "nl": "Overzicht",
+        "fr": "Une vue d’ensemble"
+      },
+      {
         "key": "aut-35",
         "type": "text",
         "label": "Zicht op wat er loopt, zonder dat iemand het moet bijhouden.",
         "nl": "Zicht op wat er loopt, zonder dat iemand het moet bijhouden.",
         "fr": "Une vue sur ce qui est en cours, sans que personne ne doive le tenir à jour."
+      },
+      {
+        "key": "aut-29",
+        "type": "text",
+        "label": "Dienst of software",
+        "nl": "Dienst of software",
+        "fr": "Service ou logiciel"
+      },
+      {
+        "key": "awx-37",
+        "type": "text",
+        "label": "Dienst",
+        "nl": "Dienst",
+        "fr": "Service"
+      },
+      {
+        "key": "awx-38",
+        "type": "text",
+        "label": "Grow Faster bouwt de automatisering voor u, op de systemen die u al gebruikt.",
+        "nl": "Grow Faster bouwt de automatisering voor u, op de systemen die u al gebruikt.",
+        "fr": "Grow Faster construit l’automatisation pour vous, sur les systèmes que vous utilisez déjà."
+      },
+      {
+        "key": "awx-39",
+        "type": "text",
+        "label": "Software: Orion",
+        "nl": "Software: Orion",
+        "fr": "Logiciel : Orion"
+      },
+      {
+        "key": "awx-40",
+        "type": "text",
+        "label": "Voor vragenlijsten en specificaties van klanten is er Orion, onze eigen software.",
+        "nl": "Voor vragenlijsten en specificaties van klanten is er Orion, onze eigen software.",
+        "fr": "Pour les questionnaires et les spécifications de vos clients, il y a Orion, notre propre logiciel."
       },
       {
         "key": "aut-36",

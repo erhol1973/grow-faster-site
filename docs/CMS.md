@@ -98,3 +98,5 @@ or use a successful local mock as evidence of a production deployment.
 ## Testomgeving (25 november 2026)
 
 Elke branch krijgt een Cloudflare Pages-preview (`<branch>.grow-faster-site.pages.dev` en een deployment-hash-URL). `assets/cms-config.js` koppelt elke zulke preview aan het geïsoleerde testproject growfaster-test (gqsvoioccvklzfmdmexy); de contentstudio toont dan "Contentstudio · TEST". Concepten en publicaties op een preview veranderen dus nooit grow-faster.be. Alleen het live domein gebruikt het productieproject. Na een productierelease bestaan pagina's die nog nooit in productie zijn geopend daar pas als concept na de eerste selectie in de contentstudio; er wordt niets automatisch gepubliceerd.
+
+Maandelijks Magazine (25 november 2026): journal.html staat in de contentstudio met de paginateksten rond het magazine (mag-sleutels), de herofoto en een videoslot. De 32 pagina's van een editie blijven buiten de contentstudio, omdat ze het redactieproces met sponsorpoorten volgen.

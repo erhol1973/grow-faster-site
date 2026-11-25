@@ -1,5 +1,27 @@
 # Testplan en kwaliteitsbeleid
 
+## Maandelijks Magazine in de contentstudio, 25 november 2026
+
+Sponsorbesluit: alle menupagina's zijn bewerkbaar in de contentstudio; het Maandelijks Magazine volgt nu PR #112 (32 pagina's in magazine-opmaak) live staat. journal.html krijgt data-cms-page="journal", de publieke loader na site.js, de mediastijl en een videoslot (cms-video-journal). In de catalogus staat de pagina tussen Training en Insights (menuvolgorde) met 50 velden: 48 tekstvelden (mag-01 tot mag-48), de omslag van de eerste dia als herofoto (mag-hero-img) en de video.
+
+Bewerkbaar is alleen de pagina rond het magazine: hero (kicker, titel, ondertitel, labels en titels van de vijf dia's), het archief (labels, titels, intro's, badge), de tegels van "In editie 1", de kop boven het flipboek en "Opbouw van elke editie". Niet bewerkbaar: de 32 pagina's van de editie, de bladerknoppen en de hint, de knoppen van de dia's en de paginaverwijzingen ("Pagina 5"). Een editie doorloopt het redactieproces met sponsorpoorten (bronnen, vertaling, GO); een wijziging via de contentstudio zou dat omzeilen.
+
+Tests: journal.test (nieuw: geen data-cms binnen het flipboek, elke sleutel is mag-, mag-hero-img of cms-video-journal, elk tekstveld staat als laatste attribuut op een element zonder kindtags en komt overeen met de NL-tekst, FR aanwezig; aangepast met reden: h1 en archieflabels mogen een data-cms-attribuut dragen), cms-client (paginalijst met journal; de test 'every content-studio page loads published CMS content' dekt journal.html), browser journal.spec (nieuw: een gepubliceerde mag-01 met een HTML-achtige waarde verschijnt als platte tekst in NL en in FR na de taalwissel, alleen cms_publications-verzoeken voor journal, het flipboek bladert nog). admin.html laadt cms-catalog.js met een nieuwe cache-bust. language/nl-extraction.json bijgewerkt (cms-catalog.js en inline-hash van journal.html); geen adapterwijziging. Geen drempel gewijzigd.
+
+## Plan een gesprek zonder kleurlaag; homepagezin verzorgd, 25 november 2026
+
+Eigenaarsbeslissing (17:02): afspraak.html laadt assets/kleur.css niet meer en krijgt zijn originele kleuren terug, zoals Home, Orion, Workflow-automatisering en Bedrijfsontwikkeling (#117). Op de homepage wordt "nog geen een op de drie" "nog niet één op de drie" (sleutel in i18n.js mee hernoemd, Franse vertaling ongewijzigd). Tests: kleur.test.cjs (afspraak.html van de positieve naar de negatieve lijst), nl-editorial.test.cjs (nieuw: nieuwe zin aanwezig, oude zin en oude sleutel weg). language/nl-extraction.json bijgewerkt; geen adapterwijziging.
+
+## Analytics-heracceptatie zonder herdownload, 25 november 2026
+
+Aanleiding: `critical-flows.spec.cjs` "accept, withdraw and accept analytics again" faalde vandaag drie keer (Firefox op main en PR #119, Chromium op PR #119), telkens op de laatste stap: na heracceptatie bleef de telling op 1 in plaats van 2. Lokaal (zonder internet) was de fout niet te reproduceren in 120 herhalingen onder CPU-belasting. De heracceptatie hing af van een tweede download van count.js en de `onload` daarvan; de test laadde bovendien het echte HubSpot-script, dat in CI wel bereikbaar is en lokaal niet.
+
+Productherstel (assets/site.js): `window.goatcounter` is één instellingenobject met toestemmingsgebonden accessors. De setter bewaart de echte telfunctie die count.js toekent; de getter geeft ze alleen terug zolang analytics-toestemming bewaard is, anders een lege functie. `bind_events` is altijd leeg. Heracceptatie na een eerder uitgevoerd script telt meteen één pageview, zonder nieuwe download en zonder `onload`. Een scriptelement dat bij intrekking is verwijderd telt nooit, ook als de download nadien nog binnenkomt (`isConnected`-controle). Daarmee is ook een bestaand gat gedicht: een download die na intrekking afrondde, liet vroeger een werkende telfunctie achter.
+
+Tests: HubSpot wordt in deze flows lokaal beantwoord (geen live derde partij in de test). De heracceptatietest controleert nu direct, zonder wachtlus: twee pageviews, één download, één scriptuitvoering en geen herladen pagina. Nieuw: "a download finishing after withdrawal stays inert and re-acceptance counts exactly once". Beide tests falen op de oude code (één met een tweede scriptuitvoering, de andere met een telling zonder toestemming) en slagen met het herstel. Geen retries, skips of ruimere timeouts.
+
+Bewijs: de vier consenttests 30× herhaald in chromium en mobile: 240/240 groen. Firefox en WebKit zijn lokaal niet geïnstalleerd; die profielen lopen in CI. `language/nl-extraction.json`: hashes bijgewerkt voor assets/site.js en voor de op main ontbrekende of verouderde contractregels (assets/cms-catalog.js, assets/i18n.js, nieuw assets/i18n-orion.js uit #121).
+
 ## Release-wachtrij en ononderbroken main-releases (GF-010), 25 november 2026
 
 `.github/workflows/release.yml` annuleert een lopende run nog alleen bij een nieuwe push op dezelfde pull request; een release op `main` (deploy en publieke verificatie) wordt niet meer afgebroken door een volgende merge. Geen test, gate of drempel gewijzigd. Procesregel: één merge-poort naar main via issue #122 (AGENTS.md, OPERATING-MODEL §3a).
@@ -468,3 +490,14 @@ Eigenaarsverzoek: ook about.html (Erlend Hollebosch, oprichter van Grow Faster) 
 ## Over-pagina in premium opbouw zoals Orion, 25 november 2026
 
 Eigenaarsverzoek: about.html krijgt dezelfde opbouw en uitstraling als orion.html (Apple-achtig): gecentreerde koppen, afgeronde tegels, drie genummerde stappen, drie ervaringstegels, drie oplossingstegels en een donkere slotoproep. De goedgekeurde teksten blijven ongewijzigd (tests/over.test.cjs); nieuw zijn enkel de tegeltitels Ervaring, Sectoren en Certificaten (FR in assets/i18n-about.js). tests/about-apple.test.cjs bewaakt opbouw, kleurtokens en vertaling.
+
+## Taalscan opgevolgd, 25 november 2026
+
+De dagelijkse taalscan stond op FINDINGS (run 45566881275 op main: 613 nieuwe bevindingen; op d9d9710: 737). LanguageTool kon hier niet lokaal draaien (downloadhost geblokkeerd) en het artifact was niet bereikbaar. De scan schrijft daarom elke nieuwe bevinding leesbaar en als volledig record naar het joblog, met de SHA-256 van de kandidaat-baseline en deel-digests. Alleen rapportage: status, register en drempels zijn ongewijzigd.
+
+- Correctie: de hoofdnavigatie op negen pagina's zonder ux.js had aria-label "Sections". Dat is nu "Hoofdnavigatie" (19 scanlocaties met de doorverwijzingen).
+- Unit (tests/nl-editorial.test.cjs): elke gebouwde pagina met hoofdnavigatie heeft "Hoofdnavigatie", of houdt "Sections" alleen als ux.js het vertaalt; ux.js behoudt de Franse vertaling "Navigation principale".
+- Unit (tests/nl-audit.test.cjs): logregels tonen regel, blok, gemarkeerde tekst en maximaal drie suggesties op één regel; records bevatten elk veld behalve de context; de bevinding zelf verandert niet.
+- De overige 718 bevindingen staan met reden in `language/nl-triage.json` (`review20261125`, geen menselijke goedkeuring). De kandidaat is lokaal herbouwd, byte-identiek aan de CI-kandidaat, en gepromoveerd met `scripts/nl-promote.cjs`.
+- Bekend: twee Radar-demoblokken tonen de kloktijd en worden elke run opnieuw gecontroleerd.
+- Secrets-gate (scripts/nl-secret-guard.cjs, echte Gitleaks 8.24.3): na de promotie houdt de baseline alleen huidige blokken. De herwerkte catalogus heeft nog één gegenereerde id, onder de entropiedrempel van de generieke regel. De guard kiest de echte publieke id nu ook uit de blok-id's van het append-only bevindingenregister. De acht scenario's (toegelaten regel, zelfde regel elders, gewone sleutel, extra inhoud, checksums) zijn ongewijzigd en slagen lokaal.

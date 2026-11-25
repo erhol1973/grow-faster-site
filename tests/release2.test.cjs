@@ -3,9 +3,11 @@
 // "adaptief bedrijf" block on Bedrijfsontwikkeling (coherence.html).
 const {test}=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),vm=require('node:vm');
 const root=path.resolve(__dirname,'..','dist');const read=f=>fs.readFileSync(path.join(root,f),'utf8');
+// 25 Nov 2026: Workflow-automatisering page strings added by the premium redesign live in assets/i18n-automatisering.js.
 // 25 Nov 2026: Orion page strings live in assets/i18n-orion.js (editorial redesign, loaded after i18n.js on orion.html only).
+// 25 Nov 2026: Training page strings added by the academy redesign live in assets/i18n-training.js (training.html only).
 // 25 Nov 2026: homepage strings moved to assets/i18n-home.js (loaded after i18n.js on index.html); it only adds keys, so merging it is neutral for other pages.
-const I18N=()=>{const c={window:{}};vm.runInNewContext(read('assets/i18n.js'),c);vm.runInNewContext(read('assets/i18n-home.js'),c);vm.runInNewContext(read('assets/i18n-orion.js'),c);return c.window.I18N};
+const I18N=()=>{const c={window:{}};vm.runInNewContext(read('assets/i18n.js'),c);vm.runInNewContext(read('assets/i18n-home.js'),c);vm.runInNewContext(read('assets/i18n-orion.js'),c);vm.runInNewContext(read('assets/i18n-automatisering.js'),c);vm.runInNewContext(read('assets/i18n-training.js'),c);vm.runInNewContext(read('assets/i18n-coherence.js'),c);return c.window.I18N};
 const main=f=>read(f).match(/<main[\s\S]*?<\/main>/)[0];
 const visible=html=>html.replace(/<script[\s\S]*?<\/script>|<style[\s\S]*?<\/style>/g,'').replace(/<([a-z0-9]+)[^>]*data-(?:notr|ih)[^>]*>[\s\S]*?<\/\1>/g,'');
 // Names stay the same in both languages.
@@ -17,7 +19,8 @@ test('Training offers three trainings on site or online, price on request, with 
   // 25 Nov 2026: training.html became CMS-editable, so headings carry a data-cms attribute.
   assert.match(m,/<h1(?: data-cms="trn-\d\d")?>Uw mensen leren werken met AI en automatisering\.<\/h1>/);
   const tr=m.match(/<section id="trainingen"[\s\S]*?<\/section>/)[0];
-  assert.deepEqual([...tr.matchAll(/<h3(?: data-cms="trn-\d\d")?>([^<]+)<\/h3>/g)].map(x=>x[1]),['Orion in de praktijk','Workflow-automatisering','Bedrijfsontwikkeling: naar een adaptief bedrijf']);
+  // 25 Nov 2026 academy redesign: the three trainings are the programme cards (the section also has two short pillars).
+  assert.deepEqual([...tr.matchAll(/<article class="ac-program">[\s\S]*?<h3(?: data-cms="trn-\d\d")?>([^<]+)<\/h3>/g)].map(x=>x[1]),['Orion in de praktijk','Workflow-automatisering','Bedrijfsontwikkeling: naar een adaptief bedrijf']);
   assert.match(m,/Ter plaatse of online, in het Nederlands of het Frans\. Prijs op aanvraag\./);
   assert.doesNotMatch(m,/href="mailto:/);assert.equal((m.match(/href="afspraak\.html\?onderwerp=training" class="btn primary"/g)||[]).length,2);
   assert.doesNotMatch(m,/<form\b/);
@@ -32,7 +35,7 @@ test('research blocks name a checked source for every figure and carry no suppli
   assert.equal((home[0].match(/statbel\.fgov\.be\/en\/themes\/enterprises\/ict-and-e-commerce-enterprises/g)||[]).length,2);
   assert.match(home[0],/oecd\.org\/en\/publications\/generative-ai-and-the-sme-workforce_2d08b99d-en/);
   const drempels=main('automatisering.html').match(/<section id="drempels"[\s\S]*?<\/section>/)[0];
-  assert.equal((drempels.match(/<tr><td>/g)||[]).length,6);assert.match(drempels,/doi\.org\/10\.1007\/s11301-024-00405-4/);
+  /* 25 Nov 2026 premium redesign: the six barriers moved from a table to tiles. */assert.equal((drempels.match(/<article class="ap-drempel">/g)||[]).length,6);assert.match(drempels,/doi\.org\/10\.1007\/s11301-024-00405-4/);
   const orion=main('orion.html').match(/<section id="beslissen"[\s\S]*?<\/section>/)[0];
   assert.equal((orion.match(/class="fase"/g)||[]).length,3);assert.match(orion,/doi\.org\/10\.1287\/orsc\.2025\.21838/);assert.match(orion,/758 consultants[\s\S]*19%/);
   const training=main('training.html').match(/<section id="mensen"[\s\S]*?<\/section>/)[0];

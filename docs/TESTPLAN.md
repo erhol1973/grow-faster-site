@@ -1,5 +1,9 @@
 # Testplan en kwaliteitsbeleid
 
+## Kleurlaag terug van vier pagina's, 25 november 2026
+
+Eigenaarsbeslissing: Home, Orion, Workflow-automatisering en Bedrijfsontwikkeling krijgen opnieuw hun eerdere look; assets/kleur.css wordt daar niet meer geladen. De andere klantpagina's houden de kleurlaag. tests/kleur.test.cjs controleert beide kanten (positief op de overige pagina's, negatief op de vier teruggedraaide).
+
 ## Kleurlaag op alle klantpagina's, 25 november 2026
 
 Eigenaarsbeslissing: elke pagina wordt even kleurrijk als de magazinepagina. Nieuw gedeeld bestand assets/kleur.css, als laatste stylesheet geladen op de tien klantpagina's en op privacy, gebruiksvoorwaarden en toegankelijkheid. Kleur zit in vlakken, balken en randen: per sectie een kleurbalk boven de kop, kaarten met een gekleurde bovenrand, cijfers als felle tegels, de piramide in vier kleuren, de afsluitende oproep als donkere band met gele knop, een kleurstrook onder de hero en boven de footer. Tekst op een fel vlak blijft #0B1020; geel en limoen zijn nooit tekstkleur op een lichte achtergrond. Donkere modus houdt eigen vlakken.

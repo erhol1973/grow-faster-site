@@ -67,7 +67,12 @@ test('Batching retains complete paragraphs and maps UTF-16 offsets back to each 
   const grouped=batches([first,first,second]);assert.equal(grouped.length,1);assert.equal(grouped[0].text,first.text+'\n\n'+second.text);
   const offset=first.text.length+2+7;const mapped=distribute(grouped[0],{matches:[{offset,length:6}]});
   assert.equal(mapped.get(second.sha256).matches[0].offset,7);assert.equal(mapped.get(first.sha256).matches.length,0);
-  assert.throws(()=>distribute(grouped[0],{matches:[{offset:first.text.length-1,length:4}]}),/boundary/);
+  // A match that runs from the last character of a paragraph into the separator stays with that paragraph, clipped to it.
+  const clipped=distribute(grouped[0],{matches:[{offset:first.text.length-1,length:4}]});
+  assert.deepEqual(clipped.get(first.sha256).matches,[{offset:first.text.length-1,length:1}]);assert.equal(clipped.artefacts,0);
+  // A match that starts inside the separator belongs to no paragraph: counted, not scanned, never fatal.
+  const dropped=distribute(grouped[0],{matches:[{offset:first.text.length,length:2}]});
+  assert.equal(dropped.artefacts,1);assert.equal(dropped.get(first.sha256).matches.length+dropped.get(second.sha256).matches.length,0);
   assert.equal(batches([block('a'.repeat(10000)),block('b'.repeat(10000))]).length,2);
 });
 test('Only changed/new paragraphs are checked, without shortening context',()=>{

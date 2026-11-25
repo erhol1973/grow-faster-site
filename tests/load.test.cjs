@@ -28,5 +28,7 @@ test('load scenarios include every menu destination and one negative route',()=>
 test('every worker reaches every load route at least once, without lowering the original 36 requests',()=>{
   assert.ok(REQUESTS_PER_WORKER>=36);assert.ok(REQUESTS_PER_WORKER>=routes.length);
   assert.ok(routes.some(r=>r.route==='/assets/journal.css'&&r.status===200));
+  assert.ok(routes.some(r=>r.route==='/assets/home.css'&&r.status===200),'homepage stylesheet (25 Nov 2026 redesign) has load coverage');
+  assert.ok(routes.some(r=>r.route==='/assets/i18n-home.js'&&r.status===200),'homepage translations (25 Nov 2026) have load coverage');
   assert.ok(routes.some(r=>r.route==='/workshop.html'&&r.status===200),'the workshop left the menu but keeps load coverage');
 });

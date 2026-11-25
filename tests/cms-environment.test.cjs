@@ -25,3 +25,13 @@ test('shared project list matches the CMS configuration and holds only publishab
  assert.equal(p.test.url,'https://gqsvoioccvklzfmdmexy.supabase.co');
  for(const k of [p.prod.key,p.test.key])assert.match(k,/^sb_publishable_/);
 });
+// 25 Nov 2026: every Cloudflare Pages preview (branch alias or deployment hash) is bound to the isolated test project, so publishing
+// on a preview can never change the live site. Only an exact single-label preview host qualifies; lookalikes stay on production.
+test('every Cloudflare Pages preview host uses the isolated test project',()=>{
+ for(const hostname of ['feature-cms-herwerking-20261125.grow-faster-site.pages.dev','2cc0d8a7.grow-faster-site.pages.dev','grow-faster-site.pages.dev']){
+  const c=config(hostname);assert.equal(c.url,'https://gqsvoioccvklzfmdmexy.supabase.co',hostname);assert.equal(c.recoveryEnabled,false,hostname);
+ }
+ for(const hostname of ['a.b.grow-faster-site.pages.dev','grow-faster-site.pages.dev.evil.test','evilgrow-faster-site.pages.dev','grow-faster.be','localhost']){
+  assert.equal(config(hostname).url,'https://dbooobckaqbkrmkpcuem.supabase.co',hostname);
+ }
+});

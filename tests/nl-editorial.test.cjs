@@ -29,7 +29,9 @@ test('Dutch workshop amounts retain the space after € while English keys and F
     assert.equal(field.nl,translations[field.label][0],field.label+' Dutch CMS default');
     assert.equal(field.fr,translations[field.label][1],field.label+' French CMS default');
   }
-  assert.deepEqual([...seen].sort(),[...priceKeys].sort(),'Both workshop price forms remain present in CMS defaults');
+  // Sponsor decision 25 Nov 2026: the old English pages (incl. workshop) left the content studio; no CMS default may then carry the price.
+  assert.deepEqual([...seen],[],'workshop prices are no longer CMS defaults');
+  assert.ok(!catalog.some(section=>section.page==='workshop'),'workshop is not in the CMS catalog');
 });
 // Release 2 (23 Nov 2026): the Executive Journal (Maandnummer 01) left journal.html; the Maandelijks Magazine for kmo's is covered
 // in tests/journal.test.cjs and has no month in its title.

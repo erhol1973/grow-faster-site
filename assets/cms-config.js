@@ -6,7 +6,8 @@
  });
  /* Shared with the booking administration page, which picks prod only on the live domain. */
  window.GF_SUPABASE_PROJECTS=projects;
- const isolated=window.location?.hostname==='feature-secure-supabase-cms.grow-faster-site.pages.dev';
+ /* Every Cloudflare Pages preview (branch alias or deployment hash) uses the isolated test project; only the live domain reaches production data (25 Nov 2026). */
+ const isolated=/^([a-z0-9-]+\.)?grow-faster-site\.pages\.dev$/.test(window.location?.hostname||'');
  window.GF_CMS_CONFIG=Object.freeze(isolated
   ?{...projects.test,recoveryEnabled:false}
   :{...projects.prod,recoveryEnabled:true});

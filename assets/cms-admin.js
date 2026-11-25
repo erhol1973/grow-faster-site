@@ -11,13 +11,13 @@
   return content;
  }
  const homeGroups=[
-  {id:'hero',label:'Hero & introductie',from:0,to:2},
-  {id:'experience',label:'Ervaring',from:3,to:4},
-  {id:'problem',label:'Herkenbare problemen',from:5,to:11},
-  {id:'steps',label:'Zo werkt Orion',from:12,to:20},
-  {id:'trust',label:'Vertrouwelijkheid',from:21,to:22},
-  {id:'pilot',label:'Pilotgesprek',from:23,to:24},
-  {id:'video',label:'Video',from:25,to:25}
+  {id:'hero',label:'Hero & introductie',from:0,to:3},
+  {id:'apps',label:'Toepassingen',from:4,to:34},
+  {id:'recurring',label:'Terugkerend werk',from:35,to:63},
+  {id:'approach',label:'Zo starten we',from:64,to:72},
+  {id:'labels',label:'Fundament en cijfers',from:73,to:74},
+  {id:'trust',label:'Uw systemen en beslissingen',from:75,to:83},
+  {id:'video',label:'Video',from:84,to:84}
  ];
  function fieldGroup(index,field){
   if(definition.page!=='home')return field.type==='media'?'media':'text';

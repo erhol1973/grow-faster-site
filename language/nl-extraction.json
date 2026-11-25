@@ -2,8 +2,8 @@
   "schema": 1,
   "scope": "rendered_local_nl_runtime_dictionaries_static_cms_and_mail",
   "technicalReview": {
-    "date": "2026-11-23",
-    "reason": "Contactadres info@grow-faster.be in plaats van het Gmail-adres (site.js, pagina’s); geen tekst- of adapterwijziging. Afspraakpagina: nieuwe pagina afspraak.html (rendered DOM, inline script zonder tekst), gespreksknoppen verwijzen ernaar, privacybeleid aangevuld; i18n.js bijgewerkt. Geen adapterwijziging. Release 2: platte menubalk (rendered DOM), nieuwe pagina’s training.html en journal.html (Monthly Journal), herschreven insights.html, automatisering.html en coherence.html (Bedrijfsontwikkeling); journal-fr.html wordt een doorverwijzing. Nieuwe runtime-dictionary assets/i18n-insights.js (zelfde adapter als i18n.js, alleen op insights.html). Gewijzigd: i18n.js, cms-catalog.js (static catalog adapter). Geen adapterwijziging in de extractor. Coherentie: label \"De film\" verwijderd (rendered DOM, i18n.js). Coherentie voor kmo’s: coherence.html herschreven (rendered DOM + coherence CMS catalog met coh-kmo-sleutels), Orion-bronregel; changed i18n.js (runtime dictionary adapter), cms-catalog.js (static catalog adapter) and ux.js (page description only). Geen adapterwijziging. Release 1.1: site.js fragment re-anchor (no text, no adapter change); customer About page (rendered DOM + about-klant CMS catalog) and the reader link to Books; release 1: new oplossingen/orion/automatisering pages, assets/home-film.js (source/poster switch only, no text) and the coherence film text block (rendered DOM) and customer homepage are discovered by the existing DOM adapter; changed i18n.js (runtime dictionary adapter), cms-catalog.js (static catalog adapter) and cms-admin.js (excluded admin). Also records assets/baies-dev-*.js and the i18n/site.js changes merged on 12 Nov (PR #74/#75) without a contract update, which made every daily run since 13 Nov fail closed; their Executive Radar text is covered only as rendered in the initial NL DOM. No adapter code changed; no language approval"
+    "date": "2026-11-25",
+    "reason": "Eigen afspraakmodule (PR #101, samengevoegd met main op 25 november 2026): nieuwe assets/booking.js en assets/booking-admin.js (formulier en beheer; zichtbare tekst via i18n.js), afspraak.html herwerkt en nieuwe beheerpagina admin-afspraken.html (inline script zonder tekst), assets/cms-config.js deelt de publieke projectlijst (geen tekst), i18n.js aangevuld met de boekingsteksten en ontdaan van de drie Google Agenda-zinnen. Geen adapterwijziging. Eerdere reden: Magazinepagina journal.html (eigenaarsbeslissing 25 november): schuivende hero met vijf beelden, archief van alle edities en de delen van editie 1; blokken Het boek en Herkent u deze verspilling? weg; nieuw assets/magazine.js en deeplinks in assets/flipboek.js. Vertalingen in assets/i18n-journal.js. Geen adapterwijziging. Eerdere reden: Contentstudio herwerkt (sponsorbesluit 25 november): catalogus beperkt tot de menupagina’s (Home, Orion, Workflow-automatisering, Bedrijfsontwikkeling, Training, Insights, Over), zeven oude Engelstali…"
   },
   "javascript": [
     {
@@ -23,12 +23,20 @@
       "sha256": "a42ed03bc91a891387db047031803c0de04d78f0950da1f5d7c79b63ca931bc6"
     },
     {
+      "file": "assets/booking-admin.js",
+      "sha256": "9087f2079787c26fa51ed31d02e1411a05ac6d560f8a1e0d8a9509e2ed422a8e"
+    },
+    {
+      "file": "assets/booking.js",
+      "sha256": "70d3f1c2465a7f4a600e75d8d7b3af88c2bb65a38ebf66f41c3352bf93159519"
+    },
+    {
       "file": "assets/cms-admin.js",
-      "sha256": "a93d451dae56fd30cefef0c8bcdd7895e407144f1d52099f11179e5702bf8f97"
+      "sha256": "eef5cf15e2fda69b3c1f69b7b4fd00f1b9dd5d224a54b3eeb5824683c9d74084"
     },
     {
       "file": "assets/cms-catalog.js",
-      "sha256": "c869e8c032bd1613817f3a7c97fc4f9cf2954a28ed6c680f8dc76dcf52fcf887"
+      "sha256": "8f54c0acdd590059835502d5dfc9ffc9756612dd019d4e00912fa3dae14a5464"
     },
     {
       "file": "assets/cms-client.js",
@@ -36,7 +44,7 @@
     },
     {
       "file": "assets/cms-config.js",
-      "sha256": "9db9aa02f7cf8fd9dd0acfddecb0bf6dffea3fd28e5d8b63c25b352c08d73a38"
+      "sha256": "707a9a935e71ca430f721ca9e86087f85d2e20def500f98f3d237f5a0582e796"
     },
     {
       "file": "assets/cms-public.js",
@@ -71,20 +79,36 @@
       "sha256": "0be40d0ebd318364882270371357756c3a150aa8229e721b1f6eeecd89e8b9c8"
     },
     {
+      "file": "assets/flipboek.js",
+      "sha256": "bc77f30426aa0f55109b0ab8e34359e6a9c3761593188807c8197db75c91af04"
+    },
+    {
       "file": "assets/home-film.js",
       "sha256": "3bb45468eddad3d1c9c0e0908580c216aef48c09d63b3f3dd0256f479fd6f19a"
+    },
+    {
+      "file": "assets/i18n-home.js",
+      "sha256": "d01c52555ec867bd578f40417490b49a1b5300fd21a0c126d03e9fcbb8ee5e88"
     },
     {
       "file": "assets/i18n-insights.js",
       "sha256": "ffbd10397662efec400ed48f8c7c807dae54a416ea063e245ae0d7f388b30940"
     },
     {
+      "file": "assets/i18n-journal.js",
+      "sha256": "d6b4245632bf02758c86eff263056487f80383905e4b6c7ecb23c79b9322c98e"
+    },
+    {
       "file": "assets/i18n.js",
-      "sha256": "8b91b6a801d51274b00dbb3a494a4e1ebefebe3b4becf40c0aa940a7d0284510"
+      "sha256": "643aac01535f8d835d6d8e95faa55d2a3a390680d09a8f67fae56f984b09b309"
     },
     {
       "file": "assets/journal.js",
       "sha256": "292c0bbaa1b1c15ebac85e2df23c3e601c5172dbb1d7981cfe2b7778d88db47f"
+    },
+    {
+      "file": "assets/magazine.js",
+      "sha256": "fb32f1bddec8adda1f4777cf47fce34d65fb0464070ce94ac01ed4e8e111c234"
     },
     {
       "file": "assets/models.js",
@@ -100,7 +124,7 @@
     },
     {
       "file": "assets/site.js",
-      "sha256": "4f910770bf2ba81afffaf00a0dbe36ed92a98de2bcc7822b1aad70ee84d9dd3b"
+      "sha256": "da75216727244124a3bc9e5e49c87dd099e4e0432daeb921fde5bf9b4f0fcca4"
     },
     {
       "file": "assets/ux.js",
@@ -129,12 +153,16 @@
       "sha256": "d471083ac75a0c3966c07716aaf17ca1b9f77a721e97f7d3d5319bbbc7bdfdc1"
     },
     {
+      "file": "admin-afspraken.html",
+      "sha256": "75a11da44c802486bc6f65640aa48a730f0f684c5c07a42ba3cd1735eb3fb070"
+    },
+    {
       "file": "admin.html",
       "sha256": "6a3cf5192354f71615ac51034b3e97c20eda99643fcaf5bbe6d41ad59bd12167"
     },
     {
       "file": "afspraak.html",
-      "sha256": "3408587b672dde4fd4e501a58271d737aabc207850ab80d4a6e9d9e9243f8ce8"
+      "sha256": "46d1df9ff48bd8e259094b4744a90000514255f1d8a19cfe7e6a5cc2dc00c40a"
     },
     {
       "file": "all-articles.html",
@@ -158,7 +186,7 @@
     },
     {
       "file": "automatisering.html",
-      "sha256": "b52df84d6113cca55ef54ffd59c30f1ffda23ea1afd46ae2d0e744ebf739b228"
+      "sha256": "9b3726bea5414c9ce0add306334903d3693a95a364d2dfef5b70189c84b5d5b4"
     },
     {
       "file": "baies-dev/index.html",
@@ -182,7 +210,7 @@
     },
     {
       "file": "coherence.html",
-      "sha256": "daa55de1502b6cd5f456d8df9f6d9a47af16d2212f3acac2e20f317bb4cc167f"
+      "sha256": "8ae7169070075abfe4bb642b63cdcfca6fed76aa8961c1aac8aab43a938d39ff"
     },
     {
       "file": "coordination-overload-1.html",
@@ -206,7 +234,7 @@
     },
     {
       "file": "index.html",
-      "sha256": "32bc212980df42143010b5a6d4bd6eaeb0ab40aa2dccfb5acec21513e3ad44e4"
+      "sha256": "520d589042e777ba0f49ac51c72c633461aa39ec8205dee896ec5fad13ac7316"
     },
     {
       "file": "insights-ai-pilot.html",
@@ -214,7 +242,7 @@
     },
     {
       "file": "insights.html",
-      "sha256": "54e4adc37cf35861fbbe7eceef1866ef8c11812c6f5bbce23fab87a3de606d97"
+      "sha256": "893145708e6d3c5b88be682a8a0c01380f443a135e2ea5171f069a9cc64d0ed3"
     },
     {
       "file": "journal-fr.html",
@@ -222,7 +250,7 @@
     },
     {
       "file": "journal.html",
-      "sha256": "3ed969b346a66f8b03bb6f094fe916a44269f5d4f66543ff2be5f76e6b2ca5ca"
+      "sha256": "f7480d3b95e87053f6ae9ca1e850d69299ea45ab2317401ff21f187c97b70f47"
     },
     {
       "file": "operating-model.html",
@@ -234,7 +262,7 @@
     },
     {
       "file": "orion.html",
-      "sha256": "d0d1bf9f13d348c6dfe2b36264a1f0da3fa960a33b21fc7d2e4a6b4a81de45b2"
+      "sha256": "23aa0d7c55db5dedd1a059b19be6712897a2c81990d01529f5d740f8cc2ccd5d"
     },
     {
       "file": "privacy.html",
@@ -258,7 +286,7 @@
     },
     {
       "file": "training.html",
-      "sha256": "8d68d607423593eb9736f3d7fa2c8162ef13b27169d594dbb432913480a3d664"
+      "sha256": "ee875ec7fdf01d132d90f0aa7f87b72c4a3902b33412639e8c3d17706a751d87"
     },
     {
       "file": "transformation.html",

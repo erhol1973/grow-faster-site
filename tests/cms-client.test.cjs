@@ -11,7 +11,7 @@ test('accepted uploads use distinct immutable paths, authenticated writes and no
 // Coherence for kmo's (23 Nov 2026): the approved page has 33 editable fields instead of 76, so the site total fell from 605 to 562.
 // Release 2 (23 Nov 2026): Insights for kmo's has 66 editable fields instead of 203 (three articles instead of six, NL/FR via the
 // dictionary instead of duplicated language blocks) and Bedrijfsontwikkeling gains 2; the total is 427. Lower bound 400, owner approval required.
-test('catalog field IDs resolve once in source and CMS scripts never publish draft data in static output',()=>{const c={window:{}};vm.runInNewContext(fs.readFileSync('assets/cms-catalog.js','utf8'),c);assert.equal(c.window.GF_CMS_CATALOG.length,11);let count=0;for(const page of c.window.GF_CMS_CATALOG){const html=fs.readFileSync(page.route,'utf8');const keys=[...html.matchAll(/data-cms="([^"]+)"/g)].map(m=>m[1]);assert.equal(new Set(keys).size,keys.length);assert.deepEqual(keys.slice().sort(),Array.from(page.fields,f=>f.key).sort());count+=keys.length;}assert.ok(count>400);assert.equal(fs.existsSync('dist/supabase'),false);assert.match(fs.readFileSync('dist/admin.html','utf8'),/noindex,nofollow/);});
+test('catalog field IDs resolve once in source and CMS scripts never publish draft data in static output',()=>{const c={window:{}};vm.runInNewContext(fs.readFileSync('assets/cms-catalog.js','utf8'),c);/* Sponsor decision 25 Nov 2026: the content studio holds exactly the menu pages; the seven old English pages left it. */ assert.deepEqual(Array.from(c.window.GF_CMS_CATALOG,p=>p.page),['home','orion','automatisering','coherence','training','insights','about']);for(const old of ['books','approach','operating-model','process','value','transformation','workshop'])assert.ok(!c.window.GF_CMS_CATALOG.some(p=>p.page===old),old);let count=0;for(const page of c.window.GF_CMS_CATALOG){const html=fs.readFileSync(page.route,'utf8');const keys=[...html.matchAll(/data-cms="([^"]+)"/g)].map(m=>m[1]);assert.equal(new Set(keys).size,keys.length);assert.deepEqual(keys.slice().sort(),Array.from(page.fields,f=>f.key).sort());count+=keys.length;}assert.ok(count>=300,'menu pages keep their editable fields: '+count);/* 25 Nov 2026: 323 after removing the old pages (was >400). */assert.equal(fs.existsSync('dist/supabase'),false);assert.match(fs.readFileSync('dist/admin.html','utf8'),/noindex,nofollow/);});
 
 test('CMS admin uses Grow Faster logo and searchable fields while retaining save/preview/publish controls',()=>{
  const html=fs.readFileSync('admin.html','utf8');
@@ -42,16 +42,23 @@ test('CMS page selector preserves all field values while showing one homepage se
  assert.match(script,/const match=textMatch&&\(term\?true:groupMatch\)/);
  assert.match(script,/section\.hidden=!match/);
  assert.match(script,/for\(const field of definition\.fields\)/);
- // Customer homepage (sprint 1): hero, experience, problems, steps, confidentiality, pilot (the pyramid is fixed markup, not CMS-editable) and the optional video slot.
+ // Customer homepage (24 Nov 2026): hero, four application cards, experience, systems and decisions, pilot (the pyramid is fixed markup, not CMS-editable) and the optional video slot.
+ // "Herkenbaar?" and "Zo werkt Orion" left the homepage on the owner's decision; the application cards link to orion.html, where the steps and the film live.
+ // Homepage redesign (25 Nov 2026, BRIEF.md IA): hero, apps (cards with today/prep/keep), recurring work, approach, eyebrows of the
+ // fixed pyramid and figures blocks, trust and video; 85 fields. Sponsor decision 25 Nov 2026 10:11: #proof ("Ervaring uit de praktijk") and #final ("Test Orion op uw eigen vragenlijsten") removed from the homepage (6 more retired keys).
  const groups=[
-  [0,2,[]],[3,4,[]],[5,11,[]],[12,20,[]],
-  [21,22,[]],[23,24,[]],[25,25,[]]
+  [0,3,[]],[4,34,[]],[35,63,[]],[64,72,[]],[73,74,[]],
+  [75,83,[]],[84,84,[]]
  ];
  const declared=[...script.slice(script.indexOf('const homeGroups=['),script.indexOf('];',script.indexOf('const homeGroups=['))).matchAll(/from:(\d+),to:(\d+)(?:,extra:\[([\d,]*)\])?/g)].map(m=>[+m[1],+m[2],m[3]?m[3].split(',').map(Number):[]]);
  assert.deepEqual(declared,groups,'the editor declares exactly the tested homepage groups');
  const indices=groups.flatMap(([start,end,extra])=>[...Array.from({length:end-start+1},(_,i)=>start+i),...extra]);
  assert.equal(new Set(indices).size,home.fields.length,'every homepage field must appear in precisely one group');
  assert.deepEqual(indices.slice().sort((a,b)=>a-b),Array.from({length:home.fields.length},(_,i)=>i));
+ // Each editor group holds the fields of its own block (25 Nov 2026), so a shifted index cannot silently regroup texts.
+ const prefixes=[/^(f7a4946dfd792-0|home-orion-hero-|home-v2-hero-)/,/^(home-v2-apps-|home-apps-[1-4]-h$)/,/^home-v2-rec-/,/^home-v2-aanpak-/,/^home-v2-(fundament|kloof)-eyebrow$/,/^(home-v2-trust-|home-orion-trust-|home-trust-)/,/^cms-video-home$/];
+ groups.forEach(([start,end],g)=>{for(let i=start;i<=end;i++)assert.match(home.fields[i].key,prefixes[g],`group ${g}: ${home.fields[i].key}`)});
+ for(const retired of ['home-apps-h','home-apps-p','home-apps-1-p','home-apps-2-p','home-apps-3-p','home-apps-4-p','home-apps-pilot-h','home-apps-pilot-p','home-v2-proof-eyebrow','home-orion-proof-h','home-orion-proof-p','home-v2-final-eyebrow','home-orion-pilot-h','home-orion-pilot-p'])assert.ok(!home.fields.some(f=>f.key===retired),`retired key ${retired} (old CMS overlays must not overwrite new text)`);
 });
 
 test('CMS publication requires a reviewed saved revision and explicit confirmation',()=>{
@@ -61,4 +68,19 @@ test('CMS publication requires a reviewed saved revision and explicit confirmati
  assert.match(source,/window\.confirm\('Deze wijziging wordt zichtbaar voor alle bezoekers/);
  assert.match(source,/if\(!dirty\)\{previewedSection=selected\.id;previewedRevision=selected\.updated_at;\}/);
  assert.match(source,/records=await client\.list\(\);selected=records\.find\(record=>record\.id===selected\.id\)/);
+});
+
+// Defect found 25 Nov 2026: coherence.html and insights.html were in the catalog but had lost the public loader in their
+// 23 Nov rewrites, so published edits never appeared. Every catalog page must carry its page id, the loader and a video slot.
+test('every content-studio page loads published CMS content on the public page',()=>{
+ const c={window:{}};vm.runInNewContext(fs.readFileSync('assets/cms-catalog.js','utf8'),c);
+ for(const page of c.window.GF_CMS_CATALOG){const html=fs.readFileSync(page.route,'utf8');
+  assert.match(html,new RegExp(`<body data-cms-page="${page.page}"`),page.route);
+  const order=['assets/cms-config.js','assets/cms-client.js','assets/cms-public.js'].map(s=>html.indexOf('src="'+s));
+  assert.ok(order.every(i=>i>0)&&order[0]<order[1]&&order[1]<order[2],`${page.route}: CMS loader in order`);
+  assert.ok(html.indexOf('src="assets/site.js')<order[0],`${page.route}: loader after site.js`);
+  assert.match(html,new RegExp(`data-cms="cms-video-${page.page}"`),page.route);
+ }
+ // The new menu pages (sponsor decision 25 Nov 2026) are editable.
+ for(const route of ['orion.html','automatisering.html','training.html'])assert.ok(c.window.GF_CMS_CATALOG.some(p=>p.route===route),route);
 });

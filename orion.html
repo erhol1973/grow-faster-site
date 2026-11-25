@@ -53,7 +53,7 @@
 <script defer src="assets/content.js?v=20261030-editorial-three"></script>
 <script defer src="assets/models.js?v=20261029-quality"></script>
 <script defer src="assets/consent.js?v=20261029-quality"></script>
-<script defer src="assets/site.js?v=20261103-book-order"></script>
+<script defer src="assets/site.js?v=20261103-book-order"></script><script defer src="assets/cms-config.js"></script><script defer src="assets/cms-client.js"></script><script defer src="assets/cms-public.js"></script>
 <style data-hero>.hero.hero-customer .hero-bg img{object-position:82% center}</style>
 <style data-bewijs>
 .cijfers{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;margin-top:28px}
@@ -70,8 +70,10 @@
 .fase h3{margin:10px 0 8px;font-size:20px}.fase p{margin:0;font-size:17px;line-height:1.55}
 @media(max-width:900px){.cijfers,.cijfers.twee,.fases{grid-template-columns:1fr}.fase{border-right:0;border-bottom:1px solid var(--line)}.fase:last-child{border-bottom:0}}
 </style>
+<style data-cms-media>[data-cms-video-section] video{display:block;width:100%;max-width:960px;height:auto;margin:0 auto 2rem}[data-cms-video-section][hidden]{display:none}</style>
+<link rel="stylesheet" href="assets/kleur.css?v=20261125-kleur">
 </head>
-<body class="editorial-home">
+<body data-cms-page="orion" class="editorial-home">
 <a class="skip-link" href="#top">Naar de inhoud</a>
 <nav class="nav nav-executive" aria-label="Sections">
   <div class="wrap">
@@ -96,51 +98,59 @@
 </nav>
 
 <main id="top" tabindex="-1">
-<header class="hero hero-minimal hero-customer" id="hero"><div class="hero-top"><div class="hero-bg" aria-hidden="true"><picture><source type="image/webp" srcset="img/hero-orion-specificaties-640.webp 640w, img/hero-orion-specificaties-1280.webp 1280w, img/hero-orion-specificaties-1774.webp 1774w" sizes="100vw"><img src="img/hero-orion-specificaties-1774.webp" alt="" width="1774" height="887" fetchpriority="high" decoding="async"></picture></div><div class="wrap hero-inner">
-  <h1>Uw klantvragenlijsten, ingevuld vanuit uw eigen documenten.</h1>
-  <p class="sub">Orion zoekt de antwoorden in uw specificaties, certificaten en eerdere lijsten. Uw medewerker kijkt na en verstuurt.</p>
+<header class="hero hero-minimal hero-customer" id="hero"><div class="hero-top"><div class="hero-bg" aria-hidden="true"><picture><source type="image/webp" srcset="img/hero-orion-specificaties-640.webp 640w, img/hero-orion-specificaties-1280.webp 1280w, img/hero-orion-specificaties-1774.webp 1774w" sizes="100vw"><img src="img/hero-orion-specificaties-1774.webp" alt="" width="1774" height="887" fetchpriority="high" decoding="async" data-cms="ori-hero-img"></picture></div><div class="wrap hero-inner">
+  <h1 data-cms="ori-01">Uw klantvragenlijsten, ingevuld vanuit uw eigen documenten.</h1>
+  <p class="sub" data-cms="ori-02">Orion zoekt de antwoorden in uw specificaties, certificaten en eerdere lijsten. Uw medewerker kijkt na en verstuurt.</p>
   <div class="ctas"><a href="afspraak.html?onderwerp=vragenlijsten" class="btn primary" id="hero-pilot">Plan een pilotgesprek <span aria-hidden="true">→</span></a><a href="#werking" class="btn ghost" id="hero-how">Bekijk hoe het werkt <span aria-hidden="true">→</span></a></div>
 </div></div></header>
 
-<section id="wat-is" class="alt"><div class="wrap"><div class="head"><h2>Wat is Orion?</h2></div><div class="cards6">
-  <article class="vcard in"><h3>Wat het is</h3><p>Een AI-assistent die vragenlijsten en specificaties van uw klanten invult op basis van uw eigen documenten. U hebt er geen IT-project of AI-kennis voor nodig.</p></article>
-  <article class="vcard in"><h3>Het doel</h3><p>Uw kwaliteitsdienst verlossen van zoek- en overtypwerk, zodat er meer tijd overblijft voor kwaliteit.</p></article>
-  <article class="vcard in"><h3>Wat het u oplevert</h3><p>Uren per week terug, sneller antwoord aan uw klanten en dezelfde, correcte informatie in elke lijst.</p></article>
+<section id="wat-is" class="alt"><div class="wrap"><div class="head"><h2 data-cms="ori-03">Wat is Orion?</h2></div><div class="cards6">
+  <article class="vcard in"><h3 data-cms="ori-04">Wat het is</h3><p data-cms="ori-05">Een AI-assistent die vragenlijsten en specificaties van uw klanten invult op basis van uw eigen documenten. U hebt er geen IT-project of AI-kennis voor nodig.</p></article>
+  <article class="vcard in"><h3 data-cms="ori-06">Het doel</h3><p data-cms="ori-07">Uw kwaliteitsdienst verlossen van zoek- en overtypwerk, zodat er meer tijd overblijft voor kwaliteit.</p></article>
+  <article class="vcard in"><h3 data-cms="ori-08">Wat het u oplevert</h3><p data-cms="ori-09">Uren per week terug, sneller antwoord aan uw klanten en dezelfde, correcte informatie in elke lijst.</p></article>
 </div></div></section>
 
-<section id="probleem"><div class="wrap"><div class="head"><h2>Dezelfde vragen, telkens opnieuw</h2></div><div class="page-copy">
-  <p>Elke retailer en elke industriële afnemer wil weten wat er in uw product zit. Allergenen, samenstelling, herkomst, certificaten. De informatie bestaat al, maar ze zit verspreid over specificaties, mails en vragenlijsten van vorig jaar. Iemand van uw kwaliteitsdienst zoekt ze telkens opnieuw op en typt ze over, in het formaat dat die ene klant vraagt.</p>
-  <p>Dat kost uren die niet naar kwaliteitswerk gaan. En wie overtypt, maakt fouten.</p>
-  <p>Onderzoek in de zorg, waar overgetypte gegevens nauwkeurig worden nagekeken, vindt 2 tot 4 fouten per 100 overgetypte velden. In vrije tekstvelden zijn dat er meer.</p>
+<section id="probleem"><div class="wrap"><div class="head"><h2 data-cms="ori-10">Dezelfde vragen, telkens opnieuw</h2></div>
+  <div class="cards6 probleem-kaarten">
+  <article class="vcard in"><h3 data-cms="ori-11">Elke klant een eigen lijst</h3><p data-cms="ori-12">Retailers en industriële afnemers vragen dezelfde informatie, telkens in een ander formaat.</p></article>
+  <article class="vcard in"><h3 data-cms="ori-13">Antwoorden overal verspreid</h3><p data-cms="ori-14">Specificaties, certificaten en oude lijsten zitten in mappen en mails. Iemand zoekt ze telkens opnieuw.</p></article>
+  </div><div class="page-copy">
+  <p data-cms="ori-15">Elke retailer en elke industriële afnemer wil weten wat er in uw product zit. Allergenen, samenstelling, herkomst, certificaten. De informatie bestaat al, maar ze zit verspreid over specificaties, mails en vragenlijsten van vorig jaar. Iemand van uw kwaliteitsdienst zoekt ze telkens opnieuw op en typt ze over, in het formaat dat die ene klant vraagt.</p>
+  <p data-cms="ori-16">Dat kost uren die niet naar kwaliteitswerk gaan. En wie overtypt, maakt fouten.</p>
+  <p data-cms="ori-17">Onderzoek in de zorg, waar overgetypte gegevens nauwkeurig worden nagekeken, vindt 2 tot 4 fouten per 100 overgetypte velden. In vrije tekstvelden zijn dat er meer.</p>
   <p class="fine">Bronnen: <a href="https://doi.org/10.1136/bmjopen-2012-002406" target="_blank" rel="noopener" data-notr>Hong et al., BMJ Open, 2013</a><span data-notr> · </span><a href="https://doi.org/10.1093/jamia/ocy170" target="_blank" rel="noopener" data-notr>Mays &amp; Mathias, JAMIA, 2019</a></p>
 </div></div></section>
 
-<section id="werking" class="alt" tabindex="-1"><div class="wrap"><div class="head"><h2>Zo werkt Orion</h2></div><div class="cards6">
-  <article class="vcard in"><span class="step-n" data-notr>01</span><h3>U laadt de vragenlijst op</h3><p>zoals u ze gekregen hebt, in Excel of Word.</p></article>
-  <article class="vcard in"><span class="step-n" data-notr>02</span><h3>Orion zoekt de antwoorden</h3><p>in de documenten die u eerder opgeladen hebt: specificaties, certificaten, technische fiches, goedgekeurde antwoorden van vroeger.</p></article>
-  <article class="vcard in"><span class="step-n" data-notr>03</span><h3>U kijkt na.</h3><p>Bij elk antwoord staat uit welk document het komt. Vragen waar een fout zwaar weegt, zoals allergenen, staan apart gemarkeerd. Vindt Orion geen bron, dan zegt het dat.</p></article>
-  <article class="vcard in"><span class="step-n" data-notr>04</span><h3>U keurt goed en verstuurt.</h3><p>U krijgt de lijst terug in hetzelfde formaat. Orion verstuurt nooit zelf iets.</p></article>
-</div><p class="memory">Elk antwoord dat u goedkeurt, onthoudt Orion. De volgende vragenlijst gaat daardoor sneller.</p></div></section>
+<section id="werking" class="alt" tabindex="-1" aria-labelledby="werking-h"><div class="wrap"><div class="head"><h2 id="werking-h" data-cms="ori-18">Zo werkt Orion</h2></div><div class="cards6">
+  <article class="vcard in"><span class="step-n" data-notr>01</span><h3 data-cms="ori-19">U laadt de vragenlijst op</h3><p data-cms="ori-20">zoals u ze gekregen hebt, in Excel of Word.</p></article>
+  <article class="vcard in"><span class="step-n" data-notr>02</span><h3 data-cms="ori-21">Orion zoekt de antwoorden</h3><p data-cms="ori-22">in de documenten die u eerder opgeladen hebt: specificaties, certificaten, technische fiches, goedgekeurde antwoorden van vroeger.</p></article>
+  <article class="vcard in"><span class="step-n" data-notr>03</span><h3 data-cms="ori-23">U kijkt na.</h3><p data-cms="ori-24">Bij elk antwoord staat uit welk document het komt. Vragen waar een fout zwaar weegt, zoals allergenen, staan apart gemarkeerd. Vindt Orion geen bron, dan zegt het dat.</p></article>
+  <article class="vcard in"><span class="step-n" data-notr>04</span><h3 data-cms="ori-25">U keurt goed en verstuurt.</h3><p data-cms="ori-26">U krijgt de lijst terug in hetzelfde formaat. Orion verstuurt nooit zelf iets.</p></article>
+</div><p class="memory" data-cms="ori-27">Elk antwoord dat u goedkeurt, onthoudt Orion. De volgende vragenlijst gaat daardoor sneller.</p>
+  <figure class="orion-film" id="orion-film" data-notr><video controls preload="none" playsinline width="1920" height="1080" poster="img/orion-werking-nl.webp" aria-labelledby="werking-h" aria-describedby="orion-film-text" data-src-nl="media/orion-werking-nl.mp4" data-poster-nl="img/orion-werking-nl.webp" data-src-fr="media/orion-werking-fr.mp4" data-poster-fr="img/orion-werking-fr.webp"><source src="media/orion-werking-nl.mp4" type="video/mp4"></video></figure>
+  <details class="orion-film-text" id="orion-film-text"><summary>Tekst in beeld</summary><ol><li><strong>Twee informatiestromen komen samen.</strong> <span>De klantvragenlijst bepaalt welke vragen Orion verwerkt. Actuele bedrijfsdocumenten leveren het bewijs.</span></li><li><strong>Orion leest de bestanden.</strong> <span>Orion haalt de vragen uit Excel en leest broninformatie uit pdf-, Word- en Excel-bestanden.</span></li><li><strong>Orion zoekt bewijs per vraag.</strong> <span>Orion koppelt elke vraag aan relevante documenten, zoals de productspecificatie en allergenenmatrix.</span></li><li><strong>Orion stelt een onderbouwd antwoord voor.</strong> <span>Bij het antwoord ziet de kwaliteitsmanager welke bron het voorstel ondersteunt.</span></li><li><strong>Vaste regels toetsen het antwoord.</strong> <span>Orion controleert broncitaten, cijfers, allergenen, ontkenningen, productverwijzingen en onbewezen claims.</span></li><li><strong>De kwaliteitsmanager beslist.</strong> <span>De manager beoordeelt elk voorstel en moet allergenen controleren aan de hand van de actuele matrix.</span></li><li><strong>Alleen goedgekeurde antwoorden gaan naar Excel.</strong> <span>Orion vult het oorspronkelijke bestand in. Een medewerker downloadt en verstuurt het.</span></li></ol></details>
+</div></section>
 
-<section id="beslissen"><div class="wrap"><div class="head"><h2>Orion bereidt voor. U beslist.</h2><p class="lede">In een experiment met 758 consultants werkten wie AI gebruikte sneller en beter bij taken die AI aankan. Bij een taak buiten het bereik van AI vonden ze 19% minder vaak de juiste oplossing, en vooraf zag je dat verschil niet.</p></div><div class="fases">
-  <div class="fase"><span class="tag">AI helpt sterk</span><h3>Zoeken en samenvatten</h3><p>Orion zoekt antwoorden en bronnen in uw documenten. Hier wint u de meeste tijd.</p></div>
-  <div class="fase"><span class="tag">Orion zegt het</span><h3>Twijfelgevallen</h3><p>Vindt Orion geen bron, of weegt een fout zwaar, zoals bij allergenen, dan staat de vraag gemarkeerd.</p></div>
-  <div class="fase"><span class="tag">Altijd een mens</span><h3>Beslissen</h3><p>Uw medewerker kijkt na en keurt goed. Orion verstuurt nooit zelf iets.</p></div>
+<section id="beslissen"><div class="wrap"><div class="head"><h2 data-cms="ori-28">Orion bereidt voor. U beslist.</h2><p class="lede" data-cms="ori-29">In een experiment met 758 consultants werkten wie AI gebruikte sneller en beter bij taken die AI aankan. Bij een taak buiten het bereik van AI vonden ze 19% minder vaak de juiste oplossing, en vooraf zag je dat verschil niet.</p></div><div class="fases">
+  <div class="fase"><span class="tag">AI helpt sterk</span><h3 data-cms="ori-30">Zoeken en samenvatten</h3><p data-cms="ori-31">Orion zoekt antwoorden en bronnen in uw documenten. Hier wint u de meeste tijd.</p></div>
+  <div class="fase"><span class="tag">Orion zegt het</span><h3 data-cms="ori-32">Twijfelgevallen</h3><p data-cms="ori-33">Vindt Orion geen bron, of weegt een fout zwaar, zoals bij allergenen, dan staat de vraag gemarkeerd.</p></div>
+  <div class="fase"><span class="tag">Altijd een mens</span><h3 data-cms="ori-34">Beslissen</h3><p data-cms="ori-35">Uw medewerker kijkt na en keurt goed. Orion verstuurt nooit zelf iets.</p></div>
 </div><p class="bewijs-bron">Bron: <a href="https://doi.org/10.1287/orsc.2025.21838" target="_blank" rel="noopener" data-notr>Dell’Acqua et al., Organization Science, 2025</a></p></div></section>
 
-<section id="voor-wie"><div class="wrap"><div class="head"><h2>Voor wie</h2></div><div class="page-copy"><p>Voedingsbedrijven die regelmatig vragenlijsten en specificaties van klanten moeten invullen. We starten in West-Vlaanderen.</p></div></div></section>
+<section id="voor-wie"><div class="wrap"><div class="head"><h2 data-cms="ori-36">Voor wie</h2></div><div class="page-copy"><p data-cms="ori-37">Voedingsbedrijven die regelmatig vragenlijsten en specificaties van klanten moeten invullen. We starten in West-Vlaanderen.</p></div></div></section>
 
-<section id="vragen" class="alt"><div class="wrap"><div class="head"><h2>Veelgestelde vragen</h2></div><div class="faq">
-  <details><summary>Wat als Orion een fout antwoord geeft?</summary><p>Elk antwoord toont zijn bron en gevoelige vragen worden gemarkeerd. Uw medewerker keurt alles goed voor het vertrekt.</p></details>
-  <details><summary>We gebruiken al ChatGPT. Wat is het verschil?</summary><p>Met ChatGPT zoekt uw medewerker nog altijd zelf de informatie op en kopieert hij elk antwoord. Orion werkt met uw eigen documenten, toont de bron en geeft de lijst terug in het formaat van uw klant.</p></details>
-  <details><summary>Wat zegt onze IT-verantwoordelijke ervan?</summary><p>Voor de pilot start, bespreken we met uw IT-verantwoordelijke hoe Orion met uw gegevens omgaat, en bezorgen we vooraf alle informatie die hij nodig heeft.</p></details>
-  <details><summary>Wat kost het?</summary><p>Dat hangt af van het aantal vragenlijsten. In de pilot meten we eerst hoeveel tijd u wint. Dan weten we allebei of het de moeite waard is.</p></details>
-  <details><summary>Moeten we een groot project opstarten?</summary><p>Nee. U levert een paar vragenlijsten en uw documenten aan. De rest doen wij.</p></details>
+<section id="vragen" class="alt"><div class="wrap"><div class="head"><h2 data-cms="ori-38">Veelgestelde vragen</h2></div><div class="faq">
+  <details><summary>Wat als Orion een fout antwoord geeft?</summary><p data-cms="ori-39">Elk antwoord toont zijn bron en gevoelige vragen worden gemarkeerd. Uw medewerker keurt alles goed voor het vertrekt.</p></details>
+  <details><summary>We gebruiken al ChatGPT. Wat is het verschil?</summary><p data-cms="ori-40">Met ChatGPT zoekt uw medewerker nog altijd zelf de informatie op en kopieert hij elk antwoord. Orion werkt met uw eigen documenten, toont de bron en geeft de lijst terug in het formaat van uw klant.</p></details>
+  <details><summary>Wat zegt onze IT-verantwoordelijke ervan?</summary><p data-cms="ori-41">Voor de pilot start, bespreken we met uw IT-verantwoordelijke hoe Orion met uw gegevens omgaat, en bezorgen we vooraf alle informatie die hij nodig heeft.</p></details>
+  <details><summary>Wat kost het?</summary><p data-cms="ori-42">Dat hangt af van het aantal vragenlijsten. In de pilot meten we eerst hoeveel tijd u wint. Dan weten we allebei of het de moeite waard is.</p></details>
+  <details><summary>Moeten we een groot project opstarten?</summary><p data-cms="ori-43">Nee. U levert een paar vragenlijsten en uw documenten aan. De rest doen wij.</p></details>
 </div></div></section>
 
-<section id="final" class="tinted"><div class="wrap pilot-box"><div class="head"><h2 id="fn-h">Test Orion op uw eigen vragenlijsten</h2><p class="lede">We starten met een paar vragenlijsten die u echt gekregen hebt. We meten hoeveel tijd ze vandaag kosten en hoeveel met Orion. Ziet u geen verschil, dan stoppen we.</p></div>
+<section id="final" class="tinted"><div class="wrap pilot-box"><div class="head"><h2 id="fn-h" data-cms="ori-44">Test Orion op uw eigen vragenlijsten</h2><p class="lede" data-cms="ori-45">We starten met een paar vragenlijsten die u echt gekregen hebt. We meten hoeveel tijd ze vandaag kosten en hoeveel met Orion. Ziet u geen verschil, dan stoppen we.</p></div>
   <div class="ctas"><a href="afspraak.html?onderwerp=vragenlijsten" class="btn primary" id="final-pilot">Plan een pilotgesprek <span aria-hidden="true">→</span></a></div>
 </div></section>
+<section class="wrap" hidden data-cms-video-section><video hidden controls preload="metadata" data-cms="cms-video-orion" aria-label="Video" width="960"></video></section>
 </main>
 
 <footer class="foot">

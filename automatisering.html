@@ -39,7 +39,7 @@
 <script defer src="assets/content.js?v=20261030-editorial-three"></script>
 <script defer src="assets/models.js?v=20261029-quality"></script>
 <script defer src="assets/consent.js?v=20261029-quality"></script>
-<script defer src="assets/site.js?v=20261103-book-order"></script>
+<script defer src="assets/site.js?v=20261103-book-order"></script><script defer src="assets/cms-config.js"></script><script defer src="assets/cms-client.js"></script><script defer src="assets/cms-public.js"></script>
 <style data-hero>.hero.hero-customer .hero-bg img{object-position:78% center}</style>
 <style>
 .page-copy{max-width:70ch}.page-copy p{font-size:19px;line-height:1.7;margin:0 0 18px}
@@ -67,8 +67,10 @@
 .voorbeelden li::before{content:"";position:absolute;left:0;top:.45em;width:12px;height:12px;border-radius:2px;background:var(--ai)}
 @media(max-width:900px){#aanpak .cards6,.voorbeelden{grid-template-columns:1fr}.drempels td:first-child{width:auto}}
 </style>
+<style data-cms-media>[data-cms-video-section] video{display:block;width:100%;max-width:960px;height:auto;margin:0 auto 2rem}[data-cms-video-section][hidden]{display:none}</style>
+<link rel="stylesheet" href="assets/kleur.css?v=20261125-kleur">
 </head>
-<body class="editorial-home">
+<body data-cms-page="automatisering" class="editorial-home">
 <a class="skip-link" href="#top">Naar de inhoud</a>
 <nav class="nav nav-executive" aria-label="Sections">
   <div class="wrap">
@@ -93,37 +95,37 @@
 </nav>
 
 <main id="top" tabindex="-1">
-<header class="hero hero-minimal hero-customer" id="hero"><div class="hero-top"><div class="hero-bg" aria-hidden="true"><picture><source type="image/webp" srcset="img/hero-automatisering-kantoor-640.webp 640w, img/hero-automatisering-kantoor-1280.webp 1280w, img/hero-automatisering-kantoor-1774.webp 1774w" sizes="100vw"><img src="img/hero-automatisering-kantoor-1774.webp" alt="" width="1774" height="887" fetchpriority="high" decoding="async"></picture></div><div class="wrap hero-inner">
-  <h1>Wat uw team overtypt, gebeurt voortaan vanzelf.</h1>
-  <p class="sub">We automatiseren het handwerk tussen uw mails, Excel-lijsten en systemen. Uw mensen houden tijd over voor het werk dat telt.</p>
+<header class="hero hero-minimal hero-customer" id="hero"><div class="hero-top"><div class="hero-bg" aria-hidden="true"><picture><source type="image/webp" srcset="img/hero-automatisering-kantoor-640.webp 640w, img/hero-automatisering-kantoor-1280.webp 1280w, img/hero-automatisering-kantoor-1774.webp 1774w" sizes="100vw"><img src="img/hero-automatisering-kantoor-1774.webp" alt="" width="1774" height="887" fetchpriority="high" decoding="async" data-cms="aut-hero-img"></picture></div><div class="wrap hero-inner">
+  <h1 data-cms="aut-01">Wat uw team overtypt, gebeurt voortaan vanzelf.</h1>
+  <p class="sub" data-cms="aut-02">We automatiseren het handwerk tussen uw mails, Excel-lijsten en systemen. Uw mensen houden tijd over voor het werk dat telt.</p>
   <div class="ctas"><a href="afspraak.html?onderwerp=workflow" class="btn primary" id="hero-gesprek">Plan een gesprek <span aria-hidden="true">→</span></a><a href="#voorbeelden" class="btn ghost" id="hero-voorbeelden">Bekijk voorbeelden <span aria-hidden="true">→</span></a></div>
 </div></div></header>
 
-<section id="herkenbaar" class="alt"><div class="wrap"><div class="head"><h2>Herkenbaar?</h2></div><div class="cards6">
-  <article class="vcard in"><h3>Overtypen.</h3><p>Een bestelling komt binnen per mail en iemand typt ze over in het ordersysteem.</p></article>
-  <article class="vcard in"><h3>Kopiëren en plakken.</h3><p>Gegevens gaan van het ene systeem naar het andere via Excel.</p></article>
-  <article class="vcard in"><h3>Opvolgen.</h3><p>Offertes, facturen en klachten hangen af van herinneringen in iemands agenda.</p></article>
-  <article class="vcard in"><h3>Rapporteren.</h3><p>Elke maand stelt iemand met de hand hetzelfde rapport samen.</p></article>
+<section id="herkenbaar" class="alt"><div class="wrap"><div class="head"><h2 data-cms="aut-03">Herkenbaar?</h2></div><div class="cards6">
+  <article class="vcard in"><h3 data-cms="aut-04">Overtypen.</h3><p data-cms="aut-05">Een bestelling komt binnen per mail en iemand typt ze over in het ordersysteem.</p></article>
+  <article class="vcard in"><h3 data-cms="aut-06">Kopiëren en plakken.</h3><p data-cms="aut-07">Gegevens gaan van het ene systeem naar het andere via Excel.</p></article>
+  <article class="vcard in"><h3 data-cms="aut-08">Opvolgen.</h3><p data-cms="aut-09">Offertes, facturen en klachten hangen af van herinneringen in iemands agenda.</p></article>
+  <article class="vcard in"><h3 data-cms="aut-10">Rapporteren.</h3><p data-cms="aut-11">Elke maand stelt iemand met de hand hetzelfde rapport samen.</p></article>
 </div></div></section>
 
-<section id="voorbeelden" tabindex="-1"><div class="wrap"><div class="head"><h2>Voorbeelden</h2></div>
+<section id="voorbeelden" tabindex="-1"><div class="wrap"><div class="head"><h2 data-cms="aut-12">Voorbeelden</h2></div>
   <ul class="voorbeelden">
-    <li>Bestellingen uit mails of pdf’s lezen en klaarzetten in uw ordersysteem.</li>
-    <li>Aankoopfacturen inlezen en voorbereiden voor de boekhouding.</li>
-    <li>Een nieuwe klant één keer invoeren, waarna de gegevens in uw CRM, boekhouding en planning staan.</li>
-    <li>Wekelijkse cijfers die vanzelf in één overzicht samenkomen.</li>
-    <li>Herinneringen voor offertes en betalingen die vertrekken nadat u ze goedgekeurd hebt.</li>
+    <li data-cms="aut-13">Bestellingen uit mails of pdf’s lezen en klaarzetten in uw ordersysteem.</li>
+    <li data-cms="aut-14">Aankoopfacturen inlezen en voorbereiden voor de boekhouding.</li>
+    <li data-cms="aut-15">Een nieuwe klant één keer invoeren, waarna de gegevens in uw CRM, boekhouding en planning staan.</li>
+    <li data-cms="aut-16">Wekelijkse cijfers die vanzelf in één overzicht samenkomen.</li>
+    <li data-cms="aut-17">Herinneringen voor offertes en betalingen die vertrekken nadat u ze goedgekeurd hebt.</li>
   </ul>
 </div></section>
 
-<section id="aanpak" class="alt"><div class="wrap"><div class="head"><h2>Zo pakken we het aan</h2></div><div class="cards6">
-  <article class="vcard in"><span class="step-n" data-notr>01</span><h3>Workflowscan.</h3><p>We kijken hoe het werk vandaag loopt en waar het handwerk zit.</p></article>
-  <article class="vcard in"><span class="step-n" data-notr>02</span><h3>Eén workflow kiezen.</h3><p>De workflow die het meeste tijd kost en het snelst iets oplevert.</p></article>
-  <article class="vcard in"><span class="step-n" data-notr>03</span><h3>Automatiseren.</h3><p>Waar het kan, bouwen we op de systemen die u al gebruikt. AI zetten we in waar mails of documenten gelezen moeten worden.</p></article>
-  <article class="vcard in"><span class="step-n" data-notr>04</span><h3>Meten.</h3><p>We vergelijken de tijd vóór en na. Werkt het, dan nemen we de volgende workflow.</p></article>
+<section id="aanpak" class="alt"><div class="wrap"><div class="head"><h2 data-cms="aut-18">Zo pakken we het aan</h2></div><div class="cards6">
+  <article class="vcard in"><span class="step-n" data-notr>01</span><h3 data-cms="aut-19">Workflowscan.</h3><p data-cms="aut-20">We kijken hoe het werk vandaag loopt en waar het handwerk zit.</p></article>
+  <article class="vcard in"><span class="step-n" data-notr>02</span><h3 data-cms="aut-21">Eén workflow kiezen.</h3><p data-cms="aut-22">De workflow die het meeste tijd kost en het snelst iets oplevert.</p></article>
+  <article class="vcard in"><span class="step-n" data-notr>03</span><h3 data-cms="aut-23">Automatiseren.</h3><p data-cms="aut-24">Waar het kan, bouwen we op de systemen die u al gebruikt. AI zetten we in waar mails of documenten gelezen moeten worden.</p></article>
+  <article class="vcard in"><span class="step-n" data-notr>04</span><h3 data-cms="aut-25">Meten.</h3><p data-cms="aut-26">We vergelijken de tijd vóór en na. Werkt het, dan nemen we de volgende workflow.</p></article>
 </div></div></section>
 
-<section id="drempels"><div class="wrap"><div class="head"><h2>Wat kmo’s tegenhoudt, en hoe wij dat oplossen</h2><p class="lede">Uit 71 studies over AI in kmo’s komen telkens dezelfde drempels terug.</p></div>
+<section id="drempels"><div class="wrap"><div class="head"><h2 data-cms="aut-27">Wat kmo’s tegenhoudt, en hoe wij dat oplossen</h2><p class="lede" data-cms="aut-28">Uit 71 studies over AI in kmo’s komen telkens dezelfde drempels terug.</p></div>
   <table class="drempels">
     <thead><tr><th scope="col">Drempel</th><th scope="col">Onze aanpak</th></tr></thead>
     <tbody>
@@ -138,28 +140,29 @@
   <p class="fine">Bron: <a href="https://doi.org/10.1007/s11301-024-00405-4" target="_blank" rel="noopener" data-notr>Oldemeyer, Jede &amp; Teuteberg, Management Review Quarterly, 2025</a></p>
 </div></section>
 
-<section id="dienst" class="alt"><div class="wrap"><div class="head"><h2>Dienst of software</h2></div><div class="page-copy">
-  <p>Grow Faster bouwt de automatisering voor u. Voor vragenlijsten en specificaties van klanten is er Orion, onze eigen software.</p>
+<section id="dienst" class="alt"><div class="wrap"><div class="head"><h2 data-cms="aut-29">Dienst of software</h2></div><div class="page-copy">
+  <p data-cms="aut-30">Grow Faster bouwt de automatisering voor u. Voor vragenlijsten en specificaties van klanten is er Orion, onze eigen software.</p>
 </div><p class="all-solutions"><a href="orion.html">Ontdek Orion <span aria-hidden="true">→</span></a></p></div></section>
 
-<section id="opbrengst"><div class="wrap"><div class="head"><h2>Wat u wint</h2></div>
+<section id="opbrengst"><div class="wrap"><div class="head"><h2 data-cms="aut-31">Wat u wint</h2></div>
   <ul class="trust-list">
-    <li>Uren per week terug voor uw team.</li>
-    <li>Minder fouten door overtypen.</li>
-    <li>Sneller antwoord aan klanten en leveranciers.</li>
-    <li>Zicht op wat er loopt, zonder dat iemand het moet bijhouden.</li>
+    <li data-cms="aut-32">Uren per week terug voor uw team.</li>
+    <li data-cms="aut-33">Minder fouten door overtypen.</li>
+    <li data-cms="aut-34">Sneller antwoord aan klanten en leveranciers.</li>
+    <li data-cms="aut-35">Zicht op wat er loopt, zonder dat iemand het moet bijhouden.</li>
   </ul>
 </div></section>
 
-<section id="vragen" class="alt"><div class="wrap"><div class="head"><h2>Veelgestelde vragen</h2></div><div class="faq">
-  <details><summary>Moeten we nieuwe software kopen?</summary><p>Meestal niet. Waar het kan, werken we met wat u al hebt. Is er toch iets nodig, dan bespreken we dat vooraf.</p></details>
-  <details><summary>Wat als de automatisering een fout maakt?</summary><p>Bij gevoelige stappen keurt een medewerker eerst goed. Er vertrekt niets naar een klant zonder dat u dat zo beslist.</p></details>
-  <details><summary>Wat kost het?</summary><p>De workflowscan is op aanvraag. Daarna hangt de prijs af van de workflow. We meten eerst wat het u oplevert.</p></details>
+<section id="vragen" class="alt"><div class="wrap"><div class="head"><h2 data-cms="aut-36">Veelgestelde vragen</h2></div><div class="faq">
+  <details><summary>Moeten we nieuwe software kopen?</summary><p data-cms="aut-37">Meestal niet. Waar het kan, werken we met wat u al hebt. Is er toch iets nodig, dan bespreken we dat vooraf.</p></details>
+  <details><summary>Wat als de automatisering een fout maakt?</summary><p data-cms="aut-38">Bij gevoelige stappen keurt een medewerker eerst goed. Er vertrekt niets naar een klant zonder dat u dat zo beslist.</p></details>
+  <details><summary>Wat kost het?</summary><p data-cms="aut-39">De workflowscan is op aanvraag. Daarna hangt de prijs af van de workflow. We meten eerst wat het u oplevert.</p></details>
 </div></div></section>
 
-<section id="contact" class="tinted" tabindex="-1" aria-labelledby="contact-h"><div class="wrap pilot-box"><div class="head"><h2 id="contact-h">Welke taak typt uw team vandaag nog over?</h2><p class="lede">Vertel ons welke workflow te veel handwerk vraagt. In een eerste gesprek bekijken we of automatiseren loont.</p></div>
+<section id="contact" class="tinted" tabindex="-1" aria-labelledby="contact-h"><div class="wrap pilot-box"><div class="head"><h2 id="contact-h" data-cms="aut-40">Welke taak typt uw team vandaag nog over?</h2><p class="lede" data-cms="aut-41">Vertel ons welke workflow te veel handwerk vraagt. In een eerste gesprek bekijken we of automatiseren loont.</p></div>
   <div class="ctas"><a href="afspraak.html?onderwerp=workflow" class="btn primary" id="contact-gesprek">Plan een gesprek <span aria-hidden="true">→</span></a></div>
 </div></section>
+<section class="wrap" hidden data-cms-video-section><video hidden controls preload="metadata" data-cms="cms-video-automatisering" aria-label="Video" width="960"></video></section>
 </main>
 
 <footer class="foot">

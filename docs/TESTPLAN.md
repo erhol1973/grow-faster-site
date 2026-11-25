@@ -1,5 +1,84 @@
 # Testplan en kwaliteitsbeleid
 
+## Kleurlaag op alle klantpagina's, 25 november 2026
+
+Eigenaarsbeslissing: elke pagina wordt even kleurrijk als de magazinepagina. Nieuw gedeeld bestand assets/kleur.css, als laatste stylesheet geladen op de tien klantpagina's en op privacy, gebruiksvoorwaarden en toegankelijkheid. Kleur zit in vlakken, balken en randen: per sectie een kleurbalk boven de kop, kaarten met een gekleurde bovenrand, cijfers als felle tegels, de piramide in vier kleuren, de afsluitende oproep als donkere band met gele knop, een kleurstrook onder de hero en boven de footer. Tekst op een fel vlak blijft #0B1020; geel en limoen zijn nooit tekstkleur op een lichte achtergrond. Donkere modus houdt eigen vlakken.
+
+Tests: nieuw tests/kleur.test.cjs (elke klantpagina laadt kleur.css als laatste element in de head; palet aanwezig; donkere tekst op felle vlakken, witte kop en gele knop in de donkere band; negatief geval: geen geel of limoen als tekstkleur). tests/performance.test.cjs meet kleur.css met een budget van 16 KB. Browser: chromium en mobile lokaal groen, behalve drie workshoptests die ook op ongewijzigde main lokaal falen (CMS-verzoek naar Supabase zonder testmodus, los van deze wijziging) en de bekende navigatietest die onder lokale belasting een time-out geeft en apart gedraaid slaagt. Firefox en WebKit draaien in CI.
+
+## Magazine editie 1 op 32 pagina's in magazine-opmaak, 25 november 2026
+
+Beslissingen van de eigenaar: elke editie telt 20 tot 35 pagina's, de omslag draagt een foto van de sector, de tekst moet groter, de pagina's moeten de beschikbare ruimte gebruiken, er moeten meer foto's in, en de opmaak moet professioneler (in de geest van McKinsey Quarterly). Meting vooraf: op een scherm van 1920 px was de lopende tekst 8,9 px en het paginanummer 5,1 px, omdat de marges met het scherm meegroeiden in plaats van met de pagina.
+
+Nieuwe opmaak: pagina's in A4-verhouding, zo groot als het scherm toelaat (minstens 530 px breed); alle maten volgen de paginabreedte (container op .fb-blad). Lopende tekst 15 px op 1440 en 18,7 px op 1920, paginanummer 15 tot 18 px, smalle marges. Drie openingspagina's met een foto over de volle pagina (deel 1 tot 3), twee halve fotopagina's, het Orion-schema, zeven genummerde figuren (drie kosten, rekenvoorbeeld als staafgrafiek, foutbereik uit Hong et al., de weg van een fout, vier stappen, keuzematrix, verloop van een pilot), "In het kort", auteursblok, telformulier met acht regels, checklist, een volledige pagina "Volgende stap" en een lezerspagina. Beelden zijn met AI gemaakt (vermeld in het colofon), zonder bestaande personen, bedrijven of merken. Geen nieuwe cijfers zonder bron.
+
+Tests: tests/journal.test.cjs bewaakt de paginatelling (20 tot 35, even), omslagfoto, drie openingsfoto's met alt-tekst, zeven figuren, rubriekkoppen, de vier stappen over twee pagina's, beide tabellen en de vertaling van elke regel (nu ook h4, figuren en bijschriften); tests/browser/journal.spec.cjs bladert door 32 pagina's op desktop en mobiel en controleert dat geen tekst onder de voetregel van een pagina komt, in NL en FR. Taalcontract opnieuw gegenereerd.
+
+## Contentstudio herwerkt voor de nieuwe Grow Faster, 25 november 2026
+
+Sponsorbesluit: de contentstudio bevat precies de menupagina's (Homepage, Orion, Workflow-automatisering, Bedrijfsontwikkeling, Training, Insights, Over Erlend Hollebosch). De zeven oude Engelstalige pagina's (Books, Approach, Operating model, Process, Value, Transformation, Workshop) zijn uit de catalogus; die pagina's zelf blijven ongewijzigd online. Het Maandelijks Magazine volgt na samenvoeging van PR #112, die journal.html herwerkt.
+
+Orion, Workflow-automatisering en Training krijgen data-cms-sleutels (ori-, aut-, trn-) op platte tekstelementen met een NL/FR-vertaling, een herofoto als mediaveld en een videoslot. Gevonden defect: coherence.html en insights.html stonden in de catalogus maar misten sinds 23 november de publieke CMS-loader, waardoor gepubliceerde wijzigingen nooit verschenen; die loader is terug. Testomgeving: elke Cloudflare Pages-preview (branchalias en deployment-hash) gebruikt nu het geïsoleerde testproject growfaster-test; alleen het live domein bereikt productiegegevens.
+
+Tests: cms-client (exacte paginalijst en negatieve gevallen voor de oude pagina's; ondergrens 300 velden in plaats van 400 met reden; nieuw: elke cataloguspagina heeft data-cms-page, loader na site.js in de juiste volgorde en een videoslot), cms-environment (nieuw: elke preview-host gebruikt het testproject, lookalikes en geneste subdomeinen blijven productie), nl-editorial (workshopprijzen zijn geen CMS-standaard meer), release2 (koppen van training.html mogen een data-cms-attribuut dragen). language/nl-extraction.json bijgewerkt; geen adapterwijziging.
+
+Secrets history gate: scripts/nl-secret-guard.cjs koos zijn echte-scanner-fixture uit de catalogus; met de oude pagina's verdween het sterkste publieke ID, waardoor 'identifier-outside-allowed-path' niet meer detecteerde. De guard kiest nu uit catalogus én taalregister (beide onder dezelfde smalle uitzondering) en neemt nog steeds het ID met de hoogste entropie; alle acht scenario's lokaal geverifieerd met Gitleaks 8.24.3 (vóór de fix: dezelfde fout als CI).
+
+## Homepage herwerkt: terugkerend werk en aanpak, 25 november 2026
+
+Opdracht van de eigenaar: betere structuur, modernere en professionelere vormgeving en uitgebreidere tekst over terugkerend werk. Nieuwe volgorde: hero, toepassingen (vandaag / wij bereiden voor / uw medewerker), terugkerend (nieuw, met gelabeld rekenvoorbeeld en herkenningslijst), aanpak (nieuw, drie fases), fundament, kloof, vertrouwelijk, proof, final. Vormgeving in assets/home.css; homepagevertalingen in assets/i18n-home.js (zelfde patroon als i18n-journal.js), zodat de gedeelde i18n.js binnen het gzip-budget van 65000 bytes blijft. Geen bestaande drempel verhoogd.
+
+Tests: nieuw tests/home-v2.test.cjs (sectievolgorde, één h1, aria-labelledby, kaartstructuur, pilotlinks, negatieve gevallen voor Herkenbaar?, Zo werkt Orion, veiligheids-/read-only-claims, werkgeverstaal en duur van een eerste workflow, NL/FR per home-v2-sleutel, rekenvoorbeeld gelabeld, geen schaduwen, i18n-home.js alleen op index.html zonder conflicterende sleutels) en tests/browser/home-v2.spec.cjs (geen horizontale overflow op 360/1440 px in NL en FR, FR-wissel, axe FR op 360 px); hulpbestanden tests/support/mini-dom.cjs en tests/support/axe-audit.cjs. Aangepast met gedateerde reden: klantsite (goedgekeurde zinnen, volgorde, laden van i18n-home.js), cms-client (negen editorgroepen), journal-editorial (proof na vertrouwelijk), home-hero-video (FR-titel kaarten), release2, load (home.css en i18n-home.js) en performance (budgetten home.css 10000 en i18n-home.js 16000 bytes). language/nl-extraction.json bijgewerkt voor i18n-home.js, cms-catalog.js en cms-admin.js; geen adapterwijziging.
+
+Beperking: de vastgezette Chromium-runtimecontrole draait niet in deze sandbox; CI gebruikt de vastgezette Playwright-image.
+
+Sponsorbesluit 25 november 2026 (10:11): rekenvoorbeeld met € 17,25 loonkost per uur (€ 4.761 per jaar); de secties #proof (Ervaring uit de praktijk) en #final (Test Orion op uw eigen vragenlijsten) zijn volledig verwijderd. Tests gewijzigd met gedateerde reden: home-v2 (volgorde eindigt bij vertrouwelijk, negatieve gevallen voor #proof en #final), klantsite, journal-editorial (negatief geval: geen ervaringsblok, About bereikbaar via footer), home-hero-video, cms-client (zeven editorgroepen, 85 velden, zes extra uitgefaseerde sleutels), refinements.spec en editorial.spec (homepage zonder #final; oplossingen.html behoudt het).
+
+## Orion-film en stappen van de homepage naar orion.html, 24 november 2026
+
+Beslissing van de eigenaar: "Zo werkt Orion" (vier stappen en film) verdwijnt van de homepage; de film staat op orion.html onder de vier stappen en de zin "Elk antwoord dat u goedkeurt, onthoudt Orion." De homepage houdt hero, vier toepassingskaarten, ervaring, piramide, kloof, vertrouwen en pilot. CMS: de negen stapvelden van de homepage zijn uit de catalogus; de groepen in de beheerpagina zijn hernummerd (28 velden). Het uitklapblok "Tekst in beeld" blijft bij de film als tekstalternatief.
+
+Tests: tests/orion-film.test.cjs en tests/browser/orion-film.spec.cjs lezen orion.html; tests/klantsite.test.cjs (sectievolgorde zonder #hoe, drie vertrouwenskaarten, geen film op de homepage) en tests/cms-client.test.cjs (groepen) aangepast. scripts/verify-production.cjs controleert na elke release de film op orion.html, de afwezigheid op de homepage, de vier kaarten en de mediabestanden (vervangt PR #106). Taalcontract opnieuw gegenereerd.
+
+## Magazine editie 1 als flipboek, 24 november 2026
+
+Beslissing van de eigenaar: de editie leest als een magazine waarvan de pagina's omslaan, zoals het vroegere Executive Journal (pdf, issue 02), niet als doorlopende webtekst. Uitvoering zonder externe dienst: acht pagina's op vier bladen in journal.html (omslag, vier delen, bronnen en colofon, volgende stap, achterkant), assets/flipboek.js voor het bladeren (knoppen, pijltjestoetsen, veeg), twee pagina's naast elkaar vanaf 761 px en één pagina eronder. Verborgen pagina's zijn inert. Teksten en vertalingen zijn dezelfde als in de vorige versie, met 35 nieuwe sleutels in assets/i18n-journal.js (kop- en voetregels, cijferkaarten, colofon, knoppen).
+
+Tests: tests/journal.test.cjs (acht pagina's, vier bladen, omslagtitel, knoppen, flipboek-script, elke regel vertaald) en tests/browser/journal.spec.cjs (bladeren met knoppen en toetsen op desktop en mobiel, teller, inert, geen tekst buiten een pagina, geen horizontale overloop). Het taalcontract language/nl-extraction.json is opnieuw gegenereerd (flipboek.js, i18n-journal.js, journal.html).
+
+## Magazine editie 1: Overtypen, de verspilling die niemand ziet, 24 november 2026
+
+GO van de eigenaar (14:23) op de concepttekst. De aankondiging op journal.html is vervangen door het volledige artikel in de vaste opbouw (verspilling, voorbeeld, aanpak, opbrengst) plus bronnen. Cijfers: 2,8 fouten per 100 velden (0,5 tot 6,4 per veld) uit Hong et al., BMJ Open 2013, en "enkele procenten" uit Mays en Mathias, JAMIA 2019; beide via de uitgeverspagina's nagelezen. Het rekenvoorbeeld (vijf retailers, 150 vragen, drie minuten) staat als illustratie gemarkeerd.
+
+De 32 vertaalsleutels van het artikel staan in assets/i18n-journal.js (zelfde patroon als i18n-insights.js), zodat i18n.js onder de gzip-grens van 65 000 bytes blijft (64 121 na de splitsing).
+
+Tests: tests/journal.test.cjs (vijf delen, vier stappen, drie meetrijen, beide DOI-links, illustratielabel, elke regel vertaald, budget) en tests/browser/journal.spec.cjs (artikel in NL en FR, geen horizontale overloop). Het taalcontract language/nl-extraction.json is opnieuw gegenereerd; het nam ook de wijzigingen van releases #104 en #105 mee, die zonder contractupdate gemerged waren.
+
+## Orion-film op de homepage, 24 november 2026
+
+Vraag van de eigenaar: onder "Zo werkt Orion" de Nederlandstalige film, en de Franstalige film (eigen voice-over) zodra de bezoeker in het Frans leest. Beide films zijn de aangeleverde 4K-bestanden (3840 x 2160, 35 seconden, ongeveer 3,6 MB elk), ongewijzigd behalve faststart. Ze starten enkel op klik (controls, preload none, geen autoplay), zoals de Coherence-film. De zeven tekstkaarten uit de film staan als tekstalternatief onder de speler, met de Franse bewoording uit de Franse editie.
+
+Tests:
+- tests/orion-film.test.cjs (nieuw): plaats onder de stappen, speler-attributen, beide edities benoemd, budgetten (5 MiB per film, 60 KiB per poster), zeven stappen, elke regel vertaald.
+- tests/browser/orion-film.spec.cjs (nieuw): bron en poster wisselen mee met de taal, er wordt niets gedownload voor de bezoeker op afspelen klikt (de taalwissel roept daarom geen load() aan op een onaangeroerde speler), afspelen na een wissel speelt de Franse editie, 16:9-kader.
+
+## Homepage: toepassingen, hero-video en vertrouwen, 24 november 2026
+
+Bron: overdracht van Erlend (OVERDRACHT.md, INHOUD.md, 4K-video en stilbeeld). Beslissingen van de eigenaar: vier toepassingskaarten direct onder de hero met Orion eerst, "Herkenbaar?" verdwijnt van de homepage (de kaarten nemen die rol over, de sterkste twee kaarten staan nu op orion.html bij "Dezelfde vragen, telkens opnieuw"), "Zo werkt Orion" blijft. Het vertrouwensblok belooft geen alleen-lezen toegang: dat wordt pas gepubliceerd als technische garantie na verificatie per koppeling. De Veiligheid-pagina blijft offline.
+
+Media: de 4K-master (16 MB, 16 Mbit/s) wordt niet gepubliceerd. Webvarianten: 1280 px (ongeveer 285 KB) voor schermen smaller dan 900 px en 1920 px (ongeveer 555 KB) daarboven, H.264 zonder geluid. Het stilbeeld volgt het bestaande 640/1280/1774-patroon in 2:1 en blijft het CMS-veld f7a4946dfd792-0. Bij minder beweging of databesparing laadt de video niet; anders is er een pauzeknop (WCAG 2.2.2).
+
+Tests:
+- tests/home-hero-video.test.cjs (nieuw): budgetten voor video en stilbeeld, geen 4K-bestand in de site, video-attributen (muted, loop, playsinline, preload none, geen autoplay of src in de HTML), pauzeknop, volgorde en doelen van de kaarten, systemen enkel als mogelijke bronnen, geen alleen-lezen belofte, verhuisde inhoud op orion.html.
+- tests/browser/home-hero-video.spec.cjs (nieuw): de juiste variant per schermbreedte, pauzeknop wisselt en bedekt de hoofdknop niet, minder beweging laadt geen video, kaarten in leesvolgorde en in het Frans.
+- Aangepast met reden: klantsite (goedgekeurde teksten, sectievolgorde met #toepassingen en zonder #herkenbaar, nieuw stilbeeld met object-position 50%, de hero-container mag de video na de picture bevatten), journal-editorial (bewijsstrook volgt nu de kaarten), cms-client (homepagegroepen: hero, toepassingen, ervaring, stappen, systemen en beslissingen, pilot, video), navigation-accessibility (nieuwe bestandsnaam van het stilbeeld). De oude foto hero-kwaliteit-productielijn is verwijderd omdat geen pagina ze nog gebruikt.
+
+Feedback eigenaar (24 november 2026, 10:00): het donkerblauw was te donker. De video en het stilbeeld zijn lichter gemaakt (gamma 1,35) en alleen de homepage krijgt een lichter verloop dat rechts openloopt; Orion en Workflow-automatisering houden hun eigen verloop. hero-photo-contrast bleef op alle breedtes boven 4,5:1 (een eerste, te lichte poging zakte op 1024 px naar 4,24 en is bijgestuurd).
+
+Keuze eigenaar (24 november 2026, 10:16): variant B in premiumversie. Homepage: verloop links 62 % in plaats van 80 % plus een zachte halo rond titel en ondertitel; afgesteld tot hero-photo-contrast op alle breedtes in NL en FR boven 4,5:1 bleef (de eerste B-versie zakte op 1024 px naar 4,12). Premium 4K-webvariant (4032 x 2048, ongeveer 3 MB) alleen voor schermen met minstens 2400 fysieke pixels breed op een snelle verbinding; budget 5 MiB in home-hero-video.test.cjs, browsertest met deviceScaleFactor 2.
+
+Beperking: Chromium in Playwright speelt geen H.264 af, dus het echte afspelen en de mobiele laadtijd worden op de Cloudflare-preview gecontroleerd.
+
 ## Eigen afspraakmodule, 23 november 2026
 
 Beslissing van de eigenaar: Google Agenda verlaten (bevestigingen kwamen van het Gmail-adres) en een eigen module bouwen. Keuzes: momenten blokkeert Erlend zelf in de beheerpagina, boeken kan ma-vr met starturen 09:00 tot 16:00, mails vertrekken via de mailserver van het domein vanaf info@. Ontwerp en instellingen: docs/BOOKING.md.
@@ -17,6 +96,8 @@ CI-bevinding 24 november 2026: op mobiele WebKit verschoof de pagina toen de dag
 De beheerpagina neemt de publieke projectsleutels over uit assets/cms-config.js (nieuw: `GF_SUPABASE_PROJECTS`), zodat ze maar op één plek staan en de bestaande gitleaks-uitzondering niet verruimd hoeft te worden. tests/cms-environment.test.cjs controleert dat die lijst gelijk is aan de CMS-configuratie en alleen publishable keys bevat. De lokale testserver levert in CMS-testmodus ook die lijst, met een niet-bruikbare testwaarde als sleutel.
 
 Niet automatisch getest: het echte versturen van mails (vraagt de SMTP-instellingen van de eigenaar) en de aankomst in Outlook. Dat gebeurt met een echte testboeking voor de release.
+
+Samengevoegd met main op 25 november 2026: assets/cms-config.js houdt de gedeelde projectlijst `GF_SUPABASE_PROJECTS` en de regel van main dat elke Cloudflare Pages-preview het testproject gebruikt; tests/cms-environment.test.cjs bevat beide tests ongewijzigd. assets/i18n.js is de unie van beide kanten (waarden van main bij verschil); de drie Google Agenda-zinnen die deze PR verwijderde, blijven weg. language/nl-extraction.json opnieuw berekend.
 
 ## Afspraakpagina, 23 november 2026
 
@@ -198,7 +279,7 @@ WebKit rendert de uitgestelde hoofdstukken direct en laadt de simulator met het 
 6. `npm run test:load`
 7. `npm run test:performance`
 
-CI bewaart reports/, playwright-report/ en test-results/, ook bij falen. browser-summary.json bevat pogingen en skipredenen; unit.xml de Node-resultaten. Lighthouse bewaart JSON en HTML. Lokale Edge via TEST_BROWSER_EXECUTABLE bewijst geen Firefox/WebKit-validatie.
+In CI draaien deze stappen parallel: één job voor build, unit- en broncontroles, acht browsershards (`--shard=n/8`, samen alle profielen en scenario’s) en twee Lighthouse-jobs (mobiel met lokale load, desktop). Binnen elke Lighthouse-job blijven de metingen sequentieel. Elke job bouwt dezelfde commit en controleert met `scripts/dist-hash.cjs` dat dist/ byte-identiek is aan het voorbereide pakket; de verplichte check Website quality gate slaagt alleen als alle parallelle jobs slagen en publiceert dat pakket. CI bewaart reports/, playwright-report/ en test-results/, ook bij falen. browser-summary.json bevat pogingen en skipredenen; unit.xml de Node-resultaten. Lighthouse bewaart JSON en HTML. Lokale Edge via TEST_BROWSER_EXECUTABLE bewijst geen Firefox/WebKit-validatie.
 
 Lighthouse vereist medianen van minimaal 90 voor de score, LCP maximaal 2.500ms, CLS maximaal 0,1 en TBT maximaal 200ms. Afgebroken metingen falen en bewaren tussentijdse resultaten. De build leest gecontroleerde open bestandsdescriptors; regressietests weigeren vervangen paden, symlinks en niet-bestanden. De vertaalbron wordt als JSON gelezen, niet als code uitgevoerd.
 
@@ -382,3 +463,12 @@ Historische previewretirement wordt afzonderlijk live gecontroleerd; nieuwe code
 De publieke release-smoke gebruikt dezelfde vastgezette Playwright-container als de Website quality gate. Chromium en de systeembibliotheken zijn daarin aanwezig; de nacontrole voert geen `playwright install --with-deps` of APT uit. Een lokale, netwerkvrije browserproef controleert de echte executable, browserstart en DOM-uitvoering vóór de publieke controles; dezelfde proef draait vóór vrijgave in de PR-gate. Een ontbrekende of onbruikbare browser faalt zichtbaar en wordt niet met retries of ruimere tijdslimieten verborgen.
 
 De bestaande `verify:production`-controles, inclusief de permanente Radar-inhoudsgrens, en de afzonderlijke publieke mobiele Lighthouse-meting blijven behouden. De job houdt uitsluitend leesrechten en de bestaande tijdslimiet van tien minuten. Installatie-, runtime- en controleresultaten worden als rapport en samenvatting bewaard; een mislukt onderdeel blijft de job doen falen. Container-/registry-, pakketdownload- en publieke netwerkstoringen blijven mogelijke expliciete fouten. De lokale load- en Lighthouse-vrijgavegrenzen veranderen niet.
+
+## Magazinepagina met schuivende hero en archief, 25 november 2026
+
+Eigenaarsbeslissing: journal.html wordt een eigen pagina voor de magazines. De blokken "Het boek" en "Herkent u deze verspilling?" onderaan zijn weg.
+
+- Unit (tests/journal.test.cjs): geen `#boek` of `#contact` meer; vijf dia's in de hero; alleen de eerste afbeelding laadt met voorrang en wordt voorgeladen; `assets/magazine.js` is gekoppeld; het archief toont de nieuwste editie eerst; elke `data-fb-pagina` verwijst naar een bestaande pagina van het boek; Franse vertaling van de nieuwe koppen.
+- Browser (tests/browser/journal.spec.cjs, chromium en mobile): pijlen, stippen en pauzeknop bewegen de hero; de vijfde dia staat na een klik echt in beeld; drie kaarten in het archief; de tegel "De aanpak" opent het boek op pagina 17; geen horizontale scroll. De bestaande bladertest scrolt eerst naar het boek, omdat het op een telefoon nu onder de vouw staat en de omslag lui laadt.
+- Zonder JavaScript is de hero een horizontale scroll met snap; met `prefers-reduced-motion` start de hero niet vanzelf.
+- Lokaal niet uitvoerbaar: Firefox en WebKit (geen browser in deze omgeving); die draaien in CI.

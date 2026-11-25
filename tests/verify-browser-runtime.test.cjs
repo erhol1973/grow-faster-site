@@ -6,9 +6,12 @@ const {verifyBrowserRuntime}=require('../scripts/verify-browser-runtime.cjs');
 test('public verification uses the same locked browser image without installing browsers',()=>{
   const workflow=fs.readFileSync(path.join(__dirname,'../.github/workflows/release.yml'),'utf8');
   const image=`mcr.microsoft.com/playwright:v${require('../package.json').devDependencies.playwright}-noble`;
-  const checks=workflow.split('  checks:')[1].split('  secrets:')[0];
+  // The browser regressions run in their own parallel job; the canary must launch Chromium there, before the suite.
+  const browsers=workflow.split('  browsers:')[1].split('  performance:')[0];
   const smoke=workflow.split('  production-smoke:')[1];
-  for(const job of [checks,smoke]){assert.ok(job.includes(`image: ${image}`));assert.ok(job.includes('node scripts/verify-browser-runtime.cjs'))}
+  for(const job of [browsers,smoke]){assert.ok(job.includes(`image: ${image}`));assert.ok(job.includes('node scripts/verify-browser-runtime.cjs'))}
+  assert.ok(browsers.indexOf('node scripts/verify-browser-runtime.cjs')<browsers.indexOf('npm run test:e2e'));
+  for(const job of workflow.split(/\n  [a-z-]+:\n/).slice(1))if(job.includes('image: mcr.microsoft.com/playwright'))assert.ok(job.includes(`image: ${image}`),'every browser job uses the locked image');
   assert.doesNotMatch(smoke,/playwright install|apt-get|continue-on-error/);
   assert.match(smoke,/timeout-minutes: 10/);
   assert.ok(smoke.includes('npm run verify:production'));assert.ok(smoke.includes('node scripts/performance.cjs --production'));

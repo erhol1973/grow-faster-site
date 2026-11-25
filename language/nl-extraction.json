@@ -3,7 +3,7 @@
   "scope": "rendered_local_nl_runtime_dictionaries_static_cms_and_mail",
   "technicalReview": {
     "date": "2026-11-25",
-    "reason": "Homepage herwerkt (opdracht sponsor 25 november): nieuwe blokken Terugkerend werk en Zo starten we, rijkere toepassingskaarten; nieuwe runtime-dictionary assets/i18n-home.js (zelfde patroon als i18n-journal.js, alleen op index.html); assets/cms-catalog.js gesynchroniseerd met index.html; assets/cms-admin.js met nieuwe homepagegroepen. Inline-vingerafdruk van index.html bijgewerkt (extra scripttag voor i18n-home.js; JSON-LD ongewijzigd). Geen adapterwijziging. Eerdere reden: Orion-film en de vier stappen van Zo werkt Orion verhuisd van index.html naar orion.html (eigenaarsbeslissing 24 november): rendered DOM van beide pagina’s en inline JSON-LD ongewijzigd in betekenis; assets/cms-catalog.js zonder de negen stapvelden; assets/cms-admin.js met hernummerde groepen. Geen adapterwijziging. Eerdere reden: Magazine editie 1 als flipboek op journal.html: nieuw script assets/flipboek.js (bladert door acht pagina’s; bevat enkel paginanummers, geen tekst), uitgebreide runtime-dictionary assets/i18n-journal.…"
+    "reason": "Homepage herwerkt (opdracht sponsor 25 november): nieuwe blokken Terugkerend werk en Zo starten we, rijkere toepassingskaarten; nieuwe runtime-dictionary assets/i18n-home.js (zelfde patroon als i18n-journal.js, alleen op index.html); assets/cms-catalog.js gesynchroniseerd met index.html; assets/cms-admin.js met nieuwe homepagegroepen. Inline-vingerafdruk van index.html bijgewerkt (extra scripttag voor i18n-home.js; JSON-LD ongewijzigd). Sponsorbesluit 25 november: #proof en #final van de homepage verwijderd, rekenvoorbeeld € 17,25 per uur. Geen adapterwijziging. Eerdere reden: Orion-film en de vier stappen van Zo werkt Orion verhuisd van index.html naar orion.html (eigenaarsbeslissing 24 november): rendered DOM van beide pagina’s en inline JSON-LD ongewijzigd in betekenis; assets/cms-catalog.js zonder de negen stapvelden; assets/cms-admin.js met hernummerde groepen. Geen adapterwijziging. Eerdere reden: Magazine editie 1 als flipboek op journal.html: nieuw script assets/flipboek.js (bladert door acht pagina’s; bevat enkel paginanummers, geen tekst), uitgebreide runtime-dictionary assets/i18n-journal.…"
   },
   "javascript": [
     {
@@ -24,11 +24,11 @@
     },
     {
       "file": "assets/cms-admin.js",
-      "sha256": "8bfb3a3482a4b9ff5affb5cdebc9e3ab6e8d2fb49c3142e477857b3afce26a53"
+      "sha256": "eef5cf15e2fda69b3c1f69b7b4fd00f1b9dd5d224a54b3eeb5824683c9d74084"
     },
     {
       "file": "assets/cms-catalog.js",
-      "sha256": "4d417c75844928fbbd5d985b582ecc5c1dfaa3cbe06b13ea9daeab251e66b905"
+      "sha256": "af71fa4f8713c01f8578fedd70b1104fb871192684cfac7c122bd829a522b86a"
     },
     {
       "file": "assets/cms-client.js",
@@ -80,7 +80,7 @@
     },
     {
       "file": "assets/i18n-home.js",
-      "sha256": "5d250bef5ef22c10cd727c2f2a1926bb2fd3353603e75e9dbae6a985aa45837d"
+      "sha256": "d01c52555ec867bd578f40417490b49a1b5300fd21a0c126d03e9fcbb8ee5e88"
     },
     {
       "file": "assets/i18n-insights.js",

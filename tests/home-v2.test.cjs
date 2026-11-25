@@ -10,7 +10,8 @@ const html=()=>read('index.html');const doc=()=>D.parse(html());const main=d=>D.
 // (Object.assign onto window.I18N), executed in one context in script order.
 const scripts=()=>[...html().matchAll(/<script\b[^>]*\bsrc="(assets\/i18n(?:-[a-z]+)?\.js)(?:\?[^"]*)?"[^>]*><\/script>/g)].map(m=>m[1]);
 function I18N(){const c={window:{}};for(const f of scripts())vm.runInNewContext(read(f),c);return {I:c.window.I18N,H:c.window.I18N_HTML||{}}}
-const ORDER=['hero','toepassingen','terugkerend','aanpak','fundament','kloof','vertrouwelijk','proof','final'];
+// Sponsor decision 25 Nov 2026 10:11: #proof ("Ervaring uit de praktijk") and #final ("Test Orion op uw eigen vragenlijsten") removed from the homepage.
+const ORDER=['hero','toepassingen','terugkerend','aanpak','fundament','kloof','vertrouwelijk'];
 const section=(d,id)=>{const s=D.byId(d,id);assert.ok(s,`missing section #${id}`);return s};
 const headings=e=>D.all(e,x=>/^h[1-6]$/.test(x.tag));
 
@@ -57,10 +58,9 @@ test('four application cards directly under the hero: Orion first, the other thr
 test('pilot calls to action open the appointment page with a known topic; no mail, form or other contact path',()=>{const d=doc(),m=main(d);
   const topics=[...read('afspraak.html').matchAll(/name="onderwerp"[^>]*value="([a-z-]+)"|value="([a-z-]+)"[^>]*name="onderwerp"/g)].map(x=>x[1]||x[2]);
   assert.ok(topics.length>=5,'topics read from afspraak.html');
-  const links=D.all(m,e=>e.tag==='a'&&/^afspraak\.html/.test(e.attrs.href||''));assert.ok(links.length>=2,'at least hero and final CTA');
+  const links=D.all(m,e=>e.tag==='a'&&/^afspraak\.html/.test(e.attrs.href||''));assert.ok(links.length>=1,'hero CTA');assert.ok(!D.byId(d,'final-pilot'),'#final removed (sponsor 25 Nov 2026)');
   for(const a of links){const t=/^afspraak\.html\?onderwerp=([a-z-]+)$/.exec(a.attrs.href);assert.ok(t,`CTA ${a.attrs.href} carries ?onderwerp=`);assert.ok(topics.includes(t[1]),`unknown topic ${t[1]}`)}
-  for(const id of ['hero-pilot','final-pilot']){const a=D.byId(d,id);assert.ok(a&&links.includes(a),`#${id} links afspraak.html`);assert.match(D.norm(D.text(a)),/^Plan een pilotgesprek/,`#${id} label`)}
-  assert.ok(D.ancestors(D.byId(d,'final-pilot')).includes(section(d,'final')),'#final-pilot sits in #final');
+  for(const id of ['hero-pilot']){const a=D.byId(d,id);assert.ok(a&&links.includes(a),`#${id} links afspraak.html`);assert.match(D.norm(D.text(a)),/^Plan een pilotgesprek/,`#${id} label`)}
   assert.equal(D.all(m,e=>e.tag==='form').length,0);assert.equal(D.all(m,e=>e.tag==='a'&&/^mailto:/.test(e.attrs.href||'')).length,0);
 });
 
@@ -129,12 +129,12 @@ test('approach block: three general phases in order (scan, pilot, measure and de
   assert.match(phases[0],/workflowscan/i);assert.match(phases[1],/pilot/i);assert.match(phases[2],/meten|beslis/i);
   assert.doesNotMatch(D.norm(D.text(s)),/Orion/,'#aanpak is general, not Orion-specific');
 });
-test('kept blocks keep their substance: pyramid, Statbel/OECD sources, trust block without links, organisations in proof',()=>{const d=doc();
+test('kept blocks keep their substance: pyramid, Statbel/OECD sources, trust block without links; experience proof removed (sponsor 25 Nov 2026)',()=>{const d=doc();
   assert.equal(D.all(section(d,'fundament'),e=>e.tag==='ol'&&D.classes(e).includes('pyr-layers')).length,1);
   const sources=D.all(section(d,'kloof'),e=>e.tag==='a').map(a=>a.attrs.href);
   assert.deepEqual([...new Set(sources)].sort(),['https://statbel.fgov.be/en/themes/enterprises/ict-and-e-commerce-enterprises','https://www.oecd.org/en/publications/generative-ai-and-the-sme-workforce_2d08b99d-en'].sort(),'sources unchanged');
   assert.equal(D.all(section(d,'vertrouwelijk'),e=>e.tag==='a').length,0,'no links in the trust block');
-  assert.ok(D.all(section(d,'proof'),e=>e.tag==='li').length>=6,'organisations listed');
+  assert.ok(!D.byId(d,'proof'),'experience proof removed (sponsor 25 Nov 2026)');
 });
 
 test('assets/home.css is linked exactly once, only by the homepage, and follows the calm visual rules',()=>{const h=html();

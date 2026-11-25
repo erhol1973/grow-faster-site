@@ -4,7 +4,8 @@ const {audit}=require('../support/axe-audit.cjs');
 // Homepage redesign v2 (25 Nov 2026, docs/home-redesign/BRIEF.md). Structure and copy are unit-tested in tests/home-v2.test.cjs;
 // these cases cover what only a browser shows: layout width, the runtime language switch and axe on the French rendering.
 // The Dutch axe scan of index.html stays in accessibility.spec.cjs (navigation-cases pages).
-const ORDER=['hero','toepassingen','terugkerend','aanpak','fundament','kloof','vertrouwelijk','proof','final'];
+// Sponsor decision 25 Nov 2026 10:11: #proof ("Ervaring uit de praktijk") and #final ("Test Orion op uw eigen vragenlijsten") removed from the homepage.
+const ORDER=['hero','toepassingen','terugkerend','aanpak','fundament','kloof','vertrouwelijk'];
 // Expected French = what i18n.js followed by i18n-home.js define (same order and context as index.html).
 const I18N=(()=>{const dist=path.resolve(__dirname,'..','..','dist'),c={window:{}};for(const f of ['assets/i18n.js','assets/i18n-home.js'])vm.runInNewContext(fs.readFileSync(path.join(dist,f),'utf8'),c);return c.window.I18N})();
 const init=async(page,lang='nl')=>page.addInitScript(l=>{localStorage.setItem('avs-lang',l);localStorage.setItem('avs-consent',JSON.stringify({v:4,ext:false,ana:false,ts:Date.now()}))},lang);

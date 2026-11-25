@@ -17,9 +17,7 @@
   {id:'approach',label:'Zo starten we',from:64,to:72},
   {id:'labels',label:'Fundament en cijfers',from:73,to:74},
   {id:'trust',label:'Uw systemen en beslissingen',from:75,to:83},
-  {id:'experience',label:'Ervaring',from:84,to:86},
-  {id:'pilot',label:'Pilotgesprek',from:87,to:89},
-  {id:'video',label:'Video',from:90,to:90}
+  {id:'video',label:'Video',from:84,to:84}
  ];
  function fieldGroup(index,field){
   if(definition.page!=='home')return field.type==='media'?'media':'text';

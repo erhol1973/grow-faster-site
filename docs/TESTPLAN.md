@@ -8,6 +8,8 @@ Tests: nieuw tests/home-v2.test.cjs (sectievolgorde, één h1, aria-labelledby, 
 
 Beperking: de vastgezette Chromium-runtimecontrole draait niet in deze sandbox; CI gebruikt de vastgezette Playwright-image.
 
+Sponsorbesluit 25 november 2026 (10:11): rekenvoorbeeld met € 17,25 loonkost per uur (€ 4.761 per jaar); de secties #proof (Ervaring uit de praktijk) en #final (Test Orion op uw eigen vragenlijsten) zijn volledig verwijderd. Tests gewijzigd met gedateerde reden: home-v2 (volgorde eindigt bij vertrouwelijk, negatieve gevallen voor #proof en #final), klantsite, journal-editorial (negatief geval: geen ervaringsblok, About bereikbaar via footer), home-hero-video, cms-client (zeven editorgroepen, 85 velden, zes extra uitgefaseerde sleutels), refinements.spec en editorial.spec (homepage zonder #final; oplossingen.html behoudt het).
+
 ## Orion-film en stappen van de homepage naar orion.html, 24 november 2026
 
 Beslissing van de eigenaar: "Zo werkt Orion" (vier stappen en film) verdwijnt van de homepage; de film staat op orion.html onder de vier stappen en de zin "Elk antwoord dat u goedkeurt, onthoudt Orion." De homepage houdt hero, vier toepassingskaarten, ervaring, piramide, kloof, vertrouwen en pilot. CMS: de negen stapvelden van de homepage zijn uit de catalogus; de groepen in de beheerpagina zijn hernummerd (28 velden). Het uitklapblok "Tekst in beeld" blijft bij de film als tekstalternatief.

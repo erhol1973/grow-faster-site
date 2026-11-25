@@ -378,9 +378,9 @@ window.GF_CMS_CATALOG=[
       {
         "key": "home-v2-rec-calc-4",
         "type": "text",
-        "label": "276 uur × € 45 loonkost per uur = € 12.420 per jaar.",
-        "nl": "276 uur × € 45 loonkost per uur = € 12.420 per jaar.",
-        "fr": "276 heures × 45 € de coût salarial par heure = 12 420 € par an."
+        "label": "276 uur × € 17,25 loonkost per uur = € 4.761 per jaar.",
+        "nl": "276 uur × € 17,25 loonkost per uur = € 4.761 per jaar.",
+        "fr": "276 heures × 17,25 € de coût salarial par heure = 4 761 € par an."
       },
       {
         "key": "home-v2-rec-calc-note",
@@ -598,48 +598,6 @@ window.GF_CMS_CATALOG=[
         "label": "Uw medewerker controleert het en zet de laatste stap: versturen, registreren of importeren",
         "nl": "Uw medewerker controleert het en zet de laatste stap: versturen, registreren of importeren.",
         "fr": "Votre collaborateur le vérifie et fait le dernier pas : envoyer, enregistrer ou importer."
-      },
-      {
-        "key": "home-v2-proof-eyebrow",
-        "type": "text",
-        "label": "Achtergrond",
-        "nl": "Achtergrond",
-        "fr": "Parcours"
-      },
-      {
-        "key": "home-orion-proof-h",
-        "type": "text",
-        "label": "Ervaring uit de praktijk",
-        "nl": "Ervaring uit de praktijk",
-        "fr": "Une expérience de terrain"
-      },
-      {
-        "key": "home-orion-proof-p",
-        "type": "text",
-        "label": "Meer dan twintig jaar procesverbetering, programmamanagement en transformatie, onder meer ",
-        "nl": "Meer dan twintig jaar procesverbetering, programmamanagement en transformatie, onder meer in retail, industrie en telecom.",
-        "fr": "Plus de vingt ans d’amélioration des processus, de gestion de programmes et de transformation, notamment dans la distribution, l’industrie et les télécoms."
-      },
-      {
-        "key": "home-v2-final-eyebrow",
-        "type": "text",
-        "label": "Pilot",
-        "nl": "Pilot",
-        "fr": "Pilote"
-      },
-      {
-        "key": "home-orion-pilot-h",
-        "type": "text",
-        "label": "Test Orion op uw eigen vragenlijsten",
-        "nl": "Test Orion op uw eigen vragenlijsten",
-        "fr": "Testez Orion sur vos propres questionnaires"
-      },
-      {
-        "key": "home-orion-pilot-p",
-        "type": "text",
-        "label": "We starten klein, met een paar vragenlijsten die u echt gekregen hebt. We meten hoeveel ti",
-        "nl": "We starten klein, met een paar vragenlijsten die u echt gekregen hebt. We meten hoeveel tijd ze vandaag kosten en hoeveel met Orion. Ziet u geen verschil, dan stoppen we.",
-        "fr": "Nous commençons petit, avec quelques questionnaires que vous avez réellement reçus. Nous mesurons le temps qu’ils prennent aujourd’hui et avec Orion. Si vous ne voyez pas de différence, nous arrêtons."
       },
       {
         "key": "cms-video-home",

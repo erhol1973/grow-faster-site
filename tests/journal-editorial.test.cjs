@@ -33,12 +33,12 @@ test('Insights speaks to customers only and every line has a French translation'
 });
 // Sprint 1 (22 Nov 2026): the customer homepage keeps the experience proof directly after the hero, now linking to About;
 // the three journal teasers and the selected insight left the homepage. Journal articles keep their own coverage above.
-test('home shows experience proof below the trust block and no longer lists journal teasers',()=>{
+// Sponsor decision 25 Nov 2026 10:11: the experience proof section is removed from the homepage entirely; About stays reachable via the footer.
+test('home no longer shows the experience proof section and no longer lists journal teasers',()=>{
   const home=read('index.html');
-  const proof=home.match(/<section id="proof"[\s\S]*?<\/section>/);assert.ok(proof);assert.match(proof[0],/href="about\.html">Over Erlend Hollebosch/);
-  // 25 Nov 2026 (BRIEF.md IA): the cards stay directly under the hero; the experience proof moves down, after #vertrouwelijk and before #final.
-  assert.ok(home.indexOf('</header>')<home.indexOf('id="toepassingen"')&&home.indexOf('id="vertrouwelijk"')<home.indexOf('id="proof"')&&home.indexOf('id="proof"')<home.indexOf('id="final"'),'proof sits between the trust block and the pilot');
-  for(const org of ['Colruyt Group','Volvo Group','Solvay','ArcelorMittal','Telenet','Ericsson'])assert.ok(proof[0].includes('<li>'+org+'</li>'),org);
+  assert.doesNotMatch(home,/<section id="proof"/);assert.doesNotMatch(home,/Ervaring uit de praktijk/);
+  assert.match(home.match(/<footer[\s\S]*?<\/footer>/)[0],/href="about\.html">Over Erlend Hollebosch/,'About reachable from the footer');
+  assert.ok(home.indexOf('</header>')<home.indexOf('id="toepassingen"'),'cards stay directly under the hero');
   assert.doesNotMatch(home,/id="journal-latest"|id="selected-insight"/);
 });
 test('track record lists dated roles, certifications and education with an accessible anchor',()=>{

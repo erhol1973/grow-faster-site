@@ -147,7 +147,7 @@ Opbouw: eyebrow, h2, lede; dan vier blokken met elk een h3: waar het werk zit (l
   - NL: 6 uur × 46 werkweken = 276 uur per jaar.
   - FR: 6 heures × 46 semaines de travail = 276 heures par an.
 - `home-v2-rec-calc-4` · regel berekening
-  - NL: 276 uur × € 45 loonkost per uur = € 12.420 per jaar.
+  - NL: 276 uur × € 17,25 loonkost per uur = € 4.761 per jaar.
   - FR: 276 heures × 45 € de coût salarial par heure = 12 420 € par an.
 - `home-v2-rec-calc-note` · kleine noot
   - NL: 46 werkweken: 52 weken min ongeveer 6 weken verlof en feestdagen. Loonkost per uur: een aanname. Vervang de cijfers door die van uw eigen team.
@@ -259,3 +259,10 @@ Opbouw: eyebrow, h2, lede; dan vier blokken met elk een h3: waar het werk zit (l
 4. Geruststellende regel in de hero: "Wij bereiden voor. Uw team kijkt na en beslist." (variant op de brief, die "Uw team kijkt na. U beslist." voorstelde).
 5. Logistiekkaart: "mailt de verschillen door" en de takenlijst beschrijven een typische werkwijze, geen vastgestelde situatie bij een klant.
 6. Fase 3 van de aanpak noemt twee uitkomsten: uitbreiden naar een volgende taak of stoppen. Er staat geen duur en geen prijs bij.
+
+
+## Sponsorbesluit 25 november 2026 (10:11)
+- Rekenvoorbeeld: loonkost € 135 per dag per persoon, gerekend als € 17,25 per uur → 276 uur × € 17,25 = € 4.761 per jaar.
+- Herozin en verplaatste vraagkop: goedgekeurd.
+- Slotoproep "Test Orion op uw eigen vragenlijsten" (#final) verwijderd: Orion is het volgende menu-item.
+- Sectie "Achtergrond — Ervaring uit de praktijk" (#proof) volledig verwijderd.

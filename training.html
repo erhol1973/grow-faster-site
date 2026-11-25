@@ -53,7 +53,7 @@
 <script defer src="assets/content.js?v=20261030-editorial-three"></script>
 <script defer src="assets/models.js?v=20261029-quality"></script>
 <script defer src="assets/consent.js?v=20261029-quality"></script>
-<script defer src="assets/site.js?v=20261103-book-order"></script>
+<script defer src="assets/site.js?v=20261103-book-order"></script><script defer src="assets/cms-config.js"></script><script defer src="assets/cms-client.js"></script><script defer src="assets/cms-public.js"></script>
 <style data-hero>.hero.hero-customer .hero-bg img{object-position:70% center}</style>
 <style data-bewijs>
 .cijfers{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;margin-top:28px}
@@ -71,8 +71,10 @@
 @media(max-width:900px){.cijfers,.cijfers.twee,.fases{grid-template-columns:1fr}.fase{border-right:0;border-bottom:1px solid var(--line)}.fase:last-child{border-bottom:0}}
 </style>
 <style>#werking .cards6{grid-template-columns:repeat(3,minmax(0,1fr))}@media(max-width:900px){#werking .cards6{grid-template-columns:1fr}}</style>
+<style data-cms-media>[data-cms-video-section] video{display:block;width:100%;max-width:960px;height:auto;margin:0 auto 2rem}[data-cms-video-section][hidden]{display:none}</style>
+<link rel="stylesheet" href="assets/kleur.css?v=20261125-kleur">
 </head>
-<body class="editorial-home">
+<body data-cms-page="training" class="editorial-home">
 <a class="skip-link" href="#top">Naar de inhoud</a>
 <nav class="nav nav-executive" aria-label="Sections">
   <div class="wrap">
@@ -97,40 +99,41 @@
 </nav>
 
 <main id="top" tabindex="-1">
-<header class="hero hero-minimal hero-customer" id="hero"><div class="hero-top"><div class="hero-bg" aria-hidden="true"><picture><source type="image/webp" srcset="img/hero-training-team-640.webp 640w, img/hero-training-team-1280.webp 1280w, img/hero-training-team-1774.webp 1774w" sizes="100vw"><img src="img/hero-training-team-1774.webp" alt="" width="1774" height="887" fetchpriority="high" decoding="async"></picture></div><div class="wrap hero-inner">
-  <h1>Uw mensen leren werken met AI en automatisering.</h1>
-  <p class="sub">Op hun eigen taken, bij u ter plaatse of online. Zo blijft de tijdwinst ook na de pilot.</p>
+<header class="hero hero-minimal hero-customer" id="hero"><div class="hero-top"><div class="hero-bg" aria-hidden="true"><picture><source type="image/webp" srcset="img/hero-training-team-640.webp 640w, img/hero-training-team-1280.webp 1280w, img/hero-training-team-1774.webp 1774w" sizes="100vw"><img src="img/hero-training-team-1774.webp" alt="" width="1774" height="887" fetchpriority="high" decoding="async" data-cms="trn-hero-img"></picture></div><div class="wrap hero-inner">
+  <h1 data-cms="trn-01">Uw mensen leren werken met AI en automatisering.</h1>
+  <p class="sub" data-cms="trn-02">Op hun eigen taken, bij u ter plaatse of online. Zo blijft de tijdwinst ook na de pilot.</p>
   <div class="ctas"><a href="afspraak.html?onderwerp=training" class="btn primary" id="hero-gesprek">Plan een gesprek <span aria-hidden="true">→</span></a><a href="#trainingen" class="btn ghost" id="hero-trainingen">Bekijk de trainingen <span aria-hidden="true">→</span></a></div>
 </div></div></header>
 
-<section id="waarom"><div class="wrap"><div class="head"><h2>Waarom training</h2></div><div class="page-copy">
-  <p>Een nieuwe tool of een geautomatiseerde workflow levert pas iets op als uw mensen ermee kunnen werken. Wie niet goed weet hoe het werkt, valt terug op de oude manier. Daarom trainen we met uw eigen documenten en taken, niet met voorbeelden uit een handboek.</p>
+<section id="waarom"><div class="wrap"><div class="head"><h2 data-cms="trn-03">Waarom training</h2></div><div class="page-copy">
+  <p data-cms="trn-04">Een nieuwe tool of een geautomatiseerde workflow levert pas iets op als uw mensen ermee kunnen werken. Wie niet goed weet hoe het werkt, valt terug op de oude manier. Daarom trainen we met uw eigen documenten en taken, niet met voorbeelden uit een handboek.</p>
 </div></div></section>
 
-<section id="mensen" class="alt"><div class="wrap"><div class="head"><h2>AI vervangt uw mensen niet. Het maakt hun werk lichter.</h2></div><div class="cijfers twee">
-  <article class="cijfer"><span class="getal" data-notr>85%</span><p>van de kmo’s die generatieve AI gebruiken, heeft evenveel personeel nodig als voordien. 6% heeft meer mensen nodig, 9% minder.</p><p class="bron">Bron: <a href="https://www.oecd.org/en/publications/generative-ai-and-the-sme-workforce_2d08b99d-en" target="_blank" rel="noopener" data-notr>OECD, 2025</a></p></article>
-  <article class="cijfer"><span class="getal">1 op 2</span><p>kmo’s die nog geen generatieve AI gebruiken, noemt een tekort aan vaardigheden als belangrijkste reden.</p><p class="bron">Bron: <a href="https://www.oecd.org/en/publications/ai-and-skills_f843b352-en/full-report.html" target="_blank" rel="noopener" data-notr>OECD, AI and skills</a></p></article>
+<section id="mensen" class="alt"><div class="wrap"><div class="head"><h2 data-cms="trn-05">AI vervangt uw mensen niet. Het maakt hun werk lichter.</h2></div><div class="cijfers twee">
+  <article class="cijfer"><span class="getal" data-notr>85%</span><p data-cms="trn-06">van de kmo’s die generatieve AI gebruiken, heeft evenveel personeel nodig als voordien. 6% heeft meer mensen nodig, 9% minder.</p><p class="bron">Bron: <a href="https://www.oecd.org/en/publications/generative-ai-and-the-sme-workforce_2d08b99d-en" target="_blank" rel="noopener" data-notr>OECD, 2025</a></p></article>
+  <article class="cijfer"><span class="getal">1 op 2</span><p data-cms="trn-07">kmo’s die nog geen generatieve AI gebruiken, noemt een tekort aan vaardigheden als belangrijkste reden.</p><p class="bron">Bron: <a href="https://www.oecd.org/en/publications/ai-and-skills_f843b352-en/full-report.html" target="_blank" rel="noopener" data-notr>OECD, AI and skills</a></p></article>
 </div></div></section>
 
-<section id="trainingen" tabindex="-1"><div class="wrap"><div class="head"><h2>Drie trainingen</h2></div><div class="cards6">
-  <article class="vcard in"><h3>Orion in de praktijk</h3><p>Voor de kwaliteitsdienst. Vragenlijsten invullen met Orion, antwoorden en bronnen nakijken, en de kennisbank bijhouden.</p></article>
-  <article class="vcard in"><h3>Workflow-automatisering</h3><p>Voor teamleiders en medewerkers. Handwerk herkennen in de eigen afdeling, een workflow beschrijven en samen bepalen wat geautomatiseerd wordt.</p></article>
-  <article class="vcard in"><h3>Bedrijfsontwikkeling: naar een adaptief bedrijf</h3><p>Voor zaakvoerders en directie. Hoe beslissingen, processen en systemen samen meebewegen als de markt verandert.</p></article>
+<section id="trainingen" tabindex="-1"><div class="wrap"><div class="head"><h2 data-cms="trn-08">Drie trainingen</h2></div><div class="cards6">
+  <article class="vcard in"><h3 data-cms="trn-09">Orion in de praktijk</h3><p data-cms="trn-10">Voor de kwaliteitsdienst. Vragenlijsten invullen met Orion, antwoorden en bronnen nakijken, en de kennisbank bijhouden.</p></article>
+  <article class="vcard in"><h3 data-cms="trn-11">Workflow-automatisering</h3><p data-cms="trn-12">Voor teamleiders en medewerkers. Handwerk herkennen in de eigen afdeling, een workflow beschrijven en samen bepalen wat geautomatiseerd wordt.</p></article>
+  <article class="vcard in"><h3 data-cms="trn-13">Bedrijfsontwikkeling: naar een adaptief bedrijf</h3><p data-cms="trn-14">Voor zaakvoerders en directie. Hoe beslissingen, processen en systemen samen meebewegen als de markt verandert.</p></article>
 </div></div></section>
 
-<section id="werking" class="alt"><div class="wrap"><div class="head"><h2>Zo werkt het</h2></div><div class="cards6">
-  <article class="vcard in"><span class="step-n" data-notr>01</span><h3>Kort gesprek.</h3><p>We bespreken uw team, uw taken en wat u wilt bereiken.</p></article>
-  <article class="vcard in"><span class="step-n" data-notr>02</span><h3>Training op maat.</h3><p>Ter plaatse of online, met uw eigen documenten en voorbeelden.</p></article>
-  <article class="vcard in"><span class="step-n" data-notr>03</span><h3>Opvolging.</h3><p>Na enkele weken kijken we samen wat er in de praktijk gebruikt wordt en wat nog beter kan.</p></article>
+<section id="werking" class="alt"><div class="wrap"><div class="head"><h2 data-cms="trn-15">Zo werkt het</h2></div><div class="cards6">
+  <article class="vcard in"><span class="step-n" data-notr>01</span><h3 data-cms="trn-16">Kort gesprek.</h3><p data-cms="trn-17">We bespreken uw team, uw taken en wat u wilt bereiken.</p></article>
+  <article class="vcard in"><span class="step-n" data-notr>02</span><h3 data-cms="trn-18">Training op maat.</h3><p data-cms="trn-19">Ter plaatse of online, met uw eigen documenten en voorbeelden.</p></article>
+  <article class="vcard in"><span class="step-n" data-notr>03</span><h3 data-cms="trn-20">Opvolging.</h3><p data-cms="trn-21">Na enkele weken kijken we samen wat er in de praktijk gebruikt wordt en wat nog beter kan.</p></article>
 </div></div></section>
 
-<section id="praktisch"><div class="wrap"><div class="head"><h2>Praktisch</h2></div><div class="page-copy">
-  <p>Ter plaatse of online, in het Nederlands of het Frans. Prijs op aanvraag.</p>
+<section id="praktisch"><div class="wrap"><div class="head"><h2 data-cms="trn-22">Praktisch</h2></div><div class="page-copy">
+  <p data-cms="trn-23">Ter plaatse of online, in het Nederlands of het Frans. Prijs op aanvraag.</p>
 </div></div></section>
 
-<section id="contact" class="tinted" tabindex="-1" aria-labelledby="contact-h"><div class="wrap pilot-box"><div class="head"><h2 id="contact-h">Welke training past bij uw team?</h2><p class="lede">Vertel ons met welke taken uw team vandaag het meeste tijd verliest. We stellen een training voor die daarbij past.</p></div>
+<section id="contact" class="tinted" tabindex="-1" aria-labelledby="contact-h"><div class="wrap pilot-box"><div class="head"><h2 id="contact-h" data-cms="trn-24">Welke training past bij uw team?</h2><p class="lede" data-cms="trn-25">Vertel ons met welke taken uw team vandaag het meeste tijd verliest. We stellen een training voor die daarbij past.</p></div>
   <div class="ctas"><a href="afspraak.html?onderwerp=training" class="btn primary" id="contact-gesprek">Plan een gesprek <span aria-hidden="true">→</span></a></div>
 </div></section>
+<section class="wrap" hidden data-cms-video-section><video hidden controls preload="metadata" data-cms="cms-video-training" aria-label="Video" width="960"></video></section>
 </main>
 
 <footer class="foot">

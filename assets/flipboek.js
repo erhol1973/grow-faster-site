@@ -41,6 +41,12 @@
   boek.addEventListener("pointerdown",function(e){if(e.pointerType==="mouse"&&e.button!==0)return;startX=e.clientX;startY=e.clientY});
   boek.addEventListener("pointerup",function(e){if(startX===null)return;var dx=e.clientX-startX,dy=e.clientY-startY;startX=startY=null;if(Math.abs(dx)>48&&Math.abs(dx)>Math.abs(dy)*1.5){if(e.target.closest("a,button"))return;ga(dx<0?1:-1)}});
   boek.addEventListener("pointercancel",function(){startX=startY=null});
+  /* Links met data-fb-pagina openen het boek op die pagina (bv. de delen-tegels op de magazinepagina). */
+  document.addEventListener("click",function(e){
+    var a=e.target.closest&&e.target.closest("[data-fb-pagina]");if(!a)return;
+    var p=Math.min(n,Math.max(1,+a.getAttribute("data-fb-pagina")||1));
+    pos=enkel?p:Math.min(n,2*Math.floor(p/2)+1);draai=null;stand();
+  });
   if(mq.addEventListener)mq.addEventListener("change",stand);else mq.addListener(stand);
   stand();
 })();

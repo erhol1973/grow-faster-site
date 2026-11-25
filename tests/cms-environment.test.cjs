@@ -18,3 +18,13 @@ test('admin CSP permits isolated Auth and media without wildcard Supabase origin
  for(const directive of ['connect-src','img-src','media-src'])assert.ok(policy.split(';').find(p=>p.trim().startsWith(directive+' ')).includes('https://gqsvoioccvklzfmdmexy.supabase.co'));
  assert.ok(!policy.includes('*.supabase.co'));
 });
+// 25 Nov 2026: every Cloudflare Pages preview (branch alias or deployment hash) is bound to the isolated test project, so publishing
+// on a preview can never change the live site. Only an exact single-label preview host qualifies; lookalikes stay on production.
+test('every Cloudflare Pages preview host uses the isolated test project',()=>{
+ for(const hostname of ['feature-cms-herwerking-20261125.grow-faster-site.pages.dev','2cc0d8a7.grow-faster-site.pages.dev','grow-faster-site.pages.dev']){
+  const c=config(hostname);assert.equal(c.url,'https://gqsvoioccvklzfmdmexy.supabase.co',hostname);assert.equal(c.recoveryEnabled,false,hostname);
+ }
+ for(const hostname of ['a.b.grow-faster-site.pages.dev','grow-faster-site.pages.dev.evil.test','evilgrow-faster-site.pages.dev','grow-faster.be','localhost']){
+  assert.equal(config(hostname).url,'https://dbooobckaqbkrmkpcuem.supabase.co',hostname);
+ }
+});

@@ -2,8 +2,8 @@
   "schema": 1,
   "scope": "rendered_local_nl_runtime_dictionaries_static_cms_and_mail",
   "technicalReview": {
-    "date": "2026-11-24",
-    "reason": "Orion-film en de vier stappen van Zo werkt Orion verhuisd van index.html naar orion.html (eigenaarsbeslissing 24 november): rendered DOM van beide pagina’s en inline JSON-LD ongewijzigd in betekenis; assets/cms-catalog.js zonder de negen stapvelden; assets/cms-admin.js met hernummerde groepen. Geen adapterwijziging. Eerdere reden: Magazine editie 1 als flipboek op journal.html: nieuw script assets/flipboek.js (bladert door acht pagina’s; bevat enkel paginanummers, geen tekst), uitgebreide runtime-dictionary assets/i18n-journal.…"
+    "date": "2026-11-25",
+    "reason": "Magazinepagina journal.html (eigenaarsbeslissing 25 november): schuivende hero met vijf beelden, archief van alle edities en de delen van editie 1; blokken Het boek en Herkent u deze verspilling? weg; nieuw assets/magazine.js en deeplinks in assets/flipboek.js. Vertalingen in assets/i18n-journal.js. Geen adapterwijziging. Eerdere reden: Contentstudio herwerkt (sponsorbesluit 25 november): catalogus beperkt tot de menupagina’s (Home, Orion, Workflow-automatisering, Bedrijfsontwikkeling, Training, Insights, Over), zeven oude Engelstali…"
   },
   "javascript": [
     {
@@ -24,11 +24,11 @@
     },
     {
       "file": "assets/cms-admin.js",
-      "sha256": "e2a0ceddb239ffa12891a407cf5773566d03f094204513c8dc6cdda4025fffae"
+      "sha256": "eef5cf15e2fda69b3c1f69b7b4fd00f1b9dd5d224a54b3eeb5824683c9d74084"
     },
     {
       "file": "assets/cms-catalog.js",
-      "sha256": "e5de177455bb9bd6aed4ecb647634bfd585580ff68d2d36c6f51808d522434a9"
+      "sha256": "8f54c0acdd590059835502d5dfc9ffc9756612dd019d4e00912fa3dae14a5464"
     },
     {
       "file": "assets/cms-client.js",
@@ -36,7 +36,7 @@
     },
     {
       "file": "assets/cms-config.js",
-      "sha256": "9db9aa02f7cf8fd9dd0acfddecb0bf6dffea3fd28e5d8b63c25b352c08d73a38"
+      "sha256": "6575f4184f2cc82de32fd08a204955444ab5b8346a139c553ea668c53aa60906"
     },
     {
       "file": "assets/cms-public.js",
@@ -72,11 +72,15 @@
     },
     {
       "file": "assets/flipboek.js",
-      "sha256": "bbbab37323f6a1a154071c0110cdc4ec8ac4684fbe81071338b5e5d5cfdb0ee2"
+      "sha256": "bc77f30426aa0f55109b0ab8e34359e6a9c3761593188807c8197db75c91af04"
     },
     {
       "file": "assets/home-film.js",
       "sha256": "3bb45468eddad3d1c9c0e0908580c216aef48c09d63b3f3dd0256f479fd6f19a"
+    },
+    {
+      "file": "assets/i18n-home.js",
+      "sha256": "d01c52555ec867bd578f40417490b49a1b5300fd21a0c126d03e9fcbb8ee5e88"
     },
     {
       "file": "assets/i18n-insights.js",
@@ -84,15 +88,19 @@
     },
     {
       "file": "assets/i18n-journal.js",
-      "sha256": "c5b156f526ba3c4ffbe5ef1ccc612e57a47edb3c1e3202b22347c0f812f1af80"
+      "sha256": "d6b4245632bf02758c86eff263056487f80383905e4b6c7ecb23c79b9322c98e"
     },
     {
       "file": "assets/i18n.js",
-      "sha256": "01ee25d699626543a804981b54f03a437b8abed86b01af48d914a43da6412767"
+      "sha256": "510c27d29cd538375a798a20e74f04a9402ab0cd3aa563231fe616f705cfea4e"
     },
     {
       "file": "assets/journal.js",
       "sha256": "292c0bbaa1b1c15ebac85e2df23c3e601c5172dbb1d7981cfe2b7778d88db47f"
+    },
+    {
+      "file": "assets/magazine.js",
+      "sha256": "fb32f1bddec8adda1f4777cf47fce34d65fb0464070ce94ac01ed4e8e111c234"
     },
     {
       "file": "assets/models.js",
@@ -166,7 +174,7 @@
     },
     {
       "file": "automatisering.html",
-      "sha256": "b52df84d6113cca55ef54ffd59c30f1ffda23ea1afd46ae2d0e744ebf739b228"
+      "sha256": "9b3726bea5414c9ce0add306334903d3693a95a364d2dfef5b70189c84b5d5b4"
     },
     {
       "file": "baies-dev/index.html",
@@ -190,7 +198,7 @@
     },
     {
       "file": "coherence.html",
-      "sha256": "daa55de1502b6cd5f456d8df9f6d9a47af16d2212f3acac2e20f317bb4cc167f"
+      "sha256": "8ae7169070075abfe4bb642b63cdcfca6fed76aa8961c1aac8aab43a938d39ff"
     },
     {
       "file": "coordination-overload-1.html",
@@ -214,7 +222,7 @@
     },
     {
       "file": "index.html",
-      "sha256": "32bc212980df42143010b5a6d4bd6eaeb0ab40aa2dccfb5acec21513e3ad44e4"
+      "sha256": "520d589042e777ba0f49ac51c72c633461aa39ec8205dee896ec5fad13ac7316"
     },
     {
       "file": "insights-ai-pilot.html",
@@ -222,7 +230,7 @@
     },
     {
       "file": "insights.html",
-      "sha256": "54e4adc37cf35861fbbe7eceef1866ef8c11812c6f5bbce23fab87a3de606d97"
+      "sha256": "893145708e6d3c5b88be682a8a0c01380f443a135e2ea5171f069a9cc64d0ed3"
     },
     {
       "file": "journal-fr.html",
@@ -230,7 +238,7 @@
     },
     {
       "file": "journal.html",
-      "sha256": "a9618ec5348db4e809b90bce8249121a8ff0253a11f32f9c6bd3029f497eb20e"
+      "sha256": "f7480d3b95e87053f6ae9ca1e850d69299ea45ab2317401ff21f187c97b70f47"
     },
     {
       "file": "operating-model.html",
@@ -242,7 +250,7 @@
     },
     {
       "file": "orion.html",
-      "sha256": "d0d1bf9f13d348c6dfe2b36264a1f0da3fa960a33b21fc7d2e4a6b4a81de45b2"
+      "sha256": "23aa0d7c55db5dedd1a059b19be6712897a2c81990d01529f5d740f8cc2ccd5d"
     },
     {
       "file": "privacy.html",
@@ -266,7 +274,7 @@
     },
     {
       "file": "training.html",
-      "sha256": "8d68d607423593eb9736f3d7fa2c8162ef13b27169d594dbb432913480a3d664"
+      "sha256": "ee875ec7fdf01d132d90f0aa7f87b72c4a3902b33412639e8c3d17706a751d87"
     },
     {
       "file": "transformation.html",

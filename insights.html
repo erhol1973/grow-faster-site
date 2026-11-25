@@ -54,7 +54,7 @@
 <script defer src="assets/content.js?v=20261030-editorial-three"></script>
 <script defer src="assets/models.js?v=20261029-quality"></script>
 <script defer src="assets/consent.js?v=20261029-quality"></script>
-<script defer src="assets/site.js?v=20261103-book-order"></script>
+<script defer src="assets/site.js?v=20261103-book-order"></script><script defer src="assets/cms-config.js"></script><script defer src="assets/cms-client.js"></script><script defer src="assets/cms-public.js"></script>
 <style data-hero>.hero.hero-customer .hero-bg img{object-position:74% 35%}</style>
 <style data-artikels>
 .art-list{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;margin-top:28px}
@@ -70,8 +70,10 @@
 .terug{margin-top:28px;font-weight:600}
 @media(max-width:900px){.art-list,.kort{grid-template-columns:1fr}.kort div{border-right:0;border-bottom:1px solid var(--line)}.kort div:last-child{border-bottom:0}}
 </style>
+<style data-cms-media>[data-cms-video-section] video{display:block;width:100%;max-width:960px;height:auto;margin:0 auto 2rem}[data-cms-video-section][hidden]{display:none}</style>
+<link rel="stylesheet" href="assets/kleur.css?v=20261125-kleur">
 </head>
-<body class="editorial-home">
+<body data-cms-page="insights" class="editorial-home">
 <a class="skip-link" href="#top">Naar de inhoud</a>
 <nav class="nav nav-executive" aria-label="Sections">
   <div class="wrap">

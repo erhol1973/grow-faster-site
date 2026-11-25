@@ -419,20 +419,33 @@
   function trap(el,e){if(e.key!=="Tab")return;const f=focusables(el);if(!f.length)return;const a=f[0],z=f[f.length-1];if(e.shiftKey&&document.activeElement===a){e.preventDefault();z.focus()}else if(!e.shiftKey&&document.activeElement===z){e.preventDefault();a.focus()}}
   const CONSENT_V=4,CONSENT_MAX=182*864e5,GC_CODE="growfaster";
   function readConsent(){return GFConsent.parse(store.get("avs-consent"))}
+  /* GoatCounter settings object with consent-bound accessors. count.js assigns goatcounter.count once per execution;
+     the setter keeps that real function, the getter only exposes it while analytics consent is stored. Withdrawal is
+     therefore inert whenever the script executes, and re-acceptance counts directly without a second download or onload. */
+  let gcCount=null,gcObj=null;const gcOff=()=>{};
+  function gcSettings(){
+    const g={no_onload:true,no_events:true};
+    Object.defineProperty(g,"count",{enumerable:true,get(){return gcCount&&readConsent()?.ana?gcCount:gcOff},set(f){if(typeof f==="function"&&f!==gcOff)gcCount=f}});
+    // Explicit pageview only: the third-party script never installs its own event listeners.
+    Object.defineProperty(g,"bind_events",{enumerable:true,get(){return gcOff},set(){}});
+    return g;
+  }
   function applyConsent(c){
     GFConsent.syncHubSpot(!!(c&&c.ana),window,document,()=>!!readConsent()?.ana);
     const gs=document.getElementById("gc");
     if(c&&c.ana&&GC_CODE){
-      if(!gs){
-        // Explicit pageview only: the third-party script never installs its own event listeners.
-        window.goatcounter={no_onload:true,no_events:true};
+      gcObj=gcObj||gcSettings();window.goatcounter=gcObj;
+      if(gcCount)gcObj.count();
+      else if(!gs){
         const x=document.createElement("script");x.id="gc";x.async=true;x.src="https://gc.zgo.at/count.js";
         x.dataset.goatcounter="https://"+GC_CODE+".goatcounter.com/count";
-        x.onload=()=>{if(readConsent()?.ana)window.goatcounter?.count?.()};document.head.appendChild(x);
+        // A script element removed by withdrawal never records a pageview, even if its download still completes.
+        x.onload=()=>{if(x.isConnected&&readConsent()?.ana)gcObj.count()};document.head.appendChild(x);
       }
     }else{
       if(gs)gs.remove();
-      if(window.goatcounter){window.goatcounter.no_onload=true;window.goatcounter.no_events=true;window.goatcounter.count=()=>{};window.goatcounter.bind_events=()=>{}}
+      const g=window.goatcounter;
+      if(g&&g!==gcObj){g.no_onload=true;g.no_events=true;g.count=gcOff;g.bind_events=gcOff}
     }
     const font=document.getElementById("gf");if(!(c&&c.ext)){if(font)font.remove();return}
     if(!font){const l=document.createElement("link");l.id="gf";l.rel="stylesheet";l.href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,400..700;1,400..600&family=Noto+Sans+Arabic:wght@400..700&display=swap";document.head.appendChild(l)}

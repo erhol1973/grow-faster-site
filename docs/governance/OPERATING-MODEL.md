@@ -44,6 +44,19 @@ Per werkitem: één eigenaar, één volgende actie, één bronlink en één expl
 
 Een toestemming om 'PR's te mergen' vervangt **niet** de afzonderlijk vereiste productie-GO.
 
+### 3a. Release-wachtrij (GF-010, 25 november 2026)
+
+Meerdere sessies werkten parallel op `main`; elke merge van een andere sessie maakte de wachtende PR's verouderd (strikte up-to-date-regel), wat herhaalde CI-runs, mislukte merges en ongecontroleerde productiereleases gaf. Daarom:
+
+1. **Eén merge-poort:** de release-agent van de CPO is de enige die naar `main` merget. GitHub-merge-queue is niet beschikbaar voor een repository onder een persoonlijk account; de regel wordt daarom via AGENTS.md, labels en issue #122 afgedwongen.
+2. **Intake:** groene verplichte checks op de huidige HEAD, GO-opmerking van de sponsor op de PR, labels `release-queue` en `sponsor-go`, registerregel waar het een productbesluit betreft.
+3. **Volgorde:** alleen in issue #122. De CPO bepaalt de prioriteit; een zichtbare productiefout gaat voor.
+4. **Serieel:** `release-lock` op #122 tijdens het mergen; bijwerken alleen voor de kop van de wachtrij; na de merge wachten op *Verify public release*.
+5. **Bundelen:** kleine tekst- en stijlfixes van één sponsor-GO gaan samen in één PR.
+6. **Onstabiele test:** één keer opnieuw draaien mag, met job en regel genoteerd in #122; bij een tweede keer stopt de wachtrij en wordt de oorzaak eerst hersteld.
+7. **Sponsorrapport:** de CPO meldt kort: wacht op GO (max. 3), vandaag live, geblokkeerd.
+8. **Deploy:** releases op `main` worden niet meer afgebroken door een volgende merge; alleen PR-runs worden bij een nieuwe push geannuleerd.
+
 ## 4. Werkbeperking en prioritering
 
 **CPO-werkafspraak:** maximaal twee grote, gelijktijdige werkstromen, tenzij de Executive Sponsor anders beslist. Kleine noodzakelijke onderhoudstaken kunnen doorgaan zolang ze deze limiet niet feitelijk omzeilen.

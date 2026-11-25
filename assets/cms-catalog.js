@@ -1449,6 +1449,34 @@ window.GF_CMS_CATALOG=[
         "fr": "L’IA et l’automatisation accélèrent ce qui existe déjà. Si vos équipes, vos processus et vos systèmes ne travaillent pas ensemble, vous accélérez surtout la confusion. La cohérence fait que tout va dans la même direction."
       },
       {
+        "key": "coh-kmo-kort-h",
+        "type": "text",
+        "label": "In het kort",
+        "nl": "In het kort",
+        "fr": "En bref"
+      },
+      {
+        "key": "coh-kmo-k1",
+        "type": "text",
+        "label": "AI en automatisering versterken wat er al is. Trekken mensen, processen en systemen in dezelfde richting, dan versterken ze de waarde.",
+        "nl": "AI en automatisering versterken wat er al is. Trekken mensen, processen en systemen in dezelfde richting, dan versterken ze de waarde.",
+        "fr": "L’IA et l’automatisation renforcent ce qui existe déjà. Si les personnes, les processus et les systèmes tirent dans la même direction, elles renforcent la valeur."
+      },
+      {
+        "key": "coh-kmo-k2",
+        "type": "text",
+        "label": "We starten bij het knelpunt dat vandaag de meeste tijd en geld kost, en meten wat de aanpak oplevert.",
+        "nl": "We starten bij het knelpunt dat vandaag de meeste tijd en geld kost, en meten wat de aanpak oplevert.",
+        "fr": "Nous commençons par le point de blocage qui coûte aujourd’hui le plus de temps et d’argent, et nous mesurons ce que l’approche rapporte."
+      },
+      {
+        "key": "coh-kmo-k3",
+        "type": "text",
+        "label": "Daarna leert uw bedrijf zelf bijsturen wanneer klanten, markt of regels veranderen.",
+        "nl": "Daarna leert uw bedrijf zelf bijsturen wanneer klanten, markt of regels veranderen.",
+        "fr": "Ensuite, votre entreprise apprend à s’ajuster elle-même lorsque les clients, le marché ou les règles changent."
+      },
+      {
         "key": "coh-kmo-03",
         "type": "text",
         "label": "Herkenbaar voor een groeiende kmo?",
@@ -1568,6 +1596,13 @@ window.GF_CMS_CATALOG=[
         "fr": "Notre approche"
       },
       {
+        "key": "coh-kmo-17b",
+        "type": "text",
+        "label": "Vier stappen. We beginnen bij één knelpunt en meten wat elke stap oplevert.",
+        "nl": "Vier stappen. We beginnen bij één knelpunt en meten wat elke stap oplevert.",
+        "fr": "Quatre étapes. Nous commençons par un seul point de blocage et mesurons ce que chaque étape rapporte."
+      },
+      {
         "key": "coh-kmo-18",
         "type": "text",
         "label": "Coherentiescan.",
@@ -1650,6 +1685,62 @@ window.GF_CMS_CATALOG=[
         "label": "Automatisering en AI die blijven werken, omdat het werk eromheen klopt.",
         "nl": "Automatisering en AI die blijven werken, omdat het werk eromheen klopt.",
         "fr": "Une automatisation et une IA qui continuent de fonctionner, parce que le travail autour est cohérent."
+      },
+      {
+        "key": "coh-kmo-vw-h",
+        "type": "text",
+        "label": "Voor zaakvoerders en directie van groeiende kmo’s",
+        "nl": "Voor zaakvoerders en directie van groeiende kmo’s",
+        "fr": "Pour les dirigeants de PME en croissance"
+      },
+      {
+        "key": "coh-kmo-vw-p",
+        "type": "text",
+        "label": "Uw bedrijf groeit, maar beslissingen, processen en systemen volgen niet meer mee. Of u wilt AI en automatisering invoeren en eerst weten waar het fundament wringt.",
+        "nl": "Uw bedrijf groeit, maar beslissingen, processen en systemen volgen niet meer mee. Of u wilt AI en automatisering invoeren en eerst weten waar het fundament wringt.",
+        "fr": "Votre entreprise grandit, mais les décisions, les processus et les systèmes ne suivent plus. Ou vous voulez introduire l’IA et l’automatisation, et savoir d’abord où les fondations coincent."
+      },
+      {
+        "key": "coh-kmo-faq-h",
+        "type": "text",
+        "label": "Veelgestelde vragen",
+        "nl": "Veelgestelde vragen",
+        "fr": "Questions fréquentes"
+      },
+      {
+        "key": "coh-kmo-f1",
+        "type": "text",
+        "label": "We starten niet met een groot rapport. We kiezen één knelpunt, pakken het aan en meten wat het oplevert. Pas daarna kiest u de volgende stap.",
+        "nl": "We starten niet met een groot rapport. We kiezen één knelpunt, pakken het aan en meten wat het oplevert. Pas daarna kiest u de volgende stap.",
+        "fr": "Nous ne commençons pas par un épais rapport. Nous choisissons un point de blocage, le traitons et mesurons ce que cela rapporte. Ce n’est qu’ensuite que vous choisissez l’étape suivante."
+      },
+      {
+        "key": "coh-kmo-f2",
+        "type": "text",
+        "label": "Ja, voor het proces dat u wilt automatiseren. Botsen daar beslissingen, processen of systemen, dan automatiseert u vooral de verwarring. Daarom kijken we eerst naar dat fundament.",
+        "nl": "Ja, voor het proces dat u wilt automatiseren. Botsen daar beslissingen, processen of systemen, dan automatiseert u vooral de verwarring. Daarom kijken we eerst naar dat fundament.",
+        "fr": "Oui, pour le processus que vous voulez automatiser. Si les décisions, les processus ou les systèmes s’y heurtent, vous automatisez surtout la confusion. C’est pourquoi nous examinons d’abord ces fondations."
+      },
+      {
+        "key": "coh-kmo-f3",
+        "type": "text",
+        "label": "Een online vragenlijst van 20 vragen, in ongeveer 5 minuten en zonder registratie. U ziet waar de samenhang in uw bedrijf het meest ontbreekt.",
+        "nl": "Een online vragenlijst van 20 vragen, in ongeveer 5 minuten en zonder registratie. U ziet waar de samenhang in uw bedrijf het meest ontbreekt.",
+        "fr": "Un questionnaire en ligne de 20 questions, en 5 minutes environ et sans inscription. Vous voyez où la cohérence manque le plus dans votre entreprise."
+      },
+      {
+        "key": "coh-kmo-f4",
+        "type": "text",
+        "label": "Dat hangt af van het knelpunt. In het eerste gesprek spreken we af wie betrokken is en hoeveel tijd dat vraagt.",
+        "nl": "Dat hangt af van het knelpunt. In het eerste gesprek spreken we af wie betrokken is en hoeveel tijd dat vraagt.",
+        "fr": "Cela dépend du point de blocage. Lors du premier entretien, nous convenons de qui est impliqué et du temps que cela demande."
+      },
+      {
+        "key": "coh-kmo-f5",
+        "type": "text",
+        "label": "Dat hangt af van het knelpunt dat we aanpakken. Na het eerste gesprek krijgt u een voorstel met een duidelijke prijs.",
+        "nl": "Dat hangt af van het knelpunt dat we aanpakken. Na het eerste gesprek krijgt u een voorstel met een duidelijke prijs.",
+        "fr": "Cela dépend du point de blocage que nous traitons. Après le premier entretien, vous recevez une proposition avec un prix clair."
       },
       {
         "key": "coh-kmo-30",

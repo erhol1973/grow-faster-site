@@ -5,7 +5,7 @@ const {test}=require('node:test'),assert=require('node:assert/strict'),fs=requir
 const root=path.resolve(__dirname,'..','dist');const read=f=>fs.readFileSync(path.join(root,f),'utf8');
 // 25 Nov 2026: Orion page strings live in assets/i18n-orion.js (editorial redesign, loaded after i18n.js on orion.html only).
 // 25 Nov 2026: homepage strings moved to assets/i18n-home.js (loaded after i18n.js on index.html); it only adds keys, so merging it is neutral for other pages.
-const I18N=()=>{const c={window:{}};vm.runInNewContext(read('assets/i18n.js'),c);vm.runInNewContext(read('assets/i18n-home.js'),c);vm.runInNewContext(read('assets/i18n-orion.js'),c);return c.window.I18N};
+const I18N=()=>{const c={window:{}};vm.runInNewContext(read('assets/i18n.js'),c);vm.runInNewContext(read('assets/i18n-home.js'),c);vm.runInNewContext(read('assets/i18n-orion.js'),c);vm.runInNewContext(read('assets/i18n-coherence.js'),c);return c.window.I18N};
 const main=f=>read(f).match(/<main[\s\S]*?<\/main>/)[0];
 const visible=html=>html.replace(/<script[\s\S]*?<\/script>|<style[\s\S]*?<\/style>/g,'').replace(/<([a-z0-9]+)[^>]*data-(?:notr|ih)[^>]*>[\s\S]*?<\/\1>/g,'');
 // Names stay the same in both languages.

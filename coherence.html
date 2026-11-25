@@ -35,21 +35,67 @@
 <noscript><style>.nav.nav-executive .nav-toggle,.nav.nav-executive .burger{display:none}.nav.nav-executive .wrap{height:auto;min-height:68px;flex-wrap:wrap;padding-block:12px}.nav.nav-executive .wrap>#navlist{position:static;display:flex;flex-wrap:wrap;gap:8px 20px;width:100%;order:3}.nav.nav-executive .lang-top{margin-left:auto}</style></noscript>
 <style>html:not(.i18n-ready) main{visibility:hidden;animation:i18n-reveal 0s 2.5s forwards}@keyframes i18n-reveal{to{visibility:visible}}</style><noscript><style>html:not(.i18n-ready) main{visibility:visible;animation:none}</style></noscript>
 <link rel="stylesheet" href="assets/home-hero.css?v=20261117-home-film-3">
-<style>
-.page-copy{max-width:70ch}.page-copy p{font-size:19px;line-height:1.7;margin:0 0 18px}
-#werking .cards6{grid-template-columns:repeat(4,minmax(0,1fr))}
-.step-n{font-family:var(--f-mono);font-size:13px;letter-spacing:.12em;color:var(--ai-ink)}
-.memory{margin-top:28px;font-size:19px;line-height:1.6;max-width:70ch}
-.trust-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px 40px;list-style:none;padding:0;margin:28px 0}
-.trust-list li{padding-left:28px;position:relative;font-size:18px;line-height:1.45}
-.trust-list li::before{content:"";position:absolute;left:0;top:.45em;width:12px;height:12px;border-radius:2px;background:var(--ai)}
-.fine{font-size:15px;line-height:1.6;max-width:70ch;color:var(--muted,#5b6472)}.page-copy p.fine{font-size:15px}.faq{max-width:80ch}.faq details{border-top:1px solid var(--line);padding:18px 0}.faq details:last-child{border-bottom:1px solid var(--line)}
-.faq details>summary{display:flex;justify-content:space-between;gap:16px;align-items:baseline;padding:0;background:none;cursor:pointer;font-family:inherit;font-size:19px;font-weight:600;letter-spacing:0;text-transform:none;line-height:1.4;color:var(--brand)}.faq details>summary::after{content:"+";flex:none;font-weight:400;color:var(--ai-ink)}.faq details[open]>summary::after{content:"−"}.faq summary:focus-visible{outline:3px solid var(--ai);outline-offset:4px}
-.faq details p{margin:12px 0 0;font-size:18px;line-height:1.65}
-.pilot-box{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:40px;align-items:end}
-@media(max-width:900px){#werking .cards6{grid-template-columns:1fr}.trust-list{grid-template-columns:1fr}.pilot-box{grid-template-columns:1fr;gap:20px}}
+<style data-apple>
+/* Bedrijfsontwikkeling, 25 Nov 2026: same premium layout as orion.html (Apple-like). Only the site's existing colour tokens are used. */
+.coh-apple{--sf:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text","Aptos","Hanken Grotesk","Segoe UI",Helvetica,Arial,sans-serif}
+.coh-apple main{font-family:var(--sf)}
+.coh-apple .hero.hero-minimal h1{font-family:var(--sf);font-weight:700;letter-spacing:-.035em;line-height:1.05;max-width:16ch}
+.coh-apple .hero-minimal .btn,.coh-apple #contact .btn{border-radius:980px;padding:14px 26px}
+.coh-apple main section{padding-block:clamp(80px,10vw,140px)}
+.ap-head{max-width:860px;margin:0 auto clamp(40px,5vw,64px);text-align:center}
+.ap-head h2{margin:0;font:700 clamp(36px,5.2vw,64px)/1.06 var(--sf);letter-spacing:-.035em;color:var(--brand)}
+.ap-head p{margin:20px auto 0;max-width:40ch;font:400 clamp(19px,1.8vw,24px)/1.45 var(--sf);letter-spacing:-.01em;color:var(--muted)}
+.ap-kort{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.ap-kort>li,.ap-kort>article{padding:36px 32px;border-radius:28px;background:var(--tint)}
+.ap-kort h3{margin:0 0 10px;font:700 24px/1.2 var(--sf);letter-spacing:-.02em;color:var(--brand)}
+.ap-kort p{margin:0;font-size:17px;line-height:1.55;color:var(--ink)}
+.ap-kort .tag{display:block;margin-bottom:10px;border:0;padding:0;font:600 15px/1.4 var(--sf);letter-spacing:0;text-transform:none;color:var(--ai-ink)}
+.ap-gain p{font:600 20px/1.4 var(--sf);letter-spacing:-.015em;color:var(--brand)}
+.cijfers{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.cijfer{padding:clamp(32px,4vw,48px) clamp(28px,3vw,36px);border-radius:28px;background:var(--tint);text-align:center}
+.cijfer:first-child{background:var(--brand-fill);color:var(--on-brand)}
+.cijfer .getal{display:block;font:700 clamp(52px,6.4vw,84px)/1 var(--sf);letter-spacing:-.05em;color:var(--brand)}
+.cijfer:first-child .getal,.cijfer:first-child p{color:var(--on-brand)}
+.cijfer p{margin:18px 0 0;font-size:17px;line-height:1.55;color:var(--ink)}
+.cijfer .bron{margin-top:16px;font-size:14px;line-height:1.5;color:var(--muted)}
+.cijfer:first-child .bron{opacity:.8}
+.cijfer .bron a{color:inherit}
+.ap-split{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+.ap-tile{padding:clamp(32px,4vw,52px);border-radius:28px;background:var(--tint)}
+.ap-tile h2{margin:0 0 16px;font:700 clamp(28px,3.2vw,40px)/1.1 var(--sf);letter-spacing:-.03em;color:var(--brand)}
+.ap-tile p{margin:0;font-size:18px;line-height:1.65;color:var(--ink)}
+.ap-more{margin:40px 0 0;text-align:center;font:600 19px/1.4 var(--sf)}
+.coh-apple .home-film{max-width:1080px;margin:0 auto}
+.coh-apple .home-film video{border-radius:28px}
+.coh-apple .ec-film-text{margin:16px auto 0;max-width:1080px}
+.mk-steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}
+.mk-steps li{padding:32px 28px;border-radius:28px;background:var(--tint)}
+.mk-steps .step-n{display:block;font:700 44px/1 var(--sf);letter-spacing:-.04em;color:var(--ai-ink);margin-bottom:20px}
+.mk-steps h3{margin:0 0 8px;font:700 20px/1.3 var(--sf);letter-spacing:-.015em;color:var(--brand)}
+.mk-steps p{margin:0;font-size:16px;line-height:1.6}
+.ap-voorwie{max-width:760px;margin:0 auto;text-align:center;font:400 clamp(20px,2vw,26px)/1.5 var(--sf);letter-spacing:-.01em;color:var(--ink)}
+.faq{max-width:760px;margin:0 auto}
+.faq details{border-bottom:1px solid var(--line);padding:22px 0}
+.faq details:first-child{border-top:1px solid var(--line)}
+.faq details>summary{display:flex;justify-content:space-between;gap:16px;align-items:center;padding:0;background:none;cursor:pointer;list-style:none;font:600 20px/1.4 var(--sf);letter-spacing:-.01em;text-transform:none;color:var(--brand)}
+.faq details>summary::-webkit-details-marker{display:none}
+.faq details>summary::after{content:"+";flex:none;font:300 28px/1 var(--sf);color:var(--ai-ink);transition:transform .25s ease}
+.faq details[open]>summary::after{transform:rotate(45deg)}
+.faq summary:focus-visible{outline:3px solid var(--ai);outline-offset:4px;border-radius:6px}
+.faq details p{margin:12px 0 0;font-size:17px;line-height:1.65;color:var(--ink)}
+.coh-apple #contact{background:var(--brand-fill);color:var(--on-brand);text-align:center}
+.coh-apple #contact .pilot-box{display:block}
+.coh-apple #contact h2{margin:0 auto;max-width:18ch;font:700 clamp(36px,5.2vw,64px)/1.06 var(--sf);letter-spacing:-.035em;color:var(--on-brand)}
+.coh-apple #contact .lede{margin:20px auto 0;max-width:52ch;font-size:19px;line-height:1.55;color:var(--on-brand);opacity:.82}
+.coh-apple #contact .ctas{margin-top:36px;display:flex;justify-content:center}
+.coh-apple #contact .btn.primary{background:var(--on-brand);border-color:var(--on-brand);color:var(--brand-fill)}
+.coh-apple #contact .btn.primary:hover{background:var(--tint);border-color:var(--tint);color:var(--brand-fill)}
+.coh-apple #contact a:focus-visible{outline:3px solid var(--on-brand);outline-offset:4px}
+@media(prefers-reduced-motion:reduce){.faq details>summary::after{transition:none}}
+@media(max-width:1000px){.mk-steps{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:760px){.ap-kort,.ap-split,.cijfers,.mk-steps{grid-template-columns:1fr}.ap-kort>li,.ap-kort>article,.mk-steps li{padding:28px 24px}}
 </style>
-<script defer src="assets/i18n.js?v=20261123-release2"></script>
+<script defer src="assets/i18n.js?v=20261123-release2"></script><script defer src="assets/i18n-coherence.js?v=20261125-apple"></script>
 <script defer src="assets/content.js?v=20261030-editorial-three"></script>
 <script defer src="assets/models.js?v=20261029-quality"></script>
 <script defer src="assets/consent.js?v=20261029-quality"></script>
@@ -57,20 +103,9 @@
 <style data-hero>.hero.hero-customer .hero-bg img{object-position:74% 35%}</style>
 <link rel="stylesheet" href="assets/coherence-film.css">
 <style data-film>.home-film{margin:2.5rem 0 0;max-width:960px}.home-film video{display:block;width:100%;height:auto;aspect-ratio:16/9;background:#060a12;border-radius:12px}.ec-film-text{margin-top:16px;max-width:70ch}.ec-film-text>summary{display:block;padding:8px 0;background:none;cursor:pointer;font-family:inherit;font-size:17px;font-weight:650;letter-spacing:0;text-transform:none;color:var(--brand)}.ec-film-text ol{line-height:1.7}</style>
-<style data-cijfers>
-.cijfers{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;margin-top:28px}
-.cijfer{padding:24px;border:1px solid var(--line);background:var(--bg)}
-.cijfer .getal{display:block;font-size:44px;line-height:1.1;font-weight:700;color:var(--brand)}
-.cijfer p{margin:12px 0 0;font-size:18px;line-height:1.5}
-.cijfer .bron{margin-top:14px;font-size:14px;line-height:1.5;color:var(--muted,#5b6472)}
-.cijfer .bron a{color:inherit}
-.fine{font-size:15px;line-height:1.6;max-width:70ch;margin-top:20px}
-#aanpak .cards6{grid-template-columns:repeat(4,minmax(0,1fr))}
-@media(max-width:900px){.cijfers,#aanpak .cards6{grid-template-columns:1fr}}
-</style>
 <style data-cms-media>[data-cms-video-section] video{display:block;width:100%;max-width:960px;height:auto;margin:0 auto 2rem}[data-cms-video-section][hidden]{display:none}</style>
 </head>
-<body data-cms-page="coherence" class="editorial-home">
+<body data-cms-page="coherence" class="editorial-home coh-apple">
 <a class="skip-link" href="#top">Naar de inhoud</a>
 <nav class="nav nav-executive" aria-label="Sections">
   <div class="wrap">
@@ -101,41 +136,79 @@
   <div class="ctas"><a href="afspraak.html?onderwerp=organisatie" class="btn primary" id="hero-gesprek">Plan een gesprek <span aria-hidden="true">→</span></a><a href="eca.html" class="btn ghost" id="hero-scan">Ontdek uw coherentieprofiel <span aria-hidden="true">→</span></a></div>
 </div></div></header>
 
-<section id="herkenbaar" class="alt"><div class="wrap"><div class="head"><h2 data-cms="coh-kmo-03">Herkenbaar voor een groeiende kmo?</h2></div><div class="cards6">
-  <article class="vcard in"><h3 data-cms="coh-kmo-04">Beslissingen blijven liggen.</h3><p data-cms="coh-kmo-05">Iedereen wacht op de zaakvoerder, omdat niet duidelijk is wie wat mag beslissen.</p></article>
-  <article class="vcard in"><h3 data-cms="coh-kmo-06">Elke afdeling haar eigen werkwijze.</h3><p data-cms="coh-kmo-07">Verkoop, productie en kwaliteit werken met eigen lijsten en systemen, en stemmen af via mails en vergaderingen.</p></article>
-  <article class="vcard in"><h3 data-cms="coh-kmo-08">Nieuwe tools, oude problemen.</h3><p data-cms="coh-kmo-09">Een nieuw systeem of een AI-tool lost weinig op als het werk eromheen niet mee verandert.</p></article>
-</div></div></section>
+<section id="kort" aria-labelledby="kort-h"><div class="wrap">
+  <div class="ap-head"><h2 id="kort-h" data-cms="coh-kmo-kort-h">In het kort</h2></div>
+  <ul class="ap-kort">
+    <li><h3>Samenhang eerst</h3><p data-cms="coh-kmo-k1">AI en automatisering versterken wat er al is. Trekken mensen, processen en systemen in dezelfde richting, dan versterken ze de waarde.</p></li>
+    <li><h3>Eén knelpunt tegelijk</h3><p data-cms="coh-kmo-k2">We starten bij het knelpunt dat vandaag de meeste tijd en geld kost, en meten wat de aanpak oplevert.</p></li>
+    <li><h3>Blijven bijsturen</h3><p data-cms="coh-kmo-k3">Daarna leert uw bedrijf zelf bijsturen wanneer klanten, markt of regels veranderen.</p></li>
+  </ul>
+</div></section>
 
-<section id="cijfers"><div class="wrap"><div class="head"><h2 data-cms="coh-kmo-10">Wat onderzoek laat zien</h2><p class="lede" data-cms="coh-kmo-11">De meeste cijfers komen uit grotere bedrijven. In een eerste traject meten we wat het bij u kost.</p></div><div class="cijfers">
+<section id="herkenbaar" aria-labelledby="herkenbaar-h"><div class="wrap">
+  <div class="ap-head"><h2 id="herkenbaar-h" data-cms="coh-kmo-03">Herkenbaar voor een groeiende kmo?</h2></div>
+  <div class="ap-kort">
+    <article><h3 data-cms="coh-kmo-04">Beslissingen blijven liggen.</h3><p data-cms="coh-kmo-05">Iedereen wacht op de zaakvoerder, omdat niet duidelijk is wie wat mag beslissen.</p></article>
+    <article><h3 data-cms="coh-kmo-06">Elke afdeling haar eigen werkwijze.</h3><p data-cms="coh-kmo-07">Verkoop, productie en kwaliteit werken met eigen lijsten en systemen, en stemmen af via mails en vergaderingen.</p></article>
+    <article><h3 data-cms="coh-kmo-08">Nieuwe tools, oude problemen.</h3><p data-cms="coh-kmo-09">Een nieuw systeem of een AI-tool lost weinig op als het werk eromheen niet mee verandert.</p></article>
+  </div>
+</div></section>
+
+<section id="cijfers" aria-labelledby="cijfers-h"><div class="wrap">
+  <div class="ap-head"><h2 id="cijfers-h" data-cms="coh-kmo-10">Wat onderzoek laat zien</h2><p data-cms="coh-kmo-11">De meeste cijfers komen uit grotere bedrijven. In een eerste traject meten we wat het bij u kost.</p></div>
+  <div class="cijfers">
   <article class="cijfer"><span class="getal" data-notr>9%</span><p data-cms="coh-kmo-12">van de managers kan altijd rekenen op collega’s van andere afdelingen. Op de eigen leidinggevende en het eigen team rekent 84%.</p><p class="bron">Bevraging van 7.600 managers in 262 bedrijven. Bron: <a href="https://hbr.org/2015/03/why-strategy-execution-unravels-and-what-to-do-about-it" target="_blank" rel="noopener" data-notr>Sull, Homkes &amp; Sull, Harvard Business Review, 2015</a></p></article>
   <article class="cijfer"><span class="getal" data-notr>61%</span><p data-cms="coh-kmo-13">van de managers zegt dat het grootste deel van hun tijd voor beslissingen niet goed besteed is.</p><p class="bron">Internationale bevraging van managers. Bron: <a href="https://www.mckinsey.com/capabilities/people-and-organizational-performance/our-insights/decision-making-in-the-age-of-urgency" target="_blank" rel="noopener" data-notr>McKinsey, 2019</a></p></article>
   <article class="cijfer"><span class="getal">€ 5,99 miljard</span><p data-cms="coh-kmo-14">kostten administratieve verplichtingen de Belgische bedrijven en zelfstandigen in 2022, of 1,08% van het bbp.</p><p class="bron">Enkel fiscale, milieu- en werkgeversverplichtingen. Bron: <a href="https://econpapers.repec.org/RePEc:fpb:wpaper:202401" target="_blank" rel="noopener">Federaal Planbureau, 2024</a></p></article>
-</div></div></section>
+  </div>
+</div></section>
 
-<section id="wat-is" class="alt"><div class="wrap"><div class="head"><h2 data-cms="coh-kmo-15">Wat coherentie is</h2></div><div class="page-copy">
-  <p data-cms="coh-kmo-16">Coherentie betekent dat de keuzes in uw bedrijf elkaar versterken: wat u wilt bereiken, hoe u beslist, hoe het werk loopt, welke systemen u gebruikt en wat uw mensen kunnen. Zit daar samenhang in, dan levert elke verbetering meer op, ook AI en automatisering. Daarom is coherentie het fundament van onze aanpak.</p>
-</div><p class="all-solutions"><a href="oplossingen.html">Alle oplossingen <span aria-hidden="true">→</span></a></p></div></section>
+<section id="wat-is"><div class="wrap">
+  <div class="ap-split">
+    <article class="ap-tile"><h2 data-cms="coh-kmo-15">Wat coherentie is</h2><p data-cms="coh-kmo-16">Coherentie betekent dat de keuzes in uw bedrijf elkaar versterken: wat u wilt bereiken, hoe u beslist, hoe het werk loopt, welke systemen u gebruikt en wat uw mensen kunnen. Zit daar samenhang in, dan levert elke verbetering meer op, ook AI en automatisering. Daarom is coherentie het fundament van onze aanpak.</p></article>
+    <article class="ap-tile" id="adaptief"><h2 data-cms="coh-kmo-adapt-h">Van samenhang naar een adaptief bedrijf</h2><p data-cms="coh-kmo-adapt-p">Een adaptief bedrijf past zich snel aan als klanten, markt of regels veranderen. Dat lukt als beslissingen dicht bij het werk genomen worden, processen eenvoudig aan te passen zijn en systemen gegevens met elkaar delen. Coherentie is de eerste stap. Daarna helpen we uw bedrijf om zelf te blijven bijsturen: met korte verbeterrondes, duidelijke afspraken over wie wat beslist en cijfers die iedereen ziet.</p></article>
+  </div>
+  <p class="ap-more all-solutions"><a href="oplossingen.html">Alle oplossingen <span aria-hidden="true">→</span></a></p>
+</div></section>
 
-<section id="adaptief"><div class="wrap"><div class="head"><h2 data-cms="coh-kmo-adapt-h">Van samenhang naar een adaptief bedrijf</h2></div><div class="page-copy">
-  <p data-cms="coh-kmo-adapt-p">Een adaptief bedrijf past zich snel aan als klanten, markt of regels veranderen. Dat lukt als beslissingen dicht bij het werk genomen worden, processen eenvoudig aan te passen zijn en systemen gegevens met elkaar delen. Coherentie is de eerste stap. Daarna helpen we uw bedrijf om zelf te blijven bijsturen: met korte verbeterrondes, duidelijke afspraken over wie wat beslist en cijfers die iedereen ziet.</p>
-</div></div></section>
+<section id="ec-film" class="ec-sec ec-film" aria-labelledby="ec-film-h"><div class="wrap">
+  <div class="ap-head"><h2 id="ec-film-h">Geen AI-waarde zonder samenhang</h2><p>Waarom samenhang de voorwaarde is voor AI-waarde, in 31 seconden.</p></div>
+  <figure class="home-film" id="home-film" data-notr><video controls preload="none" playsinline width="1920" height="1080" poster="img/enterprise-coherence-essentie.webp" aria-label="Enterprise Coherence" aria-describedby="ec-film-text"><source src="media/enterprise-coherence-essentie-nl.mp4" type="video/mp4"></video></figure><details class="ec-film-text" id="ec-film-text"><summary>Tekst in beeld</summary><ol><li>AI versterkt het systeem waarin het terechtkomt.</li><li>Is dat systeem versnipperd? Dan versterkt AI de versnippering: besluiten blijven wachten, werk wisselt telkens van hand en prioriteiten botsen.</li><li>Is het coherent? Dan versterkt AI de waarde: strategie, operating model en waardestromen, beslisrechten en governance, technologie, data en AI, en capaciteiten, prikkels en waarde komen samen in één stroom.</li><li>Waar staat jouw onderneming? 20 vragen, 5 minuten, geen registratie. Een voorbeeldprofiel toont beslisrechten en governance als belangrijkste coherentiebeperking.</li><li>Geen AI business value zonder Enterprise Coherence. Ontdek je coherentieprofiel op grow-faster.be.</li></ol></details>
+</div></section>
 
-<section id="ec-film" class="ec-sec ec-film" aria-labelledby="ec-film-h"><div class="wrap"><div class="head"><h2 id="ec-film-h">Geen AI-waarde zonder samenhang</h2><p class="lede">Waarom samenhang de voorwaarde is voor AI-waarde, in 31 seconden.</p></div><figure class="home-film" id="home-film" data-notr><video controls preload="none" playsinline width="1920" height="1080" poster="img/enterprise-coherence-essentie.webp" aria-label="Enterprise Coherence" aria-describedby="ec-film-text"><source src="media/enterprise-coherence-essentie-nl.mp4" type="video/mp4"></video></figure><details class="ec-film-text" id="ec-film-text"><summary>Tekst in beeld</summary><ol><li>AI versterkt het systeem waarin het terechtkomt.</li><li>Is dat systeem versnipperd? Dan versterkt AI de versnippering: besluiten blijven wachten, werk wisselt telkens van hand en prioriteiten botsen.</li><li>Is het coherent? Dan versterkt AI de waarde: strategie, operating model en waardestromen, beslisrechten en governance, technologie, data en AI, en capaciteiten, prikkels en waarde komen samen in één stroom.</li><li>Waar staat jouw onderneming? 20 vragen, 5 minuten, geen registratie. Een voorbeeldprofiel toont beslisrechten en governance als belangrijkste coherentiebeperking.</li><li>Geen AI business value zonder Enterprise Coherence. Ontdek je coherentieprofiel op grow-faster.be.</li></ol></details></div></section>
+<section id="aanpak" aria-labelledby="aanpak-h"><div class="wrap">
+  <div class="ap-head"><h2 id="aanpak-h" data-cms="coh-kmo-17">Zo pakken we het aan</h2><p data-cms="coh-kmo-17b">Vier stappen. We beginnen bij één knelpunt en meten wat elke stap oplevert.</p></div>
+  <ol class="mk-steps">
+    <li><span class="step-n" data-notr>01</span><h3 data-cms="coh-kmo-18">Coherentiescan.</h3><p data-cms="coh-kmo-19">In een gesprek en een korte vragenlijst brengen we in kaart waar beslissingen, processen en systemen botsen.</p></li>
+    <li><span class="step-n" data-notr>02</span><h3 data-cms="coh-kmo-20">Eén knelpunt kiezen.</h3><p data-cms="coh-kmo-21">Samen kiezen we het knelpunt dat vandaag de meeste tijd en geld kost.</p></li>
+    <li><span class="step-n" data-notr>03</span><h3 data-cms="coh-kmo-22">Aanpakken en meten.</h3><p data-cms="coh-kmo-23">We passen afspraken, processen of systemen aan en meten wat het oplevert.</p></li>
+    <li><span class="step-n" data-notr>04</span><h3 data-cms="coh-kmo-24">Dan pas automatiseren.</h3><p data-cms="coh-kmo-25">Automatisering en AI komen daarna, op een fundament dat klopt.</p></li>
+  </ol>
+</div></section>
 
-<section id="aanpak" class="alt"><div class="wrap"><div class="head"><h2 data-cms="coh-kmo-17">Zo pakken we het aan</h2></div><div class="cards6">
-  <article class="vcard in"><span class="step-n" data-notr>01</span><h3 data-cms="coh-kmo-18">Coherentiescan.</h3><p data-cms="coh-kmo-19">In een gesprek en een korte vragenlijst brengen we in kaart waar beslissingen, processen en systemen botsen.</p></article>
-  <article class="vcard in"><span class="step-n" data-notr>02</span><h3 data-cms="coh-kmo-20">Eén knelpunt kiezen.</h3><p data-cms="coh-kmo-21">Samen kiezen we het knelpunt dat vandaag de meeste tijd en geld kost.</p></article>
-  <article class="vcard in"><span class="step-n" data-notr>03</span><h3 data-cms="coh-kmo-22">Aanpakken en meten.</h3><p data-cms="coh-kmo-23">We passen afspraken, processen of systemen aan en meten wat het oplevert.</p></article>
-  <article class="vcard in"><span class="step-n" data-notr>04</span><h3 data-cms="coh-kmo-24">Dan pas automatiseren.</h3><p data-cms="coh-kmo-25">Automatisering en AI komen daarna, op een fundament dat klopt.</p></article>
-</div></div></section>
-
-<section id="opbrengst"><div class="wrap"><div class="head"><h2 data-cms="coh-kmo-26">Wat het u oplevert</h2></div>
-  <ul class="trust-list">
-    <li data-cms="coh-kmo-27">Snellere beslissingen en minder wachten op één persoon.</li>
-    <li data-cms="coh-kmo-28">Minder afstemmingsoverleg en minder dubbel werk.</li>
-    <li data-cms="coh-kmo-29">Automatisering en AI die blijven werken, omdat het werk eromheen klopt.</li>
+<section id="opbrengst" aria-labelledby="opbrengst-h"><div class="wrap">
+  <div class="ap-head"><h2 id="opbrengst-h" data-cms="coh-kmo-26">Wat het u oplevert</h2></div>
+  <ul class="ap-kort ap-gain">
+    <li><span class="tag">Beslissen</span><p data-cms="coh-kmo-27">Snellere beslissingen en minder wachten op één persoon.</p></li>
+    <li><span class="tag">Afstemmen</span><p data-cms="coh-kmo-28">Minder afstemmingsoverleg en minder dubbel werk.</p></li>
+    <li><span class="tag">Automatiseren</span><p data-cms="coh-kmo-29">Automatisering en AI die blijven werken, omdat het werk eromheen klopt.</p></li>
   </ul>
+</div></section>
+
+<section id="voor-wie" aria-labelledby="voor-wie-h"><div class="wrap">
+  <div class="ap-head"><h2 id="voor-wie-h" data-cms="coh-kmo-vw-h">Voor zaakvoerders en directie van groeiende kmo’s</h2></div>
+  <p class="ap-voorwie" data-cms="coh-kmo-vw-p">Uw bedrijf groeit, maar beslissingen, processen en systemen volgen niet meer mee. Of u wilt AI en automatisering invoeren en eerst weten waar het fundament wringt.</p>
+</div></section>
+
+<section id="vragen" aria-labelledby="vragen-h"><div class="wrap">
+  <div class="ap-head"><h2 id="vragen-h" data-cms="coh-kmo-faq-h">Veelgestelde vragen</h2></div>
+  <div class="faq">
+  <details><summary>Wat is het verschil met een klassiek adviestraject?</summary><p data-cms="coh-kmo-f1">We starten niet met een groot rapport. We kiezen één knelpunt, pakken het aan en meten wat het oplevert. Pas daarna kiest u de volgende stap.</p></details>
+  <details><summary>Moeten we eerst samenhang brengen voor we automatiseren?</summary><p data-cms="coh-kmo-f2">Ja, voor het proces dat u wilt automatiseren. Botsen daar beslissingen, processen of systemen, dan automatiseert u vooral de verwarring. Daarom kijken we eerst naar dat fundament.</p></details>
+  <details><summary>Wat is het coherentieprofiel?</summary><p data-cms="coh-kmo-f3">Een online vragenlijst van 20 vragen, in ongeveer 5 minuten en zonder registratie. U ziet waar de samenhang in uw bedrijf het meest ontbreekt.</p></details>
+  <details><summary>Hoeveel tijd vraagt het van ons?</summary><p data-cms="coh-kmo-f4">Dat hangt af van het knelpunt. In het eerste gesprek spreken we af wie betrokken is en hoeveel tijd dat vraagt.</p></details>
+  <details><summary>Wat kost het?</summary><p data-cms="coh-kmo-f5">Dat hangt af van het knelpunt dat we aanpakken. Na het eerste gesprek krijgt u een voorstel met een duidelijke prijs.</p></details>
+  </div>
 </div></section>
 
 <section id="contact" class="tinted" tabindex="-1" aria-labelledby="contact-h"><div class="wrap pilot-box"><div class="head"><h2 id="contact-h" data-cms="coh-kmo-30">Waar wringt het in uw bedrijf?</h2><p class="lede" data-cms="coh-kmo-31">Vertel ons waar het vandaag stroef loopt. In een eerste gesprek kijken we samen waar tijd en geld weglekt.</p></div>

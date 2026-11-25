@@ -7,7 +7,11 @@ function verify(binary){
   const root=path.resolve(__dirname,'..'),config=path.join(root,'.gitleaks.toml');
   const entropy=value=>{const counts={};for(const char of value)counts[char]=(counts[char]||0)+1;return Object.values(counts).reduce((sum,n)=>sum-(n/value.length)*Math.log2(n/value.length),0)};
   // Choose a real public identifier that the unexcepted generic rule detects.
-  const identifier=catalogBlocks(fs.readFileSync(path.join(root,'assets/cms-catalog.js'),'utf8')).map(b=>b.source.key).filter(v=>/^f[a-f0-9]{12,14}-[0-9]+$/.test(v)).sort((a,b)=>entropy(b)-entropy(a))[0];
+  // 25 Nov 2026: retired catalog pages keep their historical identifiers in the language baseline (same allowlist pattern), so both
+  // allowed files are candidate sources; the strongest real identifier is still used and must still be detected elsewhere.
+  const fromCatalog=catalogBlocks(fs.readFileSync(path.join(root,'assets/cms-catalog.js'),'utf8')).map(b=>b.source.key);
+  const fromBaseline=[...fs.readFileSync(path.join(root,'language/nl-baseline.json'),'utf8').matchAll(/^\s*"key": "(f[a-f0-9]{12,14}-[0-9]+)",?\s*$/gm)].map(m=>m[1]);
+  const identifier=[...new Set([...fromCatalog,...fromBaseline])].filter(v=>/^f[a-f0-9]{12,14}-[0-9]+$/.test(v)).sort((a,b)=>entropy(b)-entropy(a)||a.localeCompare(b))[0];
   if(!identifier)throw Error('Missing known public DOM identifier fixture');
   const temporary=fs.mkdtempSync(path.join(os.tmpdir(),'grow-faster-nl-secret-'));
   const generated='  "key": "'+identifier+'",';

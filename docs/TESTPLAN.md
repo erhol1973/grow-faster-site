@@ -8,6 +8,8 @@ Orion, Workflow-automatisering en Training krijgen data-cms-sleutels (ori-, aut-
 
 Tests: cms-client (exacte paginalijst en negatieve gevallen voor de oude pagina's; ondergrens 300 velden in plaats van 400 met reden; nieuw: elke cataloguspagina heeft data-cms-page, loader na site.js in de juiste volgorde en een videoslot), cms-environment (nieuw: elke preview-host gebruikt het testproject, lookalikes en geneste subdomeinen blijven productie), nl-editorial (workshopprijzen zijn geen CMS-standaard meer), release2 (koppen van training.html mogen een data-cms-attribuut dragen). language/nl-extraction.json bijgewerkt; geen adapterwijziging.
 
+Secrets history gate: scripts/nl-secret-guard.cjs koos zijn echte-scanner-fixture uit de catalogus; met de oude pagina's verdween het sterkste publieke ID, waardoor 'identifier-outside-allowed-path' niet meer detecteerde. De guard kiest nu uit catalogus én taalregister (beide onder dezelfde smalle uitzondering) en neemt nog steeds het ID met de hoogste entropie; alle acht scenario's lokaal geverifieerd met Gitleaks 8.24.3 (vóór de fix: dezelfde fout als CI).
+
 ## Homepage herwerkt: terugkerend werk en aanpak, 25 november 2026
 
 Opdracht van de eigenaar: betere structuur, modernere en professionelere vormgeving en uitgebreidere tekst over terugkerend werk. Nieuwe volgorde: hero, toepassingen (vandaag / wij bereiden voor / uw medewerker), terugkerend (nieuw, met gelabeld rekenvoorbeeld en herkenningslijst), aanpak (nieuw, drie fases), fundament, kloof, vertrouwelijk, proof, final. Vormgeving in assets/home.css; homepagevertalingen in assets/i18n-home.js (zelfde patroon als i18n-journal.js), zodat de gedeelde i18n.js binnen het gzip-budget van 65000 bytes blijft. Geen bestaande drempel verhoogd.

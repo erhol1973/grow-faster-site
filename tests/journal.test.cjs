@@ -35,7 +35,11 @@ test('the French Executive Journal address forwards to the Maandelijks Magazine 
 test('edition 1 is published in full with its four parts, sourced figures and French translations',()=>{
  const html=read('journal.html'),sec=html.match(/<section id="editie-1"[\s\S]*?<\/section>/)[0];
  assert.doesNotMatch(sec,/verschijnt binnenkort/,'no longer announced');
- assert.deepEqual([...sec.matchAll(/<h3>([^<]+)<\/h3>/g)].map(m=>m[1]),['Inhoud','Van de redactie','De verspilling','Waar overtypen zit: zes plekken in de kmo','Eén voorbeeld','Waarom niemand het ziet','De aanpak','Welke taak eerst?','Twee weken tellen: het formulier','Wat het oplevert','Wat Orion doet, en wat niet','Veelgestelde vragen','Checklist: is deze taak klaar om te automatiseren?','Bronnen','Colofon','Herkent u deze verspilling?'],'every rubric opens a page');
+ assert.deepEqual([...sec.matchAll(/<h3>([^<]+)<\/h3>/g)].map(m=>m[1]),['Inhoud', 'Van de redactie', 'In het kort', 'Waar overtypen zit: zes plekken in de kmo', 'Een dinsdag op kantoor', 'Waarom niemand het ziet', 'Welke taak eerst?', 'Twee weken tellen: het formulier', 'Wat het oplevert', 'Wat Orion doet, en wat niet', 'Veelgestelde vragen', 'Checklist: is deze taak klaar om te automatiseren?', 'Herkent u deze verspilling?', 'Bronnen', 'Uw voorbeeld in een volgende editie'],'every rubric opens a page');
+ assert.deepEqual([...sec.matchAll(/<h3 class="fb-opener-titel">([^<]+)<\/h3>/g)].map(m=>m[1]),['De verspilling','Eén voorbeeld','De aanpak'],'three parts open with a full-page photo');
+ for(const n of ['kantoor','labo','laadkade','onderhoud'])assert.match(sec,new RegExp('img/magazine-editie-1-'+n+'-880\\.webp"[^>]*alt="[^"]{20,}"'),n+' photo with alt text');
+ for(const n of ['overleg'])assert.match(sec,new RegExp('img/magazine-editie-1-'+n+'-1168\\.webp'),n);
+ assert.equal((sec.match(/<span class="fb-figuur-nr">Figuur \d<\/span>/g)||[]).length,7,'seven numbered figures');
  // Owner rule (25 Nov 2026): an edition is 20 to 35 pages, and the cover carries a photo of the sector the edition is about.
  const pages=(sec.match(/<div class="fb-pagina /g)||[]).length;assert.ok(pages>=20&&pages<=35,'between 20 and 35 pages, got '+pages);assert.equal(pages%2,0,'pages come in sheets of two');
  assert.equal((sec.match(/<div class="fb-blad">/g)||[]).length,pages/2);
@@ -45,16 +49,16 @@ test('edition 1 is published in full with its four parts, sourced figures and Fr
  for(let i=1;i<=pages;i++)assert.ok(sec.includes(`data-pagina="${i}"`),'page '+i);
  assert.match(sec,/<button type="button" class="fb-knop" id="fb-vorige"[^>]*>← Vorige<\/button>[\s\S]*<button type="button" class="fb-knop" id="fb-volgende"[^>]*>Volgende →<\/button>/);
  assert.match(html,/<script defer src="assets\/flipboek\.js\?v=[^"]+"><\/script>/);
- assert.equal((sec.match(/<ol class="editie-stappen">[\s\S]*?<\/ol>/)[0].match(/<li>/g)||[]).length,4);
+ assert.equal([...sec.matchAll(/<ol class="editie-stappen"[^>]*>([\s\S]*?)<\/ol>/g)].reduce((n,m)=>n+(m[1].match(/<li>/g)||[]).length,0),4,'four steps');
  const tables=[...sec.matchAll(/<table class="([^"]+)">[\s\S]*?<tbody>([\s\S]*?)<\/tbody>/g)].map(m=>[m[1],(m[2].match(/<tr>/g)||[]).length]);
- assert.deepEqual(tables,[['editie-tabel fb-formulier',5],['editie-tabel',3]],'counting form with five empty rows, then the three measurements');
+ assert.deepEqual(tables,[['editie-tabel fb-formulier',8],['editie-tabel',3]],'counting form with eight empty rows, then the three measurements');
  assert.match(sec,/2,8 fouten per 100/);assert.match(sec,/6,4 per 100/);
  assert.match(sec,/href="https:\/\/doi\.org\/10\.1136\/bmjopen-2012-002406"/);assert.match(sec,/href="https:\/\/doi\.org\/10\.1093\/jamia\/ocy170"/);
- assert.match(sec,/Het rekenvoorbeeld is een illustratie/,'the worked example is labelled as such');
+ assert.match(sec,/Rekenvoorbeeld, geen meting/,'the worked example is labelled as such');assert.match(sec,/zijn illustraties, geen metingen/);
  assert.match(html,/<script defer src="assets\/i18n\.js\?v=[^"]+"><\/script><script defer src="assets\/i18n-journal\.js\?v=[^"]+"><\/script>/);
  const c={window:{}};vm.runInNewContext(read('assets/i18n.js')+'\n'+read('assets/i18n-journal.js'),c);const I=c.window.I18N;
  const text=sec.replace(/<script[\s\S]*?<\/script>/g,'');
- const lines=[...text.matchAll(/<(?:h3(?: class="[^"]*")?|p(?: class="[^"]*")?|li|strong|th scope="col"|td|dt|dd|span|blockquote class="fb-citaat"|button[^>]*)>([^<]+)</g)].map(m=>m[1].trim()).filter(t=>t&&!/^[\d\s%,.:]+$/.test(t));
+ const lines=[...text.matchAll(/<(?:h3(?: class="[^"]*")?|h4|p(?: class="[^"]*")?|li|strong|b|th scope="col"|td|dt|dd|span(?: class="[^"]*")?|figcaption|blockquote class="[^"]*"|button[^>]*)>([^<]+)</g)].map(m=>m[1].trim()).filter(t=>t&&!/^[\d\s%,.:]+$/.test(t));
  assert.ok(lines.length>=30,'edition lines found: '+lines.length);
  for(const t of lines)assert.ok(I[t]?.[1]&&I[t][1]!==t,'FR missing: '+t);
  assert.equal(I['De verspilling'][1],'Le gaspillage');

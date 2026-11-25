@@ -3,7 +3,7 @@
   "scope": "rendered_local_nl_runtime_dictionaries_static_cms_and_mail",
   "technicalReview": {
     "date": "2026-11-24",
-    "reason": "Magazine editie 1 uitgebreid van acht naar 22 pagina’s met omslagfoto (eigenaarsbeslissing 25 november: 20 tot 35 pagina’s, sectorfoto op de omslag): journal.html rendered DOM, assets/i18n-journal.js (93 nieuwe sleutels), assets/i18n.js (leestijd). Geen adapterwijziging. Orion-film en de vier stappen van Zo werkt Orion verhuisd van index.html naar orion.html (eigenaarsbeslissing 24 november): rendered DOM van beide pagina’s en inline JSON-LD ongewijzigd in betekenis; …"
+    "reason": "Magazine editie 1 herwerkt tot 32 pagina’s in magazine-opmaak (eigenaarsbeslissing 25 november: 20 tot 35 pagina’s, sectorfoto op de omslag, grotere tekst, meer foto’s): journal.html rendered DOM, assets/i18n-journal.js (page-only dictionary, ongebruikte sleutels verwijderd), assets/i18n.js (leestijd). Geen adapterwijziging."
   },
   "javascript": [
     {
@@ -84,7 +84,7 @@
     },
     {
       "file": "assets/i18n-journal.js",
-      "sha256": "923018ae0ff26ded8eee0a76a9e053b95ddd97347e9a30e5e87c7b244dde27da"
+      "sha256": "6eafe1042208ec4ec74b22b049f32527a00cb3a68eed81434b5ee851e3bc3f6a"
     },
     {
       "file": "assets/i18n.js",

@@ -1,10 +1,12 @@
 # Testplan en kwaliteitsbeleid
 
-## Magazine editie 1 op 22 pagina's met omslagfoto, 25 november 2026
+## Magazine editie 1 op 32 pagina's in magazine-opmaak, 25 november 2026
 
-Beslissing van de eigenaar: elke editie telt minimum 20 en maximum 35 pagina's, en de omslag draagt altijd een foto van de sector waarover de editie gaat. Editie 1 groeide van acht naar 22 pagina's: omslag met foto (verpakkingslijn in een voedingsbedrijf, gegenereerd beeld zonder personen of merken, img/magazine-editie-1-omslag-{700,1400}.webp), inhoud, van de redactie, de verspilling (2), waar overtypen zit (2), één voorbeeld (2), waarom niemand het ziet, de aanpak (2), telformulier, wat het oplevert (2), wat Orion doet en niet doet, veelgestelde vragen (2), checklist, bronnen en colofon, volgende stap, achterkant. Geen nieuwe cijfers zonder bron. Leestijd op de pagina en in de hero: een kwartier. 93 nieuwe sleutels in assets/i18n-journal.js.
+Beslissingen van de eigenaar: elke editie telt 20 tot 35 pagina's, de omslag draagt een foto van de sector, de tekst moet groter, de pagina's moeten de beschikbare ruimte gebruiken, er moeten meer foto's in, en de opmaak moet professioneler (in de geest van McKinsey Quarterly). Meting vooraf: op een scherm van 1920 px was de lopende tekst 8,9 px en het paginanummer 5,1 px, omdat de marges met het scherm meegroeiden in plaats van met de pagina.
 
-Tests: tests/journal.test.cjs bewaakt de paginatelling (20 tot 35, even), de omslagfoto met alt-tekst en lazy loading, de rubriekkoppen, de twee tabellen en de vertaling van elke regel (nu ook dt en dd); tests/browser/journal.spec.cjs bladert door 22 pagina's op desktop en mobiel, controleert dat de omslagfoto geladen is en dat geen pagina overloopt. Taalcontract opnieuw gegenereerd.
+Nieuwe opmaak: pagina's in A4-verhouding, zo groot als het scherm toelaat (minstens 530 px breed); alle maten volgen de paginabreedte (container op .fb-blad). Lopende tekst 15 px op 1440 en 18,7 px op 1920, paginanummer 15 tot 18 px, smalle marges. Drie openingspagina's met een foto over de volle pagina (deel 1 tot 3), twee halve fotopagina's, het Orion-schema, zeven genummerde figuren (drie kosten, rekenvoorbeeld als staafgrafiek, foutbereik uit Hong et al., de weg van een fout, vier stappen, keuzematrix, verloop van een pilot), "In het kort", auteursblok, telformulier met acht regels, checklist, een volledige pagina "Volgende stap" en een lezerspagina. Beelden zijn met AI gemaakt (vermeld in het colofon), zonder bestaande personen, bedrijven of merken. Geen nieuwe cijfers zonder bron.
+
+Tests: tests/journal.test.cjs bewaakt de paginatelling (20 tot 35, even), omslagfoto, drie openingsfoto's met alt-tekst, zeven figuren, rubriekkoppen, de vier stappen over twee pagina's, beide tabellen en de vertaling van elke regel (nu ook h4, figuren en bijschriften); tests/browser/journal.spec.cjs bladert door 32 pagina's op desktop en mobiel en controleert dat geen tekst onder de voetregel van een pagina komt, in NL en FR. Taalcontract opnieuw gegenereerd.
 
 ## Orion-film en stappen van de homepage naar orion.html, 24 november 2026
 

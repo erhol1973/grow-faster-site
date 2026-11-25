@@ -36,6 +36,7 @@ test('Transformation opens the book on Books with its order route',async({page})
  const message=new URL(await order.getAttribute('href'));expect(message.pathname).toBe('info@grow-faster.be');expect(message.searchParams.get('subject')).toContain('The Coherent Enterprise');
 });
 
+// 25 Nov 2026: About uses the Orion-like premium layout (steps as rounded tiles, titled experience tiles).
 // Release 1.1: About presents the founder of Grow Faster to customers (portrait, approach, contact), without books or work routes.
 test('customer About presents identity, portrait and a working contact block in both languages',async({page})=>{
  await page.addInitScript(()=>{if(!localStorage.getItem('avs-lang'))localStorage.setItem('avs-lang','nl');localStorage.setItem('avs-consent',JSON.stringify({v:4,ext:false,ana:false,ts:Date.now()}))});
@@ -43,7 +44,7 @@ test('customer About presents identity, portrait and a working contact block in 
  for(const [language,heading,how,contact]of [['nl','Erlend Hollebosch, oprichter van Grow Faster','Hoe ik werk','Laten we kennismaken'],['fr','Erlend Hollebosch, fondateur de Grow Faster','Ma façon de travailler','Faisons connaissance']]){
    if(language!=='nl'){await page.locator('#lang-btn-top').click();await page.locator('.lang-top [data-lang="'+language+'"]').click()}
    await expect(page.locator('html')).toHaveAttribute('lang',language);await expect(page.locator('h1')).toHaveText(heading);
-   await expect(page.locator('#werkwijze h2')).toHaveText(how);await expect(page.locator('#werkwijze .vcard')).toHaveCount(3);await expect(page.locator('#contact h2')).toHaveText(contact);
+   await expect(page.locator('#werkwijze h2')).toHaveText(how);await expect(page.locator('#werkwijze .mk-steps > li')).toHaveCount(3);await expect(page.locator('#ervaring h3').first()).toHaveText(language==='nl'?'Ervaring':'Expérience');await expect(page.locator('#contact h2')).toHaveText(contact);
    await expect(page.locator('.executive-portrait img')).toBeVisible();expect(await page.locator('.executive-portrait img').evaluate(e=>e.complete&&e.naturalWidth>0)).toBe(true);
    await expect(page.locator('.executive-portrait img')).toHaveAttribute('alt',language==='nl'?'Portret van Erlend Hollebosch':'Portrait d’Erlend Hollebosch');
    expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1)).toBe(true);

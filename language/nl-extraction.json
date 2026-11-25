@@ -3,7 +3,7 @@
   "scope": "rendered_local_nl_runtime_dictionaries_static_cms_and_mail",
   "technicalReview": {
     "date": "2026-11-25",
-    "reason": "Magazinepagina journal.html (eigenaarsbeslissing 25 november): schuivende hero met vijf beelden, archief van alle edities en de delen van editie 1; blokken Het boek en Herkent u deze verspilling? weg; nieuw assets/magazine.js en deeplinks in assets/flipboek.js. Vertalingen in assets/i18n-journal.js. Geen adapterwijziging. Eerdere reden: Contentstudio herwerkt (sponsorbesluit 25 november): catalogus beperkt tot de menupagina’s (Home, Orion, Workflow-automatisering, Bedrijfsontwikkeling, Training, Insights, Over), zeven oude Engelstali…"
+    "reason": "Inline-vingerafdrukken bijgewerkt na #121/#124 (orion.html). Herstel analytics-heracceptatie (25 november): assets/site.js bewaart de echte GoatCounter-telfunctie achter een toestemmingsgebonden accessor; heracceptatie telt direct zonder nieuwe download, intrekking blijft inert. Geen tekst- of adapterwijziging. Contract bijgewerkt voor assets/site.js en voor de op main nog niet vastgelegde hashes van assets/cms-catalog.js, assets/i18n.js en het nieuwe assets/i18n-orion.js (#121). Eerdere reden: Magazinepagina journal.html (eigenaarsbeslissing 25 november): schuivende hero met vijf beelden, archief van alle edities en de delen van editie 1; blokken Het boek en Herkent u deze verspilling? weg; nieuw assets/magazine.js en deeplinks in assets/flipboek.js. Vertalingen in assets/i18n-journal.js. Geen adapterwijziging. Eerdere reden: Contentstudio herwerkt (sponsorbesluit 25 november): catalogus beperkt tot de menupagina’s (Home, Orion, Workflow-automatisering, Bedrijfsontwikkeling, Training, Insights, Over), zeven oude Engelstali…"
   },
   "javascript": [
     {
@@ -28,7 +28,7 @@
     },
     {
       "file": "assets/cms-catalog.js",
-      "sha256": "8f54c0acdd590059835502d5dfc9ffc9756612dd019d4e00912fa3dae14a5464"
+      "sha256": "c51ac5d508f6fc216bc8fc1cc91328fcf950f6d2b59f78ac65f755c130907cfd"
     },
     {
       "file": "assets/cms-client.js",
@@ -91,8 +91,12 @@
       "sha256": "d6b4245632bf02758c86eff263056487f80383905e4b6c7ecb23c79b9322c98e"
     },
     {
+      "file": "assets/i18n-orion.js",
+      "sha256": "357e655136e97914be881fddd23389b6450ea97e0500a18bae1fc674ae47ef38"
+    },
+    {
       "file": "assets/i18n.js",
-      "sha256": "510c27d29cd538375a798a20e74f04a9402ab0cd3aa563231fe616f705cfea4e"
+      "sha256": "85448555518a6539b1fe6d8597c0c582abeb94249c56f5eb8597a8376d2bf7b5"
     },
     {
       "file": "assets/journal.js",
@@ -116,7 +120,7 @@
     },
     {
       "file": "assets/site.js",
-      "sha256": "da75216727244124a3bc9e5e49c87dd099e4e0432daeb921fde5bf9b4f0fcca4"
+      "sha256": "a085b4bd99cd9beeea778bbae8c932cc2bf901ae4b981aa9545a4132f072a262"
     },
     {
       "file": "assets/ux.js",
@@ -250,7 +254,7 @@
     },
     {
       "file": "orion.html",
-      "sha256": "23aa0d7c55db5dedd1a059b19be6712897a2c81990d01529f5d740f8cc2ccd5d"
+      "sha256": "e1732484864fae17df624b42a37b63a6a6bd5b5df7eb519a26f0dd677976d3ef"
     },
     {
       "file": "privacy.html",

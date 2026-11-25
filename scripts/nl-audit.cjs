@@ -194,6 +194,16 @@ async function inventory(){
     return {blocks:blocks.sort((a,b)=>a.id.localeCompare(b.id,'en')),coverage,adapters:{network:'local-get-head-only',staticCmsCatalog:{source:'assets/cms-catalog.js',scope:'committed-defaults-not-live-CMS',blocks:catalog.length},dutchMailTemplates:{source:'data-mail-nl',blocks:blocks.filter(b=>b.kind.startsWith('mail:')).length}}};
   }finally{await browser?.close();await new Promise(resolve=>server.close(resolve));}
 }
+// Readable triage list for the job log: artifacts expire and are not reachable from every review environment.
+// Reporting only; it never changes status, ledger, baseline or which findings count.
+function findingLines(findings){
+  const clip=(v,n)=>{v=String(v).replace(/\s+/g,' ');return v.length>n?v.slice(0,n-1)+'…':v;};
+  return findings.map(f=>{const c=String(f.context||'');const marked=c.slice(f.offset,f.offset+f.length);
+    return ['NL-FINDING',f.rule,f.blockId,JSON.stringify(marked),'→ '+JSON.stringify((f.replacements||[]).slice(0,3)),'| '+clip(c.slice(Math.max(0,f.offset-60),f.offset+f.length+60),160)].join('\t');});
+}
+// Complete finding record minus its context (the context is always the full block text, already in the inventory),
+// so a reviewer without artifact access can rebuild the candidate and prove it byte-identical via the logged digest.
+function findingRecords(findings){return findings.map(f=>{const {context,...record}=f;return 'NL-FINDING-RECORD\t'+JSON.stringify(record);});}
 async function run(){
   const out=path.join(root,'reports/nl-audit');fs.mkdirSync(out,{recursive:true});
   fs.rmSync(path.join(out,'candidate-baseline.json'),{force:true});
@@ -233,14 +243,14 @@ async function run(){
     report.findings=ledger;report.newFindings=newFindings.filter(f=>!baseline.findings.some(old=>old.id===f.id));
     report.historicalFindings=ledger.filter(f=>!extracted.blocks.some(b=>b.id===f.blockId&&b.sha256===f.textHash)).map(f=>f.id);
     const candidate={schema:1,origin:baseline.origin,sourceCommit:report.sourceCommit,parentBaseline:baselineDigest(fs.readFileSync(path.join(root,'language/nl-baseline.json'))),coverage:extracted.coverage,history:[...baseline.history,{sourceCommit:baseline.sourceCommit,digest:baselineDigest(fs.readFileSync(path.join(root,'language/nl-baseline.json')))}],blocks:extracted.blocks.map(b=>({...b,engine:report.engine,...(baseline.blocks.find(old=>old.id===b.id&&old.sha256===b.sha256)?.review?{review:baseline.blocks.find(old=>old.id===b.id).review}:{})})),findings:ledger};
-    fs.writeFileSync(path.join(out,'candidate-baseline.json'),JSON.stringify(candidate,null,2)+'\n');
+    const candidateText=JSON.stringify(candidate,null,2)+'\n';fs.writeFileSync(path.join(out,'candidate-baseline.json'),candidateText);report.candidateSha256=baselineDigest(candidateText);report.candidateParts=Object.fromEntries(Object.entries(candidate).map(([k,v])=>[k,hash(JSON.stringify(v))]));
     report.status=report.newFindings.length?'FINDINGS':'PASSED';
   }catch(e){report.errors.push(e.message);}
   fs.writeFileSync(path.join(out,'report.json'),JSON.stringify(report,null,2)+'\n');
   const summary=`## Nederlandse taalcontrole — ${report.status}\n\nBron: ${report.sourceCommit}\n\nNieuwe bevindingen: ${report.newFindings?.length??'onbekend'}. Gecontroleerde blokken: ${report.checkedBlocks??'onbekend'}.\n\nBewaarde registerbevindingen: ${report.findings.length}; daarvan historisch door tekstwijziging/verwijdering: ${report.historicalFindings?.length??'onbekend'}.\n\nGeen officiële taalgoedkeuring. Register en productie zijn ongewijzigd.\n\n${report.errors.join('\n')}\n\n${report.limitations.join('\n\n')}\n\nZie report.json en eventuele candidate-baseline.json in het artifact.\n`;
   // Fixed local output only; the workflow publishes this file to GitHub's summary.
   fs.writeFileSync(path.join(out,'summary.md'),summary);
-  console.log(summary);if(report.status!=='PASSED')process.exitCode=1;return report;
+  console.log(summary);for(const line of findingLines(report.newFindings||[]))console.log(line);for(const line of findingRecords(report.newFindings||[]))console.log(line);if(report.candidateSha256){console.log('NL-CANDIDATE-SHA256\t'+report.candidateSha256);console.log('NL-CANDIDATE-PARTS\t'+JSON.stringify(report.candidateParts));console.log('NL-COVERAGE\t'+JSON.stringify(report.coverage));}if(report.status!=='PASSED')process.exitCode=1;return report;
 }
-module.exports={hash,baselineDigest,inlineScripts,allowLocalRequest,catalogBlocks,validateContract,validateCoverage,validateBaseline,delta,findingId,endpoint,check,batches,distribute,domBlocks,inventory,run,sources,files};
+module.exports={findingLines,findingRecords,hash,baselineDigest,inlineScripts,allowLocalRequest,catalogBlocks,validateContract,validateCoverage,validateBaseline,delta,findingId,endpoint,check,batches,distribute,domBlocks,inventory,run,sources,files};
 if(require.main===module)run().catch(e=>{console.error(e);process.exitCode=1});

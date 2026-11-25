@@ -11,7 +11,11 @@ function verify(binary){
   // allowed files are candidate sources; the strongest real identifier is still used and must still be detected elsewhere.
   const fromCatalog=catalogBlocks(fs.readFileSync(path.join(root,'assets/cms-catalog.js'),'utf8')).map(b=>b.source.key);
   const fromBaseline=[...fs.readFileSync(path.join(root,'language/nl-baseline.json'),'utf8').matchAll(/^\s*"key": "(f[a-f0-9]{12,14}-[0-9]+)",?\s*$/gm)].map(m=>m[1]);
-  const identifier=[...new Set([...fromCatalog,...fromBaseline])].filter(v=>/^f[a-f0-9]{12,14}-[0-9]+$/.test(v)).sort((a,b)=>entropy(b)-entropy(a)||a.localeCompare(b))[0];
+  // 25 Nov 2026 (taalscan): a promoted baseline keeps only current blocks, and the reworked catalog has almost no generated
+  // identifiers left (the one remaining is below the generic rule's entropy). The append-only findings ledger keeps the
+  // historical public identifiers in its block IDs for good, so it is the third real source. All scenarios are unchanged.
+  const fromLedger=[...fs.readFileSync(path.join(root,'language/nl-baseline.json'),'utf8').matchAll(/"blockId": "[^"#]+#cms-catalog:[^:"]+:(f[a-f0-9]{12,14}-[0-9]+):(?:text|alt)"/g)].map(m=>m[1]);
+  const identifier=[...new Set([...fromCatalog,...fromBaseline,...fromLedger])].filter(v=>/^f[a-f0-9]{12,14}-[0-9]+$/.test(v)).sort((a,b)=>entropy(b)-entropy(a)||a.localeCompare(b))[0];
   if(!identifier)throw Error('Missing known public DOM identifier fixture');
   const temporary=fs.mkdtempSync(path.join(os.tmpdir(),'grow-faster-nl-secret-'));
   const generated='  "key": "'+identifier+'",';

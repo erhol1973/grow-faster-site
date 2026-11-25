@@ -585,5 +585,941 @@
       "All glossary exceptions and contextual dispositions",
       "All broad spelling replacements and human review fields"
     ]
+  },
+  "review20261125": {
+    "date": "2026-11-25",
+    "kind": "advisory_agent_triage",
+    "humanApproval": false,
+    "sourceRuns": {
+      "main": "45566881275 (FINDINGS, 613 nieuw, bron 637f1d5)",
+      "branchBeforeFix": "45636885947 (737 nieuw op d9d9710)",
+      "branchAfterFix": "45638634710 (718 nieuw, kandidaat-SHA-256 597c0999cc8099a4644843e3369767a12c7c37a06a9b2b36bc3549deea2b972c)"
+    },
+    "corrected": {
+      "count": 19,
+      "rule": "MORFOLOGIK_RULE_NL_NL",
+      "change": "aria-label \"Sections\" → \"Hoofdnavigatie\" op de hoofdnavigatie van afspraak, automatisering, coherence, index, insights, journal, oplossingen, orion en training (9 bronnen; 19 scanlocaties met de 10 doorverwijzingen). ux.js gaf de andere pagina's al \"Hoofdnavigatie\".",
+      "regression": "tests/nl-editorial.test.cjs"
+    },
+    "accepted": {
+      "b_menu_label_readability_hyphen": {
+        "count": 49,
+        "reason": "\"Workflow-automatisering\": vastgelegde menu- en productnaam (tests/navigation-cases.json). Team Taaladvies, Aaneenschrijven 01, regel 4 \"Koppelteken voor de duidelijkheid\": \"Schrijf in samenstellingen eventueel een extra koppelteken om de leesbaarheid te vergroten\" (https://www.vlaanderen.be/team-taaladvies/spellingregels/aaneenschrijven/aaneenschrijven-01-hoofdregels-los-of-aaneen-koppelteken-of-trema). \"workflowautomatisering\" is ook correct; wijzigen is een sponsorkeuze over de naam, geen taalfout.",
+        "items": [
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL Workflow-automatisering",
+            "locations": 49
+          }
+        ]
+      },
+      "b_correct_dutch_compound_not_in_engine_lexicon": {
+        "count": 117,
+        "reason": "Correcte Nederlandse samenstellingen volgens de Taalunie-regel (aaneenschrijven): pilotgesprek, klantvragenlijst(en), browseridentificatoren, cookiekeuze, browseropslag, coherentieprofiel, overtypwerk, telformulier, allergenenmatrix. De engine kent ze niet.",
+        "items": [
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL pilotgesprek",
+            "locations": 44
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL klantvragenlijsten",
+            "locations": 19
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL browseridentificatoren",
+            "locations": 12
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL cookiekeuze",
+            "locations": 6
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL Browseropslag",
+            "locations": 6
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL Cookiekeuze",
+            "locations": 6
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL klantvragenlijst",
+            "locations": 6
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL coherentieprofiel",
+            "locations": 4
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL overtypwerk",
+            "locations": 3
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL coherentiebeperking",
+            "locations": 2
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL Klantvragenlijsten",
+            "locations": 2
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL telformulier",
+            "locations": 2
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL allergenenmatrix",
+            "locations": 2
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL AILaag",
+            "locations": 2
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL websitetracking",
+            "locations": 1
+          }
+        ]
+      },
+      "b_name_brand_technical_or_source_title": {
+        "count": 176,
+        "reason": "Eigennamen, merken, producten, certificaten, taalcodes en brontitels (GoatCounter, HubSpot, Ltd/Inc, Sull, Homkes, Oldemeyer/Jede/Teuteberg, Management Review Quarterly, OECD \"AI and skills\", SAFe, ICAgile, IBM \"AI operating models\", NL-BE, Dynamics 365, Workflowscan, Coherentiescan, Enterprise Coherence). Correct geschreven; niet in het woordenboek van de engine.",
+        "items": [
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL GoatCounter",
+            "locations": 37
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL Ltd",
+            "locations": 24
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL NL-BE",
+            "locations": 12
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL HubSpot-websitetracking",
+            "locations": 12
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL Workflowscan",
+            "locations": 8
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL Inc",
+            "locations": 7
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL HubSpot-formulieren",
+            "locations": 6
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL HubSpot-tracking",
+            "locations": 6
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL Excel-lijsten",
+            "locations": 6
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL Orion-film",
+            "locations": 5
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL Excel-lijst",
+            "locations": 5
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL kmo-maat",
+            "locations": 4
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL AI-operating",
+            "locations": 4
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL models",
+            "locations": 4
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL ICAgile",
+            "locations": 4
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL SAFe",
+            "locations": 4
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL Coherence",
+            "locations": 4
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL workflowscan",
+            "locations": 3
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL Coherentiescan",
+            "locations": 3
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL Dynamics",
+            "locations": 3
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL Sull",
+            "locations": 2
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL Word-",
+            "locations": 2
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL Grow",
+            "locations": 2
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL Oldemeyer",
+            "locations": 1
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL Jede",
+            "locations": 1
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL Quarterly",
+            "locations": 1
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL Homkes",
+            "locations": 1
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL Dell’Acqua",
+            "locations": 1
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL HubSpot-formulier",
+            "locations": 1
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL HubSpot-accountinstellingen",
+            "locations": 1
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL EU-VS",
+            "locations": 1
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL and",
+            "locations": 1
+          }
+        ]
+      },
+      "b_extraction_or_ui_fragment": {
+        "count": 145,
+        "reason": "Blokgrenzen van de extractie: kaart-, cijfer- en linkonderdelen die op het scherm onder elkaar staan (flex/blok), worden zonder spatie aaneengeplakt (bv. \"Elke maand\" + \"Nooit een editie missen\"), of een cijfer staat in een eigen element vóór een zin in kleine letters (\"75%\" + \"van de managers\"). \"›\" is een menupijl. Geen fout in de tekst die de lezer ziet.",
+        "items": [
+          {
+            "finding": "UPPERCASE_SENTENCE_START van",
+            "locations": 13
+          },
+          {
+            "finding": "UNPAIRED_BRACKETS ›",
+            "locations": 6
+          },
+          {
+            "finding": "UPPERCASE_SENTENCE_START kmo’s",
+            "locations": 5
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL verspillingEditie",
+            "locations": 5
+          },
+          {
+            "finding": "SENTENCE_WHITESPACE Pagina",
+            "locations": 4
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL voorbeeldEditie",
+            "locations": 4
+          },
+          {
+            "finding": "UPPERCASE_SENTENCE_START kostten",
+            "locations": 3
+          },
+          {
+            "finding": "UPPERCASE_SENTENCE_START in",
+            "locations": 3
+          },
+          {
+            "finding": "UPPERCASE_SENTENCE_START zoals",
+            "locations": 3
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL aanpakEditie",
+            "locations": 3
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL ↑Winst",
+            "locations": 2
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL coherentieLaag",
+            "locations": 2
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL ProcesanalyseLaag",
+            "locations": 2
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL AutomatiseringLaag",
+            "locations": 2
+          },
+          {
+            "finding": "SENTENCE_WHITESPACE Mail",
+            "locations": 2
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL FasterMagazine",
+            "locations": 2
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL OrionEditie",
+            "locations": 2
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL VragenEditie",
+            "locations": 2
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL uper",
+            "locations": 2
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL 8fouten",
+            "locations": 2
+          },
+          {
+            "finding": "UPPERCASE_SENTENCE_START stappen",
+            "locations": 1
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL pauzerenVideo",
+            "locations": 1
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL OrionZo",
+            "locations": 1
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL ←Vorige",
+            "locations": 1
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL ❚❚▶Pauzeer",
+            "locations": 1
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL 02Verschijnt",
+            "locations": 1
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL 2026Het",
+            "locations": 1
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL leveringOp",
+            "locations": 1
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL 2026Overtypen",
+            "locations": 1
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL zietBestellingen",
+            "locations": 1
+          },
+          {
+            "finding": "SENTENCE_WHITESPACE Lees",
+            "locations": 1
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL maandNooit",
+            "locations": 1
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL missenEén",
+            "locations": 1
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL 01De",
+            "locations": 1
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL verspillingWerk",
+            "locations": 1
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL 02Eén",
+            "locations": 1
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL voorbeeldEen",
+            "locations": 1
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL 03De",
+            "locations": 1
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL aanpakTel",
+            "locations": 1
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL 04Wat",
+            "locations": 1
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL oplevertWat",
+            "locations": 1
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL InhoudEditie",
+            "locations": 1
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL redactie3",
+            "locations": 1
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL formulier21",
+            "locations": 1
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL oplevert22",
+            "locations": 1
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL niet24",
+            "locations": 1
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL vragen26",
+            "locations": 1
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL stap29",
+            "locations": 1
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL colofon30",
+            "locations": 1
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL editie31",
+            "locations": 1
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL kort4",
+            "locations": 1
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL verspilling5",
+            "locations": 1
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL kmo9",
+            "locations": 1
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL kantoor11",
+            "locations": 1
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL voorbeeld12",
+            "locations": 1
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL ziet16",
+            "locations": 1
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL aanpak17",
+            "locations": 1
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL vaakHoe",
+            "locations": 1
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL hierElke",
+            "locations": 1
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL golfElke",
+            "locations": 1
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL tellenZelden",
+            "locations": 1
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL liggenZelden",
+            "locations": 1
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL 6Hoe",
+            "locations": 1
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL FormulierEditie",
+            "locations": 1
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL oplevertEditie",
+            "locations": 1
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL 04Deel",
+            "locations": 1
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL 7Zo",
+            "locations": 1
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL TellenTwee",
+            "locations": 1
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL verzamelenEen",
+            "locations": 1
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL TestenEen",
+            "locations": 1
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL beslissenDezelfde",
+            "locations": 1
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL ChecklistEditie",
+            "locations": 1
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL stapEditie",
+            "locations": 1
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL colofonEditie",
+            "locations": 1
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL LezersEditie",
+            "locations": 1
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL taakBijvoorbeeld",
+            "locations": 1
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL waarUit",
+            "locations": 1
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL tijdEen",
+            "locations": 1
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL redactieEditie",
+            "locations": 1
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL kortEditie",
+            "locations": 1
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL 4stappen",
+            "locations": 1
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL 1Typen",
+            "locations": 1
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL 2Fouten",
+            "locations": 1
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL 3Verdrongen",
+            "locations": 1
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL 1Overtypen",
+            "locations": 1
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL Samen37",
+            "locations": 1
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL 2Vijf",
+            "locations": 1
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL 21fouten",
+            "locations": 1
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL veldGemiddeld",
+            "locations": 1
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL veldenHoogste",
+            "locations": 1
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL 3Fouten",
+            "locations": 1
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL 5Van",
+            "locations": 1
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL 01Tel",
+            "locations": 1
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL 02Zoek",
+            "locations": 1
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL 03Laat",
+            "locations": 1
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL 04Een",
+            "locations": 1
+          }
+        ]
+      },
+      "c_legacy_redirect_duplicate": {
+        "count": 102,
+        "reason": "Doorverwijspagina's (meta refresh) naar coherence.html en insights.html: de scan leest de doelpagina onder de oude bestandsnaam. Zelfde bevindingen als op de doelpagina; geen eigen bron om te corrigeren.",
+        "items": [
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL pilotgesprek",
+            "locations": 26
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL Workflow-automatisering",
+            "locations": 20
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL Coherence",
+            "locations": 8
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL coherentieprofiel",
+            "locations": 8
+          },
+          {
+            "finding": "UPPERCASE_SENTENCE_START van",
+            "locations": 8
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL Sull",
+            "locations": 8
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL Homkes",
+            "locations": 4
+          },
+          {
+            "finding": "UPPERCASE_SENTENCE_START kostten",
+            "locations": 4
+          },
+          {
+            "finding": "NL_SIMPLE_REPLACE_TEKST_IN Tekst in",
+            "locations": 4
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL coherentiebeperking",
+            "locations": 4
+          },
+          {
+            "finding": "XXX_DING AI business",
+            "locations": 4
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL Coherentiescan",
+            "locations": 4
+          }
+        ]
+      },
+      "b_radar_demo_product_terms": {
+        "count": 108,
+        "reason": "Executive Radar / baies-dev: productdemo met Engelse producttermen (Discover, Evidence, Decide, Verify, Controlled Workflow), tweetalig label \"Zoeken / Rechercher\", bronnamen (Statbel) en dezelfde kaartextractie als hierboven. Valt buiten de prioritaire klantpagina's; geen tekstwijziging zonder product-owner.",
+        "items": [
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL Executive",
+            "locations": 10
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL referentierecords",
+            "locations": 6
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL Radar-productnavigatie",
+            "locations": 2
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL Radar-menu",
+            "locations": 2
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL Rechercher",
+            "locations": 2
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL DEMONSTRATIEVaste",
+            "locations": 2
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL RadarDemonstratie",
+            "locations": 2
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL Intelligence",
+            "locations": 2
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL Radar↗",
+            "locations": 2
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL AI-intelligence",
+            "locations": 2
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL CIO's",
+            "locations": 2
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL COO's",
+            "locations": 2
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL snapshotVaste",
+            "locations": 2
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL Referentierecords5Vaste",
+            "locations": 2
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL uitgevers3Statbel",
+            "locations": 2
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL Brongecontroleerde",
+            "locations": 2
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL signalen05",
+            "locations": 2
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL 2026Nationale",
+            "locations": 2
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL kwartaalNationale",
+            "locations": 2
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL ondernemingenStatbel",
+            "locations": 2
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL Discover",
+            "locations": 2
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL Verify",
+            "locations": 2
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL Decide",
+            "locations": 2
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL 5Records",
+            "locations": 2
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL 3Primaire",
+            "locations": 2
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL 4Bewijstypen",
+            "locations": 2
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL bronfeiten",
+            "locations": 2
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL bronlinks",
+            "locations": 2
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL rolgerichte",
+            "locations": 2
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL 5zichtbare",
+            "locations": 2
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL Bronmetadata",
+            "locations": 2
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL Bewijstype",
+            "locations": 2
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL bewijstypen",
+            "locations": 2
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL brontraceerbaarheid",
+            "locations": 2
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL full-text",
+            "locations": 2
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL factchecking",
+            "locations": 2
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL crawling",
+            "locations": 2
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL PDF-analyse",
+            "locations": 2
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL 01Discover",
+            "locations": 2
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL 02Evidence",
+            "locations": 2
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL 03Challenge",
+            "locations": 2
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL 04Interne",
+            "locations": 2
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL dev-MVP",
+            "locations": 2
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL Sessielog",
+            "locations": 2
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL Autonomiegrenzen",
+            "locations": 2
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL Controlled",
+            "locations": 2
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL RadarAI-intelligence",
+            "locations": 2
+          },
+          {
+            "finding": "MORFOLOGIK_RULE_NL_NL directiesOverzicht",
+            "locations": 2
+          }
+        ]
+      },
+      "b_film_onscreen_text_quote": {
+        "count": 6,
+        "reason": "\"Tekst in beeld\" is een sectietitel; de lijst eronder citeert letterlijk de tekst in de film (\"Geen AI business value zonder Enterprise Coherence\"). Het transcript moet gelijk blijven aan het beeld.",
+        "items": [
+          {
+            "finding": "NL_SIMPLE_REPLACE_TEKST_IN Tekst in",
+            "locations": 3
+          },
+          {
+            "finding": "XXX_DING AI business",
+            "locations": 3
+          }
+        ]
+      },
+      "b_disputed_sponsor_choice": {
+        "count": 2,
+        "reason": "\"nog geen een op de drie\" (index.html, I18N): spreektalig; \"nog niet één op de drie\" is verzorgder. Geen officiële bron die \"geen een\" afkeurt; homepagetekst is pas goedgekeurd. Open gelaten als sponsorkeuze.",
+        "items": [
+          {
+            "finding": "GEEN_EEN geen een",
+            "locations": 2
+          }
+        ]
+      },
+      "b_grammar_false_positive": {
+        "count": 10,
+        "reason": "Correct Nederlands: \"leest ze in in zijn eigen systeem\" (inlezen + in), \"Een paar weken werken:\" (zelfstandig gebruikte titel), \"Wie ..., ziet welk deel\" (geen komma nodig), \"een fout pas opvalt\", \"een fout weegt zwaar\", \"elk 450 minuten\".",
+        "items": [
+          {
+            "finding": "LICHT_AMANDELGEUR fout pas",
+            "locations": 2
+          },
+          {
+            "finding": "KOMMA_ONTBR ziet welk",
+            "locations": 2
+          },
+          {
+            "finding": "DUBBEL_WOORD in in",
+            "locations": 2
+          },
+          {
+            "finding": "NL_SIMPLE_REPLACE_WEEGT_ZWAAR_ weegt zwaar.",
+            "locations": 2
+          },
+          {
+            "finding": "EEN_PAAR_DOET Een paar weken werken",
+            "locations": 1
+          },
+          {
+            "finding": "VEEL_DAGEN 450 minuten",
+            "locations": 1
+          }
+        ]
+      },
+      "b_belgian_standard_dutch": {
+        "count": 3,
+        "reason": "\"voordien\" is een gewoon standaardtalig bijwoord, gangbaar in België; de engine stelt stilistisch \"ervoor\" voor. Bewust Vlaams register voor kmo's.",
+        "items": [
+          {
+            "finding": "NL_SIMPLE_REPLACE_VOORDIEN voordien",
+            "locations": 3
+          }
+        ]
+      }
+    },
+    "baseline": "Kandidaat lokaal herbouwd uit de joblog-records en lokale inventaris; byte-identiek aan de CI-kandidaat (zelfde SHA-256) na invullen van de twee kloktijden uit de Radar-demo. Gepromoveerd met scripts/nl-promote.cjs. Bevindingen blijven open in het register; promotie is geen taalgoedkeuring.",
+    "knownRecheck": "Twee Radar-demoblokken (\"HH:MM:SS · Demonstratiedossier geopend. ...\") tonen de kloktijd van de scan en worden daarom elke run opnieuw gecontroleerd. Geen bevinding."
   }
 }

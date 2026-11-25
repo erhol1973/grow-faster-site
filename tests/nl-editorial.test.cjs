@@ -49,6 +49,18 @@ test('Every built page referencing changed Dutch translations requests the curre
   }
   assert.ok(references>0,'The built site still includes its shared translation data');
 });
+// 25 november 2026, taalscan: 9 pagina's zonder ux.js (19 scanlocaties, met de doorverwijzingen erbij) hielden het Engelse aria-label "Sections" op de hoofdnavigatie.
+test('Main navigation has a Dutch accessible name on every built Dutch page; English "Sections" only where ux.js translates it',()=>{
+  const pages=[];const walk=dir=>{for(const e of fs.readdirSync(dir,{withFileTypes:true})){const p=path.join(dir,e.name);if(e.isDirectory())walk(p);else if(e.name.endsWith('.html'))pages.push(p);}};walk(root);
+  let dutch=0;
+  for(const file of pages){
+    const html=fs.readFileSync(file,'utf8');const nav=html.match(/<nav class="nav nav-executive" aria-label="([^"]*)"/);if(!nav)continue;
+    if(nav[1]==='Sections'){assert.match(html,/assets\/ux\.js/,path.relative(root,file)+' keeps an untranslated English navigation label');continue;}
+    assert.equal(nav[1],'Hoofdnavigatie',path.relative(root,file));dutch++;
+  }
+  assert.ok(dutch>=9,'customer pages carry the Dutch label');
+  const ux=fs.readFileSync(path.join(root,'assets/ux.js'),'utf8');assert.match(ux,/"Sections": \[\s*"Hoofdnavigatie",\s*"Navigation principale"/);
+});
 
 // Owner decision 25 Nov 2026 17:02: the homepage uses the polished "nog niet één op de drie" instead of informal "nog geen een op de drie".
 test('homepage figure sentence uses "nog niet één op de drie" in HTML and in the translation key',()=>{

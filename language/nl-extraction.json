@@ -3,7 +3,7 @@
   "scope": "rendered_local_nl_runtime_dictionaries_static_cms_and_mail",
   "technicalReview": {
     "date": "2026-11-25",
-    "reason": "Herstel analytics-heracceptatie (25 november): assets/site.js bewaart de echte GoatCounter-telfunctie achter een toestemmingsgebonden accessor; heracceptatie telt direct zonder nieuwe download, intrekking blijft inert. Geen tekst- of adapterwijziging. Contract bijgewerkt voor assets/site.js en voor de op main nog niet vastgelegde hashes van assets/cms-catalog.js, assets/i18n.js en het nieuwe assets/i18n-orion.js (#121). Eerdere reden: Magazinepagina journal.html (eigenaarsbeslissing 25 november): schuivende hero met vijf beelden, archief van alle edities en de delen van editie 1; blokken Het boek en Herkent u deze verspilling? weg; nieuw assets/magazine.js en deeplinks in assets/flipboek.js. Vertalingen in assets/i18n-journal.js. Geen adapterwijziging. Eerdere reden: Contentstudio herwerkt (sponsorbesluit 25 november): catalogus beperkt tot de menupagina’s (Home, Orion, Workflow-automatisering, Bedrijfsontwikkeling, Training, Insights, Over), zeven oude Engelstali…"
+    "reason": "Inline-vingerafdrukken bijgewerkt na #121/#124 (orion.html). Herstel analytics-heracceptatie (25 november): assets/site.js bewaart de echte GoatCounter-telfunctie achter een toestemmingsgebonden accessor; heracceptatie telt direct zonder nieuwe download, intrekking blijft inert. Geen tekst- of adapterwijziging. Contract bijgewerkt voor assets/site.js en voor de op main nog niet vastgelegde hashes van assets/cms-catalog.js, assets/i18n.js en het nieuwe assets/i18n-orion.js (#121). Eerdere reden: Magazinepagina journal.html (eigenaarsbeslissing 25 november): schuivende hero met vijf beelden, archief van alle edities en de delen van editie 1; blokken Het boek en Herkent u deze verspilling? weg; nieuw assets/magazine.js en deeplinks in assets/flipboek.js. Vertalingen in assets/i18n-journal.js. Geen adapterwijziging. Eerdere reden: Contentstudio herwerkt (sponsorbesluit 25 november): catalogus beperkt tot de menupagina’s (Home, Orion, Workflow-automatisering, Bedrijfsontwikkeling, Training, Insights, Over), zeven oude Engelstali…"
   },
   "javascript": [
     {
@@ -254,7 +254,7 @@
     },
     {
       "file": "orion.html",
-      "sha256": "23aa0d7c55db5dedd1a059b19be6712897a2c81990d01529f5d740f8cc2ccd5d"
+      "sha256": "e1732484864fae17df624b42a37b63a6a6bd5b5df7eb519a26f0dd677976d3ef"
     },
     {
       "file": "privacy.html",

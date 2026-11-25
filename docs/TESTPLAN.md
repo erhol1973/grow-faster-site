@@ -10,6 +10,10 @@ Tests: HubSpot wordt in deze flows lokaal beantwoord (geen live derde partij in 
 
 Bewijs: de vier consenttests 30× herhaald in chromium en mobile: 240/240 groen. Firefox en WebKit zijn lokaal niet geïnstalleerd; die profielen lopen in CI. `language/nl-extraction.json`: hashes bijgewerkt voor assets/site.js en voor de op main ontbrekende of verouderde contractregels (assets/cms-catalog.js, assets/i18n.js, nieuw assets/i18n-orion.js uit #121).
 
+## Release-wachtrij en ononderbroken main-releases (GF-010), 25 november 2026
+
+`.github/workflows/release.yml` annuleert een lopende run nog alleen bij een nieuwe push op dezelfde pull request; een release op `main` (deploy en publieke verificatie) wordt niet meer afgebroken door een volgende merge. Geen test, gate of drempel gewijzigd. Procesregel: één merge-poort naar main via issue #122 (AGENTS.md, OPERATING-MODEL §3a).
+
 ## Kleurlaag terug van vier pagina's, 25 november 2026
 
 Eigenaarsbeslissing: Home, Orion, Workflow-automatisering en Bedrijfsontwikkeling krijgen opnieuw hun eerdere look; assets/kleur.css wordt daar niet meer geladen. De andere klantpagina's houden de kleurlaag. tests/kleur.test.cjs controleert beide kanten (positief op de overige pagina's, negatief op de vier teruggedraaide).

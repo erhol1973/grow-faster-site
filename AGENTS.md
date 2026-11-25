@@ -1,4 +1,10 @@
 # Grow Faster project instructions
+## Productgovernance en productiepoort (verplicht)
+
+Lees vóór nieuwe productfuncties, architectuurinvesteringen, automatiseringen of releasebeslissingen de canonieke instructies in [docs/governance/CONTROL-TOWER.md](docs/governance/CONTROL-TOWER.md), [docs/governance/OPERATING-MODEL.md](docs/governance/OPERATING-MODEL.md), [docs/governance/DECISION-REGISTER.md](docs/governance/DECISION-REGISTER.md) en [docs/governance/CPO-PRODUCT-INVESTMENT-CRITERIA.md](docs/governance/CPO-PRODUCT-INVESTMENT-CRITERIA.md). Controleer bestaande GitHub-werkitems vóór nieuw werk, en respecteer de onafhankelijke review en de twee actieve hoofdwerkstromen.
+
+**Een productierelease vereist altijd voorafgaande expliciete GO van de Executive Sponsor.** Als mergen naar `main` automatisch productiedeployment veroorzaakt, vereist ook die merge vooraf dezelfde GO, ongeacht of het om code of documentatie gaat. Toestemming om PR's te mergen is geen algemene productieautorisatie. Alle bestaande CI-, security- en acceptatiegates hieronder blijven ongewijzigd van kracht. Orion heeft eigen bindende Poort 0 en bouwstop; wijzig die niet via deze repository.
+
 
 Read `docs/TESTPLAN.md` and `docs/RELEASE.md` before changing release or test behaviour.
 

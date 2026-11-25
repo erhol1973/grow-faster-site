@@ -1,5 +1,9 @@
 # Testplan en kwaliteitsbeleid
 
+## Taalscan na de releases van 25 november (tweede ronde), 25 november 2026
+
+Run 45696555944 op deze branch (bron 22f310f, main na #119 tot #130) gaf 87 nieuwe bevindingen in 851 gecontroleerde blokken. Geen enkele is een taalfout in onze tekst: 37 dubbels op doorverwijspagina's, 21 correcte samenstellingen, 12 namen en brontitels, 10 extractieranden van cijfers en kaarten, 5 Orion-stappen waarin de alinea de titel voortzet, 1 keer "Workflow-automatisering" en 1 keer "voordien". Reden per categorie en per bevinding-ID in `language/nl-triage.json` onder `review20261125b` (`humanApproval: false`). De kandidaat is lokaal herbouwd uit de joblog-records en byte-identiek aan de CI-kandidaat (SHA-256 `dcdbf57a…`), daarna gepromoveerd met `scripts/nl-promote.cjs`. Geen HTML, JS, CMS-catalogus of test gewijzigd; `language/nl-extraction.json` blijft gelijk. Geen regel, drempel of uitsluiting toegevoegd.
+
 ## Maandelijks Magazine in de contentstudio, 25 november 2026
 
 Sponsorbesluit: alle menupagina's zijn bewerkbaar in de contentstudio; het Maandelijks Magazine volgt nu PR #112 (32 pagina's in magazine-opmaak) live staat. journal.html krijgt data-cms-page="journal", de publieke loader na site.js, de mediastijl en een videoslot (cms-video-journal). In de catalogus staat de pagina tussen Training en Insights (menuvolgorde) met 50 velden: 48 tekstvelden (mag-01 tot mag-48), de omslag van de eerste dia als herofoto (mag-hero-img) en de video.

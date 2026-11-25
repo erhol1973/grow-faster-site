@@ -7,14 +7,24 @@ const assert=require('node:assert/strict');
 const fs=require('node:fs'),path=require('node:path'),vm=require('node:vm');
 const read=file=>fs.readFileSync(path.resolve(__dirname,'../dist',file),'utf8');
 const I18N=()=>{const c={window:{}};vm.runInNewContext(read('assets/i18n.js'),c);return c.window.I18N};
-test('Maandelijks Magazine explains the monthly format, announces edition 1 and links the book',()=>{
- const html=read('journal.html'),main=html.match(/<main[\s\S]*?<\/main>/)[0],I=I18N();
+test('Maandelijks Magazine explains the monthly format, shows a sliding hero and the archive of editions',()=>{
+ const html=read('journal.html'),main=html.match(/<main[\s\S]*?<\/main>/)[0],I=Object.assign(I18N(),(()=>{const c={window:{}};vm.runInNewContext(read('assets/i18n-journal.js'),c);return c.window.I18N})());
  assert.match(main,/<h1>Grow Faster Magazine<\/h1>/);
  assert.match(main,/Elke maand één verspilling in uw bedrijf/);assert.doesNotMatch(main,/\bwekelijks|\bweekly/i);
  assert.equal((main.match(/<article class="vcard in">/g)||[]).length,4,'four parts per edition');
  assert.match(main,/<section id="editie-1"[\s\S]*Overtypen, de verspilling die niemand ziet/);
- assert.match(main,/<section id="boek"/);
- for(const t of ['Grow Faster Magazine','Opbouw van elke editie','Overtypen, de verspilling die niemand ziet','Het boek','Herkent u deze verspilling?','Mail me bij een nieuwe editie'])assert.ok(I[t]?.[1],'FR missing: '+t);
+ // 25 Nov 2026 (owner decision): the page becomes a dedicated magazines page. The "Het boek" and "Herkent u deze verspilling?"
+ // blocks at the bottom are removed; a sliding hero with five images and an archive of all editions take their place.
+ assert.doesNotMatch(main,/<section id="boek"|<section id="contact"/);
+ assert.equal((main.match(/<div class="mz-slide mz-[a-z]+" role="group">/g)||[]).length,5,'five hero slides');
+ assert.equal((main.match(/<img [^>]*fetchpriority="high"/g)||[]).length,1,'only the first slide loads eagerly');
+ assert.match(html,/<link rel="preload" as="image" type="image\/webp" href="img\/magazine-editie-1-omslag-700\.webp"/);
+ assert.match(html,/<script defer src="assets\/magazine\.js\?v=[^"]+"><\/script>/);
+ const archief=main.match(/<section id="edities"[\s\S]*?<\/section>/)[0];
+ assert.deepEqual([...archief.matchAll(/<span class="mz-nummer-label">([^<]+)</g)].map(m=>m[1]),['Nr. 2 · december 2026','Nr. 1 · november 2026','Elke maand'],'newest edition first');
+ assert.match(archief,/href="#editie-1"/);
+ for(const p of [...main.matchAll(/data-fb-pagina="(\d+)"/g)].map(m=>m[1]))assert.match(main,new RegExp('data-pagina="'+p+'"'),'deep link to page '+p);
+ for(const t of ['Grow Faster Magazine','Opbouw van elke editie','Overtypen, de verspilling die niemand ziet','Alle edities','Vier delen, één verspilling','Pauzeer de dia\'s','Mail me bij een nieuwe editie'])assert.ok(I[t]?.[1],'FR missing: '+t);
 });
 test('Maandelijks Magazine uses mail instead of forms and is the current menu page',()=>{
  const html=read('journal.html'),main=html.match(/<main[\s\S]*?<\/main>/)[0];
@@ -35,20 +45,30 @@ test('the French Executive Journal address forwards to the Maandelijks Magazine 
 test('edition 1 is published in full with its four parts, sourced figures and French translations',()=>{
  const html=read('journal.html'),sec=html.match(/<section id="editie-1"[\s\S]*?<\/section>/)[0];
  assert.doesNotMatch(sec,/verschijnt binnenkort/,'no longer announced');
- assert.deepEqual([...sec.matchAll(/<h3>([^<]+)<\/h3>/g)].map(m=>m[1]),['De verspilling','Eén voorbeeld','De aanpak','Wat het oplevert','Bronnen','Colofon','Herkent u deze verspilling?'],'the four parts, sources, colophon and next step each open a page');
- assert.equal((sec.match(/<div class="fb-pagina /g)||[]).length,8,'eight pages on four sheets');assert.equal((sec.match(/<div class="fb-blad">/g)||[]).length,4);
- assert.match(sec,/<div class="fb-pagina fb-voor fb-omslag" data-pagina="1">[\s\S]*?<h3 class="fb-titel">Overtypen, de verspilling die niemand ziet<\/h3>/,'cover');
+ assert.deepEqual([...sec.matchAll(/<h3>([^<]+)<\/h3>/g)].map(m=>m[1]),['Inhoud', 'Van de redactie', 'In het kort', 'Waar overtypen zit: zes plekken in de kmo', 'Een dinsdag op kantoor', 'Waarom niemand het ziet', 'Welke taak eerst?', 'Twee weken tellen: het formulier', 'Wat het oplevert', 'Wat Orion doet, en wat niet', 'Veelgestelde vragen', 'Checklist: is deze taak klaar om te automatiseren?', 'Herkent u deze verspilling?', 'Bronnen', 'Uw voorbeeld in een volgende editie'],'every rubric opens a page');
+ assert.deepEqual([...sec.matchAll(/<h3 class="fb-opener-titel">([^<]+)<\/h3>/g)].map(m=>m[1]),['De verspilling','Eén voorbeeld','De aanpak'],'three parts open with a full-page photo');
+ for(const n of ['kantoor','labo','laadkade','onderhoud'])assert.match(sec,new RegExp('img/magazine-editie-1-'+n+'-880\\.webp"[^>]*alt="[^"]{20,}"'),n+' photo with alt text');
+ for(const n of ['overleg'])assert.match(sec,new RegExp('img/magazine-editie-1-'+n+'-1168\\.webp'),n);
+ assert.equal((sec.match(/<span class="fb-figuur-nr">Figuur \d<\/span>/g)||[]).length,7,'seven numbered figures');
+ // Owner rule (25 Nov 2026): an edition is 20 to 35 pages, and the cover carries a photo of the sector the edition is about.
+ const pages=(sec.match(/<div class="fb-pagina /g)||[]).length;assert.ok(pages>=20&&pages<=35,'between 20 and 35 pages, got '+pages);assert.equal(pages%2,0,'pages come in sheets of two');
+ assert.equal((sec.match(/<div class="fb-blad">/g)||[]).length,pages/2);
+ assert.match(sec,/<div class="fb-pagina fb-voor fb-omslag fb-foto" data-pagina="1">\s*<picture class="fb-foto-beeld"><source srcset="img\/magazine-editie-1-omslag-700\.webp 700w, img\/magazine-editie-1-omslag-1400\.webp 1400w"[^>]*><img src="img\/magazine-editie-1-omslag-1400\.webp" alt="[^"]{20,}"[^>]*loading="lazy"/,'cover photo with alt text and lazy loading');
+ for(const f of ['img/magazine-editie-1-omslag-700.webp','img/magazine-editie-1-omslag-1400.webp'])assert.ok(fs.existsSync(path.resolve(__dirname,'../dist',f)),f);
+ assert.match(sec,/<h3 class="fb-titel">Overtypen, de verspilling die niemand ziet<\/h3>/,'cover');
+ for(let i=1;i<=pages;i++)assert.ok(sec.includes(`data-pagina="${i}"`),'page '+i);
  assert.match(sec,/<button type="button" class="fb-knop" id="fb-vorige"[^>]*>← Vorige<\/button>[\s\S]*<button type="button" class="fb-knop" id="fb-volgende"[^>]*>Volgende →<\/button>/);
  assert.match(html,/<script defer src="assets\/flipboek\.js\?v=[^"]+"><\/script>/);
- assert.equal((sec.match(/<ol class="editie-stappen">[\s\S]*?<\/ol>/)[0].match(/<li>/g)||[]).length,4);
- assert.equal((sec.match(/<tbody>[\s\S]*?<\/tbody>/)[0].match(/<tr>/g)||[]).length,3);
+ assert.equal([...sec.matchAll(/<ol class="editie-stappen"[^>]*>([\s\S]*?)<\/ol>/g)].reduce((n,m)=>n+(m[1].match(/<li>/g)||[]).length,0),4,'four steps');
+ const tables=[...sec.matchAll(/<table class="([^"]+)">[\s\S]*?<tbody>([\s\S]*?)<\/tbody>/g)].map(m=>[m[1],(m[2].match(/<tr>/g)||[]).length]);
+ assert.deepEqual(tables,[['editie-tabel fb-formulier',8],['editie-tabel',3]],'counting form with eight empty rows, then the three measurements');
  assert.match(sec,/2,8 fouten per 100/);assert.match(sec,/6,4 per 100/);
  assert.match(sec,/href="https:\/\/doi\.org\/10\.1136\/bmjopen-2012-002406"/);assert.match(sec,/href="https:\/\/doi\.org\/10\.1093\/jamia\/ocy170"/);
- assert.match(sec,/Het rekenvoorbeeld is een illustratie/,'the worked example is labelled as such');
+ assert.match(sec,/Rekenvoorbeeld, geen meting/,'the worked example is labelled as such');assert.match(sec,/zijn illustraties, geen metingen/);
  assert.match(html,/<script defer src="assets\/i18n\.js\?v=[^"]+"><\/script><script defer src="assets\/i18n-journal\.js\?v=[^"]+"><\/script>/);
  const c={window:{}};vm.runInNewContext(read('assets/i18n.js')+'\n'+read('assets/i18n-journal.js'),c);const I=c.window.I18N;
  const text=sec.replace(/<script[\s\S]*?<\/script>/g,'');
- const lines=[...text.matchAll(/<(?:h3(?: class="[^"]*")?|p(?: class="[^"]*")?|li|strong|th scope="col"|td|span|blockquote class="fb-citaat"|button[^>]*)>([^<]+)</g)].map(m=>m[1].trim()).filter(t=>t&&!/^[\d\s%,.:]+$/.test(t));
+ const lines=[...text.matchAll(/<(?:h3(?: class="[^"]*")?|h4|p(?: class="[^"]*")?|li|strong|b|th scope="col"|td|dt|dd|span(?: class="[^"]*")?|figcaption|blockquote class="[^"]*"|button[^>]*)>([^<]+)</g)].map(m=>m[1].trim()).filter(t=>t&&!/^[\d\s%,.:]+$/.test(t));
  assert.ok(lines.length>=30,'edition lines found: '+lines.length);
  for(const t of lines)assert.ok(I[t]?.[1]&&I[t][1]!==t,'FR missing: '+t);
  assert.equal(I['De verspilling'][1],'Le gaspillage');

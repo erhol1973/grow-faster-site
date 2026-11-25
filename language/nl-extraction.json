@@ -3,7 +3,7 @@
   "scope": "rendered_local_nl_runtime_dictionaries_static_cms_and_mail",
   "technicalReview": {
     "date": "2026-11-25",
-    "reason": "Contentstudio herwerkt (sponsorbesluit 25 november): catalogus beperkt tot de menupagina’s (Home, Orion, Workflow-automatisering, Bedrijfsontwikkeling, Training, Insights, Over), zeven oude Engelstalige pagina’s eruit; orion/automatisering/training krijgen data-cms-sleutels en de publieke CMS-loader, coherence/insights krijgen de loader terug; cms-config.js koppelt elke Cloudflare-preview aan het testproject. Geen adapterwijziging. Eerdere reden: Homepage herwerkt (opdracht sponsor 25 november): nieuwe blokken Terugkerend werk en Zo starten we, rijkere toepassingskaarten; nieuwe runtime-dictionary assets/i18n-home.js (zelfde patroon als i18n-journal.js, alleen op index.html); assets/cms-catalog.js gesynchroniseerd met index.html; assets/cms-admin.js met nieuwe homepagegroepen. Inline-vingerafdruk van index.html bijgewerkt (extra scripttag voor i18n-home.js; JSON-LD ongewijzigd). Sponsorbesluit 25 november: #proof en #final van de homepage verwijderd, rekenvoorbeeld € 17,25 per uur. Geen adapterwijziging. Eerdere reden: Orion-film en de vier stappen van Zo werkt Orion verhuisd van index.html naar orion.html (eigenaarsbeslissing 24 november): rendered DOM van beide pagina’s en inline JSON-LD ongewijzigd in betekenis; assets/cms-catalog.js zonder de negen stapvelden; assets/cms-admin.js met hernummerde groepen. Geen adapterwijziging. Eerdere reden: Magazine editie 1 als flipboek op journal.html: nieuw script assets/flipboek.js (bladert door acht pagina’s; bevat enkel paginanummers, geen tekst), uitgebreide runtime-dictionary assets/i18n-journal.…"
+    "reason": "Magazinepagina journal.html (eigenaarsbeslissing 25 november): schuivende hero met vijf beelden, archief van alle edities en de delen van editie 1; blokken Het boek en Herkent u deze verspilling? weg; nieuw assets/magazine.js en deeplinks in assets/flipboek.js. Vertalingen in assets/i18n-journal.js. Geen adapterwijziging. Eerdere reden: Contentstudio herwerkt (sponsorbesluit 25 november): catalogus beperkt tot de menupagina’s (Home, Orion, Workflow-automatisering, Bedrijfsontwikkeling, Training, Insights, Over), zeven oude Engelstali…"
   },
   "javascript": [
     {
@@ -72,7 +72,7 @@
     },
     {
       "file": "assets/flipboek.js",
-      "sha256": "bbbab37323f6a1a154071c0110cdc4ec8ac4684fbe81071338b5e5d5cfdb0ee2"
+      "sha256": "bc77f30426aa0f55109b0ab8e34359e6a9c3761593188807c8197db75c91af04"
     },
     {
       "file": "assets/home-film.js",
@@ -88,15 +88,19 @@
     },
     {
       "file": "assets/i18n-journal.js",
-      "sha256": "c5b156f526ba3c4ffbe5ef1ccc612e57a47edb3c1e3202b22347c0f812f1af80"
+      "sha256": "d6b4245632bf02758c86eff263056487f80383905e4b6c7ecb23c79b9322c98e"
     },
     {
       "file": "assets/i18n.js",
-      "sha256": "01ee25d699626543a804981b54f03a437b8abed86b01af48d914a43da6412767"
+      "sha256": "510c27d29cd538375a798a20e74f04a9402ab0cd3aa563231fe616f705cfea4e"
     },
     {
       "file": "assets/journal.js",
       "sha256": "292c0bbaa1b1c15ebac85e2df23c3e601c5172dbb1d7981cfe2b7778d88db47f"
+    },
+    {
+      "file": "assets/magazine.js",
+      "sha256": "fb32f1bddec8adda1f4777cf47fce34d65fb0464070ce94ac01ed4e8e111c234"
     },
     {
       "file": "assets/models.js",
@@ -234,7 +238,7 @@
     },
     {
       "file": "journal.html",
-      "sha256": "a9618ec5348db4e809b90bce8249121a8ff0253a11f32f9c6bd3029f497eb20e"
+      "sha256": "f7480d3b95e87053f6ae9ca1e850d69299ea45ab2317401ff21f187c97b70f47"
     },
     {
       "file": "operating-model.html",

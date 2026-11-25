@@ -3,7 +3,16 @@
 
 Lees vóór nieuwe productfuncties, architectuurinvesteringen, automatiseringen of releasebeslissingen de canonieke instructies in [docs/governance/CONTROL-TOWER.md](docs/governance/CONTROL-TOWER.md), [docs/governance/OPERATING-MODEL.md](docs/governance/OPERATING-MODEL.md), [docs/governance/DECISION-REGISTER.md](docs/governance/DECISION-REGISTER.md) en [docs/governance/CPO-PRODUCT-INVESTMENT-CRITERIA.md](docs/governance/CPO-PRODUCT-INVESTMENT-CRITERIA.md). Controleer bestaande GitHub-werkitems vóór nieuw werk, en respecteer de onafhankelijke review en de twee actieve hoofdwerkstromen.
 
-**Een productierelease vereist altijd voorafgaande expliciete GO van de Executive Sponsor.** Als mergen naar `main` automatisch productiedeployment veroorzaakt, vereist ook die merge vooraf dezelfde GO, ongeacht of het om code of documentatie gaat. Toestemming om PR's te mergen is geen algemene productieautorisatie. Alle bestaande CI-, security- en acceptatiegates hieronder blijven ongewijzigd van kracht. Orion heeft eigen bindende Poort 0 en bouwstop; wijzig die niet via deze repository.
+**## Release-wachtrij: één merge-poort naar main (verplicht, besluit GF-010)
+
+**Alleen de release-agent van de CPO merget naar `main`.** Elke andere sessie of agent, ook in andere projecten (Orion, Magazine, kleur, …), doet dit en niets meer: PR openen, CI groen maken, label `release-queue` zetten en de wachtrij in [issue #122](https://github.com/erhol1973/grow-faster-site/issues/122) laten beslissen.
+- Niet zelf mergen, geen `update-branch` en geen handmatige `workflow_dispatch` van de release op `main`.
+- Een PR komt in de wachtrij met drie groene verplichte checks, een GO-opmerking van de Executive Sponsor op de PR en label `sponsor-go`. Zonder label geen merge.
+- Draagt issue #122 het label `release-lock`, dan merget of werkt niemand anders main bij.
+- De release-agent merget één PR tegelijk en wacht tot de main-release volledig klaar is (inclusief *Verify public release*) voor de volgende.
+- Een test die twee keer onstabiel blijkt, stopt de wachtrij tot de oorzaak hersteld is; nooit overslaan of versoepelen.
+
+Een productierelease vereist altijd voorafgaande expliciete GO van de Executive Sponsor.** Als mergen naar `main` automatisch productiedeployment veroorzaakt, vereist ook die merge vooraf dezelfde GO, ongeacht of het om code of documentatie gaat. Toestemming om PR's te mergen is geen algemene productieautorisatie. Alle bestaande CI-, security- en acceptatiegates hieronder blijven ongewijzigd van kracht. Orion heeft eigen bindende Poort 0 en bouwstop; wijzig die niet via deze repository.
 
 
 Read `docs/TESTPLAN.md` and `docs/RELEASE.md` before changing release or test behaviour.

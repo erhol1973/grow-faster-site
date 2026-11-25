@@ -8,7 +8,8 @@ permissions:
   contents: read
 concurrency:
   group: website-${{ github.ref }}
-  cancel-in-progress: true
+  # GF-010 (25 Nov 2026): a new push only cancels superseded PR runs; a running main release (deploy + public verification) is never cut off.
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 jobs:
   # The quality gate runs in parallel jobs. Every job builds the same commit and
   # proves its dist/ is byte-identical to the prepared package (dist-hash), so the

@@ -3,7 +3,7 @@
   "scope": "rendered_local_nl_runtime_dictionaries_static_cms_and_mail",
   "technicalReview": {
     "date": "2026-11-24",
-    "reason": "Orion-film en de vier stappen van Zo werkt Orion verhuisd van index.html naar orion.html (eigenaarsbeslissing 24 november): rendered DOM van beide pagina’s en inline JSON-LD ongewijzigd in betekenis; assets/cms-catalog.js zonder de negen stapvelden; assets/cms-admin.js met hernummerde groepen. Geen adapterwijziging. Eerdere reden: Magazine editie 1 als flipboek op journal.html: nieuw script assets/flipboek.js (bladert door acht pagina’s; bevat enkel paginanummers, geen tekst), uitgebreide runtime-dictionary assets/i18n-journal.…"
+    "reason": "Magazine editie 1 uitgebreid van acht naar 22 pagina’s met omslagfoto (eigenaarsbeslissing 25 november: 20 tot 35 pagina’s, sectorfoto op de omslag): journal.html rendered DOM, assets/i18n-journal.js (93 nieuwe sleutels), assets/i18n.js (leestijd). Geen adapterwijziging. Orion-film en de vier stappen van Zo werkt Orion verhuisd van index.html naar orion.html (eigenaarsbeslissing 24 november): rendered DOM van beide pagina’s en inline JSON-LD ongewijzigd in betekenis; …"
   },
   "javascript": [
     {
@@ -84,11 +84,11 @@
     },
     {
       "file": "assets/i18n-journal.js",
-      "sha256": "c5b156f526ba3c4ffbe5ef1ccc612e57a47edb3c1e3202b22347c0f812f1af80"
+      "sha256": "923018ae0ff26ded8eee0a76a9e053b95ddd97347e9a30e5e87c7b244dde27da"
     },
     {
       "file": "assets/i18n.js",
-      "sha256": "01ee25d699626543a804981b54f03a437b8abed86b01af48d914a43da6412767"
+      "sha256": "510c27d29cd538375a798a20e74f04a9402ab0cd3aa563231fe616f705cfea4e"
     },
     {
       "file": "assets/journal.js",
@@ -230,7 +230,7 @@
     },
     {
       "file": "journal.html",
-      "sha256": "a9618ec5348db4e809b90bce8249121a8ff0253a11f32f9c6bd3029f497eb20e"
+      "sha256": "c3307284c7201cc2d37b4898105696ef2f286a94940a481c2939f9356b8f9817"
     },
     {
       "file": "operating-model.html",

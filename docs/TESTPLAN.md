@@ -1,5 +1,11 @@
 # Testplan en kwaliteitsbeleid
 
+## Magazine editie 1 op 22 pagina's met omslagfoto, 25 november 2026
+
+Beslissing van de eigenaar: elke editie telt minimum 20 en maximum 35 pagina's, en de omslag draagt altijd een foto van de sector waarover de editie gaat. Editie 1 groeide van acht naar 22 pagina's: omslag met foto (verpakkingslijn in een voedingsbedrijf, gegenereerd beeld zonder personen of merken, img/magazine-editie-1-omslag-{700,1400}.webp), inhoud, van de redactie, de verspilling (2), waar overtypen zit (2), één voorbeeld (2), waarom niemand het ziet, de aanpak (2), telformulier, wat het oplevert (2), wat Orion doet en niet doet, veelgestelde vragen (2), checklist, bronnen en colofon, volgende stap, achterkant. Geen nieuwe cijfers zonder bron. Leestijd op de pagina en in de hero: een kwartier. 93 nieuwe sleutels in assets/i18n-journal.js.
+
+Tests: tests/journal.test.cjs bewaakt de paginatelling (20 tot 35, even), de omslagfoto met alt-tekst en lazy loading, de rubriekkoppen, de twee tabellen en de vertaling van elke regel (nu ook dt en dd); tests/browser/journal.spec.cjs bladert door 22 pagina's op desktop en mobiel, controleert dat de omslagfoto geladen is en dat geen pagina overloopt. Taalcontract opnieuw gegenereerd.
+
 ## Orion-film en stappen van de homepage naar orion.html, 24 november 2026
 
 Beslissing van de eigenaar: "Zo werkt Orion" (vier stappen en film) verdwijnt van de homepage; de film staat op orion.html onder de vier stappen en de zin "Elk antwoord dat u goedkeurt, onthoudt Orion." De homepage houdt hero, vier toepassingskaarten, ervaring, piramide, kloof, vertrouwen en pilot. CMS: de negen stapvelden van de homepage zijn uit de catalogus; de groepen in de beheerpagina zijn hernummerd (28 velden). Het uitklapblok "Tekst in beeld" blijft bij de film als tekstalternatief.

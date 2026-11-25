@@ -673,13 +673,6 @@ window.GF_CMS_CATALOG=[
         "fr": "Votre collaborateur vérifie et décide. Orion n’envoie jamais rien lui-même et retient chaque réponse que vous validez."
       },
       {
-        "key": "orx-07",
-        "type": "text",
-        "label": "Het probleem",
-        "nl": "Het probleem",
-        "fr": "Le problème"
-      },
-      {
         "key": "orx-08",
         "type": "text",
         "label": "Dezelfde vragen, telkens opnieuw",
@@ -741,13 +734,6 @@ window.GF_CMS_CATALOG=[
         "label": "Onderzoek in de zorg, waar overgetypte gegevens nauwkeurig worden nagekeken, vindt 2 tot 4",
         "nl": "Onderzoek in de zorg, waar overgetypte gegevens nauwkeurig worden nagekeken, vindt 2 tot 4 fouten per 100 overgetypte velden. In vrije tekstvelden zijn dat er meer.",
         "fr": "Des études dans le secteur des soins, où les données ressaisies sont vérifiées avec précision, trouvent 2 à 4 erreurs pour 100 champs ressaisis. Dans les champs de texte libre, il y en a davantage."
-      },
-      {
-        "key": "orx-17",
-        "type": "text",
-        "label": "De aanpak",
-        "nl": "De aanpak",
-        "fr": "L’approche"
       },
       {
         "key": "orx-18",
@@ -827,13 +813,6 @@ window.GF_CMS_CATALOG=[
         "fr": "Orion retient chaque réponse que vous validez. Le questionnaire suivant va donc plus vite."
       },
       {
-        "key": "orx-29",
-        "type": "text",
-        "label": "Toepassingen",
-        "nl": "Toepassingen",
-        "fr": "Applications"
-      },
-      {
         "key": "orx-30",
         "type": "text",
         "label": "Niet enkel voor de voedingsindustrie",
@@ -846,48 +825,6 @@ window.GF_CMS_CATALOG=[
         "label": "Orion werkt overal waar iemand informatie opvraagt die al in uw documenten staat.",
         "nl": "Orion werkt overal waar iemand informatie opvraagt die al in uw documenten staat.",
         "fr": "Orion fonctionne partout où quelqu’un demande des informations qui figurent déjà dans vos documents."
-      },
-      {
-        "key": "orx-32",
-        "type": "text",
-        "label": "Figuur 1",
-        "nl": "Figuur 1",
-        "fr": "Figure 1"
-      },
-      {
-        "key": "orx-33",
-        "type": "text",
-        "label": "Waar Orion antwoorden voorbereidt",
-        "nl": "Waar Orion antwoorden voorbereidt",
-        "fr": "Où Orion prépare les réponses"
-      },
-      {
-        "key": "orx-34",
-        "type": "text",
-        "label": "Domein",
-        "nl": "Domein",
-        "fr": "Domaine"
-      },
-      {
-        "key": "orx-35",
-        "type": "text",
-        "label": "Wie vraagt",
-        "nl": "Wie vraagt",
-        "fr": "Qui demande"
-      },
-      {
-        "key": "orx-36",
-        "type": "text",
-        "label": "Wat Orion voorbereidt",
-        "nl": "Wat Orion voorbereidt",
-        "fr": "Ce qu’Orion prépare"
-      },
-      {
-        "key": "orx-37",
-        "type": "text",
-        "label": "Uit welke documenten",
-        "nl": "Uit welke documenten",
-        "fr": "À partir de quels documents"
       },
       {
         "key": "orx-38",
@@ -1002,13 +939,6 @@ window.GF_CMS_CATALOG=[
         "fr": "Procédures, certificats, contrats"
       },
       {
-        "key": "orx-54",
-        "type": "text",
-        "label": "Mens en AI",
-        "nl": "Mens en AI",
-        "fr": "L’humain et l’IA"
-      },
-      {
         "key": "orx-55",
         "type": "text",
         "label": "Orion bereidt voor. U beslist.",
@@ -1086,13 +1016,6 @@ window.GF_CMS_CATALOG=[
         "fr": "Votre collaborateur vérifie et valide. Orion n’envoie jamais rien lui-même."
       },
       {
-        "key": "orx-66",
-        "type": "text",
-        "label": "Voor wie",
-        "nl": "Voor wie",
-        "fr": "Pour qui"
-      },
-      {
         "key": "orx-67",
         "type": "text",
         "label": "Kmo’s die vaak dezelfde vragen beantwoorden",
@@ -1105,13 +1028,6 @@ window.GF_CMS_CATALOG=[
         "label": "Bedrijven die regelmatig vragenlijsten, specificaties of dossiers moeten invullen voor kla",
         "nl": "Bedrijven die regelmatig vragenlijsten, specificaties of dossiers moeten invullen voor klanten, auditors of overheden, in de voeding, de industrie, het onderhoud, de administratie of de logistiek. We starten in West-Vlaanderen.",
         "fr": "Les entreprises qui doivent régulièrement remplir des questionnaires, des spécifications ou des dossiers pour des clients, des auditeurs ou les pouvoirs publics, dans l’alimentaire, l’industrie, la maintenance, l’administration ou la logistique. Nous commençons en Flandre occidentale."
-      },
-      {
-        "key": "orx-69",
-        "type": "text",
-        "label": "Vragen",
-        "nl": "Vragen",
-        "fr": "Questions"
       },
       {
         "key": "orx-70",
@@ -1154,13 +1070,6 @@ window.GF_CMS_CATALOG=[
         "label": "Dat hangt af van het aantal vragenlijsten. U start zonder groot project: in de pilot meten",
         "nl": "Dat hangt af van het aantal vragenlijsten. U start zonder groot project: in de pilot meten we eerst hoeveel tijd u wint. Dan weten we allebei of het de moeite waard is.",
         "fr": "Cela dépend du nombre de questionnaires. Vous commencez sans grand projet : pendant le pilote, nous mesurons d’abord le temps que vous gagnez. Nous saurons alors tous les deux si cela en vaut la peine."
-      },
-      {
-        "key": "orx-76",
-        "type": "text",
-        "label": "Volgende stap",
-        "nl": "Volgende stap",
-        "fr": "Étape suivante"
       },
       {
         "key": "orx-77",

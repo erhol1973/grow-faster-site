@@ -2,7 +2,11 @@ const {test,expect}=require('playwright/test');
 async function seed(page,c={v:4,ext:false,ana:false,ts:Date.now()}){await page.addInitScript(c=>{localStorage.setItem('avs-lang','nl');if(c)localStorage.setItem('avs-consent',JSON.stringify(c));else localStorage.removeItem('avs-consent')},c)}
 async function stubs(page){
   await page.route('https://fonts.googleapis.com/**',r=>r.fulfill({status:200,contentType:'text/css',body:''}));
-  await page.route('https://gc.zgo.at/count.js',r=>r.fulfill({status:200,contentType:'text/javascript',body:`window.__analyticsLoaded=(window.__analyticsLoaded||0)+1;window.goatcounter.count=function(){window.__counts=(window.__counts||0)+1};if(!window.goatcounter.no_onload)window.goatcounter.count();`}));
+  // HubSpot is answered locally: these flows must not depend on a live third-party script (CI has internet, local runs do not).
+  await page.route('https://js-eu1.hs-scripts.com/**',r=>r.fulfill({status:200,contentType:'text/javascript',body:''}));
+  const gc={requests:0};
+  await page.route('https://gc.zgo.at/count.js',r=>{gc.requests++;return r.fulfill({status:200,contentType:'text/javascript',body:`window.__analyticsLoaded=(window.__analyticsLoaded||0)+1;window.goatcounter.count=function(){window.__counts=(window.__counts||0)+1};if(!window.goatcounter.no_onload)window.goatcounter.count();`})});
+  return gc;
 }
 test('actual language switching persists between pages and selected article',async({page})=>{
   await seed(page);await page.goto('/insights.html');
@@ -21,12 +25,30 @@ test('partial consent loads fonts only and rejection stops optional resources',a
   expect(await page.evaluate(()=>window.__analyticsLoaded||0)).toBe(0);await expect(page.locator('body')).not.toHaveClass(/locked/);
 });
 test('accept, withdraw and accept analytics again without leaving active trackers',async({page})=>{
-  await seed(page,null);await stubs(page);await page.goto('/index.html');await page.locator('#c-all').click();
-  await expect.poll(()=>page.evaluate(()=>window.__counts||0)).toBe(1);
+  await seed(page,null);const gc=await stubs(page);await page.goto('/index.html');await page.evaluate(()=>{window.__samePage=true});await page.locator('#c-all').click();
+  await expect.poll(()=>page.evaluate(()=>window.__counts||0)).toBe(1);expect(await page.evaluate(()=>window.__analyticsLoaded)).toBe(1);
   await page.locator('.open-consent').first().click();await page.locator('#c-none').click();
   await page.evaluate(()=>{window.goatcounter.count();document.dispatchEvent(new MouseEvent('click',{bubbles:true}));window.dispatchEvent(new Event('hashchange'))});
   expect(await page.evaluate(()=>window.__counts)).toBe(1);await expect(page.locator('#gc')).toHaveCount(0);
-  await page.locator('.open-consent').first().click();await page.locator('#c-all').click();await expect.poll(()=>page.evaluate(()=>window.__counts)).toBe(2);
+  // Re-acceptance reuses the already executed script: one pageview at once, no second download, no reload.
+  await page.locator('.open-consent').first().click();await page.locator('#c-all').click();
+  expect(await page.evaluate(()=>({counts:window.__counts,loaded:window.__analyticsLoaded,samePage:window.__samePage}))).toEqual({counts:2,loaded:1,samePage:true});
+  expect(gc.requests).toBe(1);
+});
+test('a download finishing after withdrawal stays inert and re-acceptance counts exactly once',async({page})=>{
+  await seed(page,null);let release;const wait=new Promise(r=>release=r);let requests=0;
+  await page.route('https://fonts.googleapis.com/**',r=>r.fulfill({status:200,contentType:'text/css',body:''}));
+  await page.route('https://js-eu1.hs-scripts.com/**',r=>r.fulfill({status:200,contentType:'text/javascript',body:''}));
+  await page.route('https://gc.zgo.at/count.js',async r=>{if(++requests===1)await wait;await r.fulfill({status:200,contentType:'text/javascript',body:`window.__analyticsLoaded=(window.__analyticsLoaded||0)+1;window.goatcounter.count=function(){window.__counts=(window.__counts||0)+1};if(!window.goatcounter.no_onload)window.goatcounter.count()`}).catch(()=>{})});
+  await page.goto('/index.html');await page.locator('#c-all').click();await expect.poll(()=>requests).toBe(1);
+  await page.locator('.open-consent').first().click();await page.locator('#c-none').click();
+  const isGc=r=>r.url()==='https://gc.zgo.at/count.js',finished=Promise.race([page.waitForEvent('requestfinished',isGc),page.waitForEvent('requestfailed',isGc)]);release();await finished;
+  // Whether or not the browser still executes the detached script, its count function must stay unusable without consent.
+  await page.evaluate(()=>new Promise(r=>setTimeout(r,0)));await page.evaluate(()=>window.goatcounter?.count?.());
+  expect(await page.evaluate(()=>window.__counts||0)).toBe(0);await expect(page.locator('#gc')).toHaveCount(0);
+  await page.locator('.open-consent').first().click();await page.locator('#c-all').click();
+  await expect.poll(()=>page.evaluate(()=>window.__counts||0)).toBe(1);
+  await page.evaluate(()=>new Promise(r=>setTimeout(r,0)));expect(await page.evaluate(()=>window.__counts)).toBe(1);
 });
 test('document-level synthetic clicks do not throw or change analytics consent',async({page})=>{
   await seed(page,{v:4,ext:false,ana:false,ts:Date.now()});

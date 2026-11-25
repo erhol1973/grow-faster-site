@@ -3,7 +3,8 @@
 // "adaptief bedrijf" block on Bedrijfsontwikkeling (coherence.html).
 const {test}=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),vm=require('node:vm');
 const root=path.resolve(__dirname,'..','dist');const read=f=>fs.readFileSync(path.join(root,f),'utf8');
-const I18N=()=>{const c={window:{}};vm.runInNewContext(read('assets/i18n.js'),c);return c.window.I18N};
+// 25 Nov 2026: homepage strings moved to assets/i18n-home.js (loaded after i18n.js on index.html); it only adds keys, so merging it is neutral for other pages.
+const I18N=()=>{const c={window:{}};vm.runInNewContext(read('assets/i18n.js'),c);vm.runInNewContext(read('assets/i18n-home.js'),c);return c.window.I18N};
 const main=f=>read(f).match(/<main[\s\S]*?<\/main>/)[0];
 const visible=html=>html.replace(/<script[\s\S]*?<\/script>|<style[\s\S]*?<\/style>/g,'').replace(/<([a-z0-9]+)[^>]*data-(?:notr|ih)[^>]*>[\s\S]*?<\/\1>/g,'');
 // Names stay the same in both languages.

@@ -42,7 +42,8 @@ for(const [language,heading,result,layers,headings]of [
   await p.locator('.pyr a[href="'+href+'"]').first().click();await expect(p).toHaveURL(new RegExp(href.replace('.','\\.')+'$'));await expect(p.locator('html')).toHaveAttribute('lang',language);if(h1)await expect(p.locator('h1')).toHaveText(h1);
   await p.goto('/'+page);
  }
- await p.goto('/'+page+'#final');await expect(p.locator('#fn-h')).toBeInViewport();
+ // Sponsor 25 Nov 2026: the homepage has no #final pilot block any more; oplossingen.html keeps it.
+ if(page==='index.html')await expect(p.locator('#final')).toHaveCount(0);else{await p.goto('/'+page+'#final');await expect(p.locator('#fn-h')).toBeInViewport();}
  expect(errors).toEqual([]);
 });
 // The former "late book cover" scroll-anchoring regression is retired: the book covers and the selected-article link it

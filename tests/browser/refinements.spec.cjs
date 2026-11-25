@@ -1,8 +1,8 @@
 const {test,expect}=require('playwright/test');
 test.beforeEach(async({page})=>{await page.addInitScript(()=>{localStorage.setItem('avs-lang','nl');localStorage.setItem('avs-consent',JSON.stringify({v:4,ext:false,ana:false,ts:Date.now()}))})});
-// Sprint 1: the customer homepage ends with the pilot action. Release 2: Insights ends with its own contact block, so Coherentie is opened directly.
+// Sprint 1: the customer homepage ends with the pilot action. Sponsor 25 Nov 2026: #final removed; the hero CTA is the forward route. Release 2: Insights ends with its own contact block, so Coherentie is opened directly.
 test('home has a forward route and authors are credited in sources instead of promotional copy',async({page})=>{
- await page.goto('/index.html');await expect(page.locator('main')).not.toContainText('Jeanne Ross');await expect(page.locator('#final a[href^="afspraak.html"]')).toHaveCount(1);await expect(page.locator('#final a[href^="mailto:"]')).toHaveCount(0);await page.goto('/coherence.html');
+ await page.goto('/index.html');await expect(page.locator('main')).not.toContainText('Jeanne Ross');await expect(page.locator('#hero-pilot[href^="afspraak.html"]')).toHaveCount(1);await expect(page.locator('main a[href^="mailto:"]')).toHaveCount(0);await expect(page.locator('#final')).toHaveCount(0);await page.goto('/coherence.html');
  // Coherence for kmo's (23 Nov 2026): the research foundations left Coherentie; its figures credit their authors in the source line.
  await expect(page.locator('.book-foundation')).toHaveCount(0);await expect(page.locator('#cijfers .bron').first()).toContainText('Sull');
  // Release 1.1: About no longer has the intellectual-foundations block; it must not name researchers in promotional copy either.

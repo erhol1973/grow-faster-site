@@ -131,69 +131,6 @@ window.GF_CMS_CATALOG=[
         "fr": "Plus de vingt ans d’amélioration des processus, de gestion de programmes et de transformation, notamment dans la distribution, l’industrie et les télécoms."
       },
       {
-        "key": "home-orion-steps-h",
-        "type": "text",
-        "label": "Zo werkt Orion",
-        "nl": "Zo werkt Orion",
-        "fr": "Comment fonctionne Orion"
-      },
-      {
-        "key": "home-orion-step-1-h",
-        "type": "text",
-        "label": "Opladen",
-        "nl": "Opladen",
-        "fr": "Charger"
-      },
-      {
-        "key": "home-orion-step-1-p",
-        "type": "text",
-        "label": "U laadt de vragenlijst op zoals u ze kreeg, in Excel of Word.",
-        "nl": "U laadt de vragenlijst op zoals u ze kreeg, in Excel of Word.",
-        "fr": "Vous chargez le questionnaire tel que vous l’avez reçu, en Excel ou en Word."
-      },
-      {
-        "key": "home-orion-step-2-h",
-        "type": "text",
-        "label": "Zoeken",
-        "nl": "Zoeken",
-        "fr": "Rechercher"
-      },
-      {
-        "key": "home-orion-step-2-p",
-        "type": "text",
-        "label": "Orion zoekt de antwoorden in uw eigen specificaties en certificaten.",
-        "nl": "Orion zoekt de antwoorden in uw eigen specificaties en certificaten.",
-        "fr": "Orion recherche les réponses dans vos propres spécifications et certificats."
-      },
-      {
-        "key": "home-orion-step-3-h",
-        "type": "text",
-        "label": "Nakijken",
-        "nl": "Nakijken",
-        "fr": "Vérifier"
-      },
-      {
-        "key": "home-orion-step-3-p",
-        "type": "text",
-        "label": "Bij elk antwoord staat de bron. Gevoelige vragen, zoals allergenen, zijn gemarkeerd.",
-        "nl": "Bij elk antwoord staat de bron. Gevoelige vragen, zoals allergenen, zijn gemarkeerd.",
-        "fr": "Chaque réponse indique sa source. Les questions sensibles, comme les allergènes, sont signalées."
-      },
-      {
-        "key": "home-orion-step-4-h",
-        "type": "text",
-        "label": "Versturen",
-        "nl": "Versturen",
-        "fr": "Envoyer"
-      },
-      {
-        "key": "home-orion-step-4-p",
-        "type": "text",
-        "label": "Uw medewerker keurt goed en verstuurt. Orion verstuurt nooit zelf iets.",
-        "nl": "Uw medewerker keurt goed en verstuurt. Orion verstuurt nooit zelf iets.",
-        "fr": "Votre collaborateur valide et envoie. Orion n’envoie jamais rien lui-même."
-      },
-      {
         "key": "home-orion-trust-h",
         "type": "text",
         "label": "Uw systemen en uw beslissingen blijven bij u",

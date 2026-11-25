@@ -94,3 +94,7 @@ automated accessibility. Real Supabase acceptance tests are separate.
 
 Keep failure reports and follow all existing release gates. Never weaken a gate
 or use a successful local mock as evidence of a production deployment.
+
+## Testomgeving (25 november 2026)
+
+Elke branch krijgt een Cloudflare Pages-preview (`<branch>.grow-faster-site.pages.dev` en een deployment-hash-URL). `assets/cms-config.js` koppelt elke zulke preview aan het geïsoleerde testproject growfaster-test (gqsvoioccvklzfmdmexy); de contentstudio toont dan "Contentstudio · TEST". Concepten en publicaties op een preview veranderen dus nooit grow-faster.be. Alleen het live domein gebruikt het productieproject. Na een productierelease bestaan pagina's die nog nooit in productie zijn geopend daar pas als concept na de eerste selectie in de contentstudio; er wordt niets automatisch gepubliceerd.

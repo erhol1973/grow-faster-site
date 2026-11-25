@@ -11,7 +11,7 @@ test('accepted uploads use distinct immutable paths, authenticated writes and no
 // Coherence for kmo's (23 Nov 2026): the approved page has 33 editable fields instead of 76, so the site total fell from 605 to 562.
 // Release 2 (23 Nov 2026): Insights for kmo's has 66 editable fields instead of 203 (three articles instead of six, NL/FR via the
 // dictionary instead of duplicated language blocks) and Bedrijfsontwikkeling gains 2; the total is 427. Lower bound 400, owner approval required.
-test('catalog field IDs resolve once in source and CMS scripts never publish draft data in static output',()=>{const c={window:{}};vm.runInNewContext(fs.readFileSync('assets/cms-catalog.js','utf8'),c);assert.equal(c.window.GF_CMS_CATALOG.length,11);let count=0;for(const page of c.window.GF_CMS_CATALOG){const html=fs.readFileSync(page.route,'utf8');const keys=[...html.matchAll(/data-cms="([^"]+)"/g)].map(m=>m[1]);assert.equal(new Set(keys).size,keys.length);assert.deepEqual(keys.slice().sort(),Array.from(page.fields,f=>f.key).sort());count+=keys.length;}assert.ok(count>400);assert.equal(fs.existsSync('dist/supabase'),false);assert.match(fs.readFileSync('dist/admin.html','utf8'),/noindex,nofollow/);});
+test('catalog field IDs resolve once in source and CMS scripts never publish draft data in static output',()=>{const c={window:{}};vm.runInNewContext(fs.readFileSync('assets/cms-catalog.js','utf8'),c);/* Sponsor decision 25 Nov 2026: the content studio holds exactly the menu pages; the seven old English pages left it. */ assert.deepEqual(Array.from(c.window.GF_CMS_CATALOG,p=>p.page),['home','orion','automatisering','coherence','training','insights','about']);for(const old of ['books','approach','operating-model','process','value','transformation','workshop'])assert.ok(!c.window.GF_CMS_CATALOG.some(p=>p.page===old),old);let count=0;for(const page of c.window.GF_CMS_CATALOG){const html=fs.readFileSync(page.route,'utf8');const keys=[...html.matchAll(/data-cms="([^"]+)"/g)].map(m=>m[1]);assert.equal(new Set(keys).size,keys.length);assert.deepEqual(keys.slice().sort(),Array.from(page.fields,f=>f.key).sort());count+=keys.length;}assert.ok(count>=300,'menu pages keep their editable fields: '+count);/* 25 Nov 2026: 323 after removing the old pages (was >400). */assert.equal(fs.existsSync('dist/supabase'),false);assert.match(fs.readFileSync('dist/admin.html','utf8'),/noindex,nofollow/);});
 
 test('CMS admin uses Grow Faster logo and searchable fields while retaining save/preview/publish controls',()=>{
  const html=fs.readFileSync('admin.html','utf8');
@@ -68,4 +68,19 @@ test('CMS publication requires a reviewed saved revision and explicit confirmati
  assert.match(source,/window\.confirm\('Deze wijziging wordt zichtbaar voor alle bezoekers/);
  assert.match(source,/if\(!dirty\)\{previewedSection=selected\.id;previewedRevision=selected\.updated_at;\}/);
  assert.match(source,/records=await client\.list\(\);selected=records\.find\(record=>record\.id===selected\.id\)/);
+});
+
+// Defect found 25 Nov 2026: coherence.html and insights.html were in the catalog but had lost the public loader in their
+// 23 Nov rewrites, so published edits never appeared. Every catalog page must carry its page id, the loader and a video slot.
+test('every content-studio page loads published CMS content on the public page',()=>{
+ const c={window:{}};vm.runInNewContext(fs.readFileSync('assets/cms-catalog.js','utf8'),c);
+ for(const page of c.window.GF_CMS_CATALOG){const html=fs.readFileSync(page.route,'utf8');
+  assert.match(html,new RegExp(`<body data-cms-page="${page.page}"`),page.route);
+  const order=['assets/cms-config.js','assets/cms-client.js','assets/cms-public.js'].map(s=>html.indexOf('src="'+s));
+  assert.ok(order.every(i=>i>0)&&order[0]<order[1]&&order[1]<order[2],`${page.route}: CMS loader in order`);
+  assert.ok(html.indexOf('src="assets/site.js')<order[0],`${page.route}: loader after site.js`);
+  assert.match(html,new RegExp(`data-cms="cms-video-${page.page}"`),page.route);
+ }
+ // The new menu pages (sponsor decision 25 Nov 2026) are editable.
+ for(const route of ['orion.html','automatisering.html','training.html'])assert.ok(c.window.GF_CMS_CATALOG.some(p=>p.route===route),route);
 });

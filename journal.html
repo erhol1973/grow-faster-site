@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<link rel="preload" as="image" type="image/webp" href="img/hero-oplossingen-workflow-1774.webp" imagesrcset="img/hero-oplossingen-workflow-640.webp 640w, img/hero-oplossingen-workflow-1280.webp 1280w, img/hero-oplossingen-workflow-1774.webp 1774w" imagesizes="100vw" fetchpriority="high">
+<link rel="preload" as="image" type="image/webp" href="img/magazine-editie-1-omslag-700.webp" imagesrcset="img/magazine-editie-1-omslag-700.webp 700w, img/magazine-editie-1-omslag-1400.webp 1400w" imagesizes="(max-width: 860px) 50vw, 380px" fetchpriority="high">
 <meta name="description" content="Elke maand één verspilling in uw bedrijf, en hoe automatisering en AI ze wegnemen. Een kwartier lezen, voor zaakvoerders van kmo’s.">
 <link rel="canonical" href="https://grow-faster.be/journal.html">
 <meta property="og:type" content="website">
@@ -29,7 +29,7 @@
 <meta name="theme-color" content="#0B2545">
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="stylesheet" href="assets/site.css?v=20261108-film-layout">
-<link rel="stylesheet" href="assets/magazine.css?v=20261125-editie1-32">
+<link rel="stylesheet" href="assets/magazine.css?v=20261125-magazines">
 <style>.gf-feature{margin-top:28px;padding:24px;border:1px solid var(--line);background:var(--bg)}.gf-feature h3{font-size:24px;line-height:1.25;margin:8px 0 14px}.gf-feature p{max-width:65ch}.foot-grid.foot-3{grid-template-columns:repeat(3,minmax(0,1fr))}@media(max-width:620px){.foot-grid.foot-3{grid-template-columns:minmax(0,1fr)}}@media(min-width:821px){.hero.hero-customer .hero-top::after{background:linear-gradient(90deg,rgba(6,27,52,.95),rgba(6,27,52,.9) 55%,rgba(6,27,52,.74) 82%,rgba(6,27,52,.4) 100%)}}.hero.hero-customer .hero-inner h1{max-width:20ch}</style><script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://grow-faster.be/#website","name":"Grow Faster","url":"https://grow-faster.be/","inLanguage":["nl","fr"],"publisher":{"@id":"https://grow-faster.be/about.html#erlend"}},{"@type":"Person","@id":"https://grow-faster.be/about.html#erlend","name":"Erlend Hollebosch","url":"https://grow-faster.be/about.html","sameAs":["https://www.linkedin.com/in/erlend-hollebosch-053361181/"]},{"@type":"Periodical","name":"Grow Faster Magazine","description":"Elke maand één verspilling in uw bedrijf, en hoe automatisering en AI ze wegnemen. Een kwartier lezen, voor zaakvoerders van kmo’s.","url":"https://grow-faster.be/journal.html","inLanguage":["nl","fr"],"publisher":{"@id":"https://grow-faster.be/about.html#erlend"}}]}</script>
 <link rel="stylesheet" href="assets/navigation.css?v=20261108-menu-contrast">
 <link rel="stylesheet" href="assets/journal.css?v=20261106-journal">
@@ -50,7 +50,7 @@
 .pilot-box{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:40px;align-items:end}
 @media(max-width:900px){#werking .cards6{grid-template-columns:1fr}.trust-list{grid-template-columns:1fr}.pilot-box{grid-template-columns:1fr;gap:20px}}
 </style>
-<script defer src="assets/i18n.js?v=20261123-release2"></script><script defer src="assets/i18n-journal.js?v=20261125-editie1-32"></script><script defer src="assets/flipboek.js?v=20261125-editie1-32"></script>
+<script defer src="assets/i18n.js?v=20261123-release2"></script><script defer src="assets/i18n-journal.js?v=20261125-magazines"></script><script defer src="assets/flipboek.js?v=20261125-magazines"></script><script defer src="assets/magazine.js?v=20261125-magazines"></script>
 <script defer src="assets/content.js?v=20261030-editorial-three"></script>
 <script defer src="assets/models.js?v=20261029-quality"></script>
 <script defer src="assets/consent.js?v=20261029-quality"></script>
@@ -83,18 +83,79 @@
 </nav>
 
 <main id="top" tabindex="-1">
-<header class="hero hero-minimal hero-customer" id="hero"><div class="hero-top"><div class="hero-bg" aria-hidden="true"><picture><source type="image/webp" srcset="img/hero-oplossingen-workflow-640.webp 640w, img/hero-oplossingen-workflow-1280.webp 1280w, img/hero-oplossingen-workflow-1774.webp 1774w" sizes="100vw"><img src="img/hero-oplossingen-workflow-1774.webp" alt="" width="1774" height="887" fetchpriority="high" decoding="async"></picture></div><div class="wrap hero-inner">
-  <h1>Grow Faster Magazine</h1>
-  <p class="sub">Elke maand één verspilling in uw bedrijf, en hoe automatisering en AI ze wegnemen. Een kwartier lezen.</p>
-  <div class="ctas"><a href="mailto:info@grow-faster.be?subject=Magazine" class="btn primary" id="hero-abo">Mail me bij een nieuwe editie <span aria-hidden="true">→</span></a></div>
+<header class="hero mz-hero" id="hero"><div class="hero-top mz-top"><div class="wrap mz-hero-grid">
+  <div class="mz-vast">
+    <p class="mz-kicker">Maandelijks magazine voor kmo's</p>
+    <h1>Grow Faster Magazine</h1>
+    <p class="sub">Elke maand één verspilling in uw bedrijf, en hoe automatisering en AI ze wegnemen. Een kwartier lezen.</p>
+    <div class="ctas"><a href="#editie-1" class="btn mz-btn" id="hero-lees">Lees editie 1 <span aria-hidden="true">→</span></a><a href="mailto:info@grow-faster.be?subject=Magazine" class="btn mz-btn-lijn" id="hero-abo">Mail me bij een nieuwe editie <span aria-hidden="true">→</span></a></div>
+  </div>
+  <div class="mz-podium" id="mz-podium">
+    <div class="mz-track" id="mz-track" tabindex="-1">
+      <div class="mz-slide mz-koraal" role="group">
+        <div class="mz-slide-tekst"><p class="mz-slide-label">Nr. 1 · november 2026</p><p class="mz-slide-titel">Overtypen, de verspilling die niemand ziet</p><a class="mz-slide-link" href="#editie-1">Lees het magazine <span aria-hidden="true">→</span></a></div>
+        <div class="mz-slide-beeld"><img src="img/magazine-editie-1-omslag-700.webp" srcset="img/magazine-editie-1-omslag-700.webp 700w, img/magazine-editie-1-omslag-1400.webp 1400w" sizes="(max-width: 860px) 50vw, 380px" alt="Omslag van editie 1: verpakkingslijn in een voedingsbedrijf" width="700" height="929" fetchpriority="high" decoding="async"></div>
+      </div>
+      <div class="mz-slide mz-geel" role="group">
+        <div class="mz-slide-tekst"><p class="mz-slide-label">Editie 1 · deel 1</p><p class="mz-slide-titel">Werk dat niets toevoegt, en toch elke dag gebeurt</p><a class="mz-slide-link" href="#editie-1" data-fb-pagina="5">Lees deel 1 <span aria-hidden="true">→</span></a></div>
+        <div class="mz-slide-beeld"><img src="img/magazine-editie-1-kantoor-700.webp" srcset="img/magazine-editie-1-kantoor-700.webp 700w, img/magazine-editie-1-kantoor-880.webp 880w" sizes="(max-width: 860px) 50vw, 380px" alt="Bureau in een kmo met een bestelbon naast het toetsenbord" width="700" height="929" loading="lazy" decoding="async"></div>
+      </div>
+      <div class="mz-slide mz-turkoois" role="group">
+        <div class="mz-slide-tekst"><p class="mz-slide-label">Editie 1 · deel 2</p><p class="mz-slide-titel">Vijf retailers, vijf vragenlijsten, dezelfde antwoorden</p><a class="mz-slide-link" href="#editie-1" data-fb-pagina="12">Lees deel 2 <span aria-hidden="true">→</span></a></div>
+        <div class="mz-slide-beeld"><img src="img/magazine-editie-1-labo-700.webp" srcset="img/magazine-editie-1-labo-700.webp 700w, img/magazine-editie-1-labo-880.webp 880w" sizes="(max-width: 860px) 50vw, 380px" alt="Kwaliteitslabo met stalen en een specificatieblad" width="700" height="929" loading="lazy" decoding="async"></div>
+      </div>
+      <div class="mz-slide mz-roze" role="group">
+        <div class="mz-slide-tekst"><p class="mz-slide-label">Editie 1 · deel 3</p><p class="mz-slide-titel">Vier stappen, geen nieuw systeem</p><a class="mz-slide-link" href="#editie-1" data-fb-pagina="17">Lees deel 3 <span aria-hidden="true">→</span></a></div>
+        <div class="mz-slide-beeld"><img src="img/magazine-editie-1-overleg-700.webp" srcset="img/magazine-editie-1-overleg-700.webp 700w, img/magazine-editie-1-overleg-1168.webp 1168w" sizes="(max-width: 860px) 50vw, 380px" alt="Vergaderzaal met documenten en een eenvoudig processchema op een scherm" width="700" height="527" loading="lazy" decoding="async"></div>
+      </div>
+      <div class="mz-slide mz-limoen" role="group">
+        <div class="mz-slide-tekst"><p class="mz-slide-label">Nr. 2 · december 2026</p><p class="mz-slide-titel">Het verschil tussen bon en levering</p><a class="mz-slide-link" href="mailto:info@grow-faster.be?subject=Magazine%20editie%202">Mail me als ze verschijnt <span aria-hidden="true">→</span></a></div>
+        <div class="mz-slide-beeld"><img src="img/magazine-editie-1-laadkade-700.webp" srcset="img/magazine-editie-1-laadkade-700.webp 700w, img/magazine-editie-1-laadkade-880.webp 880w" sizes="(max-width: 860px) 50vw, 380px" alt="Laadkade met paletten en een klembord met een leverbon" width="700" height="929" loading="lazy" decoding="async"></div>
+      </div>
+    </div>
+    <div class="mz-bediening">
+      <button type="button" class="mz-knop" id="mz-vorige" aria-controls="mz-track"><span aria-hidden="true">←</span><span class="fb-sr">Vorige</span></button>
+      <div class="mz-stippen" id="mz-stippen"><button type="button" aria-current="true"><span class="fb-sr">Dia 1</span></button><button type="button"><span class="fb-sr">Dia 2</span></button><button type="button"><span class="fb-sr">Dia 3</span></button><button type="button"><span class="fb-sr">Dia 4</span></button><button type="button"><span class="fb-sr">Dia 5</span></button></div>
+      <button type="button" class="mz-knop" id="mz-volgende" aria-controls="mz-track"><span aria-hidden="true">→</span><span class="fb-sr">Volgende</span></button>
+      <button type="button" class="mz-knop mz-pauze" id="mz-pauze" aria-pressed="false"><span class="mz-ico-p" aria-hidden="true">❚❚</span><span class="mz-ico-s" aria-hidden="true">▶</span><span class="fb-sr">Pauzeer de dia's</span></button>
+    </div>
+  </div>
 </div></div></header>
 
-<section id="opbouw"><div class="wrap"><div class="head"><h2>Opbouw van elke editie</h2></div><div class="cards6">
-  <article class="vcard in"><span class="step-n" data-notr>01</span><h3>Eén verspilling.</h3><p>Een verspilling die u in bijna elke kmo terugvindt.</p></article>
-  <article class="vcard in"><span class="step-n" data-notr>02</span><h3>Eén voorbeeld.</h3><p>Hoe die verspilling eruitziet in een kmo, met één cijfer en de bron.</p></article>
-  <article class="vcard in"><span class="step-n" data-notr>03</span><h3>De aanpak.</h3><p>De stappen om ze weg te werken, met automatisering en AI waar het helpt.</p></article>
-  <article class="vcard in"><span class="step-n" data-notr>04</span><h3>Wat het oplevert.</h3><p>Hoeveel tijd en geld u terugwint, en hoe u dat meet.</p></article>
-</div></div></section>
+<section id="edities" class="mz-archief" aria-labelledby="edities-h"><div class="wrap">
+  <div class="mz-kop"><p class="mz-kicker">Archief</p><h2 id="edities-h">Alle edities</h2><p class="lede">Elke maand één verspilling, één voorbeeld en één aanpak. De nieuwste editie staat eerst.</p></div>
+  <h3 class="mz-jaar" data-notr>2026</h3>
+  <div class="mz-raster">
+    <article class="mz-nummer mz-limoen mz-binnenkort">
+      <a class="mz-nummer-link" href="mailto:info@grow-faster.be?subject=Magazine%20editie%202">
+        <span class="mz-nummer-beeld"><img src="img/magazine-editie-1-laadkade-700.webp" alt="" width="700" height="929" loading="lazy" decoding="async"><span class="mz-nummer-nr" data-notr>02</span><span class="mz-badge">Verschijnt in december</span></span>
+        <span class="mz-nummer-tekst"><span class="mz-nummer-label">Nr. 2 · december 2026</span><strong class="mz-nummer-titel">Het verschil tussen bon en levering</strong><span class="mz-nummer-intro">Op de bon staan 24 dozen, op de kade staan er 22. Wie merkt het, wanneer, en wat kost het als niemand het merkt?</span><span class="mz-nummer-cta">Mail me als ze verschijnt <span aria-hidden="true">→</span></span></span>
+      </a>
+    </article>
+    <article class="mz-nummer mz-koraal">
+      <a class="mz-nummer-link" href="#editie-1">
+        <span class="mz-nummer-beeld"><img src="img/magazine-editie-1-omslag-700.webp" alt="" width="700" height="929" loading="lazy" decoding="async"><span class="mz-nummer-nr" data-notr>01</span></span>
+        <span class="mz-nummer-tekst"><span class="mz-nummer-label">Nr. 1 · november 2026</span><strong class="mz-nummer-titel">Overtypen, de verspilling die niemand ziet</strong><span class="mz-nummer-intro">Bestellingen, specificaties en vragenlijsten die iemand van het ene document naar het andere overtypt. 32 pagina's.</span><span class="mz-nummer-cta">Lees het magazine <span aria-hidden="true">→</span></span></span>
+      </a>
+    </article>
+    <article class="mz-nummer mz-abo mz-violet">
+      <a class="mz-nummer-link" href="mailto:info@grow-faster.be?subject=Magazine%20abonnement">
+        <span class="mz-nummer-tekst"><span class="mz-nummer-label">Elke maand</span><strong class="mz-nummer-titel">Nooit een editie missen</strong><span class="mz-nummer-intro">Eén mail per maand, op de dag dat een nieuwe editie verschijnt. Geen reclame.</span><span class="mz-nummer-cta">Mail me bij een nieuwe editie <span aria-hidden="true">→</span></span></span>
+      </a>
+    </article>
+  </div>
+</div></section>
+
+<section id="in-editie-1" class="mz-delen" aria-labelledby="in-editie-1-h"><div class="wrap">
+  <div class="mz-kop"><p class="mz-kicker">In editie 1</p><h2 id="in-editie-1-h">Vier delen, één verspilling</h2></div>
+  <div class="mz-delen-raster">
+    <a class="mz-deel mz-koraal" href="#editie-1" data-fb-pagina="5"><span class="mz-deel-nr" data-notr>01</span><strong>De verspilling</strong><span>Werk dat niets toevoegt en op geen enkele functieomschrijving staat.</span><em>Pagina 5</em></a>
+    <a class="mz-deel mz-turkoois" href="#editie-1" data-fb-pagina="12"><span class="mz-deel-nr" data-notr>02</span><strong>Eén voorbeeld</strong><span>Een voedingsbedrijf dat dezelfde gegevens overtypt voor vijf retailers.</span><em>Pagina 12</em></a>
+    <a class="mz-deel mz-roze" href="#editie-1" data-fb-pagina="17"><span class="mz-deel-nr" data-notr>03</span><strong>De aanpak</strong><span>Tel het, zoek de bron, laat de computer lezen en laat een mens beslissen.</span><em>Pagina 17</em></a>
+    <a class="mz-deel mz-geel" href="#editie-1" data-fb-pagina="22"><span class="mz-deel-nr" data-notr>04</span><strong>Wat het oplevert</strong><span>Wat u meet voor en na: tijd, fouten en doorlooptijd.</span><em>Pagina 22</em></a>
+  </div>
+</div></section>
+
 
 <section id="editie-1" class="alt" aria-labelledby="editie-1-h"><div class="wrap"><div class="head"><span class="eyebrow">Eerste editie, november 2026</span><h2 id="editie-1-h">Overtypen, de verspilling die niemand ziet</h2><p class="lede">Over bestellingen, specificaties en vragenlijsten die iemand van het ene document naar het andere overtypt. Tweeëndertig pagina's, een kwartier lezen.</p></div>
 <article class="editie flipboek" id="flipboek" aria-label="Magazine, editie 1">
@@ -456,13 +517,12 @@
 </article>
 </div></section>
 
-<section id="boek"><div class="wrap"><div class="head"><h2>Het boek</h2></div><div class="page-copy">
-  <p>De edities vormen samen het boek dat Erlend Hollebosch schrijft over procesautomatisering en AI in de kmo.</p>
+<section id="opbouw" class="mz-opbouw"><div class="wrap"><div class="head"><h2>Opbouw van elke editie</h2></div><div class="cards6">
+  <article class="vcard in"><span class="step-n" data-notr>01</span><h3>Eén verspilling.</h3><p>Een verspilling die u in bijna elke kmo terugvindt.</p></article>
+  <article class="vcard in"><span class="step-n" data-notr>02</span><h3>Eén voorbeeld.</h3><p>Hoe die verspilling eruitziet in een kmo, met één cijfer en de bron.</p></article>
+  <article class="vcard in"><span class="step-n" data-notr>03</span><h3>De aanpak.</h3><p>De stappen om ze weg te werken, met automatisering en AI waar het helpt.</p></article>
+  <article class="vcard in"><span class="step-n" data-notr>04</span><h3>Wat het oplevert.</h3><p>Hoeveel tijd en geld u terugwint, en hoe u dat meet.</p></article>
 </div></div></section>
-
-<section id="contact" class="tinted" tabindex="-1" aria-labelledby="contact-h"><div class="wrap pilot-box"><div class="head"><h2 id="contact-h">Herkent u deze verspilling?</h2><p class="lede">Vertel ons waar uw team vandaag tijd verliest. In een eerste gesprek kijken we wat u terugwint.</p></div>
-  <div class="ctas"><a href="afspraak.html" class="btn primary" id="contact-gesprek">Plan een gesprek <span aria-hidden="true">→</span></a><a href="mailto:info@grow-faster.be?subject=Magazine" class="btn ghost" id="contact-abo">Mail me bij een nieuwe editie <span aria-hidden="true">→</span></a></div>
-</div></section>
 </main>
 
 <footer class="foot">

@@ -417,3 +417,12 @@ Historische previewretirement wordt afzonderlijk live gecontroleerd; nieuwe code
 De publieke release-smoke gebruikt dezelfde vastgezette Playwright-container als de Website quality gate. Chromium en de systeembibliotheken zijn daarin aanwezig; de nacontrole voert geen `playwright install --with-deps` of APT uit. Een lokale, netwerkvrije browserproef controleert de echte executable, browserstart en DOM-uitvoering vóór de publieke controles; dezelfde proef draait vóór vrijgave in de PR-gate. Een ontbrekende of onbruikbare browser faalt zichtbaar en wordt niet met retries of ruimere tijdslimieten verborgen.
 
 De bestaande `verify:production`-controles, inclusief de permanente Radar-inhoudsgrens, en de afzonderlijke publieke mobiele Lighthouse-meting blijven behouden. De job houdt uitsluitend leesrechten en de bestaande tijdslimiet van tien minuten. Installatie-, runtime- en controleresultaten worden als rapport en samenvatting bewaard; een mislukt onderdeel blijft de job doen falen. Container-/registry-, pakketdownload- en publieke netwerkstoringen blijven mogelijke expliciete fouten. De lokale load- en Lighthouse-vrijgavegrenzen veranderen niet.
+
+## Magazinepagina met schuivende hero en archief, 25 november 2026
+
+Eigenaarsbeslissing: journal.html wordt een eigen pagina voor de magazines. De blokken "Het boek" en "Herkent u deze verspilling?" onderaan zijn weg.
+
+- Unit (tests/journal.test.cjs): geen `#boek` of `#contact` meer; vijf dia's in de hero; alleen de eerste afbeelding laadt met voorrang en wordt voorgeladen; `assets/magazine.js` is gekoppeld; het archief toont de nieuwste editie eerst; elke `data-fb-pagina` verwijst naar een bestaande pagina van het boek; Franse vertaling van de nieuwe koppen.
+- Browser (tests/browser/journal.spec.cjs, chromium en mobile): pijlen, stippen en pauzeknop bewegen de hero; de vijfde dia staat na een klik echt in beeld; drie kaarten in het archief; de tegel "De aanpak" opent het boek op pagina 17; geen horizontale scroll. De bestaande bladertest scrolt eerst naar het boek, omdat het op een telefoon nu onder de vouw staat en de omslag lui laadt.
+- Zonder JavaScript is de hero een horizontale scroll met snap; met `prefers-reduced-motion` start de hero niet vanzelf.
+- Lokaal niet uitvoerbaar: Firefox en WebKit (geen browser in deze omgeving); die draaien in CI.

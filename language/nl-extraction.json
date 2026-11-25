@@ -2,8 +2,8 @@
   "schema": 1,
   "scope": "rendered_local_nl_runtime_dictionaries_static_cms_and_mail",
   "technicalReview": {
-    "date": "2026-11-24",
-    "reason": "Magazine editie 1 herwerkt tot 32 pagina’s in magazine-opmaak (eigenaarsbeslissing 25 november: 20 tot 35 pagina’s, sectorfoto op de omslag, grotere tekst, meer foto’s): journal.html rendered DOM, assets/i18n-journal.js (page-only dictionary, ongebruikte sleutels verwijderd), assets/i18n.js (leestijd). Geen adapterwijziging."
+    "date": "2026-11-25",
+    "reason": "Magazinepagina journal.html (eigenaarsbeslissing 25 november): schuivende hero met vijf beelden, archief van alle edities en de delen van editie 1; blokken Het boek en Herkent u deze verspilling? weg; nieuw assets/magazine.js en deeplinks in assets/flipboek.js. Vertalingen in assets/i18n-journal.js. Geen adapterwijziging. Eerdere reden: Magazine editie 1 herwerkt tot 32 pagina’s in magazine-opmaak (eigenaarsbeslissing 25 november: 20 tot 35 pagina’s, sectorfoto op de omslag, grotere tekst, meer foto’s): journal.html rendered DOM, ass…"
   },
   "javascript": [
     {
@@ -72,7 +72,7 @@
     },
     {
       "file": "assets/flipboek.js",
-      "sha256": "bbbab37323f6a1a154071c0110cdc4ec8ac4684fbe81071338b5e5d5cfdb0ee2"
+      "sha256": "bc77f30426aa0f55109b0ab8e34359e6a9c3761593188807c8197db75c91af04"
     },
     {
       "file": "assets/home-film.js",
@@ -84,7 +84,7 @@
     },
     {
       "file": "assets/i18n-journal.js",
-      "sha256": "6eafe1042208ec4ec74b22b049f32527a00cb3a68eed81434b5ee851e3bc3f6a"
+      "sha256": "d6b4245632bf02758c86eff263056487f80383905e4b6c7ecb23c79b9322c98e"
     },
     {
       "file": "assets/i18n.js",
@@ -93,6 +93,10 @@
     {
       "file": "assets/journal.js",
       "sha256": "292c0bbaa1b1c15ebac85e2df23c3e601c5172dbb1d7981cfe2b7778d88db47f"
+    },
+    {
+      "file": "assets/magazine.js",
+      "sha256": "fb32f1bddec8adda1f4777cf47fce34d65fb0464070ce94ac01ed4e8e111c234"
     },
     {
       "file": "assets/models.js",
@@ -230,7 +234,7 @@
     },
     {
       "file": "journal.html",
-      "sha256": "c3307284c7201cc2d37b4898105696ef2f286a94940a481c2939f9356b8f9817"
+      "sha256": "f7480d3b95e87053f6ae9ca1e850d69299ea45ab2317401ff21f187c97b70f47"
     },
     {
       "file": "operating-model.html",

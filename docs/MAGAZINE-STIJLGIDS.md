@@ -92,3 +92,16 @@ Figuren zijn HTML, geen SVG, zodat de tekst vertaald kan worden.
   - unit- en browsertests groen (tests/journal.test.cjs, tests/browser/journal.spec.cjs), taalcontract opnieuw gegenereerd, TESTPLAN aangevuld;
   - een aparte agent leest de tekst na tegen de bronnen.
 - Preview op de branch, daarna GO van de eigenaar voor productie.
+
+## 8. De magazinepagina rond het boek
+
+Vastgelegd op 25 november 2026 (eigenaarsbeslissing). journal.html is een eigen pagina voor de magazines, met felle kleuren naast navy. Geen blok over het boek en geen apart contactblok onderaan.
+
+- Volgorde: schuivende hero, archief "Alle edities", "In editie n" (vier delen), het flipboek, "Opbouw van elke editie".
+- Kleuren van de pagina (niet in het boek zelf): koraal #FF5A3C, geel #FFC629, turkoois #00B8A9, roze #FF4F9A, limoen #C6F432, violet #6C4CF5, met tekst in #0B1020. Op violet staat witte tekst. Achtergronden: donker #0B1020 voor hero en delen, warm wit #FFF8EE voor archief en opbouw.
+- Hero: vijf dia's, elk een kleurvlak met label, titel en link naast een foto. Dia 1 is de omslag van de nieuwste editie, dia 2 tot 4 de delen, dia 5 de volgende editie ("binnenkort"). Pijlen, stippen, pauzeknop; om de 6 seconden verder, niet bij hover, focus of `prefers-reduced-motion`. Zonder script werkt de hero als horizontale scroll.
+- Alleen de eerste dia-afbeelding laadt met voorrang en wordt voorgeladen in de head; de rest laadt lui.
+- Archief: per jaar een raster van kaarten. Elke kaart heeft een kleurkader met het nummer (01, 02), de omslag, "Nr. n · maand jaar", titel, één zin en een link. De nieuwste editie staat eerst; een editie die nog moet verschijnen krijgt de badge "Verschijnt in ..." en een mailto-link. De laatste kaart is de violette inschrijfkaart.
+- Delen-tegels en dia's springen met `data-fb-pagina="n"` naar de juiste pagina in het boek.
+- Bij een nieuwe editie: nieuwe kaart vooraan in het archief, dia 1 en dia 5 bijwerken, delen-tegels en paginanummers aanpassen, elke mailto blijft beginnen met `?subject=Magazine`.
+- Bestanden: assets/magazine.css (klassen `.mz-*`), assets/magazine.js (hero), assets/flipboek.js (deeplinks).

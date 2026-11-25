@@ -7,14 +7,24 @@ const assert=require('node:assert/strict');
 const fs=require('node:fs'),path=require('node:path'),vm=require('node:vm');
 const read=file=>fs.readFileSync(path.resolve(__dirname,'../dist',file),'utf8');
 const I18N=()=>{const c={window:{}};vm.runInNewContext(read('assets/i18n.js'),c);return c.window.I18N};
-test('Maandelijks Magazine explains the monthly format, announces edition 1 and links the book',()=>{
- const html=read('journal.html'),main=html.match(/<main[\s\S]*?<\/main>/)[0],I=I18N();
+test('Maandelijks Magazine explains the monthly format, shows a sliding hero and the archive of editions',()=>{
+ const html=read('journal.html'),main=html.match(/<main[\s\S]*?<\/main>/)[0],I=Object.assign(I18N(),(()=>{const c={window:{}};vm.runInNewContext(read('assets/i18n-journal.js'),c);return c.window.I18N})());
  assert.match(main,/<h1>Grow Faster Magazine<\/h1>/);
  assert.match(main,/Elke maand één verspilling in uw bedrijf/);assert.doesNotMatch(main,/\bwekelijks|\bweekly/i);
  assert.equal((main.match(/<article class="vcard in">/g)||[]).length,4,'four parts per edition');
  assert.match(main,/<section id="editie-1"[\s\S]*Overtypen, de verspilling die niemand ziet/);
- assert.match(main,/<section id="boek"/);
- for(const t of ['Grow Faster Magazine','Opbouw van elke editie','Overtypen, de verspilling die niemand ziet','Het boek','Herkent u deze verspilling?','Mail me bij een nieuwe editie'])assert.ok(I[t]?.[1],'FR missing: '+t);
+ // 25 Nov 2026 (owner decision): the page becomes a dedicated magazines page. The "Het boek" and "Herkent u deze verspilling?"
+ // blocks at the bottom are removed; a sliding hero with five images and an archive of all editions take their place.
+ assert.doesNotMatch(main,/<section id="boek"|<section id="contact"/);
+ assert.equal((main.match(/<div class="mz-slide mz-[a-z]+" role="group">/g)||[]).length,5,'five hero slides');
+ assert.equal((main.match(/<img [^>]*fetchpriority="high"/g)||[]).length,1,'only the first slide loads eagerly');
+ assert.match(html,/<link rel="preload" as="image" type="image\/webp" href="img\/magazine-editie-1-omslag-700\.webp"/);
+ assert.match(html,/<script defer src="assets\/magazine\.js\?v=[^"]+"><\/script>/);
+ const archief=main.match(/<section id="edities"[\s\S]*?<\/section>/)[0];
+ assert.deepEqual([...archief.matchAll(/<span class="mz-nummer-label">([^<]+)</g)].map(m=>m[1]),['Nr. 2 · december 2026','Nr. 1 · november 2026','Elke maand'],'newest edition first');
+ assert.match(archief,/href="#editie-1"/);
+ for(const p of [...main.matchAll(/data-fb-pagina="(\d+)"/g)].map(m=>m[1]))assert.match(main,new RegExp('data-pagina="'+p+'"'),'deep link to page '+p);
+ for(const t of ['Grow Faster Magazine','Opbouw van elke editie','Overtypen, de verspilling die niemand ziet','Alle edities','Vier delen, één verspilling','Pauzeer de dia\'s','Mail me bij een nieuwe editie'])assert.ok(I[t]?.[1],'FR missing: '+t);
 });
 test('Maandelijks Magazine uses mail instead of forms and is the current menu page',()=>{
  const html=read('journal.html'),main=html.match(/<main[\s\S]*?<\/main>/)[0];

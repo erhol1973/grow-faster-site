@@ -39,6 +39,8 @@ test('edition 1 reads in Dutch and French, table and sources included, without h
 // screen and one page on a phone. Pages that are not shown are inert, so links on them cannot take keyboard focus.
 test('edition 1 turns its pages with the buttons and the arrow keys, and every page fits its sheet',async({page},info)=>{
  await page.goto('/journal.html');
+ // Since the sliding hero (25 Nov 2026) the book sits below the fold on phones; its lazy cover loads once the reader reaches it.
+ await page.locator('#flipboek').scrollIntoViewIfNeeded();
  const nr=page.locator('#fb-nr'),mobile=info.project.name.startsWith('mobile');
  await expect(nr).toHaveText('1 / 32');
  await expect(page.locator('#fb-vorige')).toBeDisabled();
@@ -59,5 +61,23 @@ test('edition 1 turns its pages with the buttons and the arrow keys, and every p
  // No page may need to scroll: text that falls off a sheet is unreadable.
  const overflow=await page.evaluate(()=>[...document.querySelectorAll('.fb-pagina')].map(p=>{const r=p.getBoundingClientRect();let max=0;for(const e of p.querySelectorAll('h3,p,li,td,th,a'))max=Math.max(max,e.getBoundingClientRect().bottom-r.bottom);return p.dataset.pagina+':'+Math.round(max)}).filter(s=>+s.split(':')[1]>0));
  expect(overflow).toEqual([]);
+ expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1)).toBe(true);
+});
+
+// 25 Nov 2026 (owner decision): dedicated magazines page with a sliding hero, an archive of editions and deep links into the flipbook.
+test('the sliding hero moves with arrows, dots and pause, and the part tiles open the flipbook on their page',async({page})=>{
+ await page.goto('/journal.html');
+ const dots=page.locator('#mz-stippen button');await expect(dots).toHaveCount(5);
+ await expect(dots.nth(0)).toHaveAttribute('aria-current','true');
+ await page.locator('#mz-pauze').click();await expect(page.locator('#mz-pauze')).toHaveAttribute('aria-pressed','true');
+ await page.locator('#mz-volgende').click();await expect(dots.nth(1)).toHaveAttribute('aria-current','true');
+ await dots.nth(4).click();await expect(dots.nth(4)).toHaveAttribute('aria-current','true');
+ await expect.poll(()=>page.evaluate(()=>{const t=document.getElementById('mz-track'),s=t.querySelectorAll('.mz-slide')[4];return Math.abs(s.getBoundingClientRect().left-t.getBoundingClientRect().left)<2})).toBe(true);
+ await page.locator('#mz-vorige').click();await expect(dots.nth(3)).toHaveAttribute('aria-current','true');
+ await expect(page.locator('#boek')).toHaveCount(0);await expect(page.locator('main #contact')).toHaveCount(0);
+ await expect(page.locator('#edities .mz-nummer')).toHaveCount(3);
+ await page.locator('#in-editie-1 .mz-deel[data-fb-pagina="17"]').click();
+ await expect(page.locator('#fb-nr')).toContainText(/17/);
+ await expect(page.locator('.fb-pagina[data-pagina="17"]')).not.toHaveAttribute('inert','');
  expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1)).toBe(true);
 });

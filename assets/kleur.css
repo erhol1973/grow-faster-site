@@ -1,0 +1,115 @@
+/* Kleurlaag voor de klantpagina's (25 november 2026, eigenaarsbeslissing): dezelfde felle kleuren als de magazinepagina.
+   Kleur zit in vlakken, balken en randen; tekst blijft donker (#0B1020) op een fel vlak en wit op donker of violet. */
+:root{--k-ink:#0B1020;--k-on:#0B1020;--k-warm:#FFF8EE;--k-card:#FFFFFF;--k-muted:#3E4555;--k-dark:#0B1020;
+ --k-koraal:#FF5A3C;--k-geel:#FFC629;--k-turkoois:#00B8A9;--k-roze:#FF4F9A;--k-limoen:#C6F432;--k-violet:#6C4CF5;
+ --k-strook:linear-gradient(90deg,#FF5A3C 0 20%,#FFC629 20% 40%,#00B8A9 40% 60%,#FF4F9A 60% 80%,#6C4CF5 80% 100%)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--k-ink:#F2F4F8;--k-warm:#121826;--k-card:#161D2A;--k-muted:#B7C0CE;--k-dark:#070B14}}
+:root[data-theme="dark"]{--k-ink:#F2F4F8;--k-warm:#121826;--k-card:#161D2A;--k-muted:#B7C0CE;--k-dark:#070B14}
+
+/* Elke sectie krijgt een eigen kleur, in een vaste volgorde. */
+main>section{--c:var(--k-koraal)}
+main>section:nth-of-type(6n+2){--c:var(--k-turkoois)}
+main>section:nth-of-type(6n+3){--c:var(--k-roze)}
+main>section:nth-of-type(6n+4){--c:var(--k-geel)}
+main>section:nth-of-type(6n+5){--c:var(--k-violet)}
+main>section:nth-of-type(6n+6){--c:var(--k-limoen)}
+body main>section.alt{background:var(--k-warm)}
+
+/* Koppen: zwaarder en donker, met een kleurbalk erboven. */
+body main>section .head h2,body main>section>.wrap>h2{color:var(--k-ink);font-weight:700;letter-spacing:-.03em}
+body main>section .head::before{content:"";display:block;width:56px;height:6px;background:var(--c);margin-bottom:18px}
+body main .sec-eyebrow{color:var(--k-ink);font-weight:700}
+body main .sec-eyebrow::before{height:6px;width:28px;background:var(--c)}
+
+/* Kaarten: los van elkaar, met een gekleurde bovenrand en een groot nummer. */
+body main .cards6{background:none;border:0;gap:16px}
+body main .cards6>.vcard{background:var(--k-card);border-top:8px solid var(--kc,var(--k-koraal));box-shadow:0 1px 2px rgba(11,16,32,.08),0 10px 24px rgba(11,16,32,.06)}
+body main .cards6>.vcard:nth-child(6n+1){--kc:var(--k-koraal)}
+body main .cards6>.vcard:nth-child(6n+2){--kc:var(--k-turkoois)}
+body main .cards6>.vcard:nth-child(6n+3){--kc:var(--k-roze)}
+body main .cards6>.vcard:nth-child(6n+4){--kc:var(--k-geel)}
+body main .cards6>.vcard:nth-child(6n+5){--kc:var(--k-violet)}
+body main .cards6>.vcard:nth-child(6n+6){--kc:var(--k-limoen)}
+body main .cards6>.vcard:hover{background:var(--k-card)}
+body main .cards6>.vcard::after{display:none}
+body main .cards6>.vcard h3{color:var(--k-ink)}
+body main .cards6>.vcard p{color:var(--k-muted)}
+body main .vcard .step-n{font-family:var(--f-display);font-size:40px;font-weight:800;line-height:1;letter-spacing:-.03em;color:var(--k-ink)}
+
+/* Cijfers: felle tegels met een groot getal. */
+body main .cijfers{gap:16px}
+body main .cijfer{padding:26px 24px 24px;border:0;background:var(--kc,var(--k-koraal));color:var(--k-on)}
+body main .cijfer:nth-child(4n+1){--kc:var(--k-koraal)}
+body main .cijfer:nth-child(4n+2){--kc:var(--k-turkoois)}
+body main .cijfer:nth-child(4n+3){--kc:var(--k-geel)}
+body main .cijfer:nth-child(4n+4){--kc:var(--k-roze)}
+body main .cijfer .getal{color:var(--k-on);font-weight:800;letter-spacing:-.03em}
+body main .cijfer p,body main .cijfer .bron,body main .cijfer .bron a{color:var(--k-on)}
+body main .cijfer .bron a{text-decoration:underline;text-underline-offset:3px}
+
+/* Toepassingen op de homepage. */
+body main .toep-kaart{border:0;border-radius:0;border-top:8px solid var(--kc,var(--k-koraal));background:var(--k-card);box-shadow:0 1px 2px rgba(11,16,32,.08),0 10px 24px rgba(11,16,32,.06)}
+body main .toep-kaart:nth-child(4n+1){--kc:var(--k-koraal)}
+body main .toep-kaart:nth-child(4n+2){--kc:var(--k-turkoois)}
+body main .toep-kaart:nth-child(4n+3){--kc:var(--k-roze)}
+body main .toep-kaart:nth-child(4n+4){--kc:var(--k-geel)}
+body main .toep-kaart:hover{border-top-color:var(--kc)}
+body main .toep-kaart h3{color:var(--k-ink)}
+body main .toep-tag{background:var(--kc,var(--k-koraal));color:var(--k-on);font-weight:700}
+body main .fase-step::before{background:var(--kc,var(--k-koraal));border:0;color:var(--k-on);font-weight:800;width:40px;height:40px}
+body main .fase-step:nth-child(3n+2){--kc:var(--k-turkoois)}
+body main .fase-step:nth-child(3n+3){--kc:var(--k-geel)}
+body main .rec-calc{border:0;border-top:8px solid var(--c);border-radius:0;background:var(--k-card);box-shadow:0 10px 24px rgba(11,16,32,.06)}
+
+/* Tabellen en vragen. */
+body main table.drempels thead th{color:var(--k-ink);border-bottom:4px solid var(--c)}
+body main .faq details>summary::after,body main details.faq-item>summary::after{color:var(--k-ink)}
+body main .faq details{border-top-color:var(--line)}
+body main .faq details[open]{box-shadow:inset 6px 0 0 var(--c);padding-left:18px}
+
+/* Artikels, afspraakpagina. */
+body main .art-list a{border:0;border-top:8px solid var(--kc,var(--k-koraal));background:var(--k-card);box-shadow:0 10px 24px rgba(11,16,32,.06)}
+body main .art-list>*:nth-child(3n+2) a,body main .art-list>a:nth-child(3n+2){--kc:var(--k-turkoois)}
+body main .art-list>*:nth-child(3n+3) a,body main .art-list>a:nth-child(3n+3){--kc:var(--k-roze)}
+body main .stap-n{background:var(--c);border:0;color:var(--k-on);font-weight:800}
+body main .onderwerpen label{border-left:6px solid var(--c)}
+
+/* Afsluitende oproep: donkere band met gekleurde gloed en een gele knop. */
+body main>section.tinted{background:radial-gradient(ellipse 45% 70% at 0% 100%,rgba(255,90,60,.30),transparent 70%),radial-gradient(ellipse 40% 70% at 100% 0%,rgba(108,76,245,.40),transparent 70%),#0B1020;color:#E8ECF4}
+body main>section.tinted .head::before{background:var(--k-geel)}
+body main>section.tinted h2{color:#FFFFFF}
+body main>section.tinted .lede,body main>section.tinted p{color:#D8DEE8}
+body main>section.tinted a:not(.btn){color:#FFFFFF}
+body main>section.tinted .btn.primary{background:var(--k-geel);border-color:var(--k-geel);color:#0B1020;font-weight:700}
+body main>section.tinted .btn.primary:hover{background:#FFFFFF;border-color:#FFFFFF}
+body main>section.tinted .btn.ghost,body main>section.tinted .btn:not(.primary){color:#FFFFFF;border-color:rgba(255,255,255,.55);background:transparent}
+body main>section.tinted a:focus-visible,body main>section.tinted .btn:focus-visible{outline:3px solid var(--k-geel);outline-offset:3px}
+
+/* Hero: gele hoofdknop en een kleurstrook onderaan. */
+body .hero-top .btn.primary{background:var(--k-geel);border-color:var(--k-geel);color:#0B1020;font-weight:700}
+body .hero-top .btn.primary:hover{background:#FFFFFF;border-color:#FFFFFF}
+body .hero-customer .hero-top{border-bottom:8px solid transparent;border-image:var(--k-strook) 1}
+
+/* Footer: dezelfde kleurstrook bovenaan. */
+body .foot{border-top:8px solid transparent;border-image:var(--k-strook) 1}
+
+/* Opsommingen: het blokje krijgt de kleur van de sectie. */
+body main .trust-list li::before,body main .voorbeelden li::before{background:var(--c);width:14px;height:14px}
+body main .rec-tasks li::before{background:var(--c);height:3px}
+body main .rec-check li::before{border-color:var(--k-ink)}
+
+/* Piramide van fundament tot AI: vier felle lagen. */
+body main .pyr-1 .pyr-shape{background:var(--k-violet);color:#FFFFFF}
+body main .pyr-2 .pyr-shape{background:var(--k-turkoois);color:#0B1020}
+body main .pyr-3 .pyr-shape{background:var(--k-koraal);color:#0B1020}
+body main .pyr-4 .pyr-shape{background:var(--k-geel);color:#0B1020}
+body main .pyr-n{color:var(--k-ink);font-weight:700}
+
+/* Samenvatting boven een artikel en labels bij Orion: kleurvlak per blok. */
+body main .kort{border:0;background:none;gap:12px}
+body main .kort>div{border:0;border-top:8px solid var(--kc,var(--k-koraal));background:var(--k-card);box-shadow:0 10px 24px rgba(11,16,32,.06)}
+body main .kort>div:nth-child(3n+2){--kc:var(--k-turkoois)}
+body main .kort>div:nth-child(3n+3){--kc:var(--k-geel)}
+body main .kort dt{color:var(--k-ink);font-weight:700}
+body main .fase .tag{display:inline-block;background:var(--c);color:var(--k-on);padding:3px 8px;border:0;font-weight:700}
+body main>section:nth-of-type(6n+5) .fase .tag{color:#FFFFFF}

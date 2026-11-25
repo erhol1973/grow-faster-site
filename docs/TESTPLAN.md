@@ -1,5 +1,11 @@
 # Testplan en kwaliteitsbeleid
 
+## Kleurlaag op alle klantpagina's, 25 november 2026
+
+Eigenaarsbeslissing: elke pagina wordt even kleurrijk als de magazinepagina. Nieuw gedeeld bestand assets/kleur.css, als laatste stylesheet geladen op de tien klantpagina's en op privacy, gebruiksvoorwaarden en toegankelijkheid. Kleur zit in vlakken, balken en randen: per sectie een kleurbalk boven de kop, kaarten met een gekleurde bovenrand, cijfers als felle tegels, de piramide in vier kleuren, de afsluitende oproep als donkere band met gele knop, een kleurstrook onder de hero en boven de footer. Tekst op een fel vlak blijft #0B1020; geel en limoen zijn nooit tekstkleur op een lichte achtergrond. Donkere modus houdt eigen vlakken.
+
+Tests: nieuw tests/kleur.test.cjs (elke klantpagina laadt kleur.css als laatste element in de head; palet aanwezig; donkere tekst op felle vlakken, witte kop en gele knop in de donkere band; negatief geval: geen geel of limoen als tekstkleur). tests/performance.test.cjs meet kleur.css met een budget van 16 KB. Browser: chromium en mobile lokaal groen, behalve drie workshoptests die ook op ongewijzigde main lokaal falen (CMS-verzoek naar Supabase zonder testmodus, los van deze wijziging) en de bekende navigatietest die onder lokale belasting een time-out geeft en apart gedraaid slaagt. Firefox en WebKit draaien in CI.
+
 ## Magazine editie 1 op 32 pagina's in magazine-opmaak, 25 november 2026
 
 Beslissingen van de eigenaar: elke editie telt 20 tot 35 pagina's, de omslag draagt een foto van de sector, de tekst moet groter, de pagina's moeten de beschikbare ruimte gebruiken, er moeten meer foto's in, en de opmaak moet professioneler (in de geest van McKinsey Quarterly). Meting vooraf: op een scherm van 1920 px was de lopende tekst 8,9 px en het paginanummer 5,1 px, omdat de marges met het scherm meegroeiden in plaats van met de pagina.

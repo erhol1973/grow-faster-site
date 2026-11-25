@@ -15,7 +15,7 @@ Lees vóór nieuwe productfuncties, architectuurinvesteringen, automatiseringen 
 Een productierelease vereist altijd voorafgaande expliciete GO van de Executive Sponsor.** Als mergen naar `main` automatisch productiedeployment veroorzaakt, vereist ook die merge vooraf dezelfde GO, ongeacht of het om code of documentatie gaat. Toestemming om PR's te mergen is geen algemene productieautorisatie. Alle bestaande CI-, security- en acceptatiegates hieronder blijven ongewijzigd van kracht. Orion heeft eigen bindende Poort 0 en bouwstop; wijzig die niet via deze repository.
 
 
-Read `docs/TESTPLAN.md` and `docs/RELEASE.md` before changing release or test behaviour.
+Read `docs/TESTPLAN.md` and `docs/RELEASE.md` before changing release or test behaviour. Record the test-plan item for a change as a new file `docs/testplan/YYYY-MM-DD-<slug>.md` (one `## ` heading, then cause, tests and evidence); never add sections to `docs/TESTPLAN.md`, which holds only the standing policy. `tests/testplan.test.cjs` enforces this.
 
 Keep tests in version control. Every bug fix and new user flow must include appropriate lasting regression coverage. Extend the relevant unit, HTTP integration, browser/end-to-end, load or performance layer; do not duplicate a scenario in every layer merely to increase counts. Preserve useful positive and negative cases. Remove obsolete or redundant tests only with an explanation.
 

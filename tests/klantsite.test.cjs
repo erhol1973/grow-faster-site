@@ -2,9 +2,9 @@
 // The Veiligheid page is deliberately excluded from this release (branch feature/veiligheid-pagina).
 const {test}=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),vm=require('node:vm');
 const root=path.resolve(__dirname,'..','dist');const read=f=>fs.readFileSync(path.join(root,f),'utf8');
-// 25 Nov 2026: homepage-only strings live in assets/i18n-home.js (Object.assign onto window.I18N, loaded after i18n.js on index.html);
-// both run in one context, in that order, as in the browser.
-const I18N=()=>{const c={window:{}};vm.runInNewContext(read('assets/i18n.js'),c);vm.runInNewContext(read('assets/i18n-home.js'),c);vm.runInNewContext(read('assets/i18n-orion.js'),c);vm.runInNewContext(read('assets/i18n-automatisering.js'),c);vm.runInNewContext(read('assets/i18n-training.js'),c);vm.runInNewContext(read('assets/i18n-coherence.js'),c);return c.window};
+// Translations are loaded per page exactly as the built HTML references them (tests/support/i18n.cjs): assets/i18n.js first,
+// then that page's own dictionary. New page dictionaries need no edit here.
+const {i18nFor,i18nAll}=require('./support/i18n.cjs');
 // Appointment page (23 Nov 2026, owner decision): conversation buttons open afspraak.html with the topic preselected
 // instead of a mail; the Google booking page sends the confirmations.
 const PILOT='afspraak.html?onderwerp=vragenlijsten';
@@ -35,21 +35,21 @@ const pages={
     'Herkent u er twee of meer? Kies de taak die het vaakst terugkomt. Met die ene taak starten we de pilot.',
     'Zo starten we','Pilot op één taak','Meten en beslissen','We vergelijken de tijd vóór en na. Daarna beslist u: uitbreiden naar een volgende taak of stoppen.']
 };
-test('approved Dutch texts are published and every one has a Dutch and French translation',()=>{const {I18N:I}=I18N();
-  for(const [file,phrases]of Object.entries(pages)){const body=text(read(file));
+test('approved Dutch texts are published and every one has a Dutch and French translation',()=>{
+  for(const [file,phrases]of Object.entries(pages)){const body=text(read(file)),I=i18nFor(file).I18N;
     for(const phrase of phrases){assert.ok(body.includes(phrase),`${file}: missing approved text "${phrase}"`);
       // A phrase is either a complete translation key or part of exactly one translated sentence.
       const keys=Object.hasOwn(I,phrase)?[phrase]:Object.keys(I).filter(k=>k.includes(phrase));assert.ok(keys.length>=1,`${file}: no translation key for "${phrase}"`);
       for(const k of keys)assert.ok(Array.isArray(I[k])&&I[k][0]===k&&I[k][1]&&I[k][1]!==k,`${file}: no NL/FR translation for "${k}"`);
     }}
 });
-test('French copy uses formal vous and Belgian typography for questions and colons',()=>{const {I18N:I}=I18N();
-  const fr=Object.values(pages).flat().flatMap(p=>Object.keys(I).filter(k=>k===p||k.includes(p)).map(k=>I[k][1]));assert.ok(fr.length>=30);
+test('French copy uses formal vous and Belgian typography for questions and colons',()=>{
+  const fr=Object.entries(pages).flatMap(([file,phrases])=>{const I=i18nFor(file).I18N;return phrases.flatMap(p=>Object.keys(I).filter(k=>k===p||k.includes(p)).map(k=>I[k][1]))});assert.ok(fr.length>=30);
   for(const value of fr){assert.doesNotMatch(value,/\b(tu|ton|ta|tes|toi)\b/i,value);assert.doesNotMatch(value,/\S[?:;](\s|$)/,`missing non-breaking space: ${value}`);}
-  assert.match(I['Wat als Orion een fout antwoord geeft?'][1],/\u00a0\?$/);
+  assert.match(i18nFor('orion.html').I18N['Wat als Orion een fout antwoord geeft?'][1],/\u00a0\?$/);
 });
-test('customer pages carry title, description, canonical, og tags and NL/FR language handling',()=>{const {I18N:I}=I18N();
-  for(const file of ['index.html','oplossingen.html','orion.html','automatisering.html']){const html=read(file);
+test('customer pages carry title, description, canonical, og tags and NL/FR language handling',()=>{
+  for(const file of ['index.html','oplossingen.html','orion.html','automatisering.html']){const html=read(file),I=i18nFor(file).I18N;
     const title=decode(html.match(/<title>([^<]+)<\/title>/)[1]);assert.match(title,/\| Grow Faster$/,file);assert.ok(title.length<=70,file);
     assert.equal(decode(html.match(/<meta name="seo-title" content="([^"]+)"/)[1]),title,file);assert.equal(decode(html.match(/<meta property="og:title" content="([^"]+)"/)[1]),title,file);
     assert.ok(I[title]?.[1],`${file}: French title`);
@@ -83,7 +83,7 @@ test('the single call to action is the pilot mailto everywhere, without forms or
   const orion=read('orion.html');assert.match(orion,/href="#werking" class="btn ghost"[^>]*>Bekijk hoe het werkt/);
   assert.match(read('index.html'),/href="orion\.html" class="btn ghost"[^>]*>Zo werkt Orion/);
 });
-test('Orion lists four steps and five FAQ disclosures; released pages make no unverified security claims',()=>{const {I18N:I,I18N_HTML:H}=I18N();
+test('Orion lists four steps and five FAQ disclosures; released pages make no unverified security claims',()=>{const {I18N:I,I18N_HTML:H}=i18nAll();
   const orion=read('orion.html');const steps=orion.match(/<section id="werking"[\s\S]*?<\/section>/)[0];
   assert.deepEqual([...steps.matchAll(/<span class="step-n" data-notr>(\d+)<\/span>/g)].map(m=>m[1]),['01','02','03','04']);
   assert.equal((orion.match(/<details><summary>/g)||[]).length,5);

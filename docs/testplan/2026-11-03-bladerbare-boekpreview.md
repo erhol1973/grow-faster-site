@@ -1,0 +1,3 @@
+## Bladerbare boekpreview, 3 november 2026
+
+Home, Boeken en Over Erlend openen de aangeleverde online lezer met 25 previewpagina’s plus afsluitpagina. De 26 JPEG-bestanden blijven exact gelijk aan de ZIP. Blijvende tests controleren checksums, lokale afhankelijkheden, desktop-spreads, één pagina op mobiel, de daadwerkelijke homepageklik, vergroten/Escape/focus, de laatste pagina en terugval bij een ontbrekende bibliotheek. De bestaande PDF blijft bereikbaar voor oude gedeelde links. Zie BOOK-READER.md. De lokale loadlijst neemt de nieuwe route en assets mee; alle bestaande releasegrenzen blijven behouden.

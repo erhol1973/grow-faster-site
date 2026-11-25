@@ -3,7 +3,7 @@
   "scope": "rendered_local_nl_runtime_dictionaries_static_cms_and_mail",
   "technicalReview": {
     "date": "2026-11-25",
-    "reason": "Magazinepagina journal.html (eigenaarsbeslissing 25 november): schuivende hero met vijf beelden, archief van alle edities en de delen van editie 1; blokken Het boek en Herkent u deze verspilling? weg; nieuw assets/magazine.js en deeplinks in assets/flipboek.js. Vertalingen in assets/i18n-journal.js. Geen adapterwijziging. Eerdere reden: Contentstudio herwerkt (sponsorbesluit 25 november): catalogus beperkt tot de menupagina’s (Home, Orion, Workflow-automatisering, Bedrijfsontwikkeling, Training, Insights, Over), zeven oude Engelstali…"
+    "reason": "Contentstudio: Maandelijks Magazine (journal.html) toegevoegd aan de catalogus (sponsorbesluit 25 november, na PR #112): mag-sleutels op de paginateksten rond het magazine, herofoto en videoslot; de 32 pagina’s van de editie blijven buiten de contentstudio. Geen adapterwijziging. Eerdere reden: Magazinepagina journal.html (eigenaarsbeslissing 25 november): schuivende hero met vijf beelden, archief van alle edities en de delen van editie 1; blokken Het boek en Herkent u deze verspilling? weg; nieuw assets/magazine.js en deeplinks in assets/flipboek.js. Vertalingen in assets/i18n-journal.js. Geen adapterwijziging."
   },
   "javascript": [
     {
@@ -28,7 +28,7 @@
     },
     {
       "file": "assets/cms-catalog.js",
-      "sha256": "8f54c0acdd590059835502d5dfc9ffc9756612dd019d4e00912fa3dae14a5464"
+      "sha256": "2c6a61b11c0624504dd4899d914134f4122afb7e1936f832d65474bdccee6193"
     },
     {
       "file": "assets/cms-client.js",
@@ -238,7 +238,7 @@
     },
     {
       "file": "journal.html",
-      "sha256": "f7480d3b95e87053f6ae9ca1e850d69299ea45ab2317401ff21f187c97b70f47"
+      "sha256": "b657952775471fd2e90a54a8636c9d869aba431108820458c6d37c14db21fec8"
     },
     {
       "file": "operating-model.html",

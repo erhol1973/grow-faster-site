@@ -460,3 +460,7 @@ Eigenaarsbeslissing: journal.html wordt een eigen pagina voor de magazines. De b
 - Browser (tests/browser/journal.spec.cjs, chromium en mobile): pijlen, stippen en pauzeknop bewegen de hero; de vijfde dia staat na een klik echt in beeld; drie kaarten in het archief; de tegel "De aanpak" opent het boek op pagina 17; geen horizontale scroll. De bestaande bladertest scrolt eerst naar het boek, omdat het op een telefoon nu onder de vouw staat en de omslag lui laadt.
 - Zonder JavaScript is de hero een horizontale scroll met snap; met `prefers-reduced-motion` start de hero niet vanzelf.
 - Lokaal niet uitvoerbaar: Firefox en WebKit (geen browser in deze omgeving); die draaien in CI.
+
+## Kleurlaag terug van de Over-pagina, 25 november 2026
+
+Eigenaarsverzoek: ook about.html (Erlend Hollebosch, oprichter van Grow Faster) krijgt opnieuw de grow-faster.be-kleuren; assets/kleur.css wordt daar niet meer geladen. tests/kleur.test.cjs controleert dat negatief en haalt de pagina uit de positieve lijst.

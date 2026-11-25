@@ -24,3 +24,10 @@ test('the colour layer keeps text dark on bright fills and white on the dark ban
  // Negative case: yellow and lime are never used as a text colour on a light surface.
  assert.doesNotMatch(css,/[^-]color:var\(--k-(geel|limoen)\)/);
 });
+// 25 Nov 2026, owner request: the About page (Erlend Hollebosch, oprichter van Grow Faster) also goes back to the grow-faster.be
+// colours without the colour layer. Kept at the end of the file so it merges cleanly with parallel edits of the page list above.
+pages.splice(pages.indexOf('about.html'),1);
+test('About does not load the colour layer',()=>{
+ assert.doesNotMatch(read('about.html'),/assets\/kleur\.css/,'about.html keeps the grow-faster.be colours');
+ assert.ok(!pages.includes('about.html'));
+});

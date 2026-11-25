@@ -3,7 +3,7 @@
   "scope": "rendered_local_nl_runtime_dictionaries_static_cms_and_mail",
   "technicalReview": {
     "date": "2026-11-25",
-    "reason": "Merge main in Workflow-automatisering premium (release-wachtrij) (assets/cms-catalog.js, assets/i18n-automatisering.js, assets/i18n.js, inline automatisering.html). Geen adapterwijziging. Eerdere reden: Merge main in Training-pagina (release-wachtrij) (assets/cms-catalog.js, assets/i18n-training.js, inline training.html). Geen adapterwijziging. Eerdere reden: Contentstudio: Maandelijks Magazine (journal.html) bewerkbaar; cms-catalog.js en inline-script journal.html. Geen adapterwijziging. Eerdere reden: Eigenaarsbeslissing 25 november 17:02: homepagezin \"nog niet één op de drie\" (sleutel in i18n.js hernoemd), afspraak.html zonder kleurlaag. Geen adapterwijziging. Eerdere reden: Inline-vingerafdrukken bijgewerkt na #121/#124 (orion.html). Herstel analytics-heracceptatie (25 november): assets/site.js bewaart de echte GoatCounter-telfunctie achter een toestemmingsgebonden accessor; heracceptatie telt direct zonder nieuwe download, intrekking blijft inert. Geen tekst- of adapterwijziging. Contract bijgewerkt voor assets/site.js en voor de op main nog niet vastgelegde hashes van assets/cms-catalog.js, assets/i18n.js en het nieuwe assets/i18n-orion.js (#121). Eerdere reden: Magazinepagina journal.html (eigenaarsbeslissing 25 november): schuivende hero met vijf beelden, archief van alle edities en de delen van editie 1; blokken Het boek en Herkent u deze verspilling? weg; nieuw assets/magazine.js en deeplinks in assets/flipboek.js. Vertalingen in assets/i18n-journal.js. Geen adapterwijziging. Eerdere reden: Contentstudio herwerkt (sponsorbesluit 25 november): catalogus beperkt tot de menupagina’s (Home, Orion, Workflow-automatisering, Bedrijfsontwikkeling, Training, Insights, Over), zeven oude Engelstali…"
+    "reason": "Merge main in Bedrijfsontwikkeling premium (release-wachtrij) (assets/cms-catalog.js, assets/i18n-coherence.js, inline coherence.html). Geen adapterwijziging. Eerdere reden: Merge main in Workflow-automatisering premium (release-wachtrij) (assets/cms-catalog.js, assets/i18n-automatisering.js, assets/i18n.js, inline automatisering.html). Geen adapterwijziging. Eerdere reden: Merge main in Training-pagina (release-wachtrij) (assets/cms-catalog.js, assets/i18n-training.js, inline training.html). Geen adapterwijziging. Eerdere reden: Contentstudio: Maandelijks Magazine (journal.html) bewerkbaar; cms-catalog.js en inline-script journal.html. Geen adapterwijziging. Eerdere reden: Eigenaarsbeslissing 25 november 17:02: homepagezin \"nog niet één op de drie\" (sleutel in i18n.js hernoemd), afspraak.html zonder kleurlaag. Geen adapterwijziging. Eerdere reden: Inline-vingerafdrukken bijgewerkt na #121/#124 (orion.html). Herstel analytics-heracceptatie (25 november): assets/site.js bewaart de echte GoatCounter-telfunctie achter een toestemmingsgebonden accessor; heracceptatie telt direct zonder nieuwe download, intrekking blijft inert. Geen tekst- of adapterwijziging. Contract bijgewerkt voor assets/site.js en voor de op main nog niet vastgelegde hashes van assets/cms-catalog.js, assets/i18n.js en het nieuwe assets/i18n-orion.js (#121). Eerdere reden: Magazinepagina journal.html (eigenaarsbeslissing 25 november): schuivende hero met vijf beelden, archief van alle edities en de delen van editie 1; blokken Het boek en Herkent u deze verspilling? weg; nieuw assets/magazine.js en deeplinks in assets/flipboek.js. Vertalingen in assets/i18n-journal.js. Geen adapterwijziging. Eerdere reden: Contentstudio herwerkt (sponsorbesluit 25 november): catalogus beperkt tot de menupagina’s (Home, Orion, Workflow-automatisering, Bedrijfsontwikkeling, Training, Insights, Over), zeven oude Engelstali…"
   },
   "javascript": [
     {
@@ -28,7 +28,7 @@
     },
     {
       "file": "assets/cms-catalog.js",
-      "sha256": "c3ab7074e563e0e641732176de6eb89c59bc2617d9233951a9a3164367d7aa89"
+      "sha256": "4b0e12af37aee2c0f6d082944dffd10880db9883fe1324faaa45b4fc0b90754a"
     },
     {
       "file": "assets/cms-client.js",
@@ -81,6 +81,10 @@
     {
       "file": "assets/i18n-automatisering.js",
       "sha256": "0fdb55146583fd809125978e6cae786568ed840485210eadfb0af9eb243fc959"
+    },
+    {
+      "file": "assets/i18n-coherence.js",
+      "sha256": "a56962e6ac0df1eb2c1b44d66743ed924de20bc850d61915a3c4020064fdbc1e"
     },
     {
       "file": "assets/i18n-home.js",
@@ -210,7 +214,7 @@
     },
     {
       "file": "coherence.html",
-      "sha256": "8ae7169070075abfe4bb642b63cdcfca6fed76aa8961c1aac8aab43a938d39ff"
+      "sha256": "e0465c92f9d48bf79cac4524d76c1cd0f657b6acf555c5a87637674a3a341e59"
     },
     {
       "file": "coordination-overload-1.html",

@@ -4,7 +4,7 @@
 **Baseline:** main `637f1d5` in de aparte worktree `/home/claude/gf-release` · **Doelbranch:** `feature/home-redesign-20261125`
 **Bewijsmateriaal:** logs en rapporten van de baseline staan in `/tmp/gf-baseline-reports/` (buiten de repository, niet gepubliceerd).
 
-Fase 1 bevat de baseline, de CI-observaties, de CMS-risicoanalyse, de conflictanalyse en de checklist. Fase 2 (alle gates op de geïntegreerde branch, branch pushen, draft-PR) volgt op afzonderlijke opdracht.
+Fase 1 (§1–6) bevat de baseline, de CI-observaties, de CMS-risicoanalyse, de conflictanalyse en de checklist. Fase 2 (§7) bevat de gates op de geïntegreerde branch en PR #111. §8 is het GO/NO-GO-overzicht.
 
 ---
 
@@ -147,20 +147,54 @@ Alternatief: één read-only `SELECT page_slug, updated_at, content FROM public.
 
 ---
 
-## 7. GO/NO-GO (in te vullen na integratie, fase 2)
+## 7. Fase 2: resultaten op de geïntegreerde branch
+
+- **Branch:** `feature/home-redesign-20261125`, gepusht op 25 november om 08:20 UTC. Vóór de push liepen er geen workflows (`in_progress` 0, `queued` 0).
+- **PR:** [#111](https://github.com/erhol1973/grow-faster-site/pull/111), draft, basis `main` `637f1d5`.
+- **Geteste code-commit:** `ec7e8a7`. CI testte de merge-commit `afbb7cb`. De doc-commit met dit hoofdstuk wijzigt alleen deze markdown en start een nieuwe CI-run. Voor de GO telt de groene run op de **laatste** head.
+
+### CI op PR #111 (`ec7e8a7`)
+
+| Controle | Resultaat | Run |
+|---|---|---|
+| **Website quality gate** (verplicht) | geslaagd | [45575374558](https://github.com/erhol1973/grow-faster-site/actions/runs/45575374558) |
+| **JavaScript security gate** (verplicht, CodeQL) | geslaagd | idem |
+| **Secrets history gate** (verplicht) | geslaagd | idem |
+| Build, unit and source checks (inclusief `pnpm audit --audit-level=high`) | geslaagd | idem |
+| Browser regressions 1–8/8 (5 profielen, `failOnFlakyTests`) | 8/8 geslaagd, geen flaky. Per shard 90–106 geslaagd, 1–16 overgeslagen: het bestaande projectfilter `critical` | idem |
+| Load and Lighthouse desktop / mobiel | geslaagd. Homepage mobiel: score 99/99/98, LCP 2190/2187/2260 ms, TBT 0/0/31, CLS ≤ 0,002. Desktop: score 100, LCP ≈ 490 ms | idem |
+| Deploy / Verify public release | overgeslagen (alleen op main, zoals bedoeld) | idem |
+| Dev agent surface guard | geslaagd | [45575374517](https://github.com/erhol1973/grow-faster-site/actions/runs/45575374517) |
+| Daily Dutch language audit (niet verplicht) | **niet geslaagd, met een nieuwe oorzaak** (zie hieronder) | [45575374542](https://github.com/erhol1973/grow-faster-site/actions/runs/45575374542) |
+
+### Lokaal (snapshot van `ec7e8a7` in /tmp, Node 22)
+Build, security en load zijn geslaagd. `npm test`: 215/217. De 2 fouten zijn dezelfde omgevingsfouten als op de baseline: Chromium 1255 ontbreekt voor `nl-dom` en de runtime-canary. Lokale e2e en Lighthouse met 5 profielen konden hier niet draaien. De orchestrator draaide lokaal de e2e van home-v2, home-hero-video en accessibility: 57 geslaagd. **De bindende browser- en Lighthouse-resultaten zijn die van de CI hierboven.**
+
+### Bevinding: taalaudit faalt vóór het scannen
+- **Melding:** `Inline JavaScript extraction contract changed: review adapters and regenerate contract via PR`. Op main is de status `FINDINGS` (de scan loopt wel). Op deze PR stopt de audit vóór het scannen.
+- **Oorzaak:** `language/nl-extraction.json` is bijgewerkt voor de JS-bestanden, maar niet in de lijst `inline` voor `index.html`.
+  - Contract: `32bc2129…44e4`.
+  - Werkelijk: `520d5890…7316` (herberekend in /tmp op de build van `ec7e8a7`).
+  - De JSON-LD van de homepage is inhoudelijk identiek. De hash verandert omdat er een extra `<script defer src="assets/i18n-home.js">` bij is gekomen: de extractie voegt de `textContent` van alle `<script>`-elementen samen met `\n`.
+  - Alle andere 39 HTML-bestanden kloppen.
+- **Gevolg na een merge zonder herstel:** de dagelijkse audit op main stopt weer vóór het scannen. Dat is hetzelfde patroon als op 13 tot 22 november (zie `docs/NL-LANGUAGE-AUDIT.md`). Het is geen verplichte statuscontrole en blokkeert de deployment dus niet. Maar de Nederlandse taalcontrole valt dan stil.
+- **Herstel (orchestrator, niet door de release-agent):** de `inline`-hash van `index.html` in `language/nl-extraction.json` bijwerken naar `520d589042e777ba0f49ac51c72c633461aa39ec8205dee896ec5fad13ac7316`, met de reden in `technicalReview`. Daarna de CI opnieuw laten lopen. De audit zal dan waarschijnlijk `FINDINGS` geven, zoals op main. Dat is acceptabel: de nieuwe homepagetekst is nog niet in het register opgenomen.
+
+## 8. GO/NO-GO
 
 | Punt | Status | Bewijs |
 |---|---|---|
-| Geïntegreerde commit (SHA) | | |
-| Lokaal: build / test / security / load | | |
-| Lokaal: e2e (5 profielen) / performance | | |
-| CI: Website quality gate | | |
-| CI: JavaScript security gate | | |
-| CI: Secrets history gate | | |
-| CI: browsershards zonder flaky, Lighthouse desktop en mobiel | | |
-| Reviewer-agent | | |
-| CMS-controle door Erlend (§3) | | |
-| Conflictstatus #101 / #89, volgorde | | |
-| Open risico's | | |
-| **Advies release-agent (GO / NO-GO)** | | |
+| Geïntegreerde commit (SHA) | `ec7e8a7` (code); doc-commit erbovenop | PR #111 |
+| Lokaal: build / test / security / load | geslaagd / 215/217 (2× omgeving) / geslaagd / geslaagd | §7 |
+| Lokaal: e2e (5 profielen) / performance | niet uitvoerbaar in de sandbox; deelset 57 geslaagd (orchestrator) | §1, §7 |
+| CI: Website quality gate | geslaagd | run 45575374558 |
+| CI: JavaScript security gate | geslaagd | run 45575374558 |
+| CI: Secrets history gate | geslaagd | run 45575374558 |
+| CI: browsershards zonder flaky, Lighthouse desktop en mobiel | geslaagd (8/8, desktop, mobiel) | run 45575374558 |
+| Reviewer-agent | bevindingen verwerkt in `ec7e8a7` (volgens de orchestrator) | commit `ec7e8a7` |
+| CMS-controle door Erlend (§3) | **open** | n.v.t. |
+| Conflictstatus #101 / #89, volgorde | geen bestandsoverlap met #89. #101: alleen `docs/TESTPLAN.md` (i18n.js ongewijzigd). Volgorde #89 → #111 → #101 | §4 |
+| Open risico's | (1) taalauditcontract `index.html` (§7); (2) gepubliceerde CMS-snapshot (§3); (3) open sponsorkeuzes uit COPY.md: € 45/u, verplaatste vraagkop, hero-regel, Orion-specifieke final-CTA | §3, §7, PR-body |
+| Rollback | revert-PR via de beschermde route, zelfde gates, GO, de main-run volgen tot Verify public release | §6 |
+| **Advies release-agent (GO / NO-GO)** | **Nog geen GO: technisch releasebaar onder voorwaarden.** Alle verplichte gates zijn groen. Vóór de merge: (a) contracthash herstellen en de CI opnieuw groen op de laatste head; (b) CMS-controle door Erlend; (c) Erlend beslist over de 4 open copypunten. Daarna adviseert de release-agent GO | — |
 | **Besluit sponsor (Erlend), datum en uur** | | |

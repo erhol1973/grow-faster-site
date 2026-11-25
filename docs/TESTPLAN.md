@@ -483,6 +483,14 @@ Eigenaarsbeslissing: journal.html wordt een eigen pagina voor de magazines. De b
 - Zonder JavaScript is de hero een horizontale scroll met snap; met `prefers-reduced-motion` start de hero niet vanzelf.
 - Lokaal niet uitvoerbaar: Firefox en WebKit (geen browser in deze omgeving); die draaien in CI.
 
+## Kleurlaag terug van de Over-pagina, 25 november 2026
+
+Eigenaarsverzoek: ook about.html (Erlend Hollebosch, oprichter van Grow Faster) krijgt opnieuw de grow-faster.be-kleuren; assets/kleur.css wordt daar niet meer geladen. tests/kleur.test.cjs controleert dat negatief en haalt de pagina uit de positieve lijst.
+
+## Over-pagina in premium opbouw zoals Orion, 25 november 2026
+
+Eigenaarsverzoek: about.html krijgt dezelfde opbouw en uitstraling als orion.html (Apple-achtig): gecentreerde koppen, afgeronde tegels, drie genummerde stappen, drie ervaringstegels, drie oplossingstegels en een donkere slotoproep. De goedgekeurde teksten blijven ongewijzigd (tests/over.test.cjs); nieuw zijn enkel de tegeltitels Ervaring, Sectoren en Certificaten (FR in assets/i18n-about.js). tests/about-apple.test.cjs bewaakt opbouw, kleurtokens en vertaling.
+
 ## Taalscan opgevolgd, 25 november 2026
 
 De dagelijkse taalscan stond op FINDINGS (run 45566881275 op main: 613 nieuwe bevindingen; op d9d9710: 737). LanguageTool kon hier niet lokaal draaien (downloadhost geblokkeerd) en het artifact was niet bereikbaar. De scan schrijft daarom elke nieuwe bevinding leesbaar en als volledig record naar het joblog, met de SHA-256 van de kandidaat-baseline en deel-digests. Alleen rapportage: status, register en drempels zijn ongewijzigd.

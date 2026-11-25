@@ -35,28 +35,60 @@
 <noscript><style>.nav.nav-executive .nav-toggle,.nav.nav-executive .burger{display:none}.nav.nav-executive .wrap{height:auto;min-height:68px;flex-wrap:wrap;padding-block:12px}.nav.nav-executive .wrap>#navlist{position:static;display:flex;flex-wrap:wrap;gap:8px 20px;width:100%;order:3}.nav.nav-executive .lang-top{margin-left:auto}</style></noscript>
 <style>html:not(.i18n-ready) main{visibility:hidden;animation:i18n-reveal 0s 2.5s forwards}@keyframes i18n-reveal{to{visibility:visible}}</style><noscript><style>html:not(.i18n-ready) main{visibility:visible;animation:none}</style></noscript>
 <link rel="stylesheet" href="assets/home-hero.css?v=20261117-home-film-3">
-<style data-about>
-.page-copy{max-width:70ch}.page-copy p{font-size:19px;line-height:1.7;margin:0 0 18px}
-#werkwijze .cards6{grid-template-columns:repeat(3,minmax(0,1fr))}
-.step-n{font-family:var(--f-mono);font-size:13px;letter-spacing:.12em;color:var(--ai-ink)}
-.trust-list{display:grid;grid-template-columns:minmax(0,1fr);gap:14px;list-style:none;padding:0;margin:28px 0;max-width:75ch}
-.trust-list li{padding-left:28px;position:relative;font-size:18px;line-height:1.55}
-.trust-list li::before{content:"";position:absolute;left:0;top:.45em;width:12px;height:12px;border-radius:2px;background:var(--ai)}
-.all-solutions{margin-top:28px;font-weight:600}
-.executive-hero .executive-intro{padding-top:clamp(16px,3vw,40px)}
-.pilot-box{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:40px;align-items:end}
-.pilot-box .ctas{display:flex;flex-wrap:wrap;gap:14px}
-@media(max-width:900px){#werkwijze .cards6{grid-template-columns:1fr}.pilot-box{grid-template-columns:1fr;gap:20px}}
-</style>
 
-<style data-cms-media>[data-cms-video-section] video{display:block;width:100%;max-width:960px;height:auto;margin:0 auto 2rem}[data-cms-video-section][hidden]{display:none}</style><script defer src="assets/i18n.js?v=20261123-release2"></script>
+<style data-apple>
+/* About, 25 Nov 2026: premium layout like orion.html (Apple-like). Only the site's existing colour tokens are used. */
+.about-apple{--sf:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text","Aptos","Hanken Grotesk","Segoe UI",Helvetica,Arial,sans-serif}
+.about-apple main{font-family:var(--sf)}
+.about-apple .executive-hero{padding-block:clamp(64px,8vw,112px)}
+.about-apple .executive-hero h1{font-family:var(--sf);font-weight:700;font-size:clamp(40px,5vw,68px);letter-spacing:-.035em;line-height:1.05}
+.about-apple .executive-hero .executive-lead{font-family:var(--sf);letter-spacing:-.01em}
+.about-apple .executive-hero .executive-portrait{border-radius:28px;overflow:hidden}
+.about-apple main .btn{border-radius:980px;padding:14px 26px}
+.about-apple main section{padding-block:clamp(80px,10vw,140px)}
+.about-apple main section+section:not(#contact){padding-top:0}
+.ap-head{max-width:860px;margin:0 auto clamp(40px,5vw,64px);text-align:center}
+.ap-head h2{margin:0;font:700 clamp(36px,5.2vw,64px)/1.06 var(--sf);letter-spacing:-.035em;color:var(--brand)}
+.ap-prose{max-width:720px;margin:0 auto;text-align:center}
+.ap-prose p{margin:0 0 24px;font-size:clamp(19px,1.6vw,21px);line-height:1.6;color:var(--ink)}
+.ap-prose .ap-statement{margin:0;font:600 clamp(24px,2.6vw,32px)/1.3 var(--sf);letter-spacing:-.02em;color:var(--brand)}
+.mk-steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.mk-steps li{padding:36px 32px;border-radius:28px;background:var(--tint)}
+.mk-steps .step-n{display:block;font:700 44px/1 var(--sf);letter-spacing:-.04em;color:var(--ai-ink);margin-bottom:20px}
+.mk-steps h3{margin:0 0 8px;font:700 22px/1.3 var(--sf);letter-spacing:-.015em;color:var(--brand)}
+.mk-steps p{margin:0;font-size:17px;line-height:1.6}
+.ap-kort{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.ap-kort li{padding:36px 32px;border-radius:28px;background:var(--tint)}
+.ap-kort li:first-child{background:var(--brand-fill);color:var(--on-brand)}
+.ap-kort h3{margin:0 0 12px;font:700 24px/1.2 var(--sf);letter-spacing:-.02em;color:var(--brand)}
+.ap-kort li:first-child h3,.ap-kort li:first-child p{color:var(--on-brand)}
+.ap-kort p{margin:0;font-size:17px;line-height:1.6;color:var(--ink)}
+.ap-bento{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.ap-route{display:flex;flex-direction:column;padding:clamp(32px,3.6vw,44px);border-radius:28px;background:var(--tint)}
+.ap-route .eyebrow{display:block;margin:0;padding:0;border:0;font:600 15px/1.4 var(--sf);letter-spacing:0;text-transform:none;color:var(--ai-ink)}
+.ap-route h3{margin:10px 0 12px;font:700 clamp(24px,2.1vw,28px)/1.12 var(--sf);letter-spacing:-.025em;color:var(--brand);hyphens:auto;overflow-wrap:break-word}
+.ap-route p{margin:0 0 28px;font-size:17px;line-height:1.6;color:var(--ink)}
+.ap-route a{margin-top:auto;font:600 17px/1.4 var(--sf);color:var(--ai-ink);text-decoration:none}
+.ap-route a:hover,.all-solutions a:hover{text-decoration:underline;text-underline-offset:4px}
+.all-solutions{margin:40px 0 0;text-align:center}
+.all-solutions a{font:600 17px/1.4 var(--sf);color:var(--ai-ink);text-decoration:none}
+.about-apple #contact{background:var(--brand-fill);color:var(--on-brand);text-align:center}
+.about-apple #contact h2{margin:0 auto;max-width:18ch;font:700 clamp(36px,5.2vw,64px)/1.06 var(--sf);letter-spacing:-.035em;color:var(--on-brand)}
+.about-apple #contact .lede{margin:20px auto 0;max-width:52ch;font-size:19px;line-height:1.55;color:var(--on-brand);opacity:.82}
+.about-apple #contact .ctas{margin-top:36px;display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
+.about-apple #contact .btn.primary{background:var(--on-brand);border-color:var(--on-brand);color:var(--brand-fill)}
+.about-apple #contact .btn.primary:hover{background:var(--tint);border-color:var(--tint);color:var(--brand-fill)}
+.about-apple #contact .btn.ghost{background:transparent;border-color:var(--on-brand);color:var(--on-brand)}
+.about-apple #contact a:focus-visible{outline:3px solid var(--on-brand);outline-offset:4px}
+@media(max-width:900px){.mk-steps,.ap-kort,.ap-bento{grid-template-columns:1fr}.mk-steps li,.ap-kort li{padding:28px 24px}}
+</style>
+<style data-cms-media>[data-cms-video-section] video{display:block;width:100%;max-width:960px;height:auto;margin:0 auto 2rem}[data-cms-video-section][hidden]{display:none}</style><script defer src="assets/i18n.js?v=20261123-release2"></script><script defer src="assets/i18n-about.js?v=20261125-apple"></script>
 <script defer src="assets/content.js?v=20261030-editorial-three"></script>
 <script defer src="assets/models.js?v=20261029-quality"></script>
 <script defer src="assets/consent.js?v=20261029-quality"></script>
 <script defer src="assets/site.js?v=20261103-book-order"></script>
-<script defer src="assets/cms-config.js"></script><script defer src="assets/cms-client.js"></script><script defer src="assets/cms-public.js"></script><link rel="stylesheet" href="assets/kleur.css?v=20261125-kleur">
-</head>
-<body data-cms-page="about" class="editorial-home">
+<script defer src="assets/cms-config.js"></script><script defer src="assets/cms-client.js"></script><script defer src="assets/cms-public.js"></script></head>
+<body data-cms-page="about" class="editorial-home about-apple">
 <a class="skip-link" href="#top">Naar de inhoud</a>
 <nav class="nav nav-executive" aria-label="Sections">
   <div class="wrap">
@@ -83,32 +115,44 @@
 <main id="top" tabindex="-1">
 <header class="hero executive-hero" id="hero"><div class="wrap executive-layout"><div class="executive-intro"><h1 data-cms="about-klant-hero-h">Erlend Hollebosch, oprichter van Grow Faster</h1><p class="executive-lead" data-cms="about-klant-hero-p">Meer dan twintig jaar heb ik grote bedrijven geholpen sneller en beter te werken. Nu breng ik die aanpak naar kmo’s, met AI en automatisering.</p><div class="ctas"><a href="afspraak.html" class="btn primary" id="hero-pilot">Plan een pilotgesprek <span aria-hidden="true">→</span></a></div></div><figure class="au-photo executive-portrait"><picture><source type="image/jpeg" srcset="img/author-retouched-400.jpg 400w, img/author-retouched-720.jpg 720w" sizes="(min-width: 900px) 380px, (max-width: 760px) 180px, 380px"><img src="img/author-retouched-720.jpg" alt="Portret van Erlend Hollebosch" loading="eager" fetchpriority="high" width="720" height="900" data-cms="f9e1d98ca6f92-0"></picture></figure></div></header>
 
-<section id="waarom"><div class="wrap"><div class="head"><h2 data-cms="about-klant-why-h">Waarom Grow Faster</h2></div><div class="page-copy">
-  <p data-cms="about-klant-why-p1">Bij Volvo, Colruyt, Solvay, Telenet en ArcelorMittal zag ik hetzelfde: mensen verliezen uren aan zoeken, overtypen en afstemmen. Grote bedrijven hebben teams en budget om dat aan te pakken. Een kmo heeft die vaak niet, terwijl het probleem er net zo groot is.</p>
-  <p data-cms="about-klant-why-p2">Grow Faster brengt de aanpak van grote bedrijven op kmo-maat. We starten met één taak die vandaag te veel tijd kost, meten wat het oplevert en breiden pas uit als het werkt.</p>
-</div></div></section>
+<section id="waarom" aria-labelledby="waarom-h"><div class="wrap">
+  <div class="ap-head"><h2 id="waarom-h" data-cms="about-klant-why-h">Waarom Grow Faster</h2></div>
+  <div class="ap-prose">
+    <p data-cms="about-klant-why-p1">Bij Volvo, Colruyt, Solvay, Telenet en ArcelorMittal zag ik hetzelfde: mensen verliezen uren aan zoeken, overtypen en afstemmen. Grote bedrijven hebben teams en budget om dat aan te pakken. Een kmo heeft die vaak niet, terwijl het probleem er net zo groot is.</p>
+    <p class="ap-statement" data-cms="about-klant-why-p2">Grow Faster brengt de aanpak van grote bedrijven op kmo-maat. We starten met één taak die vandaag te veel tijd kost, meten wat het oplevert en breiden pas uit als het werkt.</p>
+  </div>
+</div></section>
 
-<section id="werkwijze" class="alt"><div class="wrap"><div class="head"><h2 data-cms="about-klant-how-h">Hoe ik werk</h2></div><div class="cards6">
-  <article class="vcard in"><span class="step-n" data-notr>01</span><h3 data-cms="about-klant-step-1-h">Klein starten.</h3><p data-cms="about-klant-step-1-p">Eén concrete taak, zoals de vragenlijsten van uw klanten.</p></article>
-  <article class="vcard in"><span class="step-n" data-notr>02</span><h3 data-cms="about-klant-step-2-h">Meten.</h3><p data-cms="about-klant-step-2-p">Hoeveel tijd kost het vandaag, en hoeveel na de verandering?</p></article>
-  <article class="vcard in"><span class="step-n" data-notr>03</span><h3 data-cms="about-klant-step-3-h">Uitbreiden.</h3><p data-cms="about-klant-step-3-p">Pas als het resultaat er is, pakken we de volgende stap aan.</p></article>
-</div></div></section>
+<section id="werkwijze" aria-labelledby="werkwijze-h"><div class="wrap">
+  <div class="ap-head"><h2 id="werkwijze-h" data-cms="about-klant-how-h">Hoe ik werk</h2></div>
+  <ol class="mk-steps">
+    <li><span class="step-n" data-notr>01</span><h3 data-cms="about-klant-step-1-h">Klein starten.</h3><p data-cms="about-klant-step-1-p">Eén concrete taak, zoals de vragenlijsten van uw klanten.</p></li>
+    <li><span class="step-n" data-notr>02</span><h3 data-cms="about-klant-step-2-h">Meten.</h3><p data-cms="about-klant-step-2-p">Hoeveel tijd kost het vandaag, en hoeveel na de verandering?</p></li>
+    <li><span class="step-n" data-notr>03</span><h3 data-cms="about-klant-step-3-h">Uitbreiden.</h3><p data-cms="about-klant-step-3-p">Pas als het resultaat er is, pakken we de volgende stap aan.</p></li>
+  </ol>
+</div></section>
 
-<section id="ervaring"><div class="wrap"><div class="head"><h2 data-cms="about-klant-exp-h">Wat ik meebreng</h2></div>
-  <ul class="trust-list">
-    <li data-cms="about-klant-exp-1">Meer dan twintig jaar programma- en projectmanagement, procesverbetering en transformatie.</li>
-    <li data-cms="about-klant-exp-2">Ervaring in voeding en retail, industrie, telecom en technologie, onder meer bij Colruyt Group, Volvo Group, Solvay, ArcelorMittal, Telenet en Ericsson.</li>
-    <li data-cms="about-klant-exp-3">Gecertificeerd in AI-operating models en AI-leiderschap (IBM), organisatieverandering (ILE) en verandertrajecten (ICAgile, SAFe SPC).</li>
+<section id="ervaring" aria-labelledby="ervaring-h"><div class="wrap">
+  <div class="ap-head"><h2 id="ervaring-h" data-cms="about-klant-exp-h">Wat ik meebreng</h2></div>
+  <ul class="ap-kort">
+    <li><h3>Ervaring</h3><p data-cms="about-klant-exp-1">Meer dan twintig jaar programma- en projectmanagement, procesverbetering en transformatie.</p></li>
+    <li><h3>Sectoren</h3><p data-cms="about-klant-exp-2">Ervaring in voeding en retail, industrie, telecom en technologie, onder meer bij Colruyt Group, Volvo Group, Solvay, ArcelorMittal, Telenet en Ericsson.</p></li>
+    <li><h3>Certificaten</h3><p data-cms="about-klant-exp-3">Gecertificeerd in AI-operating models en AI-leiderschap (IBM), organisatieverandering (ILE) en verandertrajecten (ICAgile, SAFe SPC).</p></li>
   </ul>
 </div></section>
 
-<section id="oplossingen" class="alt"><div class="wrap"><div class="head"><h2>Oplossingen</h2></div><div class="editorial-routes">
-  <article class="gf-feature"><span class="eyebrow">Product</span><h3>Orion</h3><p>Vult klantvragenlijsten en specificaties in, met de bron bij elk antwoord.</p><a href="orion.html">Ontdek Orion <span aria-hidden="true">→</span></a></article>
-  <article class="gf-feature"><span class="eyebrow">Dienst en software</span><h3>Workflow-automatisering</h3><p>Wat uw team vandaag overtypt of met de hand doorstuurt, gebeurt automatisch.</p><a href="automatisering.html">Bekijk automatisering <span aria-hidden="true">→</span></a></article>
-  <article class="gf-feature"><span class="eyebrow">Begeleiding</span><h3>Bedrijfsontwikkeling</h3><p>Mensen, processen en systemen trekken in dezelfde richting, zodat het hele bedrijf sneller gaat.</p><a href="coherence.html">Lees over bedrijfsontwikkeling <span aria-hidden="true">→</span></a></article>
-</div><p class="all-solutions"><a href="oplossingen.html">Alle oplossingen <span aria-hidden="true">→</span></a></p></div></section>
+<section id="oplossingen" aria-labelledby="oplossingen-h"><div class="wrap">
+  <div class="ap-head"><h2 id="oplossingen-h">Oplossingen</h2></div>
+  <div class="ap-bento">
+    <article class="ap-route"><span class="eyebrow">Product</span><h3>Orion</h3><p>Vult klantvragenlijsten en specificaties in, met de bron bij elk antwoord.</p><a href="orion.html">Ontdek Orion <span aria-hidden="true">→</span></a></article>
+    <article class="ap-route"><span class="eyebrow">Dienst en software</span><h3>Workflow-automatisering</h3><p>Wat uw team vandaag overtypt of met de hand doorstuurt, gebeurt automatisch.</p><a href="automatisering.html">Bekijk automatisering <span aria-hidden="true">→</span></a></article>
+    <article class="ap-route"><span class="eyebrow">Begeleiding</span><h3>Bedrijfsontwikkeling</h3><p>Mensen, processen en systemen trekken in dezelfde richting, zodat het hele bedrijf sneller gaat.</p><a href="coherence.html">Lees over bedrijfsontwikkeling <span aria-hidden="true">→</span></a></article>
+  </div>
+  <p class="all-solutions"><a href="oplossingen.html">Alle oplossingen <span aria-hidden="true">→</span></a></p>
+</div></section>
 
-<section id="contact" class="tinted" tabindex="-1" aria-labelledby="contact-h"><div class="wrap pilot-box"><div class="head"><h2 id="contact-h" data-cms="about-klant-contact-h">Laten we kennismaken</h2><p class="lede" data-cms="about-klant-contact-p">Vertel me welke taak bij u vandaag te veel tijd kost.</p></div>
+<section id="contact" class="tinted" tabindex="-1" aria-labelledby="contact-h"><div class="wrap">
+  <h2 id="contact-h" data-cms="about-klant-contact-h">Laten we kennismaken</h2><p class="lede" data-cms="about-klant-contact-p">Vertel me welke taak bij u vandaag te veel tijd kost.</p>
   <div class="ctas"><a href="afspraak.html" class="btn primary" id="contact-pilot">Plan een pilotgesprek <span aria-hidden="true">→</span></a><a href="https://www.linkedin.com/in/erlend-hollebosch-053361181/" class="btn ghost" id="contact-linkedin" target="_blank" rel="noopener" data-notr>LinkedIn</a></div>
 </div></section>
 <section class="wrap" hidden data-cms-video-section><video hidden controls preload="metadata" data-cms="cms-video-about" aria-label="Video" width="960"></video></section>

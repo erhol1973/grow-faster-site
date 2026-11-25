@@ -11,7 +11,8 @@ for(const [lang,copy]of Object.entries(cases)){
   await seed(page,lang);await page.goto('/index.html');
   await expect(page.locator('#navlist a[href="workshop.html"]')).toHaveCount(0);
   // Sprint 1: the customer footer lists the new offer; the existing content pages keep the workshop footer link.
-  await page.goto('/about.html');await expect(page.locator('footer a[href="workshop.html"]').first()).toBeAttached();
+  // Release 1.1: About now uses the customer footer; the content pages with the original footer (e.g. Value) keep the workshop link.
+  await page.goto('/value.html');await expect(page.locator('footer a[href="workshop.html"]').first()).toBeAttached();
   await page.goto('/approach.html');expect(await page.evaluate(()=>scrollY)).toBeLessThan(8);await expect(page.locator('#approach-workshop-cta')).toBeInViewport({ratio:1});await page.locator('#approach-workshop-cta').click();await expect(page.locator('h1')).toContainText(copy.title);
   await expect(page.locator('#navlist [aria-current="page"]')).toHaveCount(0);
  });
@@ -31,9 +32,10 @@ for(const [lang,copy]of Object.entries(cases)){
   await expect(page.locator('.ws-eca-link')).toHaveAttribute('href','eca.html?lang='+lang);
   await page.locator('.ws-eca-link').click();await expect(page.locator('html')).toHaveAttribute('lang',lang);await expect(page.locator('#assessment')).toBeVisible();
   await page.goto('/approach.html');await page.locator('#workshop-entry a').click();await expect(page.locator('h1')).toContainText(copy.title);
-  if(await page.locator('#burger').isVisible())await page.locator('#burger').click();await page.locator('#navlist a[href="about.html"]').click();
+  await page.locator('footer a[href="about.html"]').last().click();
   await expect(page).toHaveURL(/\/about\.html$/);await expect(page.locator('h1')).toBeInViewport();
-  await page.locator('footer a[href="workshop.html"]').first().click();await expect(page.locator('h1')).toContainText(copy.title);
+  // Release 1.1: About uses the customer footer; the shared footer route back to the workshop is exercised from Value (Coherentie uses the customer footer since 23 Nov 2026).
+  await page.goto('/value.html');await page.locator('footer a[href="workshop.html"]').first().click();await expect(page.locator('h1')).toContainText(copy.title);
   expect(errors).toEqual([]);
  });
  test('voluntary workshop request is local, encoded and language-correct in '+lang,async({page})=>{
@@ -48,7 +50,7 @@ for(const [lang,copy]of Object.entries(cases)){
   await page.locator('#request-name').fill("Nina D'Haene");await page.locator('#request-company').fill('A&B / Équipe');await page.locator('#request-question').fill(question);
   await page.locator('#request-form button[type="submit"]').click();await expect(page.locator('#request-result')).toBeVisible();
   const mails=await page.evaluate(()=>window.workshopMails);expect(mails).toHaveLength(1);const mail=new URL(mails[0]);
-  expect(mail.pathname).toBe('erlendhollebosch@gmail.com');expect(mail.searchParams.get('subject')).toBe(copy.subject);expect(mail.searchParams.get('body')).toContain(copy.greeting);expect(mail.searchParams.get('body')).toContain(question);expect(mail.searchParams.get('body')).toContain('A&B / Équipe');
+  expect(mail.pathname).toBe('info@grow-faster.be');expect(mail.searchParams.get('subject')).toBe(copy.subject);expect(mail.searchParams.get('body')).toContain(copy.greeting);expect(mail.searchParams.get('body')).toContain(question);expect(mail.searchParams.get('body')).toContain('A&B / Équipe');
   await expect(page.locator('#request-preview script')).toHaveCount(0);
   expect(new URL(page.url()).searchParams.toString()).toBe('lang='+lang);
   expect(await page.evaluate(()=>Object.keys(localStorage).sort())).toEqual(['avs-consent','avs-lang']);expect(await page.evaluate(()=>sessionStorage.length)).toBe(0);

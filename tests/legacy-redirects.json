@@ -26,13 +26,13 @@
  {
   "from": "/coordination-overload-1",
   "file": "coordination-overload-1.html",
-  "to": "insights.html#friction-first",
+  "to": "insights.html#design-the-exception",
   "canonical": "https://grow-faster.be/insights.html"
  },
  {
   "from": "/de-rol-van-leiderschap",
   "file": "de-rol-van-leiderschap.html",
-  "to": "insights.html#who-decides",
+  "to": "insights.html#ai-pilot",
   "canonical": "https://grow-faster.be/insights.html"
  },
  {
@@ -58,5 +58,11 @@
   "file": "articles-1/enterprise-architecture-needs-enterprise-coherence.html",
   "to": "../coherence.html",
   "canonical": "https://grow-faster.be/coherence.html"
+ },
+ {
+  "from": "/journal-fr",
+  "file": "journal-fr.html",
+  "to": "journal.html?lang=fr",
+  "canonical": "https://grow-faster.be/journal.html"
  }
 ]

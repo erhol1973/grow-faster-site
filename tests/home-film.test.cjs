@@ -3,11 +3,12 @@ const read=f=>fs.readFileSync(path.join(root,f),'utf8');
 // Sprint 1 (22 Nov 2026): the approved customer homepage no longer embeds the film. Release 1 places the same blue
 // "Enterprise Coherence essentie" film, NL and FR (from closed PR #84), on coherence.html, with the player script from #84.
 test('customer homepage no longer embeds the film, without deleting the media file',()=>{const html=read('index.html');assert.doesNotMatch(html,/<figure class="home-film"|enterprise-coherence-essentie-nl\.mp4|<video [^>]*autoplay/);assert.ok(fs.existsSync(path.join(root,'media/enterprise-coherence-essentie-nl.mp4')),'film media remains published')});
-test('coherence page shows the Enterprise Coherence film after the website argument, click to play, with a text alternative',()=>{
+// Coherence for kmo's (23 Nov 2026): the film follows "Wat coherentie is" and precedes the approach, with the approved title.
+test('coherence page shows the Enterprise Coherence film after what coherence is, click to play, with a text alternative',()=>{
   const html=read('coherence.html');
-  assert.ok(html.indexOf('id="book-thesis"')<html.indexOf('id="ec-film"')&&html.indexOf('id="ec-film"')<html.indexOf('<div class="ec-page">'),'film follows the website argument');
+  assert.ok(html.indexOf('id="wat-is"')<html.indexOf('id="ec-film"')&&html.indexOf('id="ec-film"')<html.indexOf('id="aanpak"'),'film follows what coherence is');
   const section=html.match(/<section id="ec-film"[\s\S]*?<\/section>/)[0];
-  assert.match(section,/aria-labelledby="ec-film-h"/);assert.match(section,/<h2 id="ec-film-h">Geen AI business value zonder Enterprise Coherence<\/h2>/);
+  assert.match(section,/aria-labelledby="ec-film-h"/);assert.match(section,/<h2 id="ec-film-h">Geen AI-waarde zonder samenhang<\/h2>/);
   const video=section.match(/<video[^>]*>/)[0];
   for(const attr of ['controls','preload="none"','playsinline','poster="img/enterprise-coherence-essentie.webp"','aria-label="Enterprise Coherence"','aria-describedby="ec-film-text"'])assert.ok(video.includes(attr),attr);
   assert.doesNotMatch(video,/\b(autoplay|muted|loop)\b/);

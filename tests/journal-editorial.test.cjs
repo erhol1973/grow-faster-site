@@ -6,38 +6,38 @@ const fs=require('node:fs'),path=require('node:path'),vm=require('node:vm');
 const root=path.resolve(__dirname,'../dist');
 const read=f=>fs.readFileSync(path.join(root,f),'utf8');
 const I18N=()=>{const ctx={window:{}};vm.runInNewContext(read('assets/i18n.js'),ctx);return ctx.window.I18N};
-const articles=['ai-pilot','turn-time-into-value','design-the-exception','no-ai-impact','friction-first','who-decides'];
-const bilingual=['ai-pilot','design-the-exception','turn-time-into-value'];
-const article=(html,id)=>{const a=html.indexOf(`<article class="ins-art rv" id="${id}"`);assert.ok(a>0,id);return html.slice(a,html.indexOf('</article>',a))};
-
-test('every journal article opens with an In brief summary and closes with an author box',()=>{
-  const html=read('insights.html');
+// Release 2 (23 Nov 2026, owner decision): Insights is rewritten for kmo's. The six Executive Journal panels (three English
+// articles and the employer-facing author box with "beschikbaar voor een vaste functie") left the page; their coverage is
+// replaced by the three rewritten articles below. Old article anchors forward to the Insights overview (legacy redirects).
+const articles=['ai-pilot','turn-time-into-value','design-the-exception'];
+const I18NAll=()=>{const ctx={window:{}};vm.runInNewContext(read('assets/i18n.js')+'\n'+read('assets/i18n-insights.js'),ctx);return ctx.window.I18N};
+test('Insights lists three kmo articles and each opens with In het kort before the body',()=>{
+  const html=read('insights.html'),main=html.match(/<main[\s\S]*?<\/main>/)[0];
+  const list=main.match(/<section id="artikels"[\s\S]*?<\/section>/)[0];
+  assert.deepEqual([...list.matchAll(/<a href="#([^"]+)"/g)].map(m=>m[1]),articles);
   for(const id of articles){
-    const t=article(html,id),langs=bilingual.includes(id)?['nl','fr']:['source'];
-    for(const lang of langs){
-      const block=bilingual.includes(id)?t.slice(t.indexOf(`data-article-lang="${lang}"`)):t;
-      const brief=block.match(/<aside class="in-brief"[\s\S]*?<\/aside>/);assert.ok(brief,`${id}/${lang}: In brief missing`);
-      assert.equal((brief[0].match(/<dt>/g)||[]).length,3,`${id}/${lang}: problem, cause and action`);
-      assert.ok(block.indexOf('class="in-brief"')<block.indexOf('<h3>')||!block.includes('<h3>'),`${id}/${lang}: In brief precedes the body`);
-      const author=block.match(/<aside class="author-box"[\s\S]*?<\/aside>/);assert.ok(author,`${id}/${lang}: author box missing`);
-      assert.match(author[0],/href="about\.html#work-with-me"/);assert.match(author[0],/href="transformation\.html#track-record"/);
-      assert.ok(block.indexOf('class="author-box"')<block.indexOf('class="ins-foot"'),`${id}/${lang}: author box precedes the share row`);
-    }
+    const sec=main.match(new RegExp(`<section id="${id}"[^>]*tabindex="-1" aria-labelledby="${id}-h">[\\s\\S]*?<\\/section>`));assert.ok(sec,id);
+    const kort=sec[0].match(/<dl class="kort">[\s\S]*?<\/dl>/);assert.ok(kort,id+': In het kort');
+    assert.deepEqual([...kort[0].matchAll(/<dt[^>]*>([^<]+)<\/dt>/g)].map(m=>m[1]),['Het probleem','Waarom het gebeurt','Wat u kunt doen']);
+    assert.ok(sec[0].indexOf('class="kort"')<sec[0].indexOf('<h3'),id+': summary precedes the body');
+    assert.match(sec[0],/href="#artikels"/);
   }
+  assert.match(main,/<h1[^>]*>Inzichten voor kmo’s<\/h1>/);
 });
-test('journal index leads with one feature and lists the newest articles after it',()=>{
-  const html=read('insights.html'),list=html.slice(html.indexOf('<div class="ins-list journal-grid">'),html.indexOf('<div class="ins-arts">'));
-  assert.deepEqual([...list.matchAll(/class="ins-card[^"]*" href="#([^"]+)"/g)].map(m=>m[1]),articles);
-  assert.equal((list.match(/ins-card--lead/g)||[]).length,1);assert.match(list,/ins-card ins-card--lead rv" href="#ai-pilot"/);
-  assert.match(html,/<h2 id="ins-h" class="journal-label"[^>]*>Latest articles<\/h2>/,'aria-labelledby="ins-h" resolves');
-  assert.match(html,/<h1\b[^>]*>Leading the agentic enterprise<\/h1>/);
+test('Insights speaks to customers only and every line has a French translation',()=>{
+  const html=read('insights.html'),main=html.match(/<main[\s\S]*?<\/main>/)[0],I=I18NAll();
+  assert.doesNotMatch(main,/vaste functie|langdurige opdracht|Bespreek een rol|trackrecord|\bje\b|\bjouw?\b/i);
+  assert.match(html,/<script defer src="assets\/i18n\.js\?v=[^"]+"><\/script>\s*<script defer src="assets\/i18n-insights\.js\?v=[^"]+"><\/script>[\s\S]*<script defer src="assets\/site\.js/);
+  const text=main.replace(/<script[\s\S]*?<\/script>/g,'').replace(/<([a-z0-9]+)[^>]*data-notr[^>]*>[\s\S]*?<\/\1>/g,'');
+  for(const m of text.matchAll(/>([^<]*[A-Za-zÀ-ÿ][^<]*)</g)){const k=m[1].trim().replace(/\s+/g,' ');assert.ok(I[k]?.[1]&&I[k][1]!==k,'FR missing: '+k);assert.doesNotMatch(I[k][1],/\S[?:;](\s|$)/,'FR typography: '+I[k][1])}
 });
 // Sprint 1 (22 Nov 2026): the customer homepage keeps the experience proof directly after the hero, now linking to About;
 // the three journal teasers and the selected insight left the homepage. Journal articles keep their own coverage above.
-test('home shows experience proof directly after the hero and no longer lists journal teasers',()=>{
+test('home shows experience proof after the application cards and no longer lists journal teasers',()=>{
   const home=read('index.html');
   const proof=home.match(/<section id="proof"[\s\S]*?<\/section>/);assert.ok(proof);assert.match(proof[0],/href="about\.html">Over Erlend Hollebosch/);
-  assert.ok(home.indexOf('</header>')<home.indexOf('id="proof"')&&home.indexOf('id="proof"')<home.indexOf('id="herkenbaar"'),'proof follows the hero');
+  // 24 Nov 2026: the application cards sit directly under the hero, then the experience proof.
+  assert.ok(home.indexOf('</header>')<home.indexOf('id="toepassingen"')&&home.indexOf('id="toepassingen"')<home.indexOf('id="proof"')&&home.indexOf('id="proof"')<home.indexOf('id="fundament"'),'proof follows the application cards');
   for(const org of ['Colruyt Group','Volvo Group','Solvay','ArcelorMittal','Telenet','Ericsson'])assert.ok(proof[0].includes('<li>'+org+'</li>'),org);
   assert.doesNotMatch(home,/id="journal-latest"|id="selected-insight"/);
 });
@@ -49,9 +49,11 @@ test('track record lists dated roles, certifications and education with an acces
 });
 test('editorial pages load the journal stylesheet and every new visible text has Dutch and French',()=>{
   for(const f of ['index.html','insights.html','transformation.html'])assert.match(read(f),/assets\/journal\.css\?v=20261106-journal/,f);
+  // Release 2: 'In brief', 'The problem', 'Why it happens', 'What to do', 'Leading the agentic enterprise', 'Latest articles', 'Executive Journal', 'See the track record' and the old Insights page title
+  // left with the Executive Journal panels; the Dutch Insights labels are covered above.
   assert.doesNotMatch(read('assets/journal.css'),/@import|url\(/,'no external font or asset requests');
   const I=I18N();
   // Sprint 1: three homepage-only journal teaser labels left with the old homepage; the new proof strip labels replace them.
-  for(const k of ['Executive Journal','Track record','In brief','The problem','Why it happens','What to do','See the track record','Leading the agentic enterprise','Latest articles','Ervaring uit de praktijk','Over Erlend Hollebosch','Where this perspective comes from','Certifications','Education','Other assignments include','Tribe coach in an Agile transformation','Track Record in Enterprise Transformation | Erlend Hollebosch','Executive Journal on AI and Enterprise Coherence | Erlend Hollebosch'])
+  for(const k of ['Track record','Ervaring uit de praktijk','Over Erlend Hollebosch','Where this perspective comes from','Certifications','Education','Other assignments include','Tribe coach in an Agile transformation','Track Record in Enterprise Transformation | Erlend Hollebosch'])
     assert.ok(Array.isArray(I[k])&&I[k][0]&&I[k][1],`missing translation: ${k}`);
 });

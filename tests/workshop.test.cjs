@@ -9,7 +9,7 @@ test('workshop publishes only public content and keeps the approved commercial f
 test('every workshop reading phrase has Dutch and French copy',()=>{
  const html=fs.readFileSync(path.join(root,'workshop.html'),'utf8').match(/<main\b[\s\S]*?<\/main>/)[0],context={window:{}};
  vm.runInNewContext(fs.readFileSync(path.join(root,'assets/i18n.js'),'utf8'),context);
- const proper=new Set(['Erlend Hollebosch','The Coherent Enterprise','erlendhollebosch@gmail.com','· PDF']);
+ const proper=new Set(['Erlend Hollebosch','The Coherent Enterprise','info@grow-faster.be','· PDF']);
  for(const m of html.matchAll(/>([^<>]+)</g)){const text=m[1].trim().replace(/\s+/g,' ').replaceAll('&amp;','&').replaceAll('&lt;','<').replaceAll('&gt;','>');if(!/[a-zA-Z]/.test(text)||proper.has(text))continue;const pair=context.window.I18N[text];assert.ok(pair,text);assert.equal(pair.length,2,text);assert.ok(pair.every(s=>typeof s==='string'&&s.trim()),text);}
 });
 test('workshop and its public resources are included in local load coverage',()=>{

@@ -43,21 +43,31 @@ async function main(){
     const errors=[];page.on('pageerror',e=>errors.push(e.message));const results=[];
     for(const route of ['index.html','coherence.html','insights.html']){
       const response=await page.goto('https://grow-faster.be/'+route);if(response.status()!==200)throw Error(route+': HTTP '+response.status());
-      if(await page.locator('#burger').isVisible())await page.locator('#burger').click();
-      await page.locator('.nav a[href="about.html"]').click();await page.waitForURL('https://grow-faster.be/about.html');
+      // Release 2: About (Contact) moved from the menu to the footer.
+      await page.locator('footer a[href="about.html"]').last().click();await page.waitForURL('https://grow-faster.be/about.html');
       if(await page.evaluate(()=>scrollY)>8)throw Error('Contact scrolled from '+route);results.push({route,contactTop:true});
     }
-    // Customer menu (sprint 1 v2): Home, Oplossingen with three submenu links, Over and one pilot mailto action; no Veiligheid page.
+    // Release 2 menu: seven flat items without dropdowns and one pilot mailto action; no Veiligheid page.
     await page.goto('https://grow-faster.be/index.html');
-    if(await page.locator('#navlist a.l:not(.nav-work)').count()!==3)throw Error('Expected Home, Oplossingen and Over');
-    if(await page.locator('#nav-oplossingen a').count()!==3)throw Error('Expected three Oplossingen submenu links');
-    if(await page.locator('#navlist a.nav-work[href="mailto:erlendhollebosch@gmail.com?subject=Pilot%20Orion"]').count()!==1)throw Error('Expected one pilot action');
+    const menu=await page.locator('#navlist a.l:not(.nav-work)').evaluateAll(a=>a.map(x=>x.getAttribute('href')));
+    if(JSON.stringify(menu)!==JSON.stringify(['index.html','orion.html','automatisering.html','coherence.html','training.html','journal.html','insights.html']))throw Error('Unexpected menu: '+menu.join(', '));
+    if(await page.locator('#navlist .nav-toggle, #navlist .nav-sub').count())throw Error('The menu must not have dropdowns');
+    if(await page.locator('#navlist a.nav-work[href="afspraak.html"]').count()!==1)throw Error('Expected one pilot action to the appointment page');
     if(await page.locator('a[href="veiligheid.html"]').count())throw Error('Veiligheid is not part of this release');
     if(await page.locator('#burger').isVisible())await page.locator('#burger').click();
-    await page.locator('[aria-controls="nav-oplossingen"]').click();
-    await page.locator('#nav-oplossingen a[href="orion.html"]').click();await page.waitForURL('https://grow-faster.be/orion.html');
+    await page.locator('#navlist a.l[href="orion.html"]').click();await page.waitForURL('https://grow-faster.be/orion.html');
     if(!await page.locator('#hero h1').isVisible())throw Error('Orion page unavailable from navigation');
     results.push({route:'orion.html',fromMenu:true});
+    // Orion film (24 Nov 2026): on orion.html under "Zo werkt Orion", both editions declared, text alternative complete; the homepage keeps four application cards and its hero video variants.
+    const film=await page.locator('#orion-film video').evaluate(v=>({poster:v.getAttribute('poster'),src:v.querySelector('source').getAttribute('src'),fr:v.dataset.srcFr}));
+    if(film.src!=='media/orion-werking-nl.mp4'||film.fr!=='media/orion-werking-fr.mp4'||film.poster!=='img/orion-werking-nl.webp')throw Error('Orion film markup unexpected: '+JSON.stringify(film));
+    if(await page.locator('#orion-film-text li').count()!==7)throw Error('Orion film text alternative incomplete');
+    await page.goto('https://grow-faster.be/index.html');
+    if(await page.locator('#orion-film').count()!==0)throw Error('Orion film still on the homepage');
+    if(await page.locator('#toepassingen .toep-kaart').count()!==4)throw Error('Expected four application cards');
+    for(const file of ['media/orion-werking-nl.mp4','media/orion-werking-fr.mp4','media/hero-toepassingen-1920.mp4','media/hero-toepassingen-4k.mp4']){
+      const head=await page.request.head('https://grow-faster.be/'+file);if(head.status()!==200)throw Error(file+' returned '+head.status());}
+    results.push({route:'orion.html',film:true});
     await page.goto('https://grow-faster.be/books.html');
     await page.locator('main a.btn[href="workshop.html"]').first().click();
     await page.waitForURL('https://grow-faster.be/workshop.html');
@@ -81,27 +91,25 @@ async function main(){
     results.push({route:'approach.html',workshopAboveFold:true});
     await page.goto('https://grow-faster.be/index.html');
     if(await page.locator('#burger').isVisible())await page.locator('#burger').click();
-    await page.locator('[aria-controls="nav-oplossingen"]').click();
-    await page.locator('#nav-oplossingen a[href="coherence.html"]').click();await page.waitForURL('https://grow-faster.be/coherence.html');
-    await page.locator('.topic-links a[href="books.html"]').click();await page.waitForURL('https://grow-faster.be/books.html');
+    await page.locator('#navlist a.l[href="coherence.html"]').click();await page.waitForURL('https://grow-faster.be/coherence.html');
+    // Release 2: Bedrijfsontwikkeling (coherence.html) ends in its own conversation mail; Books stays a direct route.
+    if(await page.locator('#contact-gesprek').getAttribute('href')!=='afspraak.html?onderwerp=organisatie')throw Error('Bedrijfsontwikkeling call to action missing');
+    await page.goto('https://grow-faster.be/books.html');
     for(const [lang,label]of [['fr','Lire l’aperçu pour les dirigeants'],['nl','Lees de executive preview']]){
       if(await page.locator('html').getAttribute('lang')!==lang){await page.locator('#lang-btn-top').click();await page.locator('.lang-top [data-lang="'+lang+'"]').click()}
       if(!(await page.locator('.book-download').innerText()).includes(label))throw Error('Book download language mismatch: '+lang);
       if(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth+1))throw Error('Book overflow: '+lang);
       results.push({route:'books.html',language:lang,freeDownloadAvailable:true});
     }
-    // Executive Journal left the menu but stays published.
-    await page.goto('https://grow-faster.be/insights.html');
-    const journal=page.locator('#executive-journal');
-    if(!await journal.getByText('De Maandelijkse Executive Journal',{exact:true}).isVisible())throw Error('Monthly Journal entry unavailable');
-    await journal.locator('a[href="journal.html"]').click();
-    await page.waitForURL('https://grow-faster.be/journal.html');
-    if(await page.locator('html').getAttribute('lang')!=='nl'||!await page.locator('#p1:visible').count())throw Error('Dutch Journal unavailable');
-    await page.locator('[data-next]').click();
-    await page.locator('[data-alternate]').click();
-    await page.waitForURL('https://grow-faster.be/journal-fr.html#p2');
-    if(await page.locator('html').getAttribute('lang')!=='fr'||!await page.locator('#p2:visible').count())throw Error('French Journal or preserved page unavailable');
-    results.push({route:'journal.html',monthlyIssue:1,languages:['nl','fr'],pagePreserved:true});
+    // Release 2: the Maandelijks Magazine (journal.html) replaces the Executive Journal; the old French address forwards to it.
+    await page.goto('https://grow-faster.be/index.html');
+    if(await page.locator('#burger').isVisible())await page.locator('#burger').click();
+    await page.locator('#navlist a.l[href="journal.html"]').click();await page.waitForURL('https://grow-faster.be/journal.html');
+    if(await page.locator('html').getAttribute('lang')!=='nl'||(await page.locator('h1').innerText())!=='Grow Faster Magazine')throw Error('Dutch Magazine unavailable');
+    await page.locator('#lang-btn-top').click();await page.locator('.lang-top [data-lang="fr"]').click();
+    if(await page.locator('html').getAttribute('lang')!=='fr'||!(await page.locator('#editie-1 h2').innerText()).includes('ressaisie'))throw Error('French Magazine unavailable');
+    await page.goto('https://grow-faster.be/journal-fr.html');await page.waitForURL('https://grow-faster.be/journal.html?lang=fr');
+    results.push({route:'journal.html',magazine:true,languages:['nl','fr'],oldFrenchAddressForwards:true});
     const publication=require('../tests/book-publication.json');
     const pdf=await page.request.get('https://grow-faster.be/'+publication.file);
     if(pdf.status()!==200||!pdf.headers()['content-type']?.startsWith('application/pdf'))throw Error('Public book PDF unavailable');

@@ -9,7 +9,7 @@ for(const [language,heading,primary,secondary] of [
  for(const width of [390,768,1024,1440]){
   await page.setViewportSize({width,height:1000});await page.goto('/index.html');
   await expect(page.locator('#consent')).toBeHidden();await expect(page.locator('#hero h1')).toHaveText(heading);
-  await expect(page.locator('#hero-pilot')).toContainText(primary);await expect(page.locator('#hero-pilot')).toHaveAttribute('href','mailto:erlendhollebosch@gmail.com?subject=Pilot%20Orion');await expect(page.locator('#hero-orion')).toContainText(secondary);
+  await expect(page.locator('#hero-pilot')).toContainText(primary);await expect(page.locator('#hero-pilot')).toHaveAttribute('href','afspraak.html?onderwerp=vragenlijsten');await expect(page.locator('#hero-orion')).toContainText(secondary);
   expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1)).toBe(true);
   expect(await page.locator('#hero img').evaluate(async image=>{await image.decode();return image.naturalWidth>0})).toBe(true);
   const bounds=await page.locator('#hero h1,#hero .sub,#hero .btn').evaluateAll(els=>els.map(el=>{const r=el.getBoundingClientRect();return{x:r.x,right:r.right,width:r.width,height:r.height,bottom:r.bottom}}));
@@ -22,8 +22,8 @@ for(const [language,heading,primary,secondary] of [
 // v2 (22 Nov 2026): the pyramid "Van fundament tot AI" replaces the offer cards on the homepage; the cards moved to oplossingen.html.
 // Layers are a list in reading order from the foundation; CSS shows layer 1 at the bottom. Every layer links to its offer.
 for(const [language,heading,result,layers,headings]of [
- ['nl','Van fundament tot AI','Winst in tijd en geld',['Enterprise coherentie','Procesanalyse','Automatisering','AI'],{'coherence.html':null,'automatisering.html':'Workflow-automatisering','orion.html':'Uw klantvragenlijsten, ingevuld vanuit uw eigen documenten.'}],
- ['fr','Des fondations à l’IA','Gain de temps et d’argent',['Cohérence d’entreprise','Analyse des processus','Automatisation','IA'],{'coherence.html':null,'automatisering.html':'Automatisation des workflows','orion.html':'Vos questionnaires clients, remplis à partir de vos propres documents.'}]
+ ['nl','Van fundament tot AI','Winst in tijd en geld',['Enterprise coherentie','Procesanalyse','Automatisering','AI'],{'coherence.html':null,'automatisering.html':'Wat uw team overtypt, gebeurt voortaan vanzelf.','orion.html':'Uw klantvragenlijsten, ingevuld vanuit uw eigen documenten.'}],
+ ['fr','Des fondations à l’IA','Gain de temps et d’argent',['Cohérence d’entreprise','Analyse des processus','Automatisation','IA'],{'coherence.html':null,'automatisering.html':'Ce que votre équipe ressaisit se fait désormais tout seul.','orion.html':'Vos questionnaires clients, remplis à partir de vos propres documents.'}]
 ])for(const page of ['index.html','oplossingen.html'])test(`pyramid builds from foundation to AI and routes to the offer on ${page} in ${language}`,async({page:browserPage},info)=>{
  const p=browserPage,errors=[];p.on('pageerror',e=>errors.push(e.message));
  await p.addInitScript(l=>{localStorage.setItem('avs-lang',l);localStorage.setItem('avs-consent',JSON.stringify({v:4,ext:false,ana:false,ts:Date.now()}))},language);

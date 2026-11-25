@@ -80,8 +80,8 @@
     "Erlend Hollebosch sur la fragmentation, la cohérence de l’entreprise et les conditions d’une valeur durable de l’IA."
   ],
   "coherence.html": [
-    "Enterprise coherence en AI-waarde: onderzoeksbronnen, duiding en een illustratieve processimulatie.",
-    "Cohérence de l’entreprise et valeur de l’IA : sources de recherche, analyse et simulation illustrative des processus."
+    "Voor zaakvoerders en directie van kmo’s: breng samenhang tussen beslissingen, processen en systemen, zodat AI en automatisering echt tijd en geld opleveren.",
+    "Pour les dirigeants de PME : alignez décisions, processus et systèmes, pour que l’IA et l’automatisation fassent vraiment gagner du temps et de l’argent."
   ],
   "value.html": [
     "Waar AI waarde kan creëren: taken, werkstromen en processen, met een kader voor kansen.",
@@ -104,8 +104,8 @@
     "Articles d’Erlend Hollebosch sur la fragmentation, la cohérence de l’entreprise, la refonte des processus et l’IA."
   ],
   "about.html": [
-    "Over Erlend Hollebosch, zijn ervaring met transformatie, het boek The Coherent Enterprise en contact.",
-    "À propos d’Erlend Hollebosch, de son expérience en transformation, du livre The Coherent Enterprise et des moyens de le contacter."
+    "Erlend Hollebosch, oprichter van Grow Faster, brengt de aanpak van grote bedrijven naar kmo’s: klein starten, meten en uitbreiden met AI en automatisering.",
+    "Erlend Hollebosch, fondateur de Grow Faster, apporte l’approche des grandes entreprises aux PME : commencer petit, mesurer et élargir avec l’IA et l’automatisation."
   ],
   "accessibility.html": [
     "Toegankelijkheidsverklaring van grow-faster.be: voorzieningen, bekende beperkingen en feedback.",

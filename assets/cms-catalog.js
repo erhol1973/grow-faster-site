@@ -6,6 +6,18 @@ window.GF_CMS_CATALOG=[
     "label": "Homepage",
     "fields": [
       {
+        "key": "f7a4946dfd792-0",
+        "type": "media",
+        "label": "img/hero-toepassingen-1774.webp",
+        "nl": "img/hero-toepassingen-1774.webp",
+        "fr": "img/hero-toepassingen-1774.webp",
+        "src": "img/hero-toepassingen-1774.webp",
+        "alt": {
+          "nl": "",
+          "fr": ""
+        }
+      },
+      {
         "key": "home-orion-hero-heading",
         "type": "text",
         "source": "heading",
@@ -14,23 +26,95 @@ window.GF_CMS_CATALOG=[
         "fr": "Travailler plus vite grâce à l’IA et à l’automatisation."
       },
       {
-        "key": "f7a4946dfd792-0",
-        "type": "media",
-        "label": "img/hero-kwaliteit-productielijn-1774.webp",
-        "nl": "img/hero-kwaliteit-productielijn-1774.webp",
-        "fr": "img/hero-kwaliteit-productielijn-1774.webp",
-        "src": "img/hero-kwaliteit-productielijn-1774.webp",
-        "alt": {
-          "nl": "",
-          "fr": ""
-        }
-      },
-      {
         "key": "home-orion-hero-sub",
         "type": "text",
-        "label": "Orion vult de vragenlijsten van uw klanten in op basis van uw eigen documenten. Uw kwalite",
-        "nl": "Orion vult de vragenlijsten van uw klanten in op basis van uw eigen documenten. Uw kwaliteitsverantwoordelijke kijkt na en verstuurt.",
-        "fr": "Orion remplit les questionnaires de vos clients à partir de vos propres documents. Votre responsable qualité vérifie et envoie."
+        "label": "Grow Faster helpt u terugkerend werk te vereenvoudigen met de systemen die u al gebruikt. ",
+        "nl": "Grow Faster helpt u terugkerend werk te vereenvoudigen met de systemen die u al gebruikt. Met Orion vult uw kwaliteitsteam klantvragenlijsten sneller in op basis van eigen documenten.",
+        "fr": "Grow Faster vous aide à simplifier le travail répétitif avec les systèmes que vous utilisez déjà. Avec Orion, votre équipe qualité remplit plus vite les questionnaires clients à partir de vos propres documents."
+      },
+      {
+        "key": "home-apps-h",
+        "type": "text",
+        "label": "Welk terugkerend werk kost uw team tijd?",
+        "nl": "Welk terugkerend werk kost uw team tijd?",
+        "fr": "Quel travail répétitif coûte du temps à votre équipe ?"
+      },
+      {
+        "key": "home-apps-p",
+        "type": "text",
+        "label": "Grow Faster helpt teams om informatie sneller terug te vinden, minder gegevens over te typ",
+        "nl": "Grow Faster helpt teams om informatie sneller terug te vinden, minder gegevens over te typen en terugkerende taken te automatiseren.",
+        "fr": "Grow Faster aide les équipes à retrouver plus vite l’information, à ressaisir moins de données et à automatiser les tâches répétitives."
+      },
+      {
+        "key": "home-apps-1-h",
+        "type": "text",
+        "label": "Kwaliteit in de voedingsproductie",
+        "nl": "Kwaliteit in de voedingsproductie",
+        "fr": "Qualité dans la production alimentaire"
+      },
+      {
+        "key": "home-apps-1-p",
+        "type": "text",
+        "label": "Orion vult klantvragenlijsten in op basis van uw specificaties en certificaten. Uw kwalite",
+        "nl": "Orion vult klantvragenlijsten in op basis van uw specificaties en certificaten. Uw kwaliteitsverantwoordelijke kijkt na en verstuurt.",
+        "fr": "Orion remplit les questionnaires clients à partir de vos spécifications et certificats. Votre responsable qualité vérifie et envoie."
+      },
+      {
+        "key": "home-apps-2-h",
+        "type": "text",
+        "label": "Technisch onderhoud",
+        "nl": "Technisch onderhoud",
+        "fr": "Maintenance technique"
+      },
+      {
+        "key": "home-apps-2-p",
+        "type": "text",
+        "label": "Bereid een conceptwerkbon voor uit een inspectieverslag. Uw onderhoudsteam beslist welke a",
+        "nl": "Bereid een conceptwerkbon voor uit een inspectieverslag. Uw onderhoudsteam beslist welke acties het registreert.",
+        "fr": "Préparez un projet de bon de travail à partir d’un rapport d’inspection. Votre équipe de maintenance décide des actions qu’elle enregistre."
+      },
+      {
+        "key": "home-apps-3-h",
+        "type": "text",
+        "label": "Administratie",
+        "nl": "Administratie",
+        "fr": "Administration"
+      },
+      {
+        "key": "home-apps-3-p",
+        "type": "text",
+        "label": "Haal gegevens uit binnenkomende documenten en bereid een conceptaanvraag voor. Uw medewerk",
+        "nl": "Haal gegevens uit binnenkomende documenten en bereid een conceptaanvraag voor. Uw medewerker controleert en registreert die in uw eigen systeem.",
+        "fr": "Extrayez les données des documents entrants et préparez un projet de demande. Votre collaborateur le vérifie et l’enregistre dans votre propre système."
+      },
+      {
+        "key": "home-apps-4-h",
+        "type": "text",
+        "label": "Logistiek",
+        "nl": "Logistiek",
+        "fr": "Logistique"
+      },
+      {
+        "key": "home-apps-4-p",
+        "type": "text",
+        "label": "Verwerk gegevens uit leveringsdocumenten en leg afwijkingen voor aan de medewerker die ze ",
+        "nl": "Verwerk gegevens uit leveringsdocumenten en leg afwijkingen voor aan de medewerker die ze kan opvolgen.",
+        "fr": "Traitez les données des documents de livraison et soumettez les écarts au collaborateur qui peut les suivre."
+      },
+      {
+        "key": "home-apps-pilot-h",
+        "type": "text",
+        "label": "Verbeter één werkproces met de systemen die u al gebruikt.",
+        "nl": "Verbeter één werkproces met de systemen die u al gebruikt.",
+        "fr": "Améliorez un processus de travail avec les systèmes que vous utilisez déjà."
+      },
+      {
+        "key": "home-apps-pilot-p",
+        "type": "text",
+        "label": "We beginnen met een taak die uw team vaak herhaalt. In een pilot meten we hoeveel tijd die",
+        "nl": "We beginnen met een taak die uw team vaak herhaalt. In een pilot meten we hoeveel tijd die vandaag vraagt, hoeveel tijd u wint en waar uw medewerkers moeten blijven nakijken.",
+        "fr": "Nous commençons par une tâche que votre équipe répète souvent. Lors d’un pilote, nous mesurons le temps qu’elle demande aujourd’hui, le temps que vous gagnez et les points que vos collaborateurs doivent continuer à vérifier."
       },
       {
         "key": "home-orion-proof-h",
@@ -47,130 +131,60 @@ window.GF_CMS_CATALOG=[
         "fr": "Plus de vingt ans d’amélioration des processus, de gestion de programmes et de transformation, notamment dans la distribution, l’industrie et les télécoms."
       },
       {
-        "key": "home-orion-problem-h",
-        "type": "text",
-        "label": "Herkenbaar?",
-        "nl": "Herkenbaar?",
-        "fr": "Cela vous parle ?"
-      },
-      {
-        "key": "home-orion-problem-1-h",
-        "type": "text",
-        "label": "Elke klant een eigen lijst",
-        "nl": "Elke klant een eigen lijst",
-        "fr": "Chaque client, son propre questionnaire"
-      },
-      {
-        "key": "home-orion-problem-1-p",
-        "type": "text",
-        "label": "Retailers en industriële afnemers vragen dezelfde informatie, telkens in een ander formaat",
-        "nl": "Retailers en industriële afnemers vragen dezelfde informatie, telkens in een ander formaat.",
-        "fr": "Distributeurs et clients industriels demandent les mêmes informations, chaque fois dans un autre format."
-      },
-      {
-        "key": "home-orion-problem-2-h",
-        "type": "text",
-        "label": "Antwoorden overal verspreid",
-        "nl": "Antwoorden overal verspreid",
-        "fr": "Des réponses éparpillées partout"
-      },
-      {
-        "key": "home-orion-problem-2-p",
-        "type": "text",
-        "label": "Specificaties, certificaten en oude lijsten zitten in mappen en mails. Iemand zoekt ze tel",
-        "nl": "Specificaties, certificaten en oude lijsten zitten in mappen en mails. Iemand zoekt ze telkens opnieuw.",
-        "fr": "Spécifications, certificats et anciens questionnaires se trouvent dans des dossiers et des e-mails. Quelqu’un doit les rechercher à chaque fois."
-      },
-      {
-        "key": "home-orion-problem-3-h",
-        "type": "text",
-        "label": "Overtypen kost uren",
-        "nl": "Overtypen kost uren",
-        "fr": "Retaper coûte des heures"
-      },
-      {
-        "key": "home-orion-problem-3-p",
-        "type": "text",
-        "label": "Dezelfde gegevens gaan met de hand van het ene document naar het andere, en daar sluipen f",
-        "nl": "Dezelfde gegevens gaan met de hand van het ene document naar het andere, en daar sluipen fouten in.",
-        "fr": "Les mêmes données passent à la main d’un document à l’autre, et des erreurs s’y glissent."
-      },
-      {
-        "key": "home-orion-steps-h",
-        "type": "text",
-        "label": "Zo werkt Orion",
-        "nl": "Zo werkt Orion",
-        "fr": "Comment fonctionne Orion"
-      },
-      {
-        "key": "home-orion-step-1-h",
-        "type": "text",
-        "label": "Opladen",
-        "nl": "Opladen",
-        "fr": "Charger"
-      },
-      {
-        "key": "home-orion-step-1-p",
-        "type": "text",
-        "label": "U laadt de vragenlijst op zoals u ze kreeg, in Excel of Word.",
-        "nl": "U laadt de vragenlijst op zoals u ze kreeg, in Excel of Word.",
-        "fr": "Vous chargez le questionnaire tel que vous l’avez reçu, en Excel ou en Word."
-      },
-      {
-        "key": "home-orion-step-2-h",
-        "type": "text",
-        "label": "Zoeken",
-        "nl": "Zoeken",
-        "fr": "Rechercher"
-      },
-      {
-        "key": "home-orion-step-2-p",
-        "type": "text",
-        "label": "Orion zoekt de antwoorden in uw eigen specificaties en certificaten.",
-        "nl": "Orion zoekt de antwoorden in uw eigen specificaties en certificaten.",
-        "fr": "Orion recherche les réponses dans vos propres spécifications et certificats."
-      },
-      {
-        "key": "home-orion-step-3-h",
-        "type": "text",
-        "label": "Nakijken",
-        "nl": "Nakijken",
-        "fr": "Vérifier"
-      },
-      {
-        "key": "home-orion-step-3-p",
-        "type": "text",
-        "label": "Bij elk antwoord staat de bron. Gevoelige vragen, zoals allergenen, zijn gemarkeerd.",
-        "nl": "Bij elk antwoord staat de bron. Gevoelige vragen, zoals allergenen, zijn gemarkeerd.",
-        "fr": "Chaque réponse indique sa source. Les questions sensibles, comme les allergènes, sont signalées."
-      },
-      {
-        "key": "home-orion-step-4-h",
-        "type": "text",
-        "label": "Versturen",
-        "nl": "Versturen",
-        "fr": "Envoyer"
-      },
-      {
-        "key": "home-orion-step-4-p",
-        "type": "text",
-        "label": "Uw medewerker keurt goed en verstuurt. Orion verstuurt nooit zelf iets.",
-        "nl": "Uw medewerker keurt goed en verstuurt. Orion verstuurt nooit zelf iets.",
-        "fr": "Votre collaborateur valide et envoie. Orion n’envoie jamais rien lui-même."
-      },
-      {
         "key": "home-orion-trust-h",
         "type": "text",
-        "label": "Vertrouwelijk blijft vertrouwelijk",
-        "nl": "Vertrouwelijk blijft vertrouwelijk",
-        "fr": "Ce qui est confidentiel reste confidentiel"
+        "label": "Uw systemen en uw beslissingen blijven bij u",
+        "nl": "Uw systemen en uw beslissingen blijven bij u",
+        "fr": "Vos systèmes et vos décisions restent chez vous"
       },
       {
         "key": "home-orion-trust-p",
         "type": "text",
-        "label": "Recepturen en specificaties zijn gevoelig. Voor de pilot start, bespreken we met uw IT-ver",
-        "nl": "Recepturen en specificaties zijn gevoelig. Voor de pilot start, bespreken we met uw IT-verantwoordelijke hoe Orion met uw gegevens omgaat.",
-        "fr": "Recettes et spécifications sont sensibles. Avant le début du pilote, nous examinons avec votre responsable informatique la manière dont Orion traite vos données."
+        "label": "Tijdens de intake bepalen we waar uw actuele gegevens staan en welke toegang nodig is.",
+        "nl": "Tijdens de intake bepalen we waar uw actuele gegevens staan en welke toegang nodig is.",
+        "fr": "Lors de l’intake, nous déterminons où se trouvent vos données actuelles et quel accès est nécessaire."
+      },
+      {
+        "key": "home-trust-1-h",
+        "type": "text",
+        "label": "Toegang in overleg",
+        "nl": "Toegang in overleg",
+        "fr": "Un accès convenu ensemble"
+      },
+      {
+        "key": "home-trust-1-p",
+        "type": "text",
+        "label": "Als een koppeling nodig is, spreken we met uw IT-team af welke brongegevens Grow Faster ma",
+        "nl": "Als een koppeling nodig is, spreken we met uw IT-team af welke brongegevens Grow Faster mag raadplegen. Bronnen zoals SAP, Dynamics 365, Business Central, Salesforce of SharePoint zijn mogelijk. Of en hoe we koppelen, beoordelen we per klant.",
+        "fr": "Si une connexion est nécessaire, nous convenons avec votre équipe IT des données sources que Grow Faster peut consulter. Des sources comme SAP, Dynamics 365, Business Central, Salesforce ou SharePoint sont possibles. Nous évaluons pour chaque client si et comment nous nous connectons."
+      },
+      {
+        "key": "home-trust-2-h",
+        "type": "text",
+        "label": "Een voorstel dat u kunt controleren",
+        "nl": "Een voorstel dat u kunt controleren",
+        "fr": "Une proposition que vous pouvez vérifier"
+      },
+      {
+        "key": "home-trust-2-p",
+        "type": "text",
+        "label": "Grow Faster bereidt een concept voor, zoals een ingevulde vragenlijst of een werkbon op ba",
+        "nl": "Grow Faster bereidt een concept voor, zoals een ingevulde vragenlijst of een werkbon op basis van een inspectieverslag.",
+        "fr": "Grow Faster prépare un projet, comme un questionnaire rempli ou un bon de travail établi à partir d’un rapport d’inspection."
+      },
+      {
+        "key": "home-trust-3-h",
+        "type": "text",
+        "label": "Uw medewerker zet de laatste stap",
+        "nl": "Uw medewerker zet de laatste stap",
+        "fr": "Votre collaborateur fait le dernier pas"
+      },
+      {
+        "key": "home-trust-3-p",
+        "type": "text",
+        "label": "Uw medewerker controleert het en zet de laatste stap: versturen, registreren of importeren",
+        "nl": "Uw medewerker controleert het en zet de laatste stap: versturen, registreren of importeren.",
+        "fr": "Votre collaborateur le vérifie et fait le dernier pas : envoyer, enregistrer ou importer."
       },
       {
         "key": "home-orion-pilot-h",
@@ -206,229 +220,142 @@ window.GF_CMS_CATALOG=[
     "label": "Erlend Hollebosch",
     "fields": [
       {
-        "key": "f5828e9e52aaa-0",
+        "key": "about-klant-hero-h",
         "type": "text",
-        "label": "I explore how organisations turn strategic ambition into coherent action, and how AI can c",
-        "nl": "Ik onderzoek hoe organisaties strategische ambitie omzetten in samenhangend handelen en hoe AI kan bijdragen wanneer mensen, processen, beslissingen en technologie samenwerken.",
-        "fr": "J’examine comment les organisations traduisent leurs ambitions stratégiques en actions cohérentes et comment l’IA peut y contribuer lorsque personnes, processus, décisions et technologie fonctionnent ensemble."
-      },
-      {
-        "key": "f96d81ec488e1-0",
-        "type": "text",
-        "label": "Author of The Coherent Enterprise and Design for Coherence",
-        "nl": "Auteur van The Coherent Enterprise en Design for Coherence",
-        "fr": "Auteur de The Coherent Enterprise et de Design for Coherence"
-      },
-      {
-        "key": "f29222a59cef9-0",
-        "type": "text",
-        "label": "Connecting direction with execution",
-        "nl": "Richting verbinden met uitvoering",
-        "fr": "Relier l’orientation à l’exécution"
-      },
-      {
-        "key": "fc537108c9c64-0",
-        "type": "text",
-        "label": "My background spans project management, PMO and business transformation. It shapes a persp",
-        "nl": "Mijn achtergrond ligt in projectmanagement, PMO en bedrijfstransformatie. Die ervaring vormt een perspectief dat strategische richting verbindt met het werk dat mensen samen moeten realiseren, over organisatiegrenzen heen.",
-        "fr": "Mon parcours associe gestion de projets, PMO et transformation des entreprises. Cette expérience nourrit une perspective qui relie le cap stratégique au travail que les personnes doivent accomplir ensemble, au-delà des frontières organisationnelles."
-      },
-      {
-        "key": "fdb526c54c092-0",
-        "type": "text",
-        "label": "My focus is enterprise coherence: how strategy, governance, decisions, processes, data and",
-        "nl": "Mijn aandacht gaat naar enterprise coherence: hoe strategie, governance, beslissingen, processen, data en leren elkaar versterken. Vanuit die lens onderzoek ik AI, waarbij technologie en organisatie samen worden ontwikkeld.",
-        "fr": "Je m’intéresse à la cohérence de l’entreprise : comment stratégie, gouvernance, décisions, processus, données et apprentissage se renforcent. J’examine l’IA sous cet angle, en développant ensemble technologie et organisation."
-      },
-      {
-        "key": "f6e561262044f-0",
-        "type": "text",
-        "label": "AI can accelerate a task while decisions, handoffs and responsibilities still hold back th",
-        "nl": "AI kan een taak versnellen terwijl beslissingen, overdrachten en verantwoordelijkheden het resultaat blijven afremmen. Dit handboek helpt je leiderschapsteam het systeem rond één AI-toepassing te onderzoeken.",
-        "fr": "L’IA peut accélérer une tâche alors que les décisions, les transferts et les responsabilités freinent encore le résultat. Ce guide aide votre équipe dirigeante à examiner le système autour d’une application d’IA."
-      },
-      {
-        "key": "fceb71014d7cb-0",
-        "type": "text",
-        "label": "Online flipbook · 22-page preview · 82-page book · November 2026",
-        "nl": "Online flipbook · preview van 22 pagina’s · boek van 82 pagina’s · november 2026",
-        "fr": "Livre feuilletable en ligne · aperçu de 22 pages · livre de 82 pages · novembre 2026"
-      },
-      {
-        "key": "f6c505bc7600c-0",
-        "type": "text",
-        "label": "The broader manuscript explores how strategy, governance, decisions, operations, technolog",
-        "nl": "Het uitgebreidere manuscript onderzoekt hoe strategie, governance, beslissingen, uitvoering, technologie en leren elkaar versterken wanneer een organisatie verandert.",
-        "fr": "Le manuscrit de fond examine comment la stratégie, la gouvernance, les décisions, les opérations, la technologie et l’apprentissage se renforcent lorsque l’organisation évolue."
-      },
-      {
-        "key": "fc9c4c0bbbff6-0",
-        "type": "text",
-        "label": "Understand why capable organisations become harder to move as complexity grows.",
-        "nl": "Begrijp waarom bekwame organisaties moeilijker in beweging komen naarmate de complexiteit groeit.",
-        "fr": "Comprendre pourquoi des organisations compétentes deviennent plus difficiles à faire évoluer à mesure que la complexité augmente."
-      },
-      {
-        "key": "f12abc47fb8a3-0",
-        "type": "text",
-        "label": "Diagnose where coherence erodes with the Coherence Diagnostic Model.",
-        "nl": "Breng met het Coherence Diagnostic Model in kaart waar de samenhang afbrokkelt.",
-        "fr": "Identifier où la cohérence s’érode grâce au Coherence Diagnostic Model."
-      },
-      {
-        "key": "f2604f2888195-0",
-        "type": "text",
-        "label": "Redesign governance, decisions and flow with the Coherent Transformation Playbook.",
-        "nl": "Herontwerp governance, beslissingen en flow met het Coherent Transformation Playbook.",
-        "fr": "Repenser la gouvernance, les décisions et le flux avec le Coherent Transformation Playbook."
-      },
-      {
-        "key": "f58b6e7e9aacb-0",
-        "type": "text",
-        "label": "Online flipbook · 12-page preview · 281-page manuscript on request",
-        "nl": "Online flipbook · preview van 12 pagina’s · manuscript van 281 pagina’s op aanvraag",
-        "fr": "Livre à feuilleter en ligne · aperçu de 12 pages · manuscrit de 281 pages sur demande"
-      },
-      {
-        "key": "f3732e763f5e5-0",
-        "type": "text",
-        "label": "Two ways to work together",
-        "nl": "Twee manieren om samen te werken",
-        "fr": "Deux façons de travailler ensemble"
-      },
-      {
-        "key": "fd921b418e593-0",
-        "type": "text",
-        "label": "I am available now in Belgium, on-site or hybrid, in English, Dutch and French.",
-        "nl": "Ik ben nu beschikbaar in België, ter plaatse of hybride, in het Nederlands, Frans en Engels.",
-        "fr": "Je suis disponible dès maintenant en Belgique, sur site ou en mode hybride, en français, néerlandais et anglais."
-      },
-      {
-        "key": "fb945fffbef00-0",
-        "type": "text",
-        "label": "Enterprise & AI Transformation Lead",
-        "nl": "Enterprise & AI Transformation Lead",
-        "fr": "Enterprise & AI Transformation Lead"
-      },
-      {
-        "key": "f501f2bd31399-0",
-        "type": "text",
-        "label": "For organisations that want AI to improve business outcomes, not only individual productiv",
-        "nl": "Voor organisaties die met AI betere bedrijfsresultaten willen, niet alleen individuele productiviteit. Ik verbind strategie, processen, beslisrechten, data en AI tot één transformatie die resultaat oplevert.",
-        "fr": "Pour les organisations qui attendent de l’IA de meilleurs résultats d’entreprise, pas seulement une productivité individuelle. Je relie stratégie, processus, droits de décision, données et IA en une seule transformation qui produit des résultats."
-      },
-      {
-        "key": "ff100957d3228-0",
-        "type": "text",
-        "label": "Lead enterprise-wide AI and business transformation",
-        "nl": "Organisatiebrede AI- en bedrijfstransformatie leiden",
-        "fr": "Piloter la transformation de l’entreprise et de l’IA à l’échelle de l’organisation"
-      },
-      {
-        "key": "f515786712e3c-0",
-        "type": "text",
-        "label": "Build the portfolio, governance and operating model to scale AI",
-        "nl": "Portfolio, governance en operating model opbouwen om AI op te schalen",
-        "fr": "Construire le portefeuille, la gouvernance et le modèle opérationnel pour déployer l’IA à grande échelle"
-      },
-      {
-        "key": "f8a525f621ad4-0",
-        "type": "text",
-        "label": "26 years in project, programme, portfolio and transformation leadership",
-        "nl": "26 jaar leiderschap in project-, programma-, portfolio- en transformatiebeheer",
-        "fr": "26 ans de leadership en gestion de projets, de programmes, de portefeuilles et de transformation"
-      },
-      {
-        "key": "fd4de1a5c1fd3-0",
-        "type": "text",
-        "label": "Interim or freelance, for the longer term",
-        "nl": "Interim of freelance, voor langere tijd",
-        "fr": "Intérim ou freelance, sur la durée"
-      },
-      {
-        "key": "fe6ff7c81fefe-0",
-        "type": "text",
-        "label": "For a transformation or AI programme that has to deliver, where I take ownership of the re",
-        "nl": "Voor een transformatie- of AI-programma dat moet opleveren, waarbij ik samen met je teams verantwoordelijkheid neem voor het resultaat.",
-        "fr": "Pour un programme de transformation ou d’IA qui doit produire des résultats, où je prends la responsabilité du résultat aux côtés de vos équipes."
-      },
-      {
-        "key": "f0a3df2134953-0",
-        "type": "text",
-        "label": "Lead or turn around an AI or transformation programme",
-        "nl": "Een AI- of transformatieprogramma leiden of bijsturen",
-        "fr": "Piloter ou redresser un programme d’IA ou de transformation"
-      },
-      {
-        "key": "fda2458cabd27-0",
-        "type": "text",
-        "label": "Redesign one end-to-end process for people and AI agents",
-        "nl": "Eén end-to-end proces herontwerpen voor mensen en AI-agents",
-        "fr": "Repenser un processus de bout en bout pour les humains et les agents IA"
-      },
-      {
-        "key": "f4f3a44d29dd2-0",
-        "type": "text",
-        "label": "Set up decision rights, governance and portfolio steering",
-        "nl": "Beslisrechten, governance en portfoliosturing inrichten",
-        "fr": "Mettre en place les droits de décision, la gouvernance et le pilotage du portefeuille"
-      },
-      {
-        "key": "f30f1f8682cb1-0",
-        "type": "text",
-        "label": "Each button opens your email with a short, ready-made template.",
-        "nl": "Elke knop opent je e-mail met een kort, kant-en-klaar sjabloon.",
-        "fr": "Chaque bouton ouvre votre messagerie avec un court modèle prêt à l’emploi."
-      },
-      {
-        "key": "f2bfe2bd85ea8-0",
-        "type": "text",
-        "label": "Intellectual foundations",
-        "nl": "Intellectuele fundamenten",
-        "fr": "Fondements intellectuels"
-      },
-      {
-        "key": "f4d468731fcc7-0",
-        "type": "text",
-        "label": "Research on enterprise design informs this perspective: reliable shared operations, reusab",
-        "nl": "Onderzoek naar organisatieontwerp voedt dit perspectief: betrouwbare gedeelde processen, herbruikbare digitale mogelijkheden en duidelijke verantwoordelijkheid. Het hier beschreven coherentieperspectief is mijn eigen synthese.",
-        "fr": "Les recherches sur la conception des entreprises nourrissent cette perspective : opérations partagées fiables, capacités numériques réutilisables et responsabilités claires. L’argument de cohérence présenté ici est ma propre synthèse."
+        "label": "Erlend Hollebosch, oprichter van Grow Faster",
+        "nl": "Erlend Hollebosch, oprichter van Grow Faster",
+        "fr": "Erlend Hollebosch, fondateur de Grow Faster"
       },
       {
         "key": "f9e1d98ca6f92-0",
         "type": "media",
-        "label": "Portrait of Erlend Hollebosch",
-        "nl": "Portrait of Erlend Hollebosch",
-        "fr": "Portrait of Erlend Hollebosch",
+        "label": "Portret van Erlend Hollebosch",
+        "nl": "Portret van Erlend Hollebosch",
+        "fr": "Portrait d’Erlend Hollebosch",
         "src": "img/author-retouched-720.jpg",
         "alt": {
-          "nl": "Portrait of Erlend Hollebosch",
-          "fr": "Portrait of Erlend Hollebosch"
+          "nl": "Portret van Erlend Hollebosch",
+          "fr": "Portrait d’Erlend Hollebosch"
         }
       },
       {
-        "key": "f34c8c508f4d2-0",
-        "type": "media",
-        "label": "Cover of Turning AI Potential into Enterprise Value by Erlend Hollebosch",
-        "nl": "Omslag van Turning AI Potential into Enterprise Value van Erlend Hollebosch",
-        "fr": "Couverture de Turning AI Potential into Enterprise Value d’Erlend Hollebosch",
-        "src": "img/design-for-coherence-book-600.png",
-        "alt": {
-          "nl": "Cover of Turning AI Potential into Enterprise Value by Erlend Hollebosch",
-          "fr": "Cover of Turning AI Potential into Enterprise Value by Erlend Hollebosch"
-        }
+        "key": "about-klant-hero-p",
+        "type": "text",
+        "label": "Meer dan twintig jaar heb ik grote bedrijven geholpen sneller en beter te werken. Nu breng",
+        "nl": "Meer dan twintig jaar heb ik grote bedrijven geholpen sneller en beter te werken. Nu breng ik die aanpak naar kmo’s, met AI en automatisering.",
+        "fr": "Pendant plus de vingt ans, j’ai aidé de grandes entreprises à travailler plus vite et mieux. Aujourd’hui, j’apporte cette approche aux PME, avec l’IA et l’automatisation."
       },
       {
-        "key": "f5322634b0b3d-0",
-        "type": "media",
-        "label": "Cover of the book The Coherent Enterprise by Erlend Hollebosch",
-        "nl": "Cover of the book The Coherent Enterprise by Erlend Hollebosch",
-        "fr": "Cover of the book The Coherent Enterprise by Erlend Hollebosch",
-        "src": "img/the-coherent-enterprise-book-600.png",
-        "alt": {
-          "nl": "Cover of the book The Coherent Enterprise by Erlend Hollebosch",
-          "fr": "Cover of the book The Coherent Enterprise by Erlend Hollebosch"
-        }
+        "key": "about-klant-why-h",
+        "type": "text",
+        "label": "Waarom Grow Faster",
+        "nl": "Waarom Grow Faster",
+        "fr": "Pourquoi Grow Faster"
+      },
+      {
+        "key": "about-klant-why-p1",
+        "type": "text",
+        "label": "Bij Volvo, Colruyt, Solvay, Telenet en ArcelorMittal zag ik hetzelfde: mensen verliezen ur",
+        "nl": "Bij Volvo, Colruyt, Solvay, Telenet en ArcelorMittal zag ik hetzelfde: mensen verliezen uren aan zoeken, overtypen en afstemmen. Grote bedrijven hebben teams en budget om dat aan te pakken. Een kmo heeft die vaak niet, terwijl het probleem er net zo groot is.",
+        "fr": "Chez Volvo, Colruyt, Solvay, Telenet et ArcelorMittal, j’ai constaté la même chose : les collaborateurs perdent des heures à chercher, à retaper et à se coordonner. Les grandes entreprises disposent d’équipes et de budgets pour s’y attaquer. Une PME n’en a souvent pas, alors que le problème y est tout aussi important."
+      },
+      {
+        "key": "about-klant-why-p2",
+        "type": "text",
+        "label": "Grow Faster brengt de aanpak van grote bedrijven op kmo-maat. We starten met één taak die ",
+        "nl": "Grow Faster brengt de aanpak van grote bedrijven op kmo-maat. We starten met één taak die vandaag te veel tijd kost, meten wat het oplevert en breiden pas uit als het werkt.",
+        "fr": "Grow Faster adapte l’approche des grandes entreprises à la taille d’une PME. Nous commençons par une seule tâche qui prend aujourd’hui trop de temps, nous mesurons ce qu’elle rapporte et nous n’élargissons que lorsque cela fonctionne."
+      },
+      {
+        "key": "about-klant-how-h",
+        "type": "text",
+        "label": "Hoe ik werk",
+        "nl": "Hoe ik werk",
+        "fr": "Ma façon de travailler"
+      },
+      {
+        "key": "about-klant-step-1-h",
+        "type": "text",
+        "label": "Klein starten.",
+        "nl": "Klein starten.",
+        "fr": "Commencer petit."
+      },
+      {
+        "key": "about-klant-step-1-p",
+        "type": "text",
+        "label": "Eén concrete taak, zoals de vragenlijsten van uw klanten.",
+        "nl": "Eén concrete taak, zoals de vragenlijsten van uw klanten.",
+        "fr": "Une tâche concrète, comme les questionnaires de vos clients."
+      },
+      {
+        "key": "about-klant-step-2-h",
+        "type": "text",
+        "label": "Meten.",
+        "nl": "Meten.",
+        "fr": "Mesurer."
+      },
+      {
+        "key": "about-klant-step-2-p",
+        "type": "text",
+        "label": "Hoeveel tijd kost het vandaag, en hoeveel na de verandering?",
+        "nl": "Hoeveel tijd kost het vandaag, en hoeveel na de verandering?",
+        "fr": "Combien de temps cela prend-il aujourd’hui, et combien après le changement ?"
+      },
+      {
+        "key": "about-klant-step-3-h",
+        "type": "text",
+        "label": "Uitbreiden.",
+        "nl": "Uitbreiden.",
+        "fr": "Élargir."
+      },
+      {
+        "key": "about-klant-step-3-p",
+        "type": "text",
+        "label": "Pas als het resultaat er is, pakken we de volgende stap aan.",
+        "nl": "Pas als het resultaat er is, pakken we de volgende stap aan.",
+        "fr": "Ce n’est qu’une fois le résultat obtenu que nous passons à l’étape suivante."
+      },
+      {
+        "key": "about-klant-exp-h",
+        "type": "text",
+        "label": "Wat ik meebreng",
+        "nl": "Wat ik meebreng",
+        "fr": "Ce que j’apporte"
+      },
+      {
+        "key": "about-klant-exp-1",
+        "type": "text",
+        "label": "Meer dan twintig jaar programma- en projectmanagement, procesverbetering en transformatie.",
+        "nl": "Meer dan twintig jaar programma- en projectmanagement, procesverbetering en transformatie.",
+        "fr": "Plus de vingt ans de gestion de programmes et de projets, d’amélioration des processus et de transformation."
+      },
+      {
+        "key": "about-klant-exp-2",
+        "type": "text",
+        "label": "Ervaring in voeding en retail, industrie, telecom en technologie, onder meer bij Colruyt G",
+        "nl": "Ervaring in voeding en retail, industrie, telecom en technologie, onder meer bij Colruyt Group, Volvo Group, Solvay, ArcelorMittal, Telenet en Ericsson.",
+        "fr": "Une expérience dans l’alimentation et la distribution, l’industrie, les télécoms et la technologie, notamment chez Colruyt Group, Volvo Group, Solvay, ArcelorMittal, Telenet et Ericsson."
+      },
+      {
+        "key": "about-klant-exp-3",
+        "type": "text",
+        "label": "Gecertificeerd in AI-operating models en AI-leiderschap (IBM), organisatieverandering (ILE",
+        "nl": "Gecertificeerd in AI-operating models en AI-leiderschap (IBM), organisatieverandering (ILE) en verandertrajecten (ICAgile, SAFe SPC).",
+        "fr": "Certifié en modèles opérationnels d’IA et en leadership de l’IA (IBM), en changement organisationnel (ILE) et en trajectoires de changement (ICAgile, SAFe SPC)."
+      },
+      {
+        "key": "about-klant-contact-h",
+        "type": "text",
+        "label": "Laten we kennismaken",
+        "nl": "Laten we kennismaken",
+        "fr": "Faisons connaissance"
+      },
+      {
+        "key": "about-klant-contact-p",
+        "type": "text",
+        "label": "Vertel me welke taak bij u vandaag te veel tijd kost.",
+        "nl": "Vertel me welke taak bij u vandaag te veel tijd kost.",
+        "fr": "Dites-moi quelle tâche vous prend aujourd’hui trop de temps."
       },
       {
         "key": "cms-video-about",
@@ -1074,526 +1001,8 @@ window.GF_CMS_CATALOG=[
     "page": "coherence",
     "route": "coherence.html",
     "section": "website",
-    "label": "Enterprise Coherence",
+    "label": "Bedrijfsontwikkeling",
     "fields": [
-      {
-        "key": "f02ea72a18222-0",
-        "type": "text",
-        "label": "Coherence decides what AI amplifies",
-        "nl": "Samenhang bepaalt wat AI versterkt",
-        "fr": "La cohérence détermine ce que l’IA amplifie"
-      },
-      {
-        "key": "feb66bf68b536-0",
-        "type": "text",
-        "label": "Research on organisational change and AI value, interpreted through the coherence perspect",
-        "nl": "Onderzoek naar organisatieverandering en AI-waarde, geduid vanuit het coherentieperspectief, met een illustratieve processimulatie.",
-        "fr": "Des recherches sur le changement organisationnel et la valeur de l’IA, interprétées à travers la perspective de cohérence, avec une simulation illustrative des processus."
-      },
-      {
-        "key": "f2f519737e3c8-0",
-        "type": "text",
-        "label": "A faster task is not automatically a better enterprise",
-        "nl": "Een snellere taak maakt nog geen betere onderneming",
-        "fr": "Une tâche plus rapide ne suffit pas à améliorer l’entreprise"
-      },
-      {
-        "key": "f4df6589482ac-0",
-        "type": "text",
-        "label": "Enterprise coherence is the ability to make the organisation’s choices reinforce one anoth",
-        "nl": "Enterprise coherence is het vermogen om de keuzes binnen een organisatie elkaar te laten versterken. Strategie, governance, beslisrechten, structuren, uitvoering, transformatie, technologie en leren moeten dezelfde richting ondersteunen. De relaties daartussen bepalen hoe de onderneming in beweging kan komen.",
-        "fr": "La cohérence de l’entreprise est la capacité à faire en sorte que ses choix se renforcent mutuellement. Stratégie, gouvernance, droits de décision, structures, opérations, transformation, technologie et apprentissage doivent soutenir une même direction. Leurs relations déterminent la capacité de l’entreprise à évoluer."
-      },
-      {
-        "key": "faaca1b36726a-0",
-        "type": "text",
-        "label": "AI can improve a task while the wider workflow still waits for information, approval or a ",
-        "nl": "AI kan een taak verbeteren terwijl de bredere werkstroom blijft wachten op informatie, goedkeuring of een overdracht. Een agent kan in seconden een voorstel maken en toch afhankelijk blijven van een besluit dat dagen duurt. Mijn centrale vraag is hoe een lokale winst door de organisatie reist en een beter resultaat voor de onderneming wordt.",
-        "fr": "L’IA peut améliorer une tâche alors que le flux de travail attend encore une information, une validation ou un passage de relais. Un agent peut produire une proposition en quelques secondes et dépendre d’une décision qui prend plusieurs jours. Ma question centrale est de comprendre comment un gain local traverse l’organisation et améliore le résultat de l’entreprise."
-      },
-      {
-        "key": "f96fb2abe4071-0",
-        "type": "text",
-        "label": "AI and organisational redesign belong in the same effort. Start with a meaningful workflow",
-        "nl": "AI en organisatieontwerp horen in dezelfde beweging. Begin bij een betekenisvolle werkstroom, onderzoek de besluiten en afhankelijkheden eromheen en ontwikkel technologie, rollen, processen en feedback samen. Coherentie groeit door dat werk; je hoeft de hele onderneming niet eerst opnieuw te ontwerpen voordat je met AI leert.",
-        "fr": "L’IA et la conception de l’organisation relèvent d’un même effort. Partez d’un flux de travail important, examinez les décisions et dépendances qui l’entourent, puis développez ensemble technologie, rôles, processus et retours d’expérience. La cohérence se construit ainsi, sans devoir repenser toute l’entreprise avant d’apprendre avec l’IA."
-      },
-      {
-        "key": "f04e734554146-0",
-        "type": "text",
-        "label": "This is the proposition developed in my manuscript. The research I draw on supports parts ",
-        "nl": "Dit is de stelling die ik in mijn manuscript ontwikkel. Het onderzoek waarop ik voortbouw ondersteunt onderdelen van de redenering; het bewijst niet dat mijn coherentiemodel AI-waarde op ondernemingsniveau veroorzaakt.",
-        "fr": "C’est la proposition que je développe dans mon manuscrit. Les recherches sur lesquelles je m’appuie soutiennent certains éléments du raisonnement ; elles ne prouvent pas que mon modèle de cohérence cause une création de valeur de l’IA à l’échelle de l’entreprise."
-      },
-      {
-        "key": "f9e48937dcdbd-0",
-        "type": "text",
-        "label": "Research foundations",
-        "nl": "Onderzoeksbasis",
-        "fr": "Fondements de recherche"
-      },
-      {
-        "key": "fe2fd0b81af98-0",
-        "type": "text",
-        "label": "Research on enterprise design informs this perspective: reliable shared operations, reusab",
-        "nl": "Onderzoek naar organisatieontwerp voedt dit perspectief: betrouwbare gedeelde processen, herbruikbare digitale mogelijkheden en duidelijke verantwoordelijkheid. Het hier beschreven coherentieperspectief is mijn eigen synthese.",
-        "fr": "Les recherches sur la conception des entreprises nourrissent cette perspective : opérations partagées fiables, capacités numériques réutilisables et responsabilités claires. L’argument de cohérence présenté ici est ma propre synthèse."
-      },
-      {
-        "key": "f8caf430c8c1e-0",
-        "type": "text",
-        "label": "I draw on those foundations to explore a broader question: how do strategic choices, gover",
-        "nl": "Op die fundamenten bouw ik voort met een bredere vraag: hoe versterken strategische keuzes, governance, beslisrechten, verandervermogen en leren elkaar terwijl de onderneming evolueert? Dat is de coherence-visie die ik in The Coherent Enterprise ontwikkel en hier op AI toepas.",
-        "fr": "Je m’appuie sur ces fondements pour explorer une question plus large : comment choix stratégiques, gouvernance, droits de décision, capacité de changement et apprentissage se renforcent-ils au fil de l’évolution de l’entreprise ? C’est la perspective de cohérence que je développe dans The Coherent Enterprise et que j’applique ici à l’IA."
-      },
-      {
-        "key": "f5cf652d3b8ff-0",
-        "type": "text",
-        "label": "Related books: Enterprise Architecture as Strategy — Jeanne Ross, Peter Weill and David Ro",
-        "nl": "Verwante boeken: Enterprise Architecture as Strategy — Jeanne Ross, Peter Weill en David Robertson; Designed for Digital — Jeanne Ross, Cynthia Beath en Martin Mocker.",
-        "fr": "Ouvrages associés : Enterprise Architecture as Strategy — Jeanne Ross, Peter Weill et David Robertson ; Designed for Digital — Jeanne Ross, Cynthia Beath et Martin Mocker."
-      },
-      {
-        "key": "f013f02bb1e7f-0",
-        "type": "text",
-        "label": "A free executive handbook on turning AI potential into enterprise value. Start with one wo",
-        "nl": "Een gratis handboek voor leiderschapsteams om AI-potentieel om te zetten in bedrijfswaarde. Begin met één werkstroom, de beslissingen eromheen en de eerste vijftien werkdagen.",
-        "fr": "Un guide gratuit pour les équipes dirigeantes qui veulent transformer le potentiel de l’IA en valeur pour l’entreprise. Commencez par un flux de travail, les décisions qui l’entourent et les quinze premiers jours."
-      },
-      {
-        "key": "f630eec497adf-0",
-        "type": "text",
-        "label": "Wat onderzoek laat zien over organisatieverandering en AI-waarde",
-        "nl": "Wat onderzoek laat zien over organisatieverandering en AI-waarde",
-        "fr": "Wat onderzoek laat zien over organisatieverandering en AI-waarde"
-      },
-      {
-        "key": "ffaa4a92b9f06-0",
-        "type": "text",
-        "label": "AI-adoptie is bijna universeel, maar financiële impact blijft zeldzaam. De organisaties di",
-        "nl": "AI-adoptie is bijna universeel, maar financiële impact blijft zeldzaam. De organisaties die wél waarde halen, hebben één ding gemeen: ze veranderen hoe de onderneming werkt, niet alleen welke tools ze gebruikt.",
-        "fr": "AI-adoptie is bijna universeel, maar financiële impact blijft zeldzaam. De organisaties die wél waarde halen, hebben één ding gemeen: ze veranderen hoe de onderneming werkt, niet alleen welke tools ze gebruikt."
-      },
-      {
-        "key": "f1bb00a9b49c9-0",
-        "type": "text",
-        "label": "van de organisaties schrijft 5% of meer van de EBIT toe aan AI.",
-        "nl": "van de organisaties schrijft 5% of meer van de EBIT toe aan AI.",
-        "fr": "van de organisaties schrijft 5% of meer van de EBIT toe aan AI."
-      },
-      {
-        "key": "f2934c3c7d20b-0",
-        "type": "text",
-        "label": "ziet een betekenisvolle EBIT-impact van AI, onveranderd tegenover vorig jaar.",
-        "nl": "ziet een betekenisvolle EBIT-impact van AI, onveranderd tegenover vorig jaar.",
-        "fr": "ziet een betekenisvolle EBIT-impact van AI, onveranderd tegenover vorig jaar."
-      },
-      {
-        "key": "ff4521d6530f4-0",
-        "type": "text",
-        "label": "van de bedrijven haalt AI-waarde op schaal. 60% haalt geen wezenlijke waarde.",
-        "nl": "van de bedrijven haalt AI-waarde op schaal. 60% haalt geen wezenlijke waarde.",
-        "fr": "van de bedrijven haalt AI-waarde op schaal. 60% haalt geen wezenlijke waarde."
-      },
-      {
-        "key": "f9de54f1c5b81-0",
-        "type": "text",
-        "label": "van de eigen ontwikkelde AI-tools van ondernemingen haalt de productie.",
-        "nl": "van de eigen ontwikkelde AI-tools van ondernemingen haalt de productie.",
-        "fr": "van de eigen ontwikkelde AI-tools van ondernemingen haalt de productie."
-      },
-      {
-        "key": "f9b421cc530d0-0",
-        "type": "text",
-        "label": "van de organisaties mist AI-ready datapraktijken of twijfelt eraan.",
-        "nl": "van de organisaties mist AI-ready datapraktijken of twijfelt eraan.",
-        "fr": "van de organisaties mist AI-ready datapraktijken of twijfelt eraan."
-      },
-      {
-        "key": "ffabe396c9f78-0",
-        "type": "text",
-        "label": "van de agentische AI-projecten wordt naar verwachting stopgezet tegen eind 2027.",
-        "nl": "van de agentische AI-projecten wordt naar verwachting stopgezet tegen eind 2027.",
-        "fr": "van de agentische AI-projecten wordt naar verwachting stopgezet tegen eind 2027."
-      },
-      {
-        "key": "f5048dc3bb196-0",
-        "type": "text",
-        "label": "Wat AI-leiders onderscheidt van de rest",
-        "nl": "Wat AI-leiders onderscheidt van de rest",
-        "fr": "Wat AI-leiders onderscheidt van de rest"
-      },
-      {
-        "key": "ffee479821e6b-0",
-        "type": "text",
-        "label": "Leiders zijn de AI high performers van McKinsey of de future-built bedrijven van BCG. Waar",
-        "nl": "Leiders zijn de AI high performers van McKinsey of de future-built bedrijven van BCG. Waarden met ≈ of > zijn afgerond zoals de bronnen ze rapporteren.",
-        "fr": "Leiders zijn de AI high performers van McKinsey of de future-built bedrijven van BCG. Waarden met ≈ of > zijn afgerond zoals de bronnen ze rapporteren."
-      },
-      {
-        "key": "f5724654a685f-0",
-        "type": "text",
-        "label": "De opbrengst: future-built bedrijven tegenover achterblijvers",
-        "nl": "De opbrengst: future-built bedrijven tegenover achterblijvers",
-        "fr": "De opbrengst: future-built bedrijven tegenover achterblijvers"
-      },
-      {
-        "key": "fb5709a4deb22-0",
-        "type": "text",
-        "label": "BCG, The Widening AI Value Gap, 2025 · │ = achterblijvers (1×)",
-        "nl": "BCG, The Widening AI Value Gap, 2025 · │ = achterblijvers (1×)",
-        "fr": "BCG, The Widening AI Value Gap, 2025 · │ = achterblijvers (1×)"
-      },
-      {
-        "key": "f36d1a1e03475-0",
-        "type": "text",
-        "label": "Waar leiders hun inspanning leggen: de 10-20-70-regel van BCG",
-        "nl": "Waar leiders hun inspanning leggen: de 10-20-70-regel van BCG",
-        "fr": "Waar leiders hun inspanning leggen: de 10-20-70-regel van BCG"
-      },
-      {
-        "key": "f6f84ee3382f3-0",
-        "type": "text",
-        "label": "BCG, 2024–2025",
-        "nl": "BCG, 2024–2025",
-        "fr": "BCG, 2024–2025"
-      },
-      {
-        "key": "f4cf013ee22a8-0",
-        "type": "text",
-        "label": "Vijf bronnen, één patroon",
-        "nl": "Vijf bronnen, één patroon",
-        "fr": "Vijf bronnen, één patroon"
-      },
-      {
-        "key": "f43f2e0b05daf-0",
-        "type": "text",
-        "label": "Sylvain Duranton, wereldwijd leider van BCG X",
-        "nl": "Sylvain Duranton, wereldwijd leider van BCG X",
-        "fr": "Sylvain Duranton, wereldwijd leider van BCG X"
-      },
-      {
-        "key": "f8513f1d03f36-0",
-        "type": "text",
-        "label": "Bedrijven worstelen omdat “too much focus is placed on the technology itself and not enoug",
-        "nl": "Bedrijven worstelen omdat “too much focus is placed on the technology itself and not enough on transforming how people work.” De leiders bij BCG steken 70% van hun inspanning in mensen en processen, en concentreren zich op enkele initiatieven met hoge impact.",
-        "fr": "Bedrijven worstelen omdat “too much focus is placed on the technology itself and not enough on transforming how people work.” De leiders bij BCG steken 70% van hun inspanning in mensen en processen, en concentreren zich op enkele initiatieven met hoge impact."
-      },
-      {
-        "key": "f672eca92b65d-0",
-        "type": "text",
-        "label": "Michael Chui en co-auteurs",
-        "nl": "Michael Chui en co-auteurs",
-        "fr": "Michael Chui en co-auteurs"
-      },
-      {
-        "key": "f53c847fcbc83-0",
-        "type": "text",
-        "label": "Slechts 1% van de leidinggevenden noemt het eigen bedrijf matuur in AI. De grootste rem op",
-        "nl": "Slechts 1% van de leidinggevenden noemt het eigen bedrijf matuur in AI. De grootste rem op opschaling zijn niet de medewerkers, maar leiders die niet snel genoeg sturen. Bijna drie kwart van de AI high performers heeft workflows fundamenteel herontworpen.",
-        "fr": "Slechts 1% van de leidinggevenden noemt het eigen bedrijf matuur in AI. De grootste rem op opschaling zijn niet de medewerkers, maar leiders die niet snel genoeg sturen. Bijna drie kwart van de AI high performers heeft workflows fundamenteel herontworpen."
-      },
-      {
-        "key": "ffd15439d31d8-0",
-        "type": "text",
-        "label": "Chuck Whitten en co-auteurs",
-        "nl": "Chuck Whitten en co-auteurs",
-        "fr": "Chuck Whitten en co-auteurs"
-      },
-      {
-        "key": "fac5dac0142e9-0",
-        "type": "text",
-        "label": "“Tech-forward enterprises are already turning their focus from automating tasks to redesig",
-        "nl": "“Tech-forward enterprises are already turning their focus from automating tasks to redesigning entire workflows.” Hun advies: herontwerp volledige workflows, geen losse activiteiten of use cases.",
-        "fr": "“Tech-forward enterprises are already turning their focus from automating tasks to redesigning entire workflows.” Hun advies: herontwerp volledige workflows, geen losse activiteiten of use cases."
-      },
-      {
-        "key": "fa565cdef37b7-0",
-        "type": "text",
-        "label": "Aditya Challapally, hoofdauteur",
-        "nl": "Aditya Challapally, hoofdauteur",
-        "fr": "Aditya Challapally, hoofdauteur"
-      },
-      {
-        "key": "f0d02ad89e535-0",
-        "type": "text",
-        "label": "Slechts 5% van de eigen ontwikkelde AI-tools haalt de productie. De oorzaak is een leerklo",
-        "nl": "Slechts 5% van de eigen ontwikkelde AI-tools haalt de productie. De oorzaak is een leerkloof bij tools en organisaties die zich niet aanpassen aan hoe het werk gebeurt, niet de kwaliteit van de modellen.",
-        "fr": "Slechts 5% van de eigen ontwikkelde AI-tools haalt de productie. De oorzaak is een leerkloof bij tools en organisaties die zich niet aanpassen aan hoe het werk gebeurt, niet de kwaliteit van de modellen."
-      },
-      {
-        "key": "f21facf5492ac-0",
-        "type": "text",
-        "label": "Anushree Verma en Roxane Edjlali",
-        "nl": "Anushree Verma en Roxane Edjlali",
-        "fr": "Anushree Verma en Roxane Edjlali"
-      },
-      {
-        "key": "f90e7249d742c-0",
-        "type": "text",
-        "label": "Meer dan 40% van de agentische AI-projecten wordt tegen eind 2027 stopgezet door stijgende",
-        "nl": "Meer dan 40% van de agentische AI-projecten wordt tegen eind 2027 stopgezet door stijgende kosten, onduidelijke bedrijfswaarde of zwakke risicocontroles. Tot en met 2026 laten organisaties 60% van de AI-projecten zonder AI-ready data vallen.",
-        "fr": "Meer dan 40% van de agentische AI-projecten wordt tegen eind 2027 stopgezet door stijgende kosten, onduidelijke bedrijfswaarde of zwakke risicocontroles. Tot en met 2026 laten organisaties 60% van de AI-projecten zonder AI-ready data vallen."
-      },
-      {
-        "key": "f8b3927018c69-0",
-        "type": "text",
-        "label": "Erlend Hollebosch, auteur",
-        "nl": "Erlend Hollebosch, auteur",
-        "fr": "Erlend Hollebosch, auteur"
-      },
-      {
-        "key": "ff5c7d9a15961-0",
-        "type": "text",
-        "label": "Mijn lens: AI versterkt het systeem waarin het terechtkomt. Ik onderzoek hoe strategie, be",
-        "nl": "Mijn lens: AI versterkt het systeem waarin het terechtkomt. Ik onderzoek hoe strategie, beslissingen, processen, data, governance en leren elkaar versterken of hinderen en waar die interacties ondernemingswaarde beperken.",
-        "fr": "Mijn lens: AI versterkt het systeem waarin het terechtkomt. Ik onderzoek hoe strategie, beslissingen, processen, data, governance en leren elkaar versterken of hinderen en waar die interacties ondernemingswaarde beperken."
-      },
-      {
-        "key": "f4274d95157c9-0",
-        "type": "text",
-        "label": "Wat het samen betekent",
-        "nl": "Wat het samen betekent",
-        "fr": "Wat het samen betekent"
-      },
-      {
-        "key": "f5dca1dd2222d-0",
-        "type": "text",
-        "label": "Ik lees deze studies door de lens van enterprise coherence. Ze onderzoeken verschillende o",
-        "nl": "Ik lees deze studies door de lens van enterprise coherence. Ze onderzoeken verschillende organisatiepraktijken en resultaten en valideren niet mijn model met acht dimensies. Verbanden in enquêtes helpen vragen te formuleren; ze bewijzen niet dat coherentie AI-waarde veroorzaakt.",
-        "fr": "Ik lees deze studies door de lens van enterprise coherence. Ze onderzoeken verschillende organisatiepraktijken en resultaten en valideren niet mijn model met acht dimensies. Verbanden in enquêtes helpen vragen te formuleren; ze bewijzen niet dat coherentie AI-waarde veroorzaakt."
-      },
-      {
-        "key": "f4b75e3f3ac44-0",
-        "type": "text",
-        "label": "Dezelfde AI. Een ander resultaat.",
-        "nl": "Dezelfde AI. Een ander resultaat.",
-        "fr": "Dezelfde AI. Een ander resultaat."
-      },
-      {
-        "key": "f27da9bc78df2-0",
-        "type": "text",
-        "label": "Ontdek hoe één use case door twee organisatieontwerpen beweegt. Zie waar het werk stroomt,",
-        "nl": "Ontdek hoe één use case door twee organisatieontwerpen beweegt. Zie waar het werk stroomt, wacht of terugkeert.",
-        "fr": "Ontdek hoe één use case door twee organisatieontwerpen beweegt. Zie waar het werk stroomt, wacht of terugkeert."
-      },
-      {
-        "key": "f9338839929ac-0",
-        "type": "text",
-        "label": "Ce que la recherche montre sur le changement organisationnel et la valeur de l’IA",
-        "nl": "Ce que la recherche montre sur le changement organisationnel et la valeur de l’IA",
-        "fr": "Ce que la recherche montre sur le changement organisationnel et la valeur de l’IA"
-      },
-      {
-        "key": "f1d86a3d4a2c3-0",
-        "type": "text",
-        "label": "L’adoption de l’IA est quasi universelle, mais l’impact financier reste rare. Les organisa",
-        "nl": "L’adoption de l’IA est quasi universelle, mais l’impact financier reste rare. Les organisations qui en tirent de la valeur ont un point commun : elles changent la façon dont l’entreprise fonctionne, pas seulement les outils qu’elle utilise.",
-        "fr": "L’adoption de l’IA est quasi universelle, mais l’impact financier reste rare. Les organisations qui en tirent de la valeur ont un point commun : elles changent la façon dont l’entreprise fonctionne, pas seulement les outils qu’elle utilise."
-      },
-      {
-        "key": "f57631ddc25bc-0",
-        "type": "text",
-        "label": "des organisations attribuent 5 % ou plus de leur EBIT à l’IA.",
-        "nl": "des organisations attribuent 5 % ou plus de leur EBIT à l’IA.",
-        "fr": "des organisations attribuent 5 % ou plus de leur EBIT à l’IA."
-      },
-      {
-        "key": "f3873af965f5c-0",
-        "type": "text",
-        "label": "constatent un impact significatif de l’IA sur l’EBIT, inchangé sur un an.",
-        "nl": "constatent un impact significatif de l’IA sur l’EBIT, inchangé sur un an.",
-        "fr": "constatent un impact significatif de l’IA sur l’EBIT, inchangé sur un an."
-      },
-      {
-        "key": "f90f68004a4a3-0",
-        "type": "text",
-        "label": "des entreprises obtiennent de la valeur de l’IA à grande échelle. 60 % n’en obtiennent auc",
-        "nl": "des entreprises obtiennent de la valeur de l’IA à grande échelle. 60 % n’en obtiennent aucune de significative.",
-        "fr": "des entreprises obtiennent de la valeur de l’IA à grande échelle. 60 % n’en obtiennent aucune de significative."
-      },
-      {
-        "key": "f805be78f217b-0",
-        "type": "text",
-        "label": "des outils d’IA développés sur mesure par les entreprises arrivent en production.",
-        "nl": "des outils d’IA développés sur mesure par les entreprises arrivent en production.",
-        "fr": "des outils d’IA développés sur mesure par les entreprises arrivent en production."
-      },
-      {
-        "key": "f90a2138daeab-0",
-        "type": "text",
-        "label": "des organisations n’ont pas de pratiques de données adaptées à l’IA, ou n’en sont pas sûre",
-        "nl": "des organisations n’ont pas de pratiques de données adaptées à l’IA, ou n’en sont pas sûres.",
-        "fr": "des organisations n’ont pas de pratiques de données adaptées à l’IA, ou n’en sont pas sûres."
-      },
-      {
-        "key": "f3874e29c712e-0",
-        "type": "text",
-        "label": "des projets d’IA agentique devraient être abandonnés d’ici fin 2027.",
-        "nl": "des projets d’IA agentique devraient être abandonnés d’ici fin 2027.",
-        "fr": "des projets d’IA agentique devraient être abandonnés d’ici fin 2027."
-      },
-      {
-        "key": "f20c21ae1ce56-0",
-        "type": "text",
-        "label": "Ce qui distingue les leaders de l’IA des autres",
-        "nl": "Ce qui distingue les leaders de l’IA des autres",
-        "fr": "Ce qui distingue les leaders de l’IA des autres"
-      },
-      {
-        "key": "fc60cfb8430d3-0",
-        "type": "text",
-        "label": "Les leaders sont les « AI high performers » de McKinsey ou les entreprises « future-built ",
-        "nl": "Les leaders sont les « AI high performers » de McKinsey ou les entreprises « future-built » du BCG. Les valeurs marquées ≈ ou > sont arrondies comme dans les sources.",
-        "fr": "Les leaders sont les « AI high performers » de McKinsey ou les entreprises « future-built » du BCG. Les valeurs marquées ≈ ou > sont arrondies comme dans les sources."
-      },
-      {
-        "key": "f00443a34e8ab-0",
-        "type": "text",
-        "label": "Le gain : entreprises « future-built » face aux retardataires",
-        "nl": "Le gain : entreprises « future-built » face aux retardataires",
-        "fr": "Le gain : entreprises « future-built » face aux retardataires"
-      },
-      {
-        "key": "ffe3cdf415b92-0",
-        "type": "text",
-        "label": "BCG, The Widening AI Value Gap, 2025 · │ = retardataires (1×)",
-        "nl": "BCG, The Widening AI Value Gap, 2025 · │ = retardataires (1×)",
-        "fr": "BCG, The Widening AI Value Gap, 2025 · │ = retardataires (1×)"
-      },
-      {
-        "key": "fef0cc624b117-0",
-        "type": "text",
-        "label": "Où les leaders mettent leurs efforts : la règle 10-20-70 du BCG",
-        "nl": "Où les leaders mettent leurs efforts : la règle 10-20-70 du BCG",
-        "fr": "Où les leaders mettent leurs efforts : la règle 10-20-70 du BCG"
-      },
-      {
-        "key": "f6f84ee3382f3-1",
-        "type": "text",
-        "label": "BCG, 2024–2025",
-        "nl": "BCG, 2024–2025",
-        "fr": "BCG, 2024–2025"
-      },
-      {
-        "key": "f5b169e6ef03e-0",
-        "type": "text",
-        "label": "Cinq sources, un même schéma",
-        "nl": "Cinq sources, un même schéma",
-        "fr": "Cinq sources, un même schéma"
-      },
-      {
-        "key": "fb304f3dbbef6-0",
-        "type": "text",
-        "label": "Sylvain Duranton, responsable mondial de BCG X",
-        "nl": "Sylvain Duranton, responsable mondial de BCG X",
-        "fr": "Sylvain Duranton, responsable mondial de BCG X"
-      },
-      {
-        "key": "f27be33278632-0",
-        "type": "text",
-        "label": "Les entreprises peinent parce que « too much focus is placed on the technology itself and ",
-        "nl": "Les entreprises peinent parce que « too much focus is placed on the technology itself and not enough on transforming how people work ». Les leaders identifiés par le BCG consacrent 70 % de leurs efforts aux personnes et aux processus et se concentrent sur quelques initiatives à fort impact.",
-        "fr": "Les entreprises peinent parce que « too much focus is placed on the technology itself and not enough on transforming how people work ». Les leaders identifiés par le BCG consacrent 70 % de leurs efforts aux personnes et aux processus et se concentrent sur quelques initiatives à fort impact."
-      },
-      {
-        "key": "f94f33854d1b4-0",
-        "type": "text",
-        "label": "Michael Chui et coauteurs",
-        "nl": "Michael Chui et coauteurs",
-        "fr": "Michael Chui et coauteurs"
-      },
-      {
-        "key": "fc00db3b76f6d-0",
-        "type": "text",
-        "label": "Seuls 1 % des dirigeants jugent leur entreprise mature en IA. Le principal frein au passag",
-        "nl": "Seuls 1 % des dirigeants jugent leur entreprise mature en IA. Le principal frein au passage à l’échelle n’est pas les employés, mais des dirigeants qui ne pilotent pas assez vite. Près des trois quarts des « AI high performers » ont fondamentalement repensé leurs flux de travail.",
-        "fr": "Seuls 1 % des dirigeants jugent leur entreprise mature en IA. Le principal frein au passage à l’échelle n’est pas les employés, mais des dirigeants qui ne pilotent pas assez vite. Près des trois quarts des « AI high performers » ont fondamentalement repensé leurs flux de travail."
-      },
-      {
-        "key": "fbeec0154cb62-0",
-        "type": "text",
-        "label": "Chuck Whitten et coauteurs",
-        "nl": "Chuck Whitten et coauteurs",
-        "fr": "Chuck Whitten et coauteurs"
-      },
-      {
-        "key": "fb447e476cc03-0",
-        "type": "text",
-        "label": "« Tech-forward enterprises are already turning their focus from automating tasks to redesi",
-        "nl": "« Tech-forward enterprises are already turning their focus from automating tasks to redesigning entire workflows. » Leur conseil : repenser des flux de travail complets, pas des activités ou cas d’usage isolés.",
-        "fr": "« Tech-forward enterprises are already turning their focus from automating tasks to redesigning entire workflows. » Leur conseil : repenser des flux de travail complets, pas des activités ou cas d’usage isolés."
-      },
-      {
-        "key": "f3decf0629eb6-0",
-        "type": "text",
-        "label": "Aditya Challapally, auteur principal",
-        "nl": "Aditya Challapally, auteur principal",
-        "fr": "Aditya Challapally, auteur principal"
-      },
-      {
-        "key": "f40faf77e8b89-0",
-        "type": "text",
-        "label": "Seuls 5 % des outils d’IA développés sur mesure arrivent en production. La cause est un dé",
-        "nl": "Seuls 5 % des outils d’IA développés sur mesure arrivent en production. La cause est un déficit d’apprentissage des outils et des organisations qui ne s’adaptent pas à la façon de travailler, pas la qualité des modèles.",
-        "fr": "Seuls 5 % des outils d’IA développés sur mesure arrivent en production. La cause est un déficit d’apprentissage des outils et des organisations qui ne s’adaptent pas à la façon de travailler, pas la qualité des modèles."
-      },
-      {
-        "key": "fad47016d7a4f-0",
-        "type": "text",
-        "label": "Anushree Verma et Roxane Edjlali",
-        "nl": "Anushree Verma et Roxane Edjlali",
-        "fr": "Anushree Verma et Roxane Edjlali"
-      },
-      {
-        "key": "f49361496bce4-0",
-        "type": "text",
-        "label": "Plus de 40 % des projets d’IA agentique seront abandonnés d’ici fin 2027 en raison de coût",
-        "nl": "Plus de 40 % des projets d’IA agentique seront abandonnés d’ici fin 2027 en raison de coûts croissants, d’une valeur métier floue ou de contrôles des risques insuffisants. Jusqu’en 2026, les organisations abandonneront 60 % des projets d’IA sans données adaptées.",
-        "fr": "Plus de 40 % des projets d’IA agentique seront abandonnés d’ici fin 2027 en raison de coûts croissants, d’une valeur métier floue ou de contrôles des risques insuffisants. Jusqu’en 2026, les organisations abandonneront 60 % des projets d’IA sans données adaptées."
-      },
-      {
-        "key": "f8b3927018c69-1",
-        "type": "text",
-        "label": "Erlend Hollebosch, auteur",
-        "nl": "Erlend Hollebosch, auteur",
-        "fr": "Erlend Hollebosch, auteur"
-      },
-      {
-        "key": "f157c23bda3c0-0",
-        "type": "text",
-        "label": "Mon regard : l’IA amplifie le système dans lequel elle s’insère. J’examine comment stratég",
-        "nl": "Mon regard : l’IA amplifie le système dans lequel elle s’insère. J’examine comment stratégie, décisions, processus, données, gouvernance et apprentissage se renforcent ou se freinent, et où ces interactions limitent la valeur pour l’entreprise.",
-        "fr": "Mon regard : l’IA amplifie le système dans lequel elle s’insère. J’examine comment stratégie, décisions, processus, données, gouvernance et apprentissage se renforcent ou se freinent, et où ces interactions limitent la valeur pour l’entreprise."
-      },
-      {
-        "key": "fe5b18e6bdfb9-0",
-        "type": "text",
-        "label": "Ce que cela signifie",
-        "nl": "Ce que cela signifie",
-        "fr": "Ce que cela signifie"
-      },
-      {
-        "key": "f60ba583b1022-0",
-        "type": "text",
-        "label": "Je lis ces études à travers le prisme de la cohérence de l’entreprise. Elles examinent dif",
-        "nl": "Je lis ces études à travers le prisme de la cohérence de l’entreprise. Elles examinent différentes pratiques et différents résultats organisationnels sans valider mon modèle à huit dimensions. Les associations observées dans les enquêtes aident à formuler des questions ; elles ne prouvent pas que la cohérence cause la valeur de l’IA.",
-        "fr": "Je lis ces études à travers le prisme de la cohérence de l’entreprise. Elles examinent différentes pratiques et différents résultats organisationnels sans valider mon modèle à huit dimensions. Les associations observées dans les enquêtes aident à formuler des questions ; elles ne prouvent pas que la cohérence cause la valeur de l’IA."
-      },
-      {
-        "key": "f5306f506d4e1-0",
-        "type": "text",
-        "label": "Même IA. Une autre entreprise.",
-        "nl": "Même IA. Une autre entreprise.",
-        "fr": "Même IA. Une autre entreprise."
-      },
-      {
-        "key": "f4690cbf90520-0",
-        "type": "text",
-        "label": "Explorez le parcours d’un même cas d’usage dans deux organisations. Repérez les flux, les ",
-        "nl": "Explorez le parcours d’un même cas d’usage dans deux organisations. Repérez les flux, les attentes et les retours.",
-        "fr": "Explorez le parcours d’un même cas d’usage dans deux organisations. Repérez les flux, les attentes et les retours."
-      },
       {
         "key": "f9e64ee949244-0",
         "type": "media",
@@ -1605,6 +1014,237 @@ window.GF_CMS_CATALOG=[
           "nl": "",
           "fr": ""
         }
+      },
+      {
+        "key": "coh-kmo-01",
+        "type": "text",
+        "label": "Sneller groeien begint bij samenhang.",
+        "nl": "Sneller groeien begint bij samenhang.",
+        "fr": "Grandir plus vite commence par la cohérence."
+      },
+      {
+        "key": "coh-kmo-02",
+        "type": "text",
+        "label": "AI en automatisering versnellen wat er al is. Werken uw mensen, processen en systemen langs elkaar heen, dan versnelt u vooral de verwarring. Coherentie zorgt dat alles in dezelfde richting trekt.",
+        "nl": "AI en automatisering versnellen wat er al is. Werken uw mensen, processen en systemen langs elkaar heen, dan versnelt u vooral de verwarring. Coherentie zorgt dat alles in dezelfde richting trekt.",
+        "fr": "L’IA et l’automatisation accélèrent ce qui existe déjà. Si vos équipes, vos processus et vos systèmes ne travaillent pas ensemble, vous accélérez surtout la confusion. La cohérence fait que tout va dans la même direction."
+      },
+      {
+        "key": "coh-kmo-03",
+        "type": "text",
+        "label": "Herkenbaar voor een groeiende kmo?",
+        "nl": "Herkenbaar voor een groeiende kmo?",
+        "fr": "Cela vous parle, dans une PME en croissance ?"
+      },
+      {
+        "key": "coh-kmo-04",
+        "type": "text",
+        "label": "Beslissingen blijven liggen.",
+        "nl": "Beslissingen blijven liggen.",
+        "fr": "Les décisions traînent."
+      },
+      {
+        "key": "coh-kmo-05",
+        "type": "text",
+        "label": "Iedereen wacht op de zaakvoerder, omdat niet duidelijk is wie wat mag beslissen.",
+        "nl": "Iedereen wacht op de zaakvoerder, omdat niet duidelijk is wie wat mag beslissen.",
+        "fr": "Tout le monde attend le dirigeant, parce qu’il n’est pas clair qui peut décider de quoi."
+      },
+      {
+        "key": "coh-kmo-06",
+        "type": "text",
+        "label": "Elke afdeling haar eigen werkwijze.",
+        "nl": "Elke afdeling haar eigen werkwijze.",
+        "fr": "Chaque service a sa propre façon de travailler."
+      },
+      {
+        "key": "coh-kmo-07",
+        "type": "text",
+        "label": "Verkoop, productie en kwaliteit werken met eigen lijsten en systemen, en stemmen af via mails en vergaderingen.",
+        "nl": "Verkoop, productie en kwaliteit werken met eigen lijsten en systemen, en stemmen af via mails en vergaderingen.",
+        "fr": "La vente, la production et la qualité utilisent leurs propres listes et systèmes, et se coordonnent par e-mails et réunions."
+      },
+      {
+        "key": "coh-kmo-08",
+        "type": "text",
+        "label": "Nieuwe tools, oude problemen.",
+        "nl": "Nieuwe tools, oude problemen.",
+        "fr": "Nouveaux outils, vieux problèmes."
+      },
+      {
+        "key": "coh-kmo-09",
+        "type": "text",
+        "label": "Een nieuw systeem of een AI-tool lost weinig op als het werk eromheen niet mee verandert.",
+        "nl": "Een nieuw systeem of een AI-tool lost weinig op als het werk eromheen niet mee verandert.",
+        "fr": "Un nouveau système ou un outil d’IA règle peu de choses si le travail autour ne change pas avec lui."
+      },
+      {
+        "key": "coh-kmo-10",
+        "type": "text",
+        "label": "Wat onderzoek laat zien",
+        "nl": "Wat onderzoek laat zien",
+        "fr": "Ce que montre la recherche"
+      },
+      {
+        "key": "coh-kmo-11",
+        "type": "text",
+        "label": "De meeste cijfers komen uit grotere bedrijven. In een eerste traject meten we wat het bij u kost.",
+        "nl": "De meeste cijfers komen uit grotere bedrijven. In een eerste traject meten we wat het bij u kost.",
+        "fr": "La plupart de ces chiffres viennent de grandes entreprises. Lors d’un premier accompagnement, nous mesurons ce que cela vous coûte."
+      },
+      {
+        "key": "coh-kmo-12",
+        "type": "text",
+        "label": "van de managers kan altijd rekenen op collega’s van andere afdelingen. Op de eigen leidinggevende en het eigen team rekent 84%.",
+        "nl": "van de managers kan altijd rekenen op collega’s van andere afdelingen. Op de eigen leidinggevende en het eigen team rekent 84%.",
+        "fr": "des managers peuvent toujours compter sur leurs collègues d’autres services. Ils sont 84 % à pouvoir compter sur leur supérieur et leur propre équipe."
+      },
+      {
+        "key": "coh-kmo-13",
+        "type": "text",
+        "label": "van de managers zegt dat het grootste deel van hun tijd voor beslissingen niet goed besteed is.",
+        "nl": "van de managers zegt dat het grootste deel van hun tijd voor beslissingen niet goed besteed is.",
+        "fr": "des managers estiment que la plus grande partie du temps consacré aux décisions est mal utilisée."
+      },
+      {
+        "key": "coh-kmo-adapt-h",
+        "type": "text",
+        "label": "Van samenhang naar een adaptief bedrijf",
+        "nl": "Van samenhang naar een adaptief bedrijf",
+        "fr": "De la cohérence à l’entreprise adaptative"
+      },
+      {
+        "key": "coh-kmo-adapt-p",
+        "type": "text",
+        "label": "Een adaptief bedrijf past zich snel aan als klanten, markt of regels veranderen. Dat lukt als beslissingen dicht bij het werk genomen worden, processen eenvoudig aan te passen zijn en systemen gegevens met elkaar delen. Coherentie is de eerste stap. Daarna helpen we uw bedrijf om zelf te blijven bijsturen: met korte verbeterrondes, duidelijke afspraken over wie wat beslist en cijfers die iedereen ziet.",
+        "nl": "Een adaptief bedrijf past zich snel aan als klanten, markt of regels veranderen. Dat lukt als beslissingen dicht bij het werk genomen worden, processen eenvoudig aan te passen zijn en systemen gegevens met elkaar delen. Coherentie is de eerste stap. Daarna helpen we uw bedrijf om zelf te blijven bijsturen: met korte verbeterrondes, duidelijke afspraken over wie wat beslist en cijfers die iedereen ziet.",
+        "fr": "Une entreprise adaptative s’adapte vite quand les clients, le marché ou les règles changent. C’est possible quand les décisions se prennent près du travail, que les processus sont faciles à adapter et que les systèmes partagent leurs données. La cohérence est la première étape. Ensuite, nous aidons votre entreprise à continuer à s’ajuster elle-même : avec des cycles d’amélioration courts, des accords clairs sur qui décide quoi et des chiffres visibles par tous."
+      },
+      {
+        "key": "coh-kmo-14",
+        "type": "text",
+        "label": "kostten administratieve verplichtingen de Belgische bedrijven en zelfstandigen in 2022, of 1,08% van het bbp.",
+        "nl": "kostten administratieve verplichtingen de Belgische bedrijven en zelfstandigen in 2022, of 1,08% van het bbp.",
+        "fr": "ont coûté les obligations administratives aux entreprises et indépendants belges en 2022, soit 1,08 % du PIB."
+      },
+      {
+        "key": "coh-kmo-15",
+        "type": "text",
+        "label": "Wat coherentie is",
+        "nl": "Wat coherentie is",
+        "fr": "Ce qu’est la cohérence"
+      },
+      {
+        "key": "coh-kmo-16",
+        "type": "text",
+        "label": "Coherentie betekent dat de keuzes in uw bedrijf elkaar versterken: wat u wilt bereiken, hoe u beslist, hoe het werk loopt, welke systemen u gebruikt en wat uw mensen kunnen. Zit daar samenhang in, dan levert elke verbetering meer op, ook AI en automatisering. Daarom is coherentie het fundament van onze aanpak.",
+        "nl": "Coherentie betekent dat de keuzes in uw bedrijf elkaar versterken: wat u wilt bereiken, hoe u beslist, hoe het werk loopt, welke systemen u gebruikt en wat uw mensen kunnen. Zit daar samenhang in, dan levert elke verbetering meer op, ook AI en automatisering. Daarom is coherentie het fundament van onze aanpak.",
+        "fr": "La cohérence signifie que les choix de votre entreprise se renforcent mutuellement : ce que vous voulez atteindre, la façon dont vous décidez, le déroulement du travail, les systèmes que vous utilisez et les compétences de vos équipes. Quand ces éléments s’accordent, chaque amélioration rapporte davantage, y compris l’IA et l’automatisation. C’est pourquoi la cohérence est le fondement de notre approche."
+      },
+      {
+        "key": "coh-kmo-17",
+        "type": "text",
+        "label": "Zo pakken we het aan",
+        "nl": "Zo pakken we het aan",
+        "fr": "Notre approche"
+      },
+      {
+        "key": "coh-kmo-18",
+        "type": "text",
+        "label": "Coherentiescan.",
+        "nl": "Coherentiescan.",
+        "fr": "Scan de cohérence."
+      },
+      {
+        "key": "coh-kmo-19",
+        "type": "text",
+        "label": "In een gesprek en een korte vragenlijst brengen we in kaart waar beslissingen, processen en systemen botsen.",
+        "nl": "In een gesprek en een korte vragenlijst brengen we in kaart waar beslissingen, processen en systemen botsen.",
+        "fr": "Par un entretien et un court questionnaire, nous identifions où les décisions, les processus et les systèmes se heurtent."
+      },
+      {
+        "key": "coh-kmo-20",
+        "type": "text",
+        "label": "Eén knelpunt kiezen.",
+        "nl": "Eén knelpunt kiezen.",
+        "fr": "Choisir un point de blocage."
+      },
+      {
+        "key": "coh-kmo-21",
+        "type": "text",
+        "label": "Samen kiezen we het knelpunt dat vandaag de meeste tijd en geld kost.",
+        "nl": "Samen kiezen we het knelpunt dat vandaag de meeste tijd en geld kost.",
+        "fr": "Ensemble, nous choisissons le point de blocage qui coûte aujourd’hui le plus de temps et d’argent."
+      },
+      {
+        "key": "coh-kmo-22",
+        "type": "text",
+        "label": "Aanpakken en meten.",
+        "nl": "Aanpakken en meten.",
+        "fr": "Agir et mesurer."
+      },
+      {
+        "key": "coh-kmo-23",
+        "type": "text",
+        "label": "We passen afspraken, processen of systemen aan en meten wat het oplevert.",
+        "nl": "We passen afspraken, processen of systemen aan en meten wat het oplevert.",
+        "fr": "Nous adaptons les accords, les processus ou les systèmes et mesurons ce que cela rapporte."
+      },
+      {
+        "key": "coh-kmo-24",
+        "type": "text",
+        "label": "Dan pas automatiseren.",
+        "nl": "Dan pas automatiseren.",
+        "fr": "Automatiser ensuite seulement."
+      },
+      {
+        "key": "coh-kmo-25",
+        "type": "text",
+        "label": "Automatisering en AI komen daarna, op een fundament dat klopt.",
+        "nl": "Automatisering en AI komen daarna, op een fundament dat klopt.",
+        "fr": "L’automatisation et l’IA viennent après, sur des fondations solides."
+      },
+      {
+        "key": "coh-kmo-26",
+        "type": "text",
+        "label": "Wat het u oplevert",
+        "nl": "Wat het u oplevert",
+        "fr": "Ce que vous y gagnez"
+      },
+      {
+        "key": "coh-kmo-27",
+        "type": "text",
+        "label": "Snellere beslissingen en minder wachten op één persoon.",
+        "nl": "Snellere beslissingen en minder wachten op één persoon.",
+        "fr": "Des décisions plus rapides et moins d’attente sur une seule personne."
+      },
+      {
+        "key": "coh-kmo-28",
+        "type": "text",
+        "label": "Minder afstemmingsoverleg en minder dubbel werk.",
+        "nl": "Minder afstemmingsoverleg en minder dubbel werk.",
+        "fr": "Moins de réunions de coordination et moins de travail en double."
+      },
+      {
+        "key": "coh-kmo-29",
+        "type": "text",
+        "label": "Automatisering en AI die blijven werken, omdat het werk eromheen klopt.",
+        "nl": "Automatisering en AI die blijven werken, omdat het werk eromheen klopt.",
+        "fr": "Une automatisation et une IA qui continuent de fonctionner, parce que le travail autour est cohérent."
+      },
+      {
+        "key": "coh-kmo-30",
+        "type": "text",
+        "label": "Waar wringt het in uw bedrijf?",
+        "nl": "Waar wringt het in uw bedrijf?",
+        "fr": "Où cela coince-t-il dans votre entreprise ?"
+      },
+      {
+        "key": "coh-kmo-31",
+        "type": "text",
+        "label": "Vertel ons waar het vandaag stroef loopt. In een eerste gesprek kijken we samen waar tijd en geld weglekt.",
+        "nl": "Vertel ons waar het vandaag stroef loopt. In een eerste gesprek kijken we samen waar tijd en geld weglekt.",
+        "fr": "Dites-nous où cela coince aujourd’hui. Lors d’un premier entretien, nous regardons ensemble où le temps et l’argent se perdent."
       },
       {
         "key": "cms-video-coherence",
@@ -1623,1471 +1263,467 @@ window.GF_CMS_CATALOG=[
     "page": "insights",
     "route": "insights.html",
     "section": "website",
-    "label": "Insights",
+    "label": "Inzichten voor kmo’s",
     "fields": [
       {
-        "key": "f5486cf989bc1-0",
-        "type": "text",
-        "label": "Leading the agentic enterprise",
-        "nl": "Leiding geven aan de agentische onderneming",
-        "fr": "Diriger l’entreprise agentique"
+        "key": "f5486cf989bc1-hero",
+        "type": "media",
+        "label": "img/hero-coherentie-samenwerking-1774.webp",
+        "nl": "img/hero-coherentie-samenwerking-1774.webp",
+        "fr": "img/hero-coherentie-samenwerking-1774.webp",
+        "src": "img/hero-coherentie-samenwerking-1774.webp",
+        "alt": {
+          "nl": "",
+          "fr": ""
+        }
       },
       {
-        "key": "fee893958f029-0",
+        "key": "ins-kmo-01",
         "type": "text",
-        "label": "Perspectives for CEOs, CIOs and leadership teams on turning AI potential into enterprise v",
-        "nl": "Perspectieven voor CEO’s, CIO’s en directieteams over het omzetten van AI-potentieel in bedrijfswaarde. Eén heldere stelling per artikel, gelezen in enkele minuten.",
-        "fr": "Des perspectives pour les CEO, les CIO et les équipes dirigeantes sur la transformation du potentiel de l’IA en valeur pour l’entreprise. Un argument clair par article, lu en quelques minutes."
+        "label": "Inzichten voor kmo’s",
+        "nl": "Inzichten voor kmo’s",
+        "fr": "Analyses pour les PME"
       },
       {
-        "key": "f2910c0fc71e4-0",
+        "key": "ins-kmo-02",
         "type": "text",
-        "label": "De Maandelijkse Executive Journal",
-        "nl": "De Maandelijkse Executive Journal",
-        "fr": "De Maandelijkse Executive Journal"
+        "label": "Korte artikels over AI, automatisering en samenhang, geschreven voor zaakvoerders.",
+        "nl": "Korte artikels over AI, automatisering en samenhang, geschreven voor zaakvoerders.",
+        "fr": "De courts articles sur l’IA, l’automatisation et la cohérence, écrits pour les dirigeants."
       },
       {
-        "key": "f690d3eec01e7-0",
+        "key": "ins-kmo-03",
         "type": "text",
-        "label": "November 2026",
-        "nl": "November 2026",
-        "fr": "November 2026"
+        "label": "Artikels",
+        "nl": "Artikels",
+        "fr": "Articles"
       },
       {
-        "key": "f8fe842cb1051-0",
+        "key": "ins-kmo-04",
         "type": "text",
-        "label": "Een maandelijkse briefing voor Belgische bedrijfsleiders over AI, uitvoering en bedrijfswa",
-        "nl": "Een maandelijkse briefing voor Belgische bedrijfsleiders over AI, uitvoering en bedrijfswaarde.",
-        "fr": "Een maandelijkse briefing voor Belgische bedrijfsleiders over AI, uitvoering en bedrijfswaarde."
+        "label": "Uw AI-pilot werkt. Waarom verandert er niets in het bedrijf?",
+        "nl": "Uw AI-pilot werkt. Waarom verandert er niets in het bedrijf?",
+        "fr": "Votre pilote IA fonctionne. Pourquoi rien ne change-t-il dans l’entreprise ?"
       },
       {
-        "key": "ff479eae89275-0",
+        "key": "ins-kmo-05",
         "type": "text",
-        "label": "Le Journal Exécutif Mensuel",
-        "nl": "Le Journal Exécutif Mensuel",
-        "fr": "Le Journal Exécutif Mensuel"
+        "label": "AI maakt één taak sneller, maar goedkeuringen en overdrachten blijven wachten. De klant merkt weinig verschil.",
+        "nl": "AI maakt één taak sneller, maar goedkeuringen en overdrachten blijven wachten. De klant merkt weinig verschil.",
+        "fr": "L’IA accélère une tâche, mais les validations et les transferts continuent d’attendre. Le client voit peu de différence."
       },
       {
-        "key": "f9a5f11a69e0d-0",
+        "key": "ins-kmo-06",
         "type": "text",
-        "label": "Novembre 2026",
-        "nl": "Novembre 2026",
-        "fr": "Novembre 2026"
+        "label": "U wint tijd met AI. Wat doet u ermee?",
+        "nl": "U wint tijd met AI. Wat doet u ermee?",
+        "fr": "Vous gagnez du temps grâce à l’IA. Qu’en faites-vous ?"
       },
       {
-        "key": "ffd8455e97199-0",
+        "key": "ins-kmo-07",
         "type": "text",
-        "label": "Un briefing mensuel pour les dirigeants belges sur l’IA, l’exécution et la création de val",
-        "nl": "Un briefing mensuel pour les dirigeants belges sur l’IA, l’exécution et la création de valeur.",
-        "fr": "Un briefing mensuel pour les dirigeants belges sur l’IA, l’exécution et la création de valeur."
+        "label": "AI bespaart uren, maar die uren worden niet vanzelf winst.",
+        "nl": "AI bespaart uren, maar die uren worden niet vanzelf winst.",
+        "fr": "L’IA fait gagner des heures, mais ces heures ne deviennent pas automatiquement du bénéfice."
       },
       {
-        "key": "fe986c3e36a77-0",
+        "key": "ins-kmo-08",
         "type": "text",
-        "label": "Latest articles",
-        "nl": "Recente artikels",
-        "fr": "Articles récents"
+        "label": "Regel eerst de uitzonderingen, dan pas de automatisering",
+        "nl": "Regel eerst de uitzonderingen, dan pas de automatisering",
+        "fr": "Réglez d’abord les exceptions, ensuite l’automatisation"
       },
       {
-        "key": "f14beeaa2736b-0",
+        "key": "ins-kmo-09",
         "type": "text",
-        "label": "Je AI-pilot werkt. Waarom verandert de organisatie niet?",
-        "nl": "Je AI-pilot werkt. Waarom verandert de organisatie niet?",
-        "fr": "Je AI-pilot werkt. Waarom verandert de organisatie niet?"
+        "label": "Automatisering werkt voor de gewone gevallen. Uitzonderingen blijven ergens liggen.",
+        "nl": "Automatisering werkt voor de gewone gevallen. Uitzonderingen blijven ergens liggen.",
+        "fr": "L’automatisation fonctionne pour les cas habituels. Les exceptions restent bloquées quelque part."
       },
       {
-        "key": "fbc73a5e37498-0",
+        "key": "ins-kmo-10",
         "type": "text",
-        "label": "Over fragmentatie, Enterprise Coherence en de voorwaarden voor AI die werkelijk waarde opl",
-        "nl": "Over fragmentatie, Enterprise Coherence en de voorwaarden voor AI die werkelijk waarde oplevert.",
-        "fr": "Over fragmentatie, Enterprise Coherence en de voorwaarden voor AI die werkelijk waarde oplevert."
+        "label": "Uw AI-pilot werkt. Waarom verandert er niets in het bedrijf?",
+        "nl": "Uw AI-pilot werkt. Waarom verandert er niets in het bedrijf?",
+        "fr": "Votre pilote IA fonctionne. Pourquoi rien ne change-t-il dans l’entreprise ?"
       },
       {
-        "key": "f86f019448640-0",
+        "key": "ins-kmo-11",
         "type": "text",
-        "label": "Votre pilote IA fonctionne. Pourquoi l’organisation ne change-t-elle pas ?",
-        "nl": "Votre pilote IA fonctionne. Pourquoi l’organisation ne change-t-elle pas ?",
-        "fr": "Votre pilote IA fonctionne. Pourquoi l’organisation ne change-t-elle pas ?"
+        "label": "Het probleem",
+        "nl": "Het probleem",
+        "fr": "Le problème"
       },
       {
-        "key": "f037a508c76e6-0",
+        "key": "ins-kmo-12",
         "type": "text",
-        "label": "Fragmentation, Enterprise Coherence et conditions nécessaires pour que l’IA crée une valeu",
-        "nl": "Fragmentation, Enterprise Coherence et conditions nécessaires pour que l’IA crée une valeur réelle.",
-        "fr": "Fragmentation, Enterprise Coherence et conditions nécessaires pour que l’IA crée une valeur réelle."
+        "label": "AI maakt één taak sneller, maar goedkeuringen en overdrachten blijven wachten. De klant merkt weinig verschil.",
+        "nl": "AI maakt één taak sneller, maar goedkeuringen en overdrachten blijven wachten. De klant merkt weinig verschil.",
+        "fr": "L’IA accélère une tâche, mais les validations et les transferts continuent d’attendre. Le client voit peu de différence."
       },
       {
-        "key": "f77e40cb55189-0",
+        "key": "ins-kmo-13",
         "type": "text",
-        "label": "Tijdwinst vraagt om een volgende keuze",
-        "nl": "Tijdwinst vraagt om een volgende keuze",
-        "fr": "Tijdwinst vraagt om een volgende keuze"
+        "label": "Waarom het gebeurt",
+        "nl": "Waarom het gebeurt",
+        "fr": "Pourquoi cela arrive"
       },
       {
-        "key": "fdc5d59d6ca97-0",
+        "key": "ins-kmo-14",
         "type": "text",
-        "label": "Vrijgekomen capaciteit wordt pas waarde wanneer je bepaalt wat ermee gebeurt.",
-        "nl": "Vrijgekomen capaciteit wordt pas waarde wanneer je bepaalt wat ermee gebeurt.",
-        "fr": "Vrijgekomen capaciteit wordt pas waarde wanneer je bepaalt wat ermee gebeurt."
+        "label": "AI versterkt hoe het werk vandaag loopt, ook de plaatsen waar het blijft liggen.",
+        "nl": "AI versterkt hoe het werk vandaag loopt, ook de plaatsen waar het blijft liggen.",
+        "fr": "L’IA renforce la façon dont le travail se déroule aujourd’hui, y compris les endroits où il reste bloqué."
       },
       {
-        "key": "f6f767a0d57eb-0",
+        "key": "ins-kmo-15",
         "type": "text",
-        "label": "Le temps gagné appelle une décision",
-        "nl": "Le temps gagné appelle une décision",
-        "fr": "Le temps gagné appelle une décision"
+        "label": "Wat u kunt doen",
+        "nl": "Wat u kunt doen",
+        "fr": "Ce que vous pouvez faire"
       },
       {
-        "key": "f716e672b1eec-0",
+        "key": "ins-kmo-16",
         "type": "text",
-        "label": "La capacité libérée devient de la valeur lorsque son utilisation est décidée.",
-        "nl": "La capacité libérée devient de la valeur lorsque son utilisation est décidée.",
-        "fr": "La capacité libérée devient de la valeur lorsque son utilisation est décidée."
+        "label": "Kies één workflow en meet de hele doorlooptijd, van vraag tot antwoord.",
+        "nl": "Kies één workflow en meet de hele doorlooptijd, van vraag tot antwoord.",
+        "fr": "Choisissez un workflow et mesurez le délai complet, de la demande à la réponse."
       },
       {
-        "key": "f1f33d0b57843-0",
+        "key": "ins-kmo-17",
         "type": "text",
-        "label": "Ontwerp eerst de uitzondering",
-        "nl": "Ontwerp eerst de uitzondering",
-        "fr": "Ontwerp eerst de uitzondering"
+        "label": "Een snellere taak is nog geen sneller bedrijf",
+        "nl": "Een snellere taak is nog geen sneller bedrijf",
+        "fr": "Une tâche plus rapide ne fait pas une entreprise plus rapide"
       },
       {
-        "key": "f0186a7e42bfa-0",
+        "key": "ins-kmo-18",
         "type": "text",
-        "label": "De kwaliteit van een AI-werkstroom blijkt wanneer de normale route niet volstaat.",
-        "nl": "De kwaliteit van een AI-werkstroom blijkt wanneer de normale route niet volstaat.",
-        "fr": "De kwaliteit van een AI-werkstroom blijkt wanneer de normale route niet volstaat."
+        "label": "Een AI-tool stelt in een paar minuten een offerte op. Vroeger kostte dat een uur. Toch wacht de klant nog altijd drie dagen, want de prijs moet nog langs de zaakvoerder, en die zit op de baan.",
+        "nl": "Een AI-tool stelt in een paar minuten een offerte op. Vroeger kostte dat een uur. Toch wacht de klant nog altijd drie dagen, want de prijs moet nog langs de zaakvoerder, en die zit op de baan.",
+        "fr": "Un outil d’IA rédige une offre en quelques minutes. Avant, cela prenait une heure. Pourtant, le client attend toujours trois jours, car le prix doit encore passer par le dirigeant, qui est sur la route."
       },
       {
-        "key": "f21a25ea039a6-0",
+        "key": "ins-kmo-19",
         "type": "text",
-        "label": "Concevoir d’abord l’exception",
-        "nl": "Concevoir d’abord l’exception",
-        "fr": "Concevoir d’abord l’exception"
+        "label": "De taak is sneller geworden. Het werk eromheen niet.",
+        "nl": "De taak is sneller geworden. Het werk eromheen niet.",
+        "fr": "La tâche est devenue plus rapide. Le travail autour, non."
       },
       {
-        "key": "fc18606e8ff74-0",
+        "key": "ins-kmo-20",
         "type": "text",
-        "label": "Un flux de travail IA révèle sa qualité lorsque le parcours habituel ne suffit plus.",
-        "nl": "Un flux de travail IA révèle sa qualité lorsque le parcours habituel ne suffit plus.",
-        "fr": "Un flux de travail IA révèle sa qualité lorsque le parcours habituel ne suffit plus."
+        "label": "Het werk wacht tussen de mensen",
+        "nl": "Het werk wacht tussen de mensen",
+        "fr": "Le travail attend entre les personnes"
       },
       {
-        "key": "f8aad11c2624a-0",
+        "key": "ins-kmo-21",
         "type": "text",
-        "label": "Why most companies still see no AI impact",
-        "nl": "Waarom de meeste bedrijven nog geen impact van AI zien",
-        "fr": "Pourquoi la plupart des entreprises ne voient pas encore l’impact de l’IA"
+        "label": "Verkoop, productie en kwaliteit werken elk met hun eigen lijsten. Wat ontbreekt, vangen mensen op met mails, telefoons en vergaderingen. Komt daar AI bij, dan komt die terecht in een bedrijf dat al moeite heeft om als geheel te werken.",
+        "nl": "Verkoop, productie en kwaliteit werken elk met hun eigen lijsten. Wat ontbreekt, vangen mensen op met mails, telefoons en vergaderingen. Komt daar AI bij, dan komt die terecht in een bedrijf dat al moeite heeft om als geheel te werken.",
+        "fr": "La vente, la production et la qualité travaillent chacune avec leurs propres listes. Ce qui manque est compensé par des e-mails, des appels et des réunions. Quand l’IA arrive, elle atterrit dans une entreprise qui a déjà du mal à fonctionner comme un tout."
       },
       {
-        "key": "fb03226ca4e00-0",
+        "key": "ins-kmo-22",
         "type": "text",
-        "label": "The technology is rarely the problem. The system it lands in usually is.",
-        "nl": "De technologie is zelden het probleem. Het systeem waarin ze terechtkomt meestal wel.",
-        "fr": "La technologie est rarement le problème. C’est généralement le système où elle est déployée."
+        "label": "Begin bij één workflow",
+        "nl": "Begin bij één workflow",
+        "fr": "Commencez par un seul workflow"
       },
       {
-        "key": "fb25e5d70d65a-0",
+        "key": "ins-kmo-23",
         "type": "text",
-        "label": "Reduce friction before you accelerate",
-        "nl": "Verminder frictie vóór je versnelt",
-        "fr": "Réduisez la friction avant d’accélérer"
+        "label": "Probeer niet het hele bedrijf tegelijk te veranderen. Kies één workflow die ertoe doet, bijvoorbeeld van bestelling tot levering. Kijk naar vijf dingen: welk resultaat u wilt, waar het werk wacht, wie wat beslist, welke informatie nodig is en waar AI echt helpt.",
+        "nl": "Probeer niet het hele bedrijf tegelijk te veranderen. Kies één workflow die ertoe doet, bijvoorbeeld van bestelling tot levering. Kijk naar vijf dingen: welk resultaat u wilt, waar het werk wacht, wie wat beslist, welke informatie nodig is en waar AI echt helpt.",
+        "fr": "N’essayez pas de changer toute l’entreprise d’un coup. Choisissez un workflow qui compte, par exemple de la commande à la livraison. Regardez cinq choses : le résultat voulu, où le travail attend, qui décide quoi, quelles informations sont nécessaires et où l’IA aide vraiment."
       },
       {
-        "key": "fd22847421704-0",
+        "key": "ins-kmo-24",
         "type": "text",
-        "label": "Most cycle time is waiting, not working. Measure that first.",
-        "nl": "Het grootste deel van de doorlooptijd is wachten, niet werken. Meet dat eerst.",
-        "fr": "L’essentiel du délai est de l’attente, pas du travail. Mesurez-le d’abord."
+        "label": "Soms is een duidelijke afspraak over wie mag beslissen al genoeg.",
+        "nl": "Soms is een duidelijke afspraak over wie mag beslissen al genoeg.",
+        "fr": "Parfois, un accord clair sur qui peut décider suffit déjà."
       },
       {
-        "key": "f2345262b80fc-0",
+        "key": "ins-kmo-25",
         "type": "text",
-        "label": "Who decides when an agent acts?",
-        "nl": "Wie beslist als een agent handelt?",
-        "fr": "Qui décide quand un agent agit ?"
+        "label": "Meet het geheel",
+        "nl": "Meet het geheel",
+        "fr": "Mesurez l’ensemble"
       },
       {
-        "key": "f1eacd7167faf-0",
+        "key": "ins-kmo-26",
         "type": "text",
-        "label": "Owning the model is not the same as owning the decision.",
-        "nl": "Eigenaar zijn van het model is niet hetzelfde als eigenaar zijn van de beslissing.",
-        "fr": "Être responsable du modèle n’est pas être responsable de la décision."
+        "label": "Kijk niet alleen naar de tijdwinst in één stap. Meet de doorlooptijd van begin tot eind, hoe vaak werk terugkomt en hoeveel fouten er nog insluipen. Vergelijk dat met de situatie vóór de verandering.",
+        "nl": "Kijk niet alleen naar de tijdwinst in één stap. Meet de doorlooptijd van begin tot eind, hoe vaak werk terugkomt en hoeveel fouten er nog insluipen. Vergelijk dat met de situatie vóór de verandering.",
+        "fr": "Ne regardez pas seulement le gain de temps d’une étape. Mesurez le délai du début à la fin, combien de fois le travail revient et combien d’erreurs s’y glissent encore. Comparez avec la situation d’avant le changement."
       },
       {
-        "key": "f1f33d0b57843-1",
+        "key": "ins-kmo-27",
         "type": "text",
-        "label": "Ontwerp eerst de uitzondering",
-        "nl": "Ontwerp eerst de uitzondering",
-        "fr": "Ontwerp eerst de uitzondering"
+        "label": "Wat de zaakvoerder moet doen",
+        "nl": "Wat de zaakvoerder moet doen",
+        "fr": "Ce que le dirigeant doit faire"
       },
       {
-        "key": "f68311a52d269-0",
+        "key": "ins-kmo-28",
         "type": "text",
-        "label": "1 november 2026 · Erlend Hollebosch",
-        "nl": "1 november 2026 · Erlend Hollebosch",
-        "fr": "1 november 2026 · Erlend Hollebosch"
+        "label": "Leg vast wie wat mag beslissen. Anders blijft elke beslissing bij u liggen, ook met de beste AI.",
+        "nl": "Leg vast wie wat mag beslissen. Anders blijft elke beslissing bij u liggen, ook met de beste AI.",
+        "fr": "Fixez qui peut décider de quoi. Sinon, chaque décision reste chez vous, même avec la meilleure IA."
       },
       {
-        "key": "f5afe67a47e3c-0",
+        "key": "ins-kmo-29",
         "type": "text",
-        "label": "In het kort",
-        "nl": "In het kort",
-        "fr": "In het kort"
+        "label": "U wint tijd met AI. Wat doet u ermee?",
+        "nl": "U wint tijd met AI. Wat doet u ermee?",
+        "fr": "Vous gagnez du temps grâce à l’IA. Qu’en faites-vous ?"
       },
       {
-        "key": "f0186a7e42bfa-1",
+        "key": "ins-kmo-30",
         "type": "text",
-        "label": "De kwaliteit van een AI-werkstroom blijkt wanneer de normale route niet volstaat.",
-        "nl": "De kwaliteit van een AI-werkstroom blijkt wanneer de normale route niet volstaat.",
-        "fr": "De kwaliteit van een AI-werkstroom blijkt wanneer de normale route niet volstaat."
+        "label": "Het probleem",
+        "nl": "Het probleem",
+        "fr": "Le problème"
       },
       {
-        "key": "f8a29c68b6628-0",
+        "key": "ins-kmo-31",
         "type": "text",
-        "label": "De normale route vertelt maar de helft",
-        "nl": "De normale route vertelt maar de helft",
-        "fr": "De normale route vertelt maar de helft"
+        "label": "AI bespaart uren, maar die uren worden niet vanzelf winst.",
+        "nl": "AI bespaart uren, maar die uren worden niet vanzelf winst.",
+        "fr": "L’IA fait gagner des heures, mais ces heures ne deviennent pas automatiquement du bénéfice."
       },
       {
-        "key": "f083d2edb10ce-0",
+        "key": "ins-kmo-32",
         "type": "text",
-        "label": "Een aanvraag is compleet, de data klopt en de uitkomst valt binnen de regels. In zo’n situ",
-        "nl": "Een aanvraag is compleet, de data klopt en de uitkomst valt binnen de regels. In zo’n situatie is automatiseren overzichtelijk. De echte ontwerpvraag begint wanneer informatie ontbreekt, belangen botsen of een beslissing buiten de afgesproken grenzen valt.",
-        "fr": "Een aanvraag is compleet, de data klopt en de uitkomst valt binnen de regels. In zo’n situatie is automatiseren overzichtelijk. De echte ontwerpvraag begint wanneer informatie ontbreekt, belangen botsen of een beslissing buiten de afgesproken grenzen valt."
+        "label": "Waarom het gebeurt",
+        "nl": "Waarom het gebeurt",
+        "fr": "Pourquoi cela arrive"
       },
       {
-        "key": "f1c8f57e98031-0",
+        "key": "ins-kmo-33",
         "type": "text",
-        "label": "Een uitzondering is een werkstroom",
-        "nl": "Een uitzondering is een werkstroom",
-        "fr": "Een uitzondering is een werkstroom"
+        "label": "Niemand besliste vooraf wat er met de vrijgekomen tijd gebeurt.",
+        "nl": "Niemand besliste vooraf wat er met de vrijgekomen tijd gebeurt.",
+        "fr": "Personne n’a décidé à l’avance de l’usage du temps libéré."
       },
       {
-        "key": "f7610c0ce2788-0",
+        "key": "ins-kmo-34",
         "type": "text",
-        "label": "Stel dat een agent een klantdossier voorbereidt, maar twee systemen verschillende informat",
-        "nl": "Stel dat een agent een klantdossier voorbereidt, maar twee systemen verschillende informatie bevatten. Stoppen is dan verstandig. Maar wie neemt over? Welke informatie krijgt die persoon? En hoe keert het dossier na de beslissing terug in de normale stroom? Zonder die afspraken verplaatst AI het werk naar een nieuwe wachtrij.",
-        "fr": "Stel dat een agent een klantdossier voorbereidt, maar twee systemen verschillende informatie bevatten. Stoppen is dan verstandig. Maar wie neemt over? Welke informatie krijgt die persoon? En hoe keert het dossier na de beslissing terug in de normale stroom? Zonder die afspraken verplaatst AI het werk naar een nieuwe wachtrij."
+        "label": "Wat u kunt doen",
+        "nl": "Wat u kunt doen",
+        "fr": "Ce que vous pouvez faire"
       },
       {
-        "key": "fda8a08894927-0",
+        "key": "ins-kmo-35",
+        "type": "text",
+        "label": "Beslis vooraf waar de tijd naartoe gaat, en meet vóór en na.",
+        "nl": "Beslis vooraf waar de tijd naartoe gaat, en meet vóór en na.",
+        "fr": "Décidez à l’avance de l’usage de ce temps, et mesurez avant et après."
+      },
+      {
+        "key": "ins-kmo-36",
+        "type": "text",
+        "label": "Uren zijn nog geen winst",
+        "nl": "Uren zijn nog geen winst",
+        "fr": "Des heures ne sont pas encore du bénéfice"
+      },
+      {
+        "key": "ins-kmo-37",
+        "type": "text",
+        "label": "Uw kwaliteitsdienst bespaart zes uur per week op vragenlijsten van klanten. Mooi. Maar gaat die tijd naar audits, naar sneller antwoord aan klanten, of verdwijnt ze in mails en vergaderingen?",
+        "nl": "Uw kwaliteitsdienst bespaart zes uur per week op vragenlijsten van klanten. Mooi. Maar gaat die tijd naar audits, naar sneller antwoord aan klanten, of verdwijnt ze in mails en vergaderingen?",
+        "fr": "Votre service qualité gagne six heures par semaine sur les questionnaires des clients. Très bien. Mais ce temps va-t-il aux audits, à des réponses plus rapides aux clients, ou disparaît-il dans les e-mails et les réunions ?"
+      },
+      {
+        "key": "ins-kmo-38",
+        "type": "text",
+        "label": "Kies vooraf de bestemming",
+        "nl": "Kies vooraf de bestemming",
+        "fr": "Choisissez la destination à l’avance"
+      },
+      {
+        "key": "ins-kmo-39",
+        "type": "text",
+        "label": "Bepaal voor u begint wat u met de tijd doet: meer klanten bedienen, een achterstand wegwerken, minder overuren of minder externe hulp. Die keuze hoort bij het project, niet erna.",
+        "nl": "Bepaal voor u begint wat u met de tijd doet: meer klanten bedienen, een achterstand wegwerken, minder overuren of minder externe hulp. Die keuze hoort bij het project, niet erna.",
+        "fr": "Avant de commencer, décidez de l’usage de ce temps : servir plus de clients, résorber un retard, réduire les heures supplémentaires ou l’aide externe. Ce choix fait partie du projet, il ne vient pas après."
+      },
+      {
+        "key": "ins-kmo-40",
+        "type": "text",
+        "label": "Meet vóór u begint",
+        "nl": "Meet vóór u begint",
+        "fr": "Mesurez avant de commencer"
+      },
+      {
+        "key": "ins-kmo-41",
+        "type": "text",
+        "label": "Noteer hoeveel vragenlijsten u krijgt, hoe lang ze vandaag duren en hoeveel fouten erin sluipen. Tel ook het nakijkwerk mee. Een minuut minder typen kan samengaan met een minuut extra controle.",
+        "nl": "Noteer hoeveel vragenlijsten u krijgt, hoe lang ze vandaag duren en hoeveel fouten erin sluipen. Tel ook het nakijkwerk mee. Een minuut minder typen kan samengaan met een minuut extra controle.",
+        "fr": "Notez combien de questionnaires vous recevez, combien de temps ils prennent aujourd’hui et combien d’erreurs s’y glissent. Comptez aussi le travail de vérification. Une minute de saisie en moins peut aller de pair avec une minute de contrôle en plus."
+      },
+      {
+        "key": "ins-kmo-42",
+        "type": "text",
+        "label": "Wie beslist over de tijd",
+        "nl": "Wie beslist over de tijd",
+        "fr": "Qui décide de l’usage du temps"
+      },
+      {
+        "key": "ins-kmo-43",
+        "type": "text",
+        "label": "Wie het werk verdeelt, moet mee aan tafel zitten. Anders blijft de tijdwinst hangen in één team, zonder dat iemand ze kan inzetten.",
+        "nl": "Wie het werk verdeelt, moet mee aan tafel zitten. Anders blijft de tijdwinst hangen in één team, zonder dat iemand ze kan inzetten.",
+        "fr": "Celui qui répartit le travail doit être autour de la table. Sinon, le gain de temps reste bloqué dans une équipe, sans que personne ne puisse l’utiliser."
+      },
+      {
+        "key": "ins-kmo-44",
+        "type": "text",
+        "label": "Een vraag om mee te starten",
+        "nl": "Een vraag om mee te starten",
+        "fr": "Une question pour commencer"
+      },
+      {
+        "key": "ins-kmo-45",
+        "type": "text",
+        "label": "Wat doen we concreet als deze tijd echt vrijkomt? Hebt u daar nog geen antwoord op, dan is het plan nog niet af.",
+        "nl": "Wat doen we concreet als deze tijd echt vrijkomt? Hebt u daar nog geen antwoord op, dan is het plan nog niet af.",
+        "fr": "Que ferons-nous concrètement quand ce temps sera réellement libéré ? Si vous n’avez pas encore de réponse, le plan n’est pas terminé."
+      },
+      {
+        "key": "ins-kmo-46",
+        "type": "text",
+        "label": "Regel eerst de uitzonderingen, dan pas de automatisering",
+        "nl": "Regel eerst de uitzonderingen, dan pas de automatisering",
+        "fr": "Réglez d’abord les exceptions, ensuite l’automatisation"
+      },
+      {
+        "key": "ins-kmo-47",
+        "type": "text",
+        "label": "Het probleem",
+        "nl": "Het probleem",
+        "fr": "Le problème"
+      },
+      {
+        "key": "ins-kmo-48",
+        "type": "text",
+        "label": "Automatisering werkt voor de gewone gevallen. Uitzonderingen blijven ergens liggen.",
+        "nl": "Automatisering werkt voor de gewone gevallen. Uitzonderingen blijven ergens liggen.",
+        "fr": "L’automatisation fonctionne pour les cas habituels. Les exceptions restent bloquées quelque part."
+      },
+      {
+        "key": "ins-kmo-49",
+        "type": "text",
+        "label": "Waarom het gebeurt",
+        "nl": "Waarom het gebeurt",
+        "fr": "Pourquoi cela arrive"
+      },
+      {
+        "key": "ins-kmo-50",
+        "type": "text",
+        "label": "Niemand sprak af wanneer de automatisering stopt en wie dan overneemt.",
+        "nl": "Niemand sprak af wanneer de automatisering stopt en wie dan overneemt.",
+        "fr": "Personne n’a convenu du moment où l’automatisation s’arrête ni de qui prend le relais."
+      },
+      {
+        "key": "ins-kmo-51",
+        "type": "text",
+        "label": "Wat u kunt doen",
+        "nl": "Wat u kunt doen",
+        "fr": "Ce que vous pouvez faire"
+      },
+      {
+        "key": "ins-kmo-52",
+        "type": "text",
+        "label": "Leg vooraf drie afspraken vast en kijk welke uitzonderingen telkens terugkomen.",
+        "nl": "Leg vooraf drie afspraken vast en kijk welke uitzonderingen telkens terugkomen.",
+        "fr": "Fixez trois accords à l’avance et observez quelles exceptions reviennent sans cesse."
+      },
+      {
+        "key": "ins-kmo-53",
+        "type": "text",
+        "label": "De gewone gang van zaken is maar de helft",
+        "nl": "De gewone gang van zaken is maar de helft",
+        "fr": "Le cas habituel n’est que la moitié"
+      },
+      {
+        "key": "ins-kmo-54",
+        "type": "text",
+        "label": "Een bestelling is compleet en de prijs klopt: dat automatiseren is eenvoudig. Het wordt moeilijk als een artikelnummer ontbreekt, de klant een andere leverdatum wil of de prijs afwijkt van de offerte.",
+        "nl": "Een bestelling is compleet en de prijs klopt: dat automatiseren is eenvoudig. Het wordt moeilijk als een artikelnummer ontbreekt, de klant een andere leverdatum wil of de prijs afwijkt van de offerte.",
+        "fr": "Une commande est complète et le prix est correct : l’automatiser est simple. Cela devient difficile quand un numéro d’article manque, que le client veut une autre date de livraison ou que le prix diffère de l’offre."
+      },
+      {
+        "key": "ins-kmo-55",
+        "type": "text",
+        "label": "Ook een uitzondering heeft een route nodig",
+        "nl": "Ook een uitzondering heeft een route nodig",
+        "fr": "Une exception a aussi besoin d’un parcours"
+      },
+      {
+        "key": "ins-kmo-56",
+        "type": "text",
+        "label": "Stopt de automatisering, wie neemt dan over? Welke informatie krijgt die persoon? En hoe gaat de bestelling daarna weer verder? Zonder afspraken ontstaat er gewoon een nieuwe stapel.",
+        "nl": "Stopt de automatisering, wie neemt dan over? Welke informatie krijgt die persoon? En hoe gaat de bestelling daarna weer verder? Zonder afspraken ontstaat er gewoon een nieuwe stapel.",
+        "fr": "Si l’automatisation s’arrête, qui prend le relais ? Quelles informations reçoit cette personne ? Et comment la commande reprend-elle ensuite ? Sans accords, une nouvelle pile se forme tout simplement."
+      },
+      {
+        "key": "ins-kmo-57",
         "type": "text",
         "label": "Leg drie afspraken vast",
         "nl": "Leg drie afspraken vast",
-        "fr": "Leg drie afspraken vast"
+        "fr": "Fixez trois accords"
       },
       {
-        "key": "f0b2221a7777c-0",
+        "key": "ins-kmo-58",
         "type": "text",
-        "label": "Bepaal vooraf wanneer de agent moet stoppen, wie het besluit mag nemen en binnen welke ter",
-        "nl": "Bepaal vooraf wanneer de agent moet stoppen, wie het besluit mag nemen en binnen welke termijn het werk verder moet kunnen. Geef de eigenaar context: de oorspronkelijke vraag, de gebruikte informatie, de onzekerheid en de al uitgevoerde stappen. Een melding zonder beslisinformatie is nog geen overdracht.",
-        "fr": "Bepaal vooraf wanneer de agent moet stoppen, wie het besluit mag nemen en binnen welke termijn het werk verder moet kunnen. Geef de eigenaar context: de oorspronkelijke vraag, de gebruikte informatie, de onzekerheid en de al uitgevoerde stappen. Een melding zonder beslisinformatie is nog geen overdracht."
+        "label": "Spreek af wanneer de automatisering stopt, wie dan beslist en tegen wanneer. Geef de informatie mee: de oorspronkelijke vraag, wat al gedaan is en wat onzeker is. Een melding zonder die informatie helpt niemand.",
+        "nl": "Spreek af wanneer de automatisering stopt, wie dan beslist en tegen wanneer. Geef de informatie mee: de oorspronkelijke vraag, wat al gedaan is en wat onzeker is. Een melding zonder die informatie helpt niemand.",
+        "fr": "Convenez du moment où l’automatisation s’arrête, de qui décide alors et pour quand. Transmettez l’information : la demande initiale, ce qui a déjà été fait et ce qui reste incertain. Une alerte sans ces informations n’aide personne."
       },
       {
-        "key": "f4469eb999d9b-0",
+        "key": "ins-kmo-59",
         "type": "text",
-        "label": "Maak terugkerende uitzonderingen zichtbaar",
-        "nl": "Maak terugkerende uitzonderingen zichtbaar",
-        "fr": "Maak terugkerende uitzonderingen zichtbaar"
+        "label": "Leer van wat terugkomt",
+        "nl": "Leer van wat terugkomt",
+        "fr": "Apprenez de ce qui revient"
       },
       {
-        "key": "fbc9efd1976c1-0",
+        "key": "ins-kmo-60",
         "type": "text",
-        "label": "Meet hoe vaak dezelfde afwijking voorkomt, hoe lang zij wacht en hoeveel herstelwerk volgt",
-        "nl": "Meet hoe vaak dezelfde afwijking voorkomt, hoe lang zij wacht en hoeveel herstelwerk volgt. Een terugkerend patroon kan wijzen op onduidelijke regels, ontbrekende data of een proces dat moet worden herontworpen. Niet iedere uitzondering vraagt om méér autonomie. Soms vraagt zij om een betere afspraak.",
-        "fr": "Meet hoe vaak dezelfde afwijking voorkomt, hoe lang zij wacht en hoeveel herstelwerk volgt. Een terugkerend patroon kan wijzen op onduidelijke regels, ontbrekende data of een proces dat moet worden herontworpen. Niet iedere uitzondering vraagt om méér autonomie. Soms vraagt zij om een betere afspraak."
+        "label": "Tel hoe vaak dezelfde uitzondering voorkomt en hoe lang ze blijft liggen. Vaak wijst ze op een onduidelijke regel of op gegevens die ontbreken. Dan lost u het op aan de bron.",
+        "nl": "Tel hoe vaak dezelfde uitzondering voorkomt en hoe lang ze blijft liggen. Vaak wijst ze op een onduidelijke regel of op gegevens die ontbreken. Dan lost u het op aan de bron.",
+        "fr": "Comptez combien de fois la même exception revient et combien de temps elle reste en attente. Elle révèle souvent une règle floue ou des données manquantes. Vous la résolvez alors à la source."
       },
       {
-        "key": "f8c5693782dd2-0",
+        "key": "ins-kmo-61",
         "type": "text",
-        "label": "De vraag voor leiders",
-        "nl": "De vraag voor leiders",
-        "fr": "De vraag voor leiders"
+        "label": "De vraag voor de zaakvoerder",
+        "nl": "De vraag voor de zaakvoerder",
+        "fr": "La question pour le dirigeant"
       },
       {
-        "key": "f3963c0dcef1c-0",
+        "key": "ins-kmo-62",
         "type": "text",
-        "label": "Kan de verantwoordelijke persoon de uitzondering werkelijk oplossen, of alleen verder esca",
-        "nl": "Kan de verantwoordelijke persoon de uitzondering werkelijk oplossen, of alleen verder escaleren? Ontwerp de uitzonderingsroute met dezelfde zorg als de normale route. Daar wordt zichtbaar of menselijke verantwoordelijkheid en agentische uitvoering op elkaar aansluiten.",
-        "fr": "Kan de verantwoordelijke persoon de uitzondering werkelijk oplossen, of alleen verder escaleren? Ontwerp de uitzonderingsroute met dezelfde zorg als de normale route. Daar wordt zichtbaar of menselijke verantwoordelijkheid en agentische uitvoering op elkaar aansluiten."
+        "label": "Kan wie de uitzondering krijgt, ze ook echt oplossen? Of stuurt die ze alleen door?",
+        "nl": "Kan wie de uitzondering krijgt, ze ook echt oplossen? Of stuurt die ze alleen door?",
+        "fr": "La personne qui reçoit l’exception peut-elle vraiment la résoudre ? Ou se contente-t-elle de la transmettre ?"
       },
       {
-        "key": "fe9608866b690-0",
+        "key": "ins-kmo-63",
         "type": "text",
-        "label": "Over de auteur",
-        "nl": "Over de auteur",
-        "fr": "Over de auteur"
+        "label": "Herkent u dit in uw bedrijf?",
+        "nl": "Herkent u dit in uw bedrijf?",
+        "fr": "Reconnaissez-vous cela dans votre entreprise ?"
       },
       {
-        "key": "ff2d2887857a5-0",
+        "key": "ins-kmo-64",
         "type": "text",
-        "label": "Erlend Hollebosch",
-        "nl": "Erlend Hollebosch",
-        "fr": "Erlend Hollebosch"
-      },
-      {
-        "key": "fcf9db1ea9bb1-0",
-        "type": "text",
-        "label": "Enterprise & AI Transformation Lead. Meer dan 20 jaar ervaring in programmamanagement, PMO",
-        "nl": "Enterprise & AI Transformation Lead. Meer dan 20 jaar ervaring in programmamanagement, PMO, governance en transformatie.",
-        "fr": "Enterprise & AI Transformation Lead. Meer dan 20 jaar ervaring in programmamanagement, PMO, governance en transformatie."
-      },
-      {
-        "key": "f49d5457d0b05-0",
-        "type": "text",
-        "label": "Nu beschikbaar in België voor een vaste functie of een langdurige opdracht.",
-        "nl": "Nu beschikbaar in België voor een vaste functie of een langdurige opdracht.",
-        "fr": "Nu beschikbaar in België voor een vaste functie of een langdurige opdracht."
-      },
-      {
-        "key": "f21a25ea039a6-1",
-        "type": "text",
-        "label": "Concevoir d’abord l’exception",
-        "nl": "Concevoir d’abord l’exception",
-        "fr": "Concevoir d’abord l’exception"
-      },
-      {
-        "key": "f0b99aea46aab-0",
-        "type": "text",
-        "label": "1 novembre 2026 · Erlend Hollebosch",
-        "nl": "1 novembre 2026 · Erlend Hollebosch",
-        "fr": "1 novembre 2026 · Erlend Hollebosch"
-      },
-      {
-        "key": "f14bcc34c7e0f-0",
-        "type": "text",
-        "label": "En bref",
-        "nl": "En bref",
-        "fr": "En bref"
-      },
-      {
-        "key": "fc18606e8ff74-1",
-        "type": "text",
-        "label": "Un flux de travail IA révèle sa qualité lorsque le parcours habituel ne suffit plus.",
-        "nl": "Un flux de travail IA révèle sa qualité lorsque le parcours habituel ne suffit plus.",
-        "fr": "Un flux de travail IA révèle sa qualité lorsque le parcours habituel ne suffit plus."
-      },
-      {
-        "key": "f3b2d86865725-0",
-        "type": "text",
-        "label": "Le parcours habituel ne dit pas tout",
-        "nl": "Le parcours habituel ne dit pas tout",
-        "fr": "Le parcours habituel ne dit pas tout"
-      },
-      {
-        "key": "f6c0a84a190b1-0",
-        "type": "text",
-        "label": "Le dossier est complet, les données concordent et le résultat respecte les règles. L’autom",
-        "nl": "Le dossier est complet, les données concordent et le résultat respecte les règles. L’automatisation est alors relativement simple. La difficulté commence lorsque des informations manquent, que les intérêts divergent ou qu’une décision dépasse les limites prévues.",
-        "fr": "Le dossier est complet, les données concordent et le résultat respecte les règles. L’automatisation est alors relativement simple. La difficulté commence lorsque des informations manquent, que les intérêts divergent ou qu’une décision dépasse les limites prévues."
-      },
-      {
-        "key": "f1d090e155441-0",
-        "type": "text",
-        "label": "Une exception est un flux de travail",
-        "nl": "Une exception est un flux de travail",
-        "fr": "Une exception est un flux de travail"
-      },
-      {
-        "key": "f26f050a9bb72-0",
-        "type": "text",
-        "label": "Un agent prépare un dossier client, mais deux systèmes fournissent des informations contra",
-        "nl": "Un agent prépare un dossier client, mais deux systèmes fournissent des informations contradictoires. S’arrêter est raisonnable. Qui prend le relais ? Avec quelles informations ? Comment le dossier revient-il dans le flux normal après la décision ? Sans ces accords, l’IA déplace le travail vers une nouvelle file d’attente.",
-        "fr": "Un agent prépare un dossier client, mais deux systèmes fournissent des informations contradictoires. S’arrêter est raisonnable. Qui prend le relais ? Avec quelles informations ? Comment le dossier revient-il dans le flux normal après la décision ? Sans ces accords, l’IA déplace le travail vers une nouvelle file d’attente."
-      },
-      {
-        "key": "f9d021a340d33-0",
-        "type": "text",
-        "label": "Fixer trois accords",
-        "nl": "Fixer trois accords",
-        "fr": "Fixer trois accords"
-      },
-      {
-        "key": "fe50cff7b9bc9-0",
-        "type": "text",
-        "label": "Définissez quand l’agent doit s’arrêter, qui peut décider et dans quel délai le travail do",
-        "nl": "Définissez quand l’agent doit s’arrêter, qui peut décider et dans quel délai le travail doit reprendre. Transmettez le contexte : demande initiale, informations utilisées, incertitude et étapes déjà réalisées. Une notification sans contexte de décision ne constitue pas un transfert complet.",
-        "fr": "Définissez quand l’agent doit s’arrêter, qui peut décider et dans quel délai le travail doit reprendre. Transmettez le contexte : demande initiale, informations utilisées, incertitude et étapes déjà réalisées. Une notification sans contexte de décision ne constitue pas un transfert complet."
-      },
-      {
-        "key": "f2394b53bae2b-0",
-        "type": "text",
-        "label": "Apprendre des exceptions récurrentes",
-        "nl": "Apprendre des exceptions récurrentes",
-        "fr": "Apprendre des exceptions récurrentes"
-      },
-      {
-        "key": "f19ede8187dbd-0",
-        "type": "text",
-        "label": "Suivez leur fréquence, leur temps d’attente et les reprises nécessaires. Un motif récurren",
-        "nl": "Suivez leur fréquence, leur temps d’attente et les reprises nécessaires. Un motif récurrent peut révéler des règles ambiguës, des données manquantes ou un processus à repenser. Davantage d’autonomie n’est pas toujours la réponse ; un meilleur accord de fonctionnement peut être plus utile.",
-        "fr": "Suivez leur fréquence, leur temps d’attente et les reprises nécessaires. Un motif récurrent peut révéler des règles ambiguës, des données manquantes ou un processus à repenser. Davantage d’autonomie n’est pas toujours la réponse ; un meilleur accord de fonctionnement peut être plus utile."
-      },
-      {
-        "key": "f997cb2e571ae-0",
-        "type": "text",
-        "label": "La question pour les dirigeants",
-        "nl": "La question pour les dirigeants",
-        "fr": "La question pour les dirigeants"
-      },
-      {
-        "key": "f74b73b426426-0",
-        "type": "text",
-        "label": "La personne responsable peut-elle résoudre l’exception ou seulement l’escalader ? Concevez",
-        "nl": "La personne responsable peut-elle résoudre l’exception ou seulement l’escalader ? Concevez le parcours exceptionnel avec autant de soin que le parcours normal. Il révèle l’articulation réelle entre responsabilité humaine et exécution par les agents.",
-        "fr": "La personne responsable peut-elle résoudre l’exception ou seulement l’escalader ? Concevez le parcours exceptionnel avec autant de soin que le parcours normal. Il révèle l’articulation réelle entre responsabilité humaine et exécution par les agents."
-      },
-      {
-        "key": "fb23a70722a09-0",
-        "type": "text",
-        "label": "À propos de l’auteur",
-        "nl": "À propos de l’auteur",
-        "fr": "À propos de l’auteur"
-      },
-      {
-        "key": "ff2d2887857a5-1",
-        "type": "text",
-        "label": "Erlend Hollebosch",
-        "nl": "Erlend Hollebosch",
-        "fr": "Erlend Hollebosch"
-      },
-      {
-        "key": "fea6cdc84f331-0",
-        "type": "text",
-        "label": "Enterprise & AI Transformation Lead. Plus de 20 ans d’expérience en gestion de programmes,",
-        "nl": "Enterprise & AI Transformation Lead. Plus de 20 ans d’expérience en gestion de programmes, PMO, gouvernance et transformation.",
-        "fr": "Enterprise & AI Transformation Lead. Plus de 20 ans d’expérience en gestion de programmes, PMO, gouvernance et transformation."
-      },
-      {
-        "key": "f9f3bb374d291-0",
-        "type": "text",
-        "label": "Disponible dès maintenant en Belgique pour un poste fixe ou une mission de longue durée.",
-        "nl": "Disponible dès maintenant en Belgique pour un poste fixe ou une mission de longue durée.",
-        "fr": "Disponible dès maintenant en Belgique pour un poste fixe ou une mission de longue durée."
-      },
-      {
-        "key": "f77e40cb55189-1",
-        "type": "text",
-        "label": "Tijdwinst vraagt om een volgende keuze",
-        "nl": "Tijdwinst vraagt om een volgende keuze",
-        "fr": "Tijdwinst vraagt om een volgende keuze"
-      },
-      {
-        "key": "f68311a52d269-1",
-        "type": "text",
-        "label": "1 november 2026 · Erlend Hollebosch",
-        "nl": "1 november 2026 · Erlend Hollebosch",
-        "fr": "1 november 2026 · Erlend Hollebosch"
-      },
-      {
-        "key": "f5afe67a47e3c-1",
-        "type": "text",
-        "label": "In het kort",
-        "nl": "In het kort",
-        "fr": "In het kort"
-      },
-      {
-        "key": "fdc5d59d6ca97-1",
-        "type": "text",
-        "label": "Vrijgekomen capaciteit wordt pas waarde wanneer je bepaalt wat ermee gebeurt.",
-        "nl": "Vrijgekomen capaciteit wordt pas waarde wanneer je bepaalt wat ermee gebeurt.",
-        "fr": "Vrijgekomen capaciteit wordt pas waarde wanneer je bepaalt wat ermee gebeurt."
-      },
-      {
-        "key": "ffacd153c123f-0",
-        "type": "text",
-        "label": "Van minuten naar een bedrijfsresultaat",
-        "nl": "Van minuten naar een bedrijfsresultaat",
-        "fr": "Van minuten naar een bedrijfsresultaat"
-      },
-      {
-        "key": "f036089f4ca10-0",
-        "type": "text",
-        "label": "Een team rapporteert dat AI elke week uren bespaart. Dat is nuttige informatie, maar nog g",
-        "nl": "Een team rapporteert dat AI elke week uren bespaart. Dat is nuttige informatie, maar nog geen volledig waardevoorstel. De vervolgvraag is wat er met die ruimte gebeurt: meer klantvragen behandelen, achterstanden wegwerken, kwaliteit verbeteren of minder externe capaciteit inzetten.",
-        "fr": "Een team rapporteert dat AI elke week uren bespaart. Dat is nuttige informatie, maar nog geen volledig waardevoorstel. De vervolgvraag is wat er met die ruimte gebeurt: meer klantvragen behandelen, achterstanden wegwerken, kwaliteit verbeteren of minder externe capaciteit inzetten."
-      },
-      {
-        "key": "f4529cb1e0c46-0",
-        "type": "text",
-        "label": "Maak de bestemming concreet",
-        "nl": "Maak de bestemming concreet",
-        "fr": "Maak de bestemming concreet"
-      },
-      {
-        "key": "f2d7258c99e57-0",
-        "type": "text",
-        "label": "Neem een serviceteam dat minder tijd nodig heeft om dossiers voor te bereiden. Als de goed",
-        "nl": "Neem een serviceteam dat minder tijd nodig heeft om dossiers voor te bereiden. Als de goedkeuring elders blijft wachten, verandert de doorlooptijd mogelijk nauwelijks. Wordt de vrijgekomen tijd bewust ingezet voor moeilijke dossiers, dan kan een andere verbetering ontstaan. De bestemming van capaciteit hoort bij het ontwerp van de use case.",
-        "fr": "Neem een serviceteam dat minder tijd nodig heeft om dossiers voor te bereiden. Als de goedkeuring elders blijft wachten, verandert de doorlooptijd mogelijk nauwelijks. Wordt de vrijgekomen tijd bewust ingezet voor moeilijke dossiers, dan kan een andere verbetering ontstaan. De bestemming van capaciteit hoort bij het ontwerp van de use case."
-      },
-      {
-        "key": "f5957995986aa-0",
-        "type": "text",
-        "label": "Spreek vooraf af wat je gaat meten",
-        "nl": "Spreek vooraf af wat je gaat meten",
-        "fr": "Spreek vooraf af wat je gaat meten"
-      },
-      {
-        "key": "f2b5867c7bf19-0",
-        "type": "text",
-        "label": "Leg een uitgangssituatie vast voor volume, doorlooptijd, kwaliteit en inzet van mensen. Ki",
-        "nl": "Leg een uitgangssituatie vast voor volume, doorlooptijd, kwaliteit en inzet van mensen. Kies vervolgens welk resultaat je wilt veranderen. Neem ook controles, uitzonderingen en herstelwerk mee. Een minuut minder voorbereiding kan samengaan met een minuut extra verificatie.",
-        "fr": "Leg een uitgangssituatie vast voor volume, doorlooptijd, kwaliteit en inzet van mensen. Kies vervolgens welk resultaat je wilt veranderen. Neem ook controles, uitzonderingen en herstelwerk mee. Een minuut minder voorbereiding kan samengaan met een minuut extra verificatie."
-      },
-      {
-        "key": "f6ed91c754452-0",
-        "type": "text",
-        "label": "Verbind de eigenaar met het resultaat",
-        "nl": "Verbind de eigenaar met het resultaat",
-        "fr": "Verbind de eigenaar met het resultaat"
-      },
-      {
-        "key": "f0b76a9de5644-0",
-        "type": "text",
-        "label": "De technische eigenaar kan de toepassing verbeteren. De proceseigenaar moet kunnen besluit",
-        "nl": "De technische eigenaar kan de toepassing verbeteren. De proceseigenaar moet kunnen besluiten over werkverdeling, capaciteit en prioriteiten. Zonder die verbinding blijft de businesscase hangen tussen een lokale tijdmeting en een resultaat waarvoor niemand de keuzes kan maken.",
-        "fr": "De technische eigenaar kan de toepassing verbeteren. De proceseigenaar moet kunnen besluiten over werkverdeling, capaciteit en prioriteiten. Zonder die verbinding blijft de businesscase hangen tussen een lokale tijdmeting en een resultaat waarvoor niemand de keuzes kan maken."
-      },
-      {
-        "key": "f9c243a6ac858-0",
-        "type": "text",
-        "label": "Een praktische startvraag",
-        "nl": "Een praktische startvraag",
-        "fr": "Een praktische startvraag"
-      },
-      {
-        "key": "facd30fcee09d-0",
-        "type": "text",
-        "label": "Welke concrete beslissing nemen we als deze tijd daadwerkelijk vrijkomt? Als het antwoord ",
-        "nl": "Welke concrete beslissing nemen we als deze tijd daadwerkelijk vrijkomt? Als het antwoord ontbreekt, is de waardehypothese nog niet af. Ontwerp de toepassing en de inzet van capaciteit samen, en toets daarna wat er met de volledige werkstroom gebeurt.",
-        "fr": "Welke concrete beslissing nemen we als deze tijd daadwerkelijk vrijkomt? Als het antwoord ontbreekt, is de waardehypothese nog niet af. Ontwerp de toepassing en de inzet van capaciteit samen, en toets daarna wat er met de volledige werkstroom gebeurt."
-      },
-      {
-        "key": "fe9608866b690-1",
-        "type": "text",
-        "label": "Over de auteur",
-        "nl": "Over de auteur",
-        "fr": "Over de auteur"
-      },
-      {
-        "key": "ff2d2887857a5-2",
-        "type": "text",
-        "label": "Erlend Hollebosch",
-        "nl": "Erlend Hollebosch",
-        "fr": "Erlend Hollebosch"
-      },
-      {
-        "key": "fcf9db1ea9bb1-1",
-        "type": "text",
-        "label": "Enterprise & AI Transformation Lead. Meer dan 20 jaar ervaring in programmamanagement, PMO",
-        "nl": "Enterprise & AI Transformation Lead. Meer dan 20 jaar ervaring in programmamanagement, PMO, governance en transformatie.",
-        "fr": "Enterprise & AI Transformation Lead. Meer dan 20 jaar ervaring in programmamanagement, PMO, governance en transformatie."
-      },
-      {
-        "key": "f49d5457d0b05-1",
-        "type": "text",
-        "label": "Nu beschikbaar in België voor een vaste functie of een langdurige opdracht.",
-        "nl": "Nu beschikbaar in België voor een vaste functie of een langdurige opdracht.",
-        "fr": "Nu beschikbaar in België voor een vaste functie of een langdurige opdracht."
-      },
-      {
-        "key": "f6f767a0d57eb-1",
-        "type": "text",
-        "label": "Le temps gagné appelle une décision",
-        "nl": "Le temps gagné appelle une décision",
-        "fr": "Le temps gagné appelle une décision"
-      },
-      {
-        "key": "f0b99aea46aab-1",
-        "type": "text",
-        "label": "1 novembre 2026 · Erlend Hollebosch",
-        "nl": "1 novembre 2026 · Erlend Hollebosch",
-        "fr": "1 novembre 2026 · Erlend Hollebosch"
-      },
-      {
-        "key": "f14bcc34c7e0f-1",
-        "type": "text",
-        "label": "En bref",
-        "nl": "En bref",
-        "fr": "En bref"
-      },
-      {
-        "key": "f716e672b1eec-1",
-        "type": "text",
-        "label": "La capacité libérée devient de la valeur lorsque son utilisation est décidée.",
-        "nl": "La capacité libérée devient de la valeur lorsque son utilisation est décidée.",
-        "fr": "La capacité libérée devient de la valeur lorsque son utilisation est décidée."
-      },
-      {
-        "key": "f85b49d434beb-0",
-        "type": "text",
-        "label": "Des minutes au résultat métier",
-        "nl": "Des minutes au résultat métier",
-        "fr": "Des minutes au résultat métier"
-      },
-      {
-        "key": "fb101002cf038-0",
-        "type": "text",
-        "label": "Une équipe annonce que l’IA économise plusieurs heures par semaine. C’est une information ",
-        "nl": "Une équipe annonce que l’IA économise plusieurs heures par semaine. C’est une information utile, mais pas encore une proposition de valeur complète. Que fera-t-on de cette capacité : traiter davantage de demandes, résorber un retard, améliorer la qualité ou réduire le recours à une aide externe ?",
-        "fr": "Une équipe annonce que l’IA économise plusieurs heures par semaine. C’est une information utile, mais pas encore une proposition de valeur complète. Que fera-t-on de cette capacité : traiter davantage de demandes, résorber un retard, améliorer la qualité ou réduire le recours à une aide externe ?"
-      },
-      {
-        "key": "fa1f1909c0fd8-0",
-        "type": "text",
-        "label": "Donner une destination à la capacité",
-        "nl": "Donner une destination à la capacité",
-        "fr": "Donner une destination à la capacité"
-      },
-      {
-        "key": "f3f9bd25eef61-0",
-        "type": "text",
-        "label": "Une équipe prépare ses dossiers plus rapidement. Si l’approbation attend toujours ailleurs",
-        "nl": "Une équipe prépare ses dossiers plus rapidement. Si l’approbation attend toujours ailleurs, le délai total peut peu évoluer. Si le temps libéré est consacré aux dossiers complexes, une autre amélioration peut apparaître. Cette destination fait partie de la conception du cas d’usage.",
-        "fr": "Une équipe prépare ses dossiers plus rapidement. Si l’approbation attend toujours ailleurs, le délai total peut peu évoluer. Si le temps libéré est consacré aux dossiers complexes, une autre amélioration peut apparaître. Cette destination fait partie de la conception du cas d’usage."
-      },
-      {
-        "key": "f1c02d1c9c61e-0",
-        "type": "text",
-        "label": "Convenir des mesures",
-        "nl": "Convenir des mesures",
-        "fr": "Convenir des mesures"
-      },
-      {
-        "key": "f84f1e022d1b4-0",
-        "type": "text",
-        "label": "Établissez une référence pour les volumes, les délais, la qualité et l’effort humain. Choi",
-        "nl": "Établissez une référence pour les volumes, les délais, la qualité et l’effort humain. Choisissez le résultat à faire évoluer. Incluez les contrôles, les exceptions et les reprises. Une minute gagnée en préparation peut s’accompagner d’une minute supplémentaire de vérification.",
-        "fr": "Établissez une référence pour les volumes, les délais, la qualité et l’effort humain. Choisissez le résultat à faire évoluer. Incluez les contrôles, les exceptions et les reprises. Une minute gagnée en préparation peut s’accompagner d’une minute supplémentaire de vérification."
-      },
-      {
-        "key": "f9b84419ee58c-0",
-        "type": "text",
-        "label": "Relier responsabilité et résultat",
-        "nl": "Relier responsabilité et résultat",
-        "fr": "Relier responsabilité et résultat"
-      },
-      {
-        "key": "f0402ed4dbb12-0",
-        "type": "text",
-        "label": "Le responsable technique peut améliorer l’application. Le responsable du processus doit po",
-        "nl": "Le responsable technique peut améliorer l’application. Le responsable du processus doit pouvoir décider de la répartition du travail, de la capacité et des priorités. Sans ce lien, le dossier économique reste entre une mesure locale du temps et un résultat que personne ne peut organiser.",
-        "fr": "Le responsable technique peut améliorer l’application. Le responsable du processus doit pouvoir décider de la répartition du travail, de la capacité et des priorités. Sans ce lien, le dossier économique reste entre une mesure locale du temps et un résultat que personne ne peut organiser."
-      },
-      {
-        "key": "fb8ede7c80c76-0",
-        "type": "text",
-        "label": "Une question de départ",
-        "nl": "Une question de départ",
-        "fr": "Une question de départ"
-      },
-      {
-        "key": "f7a126ce9db75-0",
-        "type": "text",
-        "label": "Quelle décision précise prendrons-nous si ce temps devient disponible ? Sans réponse, l’hy",
-        "nl": "Quelle décision précise prendrons-nous si ce temps devient disponible ? Sans réponse, l’hypothèse de valeur reste incomplète. Concevez ensemble l’application et l’utilisation de la capacité, puis examinez le résultat sur le flux de travail complet.",
-        "fr": "Quelle décision précise prendrons-nous si ce temps devient disponible ? Sans réponse, l’hypothèse de valeur reste incomplète. Concevez ensemble l’application et l’utilisation de la capacité, puis examinez le résultat sur le flux de travail complet."
-      },
-      {
-        "key": "fb23a70722a09-1",
-        "type": "text",
-        "label": "À propos de l’auteur",
-        "nl": "À propos de l’auteur",
-        "fr": "À propos de l’auteur"
-      },
-      {
-        "key": "ff2d2887857a5-3",
-        "type": "text",
-        "label": "Erlend Hollebosch",
-        "nl": "Erlend Hollebosch",
-        "fr": "Erlend Hollebosch"
-      },
-      {
-        "key": "fea6cdc84f331-1",
-        "type": "text",
-        "label": "Enterprise & AI Transformation Lead. Plus de 20 ans d’expérience en gestion de programmes,",
-        "nl": "Enterprise & AI Transformation Lead. Plus de 20 ans d’expérience en gestion de programmes, PMO, gouvernance et transformation.",
-        "fr": "Enterprise & AI Transformation Lead. Plus de 20 ans d’expérience en gestion de programmes, PMO, gouvernance et transformation."
-      },
-      {
-        "key": "f9f3bb374d291-1",
-        "type": "text",
-        "label": "Disponible dès maintenant en Belgique pour un poste fixe ou une mission de longue durée.",
-        "nl": "Disponible dès maintenant en Belgique pour un poste fixe ou une mission de longue durée.",
-        "fr": "Disponible dès maintenant en Belgique pour un poste fixe ou une mission de longue durée."
-      },
-      {
-        "key": "f14beeaa2736b-1",
-        "type": "text",
-        "label": "Je AI-pilot werkt. Waarom verandert de organisatie niet?",
-        "nl": "Je AI-pilot werkt. Waarom verandert de organisatie niet?",
-        "fr": "Je AI-pilot werkt. Waarom verandert de organisatie niet?"
-      },
-      {
-        "key": "f295db025f0c9-0",
-        "type": "text",
-        "label": "28 oktober 2026 · Erlend Hollebosch",
-        "nl": "28 oktober 2026 · Erlend Hollebosch",
-        "fr": "28 oktober 2026 · Erlend Hollebosch"
-      },
-      {
-        "key": "f5afe67a47e3c-2",
-        "type": "text",
-        "label": "In het kort",
-        "nl": "In het kort",
-        "fr": "In het kort"
-      },
-      {
-        "key": "fbe96df9bea6c-0",
-        "type": "text",
-        "label": "Een snellere taak is nog geen beter proces",
-        "nl": "Een snellere taak is nog geen beter proces",
-        "fr": "Een snellere taak is nog geen beter proces"
-      },
-      {
-        "key": "fafc7452482b1-0",
-        "type": "text",
-        "label": "Een AI-pilot kan overtuigend zijn. De technologie werkt. Medewerkers vinden sneller inform",
-        "nl": "Een AI-pilot kan overtuigend zijn. De technologie werkt. Medewerkers vinden sneller informatie, documenten worden automatisch verwerkt en een taak die vroeger een uur vroeg, duurt nog enkele minuten. Toch merkt de klant weinig verschil. Besluiten blijven liggen. Goedkeuringen lopen door dezelfde lagen. Het management ziet lokale vooruitgang, maar krijgt moeilijk zicht op het resultaat voor de organisatie.",
-        "fr": "Een AI-pilot kan overtuigend zijn. De technologie werkt. Medewerkers vinden sneller informatie, documenten worden automatisch verwerkt en een taak die vroeger een uur vroeg, duurt nog enkele minuten. Toch merkt de klant weinig verschil. Besluiten blijven liggen. Goedkeuringen lopen door dezelfde lagen. Het management ziet lokale vooruitgang, maar krijgt moeilijk zicht op het resultaat voor de organisatie."
-      },
-      {
-        "key": "fca5e9273d96f-0",
-        "type": "text",
-        "label": "Die vraag raakt aan een onderwerp dat mij al lange tijd fascineert: fragmentatie binnen or",
-        "nl": "Die vraag raakt aan een onderwerp dat mij al lange tijd fascineert: fragmentatie binnen organisaties. Vanuit mijn ervaring met projectmanagement, PMO-leiderschap en bedrijfstransformatie ben ik steeds meer geïnteresseerd geraakt in wat er tussen de afzonderlijke onderdelen gebeurt. Waar raken prioriteiten elkaar kwijt? Waar blijft werk wachten? Waar ontbreekt een eigenaar voor het resultaat?",
-        "fr": "Die vraag raakt aan een onderwerp dat mij al lange tijd fascineert: fragmentatie binnen organisaties. Vanuit mijn ervaring met projectmanagement, PMO-leiderschap en bedrijfstransformatie ben ik steeds meer geïnteresseerd geraakt in wat er tussen de afzonderlijke onderdelen gebeurt. Waar raken prioriteiten elkaar kwijt? Waar blijft werk wachten? Waar ontbreekt een eigenaar voor het resultaat?"
-      },
-      {
-        "key": "f8b9f52152651-0",
-        "type": "text",
-        "label": "Fragmentatie ontstaat vaak uit begrijpelijke keuzes",
-        "nl": "Fragmentatie ontstaat vaak uit begrijpelijke keuzes",
-        "fr": "Fragmentatie ontstaat vaak uit begrijpelijke keuzes"
-      },
-      {
-        "key": "fab435a59c5b7-0",
-        "type": "text",
-        "label": "Afdelingen specialiseren zich. Teams kiezen hulpmiddelen die hun eigen werk ondersteunen. ",
-        "nl": "Afdelingen specialiseren zich. Teams kiezen hulpmiddelen die hun eigen werk ondersteunen. Na een overname blijven systemen naast elkaar bestaan. Nieuwe risico’s leiden tot extra controles. Strategische initiatieven krijgen elk een eigen structuur en planning.",
-        "fr": "Afdelingen specialiseren zich. Teams kiezen hulpmiddelen die hun eigen werk ondersteunen. Na een overname blijven systemen naast elkaar bestaan. Nieuwe risico’s leiden tot extra controles. Strategische initiatieven krijgen elk een eigen structuur en planning."
-      },
-      {
-        "key": "f4340bb5efb86-0",
-        "type": "text",
-        "label": "Elke keuze kan afzonderlijk verdedigbaar zijn. Samen kunnen ze een organisatie opleveren w",
-        "nl": "Elke keuze kan afzonderlijk verdedigbaar zijn. Samen kunnen ze een organisatie opleveren waarin steeds meer afstemming nodig is om iets eenvoudigs gedaan te krijgen. Mensen compenseren de ontbrekende samenhang met vergaderingen, spreadsheets en escalaties. Wanneer AI wordt toegevoegd, komt de technologie terecht in een systeem dat al moeite heeft om als geheel te functioneren.",
-        "fr": "Elke keuze kan afzonderlijk verdedigbaar zijn. Samen kunnen ze een organisatie opleveren waarin steeds meer afstemming nodig is om iets eenvoudigs gedaan te krijgen. Mensen compenseren de ontbrekende samenhang met vergaderingen, spreadsheets en escalaties. Wanneer AI wordt toegevoegd, komt de technologie terecht in een systeem dat al moeite heeft om als geheel te functioneren."
-      },
-      {
-        "key": "fee475a2325c4-0",
-        "type": "text",
-        "label": "AI versterkt het systeem waarin het terechtkomt",
-        "nl": "AI versterkt het systeem waarin het terechtkomt",
-        "fr": "AI versterkt het systeem waarin het terechtkomt"
-      },
-      {
-        "key": "f5bc81763ab37-0",
-        "type": "text",
-        "label": "AI kan ook in een gefragmenteerde organisatie waarde creëren. Een medewerker kan beter voo",
-        "nl": "AI kan ook in een gefragmenteerde organisatie waarde creëren. Een medewerker kan beter voorbereid zijn of een analyse sneller uitvoeren. De uitdaging groeit zodra de toepassing over afdelingen, systemen en beslisgrenzen heen moet werken.",
-        "fr": "AI kan ook in een gefragmenteerde organisatie waarde creëren. Een medewerker kan beter voorbereid zijn of een analyse sneller uitvoeren. De uitdaging groeit zodra de toepassing over afdelingen, systemen en beslisgrenzen heen moet werken."
-      },
-      {
-        "key": "fc370cc855b5c-0",
-        "type": "text",
-        "label": "Gebruiken teams dezelfde betekenis van klant, risico en resultaat? Is duidelijk welke info",
-        "nl": "Gebruiken teams dezelfde betekenis van klant, risico en resultaat? Is duidelijk welke informatie betrouwbaar is? Wie mag handelen, wie behandelt uitzonderingen en wie beoordeelt de volledige werkstroom?",
-        "fr": "Gebruiken teams dezelfde betekenis van klant, risico en resultaat? Is duidelijk welke informatie betrouwbaar is? Wie mag handelen, wie behandelt uitzonderingen en wie beoordeelt de volledige werkstroom?"
-      },
-      {
-        "key": "fe19acbebe4f7-0",
-        "type": "text",
-        "label": "Voor duurzame AI-waarde op organisatieniveau moet voldoende samenhang bestaan tussen doele",
-        "nl": "Voor duurzame AI-waarde op organisatieniveau moet voldoende samenhang bestaan tussen doelen, processen, informatie, technologie en besluitvorming. Dat is voor mij de betekenis van Enterprise Coherence.",
-        "fr": "Voor duurzame AI-waarde op organisatieniveau moet voldoende samenhang bestaan tussen doelen, processen, informatie, technologie en besluitvorming. Dat is voor mij de betekenis van Enterprise Coherence."
-      },
-      {
-        "key": "f972d8c9991d4-0",
-        "type": "text",
-        "label": "Coherence vraagt om gerichte samenhang",
-        "nl": "Coherence vraagt om gerichte samenhang",
-        "fr": "Coherence vraagt om gerichte samenhang"
-      },
-      {
-        "key": "f8879457da998-0",
-        "type": "text",
-        "label": "Een coherente organisatie hoeft niet overal hetzelfde te werken. Verschillen tussen landen",
-        "nl": "Een coherente organisatie hoeft niet overal hetzelfde te werken. Verschillen tussen landen, klanten en risicoprofielen kunnen noodzakelijk zijn. De vraag is welke onderdelen op elkaar moeten aansluiten om een gezamenlijk resultaat mogelijk te maken.",
-        "fr": "Een coherente organisatie hoeft niet overal hetzelfde te werken. Verschillen tussen landen, klanten en risicoprofielen kunnen noodzakelijk zijn. De vraag is welke onderdelen op elkaar moeten aansluiten om een gezamenlijk resultaat mogelijk te maken."
-      },
-      {
-        "key": "ff9c68cc017a3-0",
-        "type": "text",
-        "label": "Meer centrale controle is daarvoor niet vanzelfsprekend de oplossing. Soms is juist minder",
-        "nl": "Meer centrale controle is daarvoor niet vanzelfsprekend de oplossing. Soms is juist minder goedkeuring nodig, met duidelijkere grenzen en meer verantwoordelijkheid op de juiste plaats.",
-        "fr": "Meer centrale controle is daarvoor niet vanzelfsprekend de oplossing. Soms is juist minder goedkeuring nodig, met duidelijkere grenzen en meer verantwoordelijkheid op de juiste plaats."
-      },
-      {
-        "key": "f268fbb171196-0",
-        "type": "text",
-        "label": "Begin bij één belangrijke werkstroom",
-        "nl": "Begin bij één belangrijke werkstroom",
-        "fr": "Begin bij één belangrijke werkstroom"
-      },
-      {
-        "key": "f8be9fe8fc46a-0",
-        "type": "text",
-        "label": "De hele organisatie eerst coherent proberen te maken, is een onwerkbaar vertrekpunt. Ik zo",
-        "nl": "De hele organisatie eerst coherent proberen te maken, is een onwerkbaar vertrekpunt. Ik zou beginnen bij één werkstroom die belangrijk genoeg is om bestuurlijke aandacht te verdienen: het oplossen van een klantprobleem, een schadegeval of een IT-incident.",
-        "fr": "De hele organisatie eerst coherent proberen te maken, is een onwerkbaar vertrekpunt. Ik zou beginnen bij één werkstroom die belangrijk genoeg is om bestuurlijke aandacht te verdienen: het oplossen van een klantprobleem, een schadegeval of een IT-incident."
-      },
-      {
-        "key": "f74827e74d1f6-0",
-        "type": "text",
-        "label": "Onderzoek vijf dingen: het gewenste en meetbare resultaat; de plaatsen waar werk wacht of ",
-        "nl": "Onderzoek vijf dingen: het gewenste en meetbare resultaat; de plaatsen waar werk wacht of terugkeert; de beslisrechten; de benodigde informatie; en de passende rol van AI. Sommige problemen vragen vooral om eenvoudiger processen of duidelijker verantwoordelijkheden.",
-        "fr": "Onderzoek vijf dingen: het gewenste en meetbare resultaat; de plaatsen waar werk wacht of terugkeert; de beslisrechten; de benodigde informatie; en de passende rol van AI. Sommige problemen vragen vooral om eenvoudiger processen of duidelijker verantwoordelijkheden."
-      },
-      {
-        "key": "fe305b9284a9f-0",
-        "type": "text",
-        "label": "Zo kunnen procesverbetering, coherence en AI-toepassing samen worden ontwikkeld.",
-        "nl": "Zo kunnen procesverbetering, coherence en AI-toepassing samen worden ontwikkeld.",
-        "fr": "Zo kunnen procesverbetering, coherence en AI-toepassing samen worden ontwikkeld."
-      },
-      {
-        "key": "f3301bb408919-0",
-        "type": "text",
-        "label": "Meet wat er met het geheel gebeurt",
-        "nl": "Meet wat er met het geheel gebeurt",
-        "fr": "Meet wat er met het geheel gebeurt"
-      },
-      {
-        "key": "fec79cff49247-0",
-        "type": "text",
-        "label": "Kijk naast lokale tijdwinst naar totale doorlooptijd, overdrachten, herstelwerk, uitzonder",
-        "nl": "Kijk naast lokale tijdwinst naar totale doorlooptijd, overdrachten, herstelwerk, uitzonderingen en kwaliteit. Tijdwinst in één team kan extra controlewerk elders veroorzaken. Vergelijk de volledige werkstroom met een vooraf vastgelegde uitgangssituatie.",
-        "fr": "Kijk naast lokale tijdwinst naar totale doorlooptijd, overdrachten, herstelwerk, uitzonderingen en kwaliteit. Tijdwinst in één team kan extra controlewerk elders veroorzaken. Vergelijk de volledige werkstroom met een vooraf vastgelegde uitgangssituatie."
-      },
-      {
-        "key": "f05336a24f225-0",
-        "type": "text",
-        "label": "De verantwoordelijkheid van het management",
-        "nl": "De verantwoordelijkheid van het management",
-        "fr": "De verantwoordelijkheid van het management"
-      },
-      {
-        "key": "fafe620f91d12-0",
-        "type": "text",
-        "label": "Wie AI over meerdere afdelingen wil toepassen, moet richting geven aan gezamenlijke priori",
-        "nl": "Wie AI over meerdere afdelingen wil toepassen, moet richting geven aan gezamenlijke prioriteiten, eigenaarschap en besluitvorming. Technologische teams kunnen tegenstrijdige bedrijfsdoelen niet zelfstandig oplossen.",
-        "fr": "Wie AI over meerdere afdelingen wil toepassen, moet richting geven aan gezamenlijke prioriteiten, eigenaarschap en besluitvorming. Technologische teams kunnen tegenstrijdige bedrijfsdoelen niet zelfstandig oplossen."
-      },
-      {
-        "key": "f12a3f0888996-0",
-        "type": "text",
-        "label": "Wie is aanspreekbaar op het volledige resultaat? Welke lokale optimalisatie belemmert het ",
-        "nl": "Wie is aanspreekbaar op het volledige resultaat? Welke lokale optimalisatie belemmert het geheel? Welke controle kan vervallen wanneer een betere waarborg beschikbaar komt? De kwaliteit van die keuzes bepaalt mede hoeveel waarde de technologie kan opleveren.",
-        "fr": "Wie is aanspreekbaar op het volledige resultaat? Welke lokale optimalisatie belemmert het geheel? Welke controle kan vervallen wanneer een betere waarborg beschikbaar komt? De kwaliteit van die keuzes bepaalt mede hoeveel waarde de technologie kan opleveren."
-      },
-      {
-        "key": "fa898c56e8c4d-0",
-        "type": "text",
-        "label": "Mijn vertrekpunt",
-        "nl": "Mijn vertrekpunt",
-        "fr": "Mijn vertrekpunt"
-      },
-      {
-        "key": "f922207de0dbb-0",
-        "type": "text",
-        "label": "Wat mij fascineert, is hoe organisaties met bekwame mensen, veel kennis en aanzienlijke in",
-        "nl": "Wat mij fascineert, is hoe organisaties met bekwame mensen, veel kennis en aanzienlijke investeringen toch steeds moeilijker in beweging kunnen komen. Enterprise Coherence biedt een manier om gericht te onderzoeken waar de samenhang ontbreekt.",
-        "fr": "Wat mij fascineert, is hoe organisaties met bekwame mensen, veel kennis en aanzienlijke investeringen toch steeds moeilijker in beweging kunnen komen. Enterprise Coherence biedt een manier om gericht te onderzoeken waar de samenhang ontbreekt."
-      },
-      {
-        "key": "fb4e87bca7413-0",
-        "type": "text",
-        "label": "Mijn vertrekpunt is één concrete vraag: wat moet in deze organisatie beter op elkaar aansl",
-        "nl": "Mijn vertrekpunt is één concrete vraag: wat moet in deze organisatie beter op elkaar aansluiten, zodat een belangrijke werkstroom aantoonbaar beter gaat functioneren?",
-        "fr": "Mijn vertrekpunt is één concrete vraag: wat moet in deze organisatie beter op elkaar aansluiten, zodat een belangrijke werkstroom aantoonbaar beter gaat functioneren?"
-      },
-      {
-        "key": "fb8fee63eb66c-0",
-        "type": "text",
-        "label": "Het antwoord maakt duidelijk waar AI waarde kan toevoegen — en welke bestuurlijke keuzes d",
-        "nl": "Het antwoord maakt duidelijk waar AI waarde kan toevoegen — en welke bestuurlijke keuzes daarvoor nodig zijn.",
-        "fr": "Het antwoord maakt duidelijk waar AI waarde kan toevoegen — en welke bestuurlijke keuzes daarvoor nodig zijn."
-      },
-      {
-        "key": "fe9608866b690-2",
-        "type": "text",
-        "label": "Over de auteur",
-        "nl": "Over de auteur",
-        "fr": "Over de auteur"
-      },
-      {
-        "key": "ff2d2887857a5-4",
-        "type": "text",
-        "label": "Erlend Hollebosch",
-        "nl": "Erlend Hollebosch",
-        "fr": "Erlend Hollebosch"
-      },
-      {
-        "key": "fcf9db1ea9bb1-2",
-        "type": "text",
-        "label": "Enterprise & AI Transformation Lead. Meer dan 20 jaar ervaring in programmamanagement, PMO",
-        "nl": "Enterprise & AI Transformation Lead. Meer dan 20 jaar ervaring in programmamanagement, PMO, governance en transformatie.",
-        "fr": "Enterprise & AI Transformation Lead. Meer dan 20 jaar ervaring in programmamanagement, PMO, governance en transformatie."
-      },
-      {
-        "key": "f49d5457d0b05-2",
-        "type": "text",
-        "label": "Nu beschikbaar in België voor een vaste functie of een langdurige opdracht.",
-        "nl": "Nu beschikbaar in België voor een vaste functie of een langdurige opdracht.",
-        "fr": "Nu beschikbaar in België voor een vaste functie of een langdurige opdracht."
-      },
-      {
-        "key": "f86f019448640-1",
-        "type": "text",
-        "label": "Votre pilote IA fonctionne. Pourquoi l’organisation ne change-t-elle pas ?",
-        "nl": "Votre pilote IA fonctionne. Pourquoi l’organisation ne change-t-elle pas ?",
-        "fr": "Votre pilote IA fonctionne. Pourquoi l’organisation ne change-t-elle pas ?"
-      },
-      {
-        "key": "f3af90ae86ece-0",
-        "type": "text",
-        "label": "28 octobre 2026 · Erlend Hollebosch",
-        "nl": "28 octobre 2026 · Erlend Hollebosch",
-        "fr": "28 octobre 2026 · Erlend Hollebosch"
-      },
-      {
-        "key": "f14bcc34c7e0f-2",
-        "type": "text",
-        "label": "En bref",
-        "nl": "En bref",
-        "fr": "En bref"
-      },
-      {
-        "key": "f6922f4cd3e82-0",
-        "type": "text",
-        "label": "Une tâche plus rapide ne suffit pas à améliorer un processus",
-        "nl": "Une tâche plus rapide ne suffit pas à améliorer un processus",
-        "fr": "Une tâche plus rapide ne suffit pas à améliorer un processus"
-      },
-      {
-        "key": "f09b8ec9dbf94-0",
-        "type": "text",
-        "label": "Un pilote IA peut être convaincant. Les collaborateurs trouvent plus vite l’information, l",
-        "nl": "Un pilote IA peut être convaincant. Les collaborateurs trouvent plus vite l’information, les documents sont traités automatiquement et une tâche d’une heure ne prend plus que quelques minutes. Pourtant, le client constate peu de différence. Les décisions attendent toujours et les validations suivent les mêmes circuits. La direction voit des progrès locaux, mais peine à identifier le résultat global.",
-        "fr": "Un pilote IA peut être convaincant. Les collaborateurs trouvent plus vite l’information, les documents sont traités automatiquement et une tâche d’une heure ne prend plus que quelques minutes. Pourtant, le client constate peu de différence. Les décisions attendent toujours et les validations suivent les mêmes circuits. La direction voit des progrès locaux, mais peine à identifier le résultat global."
-      },
-      {
-        "key": "fd5eefc6de964-0",
-        "type": "text",
-        "label": "Cela rejoint un sujet qui me fascine depuis longtemps : la fragmentation des organisations",
-        "nl": "Cela rejoint un sujet qui me fascine depuis longtemps : la fragmentation des organisations. Mon expérience des projets, de la direction de PMO et de la transformation des entreprises m’a amené à examiner ce qui se passe entre les différentes parties. Où les priorités divergent-elles ? Où le travail attend-il ? Qui porte la responsabilité du résultat ?",
-        "fr": "Cela rejoint un sujet qui me fascine depuis longtemps : la fragmentation des organisations. Mon expérience des projets, de la direction de PMO et de la transformation des entreprises m’a amené à examiner ce qui se passe entre les différentes parties. Où les priorités divergent-elles ? Où le travail attend-il ? Qui porte la responsabilité du résultat ?"
-      },
-      {
-        "key": "f621e57ec59f0-0",
-        "type": "text",
-        "label": "La fragmentation naît souvent de choix compréhensibles",
-        "nl": "La fragmentation naît souvent de choix compréhensibles",
-        "fr": "La fragmentation naît souvent de choix compréhensibles"
-      },
-      {
-        "key": "f35961ac5568e-0",
-        "type": "text",
-        "label": "Les départements se spécialisent. Les équipes choisissent leurs outils. Après une acquisit",
-        "nl": "Les départements se spécialisent. Les équipes choisissent leurs outils. Après une acquisition, les systèmes restent séparés. De nouveaux risques entraînent des contrôles supplémentaires. Chaque initiative stratégique dispose de sa propre structure et de son calendrier.",
-        "fr": "Les départements se spécialisent. Les équipes choisissent leurs outils. Après une acquisition, les systèmes restent séparés. De nouveaux risques entraînent des contrôles supplémentaires. Chaque initiative stratégique dispose de sa propre structure et de son calendrier."
-      },
-      {
-        "key": "fa64ddaaaa0ec-0",
-        "type": "text",
-        "label": "Chaque décision peut se justifier. Ensemble, elles peuvent produire une organisation qui a",
-        "nl": "Chaque décision peut se justifier. Ensemble, elles peuvent produire une organisation qui a besoin de toujours plus de coordination. Les personnes compensent par des réunions, des tableurs et des escalades. L’IA entre dans un système qui peine déjà à fonctionner comme un tout.",
-        "fr": "Chaque décision peut se justifier. Ensemble, elles peuvent produire une organisation qui a besoin de toujours plus de coordination. Les personnes compensent par des réunions, des tableurs et des escalades. L’IA entre dans un système qui peine déjà à fonctionner comme un tout."
-      },
-      {
-        "key": "f931e3c7d9523-0",
-        "type": "text",
-        "label": "L’IA amplifie le système dans lequel elle entre",
-        "nl": "L’IA amplifie le système dans lequel elle entre",
-        "fr": "L’IA amplifie le système dans lequel elle entre"
-      },
-      {
-        "key": "f7164cbf69fc1-0",
-        "type": "text",
-        "label": "L’IA peut créer de la valeur dans une organisation fragmentée. Une personne prépare mieux ",
-        "nl": "L’IA peut créer de la valeur dans une organisation fragmentée. Une personne prépare mieux son travail ou analyse plus vite. La difficulté grandit lorsque l’application traverse les départements, les systèmes et les frontières de décision.",
-        "fr": "L’IA peut créer de la valeur dans une organisation fragmentée. Une personne prépare mieux son travail ou analyse plus vite. La difficulté grandit lorsque l’application traverse les départements, les systèmes et les frontières de décision."
-      },
-      {
-        "key": "f56e4670332c5-0",
-        "type": "text",
-        "label": "Les équipes partagent-elles les mêmes définitions du client, du risque et du résultat ? L’",
-        "nl": "Les équipes partagent-elles les mêmes définitions du client, du risque et du résultat ? L’information fiable est-elle identifiable ? Qui peut agir, gérer les exceptions et évaluer le flux complet ?",
-        "fr": "Les équipes partagent-elles les mêmes définitions du client, du risque et du résultat ? L’information fiable est-elle identifiable ? Qui peut agir, gérer les exceptions et évaluer le flux complet ?"
-      },
-      {
-        "key": "ff9990ea7cca0-0",
-        "type": "text",
-        "label": "Une valeur durable à l’échelle de l’organisation nécessite un alignement suffisant entre o",
-        "nl": "Une valeur durable à l’échelle de l’organisation nécessite un alignement suffisant entre objectifs, processus, information, technologie et décisions. C’est le sens que je donne à Enterprise Coherence.",
-        "fr": "Une valeur durable à l’échelle de l’organisation nécessite un alignement suffisant entre objectifs, processus, information, technologie et décisions. C’est le sens que je donne à Enterprise Coherence."
-      },
-      {
-        "key": "f39f833a0a98b-0",
-        "type": "text",
-        "label": "La cohérence demande un alignement ciblé",
-        "nl": "La cohérence demande un alignement ciblé",
-        "fr": "La cohérence demande un alignement ciblé"
-      },
-      {
-        "key": "fa42f30f7c2ae-0",
-        "type": "text",
-        "label": "Une organisation cohérente ne doit pas fonctionner partout de manière identique. Des diffé",
-        "nl": "Une organisation cohérente ne doit pas fonctionner partout de manière identique. Des différences entre pays, clients et profils de risque peuvent être nécessaires. Il faut déterminer quelles parties doivent s’articuler pour obtenir un résultat commun.",
-        "fr": "Une organisation cohérente ne doit pas fonctionner partout de manière identique. Des différences entre pays, clients et profils de risque peuvent être nécessaires. Il faut déterminer quelles parties doivent s’articuler pour obtenir un résultat commun."
-      },
-      {
-        "key": "f38132f17a6e1-0",
-        "type": "text",
-        "label": "Davantage de contrôle central n’est pas automatiquement la solution. Il faut parfois moins",
-        "nl": "Davantage de contrôle central n’est pas automatiquement la solution. Il faut parfois moins de validations, des limites plus claires et des responsabilités au bon endroit.",
-        "fr": "Davantage de contrôle central n’est pas automatiquement la solution. Il faut parfois moins de validations, des limites plus claires et des responsabilités au bon endroit."
-      },
-      {
-        "key": "fe42d4c160d58-0",
-        "type": "text",
-        "label": "Commencer par un flux de travail important",
-        "nl": "Commencer par un flux de travail important",
-        "fr": "Commencer par un flux de travail important"
-      },
-      {
-        "key": "f750de351f5e2-0",
-        "type": "text",
-        "label": "Vouloir rendre toute l’organisation cohérente avant de commencer serait peu réaliste. Je p",
-        "nl": "Vouloir rendre toute l’organisation cohérente avant de commencer serait peu réaliste. Je partirais d’un flux qui mérite l’attention de la direction : résoudre un problème client, traiter un sinistre ou un incident informatique.",
-        "fr": "Vouloir rendre toute l’organisation cohérente avant de commencer serait peu réaliste. Je partirais d’un flux qui mérite l’attention de la direction : résoudre un problème client, traiter un sinistre ou un incident informatique."
-      },
-      {
-        "key": "f8d5b44f946af-0",
-        "type": "text",
-        "label": "Examinons cinq éléments : le résultat mesurable ; les points d’attente et de retour ; les ",
-        "nl": "Examinons cinq éléments : le résultat mesurable ; les points d’attente et de retour ; les droits de décision ; l’information nécessaire ; et le rôle approprié de l’IA. Certains problèmes exigent surtout des processus plus simples ou des responsabilités plus claires.",
-        "fr": "Examinons cinq éléments : le résultat mesurable ; les points d’attente et de retour ; les droits de décision ; l’information nécessaire ; et le rôle approprié de l’IA. Certains problèmes exigent surtout des processus plus simples ou des responsabilités plus claires."
-      },
-      {
-        "key": "f23234a5d3559-0",
-        "type": "text",
-        "label": "L’amélioration des processus, la cohérence et l’IA peuvent ainsi progresser ensemble.",
-        "nl": "L’amélioration des processus, la cohérence et l’IA peuvent ainsi progresser ensemble.",
-        "fr": "L’amélioration des processus, la cohérence et l’IA peuvent ainsi progresser ensemble."
-      },
-      {
-        "key": "f87f69b644147-0",
-        "type": "text",
-        "label": "Mesurer le résultat global",
-        "nl": "Mesurer le résultat global",
-        "fr": "Mesurer le résultat global"
-      },
-      {
-        "key": "f3af6f285f499-0",
-        "type": "text",
-        "label": "Au-delà du temps gagné localement, mesurons le délai total, les transferts, les reprises, ",
-        "nl": "Au-delà du temps gagné localement, mesurons le délai total, les transferts, les reprises, les exceptions et la qualité. Un gain dans une équipe peut créer du contrôle supplémentaire ailleurs. Comparons le flux complet à une situation de référence établie à l’avance.",
-        "fr": "Au-delà du temps gagné localement, mesurons le délai total, les transferts, les reprises, les exceptions et la qualité. Un gain dans une équipe peut créer du contrôle supplémentaire ailleurs. Comparons le flux complet à une situation de référence établie à l’avance."
-      },
-      {
-        "key": "f9d8b7aee0532-0",
-        "type": "text",
-        "label": "La responsabilité de la direction",
-        "nl": "La responsabilité de la direction",
-        "fr": "La responsabilité de la direction"
-      },
-      {
-        "key": "f02dc3bba67f5-0",
-        "type": "text",
-        "label": "Appliquer l’IA entre départements exige des choix sur les priorités communes, les responsa",
-        "nl": "Appliquer l’IA entre départements exige des choix sur les priorités communes, les responsabilités et les décisions. Les équipes technologiques ne peuvent pas résoudre seules des objectifs contradictoires.",
-        "fr": "Appliquer l’IA entre départements exige des choix sur les priorités communes, les responsabilités et les décisions. Les équipes technologiques ne peuvent pas résoudre seules des objectifs contradictoires."
-      },
-      {
-        "key": "fdd006ad709d6-0",
-        "type": "text",
-        "label": "Qui répond du résultat global ? Quelle optimisation locale le freine ? Quel contrôle peut ",
-        "nl": "Qui répond du résultat global ? Quelle optimisation locale le freine ? Quel contrôle peut disparaître lorsqu’une meilleure garantie devient disponible ? Ces choix déterminent en partie la valeur de la technologie.",
-        "fr": "Qui répond du résultat global ? Quelle optimisation locale le freine ? Quel contrôle peut disparaître lorsqu’une meilleure garantie devient disponible ? Ces choix déterminent en partie la valeur de la technologie."
-      },
-      {
-        "key": "fdd8f9e14f81c-0",
-        "type": "text",
-        "label": "Mon point de départ",
-        "nl": "Mon point de départ",
-        "fr": "Mon point de départ"
-      },
-      {
-        "key": "f4e90b1f0ba3e-0",
-        "type": "text",
-        "label": "Comment des organisations riches en compétences, en connaissances et en investissements de",
-        "nl": "Comment des organisations riches en compétences, en connaissances et en investissements deviennent-elles toujours plus difficiles à faire évoluer ? Enterprise Coherence permet d’examiner où les articulations font défaut.",
-        "fr": "Comment des organisations riches en compétences, en connaissances et en investissements deviennent-elles toujours plus difficiles à faire évoluer ? Enterprise Coherence permet d’examiner où les articulations font défaut."
-      },
-      {
-        "key": "f57a48e748110-0",
-        "type": "text",
-        "label": "Mon point de départ est une question concrète : que faut-il mieux relier dans cette organi",
-        "nl": "Mon point de départ est une question concrète : que faut-il mieux relier dans cette organisation pour améliorer de manière démontrable un flux de travail important ?",
-        "fr": "Mon point de départ est une question concrète : que faut-il mieux relier dans cette organisation pour améliorer de manière démontrable un flux de travail important ?"
-      },
-      {
-        "key": "f41e479032bee-0",
-        "type": "text",
-        "label": "La réponse révèle où l’IA peut apporter de la valeur et quelles décisions de direction son",
-        "nl": "La réponse révèle où l’IA peut apporter de la valeur et quelles décisions de direction sont nécessaires.",
-        "fr": "La réponse révèle où l’IA peut apporter de la valeur et quelles décisions de direction sont nécessaires."
-      },
-      {
-        "key": "fb23a70722a09-2",
-        "type": "text",
-        "label": "À propos de l’auteur",
-        "nl": "À propos de l’auteur",
-        "fr": "À propos de l’auteur"
-      },
-      {
-        "key": "ff2d2887857a5-5",
-        "type": "text",
-        "label": "Erlend Hollebosch",
-        "nl": "Erlend Hollebosch",
-        "fr": "Erlend Hollebosch"
-      },
-      {
-        "key": "fea6cdc84f331-2",
-        "type": "text",
-        "label": "Enterprise & AI Transformation Lead. Plus de 20 ans d’expérience en gestion de programmes,",
-        "nl": "Enterprise & AI Transformation Lead. Plus de 20 ans d’expérience en gestion de programmes, PMO, gouvernance et transformation.",
-        "fr": "Enterprise & AI Transformation Lead. Plus de 20 ans d’expérience en gestion de programmes, PMO, gouvernance et transformation."
-      },
-      {
-        "key": "f9f3bb374d291-2",
-        "type": "text",
-        "label": "Disponible dès maintenant en Belgique pour un poste fixe ou une mission de longue durée.",
-        "nl": "Disponible dès maintenant en Belgique pour un poste fixe ou une mission de longue durée.",
-        "fr": "Disponible dès maintenant en Belgique pour un poste fixe ou une mission de longue durée."
-      },
-      {
-        "key": "f8aad11c2624a-1",
-        "type": "text",
-        "label": "Why most companies still see no AI impact",
-        "nl": "Waarom de meeste bedrijven nog geen impact van AI zien",
-        "fr": "Pourquoi la plupart des entreprises ne voient pas encore l’impact de l’IA"
-      },
-      {
-        "key": "ff6d49079653c-0",
-        "type": "text",
-        "label": "In brief",
-        "nl": "In het kort",
-        "fr": "En bref"
-      },
-      {
-        "key": "f34adb6b51414-0",
-        "type": "text",
-        "label": "Almost every large organization now uses AI. Yet only about 6% attribute 5% or more of the",
-        "nl": "Bijna elke grote organisatie gebruikt vandaag AI. Toch schrijft slechts zo’n 6% er 5% of meer van de EBIT aan toe. De gangbare verklaring is dat de technologie nog niet rijp is. Meestal is dat niet het probleem.",
-        "fr": "Presque toutes les grandes organisations utilisent aujourd’hui l’IA. Pourtant, seules quelque 6 % lui attribuent 5 % ou plus de leur EBIT. On explique souvent que la technologie n’est pas encore mûre. Dans la plupart des cas, ce n’est pas le problème."
-      },
-      {
-        "key": "f45a4a5a0ff42-0",
-        "type": "text",
-        "label": "AI lands in an existing system. In many organizations, that system is fragmented: decision",
-        "nl": "AI landt in een bestaand systeem. In veel organisaties is dat systeem versnipperd: beslissingen wachten op meerdere comités, werk wisselt vaak van hand, en elk incident voegt een nieuwe controlelaag toe. Een copilot maakt individuele taken sneller, maar het dossier wacht nog altijd in dezelfde wachtrijen.",
-        "fr": "L’IA s’insère dans un système existant. Dans beaucoup d’organisations, ce système est fragmenté : les décisions passent par plusieurs comités, le travail change souvent de mains et chaque incident ajoute un niveau de contrôle. Un copilote accélère les tâches individuelles, mais le dossier attend toujours dans les mêmes files."
-      },
-      {
-        "key": "f8fd16bcf2384-0",
-        "type": "text",
-        "label": "Agents raise the stakes. They do not just assist, they act. In a coherent organization the",
-        "nl": "Agents verhogen de inzet. Ze helpen niet alleen, ze handelen. In een coherente organisatie versterken ze waarde. In een versnipperde organisatie versterken ze frictie, aan machinesnelheid.",
-        "fr": "Les agents font monter les enjeux. Ils n’assistent pas seulement, ils agissent. Dans une organisation cohérente, ils amplifient la valeur. Dans une organisation fragmentée, ils amplifient la friction, à la vitesse de la machine."
-      },
-      {
-        "key": "f170b6d3ec49e-0",
-        "type": "text",
-        "label": "The first question for an executive is therefore not which AI tool to buy. It is: where do",
-        "nl": "De eerste vraag voor een executive is dus niet welke AI-tool je koopt. Wel: waar verliest ons werk vandaag samenhang, en wat gebeurt er als we het versnellen?",
-        "fr": "La première question n’est donc pas : quel outil d’IA acheter ? Mais plutôt : où notre travail perd-il en cohérence aujourd’hui, et que se passera-t-il quand nous l’accélérerons ?"
-      },
-      {
-        "key": "f1126c049860d-0",
-        "type": "text",
-        "label": "About the author",
-        "nl": "Over de auteur",
-        "fr": "À propos de l’auteur"
-      },
-      {
-        "key": "f1d834988fc55-0",
-        "type": "text",
-        "label": "Enterprise & AI Transformation Lead. More than 20 years in programme management, PMO, gove",
-        "nl": "Enterprise & AI Transformation Lead. Meer dan 20 jaar ervaring in programmamanagement, PMO, governance en transformatie.",
-        "fr": "Enterprise & AI Transformation Lead. Plus de 20 ans d’expérience en gestion de programmes, PMO, gouvernance et transformation."
-      },
-      {
-        "key": "ffd8dd6e1f6f9-0",
-        "type": "text",
-        "label": "Available now in Belgium for a permanent role or a long-term assignment.",
-        "nl": "Nu beschikbaar in België voor een vaste functie of een langdurige opdracht.",
-        "fr": "Disponible dès maintenant en Belgique pour un poste fixe ou une mission de longue durée."
-      },
-      {
-        "key": "fb25e5d70d65a-1",
-        "type": "text",
-        "label": "Reduce friction before you accelerate",
-        "nl": "Verminder frictie vóór je versnelt",
-        "fr": "Réduisez la friction avant d’accélérer"
-      },
-      {
-        "key": "ff6d49079653c-1",
-        "type": "text",
-        "label": "In brief",
-        "nl": "In het kort",
-        "fr": "En bref"
-      },
-      {
-        "key": "fa4237c1db59d-0",
-        "type": "text",
-        "label": "Most AI business cases measure the time a task takes. But in most processes, the task itse",
-        "nl": "De meeste AI-businesscases meten hoe lang een taak duurt. Maar in de meeste processen is de taak zelf maar een klein deel van de doorlooptijd. De rest is wachten: op informatie, op een goedkeuring, op het volgende team.",
-        "fr": "La plupart des business cases IA mesurent la durée d’une tâche. Or, dans la plupart des processus, la tâche elle-même ne représente qu’une petite partie du délai. Le reste, c’est de l’attente : une information, une validation, l’équipe suivante."
-      },
-      {
-        "key": "f8462b04f653b-0",
-        "type": "text",
-        "label": "Before you add agents, measure four things for one process: how long a decision takes, how",
-        "nl": "Meet vóór je agents toevoegt vier dingen voor één proces: hoe lang een beslissing duurt, hoe vaak een dossier van hand wisselt, welk deel van de doorlooptijd puur wachten is, en hoeveel werk twee keer gebeurt.",
-        "fr": "Avant d’ajouter des agents, mesurez quatre choses pour un processus : la durée d’une décision, le nombre de fois où un dossier change de mains, la part du délai qui n’est que de l’attente, et la quantité de travail refait."
-      },
-      {
-        "key": "fd40e754c6c8b-0",
-        "type": "text",
-        "label": "Those numbers show where the value really sits. Remove a handoff, give one person ownershi",
-        "nl": "Die cijfers tonen waar de waarde echt zit. Schrap een overdracht, maak één persoon eigenaar van de hele flow, stem een goedkeuring af op het risico. Vaak verkort dat alleen al de doorlooptijd merkbaar, nog vóór er AI aan te pas komt.",
-        "fr": "Ces chiffres montrent où se trouve vraiment la valeur. Supprimez un transfert, confiez l’ensemble du flux à une seule personne, adaptez la validation au niveau de risque. Souvent, cela suffit à réduire nettement le délai, avant même que l’IA n’entre en jeu."
-      },
-      {
-        "key": "f87c0b94a6ef7-0",
-        "type": "text",
-        "label": "Then add agents to a process that is ready for speed. That is the difference between autom",
-        "nl": "Voeg daarna agents toe aan een proces dat klaar is voor snelheid. Dat is het verschil tussen het oude proces automatiseren en een beter proces ontwerpen.",
-        "fr": "Ajoutez ensuite des agents à un processus prêt pour la vitesse. C’est la différence entre automatiser l’ancien processus et en concevoir un meilleur."
-      },
-      {
-        "key": "f1126c049860d-1",
-        "type": "text",
-        "label": "About the author",
-        "nl": "Over de auteur",
-        "fr": "À propos de l’auteur"
-      },
-      {
-        "key": "f1d834988fc55-1",
-        "type": "text",
-        "label": "Enterprise & AI Transformation Lead. More than 20 years in programme management, PMO, gove",
-        "nl": "Enterprise & AI Transformation Lead. Meer dan 20 jaar ervaring in programmamanagement, PMO, governance en transformatie.",
-        "fr": "Enterprise & AI Transformation Lead. Plus de 20 ans d’expérience en gestion de programmes, PMO, gouvernance et transformation."
-      },
-      {
-        "key": "ffd8dd6e1f6f9-1",
-        "type": "text",
-        "label": "Available now in Belgium for a permanent role or a long-term assignment.",
-        "nl": "Nu beschikbaar in België voor een vaste functie of een langdurige opdracht.",
-        "fr": "Disponible dès maintenant en Belgique pour un poste fixe ou une mission de longue durée."
-      },
-      {
-        "key": "f2345262b80fc-1",
-        "type": "text",
-        "label": "Who decides when an agent acts?",
-        "nl": "Wie beslist als een agent handelt?",
-        "fr": "Qui décide quand un agent agit ?"
-      },
-      {
-        "key": "ff6d49079653c-2",
-        "type": "text",
-        "label": "In brief",
-        "nl": "In het kort",
-        "fr": "En bref"
-      },
-      {
-        "key": "fab6cf040cc6e-0",
-        "type": "text",
-        "label": "As soon as an agent can act on its own, a new question appears: who is accountable for wha",
-        "nl": "Zodra een agent zelfstandig kan handelen, duikt een nieuwe vraag op: wie is verantwoordelijk voor wat hij doet? Veel organisaties gaan ervan uit dat wie eigenaar is van het model ook eigenaar is van de beslissing. Dat is een gevaarlijke kortere weg.",
-        "fr": "Dès qu’un agent peut agir seul, une nouvelle question se pose : qui répond de ce qu’il fait ? Beaucoup d’organisations supposent que le responsable du modèle est aussi responsable de la décision. C’est un raccourci dangereux."
-      },
-      {
-        "key": "fbaa0fe824b1e-0",
-        "type": "text",
-        "label": "Settle five decision rights before an agent goes live: who approves its deployment, who mo",
-        "nl": "Leg vijf beslissingsrechten vast voor een agent live gaat: wie keurt de ingebruikname goed, wie bewaakt het gedrag, wie kan hem stilleggen, wie is eigenaar van de overdracht tussen teams, en wie is eindverantwoordelijk voor het bedrijfsresultaat.",
-        "fr": "Fixez cinq droits de décision avant la mise en service d’un agent : qui approuve son déploiement, qui surveille son comportement, qui peut l’arrêter, qui est responsable du transfert entre équipes, et qui répond du résultat métier."
-      },
-      {
-        "key": "f123d1d0f168c-0",
-        "type": "text",
-        "label": "The answers can differ by risk. Low-risk agents can act within clear boundaries. For criti",
-        "nl": "De antwoorden kunnen verschillen naargelang het risico. Agents met een laag risico kunnen handelen binnen duidelijke grenzen. Bij kritieke beslissingen adviseert de agent en beslist een mens.",
-        "fr": "Les réponses peuvent varier selon le risque. Les agents à faible risque peuvent agir dans un cadre clair. Pour les décisions critiques, l’agent recommande et une personne décide."
-      },
-      {
-        "key": "fc74cdbd3d767-0",
-        "type": "text",
-        "label": "One principle does not change: final accountability stays singular and human. Autonomy wor",
-        "nl": "Eén principe verandert niet: de eindverantwoordelijkheid blijft enkelvoudig en menselijk. Autonomie werkt als iedereen weet wie beslist.",
-        "fr": "Un principe ne change pas : la responsabilité finale reste unique et humaine. L’autonomie fonctionne quand chacun sait qui décide."
-      },
-      {
-        "key": "f1126c049860d-2",
-        "type": "text",
-        "label": "About the author",
-        "nl": "Over de auteur",
-        "fr": "À propos de l’auteur"
-      },
-      {
-        "key": "f1d834988fc55-2",
-        "type": "text",
-        "label": "Enterprise & AI Transformation Lead. More than 20 years in programme management, PMO, gove",
-        "nl": "Enterprise & AI Transformation Lead. Meer dan 20 jaar ervaring in programmamanagement, PMO, governance en transformatie.",
-        "fr": "Enterprise & AI Transformation Lead. Plus de 20 ans d’expérience en gestion de programmes, PMO, gouvernance et transformation."
-      },
-      {
-        "key": "ffd8dd6e1f6f9-2",
-        "type": "text",
-        "label": "Available now in Belgium for a permanent role or a long-term assignment.",
-        "nl": "Nu beschikbaar in België voor een vaste functie of een langdurige opdracht.",
-        "fr": "Disponible dès maintenant en Belgique pour un poste fixe ou une mission de longue durée."
-      },
-      {
-        "key": "f891cd25489dc-0",
-        "type": "media",
-        "label": "img/hero.jpg",
-        "nl": "img/hero.jpg",
-        "fr": "img/hero.jpg",
-        "src": "img/hero.jpg",
-        "alt": {
-          "nl": "",
-          "fr": ""
-        }
-      },
-      {
-        "key": "f5ba44939d944-0",
-        "type": "media",
-        "label": "img/author-400.webp",
-        "nl": "img/author-400.webp",
-        "fr": "img/author-400.webp",
-        "src": "img/author-400.webp",
-        "alt": {
-          "nl": "",
-          "fr": ""
-        }
-      },
-      {
-        "key": "f5ba44939d944-1",
-        "type": "media",
-        "label": "img/author-400.webp",
-        "nl": "img/author-400.webp",
-        "fr": "img/author-400.webp",
-        "src": "img/author-400.webp",
-        "alt": {
-          "nl": "",
-          "fr": ""
-        }
-      },
-      {
-        "key": "f5ba44939d944-2",
-        "type": "media",
-        "label": "img/author-400.webp",
-        "nl": "img/author-400.webp",
-        "fr": "img/author-400.webp",
-        "src": "img/author-400.webp",
-        "alt": {
-          "nl": "",
-          "fr": ""
-        }
-      },
-      {
-        "key": "f5ba44939d944-3",
-        "type": "media",
-        "label": "img/author-400.webp",
-        "nl": "img/author-400.webp",
-        "fr": "img/author-400.webp",
-        "src": "img/author-400.webp",
-        "alt": {
-          "nl": "",
-          "fr": ""
-        }
-      },
-      {
-        "key": "f5ba44939d944-4",
-        "type": "media",
-        "label": "img/author-400.webp",
-        "nl": "img/author-400.webp",
-        "fr": "img/author-400.webp",
-        "src": "img/author-400.webp",
-        "alt": {
-          "nl": "",
-          "fr": ""
-        }
-      },
-      {
-        "key": "f5ba44939d944-5",
-        "type": "media",
-        "label": "img/author-400.webp",
-        "nl": "img/author-400.webp",
-        "fr": "img/author-400.webp",
-        "src": "img/author-400.webp",
-        "alt": {
-          "nl": "",
-          "fr": ""
-        }
-      },
-      {
-        "key": "f5ba44939d944-6",
-        "type": "media",
-        "label": "img/author-400.webp",
-        "nl": "img/author-400.webp",
-        "fr": "img/author-400.webp",
-        "src": "img/author-400.webp",
-        "alt": {
-          "nl": "",
-          "fr": ""
-        }
-      },
-      {
-        "key": "f5ba44939d944-7",
-        "type": "media",
-        "label": "img/author-400.webp",
-        "nl": "img/author-400.webp",
-        "fr": "img/author-400.webp",
-        "src": "img/author-400.webp",
-        "alt": {
-          "nl": "",
-          "fr": ""
-        }
-      },
-      {
-        "key": "f5ba44939d944-8",
-        "type": "media",
-        "label": "img/author-400.webp",
-        "nl": "img/author-400.webp",
-        "fr": "img/author-400.webp",
-        "src": "img/author-400.webp",
-        "alt": {
-          "nl": "",
-          "fr": ""
-        }
+        "label": "Vertel ons waar het werk vandaag blijft liggen. In een eerste gesprek kijken we samen wat u terugwint.",
+        "nl": "Vertel ons waar het werk vandaag blijft liggen. In een eerste gesprek kijken we samen wat u terugwint.",
+        "fr": "Dites-nous où le travail reste bloqué aujourd’hui. Lors d’un premier entretien, nous regardons ensemble ce que vous récupérez."
       },
       {
         "key": "cms-video-insights",

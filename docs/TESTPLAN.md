@@ -1,5 +1,103 @@
 # Testplan en kwaliteitsbeleid
 
+## Orion-film en stappen van de homepage naar orion.html, 24 november 2026
+
+Beslissing van de eigenaar: "Zo werkt Orion" (vier stappen en film) verdwijnt van de homepage; de film staat op orion.html onder de vier stappen en de zin "Elk antwoord dat u goedkeurt, onthoudt Orion." De homepage houdt hero, vier toepassingskaarten, ervaring, piramide, kloof, vertrouwen en pilot. CMS: de negen stapvelden van de homepage zijn uit de catalogus; de groepen in de beheerpagina zijn hernummerd (28 velden). Het uitklapblok "Tekst in beeld" blijft bij de film als tekstalternatief.
+
+Tests: tests/orion-film.test.cjs en tests/browser/orion-film.spec.cjs lezen orion.html; tests/klantsite.test.cjs (sectievolgorde zonder #hoe, drie vertrouwenskaarten, geen film op de homepage) en tests/cms-client.test.cjs (groepen) aangepast. scripts/verify-production.cjs controleert na elke release de film op orion.html, de afwezigheid op de homepage, de vier kaarten en de mediabestanden (vervangt PR #106). Taalcontract opnieuw gegenereerd.
+
+## Magazine editie 1 als flipboek, 24 november 2026
+
+Beslissing van de eigenaar: de editie leest als een magazine waarvan de pagina's omslaan, zoals het vroegere Executive Journal (pdf, issue 02), niet als doorlopende webtekst. Uitvoering zonder externe dienst: acht pagina's op vier bladen in journal.html (omslag, vier delen, bronnen en colofon, volgende stap, achterkant), assets/flipboek.js voor het bladeren (knoppen, pijltjestoetsen, veeg), twee pagina's naast elkaar vanaf 761 px en één pagina eronder. Verborgen pagina's zijn inert. Teksten en vertalingen zijn dezelfde als in de vorige versie, met 35 nieuwe sleutels in assets/i18n-journal.js (kop- en voetregels, cijferkaarten, colofon, knoppen).
+
+Tests: tests/journal.test.cjs (acht pagina's, vier bladen, omslagtitel, knoppen, flipboek-script, elke regel vertaald) en tests/browser/journal.spec.cjs (bladeren met knoppen en toetsen op desktop en mobiel, teller, inert, geen tekst buiten een pagina, geen horizontale overloop). Het taalcontract language/nl-extraction.json is opnieuw gegenereerd (flipboek.js, i18n-journal.js, journal.html).
+
+## Magazine editie 1: Overtypen, de verspilling die niemand ziet, 24 november 2026
+
+GO van de eigenaar (14:23) op de concepttekst. De aankondiging op journal.html is vervangen door het volledige artikel in de vaste opbouw (verspilling, voorbeeld, aanpak, opbrengst) plus bronnen. Cijfers: 2,8 fouten per 100 velden (0,5 tot 6,4 per veld) uit Hong et al., BMJ Open 2013, en "enkele procenten" uit Mays en Mathias, JAMIA 2019; beide via de uitgeverspagina's nagelezen. Het rekenvoorbeeld (vijf retailers, 150 vragen, drie minuten) staat als illustratie gemarkeerd.
+
+De 32 vertaalsleutels van het artikel staan in assets/i18n-journal.js (zelfde patroon als i18n-insights.js), zodat i18n.js onder de gzip-grens van 65 000 bytes blijft (64 121 na de splitsing).
+
+Tests: tests/journal.test.cjs (vijf delen, vier stappen, drie meetrijen, beide DOI-links, illustratielabel, elke regel vertaald, budget) en tests/browser/journal.spec.cjs (artikel in NL en FR, geen horizontale overloop). Het taalcontract language/nl-extraction.json is opnieuw gegenereerd; het nam ook de wijzigingen van releases #104 en #105 mee, die zonder contractupdate gemerged waren.
+
+## Orion-film op de homepage, 24 november 2026
+
+Vraag van de eigenaar: onder "Zo werkt Orion" de Nederlandstalige film, en de Franstalige film (eigen voice-over) zodra de bezoeker in het Frans leest. Beide films zijn de aangeleverde 4K-bestanden (3840 x 2160, 35 seconden, ongeveer 3,6 MB elk), ongewijzigd behalve faststart. Ze starten enkel op klik (controls, preload none, geen autoplay), zoals de Coherence-film. De zeven tekstkaarten uit de film staan als tekstalternatief onder de speler, met de Franse bewoording uit de Franse editie.
+
+Tests:
+- tests/orion-film.test.cjs (nieuw): plaats onder de stappen, speler-attributen, beide edities benoemd, budgetten (5 MiB per film, 60 KiB per poster), zeven stappen, elke regel vertaald.
+- tests/browser/orion-film.spec.cjs (nieuw): bron en poster wisselen mee met de taal, er wordt niets gedownload voor de bezoeker op afspelen klikt (de taalwissel roept daarom geen load() aan op een onaangeroerde speler), afspelen na een wissel speelt de Franse editie, 16:9-kader.
+
+## Homepage: toepassingen, hero-video en vertrouwen, 24 november 2026
+
+Bron: overdracht van Erlend (OVERDRACHT.md, INHOUD.md, 4K-video en stilbeeld). Beslissingen van de eigenaar: vier toepassingskaarten direct onder de hero met Orion eerst, "Herkenbaar?" verdwijnt van de homepage (de kaarten nemen die rol over, de sterkste twee kaarten staan nu op orion.html bij "Dezelfde vragen, telkens opnieuw"), "Zo werkt Orion" blijft. Het vertrouwensblok belooft geen alleen-lezen toegang: dat wordt pas gepubliceerd als technische garantie na verificatie per koppeling. De Veiligheid-pagina blijft offline.
+
+Media: de 4K-master (16 MB, 16 Mbit/s) wordt niet gepubliceerd. Webvarianten: 1280 px (ongeveer 285 KB) voor schermen smaller dan 900 px en 1920 px (ongeveer 555 KB) daarboven, H.264 zonder geluid. Het stilbeeld volgt het bestaande 640/1280/1774-patroon in 2:1 en blijft het CMS-veld f7a4946dfd792-0. Bij minder beweging of databesparing laadt de video niet; anders is er een pauzeknop (WCAG 2.2.2).
+
+Tests:
+- tests/home-hero-video.test.cjs (nieuw): budgetten voor video en stilbeeld, geen 4K-bestand in de site, video-attributen (muted, loop, playsinline, preload none, geen autoplay of src in de HTML), pauzeknop, volgorde en doelen van de kaarten, systemen enkel als mogelijke bronnen, geen alleen-lezen belofte, verhuisde inhoud op orion.html.
+- tests/browser/home-hero-video.spec.cjs (nieuw): de juiste variant per schermbreedte, pauzeknop wisselt en bedekt de hoofdknop niet, minder beweging laadt geen video, kaarten in leesvolgorde en in het Frans.
+- Aangepast met reden: klantsite (goedgekeurde teksten, sectievolgorde met #toepassingen en zonder #herkenbaar, nieuw stilbeeld met object-position 50%, de hero-container mag de video na de picture bevatten), journal-editorial (bewijsstrook volgt nu de kaarten), cms-client (homepagegroepen: hero, toepassingen, ervaring, stappen, systemen en beslissingen, pilot, video), navigation-accessibility (nieuwe bestandsnaam van het stilbeeld). De oude foto hero-kwaliteit-productielijn is verwijderd omdat geen pagina ze nog gebruikt.
+
+Feedback eigenaar (24 november 2026, 10:00): het donkerblauw was te donker. De video en het stilbeeld zijn lichter gemaakt (gamma 1,35) en alleen de homepage krijgt een lichter verloop dat rechts openloopt; Orion en Workflow-automatisering houden hun eigen verloop. hero-photo-contrast bleef op alle breedtes boven 4,5:1 (een eerste, te lichte poging zakte op 1024 px naar 4,24 en is bijgestuurd).
+
+Keuze eigenaar (24 november 2026, 10:16): variant B in premiumversie. Homepage: verloop links 62 % in plaats van 80 % plus een zachte halo rond titel en ondertitel; afgesteld tot hero-photo-contrast op alle breedtes in NL en FR boven 4,5:1 bleef (de eerste B-versie zakte op 1024 px naar 4,12). Premium 4K-webvariant (4032 x 2048, ongeveer 3 MB) alleen voor schermen met minstens 2400 fysieke pixels breed op een snelle verbinding; budget 5 MiB in home-hero-video.test.cjs, browsertest met deviceScaleFactor 2.
+
+Beperking: Chromium in Playwright speelt geen H.264 af, dus het echte afspelen en de mobiele laadtijd worden op de Cloudflare-preview gecontroleerd.
+
+## Afspraakpagina, 23 november 2026
+
+Beslissing van de eigenaar: "Plan een pilotgesprek" opent geen mail meer maar afspraak.html. Stap 1: onderwerp kiezen (Algemene vraag, Vragenlijsten automatisch invullen met AI, Workflow-automatisering, Organisatieontwikkeling, Training), voorgeselecteerd via `?onderwerp=` vanaf de pagina waar de bezoeker vandaan komt. Stap 2: de gratis Google Agenda-boekingspagina (één schema van een uur) opent in een nieuw venster; de site laadt zelf niets van Google. Google mailt de klant en Erlend met datum, uur en de antwoorden. Geen adres gevraagd (dataminimalisatie). Privacybeleid versie 1.5 vermeldt de boekingsgegevens en Google Agenda.
+
+Beperking van de gratis versie: het onderwerp wordt niet automatisch doorgegeven; de klant vult het in Google opnieuw in bij "Onderwerp".
+
+Tests: nieuw tests/afspraak.test.cjs en tests/browser/afspraak.spec.cjs; de tests die een mail als gespreksknop verwachtten, verwachten nu de afspraaklink met het juiste onderwerp. Het abonnement op het Maandelijks Magazine en "Liever mailen?" blijven mailto-links.
+
+## Release 2: nieuw menu en pagina's voor kmo's, 23 november 2026
+
+Beslissingen van de eigenaar (23 november): één platte menubalk zonder uitklapmenu's (Home · Orion · Workflow-automatisering · Bedrijfsontwikkeling · Training · Maandelijks Magazine · Insights) met rechts de knop "Plan een pilotgesprek"; Over staat in de footer. Bedrijfsontwikkeling vervangt Coherentie (adres coherence.html blijft). Het Maandelijks Magazine vervangt het Executive Journal (eerst "Monthly Journal" genoemd; op vraag van de eigenaar hernoemd). Insights is herschreven voor kmo's.
+
+- Workflow-automatisering: volledige pagina met eigen mail (onderwerp "Workflow-automatisering") en het blok "Wat kmo's tegenhoudt" (Oldemeyer e.a. 2025).
+- Bedrijfsontwikkeling: blok "Van samenhang naar een adaptief bedrijf", mail met onderwerp "Bedrijfsontwikkeling", JSON-LD Service in plaats van de per vergissing gekopieerde Orion-gegevens.
+- Training (training.html, nieuw): drie trainingen, ter plaatse of online, prijs op aanvraag, eigen hero-afbeelding, OESO-cijfers.
+- Home: blok "Grote bedrijven werken al met AI" (Statbel 2025, OESO). Orion: blok "Orion bereidt voor. U beslist." (Dell'Acqua e.a., Organization Science 2025; de eerder voorgestelde bron Nassiri en El Mzabi was niet terug te vinden en is niet gebruikt).
+- Maandelijks Magazine (journal.html): nieuwe pagina, mail in plaats van HubSpot-formulieren; journal-fr.html is een doorverwijzing naar journal.html?lang=fr.
+- Insights: drie herschreven artikels in de u-vorm, zonder de werkgeversgerichte auteursbox. Oude ankers (#friction-first, #who-decides) verwijzen naar de nieuwe artikels. Vertalingen die alleen op Insights staan, zitten in assets/i18n-insights.js, zodat assets/i18n.js onder het gzip-budget van 65 000 bytes blijft.
+
+Tests: nieuw tests/release2.test.cjs; tests/journal.test.cjs, tests/browser/journal.spec.cjs, de Insights-tests en de navigatietests herschreven voor de nieuwe pagina's. Weg, met de inhoud die ze dekten: de Monthly Issue 01-fixture (journal-source-numbers.json), de Oplossingen-uitklaptests, de zes Insights-panelen en de Executive Journal-titeltest. Testregex voor redirect-links ontsnapt nu ook "?" en de doelcontrole negeert een querystring. Drempel in tests/cms-client.test.cjs: 427 bewerkbare CMS-velden (Insights heeft er 66 in plaats van 203); ondergrens van 550 naar 400. Deze wijziging vraagt expliciete goedkeuring van de eigenaar.
+
+## Coherentie voor kmo's, 23 november 2026
+
+coherence.html is herschreven voor zaakvoerders en directie van kmo's (goedgekeurde tekst, NL/FR met "vous"). De pagina bevat: hero "Sneller groeien begint bij samenhang." met de knoppen "Plan een gesprek" (mail met onderwerp "Coherentie") en "Ontdek uw coherentieprofiel" (eca.html), "Herkenbaar voor een groeiende kmo?", "Wat onderzoek laat zien" (drie cijfers met bron: Sull e.a. HBR 2015, McKinsey 2019, Federaal Planbureau 2024), "Wat coherentie is", de blauwe film met de titel "Geen AI-waarde zonder samenhang", "Zo pakken we het aan" (4 stappen), "Wat het u oplevert" en het contactblok `#contact`. De pagina gebruikt de klantfooter. Orion vermeldt in "Het probleem" het foutpercentage bij overtypen met twee peer-reviewed bronnen.
+
+Verwijderd van Coherentie: het onderzoeksblok, de boekthese en bronnen, de boekenverwijzingen, de ingesloten simulatie, de subnavigatie (Books, Value, Process, Operating model) en de volgende-paginalink naar Approach. coherence-sim.html, books.html, value.html, process.html en operating-model.html blijven gepubliceerd; de laatste vier staan in `retained` van tests/navigation-cases.json. De boeklink op Transformation gaat rechtstreeks naar Books.
+
+Tests: nieuw tests/coherentie.test.cjs. Aangepast aan de nieuwe pagina: filmpositie en titel, volgende-paginaroute, simulatortest (nu op coherence-sim.html), klantfooter, paginatitel, boek- en workshoproutes (via Insights en Value). De test van de 10/20/70-grafiek is weg samen met de grafiek. Drempel in tests/cms-client.test.cjs: het totaal aantal bewerkbare CMS-velden daalt van 605 naar 562 omdat Coherentie 33 velden heeft in plaats van 76; de ondergrens gaat van 600 naar 550. Deze wijziging vraagt expliciete goedkeuring van de eigenaar.
+
+## Release 1.1: pagina Over voor klanten, 22 november 2026
+
+about.html is herschreven voor klanten (goedgekeurde tekst, NL/FR met "vous"). Het portret is behouden. De pagina bevat een pilotknop, "Waarom Grow Faster", "Hoe ik werk" (3 stappen), "Wat ik meebreng", "Oplossingen" met de link "Alle oplossingen" en een contactblok (`#contact`, `tabindex="-1"`) met pilotgesprek en LinkedIn. Ze gebruikt de klantfooter.
+
+Verwijderd van About:
+- de twee boeken en de ingesloten books.css
+- de werkroutes "Work with me" met e-mailsjablonen voor werkgevers
+- het trackrecord en het blok met intellectuele fundamenten
+- de links naar transformation.html en de boeklezer
+
+Die pagina's blijven op hun URL bestaan. Links die naar verdwenen ankers op About wezen, zijn omgeleid:
+- de auteurskaders op Insights en Trackrecord → `about.html#contact`
+- de boeklink op Coherence → `books.html#the-coherent-enterprise`
+- de manuscriptlink in de lezer van The Coherent Enterprise → de e-bookbestelling op Books
+
+De About-sectie in de CMS-catalogus heeft nieuwe sleutels (`about-klant-*`; 20 velden). 30 vertalingen die alleen de oude About-inhoud dienden, zijn verwijderd. Het gzip-budget van 65 KB blijft groen.
+
+Tests:
+- Nieuw: `tests/over.test.cjs` dekt de goedgekeurde tekst met FR, de pilot- en contactacties zonder responstijdbelofte, de afwezigheid van boek- en trackrecordlinks, en de metadata.
+- Verplaatst: de e-mailsjabloontaalwissel naar de e-bookbestelling op Books, de lezerroute naar Books, de praktijkroute naar Insights en de boekthese-route naar Coherence → Books.
+- De werkroutetests zijn vervangen door een negatieve test (geen werkgeversroutes op About).
+- Lighthouse meet About ongewijzigd; de drempels zijn niet aangepast.
+- Fragmentlanding (Firefox-CI-fout op PR #94): de browser past het fragment toe terwijl `main` nog verborgen en onvertaald is, en laat zijn eigen (door `scroll-behavior:smooth` vloeiende) fragmentscroll tot het einde van het laden; in Firefox eindigde `books.html#the-coherent-enterprise` daardoor buiten beeld. `site.js` zet de pagina nu synchroon op het fragmentdoel direct na de eerste taaltoepassing (voor de onthulling verschijnt) en nogmaals na `load`, tenzij de bezoeker intussen zelf scrolde (wiel, aanraking, toets of aanwijzer). De nieuwe test `cross-page fragment landing shows its target ...` in `transformation.spec.cjs` houdt de pagina tussen vertaling en `load` vast (ux.js 1500 ms vertraagd) en meet eenmalig, zonder polling, dat het doel al in beeld is; zonder de fix faalt hij in Chromium desktop en mobiel (doel buiten beeld), met de fix slaagt hij. Een aparte test voor de bezoekersscroll is niet toegevoegd: Chromium voert bij `load` zelf nog een fragmentscroll uit na een toetsscroll, waardoor zo'n test de browser en niet de site zou meten. De bestaande test met `toBeInViewport()` is niet versoepeld.
+
 ## Klantsite sprint 1: Orion en nieuw menu, 22 november 2026
 
 De site spreekt alleen nog klanten aan (kmo's, eerst West-Vlaamse voedingsbedrijven). Het hoofdmenu op alle zeventien gewone pagina's bevat vier directe links zonder submenu's (Orion, Automatisering, Coherentie, Over) en één actie: Plan een pilotgesprek, een `mailto:` met onderwerp `Pilot Orion`. Executive Radar, Executive Journal, Trackrecord en Aanpak staan niet meer in het menu; hun URL's blijven werken en worden getest (`retained` in `navigation-cases.json`). De vroegere submenuroutes blijven bereikbaar via de topic-links op Coherence en Aanpak (`secondary`). Over opent about.html bovenaan; dat is de Contact-route.

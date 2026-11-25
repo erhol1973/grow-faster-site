@@ -12,12 +12,11 @@
  }
  const homeGroups=[
   {id:'hero',label:'Hero & introductie',from:0,to:2},
-  {id:'experience',label:'Ervaring',from:3,to:4},
-  {id:'problem',label:'Herkenbare problemen',from:5,to:11},
-  {id:'steps',label:'Zo werkt Orion',from:12,to:20},
-  {id:'trust',label:'Vertrouwelijkheid',from:21,to:22},
-  {id:'pilot',label:'Pilotgesprek',from:23,to:24},
-  {id:'video',label:'Video',from:25,to:25}
+  {id:'apps',label:'Toepassingen',from:3,to:14},
+  {id:'experience',label:'Ervaring',from:15,to:16},
+  {id:'trust',label:'Uw systemen en beslissingen',from:17,to:24},
+  {id:'pilot',label:'Pilotgesprek',from:25,to:26},
+  {id:'video',label:'Video',from:27,to:27}
  ];
  function fieldGroup(index,field){
   if(definition.page!=='home')return field.type==='media'?'media':'text';

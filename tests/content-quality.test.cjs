@@ -16,20 +16,23 @@ test('main pages carry a search title that matches <title>, og:title and is tran
   assert.equal(decode(h.match(/<meta property="og:title" content="([^"]+)"/)[1]),seo,`${f}: og:title differs`);
   assert.ok(seo.length<=70,`${f}: title too long for search results (${seo.length})`);
   // Customer pages (sprint 1) carry the Grow Faster brand; the existing author pages keep the author name.
-  assert.match(seo,['index.html','orion.html'].includes(f)?/\| Grow Faster$/:/Erlend Hollebosch/,f);
+  assert.match(seo,['index.html','orion.html','coherence.html','insights.html'].includes(f)?/\| Grow Faster$/:/Erlend Hollebosch/,f);
   const tr=I[seo];assert.ok(Array.isArray(tr)&&tr.slice(0,2).every(Boolean),`${f}: missing nl/fr translation for title`);}
 });
 test('structured data describes the author, the book and the site',()=>{
  const graph=f=>{const m=read(f).match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/);assert.ok(m,`${f}: no JSON-LD`);const j=JSON.parse(m[1]);assert.equal(j['@context'],'https://schema.org');return j['@graph'];};
  const about=graph('about.html'),home=graph('index.html');
  const person=about.find(x=>x['@type']==='Person');assert.equal(person.name,'Erlend Hollebosch');assert.match(person.sameAs[0],/^https:\/\/www\.linkedin\.com\/in\//);
- const book=about.find(x=>x['@type']==='Book');assert.equal(book.name,'The Coherent Enterprise');assert.equal(book.author['@id'],person['@id']);
+ // Release 1.1: About describes the founder of Grow Faster; the book's structured data lives on Books.
+ assert.equal(person.jobTitle,'Oprichter van Grow Faster');assert.equal(person.worksFor.name,'Grow Faster');assert.ok(about.some(x=>x['@type']==='AboutPage'));
+ const book=graph('books.html').find(x=>x['@type']==='Book'&&x.name==='The Coherent Enterprise');assert.ok(book,'Books keeps the book structured data');
  assert.ok(home.some(x=>x['@type']==='WebSite'&&x.url==='https://grow-faster.be/'));
 });
 test('fixed language errors do not return',()=>{const all=['assets/i18n.js','assets/content.js','assets/ux.js','assets/site.js',...main].map(read).join('\n');
  for(const bad of ['Waar zet u ','Vul uw eigen','van uw invoer','Beoordeel uw gereedheid','Ontwikkel coherence','gesprek over coherence','Transformatie roadmap','projectmanager en PMO lead','strategische capability','machinale capabilities','buitensporige waarde','vuurtorenproject','de volgende strategisch','L’IA amplifie le système où elle est déployée','futur workflow','in das sie kommt','Copiloten','Dimensions de cohérence:','coherencediagnose'])
   assert.ok(!all.includes(bad),`regression: "${bad}" is back`);
- assert.equal((read('coherence.html').match(/laggards \(1×\)/g)||[]).length,0,'the removed English block must not return');assert.doesNotMatch(read('coherence.html'),/class="lgx" lang="en"/,'no English language block');for(const w of ['achterblijvers (1×)','retardataires (1×)'])assert.ok(read('coherence.html').includes(w),w);
+ assert.equal((read('coherence.html').match(/laggards \(1×\)/g)||[]).length,0,'the removed English block must not return');assert.doesNotMatch(read('coherence.html'),/class="lgx" lang="en"/,'no English language block');// Coherence for kmo's (23 Nov 2026): the research block with these labels left the page with the approved text.
+ assert.doesNotMatch(read('coherence.html'),/class="lgx"/,'no research language blocks');
  const I=dict();assert.match(I['How I work'][1],/façon/);
  assert.match(read('assets/site.js'),/\$\{t\("Start here"\)\}\$\{document\.documentElement\.lang==="fr"\?"\\u00a0":""\}:/,'French colon needs a non-breaking space');
 });

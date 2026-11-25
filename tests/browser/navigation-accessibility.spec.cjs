@@ -1,10 +1,9 @@
 const {test,expect}=require('playwright/test');const AxeBuilder=require('@axe-core/playwright').default;
-// Sprint 1 v2 (22 Nov 2026): the open menu with the expanded Oplossingen group is scanned on Home and on a child page with a current item.
+// Release 2 (23 Nov 2026): the flat menu (no dropdowns) is scanned on Home and on a page with a current item.
 for(const lang of ['nl','fr'])test('expanded navigation has accessible labels, contrast and targets in '+lang,async({page},info)=>{
  await page.addInitScript(l=>{localStorage.setItem('avs-lang',l);localStorage.setItem('avs-consent',JSON.stringify({v:4,ext:false,ana:false,ts:Date.now()}))},lang);
  for(const route of ['index.html','orion.html']){
   await page.goto('/'+route);if(await page.locator('#burger').isVisible())await page.locator('#burger').click();await expect(page.locator('#navlist .nav-work')).toBeVisible();
-  await page.locator('[aria-controls="nav-oplossingen"]').click();await expect(page.locator('#nav-oplossingen')).toBeVisible();
   const targets=await page.locator('#navlist a').evaluateAll(links=>links.map(a=>{const r=a.getBoundingClientRect();return Math.min(r.width,r.height)}));for(const size of targets)expect(size).toBeGreaterThanOrEqual(24);
   const result=await new AxeBuilder({page}).include('.nav').withTags(['wcag2a','wcag2aa','wcag21a','wcag21aa','wcag22aa']).analyze();await info.attach(route+'-'+lang,{body:JSON.stringify(result,null,2),contentType:'application/json'});expect(result.violations.map(v=>({id:v.id,nodes:v.nodes.map(n=>n.target)}))).toEqual([]);
  }
@@ -42,15 +41,15 @@ test('header logo variants load at low priority and reuse native loaded images a
  await expect(onDark).toBeHidden();expect(requests.filter(file=>file==='/img/grow-faster-logo-light.svg')).toHaveLength(1);
 });
 
-// Sprint 1 v3: the homepage hero is now the quality-manager photo at the production line (same 640/1280/1774 pattern).
+// 24 Nov 2026: the homepage hero is the four-team still (food quality, maintenance, administration, logistics), same 640/1280/1774 pattern; the video loads on top.
 test('home responsive hero preload fetches the selected WebP once from the document head',async({page},info)=>{
  await page.setViewportSize({width:info.project.use.isMobile?390:1440,height:900});
- const requests=[];page.on('request',request=>{if(/\/img\/hero-kwaliteit-productielijn-\d+\.webp$/.test(new URL(request.url()).pathname))requests.push(request.url())});
+ const requests=[];page.on('request',request=>{if(/\/img\/hero-toepassingen-\d+\.webp$/.test(new URL(request.url()).pathname))requests.push(request.url())});
  await page.addInitScript(()=>{localStorage.setItem('avs-lang','nl');localStorage.setItem('avs-consent',JSON.stringify({v:4,ext:false,ana:false,ts:Date.now()}))});await page.goto('/index.html');
  const image=page.locator('#hero .hero-bg picture img'),source=page.locator('#hero .hero-bg picture source'),preload=page.locator('head link[rel=preload][as=image]');
  await expect(preload).toHaveCount(1);await expect(preload).toHaveAttribute('type','image/webp');await expect(preload).toHaveAttribute('fetchpriority','high');await expect(preload).toHaveAttribute('imagesrcset',await source.getAttribute('srcset'));await expect(preload).toHaveAttribute('imagesizes',await source.getAttribute('sizes'));
  await expect.poll(()=>image.evaluate(e=>e.complete&&e.naturalWidth>0)).toBe(true);
  const result=await image.evaluate(e=>({currentSrc:e.currentSrc,pixels:innerWidth*devicePixelRatio,entries:performance.getEntriesByName(e.currentSrc).map(x=>({initiatorType:x.initiatorType,transferSize:x.transferSize}))}));
- const candidate=[640,1280,1774].find(width=>width>=result.pixels)||1774;expect(new URL(result.currentSrc).pathname).toBe('/img/hero-kwaliteit-productielijn-'+candidate+'.webp');
+ const candidate=[640,1280,1774].find(width=>width>=result.pixels)||1774;expect(new URL(result.currentSrc).pathname).toBe('/img/hero-toepassingen-'+candidate+'.webp');
  expect(requests).toEqual([result.currentSrc]);expect(result.entries).toHaveLength(1);expect(result.entries[0].initiatorType).toBe('link');
 });

@@ -1,128 +1,62 @@
 const {test,expect}=require('playwright/test');
+// Release 2 (23 Nov 2026, owner decision): the Maandelijks Magazine for kmo's replaces the Executive Journal reader (Monthly Issue 01,
+// page navigation and HubSpot subscription). Coverage moves to the new page, its menu item, language switch and old French address.
+test.beforeEach(async({page})=>{await page.addInitScript(()=>{localStorage.setItem('avs-lang','nl');localStorage.setItem('avs-consent',JSON.stringify({v:4,ext:false,ana:false,ts:Date.now()}))})});
+test('Maandelijks Magazine opens from the menu and switches language without losing the page',async({page},info)=>{
+ await page.goto('/index.html');if(await page.locator('#burger').isVisible())await page.locator('#burger').click();
+ await page.locator('#navlist a.l[href="journal.html"]').click();await expect(page).toHaveURL(/\/journal\.html$/);
+ await expect(page.locator('h1')).toHaveText('Grow Faster Magazine');await expect(page.locator('#navlist a.l[href="journal.html"]')).toHaveAttribute('aria-current','page');
+ await expect(page.locator('#editie-1 h2')).toHaveText('Overtypen, de verspilling die niemand ziet');
+ await page.locator('#lang-btn-top').click();await page.locator('.lang-top [data-lang="fr"]').click();
+ await expect(page.locator('html')).toHaveAttribute('lang','fr');await expect(page).toHaveURL(/\/journal\.html$/);
+ await expect(page.locator('#editie-1 h2')).toHaveText('La ressaisie, le gaspillage que personne ne voit');
+ await expect(page.locator('#hero-abo')).toHaveAttribute('href','mailto:info@grow-faster.be?subject=Magazine');
+ await expect(page.locator('main form')).toHaveCount(0);
+ expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1)).toBe(true);
+});
+test('the old French Executive Journal address lands on the Maandelijks Magazine in French',async({page})=>{
+ await page.goto('/journal-fr.html');await expect(page).toHaveURL(/\/journal\.html\?lang=fr$/);await expect(page.locator('html')).toHaveAttribute('lang','fr');
+ await expect(page.locator('h1')).toHaveText('Grow Faster Magazine');
+});
 
-// Sprint 1 (22 Nov 2026): Executive Journal left the customer menu; the published Insights page still opens the monthly issue.
-test('monthly journal opens from Insights and preserves page when switching language',async({page})=>{
- await page.addInitScript(()=>{localStorage.setItem('avs-lang','nl');localStorage.setItem('avs-consent',JSON.stringify({v:4,ext:false,ana:false,ts:Date.now()}))});
- await page.goto('/insights.html');
- await expect(page.locator('#navlist a[href="insights.html"]')).toHaveCount(0);
- await page.getByRole('link',{name:'Lees editie 01'}).click();
- await expect(page.locator('html')).toHaveAttribute('lang','nl');
- await expect(page.locator('.sheet:visible')).toHaveAttribute('id','p1');
- await page.getByRole('button',{name:/Volgende/}).click();
- await expect(page.locator('.sheet:visible')).toHaveAttribute('id','p2');
- await page.getByRole('link',{name:'Français'}).click();
- await expect(page.locator('html')).toHaveAttribute('lang','fr');
- await expect(page.locator('.sheet:visible')).toHaveAttribute('id','p2');
- await page.keyboard.press('ArrowRight');
- await expect(page.locator('.sheet:visible')).toHaveAttribute('id','p3');
- await page.locator('#p3 a[href="#source-1"]').first().click();
- await expect(page.locator('.sheet:visible')).toHaveAttribute('id','p15');
- await expect(page.getByRole('button',{name:/Suivante/})).toBeDisabled();
- await page.getByRole('button',{name:/Précédente/}).click();
- await expect(page.locator('#p14 figure img')).toBeVisible();
+// Edition 1 (24 Nov 2026): the full article renders in both languages, including the keys loaded from i18n-journal.js.
+test('edition 1 reads in Dutch and French, table and sources included, without horizontal overflow',async({page})=>{
+ await page.goto('/journal.html');
+ await expect(page.locator('#editie-1 .editie h3')).toHaveText(['Overtypen, de verspilling die niemand ziet','De verspilling','Eén voorbeeld','De aanpak','Wat het oplevert','Bronnen','Colofon','Herkent u deze verspilling?','December 2026']);
+ await expect(page.locator('#editie-1 .editie-stappen li')).toHaveCount(4);
+ await expect(page.locator('#editie-1 .editie-tabel tbody tr')).toHaveCount(3);
+ await expect(page.locator('#editie-1 .editie-bronnen a').first()).toHaveAttribute('href','https://doi.org/10.1136/bmjopen-2012-002406');
+ expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1)).toBe(true);
+ await page.locator('#lang-btn-top').click();await page.locator('.lang-top [data-lang="fr"]').click();
+ await expect(page.locator('#editie-1 .editie h3')).toHaveText(['La ressaisie, le gaspillage que personne ne voit','Le gaspillage','Un exemple','L’approche','Ce que cela rapporte','Sources','Colophon','Reconnaissez-vous ce gaspillage ?','Décembre 2026']);
+ await expect(page.locator('#editie-1 .editie-stappen strong').first()).toHaveText('Comptez d’abord.');
+ await expect(page.locator('#editie-1 .editie-tabel th').first()).toHaveText('Ce que vous mesurez');
+ await expect(page.locator('#editie-1 .eyebrow')).toHaveText('Première édition, novembre 2026');
  expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1)).toBe(true);
 });
 
-
-
-test('reader keeps controls and subscription visible around a landscape page',async({page})=>{
- for(const viewport of [{width:1366,height:900},{width:390,height:844}]){
-  await page.setViewportSize(viewport);
-  for(const route of ['/journal.html','/journal-fr.html']){
-   await page.goto(route);
-   await expect(page.locator('.toolbar')).toBeVisible();
-   await expect.poll(async()=>{
-    const box=await page.locator('#p1').boundingBox();
-    return Math.abs(box.width/box.height-297/210);
-   }).toBeLessThan(.01);
-   for(const target of ['#p1','#p2','#p14','#p15']){
-    await page.goto(route+target);
-    await expect(page.locator(target)).toBeVisible();
-    for(const selector of ['.toolbar','.reader-links','.signup']){
-     await expect(page.locator(selector)).toBeInViewport({ratio:1});
-    }
-    const sheet=await page.locator(target).boundingBox();
-    const footer=await page.locator('.signup').boundingBox();
-    expect(sheet.y+sheet.height).toBeLessThanOrEqual(footer.y+1);
-   }
-   await page.locator('[data-zoom]').click();
-   await expect(page.locator('[data-zoom]')).toHaveAttribute('aria-pressed','true');
-   await expect(page.locator('.toolbar')).toBeInViewport({ratio:1});
-   await expect(page.locator('.signup')).toBeInViewport({ratio:1});
-  }
- }
-});
-test('complete Dutch and French editions fit every landscape sheet without truncation',async({page})=>{
- await page.setViewportSize({width:1366,height:900});
- for(const route of ['/journal.html','/journal-fr.html']){
-  await page.goto(route);
-  for(let n=1;n<=15;n++){
-   await page.evaluate(index=>{location.hash='p'+index},n);
-   const sheet=page.locator('#p'+n);
-   await expect(sheet).toBeVisible();
-   const layout=await sheet.evaluate(e=>{
-    const footer=e.querySelector('.paper-footer');
-    const content=footer.previousElementSibling;
-    return {overflow:e.scrollHeight-e.clientHeight,overlap:content.getBoundingClientRect().bottom-footer.getBoundingClientRect().top};
-   });
-   expect(layout.overflow,route+' page '+n+' overflows').toBeLessThanOrEqual(1);
-   expect(layout.overlap,route+' page '+n+' overlaps its footer').toBeLessThanOrEqual(1);
-  }
- }
-});
-
-test('cover chart retains source colours, common year scale and editorial reading order',async({page})=>{
- for(const route of ['/journal.html','/journal-fr.html']){
-  await page.goto(route);
-  const chart=page.locator('.timeline-plot');
-  const result=await chart.evaluate(e=>{
-   const colour=s=>getComputedStyle(e.querySelector(s)).backgroundColor;
-   const plot=e.getBoundingClientRect(), marker=e.querySelector('.departure-marker').getBoundingClientRect();
-   return {grace:colour('.grace'),window:colour('.ceo-window'),stages:[...e.querySelectorAll('.stages>span')].map(s=>getComputedStyle(s).backgroundColor),position:(marker.left-plot.left)/plot.width,graceWidth:e.querySelector('.grace').getBoundingClientRect().width/plot.width,tenureWidth:e.querySelector('.ceo-window').getBoundingClientRect().right-plot.left};
-  });
-  expect(result.grace).toBe('rgb(248, 187, 64)');
-  expect(result.window).toBe('rgb(232, 242, 252)');
-  expect(new Set(result.stages).size).toBe(4);
-  expect(result.position).toBeCloseTo(.71,2);
-  expect(result.graceWidth).toBeCloseTo(.20,2);
-  await page.goto(route+'#p2');
-  const order=await page.locator('#p2 .paper-content').evaluate(e=>[...e.children].slice(1,4).map(x=>x.className||x.tagName));
-  expect(order).toEqual(['deck','byline','H2']);
- }
-});
-
-test('journal promotion follows selected language and return link restores it',async({page})=>{
- await page.addInitScript(()=>{localStorage.setItem('avs-consent',JSON.stringify({v:4,ext:false,ana:false,ts:Date.now()}))});
- for(const [lang,title,cta,route] of [['nl','De Maandelijkse Executive Journal','Lees editie 01','journal.html'],['fr','Le Journal Exécutif Mensuel','Lire le numéro 01','journal-fr.html']]){
-  await page.goto('/insights.html?lang='+lang+'#executive-journal');
-  const promo=page.locator('#executive-journal');
-  await expect(promo.getByText(title,{exact:true})).toBeVisible();
-  await expect(promo.locator('[data-article-lang]:visible')).toHaveCount(1);
-  await expect(promo.locator('a:visible')).toHaveCount(1);
-  await promo.getByRole('link',{name:cta}).click();
-  await expect(page).toHaveURL(new RegExp(route+'$'));
-  await page.locator('.return-link').click();
-  await expect(page).toHaveURL(new RegExp('insights.html\\?lang='+lang+'#executive-journal$'));
-  await expect(promo.getByText(title,{exact:true})).toBeInViewport();
- }
-});
-
-test('side arrows frame the page and text magnification stays usable',async({page})=>{
- for(const viewport of [{width:1366,height:900},{width:390,height:844}]){
-  await page.setViewportSize(viewport);
-  await page.goto('/journal.html#p2');
-  const prev=page.locator('[data-prev]'),next=page.locator('[data-next]');
-  await expect(prev).toBeInViewport({ratio:1});await expect(next).toBeInViewport({ratio:1});
-  const left=await prev.boundingBox(),right=await next.boundingBox(),paper=await page.locator('#p2').boundingBox();
-  expect(left.x+left.width).toBeLessThanOrEqual(paper.x+1);
-  expect(right.x).toBeGreaterThanOrEqual(paper.x+paper.width-1);
-  const before=await page.locator('#p2 .deck').boundingBox();
-  await page.locator('[data-bigger]').click();await page.locator('[data-bigger]').click();
-  const after=await page.locator('#p2 .deck').boundingBox();
-  expect(after.height).toBeGreaterThan(before.height);
-  await expect(page.locator('.return-link')).toBeInViewport({ratio:1});
-  await expect(page.locator('.signup')).toBeInViewport({ratio:1});
-  await next.click();await expect(page.locator('#p3')).toBeVisible();
-  await page.locator('[data-zoom]').click();await expect(page.locator('[data-zoom]')).toHaveAttribute('aria-pressed','false');
- }
+// Flipboek (24 Nov 2026, owner request): the edition reads as a magazine with pages that turn, two pages side by side on a wide
+// screen and one page on a phone. Pages that are not shown are inert, so links on them cannot take keyboard focus.
+test('edition 1 turns its pages with the buttons and the arrow keys, and every page fits its sheet',async({page},info)=>{
+ await page.goto('/journal.html');
+ const nr=page.locator('#fb-nr'),mobile=info.project.name.startsWith('mobile');
+ await expect(nr).toHaveText('1 / 8');
+ await expect(page.locator('#fb-vorige')).toBeDisabled();
+ await expect(page.locator('[data-pagina="1"] .fb-titel')).toBeVisible();
+ await page.locator('#fb-volgende').click();
+ await expect(nr).toHaveText(mobile?'2 / 8':'2 - 3 / 8');
+ await expect(page.locator('[data-pagina="2"] h3')).toBeVisible();
+ await expect(page.locator('[data-pagina="7"]')).toHaveAttribute('inert','');
+ await page.locator('#fb-volgende').focus();await page.keyboard.press('ArrowRight');
+ await expect(nr).toHaveText(mobile?'3 / 8':'4 - 5 / 8');
+ await page.keyboard.press('ArrowLeft');
+ await expect(nr).toHaveText(mobile?'2 / 8':'2 - 3 / 8');
+ for(let i=0;i<8;i++)await page.locator('#fb-volgende').click({force:true}).catch(()=>{});
+ await expect(nr).toHaveText('8 / 8');
+ await expect(page.locator('#fb-volgende')).toBeDisabled();
+ await expect(page.locator('[data-pagina="8"] .fb-titel')).toHaveText('December 2026');
+ // No page may need to scroll: text that falls off a sheet is unreadable.
+ const overflow=await page.evaluate(()=>[...document.querySelectorAll('.fb-pagina')].map(p=>{const r=p.getBoundingClientRect();let max=0;for(const e of p.querySelectorAll('h3,p,li,td,th,a'))max=Math.max(max,e.getBoundingClientRect().bottom-r.bottom);return p.dataset.pagina+':'+Math.round(max)}).filter(s=>+s.split(':')[1]>0));
+ expect(overflow).toEqual([]);
+ expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1)).toBe(true);
 });

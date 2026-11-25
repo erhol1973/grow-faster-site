@@ -1,6 +1,7 @@
 const {test,expect}=require('playwright/test');
 test.beforeEach(async({page})=>{await page.addInitScript(()=>localStorage.setItem('avs-consent',JSON.stringify({v:4,ext:false,ana:false,ts:Date.now()}))) });
-test('Coherence implicit route scrolling settles before pointer activation',async({page})=>{await page.goto('/coherence.html?lang=fr');await expect(page.locator('html')).toHaveAttribute('lang','fr');const visible=await page.locator('.next-pg a').evaluate(el=>{el.scrollIntoView({block:'center'});const r=el.getBoundingClientRect();return r.top>=0&&r.bottom<=innerHeight});expect(visible).toBe(true);await page.locator('.next-pg a').click();await expect(page).toHaveURL(/\/approach\.html$/);});
+// Coherence for kmo's (23 Nov 2026): coherence.html ends with its own call to action instead of a next-page link.
+test('Coherence ends with the conversation call to action and no next-page link',async({page})=>{await page.goto('/coherence.html?lang=fr');await expect(page.locator('html')).toHaveAttribute('lang','fr');await expect(page.locator('.next-pg')).toHaveCount(0);await expect(page.locator('#contact-gesprek')).toHaveAttribute('href','afspraak.html?onderwerp=organisatie');});
 for(const lang of ['nl','fr']){
  test(`left alignment and requested next-page route (${lang})`,async({page})=>{
   for(const route of ['transformation.html','operating-model.html','eca.html']){
@@ -9,7 +10,8 @@ for(const lang of ['nl','fr']){
   }
   // Sprint 1: the customer homepage ends with the pilot call to action; the remaining three next-page steps stay covered.
   await page.goto('/index.html?lang='+lang);await expect(page.locator('.next-pg')).toHaveCount(0);
-  for(const [route,dest]of Object.entries({'insights.html':'coherence.html','coherence.html':'approach.html','approach.html':'about.html'})){await page.goto('/'+route+'?lang='+lang);await expect(page.locator('html')).toHaveAttribute('lang',lang);await expect(page.locator('.next-pg a')).toHaveAttribute('href',dest);await page.locator('.next-pg a').click();await expect(page).toHaveURL(new RegExp('/'+dest.replace('.','\\.')+'$'))}
+  // Release 2: Insights ends with its own contact block instead of a next-page link.
+  for(const [route,dest]of Object.entries({'approach.html':'about.html'})){await page.goto('/'+route+'?lang='+lang);await expect(page.locator('html')).toHaveAttribute('lang',lang);await expect(page.locator('.next-pg a')).toHaveAttribute('href',dest);await page.locator('.next-pg a').click();await expect(page).toHaveURL(new RegExp('/'+dest.replace('.','\\.')+'$'))}
  });
 }
 
@@ -27,7 +29,7 @@ for(const [lang,src,poster,summary] of [['nl','media/enterprise-coherence-essent
 test('Enterprise Coherence film switches edition with the language without reloading the page',async({page})=>{
  await page.goto('/coherence.html?lang=nl');const video=page.locator('#home-film video');await expect(video.locator('source')).toHaveAttribute('src','media/enterprise-coherence-essentie-nl.mp4');
  await page.locator('#lang-btn-top').click();await page.locator('.lang-top [data-lang="fr"]').click();await expect(page.locator('html')).toHaveAttribute('lang','fr');
- await expect(video.locator('source')).toHaveAttribute('src','media/enterprise-coherence-essentie-fr.mp4');await expect(video).toHaveAttribute('poster','img/enterprise-coherence-essentie-fr.webp');await expect(page.locator('#ec-film-h')).toHaveText('Pas de valeur business de l’IA sans Enterprise Coherence');
+ await expect(video.locator('source')).toHaveAttribute('src','media/enterprise-coherence-essentie-fr.mp4');await expect(video).toHaveAttribute('poster','img/enterprise-coherence-essentie-fr.webp');await expect(page.locator('#ec-film-h')).toHaveText('Pas de valeur de l’IA sans cohérence');
 });
 for(const [lang,label] of [['nl','Bekijk de film'],['fr','Voir le film']])test(`workshop and ECA film links open the essentie film in ${lang}`,async({page})=>{
  for(const route of ['workshop.html','eca.html']){await page.goto('/'+route+'?lang='+lang);const link=page.locator('[data-film-link]');await expect(link).toHaveText(label);await expect(link).toHaveAttribute('href','coherence.html?lang='+lang+'#ec-film');

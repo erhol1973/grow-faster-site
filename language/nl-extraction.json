@@ -3,7 +3,7 @@
   "scope": "rendered_local_nl_runtime_dictionaries_static_cms_and_mail",
   "technicalReview": {
     "date": "2026-11-25",
-    "reason": "Homepage herwerkt (opdracht sponsor 25 november): nieuwe blokken Terugkerend werk en Zo starten we, rijkere toepassingskaarten; nieuwe runtime-dictionary assets/i18n-home.js (zelfde patroon als i18n-journal.js, alleen op index.html); assets/cms-catalog.js gesynchroniseerd met index.html; assets/cms-admin.js met nieuwe homepagegroepen. Geen adapterwijziging. Eerdere reden: Orion-film en de vier stappen van Zo werkt Orion verhuisd van index.html naar orion.html (eigenaarsbeslissing 24 november): rendered DOM van beide pagina’s en inline JSON-LD ongewijzigd in betekenis; assets/cms-catalog.js zonder de negen stapvelden; assets/cms-admin.js met hernummerde groepen. Geen adapterwijziging. Eerdere reden: Magazine editie 1 als flipboek op journal.html: nieuw script assets/flipboek.js (bladert door acht pagina’s; bevat enkel paginanummers, geen tekst), uitgebreide runtime-dictionary assets/i18n-journal.…"
+    "reason": "Homepage herwerkt (opdracht sponsor 25 november): nieuwe blokken Terugkerend werk en Zo starten we, rijkere toepassingskaarten; nieuwe runtime-dictionary assets/i18n-home.js (zelfde patroon als i18n-journal.js, alleen op index.html); assets/cms-catalog.js gesynchroniseerd met index.html; assets/cms-admin.js met nieuwe homepagegroepen. Inline-vingerafdruk van index.html bijgewerkt (extra scripttag voor i18n-home.js; JSON-LD ongewijzigd). Geen adapterwijziging. Eerdere reden: Orion-film en de vier stappen van Zo werkt Orion verhuisd van index.html naar orion.html (eigenaarsbeslissing 24 november): rendered DOM van beide pagina’s en inline JSON-LD ongewijzigd in betekenis; assets/cms-catalog.js zonder de negen stapvelden; assets/cms-admin.js met hernummerde groepen. Geen adapterwijziging. Eerdere reden: Magazine editie 1 als flipboek op journal.html: nieuw script assets/flipboek.js (bladert door acht pagina’s; bevat enkel paginanummers, geen tekst), uitgebreide runtime-dictionary assets/i18n-journal.…"
   },
   "javascript": [
     {
@@ -218,7 +218,7 @@
     },
     {
       "file": "index.html",
-      "sha256": "32bc212980df42143010b5a6d4bd6eaeb0ab40aa2dccfb5acec21513e3ad44e4"
+      "sha256": "520d589042e777ba0f49ac51c72c633461aa39ec8205dee896ec5fad13ac7316"
     },
     {
       "file": "insights-ai-pilot.html",

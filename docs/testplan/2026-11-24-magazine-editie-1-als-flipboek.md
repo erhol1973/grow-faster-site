@@ -1,0 +1,5 @@
+## Magazine editie 1 als flipboek, 24 november 2026
+
+Beslissing van de eigenaar: de editie leest als een magazine waarvan de pagina's omslaan, zoals het vroegere Executive Journal (pdf, issue 02), niet als doorlopende webtekst. Uitvoering zonder externe dienst: acht pagina's op vier bladen in journal.html (omslag, vier delen, bronnen en colofon, volgende stap, achterkant), assets/flipboek.js voor het bladeren (knoppen, pijltjestoetsen, veeg), twee pagina's naast elkaar vanaf 761 px en één pagina eronder. Verborgen pagina's zijn inert. Teksten en vertalingen zijn dezelfde als in de vorige versie, met 35 nieuwe sleutels in assets/i18n-journal.js (kop- en voetregels, cijferkaarten, colofon, knoppen).
+
+Tests: tests/journal.test.cjs (acht pagina's, vier bladen, omslagtitel, knoppen, flipboek-script, elke regel vertaald) en tests/browser/journal.spec.cjs (bladeren met knoppen en toetsen op desktop en mobiel, teller, inert, geen tekst buiten een pagina, geen horizontale overloop). Het taalcontract language/nl-extraction.json is opnieuw gegenereerd (flipboek.js, i18n-journal.js, journal.html).

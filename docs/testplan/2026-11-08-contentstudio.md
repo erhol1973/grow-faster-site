@@ -1,0 +1,5 @@
+## Contentstudio, 8 november 2026
+
+Het CMS voegt afzonderlijke concepten en gepubliceerde snapshots toe aan de bestaande Supabase-structuur. De blijvende clienttests controleren sessies, beheerderscontrole, revisieconflicten en uploads. PostgreSQL-tests voeren de werkelijke migratie en RLS uit met nagebootste Supabase Auth-claims en Storage-metadata: geen conceptlek, geen zelfpromotie, geen publicatie door gewone gebruikers, behoud van de vorige publicatie en onveranderlijke uploadpaden. Dit bewijst nog geen live Auth- of Storage-werking.
+
+De CMS-browsergevallen controleren desktop en mobiel, weigering van gewone accounts, opslaan vóór publiceren, privévoorbeelden in de echte pagina, veilige tekstweergave, NL/FR en toegankelijkheid. De gewone lokale browserserver schakelt alleen de externe CMS-configuratie uit via `--cms-test`; gerichte CMS-gevallen gebruiken een synthetische API. De cachefixture gebruikt echte HTTP-cacheheaders en geen browserrouting. De oorspronkelijke releasegrenzen blijven ongewijzigd. Exacte resultaten en onvolledige controles staan in `docs/CMS-VERIFICATION.md`.

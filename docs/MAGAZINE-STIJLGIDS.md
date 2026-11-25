@@ -89,7 +89,7 @@ Figuren zijn HTML, geen SVG, zodat de tekst vertaald kan worden.
   - paginatelling tussen 20 en 35 en even;
   - geen tekst onder de voetregel van een pagina, in NL en FR, op 1440 px (vulling per pagina meten);
   - geen woordafbreking in titels op een telefoon;
-  - unit- en browsertests groen (tests/journal.test.cjs, tests/browser/journal.spec.cjs), taalcontract opnieuw gegenereerd, TESTPLAN aangevuld;
+  - unit- en browsertests groen (tests/journal.test.cjs, tests/browser/journal.spec.cjs), taalcontract opnieuw gegenereerd, testplan-item toegevoegd als nieuw bestand in docs/testplan/;
   - een aparte agent leest de tekst na tegen de bronnen.
 - Preview op de branch, daarna GO van de eigenaar voor productie.
 

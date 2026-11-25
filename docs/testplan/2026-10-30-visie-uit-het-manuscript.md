@@ -1,0 +1,3 @@
+## Visie uit het manuscript
+
+De centrale leesroute loopt van de homepage naar coherence.html#book-thesis, vervolgens naar about.html#book en de bestaande manuscriptaanvraag. De praktijkreflecties verbinden historische transformatievraagstukken met actuele AI-vragen. De permanente browserdekking controleert de centrale redenering in drie talen, de primaire Ross-bronverwijzingen, de leesroute en de runtime mailto-aanvraag zonder een bericht te openen of te versturen. De vier gewijzigde inhoudspagina’s vallen onder de bestaande WCAG-scans. Scorelogica en releasegrenzen blijven behouden; de scorekaart vermeldt nu expliciet haar beperkingen tegenover het interactiegerichte manuscriptmodel. De volledige bron-PDF’s worden niet in het bouwpakket opgenomen.

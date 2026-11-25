@@ -1,0 +1,5 @@
+## Publieke nacontrole zonder browserinstallatie, 13 november 2026
+
+De publieke release-smoke gebruikt dezelfde vastgezette Playwright-container als de Website quality gate. Chromium en de systeembibliotheken zijn daarin aanwezig; de nacontrole voert geen `playwright install --with-deps` of APT uit. Een lokale, netwerkvrije browserproef controleert de echte executable, browserstart en DOM-uitvoering vóór de publieke controles; dezelfde proef draait vóór vrijgave in de PR-gate. Een ontbrekende of onbruikbare browser faalt zichtbaar en wordt niet met retries of ruimere tijdslimieten verborgen.
+
+De bestaande `verify:production`-controles, inclusief de permanente Radar-inhoudsgrens, en de afzonderlijke publieke mobiele Lighthouse-meting blijven behouden. De job houdt uitsluitend leesrechten en de bestaande tijdslimiet van tien minuten. Installatie-, runtime- en controleresultaten worden als rapport en samenvatting bewaard; een mislukt onderdeel blijft de job doen falen. Container-/registry-, pakketdownload- en publieke netwerkstoringen blijven mogelijke expliciete fouten. De lokale load- en Lighthouse-vrijgavegrenzen veranderen niet.

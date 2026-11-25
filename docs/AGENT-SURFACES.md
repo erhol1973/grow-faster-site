@@ -46,6 +46,7 @@ docs/AGENT-SURFACES.md
 AGENTS.md
 docs/RELEASE.md
 docs/TESTPLAN.md
+docs/testplan/**
 docs/agents/**
 scripts/agent-guard.mjs
 .github/workflows/dev-agent-surfaces.yml
@@ -75,6 +76,7 @@ docs/EXECUTIVE-RADAR-NAV-DEV.md
 !AGENTS.md
 !docs/RELEASE.md
 !docs/TESTPLAN.md
+!docs/testplan/**
 !docs/agents/**
 !scripts/agent-guard.mjs
 !.github/workflows/dev-agent-surfaces.yml

@@ -1,0 +1,3 @@
+## Isolated CMS preview, 9 November 2026
+
+The exact feature-secure-supabase-cms.grow-faster-site.pages.dev hostname selects growfaster-test for all CMS clients, including page previews and public media. Production keeps its existing project. No URL parameter can choose or override an environment. The editor displays TEST on the isolated host; recovery is disabled there pending a separate redirect review. Admin CSP permits the two explicit project origins without wildcards. New configuration regressions verify preview routing, production preservation, lookalike-host rejection and URL-override rejection. The public test project key is publishable; no privileged key or password is added. Real Auth/Storage acceptance is still pending and production release remains NO-GO.

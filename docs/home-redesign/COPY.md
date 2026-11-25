@@ -102,8 +102,8 @@ Opbouw: eyebrow, h2, lede; dan vier blokken met elk een h3: waar het werk zit (l
   - NL: Welk terugkerend werk kost uw team tijd?
   - FR: Quel travail répétitif coûte du temps à votre équipe ?
 - `home-v2-rec-lede` · lede
-  - NL: Meestal gaat het om kleine handelingen die elke dag terugkomen, op bijna elke afdeling. Apart lijken ze onbelangrijk. Samen vullen ze een groot deel van de week.
-  - FR: Il s’agit le plus souvent de petites opérations qui reviennent chaque jour, dans presque tous les services. Prises une à une, elles semblent anodines. Ensemble, elles occupent une bonne partie de la semaine.
+  - NL: Meestal gaat het om kleine handelingen die elke dag terugkomen, op bijna elke afdeling. Apart lijken ze onbelangrijk. Samen lopen ze op tot uren per week.
+  - FR: Il s’agit le plus souvent de petites opérations qui reviennent chaque jour, dans presque tous les services. Prises une à une, elles semblent anodines. Ensemble, elles représentent des heures chaque semaine.
 - `home-v2-rec-tasks-h` · h3
   - NL: Waar het werk zit
   - FR: Où se trouve ce travail
@@ -150,8 +150,8 @@ Opbouw: eyebrow, h2, lede; dan vier blokken met elk een h3: waar het werk zit (l
   - NL: 276 uur × € 45 loonkost per uur = € 12.420 per jaar.
   - FR: 276 heures × 45 € de coût salarial par heure = 12 420 € par an.
 - `home-v2-rec-calc-note` · kleine noot
-  - NL: Werkweken: 52 min verlof en feestdagen. Loonkost per uur: een aanname. Vervang de cijfers door die van uw eigen team.
-  - FR: Semaines de travail : 52 moins les congés et les jours fériés. Coût salarial par heure : une hypothèse. Remplacez ces chiffres par ceux de votre équipe.
+  - NL: 46 werkweken: 52 weken min ongeveer 6 weken verlof en feestdagen. Loonkost per uur: een aanname. Vervang de cijfers door die van uw eigen team.
+  - FR: 46 semaines de travail : 52 semaines moins environ 6 semaines de congés et de jours fériés. Coût salarial par heure : une hypothèse. Remplacez ces chiffres par ceux de votre équipe.
 - `home-v2-rec-calc-close` · p
   - NL: De uitkomst toont een orde van grootte. Hoeveel tijd u daarvan echt terugwint, meten we in een pilot.
   - FR: Le résultat donne un ordre de grandeur. Le temps que vous récupérez réellement, nous le mesurons lors d’un pilote.
@@ -190,7 +190,7 @@ Opbouw: eyebrow, h2, lede; dan vier blokken met elk een h3: waar het werk zit (l
   - FR: Approche
 - `home-v2-aanpak-h` · h2
   - NL: Zo starten we
-  - FR: Comment nous démarrons
+  - FR: Notre façon de démarrer
 - `home-v2-aanpak-lede` · lede (bestaande toep-pilot-titel, nieuwe sleutel) (bestaand)
   - NL: Verbeter één werkproces met de systemen die u al gebruikt.
   - FR: Améliorez un processus de travail avec les systèmes que vous utilisez déjà.
@@ -204,8 +204,8 @@ Opbouw: eyebrow, h2, lede; dan vier blokken met elk een h3: waar het werk zit (l
   - NL: Pilot op één taak
   - FR: Pilote sur une tâche
 - `home-v2-aanpak-2-p` · p fase 2
-  - NL: We automatiseren die ene taak met de systemen die u al gebruikt. Samen bepalen we waar uw medewerkers moeten blijven nakijken.
-  - FR: Nous automatisons cette seule tâche avec les systèmes que vous utilisez déjà. Ensemble, nous déterminons les points que vos collaborateurs doivent continuer à vérifier.
+  - NL: We automatiseren die ene taak, zo veel mogelijk met de systemen die u al gebruikt. Samen bepalen we waar uw medewerkers moeten blijven nakijken.
+  - FR: Nous automatisons cette seule tâche, autant que possible avec les systèmes que vous utilisez déjà. Ensemble, nous déterminons les points que vos collaborateurs doivent continuer à vérifier.
 - `home-v2-aanpak-3-h` · h3 fase 3
   - NL: Meten en beslissen
   - FR: Mesurer et décider

@@ -1,5 +1,13 @@
 # Testplan en kwaliteitsbeleid
 
+## Homepage herwerkt: terugkerend werk en aanpak, 25 november 2026
+
+Opdracht van de eigenaar: betere structuur, modernere en professionelere vormgeving en uitgebreidere tekst over terugkerend werk. Nieuwe volgorde: hero, toepassingen (vandaag / wij bereiden voor / uw medewerker), terugkerend (nieuw, met gelabeld rekenvoorbeeld en herkenningslijst), aanpak (nieuw, drie fases), fundament, kloof, vertrouwelijk, proof, final. Vormgeving in assets/home.css; homepagevertalingen in assets/i18n-home.js (zelfde patroon als i18n-journal.js), zodat de gedeelde i18n.js binnen het gzip-budget van 65000 bytes blijft. Geen bestaande drempel verhoogd.
+
+Tests: nieuw tests/home-v2.test.cjs (sectievolgorde, één h1, aria-labelledby, kaartstructuur, pilotlinks, negatieve gevallen voor Herkenbaar?, Zo werkt Orion, veiligheids-/read-only-claims, werkgeverstaal en duur van een eerste workflow, NL/FR per home-v2-sleutel, rekenvoorbeeld gelabeld, geen schaduwen, i18n-home.js alleen op index.html zonder conflicterende sleutels) en tests/browser/home-v2.spec.cjs (geen horizontale overflow op 360/1440 px in NL en FR, FR-wissel, axe FR op 360 px); hulpbestanden tests/support/mini-dom.cjs en tests/support/axe-audit.cjs. Aangepast met gedateerde reden: klantsite (goedgekeurde zinnen, volgorde, laden van i18n-home.js), cms-client (negen editorgroepen), journal-editorial (proof na vertrouwelijk), home-hero-video (FR-titel kaarten), release2, load (home.css en i18n-home.js) en performance (budgetten home.css 10000 en i18n-home.js 16000 bytes). language/nl-extraction.json bijgewerkt voor i18n-home.js, cms-catalog.js en cms-admin.js; geen adapterwijziging.
+
+Beperking: de vastgezette Chromium-runtimecontrole draait niet in deze sandbox; CI gebruikt de vastgezette Playwright-image.
+
 ## Orion-film en stappen van de homepage naar orion.html, 24 november 2026
 
 Beslissing van de eigenaar: "Zo werkt Orion" (vier stappen en film) verdwijnt van de homepage; de film staat op orion.html onder de vier stappen en de zin "Elk antwoord dat u goedkeurt, onthoudt Orion." De homepage houdt hero, vier toepassingskaarten, ervaring, piramide, kloof, vertrouwen en pilot. CMS: de negen stapvelden van de homepage zijn uit de catalogus; de groepen in de beheerpagina zijn hernummerd (28 velden). Het uitklapblok "Tekst in beeld" blijft bij de film als tekstalternatief.

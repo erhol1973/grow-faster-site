@@ -25,7 +25,7 @@ const pages={
     'Wij maken uit het inspectieverslag een conceptwerkbon met de voorgestelde acties.','Uw onderhoudsteam beslist welke acties het registreert en inplant.',
     'Wij halen de gegevens uit het document en zetten een conceptaanvraag klaar.','Uw medewerker controleert het concept en registreert het in uw eigen systeem.',
     'Wij lezen de leveringsdocumenten in, vergelijken ze met de bestelling en zetten de afwijkingen op een rij.','De medewerker die de afwijking kan opvolgen, beslist wat er gebeurt.',
-    'Meestal gaat het om kleine handelingen die elke dag terugkomen, op bijna elke afdeling. Apart lijken ze onbelangrijk. Samen vullen ze een groot deel van de week.',
+    'Meestal gaat het om kleine handelingen die elke dag terugkomen, op bijna elke afdeling. Apart lijken ze onbelangrijk. Samen lopen ze op tot uren per week.',
     'Waar het werk zit','Administratie neemt gegevens uit mails en pdf’s over in Excel en daarna nog eens in het ERP.','Verkoop en klantendienst beantwoorden dezelfde klantvragen telkens opnieuw.',
     'Waarom niemand het ziet','Niemand meet het, dus niemand ziet het totaal.','Wat het kost: reken het zelf uit','Rekenvoorbeeld','Stel: 3 medewerkers besteden elk 2 uur per week aan opzoeken en overtypen.',
     'De uitkomst toont een orde van grootte. Hoeveel tijd u daarvan echt terugwint, meten we in een pilot.',

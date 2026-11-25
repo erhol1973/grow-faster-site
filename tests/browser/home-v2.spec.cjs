@@ -27,6 +27,16 @@ for(const width of [360,1440])for(const lang of ['nl','fr'])test(`homepage has n
   await ctx.close();
 });
 
+// Review finding 25 Nov 2026: the running-text reading width (68ch) must not narrow the pyramid rows, or the layers wrap unevenly.
+test('pyramid rows keep their full width at 1440px',async({browser},info)=>{
+  test.skip(info.project.use.isMobile,'desktop layout only');
+  const ctx=await browser.newContext({viewport:{width:1440,height:900}});const page=await ctx.newPage();await init(page,'nl');
+  await page.goto('/index.html');
+  const widths=await page.locator('#fundament .pyr-l').evaluateAll(rows=>rows.map(r=>r.getBoundingClientRect().width));
+  expect(widths).toHaveLength(4);for(const w of widths)expect(w).toBeGreaterThanOrEqual(900);
+  await ctx.close();
+});
+
 test('the French switch translates every new heading, eyebrow, card label and the calculation label',async({page})=>{
   await init(page);await page.goto('/index.html');
   const sel=ORDER.slice(1).map(id=>`#${id} h2, #${id} h3, #${id} .eyebrow, #${id} [class*="-eyebrow"]`).join(', ')+', #toepassingen [data-cms*="-label-"], [data-cms="home-v2-rec-calc-label"], [data-cms="home-v2-hero-reassure"]';
@@ -42,7 +52,7 @@ test('the French switch translates every new heading, eyebrow, card label and th
   expect(expected.length).toBe(nl.length);
   // Sample headings named explicitly so a failure reads as content, not as a selector problem.
   await expect(page.locator('#terugkerend h2')).toHaveText(/^Quel travail répétitif coûte du temps à votre équipe\s\?$/);
-  await expect(page.locator('#aanpak h2')).toHaveText('Comment nous démarrons');
+  await expect(page.locator('#aanpak h2')).toHaveText('Notre façon de démarrer');
   await expect(page.locator('[data-cms="home-v2-rec-calc-label"]')).toHaveText('Exemple de calcul');
   // Switching back restores Dutch without a reload.
   await page.locator('#lang-btn-top').click();await page.locator('.lang-top [data-lang="nl"]').click();

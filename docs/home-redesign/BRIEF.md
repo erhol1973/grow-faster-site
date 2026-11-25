@@ -42,9 +42,9 @@ Elke sectie krijgt een kleine eyebrow (sectielabel) boven de h2. Ritme: wisselen
 | Test | `tests/**`, `scripts/load.cjs`, `scripts/performance.cjs` | alles |
 | Release | `docs/home-redesign/RELEASE-PREP.md`, eigen worktree/tmp | alles |
 | Reviewer | niets (read-only) | alles |
-| Orchestrator | `docs/home-redesign/BRIEF.md`, `assets/i18n.js`, `assets/cms-catalog.js`, commits, branch, PR | alles |
+| Orchestrator | `docs/home-redesign/BRIEF.md`, `assets/i18n-home.js`, `assets/cms-catalog.js`, `assets/cms-admin.js`, `admin.html`, `language/nl-extraction.json`, `docs/TESTPLAN.md`, commits, branch, PR | alles |
 
 ## Afhankelijkheden
-- **i18n.js** is één JSON-regel van 200 KB; PR #101 wijzigt die regel ook → gegarandeerd tekstconflict. Daarom: vertalingen gaan eerst in `i18n-home.json` en worden door de orchestrator met een script samengevoegd (herhaalbaar na rebase).
+- **i18n.js** is één JSON-regel van 200 KB; PR #101 wijzigt die regel ook → gegarandeerd tekstconflict. Uitgevoerd: de nieuwe vertalingen staan in `assets/i18n-home.js` (alleen geladen op index.html, zelfde patroon als `i18n-journal.js`); `i18n.js` blijft ongewijzigd. Dat houdt ook het gedeelde gzip-budget (65000 bytes) intact.
 - **CMS-overrides:** `cms-public.js` overschrijft elementen met `data-cms`-sleutel door gepubliceerde snapshots. Nieuwe tekst op een bestaande sleutel kan live worden overschreven door oude CMS-inhoud. Nieuwe teksten krijgen **nieuwe** `data-cms`-sleutels (prefix `home-v2-`); de release-agent controleert read-only welke `home`-sleutels gepubliceerd zijn.
 - Volgorde: Copy en Design starten parallel (Design met concepttekst uit deze brief) → orchestrator integreert definitieve copy → Test vult tekstfrasen aan → Release draait alle gates → Reviewer → GO-vraag aan sponsor.

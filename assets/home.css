@@ -22,6 +22,7 @@ body[data-cms-page="home"] #hero .hero-note{text-shadow:0 0 2px rgba(6,27,52,.9)
 .hsec h2{margin-top:14px;font-size:clamp(30px,3.6vw,48px);line-height:1.1;letter-spacing:-.018em;max-width:13.5em}
 .hsec .lede{max-width:62ch;margin-top:18px}
 .hsec p,.hsec li,.hsec dd{max-width:68ch}
+#fundament .pyr-layers li,#fundament .pyr-text p,#fundament .pyr-result{max-width:none}
 .hsec h3{text-wrap:balance}
 
 /* 2. Toepassingen: two by two, each card reads cost -> preparation -> human check */
@@ -64,7 +65,7 @@ body[data-cms-page="home"] #hero .hero-note{text-shadow:0 0 2px rgba(6,27,52,.9)
 
 /* 4. Aanpak: a horizontal three-phase stepper on one hairline track; vertical on small screens */
 .fase-steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0 clamp(28px,4vw,64px);position:relative;counter-reset:fase}
-.fase-steps::before{content:"";position:absolute;left:0;right:0;top:17px;height:1px;background:var(--line)}
+.fase-steps::before{content:"";position:absolute;left:0;right:calc((100% - 2*clamp(28px,4vw,64px))/3 - 34px);top:17px;height:1px;background:var(--line)}
 .fase-step{position:relative;padding-top:60px;counter-increment:fase}
 .fase-step::before{content:counter(fase);position:absolute;top:0;left:0;width:34px;height:34px;display:grid;place-items:center;border:1px solid var(--ai-ink);border-radius:50%;background:var(--bg);color:var(--ai-ink);font-size:15px;font-weight:600;line-height:1}
 .fase-step h3{margin:0 0 10px;font-size:clamp(20px,1.7vw,23px);line-height:1.25;color:var(--brand)}

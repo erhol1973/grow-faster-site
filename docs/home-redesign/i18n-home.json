@@ -103,9 +103,9 @@
   "Welk terugkerend werk kost uw team tijd?",
   "Quel travail répétitif coûte du temps à votre équipe ?"
  ],
- "Meestal gaat het om kleine handelingen die elke dag terugkomen, op bijna elke afdeling. Apart lijken ze onbelangrijk. Samen vullen ze een groot deel van de week.": [
-  "Meestal gaat het om kleine handelingen die elke dag terugkomen, op bijna elke afdeling. Apart lijken ze onbelangrijk. Samen vullen ze een groot deel van de week.",
-  "Il s’agit le plus souvent de petites opérations qui reviennent chaque jour, dans presque tous les services. Prises une à une, elles semblent anodines. Ensemble, elles occupent une bonne partie de la semaine."
+ "Meestal gaat het om kleine handelingen die elke dag terugkomen, op bijna elke afdeling. Apart lijken ze onbelangrijk. Samen lopen ze op tot uren per week.": [
+  "Meestal gaat het om kleine handelingen die elke dag terugkomen, op bijna elke afdeling. Apart lijken ze onbelangrijk. Samen lopen ze op tot uren per week.",
+  "Il s’agit le plus souvent de petites opérations qui reviennent chaque jour, dans presque tous les services. Prises une à une, elles semblent anodines. Ensemble, elles représentent des heures chaque semaine."
  ],
  "Waar het werk zit": [
   "Waar het werk zit",
@@ -167,9 +167,9 @@
   "276 uur × € 45 loonkost per uur = € 12.420 per jaar.",
   "276 heures × 45 € de coût salarial par heure = 12 420 € par an."
  ],
- "Werkweken: 52 min verlof en feestdagen. Loonkost per uur: een aanname. Vervang de cijfers door die van uw eigen team.": [
-  "Werkweken: 52 min verlof en feestdagen. Loonkost per uur: een aanname. Vervang de cijfers door die van uw eigen team.",
-  "Semaines de travail : 52 moins les congés et les jours fériés. Coût salarial par heure : une hypothèse. Remplacez ces chiffres par ceux de votre équipe."
+ "46 werkweken: 52 weken min ongeveer 6 weken verlof en feestdagen. Loonkost per uur: een aanname. Vervang de cijfers door die van uw eigen team.": [
+  "46 werkweken: 52 weken min ongeveer 6 weken verlof en feestdagen. Loonkost per uur: een aanname. Vervang de cijfers door die van uw eigen team.",
+  "46 semaines de travail : 52 semaines moins environ 6 semaines de congés et de jours fériés. Coût salarial par heure : une hypothèse. Remplacez ces chiffres par ceux de votre équipe."
  ],
  "De uitkomst toont een orde van grootte. Hoeveel tijd u daarvan echt terugwint, meten we in een pilot.": [
   "De uitkomst toont een orde van grootte. Hoeveel tijd u daarvan echt terugwint, meten we in een pilot.",
@@ -217,7 +217,7 @@
  ],
  "Zo starten we": [
   "Zo starten we",
-  "Comment nous démarrons"
+  "Notre façon de démarrer"
  ],
  "Verbeter één werkproces met de systemen die u al gebruikt.": [
   "Verbeter één werkproces met de systemen die u al gebruikt.",
@@ -235,9 +235,9 @@
   "Pilot op één taak",
   "Pilote sur une tâche"
  ],
- "We automatiseren die ene taak met de systemen die u al gebruikt. Samen bepalen we waar uw medewerkers moeten blijven nakijken.": [
-  "We automatiseren die ene taak met de systemen die u al gebruikt. Samen bepalen we waar uw medewerkers moeten blijven nakijken.",
-  "Nous automatisons cette seule tâche avec les systèmes que vous utilisez déjà. Ensemble, nous déterminons les points que vos collaborateurs doivent continuer à vérifier."
+ "We automatiseren die ene taak, zo veel mogelijk met de systemen die u al gebruikt. Samen bepalen we waar uw medewerkers moeten blijven nakijken.": [
+  "We automatiseren die ene taak, zo veel mogelijk met de systemen die u al gebruikt. Samen bepalen we waar uw medewerkers moeten blijven nakijken.",
+  "Nous automatisons cette seule tâche, autant que possible avec les systèmes que vous utilisez déjà. Ensemble, nous déterminons les points que vos collaborateurs doivent continuer à vérifier."
  ],
  "Meten en beslissen": [
   "Meten en beslissen",

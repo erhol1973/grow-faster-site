@@ -41,7 +41,8 @@ test('application cards are links in reading order and the French texts follow t
   await expect(page.locator('#toepassingen .toep-kaart')).toHaveCount(4);
   await expect(page.locator('#toepassingen .toep-kaart h3')).toHaveText(['Kwaliteit in de voedingsproductie','Technisch onderhoud','Administratie','Logistiek']);
   await page.locator('#lang-btn-top').click();await page.locator('.lang-top [data-lang="fr"]').click();
-  await expect(page.locator('#toepassingen-h')).toHaveText('Quel travail répétitif coûte du temps à votre équipe ?');
+  // 25 Nov 2026 (BRIEF/COPY.md): the question heading moved to #terugkerend; the cards block is titled "Vier toepassingen, één werkwijze".
+  await expect(page.locator('#toepassingen h2')).toHaveText('Quatre applications, une même méthode');
   await expect(page.locator('#hero-pauze .hp-pauze, #hero-pauze .hp-speel').filter({visible:true})).toHaveText(/vidéo/);
   await page.locator('#toep-administratie').click();await expect(page).toHaveURL(/automatisering\.html/);
 });

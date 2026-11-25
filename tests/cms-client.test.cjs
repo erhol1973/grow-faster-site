@@ -44,15 +44,21 @@ test('CMS page selector preserves all field values while showing one homepage se
  assert.match(script,/for\(const field of definition\.fields\)/);
  // Customer homepage (24 Nov 2026): hero, four application cards, experience, systems and decisions, pilot (the pyramid is fixed markup, not CMS-editable) and the optional video slot.
  // "Herkenbaar?" and "Zo werkt Orion" left the homepage on the owner's decision; the application cards link to orion.html, where the steps and the film live.
+ // Homepage redesign (25 Nov 2026, BRIEF.md IA): hero, apps (cards with today/prep/keep), recurring work, approach, eyebrows of the
+ // fixed pyramid and figures blocks, trust, experience (moved down), pilot and video; 91 fields, 8 retired home-apps-* keys.
  const groups=[
-  [0,2,[]],[3,14,[]],[15,16,[]],
-  [17,24,[]],[25,26,[]],[27,27,[]]
+  [0,3,[]],[4,34,[]],[35,63,[]],[64,72,[]],[73,74,[]],
+  [75,83,[]],[84,86,[]],[87,89,[]],[90,90,[]]
  ];
  const declared=[...script.slice(script.indexOf('const homeGroups=['),script.indexOf('];',script.indexOf('const homeGroups=['))).matchAll(/from:(\d+),to:(\d+)(?:,extra:\[([\d,]*)\])?/g)].map(m=>[+m[1],+m[2],m[3]?m[3].split(',').map(Number):[]]);
  assert.deepEqual(declared,groups,'the editor declares exactly the tested homepage groups');
  const indices=groups.flatMap(([start,end,extra])=>[...Array.from({length:end-start+1},(_,i)=>start+i),...extra]);
  assert.equal(new Set(indices).size,home.fields.length,'every homepage field must appear in precisely one group');
  assert.deepEqual(indices.slice().sort((a,b)=>a-b),Array.from({length:home.fields.length},(_,i)=>i));
+ // Each editor group holds the fields of its own block (25 Nov 2026), so a shifted index cannot silently regroup texts.
+ const prefixes=[/^(f7a4946dfd792-0|home-orion-hero-|home-v2-hero-)/,/^(home-v2-apps-|home-apps-[1-4]-h$)/,/^home-v2-rec-/,/^home-v2-aanpak-/,/^home-v2-(fundament|kloof)-eyebrow$/,/^(home-v2-trust-|home-orion-trust-|home-trust-)/,/^(home-v2-proof-|home-orion-proof-)/,/^(home-v2-final-|home-orion-pilot-)/,/^cms-video-home$/];
+ groups.forEach(([start,end],g)=>{for(let i=start;i<=end;i++)assert.match(home.fields[i].key,prefixes[g],`group ${g}: ${home.fields[i].key}`)});
+ for(const retired of ['home-apps-h','home-apps-p','home-apps-1-p','home-apps-2-p','home-apps-3-p','home-apps-4-p','home-apps-pilot-h','home-apps-pilot-p'])assert.ok(!home.fields.some(f=>f.key===retired),`retired key ${retired} (old CMS overlays must not overwrite new text)`);
 });
 
 test('CMS publication requires a reviewed saved revision and explicit confirmation',()=>{

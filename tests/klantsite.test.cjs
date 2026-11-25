@@ -2,7 +2,9 @@
 // The Veiligheid page is deliberately excluded from this release (branch feature/veiligheid-pagina).
 const {test}=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),vm=require('node:vm');
 const root=path.resolve(__dirname,'..','dist');const read=f=>fs.readFileSync(path.join(root,f),'utf8');
-const I18N=()=>{const c={window:{}};vm.runInNewContext(read('assets/i18n.js'),c);return c.window};
+// 25 Nov 2026: homepage-only strings live in assets/i18n-home.js (Object.assign onto window.I18N, loaded after i18n.js on index.html);
+// both run in one context, in that order, as in the browser.
+const I18N=()=>{const c={window:{}};vm.runInNewContext(read('assets/i18n.js'),c);vm.runInNewContext(read('assets/i18n-home.js'),c);return c.window};
 // Appointment page (23 Nov 2026, owner decision): conversation buttons open afspraak.html with the topic preselected
 // instead of a mail; the Google booking page sends the confirmations.
 const PILOT='afspraak.html?onderwerp=vragenlijsten';
@@ -15,7 +17,21 @@ const pages={
   'oplossingen.html':['Sneller werken met AI en automatisering','Vier lagen, één doel: winst in tijd en geld.','Van fundament tot AI','AI levert pas tijd en geld op als wat eronder ligt klopt. Daarom bouwen we van onder naar boven: eerst samenhang in de organisatie, dan heldere processen, dan automatisering, dan AI.','Enterprise coherentie','Mensen, teams en systemen trekken in dezelfde richting.','Procesanalyse','Workflowscan','We brengen in kaart waar tijd en geld weglekt.','Repetitief werk loopt vanzelf.','AI neemt zoek- en schrijfwerk over.','Winst in tijd en geld','Drie manieren om sneller te werken','Test Orion op uw eigen vragenlijsten'],
   // Homepage 24 Nov 2026 (owner decisions): new hero line, four application cards replace "Herkenbaar?", the confidentiality block
   // becomes "Uw systemen en uw beslissingen blijven bij u" without a read-only guarantee (that waits for per-connection verification).
-  'index.html':['Grow Faster helpt u terugkerend werk te vereenvoudigen met de systemen die u al gebruikt. Met Orion vult uw kwaliteitsteam klantvragenlijsten sneller in op basis van eigen documenten.','Welk terugkerend werk kost uw team tijd?','Kwaliteit in de voedingsproductie','Technisch onderhoud','Haal gegevens uit binnenkomende documenten en bereid een conceptaanvraag voor. Uw medewerker controleert en registreert die in uw eigen systeem.','Logistiek','Verbeter één werkproces met de systemen die u al gebruikt.','Van fundament tot AI','Winst in tijd en geld','Uw systemen en uw beslissingen blijven bij u','Uw medewerker controleert het en zet de laatste stap: versturen, registreren of importeren.','Test Orion op uw eigen vragenlijsten']
+  // Homepage redesign 25 Nov 2026 (BRIEF.md, final COPY.md): the card-3 sentence "Haal gegevens uit binnenkomende documenten ..." is
+  // replaced by the today/prep/keep structure; "Welk terugkerend werk ..." moves to #terugkerend; the new blocks add their phrases.
+  'index.html':['Grow Faster helpt u terugkerend werk te vereenvoudigen met de systemen die u al gebruikt. Met Orion vult uw kwaliteitsteam klantvragenlijsten sneller in op basis van eigen documenten.','Welk terugkerend werk kost uw team tijd?','Kwaliteit in de voedingsproductie','Technisch onderhoud','Logistiek','Verbeter één werkproces met de systemen die u al gebruikt.','Van fundament tot AI','Winst in tijd en geld','Uw systemen en uw beslissingen blijven bij u','Uw medewerker controleert het en zet de laatste stap: versturen, registreren of importeren.','Test Orion op uw eigen vragenlijsten',
+    'Wij bereiden voor. Uw team kijkt na en beslist.','Vier toepassingen, één werkwijze','In elk voorbeeld ziet u wat het vandaag kost, wat wij voorbereiden en wat uw medewerker zelf blijft doen.',
+    'Orion vult de lijst in vanuit uw eigen documenten en toont bij elk antwoord de bron.','Uw kwaliteitsverantwoordelijke kijkt elk antwoord na, keurt goed en verstuurt.',
+    'Wij maken uit het inspectieverslag een conceptwerkbon met de voorgestelde acties.','Uw onderhoudsteam beslist welke acties het registreert en inplant.',
+    'Wij halen de gegevens uit het document en zetten een conceptaanvraag klaar.','Uw medewerker controleert het concept en registreert het in uw eigen systeem.',
+    'Wij lezen de leveringsdocumenten in, vergelijken ze met de bestelling en zetten de afwijkingen op een rij.','De medewerker die de afwijking kan opvolgen, beslist wat er gebeurt.',
+    'Meestal gaat het om kleine handelingen die elke dag terugkomen, op bijna elke afdeling. Apart lijken ze onbelangrijk. Samen vullen ze een groot deel van de week.',
+    'Waar het werk zit','Administratie neemt gegevens uit mails en pdf’s over in Excel en daarna nog eens in het ERP.','Verkoop en klantendienst beantwoorden dezelfde klantvragen telkens opnieuw.',
+    'Waarom niemand het ziet','Niemand meet het, dus niemand ziet het totaal.','Wat het kost: reken het zelf uit','Rekenvoorbeeld','Stel: 3 medewerkers besteden elk 2 uur per week aan opzoeken en overtypen.',
+    'De uitkomst toont een orde van grootte. Hoeveel tijd u daarvan echt terugwint, meten we in een pilot.',
+    'Zo herkent u het','Dezelfde gegevens worden in twee of meer systemen ingetikt.','Niemand weet hoeveel tijd een taak per week kost.',
+    'Herkent u er twee of meer? Kies de taak die het vaakst terugkomt. Met die ene taak starten we de pilot.',
+    'Zo starten we','Pilot op één taak','Meten en beslissen','We vergelijken de tijd vóór en na. Daarna beslist u: uitbreiden naar een volgende taak of stoppen.']
 };
 test('approved Dutch texts are published and every one has a Dutch and French translation',()=>{const {I18N:I}=I18N();
   for(const [file,phrases]of Object.entries(pages)){const body=text(read(file));
@@ -77,7 +93,8 @@ test('Orion lists four steps and five FAQ disclosures; released pages make no un
 }); 
 test('customer homepage follows the approved mockup sections and keeps consent, CMS and the hero photo',()=>{const home=read('index.html');
   // v2: the pyramid "Van fundament tot AI" replaces the former "Drie manieren om sneller te werken" section (moved to Oplossingen).
-  const order=['id="hero"','id="toepassingen"','id="proof"','id="fundament"','id="vertrouwelijk"','id="final"'].map(id=>home.indexOf(id));
+  // 25 Nov 2026 (BRIEF.md IA): proof moves below vertrouwelijk; terugkerend and aanpak are new (exact order also in home-v2.test.cjs).
+  const order=['id="hero"','id="toepassingen"','id="terugkerend"','id="aanpak"','id="fundament"','id="vertrouwelijk"','id="proof"','id="final"'].map(id=>home.indexOf(id));
   assert.doesNotMatch(home,/id="herkenbaar"|id="hoe"|orion-film/,'the Orion steps and film live on orion.html (owner decision, 24 Nov 2026)');
   assert.ok(order.every((v,i)=>v>0&&(i===0||v>order[i-1])),'section order');
   assert.match(home,/<img src="img\/hero-toepassingen-1774\.webp" alt="" width="1774" height="887" fetchpriority="high"/);

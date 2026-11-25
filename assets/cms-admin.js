@@ -11,12 +11,15 @@
   return content;
  }
  const homeGroups=[
-  {id:'hero',label:'Hero & introductie',from:0,to:2},
-  {id:'apps',label:'Toepassingen',from:3,to:14},
-  {id:'experience',label:'Ervaring',from:15,to:16},
-  {id:'trust',label:'Uw systemen en beslissingen',from:17,to:24},
-  {id:'pilot',label:'Pilotgesprek',from:25,to:26},
-  {id:'video',label:'Video',from:27,to:27}
+  {id:'hero',label:'Hero & introductie',from:0,to:3},
+  {id:'apps',label:'Toepassingen',from:4,to:34},
+  {id:'recurring',label:'Terugkerend werk',from:35,to:63},
+  {id:'approach',label:'Zo starten we',from:64,to:72},
+  {id:'labels',label:'Fundament en cijfers',from:73,to:74},
+  {id:'trust',label:'Uw systemen en beslissingen',from:75,to:83},
+  {id:'experience',label:'Ervaring',from:84,to:86},
+  {id:'pilot',label:'Pilotgesprek',from:87,to:89},
+  {id:'video',label:'Video',from:90,to:90}
  ];
  function fieldGroup(index,field){
   if(definition.page!=='home')return field.type==='media'?'media':'text';

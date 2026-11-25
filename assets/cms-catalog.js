@@ -33,18 +33,32 @@ window.GF_CMS_CATALOG=[
         "fr": "Grow Faster vous aide à simplifier le travail répétitif avec les systèmes que vous utilisez déjà. Avec Orion, votre équipe qualité remplit plus vite les questionnaires clients à partir de vos propres documents."
       },
       {
-        "key": "home-apps-h",
+        "key": "home-v2-hero-reassure",
         "type": "text",
-        "label": "Welk terugkerend werk kost uw team tijd?",
-        "nl": "Welk terugkerend werk kost uw team tijd?",
-        "fr": "Quel travail répétitif coûte du temps à votre équipe ?"
+        "label": "Wij bereiden voor. Uw team kijkt na en beslist.",
+        "nl": "Wij bereiden voor. Uw team kijkt na en beslist.",
+        "fr": "Nous préparons. Votre équipe vérifie et décide."
       },
       {
-        "key": "home-apps-p",
+        "key": "home-v2-apps-eyebrow",
         "type": "text",
-        "label": "Grow Faster helpt teams om informatie sneller terug te vinden, minder gegevens over te typ",
-        "nl": "Grow Faster helpt teams om informatie sneller terug te vinden, minder gegevens over te typen en terugkerende taken te automatiseren.",
-        "fr": "Grow Faster aide les équipes à retrouver plus vite l’information, à ressaisir moins de données et à automatiser les tâches répétitives."
+        "label": "Toepassingen",
+        "nl": "Toepassingen",
+        "fr": "Applications"
+      },
+      {
+        "key": "home-v2-apps-h",
+        "type": "text",
+        "label": "Vier toepassingen, één werkwijze",
+        "nl": "Vier toepassingen, één werkwijze",
+        "fr": "Quatre applications, une même méthode"
+      },
+      {
+        "key": "home-v2-apps-p",
+        "type": "text",
+        "label": "In elk voorbeeld ziet u wat het vandaag kost, wat wij voorbereiden en wat uw medewerker ze",
+        "nl": "In elk voorbeeld ziet u wat het vandaag kost, wat wij voorbereiden en wat uw medewerker zelf blijft doen.",
+        "fr": "Chaque exemple montre ce que la tâche coûte aujourd’hui, ce que nous préparons et ce que votre collaborateur continue à faire lui-même."
       },
       {
         "key": "home-apps-1-h",
@@ -54,11 +68,46 @@ window.GF_CMS_CATALOG=[
         "fr": "Qualité dans la production alimentaire"
       },
       {
-        "key": "home-apps-1-p",
+        "key": "home-v2-apps-1-label-today",
         "type": "text",
-        "label": "Orion vult klantvragenlijsten in op basis van uw specificaties en certificaten. Uw kwalite",
-        "nl": "Orion vult klantvragenlijsten in op basis van uw specificaties en certificaten. Uw kwaliteitsverantwoordelijke kijkt na en verstuurt.",
-        "fr": "Orion remplit les questionnaires clients à partir de vos spécifications et certificats. Votre responsable qualité vérifie et envoie."
+        "label": "Vandaag",
+        "nl": "Vandaag",
+        "fr": "Aujourd’hui"
+      },
+      {
+        "key": "home-v2-apps-1-today",
+        "type": "text",
+        "label": "Elke klant stuurt een eigen vragenlijst. Iemand van de kwaliteitsdienst zoekt de antwoorde",
+        "nl": "Elke klant stuurt een eigen vragenlijst. Iemand van de kwaliteitsdienst zoekt de antwoorden op in specificaties, certificaten en oude lijsten, en typt ze over.",
+        "fr": "Chaque client envoie son propre questionnaire. Une personne du service qualité recherche les réponses dans les spécifications, les certificats et les anciens questionnaires, puis les ressaisit."
+      },
+      {
+        "key": "home-v2-apps-1-label-prep",
+        "type": "text",
+        "label": "Wij bereiden voor",
+        "nl": "Wij bereiden voor",
+        "fr": "Nous préparons"
+      },
+      {
+        "key": "home-v2-apps-1-prep",
+        "type": "text",
+        "label": "Orion vult de lijst in vanuit uw eigen documenten en toont bij elk antwoord de bron.",
+        "nl": "Orion vult de lijst in vanuit uw eigen documenten en toont bij elk antwoord de bron.",
+        "fr": "Orion remplit le questionnaire à partir de vos propres documents et indique la source de chaque réponse."
+      },
+      {
+        "key": "home-v2-apps-1-label-keep",
+        "type": "text",
+        "label": "Uw medewerker",
+        "nl": "Uw medewerker",
+        "fr": "Votre collaborateur"
+      },
+      {
+        "key": "home-v2-apps-1-keep",
+        "type": "text",
+        "label": "Uw kwaliteitsverantwoordelijke kijkt elk antwoord na, keurt goed en verstuurt.",
+        "nl": "Uw kwaliteitsverantwoordelijke kijkt elk antwoord na, keurt goed en verstuurt.",
+        "fr": "Votre responsable qualité vérifie chaque réponse, valide et envoie."
       },
       {
         "key": "home-apps-2-h",
@@ -68,11 +117,46 @@ window.GF_CMS_CATALOG=[
         "fr": "Maintenance technique"
       },
       {
-        "key": "home-apps-2-p",
+        "key": "home-v2-apps-2-label-today",
         "type": "text",
-        "label": "Bereid een conceptwerkbon voor uit een inspectieverslag. Uw onderhoudsteam beslist welke a",
-        "nl": "Bereid een conceptwerkbon voor uit een inspectieverslag. Uw onderhoudsteam beslist welke acties het registreert.",
-        "fr": "Préparez un projet de bon de travail à partir d’un rapport d’inspection. Votre équipe de maintenance décide des actions qu’elle enregistre."
+        "label": "Vandaag",
+        "nl": "Vandaag",
+        "fr": "Aujourd’hui"
+      },
+      {
+        "key": "home-v2-apps-2-today",
+        "type": "text",
+        "label": "Na een inspectie typt een technieker de vaststellingen over in een werkbon of in het onder",
+        "nl": "Na een inspectie typt een technieker de vaststellingen over in een werkbon of in het onderhoudssysteem.",
+        "fr": "Après une inspection, un technicien ressaisit les constats dans un bon de travail ou dans le système de maintenance."
+      },
+      {
+        "key": "home-v2-apps-2-label-prep",
+        "type": "text",
+        "label": "Wij bereiden voor",
+        "nl": "Wij bereiden voor",
+        "fr": "Nous préparons"
+      },
+      {
+        "key": "home-v2-apps-2-prep",
+        "type": "text",
+        "label": "Wij maken uit het inspectieverslag een conceptwerkbon met de voorgestelde acties.",
+        "nl": "Wij maken uit het inspectieverslag een conceptwerkbon met de voorgestelde acties.",
+        "fr": "À partir du rapport d’inspection, nous préparons un projet de bon de travail avec les actions proposées."
+      },
+      {
+        "key": "home-v2-apps-2-label-keep",
+        "type": "text",
+        "label": "Uw medewerker",
+        "nl": "Uw medewerker",
+        "fr": "Votre collaborateur"
+      },
+      {
+        "key": "home-v2-apps-2-keep",
+        "type": "text",
+        "label": "Uw onderhoudsteam beslist welke acties het registreert en inplant.",
+        "nl": "Uw onderhoudsteam beslist welke acties het registreert en inplant.",
+        "fr": "Votre équipe de maintenance décide des actions qu’elle enregistre et planifie."
       },
       {
         "key": "home-apps-3-h",
@@ -82,11 +166,46 @@ window.GF_CMS_CATALOG=[
         "fr": "Administration"
       },
       {
-        "key": "home-apps-3-p",
+        "key": "home-v2-apps-3-label-today",
         "type": "text",
-        "label": "Haal gegevens uit binnenkomende documenten en bereid een conceptaanvraag voor. Uw medewerk",
-        "nl": "Haal gegevens uit binnenkomende documenten en bereid een conceptaanvraag voor. Uw medewerker controleert en registreert die in uw eigen systeem.",
-        "fr": "Extrayez les données des documents entrants et préparez un projet de demande. Votre collaborateur le vérifie et l’enregistre dans votre propre système."
+        "label": "Vandaag",
+        "nl": "Vandaag",
+        "fr": "Aujourd’hui"
+      },
+      {
+        "key": "home-v2-apps-3-today",
+        "type": "text",
+        "label": "Facturen, bestelbonnen en aanvragen komen binnen per mail of als pdf. Iemand neemt de gege",
+        "nl": "Facturen, bestelbonnen en aanvragen komen binnen per mail of als pdf. Iemand neemt de gegevens met de hand over in uw systeem.",
+        "fr": "Factures, bons de commande et demandes arrivent par e-mail ou en PDF. Quelqu’un reprend les données à la main dans votre système."
+      },
+      {
+        "key": "home-v2-apps-3-label-prep",
+        "type": "text",
+        "label": "Wij bereiden voor",
+        "nl": "Wij bereiden voor",
+        "fr": "Nous préparons"
+      },
+      {
+        "key": "home-v2-apps-3-prep",
+        "type": "text",
+        "label": "Wij halen de gegevens uit het document en zetten een conceptaanvraag klaar.",
+        "nl": "Wij halen de gegevens uit het document en zetten een conceptaanvraag klaar.",
+        "fr": "Nous extrayons les données du document et préparons un projet de demande."
+      },
+      {
+        "key": "home-v2-apps-3-label-keep",
+        "type": "text",
+        "label": "Uw medewerker",
+        "nl": "Uw medewerker",
+        "fr": "Votre collaborateur"
+      },
+      {
+        "key": "home-v2-apps-3-keep",
+        "type": "text",
+        "label": "Uw medewerker controleert het concept en registreert het in uw eigen systeem.",
+        "nl": "Uw medewerker controleert het concept en registreert het in uw eigen systeem.",
+        "fr": "Votre collaborateur vérifie le projet et l’enregistre dans votre propre système."
       },
       {
         "key": "home-apps-4-h",
@@ -96,39 +215,333 @@ window.GF_CMS_CATALOG=[
         "fr": "Logistique"
       },
       {
-        "key": "home-apps-4-p",
+        "key": "home-v2-apps-4-label-today",
         "type": "text",
-        "label": "Verwerk gegevens uit leveringsdocumenten en leg afwijkingen voor aan de medewerker die ze ",
-        "nl": "Verwerk gegevens uit leveringsdocumenten en leg afwijkingen voor aan de medewerker die ze kan opvolgen.",
-        "fr": "Traitez les données des documents de livraison et soumettez les écarts au collaborateur qui peut les suivre."
+        "label": "Vandaag",
+        "nl": "Vandaag",
+        "fr": "Aujourd’hui"
       },
       {
-        "key": "home-apps-pilot-h",
+        "key": "home-v2-apps-4-today",
+        "type": "text",
+        "label": "Iemand vergelijkt leveringsdocumenten lijn per lijn met de bestelling en mailt de verschil",
+        "nl": "Iemand vergelijkt leveringsdocumenten lijn per lijn met de bestelling en mailt de verschillen door.",
+        "fr": "Quelqu’un compare les documents de livraison ligne par ligne avec la commande et transmet les écarts par e-mail."
+      },
+      {
+        "key": "home-v2-apps-4-label-prep",
+        "type": "text",
+        "label": "Wij bereiden voor",
+        "nl": "Wij bereiden voor",
+        "fr": "Nous préparons"
+      },
+      {
+        "key": "home-v2-apps-4-prep",
+        "type": "text",
+        "label": "Wij lezen de leveringsdocumenten in, vergelijken ze met de bestelling en zetten de afwijki",
+        "nl": "Wij lezen de leveringsdocumenten in, vergelijken ze met de bestelling en zetten de afwijkingen op een rij.",
+        "fr": "Nous lisons les documents de livraison, les comparons avec la commande et listons les écarts."
+      },
+      {
+        "key": "home-v2-apps-4-label-keep",
+        "type": "text",
+        "label": "Uw medewerker",
+        "nl": "Uw medewerker",
+        "fr": "Votre collaborateur"
+      },
+      {
+        "key": "home-v2-apps-4-keep",
+        "type": "text",
+        "label": "De medewerker die de afwijking kan opvolgen, beslist wat er gebeurt.",
+        "nl": "De medewerker die de afwijking kan opvolgen, beslist wat er gebeurt.",
+        "fr": "Le collaborateur qui peut assurer le suivi de l’écart décide de la suite."
+      },
+      {
+        "key": "home-v2-rec-eyebrow",
+        "type": "text",
+        "label": "Terugkerend werk",
+        "nl": "Terugkerend werk",
+        "fr": "Travail répétitif"
+      },
+      {
+        "key": "home-v2-rec-h",
+        "type": "text",
+        "label": "Welk terugkerend werk kost uw team tijd?",
+        "nl": "Welk terugkerend werk kost uw team tijd?",
+        "fr": "Quel travail répétitif coûte du temps à votre équipe ?"
+      },
+      {
+        "key": "home-v2-rec-lede",
+        "type": "text",
+        "label": "Meestal gaat het om kleine handelingen die elke dag terugkomen, op bijna elke afdeling. Ap",
+        "nl": "Meestal gaat het om kleine handelingen die elke dag terugkomen, op bijna elke afdeling. Apart lijken ze onbelangrijk. Samen vullen ze een groot deel van de week.",
+        "fr": "Il s’agit le plus souvent de petites opérations qui reviennent chaque jour, dans presque tous les services. Prises une à une, elles semblent anodines. Ensemble, elles occupent une bonne partie de la semaine."
+      },
+      {
+        "key": "home-v2-rec-tasks-h",
+        "type": "text",
+        "label": "Waar het werk zit",
+        "nl": "Waar het werk zit",
+        "fr": "Où se trouve ce travail"
+      },
+      {
+        "key": "home-v2-rec-task-1",
+        "type": "text",
+        "label": "Kwaliteit zoekt specificaties en certificaten op in mappen en typt dezelfde antwoorden ove",
+        "nl": "Kwaliteit zoekt specificaties en certificaten op in mappen en typt dezelfde antwoorden over in elke nieuwe klantvragenlijst.",
+        "fr": "La qualité recherche les spécifications et les certificats dans des dossiers et ressaisit les mêmes réponses dans chaque nouveau questionnaire client."
+      },
+      {
+        "key": "home-v2-rec-task-2",
+        "type": "text",
+        "label": "Onderhoud zet inspectieverslagen en notities om in werkbonnen en rapporten.",
+        "nl": "Onderhoud zet inspectieverslagen en notities om in werkbonnen en rapporten.",
+        "fr": "La maintenance transforme les rapports d’inspection et les notes en bons de travail et en rapports."
+      },
+      {
+        "key": "home-v2-rec-task-3",
+        "type": "text",
+        "label": "Administratie neemt gegevens uit mails en pdf’s over in Excel en daarna nog eens in het ER",
+        "nl": "Administratie neemt gegevens uit mails en pdf’s over in Excel en daarna nog eens in het ERP.",
+        "fr": "L’administration reprend les données des e-mails et des PDF dans Excel, puis une nouvelle fois dans l’ERP."
+      },
+      {
+        "key": "home-v2-rec-task-4",
+        "type": "text",
+        "label": "Logistiek vergelijkt leveringsbonnen met bestellingen en stuurt afwijkingen per mail door.",
+        "nl": "Logistiek vergelijkt leveringsbonnen met bestellingen en stuurt afwijkingen per mail door.",
+        "fr": "La logistique compare les bons de livraison avec les commandes et transmet les écarts par e-mail."
+      },
+      {
+        "key": "home-v2-rec-task-5",
+        "type": "text",
+        "label": "Verkoop en klantendienst beantwoorden dezelfde klantvragen telkens opnieuw.",
+        "nl": "Verkoop en klantendienst beantwoorden dezelfde klantvragen telkens opnieuw.",
+        "fr": "La vente et le service clientèle répondent sans cesse aux mêmes questions des clients."
+      },
+      {
+        "key": "home-v2-rec-why-h",
+        "type": "text",
+        "label": "Waarom niemand het ziet",
+        "nl": "Waarom niemand het ziet",
+        "fr": "Pourquoi personne ne le voit"
+      },
+      {
+        "key": "home-v2-rec-why-p1",
+        "type": "text",
+        "label": "Dit werk staat in geen enkele planning. Het is verspreid over korte momenten: tien minuten",
+        "nl": "Dit werk staat in geen enkele planning. Het is verspreid over korte momenten: tien minuten zoeken, een kwartier overtypen, een mail doorsturen en wachten op antwoord. Niemand meet het, dus niemand ziet het totaal. Wie het al jaren doet, vindt het gewoon deel van de job.",
+        "fr": "Ce travail ne figure dans aucun planning. Il est dispersé en courts moments : dix minutes de recherche, un quart d’heure de ressaisie, un e-mail à transférer et une réponse à attendre. Personne ne le mesure, donc personne ne voit le total. Ceux qui le font depuis des années le considèrent simplement comme une partie du travail."
+      },
+      {
+        "key": "home-v2-rec-why-p2",
+        "type": "text",
+        "label": "Het kost ook meer dan tijd. Bij elke keer overtypen kan een fout insluipen. En een klant w",
+        "nl": "Het kost ook meer dan tijd. Bij elke keer overtypen kan een fout insluipen. En een klant wacht op antwoord tot de juiste collega vrij is.",
+        "fr": "Le coût ne se limite pas au temps. Chaque ressaisie peut introduire une erreur. Et un client attend sa réponse jusqu’à ce que le bon collègue soit disponible."
+      },
+      {
+        "key": "home-v2-rec-cost-h",
+        "type": "text",
+        "label": "Wat het kost: reken het zelf uit",
+        "nl": "Wat het kost: reken het zelf uit",
+        "fr": "Ce que cela coûte : faites le calcul"
+      },
+      {
+        "key": "home-v2-rec-calc-label",
+        "type": "text",
+        "label": "Rekenvoorbeeld",
+        "nl": "Rekenvoorbeeld",
+        "fr": "Exemple de calcul"
+      },
+      {
+        "key": "home-v2-rec-calc-1",
+        "type": "text",
+        "label": "Stel: 3 medewerkers besteden elk 2 uur per week aan opzoeken en overtypen.",
+        "nl": "Stel: 3 medewerkers besteden elk 2 uur per week aan opzoeken en overtypen.",
+        "fr": "Supposons : 3 collaborateurs consacrent chacun 2 heures par semaine à rechercher et à ressaisir des informations."
+      },
+      {
+        "key": "home-v2-rec-calc-2",
+        "type": "text",
+        "label": "3 × 2 uur = 6 uur per week.",
+        "nl": "3 × 2 uur = 6 uur per week.",
+        "fr": "3 × 2 heures = 6 heures par semaine."
+      },
+      {
+        "key": "home-v2-rec-calc-3",
+        "type": "text",
+        "label": "6 uur × 46 werkweken = 276 uur per jaar.",
+        "nl": "6 uur × 46 werkweken = 276 uur per jaar.",
+        "fr": "6 heures × 46 semaines de travail = 276 heures par an."
+      },
+      {
+        "key": "home-v2-rec-calc-4",
+        "type": "text",
+        "label": "276 uur × € 45 loonkost per uur = € 12.420 per jaar.",
+        "nl": "276 uur × € 45 loonkost per uur = € 12.420 per jaar.",
+        "fr": "276 heures × 45 € de coût salarial par heure = 12 420 € par an."
+      },
+      {
+        "key": "home-v2-rec-calc-note",
+        "type": "text",
+        "label": "Werkweken: 52 min verlof en feestdagen. Loonkost per uur: een aanname. Vervang de cijfers ",
+        "nl": "Werkweken: 52 min verlof en feestdagen. Loonkost per uur: een aanname. Vervang de cijfers door die van uw eigen team.",
+        "fr": "Semaines de travail : 52 moins les congés et les jours fériés. Coût salarial par heure : une hypothèse. Remplacez ces chiffres par ceux de votre équipe."
+      },
+      {
+        "key": "home-v2-rec-calc-close",
+        "type": "text",
+        "label": "De uitkomst toont een orde van grootte. Hoeveel tijd u daarvan echt terugwint, meten we in",
+        "nl": "De uitkomst toont een orde van grootte. Hoeveel tijd u daarvan echt terugwint, meten we in een pilot.",
+        "fr": "Le résultat donne un ordre de grandeur. Le temps que vous récupérez réellement, nous le mesurons lors d’un pilote."
+      },
+      {
+        "key": "home-v2-rec-check-h",
+        "type": "text",
+        "label": "Zo herkent u het",
+        "nl": "Zo herkent u het",
+        "fr": "Comment le reconnaître"
+      },
+      {
+        "key": "home-v2-rec-check-1",
+        "type": "text",
+        "label": "Dezelfde gegevens worden in twee of meer systemen ingetikt.",
+        "nl": "Dezelfde gegevens worden in twee of meer systemen ingetikt.",
+        "fr": "Les mêmes données sont saisies dans deux systèmes ou plus."
+      },
+      {
+        "key": "home-v2-rec-check-2",
+        "type": "text",
+        "label": "Iemand zoekt elke week in mappen of mails naar een certificaat, een specificatie of een ou",
+        "nl": "Iemand zoekt elke week in mappen of mails naar een certificaat, een specificatie of een oud antwoord.",
+        "fr": "Chaque semaine, quelqu’un cherche un certificat, une spécification ou une ancienne réponse dans des dossiers ou des e-mails."
+      },
+      {
+        "key": "home-v2-rec-check-3",
+        "type": "text",
+        "label": "Klanten stellen vragen die u al eens beantwoord hebt, en het antwoord wordt opnieuw opgest",
+        "nl": "Klanten stellen vragen die u al eens beantwoord hebt, en het antwoord wordt opnieuw opgesteld.",
+        "fr": "Des clients posent des questions auxquelles vous avez déjà répondu, et la réponse est rédigée à nouveau."
+      },
+      {
+        "key": "home-v2-rec-check-4",
+        "type": "text",
+        "label": "Een Excel-lijst houdt het werk tussen twee systemen bij elkaar.",
+        "nl": "Een Excel-lijst houdt het werk tussen twee systemen bij elkaar.",
+        "fr": "Un fichier Excel fait le lien entre deux systèmes."
+      },
+      {
+        "key": "home-v2-rec-check-5",
+        "type": "text",
+        "label": "Rapporten of werkbonnen worden telkens met de hand opgemaakt, in hetzelfde stramien.",
+        "nl": "Rapporten of werkbonnen worden telkens met de hand opgemaakt, in hetzelfde stramien.",
+        "fr": "Les rapports ou les bons de travail sont chaque fois établis à la main, selon le même modèle."
+      },
+      {
+        "key": "home-v2-rec-check-6",
+        "type": "text",
+        "label": "Is één collega ziek of met verlof, dan blijft een taak liggen.",
+        "nl": "Is één collega ziek of met verlof, dan blijft een taak liggen.",
+        "fr": "Si un collègue est malade ou en congé, une tâche reste en attente."
+      },
+      {
+        "key": "home-v2-rec-check-7",
+        "type": "text",
+        "label": "Niemand weet hoeveel tijd een taak per week kost.",
+        "nl": "Niemand weet hoeveel tijd een taak per week kost.",
+        "fr": "Personne ne sait combien de temps une tâche prend par semaine."
+      },
+      {
+        "key": "home-v2-rec-close",
+        "type": "text",
+        "label": "Herkent u er twee of meer? Kies de taak die het vaakst terugkomt. Met die ene taak starten",
+        "nl": "Herkent u er twee of meer? Kies de taak die het vaakst terugkomt. Met die ene taak starten we de pilot.",
+        "fr": "Vous en reconnaissez deux ou plus ? Choisissez la tâche qui revient le plus souvent. C’est avec cette seule tâche que nous démarrons le pilote."
+      },
+      {
+        "key": "home-v2-aanpak-eyebrow",
+        "type": "text",
+        "label": "Aanpak",
+        "nl": "Aanpak",
+        "fr": "Approche"
+      },
+      {
+        "key": "home-v2-aanpak-h",
+        "type": "text",
+        "label": "Zo starten we",
+        "nl": "Zo starten we",
+        "fr": "Comment nous démarrons"
+      },
+      {
+        "key": "home-v2-aanpak-lede",
         "type": "text",
         "label": "Verbeter één werkproces met de systemen die u al gebruikt.",
         "nl": "Verbeter één werkproces met de systemen die u al gebruikt.",
         "fr": "Améliorez un processus de travail avec les systèmes que vous utilisez déjà."
       },
       {
-        "key": "home-apps-pilot-p",
+        "key": "home-v2-aanpak-1-h",
         "type": "text",
-        "label": "We beginnen met een taak die uw team vaak herhaalt. In een pilot meten we hoeveel tijd die",
-        "nl": "We beginnen met een taak die uw team vaak herhaalt. In een pilot meten we hoeveel tijd die vandaag vraagt, hoeveel tijd u wint en waar uw medewerkers moeten blijven nakijken.",
-        "fr": "Nous commençons par une tâche que votre équipe répète souvent. Lors d’un pilote, nous mesurons le temps qu’elle demande aujourd’hui, le temps que vous gagnez et les points que vos collaborateurs doivent continuer à vérifier."
+        "label": "Workflowscan",
+        "nl": "Workflowscan",
+        "fr": "Scan des workflows"
       },
       {
-        "key": "home-orion-proof-h",
+        "key": "home-v2-aanpak-1-p",
         "type": "text",
-        "label": "Ervaring uit de praktijk",
-        "nl": "Ervaring uit de praktijk",
-        "fr": "Une expérience de terrain"
+        "label": "We kiezen samen één taak die uw team vaak herhaalt. We meten hoeveel tijd die vandaag vraa",
+        "nl": "We kiezen samen één taak die uw team vaak herhaalt. We meten hoeveel tijd die vandaag vraagt en waar het werk vastloopt.",
+        "fr": "Nous choisissons ensemble une tâche que votre équipe répète souvent. Nous mesurons le temps qu’elle demande aujourd’hui et l’endroit où le travail bloque."
       },
       {
-        "key": "home-orion-proof-p",
+        "key": "home-v2-aanpak-2-h",
         "type": "text",
-        "label": "Meer dan twintig jaar procesverbetering, programmamanagement en transformatie, onder meer ",
-        "nl": "Meer dan twintig jaar procesverbetering, programmamanagement en transformatie, onder meer in retail, industrie en telecom.",
-        "fr": "Plus de vingt ans d’amélioration des processus, de gestion de programmes et de transformation, notamment dans la distribution, l’industrie et les télécoms."
+        "label": "Pilot op één taak",
+        "nl": "Pilot op één taak",
+        "fr": "Pilote sur une tâche"
+      },
+      {
+        "key": "home-v2-aanpak-2-p",
+        "type": "text",
+        "label": "We automatiseren die ene taak met de systemen die u al gebruikt. Samen bepalen we waar uw ",
+        "nl": "We automatiseren die ene taak met de systemen die u al gebruikt. Samen bepalen we waar uw medewerkers moeten blijven nakijken.",
+        "fr": "Nous automatisons cette seule tâche avec les systèmes que vous utilisez déjà. Ensemble, nous déterminons les points que vos collaborateurs doivent continuer à vérifier."
+      },
+      {
+        "key": "home-v2-aanpak-3-h",
+        "type": "text",
+        "label": "Meten en beslissen",
+        "nl": "Meten en beslissen",
+        "fr": "Mesurer et décider"
+      },
+      {
+        "key": "home-v2-aanpak-3-p",
+        "type": "text",
+        "label": "We vergelijken de tijd vóór en na. Daarna beslist u: uitbreiden naar een volgende taak of ",
+        "nl": "We vergelijken de tijd vóór en na. Daarna beslist u: uitbreiden naar een volgende taak of stoppen.",
+        "fr": "Nous comparons le temps avant et après. Ensuite, vous décidez : passer à une tâche suivante ou arrêter."
+      },
+      {
+        "key": "home-v2-fundament-eyebrow",
+        "type": "text",
+        "label": "Fundament",
+        "nl": "Fundament",
+        "fr": "Fondations"
+      },
+      {
+        "key": "home-v2-kloof-eyebrow",
+        "type": "text",
+        "label": "Cijfers",
+        "nl": "Cijfers",
+        "fr": "Chiffres"
+      },
+      {
+        "key": "home-v2-trust-eyebrow",
+        "type": "text",
+        "label": "Controle",
+        "nl": "Controle",
+        "fr": "Contrôle"
       },
       {
         "key": "home-orion-trust-h",
@@ -185,6 +598,34 @@ window.GF_CMS_CATALOG=[
         "label": "Uw medewerker controleert het en zet de laatste stap: versturen, registreren of importeren",
         "nl": "Uw medewerker controleert het en zet de laatste stap: versturen, registreren of importeren.",
         "fr": "Votre collaborateur le vérifie et fait le dernier pas : envoyer, enregistrer ou importer."
+      },
+      {
+        "key": "home-v2-proof-eyebrow",
+        "type": "text",
+        "label": "Achtergrond",
+        "nl": "Achtergrond",
+        "fr": "Parcours"
+      },
+      {
+        "key": "home-orion-proof-h",
+        "type": "text",
+        "label": "Ervaring uit de praktijk",
+        "nl": "Ervaring uit de praktijk",
+        "fr": "Une expérience de terrain"
+      },
+      {
+        "key": "home-orion-proof-p",
+        "type": "text",
+        "label": "Meer dan twintig jaar procesverbetering, programmamanagement en transformatie, onder meer ",
+        "nl": "Meer dan twintig jaar procesverbetering, programmamanagement en transformatie, onder meer in retail, industrie en telecom.",
+        "fr": "Plus de vingt ans d’amélioration des processus, de gestion de programmes et de transformation, notamment dans la distribution, l’industrie et les télécoms."
+      },
+      {
+        "key": "home-v2-final-eyebrow",
+        "type": "text",
+        "label": "Pilot",
+        "nl": "Pilot",
+        "fr": "Pilote"
       },
       {
         "key": "home-orion-pilot-h",

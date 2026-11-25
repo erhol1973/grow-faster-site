@@ -2,8 +2,8 @@
   "schema": 1,
   "scope": "rendered_local_nl_runtime_dictionaries_static_cms_and_mail",
   "technicalReview": {
-    "date": "2026-11-24",
-    "reason": "Orion-film en de vier stappen van Zo werkt Orion verhuisd van index.html naar orion.html (eigenaarsbeslissing 24 november): rendered DOM van beide pagina’s en inline JSON-LD ongewijzigd in betekenis; assets/cms-catalog.js zonder de negen stapvelden; assets/cms-admin.js met hernummerde groepen. Geen adapterwijziging. Eerdere reden: Magazine editie 1 als flipboek op journal.html: nieuw script assets/flipboek.js (bladert door acht pagina’s; bevat enkel paginanummers, geen tekst), uitgebreide runtime-dictionary assets/i18n-journal.…"
+    "date": "2026-11-25",
+    "reason": "Homepage herwerkt (opdracht sponsor 25 november): nieuwe blokken Terugkerend werk en Zo starten we, rijkere toepassingskaarten; nieuwe runtime-dictionary assets/i18n-home.js (zelfde patroon als i18n-journal.js, alleen op index.html); assets/cms-catalog.js gesynchroniseerd met index.html; assets/cms-admin.js met nieuwe homepagegroepen. Geen adapterwijziging. Eerdere reden: Orion-film en de vier stappen van Zo werkt Orion verhuisd van index.html naar orion.html (eigenaarsbeslissing 24 november): rendered DOM van beide pagina’s en inline JSON-LD ongewijzigd in betekenis; assets/cms-catalog.js zonder de negen stapvelden; assets/cms-admin.js met hernummerde groepen. Geen adapterwijziging. Eerdere reden: Magazine editie 1 als flipboek op journal.html: nieuw script assets/flipboek.js (bladert door acht pagina’s; bevat enkel paginanummers, geen tekst), uitgebreide runtime-dictionary assets/i18n-journal.…"
   },
   "javascript": [
     {
@@ -24,11 +24,11 @@
     },
     {
       "file": "assets/cms-admin.js",
-      "sha256": "e2a0ceddb239ffa12891a407cf5773566d03f094204513c8dc6cdda4025fffae"
+      "sha256": "8bfb3a3482a4b9ff5affb5cdebc9e3ab6e8d2fb49c3142e477857b3afce26a53"
     },
     {
       "file": "assets/cms-catalog.js",
-      "sha256": "e5de177455bb9bd6aed4ecb647634bfd585580ff68d2d36c6f51808d522434a9"
+      "sha256": "4d417c75844928fbbd5d985b582ecc5c1dfaa3cbe06b13ea9daeab251e66b905"
     },
     {
       "file": "assets/cms-client.js",
@@ -77,6 +77,10 @@
     {
       "file": "assets/home-film.js",
       "sha256": "3bb45468eddad3d1c9c0e0908580c216aef48c09d63b3f3dd0256f479fd6f19a"
+    },
+    {
+      "file": "assets/i18n-home.js",
+      "sha256": "cb957137b65f8d7564da8e3494ee8b6d3eb14caf7b95dc0a8d2fb8418dead438"
     },
     {
       "file": "assets/i18n-insights.js",

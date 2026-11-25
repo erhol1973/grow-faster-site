@@ -81,3 +81,16 @@ test('the sliding hero moves with arrows, dots and pause, and the part tiles ope
  await expect(page.locator('.fb-pagina[data-pagina="17"]')).not.toHaveAttribute('inert','');
  expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1)).toBe(true);
 });
+
+// Content studio (sponsor decision 25 Nov 2026): a published mag- value replaces the page text in NL and FR; the flipbook keeps working.
+test('a published content-studio text replaces the magazine page text in Dutch and French',async({page})=>{
+ await page.route('**/assets/cms-config.js*',r=>r.fulfill({contentType:'application/javascript',body:"window.GF_CMS_CONFIG={url:'https://dbooobckaqbkrmkpcuem.supabase.co',key:'public-test-key'};"}));
+ const calls=[];await page.route('https://dbooobckaqbkrmkpcuem.supabase.co/**',r=>{calls.push(r.request().url());return r.fulfill({contentType:'application/json',headers:{'access-control-allow-origin':'*'},body:JSON.stringify([{content:{settings:{fields:{'mag-01':{type:'text',nl:'Gepubliceerde kicker <b>veilig</b>',fr:'Surtitre publié'}}}}}])});});
+ await page.goto('/journal.html');
+ await expect(page.locator('[data-cms="mag-01"]')).toHaveText('Gepubliceerde kicker <b>veilig</b>');await expect(page.locator('[data-cms="mag-01"] b')).toHaveCount(0);
+ await page.locator('#lang-btn-top').click();await page.locator('.lang-top [data-lang="fr"]').click();
+ await expect(page.locator('html')).toHaveAttribute('lang','fr');await expect(page.locator('[data-cms="mag-01"]')).toHaveText('Surtitre publié');
+ await expect(page.locator('#editie-1 h2')).toHaveText('La ressaisie, le gaspillage que personne ne voit');
+ expect(calls.length).toBeGreaterThan(0);expect(calls.every(u=>u.includes('/cms_publications?')&&u.includes('journal'))).toBe(true);
+ await page.locator('#fb-volgende').click();await expect(page.locator('#fb-nr')).not.toHaveText('1 / 32');
+});

@@ -1969,6 +1969,373 @@ window.GF_CMS_CATALOG=[
     ]
   },
   {
+    "page": "journal",
+    "route": "journal.html",
+    "section": "website",
+    "label": "Maandelijks Magazine",
+    "fields": [
+      {
+        "key": "mag-01",
+        "type": "text",
+        "label": "Maandelijks magazine voor kmo's",
+        "nl": "Maandelijks magazine voor kmo's",
+        "fr": "Magazine mensuel pour les PME"
+      },
+      {
+        "key": "mag-02",
+        "type": "text",
+        "label": "Grow Faster Magazine",
+        "nl": "Grow Faster Magazine",
+        "fr": "Grow Faster Magazine"
+      },
+      {
+        "key": "mag-03",
+        "type": "text",
+        "label": "Elke maand één verspilling in uw bedrijf, en hoe automatisering en AI ze wegnemen. Een kwa",
+        "nl": "Elke maand één verspilling in uw bedrijf, en hoe automatisering en AI ze wegnemen. Een kwartier lezen.",
+        "fr": "Chaque mois, un gaspillage dans votre entreprise, et comment l’automatisation et l’IA l’éliminent. Un quart d’heure de lecture."
+      },
+      {
+        "key": "mag-04",
+        "type": "text",
+        "label": "Nr. 1 · november 2026",
+        "nl": "Nr. 1 · november 2026",
+        "fr": "N° 1 · novembre 2026"
+      },
+      {
+        "key": "mag-05",
+        "type": "text",
+        "label": "Overtypen, de verspilling die niemand ziet",
+        "nl": "Overtypen, de verspilling die niemand ziet",
+        "fr": "La ressaisie, le gaspillage que personne ne voit"
+      },
+      {
+        "key": "mag-hero-img",
+        "type": "media",
+        "label": "img/magazine-editie-1-omslag-700.webp",
+        "nl": "img/magazine-editie-1-omslag-700.webp",
+        "fr": "img/magazine-editie-1-omslag-700.webp",
+        "src": "img/magazine-editie-1-omslag-700.webp",
+        "alt": {
+          "nl": "Omslag van editie 1: verpakkingslijn in een voedingsbedrijf",
+          "fr": "Omslag van editie 1: verpakkingslijn in een voedingsbedrijf"
+        }
+      },
+      {
+        "key": "mag-06",
+        "type": "text",
+        "label": "Editie 1 · deel 1",
+        "nl": "Editie 1 · deel 1",
+        "fr": "Édition 1 · partie 1"
+      },
+      {
+        "key": "mag-07",
+        "type": "text",
+        "label": "Werk dat niets toevoegt, en toch elke dag gebeurt",
+        "nl": "Werk dat niets toevoegt, en toch elke dag gebeurt",
+        "fr": "Un travail qui n’apporte rien, et pourtant fait chaque jour"
+      },
+      {
+        "key": "mag-08",
+        "type": "text",
+        "label": "Editie 1 · deel 2",
+        "nl": "Editie 1 · deel 2",
+        "fr": "Édition 1 · partie 2"
+      },
+      {
+        "key": "mag-09",
+        "type": "text",
+        "label": "Vijf retailers, vijf vragenlijsten, dezelfde antwoorden",
+        "nl": "Vijf retailers, vijf vragenlijsten, dezelfde antwoorden",
+        "fr": "Cinq distributeurs, cinq questionnaires, les mêmes réponses"
+      },
+      {
+        "key": "mag-10",
+        "type": "text",
+        "label": "Editie 1 · deel 3",
+        "nl": "Editie 1 · deel 3",
+        "fr": "Édition 1 · partie 3"
+      },
+      {
+        "key": "mag-11",
+        "type": "text",
+        "label": "Vier stappen, geen nieuw systeem",
+        "nl": "Vier stappen, geen nieuw systeem",
+        "fr": "Quatre étapes, aucun nouveau système"
+      },
+      {
+        "key": "mag-12",
+        "type": "text",
+        "label": "Nr. 2 · december 2026",
+        "nl": "Nr. 2 · december 2026",
+        "fr": "N° 2 · décembre 2026"
+      },
+      {
+        "key": "mag-13",
+        "type": "text",
+        "label": "Het verschil tussen bon en levering",
+        "nl": "Het verschil tussen bon en levering",
+        "fr": "L’écart entre le bon et la livraison"
+      },
+      {
+        "key": "mag-14",
+        "type": "text",
+        "label": "Archief",
+        "nl": "Archief",
+        "fr": "Archives"
+      },
+      {
+        "key": "mag-15",
+        "type": "text",
+        "label": "Alle edities",
+        "nl": "Alle edities",
+        "fr": "Toutes les éditions"
+      },
+      {
+        "key": "mag-16",
+        "type": "text",
+        "label": "Elke maand één verspilling, één voorbeeld en één aanpak. De nieuwste editie staat eerst.",
+        "nl": "Elke maand één verspilling, één voorbeeld en één aanpak. De nieuwste editie staat eerst.",
+        "fr": "Chaque mois, un gaspillage, un exemple et une approche. La dernière édition apparaît en premier."
+      },
+      {
+        "key": "mag-17",
+        "type": "text",
+        "label": "Verschijnt in december",
+        "nl": "Verschijnt in december",
+        "fr": "Parution en décembre"
+      },
+      {
+        "key": "mag-18",
+        "type": "text",
+        "label": "Nr. 2 · december 2026",
+        "nl": "Nr. 2 · december 2026",
+        "fr": "N° 2 · décembre 2026"
+      },
+      {
+        "key": "mag-19",
+        "type": "text",
+        "label": "Het verschil tussen bon en levering",
+        "nl": "Het verschil tussen bon en levering",
+        "fr": "L’écart entre le bon et la livraison"
+      },
+      {
+        "key": "mag-20",
+        "type": "text",
+        "label": "Op de bon staan 24 dozen, op de kade staan er 22. Wie merkt het, wanneer, en wat kost het ",
+        "nl": "Op de bon staan 24 dozen, op de kade staan er 22. Wie merkt het, wanneer, en wat kost het als niemand het merkt?",
+        "fr": "Le bon indique 24 cartons, le quai en compte 22. Qui le remarque, quand, et combien cela coûte-t-il si personne ne le remarque ?"
+      },
+      {
+        "key": "mag-21",
+        "type": "text",
+        "label": "Nr. 1 · november 2026",
+        "nl": "Nr. 1 · november 2026",
+        "fr": "N° 1 · novembre 2026"
+      },
+      {
+        "key": "mag-22",
+        "type": "text",
+        "label": "Overtypen, de verspilling die niemand ziet",
+        "nl": "Overtypen, de verspilling die niemand ziet",
+        "fr": "La ressaisie, le gaspillage que personne ne voit"
+      },
+      {
+        "key": "mag-23",
+        "type": "text",
+        "label": "Bestellingen, specificaties en vragenlijsten die iemand van het ene document naar het ande",
+        "nl": "Bestellingen, specificaties en vragenlijsten die iemand van het ene document naar het andere overtypt. 32 pagina's.",
+        "fr": "Des commandes, des spécifications et des questionnaires que quelqu’un ressaisit d’un document à l’autre. 32 pages."
+      },
+      {
+        "key": "mag-24",
+        "type": "text",
+        "label": "Elke maand",
+        "nl": "Elke maand",
+        "fr": "Chaque mois"
+      },
+      {
+        "key": "mag-25",
+        "type": "text",
+        "label": "Nooit een editie missen",
+        "nl": "Nooit een editie missen",
+        "fr": "Ne manquez aucune édition"
+      },
+      {
+        "key": "mag-26",
+        "type": "text",
+        "label": "Eén mail per maand, op de dag dat een nieuwe editie verschijnt. Geen reclame.",
+        "nl": "Eén mail per maand, op de dag dat een nieuwe editie verschijnt. Geen reclame.",
+        "fr": "Un mail par mois, le jour de la parution d’une nouvelle édition. Pas de publicité."
+      },
+      {
+        "key": "mag-27",
+        "type": "text",
+        "label": "In editie 1",
+        "nl": "In editie 1",
+        "fr": "Dans l’édition 1"
+      },
+      {
+        "key": "mag-28",
+        "type": "text",
+        "label": "Vier delen, één verspilling",
+        "nl": "Vier delen, één verspilling",
+        "fr": "Quatre parties, un gaspillage"
+      },
+      {
+        "key": "mag-29",
+        "type": "text",
+        "label": "De verspilling",
+        "nl": "De verspilling",
+        "fr": "Le gaspillage"
+      },
+      {
+        "key": "mag-30",
+        "type": "text",
+        "label": "Werk dat niets toevoegt en op geen enkele functieomschrijving staat.",
+        "nl": "Werk dat niets toevoegt en op geen enkele functieomschrijving staat.",
+        "fr": "Un travail qui n’apporte rien et ne figure dans aucune description de fonction."
+      },
+      {
+        "key": "mag-31",
+        "type": "text",
+        "label": "Eén voorbeeld",
+        "nl": "Eén voorbeeld",
+        "fr": "Un exemple"
+      },
+      {
+        "key": "mag-32",
+        "type": "text",
+        "label": "Een voedingsbedrijf dat dezelfde gegevens overtypt voor vijf retailers.",
+        "nl": "Een voedingsbedrijf dat dezelfde gegevens overtypt voor vijf retailers.",
+        "fr": "Une entreprise alimentaire qui ressaisit les mêmes données pour cinq distributeurs."
+      },
+      {
+        "key": "mag-33",
+        "type": "text",
+        "label": "De aanpak",
+        "nl": "De aanpak",
+        "fr": "L’approche"
+      },
+      {
+        "key": "mag-34",
+        "type": "text",
+        "label": "Tel het, zoek de bron, laat de computer lezen en laat een mens beslissen.",
+        "nl": "Tel het, zoek de bron, laat de computer lezen en laat een mens beslissen.",
+        "fr": "Comptez, trouvez la source, laissez l’ordinateur lire et un humain décider."
+      },
+      {
+        "key": "mag-35",
+        "type": "text",
+        "label": "Wat het oplevert",
+        "nl": "Wat het oplevert",
+        "fr": "Ce que cela rapporte"
+      },
+      {
+        "key": "mag-36",
+        "type": "text",
+        "label": "Wat u meet voor en na: tijd, fouten en doorlooptijd.",
+        "nl": "Wat u meet voor en na: tijd, fouten en doorlooptijd.",
+        "fr": "Ce que vous mesurez avant et après : temps, erreurs et délai."
+      },
+      {
+        "key": "mag-37",
+        "type": "text",
+        "label": "Eerste editie, november 2026",
+        "nl": "Eerste editie, november 2026",
+        "fr": "Première édition, novembre 2026"
+      },
+      {
+        "key": "mag-38",
+        "type": "text",
+        "label": "Overtypen, de verspilling die niemand ziet",
+        "nl": "Overtypen, de verspilling die niemand ziet",
+        "fr": "La ressaisie, le gaspillage que personne ne voit"
+      },
+      {
+        "key": "mag-39",
+        "type": "text",
+        "label": "Over bestellingen, specificaties en vragenlijsten die iemand van het ene document naar het",
+        "nl": "Over bestellingen, specificaties en vragenlijsten die iemand van het ene document naar het andere overtypt. Tweeëndertig pagina's, een kwartier lezen.",
+        "fr": "Sur les commandes, les spécifications et les questionnaires que quelqu’un ressaisit d’un document à l’autre. Trente-deux pages, un quart d’heure de lecture."
+      },
+      {
+        "key": "mag-40",
+        "type": "text",
+        "label": "Opbouw van elke editie",
+        "nl": "Opbouw van elke editie",
+        "fr": "Structure de chaque édition"
+      },
+      {
+        "key": "mag-41",
+        "type": "text",
+        "label": "Eén verspilling.",
+        "nl": "Eén verspilling.",
+        "fr": "Un gaspillage."
+      },
+      {
+        "key": "mag-42",
+        "type": "text",
+        "label": "Een verspilling die u in bijna elke kmo terugvindt.",
+        "nl": "Een verspilling die u in bijna elke kmo terugvindt.",
+        "fr": "Un gaspillage que l’on retrouve dans presque chaque PME."
+      },
+      {
+        "key": "mag-43",
+        "type": "text",
+        "label": "Eén voorbeeld.",
+        "nl": "Eén voorbeeld.",
+        "fr": "Un exemple."
+      },
+      {
+        "key": "mag-44",
+        "type": "text",
+        "label": "Hoe die verspilling eruitziet in een kmo, met één cijfer en de bron.",
+        "nl": "Hoe die verspilling eruitziet in een kmo, met één cijfer en de bron.",
+        "fr": "À quoi ressemble ce gaspillage dans une PME, avec un chiffre et sa source."
+      },
+      {
+        "key": "mag-45",
+        "type": "text",
+        "label": "De aanpak.",
+        "nl": "De aanpak.",
+        "fr": "L’approche."
+      },
+      {
+        "key": "mag-46",
+        "type": "text",
+        "label": "De stappen om ze weg te werken, met automatisering en AI waar het helpt.",
+        "nl": "De stappen om ze weg te werken, met automatisering en AI waar het helpt.",
+        "fr": "Les étapes pour l’éliminer, avec l’automatisation et l’IA là où elles aident."
+      },
+      {
+        "key": "mag-47",
+        "type": "text",
+        "label": "Wat het oplevert.",
+        "nl": "Wat het oplevert.",
+        "fr": "Ce que cela rapporte."
+      },
+      {
+        "key": "mag-48",
+        "type": "text",
+        "label": "Hoeveel tijd en geld u terugwint, en hoe u dat meet.",
+        "nl": "Hoeveel tijd en geld u terugwint, en hoe u dat meet.",
+        "fr": "Combien de temps et d’argent vous récupérez, et comment le mesurer."
+      },
+      {
+        "key": "cms-video-journal",
+        "type": "media",
+        "kind": "video",
+        "label": "Video bij deze pagina",
+        "src": "",
+        "alt": {
+          "nl": "",
+          "fr": ""
+        }
+      }
+    ]
+  },
+  {
     "page": "insights",
     "route": "insights.html",
     "section": "website",

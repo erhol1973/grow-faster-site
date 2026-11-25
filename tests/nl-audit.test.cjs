@@ -1,6 +1,6 @@
 'use strict';
 const {test}=require('node:test'),assert=require('node:assert/strict');
-const {hash,files,baselineDigest,allowLocalRequest,catalogBlocks,validateContract,validateCoverage,delta,findingId,validateBaseline,endpoint,check,batches,distribute}=require('../scripts/nl-audit.cjs');
+const {findingLines,findingRecords,hash,files,baselineDigest,allowLocalRequest,catalogBlocks,validateContract,validateCoverage,delta,findingId,validateBaseline,endpoint,check,batches,distribute}=require('../scripts/nl-audit.cjs');
 const {promote}=require('../scripts/nl-promote.cjs');
 const block=text=>({id:'page#paragraph',text,sha256:hash(text),engine:{version:'6.6'}});
 const baseline=()=>({schema:1,sourceCommit:'a'.repeat(40),history:[],blocks:[block('Dit is een zin.')],findings:[]});
@@ -114,4 +114,16 @@ test('Candidate promotion enforces compare-and-swap and preserves findings and h
   const dropped=structuredClone(candidate);dropped.findings=[];assert.throws(()=>promote(text,dropped,()=>true),/finding/);
   const edited=structuredClone(candidate);edited.findings[0].status='resolved';assert.throws(()=>promote(text,edited,()=>true),/finding/);
   const invented=structuredClone(candidate);invented.blocks[0].review={reviewer:'AI',reference:'hash',date:'2026-11-11',sha256:invented.blocks[0].sha256};assert.throws(()=>promote(text,invented,()=>true),/invent/);
+});
+test('Job log lists each new finding with rule, block, marked text and suggestions without altering findings',()=>{
+  const f={id:'x',blockId:'index.html#text:p:1',textHash:'h',rule:'MORFOLOGIK_RULE_NL_NL',offset:4,length:6,replacements:['spelfout','spel fout','a','b'],context:'Een spelfoutt\nhier.',status:'open'};
+  const copy=structuredClone(f);const [line]=findingLines([f]);
+  assert.deepEqual(f,copy);assert.match(line,/^NL-FINDING\tMORFOLOGIK_RULE_NL_NL\tindex\.html#text:p:1\t"spelfo"\t/);
+  assert.ok(line.includes('["spelfout","spel fout","a"]')&&!line.includes('"b"'));assert.ok(!line.includes('\n'));
+  assert.deepEqual(findingLines([]),[]);
+});
+test('Finding records carry every field except the block context, which the inventory already holds',()=>{
+  const f={id:'x',blockId:'b',textHash:'h',rule:'R',offset:1,length:2,message:'m',replacements:['a'],context:'Een\nlange alinea.',status:'open',firstSeen:'c'};
+  const [line]=findingRecords([f]);const [tag,json]=line.split('\t');
+  assert.equal(tag,'NL-FINDING-RECORD');const {context,...rest}=f;assert.deepEqual(JSON.parse(json),rest);assert.ok(!line.includes('\n'));
 });

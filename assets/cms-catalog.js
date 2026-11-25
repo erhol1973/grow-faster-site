@@ -1685,16 +1685,11 @@ window.GF_CMS_CATALOG=[
     "label": "Training",
     "fields": [
       {
-        "key": "trn-hero-img",
-        "type": "media",
-        "label": "img/hero-training-team-1774.webp",
-        "nl": "img/hero-training-team-1774.webp",
-        "fr": "img/hero-training-team-1774.webp",
-        "src": "img/hero-training-team-1774.webp",
-        "alt": {
-          "nl": "",
-          "fr": ""
-        }
+        "key": "trn-26",
+        "type": "text",
+        "label": "Training voor kmo’s",
+        "nl": "Training voor kmo’s",
+        "fr": "Formation pour les PME"
       },
       {
         "key": "trn-01",
@@ -1711,6 +1706,18 @@ window.GF_CMS_CATALOG=[
         "fr": "Sur leurs propres tâches, chez vous ou en ligne. Ainsi, le gain de temps reste après le pilote."
       },
       {
+        "key": "trn-hero-img",
+        "type": "media",
+        "label": "img/hero-training-team-1774.webp",
+        "nl": "img/hero-training-team-1774.webp",
+        "fr": "img/hero-training-team-1774.webp",
+        "src": "img/hero-training-team-1774.webp",
+        "alt": {
+          "nl": "",
+          "fr": ""
+        }
+      },
+      {
         "key": "trn-03",
         "type": "text",
         "label": "Waarom training",
@@ -1725,25 +1732,11 @@ window.GF_CMS_CATALOG=[
         "fr": "Un nouvel outil ou un workflow automatisé ne rapporte que si vos collaborateurs savent l’utiliser. Qui ne sait pas bien comment il fonctionne revient à l’ancienne méthode. C’est pourquoi nous formons avec vos propres documents et tâches, pas avec des exemples tirés d’un manuel."
       },
       {
-        "key": "trn-05",
+        "key": "trn-27",
         "type": "text",
-        "label": "AI vervangt uw mensen niet. Het maakt hun werk lichter.",
-        "nl": "AI vervangt uw mensen niet. Het maakt hun werk lichter.",
-        "fr": "L’IA ne remplace pas vos collaborateurs. Elle allège leur travail."
-      },
-      {
-        "key": "trn-06",
-        "type": "text",
-        "label": "van de kmo’s die generatieve AI gebruiken, heeft evenveel personeel nodig als voordien. 6%",
-        "nl": "van de kmo’s die generatieve AI gebruiken, heeft evenveel personeel nodig als voordien. 6% heeft meer mensen nodig, 9% minder.",
-        "fr": "des PME utilisant l’IA générative ont besoin d’autant de personnel qu’avant. 6 % ont besoin de plus de monde, 9 % de moins."
-      },
-      {
-        "key": "trn-07",
-        "type": "text",
-        "label": "kmo’s die nog geen generatieve AI gebruiken, noemt een tekort aan vaardigheden als belangr",
-        "nl": "kmo’s die nog geen generatieve AI gebruiken, noemt een tekort aan vaardigheden als belangrijkste reden.",
-        "fr": "PME n’utilisant pas encore l’IA générative cite le manque de compétences comme raison principale."
+        "label": "Elke training is kort en praktisch, met één doel: uw team doet het nieuwe werk daarna zelf, zonder ons.",
+        "nl": "Elke training is kort en praktisch, met één doel: uw team doet het nieuwe werk daarna zelf, zonder ons.",
+        "fr": "Chaque formation est courte et pratique, avec un seul objectif : votre équipe fait ensuite elle-même le nouveau travail, sans nous."
       },
       {
         "key": "trn-08",
@@ -1751,6 +1744,41 @@ window.GF_CMS_CATALOG=[
         "label": "Drie trainingen",
         "nl": "Drie trainingen",
         "fr": "Trois formations"
+      },
+      {
+        "key": "trn-28",
+        "type": "text",
+        "label": "Elk programma kan apart, of als vervolg op een pilot. We stemmen de inhoud af op uw team en uw taken.",
+        "nl": "Elk programma kan apart, of als vervolg op een pilot. We stemmen de inhoud af op uw team en uw taken.",
+        "fr": "Chaque programme peut être suivi séparément ou comme suite à un pilote. Nous adaptons le contenu à votre équipe et à vos tâches."
+      },
+      {
+        "key": "trn-29",
+        "type": "text",
+        "label": "Op uw eigen werk",
+        "nl": "Op uw eigen werk",
+        "fr": "Sur votre propre travail"
+      },
+      {
+        "key": "trn-30",
+        "type": "text",
+        "label": "Uw mensen oefenen op uw vragenlijsten, uw workflows en uw beslissingen. Wat ze leren, gebruiken ze de dag nadien.",
+        "nl": "Uw mensen oefenen op uw vragenlijsten, uw workflows en uw beslissingen. Wat ze leren, gebruiken ze de dag nadien.",
+        "fr": "Vos collaborateurs s’exercent sur vos questionnaires, vos workflows et vos décisions. Ce qu’ils apprennent, ils l’utilisent dès le lendemain."
+      },
+      {
+        "key": "trn-31",
+        "type": "text",
+        "label": "Mens en AI samen",
+        "nl": "Mens en AI samen",
+        "fr": "L’humain et l’IA ensemble"
+      },
+      {
+        "key": "trn-32",
+        "type": "text",
+        "label": "AI bereidt voor, uw mensen kijken na en beslissen. In elke training oefenen we precies die rolverdeling.",
+        "nl": "AI bereidt voor, uw mensen kijken na en beslissen. In elke training oefenen we precies die rolverdeling.",
+        "fr": "L’IA prépare, vos collaborateurs vérifient et décident. Chaque formation entraîne précisément cette répartition des rôles."
       },
       {
         "key": "trn-09",
@@ -1795,11 +1823,39 @@ window.GF_CMS_CATALOG=[
         "fr": "Pour les dirigeants et la direction. Comment décisions, processus et systèmes évoluent ensemble quand le marché change."
       },
       {
+        "key": "trn-05",
+        "type": "text",
+        "label": "AI vervangt uw mensen niet. Het maakt hun werk lichter.",
+        "nl": "AI vervangt uw mensen niet. Het maakt hun werk lichter.",
+        "fr": "L’IA ne remplace pas vos collaborateurs. Elle allège leur travail."
+      },
+      {
+        "key": "trn-06",
+        "type": "text",
+        "label": "van de kmo’s die generatieve AI gebruiken, heeft evenveel personeel nodig als voordien. 6%",
+        "nl": "van de kmo’s die generatieve AI gebruiken, heeft evenveel personeel nodig als voordien. 6% heeft meer mensen nodig, 9% minder.",
+        "fr": "des PME utilisant l’IA générative ont besoin d’autant de personnel qu’avant. 6 % ont besoin de plus de monde, 9 % de moins."
+      },
+      {
+        "key": "trn-07",
+        "type": "text",
+        "label": "kmo’s die nog geen generatieve AI gebruiken, noemt een tekort aan vaardigheden als belangr",
+        "nl": "kmo’s die nog geen generatieve AI gebruiken, noemt een tekort aan vaardigheden als belangrijkste reden.",
+        "fr": "PME n’utilisant pas encore l’IA générative cite le manque de compétences comme raison principale."
+      },
+      {
         "key": "trn-15",
         "type": "text",
         "label": "Zo werkt het",
         "nl": "Zo werkt het",
         "fr": "Comment ça marche"
+      },
+      {
+        "key": "trn-33",
+        "type": "text",
+        "label": "Leren, toepassen, volhouden. Daarom stopt een training niet na de laatste sessie.",
+        "nl": "Leren, toepassen, volhouden. Daarom stopt een training niet na de laatste sessie.",
+        "fr": "Apprendre, appliquer, ancrer. C’est pourquoi une formation ne s’arrête pas à la dernière session."
       },
       {
         "key": "trn-16",
@@ -1844,6 +1900,27 @@ window.GF_CMS_CATALOG=[
         "fr": "Après quelques semaines, nous regardons ensemble ce qui est utilisé en pratique et ce qui peut encore être amélioré."
       },
       {
+        "key": "trn-34",
+        "type": "text",
+        "label": "Uw trainer",
+        "nl": "Uw trainer",
+        "fr": "Votre formateur"
+      },
+      {
+        "key": "trn-35",
+        "type": "text",
+        "label": "Oprichter van Grow Faster",
+        "nl": "Oprichter van Grow Faster",
+        "fr": "Fondateur de Grow Faster"
+      },
+      {
+        "key": "trn-36",
+        "type": "text",
+        "label": "Meer dan twintig jaar procesverbetering bij grote bedrijven zoals Volvo, Colruyt en Telenet. Nu breng ik die aanpak naar kmo’s, in het Nederlands en het Frans.",
+        "nl": "Meer dan twintig jaar procesverbetering bij grote bedrijven zoals Volvo, Colruyt en Telenet. Nu breng ik die aanpak naar kmo’s, in het Nederlands en het Frans.",
+        "fr": "Plus de vingt ans d’amélioration des processus dans de grandes entreprises comme Volvo, Colruyt et Telenet. J’apporte aujourd’hui cette approche aux PME, en néerlandais et en français."
+      },
+      {
         "key": "trn-22",
         "type": "text",
         "label": "Praktisch",
@@ -1856,6 +1933,13 @@ window.GF_CMS_CATALOG=[
         "label": "Ter plaatse of online, in het Nederlands of het Frans. Prijs op aanvraag.",
         "nl": "Ter plaatse of online, in het Nederlands of het Frans. Prijs op aanvraag.",
         "fr": "Sur place ou en ligne, en néerlandais ou en français. Prix sur demande."
+      },
+      {
+        "key": "trn-37",
+        "type": "text",
+        "label": "Verder lezen",
+        "nl": "Verder lezen",
+        "fr": "Pour aller plus loin"
       },
       {
         "key": "trn-24",

@@ -6,13 +6,15 @@ const assert=require('node:assert/strict');
 const fs=require('node:fs'),path=require('node:path');
 const read=file=>fs.readFileSync(path.resolve(__dirname,'../dist',file),'utf8');
 // 25 Nov 2026, later owner decision: Home, Orion, Workflow-automatisering and Bedrijfsontwikkeling go back to their earlier look.
-const pages=['oplossingen.html','about.html','training.html','journal.html','insights.html','afspraak.html','privacy.html','terms.html','accessibility.html'];
+// 25 Nov 2026, owner request: Training gets the academy layout (McKinsey structure, Apple-like finish) without the colour layer, like Orion.
+// 25 Nov 2026 17:02, owner decision: afspraak.html (Plan een gesprek) also goes back to its original colours.
+const pages=['oplossingen.html','about.html','journal.html','insights.html','privacy.html','terms.html','accessibility.html'];
 test('every customer page loads the colour layer last in its head',()=>{
  for(const p of pages){const head=read(p).split('</head>')[0];
   assert.match(head,/<link rel="stylesheet" href="assets\/kleur\.css\?v=[^"]+">\s*$/,p+' loads assets/kleur.css as the last head element');}
 });
-test('Home, Orion, Workflow-automatisering and Bedrijfsontwikkeling do not load the colour layer',()=>{
- for(const p of ['index.html','orion.html','automatisering.html','coherence.html'])assert.doesNotMatch(read(p),/assets\/kleur\.css/,p+' keeps its earlier look');
+test('Home, Orion, Workflow-automatisering, Bedrijfsontwikkeling, Training and Plan een gesprek do not load the colour layer',()=>{
+ for(const p of ['index.html','orion.html','automatisering.html','coherence.html','training.html','afspraak.html'])assert.doesNotMatch(read(p),/assets\/kleur\.css/,p+' keeps its earlier look');
 });
 test('the colour layer keeps text dark on bright fills and white on the dark band',()=>{
  const css=read('assets/kleur.css');

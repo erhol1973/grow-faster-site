@@ -5,8 +5,9 @@ const {test}=require('node:test'),assert=require('node:assert/strict'),fs=requir
 const root=path.resolve(__dirname,'..','dist');const read=f=>fs.readFileSync(path.join(root,f),'utf8');
 // 25 Nov 2026: Workflow-automatisering page strings added by the premium redesign live in assets/i18n-automatisering.js.
 // 25 Nov 2026: Orion page strings live in assets/i18n-orion.js (editorial redesign, loaded after i18n.js on orion.html only).
+// 25 Nov 2026: Training page strings added by the academy redesign live in assets/i18n-training.js (training.html only).
 // 25 Nov 2026: homepage strings moved to assets/i18n-home.js (loaded after i18n.js on index.html); it only adds keys, so merging it is neutral for other pages.
-const I18N=()=>{const c={window:{}};vm.runInNewContext(read('assets/i18n.js'),c);vm.runInNewContext(read('assets/i18n-home.js'),c);vm.runInNewContext(read('assets/i18n-orion.js'),c);vm.runInNewContext(read('assets/i18n-automatisering.js'),c);return c.window.I18N};
+const I18N=()=>{const c={window:{}};vm.runInNewContext(read('assets/i18n.js'),c);vm.runInNewContext(read('assets/i18n-home.js'),c);vm.runInNewContext(read('assets/i18n-orion.js'),c);vm.runInNewContext(read('assets/i18n-automatisering.js'),c);vm.runInNewContext(read('assets/i18n-training.js'),c);return c.window.I18N};
 const main=f=>read(f).match(/<main[\s\S]*?<\/main>/)[0];
 const visible=html=>html.replace(/<script[\s\S]*?<\/script>|<style[\s\S]*?<\/style>/g,'').replace(/<([a-z0-9]+)[^>]*data-(?:notr|ih)[^>]*>[\s\S]*?<\/\1>/g,'');
 // Names stay the same in both languages.
@@ -18,7 +19,8 @@ test('Training offers three trainings on site or online, price on request, with 
   // 25 Nov 2026: training.html became CMS-editable, so headings carry a data-cms attribute.
   assert.match(m,/<h1(?: data-cms="trn-\d\d")?>Uw mensen leren werken met AI en automatisering\.<\/h1>/);
   const tr=m.match(/<section id="trainingen"[\s\S]*?<\/section>/)[0];
-  assert.deepEqual([...tr.matchAll(/<h3(?: data-cms="trn-\d\d")?>([^<]+)<\/h3>/g)].map(x=>x[1]),['Orion in de praktijk','Workflow-automatisering','Bedrijfsontwikkeling: naar een adaptief bedrijf']);
+  // 25 Nov 2026 academy redesign: the three trainings are the programme cards (the section also has two short pillars).
+  assert.deepEqual([...tr.matchAll(/<article class="ac-program">[\s\S]*?<h3(?: data-cms="trn-\d\d")?>([^<]+)<\/h3>/g)].map(x=>x[1]),['Orion in de praktijk','Workflow-automatisering','Bedrijfsontwikkeling: naar een adaptief bedrijf']);
   assert.match(m,/Ter plaatse of online, in het Nederlands of het Frans\. Prijs op aanvraag\./);
   assert.doesNotMatch(m,/href="mailto:/);assert.equal((m.match(/href="afspraak\.html\?onderwerp=training" class="btn primary"/g)||[]).length,2);
   assert.doesNotMatch(m,/<form\b/);

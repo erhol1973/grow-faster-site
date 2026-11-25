@@ -1958,16 +1958,11 @@ window.GF_CMS_CATALOG=[
     "label": "Training",
     "fields": [
       {
-        "key": "trn-hero-img",
-        "type": "media",
-        "label": "img/hero-training-team-1774.webp",
-        "nl": "img/hero-training-team-1774.webp",
-        "fr": "img/hero-training-team-1774.webp",
-        "src": "img/hero-training-team-1774.webp",
-        "alt": {
-          "nl": "",
-          "fr": ""
-        }
+        "key": "trn-26",
+        "type": "text",
+        "label": "Training voor kmo’s",
+        "nl": "Training voor kmo’s",
+        "fr": "Formation pour les PME"
       },
       {
         "key": "trn-01",
@@ -1984,6 +1979,18 @@ window.GF_CMS_CATALOG=[
         "fr": "Sur leurs propres tâches, chez vous ou en ligne. Ainsi, le gain de temps reste après le pilote."
       },
       {
+        "key": "trn-hero-img",
+        "type": "media",
+        "label": "img/hero-training-team-1774.webp",
+        "nl": "img/hero-training-team-1774.webp",
+        "fr": "img/hero-training-team-1774.webp",
+        "src": "img/hero-training-team-1774.webp",
+        "alt": {
+          "nl": "",
+          "fr": ""
+        }
+      },
+      {
         "key": "trn-03",
         "type": "text",
         "label": "Waarom training",
@@ -1998,25 +2005,11 @@ window.GF_CMS_CATALOG=[
         "fr": "Un nouvel outil ou un workflow automatisé ne rapporte que si vos collaborateurs savent l’utiliser. Qui ne sait pas bien comment il fonctionne revient à l’ancienne méthode. C’est pourquoi nous formons avec vos propres documents et tâches, pas avec des exemples tirés d’un manuel."
       },
       {
-        "key": "trn-05",
+        "key": "trn-27",
         "type": "text",
-        "label": "AI vervangt uw mensen niet. Het maakt hun werk lichter.",
-        "nl": "AI vervangt uw mensen niet. Het maakt hun werk lichter.",
-        "fr": "L’IA ne remplace pas vos collaborateurs. Elle allège leur travail."
-      },
-      {
-        "key": "trn-06",
-        "type": "text",
-        "label": "van de kmo’s die generatieve AI gebruiken, heeft evenveel personeel nodig als voordien. 6%",
-        "nl": "van de kmo’s die generatieve AI gebruiken, heeft evenveel personeel nodig als voordien. 6% heeft meer mensen nodig, 9% minder.",
-        "fr": "des PME utilisant l’IA générative ont besoin d’autant de personnel qu’avant. 6 % ont besoin de plus de monde, 9 % de moins."
-      },
-      {
-        "key": "trn-07",
-        "type": "text",
-        "label": "kmo’s die nog geen generatieve AI gebruiken, noemt een tekort aan vaardigheden als belangr",
-        "nl": "kmo’s die nog geen generatieve AI gebruiken, noemt een tekort aan vaardigheden als belangrijkste reden.",
-        "fr": "PME n’utilisant pas encore l’IA générative cite le manque de compétences comme raison principale."
+        "label": "Elke training is kort en praktisch, met één doel: uw team doet het nieuwe werk daarna zelf, zonder ons.",
+        "nl": "Elke training is kort en praktisch, met één doel: uw team doet het nieuwe werk daarna zelf, zonder ons.",
+        "fr": "Chaque formation est courte et pratique, avec un seul objectif : votre équipe fait ensuite elle-même le nouveau travail, sans nous."
       },
       {
         "key": "trn-08",
@@ -2024,6 +2017,41 @@ window.GF_CMS_CATALOG=[
         "label": "Drie trainingen",
         "nl": "Drie trainingen",
         "fr": "Trois formations"
+      },
+      {
+        "key": "trn-28",
+        "type": "text",
+        "label": "Elk programma kan apart, of als vervolg op een pilot. We stemmen de inhoud af op uw team en uw taken.",
+        "nl": "Elk programma kan apart, of als vervolg op een pilot. We stemmen de inhoud af op uw team en uw taken.",
+        "fr": "Chaque programme peut être suivi séparément ou comme suite à un pilote. Nous adaptons le contenu à votre équipe et à vos tâches."
+      },
+      {
+        "key": "trn-29",
+        "type": "text",
+        "label": "Op uw eigen werk",
+        "nl": "Op uw eigen werk",
+        "fr": "Sur votre propre travail"
+      },
+      {
+        "key": "trn-30",
+        "type": "text",
+        "label": "Uw mensen oefenen op uw vragenlijsten, uw workflows en uw beslissingen. Wat ze leren, gebruiken ze de dag nadien.",
+        "nl": "Uw mensen oefenen op uw vragenlijsten, uw workflows en uw beslissingen. Wat ze leren, gebruiken ze de dag nadien.",
+        "fr": "Vos collaborateurs s’exercent sur vos questionnaires, vos workflows et vos décisions. Ce qu’ils apprennent, ils l’utilisent dès le lendemain."
+      },
+      {
+        "key": "trn-31",
+        "type": "text",
+        "label": "Mens en AI samen",
+        "nl": "Mens en AI samen",
+        "fr": "L’humain et l’IA ensemble"
+      },
+      {
+        "key": "trn-32",
+        "type": "text",
+        "label": "AI bereidt voor, uw mensen kijken na en beslissen. In elke training oefenen we precies die rolverdeling.",
+        "nl": "AI bereidt voor, uw mensen kijken na en beslissen. In elke training oefenen we precies die rolverdeling.",
+        "fr": "L’IA prépare, vos collaborateurs vérifient et décident. Chaque formation entraîne précisément cette répartition des rôles."
       },
       {
         "key": "trn-09",
@@ -2068,11 +2096,39 @@ window.GF_CMS_CATALOG=[
         "fr": "Pour les dirigeants et la direction. Comment décisions, processus et systèmes évoluent ensemble quand le marché change."
       },
       {
+        "key": "trn-05",
+        "type": "text",
+        "label": "AI vervangt uw mensen niet. Het maakt hun werk lichter.",
+        "nl": "AI vervangt uw mensen niet. Het maakt hun werk lichter.",
+        "fr": "L’IA ne remplace pas vos collaborateurs. Elle allège leur travail."
+      },
+      {
+        "key": "trn-06",
+        "type": "text",
+        "label": "van de kmo’s die generatieve AI gebruiken, heeft evenveel personeel nodig als voordien. 6%",
+        "nl": "van de kmo’s die generatieve AI gebruiken, heeft evenveel personeel nodig als voordien. 6% heeft meer mensen nodig, 9% minder.",
+        "fr": "des PME utilisant l’IA générative ont besoin d’autant de personnel qu’avant. 6 % ont besoin de plus de monde, 9 % de moins."
+      },
+      {
+        "key": "trn-07",
+        "type": "text",
+        "label": "kmo’s die nog geen generatieve AI gebruiken, noemt een tekort aan vaardigheden als belangr",
+        "nl": "kmo’s die nog geen generatieve AI gebruiken, noemt een tekort aan vaardigheden als belangrijkste reden.",
+        "fr": "PME n’utilisant pas encore l’IA générative cite le manque de compétences comme raison principale."
+      },
+      {
         "key": "trn-15",
         "type": "text",
         "label": "Zo werkt het",
         "nl": "Zo werkt het",
         "fr": "Comment ça marche"
+      },
+      {
+        "key": "trn-33",
+        "type": "text",
+        "label": "Leren, toepassen, volhouden. Daarom stopt een training niet na de laatste sessie.",
+        "nl": "Leren, toepassen, volhouden. Daarom stopt een training niet na de laatste sessie.",
+        "fr": "Apprendre, appliquer, ancrer. C’est pourquoi une formation ne s’arrête pas à la dernière session."
       },
       {
         "key": "trn-16",
@@ -2117,6 +2173,27 @@ window.GF_CMS_CATALOG=[
         "fr": "Après quelques semaines, nous regardons ensemble ce qui est utilisé en pratique et ce qui peut encore être amélioré."
       },
       {
+        "key": "trn-34",
+        "type": "text",
+        "label": "Uw trainer",
+        "nl": "Uw trainer",
+        "fr": "Votre formateur"
+      },
+      {
+        "key": "trn-35",
+        "type": "text",
+        "label": "Oprichter van Grow Faster",
+        "nl": "Oprichter van Grow Faster",
+        "fr": "Fondateur de Grow Faster"
+      },
+      {
+        "key": "trn-36",
+        "type": "text",
+        "label": "Meer dan twintig jaar procesverbetering bij grote bedrijven zoals Volvo, Colruyt en Telenet. Nu breng ik die aanpak naar kmo’s, in het Nederlands en het Frans.",
+        "nl": "Meer dan twintig jaar procesverbetering bij grote bedrijven zoals Volvo, Colruyt en Telenet. Nu breng ik die aanpak naar kmo’s, in het Nederlands en het Frans.",
+        "fr": "Plus de vingt ans d’amélioration des processus dans de grandes entreprises comme Volvo, Colruyt et Telenet. J’apporte aujourd’hui cette approche aux PME, en néerlandais et en français."
+      },
+      {
         "key": "trn-22",
         "type": "text",
         "label": "Praktisch",
@@ -2129,6 +2206,13 @@ window.GF_CMS_CATALOG=[
         "label": "Ter plaatse of online, in het Nederlands of het Frans. Prijs op aanvraag.",
         "nl": "Ter plaatse of online, in het Nederlands of het Frans. Prijs op aanvraag.",
         "fr": "Sur place ou en ligne, en néerlandais ou en français. Prix sur demande."
+      },
+      {
+        "key": "trn-37",
+        "type": "text",
+        "label": "Verder lezen",
+        "nl": "Verder lezen",
+        "fr": "Pour aller plus loin"
       },
       {
         "key": "trn-24",
@@ -2146,6 +2230,373 @@ window.GF_CMS_CATALOG=[
       },
       {
         "key": "cms-video-training",
+        "type": "media",
+        "kind": "video",
+        "label": "Video bij deze pagina",
+        "src": "",
+        "alt": {
+          "nl": "",
+          "fr": ""
+        }
+      }
+    ]
+  },
+  {
+    "page": "journal",
+    "route": "journal.html",
+    "section": "website",
+    "label": "Maandelijks Magazine",
+    "fields": [
+      {
+        "key": "mag-01",
+        "type": "text",
+        "label": "Maandelijks magazine voor kmo's",
+        "nl": "Maandelijks magazine voor kmo's",
+        "fr": "Magazine mensuel pour les PME"
+      },
+      {
+        "key": "mag-02",
+        "type": "text",
+        "label": "Grow Faster Magazine",
+        "nl": "Grow Faster Magazine",
+        "fr": "Grow Faster Magazine"
+      },
+      {
+        "key": "mag-03",
+        "type": "text",
+        "label": "Elke maand één verspilling in uw bedrijf, en hoe automatisering en AI ze wegnemen. Een kwa",
+        "nl": "Elke maand één verspilling in uw bedrijf, en hoe automatisering en AI ze wegnemen. Een kwartier lezen.",
+        "fr": "Chaque mois, un gaspillage dans votre entreprise, et comment l’automatisation et l’IA l’éliminent. Un quart d’heure de lecture."
+      },
+      {
+        "key": "mag-04",
+        "type": "text",
+        "label": "Nr. 1 · november 2026",
+        "nl": "Nr. 1 · november 2026",
+        "fr": "N° 1 · novembre 2026"
+      },
+      {
+        "key": "mag-05",
+        "type": "text",
+        "label": "Overtypen, de verspilling die niemand ziet",
+        "nl": "Overtypen, de verspilling die niemand ziet",
+        "fr": "La ressaisie, le gaspillage que personne ne voit"
+      },
+      {
+        "key": "mag-hero-img",
+        "type": "media",
+        "label": "img/magazine-editie-1-omslag-700.webp",
+        "nl": "img/magazine-editie-1-omslag-700.webp",
+        "fr": "img/magazine-editie-1-omslag-700.webp",
+        "src": "img/magazine-editie-1-omslag-700.webp",
+        "alt": {
+          "nl": "Omslag van editie 1: verpakkingslijn in een voedingsbedrijf",
+          "fr": "Omslag van editie 1: verpakkingslijn in een voedingsbedrijf"
+        }
+      },
+      {
+        "key": "mag-06",
+        "type": "text",
+        "label": "Editie 1 · deel 1",
+        "nl": "Editie 1 · deel 1",
+        "fr": "Édition 1 · partie 1"
+      },
+      {
+        "key": "mag-07",
+        "type": "text",
+        "label": "Werk dat niets toevoegt, en toch elke dag gebeurt",
+        "nl": "Werk dat niets toevoegt, en toch elke dag gebeurt",
+        "fr": "Un travail qui n’apporte rien, et pourtant fait chaque jour"
+      },
+      {
+        "key": "mag-08",
+        "type": "text",
+        "label": "Editie 1 · deel 2",
+        "nl": "Editie 1 · deel 2",
+        "fr": "Édition 1 · partie 2"
+      },
+      {
+        "key": "mag-09",
+        "type": "text",
+        "label": "Vijf retailers, vijf vragenlijsten, dezelfde antwoorden",
+        "nl": "Vijf retailers, vijf vragenlijsten, dezelfde antwoorden",
+        "fr": "Cinq distributeurs, cinq questionnaires, les mêmes réponses"
+      },
+      {
+        "key": "mag-10",
+        "type": "text",
+        "label": "Editie 1 · deel 3",
+        "nl": "Editie 1 · deel 3",
+        "fr": "Édition 1 · partie 3"
+      },
+      {
+        "key": "mag-11",
+        "type": "text",
+        "label": "Vier stappen, geen nieuw systeem",
+        "nl": "Vier stappen, geen nieuw systeem",
+        "fr": "Quatre étapes, aucun nouveau système"
+      },
+      {
+        "key": "mag-12",
+        "type": "text",
+        "label": "Nr. 2 · december 2026",
+        "nl": "Nr. 2 · december 2026",
+        "fr": "N° 2 · décembre 2026"
+      },
+      {
+        "key": "mag-13",
+        "type": "text",
+        "label": "Het verschil tussen bon en levering",
+        "nl": "Het verschil tussen bon en levering",
+        "fr": "L’écart entre le bon et la livraison"
+      },
+      {
+        "key": "mag-14",
+        "type": "text",
+        "label": "Archief",
+        "nl": "Archief",
+        "fr": "Archives"
+      },
+      {
+        "key": "mag-15",
+        "type": "text",
+        "label": "Alle edities",
+        "nl": "Alle edities",
+        "fr": "Toutes les éditions"
+      },
+      {
+        "key": "mag-16",
+        "type": "text",
+        "label": "Elke maand één verspilling, één voorbeeld en één aanpak. De nieuwste editie staat eerst.",
+        "nl": "Elke maand één verspilling, één voorbeeld en één aanpak. De nieuwste editie staat eerst.",
+        "fr": "Chaque mois, un gaspillage, un exemple et une approche. La dernière édition apparaît en premier."
+      },
+      {
+        "key": "mag-17",
+        "type": "text",
+        "label": "Verschijnt in december",
+        "nl": "Verschijnt in december",
+        "fr": "Parution en décembre"
+      },
+      {
+        "key": "mag-18",
+        "type": "text",
+        "label": "Nr. 2 · december 2026",
+        "nl": "Nr. 2 · december 2026",
+        "fr": "N° 2 · décembre 2026"
+      },
+      {
+        "key": "mag-19",
+        "type": "text",
+        "label": "Het verschil tussen bon en levering",
+        "nl": "Het verschil tussen bon en levering",
+        "fr": "L’écart entre le bon et la livraison"
+      },
+      {
+        "key": "mag-20",
+        "type": "text",
+        "label": "Op de bon staan 24 dozen, op de kade staan er 22. Wie merkt het, wanneer, en wat kost het ",
+        "nl": "Op de bon staan 24 dozen, op de kade staan er 22. Wie merkt het, wanneer, en wat kost het als niemand het merkt?",
+        "fr": "Le bon indique 24 cartons, le quai en compte 22. Qui le remarque, quand, et combien cela coûte-t-il si personne ne le remarque ?"
+      },
+      {
+        "key": "mag-21",
+        "type": "text",
+        "label": "Nr. 1 · november 2026",
+        "nl": "Nr. 1 · november 2026",
+        "fr": "N° 1 · novembre 2026"
+      },
+      {
+        "key": "mag-22",
+        "type": "text",
+        "label": "Overtypen, de verspilling die niemand ziet",
+        "nl": "Overtypen, de verspilling die niemand ziet",
+        "fr": "La ressaisie, le gaspillage que personne ne voit"
+      },
+      {
+        "key": "mag-23",
+        "type": "text",
+        "label": "Bestellingen, specificaties en vragenlijsten die iemand van het ene document naar het ande",
+        "nl": "Bestellingen, specificaties en vragenlijsten die iemand van het ene document naar het andere overtypt. 32 pagina's.",
+        "fr": "Des commandes, des spécifications et des questionnaires que quelqu’un ressaisit d’un document à l’autre. 32 pages."
+      },
+      {
+        "key": "mag-24",
+        "type": "text",
+        "label": "Elke maand",
+        "nl": "Elke maand",
+        "fr": "Chaque mois"
+      },
+      {
+        "key": "mag-25",
+        "type": "text",
+        "label": "Nooit een editie missen",
+        "nl": "Nooit een editie missen",
+        "fr": "Ne manquez aucune édition"
+      },
+      {
+        "key": "mag-26",
+        "type": "text",
+        "label": "Eén mail per maand, op de dag dat een nieuwe editie verschijnt. Geen reclame.",
+        "nl": "Eén mail per maand, op de dag dat een nieuwe editie verschijnt. Geen reclame.",
+        "fr": "Un mail par mois, le jour de la parution d’une nouvelle édition. Pas de publicité."
+      },
+      {
+        "key": "mag-27",
+        "type": "text",
+        "label": "In editie 1",
+        "nl": "In editie 1",
+        "fr": "Dans l’édition 1"
+      },
+      {
+        "key": "mag-28",
+        "type": "text",
+        "label": "Vier delen, één verspilling",
+        "nl": "Vier delen, één verspilling",
+        "fr": "Quatre parties, un gaspillage"
+      },
+      {
+        "key": "mag-29",
+        "type": "text",
+        "label": "De verspilling",
+        "nl": "De verspilling",
+        "fr": "Le gaspillage"
+      },
+      {
+        "key": "mag-30",
+        "type": "text",
+        "label": "Werk dat niets toevoegt en op geen enkele functieomschrijving staat.",
+        "nl": "Werk dat niets toevoegt en op geen enkele functieomschrijving staat.",
+        "fr": "Un travail qui n’apporte rien et ne figure dans aucune description de fonction."
+      },
+      {
+        "key": "mag-31",
+        "type": "text",
+        "label": "Eén voorbeeld",
+        "nl": "Eén voorbeeld",
+        "fr": "Un exemple"
+      },
+      {
+        "key": "mag-32",
+        "type": "text",
+        "label": "Een voedingsbedrijf dat dezelfde gegevens overtypt voor vijf retailers.",
+        "nl": "Een voedingsbedrijf dat dezelfde gegevens overtypt voor vijf retailers.",
+        "fr": "Une entreprise alimentaire qui ressaisit les mêmes données pour cinq distributeurs."
+      },
+      {
+        "key": "mag-33",
+        "type": "text",
+        "label": "De aanpak",
+        "nl": "De aanpak",
+        "fr": "L’approche"
+      },
+      {
+        "key": "mag-34",
+        "type": "text",
+        "label": "Tel het, zoek de bron, laat de computer lezen en laat een mens beslissen.",
+        "nl": "Tel het, zoek de bron, laat de computer lezen en laat een mens beslissen.",
+        "fr": "Comptez, trouvez la source, laissez l’ordinateur lire et un humain décider."
+      },
+      {
+        "key": "mag-35",
+        "type": "text",
+        "label": "Wat het oplevert",
+        "nl": "Wat het oplevert",
+        "fr": "Ce que cela rapporte"
+      },
+      {
+        "key": "mag-36",
+        "type": "text",
+        "label": "Wat u meet voor en na: tijd, fouten en doorlooptijd.",
+        "nl": "Wat u meet voor en na: tijd, fouten en doorlooptijd.",
+        "fr": "Ce que vous mesurez avant et après : temps, erreurs et délai."
+      },
+      {
+        "key": "mag-37",
+        "type": "text",
+        "label": "Eerste editie, november 2026",
+        "nl": "Eerste editie, november 2026",
+        "fr": "Première édition, novembre 2026"
+      },
+      {
+        "key": "mag-38",
+        "type": "text",
+        "label": "Overtypen, de verspilling die niemand ziet",
+        "nl": "Overtypen, de verspilling die niemand ziet",
+        "fr": "La ressaisie, le gaspillage que personne ne voit"
+      },
+      {
+        "key": "mag-39",
+        "type": "text",
+        "label": "Over bestellingen, specificaties en vragenlijsten die iemand van het ene document naar het",
+        "nl": "Over bestellingen, specificaties en vragenlijsten die iemand van het ene document naar het andere overtypt. Tweeëndertig pagina's, een kwartier lezen.",
+        "fr": "Sur les commandes, les spécifications et les questionnaires que quelqu’un ressaisit d’un document à l’autre. Trente-deux pages, un quart d’heure de lecture."
+      },
+      {
+        "key": "mag-40",
+        "type": "text",
+        "label": "Opbouw van elke editie",
+        "nl": "Opbouw van elke editie",
+        "fr": "Structure de chaque édition"
+      },
+      {
+        "key": "mag-41",
+        "type": "text",
+        "label": "Eén verspilling.",
+        "nl": "Eén verspilling.",
+        "fr": "Un gaspillage."
+      },
+      {
+        "key": "mag-42",
+        "type": "text",
+        "label": "Een verspilling die u in bijna elke kmo terugvindt.",
+        "nl": "Een verspilling die u in bijna elke kmo terugvindt.",
+        "fr": "Un gaspillage que l’on retrouve dans presque chaque PME."
+      },
+      {
+        "key": "mag-43",
+        "type": "text",
+        "label": "Eén voorbeeld.",
+        "nl": "Eén voorbeeld.",
+        "fr": "Un exemple."
+      },
+      {
+        "key": "mag-44",
+        "type": "text",
+        "label": "Hoe die verspilling eruitziet in een kmo, met één cijfer en de bron.",
+        "nl": "Hoe die verspilling eruitziet in een kmo, met één cijfer en de bron.",
+        "fr": "À quoi ressemble ce gaspillage dans une PME, avec un chiffre et sa source."
+      },
+      {
+        "key": "mag-45",
+        "type": "text",
+        "label": "De aanpak.",
+        "nl": "De aanpak.",
+        "fr": "L’approche."
+      },
+      {
+        "key": "mag-46",
+        "type": "text",
+        "label": "De stappen om ze weg te werken, met automatisering en AI waar het helpt.",
+        "nl": "De stappen om ze weg te werken, met automatisering en AI waar het helpt.",
+        "fr": "Les étapes pour l’éliminer, avec l’automatisation et l’IA là où elles aident."
+      },
+      {
+        "key": "mag-47",
+        "type": "text",
+        "label": "Wat het oplevert.",
+        "nl": "Wat het oplevert.",
+        "fr": "Ce que cela rapporte."
+      },
+      {
+        "key": "mag-48",
+        "type": "text",
+        "label": "Hoeveel tijd en geld u terugwint, en hoe u dat meet.",
+        "nl": "Hoeveel tijd en geld u terugwint, en hoe u dat meet.",
+        "fr": "Combien de temps et d’argent vous récupérez, et comment le mesurer."
+      },
+      {
+        "key": "cms-video-journal",
         "type": "media",
         "kind": "video",
         "label": "Video bij deze pagina",

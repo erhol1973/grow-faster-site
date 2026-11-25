@@ -13,8 +13,8 @@
 | Websitewerk | [Open PR's](https://github.com/erhol1973/grow-faster-site/pulls), [Issues](https://github.com/erhol1973/grow-faster-site/issues), [Actions](https://github.com/erhol1973/grow-faster-site/actions) | Wat staat echt open en welke gates zijn groen? |
 | Website-releases | [Releasebeleid](../RELEASE.md), [Testplan](../TESTPLAN.md) | Is bewijs op actuele HEAD aanwezig? |
 | Orion | [Orion CLAUDE.md](https://github.com/erhol1973/vragenlijst-assistent/blob/main/CLAUDE.md), [artifacten-index](https://github.com/erhol1973/vragenlijst-assistent/blob/main/docs/artifacten-index.md) | Is Poort 0 gehaald? |
-| Chatcatalogus | Originele ChatGPT-projecten en bestaande inventarisexport | Welke chat heeft welke rol? |
-| Automatiseringen | Huidige ChatGPT-automatiseringsinstellingen | Bestaat er een dubbele/stale check? |
+| Chatcatalogus | Claude-projecten GROW FASTER en ORION; de vroegere ChatGPT-projecten en inventarisexport als historisch archief | Welke chat heeft welke rol? |
+| Automatiseringen | GitHub Actions-workflows in dit repository en het Magazine-redactieproces (Claude-project GROW FASTER) | Bestaat er een dubbele/stale check? |
 
 Een spreadsheet of rapport is altijd een gedateerde afleiding. Schrijf GitHub-/Orion-gegevens niet handmatig terug naar een tweede statusregister alsof dat live is.
 
@@ -25,11 +25,12 @@ Een spreadsheet of rapport is altijd een gedateerde afleiding. Schrijf GitHub-/O
 | Actief A | Orion — Poort 0 | Orion Product Owner; sponsor voor interviews en poort | 10–15 interviews; minimaal 5 geanonimiseerde echte lijsten; 2 pilotintenties; portaalpercentage; jurist en QA-nazicht in parallel | Orion Poort 0, volgens eigen register |
 | Actief B | Website — operationele kwaliteit | Website Release Owner / QA Lead | Geprioriteerde blockers en actuele end-to-end releasebewijzen voor bestaande PR's | Groen CI + sponsor-GO vóór productie |
 | Beperkt | CMS gereedheid | CMS PO | Nog ontbrekende live acceptatie aantonen; geen herhaling van historische PR #57 als open werk | Productieacceptatie |
-| Beperkt | Ledenlogin | Member Access PO | [PR #76](https://github.com/erhol1973/grow-faster-site/pull/76) toetsen aan autorisatie en UX | Onafhankelijke QA + sponsoracceptatie |
-| Review | Website typografie | Design Lead / QA | [PR #79](https://github.com/erhol1973/grow-faster-site/pull/79) tegen vast Hanken Grotesk-contract beoordelen | Frontend/visuele gates |
-| Review | Website-/kwaliteitsintegratie | Solution Architect / QA | [PR #82](https://github.com/erhol1973/grow-faster-site/pull/82) beoordelen op overlap en open gates | Sponsor indien productwijziging |
+| Gesloten | Ledenlogin | Member Access PO | [PR #76](https://github.com/erhol1973/grow-faster-site/pull/76) is gesloten zonder merge; heropenen vraagt een nieuwe productgate | Onafhankelijke QA + sponsoracceptatie |
+| Gesloten | Website typografie | Design Lead / QA | [PR #79](https://github.com/erhol1973/grow-faster-site/pull/79) gesloten op 2026-11-25: verouderd en probleem opgelost; koppengroottes gelijktrekken wordt een nieuwe kleine PR op vraag van de sponsor | Frontend/visuele gates |
+| Gesloten | Website-/kwaliteitsintegratie | Solution Architect / QA | [PR #82](https://github.com/erhol1973/grow-faster-site/pull/82) is gesloten zonder merge | Sponsor indien productwijziging |
 | Geparkeerd tot besluit | BAEIS / Executive prototypes | CPO | Open drafts stuk voor stuk op strategische relevantie beoordelen | Nieuwe productgate |
-| Redactioneel onderhoud | Journal / Radar / Brief | Editorial PO | Bestaande edities, kwaliteitsbevindingen, niet-vrijgegeven previews beheren | Inhoudelijke en productie-GO |
+| Actief | Grow Faster Magazine | Editorial PO (CPO) | Maandelijkse editie op journal.html volgens het redactieproces (Claude-project GROW FASTER, doc `magazine-redactieproces`); editie 1 live sinds 2026-11-24, editie 2 in research | Sponsorpoorten: onderwerp, tekst, release |
+| Redactioneel onderhoud | Radar / Brief | Editorial PO | Bestaande edities, kwaliteitsbevindingen, niet-vrijgegeven previews beheren | Inhoudelijke en productie-GO |
 
 Deze eigenaars zijn **rollen**, geen toegewezen individuele medewerkers of lopende agentprocessen.
 

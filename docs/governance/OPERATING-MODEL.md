@@ -13,7 +13,7 @@
 | Technische releasecriteria | [../RELEASE.md](../RELEASE.md), [../TESTPLAN.md](../TESTPLAN.md), [../../AGENTS.md](../../AGENTS.md) | Een mondelinge GO zonder tests |
 | Actuele website-PR's en CI | [GitHub PR's](https://github.com/erhol1973/grow-faster-site/pulls), [GitHub Actions](https://github.com/erhol1973/grow-faster-site/actions) | Verouderde spreadsheet |
 | Orion-werkafspraken en Poort 0 | [Orion CLAUDE.md](https://github.com/erhol1973/vragenlijst-assistent/blob/main/CLAUDE.md), [artifacten-index](https://github.com/erhol1973/vragenlijst-assistent/blob/main/docs/artifacten-index.md) | Een nieuw Orion-register in Grow Faster |
-| Automatiseringen | De actuele ChatGPT-automatiseringsconfiguratie | Handmatig overgenomen telling |
+| Automatiseringen | De GitHub Actions-workflows in dit repository en het redactieproces van het Magazine in het Claude-project GROW FASTER (doc `magazine-redactieproces`) | Handmatig overgenomen telling; de vroegere ChatGPT-configuratie (gemigreerd naar Claude) |
 | Chatgeschiedenis | Oorspronkelijke chats, met een catalogus als index | De catalogus als volledige bron |
 
 Verwijzingen zijn toegestaan; het parallel onderhouden van dezelfde besluiten in meerdere concurrerende documenten niet.
@@ -51,8 +51,9 @@ Een toestemming om 'PR's te mergen' vervangt **niet** de afzonderlijk vereiste p
 Voorgestelde actuele prioriteiten:
 1. Orion — klantgesprekken, inhoudelijke verificatie, Poort 0. Geen nieuw featurewerk zolang de eigen bouwstop geldt.
 2. Website — operationele stabiliteit, privacy/security en bestaande releaseverplichtingen.
+3. Grow Faster Magazine — maandelijkse editie op journal.html volgens het redactieproces met drie sponsorpoorten (onderwerp, tekst, release); geactiveerd door GF-006.
 
-Journal, Radar, marketing en nieuwe productideeën zijn standaard onderhoud/discovery tenzij een expliciet besluit ze activeert. Een nieuwe build vereist eerst de CPO-investeringscriteria.
+Radar, marketing en nieuwe productideeën zijn standaard onderhoud/discovery tenzij een expliciet besluit ze activeert. Een nieuwe build vereist eerst de CPO-investeringscriteria.
 
 ## 5. Standaard werkcyclus
 

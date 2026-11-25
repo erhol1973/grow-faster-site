@@ -13,9 +13,10 @@ const translated=(file,I)=>{for(const m of visible(main(file)).matchAll(/>([^<]*
 
 test('Training offers three trainings on site or online, price on request, with its own appointment topic',()=>{
   const html=read('training.html'),m=main('training.html');
-  assert.match(m,/<h1>Uw mensen leren werken met AI en automatisering\.<\/h1>/);
+  // 25 Nov 2026: training.html became CMS-editable, so headings carry a data-cms attribute.
+  assert.match(m,/<h1(?: data-cms="trn-\d\d")?>Uw mensen leren werken met AI en automatisering\.<\/h1>/);
   const tr=m.match(/<section id="trainingen"[\s\S]*?<\/section>/)[0];
-  assert.deepEqual([...tr.matchAll(/<h3>([^<]+)<\/h3>/g)].map(x=>x[1]),['Orion in de praktijk','Workflow-automatisering','Bedrijfsontwikkeling: naar een adaptief bedrijf']);
+  assert.deepEqual([...tr.matchAll(/<h3(?: data-cms="trn-\d\d")?>([^<]+)<\/h3>/g)].map(x=>x[1]),['Orion in de praktijk','Workflow-automatisering','Bedrijfsontwikkeling: naar een adaptief bedrijf']);
   assert.match(m,/Ter plaatse of online, in het Nederlands of het Frans\. Prijs op aanvraag\./);
   assert.doesNotMatch(m,/href="mailto:/);assert.equal((m.match(/href="afspraak\.html\?onderwerp=training" class="btn primary"/g)||[]).length,2);
   assert.doesNotMatch(m,/<form\b/);

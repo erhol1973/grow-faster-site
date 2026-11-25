@@ -1527,7 +1527,8 @@
     "kind": "advisory_agent_triage",
     "humanApproval": false,
     "sourceRuns": {
-      "branch": "45696555944 (FINDINGS, 87 nieuw, bron 22f310f = main na #119-#130; kandidaat-SHA-256 dcdbf57a221998e04a3182402c8ff3523ee34cc52cb050cef906bd69999d3ccf)"
+      "branch": "45696555944 (FINDINGS, 87 nieuw, bron 22f310f = main na #119-#130; kandidaat-SHA-256 dcdbf57a221998e04a3182402c8ff3523ee34cc52cb050cef906bd69999d3ccf)",
+      "branchAfterMain101": "45698438222 (FINDINGS, 8 nieuw, bron 51835e4 = deze branch na merge van main met #101 eigen afspraakmodule; kandidaat-SHA-256 020cadba05e534dfeaac8272010e751e29692100b8b8bd6d01d224cb50bb783b)"
     },
     "corrected": {
       "count": 0,
@@ -1928,6 +1929,69 @@
         ]
       }
     },
-    "baseline": "Kandidaat lokaal herbouwd uit de NL-FINDING-RECORD-regels van run 45696555944 en de lokale inventaris; byte-identiek aan de CI-kandidaat (zelfde SHA-256) na invullen van de twee kloktijden uit de Radar-demo (20:37:24 en 20:37:29). Gepromoveerd met scripts/nl-promote.cjs. Bevindingen blijven open; promotie is geen taalgoedkeuring."
+    "baseline": "Kandidaat lokaal herbouwd uit de NL-FINDING-RECORD-regels van run 45696555944 en de lokale inventaris; byte-identiek aan de CI-kandidaat (zelfde SHA-256) na invullen van de twee kloktijden uit de Radar-demo (20:37:24 en 20:37:29). Gepromoveerd met scripts/nl-promote.cjs. Bevindingen blijven open; promotie is geen taalgoedkeuring. Tweede kandidaat (run 45698438222, na merge van main met #101) op dezelfde manier herbouwd, byte-identiek (kloktijden 20:49:26 en 20:49:31) en gepromoveerd.",
+    "afterMain101": {
+      "count": 8,
+      "corrected": 0,
+      "accepted": {
+        "b_name_brand_technical_or_source_title": {
+          "count": 6,
+          "reason": "Bedrijfs- en productnamen in de privacyverklaring (GitHub, Inc.; Supabase; GoatCounter) en de eigennaam \"EU-VS Data Privacy Framework\".",
+          "items": [
+            {
+              "finding": "MORFOLOGIK_RULE_NL_NL Inc",
+              "locations": 1,
+              "ids": [
+                "4b675457b462e82bcd4832afc1e85dad4eb62e88a7b1041d5e85262d72ab2408"
+              ]
+            },
+            {
+              "finding": "MORFOLOGIK_RULE_NL_NL Supabase",
+              "locations": 3,
+              "ids": [
+                "21fc54e83c8fc250561c4565c5bd4bb6207ffda4eefa6ba5ba5e29f5c0e256d4",
+                "4461bec9364ddb90861471ad010ec1da06251517fb83ae1d6869248c50bf162d",
+                "1e21b8a0ea9bd0c2f489431caa5820059aee50f78c3cee7538c0ace9e1645617"
+              ]
+            },
+            {
+              "finding": "MORFOLOGIK_RULE_NL_NL GoatCounter",
+              "locations": 1,
+              "ids": [
+                "002afbc6f9e983eecf2a6ab50ea60930bc3a9ab485c4e7eaa071a01035ba0e68"
+              ]
+            },
+            {
+              "finding": "MORFOLOGIK_RULE_NL_NL EU-VS",
+              "locations": 1,
+              "ids": [
+                "dce82dc8a10cc2398a37467d091e30f834f3c72a1f73eaff74127125972c017f"
+              ]
+            }
+          ]
+        },
+        "b_correct_dutch_compound_not_in_engine_lexicon": {
+          "count": 2,
+          "reason": "Correcte samenstellingen, aaneen: contentstudio (beheerpagina admin-afspraken.html, noindex) en websitetracking.",
+          "items": [
+            {
+              "finding": "MORFOLOGIK_RULE_NL_NL contentstudio",
+              "locations": 1,
+              "ids": [
+                "05238b476c7db09f8a3958dc1688b448d008077bc9486167f7a6b10f6d1f89cd"
+              ]
+            },
+            {
+              "finding": "MORFOLOGIK_RULE_NL_NL websitetracking",
+              "locations": 1,
+              "ids": [
+                "9881cd4132b999b454f59fae585112437d1889dd8af8c58c975bc6668d9fef0b"
+              ]
+            }
+          ]
+        }
+      },
+      "sponsorNote": "privacy.html spreekt de lezer aan met \"je\" (53 keer, al vóór #101), de rest van de site met \"u\". Geen taalfout; een omzetting naar \"u\" is een redactionele keuze van de sponsor en is hier niet gedaan."
+    }
   }
 }

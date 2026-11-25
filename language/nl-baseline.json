@@ -1,28 +1,33 @@
 {
   "schema": 1,
   "origin": "Existing ChatGPT Library baseline/register not accessible in this environment; no prior reviews imported.",
-  "sourceCommit": "22f310f2fbfb0d40ea8edbbf6a4ade5a31626faa",
-  "parentBaseline": "597c0999cc8099a4644843e3369767a12c7c37a06a9b2b36bc3549deea2b972c",
+  "sourceCommit": "51835e43c87f156c7202e4e0080eaaf1aa74f14c",
+  "parentBaseline": "dcdbf57a221998e04a3182402c8ff3523ee34cc52cb050cef906bd69999d3ccf",
   "coverage": [
     {
       "file": "404.html",
       "status": "scanned",
-      "blocks": 1336
+      "blocks": 1355
     },
     {
       "file": "about-the-author.html",
       "status": "scanned",
-      "blocks": 1404
+      "blocks": 1423
     },
     {
       "file": "about.html",
       "status": "scanned",
-      "blocks": 1404
+      "blocks": 1423
     },
     {
       "file": "accessibility.html",
       "status": "scanned",
-      "blocks": 1363
+      "blocks": 1382
+    },
+    {
+      "file": "admin-afspraken.html",
+      "status": "scanned",
+      "blocks": 24
     },
     {
       "file": "admin.html",
@@ -32,37 +37,37 @@
     {
       "file": "afspraak.html",
       "status": "scanned",
-      "blocks": 1381
+      "blocks": 1423
     },
     {
       "file": "all-articles.html",
       "status": "scanned",
-      "blocks": 1486
+      "blocks": 1505
     },
     {
       "file": "approach.html",
       "status": "scanned",
-      "blocks": 1671
+      "blocks": 1690
     },
     {
       "file": "articles-1/enterprise-architecture-needs-enterprise-coherence.html",
       "status": "scanned",
-      "blocks": 1456
+      "blocks": 1475
     },
     {
       "file": "articles-1/index.html",
       "status": "scanned",
-      "blocks": 1486
+      "blocks": 1505
     },
     {
       "file": "articles-1/the-evolution-of-enterprise-management.html",
       "status": "scanned",
-      "blocks": 1486
+      "blocks": 1505
     },
     {
       "file": "automatisering.html",
       "status": "scanned",
-      "blocks": 1477
+      "blocks": 1496
     },
     {
       "file": "baies-dev/index.html",
@@ -82,7 +87,7 @@
     {
       "file": "books.html",
       "status": "scanned",
-      "blocks": 1420
+      "blocks": 1439
     },
     {
       "file": "coherence-sim.html",
@@ -92,22 +97,22 @@
     {
       "file": "coherence.html",
       "status": "scanned",
-      "blocks": 1456
+      "blocks": 1475
     },
     {
       "file": "coordination-overload-1.html",
       "status": "scanned",
-      "blocks": 1486
+      "blocks": 1505
     },
     {
       "file": "de-rol-van-leiderschap.html",
       "status": "scanned",
-      "blocks": 1486
+      "blocks": 1505
     },
     {
       "file": "decision-latency.html",
       "status": "scanned",
-      "blocks": 1456
+      "blocks": 1475
     },
     {
       "file": "eca.html",
@@ -122,17 +127,17 @@
     {
       "file": "index.html",
       "status": "scanned",
-      "blocks": 1533
+      "blocks": 1552
     },
     {
       "file": "insights-ai-pilot.html",
       "status": "scanned",
-      "blocks": 1486
+      "blocks": 1505
     },
     {
       "file": "insights.html",
       "status": "scanned",
-      "blocks": 1486
+      "blocks": 1505
     },
     {
       "file": "journal-fr.html",
@@ -142,67 +147,67 @@
     {
       "file": "journal.html",
       "status": "scanned",
-      "blocks": 2044
+      "blocks": 2063
     },
     {
       "file": "operating-model.html",
       "status": "scanned",
-      "blocks": 1431
+      "blocks": 1450
     },
     {
       "file": "oplossingen.html",
       "status": "scanned",
-      "blocks": 1397
+      "blocks": 1416
     },
     {
       "file": "orion.html",
       "status": "scanned",
-      "blocks": 1502
+      "blocks": 1521
     },
     {
       "file": "privacy.html",
       "status": "scanned",
-      "blocks": 1436
+      "blocks": 1455
     },
     {
       "file": "process.html",
       "status": "scanned",
-      "blocks": 1414
+      "blocks": 1433
     },
     {
       "file": "terms.html",
       "status": "scanned",
-      "blocks": 1370
+      "blocks": 1389
     },
     {
       "file": "the-coherence-model-1.html",
       "status": "scanned",
-      "blocks": 1456
+      "blocks": 1475
     },
     {
       "file": "the-enterprise-paradox-1.html",
       "status": "scanned",
-      "blocks": 1456
+      "blocks": 1475
     },
     {
       "file": "training.html",
       "status": "scanned",
-      "blocks": 1430
+      "blocks": 1449
     },
     {
       "file": "transformation.html",
       "status": "scanned",
-      "blocks": 1448
+      "blocks": 1467
     },
     {
       "file": "value.html",
       "status": "scanned",
-      "blocks": 1409
+      "blocks": 1428
     },
     {
       "file": "workshop.html",
       "status": "scanned",
-      "blocks": 1474
+      "blocks": 1493
     }
   ],
   "history": [
@@ -221,6 +226,10 @@
     {
       "sourceCommit": "8a6328686b3a13476a9a2659c2720fff6be552e0",
       "digest": "597c0999cc8099a4644843e3369767a12c7c37a06a9b2b36bc3549deea2b972c"
+    },
+    {
+      "sourceCommit": "22f310f2fbfb0d40ea8edbbf6a4ade5a31626faa",
+      "digest": "dcdbf57a221998e04a3182402c8ff3523ee34cc52cb050cef906bd69999d3ccf"
     }
   ],
   "blocks": [
@@ -8125,6 +8134,318 @@
       }
     },
     {
+      "id": "admin-afspraken.html#alt:body:2>header:2>a:1>img:1",
+      "page": "admin-afspraken.html",
+      "kind": "alt",
+      "text": "Grow Faster",
+      "sha256": "0f100b4cdf1a9bcd9d916cabb12e32bab7273a93414e8b6264e1f9861f7c1e9f",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
+      }
+    },
+    {
+      "id": "admin-afspraken.html#aria-label:body:2>header:2>a:1",
+      "page": "admin-afspraken.html",
+      "kind": "aria-label",
+      "text": "Grow Faster, naar de website",
+      "sha256": "d69a428e8ca1e7788c91afc4a9e08c4aeb604371dc52bd2b68820b65405b1b94",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
+      }
+    },
+    {
+      "id": "admin-afspraken.html#content:head:1>meta:3",
+      "page": "admin-afspraken.html",
+      "kind": "content",
+      "text": "Beheer van afspraken en geblokkeerde momenten voor Grow Faster.",
+      "sha256": "bf9554a72afb3054928b2969e7ed4d0db2e015dd0a429d5bf1ab7b2980fdbb07",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
+      }
+    },
+    {
+      "id": "admin-afspraken.html#text:body:2>a:1",
+      "page": "admin-afspraken.html",
+      "kind": "text",
+      "text": "Naar de inhoud",
+      "sha256": "08feb78d6eeb14eaa3691f7e2ffcae62dacb099dd61ad730e75960665ad6c34a",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
+      }
+    },
+    {
+      "id": "admin-afspraken.html#text:body:2>header:2",
+      "page": "admin-afspraken.html",
+      "kind": "text",
+      "text": "Afspraken · TEST",
+      "sha256": "b45cb032be43012b2602037f54244b7bbf724356f3b65a02647a4c38779aaa70",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
+      }
+    },
+    {
+      "id": "admin-afspraken.html#text:body:2>header:2>a:3",
+      "page": "admin-afspraken.html",
+      "kind": "text",
+      "text": "Bekijk afspraakpagina ↗",
+      "sha256": "69cee05b78666373bd3fa57a2f175cdd5cc18497d64e06e8a52ccaeaf7650674",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
+      }
+    },
+    {
+      "id": "admin-afspraken.html#text:body:2>header:2>button:4",
+      "page": "admin-afspraken.html",
+      "kind": "text",
+      "text": "Afmelden",
+      "sha256": "f5692c496b7d628e6c0888530be8015ef41e4f1b8b49e36c162d15c7f121ca05",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
+      }
+    },
+    {
+      "id": "admin-afspraken.html#text:body:2>main:3>div:2>section:1>form:3>button:4",
+      "page": "admin-afspraken.html",
+      "kind": "text",
+      "text": "Blokkeren",
+      "sha256": "76d589d7ee449d11aa9819f52f1f6f336bdb9c10f00f41d77ed46aa7d9ba183a",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
+      }
+    },
+    {
+      "id": "admin-afspraken.html#text:body:2>main:3>div:2>section:1>form:3>label:1",
+      "page": "admin-afspraken.html",
+      "kind": "text",
+      "text": "Van",
+      "sha256": "1d319b8341503d6022c8a036df7e299cdc001c6e1218774a78621a7d2def8978",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
+      }
+    },
+    {
+      "id": "admin-afspraken.html#text:body:2>main:3>div:2>section:1>form:3>label:2",
+      "page": "admin-afspraken.html",
+      "kind": "text",
+      "text": "Tot",
+      "sha256": "ca07c656f619f1215c6928eef99d60cbdae73828330d0841ad7845ab8cf770a4",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
+      }
+    },
+    {
+      "id": "admin-afspraken.html#text:body:2>main:3>div:2>section:1>form:3>label:3",
+      "page": "admin-afspraken.html",
+      "kind": "text",
+      "text": "Notitie (alleen voor jou)",
+      "sha256": "88a416b3931c1bf8b0cf3705d5e832de306936f4bbfe5bef9588415f2ad1b1a0",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
+      }
+    },
+    {
+      "id": "admin-afspraken.html#text:body:2>main:3>div:2>section:1>h2:1",
+      "page": "admin-afspraken.html",
+      "kind": "text",
+      "text": "Moment blokkeren",
+      "sha256": "509977cb851077bfb16f601eafe2cc6d3ed1de6a0e4c50736ace31d4467d4cc5",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
+      }
+    },
+    {
+      "id": "admin-afspraken.html#text:body:2>main:3>div:2>section:1>h3:4",
+      "page": "admin-afspraken.html",
+      "kind": "text",
+      "text": "Geblokkeerde periodes",
+      "sha256": "9a7d929b4b3f451d8e516525955c049795cf3268d2f27dacfbcf10413a6c373f",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
+      }
+    },
+    {
+      "id": "admin-afspraken.html#text:body:2>main:3>div:2>section:1>p:2",
+      "page": "admin-afspraken.html",
+      "kind": "text",
+      "text": "In een geblokkeerde periode kunnen klanten niet boeken. Voor een hele dag kies je 00:00 tot 23:59.",
+      "sha256": "4b0e2284f92a6368e0ff91b85591a13b1ea4e357a19fddd7d9557ac1fcb5f59d",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
+      }
+    },
+    {
+      "id": "admin-afspraken.html#text:body:2>main:3>div:2>section:2>h2:1",
+      "page": "admin-afspraken.html",
+      "kind": "text",
+      "text": "Afspraken",
+      "sha256": "48e737dfbdeae5e58793ae3b3bae35849b49a073e5cd4b468ceb77cc688378a9",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
+      }
+    },
+    {
+      "id": "admin-afspraken.html#text:body:2>main:3>div:2>section:2>p:2",
+      "page": "admin-afspraken.html",
+      "kind": "text",
+      "text": "Afspraken van de afgelopen 30 dagen en alles wat nog komt. Annuleer je hier, mail de klant dan zelf.",
+      "sha256": "59aca274a9a2a05ef2e27b8824da3d665312fcd997f490e811a13784b6f71796",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
+      }
+    },
+    {
+      "id": "admin-afspraken.html#text:body:2>main:3>section:1",
+      "page": "admin-afspraken.html",
+      "kind": "text",
+      "text": "Afspraken",
+      "sha256": "48e737dfbdeae5e58793ae3b3bae35849b49a073e5cd4b468ceb77cc688378a9",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
+      }
+    },
+    {
+      "id": "admin-afspraken.html#text:body:2>main:3>section:1>form:4>button:3",
+      "page": "admin-afspraken.html",
+      "kind": "text",
+      "text": "Aanmelden →",
+      "sha256": "fc405d9904c71057165f12f2534cf6a8b2c307f4d284ccd51ce03489a8fdb729",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
+      }
+    },
+    {
+      "id": "admin-afspraken.html#text:body:2>main:3>section:1>form:4>label:1",
+      "page": "admin-afspraken.html",
+      "kind": "text",
+      "text": "E-mailadres",
+      "sha256": "ca351133d550c4ae2276bf02e1f68b6d57d11914b140910e6f54f8162830e3d4",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
+      }
+    },
+    {
+      "id": "admin-afspraken.html#text:body:2>main:3>section:1>form:4>label:2",
+      "page": "admin-afspraken.html",
+      "kind": "text",
+      "text": "Wachtwoord",
+      "sha256": "9a2bca3b828e24f91baa5dd22a49919c14d60efa1375cbdf28ac7b6ff585c2b8",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
+      }
+    },
+    {
+      "id": "admin-afspraken.html#text:body:2>main:3>section:1>h1:2",
+      "page": "admin-afspraken.html",
+      "kind": "text",
+      "text": "Je agenda voor klantgesprekken.",
+      "sha256": "178f887d7e628c239d03eebde286e21b03a383277be2eaffd998f78602e09064",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
+      }
+    },
+    {
+      "id": "admin-afspraken.html#text:body:2>main:3>section:1>p:3",
+      "page": "admin-afspraken.html",
+      "kind": "text",
+      "text": "Bekijk wie een gesprek geboekt heeft en blokkeer momenten waarop je niet beschikbaar bent.",
+      "sha256": "939e12ebf93e35d537a029560f6e6d7680e9bd5ccaccf9e5372c3ff0e6abb1de",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
+      }
+    },
+    {
+      "id": "admin-afspraken.html#text:body:2>main:3>section:1>p:5",
+      "page": "admin-afspraken.html",
+      "kind": "text",
+      "text": "Je gebruikt hetzelfde account als in de contentstudio. Je sessie wordt niet bewaard op dit toestel.",
+      "sha256": "64abc90334818ef82a4710f7a6c76edf5a39b6bb20410d87be4fe6ad72d6780e",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
+      }
+    },
+    {
+      "id": "admin-afspraken.html#title:head:1>title:7",
+      "page": "admin-afspraken.html",
+      "kind": "title",
+      "text": "Grow Faster · Afspraken",
+      "sha256": "b9c8b8e1ba8f3472e6e1501347405e163bb5f7fb0c52d2d33ec25b3988ed2a83",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
+      }
+    },
+    {
       "id": "afspraak.html#alt:body:2>div:6>div:1>div:1>div:1>span:1>img:1",
       "page": "afspraak.html",
       "kind": "alt",
@@ -8234,6 +8555,32 @@
       "kind": "aria-label",
       "text": "Grow Faster – home",
       "sha256": "d1f327ca485e8be70a7cedf6b230e5829ff603ee756532c3cecddc22afb46bbc",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
+      }
+    },
+    {
+      "id": "afspraak.html#aria-label:body:2>main:3>section:3>div:1>div:1>div:2>div:4>div:2>div:1>span:2>button:1",
+      "page": "afspraak.html",
+      "kind": "aria-label",
+      "text": "Vorige dagen",
+      "sha256": "ab8a67732234e539d6469b601a6b9472a238c6fc421201b8bcee43251f509cc3",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
+      }
+    },
+    {
+      "id": "afspraak.html#aria-label:body:2>main:3>section:3>div:1>div:1>div:2>div:4>div:2>div:1>span:2>button:2",
+      "page": "afspraak.html",
+      "kind": "aria-label",
+      "text": "Volgende dagen",
+      "sha256": "fb88ffc2322140d3c0ae40656376a5f630d628911822a04eef9990bdf5e2a6cf",
       "engine": {
         "name": "LanguageTool",
         "version": "6.6",
@@ -9451,11 +9798,128 @@
       }
     },
     {
-      "id": "afspraak.html#text:body:2>main:3>section:3>div:1>div:1>div:2>div:4>a:1",
+      "id": "afspraak.html#text:body:2>main:3>section:3>div:1>div:1>div:2>div:4>div:2>div:1>h3:1",
       "page": "afspraak.html",
       "kind": "text",
-      "text": "Kies een tijdstip →",
-      "sha256": "9f28233f52d750249f10b28ebb3a7e867d2e85a3a9316be9cc3bc7dadf5fecea",
+      "text": "Kies een dag",
+      "sha256": "4a78879faebd7eccf1743a2b5e4705d540b88cfa08162a62fd50c6fcbf90d5ca",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
+      }
+    },
+    {
+      "id": "afspraak.html#text:body:2>main:3>section:3>div:1>div:1>div:2>div:4>div:2>div:1>span:2>button:1",
+      "page": "afspraak.html",
+      "kind": "text",
+      "text": "←",
+      "sha256": "774f1d6b2910de200115afec1bd87fe1ea6b0bc2142ac729e121e10a45df4b5d",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
+      }
+    },
+    {
+      "id": "afspraak.html#text:body:2>main:3>section:3>div:1>div:1>div:2>div:4>div:2>div:1>span:2>button:2",
+      "page": "afspraak.html",
+      "kind": "text",
+      "text": "→",
+      "sha256": "161660030aa6c9e32470cc1c023dab32dc748d80b0e61882b368cb775d12638e",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
+      }
+    },
+    {
+      "id": "afspraak.html#text:body:2>main:3>section:3>div:1>div:1>div:2>div:4>div:3>div:2>div:1>div:2>p:1",
+      "page": "afspraak.html",
+      "kind": "text",
+      "text": "Geen vrij uur in de voormiddag.",
+      "sha256": "b00c2b08aba39e688dd265d8fb9ab56a458a6bb05e831b8f1db3a395a1e01765",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
+      }
+    },
+    {
+      "id": "afspraak.html#text:body:2>main:3>section:3>div:1>div:1>div:2>div:4>div:3>div:2>div:1>h4:1",
+      "page": "afspraak.html",
+      "kind": "text",
+      "text": "Voormiddag",
+      "sha256": "3d75d8b2537c14e5514e2b735c4c4aa0f62fb8ff1467c2fd6484975047c9b1da",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
+      }
+    },
+    {
+      "id": "afspraak.html#text:body:2>main:3>section:3>div:1>div:1>div:2>div:4>div:3>div:2>div:2>div:2>p:1",
+      "page": "afspraak.html",
+      "kind": "text",
+      "text": "Geen vrij uur in de namiddag.",
+      "sha256": "fe6fbea56aa3e4c2f23cfac7a681320385cf7c23f83da04dc633ac6ce5e2771f",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
+      }
+    },
+    {
+      "id": "afspraak.html#text:body:2>main:3>section:3>div:1>div:1>div:2>div:4>div:3>div:2>div:2>h4:1",
+      "page": "afspraak.html",
+      "kind": "text",
+      "text": "Namiddag",
+      "sha256": "d3a21a076ef24b2f34a16e188c76d725b250c5fb3637b49d92d72797cd6a410b",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
+      }
+    },
+    {
+      "id": "afspraak.html#text:body:2>main:3>section:3>div:1>div:1>div:2>div:4>div:3>h3:1",
+      "page": "afspraak.html",
+      "kind": "text",
+      "text": "Kies een uur",
+      "sha256": "fce44379aa852f9fbaf402ff269fd7b5943745b6499c771f9dcf1305a92beac4",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
+      }
+    },
+    {
+      "id": "afspraak.html#text:body:2>main:3>section:3>div:1>div:1>div:2>div:4>div:4>button:2",
+      "page": "afspraak.html",
+      "kind": "text",
+      "text": "Verder →",
+      "sha256": "d6b93f8fa81b048cd8dbfd2bdba199c5c16f2a3185304d464ce9266b7b07541c",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
+      }
+    },
+    {
+      "id": "afspraak.html#text:body:2>main:3>section:3>div:1>div:1>div:2>div:4>p:1",
+      "page": "afspraak.html",
+      "kind": "text",
+      "text": "De agenda kan nu niet geladen worden. Probeer het later opnieuw of mail ons op info@grow-faster.be.",
+      "sha256": "a55553c72f402c11af79af5b1c3e2bc10ec071c288af113a0fdfc40a72c9a839",
       "engine": {
         "name": "LanguageTool",
         "version": "6.6",
@@ -9467,8 +9931,8 @@
       "id": "afspraak.html#text:body:2>main:3>section:3>div:1>div:1>div:2>h2:1",
       "page": "afspraak.html",
       "kind": "text",
-      "text": "Kies een tijdstip",
-      "sha256": "1586d5ae124644234b2a94be970a4ac5dd94a6af7104cfabffa92a23d3a91273",
+      "text": "Kies een dag en een uur",
+      "sha256": "033ac9a7ba8d0255f2afcbe047b25ee84dcadd882dfaaff94ba73efd73080251",
       "engine": {
         "name": "LanguageTool",
         "version": "6.6",
@@ -9493,34 +9957,8 @@
       "id": "afspraak.html#text:body:2>main:3>section:3>div:1>div:1>div:2>p:3",
       "page": "afspraak.html",
       "kind": "text",
-      "text": "U kiest het uur in onze Google-agenda en vult daar uw naam, e-mail, telefoonnummer, organisatie en functie in. Vul bij “Onderwerp” het onderwerp in dat hierboven staat.",
-      "sha256": "458fb02899a632dc6cba1c485776c55346c80e74c809b098027ca82698f9f31e",
-      "engine": {
-        "name": "LanguageTool",
-        "version": "6.6",
-        "language": "nl",
-        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
-      }
-    },
-    {
-      "id": "afspraak.html#text:body:2>main:3>section:3>div:1>div:1>div:2>p:5",
-      "page": "afspraak.html",
-      "kind": "text",
-      "text": "De agenda opent in een nieuw venster. Google verwerkt de gegevens die u daar invult.",
-      "sha256": "9b94afec0ad008f8020d008d978493a9ef3adb7e452a572879983bedef95f889",
-      "engine": {
-        "name": "LanguageTool",
-        "version": "6.6",
-        "language": "nl",
-        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
-      }
-    },
-    {
-      "id": "afspraak.html#text:body:2>main:3>section:3>div:1>div:1>div:2>p:6",
-      "page": "afspraak.html",
-      "kind": "text",
-      "text": "Lees ons privacybeleid",
-      "sha256": "feea9b521112ab207e50b6ff79f8b86ea58ad40b45ef2b122ba3bd8e9dc2c8cf",
+      "text": "Een gesprek duurt een uur. U kunt boeken op weekdagen tussen 9 en 17 uur, minstens een dag op voorhand.",
+      "sha256": "dc3ac70466e26d87cdebf0c5c51fe55c8adec8eb415e2403d480c1be490eda89",
       "engine": {
         "name": "LanguageTool",
         "version": "6.6",
@@ -9542,7 +9980,189 @@
       }
     },
     {
+      "id": "afspraak.html#text:body:2>main:3>section:4>div:1>div:1>div:2>div:4>h3:1",
+      "page": "afspraak.html",
+      "kind": "text",
+      "text": "Uw afspraak staat vast",
+      "sha256": "5af26a31365c5cba4c6d67e8ffaee1858738e2b305825b94c050c99473e8f8a8",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
+      }
+    },
+    {
+      "id": "afspraak.html#text:body:2>main:3>section:4>div:1>div:1>div:2>div:4>p:3",
+      "page": "afspraak.html",
+      "kind": "text",
+      "text": "U krijgt een bevestiging van info@grow-faster.be, met een agenda-uitnodiging in de bijlage. Vindt u die mail niet, kijk dan ook in uw map met ongewenste mail.",
+      "sha256": "0601a05b9ace4a1a22b645749bee8b164003f0fce0300e2c5f4e0a52664166a8",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
+      }
+    },
+    {
+      "id": "afspraak.html#text:body:2>main:3>section:4>div:1>div:1>div:2>form:3>div:1>label:1",
+      "page": "afspraak.html",
+      "kind": "text",
+      "text": "Voornaam en familienaam",
+      "sha256": "764bfe9e832854258a215a281fe79148f994e69209e1bb7a70532b325c12d3ec",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
+      }
+    },
+    {
+      "id": "afspraak.html#text:body:2>main:3>section:4>div:1>div:1>div:2>form:3>div:2>label:1",
+      "page": "afspraak.html",
+      "kind": "text",
+      "text": "E-mailadres",
+      "sha256": "ca351133d550c4ae2276bf02e1f68b6d57d11914b140910e6f54f8162830e3d4",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
+      }
+    },
+    {
+      "id": "afspraak.html#text:body:2>main:3>section:4>div:1>div:1>div:2>form:3>div:3>label:1",
+      "page": "afspraak.html",
+      "kind": "text",
+      "text": "Telefoonnummer",
+      "sha256": "c4156e4506c6b180f315571b7831e881d1d7a1eeb08f4d68510b34d99599b1b0",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
+      }
+    },
+    {
+      "id": "afspraak.html#text:body:2>main:3>section:4>div:1>div:1>div:2>form:3>div:4>label:1",
+      "page": "afspraak.html",
+      "kind": "text",
+      "text": "Organisatie",
+      "sha256": "5192a59eb426c464518b731cde0b26a47a2591cbff71cb323848b648d402f9ce",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
+      }
+    },
+    {
+      "id": "afspraak.html#text:body:2>main:3>section:4>div:1>div:1>div:2>form:3>div:5>label:1",
+      "page": "afspraak.html",
+      "kind": "text",
+      "text": "Functie",
+      "sha256": "20813a6157e1eeb1e41f65139a0291954aa304a58c052d4adf10f60760dee95b",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
+      }
+    },
+    {
+      "id": "afspraak.html#text:body:2>main:3>section:4>div:1>div:1>div:2>form:3>div:6>label:1",
+      "page": "afspraak.html",
+      "kind": "text",
+      "text": "Vraag of toelichting (niet verplicht)",
+      "sha256": "9489cbb25e8ed4c247bda7f362f9c7d806f61dd5a46f8879eb415b47ba8d4f37",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
+      }
+    },
+    {
+      "id": "afspraak.html#text:body:2>main:3>section:4>div:1>div:1>div:2>form:3>div:7>label:1",
+      "page": "afspraak.html",
+      "kind": "text",
+      "text": "Website",
+      "sha256": "b5a229ac8becc6035511f432ca6018f581f0627233eada6ae8e12b505d44af7f",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
+      }
+    },
+    {
+      "id": "afspraak.html#text:body:2>main:3>section:4>div:1>div:1>div:2>form:3>div:9>button:1",
+      "page": "afspraak.html",
+      "kind": "text",
+      "text": "Bevestig de afspraak →",
+      "sha256": "114c0da4e699d68afe451b25925e8783a2dd1ecbf197364a5fc387c12f10ec23",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
+      }
+    },
+    {
+      "id": "afspraak.html#text:body:2>main:3>section:4>div:1>div:1>div:2>form:3>p:8",
+      "page": "afspraak.html",
+      "kind": "text",
+      "text": "We gebruiken deze gegevens alleen om het gesprek te plannen en voor te bereiden. Lees ons privacybeleid",
+      "sha256": "c821c3efd336f1c594e9b51882f0786a66d1b8b15b6812f2ffb5496a34e1d18d",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
+      }
+    },
+    {
       "id": "afspraak.html#text:body:2>main:3>section:4>div:1>div:1>div:2>h2:1",
+      "page": "afspraak.html",
+      "kind": "text",
+      "text": "Uw gegevens",
+      "sha256": "a39a9d5f95306daf8d3b091a47bb7eaaae55fc1fa20c04632596af2fd1a8c435",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
+      }
+    },
+    {
+      "id": "afspraak.html#text:body:2>main:3>section:4>div:1>div:1>div:2>p:2",
+      "page": "afspraak.html",
+      "kind": "text",
+      "text": "Uw afspraak:",
+      "sha256": "fd85624c1af37db1aa706f120e37d4461216fcca5a1aad6321f7d7a09e8fa0c3",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
+      }
+    },
+    {
+      "id": "afspraak.html#text:body:2>main:3>section:5>div:1>div:1",
+      "page": "afspraak.html",
+      "kind": "text",
+      "text": "04",
+      "sha256": "6cd5b6e51936a442b973660c21553dd22bd72ddc8751132a943475288113b4c0",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
+      }
+    },
+    {
+      "id": "afspraak.html#text:body:2>main:3>section:5>div:1>div:1>div:2>h2:1",
       "page": "afspraak.html",
       "kind": "text",
       "text": "Wat gebeurt er daarna?",
@@ -9555,11 +10175,11 @@
       }
     },
     {
-      "id": "afspraak.html#text:body:2>main:3>section:4>div:1>div:1>div:2>p:2",
+      "id": "afspraak.html#text:body:2>main:3>section:5>div:1>div:1>div:2>p:2",
       "page": "afspraak.html",
       "kind": "text",
-      "text": "U en Grow Faster krijgen een bevestigingsmail met de datum, het uur en uw onderwerp. Het gesprek staat meteen in onze agenda. Past het toch niet, dan kunt u de afspraak vanuit die mail verplaatsen of annuleren.",
-      "sha256": "277868a853d63e0c62c53790acb3a9ea09973daf9545cc51cc594370499530e8",
+      "text": "U en Grow Faster krijgen een bevestigingsmail met de datum, het uur en uw onderwerp. Met de agenda-uitnodiging in de bijlage zet u het gesprek in Outlook, Google of een andere agenda. Past het moment toch niet, antwoord dan op die mail.",
+      "sha256": "aba4f3bc4c0d6c66418f3709ff4d86888329a18545b479b5d0e036724ffda34e",
       "engine": {
         "name": "LanguageTool",
         "version": "6.6",
@@ -9568,7 +10188,7 @@
       }
     },
     {
-      "id": "afspraak.html#text:body:2>main:3>section:4>div:1>div:1>div:2>p:3",
+      "id": "afspraak.html#text:body:2>main:3>section:5>div:1>div:1>div:2>p:3",
       "page": "afspraak.html",
       "kind": "text",
       "text": "Liever mailen? info@grow-faster.be",
@@ -30959,8 +31579,8 @@
       "id": "baies-dev/index.html#text:body:2>main:6>section:5>div:1>div:4>aside:2>div:5>ol:2>li:1",
       "page": "baies-dev/index.html",
       "kind": "text",
-      "text": "20:37:24 · Demonstratiedossier geopend. Geen externe wijzigingen.",
-      "sha256": "b1d3749777adf2c6a264d842516aab154d3a8ae8301cf487b57513298892e716",
+      "text": "20:49:26 · Demonstratiedossier geopend. Geen externe wijzigingen.",
+      "sha256": "f0680fff2abdc348faa04ce2a3a100141cbb3345ae41cbc345175de50fb1e244",
       "engine": {
         "name": "LanguageTool",
         "version": "6.6",
@@ -48735,6 +49355,19 @@
       }
     },
     {
+      "id": "dictionary:I18N:Bevestig de afspraak",
+      "page": "404.html",
+      "kind": "dictionary:I18N:Bevestig de afspraak",
+      "text": "Bevestig de afspraak",
+      "sha256": "5b57260e59c0a779d49300375727c292507679e0e72b9a731485d651c3db365b",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
+      }
+    },
+    {
       "id": "dictionary:I18N:Bevraging van 7.600 managers in 262 bedrijven. Bron:",
       "page": "404.html",
       "kind": "dictionary:I18N:Bevraging van 7.600 managers in 262 bedrijven. Bron:",
@@ -51101,19 +51734,6 @@
       }
     },
     {
-      "id": "dictionary:I18N:De agenda opent in een nieuw venster. Google verwerkt de gegevens die u daar invult.",
-      "page": "404.html",
-      "kind": "dictionary:I18N:De agenda opent in een nieuw venster. Google verwerkt de gegevens die u daar invult.",
-      "text": "De agenda opent in een nieuw venster. Google verwerkt de gegevens die u daar invult.",
-      "sha256": "9b94afec0ad008f8020d008d978493a9ef3adb7e452a572879983bedef95f889",
-      "engine": {
-        "name": "LanguageTool",
-        "version": "6.6",
-        "language": "nl",
-        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
-      }
-    },
-    {
       "id": "dictionary:I18N:De AI bereidt voor. Een medewerker of de zaakvoerder beslist.",
       "page": "404.html",
       "kind": "dictionary:I18N:De AI bereidt voor. Een medewerker of de zaakvoerder beslist.",
@@ -52414,6 +53034,19 @@
       }
     },
     {
+      "id": "dictionary:I18N:E-mailadres",
+      "page": "404.html",
+      "kind": "dictionary:I18N:E-mailadres",
+      "text": "E-mailadres",
+      "sha256": "ca351133d550c4ae2276bf02e1f68b6d57d11914b140910e6f54f8162830e3d4",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
+      }
+    },
+    {
       "id": "dictionary:I18N:Each level changes more of the work and asks different things of the organisation.",
       "page": "404.html",
       "kind": "dictionary:I18N:Each level changes more of the work and asks different things of the organisation.",
@@ -52640,6 +53273,19 @@
       "kind": "dictionary:I18N:Een fout in het resultaat is vervelend of erger.",
       "text": "Een fout in het resultaat is vervelend of erger.",
       "sha256": "9f031021e89a7d858b35a059fa5b27a52652f4b5d7939e79744ee17a0af91272",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
+      }
+    },
+    {
+      "id": "dictionary:I18N:Een gesprek duurt een uur. U kunt boeken op weekdagen tussen 9 en 17 uur, minstens een dag op voorhand.",
+      "page": "404.html",
+      "kind": "dictionary:I18N:Een gesprek duurt een uur. U kunt boeken op weekdagen tussen 9 en 17 uur, minstens een dag op voorhand.",
+      "text": "Een gesprek duurt een uur. U kunt boeken op weekdagen tussen 9 en 17 uur, minstens een dag op voorhand.",
+      "sha256": "dc3ac70466e26d87cdebf0c5c51fe55c8adec8eb415e2403d480c1be490eda89",
       "engine": {
         "name": "LanguageTool",
         "version": "6.6",
@@ -54642,6 +55288,19 @@
       "kind": "dictionary:I18N:From reading to a shared decision",
       "text": "Van lezen naar samen beslissen",
       "sha256": "16403fa19ed1727abc165a89b218c00e090f2144afb89d87cf4c218827dabbe5",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
+      }
+    },
+    {
+      "id": "dictionary:I18N:Functie",
+      "page": "404.html",
+      "kind": "dictionary:I18N:Functie",
+      "text": "Functie",
+      "sha256": "20813a6157e1eeb1e41f65139a0291954aa304a58c052d4adf10f60760dee95b",
       "engine": {
         "name": "LanguageTool",
         "version": "6.6",
@@ -56977,6 +57636,32 @@
       }
     },
     {
+      "id": "dictionary:I18N:Kies een dag",
+      "page": "404.html",
+      "kind": "dictionary:I18N:Kies een dag",
+      "text": "Kies een dag",
+      "sha256": "4a78879faebd7eccf1743a2b5e4705d540b88cfa08162a62fd50c6fcbf90d5ca",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
+      }
+    },
+    {
+      "id": "dictionary:I18N:Kies een dag en een uur",
+      "page": "404.html",
+      "kind": "dictionary:I18N:Kies een dag en een uur",
+      "text": "Kies een dag en een uur",
+      "sha256": "033ac9a7ba8d0255f2afcbe047b25ee84dcadd882dfaaff94ba73efd73080251",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
+      }
+    },
+    {
       "id": "dictionary:I18N:Kies een onderwerp en een tijdstip. Het gesprek duurt ongeveer een uur en is vrijblijvend.",
       "page": "404.html",
       "kind": "dictionary:I18N:Kies een onderwerp en een tijdstip. Het gesprek duurt ongeveer een uur en is vrijblijvend.",
@@ -56990,11 +57675,11 @@
       }
     },
     {
-      "id": "dictionary:I18N:Kies een tijdstip",
+      "id": "dictionary:I18N:Kies een uur",
       "page": "404.html",
-      "kind": "dictionary:I18N:Kies een tijdstip",
-      "text": "Kies een tijdstip",
-      "sha256": "1586d5ae124644234b2a94be970a4ac5dd94a6af7104cfabffa92a23d3a91273",
+      "kind": "dictionary:I18N:Kies een uur",
+      "text": "Kies een uur",
+      "sha256": "fce44379aa852f9fbaf402ff269fd7b5943745b6499c771f9dcf1305a92beac4",
       "engine": {
         "name": "LanguageTool",
         "version": "6.6",
@@ -58745,6 +59430,19 @@
       }
     },
     {
+      "id": "dictionary:I18N:Namiddag",
+      "page": "404.html",
+      "kind": "dictionary:I18N:Namiddag",
+      "text": "Namiddag",
+      "sha256": "d3a21a076ef24b2f34a16e188c76d725b250c5fb3637b49d92d72797cd6a410b",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
+      }
+    },
+    {
       "id": "dictionary:I18N:Necessary",
       "page": "404.html",
       "kind": "dictionary:I18N:Necessary",
@@ -59114,6 +59812,19 @@
       "kind": "dictionary:I18N:Om kwart over acht komt een bestelling binnen als pdf. Iemand tikt ze in het ERP. Om tien uur brengt de chauffeur een leverbon; de aantallen gaan in Excel. Na de middag vraagt een retailer een bijgewerkte specificatie, en de rest van de namiddag gaat naar een vragenlijst van 150 vragen.",
       "text": "Om kwart over acht komt een bestelling binnen als pdf. Iemand tikt ze in het ERP. Om tien uur brengt de chauffeur een leverbon; de aantallen gaan in Excel. Na de middag vraagt een retailer een bijgewerkte specificatie, en de rest van de namiddag gaat naar een vragenlijst van 150 vragen.",
       "sha256": "1c08701c5e60aceab2c0fe5311bb65f5434870c3eb2e7633f36c135032f47bd6",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
+      }
+    },
+    {
+      "id": "dictionary:I18N:Om online te boeken is JavaScript nodig. Mail ons gerust op info@grow-faster.be.",
+      "page": "404.html",
+      "kind": "dictionary:I18N:Om online te boeken is JavaScript nodig. Mail ons gerust op info@grow-faster.be.",
+      "text": "Om online te boeken is JavaScript nodig. Mail ons gerust op info@grow-faster.be.",
+      "sha256": "98b5a1e7b4763a5eea8f633e8035f9df02342ed53f398041e3f5c427adbb1b3b",
       "engine": {
         "name": "LanguageTool",
         "version": "6.6",
@@ -59647,6 +60358,19 @@
       "kind": "dictionary:I18N:Order the full book",
       "text": "Bestel het volledige boek",
       "sha256": "422199b9b6bbd5c33bbd2f75500724f1962a697355c4ccf0b4a1a0a734d50638",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
+      }
+    },
+    {
+      "id": "dictionary:I18N:Organisatie",
+      "page": "404.html",
+      "kind": "dictionary:I18N:Organisatie",
+      "text": "Organisatie",
+      "sha256": "5192a59eb426c464518b731cde0b26a47a2591cbff71cb323848b648d402f9ce",
       "engine": {
         "name": "LanguageTool",
         "version": "6.6",
@@ -63737,6 +64461,19 @@
       }
     },
     {
+      "id": "dictionary:I18N:Telefoonnummer",
+      "page": "404.html",
+      "kind": "dictionary:I18N:Telefoonnummer",
+      "text": "Telefoonnummer",
+      "sha256": "c4156e4506c6b180f315571b7831e881d1d7a1eeb08f4d68510b34d99599b1b0",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
+      }
+    },
+    {
       "id": "dictionary:I18N:Tellen",
       "page": "journal.html",
       "kind": "dictionary:I18N:Tellen",
@@ -64855,6 +65592,19 @@
       }
     },
     {
+      "id": "dictionary:I18N:U en Grow Faster krijgen een bevestigingsmail met de datum, het uur en uw onderwerp. Met de agenda-uitnodiging in de bijlage zet u het gesprek in Outlook, Google of een andere agenda. Past het moment toch niet, antwoord dan op die mail.",
+      "page": "404.html",
+      "kind": "dictionary:I18N:U en Grow Faster krijgen een bevestigingsmail met de datum, het uur en uw onderwerp. Met de agenda-uitnodiging in de bijlage zet u het gesprek in Outlook, Google of een andere agenda. Past het moment toch niet, antwoord dan op die mail.",
+      "text": "U en Grow Faster krijgen een bevestigingsmail met de datum, het uur en uw onderwerp. Met de agenda-uitnodiging in de bijlage zet u het gesprek in Outlook, Google of een andere agenda. Past het moment toch niet, antwoord dan op die mail.",
+      "sha256": "aba4f3bc4c0d6c66418f3709ff4d86888329a18545b479b5d0e036724ffda34e",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
+      }
+    },
+    {
       "id": "dictionary:I18N:U hoeft geen nieuw systeem te kopen. U begint met één taak die elke week terugkomt.",
       "page": "journal.html",
       "kind": "dictionary:I18N:U hoeft geen nieuw systeem te kopen. U begint met één taak die elke week terugkomt.",
@@ -64881,19 +65631,6 @@
       }
     },
     {
-      "id": "dictionary:I18N:U kiest het uur in onze Google-agenda en vult daar uw naam, e-mail, telefoonnummer, organisatie en functie in. Vul bij “Onderwerp” het onderwerp in dat hierboven staat.",
-      "page": "404.html",
-      "kind": "dictionary:I18N:U kiest het uur in onze Google-agenda en vult daar uw naam, e-mail, telefoonnummer, organisatie en functie in. Vul bij “Onderwerp” het onderwerp in dat hierboven staat.",
-      "text": "U kiest het uur in onze Google-agenda en vult daar uw naam, e-mail, telefoonnummer, organisatie en functie in. Vul bij “Onderwerp” het onderwerp in dat hierboven staat.",
-      "sha256": "458fb02899a632dc6cba1c485776c55346c80e74c809b098027ca82698f9f31e",
-      "engine": {
-        "name": "LanguageTool",
-        "version": "6.6",
-        "language": "nl",
-        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
-      }
-    },
-    {
       "id": "dictionary:I18N:U kijkt na.",
       "page": "404.html",
       "kind": "dictionary:I18N:U kijkt na.",
@@ -64912,6 +65649,19 @@
       "kind": "dictionary:I18N:U krijgt de lijst terug in hetzelfde formaat. Orion verstuurt nooit zelf iets.",
       "text": "U krijgt de lijst terug in hetzelfde formaat. Orion verstuurt nooit zelf iets.",
       "sha256": "5c0ea11a7a55a7628d5e9ca9237db204424ef3aa9b2bcd357ffc23aa3badd164",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
+      }
+    },
+    {
+      "id": "dictionary:I18N:U krijgt een bevestiging van info@grow-faster.be, met een agenda-uitnodiging in de bijlage. Vindt u die mail niet, kijk dan ook in uw map met ongewenste mail.",
+      "page": "404.html",
+      "kind": "dictionary:I18N:U krijgt een bevestiging van info@grow-faster.be, met een agenda-uitnodiging in de bijlage. Vindt u die mail niet, kijk dan ook in uw map met ongewenste mail.",
+      "text": "U krijgt een bevestiging van info@grow-faster.be, met een agenda-uitnodiging in de bijlage. Vindt u die mail niet, kijk dan ook in uw map met ongewenste mail.",
+      "sha256": "0601a05b9ace4a1a22b645749bee8b164003f0fce0300e2c5f4e0a52664166a8",
       "engine": {
         "name": "LanguageTool",
         "version": "6.6",
@@ -65128,6 +65878,32 @@
       }
     },
     {
+      "id": "dictionary:I18N:Uw afspraak staat vast",
+      "page": "404.html",
+      "kind": "dictionary:I18N:Uw afspraak staat vast",
+      "text": "Uw afspraak staat vast",
+      "sha256": "5af26a31365c5cba4c6d67e8ffaee1858738e2b305825b94c050c99473e8f8a8",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
+      }
+    },
+    {
+      "id": "dictionary:I18N:Uw afspraak:",
+      "page": "404.html",
+      "kind": "dictionary:I18N:Uw afspraak:",
+      "text": "Uw afspraak:",
+      "sha256": "fd85624c1af37db1aa706f120e37d4461216fcca5a1aad6321f7d7a09e8fa0c3",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
+      }
+    },
+    {
       "id": "dictionary:I18N:Uw AI-pilot werkt. Waarom verandert er niets in het bedrijf?",
       "page": "all-articles.html",
       "kind": "dictionary:I18N:Uw AI-pilot werkt. Waarom verandert er niets in het bedrijf?",
@@ -65146,6 +65922,19 @@
       "kind": "dictionary:I18N:Uw bedrijf groeit, maar beslissingen, processen en systemen volgen niet meer mee. Of u wilt AI en automatisering invoeren en eerst weten waar het fundament wringt.",
       "text": "Uw bedrijf groeit, maar beslissingen, processen en systemen volgen niet meer mee. Of u wilt AI en automatisering invoeren en eerst weten waar het fundament wringt.",
       "sha256": "659ee9bf2f740f65cbbe24316535310b7bba0f1f46c06e7e0d18b5f8d3bf8287",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
+      }
+    },
+    {
+      "id": "dictionary:I18N:Uw gegevens",
+      "page": "404.html",
+      "kind": "dictionary:I18N:Uw gegevens",
+      "text": "Uw gegevens",
+      "sha256": "a39a9d5f95306daf8d3b091a47bb7eaaae55fc1fa20c04632596af2fd1a8c435",
       "engine": {
         "name": "LanguageTool",
         "version": "6.6",
@@ -65666,6 +66455,19 @@
       "kind": "dictionary:I18N:Verbeter één werkproces met de systemen die u al gebruikt.",
       "text": "Verbeter één werkproces met de systemen die u al gebruikt.",
       "sha256": "6b7339525b1b30af8c00c10baab5a00041e76c5e5a8e2619c209bc4ba9800b43",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
+      }
+    },
+    {
+      "id": "dictionary:I18N:Verder",
+      "page": "404.html",
+      "kind": "dictionary:I18N:Verder",
+      "text": "Verder",
+      "sha256": "10beb8cadfb1cc3ef3ca4b43fda1a1fe335a1fdeba0d40d06990724407f9587b",
       "engine": {
         "name": "LanguageTool",
         "version": "6.6",
@@ -66350,6 +67152,32 @@
       }
     },
     {
+      "id": "dictionary:I18N:Voormiddag",
+      "page": "404.html",
+      "kind": "dictionary:I18N:Voormiddag",
+      "text": "Voormiddag",
+      "sha256": "3d75d8b2537c14e5514e2b735c4c4aa0f62fb8ff1467c2fd6484975047c9b1da",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
+      }
+    },
+    {
+      "id": "dictionary:I18N:Voornaam en familienaam",
+      "page": "404.html",
+      "kind": "dictionary:I18N:Voornaam en familienaam",
+      "text": "Voornaam en familienaam",
+      "sha256": "764bfe9e832854258a215a281fe79148f994e69209e1bb7a70532b325c12d3ec",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
+      }
+    },
+    {
       "id": "dictionary:I18N:Vorige",
       "page": "journal.html",
       "kind": "dictionary:I18N:Vorige",
@@ -66368,6 +67196,19 @@
       "kind": "dictionary:I18N:Vraag deze training aan",
       "text": "Vraag deze training aan",
       "sha256": "163b546416047337d852e0e1cee8e81635b4b0377fea1844c9e95dccc17a7591",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
+      }
+    },
+    {
+      "id": "dictionary:I18N:Vraag of toelichting (niet verplicht)",
+      "page": "404.html",
+      "kind": "dictionary:I18N:Vraag of toelichting (niet verplicht)",
+      "text": "Vraag of toelichting (niet verplicht)",
+      "sha256": "9489cbb25e8ed4c247bda7f362f9c7d806f61dd5a46f8879eb415b47ba8d4f37",
       "engine": {
         "name": "LanguageTool",
         "version": "6.6",
@@ -67325,6 +68166,19 @@
       }
     },
     {
+      "id": "dictionary:I18N:We gebruiken deze gegevens alleen om het gesprek te plannen en voor te bereiden.",
+      "page": "404.html",
+      "kind": "dictionary:I18N:We gebruiken deze gegevens alleen om het gesprek te plannen en voor te bereiden.",
+      "text": "We gebruiken deze gegevens alleen om het gesprek te plannen en voor te bereiden.",
+      "sha256": "1506a4ee72657d60637136483e8c9933d55f8dc60ff04100060e557f380ec89f",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
+      }
+    },
+    {
       "id": "dictionary:I18N:We kiezen samen één taak die uw team vaak herhaalt. We meten hoeveel tijd die vandaag vraagt en waar het werk vastloopt.",
       "page": "index.html",
       "kind": "dictionary:I18N:We kiezen samen één taak die uw team vaak herhaalt. We meten hoeveel tijd die vandaag vraagt en waar het werk vastloopt.",
@@ -67512,6 +68366,19 @@
       "kind": "dictionary:I18N:We vergelijken de tijd vóór en na. Werkt het, dan nemen we de volgende workflow.",
       "text": "We vergelijken de tijd vóór en na. Werkt het, dan nemen we de volgende workflow.",
       "sha256": "c875b085009907e427cb3875074af211faf50b41c43cc444e4edb041303a122e",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
+      }
+    },
+    {
+      "id": "dictionary:I18N:Website",
+      "page": "404.html",
+      "kind": "dictionary:I18N:Website",
+      "text": "Website",
+      "sha256": "b5a229ac8becc6035511f432ca6018f581f0627233eada6ae8e12b505d44af7f",
       "engine": {
         "name": "LanguageTool",
         "version": "6.6",
@@ -73048,8 +73915,8 @@
       "id": "executive-radar/index.html#text:body:2>main:6>section:5>div:1>div:4>aside:2>div:5>ol:2>li:1",
       "page": "executive-radar/index.html",
       "kind": "text",
-      "text": "20:37:29 · Demonstratiedossier geopend. Geen externe wijzigingen.",
-      "sha256": "735f36babfc64b488bec411ceb3921577a23decf69d37799165345d578eae05c",
+      "text": "20:49:31 · Demonstratiedossier geopend. Geen externe wijzigingen.",
+      "sha256": "eaf82172c98619ad335cc2cdb8ea1bfa900647fce01eac3ddd572626dbe1197d",
       "engine": {
         "name": "LanguageTool",
         "version": "6.6",
@@ -102072,8 +102939,8 @@
       "id": "privacy.html#text:body:2>main:3>section:2>article:1>div:1>div:7>table:1>tbody:2>tr:5>td:2",
       "page": "privacy.html",
       "kind": "text",
-      "text": "Voornaam, naam, e-mailadres, telefoonnummer, organisatie, functie, onderwerp en het gekozen tijdstip, ingevuld op de boekingspagina van Google Agenda",
-      "sha256": "8c37d43b82b521c37ec5a964a59c320bdace4ae366b6167b61b1f74cabdc5579",
+      "text": "Voornaam, naam, e-mailadres, telefoonnummer, organisatie, functie, onderwerp, het gekozen tijdstip en je eventuele vraag. Om misbruik te beperken bewaren we één dag een versleutelde code van je IP-adres, niet het adres zelf.",
+      "sha256": "46dfc79cfbff82d51713161f80c22c2802900bf53c97d55e832ca09738f05c8d",
       "engine": {
         "name": "LanguageTool",
         "version": "6.6",
@@ -102371,8 +103238,8 @@
       "id": "privacy.html#text:body:2>main:3>section:2>article:1>div:1>p:1",
       "page": "privacy.html",
       "kind": "text",
-      "text": "Versie 1.5 · Laatst bijgewerkt: 23 november 2026",
-      "sha256": "5642ebf0365d5ce5ff2a30e302895ba0f5b3b47a2b88f9cc20d29f6214b09ae3",
+      "text": "Versie 1.6 · Laatst bijgewerkt: 23 november 2026",
+      "sha256": "f0bad393c73eb405b6afde4584e02bb14f8d8bcf6c74edbb4b251eab6cc7ab9f",
       "engine": {
         "name": "LanguageTool",
         "version": "6.6",
@@ -102436,8 +103303,8 @@
       "id": "privacy.html#text:body:2>main:3>section:2>article:1>div:1>p:19",
       "page": "privacy.html",
       "kind": "text",
-      "text": "We delen gegevens alleen met de dienstverleners die nodig zijn om de website en e-mail te laten werken: GitHub, Inc. (hosting via GitHub Pages), Google (Gmail, Google Agenda voor afspraken en, met je toestemming, Google Fonts), HubSpot (formulieren, CRM en, met je toestemming, websitetracking) en GoatCounter (bezoekstatistieken, met servers in Finland en Duitsland). GitHub, Google en HubSpot kunnen gegevens buiten de Europese Economische Ruimte verwerken volgens toepasselijke doorgiftemechanismen, zoals het EU-VS Data Privacy Framework of de standaardcontractbepalingen van de Europese Commissie.",
-      "sha256": "1e0e06b2b7302421dbe79728128d470d1c7ec86f10c0bf0d59eea83e7357d15e",
+      "text": "We delen gegevens alleen met de dienstverleners die nodig zijn om de website en e-mail te laten werken: GitHub, Inc. (hosting via GitHub Pages), Supabase (opslag van afspraken, servers in Londen), de e-mailprovider van ons domein (bevestigingsmails), Google (Gmail en, met je toestemming, Google Fonts), HubSpot (formulieren, CRM en, met je toestemming, websitetracking) en GoatCounter (bezoekstatistieken, met servers in Finland en Duitsland). GitHub, Google en HubSpot kunnen gegevens buiten de Europese Economische Ruimte verwerken volgens toepasselijke doorgiftemechanismen, zoals het EU-VS Data Privacy Framework of de standaardcontractbepalingen van de Europese Commissie. Supabase bewaart de afspraken in het Verenigd Koninkrijk. Voor dat land heeft de Europese Commissie een adequaatheidsbesluit genomen.",
+      "sha256": "a41bcf8f09714f82a88666d7ff6a2c0f4b4dff978a9edd3c1778cc8519262bf0",
       "engine": {
         "name": "LanguageTool",
         "version": "6.6",
@@ -102462,8 +103329,8 @@
       "id": "privacy.html#text:body:2>main:3>section:2>article:1>div:1>p:21",
       "page": "privacy.html",
       "kind": "text",
-      "text": "De website wordt via HTTPS aangeboden en slaat zelf geen formuliergegevens op. Inzendingen worden door HubSpot verwerkt en bewaard volgens de toepasselijke instellingen en privacyvoorwaarden. De toegang tot beheeraccounts is beperkt en beveiligd.",
-      "sha256": "94fab63597921b6dcc1cf078fb4f2768310bcebe44c176e91518a3f0c97d0c6e",
+      "text": "De website wordt via HTTPS aangeboden. Afspraakgegevens staan bij Supabase en alleen de beheerder kan ze inzien. Inzendingen worden door HubSpot verwerkt en bewaard volgens de toepasselijke instellingen en privacyvoorwaarden. De toegang tot beheeraccounts is beperkt en beveiligd.",
+      "sha256": "65ed57208c0938a388083eb65068e89ead44c23040498b0978584dd5a66c9cbf",
       "engine": {
         "name": "LanguageTool",
         "version": "6.6",
@@ -340204,6 +341071,284 @@
       "context": "InsightsUw AI-pilot werkt. Waarom verandert er niets in het bedrijf?",
       "status": "open",
       "firstSeen": "22f310f2fbfb0d40ea8edbbf6a4ade5a31626faa"
+    },
+    {
+      "id": "05238b476c7db09f8a3958dc1688b448d008077bc9486167f7a6b10f6d1f89cd",
+      "blockId": "admin-afspraken.html#text:body:2>main:3>section:1>p:5",
+      "textHash": "64abc90334818ef82a4710f7a6c76edf5a39b6bb20410d87be4fe6ad72d6780e",
+      "rule": "MORFOLOGIK_RULE_NL_NL",
+      "offset": 40,
+      "length": 13,
+      "message": "Er is een mogelijke spelfout gevonden.",
+      "replacements": [
+        "concertstudio",
+        "conceptstudio"
+      ],
+      "context": "Je gebruikt hetzelfde account als in de contentstudio. Je sessie wordt niet bewaard op dit toestel.",
+      "status": "open",
+      "firstSeen": "51835e43c87f156c7202e4e0080eaaf1aa74f14c"
+    },
+    {
+      "id": "4b675457b462e82bcd4832afc1e85dad4eb62e88a7b1041d5e85262d72ab2408",
+      "blockId": "privacy.html#text:body:2>main:3>section:2>article:1>div:1>p:19",
+      "textHash": "a41bcf8f09714f82a88666d7ff6a2c0f4b4dff978a9edd3c1778cc8519262bf0",
+      "rule": "MORFOLOGIK_RULE_NL_NL",
+      "offset": 112,
+      "length": 3,
+      "message": "Er is een mogelijke spelfout gevonden.",
+      "replacements": [
+        "In",
+        "ING",
+        "In-",
+        "IND",
+        "Inch",
+        "ANC",
+        "IOC",
+        "Ina",
+        "Int",
+        "IDC",
+        "IGC",
+        "Inca",
+        "Ine",
+        "Ic",
+        "Ing",
+        "Ins",
+        "INA",
+        "INL",
+        "Ino",
+        "Zinc",
+        "Binc",
+        "Ince",
+        "Inco",
+        "Inci",
+        "Dinc",
+        "Dinç",
+        "INI",
+        "Inc."
+      ],
+      "context": "We delen gegevens alleen met de dienstverleners die nodig zijn om de website en e-mail te laten werken: GitHub, Inc. (hosting via GitHub Pages), Supabase (opslag van afspraken, servers in Londen), de e-mailprovider van ons domein (bevestigingsmails), Google (Gmail en, met je toestemming, Google Fonts), HubSpot (formulieren, CRM en, met je toestemming, websitetracking) en GoatCounter (bezoekstatistieken, met servers in Finland en Duitsland). GitHub, Google en HubSpot kunnen gegevens buiten de Europese Economische Ruimte verwerken volgens toepasselijke doorgiftemechanismen, zoals het EU-VS Data Privacy Framework of de standaardcontractbepalingen van de Europese Commissie. Supabase bewaart de afspraken in het Verenigd Koninkrijk. Voor dat land heeft de Europese Commissie een adequaatheidsbesluit genomen.",
+      "status": "open",
+      "firstSeen": "51835e43c87f156c7202e4e0080eaaf1aa74f14c"
+    },
+    {
+      "id": "21fc54e83c8fc250561c4565c5bd4bb6207ffda4eefa6ba5ba5e29f5c0e256d4",
+      "blockId": "privacy.html#text:body:2>main:3>section:2>article:1>div:1>p:19",
+      "textHash": "a41bcf8f09714f82a88666d7ff6a2c0f4b4dff978a9edd3c1778cc8519262bf0",
+      "rule": "MORFOLOGIK_RULE_NL_NL",
+      "offset": 145,
+      "length": 8,
+      "message": "Er is een mogelijke spelfout gevonden.",
+      "replacements": [
+        "Spaanse",
+        "Database",
+        "Separate",
+        "Simbase",
+        "Surabaya",
+        "Sudanese",
+        "Spabad",
+        "Sabas",
+        "Spaas",
+        "Saase",
+        "Spabaden",
+        "Subbas",
+        "Autobase",
+        "Megabase",
+        "Soundbase",
+        "Subfase",
+        "Starbase",
+        "Sukarame",
+        "Spanas",
+        "Sukarasa",
+        "Tunebase",
+        "Rupsfase",
+        "Snapbare",
+        "Surfbare",
+        "Alfabase",
+        "Sabas'",
+        "Subasi",
+        "Sukadame",
+        "Paase",
+        "Spaas'",
+        "Suanae",
+        "Sukababo",
+        "Sukabares",
+        "Sukabaru",
+        "Supayang",
+        "Szabás",
+        "Sojabases",
+        "Spabadje",
+        "Spanasje",
+        "Spanbare",
+        "Subbasje",
+        "Sugababes"
+      ],
+      "context": "We delen gegevens alleen met de dienstverleners die nodig zijn om de website en e-mail te laten werken: GitHub, Inc. (hosting via GitHub Pages), Supabase (opslag van afspraken, servers in Londen), de e-mailprovider van ons domein (bevestigingsmails), Google (Gmail en, met je toestemming, Google Fonts), HubSpot (formulieren, CRM en, met je toestemming, websitetracking) en GoatCounter (bezoekstatistieken, met servers in Finland en Duitsland). GitHub, Google en HubSpot kunnen gegevens buiten de Europese Economische Ruimte verwerken volgens toepasselijke doorgiftemechanismen, zoals het EU-VS Data Privacy Framework of de standaardcontractbepalingen van de Europese Commissie. Supabase bewaart de afspraken in het Verenigd Koninkrijk. Voor dat land heeft de Europese Commissie een adequaatheidsbesluit genomen.",
+      "status": "open",
+      "firstSeen": "51835e43c87f156c7202e4e0080eaaf1aa74f14c"
+    },
+    {
+      "id": "9881cd4132b999b454f59fae585112437d1889dd8af8c58c975bc6668d9fef0b",
+      "blockId": "privacy.html#text:body:2>main:3>section:2>article:1>div:1>p:19",
+      "textHash": "a41bcf8f09714f82a88666d7ff6a2c0f4b4dff978a9edd3c1778cc8519262bf0",
+      "rule": "MORFOLOGIK_RULE_NL_NL",
+      "offset": 354,
+      "length": 15,
+      "message": "Er is een mogelijke spelfout gevonden.",
+      "replacements": [
+        "websitetraining"
+      ],
+      "context": "We delen gegevens alleen met de dienstverleners die nodig zijn om de website en e-mail te laten werken: GitHub, Inc. (hosting via GitHub Pages), Supabase (opslag van afspraken, servers in Londen), de e-mailprovider van ons domein (bevestigingsmails), Google (Gmail en, met je toestemming, Google Fonts), HubSpot (formulieren, CRM en, met je toestemming, websitetracking) en GoatCounter (bezoekstatistieken, met servers in Finland en Duitsland). GitHub, Google en HubSpot kunnen gegevens buiten de Europese Economische Ruimte verwerken volgens toepasselijke doorgiftemechanismen, zoals het EU-VS Data Privacy Framework of de standaardcontractbepalingen van de Europese Commissie. Supabase bewaart de afspraken in het Verenigd Koninkrijk. Voor dat land heeft de Europese Commissie een adequaatheidsbesluit genomen.",
+      "status": "open",
+      "firstSeen": "51835e43c87f156c7202e4e0080eaaf1aa74f14c"
+    },
+    {
+      "id": "002afbc6f9e983eecf2a6ab50ea60930bc3a9ab485c4e7eaa071a01035ba0e68",
+      "blockId": "privacy.html#text:body:2>main:3>section:2>article:1>div:1>p:19",
+      "textHash": "a41bcf8f09714f82a88666d7ff6a2c0f4b4dff978a9edd3c1778cc8519262bf0",
+      "rule": "MORFOLOGIK_RULE_NL_NL",
+      "offset": 374,
+      "length": 11,
+      "message": "Er is een mogelijke spelfout gevonden.",
+      "replacements": [
+        "Postcounter",
+        "Beatcounter",
+        "StatCounter"
+      ],
+      "context": "We delen gegevens alleen met de dienstverleners die nodig zijn om de website en e-mail te laten werken: GitHub, Inc. (hosting via GitHub Pages), Supabase (opslag van afspraken, servers in Londen), de e-mailprovider van ons domein (bevestigingsmails), Google (Gmail en, met je toestemming, Google Fonts), HubSpot (formulieren, CRM en, met je toestemming, websitetracking) en GoatCounter (bezoekstatistieken, met servers in Finland en Duitsland). GitHub, Google en HubSpot kunnen gegevens buiten de Europese Economische Ruimte verwerken volgens toepasselijke doorgiftemechanismen, zoals het EU-VS Data Privacy Framework of de standaardcontractbepalingen van de Europese Commissie. Supabase bewaart de afspraken in het Verenigd Koninkrijk. Voor dat land heeft de Europese Commissie een adequaatheidsbesluit genomen.",
+      "status": "open",
+      "firstSeen": "51835e43c87f156c7202e4e0080eaaf1aa74f14c"
+    },
+    {
+      "id": "dce82dc8a10cc2398a37467d091e30f834f3c72a1f73eaff74127125972c017f",
+      "blockId": "privacy.html#text:body:2>main:3>section:2>article:1>div:1>p:19",
+      "textHash": "a41bcf8f09714f82a88666d7ff6a2c0f4b4dff978a9edd3c1778cc8519262bf0",
+      "rule": "MORFOLOGIK_RULE_NL_NL",
+      "offset": 589,
+      "length": 5,
+      "message": "Er is een mogelijke spelfout gevonden.",
+      "replacements": [
+        "EU-",
+        "EUDES",
+        "EUWES",
+        "EUANS",
+        "EUNS",
+        "EUS"
+      ],
+      "context": "We delen gegevens alleen met de dienstverleners die nodig zijn om de website en e-mail te laten werken: GitHub, Inc. (hosting via GitHub Pages), Supabase (opslag van afspraken, servers in Londen), de e-mailprovider van ons domein (bevestigingsmails), Google (Gmail en, met je toestemming, Google Fonts), HubSpot (formulieren, CRM en, met je toestemming, websitetracking) en GoatCounter (bezoekstatistieken, met servers in Finland en Duitsland). GitHub, Google en HubSpot kunnen gegevens buiten de Europese Economische Ruimte verwerken volgens toepasselijke doorgiftemechanismen, zoals het EU-VS Data Privacy Framework of de standaardcontractbepalingen van de Europese Commissie. Supabase bewaart de afspraken in het Verenigd Koninkrijk. Voor dat land heeft de Europese Commissie een adequaatheidsbesluit genomen.",
+      "status": "open",
+      "firstSeen": "51835e43c87f156c7202e4e0080eaaf1aa74f14c"
+    },
+    {
+      "id": "4461bec9364ddb90861471ad010ec1da06251517fb83ae1d6869248c50bf162d",
+      "blockId": "privacy.html#text:body:2>main:3>section:2>article:1>div:1>p:19",
+      "textHash": "a41bcf8f09714f82a88666d7ff6a2c0f4b4dff978a9edd3c1778cc8519262bf0",
+      "rule": "MORFOLOGIK_RULE_NL_NL",
+      "offset": 679,
+      "length": 8,
+      "message": "Er is een mogelijke spelfout gevonden.",
+      "replacements": [
+        "Spaanse",
+        "Database",
+        "Separate",
+        "Simbase",
+        "Surabaya",
+        "Sudanese",
+        "Spabad",
+        "Sabas",
+        "Spaas",
+        "Saase",
+        "Spabaden",
+        "Subbas",
+        "Autobase",
+        "Megabase",
+        "Soundbase",
+        "Subfase",
+        "Starbase",
+        "Sukarame",
+        "Spanas",
+        "Sukarasa",
+        "Tunebase",
+        "Rupsfase",
+        "Snapbare",
+        "Surfbare",
+        "Alfabase",
+        "Sabas'",
+        "Subasi",
+        "Sukadame",
+        "Paase",
+        "Spaas'",
+        "Suanae",
+        "Sukababo",
+        "Sukabares",
+        "Sukabaru",
+        "Supayang",
+        "Szabás",
+        "Sojabases",
+        "Spabadje",
+        "Spanasje",
+        "Spanbare",
+        "Subbasje",
+        "Sugababes"
+      ],
+      "context": "We delen gegevens alleen met de dienstverleners die nodig zijn om de website en e-mail te laten werken: GitHub, Inc. (hosting via GitHub Pages), Supabase (opslag van afspraken, servers in Londen), de e-mailprovider van ons domein (bevestigingsmails), Google (Gmail en, met je toestemming, Google Fonts), HubSpot (formulieren, CRM en, met je toestemming, websitetracking) en GoatCounter (bezoekstatistieken, met servers in Finland en Duitsland). GitHub, Google en HubSpot kunnen gegevens buiten de Europese Economische Ruimte verwerken volgens toepasselijke doorgiftemechanismen, zoals het EU-VS Data Privacy Framework of de standaardcontractbepalingen van de Europese Commissie. Supabase bewaart de afspraken in het Verenigd Koninkrijk. Voor dat land heeft de Europese Commissie een adequaatheidsbesluit genomen.",
+      "status": "open",
+      "firstSeen": "51835e43c87f156c7202e4e0080eaaf1aa74f14c"
+    },
+    {
+      "id": "1e21b8a0ea9bd0c2f489431caa5820059aee50f78c3cee7538c0ace9e1645617",
+      "blockId": "privacy.html#text:body:2>main:3>section:2>article:1>div:1>p:21",
+      "textHash": "65ed57208c0938a388083eb65068e89ead44c23040498b0978584dd5a66c9cbf",
+      "rule": "MORFOLOGIK_RULE_NL_NL",
+      "offset": 66,
+      "length": 8,
+      "message": "Er is een mogelijke spelfout gevonden.",
+      "replacements": [
+        "Spaanse",
+        "Database",
+        "Separate",
+        "Simbase",
+        "Surabaya",
+        "Sudanese",
+        "Spabad",
+        "Sabas",
+        "Spaas",
+        "Saase",
+        "Spabaden",
+        "Subbas",
+        "Autobase",
+        "Megabase",
+        "Soundbase",
+        "Subfase",
+        "Starbase",
+        "Sukarame",
+        "Spanas",
+        "Sukarasa",
+        "Tunebase",
+        "Rupsfase",
+        "Snapbare",
+        "Surfbare",
+        "Alfabase",
+        "Sabas'",
+        "Subasi",
+        "Sukadame",
+        "Paase",
+        "Spaas'",
+        "Suanae",
+        "Sukababo",
+        "Sukabares",
+        "Sukabaru",
+        "Supayang",
+        "Szabás",
+        "Sojabases",
+        "Spabadje",
+        "Spanasje",
+        "Spanbare",
+        "Subbasje",
+        "Sugababes"
+      ],
+      "context": "De website wordt via HTTPS aangeboden. Afspraakgegevens staan bij Supabase en alleen de beheerder kan ze inzien. Inzendingen worden door HubSpot verwerkt en bewaard volgens de toepasselijke instellingen en privacyvoorwaarden. De toegang tot beheeraccounts is beperkt en beveiligd.",
+      "status": "open",
+      "firstSeen": "51835e43c87f156c7202e4e0080eaaf1aa74f14c"
     }
   ]
 }

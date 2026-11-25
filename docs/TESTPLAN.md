@@ -1,5 +1,13 @@
 # Testplan en kwaliteitsbeleid
 
+## Maandelijks Magazine in de contentstudio, 25 november 2026
+
+Sponsorbesluit: alle menupagina's zijn bewerkbaar in de contentstudio; het Maandelijks Magazine volgt nu PR #112 (32 pagina's in magazine-opmaak) live staat. journal.html krijgt data-cms-page="journal", de publieke loader na site.js, de mediastijl en een videoslot (cms-video-journal). In de catalogus staat de pagina tussen Training en Insights (menuvolgorde) met 50 velden: 48 tekstvelden (mag-01 tot mag-48), de omslag van de eerste dia als herofoto (mag-hero-img) en de video.
+
+Bewerkbaar is alleen de pagina rond het magazine: hero (kicker, titel, ondertitel, labels en titels van de vijf dia's), het archief (labels, titels, intro's, badge), de tegels van "In editie 1", de kop boven het flipboek en "Opbouw van elke editie". Niet bewerkbaar: de 32 pagina's van de editie, de bladerknoppen en de hint, de knoppen van de dia's en de paginaverwijzingen ("Pagina 5"). Een editie doorloopt het redactieproces met sponsorpoorten (bronnen, vertaling, GO); een wijziging via de contentstudio zou dat omzeilen.
+
+Tests: journal.test (nieuw: geen data-cms binnen het flipboek, elke sleutel is mag-, mag-hero-img of cms-video-journal, elk tekstveld staat als laatste attribuut op een element zonder kindtags en komt overeen met de NL-tekst, FR aanwezig; aangepast met reden: h1 en archieflabels mogen een data-cms-attribuut dragen), cms-client (paginalijst met journal; de test 'every content-studio page loads published CMS content' dekt journal.html), browser journal.spec (nieuw: een gepubliceerde mag-01 met een HTML-achtige waarde verschijnt als platte tekst in NL en in FR na de taalwissel, alleen cms_publications-verzoeken voor journal, het flipboek bladert nog). admin.html laadt cms-catalog.js met een nieuwe cache-bust. language/nl-extraction.json bijgewerkt (cms-catalog.js en inline-hash van journal.html); geen adapterwijziging. Geen drempel gewijzigd.
+
 ## Plan een gesprek zonder kleurlaag; homepagezin verzorgd, 25 november 2026
 
 Eigenaarsbeslissing (17:02): afspraak.html laadt assets/kleur.css niet meer en krijgt zijn originele kleuren terug, zoals Home, Orion, Workflow-automatisering en Bedrijfsontwikkeling (#117). Op de homepage wordt "nog geen een op de drie" "nog niet één op de drie" (sleutel in i18n.js mee hernoemd, Franse vertaling ongewijzigd). Tests: kleur.test.cjs (afspraak.html van de positieve naar de negatieve lijst), nl-editorial.test.cjs (nieuw: nieuwe zin aanwezig, oude zin en oude sleutel weg). language/nl-extraction.json bijgewerkt; geen adapterwijziging.

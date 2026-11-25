@@ -3,7 +3,7 @@
   "scope": "rendered_local_nl_runtime_dictionaries_static_cms_and_mail",
   "technicalReview": {
     "date": "2026-11-25",
-    "reason": "Eigenaarsbeslissing 25 november 17:02: homepagezin \"nog niet één op de drie\" (sleutel in i18n.js hernoemd), afspraak.html zonder kleurlaag. Geen adapterwijziging. Eerdere reden: Inline-vingerafdrukken bijgewerkt na #121/#124 (orion.html). Herstel analytics-heracceptatie (25 november): assets/site.js bewaart de echte GoatCounter-telfunctie achter een toestemmingsgebonden accessor; heracceptatie telt direct zonder nieuwe download, intrekking blijft inert. Geen tekst- of adapterwijziging. Contract bijgewerkt voor assets/site.js en voor de op main nog niet vastgelegde hashes van assets/cms-catalog.js, assets/i18n.js en het nieuwe assets/i18n-orion.js (#121). Eerdere reden: Magazinepagina journal.html (eigenaarsbeslissing 25 november): schuivende hero met vijf beelden, archief van alle edities en de delen van editie 1; blokken Het boek en Herkent u deze verspilling? weg; nieuw assets/magazine.js en deeplinks in assets/flipboek.js. Vertalingen in assets/i18n-journal.js. Geen adapterwijziging. Eerdere reden: Contentstudio herwerkt (sponsorbesluit 25 november): catalogus beperkt tot de menupagina’s (Home, Orion, Workflow-automatisering, Bedrijfsontwikkeling, Training, Insights, Over), zeven oude Engelstali…"
+    "reason": "Contentstudio: Maandelijks Magazine (journal.html) bewerkbaar; cms-catalog.js en inline-script journal.html. Geen adapterwijziging. Eerdere reden: Eigenaarsbeslissing 25 november 17:02: homepagezin \"nog niet één op de drie\" (sleutel in i18n.js hernoemd), afspraak.html zonder kleurlaag. Geen adapterwijziging. Eerdere reden: Inline-vingerafdrukken bijgewerkt na #121/#124 (orion.html). Herstel analytics-heracceptatie (25 november): assets/site.js bewaart de echte GoatCounter-telfunctie achter een toestemmingsgebonden accessor; heracceptatie telt direct zonder nieuwe download, intrekking blijft inert. Geen tekst- of adapterwijziging. Contract bijgewerkt voor assets/site.js en voor de op main nog niet vastgelegde hashes van assets/cms-catalog.js, assets/i18n.js en het nieuwe assets/i18n-orion.js (#121). Eerdere reden: Magazinepagina journal.html (eigenaarsbeslissing 25 november): schuivende hero met vijf beelden, archief van alle edities en de delen van editie 1; blokken Het boek en Herkent u deze verspilling? weg; nieuw assets/magazine.js en deeplinks in assets/flipboek.js. Vertalingen in assets/i18n-journal.js. Geen adapterwijziging. Eerdere reden: Contentstudio herwerkt (sponsorbesluit 25 november): catalogus beperkt tot de menupagina’s (Home, Orion, Workflow-automatisering, Bedrijfsontwikkeling, Training, Insights, Over), zeven oude Engelstali…"
   },
   "javascript": [
     {
@@ -28,7 +28,7 @@
     },
     {
       "file": "assets/cms-catalog.js",
-      "sha256": "c51ac5d508f6fc216bc8fc1cc91328fcf950f6d2b59f78ac65f755c130907cfd"
+      "sha256": "80df6d8788eec59eaa00a55b11ca8057abefbf3a43637911fff9653e98bef07a"
     },
     {
       "file": "assets/cms-client.js",
@@ -242,7 +242,7 @@
     },
     {
       "file": "journal.html",
-      "sha256": "f7480d3b95e87053f6ae9ca1e850d69299ea45ab2317401ff21f187c97b70f47"
+      "sha256": "b657952775471fd2e90a54a8636c9d869aba431108820458c6d37c14db21fec8"
     },
     {
       "file": "operating-model.html",

@@ -11,7 +11,7 @@ function createServer(options={}) {
     try { pathname = decodeURIComponent(new URL(req.url, 'http://localhost').pathname); } catch { res.writeHead(400); return res.end(); }
     if(options.cmsTestMode && pathname==='/assets/cms-config.js'){
       res.writeHead(200,{'Content-Type':'text/javascript; charset=utf-8','Cache-Control':'no-store','X-Content-Type-Options':'nosniff'});
-      return res.end(req.method==='HEAD'?'':"window.GF_CMS_CONFIG=Object.freeze({url:'https://dbooobckaqbkrmkpcuem.supabase.co',key:''});");
+      return res.end(req.method==='HEAD'?'':"window.GF_CMS_CONFIG=Object.freeze({url:'https://dbooobckaqbkrmkpcuem.supabase.co',key:''});window.GF_SUPABASE_PROJECTS=Object.freeze({prod:Object.freeze({url:'https://dbooobckaqbkrmkpcuem.supabase.co',key:'local-test-only'}),test:Object.freeze({url:'https://gqsvoioccvklzfmdmexy.supabase.co',key:'local-test-only'})});");
     }
     if (pathname.includes('\0') || pathname.includes('\\')) { res.writeHead(400); return res.end(); }
     const target = path.resolve(root, '.' + pathname + (pathname.endsWith('/') ? 'index.html' : ''));

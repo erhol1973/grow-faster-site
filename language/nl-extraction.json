@@ -3,7 +3,7 @@
   "scope": "rendered_local_nl_runtime_dictionaries_static_cms_and_mail",
   "technicalReview": {
     "date": "2026-11-25",
-    "reason": "Merge main in fix/over-kleur-terug-20261125 (release-wachtrij) (assets/i18n-about.js, inline about.html). Geen adapterwijziging. Eerdere reden: Merge main in Bedrijfsontwikkeling premium (release-wachtrij) (assets/cms-catalog.js, assets/i18n-coherence.js, inline coherence.html). Geen adapterwijziging. Eerdere reden: Merge main in Workflow-automatisering premium (release-wachtrij) (assets/cms-catalog.js, assets/i18n-automatisering.js, assets/i18n.js, inline automatisering.html). Geen adapterwijziging. Eerdere reden: Merge main in Training-pagina (release-wachtrij) (assets/cms-catalog.js, assets/i18n-training.js, inline training.html). Geen adapterwijziging. Eerdere reden: Contentstudio: Maandelijks Magazine (journal.html) bewerkbaar; cms-catalog.js en inline-script journal.html. Geen adapterwijziging. Eerdere reden: Eigenaarsbeslissing 25 november 17:02: homepagezin \"nog niet één op de drie\" (sleutel in i18n.js hernoemd), afspraak.html zonder kleurlaag. Geen adapterwijziging. Eerdere reden: Inline-vingerafdrukken bijgewerkt na #121/#124 (orion.html). Herstel analytics-heracceptatie (25 november): assets/site.js bewaart de echte GoatCounter-telfunctie achter een toestemmingsgebonden accessor; heracceptatie telt direct zonder nieuwe download, intrekking blijft inert. Geen tekst- of adapterwijziging. Contract bijgewerkt voor assets/site.js en voor de op main nog niet vastgelegde hashes van assets/cms-catalog.js, assets/i18n.js en het nieuwe assets/i18n-orion.js (#121). Eerdere reden: Magazinepagina journal.html (eigenaarsbeslissing 25 november): schuivende hero met vijf beelden, archief van alle edities en de delen van editie 1; blokken Het boek en Herkent u deze verspilling? weg; nieuw assets/magazine.js en deeplinks in assets/flipboek.js. Vertalingen in assets/i18n-journal.js. Geen adapterwijziging. Eerdere reden: Contentstudio herwerkt (sponsorbesluit 25 november): catalogus beperkt tot de menupagina’s (Home, Orion, Workflow-automatisering, Bedrijfsontwikkeling, Training, Insights, Over), zeven oude Engelstali…"
+    "reason": "Merge main in Eigen afspraakmodule (release-wachtrij) (assets/booking-admin.js, assets/booking.js, assets/cms-config.js, assets/i18n.js, inline admin-afspraken.html, inline afspraak.html). Geen adapterwijziging. Eerdere reden: Merge main in fix/over-kleur-terug-20261125 (release-wachtrij) (assets/i18n-about.js, inline about.html). Geen adapterwijziging. Eerdere reden: Merge main in Bedrijfsontwikkeling premium (release-wachtrij) (assets/cms-catalog.js, assets/i18n-coherence.js, inline coherence.html). Geen adapterwijziging. Eerdere reden: Merge main in Workflow-automatisering premium (release-wachtrij) (assets/cms-catalog.js, assets/i18n-automatisering.js, assets/i18n.js, inline automatisering.html). Geen adapterwijziging. Eerdere reden: Merge main in Training-pagina (release-wachtrij) (assets/cms-catalog.js, assets/i18n-training.js, inline training.html). Geen adapterwijziging. Eerdere reden: Contentstudio: Maandelijks Magazine (journal.html) bewerkbaar; cms-catalog.js en inline-script journal.html. Geen adapterwijziging. Eerdere reden: Eigenaarsbeslissing 25 november 17:02: homepagezin \"nog niet één op de dr…"
   },
   "javascript": [
     {
@@ -23,6 +23,14 @@
       "sha256": "a42ed03bc91a891387db047031803c0de04d78f0950da1f5d7c79b63ca931bc6"
     },
     {
+      "file": "assets/booking-admin.js",
+      "sha256": "9087f2079787c26fa51ed31d02e1411a05ac6d560f8a1e0d8a9509e2ed422a8e"
+    },
+    {
+      "file": "assets/booking.js",
+      "sha256": "70d3f1c2465a7f4a600e75d8d7b3af88c2bb65a38ebf66f41c3352bf93159519"
+    },
+    {
       "file": "assets/cms-admin.js",
       "sha256": "eef5cf15e2fda69b3c1f69b7b4fd00f1b9dd5d224a54b3eeb5824683c9d74084"
     },
@@ -36,7 +44,7 @@
     },
     {
       "file": "assets/cms-config.js",
-      "sha256": "6575f4184f2cc82de32fd08a204955444ab5b8346a139c553ea668c53aa60906"
+      "sha256": "707a9a935e71ca430f721ca9e86087f85d2e20def500f98f3d237f5a0582e796"
     },
     {
       "file": "assets/cms-public.js",
@@ -112,7 +120,7 @@
     },
     {
       "file": "assets/i18n.js",
-      "sha256": "bbac33741cbdcb2d903b1ca858df244bc336989c9040fd066ea650bbfd43f35a"
+      "sha256": "1d2a332dd0fe3c46e5d3a61370e8bcb27559b02fefc9295d5fa9fd905665eada"
     },
     {
       "file": "assets/journal.js",
@@ -165,12 +173,16 @@
       "sha256": "d471083ac75a0c3966c07716aaf17ca1b9f77a721e97f7d3d5319bbbc7bdfdc1"
     },
     {
+      "file": "admin-afspraken.html",
+      "sha256": "75a11da44c802486bc6f65640aa48a730f0f684c5c07a42ba3cd1735eb3fb070"
+    },
+    {
       "file": "admin.html",
       "sha256": "6a3cf5192354f71615ac51034b3e97c20eda99643fcaf5bbe6d41ad59bd12167"
     },
     {
       "file": "afspraak.html",
-      "sha256": "3408587b672dde4fd4e501a58271d737aabc207850ab80d4a6e9d9e9243f8ce8"
+      "sha256": "46d1df9ff48bd8e259094b4744a90000514255f1d8a19cfe7e6a5cc2dc00c40a"
     },
     {
       "file": "all-articles.html",

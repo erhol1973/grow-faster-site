@@ -3,7 +3,7 @@
   "scope": "rendered_local_nl_runtime_dictionaries_static_cms_and_mail",
   "technicalReview": {
     "date": "2026-11-25",
-    "reason": "Magazinepagina journal.html (eigenaarsbeslissing 25 november): schuivende hero met vijf beelden, archief van alle edities en de delen van editie 1; blokken Het boek en Herkent u deze verspilling? weg; nieuw assets/magazine.js en deeplinks in assets/flipboek.js. Vertalingen in assets/i18n-journal.js. Geen adapterwijziging. Eerdere reden: Magazine editie 1 herwerkt tot 32 pagina’s in magazine-opmaak (eigenaarsbeslissing 25 november: 20 tot 35 pagina’s, sectorfoto op de omslag, grotere tekst, meer foto’s): journal.html rendered DOM, ass…"
+    "reason": "Magazinepagina journal.html (eigenaarsbeslissing 25 november): schuivende hero met vijf beelden, archief van alle edities en de delen van editie 1; blokken Het boek en Herkent u deze verspilling? weg; nieuw assets/magazine.js en deeplinks in assets/flipboek.js. Vertalingen in assets/i18n-journal.js. Geen adapterwijziging. Eerdere reden: Homepage herwerkt (opdracht sponsor 25 november): nieuwe blokken Terugkerend werk en Zo starten we, rijkere toepassingskaarten; nieuwe runtime-dictionary assets/i18n-home.js (zelfde patroon als i18n-j…"
   },
   "javascript": [
     {
@@ -24,11 +24,11 @@
     },
     {
       "file": "assets/cms-admin.js",
-      "sha256": "e2a0ceddb239ffa12891a407cf5773566d03f094204513c8dc6cdda4025fffae"
+      "sha256": "eef5cf15e2fda69b3c1f69b7b4fd00f1b9dd5d224a54b3eeb5824683c9d74084"
     },
     {
       "file": "assets/cms-catalog.js",
-      "sha256": "e5de177455bb9bd6aed4ecb647634bfd585580ff68d2d36c6f51808d522434a9"
+      "sha256": "af71fa4f8713c01f8578fedd70b1104fb871192684cfac7c122bd829a522b86a"
     },
     {
       "file": "assets/cms-client.js",
@@ -77,6 +77,10 @@
     {
       "file": "assets/home-film.js",
       "sha256": "3bb45468eddad3d1c9c0e0908580c216aef48c09d63b3f3dd0256f479fd6f19a"
+    },
+    {
+      "file": "assets/i18n-home.js",
+      "sha256": "d01c52555ec867bd578f40417490b49a1b5300fd21a0c126d03e9fcbb8ee5e88"
     },
     {
       "file": "assets/i18n-insights.js",
@@ -218,7 +222,7 @@
     },
     {
       "file": "index.html",
-      "sha256": "32bc212980df42143010b5a6d4bd6eaeb0ab40aa2dccfb5acec21513e3ad44e4"
+      "sha256": "520d589042e777ba0f49ac51c72c633461aa39ec8205dee896ec5fad13ac7316"
     },
     {
       "file": "insights-ai-pilot.html",

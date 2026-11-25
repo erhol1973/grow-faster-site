@@ -32,6 +32,8 @@ test('application cards: Orion first, the other three lead to workflow automatio
   for(const sys of ['SAP','Dynamics 365','Business Central','Salesforce','SharePoint'])assert.ok(trust.includes(sys),sys);
   assert.match(trust,/Of en hoe we koppelen, beoordelen we per klant\./);
   assert.doesNotMatch(trust,/alleen-lezen|garantie|nooit/i);
-  for(const id of ['hero-pilot','final-pilot'])assert.match(home,new RegExp(`href="afspraak\\.html\\?onderwerp=vragenlijsten"[^>]*id="${id}"|id="${id}"`));
+  // Sponsor decision 25 Nov 2026 10:11: #proof ("Ervaring uit de praktijk") and #final ("Test Orion op uw eigen vragenlijsten") removed from the homepage: only the hero CTA remains.
+  assert.doesNotMatch(home,/id="final-pilot"/);
+  for(const id of ['hero-pilot'])assert.match(home,new RegExp(`href="afspraak\\.html\\?onderwerp=vragenlijsten"[^>]*id="${id}"|id="${id}"`));
   const orion=read('orion.html');assert.match(orion.match(/<section id="probleem"[\s\S]*?<\/section>/)[0],/Elke klant een eigen lijst[\s\S]*Antwoorden overal verspreid/,'strongest "Herkenbaar?" content moved to Orion');
 });

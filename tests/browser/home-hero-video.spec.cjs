@@ -7,6 +7,7 @@ test('the video variant follows the viewport and the pause button is labelled an
   await init(page);await page.goto('/index.html');
   const v=page.locator('#hero-video'),btn=page.locator('#hero-pauze');
   await expect(v).toBeVisible();
+  await expect(page.locator('#hero-orion')).toHaveCSS('background-color','rgb(11, 41, 73)');
   const src=await v.evaluate(e=>e.getAttribute('src'));
   expect(src).toBe(info.project.use.isMobile?'media/hero-toepassingen-1280.mp4':'media/hero-toepassingen-1920.mp4');
   expect(await v.evaluate(e=>e.muted&&e.loop&&e.playsInline)).toBe(true);

@@ -9,6 +9,32 @@ const ORDER=['hero','toepassingen','terugkerend','aanpak','fundament','kloof','v
 // Expected French = what i18n.js followed by i18n-home.js define (same order and context as index.html).
 const I18N=(()=>{const dist=path.resolve(__dirname,'..','..','dist'),c={window:{}};for(const f of ['assets/i18n.js','assets/i18n-home.js'])vm.runInNewContext(fs.readFileSync(path.join(dist,f),'utf8'),c);return c.window.I18N})();
 const init=async(page,lang='nl')=>page.addInitScript(l=>{localStorage.setItem('avs-lang',l);localStorage.setItem('avs-consent',JSON.stringify({v:4,ext:false,ana:false,ts:Date.now()}))},lang);
+test('Orion leads the four applications and the pilot remains the first hero action',async({page},info)=>{
+  await init(page);
+  await page.goto('/index.html');
+  const hero=page.locator('#hero');
+  await hero.locator('#hero-pilot').focus();
+  await page.keyboard.press('Tab');
+  await expect(hero.locator('#hero-orion')).toBeFocused();
+  const cards=page.locator('#toepassingen .toep-kaart');
+  await expect(cards).toHaveCount(4);
+  const orion=cards.first();
+  await orion.scrollIntoViewIfNeeded();
+  await expect(orion).toHaveAttribute('id','toep-kwaliteit');
+  await expect(orion.locator('img')).toHaveAttribute('loading','lazy');
+  await expect(orion.locator('img')).toHaveAttribute('alt','');
+  const [lead,...related]=await cards.evaluateAll(items=>items.map(item=>{
+    const {width,top}=item.getBoundingClientRect();
+    return {width,top};
+  }));
+  if(info.project.use.isMobile){
+    expect(related.every(card=>Math.abs(card.width-lead.width)<1)).toBe(true);
+    expect(related.every((card,index)=>card.top>(index===0?lead:related[index-1]).top)).toBe(true);
+  }else{
+    expect(lead.width).toBeGreaterThan(related.reduce((sum,card)=>sum+card.width,0));
+    expect(related.every(card=>Math.abs(card.top-related[0].top)<1)).toBe(true);
+  }
+});
 async function overflow(page){
   await page.addStyleTag({content:'*{content-visibility:visible!important}'});
   return page.evaluate(ids=>{const vw=document.documentElement.clientWidth,out=[];

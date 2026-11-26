@@ -12,6 +12,17 @@
 /* Hero: one quiet reassurance line under the buttons */
 .hero-minimal .hero-note{margin:22px 0 0;max-width:62ch;font-size:16px;line-height:1.5;font-weight:500;color:#e1edf9}
 body[data-cms-page="home"] #hero .hero-note{text-shadow:0 0 2px rgba(6,27,52,.9),0 2px 14px rgba(6,27,52,.85)}
+#hero .ctas{align-items:center}
+#hero #hero-orion{width:auto;padding-inline:8px;border-color:transparent;background:transparent;color:#fff;text-decoration:underline;text-underline-offset:.25em}
+#hero #hero-orion:hover{text-decoration-thickness:2px}
+#hero:has(.hero-video:not([hidden])) #hero-orion{background:#0b2949;padding-inline:8px}
+@media(max-width:480px){
+  #hero .hero-top{min-height:0}
+  #hero .hero-inner{padding-block:104px 56px}
+  #hero .ctas{margin-top:24px;gap:4px}
+  #hero #hero-orion{padding-inline:0}
+  #hero .hero-note{margin-top:12px}
+}
 
 /* Section rhythm: one vertical scale, alternating white and soft neutral */
 .editorial-home section.hsec{padding-block:clamp(72px,8vw,120px)}
@@ -25,20 +36,41 @@ body[data-cms-page="home"] #hero .hero-note{text-shadow:0 0 2px rgba(6,27,52,.9)
 #fundament .pyr-layers li,#fundament .pyr-text p,#fundament .pyr-result{max-width:none}
 .hsec h3{text-wrap:balance}
 
-/* 2. Toepassingen: two by two, each card reads cost -> preparation -> human check */
-#toepassingen .toep-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;margin-top:0}
-#toepassingen .toep-kaart{gap:16px;padding:clamp(24px,2.6vw,36px);border-radius:12px;transition:border-color .15s}
+/* 2. Toepassingen: Orion as the lead case, then three related workflows. */
+body[data-cms-page="home"] #toepassingen{background:#f6f5f1;padding-block:clamp(52px,6vw,84px)}
+#toepassingen .head{margin-bottom:clamp(28px,4vw,52px)}
+#toepassingen .toep-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:36px clamp(24px,3.5vw,52px);margin-top:0}
+#toepassingen .toep-kaart{gap:14px;padding:24px 0 0;border:0;border-top:1px solid var(--line);border-radius:0;background:transparent;transition:none}
 #toepassingen .toep-kaart:hover{transform:none;border-color:var(--ai-ink)}
-#toepassingen .toep-orion{box-shadow:none;border-color:var(--ai-ink)}
+#toepassingen .toep-kaart:hover .toep-meer{text-decoration:underline;text-underline-offset:.2em}
+#toepassingen .toep-orion{grid-column:1/-1;display:grid;grid-template-columns:minmax(0,2fr) minmax(0,3fr);gap:0;padding:0;border:0;border-radius:8px;background:var(--bg);box-shadow:none;overflow:hidden}
+.toep-beeld{display:block;position:relative;min-height:220px;background:var(--brand)}
+.toep-beeld img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:78% center}
+.toep-inhoud{display:grid;gap:12px;padding:clamp(24px,3.2vw,46px)}
+#toepassingen .toep-tag{justify-self:start;padding:0;border-radius:0;background:none;font-family:var(--f-sans);font-size:14px;font-weight:600;letter-spacing:.06em}
 #toepassingen .toep-kaart h3{font-size:clamp(21px,1.8vw,24px);line-height:1.25}
-.toep-parts{margin:0;display:grid;border-top:1px solid var(--line)}
-.toep-part{display:grid;grid-template-columns:minmax(0,9.5rem) minmax(0,1fr);gap:4px 24px;padding:14px 0;border-bottom:1px solid var(--line)}
-.toep-part dt{font-size:14px;font-weight:600;line-height:1.5;color:var(--muted);padding-top:1px}
+#toepassingen .toep-orion h3{max-width:22ch;font-size:clamp(25px,3vw,38px);line-height:1.1;letter-spacing:-.025em}
+.toep-parts{margin:0;display:grid;gap:12px}
+.toep-part{display:grid;gap:4px}
+.toep-part dt{font-size:14px;font-weight:600;line-height:1.5;color:var(--muted)}
 .toep-part dd{margin:0;font-size:16px;line-height:1.55;color:var(--ink)}
 .toep-part-keep dt{color:var(--brand)}
 #toepassingen .toep-meer{padding-top:4px}
-@media(max-width:860px){#toepassingen .toep-grid{grid-template-columns:minmax(0,1fr)}}
-@media(max-width:480px){.toep-part{grid-template-columns:minmax(0,1fr);gap:2px}}
+.toep-orion .toep-parts{gap:0;margin-top:4px;border-top:1px solid var(--line)}
+.toep-orion .toep-part{grid-template-columns:minmax(0,8.5rem) minmax(0,1fr);gap:4px 16px;padding:10px 0;border-bottom:1px solid var(--line)}
+@media(min-width:1000px){
+  #toepassingen .head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:56px;align-items:end}
+  #toepassingen .head .sec-eyebrow{grid-column:1/-1}
+  #toepassingen .head .lede{margin-top:0}
+}
+@media(max-width:860px){
+  #toepassingen .toep-grid,#toepassingen .toep-orion{grid-template-columns:minmax(0,1fr)}
+  .toep-beeld{height:clamp(150px,34vw,230px);min-height:0}
+}
+@media(max-width:520px){
+  .toep-orion .toep-part{grid-template-columns:minmax(0,1fr)}
+  .toep-inhoud{padding:20px}
+}
 
 /* 3. Terugkerend: text and task list left, the labelled calculation example right, checklist below */
 .rec-grid{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(40px,6vw,96px);align-items:start}

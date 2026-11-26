@@ -26,8 +26,20 @@ for (const [lang, text] of Object.entries(copy)) {
       return route.fulfill({ status: 200, json: { slots: [] } });
     });
 
+    const narrowFrench = lang === 'fr' && info.project.use.isMobile;
+    if (narrowFrench) await page.setViewportSize({ width: 320, height: 720 });
     await page.goto('/training.html?lang=' + lang);
     await expect(page.locator('html')).toHaveAttribute('lang', lang);
+    if (narrowFrench) {
+      const finalWordLines = await page.locator('h1').evaluate(heading => {
+        const text = heading.firstChild;
+        const word = document.createRange();
+        word.setStart(text, text.textContent.lastIndexOf(' ') + 1);
+        word.setEnd(text, text.length);
+        return word.getClientRects().length;
+      });
+      expect(finalWordLines).toBe(1);
+    }
     const choose = page.getByRole('link', { name: text.action });
     if (info.project.use.isMobile) {
       await choose.tap();

@@ -21,12 +21,13 @@ const pages={
   // becomes "Uw systemen en uw beslissingen blijven bij u" without a read-only guarantee (that waits for per-connection verification).
   // Homepage redesign 25 Nov 2026 (BRIEF.md, final COPY.md): the card-3 sentence "Haal gegevens uit binnenkomende documenten ..." is
   // replaced by the today/prep/keep structure; "Welk terugkerend werk ..." moves to #terugkerend; the new blocks add their phrases.
+  // Homepage preview (26 Nov): use the shorter candidate wording for the application examples.
   'index.html':['Grow Faster helpt u terugkerend werk te vereenvoudigen met de systemen die u al gebruikt. Met Orion vult uw kwaliteitsteam klantvragenlijsten sneller in op basis van eigen documenten.','Welk terugkerend werk kost uw team tijd?','Kwaliteit in de voedingsproductie','Technisch onderhoud','Logistiek','Verbeter één werkproces met de systemen die u al gebruikt.','Van fundament tot AI','Winst in tijd en geld','Uw systemen en uw beslissingen blijven bij u','Uw medewerker controleert het en zet de laatste stap: versturen, registreren of importeren.',
-    'Wij bereiden voor. Uw team kijkt na en beslist.','Vier toepassingen, één werkwijze','In elk voorbeeld ziet u wat het vandaag kost, wat wij voorbereiden en wat uw medewerker zelf blijft doen.',
-    'Orion vult de lijst in vanuit uw eigen documenten en toont bij elk antwoord de bron.','Uw kwaliteitsverantwoordelijke kijkt elk antwoord na, keurt goed en verstuurt.',
-    'Wij maken uit het inspectieverslag een conceptwerkbon met de voorgestelde acties.','Uw onderhoudsteam beslist welke acties het registreert en inplant.',
-    'Wij halen de gegevens uit het document en zetten een conceptaanvraag klaar.','Uw medewerker controleert het concept en registreert het in uw eigen systeem.',
-    'Wij lezen de leveringsdocumenten in, vergelijken ze met de bestelling en zetten de afwijkingen op een rij.','De medewerker die de afwijking kan opvolgen, beslist wat er gebeurt.',
+    'Wij bereiden voor. Uw team kijkt na en beslist.','Vier toepassingen, één werkwijze','Herken de taak. Zie wat wij voorbereiden en wat uw team beslist.',
+    'Orion stelt antwoorden voor en toont bij elk antwoord de bron.','Uw kwaliteitsverantwoordelijke controleert en keurt goed voor verzending.',
+    'Wij zetten de voorgestelde acties in een conceptwerkbon.','Uw team kiest welke acties het registreert en inplant.',
+    'Wij halen de gegevens op en maken een conceptaanvraag.','Uw medewerker controleert en registreert de aanvraag.',
+    'Wij vergelijken de documenten en markeren de verschillen.','Uw medewerker beslist hoe elk verschil wordt opgevolgd.',
     'Meestal gaat het om kleine handelingen die elke dag terugkomen, op bijna elke afdeling. Apart lijken ze onbelangrijk. Samen lopen ze op tot uren per week.',
     'Waar het werk zit','Administratie neemt gegevens uit mails en pdf’s over in Excel en daarna nog eens in het ERP.','Verkoop en klantendienst beantwoorden dezelfde klantvragen telkens opnieuw.',
     'Waarom niemand het ziet','Niemand meet het, dus niemand ziet het totaal.','Wat het kost: reken het zelf uit','Rekenvoorbeeld','Stel: 3 medewerkers besteden elk 2 uur per week aan opzoeken en overtypen.',
@@ -35,9 +36,9 @@ const pages={
     'Herkent u er twee of meer? Kies de taak die het vaakst terugkomt. Met die ene taak starten we de pilot.',
     'Zo starten we','Pilot op één taak','Meten en beslissen','We vergelijken de tijd vóór en na. Daarna beslist u: uitbreiden naar een volgende taak of stoppen.']
 };
-test('approved Dutch texts are published and every one has a Dutch and French translation',()=>{
+test('expected Dutch copy is rendered and every phrase has a Dutch and French translation',()=>{
   for(const [file,phrases]of Object.entries(pages)){const body=text(read(file)),I=i18nFor(file).I18N;
-    for(const phrase of phrases){assert.ok(body.includes(phrase),`${file}: missing approved text "${phrase}"`);
+    for(const phrase of phrases){assert.ok(body.includes(phrase),`${file}: missing expected text "${phrase}"`);
       // A phrase is either a complete translation key or part of exactly one translated sentence.
       const keys=Object.hasOwn(I,phrase)?[phrase]:Object.keys(I).filter(k=>k.includes(phrase));assert.ok(keys.length>=1,`${file}: no translation key for "${phrase}"`);
       for(const k of keys)assert.ok(Array.isArray(I[k])&&I[k][0]===k&&I[k][1]&&I[k][1]!==k,`${file}: no NL/FR translation for "${k}"`);

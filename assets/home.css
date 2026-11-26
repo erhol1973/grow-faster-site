@@ -6,16 +6,24 @@
 .foot-grid.foot-3{grid-template-columns:repeat(3,minmax(0,1fr))}
 @media(max-width:620px){.foot-grid.foot-3{grid-template-columns:minmax(0,1fr)}}
 @media(min-width:821px){.hero.hero-customer .hero-top::after{background:linear-gradient(90deg,rgba(6,27,52,.95),rgba(6,27,52,.9) 55%,rgba(6,27,52,.74) 82%,rgba(6,27,52,.4) 100%)}}
-.pilot-box{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:40px;align-items:end}
-@media(max-width:900px){.pilot-box{grid-template-columns:1fr;gap:20px}}
 
 /* Hero: one quiet reassurance line under the buttons */
 .hero-minimal .hero-note{margin:22px 0 0;max-width:62ch;font-size:16px;line-height:1.5;font-weight:500;color:#e1edf9}
 body[data-cms-page="home"] #hero .hero-note{text-shadow:0 0 2px rgba(6,27,52,.9),0 2px 14px rgba(6,27,52,.85)}
+#hero .ctas{align-items:center}
+#hero #hero-orion{width:auto;padding-inline:8px;border-color:transparent;background:transparent;color:#fff;text-decoration:underline;text-underline-offset:.25em}
+#hero #hero-orion:hover{text-decoration-thickness:2px}
+#hero:has(.hero-video:not([hidden])) #hero-orion{background:#0b2949;padding-inline:8px}
+@media(max-width:480px){
+  #hero .hero-top{min-height:0}
+  #hero .hero-inner{padding-block:104px 56px}
+  #hero .ctas{margin-top:24px;gap:4px}
+  #hero #hero-orion{padding-inline:0}
+  #hero .hero-note{margin-top:12px}
+}
 
 /* Section rhythm: one vertical scale, alternating white and soft neutral */
 .editorial-home section.hsec{padding-block:clamp(72px,8vw,120px)}
-.editorial-home section.proof-strip.hsec{padding-block:0}
 .hsec .head{margin-bottom:clamp(40px,4.5vw,64px)}
 .sec-eyebrow{display:flex;align-items:center;gap:12px;margin:0;font-family:var(--f-sans);font-size:15px;font-weight:600;line-height:1.4;letter-spacing:.01em;color:var(--ai-ink)}
 .sec-eyebrow::before{content:"";flex:none;width:24px;height:1px;background:currentColor}
@@ -25,20 +33,46 @@ body[data-cms-page="home"] #hero .hero-note{text-shadow:0 0 2px rgba(6,27,52,.9)
 #fundament .pyr-layers li,#fundament .pyr-text p,#fundament .pyr-result{max-width:none}
 .hsec h3{text-wrap:balance}
 
-/* 2. Toepassingen: two by two, each card reads cost -> preparation -> human check */
-#toepassingen .toep-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;margin-top:0}
-#toepassingen .toep-kaart{gap:16px;padding:clamp(24px,2.6vw,36px);border-radius:12px;transition:border-color .15s}
+/* 2. Toepassingen: Orion as the lead case, then three related workflows. */
+body[data-cms-page="home"] #toepassingen{background:#f6f5f1;padding-block:clamp(52px,6vw,84px)}
+#toepassingen .head{margin-bottom:clamp(28px,4vw,52px)}
+#toepassingen .toep-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:36px clamp(24px,3.5vw,52px);margin-top:0}
+#toepassingen .toep-kaart{gap:14px;padding:24px 0 0;border:0;border-top:1px solid var(--line);border-radius:0;background:transparent;transition:none}
 #toepassingen .toep-kaart:hover{transform:none;border-color:var(--ai-ink)}
-#toepassingen .toep-orion{box-shadow:none;border-color:var(--ai-ink)}
+#toepassingen .toep-kaart:hover .toep-meer{text-decoration:underline;text-underline-offset:.2em}
+.toep-voorbeeld{grid-column:1/-1;display:grid;grid-template-columns:minmax(0,2fr) minmax(0,3fr);border-radius:8px;background:var(--bg);overflow:hidden}
+#toepassingen .toep-orion{padding:0;border:0;box-shadow:none;outline-offset:-4px}
+.toep-demo{margin:0;padding:clamp(20px,3vw,42px);background:var(--brand);color:#fff}
+.toep-demo figcaption{margin-bottom:16px;font-weight:600}
+.toep-demo dl,.toep-demo dd{margin:0}
+.toep-demo dt{margin-top:9px;color:#bde5ff;font-size:.875rem}
+.toep-demo dd{font-size:1rem;line-height:1.45}
+.toep-inhoud{display:grid;gap:12px;padding:clamp(24px,3.2vw,46px)}
+#toepassingen .toep-tag{justify-self:start;padding:0;border-radius:0;background:none;font-family:var(--f-sans);font-size:14px;font-weight:600;letter-spacing:.06em}
 #toepassingen .toep-kaart h3{font-size:clamp(21px,1.8vw,24px);line-height:1.25}
-.toep-parts{margin:0;display:grid;border-top:1px solid var(--line)}
-.toep-part{display:grid;grid-template-columns:minmax(0,9.5rem) minmax(0,1fr);gap:4px 24px;padding:14px 0;border-bottom:1px solid var(--line)}
-.toep-part dt{font-size:14px;font-weight:600;line-height:1.5;color:var(--muted);padding-top:1px}
+#toepassingen .toep-orion h3{max-width:22ch;font-size:clamp(25px,3vw,38px);line-height:1.1;letter-spacing:-.025em}
+.toep-parts{margin:0;display:grid;gap:12px}
+.toep-part{display:grid;gap:4px}
+.toep-part dt{font-size:14px;font-weight:600;line-height:1.5;color:var(--muted)}
 .toep-part dd{margin:0;font-size:16px;line-height:1.55;color:var(--ink)}
 .toep-part-keep dt{color:var(--brand)}
 #toepassingen .toep-meer{padding-top:4px}
-@media(max-width:860px){#toepassingen .toep-grid{grid-template-columns:minmax(0,1fr)}}
-@media(max-width:480px){.toep-part{grid-template-columns:minmax(0,1fr);gap:2px}}
+.toep-orion .toep-parts{gap:0;margin:4px 0 4px 4px;border-left:1px solid var(--ai-ink)}
+.toep-orion .toep-part{position:relative;grid-template-columns:minmax(0,8.5rem) minmax(0,1fr);gap:4px 16px;padding:9px 0 9px 18px}
+.toep-orion .toep-part::before{content:"";position:absolute;left:-5px;top:16px;width:9px;height:9px;border-radius:50%;background:var(--ai-ink)}
+.toep-orion .toep-part-keep{background:var(--ai-soft)}
+@media(min-width:1000px){
+  #toepassingen .head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:56px;align-items:end}
+  #toepassingen .head .sec-eyebrow{grid-column:1/-1}
+  #toepassingen .head .lede{margin-top:0}
+}
+@media(max-width:860px){
+  #toepassingen .toep-grid,.toep-voorbeeld{grid-template-columns:minmax(0,1fr)}
+}
+@media(max-width:520px){
+  .toep-orion .toep-part{grid-template-columns:minmax(0,1fr)}
+  .toep-inhoud{padding:20px}
+}
 
 /* 3. Terugkerend: text and task list left, the labelled calculation example right, checklist below */
 .rec-grid{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(40px,6vw,96px);align-items:start}
@@ -79,10 +113,10 @@ body[data-cms-page="home"] #hero .hero-note{text-shadow:0 0 2px rgba(6,27,52,.9)
 /* 5. Fundament: the pyramid itself stays inline (data-pyramid); only spacing here */
 #fundament .pyr{margin-top:0}
 
-/* 6. Kloof: figures on a hairline instead of boxed cards */
+/* 6. Kloof: three static rings on the same scale */
 .cijfers{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px clamp(24px,3.5vw,56px);margin-top:0}
 .cijfer{padding:24px 0 0;border-top:1px solid var(--brand);background:none}
-.cijfer .getal{display:block;font-size:clamp(44px,4.6vw,60px);line-height:1.05;font-weight:600;letter-spacing:-.02em;color:var(--brand)}
+.cijfer .getal{display:block;font-size:clamp(22px,3vw,30px);line-height:1;font-weight:650;color:var(--brand)}
 .cijfer p{margin:12px 0 0;font-size:18px;line-height:1.5}
 .cijfer .bron{margin-top:14px;font-size:14px;line-height:1.5;color:var(--muted)}
 .cijfer .bron a{color:inherit}
@@ -94,15 +128,3 @@ body[data-cms-page="home"] #hero .hero-note{text-shadow:0 0 2px rgba(6,27,52,.9)
 #vertrouwelijk .vcard:hover{transform:none;background:var(--bg)}
 #vertrouwelijk .vcard h3{font-family:var(--f-sans);font-size:19px;font-weight:600;line-height:1.3;letter-spacing:0;text-transform:none}
 #vertrouwelijk .vcard p{font-family:var(--f-sans);font-size:17px;font-weight:400;line-height:1.6;letter-spacing:0}
-
-/* 8. Proof: same eyebrow and heading scale as the other sections, kept compact */
-.editorial-home .proof-strip{border-bottom:1px solid var(--line)}
-.proof-strip .proof-grid{padding-block:clamp(56px,6vw,88px)}
-.editorial-home .proof-strip .sec-eyebrow{margin:0 0 12px;font-size:15px;line-height:1.4;color:var(--ai-ink)}
-.editorial-home .proof-strip h2{margin:0 0 12px;font-family:var(--f-display);font-size:clamp(26px,2.6vw,34px);font-weight:600;line-height:1.15;letter-spacing:-.012em;text-transform:none;color:var(--brand)}
-
-/* 9. Final */
-#final .head{margin-bottom:0}
-#final h2{max-width:14.5em}
-
-@media(prefers-reduced-motion:reduce){#toepassingen .toep-kaart{transition:none}}

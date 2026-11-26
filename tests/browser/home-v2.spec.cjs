@@ -9,6 +9,43 @@ const ORDER=['hero','toepassingen','terugkerend','aanpak','fundament','kloof','v
 // Expected French = what i18n.js followed by i18n-home.js define (same order and context as index.html).
 const I18N=(()=>{const dist=path.resolve(__dirname,'..','..','dist'),c={window:{}};for(const f of ['assets/i18n.js','assets/i18n-home.js'])vm.runInNewContext(fs.readFileSync(path.join(dist,f),'utf8'),c);return c.window.I18N})();
 const init=async(page,lang='nl')=>page.addInitScript(l=>{localStorage.setItem('avs-lang',l);localStorage.setItem('avs-consent',JSON.stringify({v:4,ext:false,ana:false,ts:Date.now()}))},lang);
+test('Orion leads the four applications and the pilot remains the first hero action',async({page},info)=>{
+  await init(page);
+  await page.goto('/index.html');
+  const hero=page.locator('#hero');
+  await hero.locator('#hero-pilot').focus();
+  await page.keyboard.press('Tab');
+  await expect(hero.locator('#hero-orion')).toBeFocused();
+  const cards=page.locator('#toepassingen .toep-kaart');
+  await expect(cards).toHaveCount(4);
+  const orion=cards.first();
+  await expect(cards.locator('.toep-part')).toHaveCount(12);
+  await orion.scrollIntoViewIfNeeded();
+  await expect(orion).toHaveAttribute('id','toep-kwaliteit');
+  const demo=page.locator('.toep-voorbeeld figure');
+  await expect(demo.locator('xpath=ancestor::a')).toHaveCount(0);
+  await expect(orion).toHaveAccessibleName(/^Orion Kwaliteit in de voedingsproductie.*Zo werkt Orion$/);
+  await expect(demo.locator('figcaption')).toHaveText('Orion · fictief voorbeeld');
+  await expect(demo.locator('dt')).toHaveText(['Klantvraag','Voorstel van Orion','Bron','Goedkeuring']);
+  await expect(demo.locator('dd').last()).toHaveText('Wacht op goedkeuring door het kwaliteitsteam.');
+  const [lead,...related]=await cards.evaluateAll(items=>items.map(item=>{
+    const {width,top}=(item.closest('.toep-voorbeeld')||item).getBoundingClientRect();
+    return {width,top};
+  }));
+  if(info.project.use.isMobile){
+    expect(related.every(card=>Math.abs(card.width-lead.width)<1)).toBe(true);
+    expect(related.every((card,index)=>card.top>(index===0?lead:related[index-1]).top)).toBe(true);
+  }else{
+    expect(lead.width).toBeGreaterThan(related.reduce((sum,card)=>sum+card.width,0));
+    expect(related.every(card=>Math.abs(card.top-related[0].top)<1)).toBe(true);
+  }
+  await page.locator('#lang-btn-top').click();
+  await page.locator('.lang-top [data-lang="fr"]').click();
+  await expect(demo.locator('figcaption')).toHaveText('Orion · exemple fictif');
+  await expect(demo.locator('dt')).toHaveText(['Question du client','Proposition d’Orion','Source','Validation']);
+  await expect(demo.locator('dd').last()).toHaveText('En attente de validation par l’équipe qualité.');
+  await expect(orion).toHaveAccessibleName(/^Orion Qualité dans la production alimentaire.*Comment fonctionne Orion$/);
+});
 async function overflow(page){
   await page.addStyleTag({content:'*{content-visibility:visible!important}'});
   return page.evaluate(ids=>{const vw=document.documentElement.clientWidth,out=[];
@@ -67,4 +104,34 @@ test('French homepage passes the automatic WCAG scan at 360px',async({browser},i
   await page.locator('footer').scrollIntoViewIfNeeded();await page.locator('h1').scrollIntoViewIfNeeded();
   await audit(page,info,'home-v2-fr-360');
   await ctx.close();
+});
+
+test('statistics show percentages in distinct static rings',async({page})=>{
+  await init(page,'fr');
+  await page.goto('/index.html',{waitUntil:'domcontentloaded'});
+  const stats=page.locator('#kloof .cijfer');
+  const values=stats.locator('.getal');
+  await expect(values).toHaveText(['76%','29%','33%1 sur 3']);
+  await expect(values.last().locator('.sr')).toHaveText('1 sur 3');
+  const indicators=await stats.evaluateAll(items=>items.map(item=>{
+    const ring=getComputedStyle(item.querySelector('.cijfer-visual'),'::before');
+    return {share:getComputedStyle(item).getPropertyValue('--aandeel').trim(),shape:ring.backgroundImage,width:parseFloat(ring.width),animation:ring.animationName};
+  }));
+  expect(indicators.map(ring=>ring.share)).toEqual(['76%','29%','calc(100% / 3)']);
+  expect(indicators.every(ring=>ring.shape.startsWith('conic-gradient(')&&ring.width>=86&&ring.animation==='none')).toBe(true);
+  const colors=indicators.map(ring=>ring.shape.match(/rgb\([^)]+\)/)?.[0]);
+  expect(new Set(colors).size).toBe(3);
+  for(const value of await values.all()){
+    await expect(value).toBeVisible();
+    const {valueCenter,ringCenter}=await value.evaluate(el=>{
+      const center=node=>{const {x,y,width,height}=node.getBoundingClientRect();return [x+width/2,y+height/2]};
+      return {valueCenter:center(el),ringCenter:center(el.parentElement)};
+    });
+    expect(valueCenter[0]).toBeCloseTo(ringCenter[0],1);
+    expect(valueCenter[1]).toBeCloseTo(ringCenter[1],1);
+  }
+  await page.emulateMedia({forcedColors:'active'});
+  await expect(values.last()).toBeVisible();
+  const border=await stats.first().locator('.cijfer-visual').evaluate(el=>getComputedStyle(el,'::before').borderTopWidth);
+  expect(border).toBe('2px');
 });

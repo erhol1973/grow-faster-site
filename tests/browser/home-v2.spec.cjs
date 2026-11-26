@@ -105,3 +105,21 @@ test('French homepage passes the automatic WCAG scan at 360px',async({browser},i
   await audit(page,info,'home-v2-fr-360');
   await ctx.close();
 });
+
+test('statistics render as static rings while retaining localised values',async({page})=>{
+  await init(page,'fr');
+  await page.goto('/index.html',{waitUntil:'domcontentloaded'});
+  const stats=page.locator('#kloof .cijfer');
+  await expect(stats.locator('.getal')).toHaveText(['76%','29%','1 sur 3']);
+  await expect(stats.first().locator('.getal')).toHaveCSS('clip-path','inset(50%)');
+  const indicators=await stats.evaluateAll(items=>items.map(item=>{
+    const ring=getComputedStyle(item,'::before');
+    return {share:getComputedStyle(item).getPropertyValue('--aandeel').trim(),shape:ring.backgroundImage,width:parseFloat(ring.width),animation:ring.animationName};
+  }));
+  expect(indicators.map(ring=>ring.share)).toEqual(['76%','29%','calc(100% / 3)']);
+  expect(indicators.every(ring=>ring.shape.startsWith('conic-gradient(')&&ring.width>=86&&ring.animation==='none')).toBe(true);
+  const colors=indicators.map(ring=>ring.shape.match(/rgb\([^)]+\)/)?.[0]);
+  expect(new Set(colors).size).toBe(3);
+  await page.emulateMedia({forcedColors:'active'});
+  await expect(stats.first().locator('.getal')).toHaveCSS('clip-path','none');
+});

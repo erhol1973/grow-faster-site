@@ -113,7 +113,7 @@ body[data-cms-page="home"] #toepassingen{background:#f6f5f1;padding-block:clamp(
 /* 5. Fundament: the pyramid itself stays inline (data-pyramid); only spacing here */
 #fundament .pyr{margin-top:0}
 
-/* 6. Kloof: figures on a hairline instead of boxed cards */
+/* 6. Kloof: three static rings on the same scale */
 .cijfers{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px clamp(24px,3.5vw,56px);margin-top:0}
 .cijfer{padding:24px 0 0;border-top:1px solid var(--brand);background:none}
 .cijfer .getal{display:block;font-size:clamp(44px,4.6vw,60px);line-height:1.05;font-weight:600;letter-spacing:-.02em;color:var(--brand)}

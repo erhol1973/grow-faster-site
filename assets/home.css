@@ -53,8 +53,10 @@ body[data-cms-page="home"] #toepassingen{background:#f6f5f1;padding-block:clamp(
 .toep-part dd{margin:0;font-size:16px;line-height:1.55;color:var(--ink)}
 .toep-part-keep dt{color:var(--brand)}
 #toepassingen .toep-meer{padding-top:4px}
-.toep-orion .toep-parts{gap:0;margin-top:4px;border-top:1px solid var(--line)}
-.toep-orion .toep-part{grid-template-columns:minmax(0,8.5rem) minmax(0,1fr);gap:4px 16px;padding:10px 0;border-bottom:1px solid var(--line)}
+.toep-orion .toep-parts{gap:0;margin:4px 0 4px 4px;border-left:1px solid var(--ai-ink)}
+.toep-orion .toep-part{position:relative;grid-template-columns:minmax(0,8.5rem) minmax(0,1fr);gap:4px 16px;padding:9px 0 9px 18px}
+.toep-orion .toep-part::before{content:"";position:absolute;left:-5px;top:16px;width:9px;height:9px;border-radius:50%;background:var(--ai-ink)}
+.toep-orion .toep-part-keep{background:var(--ai-soft)}
 @media(min-width:1000px){
   #toepassingen .head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:56px;align-items:end}
   #toepassingen .head .sec-eyebrow{grid-column:1/-1}

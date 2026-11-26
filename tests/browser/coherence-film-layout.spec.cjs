@@ -35,3 +35,23 @@ for(const [lang,label] of [['nl','Bekijk de film'],['fr','Voir le film']])test(`
  for(const route of ['workshop.html','eca.html']){await page.goto('/'+route+'?lang='+lang);const link=page.locator('[data-film-link]');await expect(link).toHaveText(label);await expect(link).toHaveAttribute('href','coherence.html?lang='+lang+'#ec-film');
   await link.click();await expect(page).toHaveURL(new RegExp('/coherence\\.html\\?lang='+lang+'#ec-film$'));await expect(page.locator('#ec-film')).toBeInViewport();await expect(page.locator('#home-film video source')).toHaveAttribute('src','media/enterprise-coherence-essentie-'+lang+'.mp4')}
 });
+
+for(const [lang,heading] of [['nl','Wie geeft de spoedorder vrij?'],['fr','Qui autorise l’expédition de la commande urgente ?']]){
+ test('Coherence links the example to the four-step approach in '+lang,async({page})=>{
+   await page.goto('/coherence.html?lang='+lang,{waitUntil:'domcontentloaded'});
+   await expect(page.locator('html')).toHaveAttribute('lang',lang);
+   const example=page.locator('#praktijkvoorbeeld');
+   const entry=page.locator('.coh-example-link');
+   await entry.focus();
+   await entry.press('Enter');
+   await expect(page).toHaveURL(/#praktijkvoorbeeld$/);
+   await expect(example.getByRole('heading')).toHaveText(heading);
+   await expect(example).toBeInViewport();
+   await expect(example.locator('dl dt')).toHaveCount(3);
+   await example.locator('.coh-method-link').click();
+   await expect(page).toHaveURL(/#aanpak$/);
+   await expect(page.locator('#aanpak h2')).toBeInViewport();
+   await expect(page.locator('#aanpak ol>li')).toHaveCount(4);
+   expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1)).toBe(true);
+ });
+}

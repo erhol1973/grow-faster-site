@@ -1,4 +1,8 @@
-/* Homepage layout. The pyramid and hero artwork are styled in index.html. */
+/* Homepage v2 (25 Nov 2026): refines the existing homepage. Hero, colours, logo, nav and footer stay as they are;
+   this file adds section rhythm, eyebrows, the three-part application cards, the "terugkerend" block and the
+   three-phase "aanpak" stepper. Inline blocks that tests read (data-pyramid, data-hero, data-cms-media) stay in index.html. */
+
+/* Moved from the inline page styles of index.html */
 .foot-grid.foot-3{grid-template-columns:repeat(3,minmax(0,1fr))}
 @media(max-width:620px){.foot-grid.foot-3{grid-template-columns:minmax(0,1fr)}}
 @media(min-width:821px){.hero.hero-customer .hero-top::after{background:linear-gradient(90deg,rgba(6,27,52,.95),rgba(6,27,52,.9) 55%,rgba(6,27,52,.74) 82%,rgba(6,27,52,.4) 100%)}}
@@ -43,15 +47,6 @@ body[data-cms-page="home"] #toepassingen{background:#f6f5f1;padding-block:clamp(
 .toep-demo dl,.toep-demo dd{margin:0}
 .toep-demo dt{margin-top:9px;color:#bde5ff;font-size:.875rem}
 .toep-demo dd{font-size:1rem;line-height:1.45}
-.toep-fotos{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
-.toep-fotos figure{margin:0}
-.toep-fotos img{display:block;width:100%;height:auto;border-radius:6px}
-.toep-fotos figcaption{margin-top:5px;font-size:.875rem;color:var(--muted)}
-.toep-casus .toep-fotos figure:first-child{grid-column:1/-1}
-.toep-voorbeeld .toep-fotos{grid-column:1/-1;grid-template-columns:repeat(3,minmax(0,1fr));padding:16px}
-.toep-casus{display:flex;flex-direction:column;gap:18px}
-.toep-casus>.toep-kaart{flex:1}
-.toep-beeldnoot{font-size:.875rem;color:var(--muted)}
 .toep-inhoud{display:grid;gap:12px;padding:clamp(24px,3.2vw,46px)}
 #toepassingen .toep-tag{justify-self:start;padding:0;border-radius:0;background:none;font-family:var(--f-sans);font-size:14px;font-weight:600;letter-spacing:.06em}
 #toepassingen .toep-kaart h3{font-size:clamp(21px,1.8vw,24px);line-height:1.25}
@@ -77,11 +72,9 @@ body[data-cms-page="home"] #toepassingen{background:#f6f5f1;padding-block:clamp(
 @media(max-width:520px){
   .toep-orion .toep-part{grid-template-columns:minmax(0,1fr)}
   .toep-inhoud{padding:20px}
-  .toep-voorbeeld .toep-fotos{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .toep-voorbeeld .toep-fotos figure:first-child{grid-column:1/-1}
 }
 
-/* 3. Terugkerend werk */
+/* 3. Terugkerend: text and task list left, the labelled calculation example right, checklist below */
 .rec-grid{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(40px,6vw,96px);align-items:start}
 .rec-sub{margin:0 0 16px;font-size:21px;line-height:1.3;font-weight:600;color:var(--brand)}
 .rec-main p{margin:0 0 14px;font-size:17px;line-height:1.65}
@@ -104,7 +97,7 @@ body[data-cms-page="home"] #toepassingen{background:#f6f5f1;padding-block:clamp(
 @media(max-width:960px){.rec-grid{grid-template-columns:minmax(0,1fr)}}
 @media(max-width:700px){.rec-check{grid-template-columns:minmax(0,1fr)}}
 
-/* 4. Aanpak */
+/* 4. Aanpak: a horizontal three-phase stepper on one hairline track; vertical on small screens */
 .fase-steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0 clamp(28px,4vw,64px);position:relative;counter-reset:fase}
 .fase-steps::before{content:"";position:absolute;left:0;right:calc((100% - 2*clamp(28px,4vw,64px))/3 - 34px);top:17px;height:1px;background:var(--line)}
 .fase-step{position:relative;padding-top:60px;counter-increment:fase}
@@ -117,10 +110,10 @@ body[data-cms-page="home"] #toepassingen{background:#f6f5f1;padding-block:clamp(
   .fase-step{padding:4px 0 0 58px}
 }
 
-/* 5. Fundament */
+/* 5. Fundament: the pyramid itself stays inline (data-pyramid); only spacing here */
 #fundament .pyr{margin-top:0}
 
-/* 6. Cijfers */
+/* 6. Kloof: figures on a hairline instead of boxed cards */
 .cijfers{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px clamp(24px,3.5vw,56px);margin-top:0}
 .cijfer{padding:24px 0 0;border-top:1px solid var(--brand);background:none}
 .cijfer .getal{display:block;font-size:clamp(44px,4.6vw,60px);line-height:1.05;font-weight:600;letter-spacing:-.02em;color:var(--brand)}
@@ -129,7 +122,7 @@ body[data-cms-page="home"] #toepassingen{background:#f6f5f1;padding-block:clamp(
 .cijfer .bron a{color:inherit}
 @media(max-width:900px){.cijfers{grid-template-columns:minmax(0,1fr)}}
 
-/* 7. Controle */
+/* 7. Vertrouwelijk: calm cards, sentence-case titles, no hover lift */
 #vertrouwelijk .vcard{padding:clamp(24px,2.4vw,32px)}
 #vertrouwelijk .vcard::after{display:none}
 #vertrouwelijk .vcard:hover{transform:none;background:var(--bg)}

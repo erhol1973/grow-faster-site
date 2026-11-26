@@ -60,9 +60,8 @@
       var top = document.createElement('span'); top.className = 'dk-boven';
       top.textContent = dayLabel(d, { weekday: 'long' });
       var nr = document.createElement('span'); nr.className = 'dk-nr'; nr.textContent = dayLabel(d, { day: 'numeric' });
-      var mon = document.createElement('small'); mon.textContent = dayLabel(d, { month: 'short' }).replace('.', ''); nr.append(mon);
+      var mon = document.createElement('small'); mon.textContent = dayLabel(d, { month: 'short' }).replace('.', ''); nr.append(' ', mon);
       var free = document.createElement('span'); free.className = 'dk-vrij'; free.textContent = count[d] === 1 ? t('free1') : t('freeN').replace('{n}', count[d]);
-      b.setAttribute('aria-label', longDay(d) + ', ' + free.textContent);
       b.append(top, nr, free);
       b.addEventListener('click', function () { day = d; chosen = null; render(); var f = document.querySelector('#uren .uurknop'); if (f) f.focus({ preventScroll: true }); });
       box.append(b);

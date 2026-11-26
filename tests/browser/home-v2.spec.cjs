@@ -106,20 +106,32 @@ test('French homepage passes the automatic WCAG scan at 360px',async({browser},i
   await ctx.close();
 });
 
-test('statistics render as static rings while retaining localised values',async({page})=>{
+test('statistics show percentages in distinct static rings',async({page})=>{
   await init(page,'fr');
   await page.goto('/index.html',{waitUntil:'domcontentloaded'});
   const stats=page.locator('#kloof .cijfer');
-  await expect(stats.locator('.getal')).toHaveText(['76%','29%','1 sur 3']);
-  await expect(stats.first().locator('.getal')).toHaveCSS('clip-path','inset(50%)');
+  const values=stats.locator('.getal');
+  await expect(values).toHaveText(['76%','29%','33%1 sur 3']);
+  await expect(values.last().locator('.sr')).toHaveText('1 sur 3');
   const indicators=await stats.evaluateAll(items=>items.map(item=>{
-    const ring=getComputedStyle(item,'::before');
+    const ring=getComputedStyle(item.querySelector('.cijfer-visual'),'::before');
     return {share:getComputedStyle(item).getPropertyValue('--aandeel').trim(),shape:ring.backgroundImage,width:parseFloat(ring.width),animation:ring.animationName};
   }));
   expect(indicators.map(ring=>ring.share)).toEqual(['76%','29%','calc(100% / 3)']);
   expect(indicators.every(ring=>ring.shape.startsWith('conic-gradient(')&&ring.width>=86&&ring.animation==='none')).toBe(true);
   const colors=indicators.map(ring=>ring.shape.match(/rgb\([^)]+\)/)?.[0]);
   expect(new Set(colors).size).toBe(3);
+  for(const value of await values.all()){
+    await expect(value).toBeVisible();
+    const {valueCenter,ringCenter}=await value.evaluate(el=>{
+      const center=node=>{const {x,y,width,height}=node.getBoundingClientRect();return [x+width/2,y+height/2]};
+      return {valueCenter:center(el),ringCenter:center(el.parentElement)};
+    });
+    expect(valueCenter[0]).toBeCloseTo(ringCenter[0],1);
+    expect(valueCenter[1]).toBeCloseTo(ringCenter[1],1);
+  }
   await page.emulateMedia({forcedColors:'active'});
-  await expect(stats.first().locator('.getal')).toHaveCSS('clip-path','none');
+  await expect(values.last()).toBeVisible();
+  const border=await stats.first().locator('.cijfer-visual').evaluate(el=>getComputedStyle(el,'::before').borderTopWidth);
+  expect(border).toBe('2px');
 });

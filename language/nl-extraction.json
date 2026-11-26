@@ -115,16 +115,12 @@
       "sha256": "357e655136e97914be881fddd23389b6450ea97e0500a18bae1fc674ae47ef38"
     },
     {
-      "file": "assets/i18n-sector-photos.js",
-      "sha256": "8ff8e6aa1c9d6d2b87cb2a24937bc1628439452ba82de2660e59a37a1cbfff30"
-    },
-    {
       "file": "assets/i18n-training.js",
       "sha256": "84e6b990db8befda934af7807178a89d96b17b7f68bfd4b51efa22206fa18720"
     },
     {
       "file": "assets/i18n.js",
-      "sha256": "1d2a332dd0fe3c46e5d3a61370e8bcb27559b02fefc9295d5fa9fd905665eada"
+      "sha256": "ea4c8852bfb64c770995955a9bd41a404763e1918bce8075241e51ae371f671e"
     },
     {
       "file": "assets/journal.js",
@@ -210,7 +206,7 @@
     },
     {
       "file": "automatisering.html",
-      "sha256": "913ab9475086fe1d459ca4b2cb3c215c473dd5b2aa8bf5a43b86f9551d6069be"
+      "sha256": "3f44a70b4e0b9b92713f9944d82cd1fc6223f3c9a257da0dd6c526715655d1b8"
     },
     {
       "file": "baies-dev/index.html",
@@ -258,7 +254,7 @@
     },
     {
       "file": "index.html",
-      "sha256": "c17a3d7d77c34f7483349bc5a43c0626f66c4b8ff0821d733f0002c779bcdfe0"
+      "sha256": "520d589042e777ba0f49ac51c72c633461aa39ec8205dee896ec5fad13ac7316"
     },
     {
       "file": "insights-ai-pilot.html",
@@ -266,7 +262,7 @@
     },
     {
       "file": "insights.html",
-      "sha256": "90d71e0f320b8de63b6d945f218c2fcc5e300c5a06c795de0fe7f0e15b0d21d7"
+      "sha256": "893145708e6d3c5b88be682a8a0c01380f443a135e2ea5171f069a9cc64d0ed3"
     },
     {
       "file": "journal-fr.html",
@@ -286,7 +282,7 @@
     },
     {
       "file": "orion.html",
-      "sha256": "cfe7ea3df503f19dd286bf67c403c5c21e3570d55c75e50eb25a7db03a892453"
+      "sha256": "e1732484864fae17df624b42a37b63a6a6bd5b5df7eb519a26f0dd677976d3ef"
     },
     {
       "file": "privacy.html",

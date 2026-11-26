@@ -2154,9 +2154,9 @@ window.GF_CMS_CATALOG=[
       {
         "key": "trn-10",
         "type": "text",
-        "label": "Voor de kwaliteitsdienst. Vragenlijsten invullen met Orion, antwoorden en bronnen nakijken",
-        "nl": "Voor de kwaliteitsdienst. Vragenlijsten invullen met Orion, antwoorden en bronnen nakijken, en de kennisbank bijhouden.",
-        "fr": "Pour le service qualité. Remplir des questionnaires avec Orion, vérifier les réponses et les sources, et tenir à jour la base de connaissances."
+        "label": "Vul met Orion vragenlijsten in, controleer antwoorden aan de hand van uw bronnen en houd d",
+        "nl": "Vul met Orion vragenlijsten in, controleer antwoorden aan de hand van uw bronnen en houd de kennisbank bij.",
+        "fr": "Remplissez des questionnaires avec Orion, vérifiez les réponses à partir de vos sources et tenez à jour la base de connaissances."
       },
       {
         "key": "trn-11",
@@ -2168,9 +2168,9 @@ window.GF_CMS_CATALOG=[
       {
         "key": "trn-12",
         "type": "text",
-        "label": "Voor teamleiders en medewerkers. Handwerk herkennen in de eigen afdeling, een workflow bes",
-        "nl": "Voor teamleiders en medewerkers. Handwerk herkennen in de eigen afdeling, een workflow beschrijven en samen bepalen wat geautomatiseerd wordt.",
-        "fr": "Pour les chefs d’équipe et les collaborateurs. Repérer le travail manuel dans son service, décrire un workflow et décider ensemble de ce qui sera automatisé."
+        "label": "Spoor terugkerend handwerk op, breng een werkproces in kaart en beslis samen welke stappen",
+        "nl": "Spoor terugkerend handwerk op, breng een werkproces in kaart en beslis samen welke stappen u automatiseert.",
+        "fr": "Repérez les tâches manuelles récurrentes, décrivez un processus de travail et décidez ensemble des étapes à automatiser."
       },
       {
         "key": "trn-13",
@@ -2182,9 +2182,9 @@ window.GF_CMS_CATALOG=[
       {
         "key": "trn-14",
         "type": "text",
-        "label": "Voor zaakvoerders en directie. Hoe beslissingen, processen en systemen samen meebewegen al",
-        "nl": "Voor zaakvoerders en directie. Hoe beslissingen, processen en systemen samen meebewegen als de markt verandert.",
-        "fr": "Pour les dirigeants et la direction. Comment décisions, processus et systèmes évoluent ensemble quand le marché change."
+        "label": "Onderzoek hoe u beslissingen, processen en systemen op elkaar afstemt wanneer de markt ver",
+        "nl": "Onderzoek hoe u beslissingen, processen en systemen op elkaar afstemt wanneer de markt verandert.",
+        "fr": "Examinez comment aligner vos décisions, vos processus et vos systèmes lorsque le marché évolue."
       },
       {
         "key": "trn-05",

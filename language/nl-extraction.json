@@ -36,7 +36,7 @@
     },
     {
       "file": "assets/cms-catalog.js",
-      "sha256": "4b0e12af37aee2c0f6d082944dffd10880db9883fe1324faaa45b4fc0b90754a"
+      "sha256": "2c2d13c5566902d55e5160699c452f79bce6d52b809418f5d9a751ee93a8551d"
     },
     {
       "file": "assets/cms-client.js",
@@ -120,7 +120,7 @@
     },
     {
       "file": "assets/i18n-training.js",
-      "sha256": "84e6b990db8befda934af7807178a89d96b17b7f68bfd4b51efa22206fa18720"
+      "sha256": "6969c6d35c3c11797bd825b2810baa6d60634457105e08e7f303b7702f171707"
     },
     {
       "file": "assets/i18n.js",

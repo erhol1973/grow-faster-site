@@ -3,6 +3,7 @@
 const {test}=require('node:test');
 const assert=require('node:assert/strict');
 const fs=require('node:fs'),path=require('node:path'),vm=require('node:vm');
+const {i18nFor}=require('./support/i18n.cjs');
 const root=path.resolve(__dirname,'../dist');
 const read=f=>fs.readFileSync(path.join(root,f),'utf8');
 const I18N=()=>{const ctx={window:{}};vm.runInNewContext(read('assets/i18n.js'),ctx);return ctx.window.I18N};
@@ -10,7 +11,6 @@ const I18N=()=>{const ctx={window:{}};vm.runInNewContext(read('assets/i18n.js'),
 // articles and the employer-facing author box with "beschikbaar voor een vaste functie") left the page; their coverage is
 // replaced by the three rewritten articles below. Old article anchors forward to the Insights overview (legacy redirects).
 const articles=['ai-pilot','turn-time-into-value','design-the-exception'];
-const I18NAll=()=>{const ctx={window:{}};vm.runInNewContext(read('assets/i18n.js')+'\n'+read('assets/i18n-insights.js'),ctx);return ctx.window.I18N};
 test('Insights lists three kmo articles and each opens with In het kort before the body',()=>{
   const html=read('insights.html'),main=html.match(/<main[\s\S]*?<\/main>/)[0];
   const list=main.match(/<section id="artikels"[\s\S]*?<\/section>/)[0];
@@ -25,7 +25,7 @@ test('Insights lists three kmo articles and each opens with In het kort before t
   assert.match(main,/<h1[^>]*>Inzichten voor kmo’s<\/h1>/);
 });
 test('Insights speaks to customers only and every line has a French translation',()=>{
-  const html=read('insights.html'),main=html.match(/<main[\s\S]*?<\/main>/)[0],I=I18NAll();
+  const html=read('insights.html'),main=html.match(/<main[\s\S]*?<\/main>/)[0],I=i18nFor('insights.html').I18N;
   assert.doesNotMatch(main,/vaste functie|langdurige opdracht|Bespreek een rol|trackrecord|\bje\b|\bjouw?\b/i);
   assert.match(html,/<script defer src="assets\/i18n\.js\?v=[^"]+"><\/script>\s*<script defer src="assets\/i18n-insights\.js\?v=[^"]+"><\/script>[\s\S]*<script defer src="assets\/site\.js/);
   const text=main.replace(/<script[\s\S]*?<\/script>/g,'').replace(/<([a-z0-9]+)[^>]*data-notr[^>]*>[\s\S]*?<\/\1>/g,'');

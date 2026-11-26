@@ -1,4 +1,5 @@
 const {test,expect}=require('playwright/test');
+const AxeBuilder=require('@axe-core/playwright').default;
 // Appointment page (23 Nov 2026): topic first (preselected from the calling page), then our own planner and form.
 // The booking function is replaced by a local fake so the browser flow runs without the network and without real bookings;
 // the slot rules themselves are covered by tests/booking-rules.test.cjs and the database checks by tests/afspraak.test.cjs.
@@ -30,9 +31,9 @@ test('the menu action opens the planner with a general question selected',async(
  await expect(page.locator('input[value="algemeen"]')).toBeChecked();await expect(page.locator('#gekozen-onderwerp')).toHaveText('Algemene vraag');
  await expect(page.locator('#dag-knoppen .dag-kaart')).toHaveCount(14,{timeout:10000});
  const first=page.locator('#dag-knoppen .dag-kaart').first();
- await expect(first.locator('.dk-nr')).toHaveText('8jan');await expect(first.locator('.dk-boven')).toHaveText('dinsdag');await expect(first.locator('.dk-vrij')).toHaveText('2 uren vrij');
+ await expect(first.locator('.dk-nr')).toHaveText('8 jan');await expect(first.locator('.dk-boven')).toHaveText('dinsdag');await expect(first.locator('.dk-vrij')).toHaveText('2 uren vrij');
  await expect(page.locator('#dag-knoppen .dag-kaart').nth(1).locator('.dk-vrij')).toHaveText('1 uur vrij');
- await expect(first).toHaveAttribute('aria-label','dinsdag 8 januari, 2 uren vrij');
+ await expect(first).toHaveAccessibleName('dinsdag 8 jan 2 uren vrij');
  await expect(page.locator('#uren')).toBeHidden();await expect(page.locator('#keuze-balk')).toBeHidden();
  expect(await page.locator('#dag-knoppen').evaluate(e=>getComputedStyle(e).overflowX)).toBe('auto');
  expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1)).toBe(true);
@@ -92,10 +93,25 @@ test('topic and planner follow the language switch',async({page})=>{
  await page.locator('#dag-knoppen .dag-kaart').first().click();await page.locator('#uren-vm .uurknop').first().click();
  await page.locator('#lang-btn-top').click();await page.locator('.lang-top [data-lang="fr"]').click();
  await expect(page.locator('#gekozen-onderwerp')).toHaveText('Automatisation des workflows');
- await expect(page.locator('#dag-knoppen .dag-kaart').first()).toHaveAttribute('aria-label','mardi 8 janvier, 2 heures libres');
+ await expect(page.locator('#dag-knoppen .dag-kaart').first()).toHaveAccessibleName('mardi 8 janv 2 heures libres');
  await expect(page.locator('#keuze-tekst')).toHaveText('mar 8 janv · 09:00 - 10:00');await expect(page.locator('#keuze-verder')).toContainText('Continuer');await expect(page.locator('.dagdeel h4').first()).toHaveText('Matin');
  await expect(page.locator('#boek')).toContainText('Confirmer le rendez-vous');await expect(page.locator('#stap3-h')).toHaveText('Vos coordonnées');
 });
+
+for (const [locale, name] of [['nl','dinsdag 8 jan 2 uren vrij'],['fr','mardi 8 janv 2 heures libres']]) {
+ test(`date button names match their visible labels in ${locale}`,async({page})=>{
+  await fake(page);
+  await page.goto(`/afspraak.html?lang=${locale}`);
+  const first=page.getByRole('button',{name,exact:true});
+  await expect(first).toBeVisible();
+  await first.focus();
+  await first.press('Enter');
+  await expect(first).toHaveAttribute('aria-pressed','true');
+  await expect(page.locator('#uren-vm .uurknop').first()).toBeFocused();
+  const result=await new AxeBuilder({page}).include('#dag-knoppen').withRules(['label-content-name-mismatch']).analyze();
+  expect(result.violations).toEqual([]);
+ });
+}
 
 test('administration: sign in, see appointments, block a period in Brussels time, two-step cancel',async({page})=>{
  const calls=[];

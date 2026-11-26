@@ -22,7 +22,7 @@ test('Training offers three trainings on site or online, price on request, with 
   assert.match(m,/Ter plaatse of online, in het Nederlands of het Frans\. Prijs op aanvraag\./);
   assert.doesNotMatch(m,/href="mailto:/);assert.match(m,/href="#trainingen" class="btn primary" id="hero-trainingen"/);assert.match(m,/href="afspraak\.html\?onderwerp=training" class="btn ghost" id="hero-gesprek"/);assert.match(m,/href="afspraak\.html\?onderwerp=training" class="btn primary" id="contact-gesprek"/);
   assert.doesNotMatch(m,/<form\b/);
-  assert.match(html,/<img src="img\/hero-training-team-1774\.webp"/);for(const w of [640,1280,1774])assert.ok(fs.statSync(path.join(root,`img/hero-training-team-${w}.webp`)).size<60000,w);
+  assert.match(html,/<img src="img\/hero-training-workshop-1536\.webp"/);for(const w of [640,800,1200,1536])assert.ok(fs.statSync(path.join(root,`img/hero-training-workshop-${w}.webp`)).size<60000,w);
   assert.match(read('sitemap.xml'),/<loc>https:\/\/grow-faster\.be\/training\.html<\/loc>/);
   translated('training.html',i18nFor('training.html').I18N);
 });

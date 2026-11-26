@@ -56,7 +56,7 @@ for(const [lang,heading] of [['nl','Wie geeft de spoedorder vrij?'],['fr','Qui a
  });
 }
 
-for(const [lang,caption] of [['nl','Technisch onderhoud'],['fr','Maintenance technique']]){
+for(const [lang,caption,frequency] of [['nl','Technisch onderhoud','altijd of meestal'],['fr','Maintenance technique','toujours ou la plupart du temps']]){
  test('Coherence shows proportional charts and three editorial photos in '+lang,async({page})=>{
    await page.goto('/coherence.html?lang='+lang+'#cijfers',{waitUntil:'domcontentloaded'});
    await expect(page.locator('html')).toHaveAttribute('lang',lang);
@@ -65,13 +65,15 @@ for(const [lang,caption] of [['nl','Technisch onderhoud'],['fr','Maintenance tec
    const shares=await figures.locator('.coh-track>span').evaluateAll(bars=>bars.map(bar=>bar.style.inlineSize));
    expect(shares).toEqual(['9%','84%','1.08%']);
    await expect(figures.locator('.coh-donut .getal')).toHaveText('61%');
+   await expect(figures.locator('.coh-bars .coh-chart-label span').last()).toContainText(frequency);
    await expect(figures.locator('h2')).toBeInViewport();
    const photos=page.locator('main img');
    await expect(photos).toHaveCount(3);
    await expect(page.locator('.coh-practice-media figcaption strong').first()).toHaveText(caption);
    for(const photo of await photos.all()){
      await photo.scrollIntoViewIfNeeded();
-     expect(await photo.evaluate(async image=>{await image.decode();return image.naturalWidth>0})).toBe(true);
+     await expect(photo).toBeVisible();
+     await expect.poll(()=>photo.evaluate(image=>image.complete&&image.naturalWidth>0)).toBe(true);
    }
  });
 }

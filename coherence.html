@@ -127,8 +127,6 @@
 .coh-practice-note{margin-bottom:clamp(24px,4vw,44px)}
 .coh-plot{min-block-size:118px;display:grid;align-content:center;gap:10px}
 .coh-bars{gap:14px}
-.coh-stat-copy{margin-top:18px}
-.cijfer .coh-stat-copy p{display:inline;margin:0}
 .coh-stat-copy strong{color:var(--brand)}
 .coh-chart-label{display:flex;justify-content:space-between;align-items:baseline;gap:8px;margin-bottom:5px;font-size:14px;line-height:1.35;color:var(--ink)}
 .coh-chart-label strong{white-space:nowrap;color:var(--brand)}
@@ -149,7 +147,7 @@
 /* Contain layout invalidations within static chapters while keeping their real height for anchors. */
 .coh-apple :is(#herkenbaar,#cijfers,#wat-is,#opbrengst,#voor-wie){contain:layout}
 </style>
-<script defer src="assets/i18n.js?v=20261123-release2"></script><script defer src="assets/i18n-coherence.js?v=20261126-grafieken-fotos"></script>
+<script defer src="assets/i18n.js?v=20261123-release2"></script><script defer src="assets/i18n-coherence.js?v=20261126-grafieken-fotos-2"></script>
 <script defer src="assets/content.js?v=20261030-editorial-three"></script>
 <script defer src="assets/models.js?v=20261029-quality"></script>
 <script defer src="assets/consent.js?v=20261029-quality"></script>
@@ -208,11 +206,11 @@
   <div class="sector-fotos coh-practice-media">
     <figure data-sector="onderhoud">
       <img src="img/home-sector-onderhoud-onderzoek-480.webp" srcset="img/home-sector-onderhoud-onderzoek-480.webp 480w, img/home-sector-onderhoud-onderzoek-960.webp 960w" sizes="(min-width: 1240px) 564px, (min-width: 761px) 46vw, 100vw" width="960" height="640" loading="lazy" decoding="async" fetchpriority="low" alt="">
-      <figcaption><strong>Technisch onderhoud</strong><span>Terugkerende problemen bij een machine bespreken</span></figcaption>
+      <figcaption><strong>Technisch onderhoud</strong> <span>Terugkerende problemen bij een machine bespreken</span></figcaption>
     </figure>
     <figure data-sector="logistiek">
       <img src="img/home-sector-logistiek-afwijking-480.webp" srcset="img/home-sector-logistiek-afwijking-480.webp 480w, img/home-sector-logistiek-afwijking-960.webp 960w" sizes="(min-width: 1240px) 564px, (min-width: 761px) 46vw, 100vw" width="960" height="640" loading="lazy" decoding="async" fetchpriority="low" alt="">
-      <figcaption><strong>Logistiek</strong><span>Een afwijking in de levering opvolgen</span></figcaption>
+      <figcaption><strong>Logistiek</strong> <span>Een afwijking in de levering opvolgen</span></figcaption>
     </figure>
   </div>
   <p class="sector-fotos-noot coh-practice-note">De foto’s zijn gegenereerd ter illustratie.</p>
@@ -237,14 +235,14 @@
   <div class="ap-head"><h2 id="cijfers-h" data-cms="coh-kmo-10">Wat onderzoek laat zien</h2><p data-cms="coh-kmo-11">De meeste cijfers komen uit grotere bedrijven. In een eerste traject meten we wat het bij u kost.</p></div>
   <div class="cijfers">
   <article class="cijfer"><div class="coh-plot coh-bars" aria-hidden="true">
-      <div><div class="coh-chart-label"><span>Andere afdelingen</span><strong data-notr>9%</strong></div><span class="coh-track"><span style="inline-size:9%"></span></span></div>
-      <div><div class="coh-chart-label"><span>Eigen team en leidinggevende</span><strong data-notr>84%</strong></div><span class="coh-track coh-track-secondary"><span style="inline-size:84%"></span></span></div>
-    </div><div class="coh-stat-copy"><strong data-notr>9%</strong> <p data-cms="coh-kmo-12">van de managers kan altijd rekenen op collega’s van andere afdelingen. Op de eigen leidinggevende en het eigen team rekent 84%.</p></div><p class="bron">Bevraging van 7.600 managers in 262 bedrijven. Bron: <a href="https://hbr.org/2015/03/why-strategy-execution-unravels-and-what-to-do-about-it" target="_blank" rel="noopener" data-notr>Sull, Homkes &amp; Sull, Harvard Business Review, 2015</a></p></article>
-  <article class="cijfer"><div class="coh-plot" aria-hidden="true"><span class="coh-donut"><span class="getal" data-notr>61%</span></span></div><div class="coh-stat-copy"><strong data-notr>61%</strong> <p data-cms="coh-kmo-13">van de managers zegt dat het grootste deel van hun tijd voor beslissingen niet goed besteed is.</p></div><p class="bron">Internationale bevraging van managers. Bron: <a href="https://www.mckinsey.com/capabilities/people-and-organizational-performance/our-insights/decision-making-in-the-age-of-urgency" target="_blank" rel="noopener" data-notr>McKinsey, 2019</a></p></article>
+      <div><div class="coh-chart-label"><span>Andere afdelingen · altijd</span> <strong data-notr>9%</strong></div><span class="coh-track"><span style="inline-size:9%"></span></span></div>
+      <div><div class="coh-chart-label"><span>Eigen team en leidinggevende · altijd of meestal</span> <strong data-notr>84%</strong></div><span class="coh-track coh-track-secondary"><span style="inline-size:84%"></span></span></div>
+    </div><p class="coh-stat-copy"><strong data-notr>9%</strong> <span data-cms="coh-kmo-12">van de managers kan altijd rekenen op collega’s van andere afdelingen. Op de eigen leidinggevende en het eigen team rekent 84%.</span> <span>Bij die 84% zijn de antwoorden ‘altijd’ en ‘meestal’ samengeteld.</span></p><p class="bron">Bevraging van 7.600 managers in 262 bedrijven. Bron: <a href="https://hbr.org/2015/03/why-strategy-execution-unravelsand-what-to-do-about-it" target="_blank" rel="noopener" data-notr>Sull, Homkes &amp; Sull, Harvard Business Review, 2015</a></p></article>
+  <article class="cijfer"><div class="coh-plot" aria-hidden="true"><span class="coh-donut"><span class="getal" data-notr>61%</span></span></div><p class="coh-stat-copy"><strong data-notr>61%</strong> <span data-cms="coh-kmo-13">van de managers zegt dat het grootste deel van hun tijd voor beslissingen niet goed besteed is.</span></p><p class="bron">Internationale bevraging van managers. Bron: <a href="https://www.mckinsey.com/capabilities/people-and-organizational-performance/our-insights/decision-making-in-the-age-of-urgency" target="_blank" rel="noopener" data-notr>McKinsey, 2019</a></p></article>
   <article class="cijfer"><div class="coh-plot coh-gdp" aria-hidden="true">
       <span class="getal">€ 5,99 miljard</span>
       <div aria-hidden="true"><div class="coh-chart-label"><span>1,08% van het bbp</span></div><span class="coh-track"><span style="inline-size:1.08%"></span></span></div>
-    </div><div class="coh-stat-copy"><strong>€ 5,99 miljard</strong> <p data-cms="coh-kmo-14">kostten administratieve verplichtingen de Belgische bedrijven en zelfstandigen in 2022, of 1,08% van het bbp.</p></div><p class="bron">Enkel fiscale, milieu- en werkgeversverplichtingen. Bron: <a href="https://econpapers.repec.org/RePEc:fpb:wpaper:202401" target="_blank" rel="noopener">Federaal Planbureau, 2024</a></p></article>
+    </div><p class="coh-stat-copy"><strong>€ 5,99 miljard</strong> <span data-cms="coh-kmo-14">kostten administratieve verplichtingen de Belgische bedrijven en zelfstandigen in 2022, of 1,08% van het bbp.</span></p><p class="bron">Enkel fiscale, milieu- en werkgeversverplichtingen. Bron: <a href="https://econpapers.repec.org/RePEc:fpb:wpaper:202401" target="_blank" rel="noopener">Federaal Planbureau, 2024</a></p></article>
   </div>
 </div></section>
 

@@ -1,6 +1,6 @@
 'use strict';
 // Bedrijfsontwikkeling redesign (owner request, 25 Nov 2026): coherence.html follows the structure and premium look of orion.html
-// (centred headlines, rounded tiles, numbered steps, FAQ, dark closing call to action). All approved texts, the film and the
+// (section order, numbered steps, FAQ, dark closing call to action). All approved texts, the film and the
 // appointment buttons stay; only the site's existing colour tokens are used.
 const {test}=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),vm=require('node:vm');
 const root=path.resolve(__dirname,'..','dist');const read=f=>fs.readFileSync(path.join(root,f),'utf8');
@@ -15,7 +15,7 @@ test('section order follows the Orion page: hero, In het kort, problem, figures,
   assert.equal((m.match(/class="step-n"/g)||[]).length,4,'numbering only on the four real steps');
   assert.equal((section('aanpak').match(/<li>/g)||[]).length,4);
   assert.equal((section('vragen').match(/<details>/g)||[]).length,5);
-  assert.equal((m.match(/class="ap-head"/g)||[]).length,8,'centred section heads');
+  assert.equal((m.match(/class="ap-head"/g)||[]).length,8,'section heads');
 });
 
 test('no extra colours: the page style block uses only existing colour tokens, no colour layer',()=>{

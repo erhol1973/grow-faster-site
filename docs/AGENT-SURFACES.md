@@ -44,6 +44,7 @@ tests/brand-logo.test.cjs
 ```surface:orchestrator
 docs/AGENT-SURFACES.md
 AGENTS.md
+.agents/skills/premiumdesign/**
 docs/RELEASE.md
 docs/TESTPLAN.md
 docs/testplan/**
@@ -74,6 +75,7 @@ docs/EXECUTIVE-RADAR-NAV-DEV.md
 !favicon.ico
 !docs/AGENT-SURFACES.md
 !AGENTS.md
+!.agents/skills/premiumdesign/**
 !docs/RELEASE.md
 !docs/TESTPLAN.md
 !docs/testplan/**

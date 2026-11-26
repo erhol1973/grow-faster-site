@@ -28,7 +28,7 @@
 <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
 <meta name="theme-color" content="#0B2545">
 <meta name="claude:viewport-fit-sides" content="cover">
-<link rel="stylesheet" href="assets/site.css?v=20261108-film-layout">
+<link rel="stylesheet" href="assets/site.css?v=20261126-coherence-media">
 <style>.gf-feature{margin-top:28px;padding:24px;border:1px solid var(--line);background:var(--bg)}.gf-feature h3{font-size:24px;line-height:1.25;margin:8px 0 14px}.gf-feature p{max-width:65ch}.foot-grid.foot-3{grid-template-columns:repeat(3,minmax(0,1fr))}@media(max-width:620px){.foot-grid.foot-3{grid-template-columns:minmax(0,1fr)}}@media(min-width:821px){.hero.hero-customer .hero-top::after{background:linear-gradient(90deg,rgba(6,27,52,.95),rgba(6,27,52,.9) 55%,rgba(6,27,52,.74) 82%,rgba(6,27,52,.4) 100%)}}.hero.hero-customer .hero-inner h1{max-width:20ch}</style><script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://grow-faster.be/#website","name":"Grow Faster","url":"https://grow-faster.be/","inLanguage":["nl","fr"],"publisher":{"@id":"https://grow-faster.be/about.html#erlend"}},{"@type":"Person","@id":"https://grow-faster.be/about.html#erlend","name":"Erlend Hollebosch","url":"https://grow-faster.be/about.html","sameAs":["https://www.linkedin.com/in/erlend-hollebosch-053361181/"]},{"@type":"Service","name":"Bedrijfsontwikkeling","serviceType":"Bedrijfsontwikkeling en coherentie voor kmo’s","description":"Samenhang tussen beslissingen, processen en systemen, zodat AI en automatisering echt tijd en geld opleveren.","url":"https://grow-faster.be/coherence.html","areaServed":"BE","provider":{"@id":"https://grow-faster.be/about.html#erlend"}}]}</script>
 <link rel="stylesheet" href="assets/navigation.css?v=20261108-menu-contrast">
 <noscript><style>.nav.nav-executive .nav-toggle,.nav.nav-executive .burger{display:none}.nav.nav-executive .wrap{height:auto;min-height:68px;flex-wrap:wrap;padding-block:12px}.nav.nav-executive .wrap>#navlist{position:static;display:flex;flex-wrap:wrap;gap:8px 20px;width:100%;order:3}.nav.nav-executive .lang-top{margin-left:auto}</style></noscript>
@@ -122,10 +122,34 @@
   .coh-apple #hero .hero-bg{position:relative;inset:auto;grid-row:2;margin:0 16px 24px;aspect-ratio:16/9;border-radius:10px;overflow:hidden}
 }
 @media(max-width:680px){.coh-case{grid-template-columns:minmax(0,1fr)}.coh-kicker{margin-bottom:10px}}
+
+.coh-practice-media.sector-fotos{grid-template-columns:repeat(2,minmax(0,1fr));margin-top:0}
+.coh-practice-note{margin-bottom:clamp(24px,4vw,44px)}
+.coh-plot{min-block-size:118px;display:grid;align-content:center;gap:10px}
+.coh-bars{gap:14px}
+.coh-stat-copy{margin-top:18px}
+.cijfer .coh-stat-copy p{display:inline;margin:0}
+.coh-stat-copy strong{color:var(--brand)}
+.coh-chart-label{display:flex;justify-content:space-between;align-items:baseline;gap:8px;margin-bottom:5px;font-size:14px;line-height:1.35;color:var(--ink)}
+.coh-chart-label strong{white-space:nowrap;color:var(--brand)}
+.coh-track{display:block;block-size:9px;border-radius:999px;background:var(--line);overflow:hidden}
+.coh-track>span{display:block;block-size:100%;background:var(--ai-ink)}
+.coh-track-secondary>span{background:var(--brand)}
+.coh-donut{display:grid;place-items:center;inline-size:102px;aspect-ratio:1}
+.coh-donut::before,.coh-donut .getal{grid-area:1/1}
+.coh-donut::before{content:"";inline-size:100%;block-size:100%;border-radius:50%;background:conic-gradient(var(--ai-ink) 61%,var(--line) 0);mask:radial-gradient(farthest-side,transparent calc(100% - 11px),currentColor calc(100% - 10px))}
+.coh-donut .getal{font-size:30px}
+.coh-gdp .getal{font-size:clamp(30px,3.4vw,52px)}
+@media(max-width:760px){.coh-practice-media.sector-fotos{grid-template-columns:minmax(0,1fr)}}
+@media(forced-colors:active){
+  .coh-track{border:1px solid CanvasText}
+  .coh-track>span{background:Highlight;forced-color-adjust:none}
+  .coh-donut::before{background:none;mask:none;border:2px solid CanvasText}
+}
 /* Contain layout invalidations within static chapters while keeping their real height for anchors. */
 .coh-apple :is(#herkenbaar,#cijfers,#wat-is,#opbrengst,#voor-wie){contain:layout}
 </style>
-<script defer src="assets/i18n.js?v=20261123-release2"></script><script defer src="assets/i18n-coherence.js?v=20261126-praktijkvoorbeeld-2"></script>
+<script defer src="assets/i18n.js?v=20261123-release2"></script><script defer src="assets/i18n-coherence.js?v=20261126-grafieken-fotos"></script>
 <script defer src="assets/content.js?v=20261030-editorial-three"></script>
 <script defer src="assets/models.js?v=20261029-quality"></script>
 <script defer src="assets/consent.js?v=20261029-quality"></script>
@@ -181,6 +205,17 @@
       <div><dt>Wat we meten</dt><dd>Hoeveel tijd verstrijkt tot de leverdatum vastligt? Hoe vaak moeten de teams dezelfde informatie opnieuw opvragen?</dd></div>
     </dl>
   </article>
+  <div class="sector-fotos coh-practice-media">
+    <figure data-sector="onderhoud">
+      <img src="img/home-sector-onderhoud-onderzoek-480.webp" srcset="img/home-sector-onderhoud-onderzoek-480.webp 480w, img/home-sector-onderhoud-onderzoek-960.webp 960w" sizes="(min-width: 1240px) 564px, (min-width: 761px) 46vw, 100vw" width="960" height="640" loading="lazy" decoding="async" fetchpriority="low" alt="">
+      <figcaption><strong>Technisch onderhoud</strong><span>Terugkerende problemen bij een machine bespreken</span></figcaption>
+    </figure>
+    <figure data-sector="logistiek">
+      <img src="img/home-sector-logistiek-afwijking-480.webp" srcset="img/home-sector-logistiek-afwijking-480.webp 480w, img/home-sector-logistiek-afwijking-960.webp 960w" sizes="(min-width: 1240px) 564px, (min-width: 761px) 46vw, 100vw" width="960" height="640" loading="lazy" decoding="async" fetchpriority="low" alt="">
+      <figcaption><strong>Logistiek</strong><span>Een afwijking in de levering opvolgen</span></figcaption>
+    </figure>
+  </div>
+  <p class="sector-fotos-noot coh-practice-note">De foto’s zijn gegenereerd ter illustratie.</p>
   <p class="coh-foundation" data-cms="coh-kmo-02">AI en automatisering versnellen wat er al is. Werken uw mensen, processen en systemen langs elkaar heen, dan versnelt u vooral de verwarring. Coherentie zorgt dat alles in dezelfde richting trekt.</p>
   <ul class="ap-kort">
     <li><h3>Samenhang eerst</h3><p data-cms="coh-kmo-k1">AI en automatisering versterken wat er al is. Trekken mensen, processen en systemen in dezelfde richting, dan versterken ze de waarde.</p></li>
@@ -201,9 +236,15 @@
 <section id="cijfers" aria-labelledby="cijfers-h"><div class="wrap">
   <div class="ap-head"><h2 id="cijfers-h" data-cms="coh-kmo-10">Wat onderzoek laat zien</h2><p data-cms="coh-kmo-11">De meeste cijfers komen uit grotere bedrijven. In een eerste traject meten we wat het bij u kost.</p></div>
   <div class="cijfers">
-  <article class="cijfer"><span class="getal" data-notr>9%</span><p data-cms="coh-kmo-12">van de managers kan altijd rekenen op collega’s van andere afdelingen. Op de eigen leidinggevende en het eigen team rekent 84%.</p><p class="bron">Bevraging van 7.600 managers in 262 bedrijven. Bron: <a href="https://hbr.org/2015/03/why-strategy-execution-unravels-and-what-to-do-about-it" target="_blank" rel="noopener" data-notr>Sull, Homkes &amp; Sull, Harvard Business Review, 2015</a></p></article>
-  <article class="cijfer"><span class="getal" data-notr>61%</span><p data-cms="coh-kmo-13">van de managers zegt dat het grootste deel van hun tijd voor beslissingen niet goed besteed is.</p><p class="bron">Internationale bevraging van managers. Bron: <a href="https://www.mckinsey.com/capabilities/people-and-organizational-performance/our-insights/decision-making-in-the-age-of-urgency" target="_blank" rel="noopener" data-notr>McKinsey, 2019</a></p></article>
-  <article class="cijfer"><span class="getal">€ 5,99 miljard</span><p data-cms="coh-kmo-14">kostten administratieve verplichtingen de Belgische bedrijven en zelfstandigen in 2022, of 1,08% van het bbp.</p><p class="bron">Enkel fiscale, milieu- en werkgeversverplichtingen. Bron: <a href="https://econpapers.repec.org/RePEc:fpb:wpaper:202401" target="_blank" rel="noopener">Federaal Planbureau, 2024</a></p></article>
+  <article class="cijfer"><div class="coh-plot coh-bars" aria-hidden="true">
+      <div><div class="coh-chart-label"><span>Andere afdelingen</span><strong data-notr>9%</strong></div><span class="coh-track"><span style="inline-size:9%"></span></span></div>
+      <div><div class="coh-chart-label"><span>Eigen team en leidinggevende</span><strong data-notr>84%</strong></div><span class="coh-track coh-track-secondary"><span style="inline-size:84%"></span></span></div>
+    </div><div class="coh-stat-copy"><strong data-notr>9%</strong> <p data-cms="coh-kmo-12">van de managers kan altijd rekenen op collega’s van andere afdelingen. Op de eigen leidinggevende en het eigen team rekent 84%.</p></div><p class="bron">Bevraging van 7.600 managers in 262 bedrijven. Bron: <a href="https://hbr.org/2015/03/why-strategy-execution-unravels-and-what-to-do-about-it" target="_blank" rel="noopener" data-notr>Sull, Homkes &amp; Sull, Harvard Business Review, 2015</a></p></article>
+  <article class="cijfer"><div class="coh-plot" aria-hidden="true"><span class="coh-donut"><span class="getal" data-notr>61%</span></span></div><div class="coh-stat-copy"><strong data-notr>61%</strong> <p data-cms="coh-kmo-13">van de managers zegt dat het grootste deel van hun tijd voor beslissingen niet goed besteed is.</p></div><p class="bron">Internationale bevraging van managers. Bron: <a href="https://www.mckinsey.com/capabilities/people-and-organizational-performance/our-insights/decision-making-in-the-age-of-urgency" target="_blank" rel="noopener" data-notr>McKinsey, 2019</a></p></article>
+  <article class="cijfer"><div class="coh-plot coh-gdp" aria-hidden="true">
+      <span class="getal">€ 5,99 miljard</span>
+      <div aria-hidden="true"><div class="coh-chart-label"><span>1,08% van het bbp</span></div><span class="coh-track"><span style="inline-size:1.08%"></span></span></div>
+    </div><div class="coh-stat-copy"><strong>€ 5,99 miljard</strong> <p data-cms="coh-kmo-14">kostten administratieve verplichtingen de Belgische bedrijven en zelfstandigen in 2022, of 1,08% van het bbp.</p></div><p class="bron">Enkel fiscale, milieu- en werkgeversverplichtingen. Bron: <a href="https://econpapers.repec.org/RePEc:fpb:wpaper:202401" target="_blank" rel="noopener">Federaal Planbureau, 2024</a></p></article>
   </div>
 </div></section>
 

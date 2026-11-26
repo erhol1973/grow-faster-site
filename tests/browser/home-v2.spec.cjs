@@ -75,6 +75,36 @@ test('pyramid rows keep their full width at 1440px',async({browser},info)=>{
   await ctx.close();
 });
 
+test('pyramid animates the layers in order and keyboard focus settles the animation',async({page})=>{
+  await page.emulateMedia({reducedMotion:'no-preference'});
+  await init(page);
+  await page.goto('/index.html');
+  const pyramid=page.locator('#fundament .pyr');
+  await expect(pyramid).not.toHaveClass(/pyr-build/);
+  await pyramid.evaluate(element=>window.scrollBy(0,element.getBoundingClientRect().top-innerHeight+60));
+  await expect(pyramid.locator('.pyr-result')).toBeInViewport();
+  await expect(pyramid).not.toHaveClass(/pyr-build/);
+  await pyramid.scrollIntoViewIfNeeded();
+  await expect(pyramid).toHaveClass(/pyr-build/);
+  const delays=await pyramid.locator('.pyr-l, .pyr-result').evaluateAll(parts=>parts.map(part=>getComputedStyle(part).animationDelay));
+  expect(delays).toEqual(['0.5s','0s','0.125s','0.25s','0.375s']);
+  await pyramid.getByRole('link').first().focus();
+  await expect(pyramid).not.toHaveClass(/pyr-build/);
+  await expect(pyramid.locator('.pyr-l').first()).toHaveCSS('animation-name','none');
+});
+
+test('pyramid stays static with reduced motion in French',async({page})=>{
+  await page.emulateMedia({reducedMotion:'reduce'});
+  await init(page,'fr');
+  await page.goto('/index.html');
+  await expect(page.locator('html')).toHaveAttribute('lang','fr');
+  const pyramid=page.locator('#fundament .pyr');
+  await pyramid.scrollIntoViewIfNeeded();
+  await expect(pyramid.locator('.pyr-l')).toHaveCount(4);
+  await expect(pyramid.locator('.pyr-l').first()).toHaveCSS('animation-name','none');
+  await expect(pyramid.locator('.pyr-result')).toHaveCSS('opacity','1');
+});
+
 test('the French switch translates every new heading, eyebrow, card label and the calculation label',async({page})=>{
   await init(page);await page.goto('/index.html');
   const sel=ORDER.slice(1).map(id=>`#${id} h2, #${id} h3, #${id} .eyebrow, #${id} [class*="-eyebrow"]`).join(', ')+', #toepassingen [data-cms*="-label-"], [data-cms="home-v2-rec-calc-label"], [data-cms="home-v2-hero-reassure"]';

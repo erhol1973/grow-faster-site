@@ -57,6 +57,14 @@
 .pyr-text p{margin:0;font-size:17px;line-height:1.5;color:var(--muted)}
 .pyr-n{font-family:var(--f-mono);font-size:12px;letter-spacing:.1em;color:var(--ai-ink);display:block;margin-bottom:2px}
 @media(max-width:700px){.pyr-result{width:100%}.pyr-l{grid-template-columns:minmax(0,1fr);gap:8px;margin-bottom:10px}.pyr-shape{height:64px;font-size:15px;padding:0 9%}.pyr-text{text-align:center}}
+@media(prefers-reduced-motion:no-preference){
+  .pyr-build .pyr-l,.pyr-build .pyr-result{animation:pyr-rise .36s ease-in-out}
+  .pyr-build .pyr-2{animation-delay:.125s}
+  .pyr-build .pyr-3{animation-delay:.25s}
+  .pyr-build .pyr-4{animation-delay:.375s}
+  .pyr-build .pyr-result{animation-delay:.5s}
+  @keyframes pyr-rise{50%{transform:translateY(-8px)}}
+}
 </style>
 <style>.hero.hero-customer .hero-inner h1{max-width:20ch}</style>
 <style data-hero>.hero.hero-customer .hero-bg img,.hero.hero-customer .hero-video{object-position:50% center}</style>
@@ -176,6 +184,23 @@
     <li class="pyr-l pyr-4"><span class="pyr-shape">AI</span><div class="pyr-text"><span class="pyr-n"><span>Laag</span> 4</span><h3><a href="orion.html">Orion</a></h3><p>AI neemt zoek- en schrijfwerk over.</p></div></li>
     </ol>
   </figure>
+  <script>
+    (() => {
+      if (!('IntersectionObserver' in window) || !matchMedia('(prefers-reduced-motion: no-preference)').matches) return;
+      const pyramid = document.querySelector('#fundament .pyr');
+      const visibleShare = 0.6;
+      const observer = new IntersectionObserver(entries => {
+        if (!entries.some(entry => entry.intersectionRatio >= visibleShare)) return;
+        pyramid.classList.add('pyr-build');
+        observer.disconnect();
+      }, { threshold: visibleShare });
+      observer.observe(pyramid);
+      pyramid.addEventListener('focusin', () => {
+        observer.disconnect();
+        pyramid.classList.remove('pyr-build');
+      }, { once: true });
+    })();
+  </script>
 </div></section>
 
 <section id="kloof" class="hsec" aria-labelledby="kloof-h"><div class="wrap"><div class="head"><p class="sec-eyebrow" data-cms="home-v2-kloof-eyebrow" data-copy="home-v2-kloof-eyebrow">Cijfers</p><h2 id="kloof-h">Grote bedrijven werken al met AI. De meeste kmo’s nog niet.</h2><p class="lede">Bij Belgische bedrijven met meer dan 250 medewerkers gebruiken er drie op de vier AI. Bij kleinere bedrijven is dat er nog niet één op de drie.</p></div><div class="cijfers">

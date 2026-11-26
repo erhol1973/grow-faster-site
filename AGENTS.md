@@ -1,4 +1,9 @@
 # Grow Faster project instructions
+
+## Premium Design voor websitewijzigingen
+
+Gebruik bij iedere wijziging die de website-UI, visuele identiteit, inhoudshiërarchie, navigatie, zichtbare copy of interactie raakt [`$premiumdesign`](.agents/skills/premiumdesign/SKILL.md). Lees het bestand rechtstreeks als de skill niet in de selector verschijnt. Leg vóór de wijziging de relevante baseline vast en lever bij de overdracht revisiegebonden bewijs en de onafhankelijke reviewstatus. Schaal de toets naar de geraakte routes en gebruikerspaden. De bestaande governance-, schrijf-, test- en sponsorpoorten gelden integraal.
+
 ## Productgovernance en productiepoort (verplicht)
 
 Lees vóór nieuwe productfuncties, architectuurinvesteringen, automatiseringen of releasebeslissingen de canonieke instructies in [docs/governance/CONTROL-TOWER.md](docs/governance/CONTROL-TOWER.md), [docs/governance/OPERATING-MODEL.md](docs/governance/OPERATING-MODEL.md), [docs/governance/DECISION-REGISTER.md](docs/governance/DECISION-REGISTER.md) en [docs/governance/CPO-PRODUCT-INVESTMENT-CRITERIA.md](docs/governance/CPO-PRODUCT-INVESTMENT-CRITERIA.md). Controleer bestaande GitHub-werkitems vóór nieuw werk, en respecteer de onafhankelijke review en de twee actieve hoofdwerkstromen.

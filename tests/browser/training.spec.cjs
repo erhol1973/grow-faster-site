@@ -7,7 +7,7 @@ const copy = {
   nl: {
     action: 'Bekijk trainingen per team',
     teams: ['Kwaliteitsdienst', 'Teamleiders en medewerkers', 'Zaakvoerders en directie'],
-    links: ['Bespreek de Orion-training', 'Bespreek de workflowtraining', 'Bespreek bedrijfsontwikkeling']
+    links: ['Bespreek de opleiding over Orion', 'Bespreek de opleiding over automatisering', 'Bespreek bedrijfsontwikkeling']
   },
   fr: {
     action: 'Voir les formations par équipe',

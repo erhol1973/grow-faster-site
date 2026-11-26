@@ -18,7 +18,7 @@ test('Training offers three trainings on site or online, price on request, with 
   assert.match(m,/<h1(?: data-cms="trn-\d\d")?>Uw mensen leren werken met AI en automatisering\.<\/h1>/);
   const tr=m.match(/<section id="trainingen"[\s\S]*?<\/section>/)[0];
   // 25 Nov 2026 academy redesign: the three trainings are the programme cards (the section also has two short pillars).
-  assert.deepEqual([...tr.matchAll(/<article class="ac-program">[\s\S]*?<h3(?: data-cms="trn-\d\d")?>([^<]+)<\/h3>/g)].map(x=>x[1]),['Orion in de praktijk','Workflow-automatisering','Bedrijfsontwikkeling: naar een adaptief bedrijf']);
+  assert.deepEqual([...tr.matchAll(/<article class="ac-program">[\s\S]*?<h3(?: data-cms="trn-\d\d")?>([^<]+)<\/h3>/g)].map(x=>x[1]),['Orion in de praktijk','Werkprocessen automatiseren','Bedrijfsontwikkeling: naar een adaptief bedrijf']);
   assert.match(m,/Ter plaatse of online, in het Nederlands of het Frans\. Prijs op aanvraag\./);
   assert.doesNotMatch(m,/href="mailto:/);assert.match(m,/href="#trainingen" class="btn primary" id="hero-trainingen"/);assert.match(m,/href="afspraak\.html\?onderwerp=training" class="btn ghost" id="hero-gesprek"/);assert.match(m,/href="afspraak\.html\?onderwerp=training" class="btn primary" id="contact-gesprek"/);
   assert.doesNotMatch(m,/<form\b/);

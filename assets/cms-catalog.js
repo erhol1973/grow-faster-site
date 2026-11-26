@@ -2161,9 +2161,9 @@ window.GF_CMS_CATALOG=[
       {
         "key": "trn-11",
         "type": "text",
-        "label": "Workflow-automatisering",
-        "nl": "Workflow-automatisering",
-        "fr": "Automatisation des workflows"
+        "label": "Werkprocessen automatiseren",
+        "nl": "Werkprocessen automatiseren",
+        "fr": "Automatiser les processus de travail"
       },
       {
         "key": "trn-12",

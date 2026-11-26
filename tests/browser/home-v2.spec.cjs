@@ -22,14 +22,14 @@ test('Orion leads the four applications and the pilot remains the first hero act
   await expect(cards.locator('.toep-part')).toHaveCount(12);
   await orion.scrollIntoViewIfNeeded();
   await expect(orion).toHaveAttribute('id','toep-kwaliteit');
-  const demo=page.locator('.toep-voorbeeld figure');
+  const demo=page.locator('.toep-demo');
   await expect(demo.locator('xpath=ancestor::a')).toHaveCount(0);
   await expect(orion).toHaveAccessibleName(/^Orion Kwaliteit in de voedingsproductie.*Zo werkt Orion$/);
   await expect(demo.locator('figcaption')).toHaveText('Orion · fictief voorbeeld');
   await expect(demo.locator('dt')).toHaveText(['Klantvraag','Voorstel van Orion','Bron','Goedkeuring']);
   await expect(demo.locator('dd').last()).toHaveText('Wacht op goedkeuring door het kwaliteitsteam.');
   const [lead,...related]=await cards.evaluateAll(items=>items.map(item=>{
-    const {width,top}=(item.closest('.toep-voorbeeld')||item).getBoundingClientRect();
+    const {width,top}=item.closest('.toep-voorbeeld, .toep-casus').getBoundingClientRect();
     return {width,top};
   }));
   if(info.project.use.isMobile){
@@ -45,6 +45,11 @@ test('Orion leads the four applications and the pilot remains the first hero act
   await expect(demo.locator('dt')).toHaveText(['Question du client','Proposition d’Orion','Source','Validation']);
   await expect(demo.locator('dd').last()).toHaveText('En attente de validation par l’équipe qualité.');
   await expect(orion).toHaveAccessibleName(/^Orion Qualité dans la production alimentaire.*Comment fonctionne Orion$/);
+  const galleries=page.locator('#toepassingen .toep-fotos');
+  await expect(galleries).toHaveCount(4);
+  for(const gallery of await galleries.all())await expect(gallery.locator('img[loading="lazy"]')).toHaveCount(3);
+  await expect(galleries.first().locator('figcaption').first()).toHaveText('Contrôle qualité sur la ligne de conditionnement');
+  await expect(page.locator('.toep-beeldnoot')).toHaveText('Les photos ont été générées à titre d’illustration.');
 });
 async function overflow(page){
   await page.addStyleTag({content:'*{content-visibility:visible!important}'});
@@ -70,39 +75,12 @@ test('pyramid rows keep their full width at 1440px',async({browser},info)=>{
   test.skip(info.project.use.isMobile,'desktop layout only');
   const ctx=await browser.newContext({viewport:{width:1440,height:900}});const page=await ctx.newPage();await init(page,'nl');
   await page.goto('/index.html');
+  const pyramid=page.locator('#fundament .pyr');
+  await pyramid.scrollIntoViewIfNeeded();
+  await expect(pyramid.locator('.pyr-l').first()).toHaveCSS('animation-name','none');
   const widths=await page.locator('#fundament .pyr-l').evaluateAll(rows=>rows.map(r=>r.getBoundingClientRect().width));
   expect(widths).toHaveLength(4);for(const w of widths)expect(w).toBeGreaterThanOrEqual(900);
   await ctx.close();
-});
-
-test('pyramid animates the layers in order and keyboard focus settles the animation',async({page})=>{
-  await page.emulateMedia({reducedMotion:'no-preference'});
-  await init(page);
-  await page.goto('/index.html');
-  const pyramid=page.locator('#fundament .pyr');
-  await expect(pyramid).not.toHaveClass(/pyr-build/);
-  await pyramid.evaluate(element=>window.scrollBy(0,element.getBoundingClientRect().top-innerHeight+60));
-  await expect(pyramid.locator('.pyr-result')).toBeInViewport();
-  await expect(pyramid).not.toHaveClass(/pyr-build/);
-  await pyramid.scrollIntoViewIfNeeded();
-  await expect(pyramid).toHaveClass(/pyr-build/);
-  const delays=await pyramid.locator('.pyr-l, .pyr-result').evaluateAll(parts=>parts.map(part=>getComputedStyle(part).animationDelay));
-  expect(delays).toEqual(['0.5s','0s','0.125s','0.25s','0.375s']);
-  await pyramid.getByRole('link').first().focus();
-  await expect(pyramid).not.toHaveClass(/pyr-build/);
-  await expect(pyramid.locator('.pyr-l').first()).toHaveCSS('animation-name','none');
-});
-
-test('pyramid stays static with reduced motion in French',async({page})=>{
-  await page.emulateMedia({reducedMotion:'reduce'});
-  await init(page,'fr');
-  await page.goto('/index.html');
-  await expect(page.locator('html')).toHaveAttribute('lang','fr');
-  const pyramid=page.locator('#fundament .pyr');
-  await pyramid.scrollIntoViewIfNeeded();
-  await expect(pyramid.locator('.pyr-l')).toHaveCount(4);
-  await expect(pyramid.locator('.pyr-l').first()).toHaveCSS('animation-name','none');
-  await expect(pyramid.locator('.pyr-result')).toHaveCSS('opacity','1');
 });
 
 test('the French switch translates every new heading, eyebrow, card label and the calculation label',async({page})=>{

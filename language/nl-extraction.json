@@ -100,7 +100,7 @@
     },
     {
       "file": "assets/i18n-home.js",
-      "sha256": "775688343a32c82afca5f3b75d830b679b87952a45b97a5f5fd43ff6afbe3fd5"
+      "sha256": "26d818f6354c9f145304f801beca018653fad3ea047a1210277ad58e8e9f7a20"
     },
     {
       "file": "assets/i18n-insights.js",
@@ -254,7 +254,7 @@
     },
     {
       "file": "index.html",
-      "sha256": "914fa9ed30a95400a85ac284ff47db748b6eb9b92030cbb51fa436e4b7c71e8f"
+      "sha256": "520d589042e777ba0f49ac51c72c633461aa39ec8205dee896ec5fad13ac7316"
     },
     {
       "file": "insights-ai-pilot.html",

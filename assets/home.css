@@ -40,7 +40,8 @@ body[data-cms-page="home"] #toepassingen{background:#f6f5f1;padding-block:clamp(
 #toepassingen .toep-kaart{gap:14px;padding:24px 0 0;border:0;border-top:1px solid var(--line);border-radius:0;background:transparent;transition:none}
 #toepassingen .toep-kaart:hover{transform:none;border-color:var(--ai-ink)}
 #toepassingen .toep-kaart:hover .toep-meer{text-decoration:underline;text-underline-offset:.2em}
-#toepassingen .toep-orion{grid-column:1/-1;display:grid;grid-template-columns:minmax(0,2fr) minmax(0,3fr);gap:0;padding:0;border:0;border-radius:8px;background:var(--bg);box-shadow:none;overflow:hidden}
+.toep-voorbeeld{grid-column:1/-1;display:grid;grid-template-columns:minmax(0,2fr) minmax(0,3fr);border-radius:8px;background:var(--bg);overflow:hidden}
+#toepassingen .toep-orion{padding:0;border:0;box-shadow:none;outline-offset:-4px}
 .toep-demo{margin:0;padding:clamp(20px,3vw,42px);background:var(--brand);color:#fff}
 .toep-demo figcaption{margin-bottom:16px;font-weight:600}
 .toep-demo dl,.toep-demo dd{margin:0}
@@ -66,7 +67,7 @@ body[data-cms-page="home"] #toepassingen{background:#f6f5f1;padding-block:clamp(
   #toepassingen .head .lede{margin-top:0}
 }
 @media(max-width:860px){
-  #toepassingen .toep-grid,#toepassingen .toep-orion{grid-template-columns:minmax(0,1fr)}
+  #toepassingen .toep-grid,.toep-voorbeeld{grid-template-columns:minmax(0,1fr)}
 }
 @media(max-width:520px){
   .toep-orion .toep-part{grid-template-columns:minmax(0,1fr)}

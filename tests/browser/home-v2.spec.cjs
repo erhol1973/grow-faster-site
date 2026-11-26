@@ -22,13 +22,14 @@ test('Orion leads the four applications and the pilot remains the first hero act
   await expect(cards.locator('.toep-part')).toHaveCount(12);
   await orion.scrollIntoViewIfNeeded();
   await expect(orion).toHaveAttribute('id','toep-kwaliteit');
-  const demo=orion.locator('figure');
-  await expect(orion).toHaveAccessibleName('Kwaliteit in de voedingsproductie Zo werkt Orion');
+  const demo=page.locator('.toep-voorbeeld figure');
+  await expect(demo.locator('xpath=ancestor::a')).toHaveCount(0);
+  await expect(orion).toHaveAccessibleName(/^Orion Kwaliteit in de voedingsproductie.*Zo werkt Orion$/);
   await expect(demo.locator('figcaption')).toHaveText('Orion · fictief voorbeeld');
   await expect(demo.locator('dt')).toHaveText(['Klantvraag','Voorstel van Orion','Bron','Goedkeuring']);
   await expect(demo.locator('dd').last()).toHaveText('Wacht op goedkeuring door het kwaliteitsteam.');
   const [lead,...related]=await cards.evaluateAll(items=>items.map(item=>{
-    const {width,top}=item.getBoundingClientRect();
+    const {width,top}=(item.closest('.toep-voorbeeld')||item).getBoundingClientRect();
     return {width,top};
   }));
   if(info.project.use.isMobile){
@@ -43,7 +44,7 @@ test('Orion leads the four applications and the pilot remains the first hero act
   await expect(demo.locator('figcaption')).toHaveText('Orion · exemple fictif');
   await expect(demo.locator('dt')).toHaveText(['Question du client','Proposition d’Orion','Source','Validation']);
   await expect(demo.locator('dd').last()).toHaveText('En attente de validation par l’équipe qualité.');
-  await expect(orion).toHaveAccessibleName('Qualité dans la production alimentaire Comment fonctionne Orion');
+  await expect(orion).toHaveAccessibleName(/^Orion Qualité dans la production alimentaire.*Comment fonctionne Orion$/);
 });
 async function overflow(page){
   await page.addStyleTag({content:'*{content-visibility:visible!important}'});

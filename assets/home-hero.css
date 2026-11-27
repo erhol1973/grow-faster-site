@@ -67,7 +67,7 @@ html.nav-over [data-cms-page="home"] .nav.nav-executive { background: #0b2545 !i
   line-height: 1.5;
   color: #e1edf9;
 }
-[data-cms-page="home"] #hero .hero-pauze { background: #0b2545; }
+[data-cms-page="home"] #hero .hero-pauze { position: static; align-self: flex-start; margin-top: 12px; background: #0b2545; }
 @media (max-width: 900px) {
   [data-cms-page="home"] #hero .hero-top {
     --photo-height: clamp(160px, 48vw, 320px);
@@ -89,5 +89,4 @@ html.nav-over [data-cms-page="home"] .nav.nav-executive { background: #0b2545 !i
   [data-cms-page="home"] #hero h1 { font-size: clamp(32px, 7.4vw, 48px); }
   [data-cms-page="home"] #hero .sub { margin-top: 14px; }
   [data-cms-page="home"] #hero .ctas { margin-top: 20px; }
-  [data-cms-page="home"] #hero .hero-pauze { top: calc(var(--photo-height) - 56px); bottom: auto; left: 12px; right: auto; }
 }

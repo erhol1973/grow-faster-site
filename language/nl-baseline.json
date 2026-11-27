@@ -1,8 +1,8 @@
 {
   "schema": 1,
   "origin": "Existing ChatGPT Library baseline/register not accessible in this environment; no prior reviews imported.",
-  "sourceCommit": "d2435762a900973e010c0e4cb051d0574bb1b72c",
-  "parentBaseline": "da08527bcbbad800c640714f5f0608c0e3f0ccd98868ba4ff39d3e47e18be987",
+  "sourceCommit": "d504436cd66471a19ecb842ee6c3eee91d6d1ab2",
+  "parentBaseline": "dcb5aab284e0b4dcabcbeb40c6a0504a195404e05c0c5b97c27ee422eeccaa16",
   "coverage": [
     {
       "file": "404.html",
@@ -67,7 +67,7 @@
     {
       "file": "automatisering.html",
       "status": "scanned",
-      "blocks": 1511
+      "blocks": 1506
     },
     {
       "file": "baies-dev/index.html",
@@ -243,6 +243,10 @@
     {
       "sourceCommit": "f58181d0c37c2b09eb9591f26ca5c743a667ce9d",
       "digest": "da08527bcbbad800c640714f5f0608c0e3f0ccd98868ba4ff39d3e47e18be987"
+    },
+    {
+      "sourceCommit": "d2435762a900973e010c0e4cb051d0574bb1b72c",
+      "digest": "dcb5aab284e0b4dcabcbeb40c6a0504a195404e05c0c5b97c27ee422eeccaa16"
     }
   ],
   "blocks": [
@@ -26116,8 +26120,8 @@
       "id": "automatisering.html#aria-label:body:2>footer:4>div:2>div:1>a:1",
       "page": "automatisering.html",
       "kind": "aria-label",
-      "text": "Grow Faster – home",
-      "sha256": "d1f327ca485e8be70a7cedf6b230e5829ff603ee756532c3cecddc22afb46bbc",
+      "text": "Grow Faster – startpagina",
+      "sha256": "5cd66faa71e3f0702cdabbc2cc1f6b5bb98ac52db3c6e8db24644bad3215f65f",
       "engine": {
         "name": "LanguageTool",
         "version": "6.6",
@@ -26126,7 +26130,7 @@
       }
     },
     {
-      "id": "automatisering.html#aria-label:body:2>main:3>section:11>video:1",
+      "id": "automatisering.html#aria-label:body:2>main:3>section:9>video:1",
       "page": "automatisering.html",
       "kind": "aria-label",
       "text": "Video",
@@ -26155,8 +26159,8 @@
       "id": "automatisering.html#aria-label:body:2>nav:2>div:1>a:1",
       "page": "automatisering.html",
       "kind": "aria-label",
-      "text": "Grow Faster – home",
-      "sha256": "d1f327ca485e8be70a7cedf6b230e5829ff603ee756532c3cecddc22afb46bbc",
+      "text": "Grow Faster – startpagina",
+      "sha256": "5cd66faa71e3f0702cdabbc2cc1f6b5bb98ac52db3c6e8db24644bad3215f65f",
       "engine": {
         "name": "LanguageTool",
         "version": "6.6",
@@ -26196,426 +26200,6 @@
       "kind": "aria-label",
       "text": "Nederlands (BE)",
       "sha256": "8530c2f81cf47f9470e681927b1bd4d63782f80e61d3434a7f3d4292a4bcaf1c",
-      "engine": {
-        "name": "LanguageTool",
-        "version": "6.6",
-        "language": "nl",
-        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
-      }
-    },
-    {
-      "id": "automatisering.html#cms-catalog:website:aut-01:text",
-      "page": "automatisering.html",
-      "kind": "cms-catalog:text",
-      "text": "Wat uw team overtypt, gebeurt voortaan vanzelf.",
-      "sha256": "e9e1549fa97fbb81c9facdb62bf886ce8ec416490ffcd83ca947dac96bdedc2e",
-      "source": {
-        "adapter": "static-cms-catalog",
-        "file": "assets/cms-catalog.js",
-        "section": "website",
-        "key": "aut-01",
-        "language": "nl",
-        "scope": "committed-defaults"
-      },
-      "engine": {
-        "name": "LanguageTool",
-        "version": "6.6",
-        "language": "nl",
-        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
-      }
-    },
-    {
-      "id": "automatisering.html#cms-catalog:website:aut-02:text",
-      "page": "automatisering.html",
-      "kind": "cms-catalog:text",
-      "text": "We automatiseren het handwerk tussen uw mails, Excel-lijsten en systemen. Uw mensen houden tijd over voor het werk dat telt.",
-      "sha256": "905c719a5afe0450c113defc246de02311acda8839932f111d7c013f863136c1",
-      "source": {
-        "adapter": "static-cms-catalog",
-        "file": "assets/cms-catalog.js",
-        "section": "website",
-        "key": "aut-02",
-        "language": "nl",
-        "scope": "committed-defaults"
-      },
-      "engine": {
-        "name": "LanguageTool",
-        "version": "6.6",
-        "language": "nl",
-        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
-      }
-    },
-    {
-      "id": "automatisering.html#cms-catalog:website:aut-03:text",
-      "page": "automatisering.html",
-      "kind": "cms-catalog:text",
-      "text": "Herkenbaar?",
-      "sha256": "7b8225354af212bb09169c2f5b943c0a2477070b15a049a3b0cc253c6a78bc5b",
-      "source": {
-        "adapter": "static-cms-catalog",
-        "file": "assets/cms-catalog.js",
-        "section": "website",
-        "key": "aut-03",
-        "language": "nl",
-        "scope": "committed-defaults"
-      },
-      "engine": {
-        "name": "LanguageTool",
-        "version": "6.6",
-        "language": "nl",
-        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
-      }
-    },
-    {
-      "id": "automatisering.html#cms-catalog:website:aut-04:text",
-      "page": "automatisering.html",
-      "kind": "cms-catalog:text",
-      "text": "Overtypen.",
-      "sha256": "9beb9efa4e336fafc38aa36697b1a809db1ff6444eeed7618c3bb827e79903b9",
-      "source": {
-        "adapter": "static-cms-catalog",
-        "file": "assets/cms-catalog.js",
-        "section": "website",
-        "key": "aut-04",
-        "language": "nl",
-        "scope": "committed-defaults"
-      },
-      "engine": {
-        "name": "LanguageTool",
-        "version": "6.6",
-        "language": "nl",
-        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
-      }
-    },
-    {
-      "id": "automatisering.html#cms-catalog:website:aut-05:text",
-      "page": "automatisering.html",
-      "kind": "cms-catalog:text",
-      "text": "Een bestelling komt binnen per mail en iemand typt ze over in het ordersysteem.",
-      "sha256": "3d2329a8c66c1be199f1f5f61c70bdc32fd5643838bb3dfce0d02e9a654711c3",
-      "source": {
-        "adapter": "static-cms-catalog",
-        "file": "assets/cms-catalog.js",
-        "section": "website",
-        "key": "aut-05",
-        "language": "nl",
-        "scope": "committed-defaults"
-      },
-      "engine": {
-        "name": "LanguageTool",
-        "version": "6.6",
-        "language": "nl",
-        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
-      }
-    },
-    {
-      "id": "automatisering.html#cms-catalog:website:aut-06:text",
-      "page": "automatisering.html",
-      "kind": "cms-catalog:text",
-      "text": "Kopiëren en plakken.",
-      "sha256": "d364824591fd2af0028ad82f193cc31fcbf437c17018b1771653ddb5e4fd29d9",
-      "source": {
-        "adapter": "static-cms-catalog",
-        "file": "assets/cms-catalog.js",
-        "section": "website",
-        "key": "aut-06",
-        "language": "nl",
-        "scope": "committed-defaults"
-      },
-      "engine": {
-        "name": "LanguageTool",
-        "version": "6.6",
-        "language": "nl",
-        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
-      }
-    },
-    {
-      "id": "automatisering.html#cms-catalog:website:aut-07:text",
-      "page": "automatisering.html",
-      "kind": "cms-catalog:text",
-      "text": "Gegevens gaan van het ene systeem naar het andere via Excel.",
-      "sha256": "b540a0d7f4441e8931c38e262cb9354d9e6cd18935e724ac7aa87913c75ddd92",
-      "source": {
-        "adapter": "static-cms-catalog",
-        "file": "assets/cms-catalog.js",
-        "section": "website",
-        "key": "aut-07",
-        "language": "nl",
-        "scope": "committed-defaults"
-      },
-      "engine": {
-        "name": "LanguageTool",
-        "version": "6.6",
-        "language": "nl",
-        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
-      }
-    },
-    {
-      "id": "automatisering.html#cms-catalog:website:aut-08:text",
-      "page": "automatisering.html",
-      "kind": "cms-catalog:text",
-      "text": "Opvolgen.",
-      "sha256": "8681184dfac43a05a3f4d73347aeae9b6ddfceab6b277ff8e5da2ed498a2676f",
-      "source": {
-        "adapter": "static-cms-catalog",
-        "file": "assets/cms-catalog.js",
-        "section": "website",
-        "key": "aut-08",
-        "language": "nl",
-        "scope": "committed-defaults"
-      },
-      "engine": {
-        "name": "LanguageTool",
-        "version": "6.6",
-        "language": "nl",
-        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
-      }
-    },
-    {
-      "id": "automatisering.html#cms-catalog:website:aut-09:text",
-      "page": "automatisering.html",
-      "kind": "cms-catalog:text",
-      "text": "Offertes, facturen en klachten hangen af van herinneringen in iemands agenda.",
-      "sha256": "616998f721253cab2ec95a8079b0a3d083409c7816a3b0b2e7bfadca5acede6b",
-      "source": {
-        "adapter": "static-cms-catalog",
-        "file": "assets/cms-catalog.js",
-        "section": "website",
-        "key": "aut-09",
-        "language": "nl",
-        "scope": "committed-defaults"
-      },
-      "engine": {
-        "name": "LanguageTool",
-        "version": "6.6",
-        "language": "nl",
-        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
-      }
-    },
-    {
-      "id": "automatisering.html#cms-catalog:website:aut-10:text",
-      "page": "automatisering.html",
-      "kind": "cms-catalog:text",
-      "text": "Rapporteren.",
-      "sha256": "c2190b1f2d0120f3b51f5740651f81da62b96e59c799b561de0c709db5e2ea4f",
-      "source": {
-        "adapter": "static-cms-catalog",
-        "file": "assets/cms-catalog.js",
-        "section": "website",
-        "key": "aut-10",
-        "language": "nl",
-        "scope": "committed-defaults"
-      },
-      "engine": {
-        "name": "LanguageTool",
-        "version": "6.6",
-        "language": "nl",
-        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
-      }
-    },
-    {
-      "id": "automatisering.html#cms-catalog:website:aut-11:text",
-      "page": "automatisering.html",
-      "kind": "cms-catalog:text",
-      "text": "Elke maand stelt iemand met de hand hetzelfde rapport samen.",
-      "sha256": "bfc692090b96b385c0ba1da037c2be6a45eab6dea93dd4c0ed78071800e454f7",
-      "source": {
-        "adapter": "static-cms-catalog",
-        "file": "assets/cms-catalog.js",
-        "section": "website",
-        "key": "aut-11",
-        "language": "nl",
-        "scope": "committed-defaults"
-      },
-      "engine": {
-        "name": "LanguageTool",
-        "version": "6.6",
-        "language": "nl",
-        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
-      }
-    },
-    {
-      "id": "automatisering.html#cms-catalog:website:aut-12:text",
-      "page": "automatisering.html",
-      "kind": "cms-catalog:text",
-      "text": "Voorbeelden",
-      "sha256": "9cd4e067a578d3265336ea58de9222fc14b1ba6c7083bccfc3487bde9e266181",
-      "source": {
-        "adapter": "static-cms-catalog",
-        "file": "assets/cms-catalog.js",
-        "section": "website",
-        "key": "aut-12",
-        "language": "nl",
-        "scope": "committed-defaults"
-      },
-      "engine": {
-        "name": "LanguageTool",
-        "version": "6.6",
-        "language": "nl",
-        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
-      }
-    },
-    {
-      "id": "automatisering.html#cms-catalog:website:aut-13:text",
-      "page": "automatisering.html",
-      "kind": "cms-catalog:text",
-      "text": "Bestellingen uit mails of pdf’s lezen en klaarzetten in uw ordersysteem.",
-      "sha256": "eb79010d7d829bd38b62964b09ba0aebed0a1c9205c1a6d97599a6b3ef2abd2e",
-      "source": {
-        "adapter": "static-cms-catalog",
-        "file": "assets/cms-catalog.js",
-        "section": "website",
-        "key": "aut-13",
-        "language": "nl",
-        "scope": "committed-defaults"
-      },
-      "engine": {
-        "name": "LanguageTool",
-        "version": "6.6",
-        "language": "nl",
-        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
-      }
-    },
-    {
-      "id": "automatisering.html#cms-catalog:website:aut-14:text",
-      "page": "automatisering.html",
-      "kind": "cms-catalog:text",
-      "text": "Aankoopfacturen inlezen en voorbereiden voor de boekhouding.",
-      "sha256": "d55a591bb77e8fc2e67aa858c26237e502a316b330f16b9ffee0b3c824fe2169",
-      "source": {
-        "adapter": "static-cms-catalog",
-        "file": "assets/cms-catalog.js",
-        "section": "website",
-        "key": "aut-14",
-        "language": "nl",
-        "scope": "committed-defaults"
-      },
-      "engine": {
-        "name": "LanguageTool",
-        "version": "6.6",
-        "language": "nl",
-        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
-      }
-    },
-    {
-      "id": "automatisering.html#cms-catalog:website:aut-15:text",
-      "page": "automatisering.html",
-      "kind": "cms-catalog:text",
-      "text": "Een nieuwe klant één keer invoeren, waarna de gegevens in uw CRM, boekhouding en planning staan.",
-      "sha256": "1d6573a2dde9afbf58f0771bab329700a647ebea8abcb1ba104b6f9c3fc35c1f",
-      "source": {
-        "adapter": "static-cms-catalog",
-        "file": "assets/cms-catalog.js",
-        "section": "website",
-        "key": "aut-15",
-        "language": "nl",
-        "scope": "committed-defaults"
-      },
-      "engine": {
-        "name": "LanguageTool",
-        "version": "6.6",
-        "language": "nl",
-        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
-      }
-    },
-    {
-      "id": "automatisering.html#cms-catalog:website:aut-16:text",
-      "page": "automatisering.html",
-      "kind": "cms-catalog:text",
-      "text": "Wekelijkse cijfers die vanzelf in één overzicht samenkomen.",
-      "sha256": "6703f6c88d7feca4ad2c5a566c210131b1c4494265c97301662af17b5e2fce9b",
-      "source": {
-        "adapter": "static-cms-catalog",
-        "file": "assets/cms-catalog.js",
-        "section": "website",
-        "key": "aut-16",
-        "language": "nl",
-        "scope": "committed-defaults"
-      },
-      "engine": {
-        "name": "LanguageTool",
-        "version": "6.6",
-        "language": "nl",
-        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
-      }
-    },
-    {
-      "id": "automatisering.html#cms-catalog:website:aut-17:text",
-      "page": "automatisering.html",
-      "kind": "cms-catalog:text",
-      "text": "Herinneringen voor offertes en betalingen die vertrekken nadat u ze goedgekeurd hebt.",
-      "sha256": "53b8fa20dcb32522eacfd659f5646cca9e264c729976d2677a162acc74c7ce53",
-      "source": {
-        "adapter": "static-cms-catalog",
-        "file": "assets/cms-catalog.js",
-        "section": "website",
-        "key": "aut-17",
-        "language": "nl",
-        "scope": "committed-defaults"
-      },
-      "engine": {
-        "name": "LanguageTool",
-        "version": "6.6",
-        "language": "nl",
-        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
-      }
-    },
-    {
-      "id": "automatisering.html#cms-catalog:website:aut-18:text",
-      "page": "automatisering.html",
-      "kind": "cms-catalog:text",
-      "text": "Zo pakken we het aan",
-      "sha256": "cba9144a4f6d1f7f30d634472a0014e4479d632d51755d3fa3cc53ad3ff148fa",
-      "source": {
-        "adapter": "static-cms-catalog",
-        "file": "assets/cms-catalog.js",
-        "section": "website",
-        "key": "aut-18",
-        "language": "nl",
-        "scope": "committed-defaults"
-      },
-      "engine": {
-        "name": "LanguageTool",
-        "version": "6.6",
-        "language": "nl",
-        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
-      }
-    },
-    {
-      "id": "automatisering.html#cms-catalog:website:aut-19:text",
-      "page": "automatisering.html",
-      "kind": "cms-catalog:text",
-      "text": "Workflowscan.",
-      "sha256": "e3bb8de33d5de34ab36859850b0783a315c9cd6fe30c4db498513e43fa08c59b",
-      "source": {
-        "adapter": "static-cms-catalog",
-        "file": "assets/cms-catalog.js",
-        "section": "website",
-        "key": "aut-19",
-        "language": "nl",
-        "scope": "committed-defaults"
-      },
-      "engine": {
-        "name": "LanguageTool",
-        "version": "6.6",
-        "language": "nl",
-        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
-      }
-    },
-    {
-      "id": "automatisering.html#cms-catalog:website:aut-20:text",
-      "page": "automatisering.html",
-      "kind": "cms-catalog:text",
-      "text": "We kijken hoe het werk vandaag loopt en waar het handwerk zit.",
-      "sha256": "bb119a8a5d0a646a49c16701c060f3004222b3d95d1b3c49cd8943689b6c3670",
-      "source": {
-        "adapter": "static-cms-catalog",
-        "file": "assets/cms-catalog.js",
-        "section": "website",
-        "key": "aut-20",
-        "language": "nl",
-        "scope": "committed-defaults"
-      },
       "engine": {
         "name": "LanguageTool",
         "version": "6.6",
@@ -26792,132 +26376,6 @@
       }
     },
     {
-      "id": "automatisering.html#cms-catalog:website:aut-29:text",
-      "page": "automatisering.html",
-      "kind": "cms-catalog:text",
-      "text": "Dienst of software",
-      "sha256": "2c669debdeb5fa8749144d36ce2fdecdb1499c1202efc36f140e9b5ea0429499",
-      "source": {
-        "adapter": "static-cms-catalog",
-        "file": "assets/cms-catalog.js",
-        "section": "website",
-        "key": "aut-29",
-        "language": "nl",
-        "scope": "committed-defaults"
-      },
-      "engine": {
-        "name": "LanguageTool",
-        "version": "6.6",
-        "language": "nl",
-        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
-      }
-    },
-    {
-      "id": "automatisering.html#cms-catalog:website:aut-31:text",
-      "page": "automatisering.html",
-      "kind": "cms-catalog:text",
-      "text": "Wat u wint",
-      "sha256": "265ae3773b41847acef84360cce5780dd910b88c18da45df54b8291037eff72b",
-      "source": {
-        "adapter": "static-cms-catalog",
-        "file": "assets/cms-catalog.js",
-        "section": "website",
-        "key": "aut-31",
-        "language": "nl",
-        "scope": "committed-defaults"
-      },
-      "engine": {
-        "name": "LanguageTool",
-        "version": "6.6",
-        "language": "nl",
-        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
-      }
-    },
-    {
-      "id": "automatisering.html#cms-catalog:website:aut-32:text",
-      "page": "automatisering.html",
-      "kind": "cms-catalog:text",
-      "text": "Uren per week terug voor uw team.",
-      "sha256": "888fd224d84dd05982ebef12138385f98820c73ebcd7bb0104ea84ccdaaf25f6",
-      "source": {
-        "adapter": "static-cms-catalog",
-        "file": "assets/cms-catalog.js",
-        "section": "website",
-        "key": "aut-32",
-        "language": "nl",
-        "scope": "committed-defaults"
-      },
-      "engine": {
-        "name": "LanguageTool",
-        "version": "6.6",
-        "language": "nl",
-        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
-      }
-    },
-    {
-      "id": "automatisering.html#cms-catalog:website:aut-33:text",
-      "page": "automatisering.html",
-      "kind": "cms-catalog:text",
-      "text": "Minder fouten door overtypen.",
-      "sha256": "ffcfc9bd4d3bbcc457704bee6e7ee773f15421392891a1811e405820960a3762",
-      "source": {
-        "adapter": "static-cms-catalog",
-        "file": "assets/cms-catalog.js",
-        "section": "website",
-        "key": "aut-33",
-        "language": "nl",
-        "scope": "committed-defaults"
-      },
-      "engine": {
-        "name": "LanguageTool",
-        "version": "6.6",
-        "language": "nl",
-        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
-      }
-    },
-    {
-      "id": "automatisering.html#cms-catalog:website:aut-34:text",
-      "page": "automatisering.html",
-      "kind": "cms-catalog:text",
-      "text": "Sneller antwoord aan klanten en leveranciers.",
-      "sha256": "e3f41959e14519a8b6a0ecd85d30a6005e3bfa98024ba0c6db0fd28058a1fa7d",
-      "source": {
-        "adapter": "static-cms-catalog",
-        "file": "assets/cms-catalog.js",
-        "section": "website",
-        "key": "aut-34",
-        "language": "nl",
-        "scope": "committed-defaults"
-      },
-      "engine": {
-        "name": "LanguageTool",
-        "version": "6.6",
-        "language": "nl",
-        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
-      }
-    },
-    {
-      "id": "automatisering.html#cms-catalog:website:aut-35:text",
-      "page": "automatisering.html",
-      "kind": "cms-catalog:text",
-      "text": "Zicht op wat er loopt, zonder dat iemand het moet bijhouden.",
-      "sha256": "dff4f0280c1ac689912fea87612073431b686e0ef4759bb5429d110fd98a6e6d",
-      "source": {
-        "adapter": "static-cms-catalog",
-        "file": "assets/cms-catalog.js",
-        "section": "website",
-        "key": "aut-35",
-        "language": "nl",
-        "scope": "committed-defaults"
-      },
-      "engine": {
-        "name": "LanguageTool",
-        "version": "6.6",
-        "language": "nl",
-        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
-      }
-    },
-    {
       "id": "automatisering.html#cms-catalog:website:aut-36:text",
       "page": "automatisering.html",
       "kind": "cms-catalog:text",
@@ -27002,27 +26460,6 @@
       }
     },
     {
-      "id": "automatisering.html#cms-catalog:website:aut-40:text",
-      "page": "automatisering.html",
-      "kind": "cms-catalog:text",
-      "text": "Welke taak typt uw team vandaag nog over?",
-      "sha256": "3a3a075abc39d9f3650f1fb9affdeb272616258db9a21cea3c2f910cf4c137ba",
-      "source": {
-        "adapter": "static-cms-catalog",
-        "file": "assets/cms-catalog.js",
-        "section": "website",
-        "key": "aut-40",
-        "language": "nl",
-        "scope": "committed-defaults"
-      },
-      "engine": {
-        "name": "LanguageTool",
-        "version": "6.6",
-        "language": "nl",
-        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
-      }
-    },
-    {
       "id": "automatisering.html#cms-catalog:website:aut-41:text",
       "page": "automatisering.html",
       "kind": "cms-catalog:text",
@@ -27033,405 +26470,6 @@
         "file": "assets/cms-catalog.js",
         "section": "website",
         "key": "aut-41",
-        "language": "nl",
-        "scope": "committed-defaults"
-      },
-      "engine": {
-        "name": "LanguageTool",
-        "version": "6.6",
-        "language": "nl",
-        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
-      }
-    },
-    {
-      "id": "automatisering.html#cms-catalog:website:awx-01:text",
-      "page": "automatisering.html",
-      "kind": "cms-catalog:text",
-      "text": "In het kort",
-      "sha256": "717ab12926825fa523cb53871c822bb461cff3e4b5dc2599ff1927249e599cee",
-      "source": {
-        "adapter": "static-cms-catalog",
-        "file": "assets/cms-catalog.js",
-        "section": "website",
-        "key": "awx-01",
-        "language": "nl",
-        "scope": "committed-defaults"
-      },
-      "engine": {
-        "name": "LanguageTool",
-        "version": "6.6",
-        "language": "nl",
-        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
-      }
-    },
-    {
-      "id": "automatisering.html#cms-catalog:website:awx-02:text",
-      "page": "automatisering.html",
-      "kind": "cms-catalog:text",
-      "text": "Het handwerk",
-      "sha256": "19f87b34e577cb12393fb415ccd383d81bbcd626e417ee6c9bb844efb87cd555",
-      "source": {
-        "adapter": "static-cms-catalog",
-        "file": "assets/cms-catalog.js",
-        "section": "website",
-        "key": "awx-02",
-        "language": "nl",
-        "scope": "committed-defaults"
-      },
-      "engine": {
-        "name": "LanguageTool",
-        "version": "6.6",
-        "language": "nl",
-        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
-      }
-    },
-    {
-      "id": "automatisering.html#cms-catalog:website:awx-03:text",
-      "page": "automatisering.html",
-      "kind": "cms-catalog:text",
-      "text": "Uw team typt over, kopieert en plakt, en volgt op met herinneringen. Dat kost elke week uren.",
-      "sha256": "b3a36f06135054c4d836ec5ba1f82cde2c2a6ea1c93f76516f3a225bc1ff55d2",
-      "source": {
-        "adapter": "static-cms-catalog",
-        "file": "assets/cms-catalog.js",
-        "section": "website",
-        "key": "awx-03",
-        "language": "nl",
-        "scope": "committed-defaults"
-      },
-      "engine": {
-        "name": "LanguageTool",
-        "version": "6.6",
-        "language": "nl",
-        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
-      }
-    },
-    {
-      "id": "automatisering.html#cms-catalog:website:awx-04:text",
-      "page": "automatisering.html",
-      "kind": "cms-catalog:text",
-      "text": "Eén workflow tegelijk",
-      "sha256": "d2dd5d37afe16aff67d39663b0304a082407e4598eff5ee3750f01d1ceac6333",
-      "source": {
-        "adapter": "static-cms-catalog",
-        "file": "assets/cms-catalog.js",
-        "section": "website",
-        "key": "awx-04",
-        "language": "nl",
-        "scope": "committed-defaults"
-      },
-      "engine": {
-        "name": "LanguageTool",
-        "version": "6.6",
-        "language": "nl",
-        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
-      }
-    },
-    {
-      "id": "automatisering.html#cms-catalog:website:awx-05:text",
-      "page": "automatisering.html",
-      "kind": "cms-catalog:text",
-      "text": "We starten met de workflow die het meeste tijd kost, en bouwen waar het kan op de systemen die u al hebt.",
-      "sha256": "511035e6459218218f9952b160c3bec927796fee1a931ddfbd7bf7565326acf7",
-      "source": {
-        "adapter": "static-cms-catalog",
-        "file": "assets/cms-catalog.js",
-        "section": "website",
-        "key": "awx-05",
-        "language": "nl",
-        "scope": "committed-defaults"
-      },
-      "engine": {
-        "name": "LanguageTool",
-        "version": "6.6",
-        "language": "nl",
-        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
-      }
-    },
-    {
-      "id": "automatisering.html#cms-catalog:website:awx-06:text",
-      "page": "automatisering.html",
-      "kind": "cms-catalog:text",
-      "text": "U beslist",
-      "sha256": "50fdb19bb5439fb88f84979a2d0ee16dca5137fba781ebd6a75373993c9d4a6f",
-      "source": {
-        "adapter": "static-cms-catalog",
-        "file": "assets/cms-catalog.js",
-        "section": "website",
-        "key": "awx-06",
-        "language": "nl",
-        "scope": "committed-defaults"
-      },
-      "engine": {
-        "name": "LanguageTool",
-        "version": "6.6",
-        "language": "nl",
-        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
-      }
-    },
-    {
-      "id": "automatisering.html#cms-catalog:website:awx-07:text",
-      "page": "automatisering.html",
-      "kind": "cms-catalog:text",
-      "text": "Bij gevoelige stappen keurt een medewerker eerst goed. We meten de tijd vóór en na.",
-      "sha256": "ef868f1204c4621eb44ed0d1a2aefd2447035e689ade9b2fa44b795983e66422",
-      "source": {
-        "adapter": "static-cms-catalog",
-        "file": "assets/cms-catalog.js",
-        "section": "website",
-        "key": "awx-07",
-        "language": "nl",
-        "scope": "committed-defaults"
-      },
-      "engine": {
-        "name": "LanguageTool",
-        "version": "6.6",
-        "language": "nl",
-        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
-      }
-    },
-    {
-      "id": "automatisering.html#cms-catalog:website:awx-08:text",
-      "page": "automatisering.html",
-      "kind": "cms-catalog:text",
-      "text": "Vier soorten handwerk die uw mensen elke week tijd kosten.",
-      "sha256": "67291a58956987dc9da05e1a8cd1dda1fd96f0b12fc462e9db493f8dafd2c086",
-      "source": {
-        "adapter": "static-cms-catalog",
-        "file": "assets/cms-catalog.js",
-        "section": "website",
-        "key": "awx-08",
-        "language": "nl",
-        "scope": "committed-defaults"
-      },
-      "engine": {
-        "name": "LanguageTool",
-        "version": "6.6",
-        "language": "nl",
-        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
-      }
-    },
-    {
-      "id": "automatisering.html#cms-catalog:website:awx-09:text",
-      "page": "automatisering.html",
-      "kind": "cms-catalog:text",
-      "text": "Rekenvoorbeeld",
-      "sha256": "167242f5cefbed7447e77271d8001fe928973cf074a3e27fe8fe7e0a0475a2ca",
-      "source": {
-        "adapter": "static-cms-catalog",
-        "file": "assets/cms-catalog.js",
-        "section": "website",
-        "key": "awx-09",
-        "language": "nl",
-        "scope": "committed-defaults"
-      },
-      "engine": {
-        "name": "LanguageTool",
-        "version": "6.6",
-        "language": "nl",
-        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
-      }
-    },
-    {
-      "id": "automatisering.html#cms-catalog:website:awx-10:text",
-      "page": "automatisering.html",
-      "kind": "cms-catalog:text",
-      "text": "€ 3.795",
-      "sha256": "d889b53b484606ed8a4eae7506140bc9eeb2df8b21f2428edc4cdf48d4369ad3",
-      "source": {
-        "adapter": "static-cms-catalog",
-        "file": "assets/cms-catalog.js",
-        "section": "website",
-        "key": "awx-10",
-        "language": "nl",
-        "scope": "committed-defaults"
-      },
-      "engine": {
-        "name": "LanguageTool",
-        "version": "6.6",
-        "language": "nl",
-        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
-      }
-    },
-    {
-      "id": "automatisering.html#cms-catalog:website:awx-11:text",
-      "page": "automatisering.html",
-      "kind": "cms-catalog:text",
-      "text": "per medewerker per jaar",
-      "sha256": "508faf488b4820bd1811ff886d0347166f685037ec82bb685caee952daf95d4e",
-      "source": {
-        "adapter": "static-cms-catalog",
-        "file": "assets/cms-catalog.js",
-        "section": "website",
-        "key": "awx-11",
-        "language": "nl",
-        "scope": "committed-defaults"
-      },
-      "engine": {
-        "name": "LanguageTool",
-        "version": "6.6",
-        "language": "nl",
-        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
-      }
-    },
-    {
-      "id": "automatisering.html#cms-catalog:website:awx-12:text",
-      "page": "automatisering.html",
-      "kind": "cms-catalog:text",
-      "text": "Wie één uur per dag overtypt, besteedt daar bij € 17,25 per uur en 220 werkdagen zoveel aan. Die tijd kan naar klanten, kwaliteit of groei gaan.",
-      "sha256": "b6a466cd667c68f94e423b0bfd99e465e5944c2f2358a6470cba3d3cb999af9a",
-      "source": {
-        "adapter": "static-cms-catalog",
-        "file": "assets/cms-catalog.js",
-        "section": "website",
-        "key": "awx-12",
-        "language": "nl",
-        "scope": "committed-defaults"
-      },
-      "engine": {
-        "name": "LanguageTool",
-        "version": "6.6",
-        "language": "nl",
-        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
-      }
-    },
-    {
-      "id": "automatisering.html#cms-catalog:website:awx-13:text",
-      "page": "automatisering.html",
-      "kind": "cms-catalog:text",
-      "text": "Wat we automatiseren, van de eerste mail tot het rapport.",
-      "sha256": "e682ddc55c0687ec88c8028e0c8d88b7b95b3185f34dce2e7673339d0a496190",
-      "source": {
-        "adapter": "static-cms-catalog",
-        "file": "assets/cms-catalog.js",
-        "section": "website",
-        "key": "awx-13",
-        "language": "nl",
-        "scope": "committed-defaults"
-      },
-      "engine": {
-        "name": "LanguageTool",
-        "version": "6.6",
-        "language": "nl",
-        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
-      }
-    },
-    {
-      "id": "automatisering.html#cms-catalog:website:awx-14:text",
-      "page": "automatisering.html",
-      "kind": "cms-catalog:text",
-      "text": "Bestellingen",
-      "sha256": "f9b49c2606bb04b90bf68237925c22d1b65613e46a40f140c1ed0c9ab759f9ba",
-      "source": {
-        "adapter": "static-cms-catalog",
-        "file": "assets/cms-catalog.js",
-        "section": "website",
-        "key": "awx-14",
-        "language": "nl",
-        "scope": "committed-defaults"
-      },
-      "engine": {
-        "name": "LanguageTool",
-        "version": "6.6",
-        "language": "nl",
-        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
-      }
-    },
-    {
-      "id": "automatisering.html#cms-catalog:website:awx-15:text",
-      "page": "automatisering.html",
-      "kind": "cms-catalog:text",
-      "text": "Aankoopfacturen",
-      "sha256": "19b0ae383082f3d2cb87440f789c828a272f9ae21fa451b369e807814645fa2f",
-      "source": {
-        "adapter": "static-cms-catalog",
-        "file": "assets/cms-catalog.js",
-        "section": "website",
-        "key": "awx-15",
-        "language": "nl",
-        "scope": "committed-defaults"
-      },
-      "engine": {
-        "name": "LanguageTool",
-        "version": "6.6",
-        "language": "nl",
-        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
-      }
-    },
-    {
-      "id": "automatisering.html#cms-catalog:website:awx-16:text",
-      "page": "automatisering.html",
-      "kind": "cms-catalog:text",
-      "text": "Nieuwe klanten",
-      "sha256": "70a07a25a93094743491bbffffbc9c8eb657e52bfdf528db6389c5a81fbcd3a3",
-      "source": {
-        "adapter": "static-cms-catalog",
-        "file": "assets/cms-catalog.js",
-        "section": "website",
-        "key": "awx-16",
-        "language": "nl",
-        "scope": "committed-defaults"
-      },
-      "engine": {
-        "name": "LanguageTool",
-        "version": "6.6",
-        "language": "nl",
-        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
-      }
-    },
-    {
-      "id": "automatisering.html#cms-catalog:website:awx-17:text",
-      "page": "automatisering.html",
-      "kind": "cms-catalog:text",
-      "text": "Wekelijkse cijfers",
-      "sha256": "f89b1523af792768947f320b04ce2fd9d2913bf4b7a6bd1979e4dc7fa81fcc34",
-      "source": {
-        "adapter": "static-cms-catalog",
-        "file": "assets/cms-catalog.js",
-        "section": "website",
-        "key": "awx-17",
-        "language": "nl",
-        "scope": "committed-defaults"
-      },
-      "engine": {
-        "name": "LanguageTool",
-        "version": "6.6",
-        "language": "nl",
-        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
-      }
-    },
-    {
-      "id": "automatisering.html#cms-catalog:website:awx-18:text",
-      "page": "automatisering.html",
-      "kind": "cms-catalog:text",
-      "text": "Herinneringen",
-      "sha256": "5cdc8532c0f1b1253a9d398907891984915fcaddf84421dd48caeebbbffc8daa",
-      "source": {
-        "adapter": "static-cms-catalog",
-        "file": "assets/cms-catalog.js",
-        "section": "website",
-        "key": "awx-18",
-        "language": "nl",
-        "scope": "committed-defaults"
-      },
-      "engine": {
-        "name": "LanguageTool",
-        "version": "6.6",
-        "language": "nl",
-        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
-      }
-    },
-    {
-      "id": "automatisering.html#cms-catalog:website:awx-19:text",
-      "page": "automatisering.html",
-      "kind": "cms-catalog:text",
-      "text": "Vier stappen. Klein beginnen, meten, en pas dan verder.",
-      "sha256": "3a516561371305bcca189feb77fbbd43f0700d5b1dbad156b704d195c1e026f0",
-      "source": {
-        "adapter": "static-cms-catalog",
-        "file": "assets/cms-catalog.js",
-        "section": "website",
-        "key": "awx-19",
         "language": "nl",
         "scope": "committed-defaults"
       },
@@ -27695,16 +26733,16 @@
       }
     },
     {
-      "id": "automatisering.html#cms-catalog:website:awx-32:text",
+      "id": "automatisering.html#cms-catalog:website:wf-aanpak-intro:text",
       "page": "automatisering.html",
       "kind": "cms-catalog:text",
-      "text": "Wat een geautomatiseerde workflow u oplevert.",
-      "sha256": "376ab1c2ba62489c13eaf97a801727249cc6d202243688ead72e788004ed16fd",
+      "text": "Breng één terugkerende taak mee. Samen volgen we een echt voorbeeld door uw systemen, van binnenkomst tot goedkeuring.",
+      "sha256": "c9e72c51fea0c485f8a808b0b2fedc2fb170d316638903e4dab14015663f119d",
       "source": {
         "adapter": "static-cms-catalog",
         "file": "assets/cms-catalog.js",
         "section": "website",
-        "key": "awx-32",
+        "key": "wf-aanpak-intro",
         "language": "nl",
         "scope": "committed-defaults"
       },
@@ -27716,16 +26754,16 @@
       }
     },
     {
-      "id": "automatisering.html#cms-catalog:website:awx-33:text",
+      "id": "automatisering.html#cms-catalog:website:wf-aanpak-scan-uitleg:text",
       "page": "automatisering.html",
       "kind": "cms-catalog:text",
-      "text": "Tijd terug",
-      "sha256": "5ad54211589e9f2ef3168a8deeb97a6a0cfac36df353df469f0ad544f2ad1d03",
+      "text": "We kijken hoe het werk vandaag loopt en waar het handwerk zit.",
+      "sha256": "bb119a8a5d0a646a49c16701c060f3004222b3d95d1b3c49cd8943689b6c3670",
       "source": {
         "adapter": "static-cms-catalog",
         "file": "assets/cms-catalog.js",
         "section": "website",
-        "key": "awx-33",
+        "key": "wf-aanpak-scan-uitleg",
         "language": "nl",
         "scope": "committed-defaults"
       },
@@ -27737,16 +26775,16 @@
       }
     },
     {
-      "id": "automatisering.html#cms-catalog:website:awx-34:text",
+      "id": "automatisering.html#cms-catalog:website:wf-aanpak-scan:text",
       "page": "automatisering.html",
       "kind": "cms-catalog:text",
-      "text": "Minder fouten",
-      "sha256": "6bf62e1d668540b812499d801ebf60b80229c42872d67efe870a69110e3abbfb",
+      "text": "Workflowscan.",
+      "sha256": "e3bb8de33d5de34ab36859850b0783a315c9cd6fe30c4db498513e43fa08c59b",
       "source": {
         "adapter": "static-cms-catalog",
         "file": "assets/cms-catalog.js",
         "section": "website",
-        "key": "awx-34",
+        "key": "wf-aanpak-scan",
         "language": "nl",
         "scope": "committed-defaults"
       },
@@ -27758,16 +26796,16 @@
       }
     },
     {
-      "id": "automatisering.html#cms-catalog:website:awx-35:text",
+      "id": "automatisering.html#cms-catalog:website:wf-aanpak-titel:text",
       "page": "automatisering.html",
       "kind": "cms-catalog:text",
-      "text": "Sneller antwoord",
-      "sha256": "bb872305da62cedfa9a33914e71c67d7a08b32384dd2c52bc6df26e9eb9c7fed",
+      "text": "Zo pakken we het aan",
+      "sha256": "cba9144a4f6d1f7f30d634472a0014e4479d632d51755d3fa3cc53ad3ff148fa",
       "source": {
         "adapter": "static-cms-catalog",
         "file": "assets/cms-catalog.js",
         "section": "website",
-        "key": "awx-35",
+        "key": "wf-aanpak-titel",
         "language": "nl",
         "scope": "committed-defaults"
       },
@@ -27779,16 +26817,16 @@
       }
     },
     {
-      "id": "automatisering.html#cms-catalog:website:awx-36:text",
+      "id": "automatisering.html#cms-catalog:website:wf-concept-titel:text",
       "page": "automatisering.html",
       "kind": "cms-catalog:text",
-      "text": "Overzicht",
-      "sha256": "6c20ea442bdde6a22cde135c38eac5ec2dcff01e9290d96162a0795e1f1c3668",
+      "text": "De conceptorder staat klaar",
+      "sha256": "ab5c18aa06853d333b8d73e127f8ad68264a4cb9d33741834068b34bc727775d",
       "source": {
         "adapter": "static-cms-catalog",
         "file": "assets/cms-catalog.js",
         "section": "website",
-        "key": "awx-36",
+        "key": "wf-concept-titel",
         "language": "nl",
         "scope": "committed-defaults"
       },
@@ -27800,16 +26838,16 @@
       }
     },
     {
-      "id": "automatisering.html#cms-catalog:website:awx-37:text",
+      "id": "automatisering.html#cms-catalog:website:wf-contact-titel:text",
       "page": "automatisering.html",
       "kind": "cms-catalog:text",
-      "text": "Dienst",
-      "sha256": "ecc4f77cf213133424a79389981368da6d212ef84d247a91be12da532863062f",
+      "text": "Welke gegevens typt uw team vandaag nog over?",
+      "sha256": "fa6139f81d45ca3631a44a702ea04bc1ec33b92ebb80aa1ac13ec2a525a0c9b3",
       "source": {
         "adapter": "static-cms-catalog",
         "file": "assets/cms-catalog.js",
         "section": "website",
-        "key": "awx-37",
+        "key": "wf-contact-titel",
         "language": "nl",
         "scope": "committed-defaults"
       },
@@ -27821,16 +26859,16 @@
       }
     },
     {
-      "id": "automatisering.html#cms-catalog:website:awx-38:text",
+      "id": "automatisering.html#cms-catalog:website:wf-controle-titel:text",
       "page": "automatisering.html",
       "kind": "cms-catalog:text",
-      "text": "Grow Faster bouwt de automatisering voor u, op de systemen die u al gebruikt.",
-      "sha256": "72f49323e8eb54e8b829b3a3b7b33bf222cc6c4ffad43a4ff4d58ef9b52bc9ff",
+      "text": "Uw medewerker beslist",
+      "sha256": "4de407dfcbb6f3623a17536824e4a0ac93b663dfa0c54bce9c14f14fe93a5084",
       "source": {
         "adapter": "static-cms-catalog",
         "file": "assets/cms-catalog.js",
         "section": "website",
-        "key": "awx-38",
+        "key": "wf-controle-titel",
         "language": "nl",
         "scope": "committed-defaults"
       },
@@ -27842,16 +26880,16 @@
       }
     },
     {
-      "id": "automatisering.html#cms-catalog:website:awx-39:text",
+      "id": "automatisering.html#cms-catalog:website:wf-controle-uitleg:text",
       "page": "automatisering.html",
       "kind": "cms-catalog:text",
-      "text": "Software: Orion",
-      "sha256": "4475c74e72cecdf9aa3c9eabae3b9e757c62cd42c5c85a30cbd951fb19329eb2",
+      "text": "Op de klantenfiche staat kaai 1. De bestelling blijft open tot iemand de leverplaats heeft nagekeken.",
+      "sha256": "bf1d479091c6ba644629c674a6ddf073b16b51b3519ca5977268c880003cd714",
       "source": {
         "adapter": "static-cms-catalog",
         "file": "assets/cms-catalog.js",
         "section": "website",
-        "key": "awx-39",
+        "key": "wf-controle-uitleg",
         "language": "nl",
         "scope": "committed-defaults"
       },
@@ -27863,16 +26901,268 @@
       }
     },
     {
-      "id": "automatisering.html#cms-catalog:website:awx-40:text",
+      "id": "automatisering.html#cms-catalog:website:wf-herkenbaar-titel:text",
       "page": "automatisering.html",
       "kind": "cms-catalog:text",
-      "text": "Voor vragenlijsten en specificaties van klanten is er Orion, onze eigen software.",
-      "sha256": "fc47075c9185a97e624dde01530de03775bdc0815afab93be651e8ef2b8ff045",
+      "text": "Hoeveel tijd gaat naar overtypen?",
+      "sha256": "046e510ba12d52b7368b28f03c1a5f8979f424134841796d08098e461ddcc665",
       "source": {
         "adapter": "static-cms-catalog",
         "file": "assets/cms-catalog.js",
         "section": "website",
-        "key": "awx-40",
+        "key": "wf-herkenbaar-titel",
+        "language": "nl",
+        "scope": "committed-defaults"
+      },
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
+      }
+    },
+    {
+      "id": "automatisering.html#cms-catalog:website:wf-intro:text",
+      "page": "automatisering.html",
+      "kind": "cms-catalog:text",
+      "text": "Een bestelling komt per mail binnen. Wij richten de workflow zo in dat de order klaarstaat in uw systeem. Uw team controleert de uitzonderingen en geeft de bestelling vrij.",
+      "sha256": "4309972a8a5ba343f904bc4efc2a9b3f3d1b39e62a4e36c4e559ebe5b19a324e",
+      "source": {
+        "adapter": "static-cms-catalog",
+        "file": "assets/cms-catalog.js",
+        "section": "website",
+        "key": "wf-intro",
+        "language": "nl",
+        "scope": "committed-defaults"
+      },
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
+      }
+    },
+    {
+      "id": "automatisering.html#cms-catalog:website:wf-kop:text",
+      "page": "automatisering.html",
+      "kind": "cms-catalog:text",
+      "text": "Van bestelmail naar conceptorder",
+      "sha256": "89aa4d8cb08b1d0cefa8b2cd21695c47d401f3ff568f1defc158dc1b9351b859",
+      "source": {
+        "adapter": "static-cms-catalog",
+        "file": "assets/cms-catalog.js",
+        "section": "website",
+        "key": "wf-kop",
+        "language": "nl",
+        "scope": "committed-defaults"
+      },
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
+      }
+    },
+    {
+      "id": "automatisering.html#cms-catalog:website:wf-mail-bericht:text",
+      "page": "automatisering.html",
+      "kind": "cms-catalog:text",
+      "text": "“Graag 24 dozen appelsap voor vrijdag. Leveren aan kaai 2.”",
+      "sha256": "3024c0403c20a5949962d632c523914308480485f2829b06fa177ecb0642b89e",
+      "source": {
+        "adapter": "static-cms-catalog",
+        "file": "assets/cms-catalog.js",
+        "section": "website",
+        "key": "wf-mail-bericht",
+        "language": "nl",
+        "scope": "committed-defaults"
+      },
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
+      }
+    },
+    {
+      "id": "automatisering.html#cms-catalog:website:wf-mail-titel:text",
+      "page": "automatisering.html",
+      "kind": "cms-catalog:text",
+      "text": "Een klant bestelt",
+      "sha256": "d130f3546f71d2e7cc6f4d2c36203ac44987622115f14e03a73adc3b4e013fdf",
+      "source": {
+        "adapter": "static-cms-catalog",
+        "file": "assets/cms-catalog.js",
+        "section": "website",
+        "key": "wf-mail-titel",
+        "language": "nl",
+        "scope": "committed-defaults"
+      },
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
+      }
+    },
+    {
+      "id": "automatisering.html#cms-catalog:website:wf-orion-uitleg:text",
+      "page": "automatisering.html",
+      "kind": "cms-catalog:text",
+      "text": "Voor klantvragenlijsten in de voedingssector zoekt Orion in uw documenten en toont het de bron bij elk voorstel.",
+      "sha256": "9952b1abe18f85414374194880000f223cd80a13cc6ef20f11a1c11984f7b27f",
+      "source": {
+        "adapter": "static-cms-catalog",
+        "file": "assets/cms-catalog.js",
+        "section": "website",
+        "key": "wf-orion-uitleg",
+        "language": "nl",
+        "scope": "committed-defaults"
+      },
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
+      }
+    },
+    {
+      "id": "automatisering.html#cms-catalog:website:wf-reken-duiding:text",
+      "page": "automatisering.html",
+      "kind": "cms-catalog:text",
+      "text": "Bij één uur per dag en € 17,25 per uur kost dat € 3.795 per medewerker per jaar. Welk deel u kunt besparen, meten we pas in de praktijk.",
+      "sha256": "8d32058ecf3fb80b5f5cb40bbe6518a0358f596df13cbc80028c547608570651",
+      "source": {
+        "adapter": "static-cms-catalog",
+        "file": "assets/cms-catalog.js",
+        "section": "website",
+        "key": "wf-reken-duiding",
+        "language": "nl",
+        "scope": "committed-defaults"
+      },
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
+      }
+    },
+    {
+      "id": "automatisering.html#cms-catalog:website:wf-reken-intro:text",
+      "page": "automatisering.html",
+      "kind": "cms-catalog:text",
+      "text": "Tel de minuten die één medewerker hier op een werkdag aan besteedt. De grafiek rekent met 220 werkdagen per jaar.",
+      "sha256": "f69d73558359d308af223630c849855bc6ce4b08b1f8bd3d35b2ffb6987d8714",
+      "source": {
+        "adapter": "static-cms-catalog",
+        "file": "assets/cms-catalog.js",
+        "section": "website",
+        "key": "wf-reken-intro",
+        "language": "nl",
+        "scope": "committed-defaults"
+      },
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
+      }
+    },
+    {
+      "id": "automatisering.html#cms-catalog:website:wf-sector-administratie:text",
+      "page": "automatisering.html",
+      "kind": "cms-catalog:text",
+      "text": "Een factuur komt per mail binnen. De boekhouding controleert het overgenomen bedrag en de leverancier vóór het boeken.",
+      "sha256": "fd8fd7aef0ec2eef3dc3954b40ccd076141e301921dc8683dfbd42a39d6dcb86",
+      "source": {
+        "adapter": "static-cms-catalog",
+        "file": "assets/cms-catalog.js",
+        "section": "website",
+        "key": "wf-sector-administratie",
+        "language": "nl",
+        "scope": "committed-defaults"
+      },
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
+      }
+    },
+    {
+      "id": "automatisering.html#cms-catalog:website:wf-sector-onderhoud:text",
+      "page": "automatisering.html",
+      "kind": "cms-catalog:text",
+      "text": "Een storing wordt gemeld. De werkbon staat klaar met de machine en de locatie. De planner kiest de technicus.",
+      "sha256": "f60cfc83f19fa28a66af29a79376903cbdf915f0fe1f7e1a68767a0fac29b454",
+      "source": {
+        "adapter": "static-cms-catalog",
+        "file": "assets/cms-catalog.js",
+        "section": "website",
+        "key": "wf-sector-onderhoud",
+        "language": "nl",
+        "scope": "committed-defaults"
+      },
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
+      }
+    },
+    {
+      "id": "automatisering.html#cms-catalog:website:wf-sector-voeding:text",
+      "page": "automatisering.html",
+      "kind": "cms-catalog:text",
+      "text": "Een leveringsbon komt binnen. De ontvangstmedewerker vergelijkt het voorgestelde lotnummer met het etiket vóór de registratie.",
+      "sha256": "5867adfe18ca8721da5b999ce7ce77028c9868b97a64c0ff43f7a0a42ed441ba",
+      "source": {
+        "adapter": "static-cms-catalog",
+        "file": "assets/cms-catalog.js",
+        "section": "website",
+        "key": "wf-sector-voeding",
+        "language": "nl",
+        "scope": "committed-defaults"
+      },
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
+      }
+    },
+    {
+      "id": "automatisering.html#cms-catalog:website:wf-sectoren-titel:text",
+      "page": "automatisering.html",
+      "kind": "cms-catalog:text",
+      "text": "Waar beslist uw team?",
+      "sha256": "63f9bb20454b38531ea54d64a90b43dcc11399f1129f23ed20e36fe82deae9a1",
+      "source": {
+        "adapter": "static-cms-catalog",
+        "file": "assets/cms-catalog.js",
+        "section": "website",
+        "key": "wf-sectoren-titel",
+        "language": "nl",
+        "scope": "committed-defaults"
+      },
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
+      }
+    },
+    {
+      "id": "automatisering.html#cms-catalog:website:wf-voorbeelden-titel:text",
+      "page": "automatisering.html",
+      "kind": "cms-catalog:text",
+      "text": "Wat gebeurt er met één bestelmail?",
+      "sha256": "4a3131594be18114321159406711d3e6caf142385c8aff3382df3883b8aae4bb",
+      "source": {
+        "adapter": "static-cms-catalog",
+        "file": "assets/cms-catalog.js",
+        "section": "website",
+        "key": "wf-voorbeelden-titel",
         "language": "nl",
         "scope": "committed-defaults"
       },
@@ -28885,7 +28175,7 @@
       }
     },
     {
-      "id": "automatisering.html#text:body:2>main:3>header:1>div:1>div:2>div:3>a:1",
+      "id": "automatisering.html#text:body:2>main:3>header:1>div:1>div:1>div:4>a:1",
       "page": "automatisering.html",
       "kind": "text",
       "text": "Plan een gesprek →",
@@ -28898,11 +28188,11 @@
       }
     },
     {
-      "id": "automatisering.html#text:body:2>main:3>header:1>div:1>div:2>div:3>a:2",
+      "id": "automatisering.html#text:body:2>main:3>header:1>div:1>div:1>div:4>a:2",
       "page": "automatisering.html",
       "kind": "text",
-      "text": "Bekijk voorbeelden →",
-      "sha256": "9eb852a8136ea370c0d6e6454f51b9f6a91a4f7368e3f9ec4d627b7bfc81d931",
+      "text": "Volg een bestelling ↓",
+      "sha256": "b401bc21cd50060d25f61c323699af210dbe2f1db90f5f0086c02c2f2f5776ab",
       "engine": {
         "name": "LanguageTool",
         "version": "6.6",
@@ -28911,11 +28201,11 @@
       }
     },
     {
-      "id": "automatisering.html#text:body:2>main:3>header:1>div:1>div:2>h1:1",
+      "id": "automatisering.html#text:body:2>main:3>header:1>div:1>div:1>h1:2",
       "page": "automatisering.html",
       "kind": "text",
-      "text": "Wat uw team overtypt, gebeurt voortaan vanzelf.",
-      "sha256": "e9e1549fa97fbb81c9facdb62bf886ce8ec416490ffcd83ca947dac96bdedc2e",
+      "text": "Van bestelmail naar conceptorder",
+      "sha256": "89aa4d8cb08b1d0cefa8b2cd21695c47d401f3ff568f1defc158dc1b9351b859",
       "engine": {
         "name": "LanguageTool",
         "version": "6.6",
@@ -28924,11 +28214,11 @@
       }
     },
     {
-      "id": "automatisering.html#text:body:2>main:3>header:1>div:1>div:2>p:2",
+      "id": "automatisering.html#text:body:2>main:3>header:1>div:1>div:1>p:1",
       "page": "automatisering.html",
       "kind": "text",
-      "text": "We automatiseren het handwerk tussen uw mails, Excel-lijsten en systemen. Uw mensen houden tijd over voor het werk dat telt.",
-      "sha256": "905c719a5afe0450c113defc246de02311acda8839932f111d7c013f863136c1",
+      "text": "Workflow-automatisering",
+      "sha256": "d843d7d010c297e9336b2a9d47f659857a440a8646f738438bdcd15387a32daf",
       "engine": {
         "name": "LanguageTool",
         "version": "6.6",
@@ -28937,11 +28227,11 @@
       }
     },
     {
-      "id": "automatisering.html#text:body:2>main:3>section:10>div:1>div:3>a:1",
+      "id": "automatisering.html#text:body:2>main:3>header:1>div:1>div:1>p:3",
       "page": "automatisering.html",
       "kind": "text",
-      "text": "Plan een gesprek →",
-      "sha256": "4a40436178b1e8c648093e16d0c21314f18a6457d30056d2bdc20a98828e5449",
+      "text": "Een bestelling komt per mail binnen. Wij richten de workflow zo in dat de order klaarstaat in uw systeem. Uw team controleert de uitzonderingen en geeft de bestelling vrij.",
+      "sha256": "4309972a8a5ba343f904bc4efc2a9b3f3d1b39e62a4e36c4e559ebe5b19a324e",
       "engine": {
         "name": "LanguageTool",
         "version": "6.6",
@@ -28950,11 +28240,11 @@
       }
     },
     {
-      "id": "automatisering.html#text:body:2>main:3>section:10>div:1>h2:1",
+      "id": "automatisering.html#text:body:2>main:3>section:2>div:1>h2:2",
       "page": "automatisering.html",
       "kind": "text",
-      "text": "Welke taak typt uw team vandaag nog over?",
-      "sha256": "3a3a075abc39d9f3650f1fb9affdeb272616258db9a21cea3c2f910cf4c137ba",
+      "text": "Wat gebeurt er met één bestelmail?",
+      "sha256": "4a3131594be18114321159406711d3e6caf142385c8aff3382df3883b8aae4bb",
       "engine": {
         "name": "LanguageTool",
         "version": "6.6",
@@ -28963,11 +28253,11 @@
       }
     },
     {
-      "id": "automatisering.html#text:body:2>main:3>section:10>div:1>p:2",
+      "id": "automatisering.html#text:body:2>main:3>section:2>div:1>ol:3>li:1",
       "page": "automatisering.html",
       "kind": "text",
-      "text": "Vertel ons welke workflow te veel handwerk vraagt. In een eerste gesprek bekijken we of automatiseren loont.",
-      "sha256": "d600b562fdd457ad076153747fe3847ddc2216f71a19c0a380decc9964981602",
+      "text": "Binnenkomst",
+      "sha256": "72bb1fecd647ab92032f347596069f6791a94622dfbef673c7098e4b0f972cec",
       "engine": {
         "name": "LanguageTool",
         "version": "6.6",
@@ -28976,11 +28266,11 @@
       }
     },
     {
-      "id": "automatisering.html#text:body:2>main:3>section:2>div:1>div:1>h2:1",
+      "id": "automatisering.html#text:body:2>main:3>section:2>div:1>ol:3>li:1>blockquote:3",
       "page": "automatisering.html",
       "kind": "text",
-      "text": "In het kort",
-      "sha256": "717ab12926825fa523cb53871c822bb461cff3e4b5dc2599ff1927249e599cee",
+      "text": "“Graag 24 dozen appelsap voor vrijdag. Leveren aan kaai 2.”",
+      "sha256": "3024c0403c20a5949962d632c523914308480485f2829b06fa177ecb0642b89e",
       "engine": {
         "name": "LanguageTool",
         "version": "6.6",
@@ -28989,11 +28279,11 @@
       }
     },
     {
-      "id": "automatisering.html#text:body:2>main:3>section:2>div:1>ul:2>li:1>h3:1",
+      "id": "automatisering.html#text:body:2>main:3>section:2>div:1>ol:3>li:1>h3:2",
       "page": "automatisering.html",
       "kind": "text",
-      "text": "Het handwerk",
-      "sha256": "19f87b34e577cb12393fb415ccd383d81bbcd626e417ee6c9bb844efb87cd555",
+      "text": "Een klant bestelt",
+      "sha256": "d130f3546f71d2e7cc6f4d2c36203ac44987622115f14e03a73adc3b4e013fdf",
       "engine": {
         "name": "LanguageTool",
         "version": "6.6",
@@ -29002,11 +28292,11 @@
       }
     },
     {
-      "id": "automatisering.html#text:body:2>main:3>section:2>div:1>ul:2>li:1>p:2",
+      "id": "automatisering.html#text:body:2>main:3>section:2>div:1>ol:3>li:2",
       "page": "automatisering.html",
       "kind": "text",
-      "text": "Uw team typt over, kopieert en plakt, en volgt op met herinneringen. Dat kost elke week uren.",
-      "sha256": "b3a36f06135054c4d836ec5ba1f82cde2c2a6ea1c93f76516f3a225bc1ff55d2",
+      "text": "Voorbereiding",
+      "sha256": "26ec780337abd00e5041ecf8ff5fce6eaeac52adaef6ef6082ea5ce2205ae46c",
       "engine": {
         "name": "LanguageTool",
         "version": "6.6",
@@ -29015,11 +28305,11 @@
       }
     },
     {
-      "id": "automatisering.html#text:body:2>main:3>section:2>div:1>ul:2>li:2>h3:1",
+      "id": "automatisering.html#text:body:2>main:3>section:2>div:1>ol:3>li:2>dl:3>div:1>dd:2",
       "page": "automatisering.html",
       "kind": "text",
-      "text": "Eén workflow tegelijk",
-      "sha256": "d2dd5d37afe16aff67d39663b0304a082407e4598eff5ee3750f01d1ceac6333",
+      "text": "Appelsap",
+      "sha256": "e2f8844282a3a593ca30691693dfb39f7f73882690cdc5de1cb516b2f6b17d71",
       "engine": {
         "name": "LanguageTool",
         "version": "6.6",
@@ -29028,11 +28318,11 @@
       }
     },
     {
-      "id": "automatisering.html#text:body:2>main:3>section:2>div:1>ul:2>li:2>p:2",
+      "id": "automatisering.html#text:body:2>main:3>section:2>div:1>ol:3>li:2>dl:3>div:1>dt:1",
       "page": "automatisering.html",
       "kind": "text",
-      "text": "We starten met de workflow die het meeste tijd kost, en bouwen waar het kan op de systemen die u al hebt.",
-      "sha256": "511035e6459218218f9952b160c3bec927796fee1a931ddfbd7bf7565326acf7",
+      "text": "Artikel",
+      "sha256": "4435fcc2e763d6b80312ae4211bebaf51461501a75ce52ff4cd45f5bdb535f5a",
       "engine": {
         "name": "LanguageTool",
         "version": "6.6",
@@ -29041,11 +28331,11 @@
       }
     },
     {
-      "id": "automatisering.html#text:body:2>main:3>section:2>div:1>ul:2>li:3>h3:1",
+      "id": "automatisering.html#text:body:2>main:3>section:2>div:1>ol:3>li:2>dl:3>div:2>dd:2",
       "page": "automatisering.html",
       "kind": "text",
-      "text": "U beslist",
-      "sha256": "50fdb19bb5439fb88f84979a2d0ee16dca5137fba781ebd6a75373993c9d4a6f",
+      "text": "24 dozen",
+      "sha256": "c2d619e5c8a94292c838f290ccef088715c611ff8011d48ca09f64d3c7f7a714",
       "engine": {
         "name": "LanguageTool",
         "version": "6.6",
@@ -29054,11 +28344,11 @@
       }
     },
     {
-      "id": "automatisering.html#text:body:2>main:3>section:2>div:1>ul:2>li:3>p:2",
+      "id": "automatisering.html#text:body:2>main:3>section:2>div:1>ol:3>li:2>dl:3>div:2>dt:1",
       "page": "automatisering.html",
       "kind": "text",
-      "text": "Bij gevoelige stappen keurt een medewerker eerst goed. We meten de tijd vóór en na.",
-      "sha256": "ef868f1204c4621eb44ed0d1a2aefd2447035e689ade9b2fa44b795983e66422",
+      "text": "Aantal",
+      "sha256": "80f17696b152ac166d0150f3877ece787572838b544707e60def55a15344f4f7",
       "engine": {
         "name": "LanguageTool",
         "version": "6.6",
@@ -29067,11 +28357,11 @@
       }
     },
     {
-      "id": "automatisering.html#text:body:2>main:3>section:3>div:1>div:1>h2:1",
+      "id": "automatisering.html#text:body:2>main:3>section:2>div:1>ol:3>li:2>dl:3>div:3>dd:2",
       "page": "automatisering.html",
       "kind": "text",
-      "text": "Herkenbaar?",
-      "sha256": "7b8225354af212bb09169c2f5b943c0a2477070b15a049a3b0cc253c6a78bc5b",
+      "text": "Kaai 2",
+      "sha256": "1fc73bab0609983828e26ecf6470828b8c454445658ff6d6f9c25a238a3cccc4",
       "engine": {
         "name": "LanguageTool",
         "version": "6.6",
@@ -29080,11 +28370,11 @@
       }
     },
     {
-      "id": "automatisering.html#text:body:2>main:3>section:3>div:1>div:1>p:2",
+      "id": "automatisering.html#text:body:2>main:3>section:2>div:1>ol:3>li:2>dl:3>div:3>dt:1",
       "page": "automatisering.html",
       "kind": "text",
-      "text": "Vier soorten handwerk die uw mensen elke week tijd kosten.",
-      "sha256": "67291a58956987dc9da05e1a8cd1dda1fd96f0b12fc462e9db493f8dafd2c086",
+      "text": "Leverplaats",
+      "sha256": "ef44ecf407d641bcad7fa5dffdfd82014627b6a1e3cc20f6e1967133a083a77e",
       "engine": {
         "name": "LanguageTool",
         "version": "6.6",
@@ -29093,11 +28383,11 @@
       }
     },
     {
-      "id": "automatisering.html#text:body:2>main:3>section:3>div:1>div:2>article:1>h3:1",
+      "id": "automatisering.html#text:body:2>main:3>section:2>div:1>ol:3>li:2>h3:2",
       "page": "automatisering.html",
       "kind": "text",
-      "text": "Overtypen.",
-      "sha256": "9beb9efa4e336fafc38aa36697b1a809db1ff6444eeed7618c3bb827e79903b9",
+      "text": "De conceptorder staat klaar",
+      "sha256": "ab5c18aa06853d333b8d73e127f8ad68264a4cb9d33741834068b34bc727775d",
       "engine": {
         "name": "LanguageTool",
         "version": "6.6",
@@ -29106,11 +28396,11 @@
       }
     },
     {
-      "id": "automatisering.html#text:body:2>main:3>section:3>div:1>div:2>article:1>p:2",
+      "id": "automatisering.html#text:body:2>main:3>section:2>div:1>ol:3>li:3",
       "page": "automatisering.html",
       "kind": "text",
-      "text": "Een bestelling komt binnen per mail en iemand typt ze over in het ordersysteem.",
-      "sha256": "3d2329a8c66c1be199f1f5f61c70bdc32fd5643838bb3dfce0d02e9a654711c3",
+      "text": "Controle Hoe loopt dit af?",
+      "sha256": "57d164a3ddb6688336d2cab17e5de4ead76d058e79e4139aed6e51913360b7c8",
       "engine": {
         "name": "LanguageTool",
         "version": "6.6",
@@ -29119,11 +28409,11 @@
       }
     },
     {
-      "id": "automatisering.html#text:body:2>main:3>section:3>div:1>div:2>article:2>h3:1",
+      "id": "automatisering.html#text:body:2>main:3>section:2>div:1>ol:3>li:3>details:4>p:2",
       "page": "automatisering.html",
       "kind": "text",
-      "text": "Kopiëren en plakken.",
-      "sha256": "d364824591fd2af0028ad82f193cc31fcbf437c17018b1771653ddb5e4fd29d9",
+      "text": "De klant bevestigt kaai 2. De medewerker bevestigt de afwijking en geeft de bestelling vrij.",
+      "sha256": "382ba85950f9e044a4ef425d382e4498645c7da27390886847bb2b714b04a921",
       "engine": {
         "name": "LanguageTool",
         "version": "6.6",
@@ -29132,11 +28422,11 @@
       }
     },
     {
-      "id": "automatisering.html#text:body:2>main:3>section:3>div:1>div:2>article:2>p:2",
+      "id": "automatisering.html#text:body:2>main:3>section:2>div:1>ol:3>li:3>h3:2",
       "page": "automatisering.html",
       "kind": "text",
-      "text": "Gegevens gaan van het ene systeem naar het andere via Excel.",
-      "sha256": "b540a0d7f4441e8931c38e262cb9354d9e6cd18935e724ac7aa87913c75ddd92",
+      "text": "Uw medewerker beslist",
+      "sha256": "4de407dfcbb6f3623a17536824e4a0ac93b663dfa0c54bce9c14f14fe93a5084",
       "engine": {
         "name": "LanguageTool",
         "version": "6.6",
@@ -29145,11 +28435,11 @@
       }
     },
     {
-      "id": "automatisering.html#text:body:2>main:3>section:3>div:1>div:2>article:3>h3:1",
+      "id": "automatisering.html#text:body:2>main:3>section:2>div:1>ol:3>li:3>p:3",
       "page": "automatisering.html",
       "kind": "text",
-      "text": "Opvolgen.",
-      "sha256": "8681184dfac43a05a3f4d73347aeae9b6ddfceab6b277ff8e5da2ed498a2676f",
+      "text": "Op de klantenfiche staat kaai 1. De bestelling blijft open tot iemand de leverplaats heeft nagekeken.",
+      "sha256": "bf1d479091c6ba644629c674a6ddf073b16b51b3519ca5977268c880003cd714",
       "engine": {
         "name": "LanguageTool",
         "version": "6.6",
@@ -29158,11 +28448,11 @@
       }
     },
     {
-      "id": "automatisering.html#text:body:2>main:3>section:3>div:1>div:2>article:3>p:2",
+      "id": "automatisering.html#text:body:2>main:3>section:2>div:1>p:1",
       "page": "automatisering.html",
       "kind": "text",
-      "text": "Offertes, facturen en klachten hangen af van herinneringen in iemands agenda.",
-      "sha256": "616998f721253cab2ec95a8079b0a3d083409c7816a3b0b2e7bfadca5acede6b",
+      "text": "Fictief praktijkvoorbeeld",
+      "sha256": "42d24cdaa155229d257b76cc0be79cfbca4450174cc12bd15694f8bb7ffc2780",
       "engine": {
         "name": "LanguageTool",
         "version": "6.6",
@@ -29171,11 +28461,11 @@
       }
     },
     {
-      "id": "automatisering.html#text:body:2>main:3>section:3>div:1>div:2>article:4>h3:1",
+      "id": "automatisering.html#text:body:2>main:3>section:3>div:1>div:2>figure:1>figcaption:2",
       "page": "automatisering.html",
       "kind": "text",
-      "text": "Rapporteren.",
-      "sha256": "c2190b1f2d0120f3b51f5740651f81da62b96e59c799b561de0c709db5e2ea4f",
+      "text": "Voedselproductie Een leveringsbon komt binnen. De ontvangstmedewerker vergelijkt het voorgestelde lotnummer met het etiket vóór de registratie.",
+      "sha256": "1f32e1254e45e2e5415fe09a26cba3376e548357901a3c9bbd9e660498ea39ec",
       "engine": {
         "name": "LanguageTool",
         "version": "6.6",
@@ -29184,11 +28474,11 @@
       }
     },
     {
-      "id": "automatisering.html#text:body:2>main:3>section:3>div:1>div:2>article:4>p:2",
+      "id": "automatisering.html#text:body:2>main:3>section:3>div:1>div:2>figure:2>figcaption:2",
       "page": "automatisering.html",
       "kind": "text",
-      "text": "Elke maand stelt iemand met de hand hetzelfde rapport samen.",
-      "sha256": "bfc692090b96b385c0ba1da037c2be6a45eab6dea93dd4c0ed78071800e454f7",
+      "text": "Technisch onderhoud Een storing wordt gemeld. De werkbon staat klaar met de machine en de locatie. De planner kiest de technicus.",
+      "sha256": "ce4908aef82c6a36c3fbb9e370460065b0f87a56a0c10d1760ce9a1bb9b3c2c2",
       "engine": {
         "name": "LanguageTool",
         "version": "6.6",
@@ -29197,11 +28487,11 @@
       }
     },
     {
-      "id": "automatisering.html#text:body:2>main:3>section:3>div:1>div:3",
+      "id": "automatisering.html#text:body:2>main:3>section:3>div:1>div:2>figure:3>figcaption:2",
       "page": "automatisering.html",
       "kind": "text",
-      "text": "Rekenvoorbeeld€ 3.795per medewerker per jaar",
-      "sha256": "44283f432dc85a399a639f2c5d54e942a890930ce740bef135e725f30bff6554",
+      "text": "Administratie Een factuur komt per mail binnen. De boekhouding controleert het overgenomen bedrag en de leverancier vóór het boeken.",
+      "sha256": "0307cb9e642f7625c3b22587bd220ea5423eff29de5c2ff2476695d9ae766b97",
       "engine": {
         "name": "LanguageTool",
         "version": "6.6",
@@ -29210,11 +28500,11 @@
       }
     },
     {
-      "id": "automatisering.html#text:body:2>main:3>section:3>div:1>div:3>p:4",
+      "id": "automatisering.html#text:body:2>main:3>section:3>div:1>h2:1",
       "page": "automatisering.html",
       "kind": "text",
-      "text": "Wie één uur per dag overtypt, besteedt daar bij € 17,25 per uur en 220 werkdagen zoveel aan. Die tijd kan naar klanten, kwaliteit of groei gaan.",
-      "sha256": "b6a466cd667c68f94e423b0bfd99e465e5944c2f2358a6470cba3d3cb999af9a",
+      "text": "Waar beslist uw team?",
+      "sha256": "63f9bb20454b38531ea54d64a90b43dcc11399f1129f23ed20e36fe82deae9a1",
       "engine": {
         "name": "LanguageTool",
         "version": "6.6",
@@ -29223,202 +28513,7 @@
       }
     },
     {
-      "id": "automatisering.html#text:body:2>main:3>section:4>div:1>div:1>h2:1",
-      "page": "automatisering.html",
-      "kind": "text",
-      "text": "Voorbeelden",
-      "sha256": "9cd4e067a578d3265336ea58de9222fc14b1ba6c7083bccfc3487bde9e266181",
-      "engine": {
-        "name": "LanguageTool",
-        "version": "6.6",
-        "language": "nl",
-        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
-      }
-    },
-    {
-      "id": "automatisering.html#text:body:2>main:3>section:4>div:1>div:1>p:2",
-      "page": "automatisering.html",
-      "kind": "text",
-      "text": "Wat we automatiseren, van de eerste mail tot het rapport.",
-      "sha256": "e682ddc55c0687ec88c8028e0c8d88b7b95b3185f34dce2e7673339d0a496190",
-      "engine": {
-        "name": "LanguageTool",
-        "version": "6.6",
-        "language": "nl",
-        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
-      }
-    },
-    {
-      "id": "automatisering.html#text:body:2>main:3>section:4>div:1>div:2>article:1>h3:1",
-      "page": "automatisering.html",
-      "kind": "text",
-      "text": "Bestellingen",
-      "sha256": "f9b49c2606bb04b90bf68237925c22d1b65613e46a40f140c1ed0c9ab759f9ba",
-      "engine": {
-        "name": "LanguageTool",
-        "version": "6.6",
-        "language": "nl",
-        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
-      }
-    },
-    {
-      "id": "automatisering.html#text:body:2>main:3>section:4>div:1>div:2>article:1>p:2",
-      "page": "automatisering.html",
-      "kind": "text",
-      "text": "Bestellingen uit mails of pdf’s lezen en klaarzetten in uw ordersysteem.",
-      "sha256": "eb79010d7d829bd38b62964b09ba0aebed0a1c9205c1a6d97599a6b3ef2abd2e",
-      "engine": {
-        "name": "LanguageTool",
-        "version": "6.6",
-        "language": "nl",
-        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
-      }
-    },
-    {
-      "id": "automatisering.html#text:body:2>main:3>section:4>div:1>div:2>article:2>h3:1",
-      "page": "automatisering.html",
-      "kind": "text",
-      "text": "Aankoopfacturen",
-      "sha256": "19b0ae383082f3d2cb87440f789c828a272f9ae21fa451b369e807814645fa2f",
-      "engine": {
-        "name": "LanguageTool",
-        "version": "6.6",
-        "language": "nl",
-        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
-      }
-    },
-    {
-      "id": "automatisering.html#text:body:2>main:3>section:4>div:1>div:2>article:2>p:2",
-      "page": "automatisering.html",
-      "kind": "text",
-      "text": "Aankoopfacturen inlezen en voorbereiden voor de boekhouding.",
-      "sha256": "d55a591bb77e8fc2e67aa858c26237e502a316b330f16b9ffee0b3c824fe2169",
-      "engine": {
-        "name": "LanguageTool",
-        "version": "6.6",
-        "language": "nl",
-        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
-      }
-    },
-    {
-      "id": "automatisering.html#text:body:2>main:3>section:4>div:1>div:2>article:3>h3:1",
-      "page": "automatisering.html",
-      "kind": "text",
-      "text": "Nieuwe klanten",
-      "sha256": "70a07a25a93094743491bbffffbc9c8eb657e52bfdf528db6389c5a81fbcd3a3",
-      "engine": {
-        "name": "LanguageTool",
-        "version": "6.6",
-        "language": "nl",
-        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
-      }
-    },
-    {
-      "id": "automatisering.html#text:body:2>main:3>section:4>div:1>div:2>article:3>p:2",
-      "page": "automatisering.html",
-      "kind": "text",
-      "text": "Een nieuwe klant één keer invoeren, waarna de gegevens in uw CRM, boekhouding en planning staan.",
-      "sha256": "1d6573a2dde9afbf58f0771bab329700a647ebea8abcb1ba104b6f9c3fc35c1f",
-      "engine": {
-        "name": "LanguageTool",
-        "version": "6.6",
-        "language": "nl",
-        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
-      }
-    },
-    {
-      "id": "automatisering.html#text:body:2>main:3>section:4>div:1>div:2>article:4>h3:1",
-      "page": "automatisering.html",
-      "kind": "text",
-      "text": "Wekelijkse cijfers",
-      "sha256": "f89b1523af792768947f320b04ce2fd9d2913bf4b7a6bd1979e4dc7fa81fcc34",
-      "engine": {
-        "name": "LanguageTool",
-        "version": "6.6",
-        "language": "nl",
-        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
-      }
-    },
-    {
-      "id": "automatisering.html#text:body:2>main:3>section:4>div:1>div:2>article:4>p:2",
-      "page": "automatisering.html",
-      "kind": "text",
-      "text": "Wekelijkse cijfers die vanzelf in één overzicht samenkomen.",
-      "sha256": "6703f6c88d7feca4ad2c5a566c210131b1c4494265c97301662af17b5e2fce9b",
-      "engine": {
-        "name": "LanguageTool",
-        "version": "6.6",
-        "language": "nl",
-        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
-      }
-    },
-    {
-      "id": "automatisering.html#text:body:2>main:3>section:4>div:1>div:2>article:5>h3:1",
-      "page": "automatisering.html",
-      "kind": "text",
-      "text": "Herinneringen",
-      "sha256": "5cdc8532c0f1b1253a9d398907891984915fcaddf84421dd48caeebbbffc8daa",
-      "engine": {
-        "name": "LanguageTool",
-        "version": "6.6",
-        "language": "nl",
-        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
-      }
-    },
-    {
-      "id": "automatisering.html#text:body:2>main:3>section:4>div:1>div:2>article:5>p:2",
-      "page": "automatisering.html",
-      "kind": "text",
-      "text": "Herinneringen voor offertes en betalingen die vertrekken nadat u ze goedgekeurd hebt.",
-      "sha256": "53b8fa20dcb32522eacfd659f5646cca9e264c729976d2677a162acc74c7ce53",
-      "engine": {
-        "name": "LanguageTool",
-        "version": "6.6",
-        "language": "nl",
-        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
-      }
-    },
-    {
-      "id": "automatisering.html#text:body:2>main:3>section:4>div:1>div:3>figure:1>figcaption:2",
-      "page": "automatisering.html",
-      "kind": "text",
-      "text": "Voedselproductie Lotnummer controleren bij ontvangst",
-      "sha256": "74f5b5b8d45daff0113b7d111b80f884599791ced44fbf9585a7bcd3a0a07003",
-      "engine": {
-        "name": "LanguageTool",
-        "version": "6.6",
-        "language": "nl",
-        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
-      }
-    },
-    {
-      "id": "automatisering.html#text:body:2>main:3>section:4>div:1>div:3>figure:2>figcaption:2",
-      "page": "automatisering.html",
-      "kind": "text",
-      "text": "Technisch onderhoud Een conceptwerkbon voorbereiden",
-      "sha256": "eb67c9853f6798bb882c452ed0be50830e16bb9784cc24fa3ecaac8c698268e7",
-      "engine": {
-        "name": "LanguageTool",
-        "version": "6.6",
-        "language": "nl",
-        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
-      }
-    },
-    {
-      "id": "automatisering.html#text:body:2>main:3>section:4>div:1>div:3>figure:3>figcaption:2",
-      "page": "automatisering.html",
-      "kind": "text",
-      "text": "Administratie Overgenomen factuurgegevens nakijken",
-      "sha256": "1c5f1c8fc0ae30aca037a466d57d9e2675044650d571fe9411cfd6015820e978",
-      "engine": {
-        "name": "LanguageTool",
-        "version": "6.6",
-        "language": "nl",
-        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
-      }
-    },
-    {
-      "id": "automatisering.html#text:body:2>main:3>section:4>div:1>p:4",
+      "id": "automatisering.html#text:body:2>main:3>section:3>div:1>p:3",
       "page": "automatisering.html",
       "kind": "text",
       "text": "De foto’s zijn gegenereerd ter illustratie.",
@@ -29431,7 +28526,7 @@
       }
     },
     {
-      "id": "automatisering.html#text:body:2>main:3>section:5>div:1>div:1>h2:1",
+      "id": "automatisering.html#text:body:2>main:3>section:4>div:1>div:1>h2:1",
       "page": "automatisering.html",
       "kind": "text",
       "text": "Zo pakken we het aan",
@@ -29444,11 +28539,11 @@
       }
     },
     {
-      "id": "automatisering.html#text:body:2>main:3>section:5>div:1>div:1>p:2",
+      "id": "automatisering.html#text:body:2>main:3>section:4>div:1>div:1>p:2",
       "page": "automatisering.html",
       "kind": "text",
-      "text": "Vier stappen. Klein beginnen, meten, en pas dan verder.",
-      "sha256": "3a516561371305bcca189feb77fbbd43f0700d5b1dbad156b704d195c1e026f0",
+      "text": "Breng één terugkerende taak mee. Samen volgen we een echt voorbeeld door uw systemen, van binnenkomst tot goedkeuring.",
+      "sha256": "c9e72c51fea0c485f8a808b0b2fedc2fb170d316638903e4dab14015663f119d",
       "engine": {
         "name": "LanguageTool",
         "version": "6.6",
@@ -29457,7 +28552,7 @@
       }
     },
     {
-      "id": "automatisering.html#text:body:2>main:3>section:5>div:1>ol:2>li:1",
+      "id": "automatisering.html#text:body:2>main:3>section:4>div:1>ol:2>li:1",
       "page": "automatisering.html",
       "kind": "text",
       "text": "01",
@@ -29470,7 +28565,7 @@
       }
     },
     {
-      "id": "automatisering.html#text:body:2>main:3>section:5>div:1>ol:2>li:1>h3:2",
+      "id": "automatisering.html#text:body:2>main:3>section:4>div:1>ol:2>li:1>div:2>h3:1",
       "page": "automatisering.html",
       "kind": "text",
       "text": "Workflowscan.",
@@ -29483,7 +28578,7 @@
       }
     },
     {
-      "id": "automatisering.html#text:body:2>main:3>section:5>div:1>ol:2>li:1>p:3",
+      "id": "automatisering.html#text:body:2>main:3>section:4>div:1>ol:2>li:1>div:2>p:2",
       "page": "automatisering.html",
       "kind": "text",
       "text": "We kijken hoe het werk vandaag loopt en waar het handwerk zit.",
@@ -29496,7 +28591,7 @@
       }
     },
     {
-      "id": "automatisering.html#text:body:2>main:3>section:5>div:1>ol:2>li:2",
+      "id": "automatisering.html#text:body:2>main:3>section:4>div:1>ol:2>li:2",
       "page": "automatisering.html",
       "kind": "text",
       "text": "02",
@@ -29509,7 +28604,7 @@
       }
     },
     {
-      "id": "automatisering.html#text:body:2>main:3>section:5>div:1>ol:2>li:2>h3:2",
+      "id": "automatisering.html#text:body:2>main:3>section:4>div:1>ol:2>li:2>div:2>h3:1",
       "page": "automatisering.html",
       "kind": "text",
       "text": "Eén workflow kiezen.",
@@ -29522,7 +28617,7 @@
       }
     },
     {
-      "id": "automatisering.html#text:body:2>main:3>section:5>div:1>ol:2>li:2>p:3",
+      "id": "automatisering.html#text:body:2>main:3>section:4>div:1>ol:2>li:2>div:2>p:2",
       "page": "automatisering.html",
       "kind": "text",
       "text": "De workflow die het meeste tijd kost en het snelst iets oplevert.",
@@ -29535,7 +28630,7 @@
       }
     },
     {
-      "id": "automatisering.html#text:body:2>main:3>section:5>div:1>ol:2>li:3",
+      "id": "automatisering.html#text:body:2>main:3>section:4>div:1>ol:2>li:3",
       "page": "automatisering.html",
       "kind": "text",
       "text": "03",
@@ -29548,7 +28643,7 @@
       }
     },
     {
-      "id": "automatisering.html#text:body:2>main:3>section:5>div:1>ol:2>li:3>h3:2",
+      "id": "automatisering.html#text:body:2>main:3>section:4>div:1>ol:2>li:3>div:2>h3:1",
       "page": "automatisering.html",
       "kind": "text",
       "text": "Automatiseren.",
@@ -29561,7 +28656,7 @@
       }
     },
     {
-      "id": "automatisering.html#text:body:2>main:3>section:5>div:1>ol:2>li:3>p:3",
+      "id": "automatisering.html#text:body:2>main:3>section:4>div:1>ol:2>li:3>div:2>p:2",
       "page": "automatisering.html",
       "kind": "text",
       "text": "Waar het kan, bouwen we op de systemen die u al gebruikt. AI zetten we in waar mails of documenten gelezen moeten worden.",
@@ -29574,7 +28669,7 @@
       }
     },
     {
-      "id": "automatisering.html#text:body:2>main:3>section:5>div:1>ol:2>li:4",
+      "id": "automatisering.html#text:body:2>main:3>section:4>div:1>ol:2>li:4",
       "page": "automatisering.html",
       "kind": "text",
       "text": "04",
@@ -29587,7 +28682,7 @@
       }
     },
     {
-      "id": "automatisering.html#text:body:2>main:3>section:5>div:1>ol:2>li:4>h3:2",
+      "id": "automatisering.html#text:body:2>main:3>section:4>div:1>ol:2>li:4>div:2>h3:1",
       "page": "automatisering.html",
       "kind": "text",
       "text": "Meten.",
@@ -29600,11 +28695,310 @@
       }
     },
     {
-      "id": "automatisering.html#text:body:2>main:3>section:5>div:1>ol:2>li:4>p:3",
+      "id": "automatisering.html#text:body:2>main:3>section:4>div:1>ol:2>li:4>div:2>p:2",
       "page": "automatisering.html",
       "kind": "text",
       "text": "We vergelijken de tijd vóór en na. Werkt het, dan nemen we de volgende workflow.",
       "sha256": "c875b085009907e427cb3875074af211faf50b41c43cc444e4edb041303a122e",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
+      }
+    },
+    {
+      "id": "automatisering.html#text:body:2>main:3>section:5>div:1>div:1>h2:2",
+      "page": "automatisering.html",
+      "kind": "text",
+      "text": "Hoeveel tijd gaat naar overtypen?",
+      "sha256": "046e510ba12d52b7368b28f03c1a5f8979f424134841796d08098e461ddcc665",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
+      }
+    },
+    {
+      "id": "automatisering.html#text:body:2>main:3>section:5>div:1>div:1>p:1",
+      "page": "automatisering.html",
+      "kind": "text",
+      "text": "Rekenvoorbeeld",
+      "sha256": "167242f5cefbed7447e77271d8001fe928973cf074a3e27fe8fe7e0a0475a2ca",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
+      }
+    },
+    {
+      "id": "automatisering.html#text:body:2>main:3>section:5>div:1>div:1>p:3",
+      "page": "automatisering.html",
+      "kind": "text",
+      "text": "Tel de minuten die één medewerker hier op een werkdag aan besteedt. De grafiek rekent met 220 werkdagen per jaar.",
+      "sha256": "f69d73558359d308af223630c849855bc6ce4b08b1f8bd3d35b2ffb6987d8714",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
+      }
+    },
+    {
+      "id": "automatisering.html#text:body:2>main:3>section:5>div:1>figure:2>figcaption:1",
+      "page": "automatisering.html",
+      "kind": "text",
+      "text": "Minuten per dag en uren per jaar",
+      "sha256": "331d7c41ee3c8bd06b7831e27036336438dbb7ca3c806f351b46bfc2ffb00a3d",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
+      }
+    },
+    {
+      "id": "automatisering.html#text:body:2>main:3>section:5>div:1>figure:2>p:3",
+      "page": "automatisering.html",
+      "kind": "text",
+      "text": "Bij één uur per dag en € 17,25 per uur kost dat € 3.795 per medewerker per jaar. Welk deel u kunt besparen, meten we pas in de praktijk.",
+      "sha256": "8d32058ecf3fb80b5f5cb40bbe6518a0358f596df13cbc80028c547608570651",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
+      }
+    },
+    {
+      "id": "automatisering.html#text:body:2>main:3>section:5>div:1>figure:2>ul:2>li:1",
+      "page": "automatisering.html",
+      "kind": "text",
+      "text": "15 min 55 uur",
+      "sha256": "b826fffd143dd75d314b01e72536c989867b622139569695cddf1d704bb90498",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
+      }
+    },
+    {
+      "id": "automatisering.html#text:body:2>main:3>section:5>div:1>figure:2>ul:2>li:2",
+      "page": "automatisering.html",
+      "kind": "text",
+      "text": "30 min 110 uur",
+      "sha256": "25351c33a4200f03d95bfa32d78ce303661d4f99f7a47af5b59185b9c820a539",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
+      }
+    },
+    {
+      "id": "automatisering.html#text:body:2>main:3>section:5>div:1>figure:2>ul:2>li:3",
+      "page": "automatisering.html",
+      "kind": "text",
+      "text": "60 min 220 uur",
+      "sha256": "cb97c8ea8c992dbaa769741a4c3eb6dcc34a6edd59bc01ca744e1c2f94833304",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
+      }
+    },
+    {
+      "id": "automatisering.html#text:body:2>main:3>section:6>div:1>div:1",
+      "page": "automatisering.html",
+      "kind": "text",
+      "text": "Lees de zes drempels en onze aanpak",
+      "sha256": "dec3e5d8745c76f30634a2bfc9306321f961fffb092d2752033aa3dff96e9b2a",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
+      }
+    },
+    {
+      "id": "automatisering.html#text:body:2>main:3>section:6>div:1>div:1>details:2>dl:3>dd:10",
+      "page": "automatisering.html",
+      "kind": "text",
+      "text": "De AI bereidt voor. Een medewerker of de zaakvoerder beslist.",
+      "sha256": "234188f3ddd0e595a78cd3b87918b852f0f45f0bed8bbf6c3ca1a3b4f319c9fa",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
+      }
+    },
+    {
+      "id": "automatisering.html#text:body:2>main:3>section:6>div:1>div:1>details:2>dl:3>dd:12",
+      "page": "automatisering.html",
+      "kind": "text",
+      "text": "We meten de tijd vóór en na, per proces.",
+      "sha256": "bd7cd46076acad1494ec65c9d176068378ae8df5741288c2e8e1708e67daf1fe",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
+      }
+    },
+    {
+      "id": "automatisering.html#text:body:2>main:3>section:6>div:1>div:1>details:2>dl:3>dd:2",
+      "page": "automatisering.html",
+      "kind": "text",
+      "text": "Wij brengen de kennis mee en trainen uw mensen op hun eigen taken.",
+      "sha256": "10ee559897dec4bc4012fcf2b0ba1f113dae07a265cd54885085968fe5eddaf2",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
+      }
+    },
+    {
+      "id": "automatisering.html#text:body:2>main:3>section:6>div:1>div:1>details:2>dl:3>dd:4",
+      "page": "automatisering.html",
+      "kind": "text",
+      "text": "We starten met één proces en meten wat het oplevert. Werkt het niet, dan stoppen we.",
+      "sha256": "732ec3f6633ec60deb541f428729539014f0e883f57f6960821acf130b74d7da",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
+      }
+    },
+    {
+      "id": "automatisering.html#text:body:2>main:3>section:6>div:1>div:1>details:2>dl:3>dd:6",
+      "page": "automatisering.html",
+      "kind": "text",
+      "text": "Waar het kan, werken we met de systemen die u al hebt.",
+      "sha256": "921bdd982010963e3fab6878e3fc5d9cbc0c000e97ee4bb344b46701a2bf14bf",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
+      }
+    },
+    {
+      "id": "automatisering.html#text:body:2>main:3>section:6>div:1>div:1>details:2>dl:3>dd:8",
+      "page": "automatisering.html",
+      "kind": "text",
+      "text": "We starten met wat elke kmo heeft: mails, Excel-lijsten en documenten.",
+      "sha256": "ae71c6d3a0c2a095c6357e74ef024bf9a4f0db8f984c8e947333794683148bcf",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
+      }
+    },
+    {
+      "id": "automatisering.html#text:body:2>main:3>section:6>div:1>div:1>details:2>dl:3>dt:1",
+      "page": "automatisering.html",
+      "kind": "text",
+      "text": "Geen kennis in huis",
+      "sha256": "ba496b9d55668e688ccdc611e9b923885018944a63bfa7bffcc7b87138e07aab",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
+      }
+    },
+    {
+      "id": "automatisering.html#text:body:2>main:3>section:6>div:1>div:1>details:2>dl:3>dt:11",
+      "page": "automatisering.html",
+      "kind": "text",
+      "text": "Levert het iets op?",
+      "sha256": "69f87fcdd556d10483fd3f909f2ba5ccfa7f455a40061374db7e574dc8323211",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
+      }
+    },
+    {
+      "id": "automatisering.html#text:body:2>main:3>section:6>div:1>div:1>details:2>dl:3>dt:3",
+      "page": "automatisering.html",
+      "kind": "text",
+      "text": "Te duur",
+      "sha256": "d3f5c89a4f2957324e2888a0f67bf42e4dc44116eaca367a991f4d215a7ab0e4",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
+      }
+    },
+    {
+      "id": "automatisering.html#text:body:2>main:3>section:6>div:1>div:1>details:2>dl:3>dt:5",
+      "page": "automatisering.html",
+      "kind": "text",
+      "text": "Onze IT is er niet klaar voor",
+      "sha256": "57aaabf67bb6aac953f6035cb1b39e6bf59dd88c9da4446d2bb2cf0424ec3223",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
+      }
+    },
+    {
+      "id": "automatisering.html#text:body:2>main:3>section:6>div:1>div:1>details:2>dl:3>dt:7",
+      "page": "automatisering.html",
+      "kind": "text",
+      "text": "Onze data zijn niet op orde",
+      "sha256": "353352ae922a21f24e6766749469abbb3865f84d4501b6cc8ca5c8f0cc92c94f",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
+      }
+    },
+    {
+      "id": "automatisering.html#text:body:2>main:3>section:6>div:1>div:1>details:2>dl:3>dt:9",
+      "page": "automatisering.html",
+      "kind": "text",
+      "text": "Wie houdt de controle?",
+      "sha256": "105f879bea5ce4c57e762611bbfe49a3d3079273ae495abb15519d3159be87a7",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
+      }
+    },
+    {
+      "id": "automatisering.html#text:body:2>main:3>section:6>div:1>div:1>details:2>p:2",
+      "page": "automatisering.html",
+      "kind": "text",
+      "text": "Uit 71 studies over AI in kmo’s komen telkens dezelfde drempels terug.",
+      "sha256": "2017a660002a0621d2e45d2aa9a621ac7324b4928dc26dca66e79db13a55c055",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
+      }
+    },
+    {
+      "id": "automatisering.html#text:body:2>main:3>section:6>div:1>div:1>details:2>p:4",
+      "page": "automatisering.html",
+      "kind": "text",
+      "text": "Bron: Oldemeyer, Jede & Teuteberg, Management Review Quarterly, 2025",
+      "sha256": "94d77256f245e2bccb60c3b5bab53108652142d6cd7aeaaf948946bf3b43c29d",
       "engine": {
         "name": "LanguageTool",
         "version": "6.6",
@@ -29626,397 +29020,7 @@
       }
     },
     {
-      "id": "automatisering.html#text:body:2>main:3>section:6>div:1>div:1>p:2",
-      "page": "automatisering.html",
-      "kind": "text",
-      "text": "Uit 71 studies over AI in kmo’s komen telkens dezelfde drempels terug.",
-      "sha256": "2017a660002a0621d2e45d2aa9a621ac7324b4928dc26dca66e79db13a55c055",
-      "engine": {
-        "name": "LanguageTool",
-        "version": "6.6",
-        "language": "nl",
-        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
-      }
-    },
-    {
-      "id": "automatisering.html#text:body:2>main:3>section:6>div:1>div:2>article:1>h3:1",
-      "page": "automatisering.html",
-      "kind": "text",
-      "text": "Geen kennis in huis",
-      "sha256": "ba496b9d55668e688ccdc611e9b923885018944a63bfa7bffcc7b87138e07aab",
-      "engine": {
-        "name": "LanguageTool",
-        "version": "6.6",
-        "language": "nl",
-        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
-      }
-    },
-    {
-      "id": "automatisering.html#text:body:2>main:3>section:6>div:1>div:2>article:1>p:2",
-      "page": "automatisering.html",
-      "kind": "text",
-      "text": "Wij brengen de kennis mee en trainen uw mensen op hun eigen taken.",
-      "sha256": "10ee559897dec4bc4012fcf2b0ba1f113dae07a265cd54885085968fe5eddaf2",
-      "engine": {
-        "name": "LanguageTool",
-        "version": "6.6",
-        "language": "nl",
-        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
-      }
-    },
-    {
-      "id": "automatisering.html#text:body:2>main:3>section:6>div:1>div:2>article:2>h3:1",
-      "page": "automatisering.html",
-      "kind": "text",
-      "text": "Te duur",
-      "sha256": "d3f5c89a4f2957324e2888a0f67bf42e4dc44116eaca367a991f4d215a7ab0e4",
-      "engine": {
-        "name": "LanguageTool",
-        "version": "6.6",
-        "language": "nl",
-        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
-      }
-    },
-    {
-      "id": "automatisering.html#text:body:2>main:3>section:6>div:1>div:2>article:2>p:2",
-      "page": "automatisering.html",
-      "kind": "text",
-      "text": "We starten met één proces en meten wat het oplevert. Werkt het niet, dan stoppen we.",
-      "sha256": "732ec3f6633ec60deb541f428729539014f0e883f57f6960821acf130b74d7da",
-      "engine": {
-        "name": "LanguageTool",
-        "version": "6.6",
-        "language": "nl",
-        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
-      }
-    },
-    {
-      "id": "automatisering.html#text:body:2>main:3>section:6>div:1>div:2>article:3>h3:1",
-      "page": "automatisering.html",
-      "kind": "text",
-      "text": "Onze IT is er niet klaar voor",
-      "sha256": "57aaabf67bb6aac953f6035cb1b39e6bf59dd88c9da4446d2bb2cf0424ec3223",
-      "engine": {
-        "name": "LanguageTool",
-        "version": "6.6",
-        "language": "nl",
-        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
-      }
-    },
-    {
-      "id": "automatisering.html#text:body:2>main:3>section:6>div:1>div:2>article:3>p:2",
-      "page": "automatisering.html",
-      "kind": "text",
-      "text": "Waar het kan, werken we met de systemen die u al hebt.",
-      "sha256": "921bdd982010963e3fab6878e3fc5d9cbc0c000e97ee4bb344b46701a2bf14bf",
-      "engine": {
-        "name": "LanguageTool",
-        "version": "6.6",
-        "language": "nl",
-        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
-      }
-    },
-    {
-      "id": "automatisering.html#text:body:2>main:3>section:6>div:1>div:2>article:4>h3:1",
-      "page": "automatisering.html",
-      "kind": "text",
-      "text": "Onze data zijn niet op orde",
-      "sha256": "353352ae922a21f24e6766749469abbb3865f84d4501b6cc8ca5c8f0cc92c94f",
-      "engine": {
-        "name": "LanguageTool",
-        "version": "6.6",
-        "language": "nl",
-        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
-      }
-    },
-    {
-      "id": "automatisering.html#text:body:2>main:3>section:6>div:1>div:2>article:4>p:2",
-      "page": "automatisering.html",
-      "kind": "text",
-      "text": "We starten met wat elke kmo heeft: mails, Excel-lijsten en documenten.",
-      "sha256": "ae71c6d3a0c2a095c6357e74ef024bf9a4f0db8f984c8e947333794683148bcf",
-      "engine": {
-        "name": "LanguageTool",
-        "version": "6.6",
-        "language": "nl",
-        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
-      }
-    },
-    {
-      "id": "automatisering.html#text:body:2>main:3>section:6>div:1>div:2>article:5>h3:1",
-      "page": "automatisering.html",
-      "kind": "text",
-      "text": "Wie houdt de controle?",
-      "sha256": "105f879bea5ce4c57e762611bbfe49a3d3079273ae495abb15519d3159be87a7",
-      "engine": {
-        "name": "LanguageTool",
-        "version": "6.6",
-        "language": "nl",
-        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
-      }
-    },
-    {
-      "id": "automatisering.html#text:body:2>main:3>section:6>div:1>div:2>article:5>p:2",
-      "page": "automatisering.html",
-      "kind": "text",
-      "text": "De AI bereidt voor. Een medewerker of de zaakvoerder beslist.",
-      "sha256": "234188f3ddd0e595a78cd3b87918b852f0f45f0bed8bbf6c3ca1a3b4f319c9fa",
-      "engine": {
-        "name": "LanguageTool",
-        "version": "6.6",
-        "language": "nl",
-        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
-      }
-    },
-    {
-      "id": "automatisering.html#text:body:2>main:3>section:6>div:1>div:2>article:6>h3:1",
-      "page": "automatisering.html",
-      "kind": "text",
-      "text": "Levert het iets op?",
-      "sha256": "69f87fcdd556d10483fd3f909f2ba5ccfa7f455a40061374db7e574dc8323211",
-      "engine": {
-        "name": "LanguageTool",
-        "version": "6.6",
-        "language": "nl",
-        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
-      }
-    },
-    {
-      "id": "automatisering.html#text:body:2>main:3>section:6>div:1>div:2>article:6>p:2",
-      "page": "automatisering.html",
-      "kind": "text",
-      "text": "We meten de tijd vóór en na, per proces.",
-      "sha256": "bd7cd46076acad1494ec65c9d176068378ae8df5741288c2e8e1708e67daf1fe",
-      "engine": {
-        "name": "LanguageTool",
-        "version": "6.6",
-        "language": "nl",
-        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
-      }
-    },
-    {
-      "id": "automatisering.html#text:body:2>main:3>section:6>div:1>p:3",
-      "page": "automatisering.html",
-      "kind": "text",
-      "text": "Bron: Oldemeyer, Jede & Teuteberg, Management Review Quarterly, 2025",
-      "sha256": "94d77256f245e2bccb60c3b5bab53108652142d6cd7aeaaf948946bf3b43c29d",
-      "engine": {
-        "name": "LanguageTool",
-        "version": "6.6",
-        "language": "nl",
-        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
-      }
-    },
-    {
       "id": "automatisering.html#text:body:2>main:3>section:7>div:1>div:1>h2:1",
-      "page": "automatisering.html",
-      "kind": "text",
-      "text": "Wat u wint",
-      "sha256": "265ae3773b41847acef84360cce5780dd910b88c18da45df54b8291037eff72b",
-      "engine": {
-        "name": "LanguageTool",
-        "version": "6.6",
-        "language": "nl",
-        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
-      }
-    },
-    {
-      "id": "automatisering.html#text:body:2>main:3>section:7>div:1>div:1>p:2",
-      "page": "automatisering.html",
-      "kind": "text",
-      "text": "Wat een geautomatiseerde workflow u oplevert.",
-      "sha256": "376ab1c2ba62489c13eaf97a801727249cc6d202243688ead72e788004ed16fd",
-      "engine": {
-        "name": "LanguageTool",
-        "version": "6.6",
-        "language": "nl",
-        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
-      }
-    },
-    {
-      "id": "automatisering.html#text:body:2>main:3>section:7>div:1>ul:2>li:1>h3:1",
-      "page": "automatisering.html",
-      "kind": "text",
-      "text": "Tijd terug",
-      "sha256": "5ad54211589e9f2ef3168a8deeb97a6a0cfac36df353df469f0ad544f2ad1d03",
-      "engine": {
-        "name": "LanguageTool",
-        "version": "6.6",
-        "language": "nl",
-        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
-      }
-    },
-    {
-      "id": "automatisering.html#text:body:2>main:3>section:7>div:1>ul:2>li:1>p:2",
-      "page": "automatisering.html",
-      "kind": "text",
-      "text": "Uren per week terug voor uw team.",
-      "sha256": "888fd224d84dd05982ebef12138385f98820c73ebcd7bb0104ea84ccdaaf25f6",
-      "engine": {
-        "name": "LanguageTool",
-        "version": "6.6",
-        "language": "nl",
-        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
-      }
-    },
-    {
-      "id": "automatisering.html#text:body:2>main:3>section:7>div:1>ul:2>li:2>h3:1",
-      "page": "automatisering.html",
-      "kind": "text",
-      "text": "Minder fouten",
-      "sha256": "6bf62e1d668540b812499d801ebf60b80229c42872d67efe870a69110e3abbfb",
-      "engine": {
-        "name": "LanguageTool",
-        "version": "6.6",
-        "language": "nl",
-        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
-      }
-    },
-    {
-      "id": "automatisering.html#text:body:2>main:3>section:7>div:1>ul:2>li:2>p:2",
-      "page": "automatisering.html",
-      "kind": "text",
-      "text": "Minder fouten door overtypen.",
-      "sha256": "ffcfc9bd4d3bbcc457704bee6e7ee773f15421392891a1811e405820960a3762",
-      "engine": {
-        "name": "LanguageTool",
-        "version": "6.6",
-        "language": "nl",
-        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
-      }
-    },
-    {
-      "id": "automatisering.html#text:body:2>main:3>section:7>div:1>ul:2>li:3>h3:1",
-      "page": "automatisering.html",
-      "kind": "text",
-      "text": "Sneller antwoord",
-      "sha256": "bb872305da62cedfa9a33914e71c67d7a08b32384dd2c52bc6df26e9eb9c7fed",
-      "engine": {
-        "name": "LanguageTool",
-        "version": "6.6",
-        "language": "nl",
-        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
-      }
-    },
-    {
-      "id": "automatisering.html#text:body:2>main:3>section:7>div:1>ul:2>li:3>p:2",
-      "page": "automatisering.html",
-      "kind": "text",
-      "text": "Sneller antwoord aan klanten en leveranciers.",
-      "sha256": "e3f41959e14519a8b6a0ecd85d30a6005e3bfa98024ba0c6db0fd28058a1fa7d",
-      "engine": {
-        "name": "LanguageTool",
-        "version": "6.6",
-        "language": "nl",
-        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
-      }
-    },
-    {
-      "id": "automatisering.html#text:body:2>main:3>section:7>div:1>ul:2>li:4>h3:1",
-      "page": "automatisering.html",
-      "kind": "text",
-      "text": "Overzicht",
-      "sha256": "6c20ea442bdde6a22cde135c38eac5ec2dcff01e9290d96162a0795e1f1c3668",
-      "engine": {
-        "name": "LanguageTool",
-        "version": "6.6",
-        "language": "nl",
-        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
-      }
-    },
-    {
-      "id": "automatisering.html#text:body:2>main:3>section:7>div:1>ul:2>li:4>p:2",
-      "page": "automatisering.html",
-      "kind": "text",
-      "text": "Zicht op wat er loopt, zonder dat iemand het moet bijhouden.",
-      "sha256": "dff4f0280c1ac689912fea87612073431b686e0ef4759bb5429d110fd98a6e6d",
-      "engine": {
-        "name": "LanguageTool",
-        "version": "6.6",
-        "language": "nl",
-        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
-      }
-    },
-    {
-      "id": "automatisering.html#text:body:2>main:3>section:8>div:1>div:1>h2:1",
-      "page": "automatisering.html",
-      "kind": "text",
-      "text": "Dienst of software",
-      "sha256": "2c669debdeb5fa8749144d36ce2fdecdb1499c1202efc36f140e9b5ea0429499",
-      "engine": {
-        "name": "LanguageTool",
-        "version": "6.6",
-        "language": "nl",
-        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
-      }
-    },
-    {
-      "id": "automatisering.html#text:body:2>main:3>section:8>div:1>div:2>article:1>h3:1",
-      "page": "automatisering.html",
-      "kind": "text",
-      "text": "Dienst",
-      "sha256": "ecc4f77cf213133424a79389981368da6d212ef84d247a91be12da532863062f",
-      "engine": {
-        "name": "LanguageTool",
-        "version": "6.6",
-        "language": "nl",
-        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
-      }
-    },
-    {
-      "id": "automatisering.html#text:body:2>main:3>section:8>div:1>div:2>article:1>p:2",
-      "page": "automatisering.html",
-      "kind": "text",
-      "text": "Grow Faster bouwt de automatisering voor u, op de systemen die u al gebruikt.",
-      "sha256": "72f49323e8eb54e8b829b3a3b7b33bf222cc6c4ffad43a4ff4d58ef9b52bc9ff",
-      "engine": {
-        "name": "LanguageTool",
-        "version": "6.6",
-        "language": "nl",
-        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
-      }
-    },
-    {
-      "id": "automatisering.html#text:body:2>main:3>section:8>div:1>div:2>article:2>a:3",
-      "page": "automatisering.html",
-      "kind": "text",
-      "text": "Ontdek Orion →",
-      "sha256": "2b4a17b73014449b26c30a6e35c69dd569101dc532132ee34fd6eea1ae8a386c",
-      "engine": {
-        "name": "LanguageTool",
-        "version": "6.6",
-        "language": "nl",
-        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
-      }
-    },
-    {
-      "id": "automatisering.html#text:body:2>main:3>section:8>div:1>div:2>article:2>h3:1",
-      "page": "automatisering.html",
-      "kind": "text",
-      "text": "Software: Orion",
-      "sha256": "4475c74e72cecdf9aa3c9eabae3b9e757c62cd42c5c85a30cbd951fb19329eb2",
-      "engine": {
-        "name": "LanguageTool",
-        "version": "6.6",
-        "language": "nl",
-        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
-      }
-    },
-    {
-      "id": "automatisering.html#text:body:2>main:3>section:8>div:1>div:2>article:2>p:2",
-      "page": "automatisering.html",
-      "kind": "text",
-      "text": "Voor vragenlijsten en specificaties van klanten is er Orion, onze eigen software.",
-      "sha256": "fc47075c9185a97e624dde01530de03775bdc0815afab93be651e8ef2b8ff045",
-      "engine": {
-        "name": "LanguageTool",
-        "version": "6.6",
-        "language": "nl",
-        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
-      }
-    },
-    {
-      "id": "automatisering.html#text:body:2>main:3>section:9>div:1>div:1>h2:1",
       "page": "automatisering.html",
       "kind": "text",
       "text": "Veelgestelde vragen",
@@ -30029,11 +29033,11 @@
       }
     },
     {
-      "id": "automatisering.html#text:body:2>main:3>section:9>div:1>div:2",
+      "id": "automatisering.html#text:body:2>main:3>section:7>div:1>div:2",
       "page": "automatisering.html",
       "kind": "text",
-      "text": "Moeten we nieuwe software kopen? Wat als de automatisering een fout maakt? Wat kost het?",
-      "sha256": "b5c8938ba9734d60581c78155ee480acd4ea38531b094fd12578bb4f76e1ab87",
+      "text": "Moeten we nieuwe software kopen? Wat als de automatisering een fout maakt? Wat kost het? Wanneer past Orion beter?",
+      "sha256": "e650bc9550087d52cd4811a5facc5ececef084ba40bde448629c984ca5e03597",
       "engine": {
         "name": "LanguageTool",
         "version": "6.6",
@@ -30042,7 +29046,7 @@
       }
     },
     {
-      "id": "automatisering.html#text:body:2>main:3>section:9>div:1>div:2>details:1>p:2",
+      "id": "automatisering.html#text:body:2>main:3>section:7>div:1>div:2>details:1>p:2",
       "page": "automatisering.html",
       "kind": "text",
       "text": "Meestal niet. Waar het kan, werken we met wat u al hebt. Is er toch iets nodig, dan bespreken we dat vooraf.",
@@ -30055,7 +29059,7 @@
       }
     },
     {
-      "id": "automatisering.html#text:body:2>main:3>section:9>div:1>div:2>details:2>p:2",
+      "id": "automatisering.html#text:body:2>main:3>section:7>div:1>div:2>details:2>p:2",
       "page": "automatisering.html",
       "kind": "text",
       "text": "Bij gevoelige stappen keurt een medewerker eerst goed. Er vertrekt niets naar een klant zonder dat u dat zo beslist.",
@@ -30068,11 +29072,76 @@
       }
     },
     {
-      "id": "automatisering.html#text:body:2>main:3>section:9>div:1>div:2>details:3>p:2",
+      "id": "automatisering.html#text:body:2>main:3>section:7>div:1>div:2>details:3>p:2",
       "page": "automatisering.html",
       "kind": "text",
       "text": "De workflowscan is op aanvraag. Daarna hangt de prijs af van de workflow. We meten eerst wat het u oplevert.",
       "sha256": "02c03d71141d210424e78492682d3fec6adf01efeca97ceddd2f54ebfe8de9bd",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
+      }
+    },
+    {
+      "id": "automatisering.html#text:body:2>main:3>section:7>div:1>div:2>details:4>a:3",
+      "page": "automatisering.html",
+      "kind": "text",
+      "text": "Ontdek Orion →",
+      "sha256": "2b4a17b73014449b26c30a6e35c69dd569101dc532132ee34fd6eea1ae8a386c",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
+      }
+    },
+    {
+      "id": "automatisering.html#text:body:2>main:3>section:7>div:1>div:2>details:4>p:2",
+      "page": "automatisering.html",
+      "kind": "text",
+      "text": "Voor klantvragenlijsten in de voedingssector zoekt Orion in uw documenten en toont het de bron bij elk voorstel.",
+      "sha256": "9952b1abe18f85414374194880000f223cd80a13cc6ef20f11a1c11984f7b27f",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
+      }
+    },
+    {
+      "id": "automatisering.html#text:body:2>main:3>section:8>div:1>div:3>a:1",
+      "page": "automatisering.html",
+      "kind": "text",
+      "text": "Plan een gesprek →",
+      "sha256": "4a40436178b1e8c648093e16d0c21314f18a6457d30056d2bdc20a98828e5449",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
+      }
+    },
+    {
+      "id": "automatisering.html#text:body:2>main:3>section:8>div:1>h2:1",
+      "page": "automatisering.html",
+      "kind": "text",
+      "text": "Welke gegevens typt uw team vandaag nog over?",
+      "sha256": "fa6139f81d45ca3631a44a702ea04bc1ec33b92ebb80aa1ac13ec2a525a0c9b3",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
+      }
+    },
+    {
+      "id": "automatisering.html#text:body:2>main:3>section:8>div:1>p:2",
+      "page": "automatisering.html",
+      "kind": "text",
+      "text": "Vertel ons welke workflow te veel handwerk vraagt. In een eerste gesprek bekijken we of automatiseren loont.",
+      "sha256": "d600b562fdd457ad076153747fe3847ddc2216f71a19c0a380decc9964981602",
       "engine": {
         "name": "LanguageTool",
         "version": "6.6",
@@ -32034,8 +31103,8 @@
       "id": "baies-dev/index.html#text:body:2>main:6>section:5>div:1>div:4>aside:2>div:5>ol:2>li:1",
       "page": "baies-dev/index.html",
       "kind": "text",
-      "text": "13:12:29 · Demonstratiedossier geopend. Geen externe wijzigingen.",
-      "sha256": "d24a7daea292e48ba09948f1eb3086598bf3dce0941d62590c439494022bc8a1",
+      "text": "14:27:40 · Demonstratiedossier geopend. Geen externe wijzigingen.",
+      "sha256": "0b7042b13f41a6f20d172e42ad8ff7a52eecf414901e67f4b75892aba44ba280",
       "engine": {
         "name": "LanguageTool",
         "version": "6.6",
@@ -47678,6 +46747,19 @@
       }
     },
     {
+      "id": "dictionary:I18N:“Graag 24 dozen appelsap voor vrijdag. Leveren aan kaai 2.”",
+      "page": "automatisering.html",
+      "kind": "dictionary:I18N:“Graag 24 dozen appelsap voor vrijdag. Leveren aan kaai 2.”",
+      "text": "“Graag 24 dozen appelsap voor vrijdag. Leveren aan kaai 2.”",
+      "sha256": "3024c0403c20a5949962d632c523914308480485f2829b06fa177ecb0642b89e",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
+      }
+    },
+    {
       "id": "dictionary:I18N:\"Noteer bij elke levering de ontvangstdatum en het lotnummer op het ontvangstformulier.\"",
       "page": "fr/orion/index.html",
       "kind": "dictionary:I18N:\"Noteer bij elke levering de ontvangstdatum en het lotnummer op het ontvangstformulier.\"",
@@ -48042,6 +47124,19 @@
       }
     },
     {
+      "id": "dictionary:I18N:110 uur",
+      "page": "automatisering.html",
+      "kind": "dictionary:I18N:110 uur",
+      "text": "110 uur",
+      "sha256": "3b9698931741445b8824a2af0ac2610309f1e7f12aa975f7f2359464648d3623",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
+      }
+    },
+    {
       "id": "dictionary:I18N:12. Executive decision framework",
       "page": "404.html",
       "kind": "dictionary:I18N:12. Executive decision framework",
@@ -48073,6 +47168,32 @@
       "kind": "dictionary:I18N:21 fouten per jaar in gegevens over allergenen kan niemand wegwuiven.",
       "text": "21 fouten per jaar in gegevens over allergenen kan niemand wegwuiven.",
       "sha256": "d9fccf0f791e189f1a06bffefc57c0c5a3da077fcc68eeb3dcec76e036111e58",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
+      }
+    },
+    {
+      "id": "dictionary:I18N:220 uur",
+      "page": "automatisering.html",
+      "kind": "dictionary:I18N:220 uur",
+      "text": "220 uur",
+      "sha256": "9d49fdf52bd202db202bdaa9ab458e372c4d9116af5d94fd45b9e8df67f55ac5",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
+      }
+    },
+    {
+      "id": "dictionary:I18N:24 dozen",
+      "page": "automatisering.html",
+      "kind": "dictionary:I18N:24 dozen",
+      "text": "24 dozen",
+      "sha256": "c2d619e5c8a94292c838f290ccef088715c611ff8011d48ca09f64d3c7f7a714",
       "engine": {
         "name": "LanguageTool",
         "version": "6.6",
@@ -48164,6 +47285,19 @@
       "kind": "dictionary:I18N:46 werkweken: 52 weken min ongeveer 6 weken verlof en feestdagen. Loonkost per uur: een aanname. Vervang de cijfers door die van uw eigen team.",
       "text": "46 werkweken: 52 weken min ongeveer 6 weken verlof en feestdagen. Loonkost per uur: een aanname. Vervang de cijfers door die van uw eigen team.",
       "sha256": "f0dfdb07bee37d05fc93b4929832d10fa2687ae97844bdcd06517020cdff0eb8",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
+      }
+    },
+    {
+      "id": "dictionary:I18N:55 uur",
+      "page": "automatisering.html",
+      "kind": "dictionary:I18N:55 uur",
+      "text": "55 uur",
+      "sha256": "698c62126712dcf4b80d1e5376f8e34759049f61f5e8a53c6e203d7864b5463d",
       "engine": {
         "name": "LanguageTool",
         "version": "6.6",
@@ -48393,19 +47527,6 @@
       }
     },
     {
-      "id": "dictionary:I18N:Aankoopfacturen",
-      "page": "automatisering.html",
-      "kind": "dictionary:I18N:Aankoopfacturen",
-      "text": "Aankoopfacturen",
-      "sha256": "19b0ae383082f3d2cb87440f789c828a272f9ae21fa451b369e807814645fa2f",
-      "engine": {
-        "name": "LanguageTool",
-        "version": "6.6",
-        "language": "nl",
-        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
-      }
-    },
-    {
       "id": "dictionary:I18N:Aankoopfacturen inlezen en voorbereiden voor de boekhouding.",
       "page": "404.html",
       "kind": "dictionary:I18N:Aankoopfacturen inlezen en voorbereiden voor de boekhouding.",
@@ -48450,6 +47571,19 @@
       "kind": "dictionary:I18N:Aansprakelijkheid is mensenwerk.",
       "text": "Aansprakelijkheid is mensenwerk.",
       "sha256": "b97f68997d929d0a69fc050dd376852d89bc5591c235b3a2cd28910928c637e4",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
+      }
+    },
+    {
+      "id": "dictionary:I18N:Aantal",
+      "page": "automatisering.html",
+      "kind": "dictionary:I18N:Aantal",
+      "text": "Aantal",
+      "sha256": "80f17696b152ac166d0150f3877ece787572838b544707e60def55a15344f4f7",
       "engine": {
         "name": "LanguageTool",
         "version": "6.6",
@@ -49784,6 +48918,19 @@
       }
     },
     {
+      "id": "dictionary:I18N:Appelsap",
+      "page": "automatisering.html",
+      "kind": "dictionary:I18N:Appelsap",
+      "text": "Appelsap",
+      "sha256": "e2f8844282a3a593ca30691693dfb39f7f73882690cdc5de1cb516b2f6b17d71",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
+      }
+    },
+    {
       "id": "dictionary:I18N:Approach",
       "page": "404.html",
       "kind": "dictionary:I18N:Approach",
@@ -49815,6 +48962,19 @@
       "kind": "dictionary:I18N:Archief",
       "text": "Archief",
       "sha256": "afd09b9e36e51601ce5fcd037125f10979465b9d8ef7f4774c34eccc61e513c3",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
+      }
+    },
+    {
+      "id": "dictionary:I18N:Artikel",
+      "page": "automatisering.html",
+      "kind": "dictionary:I18N:Artikel",
+      "text": "Artikel",
+      "sha256": "4435fcc2e763d6b80312ae4211bebaf51461501a75ce52ff4cd45f5bdb535f5a",
       "engine": {
         "name": "LanguageTool",
         "version": "6.6",
@@ -50551,19 +49711,6 @@
       }
     },
     {
-      "id": "dictionary:I18N:Bestellingen",
-      "page": "automatisering.html",
-      "kind": "dictionary:I18N:Bestellingen",
-      "text": "Bestellingen",
-      "sha256": "f9b49c2606bb04b90bf68237925c22d1b65613e46a40f140c1ed0c9ab759f9ba",
-      "engine": {
-        "name": "LanguageTool",
-        "version": "6.6",
-        "language": "nl",
-        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
-      }
-    },
-    {
       "id": "dictionary:I18N:Bestellingen uit mails of pdf’s lezen en klaarzetten in uw ordersysteem.",
       "page": "404.html",
       "kind": "dictionary:I18N:Bestellingen uit mails of pdf’s lezen en klaarzetten in uw ordersysteem.",
@@ -50655,6 +49802,19 @@
       }
     },
     {
+      "id": "dictionary:I18N:Bij één uur per dag en € 17,25 per uur kost dat € 3.795 per medewerker per jaar. Welk deel u kunt besparen, meten we pas in de praktijk.",
+      "page": "automatisering.html",
+      "kind": "dictionary:I18N:Bij één uur per dag en € 17,25 per uur kost dat € 3.795 per medewerker per jaar. Welk deel u kunt besparen, meten we pas in de praktijk.",
+      "text": "Bij één uur per dag en € 17,25 per uur kost dat € 3.795 per medewerker per jaar. Welk deel u kunt besparen, meten we pas in de praktijk.",
+      "sha256": "8d32058ecf3fb80b5f5cb40bbe6518a0358f596df13cbc80028c547608570651",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
+      }
+    },
+    {
       "id": "dictionary:I18N:Bij elk antwoord staat de bron. Gevoelige vragen, zoals allergenen, zijn gemarkeerd.",
       "page": "404.html",
       "kind": "dictionary:I18N:Bij elk antwoord staat de bron. Gevoelige vragen, zoals allergenen, zijn gemarkeerd.",
@@ -50733,19 +49893,6 @@
       }
     },
     {
-      "id": "dictionary:I18N:Bij gevoelige stappen keurt een medewerker eerst goed. We meten de tijd vóór en na.",
-      "page": "automatisering.html",
-      "kind": "dictionary:I18N:Bij gevoelige stappen keurt een medewerker eerst goed. We meten de tijd vóór en na.",
-      "text": "Bij gevoelige stappen keurt een medewerker eerst goed. We meten de tijd vóór en na.",
-      "sha256": "ef868f1204c4621eb44ed0d1a2aefd2447035e689ade9b2fa44b795983e66422",
-      "engine": {
-        "name": "LanguageTool",
-        "version": "6.6",
-        "language": "nl",
-        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
-      }
-    },
-    {
       "id": "dictionary:I18N:Bij het antwoord ziet de kwaliteitsmanager welke bron het voorstel ondersteunt.",
       "page": "404.html",
       "kind": "dictionary:I18N:Bij het antwoord ziet de kwaliteitsmanager welke bron het voorstel ondersteunt.",
@@ -50803,6 +49950,19 @@
       "kind": "dictionary:I18N:Bijvoorbeeld bestellingen, leverbonnen, vragenlijsten, fiches, verslagen of facturen.",
       "text": "Bijvoorbeeld bestellingen, leverbonnen, vragenlijsten, fiches, verslagen of facturen.",
       "sha256": "a57fad3a77d8a89831ccd5434f89257064567be4167943a1a5f5780b94329240",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
+      }
+    },
+    {
+      "id": "dictionary:I18N:Binnenkomst",
+      "page": "automatisering.html",
+      "kind": "dictionary:I18N:Binnenkomst",
+      "text": "Binnenkomst",
+      "sha256": "72bb1fecd647ab92032f347596069f6791a94622dfbef673c7098e4b0f972cec",
       "engine": {
         "name": "LanguageTool",
         "version": "6.6",
@@ -50933,6 +50093,19 @@
       "kind": "dictionary:I18N:Breng beslissingen, processen en systemen op één lijn. Begin bij één knelpunt in uw bedrijf.",
       "text": "Breng beslissingen, processen en systemen op één lijn. Begin bij één knelpunt in uw bedrijf.",
       "sha256": "09f03af8bf5c94bc615b1d950b1e2461a8ef0c577636dfdc0087f8b0761a16cb",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
+      }
+    },
+    {
+      "id": "dictionary:I18N:Breng één terugkerende taak mee. Samen volgen we een echt voorbeeld door uw systemen, van binnenkomst tot goedkeuring.",
+      "page": "automatisering.html",
+      "kind": "dictionary:I18N:Breng één terugkerende taak mee. Samen volgen we een echt voorbeeld door uw systemen, van binnenkomst tot goedkeuring.",
+      "text": "Breng één terugkerende taak mee. Samen volgen we een echt voorbeeld door uw systemen, van binnenkomst tot goedkeuring.",
+      "sha256": "c9e72c51fea0c485f8a808b0b2fedc2fb170d316638903e4dab14015663f119d",
       "engine": {
         "name": "LanguageTool",
         "version": "6.6",
@@ -52151,7 +51324,7 @@
     },
     {
       "id": "dictionary:I18N:Controle",
-      "page": "index.html",
+      "page": "automatisering.html",
       "kind": "dictionary:I18N:Controle",
       "text": "Controle",
       "sha256": "4808fa8bb9f5a9dff37421848e4757361ea0a39d984ade8c8e1d70b0144bed06",
@@ -53125,6 +52298,19 @@
       }
     },
     {
+      "id": "dictionary:I18N:De conceptorder staat klaar",
+      "page": "automatisering.html",
+      "kind": "dictionary:I18N:De conceptorder staat klaar",
+      "text": "De conceptorder staat klaar",
+      "sha256": "ab5c18aa06853d333b8d73e127f8ad68264a4cb9d33741834068b34bc727775d",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
+      }
+    },
+    {
       "id": "dictionary:I18N:De consultant vraagt het u",
       "page": "fr/orion/index.html",
       "kind": "dictionary:I18N:De consultant vraagt het u",
@@ -53234,6 +52420,19 @@
       "kind": "dictionary:I18N:De gewone gang van zaken is maar de helft",
       "text": "De gewone gang van zaken is maar de helft",
       "sha256": "250b416946af129b76723135d9e9fb2fac2b547ac89c08f8382fd252ab17710d",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
+      }
+    },
+    {
+      "id": "dictionary:I18N:De klant bevestigt kaai 2. De medewerker bevestigt de afwijking en geeft de bestelling vrij.",
+      "page": "automatisering.html",
+      "kind": "dictionary:I18N:De klant bevestigt kaai 2. De medewerker bevestigt de afwijking en geeft de bestelling vrij.",
+      "text": "De klant bevestigt kaai 2. De medewerker bevestigt de afwijking en geeft de bestelling vrij.",
+      "sha256": "382ba85950f9e044a4ef425d382e4498645c7da27390886847bb2b714b04a921",
       "engine": {
         "name": "LanguageTool",
         "version": "6.6",
@@ -54152,19 +53351,6 @@
       }
     },
     {
-      "id": "dictionary:I18N:Dienst",
-      "page": "automatisering.html",
-      "kind": "dictionary:I18N:Dienst",
-      "text": "Dienst",
-      "sha256": "ecc4f77cf213133424a79389981368da6d212ef84d247a91be12da532863062f",
-      "engine": {
-        "name": "LanguageTool",
-        "version": "6.6",
-        "language": "nl",
-        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
-      }
-    },
-    {
       "id": "dictionary:I18N:Dienst en software",
       "page": "404.html",
       "kind": "dictionary:I18N:Dienst en software",
@@ -54711,6 +53897,19 @@
       }
     },
     {
+      "id": "dictionary:I18N:Een bestelling komt per mail binnen. Wij richten de workflow zo in dat de order klaarstaat in uw systeem. Uw team controleert de uitzonderingen en geeft de bestelling vrij.",
+      "page": "automatisering.html",
+      "kind": "dictionary:I18N:Een bestelling komt per mail binnen. Wij richten de workflow zo in dat de order klaarstaat in uw systeem. Uw team controleert de uitzonderingen en geeft de bestelling vrij.",
+      "text": "Een bestelling komt per mail binnen. Wij richten de workflow zo in dat de order klaarstaat in uw systeem. Uw team controleert de uitzonderingen en geeft de bestelling vrij.",
+      "sha256": "4309972a8a5ba343f904bc4efc2a9b3f3d1b39e62a4e36c4e559ebe5b19a324e",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
+      }
+    },
+    {
       "id": "dictionary:I18N:Een bronnenregister met versie, vervaldatum en goedkeurder",
       "page": "fr/orion/index.html",
       "kind": "dictionary:I18N:Een bronnenregister met versie, vervaldatum en goedkeurder",
@@ -54815,6 +54014,19 @@
       }
     },
     {
+      "id": "dictionary:I18N:Een factuur komt per mail binnen. De boekhouding controleert het overgenomen bedrag en de leverancier vóór het boeken.",
+      "page": "automatisering.html",
+      "kind": "dictionary:I18N:Een factuur komt per mail binnen. De boekhouding controleert het overgenomen bedrag en de leverancier vóór het boeken.",
+      "text": "Een factuur komt per mail binnen. De boekhouding controleert het overgenomen bedrag en de leverancier vóór het boeken.",
+      "sha256": "fd8fd7aef0ec2eef3dc3954b40ccd076141e301921dc8683dfbd42a39d6dcb86",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
+      }
+    },
+    {
       "id": "dictionary:I18N:Een fout in het resultaat is vervelend of erger.",
       "page": "journal.html",
       "kind": "dictionary:I18N:Een fout in het resultaat is vervelend of erger.",
@@ -54880,6 +54092,19 @@
       }
     },
     {
+      "id": "dictionary:I18N:Een klant bestelt",
+      "page": "automatisering.html",
+      "kind": "dictionary:I18N:Een klant bestelt",
+      "text": "Een klant bestelt",
+      "sha256": "d130f3546f71d2e7cc6f4d2c36203ac44987622115f14e03a73adc3b4e013fdf",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
+      }
+    },
+    {
       "id": "dictionary:I18N:Eén knelpunt kiezen.",
       "page": "404.html",
       "kind": "dictionary:I18N:Eén knelpunt kiezen.",
@@ -54924,6 +54149,19 @@
       "kind": "dictionary:I18N:Een levering aan de loskade registreren",
       "text": "Een levering aan de loskade registreren",
       "sha256": "564f90488fa5d3ed0147fc2a8a8b1e00370565fbf20f9ccb94775632dd057189",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
+      }
+    },
+    {
+      "id": "dictionary:I18N:Een leveringsbon komt binnen. De ontvangstmedewerker vergelijkt het voorgestelde lotnummer met het etiket vóór de registratie.",
+      "page": "automatisering.html",
+      "kind": "dictionary:I18N:Een leveringsbon komt binnen. De ontvangstmedewerker vergelijkt het voorgestelde lotnummer met het etiket vóór de registratie.",
+      "text": "Een leveringsbon komt binnen. De ontvangstmedewerker vergelijkt het voorgestelde lotnummer met het etiket vóór de registratie.",
+      "sha256": "5867adfe18ca8721da5b999ce7ce77028c9868b97a64c0ff43f7a0a42ed441ba",
       "engine": {
         "name": "LanguageTool",
         "version": "6.6",
@@ -55114,6 +54352,19 @@
       }
     },
     {
+      "id": "dictionary:I18N:Een storing wordt gemeld. De werkbon staat klaar met de machine en de locatie. De planner kiest de technicus.",
+      "page": "automatisering.html",
+      "kind": "dictionary:I18N:Een storing wordt gemeld. De werkbon staat klaar met de machine en de locatie. De planner kiest de technicus.",
+      "text": "Een storing wordt gemeld. De werkbon staat klaar met de machine en de locatie. De planner kiest de technicus.",
+      "sha256": "f60cfc83f19fa28a66af29a79376903cbdf915f0fe1f7e1a68767a0fac29b454",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
+      }
+    },
+    {
       "id": "dictionary:I18N:Een verlopen of gewijzigde bron vraagt een beslissing.",
       "page": "fr/orion/index.html",
       "kind": "dictionary:I18N:Een verlopen of gewijzigde bron vraagt een beslissing.",
@@ -55275,19 +54526,6 @@
       "kind": "dictionary:I18N:Eén workflow kiezen.",
       "text": "Eén workflow kiezen.",
       "sha256": "b068a7b71c40586132c578b4d268bf1ea38542e02ea46299e5e1f9bd6872c85d",
-      "engine": {
-        "name": "LanguageTool",
-        "version": "6.6",
-        "language": "nl",
-        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
-      }
-    },
-    {
-      "id": "dictionary:I18N:Eén workflow tegelijk",
-      "page": "automatisering.html",
-      "kind": "dictionary:I18N:Eén workflow tegelijk",
-      "text": "Eén workflow tegelijk",
-      "sha256": "d2dd5d37afe16aff67d39663b0304a082407e4598eff5ee3750f01d1ceac6333",
       "engine": {
         "name": "LanguageTool",
         "version": "6.6",
@@ -57480,19 +56718,6 @@
       }
     },
     {
-      "id": "dictionary:I18N:Grow Faster bouwt de automatisering voor u, op de systemen die u al gebruikt.",
-      "page": "automatisering.html",
-      "kind": "dictionary:I18N:Grow Faster bouwt de automatisering voor u, op de systemen die u al gebruikt.",
-      "text": "Grow Faster bouwt de automatisering voor u, op de systemen die u al gebruikt.",
-      "sha256": "72f49323e8eb54e8b829b3a3b7b33bf222cc6c4ffad43a4ff4d58ef9b52bc9ff",
-      "engine": {
-        "name": "LanguageTool",
-        "version": "6.6",
-        "language": "nl",
-        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
-      }
-    },
-    {
       "id": "dictionary:I18N:Grow Faster brengt de aanpak van grote bedrijven op kmo-maat. We starten met één taak die vandaag te veel tijd kost, meten wat het oplevert en breiden pas uit als het werkt.",
       "page": "404.html",
       "kind": "dictionary:I18N:Grow Faster brengt de aanpak van grote bedrijven op kmo-maat. We starten met één taak die vandaag te veel tijd kost, meten wat het oplevert en breiden pas uit als het werkt.",
@@ -57727,19 +56952,6 @@
       }
     },
     {
-      "id": "dictionary:I18N:Herinneringen",
-      "page": "automatisering.html",
-      "kind": "dictionary:I18N:Herinneringen",
-      "text": "Herinneringen",
-      "sha256": "5cdc8532c0f1b1253a9d398907891984915fcaddf84421dd48caeebbbffc8daa",
-      "engine": {
-        "name": "LanguageTool",
-        "version": "6.6",
-        "language": "nl",
-        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
-      }
-    },
-    {
       "id": "dictionary:I18N:Herinneringen voor offertes en betalingen die vertrekken nadat u ze goedgekeurd hebt.",
       "page": "404.html",
       "kind": "dictionary:I18N:Herinneringen voor offertes en betalingen die vertrekken nadat u ze goedgekeurd hebt.",
@@ -57862,19 +57074,6 @@
       "kind": "dictionary:I18N:Het doel",
       "text": "Het doel",
       "sha256": "f1aa0faaf3449b81a6e87c17bb1262c84cdbc121038d0ef5f77af5cd7898a87f",
-      "engine": {
-        "name": "LanguageTool",
-        "version": "6.6",
-        "language": "nl",
-        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
-      }
-    },
-    {
-      "id": "dictionary:I18N:Het handwerk",
-      "page": "automatisering.html",
-      "kind": "dictionary:I18N:Het handwerk",
-      "text": "Het handwerk",
-      "sha256": "19f87b34e577cb12393fb415ccd383d81bbcd626e417ee6c9bb844efb87cd555",
       "engine": {
         "name": "LanguageTool",
         "version": "6.6",
@@ -58143,6 +57342,19 @@
       }
     },
     {
+      "id": "dictionary:I18N:Hoe loopt dit af?",
+      "page": "automatisering.html",
+      "kind": "dictionary:I18N:Hoe loopt dit af?",
+      "text": "Hoe loopt dit af?",
+      "sha256": "efa53ae38aaa0ae39e5650c4af8e391313ffd9ebd01ac9c576ee3e0b9270cf46",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
+      }
+    },
+    {
       "id": "dictionary:I18N:Hoe registreert u binnenkomende leveringen?",
       "page": "fr/orion/index.html",
       "kind": "dictionary:I18N:Hoe registreert u binnenkomende leveringen?",
@@ -58200,6 +57412,19 @@
       "kind": "dictionary:I18N:Hoeveel tijd en geld u terugwint, en hoe u dat meet.",
       "text": "Hoeveel tijd en geld u terugwint, en hoe u dat meet.",
       "sha256": "dea26cef1535bbf32c804ae9b1696697cb7be9e805b135ce732e407ab979b846",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
+      }
+    },
+    {
+      "id": "dictionary:I18N:Hoeveel tijd gaat naar overtypen?",
+      "page": "automatisering.html",
+      "kind": "dictionary:I18N:Hoeveel tijd gaat naar overtypen?",
+      "text": "Hoeveel tijd gaat naar overtypen?",
+      "sha256": "046e510ba12d52b7368b28f03c1a5f8979f424134841796d08098e461ddcc665",
       "engine": {
         "name": "LanguageTool",
         "version": "6.6",
@@ -59469,6 +58694,19 @@
       }
     },
     {
+      "id": "dictionary:I18N:Kaai 2",
+      "page": "automatisering.html",
+      "kind": "dictionary:I18N:Kaai 2",
+      "text": "Kaai 2",
+      "sha256": "1fc73bab0609983828e26ecf6470828b8c454445658ff6d6f9c25a238a3cccc4",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
+      }
+    },
+    {
       "id": "dictionary:I18N:Kan Orion zich vergissen?",
       "page": "fr/orion/index.html",
       "kind": "dictionary:I18N:Kan Orion zich vergissen?",
@@ -60028,6 +59266,19 @@
       }
     },
     {
+      "id": "dictionary:I18N:Lees de zes drempels en onze aanpak",
+      "page": "automatisering.html",
+      "kind": "dictionary:I18N:Lees de zes drempels en onze aanpak",
+      "text": "Lees de zes drempels en onze aanpak",
+      "sha256": "dec3e5d8745c76f30634a2bfc9306321f961fffb092d2752033aa3dff96e9b2a",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
+      }
+    },
+    {
       "id": "dictionary:I18N:Lees deel 1",
       "page": "journal.html",
       "kind": "dictionary:I18N:Lees deel 1",
@@ -60280,6 +59531,19 @@
       "kind": "dictionary:I18N:Leverbonnen.",
       "text": "Leverbonnen.",
       "sha256": "24b6a5421ef13002a673810290d77803e4ea0cc578660c3ccb2e8769b30da9e6",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
+      }
+    },
+    {
+      "id": "dictionary:I18N:Leverplaats",
+      "page": "automatisering.html",
+      "kind": "dictionary:I18N:Leverplaats",
+      "text": "Leverplaats",
+      "sha256": "ef44ecf407d641bcad7fa5dffdfd82014627b6a1e3cc20f6e1967133a083a77e",
       "engine": {
         "name": "LanguageTool",
         "version": "6.6",
@@ -60938,19 +60202,6 @@
       }
     },
     {
-      "id": "dictionary:I18N:Minder fouten",
-      "page": "automatisering.html",
-      "kind": "dictionary:I18N:Minder fouten",
-      "text": "Minder fouten",
-      "sha256": "6bf62e1d668540b812499d801ebf60b80229c42872d67efe870a69110e3abbfb",
-      "engine": {
-        "name": "LanguageTool",
-        "version": "6.6",
-        "language": "nl",
-        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
-      }
-    },
-    {
       "id": "dictionary:I18N:Minder fouten door overtypen.",
       "page": "404.html",
       "kind": "dictionary:I18N:Minder fouten door overtypen.",
@@ -60969,6 +60220,19 @@
       "kind": "dictionary:I18N:Minuten",
       "text": "Minuten",
       "sha256": "135cc4d303fb5a345704fed6d8ee682f0e9e17748a57764ee11aa9110a84b71c",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
+      }
+    },
+    {
+      "id": "dictionary:I18N:Minuten per dag en uren per jaar",
+      "page": "automatisering.html",
+      "kind": "dictionary:I18N:Minuten per dag en uren per jaar",
+      "text": "Minuten per dag en uren per jaar",
+      "sha256": "331d7c41ee3c8bd06b7831e27036336438dbb7ca3c806f351b46bfc2ffb00a3d",
       "engine": {
         "name": "LanguageTool",
         "version": "6.6",
@@ -61476,19 +60740,6 @@
       "kind": "dictionary:I18N:Niemand weet hoeveel tijd een taak per week kost.",
       "text": "Niemand weet hoeveel tijd een taak per week kost.",
       "sha256": "3566d77d9090db17a58aed7661d9f224c415140b58dcc7f5de2dfc1ca2f19152",
-      "engine": {
-        "name": "LanguageTool",
-        "version": "6.6",
-        "language": "nl",
-        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
-      }
-    },
-    {
-      "id": "dictionary:I18N:Nieuwe klanten",
-      "page": "automatisering.html",
-      "kind": "dictionary:I18N:Nieuwe klanten",
-      "text": "Nieuwe klanten",
-      "sha256": "70a07a25a93094743491bbffffbc9c8eb657e52bfdf528db6389c5a81fbcd3a3",
       "engine": {
         "name": "LanguageTool",
         "version": "6.6",
@@ -62048,6 +61299,19 @@
       "kind": "dictionary:I18N:Op de bon staan 24 dozen, op de kade staan er 22. Wie merkt het, wanneer, en wat kost het als niemand het merkt?",
       "text": "Op de bon staan 24 dozen, op de kade staan er 22. Wie merkt het, wanneer, en wat kost het als niemand het merkt?",
       "sha256": "c56854d498a8ea1e72b35ff9436714f2a969bfb7474dfd892e852d6f8bc4dc32",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
+      }
+    },
+    {
+      "id": "dictionary:I18N:Op de klantenfiche staat kaai 1. De bestelling blijft open tot iemand de leverplaats heeft nagekeken.",
+      "page": "automatisering.html",
+      "kind": "dictionary:I18N:Op de klantenfiche staat kaai 1. De bestelling blijft open tot iemand de leverplaats heeft nagekeken.",
+      "text": "Op de klantenfiche staat kaai 1. De bestelling blijft open tot iemand de leverplaats heeft nagekeken.",
+      "sha256": "bf1d479091c6ba644629c674a6ddf073b16b51b3519ca5977268c880003cd714",
       "engine": {
         "name": "LanguageTool",
         "version": "6.6",
@@ -63088,19 +62352,6 @@
       "kind": "dictionary:I18N:Overtypen.",
       "text": "Overtypen.",
       "sha256": "9beb9efa4e336fafc38aa36697b1a809db1ff6444eeed7618c3bb827e79903b9",
-      "engine": {
-        "name": "LanguageTool",
-        "version": "6.6",
-        "language": "nl",
-        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
-      }
-    },
-    {
-      "id": "dictionary:I18N:Overzicht",
-      "page": "automatisering.html",
-      "kind": "dictionary:I18N:Overzicht",
-      "text": "Overzicht",
-      "sha256": "6c20ea442bdde6a22cde135c38eac5ec2dcff01e9290d96162a0795e1f1c3668",
       "engine": {
         "name": "LanguageTool",
         "version": "6.6",
@@ -65592,19 +64843,6 @@
       }
     },
     {
-      "id": "dictionary:I18N:Sneller antwoord",
-      "page": "automatisering.html",
-      "kind": "dictionary:I18N:Sneller antwoord",
-      "text": "Sneller antwoord",
-      "sha256": "bb872305da62cedfa9a33914e71c67d7a08b32384dd2c52bc6df26e9eb9c7fed",
-      "engine": {
-        "name": "LanguageTool",
-        "version": "6.6",
-        "language": "nl",
-        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
-      }
-    },
-    {
       "id": "dictionary:I18N:Sneller antwoord aan klanten en leveranciers.",
       "page": "404.html",
       "kind": "dictionary:I18N:Sneller antwoord aan klanten en leveranciers.",
@@ -65649,19 +64887,6 @@
       "kind": "dictionary:I18N:Snellere beslissingen en minder wachten op één persoon.",
       "text": "Snellere beslissingen en minder wachten op één persoon.",
       "sha256": "fbac6e556fe69940c309b964ba6d45cb62b5e47f696ed61bfca9886fc54804b4",
-      "engine": {
-        "name": "LanguageTool",
-        "version": "6.6",
-        "language": "nl",
-        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
-      }
-    },
-    {
-      "id": "dictionary:I18N:Software: Orion",
-      "page": "automatisering.html",
-      "kind": "dictionary:I18N:Software: Orion",
-      "text": "Software: Orion",
-      "sha256": "4475c74e72cecdf9aa3c9eabae3b9e757c62cd42c5c85a30cbd951fb19329eb2",
       "engine": {
         "name": "LanguageTool",
         "version": "6.6",
@@ -66450,6 +65675,19 @@
       }
     },
     {
+      "id": "dictionary:I18N:Tel de minuten die één medewerker hier op een werkdag aan besteedt. De grafiek rekent met 220 werkdagen per jaar.",
+      "page": "automatisering.html",
+      "kind": "dictionary:I18N:Tel de minuten die één medewerker hier op een werkdag aan besteedt. De grafiek rekent met 220 werkdagen per jaar.",
+      "text": "Tel de minuten die één medewerker hier op een werkdag aan besteedt. De grafiek rekent met 220 werkdagen per jaar.",
+      "sha256": "f69d73558359d308af223630c849855bc6ce4b08b1f8bd3d35b2ffb6987d8714",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
+      }
+    },
+    {
       "id": "dictionary:I18N:Tel het",
       "page": "journal.html",
       "kind": "dictionary:I18N:Tel het",
@@ -67165,19 +66403,6 @@
       }
     },
     {
-      "id": "dictionary:I18N:Tijd terug",
-      "page": "automatisering.html",
-      "kind": "dictionary:I18N:Tijd terug",
-      "text": "Tijd terug",
-      "sha256": "5ad54211589e9f2ef3168a8deeb97a6a0cfac36df353df469f0ad544f2ad1d03",
-      "engine": {
-        "name": "LanguageTool",
-        "version": "6.6",
-        "language": "nl",
-        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
-      }
-    },
-    {
       "id": "dictionary:I18N:Tijdens de intake bepalen we waar uw actuele gegevens staan en welke toegang nodig is.",
       "page": "404.html",
       "kind": "dictionary:I18N:Tijdens de intake bepalen we waar uw actuele gegevens staan en welke toegang nodig is.",
@@ -67677,19 +66902,6 @@
       "kind": "dictionary:I18N:U bepaalt hoe u de documentversies opvolgt",
       "text": "U bepaalt hoe u de documentversies opvolgt",
       "sha256": "8d6db4e96789d69eae0cb9045f549e346126124a6e37a8f2e1faa9e7efb476d2",
-      "engine": {
-        "name": "LanguageTool",
-        "version": "6.6",
-        "language": "nl",
-        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
-      }
-    },
-    {
-      "id": "dictionary:I18N:U beslist",
-      "page": "automatisering.html",
-      "kind": "dictionary:I18N:U beslist",
-      "text": "U beslist",
-      "sha256": "50fdb19bb5439fb88f84979a2d0ee16dca5137fba781ebd6a75373993c9d4a6f",
       "engine": {
         "name": "LanguageTool",
         "version": "6.6",
@@ -68309,6 +67521,19 @@
       }
     },
     {
+      "id": "dictionary:I18N:Uw medewerker beslist",
+      "page": "automatisering.html",
+      "kind": "dictionary:I18N:Uw medewerker beslist",
+      "text": "Uw medewerker beslist",
+      "sha256": "4de407dfcbb6f3623a17536824e4a0ac93b663dfa0c54bce9c14f14fe93a5084",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
+      }
+    },
+    {
       "id": "dictionary:I18N:Uw medewerker beslist hoe elk verschil wordt opgevolgd.",
       "page": "index.html",
       "kind": "dictionary:I18N:Uw medewerker beslist hoe elk verschil wordt opgevolgd.",
@@ -68517,19 +67742,6 @@
       }
     },
     {
-      "id": "dictionary:I18N:Uw team typt over, kopieert en plakt, en volgt op met herinneringen. Dat kost elke week uren.",
-      "page": "automatisering.html",
-      "kind": "dictionary:I18N:Uw team typt over, kopieert en plakt, en volgt op met herinneringen. Dat kost elke week uren.",
-      "text": "Uw team typt over, kopieert en plakt, en volgt op met herinneringen. Dat kost elke week uren.",
-      "sha256": "b3a36f06135054c4d836ec5ba1f82cde2c2a6ea1c93f76516f3a225bc1ff55d2",
-      "engine": {
-        "name": "LanguageTool",
-        "version": "6.6",
-        "language": "nl",
-        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
-      }
-    },
-    {
       "id": "dictionary:I18N:Uw team vergelijkt leveringen handmatig met bestellingen.",
       "page": "index.html",
       "kind": "dictionary:I18N:Uw team vergelijkt leveringen handmatig met bestellingen.",
@@ -68652,6 +67864,19 @@
       "kind": "dictionary:I18N:Value simulator",
       "text": "Waardesimulator",
       "sha256": "741f7ca34cc7907bb695649954918c88221686145e933498eb44197467d155a0",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
+      }
+    },
+    {
+      "id": "dictionary:I18N:Van bestelmail naar conceptorder",
+      "page": "automatisering.html",
+      "kind": "dictionary:I18N:Van bestelmail naar conceptorder",
+      "text": "Van bestelmail naar conceptorder",
+      "sha256": "89aa4d8cb08b1d0cefa8b2cd21695c47d401f3ff568f1defc158dc1b9351b859",
       "engine": {
         "name": "LanguageTool",
         "version": "6.6",
@@ -69284,19 +68509,6 @@
       }
     },
     {
-      "id": "dictionary:I18N:Vier soorten handwerk die uw mensen elke week tijd kosten.",
-      "page": "automatisering.html",
-      "kind": "dictionary:I18N:Vier soorten handwerk die uw mensen elke week tijd kosten.",
-      "text": "Vier soorten handwerk die uw mensen elke week tijd kosten.",
-      "sha256": "67291a58956987dc9da05e1a8cd1dda1fd96f0b12fc462e9db493f8dafd2c086",
-      "engine": {
-        "name": "LanguageTool",
-        "version": "6.6",
-        "language": "nl",
-        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
-      }
-    },
-    {
       "id": "dictionary:I18N:Vier stappen, geen nieuw systeem",
       "page": "journal.html",
       "kind": "dictionary:I18N:Vier stappen, geen nieuw systeem",
@@ -69315,19 +68527,6 @@
       "kind": "dictionary:I18N:Vier stappen. Geen nieuw systeem. Eén taak om mee te beginnen.",
       "text": "Vier stappen. Geen nieuw systeem. Eén taak om mee te beginnen.",
       "sha256": "5d66ffd0c5c6130330aac5afc8815f714816405542252a7c984491c1cd1a1bfb",
-      "engine": {
-        "name": "LanguageTool",
-        "version": "6.6",
-        "language": "nl",
-        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
-      }
-    },
-    {
-      "id": "dictionary:I18N:Vier stappen. Klein beginnen, meten, en pas dan verder.",
-      "page": "automatisering.html",
-      "kind": "dictionary:I18N:Vier stappen. Klein beginnen, meten, en pas dan verder.",
-      "text": "Vier stappen. Klein beginnen, meten, en pas dan verder.",
-      "sha256": "3a516561371305bcca189feb77fbbd43f0700d5b1dbad156b704d195c1e026f0",
       "engine": {
         "name": "LanguageTool",
         "version": "6.6",
@@ -69479,6 +68678,19 @@
       }
     },
     {
+      "id": "dictionary:I18N:Volg een bestelling",
+      "page": "automatisering.html",
+      "kind": "dictionary:I18N:Volg een bestelling",
+      "text": "Volg een bestelling",
+      "sha256": "5cccc4f0fc5c2c7a45683410e30741cb923c233b45b26eb8fa6bd680cad4f6ed",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
+      }
+    },
+    {
       "id": "dictionary:I18N:Volgende",
       "page": "journal.html",
       "kind": "dictionary:I18N:Volgende",
@@ -69583,6 +68795,19 @@
       }
     },
     {
+      "id": "dictionary:I18N:Voor klantvragenlijsten in de voedingssector zoekt Orion in uw documenten en toont het de bron bij elk voorstel.",
+      "page": "automatisering.html",
+      "kind": "dictionary:I18N:Voor klantvragenlijsten in de voedingssector zoekt Orion in uw documenten en toont het de bron bij elk voorstel.",
+      "text": "Voor klantvragenlijsten in de voedingssector zoekt Orion in uw documenten en toont het de bron bij elk voorstel.",
+      "sha256": "9952b1abe18f85414374194880000f223cd80a13cc6ef20f11a1c11984f7b27f",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
+      }
+    },
+    {
       "id": "dictionary:I18N:Voor kwaliteitsteams in voedingsbedrijven",
       "page": "fr/orion/index.html",
       "kind": "dictionary:I18N:Voor kwaliteitsteams in voedingsbedrijven",
@@ -69614,19 +68839,6 @@
       "kind": "dictionary:I18N:Voor teamleiders en medewerkers. Handwerk herkennen in de eigen afdeling, een workflow beschrijven en samen bepalen wat geautomatiseerd wordt.",
       "text": "Voor teamleiders en medewerkers. Handwerk herkennen in de eigen afdeling, een workflow beschrijven en samen bepalen wat geautomatiseerd wordt.",
       "sha256": "ec3dd8cf254f1ab160cc72cc817a6f86e5c9153f555df40a61ce80bde566a113",
-      "engine": {
-        "name": "LanguageTool",
-        "version": "6.6",
-        "language": "nl",
-        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
-      }
-    },
-    {
-      "id": "dictionary:I18N:Voor vragenlijsten en specificaties van klanten is er Orion, onze eigen software.",
-      "page": "automatisering.html",
-      "kind": "dictionary:I18N:Voor vragenlijsten en specificaties van klanten is er Orion, onze eigen software.",
-      "text": "Voor vragenlijsten en specificaties van klanten is er Orion, onze eigen software.",
-      "sha256": "fc47075c9185a97e624dde01530de03775bdc0815afab93be651e8ef2b8ff045",
       "engine": {
         "name": "LanguageTool",
         "version": "6.6",
@@ -69679,6 +68891,19 @@
       "kind": "dictionary:I18N:Voorbeelden",
       "text": "Voorbeelden",
       "sha256": "9cd4e067a578d3265336ea58de9222fc14b1ba6c7083bccfc3487bde9e266181",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
+      }
+    },
+    {
+      "id": "dictionary:I18N:Voorbereiding",
+      "page": "automatisering.html",
+      "kind": "dictionary:I18N:Voorbereiding",
+      "text": "Voorbereiding",
+      "sha256": "26ec780337abd00e5041ecf8ff5fce6eaeac52adaef6ef6082ea5ce2205ae46c",
       "engine": {
         "name": "LanguageTool",
         "version": "6.6",
@@ -69887,6 +69112,19 @@
       "kind": "dictionary:I18N:Vult klantvragenlijsten en specificaties in, met de bron bij elk antwoord.",
       "text": "Vult klantvragenlijsten en specificaties in, met de bron bij elk antwoord.",
       "sha256": "5d3cbb41da4f59da9ff52e41fd25cacf5abc4701bffe4e34331d570c91304bab",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
+      }
+    },
+    {
+      "id": "dictionary:I18N:Waar beslist uw team?",
+      "page": "automatisering.html",
+      "kind": "dictionary:I18N:Waar beslist uw team?",
+      "text": "Waar beslist uw team?",
+      "sha256": "63f9bb20454b38531ea54d64a90b43dcc11399f1129f23ed20e36fe82deae9a1",
       "engine": {
         "name": "LanguageTool",
         "version": "6.6",
@@ -70220,6 +69458,19 @@
       }
     },
     {
+      "id": "dictionary:I18N:Wanneer past Orion beter?",
+      "page": "automatisering.html",
+      "kind": "dictionary:I18N:Wanneer past Orion beter?",
+      "text": "Wanneer past Orion beter?",
+      "sha256": "95e2a3dfdcaed348c0678f863d09706cc8dee9d2f3d004a07f55572e7d2efd3e",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
+      }
+    },
+    {
       "id": "dictionary:I18N:Wat als de automatisering een fout maakt?",
       "page": "404.html",
       "kind": "dictionary:I18N:Wat als de automatisering een fout maakt?",
@@ -70337,11 +69588,11 @@
       }
     },
     {
-      "id": "dictionary:I18N:Wat een geautomatiseerde workflow u oplevert.",
-      "page": "automatisering.html",
-      "kind": "dictionary:I18N:Wat een geautomatiseerde workflow u oplevert.",
-      "text": "Wat een geautomatiseerde workflow u oplevert.",
-      "sha256": "376ab1c2ba62489c13eaf97a801727249cc6d202243688ead72e788004ed16fd",
+      "id": "dictionary:I18N:Wat gebeurt er daarna?",
+      "page": "404.html",
+      "kind": "dictionary:I18N:Wat gebeurt er daarna?",
+      "text": "Wat gebeurt er daarna?",
+      "sha256": "34270237c70bff6e9793d82125fc0f11cfa1e6b6dac72d1ef7cbf915f00bef57",
       "engine": {
         "name": "LanguageTool",
         "version": "6.6",
@@ -70350,11 +69601,11 @@
       }
     },
     {
-      "id": "dictionary:I18N:Wat gebeurt er daarna?",
-      "page": "404.html",
-      "kind": "dictionary:I18N:Wat gebeurt er daarna?",
-      "text": "Wat gebeurt er daarna?",
-      "sha256": "34270237c70bff6e9793d82125fc0f11cfa1e6b6dac72d1ef7cbf915f00bef57",
+      "id": "dictionary:I18N:Wat gebeurt er met één bestelmail?",
+      "page": "automatisering.html",
+      "kind": "dictionary:I18N:Wat gebeurt er met één bestelmail?",
+      "text": "Wat gebeurt er met één bestelmail?",
+      "sha256": "4a3131594be18114321159406711d3e6caf142385c8aff3382df3883b8aae4bb",
       "engine": {
         "name": "LanguageTool",
         "version": "6.6",
@@ -70740,19 +69991,6 @@
       }
     },
     {
-      "id": "dictionary:I18N:Wat we automatiseren, van de eerste mail tot het rapport.",
-      "page": "automatisering.html",
-      "kind": "dictionary:I18N:Wat we automatiseren, van de eerste mail tot het rapport.",
-      "text": "Wat we automatiseren, van de eerste mail tot het rapport.",
-      "sha256": "e682ddc55c0687ec88c8028e0c8d88b7b95b3185f34dce2e7673339d0a496190",
-      "engine": {
-        "name": "LanguageTool",
-        "version": "6.6",
-        "language": "nl",
-        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
-      }
-    },
-    {
       "id": "dictionary:I18N:Wat we meten",
       "page": "articles-1/enterprise-architecture-needs-enterprise-coherence.html",
       "kind": "dictionary:I18N:Wat we meten",
@@ -70987,19 +70225,6 @@
       }
     },
     {
-      "id": "dictionary:I18N:We starten met de workflow die het meeste tijd kost, en bouwen waar het kan op de systemen die u al hebt.",
-      "page": "automatisering.html",
-      "kind": "dictionary:I18N:We starten met de workflow die het meeste tijd kost, en bouwen waar het kan op de systemen die u al hebt.",
-      "text": "We starten met de workflow die het meeste tijd kost, en bouwen waar het kan op de systemen die u al hebt.",
-      "sha256": "511035e6459218218f9952b160c3bec927796fee1a931ddfbd7bf7565326acf7",
-      "engine": {
-        "name": "LanguageTool",
-        "version": "6.6",
-        "language": "nl",
-        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
-      }
-    },
-    {
       "id": "dictionary:I18N:We starten met een paar vragenlijsten die u echt gekregen hebt. We meten hoeveel tijd ze vandaag kosten en hoeveel met Orion. Ziet u geen verschil, dan stoppen we.",
       "page": "404.html",
       "kind": "dictionary:I18N:We starten met een paar vragenlijsten die u echt gekregen hebt. We meten hoeveel tijd ze vandaag kosten en hoeveel met Orion. Ziet u geen verschil, dan stoppen we.",
@@ -71143,19 +70368,6 @@
       }
     },
     {
-      "id": "dictionary:I18N:Wekelijkse cijfers",
-      "page": "automatisering.html",
-      "kind": "dictionary:I18N:Wekelijkse cijfers",
-      "text": "Wekelijkse cijfers",
-      "sha256": "f89b1523af792768947f320b04ce2fd9d2913bf4b7a6bd1979e4dc7fa81fcc34",
-      "engine": {
-        "name": "LanguageTool",
-        "version": "6.6",
-        "language": "nl",
-        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
-      }
-    },
-    {
       "id": "dictionary:I18N:Wekelijkse cijfers die vanzelf in één overzicht samenkomen.",
       "page": "404.html",
       "kind": "dictionary:I18N:Wekelijkse cijfers die vanzelf in één overzicht samenkomen.",
@@ -71200,6 +70412,19 @@
       "kind": "dictionary:I18N:Welk terugkerend werk kost uw team tijd?",
       "text": "Welk terugkerend werk kost uw team tijd?",
       "sha256": "4b9ef096c31335fdd627bce469b4e4aa428991fb595e58efbb008805f2e75fc8",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
+      }
+    },
+    {
+      "id": "dictionary:I18N:Welke gegevens typt uw team vandaag nog over?",
+      "page": "automatisering.html",
+      "kind": "dictionary:I18N:Welke gegevens typt uw team vandaag nog over?",
+      "text": "Welke gegevens typt uw team vandaag nog over?",
+      "sha256": "fa6139f81d45ca3631a44a702ea04bc1ec33b92ebb80aa1ac13ec2a525a0c9b3",
       "engine": {
         "name": "LanguageTool",
         "version": "6.6",
@@ -71785,19 +71010,6 @@
       "kind": "dictionary:I18N:Wie beslist over de tijd",
       "text": "Wie beslist over de tijd",
       "sha256": "ca3cf6a4a5e5957ece4263d897ba3d97574d17f245465813a7d9d9e181118857",
-      "engine": {
-        "name": "LanguageTool",
-        "version": "6.6",
-        "language": "nl",
-        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
-      }
-    },
-    {
-      "id": "dictionary:I18N:Wie één uur per dag overtypt, besteedt daar bij € 17,25 per uur en 220 werkdagen zoveel aan. Die tijd kan naar klanten, kwaliteit of groei gaan.",
-      "page": "automatisering.html",
-      "kind": "dictionary:I18N:Wie één uur per dag overtypt, besteedt daar bij € 17,25 per uur en 220 werkdagen zoveel aan. Die tijd kan naar klanten, kwaliteit of groei gaan.",
-      "text": "Wie één uur per dag overtypt, besteedt daar bij € 17,25 per uur en 220 werkdagen zoveel aan. Die tijd kan naar klanten, kwaliteit of groei gaan.",
-      "sha256": "b6a466cd667c68f94e423b0bfd99e465e5944c2f2358a6470cba3d3cb999af9a",
       "engine": {
         "name": "LanguageTool",
         "version": "6.6",
@@ -76710,8 +75922,8 @@
       "id": "executive-radar/index.html#text:body:2>main:6>section:5>div:1>div:4>aside:2>div:5>ol:2>li:1",
       "page": "executive-radar/index.html",
       "kind": "text",
-      "text": "13:12:38 · Demonstratiedossier geopend. Geen externe wijzigingen.",
-      "sha256": "9cbcca48eeb221d5a7d93eb0f5c45ccece9b879a365b740ee64955989de813e4",
+      "text": "14:28:02 · Demonstratiedossier geopend. Geen externe wijzigingen.",
+      "sha256": "505cdc9f5eb685d24c02865c39dd76dfcc66d2898bdad1881b61d9c478bb927a",
       "engine": {
         "name": "LanguageTool",
         "version": "6.6",
@@ -349666,6 +348878,211 @@
       "context": "Voordat u over een pilot beslist, bespreken we met uw IT-verantwoordelijke waar Orion draait, welke gegevens worden verwerkt en door welke partijen. We leggen de afspraken voor uw pilot vast in de verwerkersovereenkomst, met de lijst van ingeschakelde subverwerkers.",
       "status": "open",
       "firstSeen": "d2435762a900973e010c0e4cb051d0574bb1b72c"
+    },
+    {
+      "id": "642062f7b8fb1eba9e922a4406e7692bae02e494682cf527d98c07e9c8276888",
+      "blockId": "automatisering.html#cms-catalog:website:wf-aanpak-scan:text",
+      "textHash": "e3bb8de33d5de34ab36859850b0783a315c9cd6fe30c4db498513e43fa08c59b",
+      "rule": "MORFOLOGIK_RULE_NL_NL",
+      "offset": 0,
+      "length": 12,
+      "message": "Er is een mogelijke spelfout gevonden.",
+      "replacements": [
+        "Workflowstap"
+      ],
+      "context": "Workflowscan.",
+      "status": "open",
+      "firstSeen": "d504436cd66471a19ecb842ee6c3eee91d6d1ab2"
+    },
+    {
+      "id": "25bca56c8c470939109cb472fb1c2824492550c4513fa713056fda25411fd619",
+      "blockId": "automatisering.html#cms-catalog:website:wf-orion-uitleg:text",
+      "textHash": "9952b1abe18f85414374194880000f223cd80a13cc6ef20f11a1c11984f7b27f",
+      "rule": "MORFOLOGIK_RULE_NL_NL",
+      "offset": 5,
+      "length": 18,
+      "message": "Er is een mogelijke spelfout gevonden.",
+      "replacements": [
+        "cliëntvragenlijsten",
+        "aanvragenlijsten",
+        "slaapvragenlijsten",
+        "slotvragenlijsten"
+      ],
+      "context": "Voor klantvragenlijsten in de voedingssector zoekt Orion in uw documenten en toont het de bron bij elk voorstel.",
+      "status": "open",
+      "firstSeen": "d504436cd66471a19ecb842ee6c3eee91d6d1ab2"
+    },
+    {
+      "id": "1f6f984aa6f4947df60491d55d565bc0424a74a8adfc85bdedebae4e7bd1c5d2",
+      "blockId": "automatisering.html#text:body:2>main:3>header:1>div:1>div:1>p:1",
+      "textHash": "d843d7d010c297e9336b2a9d47f659857a440a8646f738438bdcd15387a32daf",
+      "rule": "MORFOLOGIK_RULE_NL_NL",
+      "offset": 0,
+      "length": 23,
+      "message": "Er is een mogelijke spelfout gevonden.",
+      "replacements": [
+        "Workflowautomatisering"
+      ],
+      "context": "Workflow-automatisering",
+      "status": "open",
+      "firstSeen": "d504436cd66471a19ecb842ee6c3eee91d6d1ab2"
+    },
+    {
+      "id": "9d42f921ccc0f00f51c20cca2957e5bdb31c4cbb0bb90e682e6bfeebd432ef63",
+      "blockId": "automatisering.html#text:body:2>main:3>section:4>div:1>ol:2>li:1>div:2>h3:1",
+      "textHash": "e3bb8de33d5de34ab36859850b0783a315c9cd6fe30c4db498513e43fa08c59b",
+      "rule": "MORFOLOGIK_RULE_NL_NL",
+      "offset": 0,
+      "length": 12,
+      "message": "Er is een mogelijke spelfout gevonden.",
+      "replacements": [
+        "Workflowstap"
+      ],
+      "context": "Workflowscan.",
+      "status": "open",
+      "firstSeen": "d504436cd66471a19ecb842ee6c3eee91d6d1ab2"
+    },
+    {
+      "id": "084401d267011d3e41cad2c64c463d6c3f3c6307f6b6ab35e4e7f347f1f9c38a",
+      "blockId": "automatisering.html#text:body:2>main:3>section:6>div:1>div:1>details:2>dl:3>dd:8",
+      "textHash": "ae71c6d3a0c2a095c6357e74ef024bf9a4f0db8f984c8e947333794683148bcf",
+      "rule": "MORFOLOGIK_RULE_NL_NL",
+      "offset": 42,
+      "length": 13,
+      "message": "Er is een mogelijke spelfout gevonden.",
+      "replacements": [
+        "Ecolo-lijsten"
+      ],
+      "context": "We starten met wat elke kmo heeft: mails, Excel-lijsten en documenten.",
+      "status": "open",
+      "firstSeen": "d504436cd66471a19ecb842ee6c3eee91d6d1ab2"
+    },
+    {
+      "id": "1964b95f80f69a0142ed14f1318162edece19fe72f738875cf990c9353aa0e5b",
+      "blockId": "automatisering.html#text:body:2>main:3>section:6>div:1>div:1>details:2>p:4",
+      "textHash": "94d77256f245e2bccb60c3b5bab53108652142d6cd7aeaaf948946bf3b43c29d",
+      "rule": "MORFOLOGIK_RULE_NL_NL",
+      "offset": 6,
+      "length": 9,
+      "message": "Er is een mogelijke spelfout gevonden.",
+      "replacements": [
+        "Oldemeier"
+      ],
+      "context": "Bron: Oldemeyer, Jede & Teuteberg, Management Review Quarterly, 2025",
+      "status": "open",
+      "firstSeen": "d504436cd66471a19ecb842ee6c3eee91d6d1ab2"
+    },
+    {
+      "id": "01bb2b6773de86c71788ffc16398703a7b6b3aa2ed458deef538042b488a83a0",
+      "blockId": "automatisering.html#text:body:2>main:3>section:6>div:1>div:1>details:2>p:4",
+      "textHash": "94d77256f245e2bccb60c3b5bab53108652142d6cd7aeaaf948946bf3b43c29d",
+      "rule": "MORFOLOGIK_RULE_NL_NL",
+      "offset": 17,
+      "length": 4,
+      "message": "Er is een mogelijke spelfout gevonden.",
+      "replacements": [
+        "Mede",
+        "Rede",
+        "Ede",
+        "Jade",
+        "Jude",
+        "Jee",
+        "Lede",
+        "Jed",
+        "Jedi",
+        "Bede",
+        "Eede",
+        "Gede",
+        "Zede",
+        "Dede",
+        "Hede",
+        "Wede",
+        "Fede",
+        "Jeds",
+        "Jende",
+        "Jere",
+        "Jele",
+        "Jewe",
+        "EEDE",
+        "Jéke",
+        "Réde",
+        "Jece",
+        "Jedle"
+      ],
+      "context": "Bron: Oldemeyer, Jede & Teuteberg, Management Review Quarterly, 2025",
+      "status": "open",
+      "firstSeen": "d504436cd66471a19ecb842ee6c3eee91d6d1ab2"
+    },
+    {
+      "id": "6b000ce1517db924e57a68482ac4789c179533057af205ccfa718f14ccab7dd8",
+      "blockId": "automatisering.html#text:body:2>main:3>section:6>div:1>div:1>details:2>p:4",
+      "textHash": "94d77256f245e2bccb60c3b5bab53108652142d6cd7aeaaf948946bf3b43c29d",
+      "rule": "MORFOLOGIK_RULE_NL_NL",
+      "offset": 53,
+      "length": 9,
+      "message": "Er is een mogelijke spelfout gevonden.",
+      "replacements": [
+        "Quarter",
+        "Quarters",
+        "Quartel",
+        "Quartero",
+        "Quartels",
+        "Quartey"
+      ],
+      "context": "Bron: Oldemeyer, Jede & Teuteberg, Management Review Quarterly, 2025",
+      "status": "open",
+      "firstSeen": "d504436cd66471a19ecb842ee6c3eee91d6d1ab2"
+    },
+    {
+      "id": "eeee3ff29a791213ea7db666ef1d735f7b28a5e066c9ca106ebc9409e1e29bb4",
+      "blockId": "automatisering.html#text:body:2>main:3>section:7>div:1>div:2>details:3>p:2",
+      "textHash": "02c03d71141d210424e78492682d3fec6adf01efeca97ceddd2f54ebfe8de9bd",
+      "rule": "MORFOLOGIK_RULE_NL_NL",
+      "offset": 3,
+      "length": 12,
+      "message": "Er is een mogelijke spelfout gevonden.",
+      "replacements": [
+        "workflowstap"
+      ],
+      "context": "De workflowscan is op aanvraag. Daarna hangt de prijs af van de workflow. We meten eerst wat het u oplevert.",
+      "status": "open",
+      "firstSeen": "d504436cd66471a19ecb842ee6c3eee91d6d1ab2"
+    },
+    {
+      "id": "51b65c30ee59b13577853dafd32058be4453533ad657c5d1ba8f9f1194636d50",
+      "blockId": "automatisering.html#text:body:2>main:3>section:7>div:1>div:2>details:4>p:2",
+      "textHash": "9952b1abe18f85414374194880000f223cd80a13cc6ef20f11a1c11984f7b27f",
+      "rule": "MORFOLOGIK_RULE_NL_NL",
+      "offset": 5,
+      "length": 18,
+      "message": "Er is een mogelijke spelfout gevonden.",
+      "replacements": [
+        "cliëntvragenlijsten",
+        "aanvragenlijsten",
+        "slaapvragenlijsten",
+        "slotvragenlijsten"
+      ],
+      "context": "Voor klantvragenlijsten in de voedingssector zoekt Orion in uw documenten en toont het de bron bij elk voorstel.",
+      "status": "open",
+      "firstSeen": "d504436cd66471a19ecb842ee6c3eee91d6d1ab2"
+    },
+    {
+      "id": "95b9b857b0a05ed3c8e9c92defe36cfd64def435d43ac82f0958a03939fb86a2",
+      "blockId": "dictionary:I18N:Voor klantvragenlijsten in de voedingssector zoekt Orion in uw documenten en toont het de bron bij elk voorstel.",
+      "textHash": "9952b1abe18f85414374194880000f223cd80a13cc6ef20f11a1c11984f7b27f",
+      "rule": "MORFOLOGIK_RULE_NL_NL",
+      "offset": 5,
+      "length": 18,
+      "message": "Er is een mogelijke spelfout gevonden.",
+      "replacements": [
+        "cliëntvragenlijsten",
+        "aanvragenlijsten",
+        "slaapvragenlijsten",
+        "slotvragenlijsten"
+      ],
+      "context": "Voor klantvragenlijsten in de voedingssector zoekt Orion in uw documenten en toont het de bron bij elk voorstel.",
+      "status": "open",
+      "firstSeen": "d504436cd66471a19ecb842ee6c3eee91d6d1ab2"
     }
   ]
 }

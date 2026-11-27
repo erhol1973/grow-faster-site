@@ -2158,5 +2158,65 @@
         ]
       }
     ]
+  },
+  "review20261127WorkflowAutomatisering": {
+    "sourceCommit": "d504436cd66471a19ecb842ee6c3eee91d6d1ab2",
+    "humanApproval": false,
+    "locations": 11,
+    "groups": [
+      {
+        "term": "workflowscan",
+        "reason": "Naam van de Grow Faster-dienst die een werkproces onderzoekt. De suggestie workflowstap duidt een andere handeling aan.",
+        "ids": [
+          "642062f7b8fb1eba9e922a4406e7692bae02e494682cf527d98c07e9c8276888",
+          "9d42f921ccc0f00f51c20cca2957e5bdb31c4cbb0bb90e682e6bfeebd432ef63",
+          "eeee3ff29a791213ea7db666ef1d735f7b28a5e066c9ca106ebc9409e1e29bb4"
+        ]
+      },
+      {
+        "term": "klantvragenlijsten",
+        "reason": "Samenstelling voor vragenlijsten van klanten. De voorgestelde vervangingen veranderen de betekenis.",
+        "ids": [
+          "25bca56c8c470939109cb472fb1c2824492550c4513fa713056fda25411fd619",
+          "51b65c30ee59b13577853dafd32058be4453533ad657c5d1ba8f9f1194636d50",
+          "95b9b857b0a05ed3c8e9c92defe36cfd64def435d43ac82f0958a03939fb86a2"
+        ]
+      },
+      {
+        "term": "workflow-automatisering",
+        "reason": "Vaste naam van deze dienst in het hoofdmenu. Het koppelteken maakt de samengestelde naam leesbaar.",
+        "ids": [
+          "1f6f984aa6f4947df60491d55d565bc0424a74a8adfc85bdedebae4e7bd1c5d2"
+        ]
+      },
+      {
+        "term": "excel-lijsten",
+        "reason": "Samenstelling met de productnaam Excel. Het koppelteken bevordert de leesbaarheid.",
+        "ids": [
+          "084401d267011d3e41cad2c64c463d6c3f3c6307f6b6ab35e4e7f347f1f9c38a"
+        ]
+      },
+      {
+        "term": "oldemeyer",
+        "reason": "Familienaam van een auteur in de bronvermelding.",
+        "ids": [
+          "1964b95f80f69a0142ed14f1318162edece19fe72f738875cf990c9353aa0e5b"
+        ]
+      },
+      {
+        "term": "jede",
+        "reason": "Familienaam van een auteur in de bronvermelding.",
+        "ids": [
+          "01bb2b6773de86c71788ffc16398703a7b6b3aa2ed458deef538042b488a83a0"
+        ]
+      },
+      {
+        "term": "quarterly",
+        "reason": "Onderdeel van de officiële tijdschrifttitel Management Review Quarterly in de bronvermelding.",
+        "ids": [
+          "6b000ce1517db924e57a68482ac4789c179533057af205ccfa718f14ccab7dd8"
+        ]
+      }
+    ]
   }
 }

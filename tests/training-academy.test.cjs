@@ -24,8 +24,16 @@ test('every programme card and the closing call lead to the training appointment
 test('further reading links to existing magazine and insights pages; trainer links to the About page',()=>{
   const r=section('lezen');for(const href of ['journal.html','insights-ai-pilot.html']){assert.match(r,new RegExp(`href="${href.replace('.','\\.')}"`));assert.ok(fs.existsSync(path.join(root,href)),href);}
   for(const src of r.matchAll(/src="([^"]+)"/g))assert.ok(fs.existsSync(path.join(root,src[1])),src[1]);
-  // 25 Nov 2026 owner feedback: the Insights card uses an own office photo like the magazine card, not the blue-tinted city photo.
-  assert.match(r,/img\/insights-ai-pilot-700\.webp/);assert.doesNotMatch(r,/band-process/);
+  // 27 Nov 2026 owner request: both reading cards use a dedicated workflow training photograph.
+  assert.deepEqual([...r.matchAll(/<img src="img\/(training-lezen-(?:werkproces|pilot)-672\.webp)"/g)].map(match=>match[1]),
+    ['training-lezen-werkproces-672.webp','training-lezen-pilot-672.webp']);
+  for(const match of r.matchAll(/srcset="([^"]+)"/g)){
+    for(const variant of match[1].split(', ')){
+      const file=variant.split(' ')[0];
+      assert.ok(fs.statSync(path.join(root,file)).size<78001,file);
+    }
+  }
+  assert.doesNotMatch(r,/band-process/);
   assert.match(section('trainer'),/href="about\.html"/);
   // Negative: no invented participant quotes, case studies or participant numbers.
   assert.doesNotMatch(main(),/<blockquote|deelnemer|Case study|klantcase/i);

@@ -1,8 +1,8 @@
 {
   "schema": 1,
   "origin": "Existing ChatGPT Library baseline/register not accessible in this environment; no prior reviews imported.",
-  "sourceCommit": "f58181d0c37c2b09eb9591f26ca5c743a667ce9d",
-  "parentBaseline": "020cadba05e534dfeaac8272010e751e29692100b8b8bd6d01d224cb50bb783b",
+  "sourceCommit": "d2435762a900973e010c0e4cb051d0574bb1b72c",
+  "parentBaseline": "da08527bcbbad800c640714f5f0608c0e3f0ccd98868ba4ff39d3e47e18be987",
   "coverage": [
     {
       "file": "404.html",
@@ -127,7 +127,7 @@
     {
       "file": "fr/orion/index.html",
       "status": "scanned",
-      "blocks": 1652
+      "blocks": 1654
     },
     {
       "file": "index.html",
@@ -167,7 +167,7 @@
     {
       "file": "orion.html",
       "status": "scanned",
-      "blocks": 1652
+      "blocks": 1654
     },
     {
       "file": "privacy.html",
@@ -239,6 +239,10 @@
     {
       "sourceCommit": "51835e43c87f156c7202e4e0080eaaf1aa74f14c",
       "digest": "020cadba05e534dfeaac8272010e751e29692100b8b8bd6d01d224cb50bb783b"
+    },
+    {
+      "sourceCommit": "f58181d0c37c2b09eb9591f26ca5c743a667ce9d",
+      "digest": "da08527bcbbad800c640714f5f0608c0e3f0ccd98868ba4ff39d3e47e18be987"
     }
   ],
   "blocks": [
@@ -32030,8 +32034,8 @@
       "id": "baies-dev/index.html#text:body:2>main:6>section:5>div:1>div:4>aside:2>div:5>ol:2>li:1",
       "page": "baies-dev/index.html",
       "kind": "text",
-      "text": "12:47:54 · Demonstratiedossier geopend. Geen externe wijzigingen.",
-      "sha256": "d6210fc9ec219fb40c3e5f2229d28e87e976f0f0874810731bf5a906c19caabd",
+      "text": "13:12:29 · Demonstratiedossier geopend. Geen externe wijzigingen.",
+      "sha256": "d24a7daea292e48ba09948f1eb3086598bf3dce0941d62590c439494022bc8a1",
       "engine": {
         "name": "LanguageTool",
         "version": "6.6",
@@ -47648,11 +47652,11 @@
       }
     },
     {
-      "id": "dictionary:I18N:. In een experiment met 758 consultants werkten wie AI gebruikte sneller en beter bij taken die AI aankan. Bij een taak buiten het bereik van AI vonden ze 19 procentpunten minder vaak de juiste oplossing, terwijl beide taken even moeilijk leken. Bron:",
+      "id": "dictionary:I18N:. In een experiment met 758 consultants werkten de deelnemers die AI gebruikten sneller en beter bij taken die AI aankan. Bij een taak buiten het bereik van AI vonden ze 19 procentpunten minder vaak de juiste oplossing, terwijl beide taken even moeilijk leken. Bron:",
       "page": "fr/orion/index.html",
-      "kind": "dictionary:I18N:. In een experiment met 758 consultants werkten wie AI gebruikte sneller en beter bij taken die AI aankan. Bij een taak buiten het bereik van AI vonden ze 19 procentpunten minder vaak de juiste oplossing, terwijl beide taken even moeilijk leken. Bron:",
-      "text": ". In een experiment met 758 consultants werkten wie AI gebruikte sneller en beter bij taken die AI aankan. Bij een taak buiten het bereik van AI vonden ze 19 procentpunten minder vaak de juiste oplossing, terwijl beide taken even moeilijk leken. Bron:",
-      "sha256": "dd542f5cacd6e7efc4f4678b7999572d6940fe32c9a6fe088ad89aec6ac7ee0d",
+      "kind": "dictionary:I18N:. In een experiment met 758 consultants werkten de deelnemers die AI gebruikten sneller en beter bij taken die AI aankan. Bij een taak buiten het bereik van AI vonden ze 19 procentpunten minder vaak de juiste oplossing, terwijl beide taken even moeilijk leken. Bron:",
+      "text": ". In een experiment met 758 consultants werkten de deelnemers die AI gebruikten sneller en beter bij taken die AI aankan. Bij een taak buiten het bereik van AI vonden ze 19 procentpunten minder vaak de juiste oplossing, terwijl beide taken even moeilijk leken. Bron:",
+      "sha256": "b2e8c6d5e6b39c544f105011187b80d644180ccb322ccf146a219fb1feee48e6",
       "engine": {
         "name": "LanguageTool",
         "version": "6.6",
@@ -49585,19 +49589,6 @@
       }
     },
     {
-      "id": "dictionary:I18N:Alleen uit documenten in uw bronnenregister",
-      "page": "fr/orion/index.html",
-      "kind": "dictionary:I18N:Alleen uit documenten in uw bronnenregister",
-      "text": "Alleen uit documenten in uw bronnenregister",
-      "sha256": "1a8d71c15daf25f65a188b2dd818c18e5fe36175e7902d648687b5bd4ea04ad3",
-      "engine": {
-        "name": "LanguageTool",
-        "version": "6.6",
-        "language": "nl",
-        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
-      }
-    },
-    {
       "id": "dictionary:I18N:Allergeenvragen apart gemarkeerd",
       "page": "fr/orion/index.html",
       "kind": "dictionary:I18N:Allergeenvragen apart gemarkeerd",
@@ -49624,11 +49615,11 @@
       }
     },
     {
-      "id": "dictionary:I18N:Allergenen. Certificaten. Herkomst. Traceerbaarheid. Elke klant stelt ze op zijn manier, in zijn eigen Excel-bestand. Het antwoord staat ergens in uw specificaties, uw procedures of een vragenlijst van vorig jaar. Iemand moet het zoeken, overtypen en nakijken, tussen een audit en een klacht door.",
+      "id": "dictionary:I18N:Allergenen, certificaten, herkomst en traceerbaarheid komen telkens terug. Elke klant stelt zijn vragen op zijn eigen manier, in zijn eigen Excel-bestand. Het antwoord staat ergens in uw specificaties, uw procedures of een vragenlijst van vorig jaar. Iemand moet het zoeken, overtypen en nakijken, tussen een audit en een klacht door.",
       "page": "fr/orion/index.html",
-      "kind": "dictionary:I18N:Allergenen. Certificaten. Herkomst. Traceerbaarheid. Elke klant stelt ze op zijn manier, in zijn eigen Excel-bestand. Het antwoord staat ergens in uw specificaties, uw procedures of een vragenlijst van vorig jaar. Iemand moet het zoeken, overtypen en nakijken, tussen een audit en een klacht door.",
-      "text": "Allergenen. Certificaten. Herkomst. Traceerbaarheid. Elke klant stelt ze op zijn manier, in zijn eigen Excel-bestand. Het antwoord staat ergens in uw specificaties, uw procedures of een vragenlijst van vorig jaar. Iemand moet het zoeken, overtypen en nakijken, tussen een audit en een klacht door.",
-      "sha256": "23bfc7ae92d964cce96081955588a03211cfc383386d402cab3cf290776fc5f2",
+      "kind": "dictionary:I18N:Allergenen, certificaten, herkomst en traceerbaarheid komen telkens terug. Elke klant stelt zijn vragen op zijn eigen manier, in zijn eigen Excel-bestand. Het antwoord staat ergens in uw specificaties, uw procedures of een vragenlijst van vorig jaar. Iemand moet het zoeken, overtypen en nakijken, tussen een audit en een klacht door.",
+      "text": "Allergenen, certificaten, herkomst en traceerbaarheid komen telkens terug. Elke klant stelt zijn vragen op zijn eigen manier, in zijn eigen Excel-bestand. Het antwoord staat ergens in uw specificaties, uw procedures of een vragenlijst van vorig jaar. Iemand moet het zoeken, overtypen en nakijken, tussen een audit en een klacht door.",
+      "sha256": "7b36bc2b4ae161a8e2942bd147713fb1d192363db00892814e61382ffac13ba9",
       "engine": {
         "name": "LanguageTool",
         "version": "6.6",
@@ -50664,19 +50655,6 @@
       }
     },
     {
-      "id": "dictionary:I18N:Bij elk antwoord het brondocument",
-      "page": "fr/orion/index.html",
-      "kind": "dictionary:I18N:Bij elk antwoord het brondocument",
-      "text": "Bij elk antwoord het brondocument",
-      "sha256": "aba194c976be5042e204df6991f01808929dad540bbbe2c462fd5a9e2ba7ad5e",
-      "engine": {
-        "name": "LanguageTool",
-        "version": "6.6",
-        "language": "nl",
-        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
-      }
-    },
-    {
       "id": "dictionary:I18N:Bij elk antwoord staat de bron. Gevoelige vragen, zoals allergenen, zijn gemarkeerd.",
       "page": "404.html",
       "kind": "dictionary:I18N:Bij elk antwoord staat de bron. Gevoelige vragen, zoals allergenen, zijn gemarkeerd.",
@@ -50695,6 +50673,19 @@
       "kind": "dictionary:I18N:Bij elk antwoord staat uit welk document het komt. Vragen waar een fout zwaar weegt, zoals allergenen, staan apart gemarkeerd. Vindt Orion geen bron, dan zegt het dat.",
       "text": "Bij elk antwoord staat uit welk document het komt. Vragen waar een fout zwaar weegt, zoals allergenen, staan apart gemarkeerd. Vindt Orion geen bron, dan zegt het dat.",
       "sha256": "fd52fe87ab5bc93f10abb4d1cbd7b8c73e99d83e7f19f78721e7f408d1358e09",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
+      }
+    },
+    {
+      "id": "dictionary:I18N:Bij elk voorstel het brondocument",
+      "page": "fr/orion/index.html",
+      "kind": "dictionary:I18N:Bij elk voorstel het brondocument",
+      "text": "Bij elk voorstel het brondocument",
+      "sha256": "03560139be1453b063dd24600621d9def9356db57313adbce9bda32a9fa471fe",
       "engine": {
         "name": "LanguageTool",
         "version": "6.6",
@@ -52775,6 +52766,19 @@
       "kind": "dictionary:I18N:Dat bespreken we in het eerste gesprek, op basis van uw aantal lijsten en documenten. Een pilot heeft een vaste prijs en een vaste duur, zodat u vooraf weet waar u aan begint.",
       "text": "Dat bespreken we in het eerste gesprek, op basis van uw aantal lijsten en documenten. Een pilot heeft een vaste prijs en een vaste duur, zodat u vooraf weet waar u aan begint.",
       "sha256": "eb9cc6fd106598bc68fc30f3c48428edb231b2bae7bdb95d3d73b2554377bc82",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
+      }
+    },
+    {
+      "id": "dictionary:I18N:Dat hangt af van de instellingen. De assistent kan uw bestanden, gekoppelde bronnen en algemene kennis gebruiken.",
+      "page": "fr/orion/index.html",
+      "kind": "dictionary:I18N:Dat hangt af van de instellingen. De assistent kan uw bestanden, gekoppelde bronnen en algemene kennis gebruiken.",
+      "text": "Dat hangt af van de instellingen. De assistent kan uw bestanden, gekoppelde bronnen en algemene kennis gebruiken.",
+      "sha256": "ffc860cc43efdb1ca73007df446ffbf91039a6919dfdac407247ee8284630c6e",
       "engine": {
         "name": "LanguageTool",
         "version": "6.6",
@@ -55071,11 +55075,11 @@
       }
     },
     {
-      "id": "dictionary:I18N:Een retailer vraagt hoe u allergenen beheert. Een afnemer wil uw certificaten en uw traceerprocedure. Orion zoekt de antwoorden in de documenten die u zelf hebt goedgekeurd en zet bij elk antwoord de bron. U leest na, u keurt goed, u verstuurt.",
+      "id": "dictionary:I18N:Een retailer vraagt hoe u allergenen beheert. Een afnemer wil uw certificaten en uw traceerprocedure. Orion zoekt in uw eigen documenten en toont bij elk voorstel de bron. Uw team controleert het antwoord en beslist wat het verstuurt.",
       "page": "fr/orion/index.html",
-      "kind": "dictionary:I18N:Een retailer vraagt hoe u allergenen beheert. Een afnemer wil uw certificaten en uw traceerprocedure. Orion zoekt de antwoorden in de documenten die u zelf hebt goedgekeurd en zet bij elk antwoord de bron. U leest na, u keurt goed, u verstuurt.",
-      "text": "Een retailer vraagt hoe u allergenen beheert. Een afnemer wil uw certificaten en uw traceerprocedure. Orion zoekt de antwoorden in de documenten die u zelf hebt goedgekeurd en zet bij elk antwoord de bron. U leest na, u keurt goed, u verstuurt.",
-      "sha256": "5ff79a9850710fa58dcde7858386b07f5ab0657ae7fe76971f12b481bb4e2f22",
+      "kind": "dictionary:I18N:Een retailer vraagt hoe u allergenen beheert. Een afnemer wil uw certificaten en uw traceerprocedure. Orion zoekt in uw eigen documenten en toont bij elk voorstel de bron. Uw team controleert het antwoord en beslist wat het verstuurt.",
+      "text": "Een retailer vraagt hoe u allergenen beheert. Een afnemer wil uw certificaten en uw traceerprocedure. Orion zoekt in uw eigen documenten en toont bij elk voorstel de bron. Uw team controleert het antwoord en beslist wat het verstuurt.",
+      "sha256": "939b2a99c6d3ff24f8ae92ea18e0bbac750731e60b58efe8f3b46890f0d86a16",
       "engine": {
         "name": "LanguageTool",
         "version": "6.6",
@@ -55102,19 +55106,6 @@
       "kind": "dictionary:I18N:Een snellere taak is nog geen sneller bedrijf",
       "text": "Een snellere taak is nog geen sneller bedrijf",
       "sha256": "59ad19750037080ca8db60f3036f3c581cd726242fb7a0544f2f65a26777e20b",
-      "engine": {
-        "name": "LanguageTool",
-        "version": "6.6",
-        "language": "nl",
-        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
-      }
-    },
-    {
-      "id": "dictionary:I18N:Een vaste controle van elk antwoord tegen de bron",
-      "page": "fr/orion/index.html",
-      "kind": "dictionary:I18N:Een vaste controle van elk antwoord tegen de bron",
-      "text": "Een vaste controle van elk antwoord tegen de bron",
-      "sha256": "4f0c300981d461b09912dadbb4cee7d038f64cff803eb32746b5557bf142f646",
       "engine": {
         "name": "LanguageTool",
         "version": "6.6",
@@ -55461,6 +55452,19 @@
       }
     },
     {
+      "id": "dictionary:I18N:Elk voorstel toetsen aan de bron",
+      "page": "fr/orion/index.html",
+      "kind": "dictionary:I18N:Elk voorstel toetsen aan de bron",
+      "text": "Elk voorstel toetsen aan de bron",
+      "sha256": "8ae892866597e78f4a1d50bfc1f88da41ec72fbec48d3004de74aef90822f3ee",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
+      }
+    },
+    {
       "id": "dictionary:I18N:Elke afdeling haar eigen werkwijze.",
       "page": "404.html",
       "kind": "dictionary:I18N:Elke afdeling haar eigen werkwijze.",
@@ -55643,11 +55647,11 @@
       }
     },
     {
-      "id": "dictionary:I18N:En als er geen geldige bron is?",
+      "id": "dictionary:I18N:En als Orion geen bron vindt?",
       "page": "fr/orion/index.html",
-      "kind": "dictionary:I18N:En als er geen geldige bron is?",
-      "text": "En als er geen geldige bron is?",
-      "sha256": "9202008a0c52ad6b92439e37c47df03926d9457f20f8c6c8ce0fac203693a53f",
+      "kind": "dictionary:I18N:En als Orion geen bron vindt?",
+      "text": "En als Orion geen bron vindt?",
+      "sha256": "f2cb6803de275494f56da0e94f2ee4bf09e703829092b8c423213197ff005580",
       "engine": {
         "name": "LanguageTool",
         "version": "6.6",
@@ -57450,6 +57454,19 @@
       }
     },
     {
+      "id": "dictionary:I18N:Grow Faster – startpagina",
+      "page": "fr/orion/index.html",
+      "kind": "dictionary:I18N:Grow Faster – startpagina",
+      "text": "Grow Faster – startpagina",
+      "sha256": "5cd66faa71e3f0702cdabbc2cc1f6b5bb98ac52db3c6e8db24644bad3215f65f",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
+      }
+    },
+    {
       "id": "dictionary:I18N:Grow Faster bereidt een concept voor, zoals een ingevulde vragenlijst of een werkbon op basis van een inspectieverslag.",
       "page": "404.html",
       "kind": "dictionary:I18N:Grow Faster bereidt een concept voor, zoals een ingevulde vragenlijst of een werkbon op basis van een inspectieverslag.",
@@ -58269,6 +58286,19 @@
       }
     },
     {
+      "id": "dictionary:I18N:Hoofdnavigatie",
+      "page": "fr/orion/index.html",
+      "kind": "dictionary:I18N:Hoofdnavigatie",
+      "text": "Hoofdnavigatie",
+      "sha256": "279c2af242dc537694bb18562d665be6de083625155f128276720627473588f7",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
+      }
+    },
+    {
       "id": "dictionary:I18N:Hoogste veld, vrije tekst",
       "page": "journal.html",
       "kind": "dictionary:I18N:Hoogste veld, vrije tekst",
@@ -59010,19 +59040,6 @@
       }
     },
     {
-      "id": "dictionary:I18N:In de pilot meten we eerst hoeveel tijd u wint. Daarna krijgt u een vast bedrag per bedrijf, niet per vraag en niet per gebruiker.",
-      "page": "fr/orion/index.html",
-      "kind": "dictionary:I18N:In de pilot meten we eerst hoeveel tijd u wint. Daarna krijgt u een vast bedrag per bedrijf, niet per vraag en niet per gebruiker.",
-      "text": "In de pilot meten we eerst hoeveel tijd u wint. Daarna krijgt u een vast bedrag per bedrijf, niet per vraag en niet per gebruiker.",
-      "sha256": "44870488c1f71a66e80e02790e5af9ce8fbf37ab0daf751857fa0d5a2cfc0e89",
-      "engine": {
-        "name": "LanguageTool",
-        "version": "6.6",
-        "language": "nl",
-        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
-      }
-    },
-    {
       "id": "dictionary:I18N:In editie 1",
       "page": "journal.html",
       "kind": "dictionary:I18N:In editie 1",
@@ -59426,11 +59443,11 @@
       }
     },
     {
-      "id": "dictionary:I18N:Ja. Orion is een hulpmiddel. De kwaliteit hangt af van uw brondocumenten, en uw team keurt elk antwoord goed voordat het vertrekt. Daarom toont Orion bij elk antwoord de bron.",
+      "id": "dictionary:I18N:Ja. De kwaliteit van een voorstel hangt af van uw documenten. Orion toont de bron, zodat uw team het voorstel kan controleren en zo nodig verbeteren voordat het de antwoorden verstuurt.",
       "page": "fr/orion/index.html",
-      "kind": "dictionary:I18N:Ja. Orion is een hulpmiddel. De kwaliteit hangt af van uw brondocumenten, en uw team keurt elk antwoord goed voordat het vertrekt. Daarom toont Orion bij elk antwoord de bron.",
-      "text": "Ja. Orion is een hulpmiddel. De kwaliteit hangt af van uw brondocumenten, en uw team keurt elk antwoord goed voordat het vertrekt. Daarom toont Orion bij elk antwoord de bron.",
-      "sha256": "4c393ab34b58ccd9a3aff1ac59a1d462345544f892ded07c63082e287f95b0b7",
+      "kind": "dictionary:I18N:Ja. De kwaliteit van een voorstel hangt af van uw documenten. Orion toont de bron, zodat uw team het voorstel kan controleren en zo nodig verbeteren voordat het de antwoorden verstuurt.",
+      "text": "Ja. De kwaliteit van een voorstel hangt af van uw documenten. Orion toont de bron, zodat uw team het voorstel kan controleren en zo nodig verbeteren voordat het de antwoorden verstuurt.",
+      "sha256": "dac5a534b653db674620b97720ff113c64a71ce22c0bc9e4fd74ff94654889f4",
       "engine": {
         "name": "LanguageTool",
         "version": "6.6",
@@ -62377,19 +62394,6 @@
       }
     },
     {
-      "id": "dictionary:I18N:Orion bereidt de klantvragenlijsten van voedingsbedrijven voor vanuit hun eigen goedgekeurde documenten, met de bron bij elk antwoord. Geen bron, geen antwoord. Uw team keurt goed.",
-      "page": "fr/orion/index.html",
-      "kind": "dictionary:I18N:Orion bereidt de klantvragenlijsten van voedingsbedrijven voor vanuit hun eigen goedgekeurde documenten, met de bron bij elk antwoord. Geen bron, geen antwoord. Uw team keurt goed.",
-      "text": "Orion bereidt de klantvragenlijsten van voedingsbedrijven voor vanuit hun eigen goedgekeurde documenten, met de bron bij elk antwoord. Geen bron, geen antwoord. Uw team keurt goed.",
-      "sha256": "6bb01f1c5b512c1efc0ba1a10802a31c4b8fe22a17219c2d442c3322f259d3af",
-      "engine": {
-        "name": "LanguageTool",
-        "version": "6.6",
-        "language": "nl",
-        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
-      }
-    },
-    {
       "id": "dictionary:I18N:Orion bereidt voor. U beslist.",
       "page": "404.html",
       "kind": "dictionary:I18N:Orion bereidt voor. U beslist.",
@@ -62447,6 +62451,19 @@
       "kind": "dictionary:I18N:Orion haalt de vragen uit Excel en leest broninformatie uit pdf-, Word- en Excel-bestanden.",
       "text": "Orion haalt de vragen uit Excel en leest broninformatie uit pdf-, Word- en Excel-bestanden.",
       "sha256": "c2e34706fc7a90596ecdf48a0df77eb528d3f6c85e33b91a4d336c27e6cd8931",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
+      }
+    },
+    {
+      "id": "dictionary:I18N:Orion helpt voedingsbedrijven om klantvragenlijsten in te vullen. Het zoekt in uw documenten en toont bij elk voorstel de bron. Uw team controleert de antwoorden.",
+      "page": "fr/orion/index.html",
+      "kind": "dictionary:I18N:Orion helpt voedingsbedrijven om klantvragenlijsten in te vullen. Het zoekt in uw documenten en toont bij elk voorstel de bron. Uw team controleert de antwoorden.",
+      "text": "Orion helpt voedingsbedrijven om klantvragenlijsten in te vullen. Het zoekt in uw documenten en toont bij elk voorstel de bron. Uw team controleert de antwoorden.",
+      "sha256": "4f4483dec54db362b009dd5db6debbb1163385e01abd4f52c81c16255ecf8c72",
       "engine": {
         "name": "LanguageTool",
         "version": "6.6",
@@ -62564,6 +62581,19 @@
       "kind": "dictionary:I18N:Orion stelt een onderbouwd antwoord voor.",
       "text": "Orion stelt een onderbouwd antwoord voor.",
       "sha256": "bbd970895071b53b41fb19955f678219d12f5efc164ca40d4f5cefc40af61b10",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
+      }
+    },
+    {
+      "id": "dictionary:I18N:Orion toont bij elk voorstel het document waarop het zich baseert",
+      "page": "fr/orion/index.html",
+      "kind": "dictionary:I18N:Orion toont bij elk voorstel het document waarop het zich baseert",
+      "text": "Orion toont bij elk voorstel het document waarop het zich baseert",
+      "sha256": "cdb0f27126f458b554b7c40739880f3bcb6cbb1df701b666ca44dfbc9b1ad733",
       "engine": {
         "name": "LanguageTool",
         "version": "6.6",
@@ -62694,19 +62724,6 @@
       "kind": "dictionary:I18N:Orion zoekt en controleert.",
       "text": "Orion zoekt en controleert.",
       "sha256": "e08782085ee1b4c5c4f64bd2d72b07dba0a3503b9fb77030242dff395b870b55",
-      "engine": {
-        "name": "LanguageTool",
-        "version": "6.6",
-        "language": "nl",
-        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
-      }
-    },
-    {
-      "id": "dictionary:I18N:Orion zoekt per vraag het antwoord in uw bronnen en noteert uit welk document het komt. Een vaste controle toetst daarna elk antwoord aan de bron: citaten, cijfers, allergenen en ontkenningen.",
-      "page": "fr/orion/index.html",
-      "kind": "dictionary:I18N:Orion zoekt per vraag het antwoord in uw bronnen en noteert uit welk document het komt. Een vaste controle toetst daarna elk antwoord aan de bron: citaten, cijfers, allergenen en ontkenningen.",
-      "text": "Orion zoekt per vraag het antwoord in uw bronnen en noteert uit welk document het komt. Een vaste controle toetst daarna elk antwoord aan de bron: citaten, cijfers, allergenen en ontkenningen.",
-      "sha256": "d85c41ba2a5da679bd3c0210eff1fa186b72c26ee2905a40f0e2bd3f44aae908",
       "engine": {
         "name": "LanguageTool",
         "version": "6.6",
@@ -67174,6 +67191,19 @@
       }
     },
     {
+      "id": "dictionary:I18N:Tijdens de pilot meten we hoeveel tijd uw team aan de vragenlijsten besteedt. Daarna stellen we u een vaste prijs per bedrijf voor, ongeacht het aantal vragen of gebruikers.",
+      "page": "fr/orion/index.html",
+      "kind": "dictionary:I18N:Tijdens de pilot meten we hoeveel tijd uw team aan de vragenlijsten besteedt. Daarna stellen we u een vaste prijs per bedrijf voor, ongeacht het aantal vragen of gebruikers.",
+      "text": "Tijdens de pilot meten we hoeveel tijd uw team aan de vragenlijsten besteedt. Daarna stellen we u een vaste prijs per bedrijf voor, ongeacht het aantal vragen of gebruikers.",
+      "sha256": "7f957af0b950195e51eab44bdf1c2f102e3e92c87eda14fd881459aeb5007a6a",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
+      }
+    },
+    {
       "id": "dictionary:I18N:Time to decision",
       "page": "404.html",
       "kind": "dictionary:I18N:Time to decision",
@@ -68037,19 +68067,6 @@
       "kind": "dictionary:I18N:Uit uw hoofd en uw mappen",
       "text": "Uit uw hoofd en uw mappen",
       "sha256": "83cc13301f95460cc79d0279544c7b9faaeb0f9a0d915f77f3beb1b274b14f57",
-      "engine": {
-        "name": "LanguageTool",
-        "version": "6.6",
-        "language": "nl",
-        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
-      }
-    },
-    {
-      "id": "dictionary:I18N:Uit wat u op dat moment oplaadt, en uit algemene kennis",
-      "page": "fr/orion/index.html",
-      "kind": "dictionary:I18N:Uit wat u op dat moment oplaadt, en uit algemene kennis",
-      "text": "Uit wat u op dat moment oplaadt, en uit algemene kennis",
-      "sha256": "d9d4b9eac1eb1a54e8897474212a3477c1a5762355f892ca94ef9e940da0613a",
       "engine": {
         "name": "LanguageTool",
         "version": "6.6",
@@ -69540,6 +69557,19 @@
       }
     },
     {
+      "id": "dictionary:I18N:Voor elke vraag zoekt Orion een antwoord in uw documenten. Bij elk voorstel toont het de bron en controleert het onder meer de citaten, cijfers, allergenen en ontkenningen.",
+      "page": "fr/orion/index.html",
+      "kind": "dictionary:I18N:Voor elke vraag zoekt Orion een antwoord in uw documenten. Bij elk voorstel toont het de bron en controleert het onder meer de citaten, cijfers, allergenen en ontkenningen.",
+      "text": "Voor elke vraag zoekt Orion een antwoord in uw documenten. Bij elk voorstel toont het de bron en controleert het onder meer de citaten, cijfers, allergenen en ontkenningen.",
+      "sha256": "7d0d790a167d96d10db4851def73cb298bd04a3595a782ac381f5634c5401261",
+      "engine": {
+        "name": "LanguageTool",
+        "version": "6.6",
+        "language": "nl",
+        "extractor": "4cd0ff154e443f130089ee140a66cc1d5547615c52b50e03942d455b165c9618"
+      }
+    },
+    {
       "id": "dictionary:I18N:Voor gegevens die in documenten zitten, haalt software ze eruit en zet ze klaar in het doelformaat. Voor vragenlijsten zoekt AI het antwoord in uw eigen documenten en toont bij elk antwoord de bron. Dat is wat Orion doet.",
       "page": "journal.html",
       "kind": "dictionary:I18N:Voor gegevens die in documenten zitten, haalt software ze eruit en zet ze klaar in het doelformaat. Voor vragenlijsten zoekt AI het antwoord in uw eigen documenten en toont bij elk antwoord de bron. Dat is wat Orion doet.",
@@ -69657,11 +69687,11 @@
       }
     },
     {
-      "id": "dictionary:I18N:Voordat u over een pilot beslist, bespreken we met uw IT-verantwoordelijke waar Orion draait, welke gegevens worden verwerkt en door welke partijen. We leggen de afspraken voor uw pilot vast in de verwerkersovereenkomst en de bijbehorende lijst van verwerkers.",
+      "id": "dictionary:I18N:Voordat u over een pilot beslist, bespreken we met uw IT-verantwoordelijke waar Orion draait, welke gegevens worden verwerkt en door welke partijen. We leggen de afspraken voor uw pilot vast in de verwerkersovereenkomst, met de lijst van ingeschakelde subverwerkers.",
       "page": "fr/orion/index.html",
-      "kind": "dictionary:I18N:Voordat u over een pilot beslist, bespreken we met uw IT-verantwoordelijke waar Orion draait, welke gegevens worden verwerkt en door welke partijen. We leggen de afspraken voor uw pilot vast in de verwerkersovereenkomst en de bijbehorende lijst van verwerkers.",
-      "text": "Voordat u over een pilot beslist, bespreken we met uw IT-verantwoordelijke waar Orion draait, welke gegevens worden verwerkt en door welke partijen. We leggen de afspraken voor uw pilot vast in de verwerkersovereenkomst en de bijbehorende lijst van verwerkers.",
-      "sha256": "748d7e5d97dc269c5ae2e23efda76b92bd830e79fbb0670ba2c6e75f0fbe5ac8",
+      "kind": "dictionary:I18N:Voordat u over een pilot beslist, bespreken we met uw IT-verantwoordelijke waar Orion draait, welke gegevens worden verwerkt en door welke partijen. We leggen de afspraken voor uw pilot vast in de verwerkersovereenkomst, met de lijst van ingeschakelde subverwerkers.",
+      "text": "Voordat u over een pilot beslist, bespreken we met uw IT-verantwoordelijke waar Orion draait, welke gegevens worden verwerkt en door welke partijen. We leggen de afspraken voor uw pilot vast in de verwerkersovereenkomst, met de lijst van ingeschakelde subverwerkers.",
+      "sha256": "d9da65824d76d45bcb30af05612f28c97345b0ec946b0a729e1bfedc63115854",
       "engine": {
         "name": "LanguageTool",
         "version": "6.6",
@@ -76680,8 +76710,8 @@
       "id": "executive-radar/index.html#text:body:2>main:6>section:5>div:1>div:4>aside:2>div:5>ol:2>li:1",
       "page": "executive-radar/index.html",
       "kind": "text",
-      "text": "12:48:04 · Demonstratiedossier geopend. Geen externe wijzigingen.",
-      "sha256": "6864307e5ca834f4bf396a4053953fee5abf027637f7c77aacc0252ab1acd0e8",
+      "text": "13:12:38 · Demonstratiedossier geopend. Geen externe wijzigingen.",
+      "sha256": "9cbcca48eeb221d5a7d93eb0f5c45ccece9b879a365b740ee64955989de813e4",
       "engine": {
         "name": "LanguageTool",
         "version": "6.6",
@@ -77070,8 +77100,8 @@
       "id": "fr/orion/index.html#aria-label:body:2>footer:4>div:2>div:1>a:1",
       "page": "fr/orion/index.html",
       "kind": "aria-label",
-      "text": "Grow Faster – home",
-      "sha256": "d1f327ca485e8be70a7cedf6b230e5829ff603ee756532c3cecddc22afb46bbc",
+      "text": "Grow Faster – startpagina",
+      "sha256": "5cd66faa71e3f0702cdabbc2cc1f6b5bb98ac52db3c6e8db24644bad3215f65f",
       "engine": {
         "name": "LanguageTool",
         "version": "6.6",
@@ -77122,8 +77152,8 @@
       "id": "fr/orion/index.html#aria-label:body:2>nav:2>div:1>a:1",
       "page": "fr/orion/index.html",
       "kind": "aria-label",
-      "text": "Grow Faster – home",
-      "sha256": "d1f327ca485e8be70a7cedf6b230e5829ff603ee756532c3cecddc22afb46bbc",
+      "text": "Grow Faster – startpagina",
+      "sha256": "5cd66faa71e3f0702cdabbc2cc1f6b5bb98ac52db3c6e8db24644bad3215f65f",
       "engine": {
         "name": "LanguageTool",
         "version": "6.6",
@@ -77174,8 +77204,8 @@
       "id": "fr/orion/index.html#content:head:1>meta:4",
       "page": "fr/orion/index.html",
       "kind": "content",
-      "text": "Orion bereidt de klantvragenlijsten van voedingsbedrijven voor vanuit hun eigen goedgekeurde documenten, met de bron bij elk antwoord. Geen bron, geen antwoord. Uw team keurt goed.",
-      "sha256": "6bb01f1c5b512c1efc0ba1a10802a31c4b8fe22a17219c2d442c3322f259d3af",
+      "text": "Orion helpt voedingsbedrijven om klantvragenlijsten in te vullen. Het zoekt in uw documenten en toont bij elk voorstel de bron. Uw team controleert de antwoorden.",
+      "sha256": "4f4483dec54db362b009dd5db6debbb1163385e01abd4f52c81c16255ecf8c72",
       "engine": {
         "name": "LanguageTool",
         "version": "6.6",
@@ -78240,8 +78270,8 @@
       "id": "fr/orion/index.html#text:body:2>main:3>header:1>div:1>div:1>p:4",
       "page": "fr/orion/index.html",
       "kind": "text",
-      "text": "Een retailer vraagt hoe u allergenen beheert. Een afnemer wil uw certificaten en uw traceerprocedure. Orion zoekt de antwoorden in de documenten die u zelf hebt goedgekeurd en zet bij elk antwoord de bron. U leest na, u keurt goed, u verstuurt.",
-      "sha256": "5ff79a9850710fa58dcde7858386b07f5ab0657ae7fe76971f12b481bb4e2f22",
+      "text": "Een retailer vraagt hoe u allergenen beheert. Een afnemer wil uw certificaten en uw traceerprocedure. Orion zoekt in uw eigen documenten en toont bij elk voorstel de bron. Uw team controleert het antwoord en beslist wat het verstuurt.",
+      "sha256": "939b2a99c6d3ff24f8ae92ea18e0bbac750731e60b58efe8f3b46890f0d86a16",
       "engine": {
         "name": "LanguageTool",
         "version": "6.6",
@@ -78318,8 +78348,8 @@
       "id": "fr/orion/index.html#text:body:2>main:3>section:11>div:1>div:2>details:1>p:2",
       "page": "fr/orion/index.html",
       "kind": "text",
-      "text": "Ja. Orion is een hulpmiddel. De kwaliteit hangt af van uw brondocumenten, en uw team keurt elk antwoord goed voordat het vertrekt. Daarom toont Orion bij elk antwoord de bron.",
-      "sha256": "4c393ab34b58ccd9a3aff1ac59a1d462345544f892ded07c63082e287f95b0b7",
+      "text": "Ja. De kwaliteit van een voorstel hangt af van uw documenten. Orion toont de bron, zodat uw team het voorstel kan controleren en zo nodig verbeteren voordat het de antwoorden verstuurt.",
+      "sha256": "dac5a534b653db674620b97720ff113c64a71ce22c0bc9e4fd74ff94654889f4",
       "engine": {
         "name": "LanguageTool",
         "version": "6.6",
@@ -78370,8 +78400,8 @@
       "id": "fr/orion/index.html#text:body:2>main:3>section:11>div:1>div:2>details:5>p:2",
       "page": "fr/orion/index.html",
       "kind": "text",
-      "text": "In de pilot meten we eerst hoeveel tijd u wint. Daarna krijgt u een vast bedrag per bedrijf, niet per vraag en niet per gebruiker.",
-      "sha256": "44870488c1f71a66e80e02790e5af9ce8fbf37ab0daf751857fa0d5a2cfc0e89",
+      "text": "Tijdens de pilot meten we hoeveel tijd uw team aan de vragenlijsten besteedt. Daarna stellen we u een vaste prijs per bedrijf voor, ongeacht het aantal vragen of gebruikers.",
+      "sha256": "7f957af0b950195e51eab44bdf1c2f102e3e92c87eda14fd881459aeb5007a6a",
       "engine": {
         "name": "LanguageTool",
         "version": "6.6",
@@ -78396,8 +78426,8 @@
       "id": "fr/orion/index.html#text:body:2>main:3>section:11>div:1>div:2>details:7>p:2",
       "page": "fr/orion/index.html",
       "kind": "text",
-      "text": "Onderzoek in de zorg, waar overgetypte gegevens nauwkeurig worden nagekeken, vindt 2 tot 4 fouten per 100 overgetypte velden. In vrije tekstvelden zijn dat er meer. Bronnen: Hong et al., BMJ Open, 2013 · Mays & Mathias, JAMIA, 2019. In een experiment met 758 consultants werkten wie AI gebruikte sneller en beter bij taken die AI aankan. Bij een taak buiten het bereik van AI vonden ze 19 procentpunten minder vaak de juiste oplossing, terwijl beide taken even moeilijk leken. Bron: Dell’Acqua et al., Organization Science, 2026.",
-      "sha256": "646b3dc19a88a7ae3260f1d876ec711f00f0bb79ee242793955b6341d140282e",
+      "text": "Onderzoek in de zorg, waar overgetypte gegevens nauwkeurig worden nagekeken, vindt 2 tot 4 fouten per 100 overgetypte velden. In vrije tekstvelden zijn dat er meer. Bronnen: Hong et al., BMJ Open, 2013 · Mays & Mathias, JAMIA, 2019. In een experiment met 758 consultants werkten de deelnemers die AI gebruikten sneller en beter bij taken die AI aankan. Bij een taak buiten het bereik van AI vonden ze 19 procentpunten minder vaak de juiste oplossing, terwijl beide taken even moeilijk leken. Bron: Dell’Acqua et al., Organization Science, 2026.",
+      "sha256": "878254c167181f670b0cde8478df2e1b6343993fc83a0c4a5565738e4bc1b133",
       "engine": {
         "name": "LanguageTool",
         "version": "6.6",
@@ -78474,8 +78504,8 @@
       "id": "fr/orion/index.html#text:body:2>main:3>section:2>div:1>div:1>p:2",
       "page": "fr/orion/index.html",
       "kind": "text",
-      "text": "Allergenen. Certificaten. Herkomst. Traceerbaarheid. Elke klant stelt ze op zijn manier, in zijn eigen Excel-bestand. Het antwoord staat ergens in uw specificaties, uw procedures of een vragenlijst van vorig jaar. Iemand moet het zoeken, overtypen en nakijken, tussen een audit en een klacht door.",
-      "sha256": "23bfc7ae92d964cce96081955588a03211cfc383386d402cab3cf290776fc5f2",
+      "text": "Allergenen, certificaten, herkomst en traceerbaarheid komen telkens terug. Elke klant stelt zijn vragen op zijn eigen manier, in zijn eigen Excel-bestand. Het antwoord staat ergens in uw specificaties, uw procedures of een vragenlijst van vorig jaar. Iemand moet het zoeken, overtypen en nakijken, tussen een audit en een klacht door.",
+      "sha256": "7b36bc2b4ae161a8e2942bd147713fb1d192363db00892814e61382ffac13ba9",
       "engine": {
         "name": "LanguageTool",
         "version": "6.6",
@@ -78500,8 +78530,8 @@
       "id": "fr/orion/index.html#text:body:2>main:3>section:3>div:1>aside:4>h3:1",
       "page": "fr/orion/index.html",
       "kind": "text",
-      "text": "En als er geen geldige bron is?",
-      "sha256": "9202008a0c52ad6b92439e37c47df03926d9457f20f8c6c8ce0fac203693a53f",
+      "text": "En als Orion geen bron vindt?",
+      "sha256": "f2cb6803de275494f56da0e94f2ee4bf09e703829092b8c423213197ff005580",
       "engine": {
         "name": "LanguageTool",
         "version": "6.6",
@@ -78864,8 +78894,8 @@
       "id": "fr/orion/index.html#text:body:2>main:3>section:4>div:1>ol:3>li:3>p:3",
       "page": "fr/orion/index.html",
       "kind": "text",
-      "text": "Orion zoekt per vraag het antwoord in uw bronnen en noteert uit welk document het komt. Een vaste controle toetst daarna elk antwoord aan de bron: citaten, cijfers, allergenen en ontkenningen.",
-      "sha256": "d85c41ba2a5da679bd3c0210eff1fa186b72c26ee2905a40f0e2bd3f44aae908",
+      "text": "Voor elke vraag zoekt Orion een antwoord in uw documenten. Bij elk voorstel toont het de bron en controleert het onder meer de citaten, cijfers, allergenen en ontkenningen.",
+      "sha256": "7d0d790a167d96d10db4851def73cb298bd04a3595a782ac381f5634c5401261",
       "engine": {
         "name": "LanguageTool",
         "version": "6.6",
@@ -79163,8 +79193,8 @@
       "id": "fr/orion/index.html#text:body:2>main:3>section:6>div:1>div:4>table:1>tbody:2>tr:1>td:4",
       "page": "fr/orion/index.html",
       "kind": "text",
-      "text": "Uit wat u op dat moment oplaadt, en uit algemene kennis",
-      "sha256": "d9d4b9eac1eb1a54e8897474212a3477c1a5762355f892ca94ef9e940da0613a",
+      "text": "Dat hangt af van de instellingen. De assistent kan uw bestanden, gekoppelde bronnen en algemene kennis gebruiken.",
+      "sha256": "ffc860cc43efdb1ca73007df446ffbf91039a6919dfdac407247ee8284630c6e",
       "engine": {
         "name": "LanguageTool",
         "version": "6.6",
@@ -79176,8 +79206,8 @@
       "id": "fr/orion/index.html#text:body:2>main:3>section:6>div:1>div:4>table:1>tbody:2>tr:1>td:5",
       "page": "fr/orion/index.html",
       "kind": "text",
-      "text": "Alleen uit documenten in uw bronnenregister",
-      "sha256": "1a8d71c15daf25f65a188b2dd818c18e5fe36175e7902d648687b5bd4ea04ad3",
+      "text": "Orion toont bij elk voorstel het document waarop het zich baseert",
+      "sha256": "cdb0f27126f458b554b7c40739880f3bcb6cbb1df701b666ca44dfbc9b1ad733",
       "engine": {
         "name": "LanguageTool",
         "version": "6.6",
@@ -79579,8 +79609,8 @@
       "id": "fr/orion/index.html#text:body:2>main:3>section:7>div:1>div:3>div:1>ul:2>li:2",
       "page": "fr/orion/index.html",
       "kind": "text",
-      "text": "Bij elk antwoord het brondocument",
-      "sha256": "aba194c976be5042e204df6991f01808929dad540bbbe2c462fd5a9e2ba7ad5e",
+      "text": "Bij elk voorstel het brondocument",
+      "sha256": "03560139be1453b063dd24600621d9def9356db57313adbce9bda32a9fa471fe",
       "engine": {
         "name": "LanguageTool",
         "version": "6.6",
@@ -79605,8 +79635,8 @@
       "id": "fr/orion/index.html#text:body:2>main:3>section:7>div:1>div:3>div:1>ul:2>li:4",
       "page": "fr/orion/index.html",
       "kind": "text",
-      "text": "Een vaste controle van elk antwoord tegen de bron",
-      "sha256": "4f0c300981d461b09912dadbb4cee7d038f64cff803eb32746b5557bf142f646",
+      "text": "Elk voorstel toetsen aan de bron",
+      "sha256": "8ae892866597e78f4a1d50bfc1f88da41ec72fbec48d3004de74aef90822f3ee",
       "engine": {
         "name": "LanguageTool",
         "version": "6.6",
@@ -79774,8 +79804,8 @@
       "id": "fr/orion/index.html#text:body:2>main:3>section:8>div:1>div:1>p:2",
       "page": "fr/orion/index.html",
       "kind": "text",
-      "text": "Voordat u over een pilot beslist, bespreken we met uw IT-verantwoordelijke waar Orion draait, welke gegevens worden verwerkt en door welke partijen. We leggen de afspraken voor uw pilot vast in de verwerkersovereenkomst en de bijbehorende lijst van verwerkers.",
-      "sha256": "748d7e5d97dc269c5ae2e23efda76b92bd830e79fbb0670ba2c6e75f0fbe5ac8",
+      "text": "Voordat u over een pilot beslist, bespreken we met uw IT-verantwoordelijke waar Orion draait, welke gegevens worden verwerkt en door welke partijen. We leggen de afspraken voor uw pilot vast in de verwerkersovereenkomst, met de lijst van ingeschakelde subverwerkers.",
+      "sha256": "d9da65824d76d45bcb30af05612f28c97345b0ec946b0a729e1bfedc63115854",
       "engine": {
         "name": "LanguageTool",
         "version": "6.6",
@@ -102974,8 +103004,8 @@
       "id": "orion.html#aria-label:body:2>footer:4>div:2>div:1>a:1",
       "page": "orion.html",
       "kind": "aria-label",
-      "text": "Grow Faster – home",
-      "sha256": "d1f327ca485e8be70a7cedf6b230e5829ff603ee756532c3cecddc22afb46bbc",
+      "text": "Grow Faster – startpagina",
+      "sha256": "5cd66faa71e3f0702cdabbc2cc1f6b5bb98ac52db3c6e8db24644bad3215f65f",
       "engine": {
         "name": "LanguageTool",
         "version": "6.6",
@@ -103026,8 +103056,8 @@
       "id": "orion.html#aria-label:body:2>nav:2>div:1>a:1",
       "page": "orion.html",
       "kind": "aria-label",
-      "text": "Grow Faster – home",
-      "sha256": "d1f327ca485e8be70a7cedf6b230e5829ff603ee756532c3cecddc22afb46bbc",
+      "text": "Grow Faster – startpagina",
+      "sha256": "5cd66faa71e3f0702cdabbc2cc1f6b5bb98ac52db3c6e8db24644bad3215f65f",
       "engine": {
         "name": "LanguageTool",
         "version": "6.6",
@@ -103141,8 +103171,8 @@
       "id": "orion.html#cms-catalog:website:orion-food-gegevens-19:text",
       "page": "orion.html",
       "kind": "cms-catalog:text",
-      "text": "Voordat u over een pilot beslist, bespreken we met uw IT-verantwoordelijke waar Orion draait, welke gegevens worden verwerkt en door welke partijen. We leggen de afspraken voor uw pilot vast in de verwerkersovereenkomst en de bijbehorende lijst van verwerkers.",
-      "sha256": "748d7e5d97dc269c5ae2e23efda76b92bd830e79fbb0670ba2c6e75f0fbe5ac8",
+      "text": "Voordat u over een pilot beslist, bespreken we met uw IT-verantwoordelijke waar Orion draait, welke gegevens worden verwerkt en door welke partijen. We leggen de afspraken voor uw pilot vast in de verwerkersovereenkomst, met de lijst van ingeschakelde subverwerkers.",
+      "sha256": "d9da65824d76d45bcb30af05612f28c97345b0ec946b0a729e1bfedc63115854",
       "source": {
         "adapter": "static-cms-catalog",
         "file": "assets/cms-catalog.js",
@@ -103183,8 +103213,8 @@
       "id": "orion.html#cms-catalog:website:orion-food-intro:text",
       "page": "orion.html",
       "kind": "cms-catalog:text",
-      "text": "Een retailer vraagt hoe u allergenen beheert. Een afnemer wil uw certificaten en uw traceerprocedure. Orion zoekt de antwoorden in de documenten die u zelf hebt goedgekeurd en zet bij elk antwoord de bron. U leest na, u keurt goed, u verstuurt.",
-      "sha256": "5ff79a9850710fa58dcde7858386b07f5ab0657ae7fe76971f12b481bb4e2f22",
+      "text": "Een retailer vraagt hoe u allergenen beheert. Een afnemer wil uw certificaten en uw traceerprocedure. Orion zoekt in uw eigen documenten en toont bij elk voorstel de bron. Uw team controleert het antwoord en beslist wat het verstuurt.",
+      "sha256": "939b2a99c6d3ff24f8ae92ea18e0bbac750731e60b58efe8f3b46890f0d86a16",
       "source": {
         "adapter": "static-cms-catalog",
         "file": "assets/cms-catalog.js",
@@ -103372,8 +103402,8 @@
       "id": "orion.html#cms-catalog:website:orion-food-probleem-4:text",
       "page": "orion.html",
       "kind": "cms-catalog:text",
-      "text": "Allergenen. Certificaten. Herkomst. Traceerbaarheid. Elke klant stelt ze op zijn manier, in zijn eigen Excel-bestand. Het antwoord staat ergens in uw specificaties, uw procedures of een vragenlijst van vorig jaar. Iemand moet het zoeken, overtypen en nakijken, tussen een audit en een klacht door.",
-      "sha256": "23bfc7ae92d964cce96081955588a03211cfc383386d402cab3cf290776fc5f2",
+      "text": "Allergenen, certificaten, herkomst en traceerbaarheid komen telkens terug. Elke klant stelt zijn vragen op zijn eigen manier, in zijn eigen Excel-bestand. Het antwoord staat ergens in uw specificaties, uw procedures of een vragenlijst van vorig jaar. Iemand moet het zoeken, overtypen en nakijken, tussen een audit en een klacht door.",
+      "sha256": "7b36bc2b4ae161a8e2942bd147713fb1d192363db00892814e61382ffac13ba9",
       "source": {
         "adapter": "static-cms-catalog",
         "file": "assets/cms-catalog.js",
@@ -103687,8 +103717,8 @@
       "id": "orion.html#cms-catalog:website:orion-food-vragen-28:text",
       "page": "orion.html",
       "kind": "cms-catalog:text",
-      "text": "Ja. Orion is een hulpmiddel. De kwaliteit hangt af van uw brondocumenten, en uw team keurt elk antwoord goed voordat het vertrekt. Daarom toont Orion bij elk antwoord de bron.",
-      "sha256": "4c393ab34b58ccd9a3aff1ac59a1d462345544f892ded07c63082e287f95b0b7",
+      "text": "Ja. De kwaliteit van een voorstel hangt af van uw documenten. Orion toont de bron, zodat uw team het voorstel kan controleren en zo nodig verbeteren voordat het de antwoorden verstuurt.",
+      "sha256": "dac5a534b653db674620b97720ff113c64a71ce22c0bc9e4fd74ff94654889f4",
       "source": {
         "adapter": "static-cms-catalog",
         "file": "assets/cms-catalog.js",
@@ -103771,8 +103801,8 @@
       "id": "orion.html#cms-catalog:website:orion-food-vragen-32:text",
       "page": "orion.html",
       "kind": "cms-catalog:text",
-      "text": "In de pilot meten we eerst hoeveel tijd u wint. Daarna krijgt u een vast bedrag per bedrijf, niet per vraag en niet per gebruiker.",
-      "sha256": "44870488c1f71a66e80e02790e5af9ce8fbf37ab0daf751857fa0d5a2cfc0e89",
+      "text": "Tijdens de pilot meten we hoeveel tijd uw team aan de vragenlijsten besteedt. Daarna stellen we u een vaste prijs per bedrijf voor, ongeacht het aantal vragen of gebruikers.",
+      "sha256": "7f957af0b950195e51eab44bdf1c2f102e3e92c87eda14fd881459aeb5007a6a",
       "source": {
         "adapter": "static-cms-catalog",
         "file": "assets/cms-catalog.js",
@@ -103960,8 +103990,8 @@
       "id": "orion.html#cms-catalog:website:orion-food-werking-43:text",
       "page": "orion.html",
       "kind": "cms-catalog:text",
-      "text": "Orion zoekt per vraag het antwoord in uw bronnen en noteert uit welk document het komt. Een vaste controle toetst daarna elk antwoord aan de bron: citaten, cijfers, allergenen en ontkenningen.",
-      "sha256": "d85c41ba2a5da679bd3c0210eff1fa186b72c26ee2905a40f0e2bd3f44aae908",
+      "text": "Voor elke vraag zoekt Orion een antwoord in uw documenten. Bij elk voorstel toont het de bron en controleert het onder meer de citaten, cijfers, allergenen en ontkenningen.",
+      "sha256": "7d0d790a167d96d10db4851def73cb298bd04a3595a782ac381f5634c5401261",
       "source": {
         "adapter": "static-cms-catalog",
         "file": "assets/cms-catalog.js",
@@ -104044,8 +104074,8 @@
       "id": "orion.html#content:head:1>meta:4",
       "page": "orion.html",
       "kind": "content",
-      "text": "Orion bereidt de klantvragenlijsten van voedingsbedrijven voor vanuit hun eigen goedgekeurde documenten, met de bron bij elk antwoord. Geen bron, geen antwoord. Uw team keurt goed.",
-      "sha256": "6bb01f1c5b512c1efc0ba1a10802a31c4b8fe22a17219c2d442c3322f259d3af",
+      "text": "Orion helpt voedingsbedrijven om klantvragenlijsten in te vullen. Het zoekt in uw documenten en toont bij elk voorstel de bron. Uw team controleert de antwoorden.",
+      "sha256": "4f4483dec54db362b009dd5db6debbb1163385e01abd4f52c81c16255ecf8c72",
       "engine": {
         "name": "LanguageTool",
         "version": "6.6",
@@ -105110,8 +105140,8 @@
       "id": "orion.html#text:body:2>main:3>header:1>div:1>div:1>p:4",
       "page": "orion.html",
       "kind": "text",
-      "text": "Een retailer vraagt hoe u allergenen beheert. Een afnemer wil uw certificaten en uw traceerprocedure. Orion zoekt de antwoorden in de documenten die u zelf hebt goedgekeurd en zet bij elk antwoord de bron. U leest na, u keurt goed, u verstuurt.",
-      "sha256": "5ff79a9850710fa58dcde7858386b07f5ab0657ae7fe76971f12b481bb4e2f22",
+      "text": "Een retailer vraagt hoe u allergenen beheert. Een afnemer wil uw certificaten en uw traceerprocedure. Orion zoekt in uw eigen documenten en toont bij elk voorstel de bron. Uw team controleert het antwoord en beslist wat het verstuurt.",
+      "sha256": "939b2a99c6d3ff24f8ae92ea18e0bbac750731e60b58efe8f3b46890f0d86a16",
       "engine": {
         "name": "LanguageTool",
         "version": "6.6",
@@ -105188,8 +105218,8 @@
       "id": "orion.html#text:body:2>main:3>section:11>div:1>div:2>details:1>p:2",
       "page": "orion.html",
       "kind": "text",
-      "text": "Ja. Orion is een hulpmiddel. De kwaliteit hangt af van uw brondocumenten, en uw team keurt elk antwoord goed voordat het vertrekt. Daarom toont Orion bij elk antwoord de bron.",
-      "sha256": "4c393ab34b58ccd9a3aff1ac59a1d462345544f892ded07c63082e287f95b0b7",
+      "text": "Ja. De kwaliteit van een voorstel hangt af van uw documenten. Orion toont de bron, zodat uw team het voorstel kan controleren en zo nodig verbeteren voordat het de antwoorden verstuurt.",
+      "sha256": "dac5a534b653db674620b97720ff113c64a71ce22c0bc9e4fd74ff94654889f4",
       "engine": {
         "name": "LanguageTool",
         "version": "6.6",
@@ -105240,8 +105270,8 @@
       "id": "orion.html#text:body:2>main:3>section:11>div:1>div:2>details:5>p:2",
       "page": "orion.html",
       "kind": "text",
-      "text": "In de pilot meten we eerst hoeveel tijd u wint. Daarna krijgt u een vast bedrag per bedrijf, niet per vraag en niet per gebruiker.",
-      "sha256": "44870488c1f71a66e80e02790e5af9ce8fbf37ab0daf751857fa0d5a2cfc0e89",
+      "text": "Tijdens de pilot meten we hoeveel tijd uw team aan de vragenlijsten besteedt. Daarna stellen we u een vaste prijs per bedrijf voor, ongeacht het aantal vragen of gebruikers.",
+      "sha256": "7f957af0b950195e51eab44bdf1c2f102e3e92c87eda14fd881459aeb5007a6a",
       "engine": {
         "name": "LanguageTool",
         "version": "6.6",
@@ -105266,8 +105296,8 @@
       "id": "orion.html#text:body:2>main:3>section:11>div:1>div:2>details:7>p:2",
       "page": "orion.html",
       "kind": "text",
-      "text": "Onderzoek in de zorg, waar overgetypte gegevens nauwkeurig worden nagekeken, vindt 2 tot 4 fouten per 100 overgetypte velden. In vrije tekstvelden zijn dat er meer. Bronnen: Hong et al., BMJ Open, 2013 · Mays & Mathias, JAMIA, 2019. In een experiment met 758 consultants werkten wie AI gebruikte sneller en beter bij taken die AI aankan. Bij een taak buiten het bereik van AI vonden ze 19 procentpunten minder vaak de juiste oplossing, terwijl beide taken even moeilijk leken. Bron: Dell’Acqua et al., Organization Science, 2026.",
-      "sha256": "646b3dc19a88a7ae3260f1d876ec711f00f0bb79ee242793955b6341d140282e",
+      "text": "Onderzoek in de zorg, waar overgetypte gegevens nauwkeurig worden nagekeken, vindt 2 tot 4 fouten per 100 overgetypte velden. In vrije tekstvelden zijn dat er meer. Bronnen: Hong et al., BMJ Open, 2013 · Mays & Mathias, JAMIA, 2019. In een experiment met 758 consultants werkten de deelnemers die AI gebruikten sneller en beter bij taken die AI aankan. Bij een taak buiten het bereik van AI vonden ze 19 procentpunten minder vaak de juiste oplossing, terwijl beide taken even moeilijk leken. Bron: Dell’Acqua et al., Organization Science, 2026.",
+      "sha256": "878254c167181f670b0cde8478df2e1b6343993fc83a0c4a5565738e4bc1b133",
       "engine": {
         "name": "LanguageTool",
         "version": "6.6",
@@ -105344,8 +105374,8 @@
       "id": "orion.html#text:body:2>main:3>section:2>div:1>div:1>p:2",
       "page": "orion.html",
       "kind": "text",
-      "text": "Allergenen. Certificaten. Herkomst. Traceerbaarheid. Elke klant stelt ze op zijn manier, in zijn eigen Excel-bestand. Het antwoord staat ergens in uw specificaties, uw procedures of een vragenlijst van vorig jaar. Iemand moet het zoeken, overtypen en nakijken, tussen een audit en een klacht door.",
-      "sha256": "23bfc7ae92d964cce96081955588a03211cfc383386d402cab3cf290776fc5f2",
+      "text": "Allergenen, certificaten, herkomst en traceerbaarheid komen telkens terug. Elke klant stelt zijn vragen op zijn eigen manier, in zijn eigen Excel-bestand. Het antwoord staat ergens in uw specificaties, uw procedures of een vragenlijst van vorig jaar. Iemand moet het zoeken, overtypen en nakijken, tussen een audit en een klacht door.",
+      "sha256": "7b36bc2b4ae161a8e2942bd147713fb1d192363db00892814e61382ffac13ba9",
       "engine": {
         "name": "LanguageTool",
         "version": "6.6",
@@ -105370,8 +105400,8 @@
       "id": "orion.html#text:body:2>main:3>section:3>div:1>aside:4>h3:1",
       "page": "orion.html",
       "kind": "text",
-      "text": "En als er geen geldige bron is?",
-      "sha256": "9202008a0c52ad6b92439e37c47df03926d9457f20f8c6c8ce0fac203693a53f",
+      "text": "En als Orion geen bron vindt?",
+      "sha256": "f2cb6803de275494f56da0e94f2ee4bf09e703829092b8c423213197ff005580",
       "engine": {
         "name": "LanguageTool",
         "version": "6.6",
@@ -105734,8 +105764,8 @@
       "id": "orion.html#text:body:2>main:3>section:4>div:1>ol:3>li:3>p:3",
       "page": "orion.html",
       "kind": "text",
-      "text": "Orion zoekt per vraag het antwoord in uw bronnen en noteert uit welk document het komt. Een vaste controle toetst daarna elk antwoord aan de bron: citaten, cijfers, allergenen en ontkenningen.",
-      "sha256": "d85c41ba2a5da679bd3c0210eff1fa186b72c26ee2905a40f0e2bd3f44aae908",
+      "text": "Voor elke vraag zoekt Orion een antwoord in uw documenten. Bij elk voorstel toont het de bron en controleert het onder meer de citaten, cijfers, allergenen en ontkenningen.",
+      "sha256": "7d0d790a167d96d10db4851def73cb298bd04a3595a782ac381f5634c5401261",
       "engine": {
         "name": "LanguageTool",
         "version": "6.6",
@@ -106033,8 +106063,8 @@
       "id": "orion.html#text:body:2>main:3>section:6>div:1>div:4>table:1>tbody:2>tr:1>td:4",
       "page": "orion.html",
       "kind": "text",
-      "text": "Uit wat u op dat moment oplaadt, en uit algemene kennis",
-      "sha256": "d9d4b9eac1eb1a54e8897474212a3477c1a5762355f892ca94ef9e940da0613a",
+      "text": "Dat hangt af van de instellingen. De assistent kan uw bestanden, gekoppelde bronnen en algemene kennis gebruiken.",
+      "sha256": "ffc860cc43efdb1ca73007df446ffbf91039a6919dfdac407247ee8284630c6e",
       "engine": {
         "name": "LanguageTool",
         "version": "6.6",
@@ -106046,8 +106076,8 @@
       "id": "orion.html#text:body:2>main:3>section:6>div:1>div:4>table:1>tbody:2>tr:1>td:5",
       "page": "orion.html",
       "kind": "text",
-      "text": "Alleen uit documenten in uw bronnenregister",
-      "sha256": "1a8d71c15daf25f65a188b2dd818c18e5fe36175e7902d648687b5bd4ea04ad3",
+      "text": "Orion toont bij elk voorstel het document waarop het zich baseert",
+      "sha256": "cdb0f27126f458b554b7c40739880f3bcb6cbb1df701b666ca44dfbc9b1ad733",
       "engine": {
         "name": "LanguageTool",
         "version": "6.6",
@@ -106449,8 +106479,8 @@
       "id": "orion.html#text:body:2>main:3>section:7>div:1>div:3>div:1>ul:2>li:2",
       "page": "orion.html",
       "kind": "text",
-      "text": "Bij elk antwoord het brondocument",
-      "sha256": "aba194c976be5042e204df6991f01808929dad540bbbe2c462fd5a9e2ba7ad5e",
+      "text": "Bij elk voorstel het brondocument",
+      "sha256": "03560139be1453b063dd24600621d9def9356db57313adbce9bda32a9fa471fe",
       "engine": {
         "name": "LanguageTool",
         "version": "6.6",
@@ -106475,8 +106505,8 @@
       "id": "orion.html#text:body:2>main:3>section:7>div:1>div:3>div:1>ul:2>li:4",
       "page": "orion.html",
       "kind": "text",
-      "text": "Een vaste controle van elk antwoord tegen de bron",
-      "sha256": "4f0c300981d461b09912dadbb4cee7d038f64cff803eb32746b5557bf142f646",
+      "text": "Elk voorstel toetsen aan de bron",
+      "sha256": "8ae892866597e78f4a1d50bfc1f88da41ec72fbec48d3004de74aef90822f3ee",
       "engine": {
         "name": "LanguageTool",
         "version": "6.6",
@@ -106644,8 +106674,8 @@
       "id": "orion.html#text:body:2>main:3>section:8>div:1>div:1>p:2",
       "page": "orion.html",
       "kind": "text",
-      "text": "Voordat u over een pilot beslist, bespreken we met uw IT-verantwoordelijke waar Orion draait, welke gegevens worden verwerkt en door welke partijen. We leggen de afspraken voor uw pilot vast in de verwerkersovereenkomst en de bijbehorende lijst van verwerkers.",
-      "sha256": "748d7e5d97dc269c5ae2e23efda76b92bd830e79fbb0670ba2c6e75f0fbe5ac8",
+      "text": "Voordat u over een pilot beslist, bespreken we met uw IT-verantwoordelijke waar Orion draait, welke gegevens worden verwerkt en door welke partijen. We leggen de afspraken voor uw pilot vast in de verwerkersovereenkomst, met de lijst van ingeschakelde subverwerkers.",
+      "sha256": "d9da65824d76d45bcb30af05612f28c97345b0ec946b0a729e1bfedc63115854",
       "engine": {
         "name": "LanguageTool",
         "version": "6.6",
@@ -349424,6 +349454,218 @@
       "context": "Orion: klantvragenlijsten invullen vanuit uw eigen documenten | Grow Faster",
       "status": "open",
       "firstSeen": "f58181d0c37c2b09eb9591f26ca5c743a667ce9d"
+    },
+    {
+      "id": "215e1726cf14ad5c4816eebc2cf3d2e87cee537d9a22ec1fe2f2bf47b6a4ad98",
+      "blockId": "dictionary:I18N:Een retailer vraagt hoe u allergenen beheert. Een afnemer wil uw certificaten en uw traceerprocedure. Orion zoekt in uw eigen documenten en toont bij elk voorstel de bron. Uw team controleert het antwoord en beslist wat het verstuurt.",
+      "textHash": "939b2a99c6d3ff24f8ae92ea18e0bbac750731e60b58efe8f3b46890f0d86a16",
+      "rule": "MORFOLOGIK_RULE_NL_NL",
+      "offset": 84,
+      "length": 16,
+      "message": "Er is een mogelijke spelfout gevonden.",
+      "replacements": [
+        "tracéprocedure",
+        "tracéwetprocedure"
+      ],
+      "context": "Een retailer vraagt hoe u allergenen beheert. Een afnemer wil uw certificaten en uw traceerprocedure. Orion zoekt in uw eigen documenten en toont bij elk voorstel de bron. Uw team controleert het antwoord en beslist wat het verstuurt.",
+      "status": "open",
+      "firstSeen": "d2435762a900973e010c0e4cb051d0574bb1b72c"
+    },
+    {
+      "id": "8dfbe77ee6bb39ab65786b3c43549c767875970db6dc305af475bbf4a85637bb",
+      "blockId": "dictionary:I18N:Orion helpt voedingsbedrijven om klantvragenlijsten in te vullen. Het zoekt in uw documenten en toont bij elk voorstel de bron. Uw team controleert de antwoorden.",
+      "textHash": "4f4483dec54db362b009dd5db6debbb1163385e01abd4f52c81c16255ecf8c72",
+      "rule": "MORFOLOGIK_RULE_NL_NL",
+      "offset": 33,
+      "length": 18,
+      "message": "Er is een mogelijke spelfout gevonden.",
+      "replacements": [
+        "cliëntvragenlijsten",
+        "aanvragenlijsten",
+        "slaapvragenlijsten",
+        "slotvragenlijsten"
+      ],
+      "context": "Orion helpt voedingsbedrijven om klantvragenlijsten in te vullen. Het zoekt in uw documenten en toont bij elk voorstel de bron. Uw team controleert de antwoorden.",
+      "status": "open",
+      "firstSeen": "d2435762a900973e010c0e4cb051d0574bb1b72c"
+    },
+    {
+      "id": "c90b5a9af91d2a7f7dcf0d120f89f4e908410fcfcf4cd27ec01ef49ed07ae0ed",
+      "blockId": "dictionary:I18N:Voordat u over een pilot beslist, bespreken we met uw IT-verantwoordelijke waar Orion draait, welke gegevens worden verwerkt en door welke partijen. We leggen de afspraken voor uw pilot vast in de verwerkersovereenkomst, met de lijst van ingeschakelde subverwerkers.",
+      "textHash": "d9da65824d76d45bcb30af05612f28c97345b0ec946b0a729e1bfedc63115854",
+      "rule": "MORFOLOGIK_RULE_NL_NL",
+      "offset": 252,
+      "length": 13,
+      "message": "Er is een mogelijke spelfout gevonden.",
+      "replacements": [
+        "rubberwerkers",
+        "slibverwerkers",
+        "suikerwerkers"
+      ],
+      "context": "Voordat u over een pilot beslist, bespreken we met uw IT-verantwoordelijke waar Orion draait, welke gegevens worden verwerkt en door welke partijen. We leggen de afspraken voor uw pilot vast in de verwerkersovereenkomst, met de lijst van ingeschakelde subverwerkers.",
+      "status": "open",
+      "firstSeen": "d2435762a900973e010c0e4cb051d0574bb1b72c"
+    },
+    {
+      "id": "68788537e6494d48e1d167787c77744b8fce9fa8b641d148889f64f3299150b8",
+      "blockId": "fr/orion/index.html#content:head:1>meta:4",
+      "textHash": "4f4483dec54db362b009dd5db6debbb1163385e01abd4f52c81c16255ecf8c72",
+      "rule": "MORFOLOGIK_RULE_NL_NL",
+      "offset": 33,
+      "length": 18,
+      "message": "Er is een mogelijke spelfout gevonden.",
+      "replacements": [
+        "cliëntvragenlijsten",
+        "aanvragenlijsten",
+        "slaapvragenlijsten",
+        "slotvragenlijsten"
+      ],
+      "context": "Orion helpt voedingsbedrijven om klantvragenlijsten in te vullen. Het zoekt in uw documenten en toont bij elk voorstel de bron. Uw team controleert de antwoorden.",
+      "status": "open",
+      "firstSeen": "d2435762a900973e010c0e4cb051d0574bb1b72c"
+    },
+    {
+      "id": "1340ed66c289de7bebdf0d2943f89830c32cbfc507e947fff146512a91223c10",
+      "blockId": "fr/orion/index.html#text:body:2>main:3>header:1>div:1>div:1>p:4",
+      "textHash": "939b2a99c6d3ff24f8ae92ea18e0bbac750731e60b58efe8f3b46890f0d86a16",
+      "rule": "MORFOLOGIK_RULE_NL_NL",
+      "offset": 84,
+      "length": 16,
+      "message": "Er is een mogelijke spelfout gevonden.",
+      "replacements": [
+        "tracéprocedure",
+        "tracéwetprocedure"
+      ],
+      "context": "Een retailer vraagt hoe u allergenen beheert. Een afnemer wil uw certificaten en uw traceerprocedure. Orion zoekt in uw eigen documenten en toont bij elk voorstel de bron. Uw team controleert het antwoord en beslist wat het verstuurt.",
+      "status": "open",
+      "firstSeen": "d2435762a900973e010c0e4cb051d0574bb1b72c"
+    },
+    {
+      "id": "b1fe414255d4e0c46f50680e32ee674d9d83d769b99bf45728f8d345cd6648d1",
+      "blockId": "fr/orion/index.html#text:body:2>main:3>section:11>div:1>div:2>details:7>p:2",
+      "textHash": "878254c167181f670b0cde8478df2e1b6343993fc83a0c4a5565738e4bc1b133",
+      "rule": "MORFOLOGIK_RULE_NL_NL",
+      "offset": 498,
+      "length": 10,
+      "message": "Er is een mogelijke spelfout gevonden.",
+      "replacements": [],
+      "context": "Onderzoek in de zorg, waar overgetypte gegevens nauwkeurig worden nagekeken, vindt 2 tot 4 fouten per 100 overgetypte velden. In vrije tekstvelden zijn dat er meer. Bronnen: Hong et al., BMJ Open, 2013 · Mays & Mathias, JAMIA, 2019. In een experiment met 758 consultants werkten de deelnemers die AI gebruikten sneller en beter bij taken die AI aankan. Bij een taak buiten het bereik van AI vonden ze 19 procentpunten minder vaak de juiste oplossing, terwijl beide taken even moeilijk leken. Bron: Dell’Acqua et al., Organization Science, 2026.",
+      "status": "open",
+      "firstSeen": "d2435762a900973e010c0e4cb051d0574bb1b72c"
+    },
+    {
+      "id": "0f6a8b19b9f33b8965fe3e5967053e84a1af28ba4620c1e94f0cdcf6caf8e17c",
+      "blockId": "fr/orion/index.html#text:body:2>main:3>section:8>div:1>div:1>p:2",
+      "textHash": "d9da65824d76d45bcb30af05612f28c97345b0ec946b0a729e1bfedc63115854",
+      "rule": "MORFOLOGIK_RULE_NL_NL",
+      "offset": 252,
+      "length": 13,
+      "message": "Er is een mogelijke spelfout gevonden.",
+      "replacements": [
+        "rubberwerkers",
+        "slibverwerkers",
+        "suikerwerkers"
+      ],
+      "context": "Voordat u over een pilot beslist, bespreken we met uw IT-verantwoordelijke waar Orion draait, welke gegevens worden verwerkt en door welke partijen. We leggen de afspraken voor uw pilot vast in de verwerkersovereenkomst, met de lijst van ingeschakelde subverwerkers.",
+      "status": "open",
+      "firstSeen": "d2435762a900973e010c0e4cb051d0574bb1b72c"
+    },
+    {
+      "id": "e65290cb38b99a00f7c88b1c1e8ecaf6eb1284695333a8135ae38981aadad58f",
+      "blockId": "orion.html#cms-catalog:website:orion-food-gegevens-19:text",
+      "textHash": "d9da65824d76d45bcb30af05612f28c97345b0ec946b0a729e1bfedc63115854",
+      "rule": "MORFOLOGIK_RULE_NL_NL",
+      "offset": 252,
+      "length": 13,
+      "message": "Er is een mogelijke spelfout gevonden.",
+      "replacements": [
+        "rubberwerkers",
+        "slibverwerkers",
+        "suikerwerkers"
+      ],
+      "context": "Voordat u over een pilot beslist, bespreken we met uw IT-verantwoordelijke waar Orion draait, welke gegevens worden verwerkt en door welke partijen. We leggen de afspraken voor uw pilot vast in de verwerkersovereenkomst, met de lijst van ingeschakelde subverwerkers.",
+      "status": "open",
+      "firstSeen": "d2435762a900973e010c0e4cb051d0574bb1b72c"
+    },
+    {
+      "id": "c20827595cab0228770e1eb6a9c2dbbf5bc472ff80a37632990d0127b1330f4e",
+      "blockId": "orion.html#cms-catalog:website:orion-food-intro:text",
+      "textHash": "939b2a99c6d3ff24f8ae92ea18e0bbac750731e60b58efe8f3b46890f0d86a16",
+      "rule": "MORFOLOGIK_RULE_NL_NL",
+      "offset": 84,
+      "length": 16,
+      "message": "Er is een mogelijke spelfout gevonden.",
+      "replacements": [
+        "tracéprocedure",
+        "tracéwetprocedure"
+      ],
+      "context": "Een retailer vraagt hoe u allergenen beheert. Een afnemer wil uw certificaten en uw traceerprocedure. Orion zoekt in uw eigen documenten en toont bij elk voorstel de bron. Uw team controleert het antwoord en beslist wat het verstuurt.",
+      "status": "open",
+      "firstSeen": "d2435762a900973e010c0e4cb051d0574bb1b72c"
+    },
+    {
+      "id": "4d884f3d68a22d1aad31a5bf570e4d0da87094398eddccb31e4c05237d5494a1",
+      "blockId": "orion.html#content:head:1>meta:4",
+      "textHash": "4f4483dec54db362b009dd5db6debbb1163385e01abd4f52c81c16255ecf8c72",
+      "rule": "MORFOLOGIK_RULE_NL_NL",
+      "offset": 33,
+      "length": 18,
+      "message": "Er is een mogelijke spelfout gevonden.",
+      "replacements": [
+        "cliëntvragenlijsten",
+        "aanvragenlijsten",
+        "slaapvragenlijsten",
+        "slotvragenlijsten"
+      ],
+      "context": "Orion helpt voedingsbedrijven om klantvragenlijsten in te vullen. Het zoekt in uw documenten en toont bij elk voorstel de bron. Uw team controleert de antwoorden.",
+      "status": "open",
+      "firstSeen": "d2435762a900973e010c0e4cb051d0574bb1b72c"
+    },
+    {
+      "id": "ad9da787622ee26aff576cf20b43080e6def98de69d118bfe257701c270f6130",
+      "blockId": "orion.html#text:body:2>main:3>header:1>div:1>div:1>p:4",
+      "textHash": "939b2a99c6d3ff24f8ae92ea18e0bbac750731e60b58efe8f3b46890f0d86a16",
+      "rule": "MORFOLOGIK_RULE_NL_NL",
+      "offset": 84,
+      "length": 16,
+      "message": "Er is een mogelijke spelfout gevonden.",
+      "replacements": [
+        "tracéprocedure",
+        "tracéwetprocedure"
+      ],
+      "context": "Een retailer vraagt hoe u allergenen beheert. Een afnemer wil uw certificaten en uw traceerprocedure. Orion zoekt in uw eigen documenten en toont bij elk voorstel de bron. Uw team controleert het antwoord en beslist wat het verstuurt.",
+      "status": "open",
+      "firstSeen": "d2435762a900973e010c0e4cb051d0574bb1b72c"
+    },
+    {
+      "id": "9eda4f305621acd15a9c4b57172179ff643c8c2b2b54998b7e63680b22792a6d",
+      "blockId": "orion.html#text:body:2>main:3>section:11>div:1>div:2>details:7>p:2",
+      "textHash": "878254c167181f670b0cde8478df2e1b6343993fc83a0c4a5565738e4bc1b133",
+      "rule": "MORFOLOGIK_RULE_NL_NL",
+      "offset": 498,
+      "length": 10,
+      "message": "Er is een mogelijke spelfout gevonden.",
+      "replacements": [],
+      "context": "Onderzoek in de zorg, waar overgetypte gegevens nauwkeurig worden nagekeken, vindt 2 tot 4 fouten per 100 overgetypte velden. In vrije tekstvelden zijn dat er meer. Bronnen: Hong et al., BMJ Open, 2013 · Mays & Mathias, JAMIA, 2019. In een experiment met 758 consultants werkten de deelnemers die AI gebruikten sneller en beter bij taken die AI aankan. Bij een taak buiten het bereik van AI vonden ze 19 procentpunten minder vaak de juiste oplossing, terwijl beide taken even moeilijk leken. Bron: Dell’Acqua et al., Organization Science, 2026.",
+      "status": "open",
+      "firstSeen": "d2435762a900973e010c0e4cb051d0574bb1b72c"
+    },
+    {
+      "id": "b1740564079deafdd6df1c611d081fee703586554c50f4a224b09c893b0c5b99",
+      "blockId": "orion.html#text:body:2>main:3>section:8>div:1>div:1>p:2",
+      "textHash": "d9da65824d76d45bcb30af05612f28c97345b0ec946b0a729e1bfedc63115854",
+      "rule": "MORFOLOGIK_RULE_NL_NL",
+      "offset": 252,
+      "length": 13,
+      "message": "Er is een mogelijke spelfout gevonden.",
+      "replacements": [
+        "rubberwerkers",
+        "slibverwerkers",
+        "suikerwerkers"
+      ],
+      "context": "Voordat u over een pilot beslist, bespreken we met uw IT-verantwoordelijke waar Orion draait, welke gegevens worden verwerkt en door welke partijen. We leggen de afspraken voor uw pilot vast in de verwerkersovereenkomst, met de lijst van ingeschakelde subverwerkers.",
+      "status": "open",
+      "firstSeen": "d2435762a900973e010c0e4cb051d0574bb1b72c"
     }
   ]
 }

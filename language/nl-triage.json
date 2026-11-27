@@ -2114,5 +2114,49 @@
         ]
       }
     ]
+  },
+  "review20261127OrionEindcontrole": {
+    "sourceCommit": "d2435762a900973e010c0e4cb051d0574bb1b72c",
+    "humanApproval": false,
+    "locations": 13,
+    "groups": [
+      {
+        "term": "subverwerkers",
+        "reason": "Partijen die de verwerker inschakelt. De voorgestelde alternatieven veranderen de betekenis.",
+        "ids": [
+          "c90b5a9af91d2a7f7dcf0d120f89f4e908410fcfcf4cd27ec01ef49ed07ae0ed",
+          "0f6a8b19b9f33b8965fe3e5967053e84a1af28ba4620c1e94f0cdcf6caf8e17c",
+          "e65290cb38b99a00f7c88b1c1e8ecaf6eb1284695333a8135ae38981aadad58f",
+          "b1740564079deafdd6df1c611d081fee703586554c50f4a224b09c893b0c5b99"
+        ]
+      },
+      {
+        "term": "Dell’Acqua",
+        "reason": "Familienaam in de bronvermelding.",
+        "ids": [
+          "b1fe414255d4e0c46f50680e32ee674d9d83d769b99bf45728f8d345cd6648d1",
+          "9eda4f305621acd15a9c4b57172179ff643c8c2b2b54998b7e63680b22792a6d"
+        ]
+      },
+      {
+        "term": "klantvragenlijsten",
+        "reason": "Samenstelling voor vragenlijsten van klanten.",
+        "ids": [
+          "8dfbe77ee6bb39ab65786b3c43549c767875970db6dc305af475bbf4a85637bb",
+          "68788537e6494d48e1d167787c77744b8fce9fa8b641d148889f64f3299150b8",
+          "4d884f3d68a22d1aad31a5bf570e4d0da87094398eddccb31e4c05237d5494a1"
+        ]
+      },
+      {
+        "term": "traceerprocedure",
+        "reason": "Samenstelling voor de procedure om producten te traceren.",
+        "ids": [
+          "215e1726cf14ad5c4816eebc2cf3d2e87cee537d9a22ec1fe2f2bf47b6a4ad98",
+          "1340ed66c289de7bebdf0d2943f89830c32cbfc507e947fff146512a91223c10",
+          "c20827595cab0228770e1eb6a9c2dbbf5bc472ff80a37632990d0127b1330f4e",
+          "ad9da787622ee26aff576cf20b43080e6def98de69d118bfe257701c270f6130"
+        ]
+      }
+    ]
   }
 }

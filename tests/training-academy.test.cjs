@@ -13,7 +13,7 @@ test('academy section order: hero, why, programmes, figures, how, trainer, pract
   assert.ok(order.every(i=>i>=0),'all sections present');assert.deepEqual(order,[...order].sort((a,b)=>a-b));
   assert.equal((section('trainingen').match(/<article class="ac-program">/g)||[]).length,3,'three programme cards');
   assert.equal((section('werking').match(/class="step-n"/g)||[]).length,3,'three steps');
-  assert.match(section('hero'),/<figure class="ac-figure">[\s\S]*hero-training-team-1774\.webp/,'one wide photo under the hero text');
+  assert.match(section('hero'),/<figure class="ac-figure">[\s\S]*hero-training-workshop-1536\.webp/,'one wide photo under the hero text');
 });
 
 test('every programme card and the closing call lead to the training appointment topic',()=>{

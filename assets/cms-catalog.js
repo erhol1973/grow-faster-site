@@ -2072,10 +2072,10 @@ window.GF_CMS_CATALOG=[
       {
         "key": "trn-hero-img",
         "type": "media",
-        "label": "img/hero-training-team-1774.webp",
-        "nl": "img/hero-training-team-1774.webp",
-        "fr": "img/hero-training-team-1774.webp",
-        "src": "img/hero-training-team-1774.webp",
+        "label": "img/hero-training-workshop-1536.webp",
+        "nl": "img/hero-training-workshop-1536.webp",
+        "fr": "img/hero-training-workshop-1536.webp",
+        "src": "img/hero-training-workshop-1536.webp",
         "alt": {
           "nl": "",
           "fr": ""

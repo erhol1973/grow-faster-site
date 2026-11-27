@@ -49,6 +49,12 @@ for (const [lang, text] of Object.entries(copy)) {
     }
     await expect(page).toHaveURL(/#trainingen$/);
     await expect(page.locator('#trainingen-h')).toBeInViewport();
+    const portrait = page.locator('#trainer img');
+    await expect(portrait).toHaveAttribute('alt', 'Erlend Hollebosch');
+    const portraitSize = await portrait.boundingBox();
+    expect(portraitSize.width).toBeGreaterThanOrEqual(192);
+    expect(portraitSize.height / portraitSize.width).toBeCloseTo(1.25, 2);
+    await expect(portrait).toHaveCSS('border-radius', '16px');
     const programmes = page.locator('.ac-program');
     await expect(programmes.locator('.ac-team')).toHaveText(text.teams);
     for (const [index, name] of text.links.entries()) {

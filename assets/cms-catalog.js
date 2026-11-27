@@ -619,18 +619,6 @@ window.GF_CMS_CATALOG=[
     "label": "Orion",
     "fields": [
       {
-        "key": "orion-kwaliteit-hero",
-        "type": "media",
-        "label": "img/home-orion-kwaliteit-1280.webp",
-        "nl": "img/home-orion-kwaliteit-1280.webp",
-        "fr": "img/home-orion-kwaliteit-1280.webp",
-        "src": "img/home-orion-kwaliteit-1280.webp",
-        "alt": {
-          "nl": "",
-          "fr": ""
-        }
-      },
-      {
         "key": "orion-vraag-titel",
         "type": "text",
         "label": "Orion bereidt uw klantvragenlijsten voor.",
@@ -638,11 +626,11 @@ window.GF_CMS_CATALOG=[
         "fr": "Orion prépare vos réponses aux questionnaires clients."
       },
       {
-        "key": "orion-vraag-intro",
+        "key": "orion-demo-intro",
         "type": "text",
-        "label": "Orion zoekt antwoorden in uw specificaties, certificaten en procedures. Uw medewerker ziet",
-        "nl": "Orion zoekt antwoorden in uw specificaties, certificaten en procedures. Uw medewerker ziet de bron, controleert het voorstel en beslist wat naar de klant gaat.",
-        "fr": "Orion cherche les réponses dans vos spécifications, certificats et procédures. Votre équipe consulte la source, vérifie la proposition et décide de ce qui est envoyé au client."
+        "label": "Een retailer vraagt hoe u allergenen beheert. Met Orion vindt uw kwaliteitsteam het antw",
+        "nl": "Een retailer vraagt hoe u allergenen beheert. Met Orion vindt uw kwaliteitsteam het antwoord in de eigen productspecificaties en certificaten. Uw medewerker controleert de bron en beslist wat naar de klant gaat.",
+        "fr": "Un distributeur vous interroge sur la gestion des allergènes. Avec Orion, votre équipe qualité retrouve la réponse dans vos fiches produits et certificats. Elle vérifie la source et décide de ce qui est envoyé au client."
       },
       {
         "key": "orx-16",
@@ -673,11 +661,11 @@ window.GF_CMS_CATALOG=[
         "fr": "Vous chargez le questionnaire"
       },
       {
-        "key": "orx-21",
+        "key": "orion-demo-formaat",
         "type": "text",
-        "label": "zoals u ze gekregen hebt, in Excel of Word.",
-        "nl": "zoals u ze gekregen hebt, in Excel of Word.",
-        "fr": "tel que vous l’avez reçu, en Excel ou en Word."
+        "label": "U start met het Excel-bestand dat uw klant heeft gestuurd.",
+        "nl": "U start met het Excel-bestand dat uw klant heeft gestuurd.",
+        "fr": "Vous partez du fichier Excel envoyé par votre client."
       },
       {
         "key": "orx-22",
@@ -876,11 +864,11 @@ window.GF_CMS_CATALOG=[
         "fr": "Chaque réponse affiche sa source et les questions sensibles sont signalées. Votre collaborateur valide tout avant l’envoi."
       },
       {
-        "key": "orion-pilot-bestanden",
+        "key": "orion-demo-bestanden",
         "type": "text",
-        "label": "Breng uw vragenlijst in Excel of Word mee. Specificaties, procedures en attesten dienen al",
-        "nl": "Breng uw vragenlijst in Excel of Word mee. Specificaties, procedures en attesten dienen als bron voor de antwoorden.",
-        "fr": "Apportez votre questionnaire Excel ou Word. Les spécifications, procédures et attestations servent de sources pour les réponses."
+        "label": "Breng de Excel-vragenlijst van uw klant mee, samen met de specificaties, procedures of a",
+        "nl": "Breng de Excel-vragenlijst van uw klant mee, samen met de specificaties, procedures of attesten waarop uw antwoorden steunen. Werkt u met een ander formaat, dan bespreken we dat bij de intake.",
+        "fr": "Apportez le questionnaire Excel de votre client et les spécifications, procédures ou attestations qui étayent vos réponses. Si vous utilisez un autre format, nous en discutons lors du premier entretien."
       },
       {
         "key": "orx-74",

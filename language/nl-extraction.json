@@ -36,7 +36,7 @@
     },
     {
       "file": "assets/cms-catalog.js",
-      "sha256": "9f8af9d1cb293f35c49f13ff0a337f2aaa5f4c6426700faa8518e574484e52a2"
+      "sha256": "e7c2f21503a318babb6dc5a4bf792e3c2d74aae138f6685f7c23d24e52857674"
     },
     {
       "file": "assets/cms-client.js",
@@ -112,7 +112,7 @@
     },
     {
       "file": "assets/i18n-orion.js",
-      "sha256": "ced08af2aa25ce470c48c6d311079ef46f6e4d5b5642bce09a840ef232a42636"
+      "sha256": "850fb9c490608951e53391e9593ea3529c2e34e5026ea3188bfe6b60067cab87"
     },
     {
       "file": "assets/i18n-sector-photos.js",

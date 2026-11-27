@@ -6,16 +6,16 @@ const dom=require('./support/mini-dom.cjs');
 const {i18nFor}=require('./support/i18n.cjs');
 
 const dist=path.resolve(__dirname,'../dist');
-const pages=['index.html','orion.html','automatisering.html','insights.html'];
+const pages=['index.html','automatisering.html','insights.html'];
 
-test('four customer pages show three sector examples within the photo range',()=>{
+test('customer pages with sector photography show three sector examples within the photo range',()=>{
   for(const page of pages){
     const doc=dom.parse(fs.readFileSync(path.join(dist,page),'utf8'));
     const main=dom.all(doc,el=>el.tag==='main')[0];
     const photos=dom.all(main,el=>el.tag==='img'&&/\.(webp|png|jpe?g)(?:$|\?)/i.test(el.attrs.src||''));
     assert.ok(photos.length>=3&&photos.length<=4,page);
-    const examples=dom.all(main,el=>el.attrs['data-sector']&&(el.tag==='figure'||(['index.html','orion.html'].includes(page)&&el.tag==='picture')));
-    assert.equal(examples.length,page==='orion.html'?4:3,page);
+    const examples=dom.all(main,el=>el.attrs['data-sector']&&(el.tag==='figure'||(page==='index.html'&&el.tag==='picture')));
+    assert.equal(examples.length,3,page);
     const sectors=new Set(examples.map(el=>el.attrs['data-sector']));
     assert.ok(sectors.has('voeding')&&sectors.has('onderhoud'),page);
     assert.ok(sectors.has('logistiek')||sectors.has('administratie'),page);
@@ -23,12 +23,9 @@ test('four customer pages show three sector examples within the photo range',()=
     for(const example of examples){
       const images=dom.all(example,el=>el.tag==='img');
       assert.equal(images.length,1,page);
-      if(page==='orion.html'&&example.tag==='picture') assert.equal(images[0].attrs.fetchpriority,'high',page);
-      else assert.equal(images[0].attrs.loading,'lazy',page);
+      assert.equal(images[0].attrs.loading,'lazy',page);
       const caption=dom.all(example,el=>el.tag==='figcaption')[0];
-      if(page==='orion.html'&&example.tag==='figure'){
-        assert.ok(dom.all(main,el=>el.tag==='article'&&dom.all(el,node=>node===example).length&&dom.all(el,node=>node.tag==='h3').length).length,page);
-      }else if(example.tag==='figure'){
+      if(example.tag==='figure'){
         assert.ok(caption,page);
         for(const el of dom.all(caption,el=>el.tag==='strong'||el.tag==='span')){
           const label=el.children.map(node=>node.text||'').join('').trim();

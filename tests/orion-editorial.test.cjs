@@ -15,9 +15,14 @@ test('the example follows the hero and exposes its evidence and review path',()=
   assert.match(section('voorbeeld'),/<summary>Bekijk de bron/);
   assert.match(section('voorbeeld'),/Controle nodig/);
   assert.equal((section('werking').match(/class="step-n"/g)||[]).length,4);
-  const set=m.match(/<picture data-sector="voeding"><source [^>]*srcset="([^"]+)"/)[1];
-  assert.ok(html().includes('imagesrcset="'+set+'"'));
-  assert.match(set,/home-orion-kwaliteit-3840\.webp 3840w/);
+  const images=[...m.matchAll(/<a class="or-screen" href="img\/orion-demo-([a-z]+)\.png"><img src="img\/orion-demo-([a-z]+)-detail\.webp"/g)];
+  assert.deepEqual(images.map(x=>x[1]),['vragenlijsten','bronnen','instellingen','logboek']);
+  for(const [,full,detail] of images){
+    assert.equal(full,detail);
+    assert.ok(read('img/orion-demo-'+full+'.png').length>0);
+    assert.ok(read('img/orion-demo-'+detail+'-detail.webp').length>0);
+  }
+  assert.ok(html().includes('href="img/orion-demo-vragenlijsten-detail.webp" fetchpriority="high"'));
   assert.ok(m.includes('alt="" fetchpriority="high"'));
 });
 

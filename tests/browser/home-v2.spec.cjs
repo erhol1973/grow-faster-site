@@ -29,8 +29,10 @@ test('Orion leads the four applications and the pilot remains the first hero act
   await expect(photo).toHaveAttribute('loading','lazy');
   await photo.scrollIntoViewIfNeeded();
   await expect.poll(()=>photo.evaluate(img=>img.complete&&img.naturalWidth>0)).toBe(true);
-  expect(await photo.evaluate(img=>new URL(img.currentSrc).pathname)).toMatch(/\/img\/hero-orion-specificaties-(640|1280)\.webp$/);
+  expect(await photo.evaluate(img=>new URL(img.currentSrc).pathname)).toMatch(/\/img\/home-orion-kwaliteit-(640|840|1280|1920|3840)\.webp$/);
   await expect(photo).toHaveCSS('object-fit','cover');
+  await expect(photo).toHaveCSS('filter','none');
+  await expect(picture).toHaveCSS('background-image','none');
   await expect(page.locator('.toep-voorbeeld .toep-demo')).toHaveCount(0);
   await expect(orion).toHaveAccessibleName(/^Orion Kwaliteit in de voedingsproductie.*Zo werkt Orion$/);
   const [lead,...related]=await cards.evaluateAll(items=>items.map(item=>{

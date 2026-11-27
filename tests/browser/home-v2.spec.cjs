@@ -24,6 +24,7 @@ test('Orion leads the four applications and the pilot remains the first hero act
   await expect(orion).toHaveAttribute('id','toep-kwaliteit');
   const picture=page.locator('.toep-voorbeeld .toep-beeld');
   const photo=picture.locator('img');
+  await expect(picture).toHaveAttribute('data-sector','voeding');
   await expect(picture.locator('xpath=ancestor::a')).toHaveCount(0);
   await expect(photo).toHaveAttribute('alt','');
   await expect(photo).toHaveAttribute('loading','lazy');

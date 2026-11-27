@@ -960,6 +960,20 @@ window.GF_CMS_CATALOG=[
     "label": "Workflow-automatisering",
     "fields": [
       {
+        "key": "wf-kop",
+        "type": "text",
+        "label": "Van bestelmail naar conceptorder",
+        "nl": "Van bestelmail naar conceptorder",
+        "fr": "Du courriel à la commande à valider"
+      },
+      {
+        "key": "wf-intro",
+        "type": "text",
+        "label": "Een bestelling komt per mail binnen. Wij richten de workflow zo in dat de order ",
+        "nl": "Een bestelling komt per mail binnen. Wij richten de workflow zo in dat de order klaarstaat in uw systeem. Uw team controleert de uitzonderingen en geeft de bestelling vrij.",
+        "fr": "Une commande arrive par courriel. Nous configurons le flux de travail pour la préparer dans votre système. Votre équipe vérifie les exceptions et valide la commande."
+      },
+      {
         "key": "aut-hero-img",
         "type": "media",
         "label": "img/hero-automatisering-kantoor-1774.webp",
@@ -972,277 +986,102 @@ window.GF_CMS_CATALOG=[
         }
       },
       {
-        "key": "aut-01",
+        "key": "wf-voorbeelden-titel",
         "type": "text",
-        "label": "Wat uw team overtypt, gebeurt voortaan vanzelf.",
-        "nl": "Wat uw team overtypt, gebeurt voortaan vanzelf.",
-        "fr": "Ce que votre équipe ressaisit se fait désormais tout seul."
+        "label": "Wat gebeurt er met één bestelmail?",
+        "nl": "Wat gebeurt er met één bestelmail?",
+        "fr": "Que devient un courriel de commande ?"
       },
       {
-        "key": "aut-02",
+        "key": "wf-mail-titel",
         "type": "text",
-        "label": "We automatiseren het handwerk tussen uw mails, Excel-lijsten en systemen. Uw mensen houden",
-        "nl": "We automatiseren het handwerk tussen uw mails, Excel-lijsten en systemen. Uw mensen houden tijd over voor het werk dat telt.",
-        "fr": "Nous automatisons le travail manuel entre vos e-mails, vos listes Excel et vos systèmes. Vos collaborateurs gagnent du temps pour le travail qui compte."
+        "label": "Een klant bestelt",
+        "nl": "Een klant bestelt",
+        "fr": "Un client passe commande"
       },
       {
-        "key": "awx-01",
+        "key": "wf-mail-bericht",
         "type": "text",
-        "label": "In het kort",
-        "nl": "In het kort",
-        "fr": "En bref"
+        "label": "“Graag 24 dozen appelsap voor vrijdag. Leveren aan kaai 2.”",
+        "nl": "“Graag 24 dozen appelsap voor vrijdag. Leveren aan kaai 2.”",
+        "fr": "« Merci de prévoir 24 cartons de jus de pomme pour vendredi. Livraison au quai 2. »"
       },
       {
-        "key": "awx-02",
+        "key": "wf-concept-titel",
         "type": "text",
-        "label": "Het handwerk",
-        "nl": "Het handwerk",
-        "fr": "Le travail manuel"
+        "label": "De conceptorder staat klaar",
+        "nl": "De conceptorder staat klaar",
+        "fr": "La commande est prête à être vérifiée"
       },
       {
-        "key": "awx-03",
+        "key": "wf-controle-titel",
         "type": "text",
-        "label": "Uw team typt over, kopieert en plakt, en volgt op met herinneringen. Dat kost elke week ur",
-        "nl": "Uw team typt over, kopieert en plakt, en volgt op met herinneringen. Dat kost elke week uren.",
-        "fr": "Votre équipe ressaisit, copie-colle et assure le suivi à coups de rappels. Cela coûte des heures chaque semaine."
+        "label": "Uw medewerker beslist",
+        "nl": "Uw medewerker beslist",
+        "fr": "Votre équipe décide"
       },
       {
-        "key": "awx-04",
+        "key": "wf-controle-uitleg",
         "type": "text",
-        "label": "Eén workflow tegelijk",
-        "nl": "Eén workflow tegelijk",
-        "fr": "Un workflow à la fois"
+        "label": "Op de klantenfiche staat kaai 1. De bestelling blijft open tot iemand de leverpl",
+        "nl": "Op de klantenfiche staat kaai 1. De bestelling blijft open tot iemand de leverplaats heeft nagekeken.",
+        "fr": "La fiche client indique le quai 1. La commande reste en attente jusqu’à ce qu’une personne ait vérifié le lieu de livraison."
       },
       {
-        "key": "awx-05",
+        "key": "wf-sectoren-titel",
         "type": "text",
-        "label": "We starten met de workflow die het meeste tijd kost, en bouwen waar het kan op de systemen",
-        "nl": "We starten met de workflow die het meeste tijd kost, en bouwen waar het kan op de systemen die u al hebt.",
-        "fr": "Nous commençons par le workflow qui prend le plus de temps et, dans la mesure du possible, nous nous appuyons sur les systèmes que vous avez déjà."
+        "label": "Waar beslist uw team?",
+        "nl": "Waar beslist uw team?",
+        "fr": "À quel moment votre équipe intervient-elle ?"
       },
       {
-        "key": "awx-06",
+        "key": "wf-sector-voeding",
         "type": "text",
-        "label": "U beslist",
-        "nl": "U beslist",
-        "fr": "Vous décidez"
+        "label": "Een leveringsbon komt binnen. De ontvangstmedewerker vergelijkt het voorgestelde",
+        "nl": "Een leveringsbon komt binnen. De ontvangstmedewerker vergelijkt het voorgestelde lotnummer met het etiket vóór de registratie.",
+        "fr": "Un bon de livraison arrive. À la réception, une personne compare le numéro de lot proposé avec celui de l’étiquette avant de l’enregistrer."
       },
       {
-        "key": "awx-07",
+        "key": "wf-sector-onderhoud",
         "type": "text",
-        "label": "Bij gevoelige stappen keurt een medewerker eerst goed. We meten de tijd vóór en na.",
-        "nl": "Bij gevoelige stappen keurt een medewerker eerst goed. We meten de tijd vóór en na.",
-        "fr": "Pour les étapes sensibles, un collaborateur valide d’abord. Nous mesurons le temps avant et après."
+        "label": "Een storing wordt gemeld. De werkbon staat klaar met de machine en de locatie. D",
+        "nl": "Een storing wordt gemeld. De werkbon staat klaar met de machine en de locatie. De planner kiest de technicus.",
+        "fr": "Une panne est signalée. Le bon d’intervention reprend la machine et son emplacement. Le responsable du planning choisit le technicien."
       },
       {
-        "key": "aut-03",
+        "key": "wf-sector-administratie",
         "type": "text",
-        "label": "Herkenbaar?",
-        "nl": "Herkenbaar?",
-        "fr": "Cela vous parle ?"
+        "label": "Een factuur komt per mail binnen. De boekhouding controleert het overgenomen bed",
+        "nl": "Een factuur komt per mail binnen. De boekhouding controleert het overgenomen bedrag en de leverancier vóór het boeken.",
+        "fr": "Une facture arrive par courriel. La comptabilité vérifie le montant repris et le fournisseur avant de comptabiliser la facture."
       },
       {
-        "key": "awx-08",
-        "type": "text",
-        "label": "Vier soorten handwerk die uw mensen elke week tijd kosten.",
-        "nl": "Vier soorten handwerk die uw mensen elke week tijd kosten.",
-        "fr": "Quatre types de travail manuel qui coûtent du temps à vos collaborateurs chaque semaine."
-      },
-      {
-        "key": "aut-04",
-        "type": "text",
-        "label": "Overtypen.",
-        "nl": "Overtypen.",
-        "fr": "Ressaisir."
-      },
-      {
-        "key": "aut-05",
-        "type": "text",
-        "label": "Een bestelling komt binnen per mail en iemand typt ze over in het ordersysteem.",
-        "nl": "Een bestelling komt binnen per mail en iemand typt ze over in het ordersysteem.",
-        "fr": "Une commande arrive par e-mail et quelqu’un la ressaisit dans le système de commandes."
-      },
-      {
-        "key": "aut-06",
-        "type": "text",
-        "label": "Kopiëren en plakken.",
-        "nl": "Kopiëren en plakken.",
-        "fr": "Copier-coller."
-      },
-      {
-        "key": "aut-07",
-        "type": "text",
-        "label": "Gegevens gaan van het ene systeem naar het andere via Excel.",
-        "nl": "Gegevens gaan van het ene systeem naar het andere via Excel.",
-        "fr": "Les données passent d’un système à l’autre via Excel."
-      },
-      {
-        "key": "aut-08",
-        "type": "text",
-        "label": "Opvolgen.",
-        "nl": "Opvolgen.",
-        "fr": "Assurer le suivi."
-      },
-      {
-        "key": "aut-09",
-        "type": "text",
-        "label": "Offertes, facturen en klachten hangen af van herinneringen in iemands agenda.",
-        "nl": "Offertes, facturen en klachten hangen af van herinneringen in iemands agenda.",
-        "fr": "Les offres, factures et réclamations dépendent de rappels dans l’agenda de quelqu’un."
-      },
-      {
-        "key": "aut-10",
-        "type": "text",
-        "label": "Rapporteren.",
-        "nl": "Rapporteren.",
-        "fr": "Rapporter."
-      },
-      {
-        "key": "aut-11",
-        "type": "text",
-        "label": "Elke maand stelt iemand met de hand hetzelfde rapport samen.",
-        "nl": "Elke maand stelt iemand met de hand hetzelfde rapport samen.",
-        "fr": "Chaque mois, quelqu’un compose à la main le même rapport."
-      },
-      {
-        "key": "awx-09",
-        "type": "text",
-        "label": "Rekenvoorbeeld",
-        "nl": "Rekenvoorbeeld",
-        "fr": "Exemple de calcul"
-      },
-      {
-        "key": "awx-10",
-        "type": "text",
-        "label": "€ 3.795",
-        "nl": "€ 3.795",
-        "fr": "3 795 €"
-      },
-      {
-        "key": "awx-11",
-        "type": "text",
-        "label": "per medewerker per jaar",
-        "nl": "per medewerker per jaar",
-        "fr": "par collaborateur et par an"
-      },
-      {
-        "key": "awx-12",
-        "type": "text",
-        "label": "Wie één uur per dag overtypt, besteedt daar bij € 17,25 per uur en 220 werkdagen zoveel aa",
-        "nl": "Wie één uur per dag overtypt, besteedt daar bij € 17,25 per uur en 220 werkdagen zoveel aan. Die tijd kan naar klanten, kwaliteit of groei gaan.",
-        "fr": "Qui ressaisit une heure par jour y consacre ce montant, à 17,25 € de l’heure et sur 220 jours ouvrables. Ce temps peut aller aux clients, à la qualité ou à la croissance."
-      },
-      {
-        "key": "aut-12",
-        "type": "text",
-        "label": "Voorbeelden",
-        "nl": "Voorbeelden",
-        "fr": "Exemples"
-      },
-      {
-        "key": "awx-13",
-        "type": "text",
-        "label": "Wat we automatiseren, van de eerste mail tot het rapport.",
-        "nl": "Wat we automatiseren, van de eerste mail tot het rapport.",
-        "fr": "Ce que nous automatisons, du premier e-mail jusqu’au rapport."
-      },
-      {
-        "key": "awx-14",
-        "type": "text",
-        "label": "Bestellingen",
-        "nl": "Bestellingen",
-        "fr": "Commandes"
-      },
-      {
-        "key": "aut-13",
-        "type": "text",
-        "label": "Bestellingen uit mails of pdf’s lezen en klaarzetten in uw ordersysteem.",
-        "nl": "Bestellingen uit mails of pdf’s lezen en klaarzetten in uw ordersysteem.",
-        "fr": "Lire les commandes dans les e-mails ou les PDF et les préparer dans votre système de commandes."
-      },
-      {
-        "key": "awx-15",
-        "type": "text",
-        "label": "Aankoopfacturen",
-        "nl": "Aankoopfacturen",
-        "fr": "Factures d’achat"
-      },
-      {
-        "key": "aut-14",
-        "type": "text",
-        "label": "Aankoopfacturen inlezen en voorbereiden voor de boekhouding.",
-        "nl": "Aankoopfacturen inlezen en voorbereiden voor de boekhouding.",
-        "fr": "Lire les factures d’achat et les préparer pour la comptabilité."
-      },
-      {
-        "key": "awx-16",
-        "type": "text",
-        "label": "Nieuwe klanten",
-        "nl": "Nieuwe klanten",
-        "fr": "Nouveaux clients"
-      },
-      {
-        "key": "aut-15",
-        "type": "text",
-        "label": "Een nieuwe klant één keer invoeren, waarna de gegevens in uw CRM, boekhouding en planning ",
-        "nl": "Een nieuwe klant één keer invoeren, waarna de gegevens in uw CRM, boekhouding en planning staan.",
-        "fr": "Encoder un nouveau client une seule fois, puis retrouver ses données dans votre CRM, votre comptabilité et votre planning."
-      },
-      {
-        "key": "awx-17",
-        "type": "text",
-        "label": "Wekelijkse cijfers",
-        "nl": "Wekelijkse cijfers",
-        "fr": "Chiffres hebdomadaires"
-      },
-      {
-        "key": "aut-16",
-        "type": "text",
-        "label": "Wekelijkse cijfers die vanzelf in één overzicht samenkomen.",
-        "nl": "Wekelijkse cijfers die vanzelf in één overzicht samenkomen.",
-        "fr": "Des chiffres hebdomadaires qui se rassemblent tout seuls dans un seul aperçu."
-      },
-      {
-        "key": "awx-18",
-        "type": "text",
-        "label": "Herinneringen",
-        "nl": "Herinneringen",
-        "fr": "Rappels"
-      },
-      {
-        "key": "aut-17",
-        "type": "text",
-        "label": "Herinneringen voor offertes en betalingen die vertrekken nadat u ze goedgekeurd hebt.",
-        "nl": "Herinneringen voor offertes en betalingen die vertrekken nadat u ze goedgekeurd hebt.",
-        "fr": "Des rappels pour les offres et les paiements qui partent après votre validation."
-      },
-      {
-        "key": "aut-18",
+        "key": "wf-aanpak-titel",
         "type": "text",
         "label": "Zo pakken we het aan",
         "nl": "Zo pakken we het aan",
-        "fr": "Notre approche"
+        "fr": "Comment nous procédons"
       },
       {
-        "key": "awx-19",
+        "key": "wf-aanpak-intro",
         "type": "text",
-        "label": "Vier stappen. Klein beginnen, meten, en pas dan verder.",
-        "nl": "Vier stappen. Klein beginnen, meten, en pas dan verder.",
-        "fr": "Quatre étapes. Commencer petit, mesurer, et seulement ensuite aller plus loin."
+        "label": "Breng één terugkerende taak mee. Samen volgen we een echt voorbeeld door uw syst",
+        "nl": "Breng één terugkerende taak mee. Samen volgen we een echt voorbeeld door uw systemen, van binnenkomst tot goedkeuring.",
+        "fr": "Choisissez une tâche récurrente. Ensemble, nous suivons un cas réel dans vos systèmes, de la réception à la validation."
       },
       {
-        "key": "aut-19",
+        "key": "wf-aanpak-scan",
         "type": "text",
         "label": "Workflowscan.",
         "nl": "Workflowscan.",
-        "fr": "Scan du workflow."
+        "fr": "Analyse du processus."
       },
       {
-        "key": "aut-20",
+        "key": "wf-aanpak-scan-uitleg",
         "type": "text",
         "label": "We kijken hoe het werk vandaag loopt en waar het handwerk zit.",
         "nl": "We kijken hoe het werk vandaag loopt en waar het handwerk zit.",
-        "fr": "Nous regardons comment le travail se déroule aujourd’hui et où se trouve le travail manuel."
+        "fr": "Nous examinons avec vous le déroulement du travail pour repérer les étapes manuelles."
       },
       {
         "key": "aut-21",
@@ -1285,6 +1124,27 @@ window.GF_CMS_CATALOG=[
         "label": "We vergelijken de tijd vóór en na. Werkt het, dan nemen we de volgende workflow.",
         "nl": "We vergelijken de tijd vóór en na. Werkt het, dan nemen we de volgende workflow.",
         "fr": "Nous comparons le temps avant et après. Si cela fonctionne, nous passons au workflow suivant."
+      },
+      {
+        "key": "wf-herkenbaar-titel",
+        "type": "text",
+        "label": "Hoeveel tijd gaat naar overtypen?",
+        "nl": "Hoeveel tijd gaat naar overtypen?",
+        "fr": "Combien de temps passez-vous à ressaisir des données ?"
+      },
+      {
+        "key": "wf-reken-intro",
+        "type": "text",
+        "label": "Tel de minuten die één medewerker hier op een werkdag aan besteedt. De grafiek r",
+        "nl": "Tel de minuten die één medewerker hier op een werkdag aan besteedt. De grafiek rekent met 220 werkdagen per jaar.",
+        "fr": "Comptez les minutes qu’une personne y consacre par jour de travail. Le graphique se base sur 220 jours de travail par an."
+      },
+      {
+        "key": "wf-reken-duiding",
+        "type": "text",
+        "label": "Bij één uur per dag en € 17,25 per uur kost dat € 3.795 per medewerker per jaar.",
+        "nl": "Bij één uur per dag en € 17,25 per uur kost dat € 3.795 per medewerker per jaar. Welk deel u kunt besparen, meten we pas in de praktijk.",
+        "fr": "À raison d’une heure par jour et de 17,25 € de l’heure, cela représente 3 795 € par personne et par an. Nous mesurons sur le terrain la part que vous pouvez réellement économiser."
       },
       {
         "key": "aut-27",
@@ -1385,111 +1245,6 @@ window.GF_CMS_CATALOG=[
         "fr": "Nous mesurons le temps avant et après, par processus."
       },
       {
-        "key": "aut-31",
-        "type": "text",
-        "label": "Wat u wint",
-        "nl": "Wat u wint",
-        "fr": "Ce que vous gagnez"
-      },
-      {
-        "key": "awx-32",
-        "type": "text",
-        "label": "Wat een geautomatiseerde workflow u oplevert.",
-        "nl": "Wat een geautomatiseerde workflow u oplevert.",
-        "fr": "Ce qu’un workflow automatisé vous rapporte."
-      },
-      {
-        "key": "awx-33",
-        "type": "text",
-        "label": "Tijd terug",
-        "nl": "Tijd terug",
-        "fr": "Du temps retrouvé"
-      },
-      {
-        "key": "aut-32",
-        "type": "text",
-        "label": "Uren per week terug voor uw team.",
-        "nl": "Uren per week terug voor uw team.",
-        "fr": "Des heures récupérées chaque semaine pour votre équipe."
-      },
-      {
-        "key": "awx-34",
-        "type": "text",
-        "label": "Minder fouten",
-        "nl": "Minder fouten",
-        "fr": "Moins d’erreurs"
-      },
-      {
-        "key": "aut-33",
-        "type": "text",
-        "label": "Minder fouten door overtypen.",
-        "nl": "Minder fouten door overtypen.",
-        "fr": "Moins d’erreurs de ressaisie."
-      },
-      {
-        "key": "awx-35",
-        "type": "text",
-        "label": "Sneller antwoord",
-        "nl": "Sneller antwoord",
-        "fr": "Des réponses plus rapides"
-      },
-      {
-        "key": "aut-34",
-        "type": "text",
-        "label": "Sneller antwoord aan klanten en leveranciers.",
-        "nl": "Sneller antwoord aan klanten en leveranciers.",
-        "fr": "Des réponses plus rapides aux clients et fournisseurs."
-      },
-      {
-        "key": "awx-36",
-        "type": "text",
-        "label": "Overzicht",
-        "nl": "Overzicht",
-        "fr": "Une vue d’ensemble"
-      },
-      {
-        "key": "aut-35",
-        "type": "text",
-        "label": "Zicht op wat er loopt, zonder dat iemand het moet bijhouden.",
-        "nl": "Zicht op wat er loopt, zonder dat iemand het moet bijhouden.",
-        "fr": "Une vue sur ce qui est en cours, sans que personne ne doive le tenir à jour."
-      },
-      {
-        "key": "aut-29",
-        "type": "text",
-        "label": "Dienst of software",
-        "nl": "Dienst of software",
-        "fr": "Service ou logiciel"
-      },
-      {
-        "key": "awx-37",
-        "type": "text",
-        "label": "Dienst",
-        "nl": "Dienst",
-        "fr": "Service"
-      },
-      {
-        "key": "awx-38",
-        "type": "text",
-        "label": "Grow Faster bouwt de automatisering voor u, op de systemen die u al gebruikt.",
-        "nl": "Grow Faster bouwt de automatisering voor u, op de systemen die u al gebruikt.",
-        "fr": "Grow Faster construit l’automatisation pour vous, sur les systèmes que vous utilisez déjà."
-      },
-      {
-        "key": "awx-39",
-        "type": "text",
-        "label": "Software: Orion",
-        "nl": "Software: Orion",
-        "fr": "Logiciel : Orion"
-      },
-      {
-        "key": "awx-40",
-        "type": "text",
-        "label": "Voor vragenlijsten en specificaties van klanten is er Orion, onze eigen software.",
-        "nl": "Voor vragenlijsten en specificaties van klanten is er Orion, onze eigen software.",
-        "fr": "Pour les questionnaires et les spécifications de vos clients, il y a Orion, notre propre logiciel."
-      },
-      {
         "key": "aut-36",
         "type": "text",
         "label": "Veelgestelde vragen",
@@ -1518,11 +1273,18 @@ window.GF_CMS_CATALOG=[
         "fr": "Le scan du workflow est sur demande. Ensuite, le prix dépend du workflow. Nous mesurons d’abord ce que cela vous rapporte."
       },
       {
-        "key": "aut-40",
+        "key": "wf-orion-uitleg",
         "type": "text",
-        "label": "Welke taak typt uw team vandaag nog over?",
-        "nl": "Welke taak typt uw team vandaag nog over?",
-        "fr": "Quelle tâche votre équipe ressaisit-elle encore aujourd’hui ?"
+        "label": "Voor klantvragenlijsten in de voedingssector zoekt Orion in uw documenten en too",
+        "nl": "Voor klantvragenlijsten in de voedingssector zoekt Orion in uw documenten en toont het de bron bij elk voorstel.",
+        "fr": "Pour les questionnaires clients du secteur alimentaire, Orion consulte vos documents et indique la source de chaque proposition."
+      },
+      {
+        "key": "wf-contact-titel",
+        "type": "text",
+        "label": "Welke gegevens typt uw team vandaag nog over?",
+        "nl": "Welke gegevens typt uw team vandaag nog over?",
+        "fr": "Quelles données votre équipe doit-elle encore ressaisir ?"
       },
       {
         "key": "aut-41",

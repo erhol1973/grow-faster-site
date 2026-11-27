@@ -41,8 +41,8 @@ for(const [language,heading,primary,secondary] of [
 // v2 (22 Nov 2026): the pyramid "Van fundament tot AI" replaces the offer cards on the homepage; the cards moved to oplossingen.html.
 // Layers are a list in reading order from the foundation; CSS shows layer 1 at the bottom. Every layer links to its offer.
 for(const [language,heading,result,layers,headings]of [
- ['nl','Van fundament tot AI','Winst in tijd en geld',['Enterprise coherentie','Procesanalyse','Automatisering','AI'],{'coherence.html':null,'automatisering.html':'Wat uw team overtypt, gebeurt voortaan vanzelf.','orion.html':'De vragenlijst van uw klant, ingevuld vanuit uw eigen documenten.'}],
- ['fr','Des fondations à l’IA','Gain de temps et d’argent',['Cohérence d’entreprise','Analyse des processus','Automatisation','IA'],{'coherence.html':null,'automatisering.html':'Ce que votre équipe ressaisit se fait désormais tout seul.','orion.html':'Le questionnaire de votre client, complété à partir de vos propres documents.'}]
+ ['nl','Van fundament tot AI','Winst in tijd en geld',['Enterprise coherentie','Procesanalyse','Automatisering','AI'],{'coherence.html':null,'automatisering.html':'Van bestelmail naar conceptorder','orion.html':'De vragenlijst van uw klant, ingevuld vanuit uw eigen documenten.'}],
+ ['fr','Des fondations à l’IA','Gain de temps et d’argent',['Cohérence d’entreprise','Analyse des processus','Automatisation','IA'],{'coherence.html':null,'automatisering.html':'Du courriel à la commande à valider','orion.html':'Le questionnaire de votre client, complété à partir de vos propres documents.'}]
 ])for(const page of ['index.html','oplossingen.html'])test(`pyramid builds from foundation to AI and routes to the offer on ${page} in ${language}`,async({page:browserPage},info)=>{
  const p=browserPage,errors=[];p.on('pageerror',e=>errors.push(e.message));
  await p.addInitScript(l=>{localStorage.setItem('avs-lang',l);localStorage.setItem('avs-consent',JSON.stringify({v:4,ext:false,ana:false,ts:Date.now()}))},language);

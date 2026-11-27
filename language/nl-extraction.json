@@ -36,7 +36,7 @@
     },
     {
       "file": "assets/cms-catalog.js",
-      "sha256": "df0c1115e1769b101e354c4f05e0133e6f8f3b1c7820ca9e1e963c26dd3ad793"
+      "sha256": "81667a26f972c5000044608525656b80204cda7659d4b57dd01bacb30d407b2c"
     },
     {
       "file": "assets/cms-client.js",
@@ -92,7 +92,7 @@
     },
     {
       "file": "assets/i18n-automatisering.js",
-      "sha256": "0fdb55146583fd809125978e6cae786568ed840485210eadfb0af9eb243fc959"
+      "sha256": "d56bc5c6209f142a50bd12c0a25c3991551003393c7c6626fa12f18c76613c0e"
     },
     {
       "file": "assets/i18n-coherence.js",
@@ -159,6 +159,10 @@
       "sha256": "80d0e7e6aef9afc2a8230a93e1fac3896ac667a2af7c08da5ddb093b47259245"
     },
     {
+      "file": "assets/workflow-locale.js",
+      "sha256": "797b919cf33f14f0f0b7b55cf80fbad7b61c7eb3b90772708f987740eae15509"
+    },
+    {
       "file": "assets/workshop.js",
       "sha256": "a19e4d86bce237f8f3eaec64bcaf7f2022e19a38cdf6e9f74136779da04c3ec0"
     }
@@ -214,7 +218,7 @@
     },
     {
       "file": "automatisering.html",
-      "sha256": "913ab9475086fe1d459ca4b2cb3c215c473dd5b2aa8bf5a43b86f9551d6069be"
+      "sha256": "0e8fe1d9944529d586ad0a3939b7e8fbc508b8dbd5a3aa97c02d89f06b9493fe"
     },
     {
       "file": "baies-dev/index.html",

@@ -13,8 +13,7 @@ const text=html=>decode(html.replace(/<script[\s\S]*?<\/script>|<style[\s\S]*?<\
 const pages={
   // Approved food-sector edition of the Orion page.
   'orion.html':["De vragenlijst van uw klant, ingevuld vanuit uw eigen documenten.", "Van klantvraag naar antwoord", "Bekijk de bron", "En als Orion geen bron vindt?", "Zo werkt Orion", "U bepaalt de bronnen.", "U laadt de vragenlijst op.", "Orion zoekt en controleert.", "U keurt goed en verstuurt.", "Vijf regels waar Orion zich aan houdt", "Vier manieren om een vragenlijst in te vullen", "Uw receptuur blijft van u", "Veelgestelde vragen", "Kan Orion zich vergissen?", "Stuur ons één vragenlijst"],
-  // Release 2 (23 Nov 2026): the approved full Workflow-automatisering text replaces the placeholder.
-  'automatisering.html':['Wat uw team overtypt, gebeurt voortaan vanzelf.','We automatiseren het handwerk tussen uw mails, Excel-lijsten en systemen. Uw mensen houden tijd over voor het werk dat telt.','Herkenbaar?','Voorbeelden','Zo pakken we het aan','Wat kmo’s tegenhoudt, en hoe wij dat oplossen','Dienst of software','Wat u wint','Veelgestelde vragen','Welke taak typt uw team vandaag nog over?'],
+  'automatisering.html':['Van bestelmail naar conceptorder','Wat gebeurt er met één bestelmail?','Een klant bestelt','De conceptorder staat klaar','Uw medewerker beslist','Waar beslist uw team?','Zo pakken we het aan','Hoeveel tijd gaat naar overtypen?','Wat kmo’s tegenhoudt, en hoe wij dat oplossen','Wanneer past Orion beter?','Veelgestelde vragen','Welke gegevens typt uw team vandaag nog over?'],
   'oplossingen.html':['Sneller werken met AI en automatisering','Vier lagen, één doel: winst in tijd en geld.','Van fundament tot AI','AI levert pas tijd en geld op als wat eronder ligt klopt. Daarom bouwen we van onder naar boven: eerst samenhang in de organisatie, dan heldere processen, dan automatisering, dan AI.','Enterprise coherentie','Mensen, teams en systemen trekken in dezelfde richting.','Procesanalyse','Workflowscan','We brengen in kaart waar tijd en geld weglekt.','Repetitief werk loopt vanzelf.','AI neemt zoek- en schrijfwerk over.','Winst in tijd en geld','Drie manieren om sneller te werken','Test Orion op uw eigen vragenlijsten'],
   // Homepage 24 Nov 2026 (owner decisions): new hero line, four application cards replace "Herkenbaar?", the confidentiality block
   // becomes "Uw systemen en uw beslissingen blijven bij u" without a read-only guarantee (that waits for per-connection verification).
@@ -133,7 +132,7 @@ test('Oplossingen overview repeats its submenu, keeps the three offer cards and 
 // v3: every customer page and Coherence has its own decorative 2:1 hero photo in the 640/1280/1774 WebP pattern,
 // preloaded with the same srcset, and a page-specific object-position that keeps the subject in view on mobile.
 test('each hero uses its own preloaded 2:1 photo, stays decorative and keeps the subject in view',()=>{
-  const heroes={'index.html':['hero-toepassingen','50%'],'oplossingen.html':['hero-oplossingen-workflow','58%'],'automatisering.html':['hero-automatisering-kantoor','78%'],'coherence.html':['hero-coherentie-samenwerking','74%']};
+  const heroes={'index.html':['hero-toepassingen','50%'],'oplossingen.html':['hero-oplossingen-workflow','58%'],'coherence.html':['hero-coherentie-samenwerking','74%']};
   for(const [file,[name,pos]] of Object.entries(heroes)){const html=read(file);
     const sizes=file==='coherence.html'?'(min-width: 900px) 1280px, 100vw':'100vw';
     const set=[640,1280,1774].map(w=>`img/${name}-${w}.webp ${w}w`).join(', ');

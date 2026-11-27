@@ -33,7 +33,10 @@ test('research blocks name a checked source for every figure and carry no suppli
   assert.equal((home[0].match(/statbel\.fgov\.be\/en\/themes\/enterprises\/ict-and-e-commerce-enterprises/g)||[]).length,2);
   assert.match(home[0],/oecd\.org\/en\/publications\/generative-ai-and-the-sme-workforce_2d08b99d-en/);
   const drempels=main('automatisering.html').match(/<section id="drempels"[\s\S]*?<\/section>/)[0];
-  /* 25 Nov 2026 premium redesign: the six barriers moved from a table to tiles. */assert.equal((drempels.match(/<article class="ap-drempel">/g)||[]).length,6);assert.match(drempels,/doi\.org\/10\.1007\/s11301-024-00405-4/);
+  const evidence=drempels.match(/<details>[\s\S]*?<\/details>/)[0];
+  assert.equal((evidence.match(/<dt\b/g)||[]).length,6);
+  assert.equal((evidence.match(/<dd\b/g)||[]).length,6);
+  assert.match(evidence,/doi\.org\/10\.1007\/s11301-024-00405-4/);
   const orion=main('orion.html').match(/<details class="or-research"[\s\S]*?<\/details>/)[0];
   assert.match(orion,/Waarom nakijken nodig blijft/);assert.match(orion,/doi\.org\/10\.1287\/orsc\.2025\.21838/);assert.match(orion,/758 consultants[\s\S]*19 procentpunten/);
   const training=main('training.html').match(/<section id="mensen"[\s\S]*?<\/section>/)[0];

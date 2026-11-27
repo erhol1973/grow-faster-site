@@ -8,17 +8,22 @@ const html=()=>read('orion.html');const main=()=>html().match(/<main[\s\S]*?<\/m
 const section=id=>main().match(new RegExp(`<section id="${id}"[\\s\\S]*?</section>`))[0];
 const text=s=>s.replace(/<[^>]+>/g,' ').replace(/\s+/g,' ').trim();
 
-test('section order: hero, In het kort, problem, steps, applications, human decides, for whom, FAQ, pilot',()=>{
-  const m=main();const order=['id="hero"','id="kort"','id="probleem"','id="werking"','id="toepassingen"','id="beslissen"','id="voor-wie"','id="vragen"','id="final"'].map(id=>m.indexOf(id));
-  assert.ok(order.every(i=>i>=0),'all sections present');assert.deepEqual(order,[...order].sort((a,b)=>a-b));
-  assert.equal((section('kort').match(/<li>/g)||[]).length,3,'three key points');
-  // Numbering is reserved for the real sequence (the four steps); sections carry no number labels.
-  assert.equal((m.match(/class="step-n"/g)||[]).length,4);assert.doesNotMatch(m,/class="n" data-notr/);
+test('the example follows the hero and exposes its evidence and review path',()=>{
+  const m=main();
+  const ids=['hero','voorbeeld','werking','toepassingen','vragen','final'].map(id=>m.indexOf('id="'+id+'"'));
+  assert.ok(ids.every((pos,i)=>pos>=0&&(!i||pos>ids[i-1])));
+  assert.match(section('voorbeeld'),/<summary>Bekijk de bron/);
+  assert.match(section('voorbeeld'),/Controle nodig/);
+  assert.equal((section('werking').match(/class="step-n"/g)||[]).length,4);
+  const set=m.match(/<picture data-sector="voeding"><source [^>]*srcset="([^"]+)"/)[1];
+  assert.ok(html().includes('imagesrcset="'+set+'"'));
+  assert.match(set,/home-orion-kwaliteit-3840\.webp 3840w/);
+  assert.ok(m.includes('alt="" fetchpriority="high"'));
 });
 
 test('Orion is presented for four domains, not only the food industry',()=>{
   const ex=section('toepassingen');
-  assert.deepEqual([...ex.matchAll(/<article class="ap-domain"><h3 data-cms="orx-\d+">([^<]+)<\/h3>/g)].map(x=>x[1]),['Kwaliteit in de voedingsproductie','Technisch onderhoud','Administratie','Logistiek']);
+  assert.deepEqual([...ex.matchAll(/<h3 data-cms="orx-\d+">([^<]+)<\/h3>/g)].map(x=>x[1]),['Kwaliteit in de voedingsproductie','Technisch onderhoud','Administratie','Logistiek']);
   assert.equal((ex.match(/<dt>Wie vraagt<\/dt>/g)||[]).length,4,'each domain names who asks, what Orion prepares and from which documents');
   assert.match(text(section('vragen')),/Werkt Orion ook buiten de voedingsindustrie\?/);
   // Negative: no sentence may limit Orion to food companies any more.
@@ -29,7 +34,7 @@ test('Orion is presented for four domains, not only the food industry',()=>{
 test('no extra colours: the page style block uses only existing colour tokens',()=>{
   const css=html().match(/<style data-apple>([\s\S]*?)<\/style>/)[1];
   assert.doesNotMatch(css,/#[0-9a-f]{3,8}\b|rgba?\(|hsla?\(/i,'no literal colours');
-  for(const v of css.match(/var\(--[a-z-]+\)/g))assert.match(v,/var\(--(brand|brand-fill|on-brand|ai|ai-ink|ink|muted|line|tint|sf)\)/,v);
+  for(const v of css.match(/var\(--[a-z-]+\)/g))assert.match(v,/var\(--(brand|brand-fill|on-brand|ai|ai-ink|bg|ink|muted|line|tint|sf)\)/,v);
   assert.doesNotMatch(html(),/assets\/kleur\.css/);
 });
 

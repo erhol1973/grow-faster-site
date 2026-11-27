@@ -6,7 +6,7 @@ const root=path.resolve(__dirname,'..','dist');const read=f=>fs.readFileSync(pat
 
 test('Orion film sits under the four steps on orion.html, plays only on request and names both editions',()=>{
   const orion=read('orion.html');const sec=orion.match(/<section id="werking"[\s\S]*?<\/section>/)[0];
-  assert.ok(sec.indexOf('class="memory"')<sec.indexOf('id="orion-film"'),'film follows the steps and the memory line');
+  assert.ok(sec.includes('class="mk-steps"')&&sec.indexOf('class="mk-steps"')<sec.indexOf('id="orion-film"'),'film follows the steps');
   assert.doesNotMatch(read('index.html'),/orion-film|orion-werking/,'the homepage no longer carries the film');
   const v=sec.match(/<video[^>]*>/)[0];
   for(const a of ['controls','preload="none"','playsinline','poster="img/orion-werking-nl.webp"','aria-labelledby="werking-h"','aria-describedby="orion-film-text"','data-src-fr="media/orion-werking-fr.mp4"','data-poster-fr="img/orion-werking-fr.webp"'])assert.ok(v.includes(a),a);

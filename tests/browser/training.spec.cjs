@@ -55,6 +55,9 @@ for (const [lang, text] of Object.entries(copy)) {
     expect(portraitSize.width).toBeGreaterThanOrEqual(192);
     expect(portraitSize.height / portraitSize.width).toBeCloseTo(1.25, 2);
     await expect(portrait).toHaveCSS('border-radius', '16px');
+    const readingImages = await page.locator('#lezen .ac-read img').all();
+    expect(readingImages).toHaveLength(2);
+    for (const image of readingImages) await expect(image).toHaveCSS('object-fit', 'cover');
     const programmes = page.locator('.ac-program');
     await expect(programmes.locator('.ac-team')).toHaveText(text.teams);
     for (const [index, name] of text.links.entries()) {

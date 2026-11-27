@@ -24,13 +24,18 @@ test('every programme card and the closing call lead to the training appointment
 test('further reading links to existing magazine and insights pages; trainer links to the About page',()=>{
   const r=section('lezen');for(const href of ['journal.html','insights-ai-pilot.html']){assert.match(r,new RegExp(`href="${href.replace('.','\\.')}"`));assert.ok(fs.existsSync(path.join(root,href)),href);}
   for(const src of r.matchAll(/src="([^"]+)"/g))assert.ok(fs.existsSync(path.join(root,src[1])),src[1]);
-  // 27 Nov 2026 owner request: both reading cards use a dedicated workflow training photograph.
-  assert.deepEqual([...r.matchAll(/<img src="img\/(training-lezen-(?:werkproces|pilot)-672\.webp)"/g)].map(match=>match[1]),
-    ['training-lezen-werkproces-672.webp','training-lezen-pilot-672.webp']);
+  // 27 Nov 2026 owner request: the Magazine card uses a higher-resolution reconstruction of the supplied photo; Insights uses the supplied logistics photo.
+  assert.deepEqual([...r.matchAll(/<img[^>]* src="img\/(training-lezen-(?:voedselproductie-672|logistiek-672)\.webp)"/g)].map(match=>match[1]),
+    ['training-lezen-voedselproductie-672.webp','training-lezen-logistiek-672.webp']);
+  assert.match(r,/img\/training-lezen-voedselproductie-3840\.webp 3840w/);
+  const largeBudgets = {
+    'img/training-lezen-voedselproductie-1920.webp': 150000,
+    'img/training-lezen-voedselproductie-3840.webp': 450000
+  };
   for(const match of r.matchAll(/srcset="([^"]+)"/g)){
     for(const variant of match[1].split(', ')){
       const file=variant.split(' ')[0];
-      assert.ok(fs.statSync(path.join(root,file)).size<78001,file);
+      assert.ok(fs.statSync(path.join(root,file)).size <= (largeBudgets[file] ?? 78000),file);
     }
   }
   assert.doesNotMatch(r,/band-process/);

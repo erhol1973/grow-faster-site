@@ -132,11 +132,12 @@ test('Oplossingen overview repeats its submenu, keeps the three offer cards and 
 // v3: every customer page and Coherence has its own decorative 2:1 hero photo in the 640/1280/1774 WebP pattern,
 // preloaded with the same srcset, and a page-specific object-position that keeps the subject in view on mobile.
 test('each hero uses its own preloaded 2:1 photo, stays decorative and keeps the subject in view',()=>{
-  const heroes={'index.html':['hero-toepassingen','50%'],'oplossingen.html':['hero-oplossingen-workflow','58%'],'coherence.html':['hero-coherentie-samenwerking','74%']};
+  const heroes={'index.html':['hero-toepassingen','74%'],'oplossingen.html':['hero-oplossingen-workflow','58%'],'coherence.html':['hero-coherentie-samenwerking','74%']};
   for(const [file,[name,pos]] of Object.entries(heroes)){const html=read(file);
     const sizes=file==='coherence.html'?'(min-width: 900px) 1280px, 100vw':'100vw';
-    const set=[640,1280,1774].map(w=>`img/${name}-${w}.webp ${w}w`).join(', ');
-    for(const w of [640,1280,1774]){const st=fs.statSync(path.join(root,`img/${name}-${w}.webp`));assert.ok(st.size>0&&st.size<=700000,`${name}-${w}`);}
+    const widths=file==='index.html'?[640,840,1280,1774]:[640,1280,1774];
+    const set=widths.map(w=>`img/${name}-${w}.webp ${w}w`).join(', ');
+    for(const w of widths){const st=fs.statSync(path.join(root,`img/${name}-${w}.webp`));assert.ok(st.size>0&&st.size<=700000,`${name}-${w}`);}
     // The homepage may add its silent video after the picture inside the same decorative container.
     const bg=html.match(/<div class="hero-bg" aria-hidden="true"><picture>[\s\S]*?<\/picture>(?:<video class="hero-video"[^>]*><\/video>)?<\/div>/);assert.ok(bg,file);
     assert.ok(bg[0].includes(`srcset="${set}" sizes="${sizes}"`),`${file}: srcset`);assert.match(bg[0],new RegExp(`<img src="img/${name}-1774\\.webp" alt="" width="1774" height="887" fetchpriority="high"`),file);

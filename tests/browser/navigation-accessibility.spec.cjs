@@ -41,7 +41,7 @@ test('header logo variants load at low priority and reuse native loaded images a
  await expect(onDark).toBeHidden();expect(requests.filter(file=>file==='/img/grow-faster-logo-light.svg')).toHaveLength(1);
 });
 
-// 24 Nov 2026: the homepage hero is the four-team still (food quality, maintenance, administration, logistics), same 640/1280/1774 pattern; the video loads on top.
+// The homepage preloads the responsive photograph used in the hero.
 test('home responsive hero preload fetches the selected WebP once from the document head',async({page},info)=>{
  await page.setViewportSize({width:info.project.use.isMobile?390:1440,height:900});
  const requests=[];page.on('request',request=>{if(/\/img\/hero-toepassingen-\d+\.webp$/.test(new URL(request.url()).pathname))requests.push(request.url())});
@@ -50,6 +50,6 @@ test('home responsive hero preload fetches the selected WebP once from the docum
  await expect(preload).toHaveCount(1);await expect(preload).toHaveAttribute('type','image/webp');await expect(preload).toHaveAttribute('fetchpriority','high');await expect(preload).toHaveAttribute('imagesrcset',await source.getAttribute('srcset'));await expect(preload).toHaveAttribute('imagesizes',await source.getAttribute('sizes'));
  await expect.poll(()=>image.evaluate(e=>e.complete&&e.naturalWidth>0)).toBe(true);
  const result=await image.evaluate(e=>({currentSrc:e.currentSrc,pixels:innerWidth*devicePixelRatio,entries:performance.getEntriesByName(e.currentSrc).map(x=>({initiatorType:x.initiatorType,transferSize:x.transferSize}))}));
- const candidate=[640,1280,1774].find(width=>width>=result.pixels)||1774;expect(new URL(result.currentSrc).pathname).toBe('/img/hero-toepassingen-'+candidate+'.webp');
+ const candidate=[640,840,1280,1774].find(width=>width>=result.pixels)||1774;expect(new URL(result.currentSrc).pathname).toBe('/img/hero-toepassingen-'+candidate+'.webp');
  expect(requests).toEqual([result.currentSrc]);expect(result.entries).toHaveLength(1);expect(result.entries[0].initiatorType).toBe('link');
 });

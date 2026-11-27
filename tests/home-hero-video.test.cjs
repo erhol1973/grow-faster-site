@@ -1,7 +1,5 @@
 'use strict';
-// Homepage 24 Nov 2026: silent hero video (overlay baked into the MP4) on top of the decorative still.
-// The 4K master (16 MB) is not published; two web variants within budget are. Readers who prefer less motion or save data
-// keep the still image; everyone else gets a pause button (WCAG 2.2.2, the loop lasts longer than five seconds).
+// The homepage pairs a responsive photograph with a silent, pausable loop of the same scene.
 const {test}=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path');
 const root=path.resolve(__dirname,'..','dist');const read=f=>fs.readFileSync(path.join(root,f),'utf8');
 
@@ -21,7 +19,7 @@ test('hero video is decorative, silent, looping, inline, lazy and paired with a 
   assert.match(home,/<button type="button" class="hero-pauze" id="hero-pauze" aria-pressed="false" hidden><span class="hp-pauze">Video pauzeren<\/span><span class="hp-speel" hidden>Video afspelen<\/span><\/button>/);
   const js=read('assets/site.js');
   assert.match(js,/if\(reduce\|\|save\)return;/,'reduced motion and data saver keep the still');
-  assert.match(js,/v\.src=innerWidth<900\?v\.dataset\.small:\(px>=2400&&\(!net\|\|net==="4g"\)\?v\.dataset\.uhd:v\.dataset\.large\);/);
+  assert.match(js,/if\(!smallScreen\)play\(\)/,'small screens start with the photograph');
 });
 
 test('application cards: Orion first, the other three lead to workflow automation, the trust block makes no read-only promise',()=>{

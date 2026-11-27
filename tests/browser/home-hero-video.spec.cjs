@@ -6,19 +6,27 @@ const init=async page=>page.addInitScript(()=>{localStorage.setItem('avs-lang','
 test('the video variant follows the viewport and the pause button is labelled and toggles',async({page},info)=>{
   await init(page);await page.goto('/index.html');
   const v=page.locator('#hero-video'),btn=page.locator('#hero-pauze');
+  if(info.project.use.isMobile){
+    await expect(v).toBeHidden();
+    await expect(v).not.toHaveAttribute('src',/.+/);
+    await expect(btn).toHaveAttribute('aria-pressed','true');
+    await btn.click();
+  }
   await expect(v).toBeVisible();
+
   await expect(page.locator('#hero-orion')).toHaveCSS('background-color','rgb(11, 41, 73)');
   const src=await v.evaluate(e=>e.getAttribute('src'));
   expect(src).toBe(info.project.use.isMobile?'media/hero-toepassingen-1280.mp4':'media/hero-toepassingen-1920.mp4');
   expect(await v.evaluate(e=>e.muted&&e.loop&&e.playsInline)).toBe(true);
   await expect(btn).toBeVisible();
+  await expect(btn).toHaveAttribute('aria-pressed','false');
   const before=await btn.getAttribute('aria-pressed');
   await btn.click();await expect(btn).not.toHaveAttribute('aria-pressed',before);
   const pressed=await btn.getAttribute('aria-pressed');
   await expect(btn.locator(pressed==='true'?'.hp-speel':'.hp-pauze')).toBeVisible();
   await expect(page.locator('#hero-pilot')).toBeInViewport();
   const box=await btn.boundingBox(),cta=await page.locator('#hero-pilot').boundingBox();
-  expect(box.y>=cta.y+cta.height||box.x>=cta.x+cta.width,'pause button does not cover the main button').toBe(true);
+  expect(box.y+box.height<=cta.y||box.y>=cta.y+cta.height||box.x+box.width<=cta.x||box.x>=cta.x+cta.width,'pause button does not cover the main button').toBe(true);
 });
 
 test('wide, sharp screens get the premium 4K variant',async({browser},info)=>{

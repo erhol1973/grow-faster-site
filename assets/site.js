@@ -498,14 +498,26 @@
     if(reduce||save)return;
     // 4K only where it shows: wide, sharp screens on a fast connection; 1920 px elsewhere, 1280 px on small screens.
     const net=navigator.connection&&navigator.connection.effectiveType,px=innerWidth*(devicePixelRatio||1);
-    v.src=innerWidth<900?v.dataset.small:(px>=2400&&(!net||net==="4g")?v.dataset.uhd:v.dataset.large);
-    v.muted=true;v.hidden=false;
-    const top=v.closest(".hero-top");if(top)top.classList.add("has-video");
+    const smallScreen=innerWidth<900;
+    const source=smallScreen?v.dataset.small:(px>=2400&&(!net||net==="4g")?v.dataset.uhd:v.dataset.large);
+    const top=v.closest(".hero-top");
     const set=paused=>{btn.setAttribute("aria-pressed",String(paused));btn.querySelector(".hp-pauze").hidden=paused;btn.querySelector(".hp-speel").hidden=!paused};
-    v.addEventListener("error",()=>{v.hidden=true;btn.hidden=true;if(top)top.classList.remove("has-video")},{once:true});
-    const p=v.play();if(p&&p.catch)p.catch(()=>set(true));
-    btn.hidden=false;set(false);
-    btn.addEventListener("click",()=>{if(v.paused){v.play();set(false)}else{v.pause();set(true)}});
+    function play(){
+      if(!v.hasAttribute("src")){
+        v.poster=top.querySelector("picture img").currentSrc;
+        v.src=source;
+        v.muted=true;
+        v.hidden=false;
+      }
+      v.play().catch(()=>set(true));
+    }
+    v.addEventListener("playing",()=>{top.classList.add("has-video");set(false)});
+    v.addEventListener("pause",()=>set(true));
+    v.addEventListener("error",()=>{v.hidden=true;btn.hidden=true;top.classList.remove("has-video")},{once:true});
+    btn.addEventListener("click",()=>{if(v.paused)play();else v.pause()});
+    btn.hidden=false;
+    set(true);
+    if(!smallScreen)play();
   })();
 
   /* homepage Orion film: Dutch and French editions; only source and poster follow the page language */

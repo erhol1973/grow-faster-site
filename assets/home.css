@@ -9,7 +9,6 @@
 
 /* Hero: one quiet reassurance line under the buttons */
 .hero-minimal .hero-note{margin:22px 0 0;max-width:62ch;font-size:16px;line-height:1.5;font-weight:500;color:#e1edf9}
-body[data-cms-page="home"] #hero .hero-note{text-shadow:0 0 2px rgba(6,27,52,.9),0 2px 14px rgba(6,27,52,.85)}
 #hero .ctas{align-items:center}
 #hero #hero-orion{width:auto;padding-inline:8px;border-color:transparent;background:transparent;color:#fff;text-decoration:underline;text-underline-offset:.25em}
 #hero #hero-orion:hover{text-decoration-thickness:2px}

@@ -7,3 +7,5 @@ Tests. Controleer de twaalf blokken, het bronnenvoorbeeld, de zes beelden, de ve
 Bewijs. De build, gerichte regressietests en de NL/FR-preview horen bij concept-PR #143. Ontwerpacceptatie en de bevestigingen voor livegang zijn afzonderlijke stappen.
 
 Vervolg na ontwerpacceptatie. Toets de handmatige status, de beslissing bij een verlopen bron en de actuele antwoordtaal in beide edities. Controleer het natuurlijke portret met de JPEG- en WebP-varianten op Over, Training, Orion en de twee plaatsen op Workshop. Controleer de drie zakelijke keuzes en de taalscan op de uiteindelijke revisie.
+
+Eindcontrole. Vergelijk in beide talen de bronvermelding bij een voorstel, de vraag zonder bron en de prijs per bedrijf. Controleer de taalkeuze en toegankelijke navigatienamen ook op de rechtstreeks geopende Franse pagina.

@@ -30,6 +30,18 @@ test('French sharing and indexing work before scripts run',()=>{
   assert.match(fr,/Aujourd’hui, Orion rédige ses réponses en néerlandais/);
 });
 
+test('both editions distinguish a proposed answer from manual input and explain the pilot price', () => {
+  for (const [file, source, manual, price] of [
+    ['orion.html', 'toont bij elk voorstel de bron', 'En als Orion geen bron vindt?', 'een vaste prijs per bedrijf'],
+    ['fr/orion/index.html', 'indique la source de chaque proposition', 'Et si Orion ne trouve aucune source', 'un tarif fixe par entreprise']
+  ]) {
+    const page = read(file);
+    assert.ok(page.includes(source), file);
+    assert.ok(page.includes(manual), file);
+    assert.ok(page.includes(price), file);
+  }
+});
+
 test('no extra colours: the page style block uses only existing colour tokens',()=>{
   const css=html().match(/<style data-apple>([\s\S]*?)<\/style>/)[1];
   assert.doesNotMatch(css,/#[0-9a-f]{3,8}\b|rgba?\(|hsla?\(/i,'no literal colours');

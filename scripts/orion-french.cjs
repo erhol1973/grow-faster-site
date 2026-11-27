@@ -40,6 +40,13 @@ function writeFrenchOrion(out) {
           .replaceAll('href="afspraak.html?onderwerp=vragenlijsten"', 'href="afspraak.html?onderwerp=vragenlijsten&amp;lang=fr"')
           .replace(/href="#/g, 'href="/fr/orion/#');
       }))
+    .replace(/(<button\b[^>]*\bid="lang-btn-(top|modal)"[^>]*>)<span class="lang-cur">[^<]*<\/span>/g,
+      (_, button, position) => {
+        const label = position === 'top' ? 'FR-BE' : 'Français (BE)';
+        const name = position === 'top' ? 'Langue : FR-BE — Français (BE)' : 'Langue : Français (BE)';
+        return button.replace(/aria-label="[^"]*"/, 'aria-label="' + name + '"') + '<span class="lang-cur">' + label + '</span>';
+      })
+    .replaceAll('aria-checked="false" data-lang="fr"', 'aria-checked="true" data-lang="fr"')
     .replaceAll('poster="img/orion-werking-nl.webp"', 'poster="img/orion-werking-fr.webp"')
     .replace('<source src="media/orion-werking-nl.mp4"', '<source src="media/orion-werking-fr.mp4"');
   const dir = path.join(out, 'fr', 'orion');

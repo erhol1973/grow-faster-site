@@ -629,8 +629,8 @@ window.GF_CMS_CATALOG=[
         "key": "orion-food-intro",
         "type": "text",
         "label": "Een retailer vraagt hoe u allergenen beheert. Een afnemer wil uw certificaten en",
-        "nl": "Een retailer vraagt hoe u allergenen beheert. Een afnemer wil uw certificaten en uw traceerprocedure. Orion zoekt de antwoorden in de documenten die u zelf hebt goedgekeurd en zet bij elk antwoord de bron. U leest na, u keurt goed, u verstuurt.",
-        "fr": "Un distributeur vous interroge sur la gestion des allergènes. Un client veut vos certificats et votre procédure de traçabilité. Orion cherche les réponses dans les documents que vous avez vous-même approuvés et indique la source de chaque réponse. Vous relisez, vous validez, vous envoyez."
+        "nl": "Een retailer vraagt hoe u allergenen beheert. Een afnemer wil uw certificaten en uw traceerprocedure. Orion zoekt in uw eigen documenten en toont bij elk voorstel de bron. Uw team controleert het antwoord en beslist wat het verstuurt.",
+        "fr": "Un distributeur vous interroge sur la gestion des allergènes. Un client vous demande vos certificats et votre procédure de traçabilité. Orion cherche dans vos propres documents et indique la source de chaque proposition. Votre équipe vérifie la réponse et décide de ce qu’elle envoie."
       },
       {
         "key": "cms-video-orion",
@@ -653,9 +653,9 @@ window.GF_CMS_CATALOG=[
       {
         "key": "orion-food-probleem-4",
         "type": "text",
-        "label": "Allergenen. Certificaten. Herkomst. Traceerbaarheid. Elke klant stelt ze op zijn",
-        "nl": "Allergenen. Certificaten. Herkomst. Traceerbaarheid. Elke klant stelt ze op zijn manier, in zijn eigen Excel-bestand. Het antwoord staat ergens in uw specificaties, uw procedures of een vragenlijst van vorig jaar. Iemand moet het zoeken, overtypen en nakijken, tussen een audit en een klacht door.",
-        "fr": "Allergènes. Certificats. Origine. Traçabilité. Chaque client les pose à sa manière, dans son propre fichier Excel. La réponse se trouve quelque part dans vos spécifications, vos procédures ou un questionnaire de l’an dernier. Quelqu’un doit la chercher, la ressaisir et la vérifier, entre un audit et une réclamation."
+        "label": "Allergenen, certificaten, herkomst en traceerbaarheid komen telkens terug. Elke ",
+        "nl": "Allergenen, certificaten, herkomst en traceerbaarheid komen telkens terug. Elke klant stelt zijn vragen op zijn eigen manier, in zijn eigen Excel-bestand. Het antwoord staat ergens in uw specificaties, uw procedures of een vragenlijst van vorig jaar. Iemand moet het zoeken, overtypen en nakijken, tussen een audit en een klacht door.",
+        "fr": "Allergènes, certificats, origine, traçabilité… Chaque client aborde ces sujets à sa manière, dans son propre fichier Excel. La réponse se trouve quelque part dans vos spécifications, vos procédures ou un questionnaire de l’an dernier. Quelqu’un doit la chercher, la ressaisir et la vérifier, entre un audit et une réclamation."
       },
       {
         "key": "orion-food-probleem-5",
@@ -704,7 +704,7 @@ window.GF_CMS_CATALOG=[
         "type": "text",
         "label": "Vragen over aansprakelijkheid, vrijwaring of auditkosten gaan altijd naar een me",
         "nl": "Vragen over aansprakelijkheid, vrijwaring of auditkosten gaan altijd naar een mens. Orion doet daar geen voorstel.",
-        "fr": "Les questions sur la responsabilité, les garanties ou les frais d’audit vont toujours à une personne. Orion n’y fait aucune proposition."
+        "fr": "Les questions sur la responsabilité, les clauses d’indemnisation ou les frais d’audit sont toujours confiées à votre équipe. Orion ne propose pas de réponse."
       },
       {
         "key": "orion-food-regels-12",
@@ -759,8 +759,8 @@ window.GF_CMS_CATALOG=[
         "key": "orion-food-gegevens-19",
         "type": "text",
         "label": "Voordat u over een pilot beslist, bespreken we met uw IT-verantwoordelijke waar ",
-        "nl": "Voordat u over een pilot beslist, bespreken we met uw IT-verantwoordelijke waar Orion draait, welke gegevens worden verwerkt en door welke partijen. We leggen de afspraken voor uw pilot vast in de verwerkersovereenkomst en de bijbehorende lijst van verwerkers.",
-        "fr": "Avant que vous décidiez de lancer un pilote, nous examinons avec votre responsable informatique où Orion fonctionne, quelles données sont traitées et par qui. Nous consignons les modalités de votre pilote dans le contrat de sous-traitance et dans la liste des prestataires concernés."
+        "nl": "Voordat u over een pilot beslist, bespreken we met uw IT-verantwoordelijke waar Orion draait, welke gegevens worden verwerkt en door welke partijen. We leggen de afspraken voor uw pilot vast in de verwerkersovereenkomst, met de lijst van ingeschakelde subverwerkers.",
+        "fr": "Avant que vous décidiez de lancer un pilote, nous examinons avec votre responsable informatique où Orion fonctionne, quelles données sont traitées et par qui. Nous consignons les modalités du pilote dans l’accord de traitement des données, avec la liste des sous-traitants ultérieurs retenus."
       },
       {
         "key": "orion-food-pilot-20",
@@ -821,9 +821,9 @@ window.GF_CMS_CATALOG=[
       {
         "key": "orion-food-vragen-28",
         "type": "text",
-        "label": "Ja. Orion is een hulpmiddel. De kwaliteit hangt af van uw brondocumenten, en uw ",
-        "nl": "Ja. Orion is een hulpmiddel. De kwaliteit hangt af van uw brondocumenten, en uw team keurt elk antwoord goed voordat het vertrekt. Daarom toont Orion bij elk antwoord de bron.",
-        "fr": "Oui. Orion est un outil. La qualité dépend de vos documents sources, et votre équipe valide chaque réponse avant l’envoi. C’est pour cela qu’Orion affiche la source de chaque réponse."
+        "label": "Ja. De kwaliteit van een voorstel hangt af van uw documenten. Orion toont de bro",
+        "nl": "Ja. De kwaliteit van een voorstel hangt af van uw documenten. Orion toont de bron, zodat uw team het voorstel kan controleren en zo nodig verbeteren voordat het de antwoorden verstuurt.",
+        "fr": "Oui. La qualité d’une proposition dépend de vos documents. Orion indique la source pour que votre équipe puisse vérifier la proposition et la corriger si nécessaire avant d’envoyer les réponses."
       },
       {
         "key": "orion-food-vragen-29",
@@ -849,9 +849,9 @@ window.GF_CMS_CATALOG=[
       {
         "key": "orion-food-vragen-32",
         "type": "text",
-        "label": "In de pilot meten we eerst hoeveel tijd u wint. Daarna krijgt u een vast bedrag ",
-        "nl": "In de pilot meten we eerst hoeveel tijd u wint. Daarna krijgt u een vast bedrag per bedrijf, niet per vraag en niet per gebruiker.",
-        "fr": "Pendant le pilote, nous mesurons d’abord le temps que vous gagnez. Vous recevez ensuite un montant fixe par entreprise, et non par question ni par utilisateur."
+        "label": "Tijdens de pilot meten we hoeveel tijd uw team aan de vragenlijsten besteedt. Da",
+        "nl": "Tijdens de pilot meten we hoeveel tijd uw team aan de vragenlijsten besteedt. Daarna stellen we u een vaste prijs per bedrijf voor, ongeacht het aantal vragen of gebruikers.",
+        "fr": "Pendant le pilote, nous mesurons le temps que votre équipe consacre aux questionnaires. Nous vous proposons ensuite un tarif fixe par entreprise, quel que soit le nombre de questions ou d’utilisateurs."
       },
       {
         "key": "orion-food-vragen-33",
@@ -886,7 +886,7 @@ window.GF_CMS_CATALOG=[
         "type": "text",
         "label": "Vier stappen. Orion doet het zoek- en overtypwerk. De beslissing blijft bij u.",
         "nl": "Vier stappen. Orion doet het zoek- en overtypwerk. De beslissing blijft bij u.",
-        "fr": "Quatre étapes. Orion fait les recherches et les ressaisies. La décision reste chez vous."
+        "fr": "Quatre étapes. Orion se charge de la recherche et de la saisie. La décision vous appartient."
       },
       {
         "key": "orion-food-werking-38",
@@ -926,9 +926,9 @@ window.GF_CMS_CATALOG=[
       {
         "key": "orion-food-werking-43",
         "type": "text",
-        "label": "Orion zoekt per vraag het antwoord in uw bronnen en noteert uit welk document he",
-        "nl": "Orion zoekt per vraag het antwoord in uw bronnen en noteert uit welk document het komt. Een vaste controle toetst daarna elk antwoord aan de bron: citaten, cijfers, allergenen en ontkenningen.",
-        "fr": "Pour chaque question, Orion cherche la réponse dans vos sources et note le document dont elle provient. Un contrôle fixe compare ensuite chaque réponse à la source : citations, chiffres, allergènes et négations."
+        "label": "Voor elke vraag zoekt Orion een antwoord in uw documenten. Bij elk voorstel toon",
+        "nl": "Voor elke vraag zoekt Orion een antwoord in uw documenten. Bij elk voorstel toont het de bron en controleert het onder meer de citaten, cijfers, allergenen en ontkenningen.",
+        "fr": "Pour chaque question, Orion cherche une réponse dans vos documents. Pour chaque proposition, il indique la source et vérifie notamment les citations, les chiffres, les allergènes et les négations."
       },
       {
         "key": "orion-food-werking-44",

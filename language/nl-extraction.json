@@ -36,7 +36,7 @@
     },
     {
       "file": "assets/cms-catalog.js",
-      "sha256": "fe8abea13fca0f05e762063481af09c9d5b8bf2c7d19dceded4bb27ef832e46d"
+      "sha256": "df0c1115e1769b101e354c4f05e0133e6f8f3b1c7820ca9e1e963c26dd3ad793"
     },
     {
       "file": "assets/cms-client.js",
@@ -112,7 +112,7 @@
     },
     {
       "file": "assets/i18n-orion.js",
-      "sha256": "bc889ffe5aa196c79d1c538e4457694fc3fe666efe96e0c2234f564f8c6960f8"
+      "sha256": "82a4139ea67d275b9e9be049e29ebc73ac81bda16a4d88d5b140b2bb58a44565"
     },
     {
       "file": "assets/i18n-sector-photos.js",
@@ -140,7 +140,7 @@
     },
     {
       "file": "assets/orion-locale.js",
-      "sha256": "c1a0a18afa8df734c2e9313a2d9f4e623a3fa888f59a1849d18f89539c6dbc63"
+      "sha256": "6884dc104dab1788a49c98a7c71097fe5d27e796f64c24b6cfabddfce61589f0"
     },
     {
       "file": "assets/page-flip-2.0.7.js",
@@ -262,7 +262,7 @@
     },
     {
       "file": "fr/orion/index.html",
-      "sha256": "150ce38b3d3a6e5b9bfdb5e01b13346ff3928be4adc07fb50fe40c9f90d84b34"
+      "sha256": "294cf8bf71881a4c7d22fce8a6a87bfde20c1bfb3b56d1c8e563a68e2558a8b8"
     },
     {
       "file": "index.html",
@@ -294,7 +294,7 @@
     },
     {
       "file": "orion.html",
-      "sha256": "495716b90bdebbfc9f6db67fcf60ec378c19a496655017135adf4a163a81bbde"
+      "sha256": "26ad737f4f90679b490448291d393ba3ebcac3a48046ff88429ce22edadd81f1"
     },
     {
       "file": "privacy.html",

@@ -1,5 +1,5 @@
-/* Share metadata and accessible image names follow the selected Orion edition. */
-const orionAttributes = Array.from(document.querySelectorAll('main img[alt], #orion-film video[aria-label]'), element => {
+/* Share metadata and accessible names follow the selected Orion edition. */
+const orionAttributes = Array.from(document.querySelectorAll('main img[alt], #orion-film video[aria-label], nav.nav[aria-label], .brand[aria-label], .footer-brand[aria-label]'), element => {
   const attribute = element.matches('img') ? 'alt' : 'aria-label';
   return { element, attribute, initial: element.getAttribute(attribute) };
 });
@@ -15,6 +15,6 @@ document.addEventListener('gf:language', ({detail: {language}}) => {
     link.href = 'afspraak.html?onderwerp=vragenlijsten' + (language === 'fr' ? '&lang=fr' : '');
   }
   for (const {element, attribute, initial} of orionAttributes) {
-    element.setAttribute(attribute, language === 'fr' ? window.I18N[initial]?.[1] || initial : initial);
+    element.setAttribute(attribute, window.I18N[initial]?.[language === 'fr' ? 1 : 0] || initial);
   }
 });

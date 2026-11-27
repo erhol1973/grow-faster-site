@@ -9,10 +9,11 @@ test('Orion film sits under the four steps on orion.html, plays only on request 
   assert.ok(sec.includes('class="mk-steps"')&&sec.indexOf('class="mk-steps"')<sec.indexOf('id="orion-film"'),'film follows the steps');
   assert.doesNotMatch(read('index.html'),/orion-film|orion-werking/,'the homepage no longer carries the film');
   const v=sec.match(/<video[^>]*>/)[0];
-  for(const a of ['controls','preload="none"','playsinline','poster="img/orion-werking-nl.webp"','aria-label="Film: zo werkt Orion in vier stappen"','aria-describedby="orion-film-text"','data-src-fr="media/orion-werking-fr.mp4"','data-poster-fr="img/orion-werking-fr.webp"'])assert.ok(v.includes(a),a);
+  for(const a of ['controls','preload="none"','playsinline','poster="img/orion-werking-nl.webp"','aria-label="Film: zo werkt Orion in vier stappen"','aria-describedby="film-formaten orion-film-text"','data-src-fr="media/orion-werking-fr.mp4"','data-poster-fr="img/orion-werking-fr.webp"'])assert.ok(v.includes(a),a);
   assert.doesNotMatch(v,/\b(autoplay|muted|loop)\b/,'the film has a voice-over and never starts by itself');
   assert.match(sec,/<source src="media\/orion-werking-nl\.mp4" type="video\/mp4">/);
   assert.match(sec,/<h2 id="werking-h"/);
+  assert.ok(sec.indexOf('id="film-formaten"')<sec.indexOf('id="orion-film"'));
   assert.equal((sec.match(/<li><strong>/g)||[]).length,7,'seven on-screen steps as text alternative');
 });
 

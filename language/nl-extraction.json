@@ -112,7 +112,7 @@
     },
     {
       "file": "assets/i18n-orion.js",
-      "sha256": "826e86c9e428912517fefe103e46cb2eae9209ec19c067f87f9a5601b4fa7314"
+      "sha256": "89e1bb5e2551ec37c950b5a80a74e76920d369d42ecdac7d2bab0bfb96eabc8a"
     },
     {
       "file": "assets/i18n-sector-photos.js",
@@ -259,6 +259,10 @@
     {
       "file": "executive-radar/index.html",
       "sha256": "75a11da44c802486bc6f65640aa48a730f0f684c5c07a42ba3cd1735eb3fb070"
+    },
+    {
+      "file": "fr/orion/index.html",
+      "sha256": "150ce38b3d3a6e5b9bfdb5e01b13346ff3928be4adc07fb50fe40c9f90d84b34"
     },
     {
       "file": "index.html",

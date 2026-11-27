@@ -119,6 +119,8 @@ html:not([lang="fr"]) .or-language {display:none}
 .or-rules>div {display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr);gap:1.2rem;border-top:1px solid var(--line);padding:1rem 0}
 .or-rules dt,.or-table th {font-weight:700;color:var(--brand)}
 .or-rules dd {margin:0;max-width:68ch}
+.or-table-hint {display:none;color:var(--muted);font-size:0.95rem}
+@media(max-width:900px){.or-table-hint {display:block}}
 .or-table {overflow-x:auto;margin-top:24px}
 .or-table table {width:100%;min-width:800px;border-collapse:collapse}
 .or-table td,.or-table th {text-align:start;vertical-align:top;padding:16px;border-bottom:1px solid var(--line);line-height:1.5}
@@ -219,7 +221,8 @@ html:not([lang="fr"]) .or-language {display:none}
 <li><span class="step-n" data-notr>04</span>
 <h3 data-cms="orion-food-werking-44">U keurt goed en verstuurt.</h3>
 <p data-cms="orion-food-werking-45">U krijgt hetzelfde Excel-bestand terug, ingevuld en leesbaar opgemaakt. Orion verstuurt nooit zelf iets naar uw klant.</p></li></ol>
-<figure class="orion-film" id="orion-film" data-notr><video controls preload="none" playsinline width="1920" height="1080" poster="img/orion-werking-nl.webp" aria-label="Film: zo werkt Orion in vier stappen" aria-describedby="orion-film-text" data-src-nl="media/orion-werking-nl.mp4" data-poster-nl="img/orion-werking-nl.webp" data-src-fr="media/orion-werking-fr.mp4" data-poster-fr="img/orion-werking-fr.webp"><source src="media/orion-werking-nl.mp4" type="video/mp4"></video></figure>
+<p id="film-formaten" class="or-film-note" data-cms="orion-food-werking-46">De film toont ook het rechtstreeks lezen van bronbestanden. Vandaag zetten we uw documenten samen met u klaar als tekst.</p>
+<figure class="orion-film" id="orion-film" data-notr><video controls preload="none" playsinline width="1920" height="1080" poster="img/orion-werking-nl.webp" aria-label="Film: zo werkt Orion in vier stappen" aria-describedby="film-formaten orion-film-text" data-src-nl="media/orion-werking-nl.mp4" data-poster-nl="img/orion-werking-nl.webp" data-src-fr="media/orion-werking-fr.mp4" data-poster-fr="img/orion-werking-fr.webp"><source src="media/orion-werking-nl.mp4" type="video/mp4"></video></figure>
   <details class="orion-film-text" id="orion-film-text"><summary>Lees de tekst van de video</summary>
 <ol>
 <li><strong>Twee informatiestromen komen samen.</strong> <span>De klantvragenlijst bepaalt welke vragen Orion verwerkt. Actuele bedrijfsdocumenten leveren het bewijs.</span></li>
@@ -229,7 +232,7 @@ html:not([lang="fr"]) .or-language {display:none}
 <li><strong>Vaste regels toetsen het antwoord.</strong> <span>Orion controleert broncitaten, cijfers, allergenen, ontkenningen, productverwijzingen en onbewezen claims.</span></li>
 <li><strong>De kwaliteitsmanager beslist.</strong> <span>De manager beoordeelt elk voorstel en moet allergenen controleren aan de hand van de actuele matrix.</span></li>
 <li><strong>Alleen goedgekeurde antwoorden gaan naar Excel.</strong> <span>Orion vult het oorspronkelijke bestand in. Een medewerker downloadt en verstuurt het.</span></li></ol></details>
-<p class="or-film-note" data-cms="orion-food-werking-46">De film toont ook het rechtstreeks lezen van bronbestanden. Vandaag zetten we uw documenten samen met u klaar als tekst.</p></div></section>
+</div></section>
 
 <section id="regels" tabindex="-1" aria-labelledby="regels-h">
 <div class="wrap">
@@ -250,7 +253,8 @@ html:not([lang="fr"]) .or-language {display:none}
 <div class="wrap">
 <h2 id="vergelijking-h">Vier manieren om een vragenlijst in te vullen</h2>
 <p>Elke manier heeft haar plaats. Kies wat bij uw bedrijf past.</p>
-<div class="or-table" tabindex="0" role="region" aria-labelledby="vergelijking-h"><table><thead>
+<p class="or-table-hint" id="vergelijking-tip">Schuif de tabel opzij om alle vier de opties te vergelijken.</p>
+<div aria-describedby="vergelijking-tip" class="or-table" tabindex="0" role="region" aria-labelledby="vergelijking-h"><table><thead>
 <tr><td></td><th scope="col">Zelf in Excel</th><th scope="col">Een consultant</th><th scope="col">Een algemene AI-assistent</th><th scope="col">Orion</th></tr></thead><tbody>
 <tr><th scope="row">Waar komt het antwoord vandaan?</th><td>Uit uw hoofd en uw mappen</td><td>Uit uw documenten en de kennis van de consultant</td><td>Uit wat u op dat moment oplaadt, en uit algemene kennis</td><td>Alleen uit documenten in uw bronnenregister</td></tr>
 <tr><th scope="row">Wat als er geen bron is?</th><td>U zoekt verder of belt een collega</td><td>De consultant vraagt het u</td><td>De assistent kan toch een antwoord schrijven</td><td>Geen antwoord. De vraag blijft open voor uw team</td></tr>

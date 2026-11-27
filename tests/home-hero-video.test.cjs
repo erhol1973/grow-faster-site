@@ -1,7 +1,5 @@
 'use strict';
-// Homepage 24 Nov 2026: silent hero video (overlay baked into the MP4) on top of the decorative still.
-// The 4K master (16 MB) is not published; two web variants within budget are. Readers who prefer less motion or save data
-// keep the still image; everyone else gets a pause button (WCAG 2.2.2, the loop lasts longer than five seconds).
+// The homepage pairs a responsive photograph with a silent, pausable loop of the same scene.
 const {test}=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path');
 const root=path.resolve(__dirname,'..','dist');const read=f=>fs.readFileSync(path.join(root,f),'utf8');
 

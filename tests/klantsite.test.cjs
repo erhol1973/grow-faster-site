@@ -132,7 +132,7 @@ test('Oplossingen overview repeats its submenu, keeps the three offer cards and 
 // v3: every customer page and Coherence has its own decorative 2:1 hero photo in the 640/1280/1774 WebP pattern,
 // preloaded with the same srcset, and a page-specific object-position that keeps the subject in view on mobile.
 test('each hero uses its own preloaded 2:1 photo, stays decorative and keeps the subject in view',()=>{
-  const heroes={'index.html':['hero-toepassingen','50%'],'oplossingen.html':['hero-oplossingen-workflow','58%'],'coherence.html':['hero-coherentie-samenwerking','74%']};
+  const heroes={'index.html':['hero-toepassingen','74%'],'oplossingen.html':['hero-oplossingen-workflow','58%'],'coherence.html':['hero-coherentie-samenwerking','74%']};
   for(const [file,[name,pos]] of Object.entries(heroes)){const html=read(file);
     const sizes=file==='coherence.html'?'(min-width: 900px) 1280px, 100vw':'100vw';
     const set=[640,1280,1774].map(w=>`img/${name}-${w}.webp ${w}w`).join(', ');

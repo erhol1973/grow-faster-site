@@ -18,7 +18,7 @@ test('the video variant follows the viewport and the pause button is labelled an
   await expect(btn.locator(pressed==='true'?'.hp-speel':'.hp-pauze')).toBeVisible();
   await expect(page.locator('#hero-pilot')).toBeInViewport();
   const box=await btn.boundingBox(),cta=await page.locator('#hero-pilot').boundingBox();
-  expect(box.y>=cta.y+cta.height||box.x>=cta.x+cta.width,'pause button does not cover the main button').toBe(true);
+  expect(box.y+box.height<=cta.y||box.y>=cta.y+cta.height||box.x+box.width<=cta.x||box.x>=cta.x+cta.width,'pause button does not cover the main button').toBe(true);
 });
 
 test('wide, sharp screens get the premium 4K variant',async({browser},info)=>{

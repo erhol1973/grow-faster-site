@@ -60,5 +60,5 @@ test('intentional contact shortcuts still resolve to an accessible destination',
   const html=await (await fetch(base+'/about.html')).text();assert.match(html,/<[^>]*id="contact"[^>]*tabindex="-1"/);
   // Release 2: Insights ends with its own contact block (#contact); Orion keeps an in-page anchor to its steps.
   assert.match(await (await fetch(base+'/insights.html')).text(),/<section id="contact" class="tinted" tabindex="-1"/);
-  const orion=await (await fetch(base+'/orion.html')).text();assert.match(orion,/href="#werking"/);assert.match(orion,/<section id="werking"[^>]*tabindex="-1"/);
+  const orion=await (await fetch(base+'/orion.html')).text();assert.match(orion,/href="#voorbeeld"/);assert.match(orion,/<section id="voorbeeld"[^>]*tabindex="-1"/);
 });

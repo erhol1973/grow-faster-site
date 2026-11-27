@@ -39,6 +39,7 @@ function walk(folder, relative, allowed) {
   }
 }
 for (const [dir, allowed] of Object.entries(extensions)) walk(path.join(root, dir), dir, allowed);
+require('./orion-french.cjs').writeFrenchOrion(out);
 assertPublicArtifact(out);
 fs.renameSync(out,destination);
 console.log(`Built ${count} website files in dist/ (public-content policy passed)`);

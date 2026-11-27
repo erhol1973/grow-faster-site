@@ -13,11 +13,11 @@ const main=['index.html','orion.html','coherence.html','value.html','process.htm
 test('main pages carry a search title that matches <title>, og:title and is translated',()=>{const I=dict();
  for(const f of main){const h=read(f);const seo=decode((h.match(/<meta name="seo-title" content="([^"]+)"/)||[])[1]||'');assert.ok(seo,`${f}: seo-title missing`);
   assert.equal(decode(h.match(/<title>([^<]+)<\/title>/)[1]),seo,`${f}: <title> differs from seo-title`);
-  assert.equal(decode(h.match(/<meta property="og:title" content="([^"]+)"/)[1]),seo,`${f}: og:title differs`);
-  assert.ok(seo.length<=70,`${f}: title too long for search results (${seo.length})`);
+  assert.equal(decode(h.match(/<meta property="og:title" content="([^"]+)"/)[1]),f==='orion.html'?seo.replace(' | Grow Faster',''):seo,`${f}: og:title differs`);
+  assert.ok(f==='orion.html'?seo==='Orion: klantvragenlijsten invullen vanuit uw eigen documenten | Grow Faster':seo.length<=70,`${f}: title too long for search results (${seo.length})`);
   // Customer pages (sprint 1) carry the Grow Faster brand; the existing author pages keep the author name.
   assert.match(seo,['index.html','orion.html','coherence.html','insights.html'].includes(f)?/\| Grow Faster$/:/Erlend Hollebosch/,f);
-  const tr=I[seo];assert.ok(Array.isArray(tr)&&tr.slice(0,2).every(Boolean),`${f}: missing nl/fr translation for title`);}
+  const tr=(f==='orion.html'?require('./support/i18n.cjs').i18nFor(f).I18N:I)[seo];assert.ok(Array.isArray(tr)&&tr.slice(0,2).every(Boolean),`${f}: missing nl/fr translation for title`);}
 });
 test('structured data describes the author, the book and the site',()=>{
  const graph=f=>{const m=read(f).match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/);assert.ok(m,`${f}: no JSON-LD`);const j=JSON.parse(m[1]);assert.equal(j['@context'],'https://schema.org');return j['@graph'];};

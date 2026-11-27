@@ -1,35 +1,51 @@
 'use strict';
-// Orion redesign (owner requests, 25 Nov 2026): Orion is not only for the food industry. First restructured in a consultancy
-// layout, then the same day restyled as a premium product page (Apple-like): centred headlines, rounded tiles, a bento of four
-// application domains and a sector FAQ. No extra colours: the page styles use only the site's existing colour tokens.
 const {test}=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),vm=require('node:vm');
 const root=path.resolve(__dirname,'..','dist');const read=f=>fs.readFileSync(path.join(root,f),'utf8');
 const html=()=>read('orion.html');const main=()=>html().match(/<main[\s\S]*?<\/main>/)[0];
 const section=id=>main().match(new RegExp(`<section id="${id}"[\\s\\S]*?</section>`))[0];
 const text=s=>s.replace(/<[^>]+>/g,' ').replace(/\s+/g,' ').trim();
 
-test('section order: hero, In het kort, problem, steps, applications, human decides, for whom, FAQ, pilot',()=>{
-  const m=main();const order=['id="hero"','id="kort"','id="probleem"','id="werking"','id="toepassingen"','id="beslissen"','id="voor-wie"','id="vragen"','id="final"'].map(id=>m.indexOf(id));
-  assert.ok(order.every(i=>i>=0),'all sections present');assert.deepEqual(order,[...order].sort((a,b)=>a-b));
-  assert.equal((section('kort').match(/<li>/g)||[]).length,3,'three key points');
-  // Numbering is reserved for the real sequence (the four steps); sections carry no number labels.
-  assert.equal((m.match(/class="step-n"/g)||[]).length,4);assert.doesNotMatch(m,/class="n" data-notr/);
+test('the food pilot has twelve ordered sections, six illustrations and an inspectable source',()=>{
+  const m=main(),ids=['hero','probleem','voorbeeld','werking','regels','vergelijking','vandaag','gegevens','pilot','maker','vragen','final'];
+  const positions=ids.map(id=>m.indexOf('id="'+id+'"'));
+  assert.ok(positions.every((pos,i)=>pos>=0&&(!i||pos>positions[i-1])));
+  assert.match(section('voorbeeld'),/<summary>Bekijk de bron/);
+  assert.match(section('voorbeeld'),/Handmatig invullen/);
+  assert.match(section('regels'),/vóór de definitieve export[\s\S]*uitdrukkelijk bevestigen/);
+  assert.equal((section('werking').match(/class="step-n"/g)||[]).length,4);
+  assert.equal((m.match(/<img /g)||[]).length,6);
+  assert.match(section('vragen'),/Nog niet. Orion start bij voedingsbedrijven/);
+  const screens=[...m.matchAll(/class="or-screen" href="(img[^"]+)"><img src="([^"]+)"/g)];
+  assert.deepEqual(screens.map(x=>x[1].split('demo-')[1]),['vragenlijsten.png','bronnen-verlopen.png','logboek.png','instellingen.png']);
+  for(const [,full,preview] of screens) for(const f of [full,preview]) assert.ok(fs.statSync(path.join(root,f)).size>0);
 });
 
-test('Orion is presented for four domains, not only the food industry',()=>{
-  const ex=section('toepassingen');
-  assert.deepEqual([...ex.matchAll(/<article class="ap-domain"><h3 data-cms="orx-\d+">([^<]+)<\/h3>/g)].map(x=>x[1]),['Kwaliteit in de voedingsproductie','Technisch onderhoud','Administratie','Logistiek']);
-  assert.equal((ex.match(/<dt>Wie vraagt<\/dt>/g)||[]).length,4,'each domain names who asks, what Orion prepares and from which documents');
-  assert.match(text(section('vragen')),/Werkt Orion ook buiten de voedingsindustrie\?/);
-  // Negative: no sentence may limit Orion to food companies any more.
-  assert.doesNotMatch(text(main()),/Voedingsbedrijven die regelmatig/);
-  assert.doesNotMatch(text(read('orion.html').match(/<head>[\s\S]*?<\/head>/)[0]),/klantvragenlijsten invullen vanuit uw documenten/);
+test('French sharing and indexing work before scripts run',()=>{
+  const fr=read('fr/orion/index.html');
+  assert.match(fr,/<html lang="fr"/);
+  assert.match(fr,/<h1[^>]*>Le questionnaire de votre client/);
+  assert.match(fr,/property="og:image" content="https:\/\/grow-faster\.be\/img\/og-orion-fr\.jpg"/);
+  assert.match(fr,/property="og:locale" content="fr_BE"/);
+  assert.match(fr,/<link rel="canonical" href="https:\/\/grow-faster\.be\/fr\/orion\/"/);
+  assert.match(fr,/Aujourd’hui, Orion rédige ses réponses en néerlandais/);
+});
+
+test('both editions distinguish a proposed answer from manual input and explain the pilot price', () => {
+  for (const [file, source, manual, price] of [
+    ['orion.html', 'toont bij elk voorstel de bron', 'En als Orion geen bron vindt?', 'een vaste prijs per bedrijf'],
+    ['fr/orion/index.html', 'indique la source de chaque proposition', 'Et si Orion ne trouve aucune source', 'un tarif fixe par entreprise']
+  ]) {
+    const page = read(file);
+    assert.ok(page.includes(source), file);
+    assert.ok(page.includes(manual), file);
+    assert.ok(page.includes(price), file);
+  }
 });
 
 test('no extra colours: the page style block uses only existing colour tokens',()=>{
   const css=html().match(/<style data-apple>([\s\S]*?)<\/style>/)[1];
   assert.doesNotMatch(css,/#[0-9a-f]{3,8}\b|rgba?\(|hsla?\(/i,'no literal colours');
-  for(const v of css.match(/var\(--[a-z-]+\)/g))assert.match(v,/var\(--(brand|brand-fill|on-brand|ai|ai-ink|ink|muted|line|tint|sf)\)/,v);
+  for(const v of css.match(/var\(--[a-z-]+\)/g))assert.match(v,/var\(--(brand|brand-fill|on-brand|ai|ai-ink|bg|ink|muted|line|tint|sf)\)/,v);
   assert.doesNotMatch(html(),/assets\/kleur\.css/);
 });
 

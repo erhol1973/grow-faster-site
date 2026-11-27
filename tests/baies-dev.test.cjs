@@ -247,12 +247,13 @@ test('Radar publication policy walks all artifact text, including renamed copies
 
 test('Radar build publishes only a complete policy-approved artifact and removes staged output on internal content rejection',t=>{
   const fixture=policyTemp(t);policyFs.mkdirSync(policyPath.join(fixture,'scripts'));policyFs.mkdirSync(policyPath.join(fixture,'tests'));policyFs.writeFileSync(policyPath.join(fixture,'tests/legacy-redirects.json'),'[]');
-  for(const file of ['build.cjs','file-reader.cjs','baies-dev-public-policy.cjs'])policyFs.copyFileSync(policyPath.join(policyRoot,'scripts',file),policyPath.join(fixture,'scripts',file));
+  for(const file of ['build.cjs','orion-french.cjs','file-reader.cjs','baies-dev-public-policy.cjs'])policyFs.copyFileSync(policyPath.join(policyRoot,'scripts',file),policyPath.join(fixture,'scripts',file));
   // Use the real build allowlist to construct a minimal input tree; assertions exercise its actual CLI.
   const source=policyFs.readFileSync(policyPath.join(policyRoot,'scripts/build.cjs'),'utf8'),expression=source.match(/^const files = (.+);$/m)[1];
   const files=require('node:vm').runInNewContext(expression,{require:id=>{assert.equal(id,'../tests/legacy-redirects.json');return [];}});
   for(const file of files){const dest=policyPath.join(fixture,file);policyFs.mkdirSync(policyPath.dirname(dest),{recursive:true});policyFs.writeFileSync(dest,file==='executive-radar/index.html'?html:'');}
   for(const directory of ['assets','media','boek','img','books'])policyFs.mkdirSync(policyPath.join(fixture,directory),{recursive:true});policyFs.writeFileSync(policyPath.join(fixture,'assets/i18n.js'),'window.I18N={};\nwindow.I18N_HTML={};\n');
+  policyFs.copyFileSync(policyPath.join(policyRoot,'assets/i18n-orion.js'),policyPath.join(fixture,'assets/i18n-orion.js'));
   const run=()=>policyCp.spawnSync(process.execPath,['scripts/build.cjs'],{cwd:fixture,encoding:'utf8'});
   let result=run();assert.equal(result.status,0,result.stderr);const destination=policyPath.join(fixture,'dist');assert.ok(policyFs.existsSync(policyPath.join(destination,'executive-radar/index.html')));assert.equal(policyFs.readFileSync(policyPath.join(destination,'baies-dev/index.html'),'utf8'),html);
   const contaminated=policyPath.join(fixture,'assets','copy-of-old-runtime.js');policyFs.writeFileSync(contaminated,"const old={roadmapTitle:'Internal roadmap'};");result=run();assert.notEqual(result.status,0);assert.match(result.stderr,/public-content policy rejected/);assert.equal(policyFs.existsSync(destination),false,'rejected output must not remain deployable');assert.deepEqual(policyFs.readdirSync(fixture).filter(name=>name.startsWith('.dist-build-')),[],'failed staging is cleaned');

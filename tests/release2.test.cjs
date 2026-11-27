@@ -34,8 +34,8 @@ test('research blocks name a checked source for every figure and carry no suppli
   assert.match(home[0],/oecd\.org\/en\/publications\/generative-ai-and-the-sme-workforce_2d08b99d-en/);
   const drempels=main('automatisering.html').match(/<section id="drempels"[\s\S]*?<\/section>/)[0];
   /* 25 Nov 2026 premium redesign: the six barriers moved from a table to tiles. */assert.equal((drempels.match(/<article class="ap-drempel">/g)||[]).length,6);assert.match(drempels,/doi\.org\/10\.1007\/s11301-024-00405-4/);
-  const orion=main('orion.html').match(/<section id="beslissen"[\s\S]*?<\/section>/)[0];
-  assert.equal((orion.match(/class="fase"/g)||[]).length,3);assert.match(orion,/doi\.org\/10\.1287\/orsc\.2025\.21838/);assert.match(orion,/758 consultants[\s\S]*19%/);
+  const orion=main('orion.html').match(/<details class="or-research"[\s\S]*?<\/details>/)[0];
+  assert.match(orion,/Waarom nakijken nodig blijft/);assert.match(orion,/doi\.org\/10\.1287\/orsc\.2025\.21838/);assert.match(orion,/758 consultants[\s\S]*19 procentpunten/);
   const training=main('training.html').match(/<section id="mensen"[\s\S]*?<\/section>/)[0];
   assert.match(training,/85%[\s\S]*6% heeft meer mensen nodig, 9% minder/);assert.match(training,/oecd\.org\/en\/publications\/ai-and-skills_f843b352-en/);
   for(const f of ['index.html','orion.html','automatisering.html','training.html','coherence.html'])assert.doesNotMatch(main(f),/Smartsheet|Asana|Zapier|Automation Anywhere|KITIM|MIT NANDA|95% van de pilots/,f);

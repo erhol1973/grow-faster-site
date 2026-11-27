@@ -6,9 +6,9 @@ const dom=require('./support/mini-dom.cjs');
 const {i18nFor}=require('./support/i18n.cjs');
 
 const dist=path.resolve(__dirname,'../dist');
-const pages=['index.html','orion.html','automatisering.html','insights.html'];
+const pages=['index.html','automatisering.html','insights.html'];
 
-test('four customer pages show three sector examples within the photo range',()=>{
+test('customer pages with sector photography show three sector examples within the photo range',()=>{
   for(const page of pages){
     const doc=dom.parse(fs.readFileSync(path.join(dist,page),'utf8'));
     const main=dom.all(doc,el=>el.tag==='main')[0];

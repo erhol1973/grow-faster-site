@@ -11,9 +11,8 @@ const PILOT='afspraak.html?onderwerp=vragenlijsten';
 const decode=s=>s.replaceAll('&amp;','&').replaceAll('&quot;','"');
 const text=html=>decode(html.replace(/<script[\s\S]*?<\/script>|<style[\s\S]*?<\/style>/g,'').replace(/<[^>]+>/g,' ')).replace(/\s+/g,' ');
 const pages={
-  // 25 Nov 2026 (owner): Orion is not only for the food industry; editorial redesign with "In het kort", numbered sections,
-  // application exhibit across four domains and a sector FAQ (replaces "Moeten we een groot project opstarten?").
-  'orion.html':['Vragenlijsten en dossiers, voorbereid vanuit uw eigen documenten.','Orion zoekt de antwoorden in uw specificaties, certificaten, fiches en eerdere dossiers, en toont bij elk antwoord de bron. Uw medewerker kijkt na en beslist.','In het kort','Dezelfde vragen, telkens opnieuw','Dat kost uren die niet naar het eigenlijke werk gaan. En wie overtypt, maakt fouten.','Zo werkt Orion','U laadt de vragenlijst op','Orion zoekt de antwoorden','U kijkt na.','U keurt goed en verstuurt.','U krijgt de lijst terug in hetzelfde formaat. Orion verstuurt nooit zelf iets.','Elk antwoord dat u goedkeurt, onthoudt Orion. De volgende vragenlijst gaat daardoor sneller.','Niet enkel voor de voedingsindustrie','Kwaliteit in de voedingsproductie','Technisch onderhoud','Administratie','Logistiek','Kmo’s die vaak dezelfde vragen beantwoorden','Veelgestelde vragen','Werkt Orion ook buiten de voedingsindustrie?','Wat als Orion een fout antwoord geeft?','We gebruiken al ChatGPT. Wat is het verschil?','Wat zegt onze IT-verantwoordelijke ervan?','Voor de pilot start, bespreken we met uw IT-verantwoordelijke hoe Orion met uw gegevens omgaat, en bezorgen we vooraf alle informatie die hij nodig heeft.','Wat kost het?','We starten met een paar vragenlijsten die u echt gekregen hebt. We meten hoeveel tijd ze vandaag kosten en hoeveel met Orion. Ziet u geen verschil, dan stoppen we.'],
+  // Approved food-sector edition of the Orion page.
+  'orion.html':["De vragenlijst van uw klant, ingevuld vanuit uw eigen documenten.", "Van klantvraag naar antwoord", "Bekijk de bron", "En als Orion geen bron vindt?", "Zo werkt Orion", "U bepaalt de bronnen.", "U laadt de vragenlijst op.", "Orion zoekt en controleert.", "U keurt goed en verstuurt.", "Vijf regels waar Orion zich aan houdt", "Vier manieren om een vragenlijst in te vullen", "Uw receptuur blijft van u", "Veelgestelde vragen", "Kan Orion zich vergissen?", "Stuur ons één vragenlijst"],
   // Release 2 (23 Nov 2026): the approved full Workflow-automatisering text replaces the placeholder.
   'automatisering.html':['Wat uw team overtypt, gebeurt voortaan vanzelf.','We automatiseren het handwerk tussen uw mails, Excel-lijsten en systemen. Uw mensen houden tijd over voor het werk dat telt.','Herkenbaar?','Voorbeelden','Zo pakken we het aan','Wat kmo’s tegenhoudt, en hoe wij dat oplossen','Dienst of software','Wat u wint','Veelgestelde vragen','Welke taak typt uw team vandaag nog over?'],
   'oplossingen.html':['Sneller werken met AI en automatisering','Vier lagen, één doel: winst in tijd en geld.','Van fundament tot AI','AI levert pas tijd en geld op als wat eronder ligt klopt. Daarom bouwen we van onder naar boven: eerst samenhang in de organisatie, dan heldere processen, dan automatisering, dan AI.','Enterprise coherentie','Mensen, teams en systemen trekken in dezelfde richting.','Procesanalyse','Workflowscan','We brengen in kaart waar tijd en geld weglekt.','Repetitief werk loopt vanzelf.','AI neemt zoek- en schrijfwerk over.','Winst in tijd en geld','Drie manieren om sneller te werken','Test Orion op uw eigen vragenlijsten'],
@@ -51,14 +50,14 @@ test('French copy uses formal vous and Belgian typography for questions and colo
 });
 test('customer pages carry title, description, canonical, og tags and NL/FR language handling',()=>{
   for(const file of ['index.html','oplossingen.html','orion.html','automatisering.html']){const html=read(file),I=i18nFor(file).I18N;
-    const title=decode(html.match(/<title>([^<]+)<\/title>/)[1]);assert.match(title,/\| Grow Faster$/,file);assert.ok(title.length<=70,file);
-    assert.equal(decode(html.match(/<meta name="seo-title" content="([^"]+)"/)[1]),title,file);assert.equal(decode(html.match(/<meta property="og:title" content="([^"]+)"/)[1]),title,file);
+    const title=decode(html.match(/<title>([^<]+)<\/title>/)[1]);assert.match(title,/\| Grow Faster$/,file);assert.ok(file==='orion.html'?title==='Orion: klantvragenlijsten invullen vanuit uw eigen documenten | Grow Faster':title.length<=70,file);
+    assert.equal(decode(html.match(/<meta name="seo-title" content="([^"]+)"/)[1]),title,file);assert.equal(decode(html.match(/<meta property="og:title" content="([^"]+)"/)[1]),file==='orion.html'?title.replace(' | Grow Faster',''):title,file);
     assert.ok(I[title]?.[1],`${file}: French title`);
     const canonical='https://grow-faster.be/'+(file==='index.html'?'':file);
-    assert.match(html,new RegExp(`<link rel="canonical" href="${canonical.replaceAll('.','\\.')}">`),file);assert.match(html,new RegExp(`<meta property="og:url" content="${canonical.replaceAll('.','\\.')}">`),file);
-    const description=html.match(/<meta name="description" content="([^"]+)">/)[1];assert.ok(description.length>=60&&description.length<=170,`${file}: description length ${description.length}`);
-    assert.match(html,/<meta property="og:description" content="[^"]+">/);assert.match(html,/<meta property="og:image" content="https:\/\/grow-faster\.be\/img\/og-image\.jpg">/);
-    assert.match(html,/<html lang="nl">/);assert.match(html,/<meta property="og:locale" content="nl_BE">\s*<meta property="og:locale:alternate" content="fr_BE">/);
+    assert.match(html,new RegExp(`<link rel="canonical" href="${canonical.replaceAll('.','\\.')}"[^>]*>`),file);assert.match(html,new RegExp(`<meta property="og:url" content="${canonical.replaceAll('.','\\.')}"[^>]*>`),file);
+    const description=html.match(/<meta name="description" content="([^"]+)"[^>]*>/)[1];assert.ok(description.length>=60&&(file==='orion.html'?description==='Orion helpt voedingsbedrijven om klantvragenlijsten in te vullen. Het zoekt in uw documenten en toont bij elk voorstel de bron. Uw team controleert de antwoorden.':description.length<=170),`${file}: description length ${description.length}`);
+    assert.match(html,/<meta property="og:description" content="[^"]+"[^>]*>/);assert.ok(html.includes('property="og:image" content="https://grow-faster.be/img/'+(file==='orion.html'?'og-orion-nl.jpg':'og-image.jpg')+'"'));
+    assert.match(html,/<html lang="nl">/);assert.match(html,/<meta property="og:locale" content="nl_BE"[^>]*>\s*<meta property="og:locale:alternate" content="fr_BE"[^>]*>/);
     assert.match(html,/data-lang="nl"[\s\S]*data-lang="fr"/);assert.doesNotMatch(html,/data-lang="en"/);
     assert.match(html,/<script defer src="assets\/i18n\.js\?v=20261123-release2"><\/script>[\s\S]*<script defer src="assets\/site\.js/);
     assert.ok(JSON.parse(html.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/)[1])['@graph'].some(x=>x['@type']==='WebSite'),file);
@@ -72,7 +71,7 @@ test('the single call to action is the pilot mailto everywhere, without forms or
     assert.doesNotMatch(html,/<form\b|hsforms|hbspt\./i,file);
     assert.doesNotMatch(html,/href="mailto:/,file);const ctas=[...main.matchAll(/href="(afspraak\.html[^"]*)"/g)].map(m=>decode(m[1]));assert.ok(ctas.length>=(file==='index.html'?1:2),file);// Sponsor 25 Nov 2026: index.html lost #final; only the hero pilot CTA remains in main.
     for(const m of ctas)assert.equal(m,PILOT,file);
-    assert.match(main,new RegExp(`<a href="${PILOT.replace(/[.?]/g,'\\$&')}" class="btn primary"[^>]*>Plan een pilotgesprek <span aria-hidden="true">→</span></a>`),file);
+    assert.match(main,new RegExp(`<a href="${PILOT.replace(/[.?]/g,'\\$&')}" class="btn primary"[^>]*>${file==='orion.html'?'Plan een demo op uw eigen vragenlijst':'Plan een pilotgesprek'} <span aria-hidden="true">→</span></a>`),file);
     assert.doesNotMatch(main,/about\.html#work-with-me|Work with me/,file);
   }
   for(const [file,own] of Object.entries(OWN)){const html=read(file),main=html.match(/<main[\s\S]*?<\/main>/)[0];
@@ -81,13 +80,13 @@ test('the single call to action is the pilot mailto everywhere, without forms or
     for(const m of [...main.matchAll(/href="(afspraak\.html[^"]*)"/g)].map(m=>decode(m[1])))assert.equal(m,own,file);
     assert.match(main,new RegExp(`<a href="${own.replace(/[.?]/g,'\\$&')}" class="btn primary"[^>]*>Plan een gesprek <span aria-hidden="true">→</span></a>`),file);
   }
-  const orion=read('orion.html');assert.match(orion,/href="#werking" class="btn ghost"[^>]*>Bekijk hoe het werkt/);
+  const orion=read('orion.html');assert.match(orion,/href="#voorbeeld" id="hero-how">Bekijk een voorbeeld/);
   assert.match(read('index.html'),/href="orion\.html" class="btn ghost"[^>]*>Zo werkt Orion/);
 });
-test('Orion lists four steps and five FAQ disclosures; released pages make no unverified security claims',()=>{const {I18N:I,I18N_HTML:H}=i18nAll();
+test('Orion lists four steps and six FAQ disclosures; released pages make no unverified security claims',()=>{const {I18N:I,I18N_HTML:H}=i18nAll();
   const orion=read('orion.html');const steps=orion.match(/<section id="werking"[\s\S]*?<\/section>/)[0];
   assert.deepEqual([...steps.matchAll(/<span class="step-n" data-notr>(\d+)<\/span>/g)].map(m=>m[1]),['01','02','03','04']);
-  assert.equal((orion.match(/<details><summary>/g)||[]).length,5);
+  assert.equal((orion.match(/<details><summary>/g)||[]).length,6);
   // Release scope (business owner, 22 Nov 2026): Veiligheid is not published and no EU-storage/no-training claim ships.
   assert.equal(fs.existsSync(path.join(root,'veiligheid.html')),false);assert.doesNotMatch(read('sitemap.xml'),/veiligheid/);
   for(const file of fs.readdirSync(root).filter(f=>f.endsWith('.html')))assert.doesNotMatch(read(file),/href="veiligheid\.html"/,file);
@@ -134,7 +133,7 @@ test('Oplossingen overview repeats its submenu, keeps the three offer cards and 
 // v3: every customer page and Coherence has its own decorative 2:1 hero photo in the 640/1280/1774 WebP pattern,
 // preloaded with the same srcset, and a page-specific object-position that keeps the subject in view on mobile.
 test('each hero uses its own preloaded 2:1 photo, stays decorative and keeps the subject in view',()=>{
-  const heroes={'index.html':['hero-toepassingen','50%'],'oplossingen.html':['hero-oplossingen-workflow','58%'],'orion.html':['hero-orion-specificaties','82%'],'automatisering.html':['hero-automatisering-kantoor','78%'],'coherence.html':['hero-coherentie-samenwerking','74%']};
+  const heroes={'index.html':['hero-toepassingen','50%'],'oplossingen.html':['hero-oplossingen-workflow','58%'],'automatisering.html':['hero-automatisering-kantoor','78%'],'coherence.html':['hero-coherentie-samenwerking','74%']};
   for(const [file,[name,pos]] of Object.entries(heroes)){const html=read(file);
     const sizes=file==='coherence.html'?'(min-width: 900px) 1280px, 100vw':'100vw';
     const set=[640,1280,1774].map(w=>`img/${name}-${w}.webp ${w}w`).join(', ');

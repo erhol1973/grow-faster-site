@@ -8,7 +8,7 @@ test('Orion film switches between the Dutch and French editions with the languag
   await expect(v.locator('source')).toHaveAttribute('src','media/orion-werking-nl.mp4');
   await page.locator('#lang-btn-top').click();await page.locator('.lang-top [data-lang="fr"]').click();
   await expect(v.locator('source')).toHaveAttribute('src','media/orion-werking-fr.mp4');await expect(v).toHaveAttribute('poster','img/orion-werking-fr.webp');
-  await expect(page.locator('#orion-film-text summary')).toHaveText('Texte à l’écran');
+  await expect(page.locator('#orion-film-text summary')).toHaveText('Lire le texte de la vidéo');
   await expect(page.locator('#orion-film-text strong').first()).toHaveText('Deux flux alimentent Orion.');
   await page.locator('#lang-btn-top').click();await page.locator('.lang-top [data-lang="nl"]').click();
   await expect(v.locator('source')).toHaveAttribute('src','media/orion-werking-nl.mp4');

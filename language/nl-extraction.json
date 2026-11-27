@@ -36,7 +36,7 @@
     },
     {
       "file": "assets/cms-catalog.js",
-      "sha256": "123c9e20b5a240c3c3d976500d2ae5e7ef60ac08333467c1ad19e4f0e497987a"
+      "sha256": "df0c1115e1769b101e354c4f05e0133e6f8f3b1c7820ca9e1e963c26dd3ad793"
     },
     {
       "file": "assets/cms-client.js",
@@ -112,7 +112,7 @@
     },
     {
       "file": "assets/i18n-orion.js",
-      "sha256": "357e655136e97914be881fddd23389b6450ea97e0500a18bae1fc674ae47ef38"
+      "sha256": "82a4139ea67d275b9e9be049e29ebc73ac81bda16a4d88d5b140b2bb58a44565"
     },
     {
       "file": "assets/i18n-sector-photos.js",
@@ -139,6 +139,10 @@
       "sha256": "f559c785bba371d7129be18a6a5f35a4eb5e3b6eeeaf87a07be0e3c687576ace"
     },
     {
+      "file": "assets/orion-locale.js",
+      "sha256": "6884dc104dab1788a49c98a7c71097fe5d27e796f64c24b6cfabddfce61589f0"
+    },
+    {
       "file": "assets/page-flip-2.0.7.js",
       "sha256": "bbaca0bbef57a22bb66a3fc69d67baf9a17fb9a9c89ec9ed35e2b91abe4bd1e7"
     },
@@ -148,11 +152,11 @@
     },
     {
       "file": "assets/site.js",
-      "sha256": "a085b4bd99cd9beeea778bbae8c932cc2bf901ae4b981aa9545a4132f072a262"
+      "sha256": "67eb654c78ae2689fca01008d7dc6d5220ac71082da3bb07857e708ca1150f07"
     },
     {
       "file": "assets/ux.js",
-      "sha256": "3bf69258dac10d29b6f3e7bd7f0665cb58635735c9b9a5dcf707fe96880a733c"
+      "sha256": "80d0e7e6aef9afc2a8230a93e1fac3896ac667a2af7c08da5ddb093b47259245"
     },
     {
       "file": "assets/workshop.js",
@@ -257,6 +261,10 @@
       "sha256": "75a11da44c802486bc6f65640aa48a730f0f684c5c07a42ba3cd1735eb3fb070"
     },
     {
+      "file": "fr/orion/index.html",
+      "sha256": "294cf8bf71881a4c7d22fce8a6a87bfde20c1bfb3b56d1c8e563a68e2558a8b8"
+    },
+    {
       "file": "index.html",
       "sha256": "520d589042e777ba0f49ac51c72c633461aa39ec8205dee896ec5fad13ac7316"
     },
@@ -286,7 +294,7 @@
     },
     {
       "file": "orion.html",
-      "sha256": "cfe7ea3df503f19dd286bf67c403c5c21e3570d55c75e50eb25a7db03a892453"
+      "sha256": "26ad737f4f90679b490448291d393ba3ebcac3a48046ff88429ce22edadd81f1"
     },
     {
       "file": "privacy.html",

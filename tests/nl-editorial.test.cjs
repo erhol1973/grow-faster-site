@@ -55,6 +55,10 @@ test('Main navigation has a Dutch accessible name on every built Dutch page; Eng
   let dutch=0;
   for(const file of pages){
     const html=fs.readFileSync(file,'utf8');const nav=html.match(/<nav class="nav nav-executive" aria-label="([^"]*)"/);if(!nav)continue;
+    if(/<html\b[^>]*\blang="fr"/.test(html)){
+      assert.equal(nav[1],'Navigation principale',path.relative(root,file));
+      continue;
+    }
     if(nav[1]==='Sections'){assert.match(html,/assets\/ux\.js/,path.relative(root,file)+' keeps an untranslated English navigation label');continue;}
     assert.equal(nav[1],'Hoofdnavigatie',path.relative(root,file));dutch++;
   }

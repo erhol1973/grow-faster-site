@@ -29,7 +29,7 @@ test('Coherence figures name their sources; supplier surveys are not used',()=>{
   assert.doesNotMatch(read('coherence.html').match(/<header[\s\S]*?<\/header>/)[0],/\d+ ?%/,'no figure in the hero');
 });
 test('Orion names the manual transcription error rate with peer-reviewed sources',()=>{const html=read('orion.html'),I=I18N();const p='Onderzoek in de zorg, waar overgetypte gegevens nauwkeurig worden nagekeken, vindt 2 tot 4 fouten per 100 overgetypte velden. In vrije tekstvelden zijn dat er meer.';
-  const sec=html.match(/<section id="probleem"[\s\S]*?<\/section>/)[0];assert.ok(text(sec).includes(p));assert.ok(I[p]?.[1]);
+  const sec=html.match(/<details class="or-research"[\s\S]*?<\/details>/)[0];assert.ok(text(sec).includes(p));assert.ok(I[p]?.[1]);
   assert.match(sec,/href="https:\/\/doi\.org\/10\.1136\/bmjopen-2012-002406"/);assert.match(sec,/href="https:\/\/doi\.org\/10\.1093\/jamia\/ocy170"/);
 });
 test('Coherence metadata speaks to SMEs',()=>{const html=read('coherence.html');const t='Bedrijfsontwikkeling: groeien begint bij samenhang | Grow Faster';

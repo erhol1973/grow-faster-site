@@ -20,6 +20,9 @@ test('the video variant follows the viewport and the pause button is labelled an
   expect(await v.evaluate(e=>e.muted&&e.loop&&e.playsInline)).toBe(true);
   await expect(btn).toBeVisible();
   await expect(btn).toHaveAttribute('aria-pressed','false');
+  const photo=await page.locator('#hero .hero-bg').boundingBox();
+  const control=await btn.boundingBox();
+  expect(control.y>=photo.y+photo.height-1||control.x+control.width<=photo.x+1,'video control stays outside the photograph').toBe(true);
   const before=await btn.getAttribute('aria-pressed');
   await btn.click();await expect(btn).not.toHaveAttribute('aria-pressed',before);
   const pressed=await btn.getAttribute('aria-pressed');

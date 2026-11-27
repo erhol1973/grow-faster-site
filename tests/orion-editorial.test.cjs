@@ -10,7 +10,8 @@ test('the food pilot has twelve ordered sections, six illustrations and an inspe
   const positions=ids.map(id=>m.indexOf('id="'+id+'"'));
   assert.ok(positions.every((pos,i)=>pos>=0&&(!i||pos>positions[i-1])));
   assert.match(section('voorbeeld'),/<summary>Bekijk de bron/);
-  assert.match(section('voorbeeld'),/Geen bron gevonden/);
+  assert.match(section('voorbeeld'),/Handmatig invullen/);
+  assert.match(section('regels'),/vóór de definitieve export[\s\S]*uitdrukkelijk bevestigen/);
   assert.equal((section('werking').match(/class="step-n"/g)||[]).length,4);
   assert.equal((m.match(/<img /g)||[]).length,6);
   assert.match(section('vragen'),/Nog niet. Orion start bij voedingsbedrijven/);
@@ -26,7 +27,7 @@ test('French sharing and indexing work before scripts run',()=>{
   assert.match(fr,/property="og:image" content="https:\/\/grow-faster\.be\/img\/og-orion-fr\.jpg"/);
   assert.match(fr,/property="og:locale" content="fr_BE"/);
   assert.match(fr,/<link rel="canonical" href="https:\/\/grow-faster\.be\/fr\/orion\/"/);
-  assert.match(fr,/Les réponses en français sont en développement/);
+  assert.match(fr,/Aujourd’hui, Orion rédige ses réponses en néerlandais/);
 });
 
 test('no extra colours: the page style block uses only existing colour tokens',()=>{

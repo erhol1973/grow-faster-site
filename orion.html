@@ -132,7 +132,7 @@ html:not([lang="fr"]) .or-language {display:none}
 .orion-apple main .btn {white-space:normal}
 @media(max-width:760px){.or-status,.or-rules>div,.or-maker {grid-template-columns:minmax(0,1fr)}.or-rules>div{gap:.4rem}.or-maker img{max-width:250px}}
 </style>
-<script defer src="assets/i18n.js?v=20261123-release2"></script><script defer src="assets/i18n-orion.js?v=20261127-orion-food"></script>
+<script defer src="assets/i18n.js?v=20261123-release2"></script><script defer src="assets/i18n-orion.js?v=20261127-orion-redactie"></script>
 <script defer src="assets/content.js?v=20261030-editorial-three"></script>
 <script defer src="assets/models.js?v=20261029-quality"></script>
 <script defer src="assets/consent.js?v=20261029-quality"></script>
@@ -174,7 +174,7 @@ html:not([lang="fr"]) .or-language {display:none}
 <h1 data-cms="orion-food-heading">De vragenlijst van uw klant, ingevuld vanuit uw eigen documenten.</h1>
 <p class="or-promise">Geen bron, geen antwoord.</p>
 <p class="sub" data-cms="orion-food-intro">Een retailer vraagt hoe u allergenen beheert. Een afnemer wil uw certificaten en uw traceerprocedure. Orion zoekt de antwoorden in de documenten die u zelf hebt goedgekeurd en zet bij elk antwoord de bron. U leest na, u keurt goed, u verstuurt.</p>
-<p class="or-language" lang="fr" data-notr>Aujourd’hui, Orion rédige ses réponses en néerlandais et l’accompagnement se fait en néerlandais. Les réponses en français sont en développement.</p>
+<p class="or-language" lang="fr" data-notr>Aujourd’hui, Orion rédige ses réponses en néerlandais et l’accompagnement se fait en néerlandais.</p>
 <div class="ctas"><a href="afspraak.html?onderwerp=vragenlijsten" class="btn primary" id="hero-pilot">Plan een demo op uw eigen vragenlijst <span aria-hidden="true">→</span></a><a href="#voorbeeld" id="hero-how">Bekijk een voorbeeld <span aria-hidden="true">↓</span></a></div></div>
 <div>
 <figure><a class="or-screen" href="img/orion-demo-vragenlijsten.png"><img src="img/orion-demo-vragenlijsten-detail.webp" width="1280" height="540" alt="Orion-scherm met het overzicht van klantvragenlijsten van een fictieve bakkerij" fetchpriority="high" decoding="async"><span>Vergroot het vragenlijstoverzicht</span></a></figure>
@@ -198,11 +198,12 @@ html:not([lang="fr"]) .or-language {display:none}
 <div>
 <h3>Voorstel van Orion</h3>
 <p>Bij ontvangst registreren we de ontvangstdatum en het lotnummer.</p>
-<details class="or-source"><summary>Bekijk de bron</summary><strong>Werkinstructie ontvangst · versie 2.1 · § 3.</strong><blockquote>"Noteer bij elke levering de ontvangstdatum en het lotnummer op het ontvangstformulier."</blockquote></details>
+<details class="or-source"><summary>Bekijk de bron</summary>
+<strong>Werkinstructie ontvangst · versie 2.1 · § 3.</strong><blockquote>"Noteer bij elke levering de ontvangstdatum en het lotnummer op het ontvangstformulier."</blockquote></details>
 <p>Uw medewerker controleert de bron, past het antwoord aan waar nodig en beslist of het naar de klant gaat.</p></div></div>
 <aside class="or-note">
 <h3>En als er geen geldige bron is?</h3>
-<p>Dan schrijft Orion geen antwoord. De vraag krijgt de melding "Geen bron gevonden" en blijft open voor uw team. Zo belandt er geen gok in het bestand van uw klant.</p></aside></div></section>
+<p>Dan blijft het antwoord leeg. Orion toont de status ‘Handmatig invullen’. Uw medewerker krijgt de aanwijzing ‘Orion vond geen bron. Vul het antwoord zelf in.’ en kan de vraag zelf beantwoorden.</p></aside></div></section>
 
 <section id="werking" tabindex="-1" aria-labelledby="werking-h">
 <div class="wrap">
@@ -237,11 +238,11 @@ html:not([lang="fr"]) .or-language {display:none}
 <section id="regels" tabindex="-1" aria-labelledby="regels-h">
 <div class="wrap">
 <h2 id="regels-h" data-cms="orion-food-regels-6">Vijf regels waar Orion zich aan houdt</h2>
-<p data-cms="orion-food-regels-7">Deze regels zitten in de kern van Orion. Ze staan niet in een instelling die iemand kan uitzetten.</p>
+<p data-cms="orion-food-regels-7">Orion controleert de bronnen en legt beslissingen vast in het logboek. Uw bedrijf bepaalt welke medewerkers antwoorden mogen goedkeuren.</p>
 <dl class="or-rules">
 <div><dt>Geen bron, geen antwoord.</dt><dd data-cms="orion-food-regels-8">Vindt Orion geen bron, dan schrijft het niets. Ook geen voorstel.</dd></div>
-<div><dt>Een verlopen bron telt niet.</dt><dd data-cms="orion-food-regels-9">Is een certificaat of specificatie over datum of gewijzigd, dan blokkeert Orion het antwoord tot uw kwaliteitsverantwoordelijke de bron opnieuw valideert.</dd></div>
-<div><dt>Allergenen altijd langs uw team.</dt><dd data-cms="orion-food-regels-10">Vragen over allergenen worden apart gemarkeerd. Uw kwaliteitsverantwoordelijke kijkt ze altijd zelf na.</dd></div>
+<div><dt>Een verlopen of gewijzigde bron vraagt een beslissing.</dt><dd data-cms="orion-food-regels-9">Bij elke vraag controleert Orion vóór de definitieve export of de gebruikte bron nog geldig is. Is die verlopen of gewijzigd, dan stopt de export. Uw team kan de bron opnieuw valideren. Een bevoegde medewerker kan ook de waarschuwing uitdrukkelijk bevestigen bij de goedkeuring van het antwoord. Orion legt die beslissing vast.</dd></div>
+<div><dt>Allergenen altijd langs uw team.</dt><dd data-cms="orion-food-regels-10">Orion markeert vragen over allergenen voor controle door de bevoegde medewerker. In de demobakkerij is dat de kwaliteitsverantwoordelijke.</dd></div>
 <div><dt>Aansprakelijkheid is mensenwerk.</dt><dd data-cms="orion-food-regels-11">Vragen over aansprakelijkheid, vrijwaring of auditkosten gaan altijd naar een mens. Orion doet daar geen voorstel.</dd></div>
 <div><dt>Alles in het logboek.</dt><dd data-cms="orion-food-regels-12">U ziet later terug welk antwoord uit welk document kwam, wie het heeft goedgekeurd en wanneer.</dd></div></dl>
 <div class="or-split">
@@ -258,8 +259,8 @@ html:not([lang="fr"]) .or-language {display:none}
 <tr><td></td><th scope="col">Zelf in Excel</th><th scope="col">Een consultant</th><th scope="col">Een algemene AI-assistent</th><th scope="col">Orion</th></tr></thead><tbody>
 <tr><th scope="row">Waar komt het antwoord vandaan?</th><td>Uit uw hoofd en uw mappen</td><td>Uit uw documenten en de kennis van de consultant</td><td>Uit wat u op dat moment oplaadt, en uit algemene kennis</td><td>Alleen uit documenten in uw bronnenregister</td></tr>
 <tr><th scope="row">Wat als er geen bron is?</th><td>U zoekt verder of belt een collega</td><td>De consultant vraagt het u</td><td>De assistent kan toch een antwoord schrijven</td><td>Geen antwoord. De vraag blijft open voor uw team</td></tr>
-<tr><th scope="row">Wie houdt bij welke versie geldig is?</th><td>U</td><td>U of de consultant</td><td>Niemand, tenzij u dat zelf organiseert</td><td>Het bronnenregister, met vervaldatum</td></tr>
-<tr><th scope="row">Wie keurt goed?</th><td>U</td><td>U</td><td>U, zonder vast spoor</td><td>U, met een logboek</td></tr>
+<tr><th scope="row">Wie houdt bij welke versie geldig is?</th><td>U</td><td>U of de consultant</td><td>U bepaalt hoe u de documentversies opvolgt</td><td>Het bronnenregister, met vervaldatum</td></tr>
+<tr><th scope="row">Wie keurt goed?</th><td>U</td><td>U</td><td>U, met de opvolging die u organiseert</td><td>U, met een logboek</td></tr>
 <tr><th scope="row">Goed als</th><td>U weinig vragenlijsten krijgt</td><td>U niemand voor kwaliteit in huis hebt</td><td>U een tekst wilt herschrijven of samenvatten</td><td>U vaak dezelfde vragen krijgt en elk antwoord moet kunnen aantonen</td></tr></tbody></table></div></div></section>
 
 <section id="vandaag" tabindex="-1" aria-labelledby="vandaag-h">
@@ -282,7 +283,7 @@ html:not([lang="fr"]) .or-language {display:none}
 <ul>
 <li>Bronnen rechtstreeks lezen uit pdf, Word en Excel. Vandaag zetten we uw documenten samen met u klaar als tekst.</li>
 <li>Vragenlijsten in Word</li>
-<li>Antwoorden in het Frans en het Engels</li></ul></div>
+</ul></div>
 <div>
 <h3 data-cms="orion-food-vandaag-17">Doet Orion niet</h3>
 <ul>
@@ -293,7 +294,7 @@ html:not([lang="fr"]) .or-language {display:none}
 <div class="wrap or-split">
 <div>
 <h2 id="gegevens-h" data-cms="orion-food-gegevens-18">Uw receptuur blijft van u</h2>
-<p data-cms="orion-food-gegevens-19">Voor de pilot start, bespreken we met uw IT-verantwoordelijke waar Orion draait en welke gegevens waarheen gaan. U krijgt vooraf de verwerkersovereenkomst en de lijst van alle partijen die gegevens verwerken. Pas daarna beslist u.</p></div>
+<p data-cms="orion-food-gegevens-19">Voordat u over een pilot beslist, bespreken we met uw IT-verantwoordelijke waar Orion draait, welke gegevens worden verwerkt en door welke partijen. We leggen de afspraken voor uw pilot vast in de verwerkersovereenkomst en de bijbehorende lijst van verwerkers.</p></div>
 <div>
 <figure><a class="or-screen" href="img/orion-demo-instellingen.png"><img src="img/orion-demo-instellingen-detail.webp" width="1280" height="726" alt="Instellingenscherm van Orion met kennisbank en rollen" loading="lazy" decoding="async"><span>Vergroot de instellingen</span></a></figure>
 <p class="or-caption">Deze schermen tonen een fictieve bakkerij in de Orion-demo.</p></div></div></section>
@@ -303,15 +304,15 @@ html:not([lang="fr"]) .or-language {display:none}
 <h2 id="pilot-h" data-cms="orion-food-pilot-20">Test Orion op uw eigen vragenlijsten</h2>
 <p data-cms="orion-food-pilot-21">We zoeken voedingsbedrijven in West-Vlaanderen met 20 tot 249 medewerkers voor de eerste pilots in 2027. We starten met een paar vragenlijsten die u echt gekregen hebt en spreken vooraf één meetbaar doel af. Ziet u geen verschil, dan stoppen we.</p>
 <dl class="or-pilot">
-<div><dt>Wat u meebrengt</dt><dd data-cms="orion-food-pilot-22">een recente vragenlijst en de documenten waarin uw team de antwoorden zoekt.</dd></div>
-<div><dt>Wat uw team doet</dt><dd data-cms="orion-food-pilot-23">de voorstellen bekijken, de bronnen openen en corrigeren waar nodig.</dd></div>
-<div><dt>Wat we samen meten</dt><dd data-cms="orion-food-pilot-24">hoeveel tijd het zoeken en nakijken kost, vandaag en met Orion, en hoeveel antwoorden uw team nog moet verbeteren.</dd></div></dl><a href="afspraak.html?onderwerp=vragenlijsten" class="btn primary" id="pilot-demo">Plan een demo op uw eigen vragenlijst <span aria-hidden="true">→</span></a></div></section>
+<div><dt>Wat u meebrengt</dt><dd data-cms="orion-food-pilot-22">Een recente vragenlijst en de documenten waarin uw team de antwoorden zoekt.</dd></div>
+<div><dt>Wat uw team doet</dt><dd data-cms="orion-food-pilot-23">De voorstellen bekijken, de bronnen openen en corrigeren waar nodig.</dd></div>
+<div><dt>Wat we samen meten</dt><dd data-cms="orion-food-pilot-24">Hoeveel tijd het zoeken en nakijken kost, vandaag en met Orion, en hoeveel antwoorden uw team nog moet verbeteren.</dd></div></dl><a href="afspraak.html?onderwerp=vragenlijsten" class="btn primary" id="pilot-demo">Plan een demo op uw eigen vragenlijst <span aria-hidden="true">→</span></a></div></section>
 
 <section id="maker" aria-labelledby="maker-h">
 <div class="wrap or-maker"><img src="img/author-400.webp" srcset="img/author-400.webp 400w, img/author-720.webp 720w" sizes="(max-width:520px) 66vw, 280px" width="400" height="500" loading="lazy" alt="Erlend Hollebosch, maker van Orion">
 <div>
 <h2 id="maker-h" data-cms="orion-food-maker-25">U spreekt met de maker</h2>
-<p data-cms="orion-food-maker-26">Orion is gemaakt door Grow Faster, de onderneming van Erlend Hollebosch. De demo, de opstart en de opvolging gebeuren in het Nederlands, bij u in het bedrijf.</p></div></div></section>
+<p data-cms="orion-food-maker-26">Orion is gemaakt door Grow Faster, de onderneming van Erlend Hollebosch. Orion stelt vandaag antwoorden op in het Nederlands. Ook de demo, de opstart en de opvolging bij u in het bedrijf gebeuren in het Nederlands.</p></div></div></section>
 
 <section id="vragen" aria-labelledby="vragen-h">
 <div class="wrap">
@@ -320,7 +321,7 @@ html:not([lang="fr"]) .or-language {display:none}
 <details><summary>Kan Orion zich vergissen?</summary>
 <p data-cms="orion-food-vragen-28">Ja. Orion is een hulpmiddel. De kwaliteit hangt af van uw brondocumenten, en uw team keurt elk antwoord goed voordat het vertrekt. Daarom toont Orion bij elk antwoord de bron.</p></details>
 <details><summary>Waarom niet gewoon een algemene AI-assistent?</summary>
-<p data-cms="orion-food-vragen-29">Om een tekst te herschrijven is die prima. Een algemene assistent werkt met wat u hem op dat moment geeft en houdt zelf niet bij welke documenten goedgekeurd en nog geldig zijn. Orion is rond dat register gebouwd.</p></details>
+<p data-cms="orion-food-vragen-29">Een algemene AI-assistent kan teksten herschrijven en samenvatten. Hoe u bronnen, versies en goedkeuringen opvolgt, hangt af van uw hulpmiddel en de inrichting ervan. In Orion werkt uw kwaliteitsteam met een bronnenregister en ziet het wie elk antwoord heeft goedgekeurd.</p></details>
 <details><summary>Moet ik al mijn gegevens eerst in een nieuw systeem zetten?</summary>
 <p data-cms="orion-food-vragen-30">Nee. U begint met de documenten die u vandaag al gebruikt.</p></details>
 <details><summary>Werkt Orion ook buiten de voedingsindustrie?</summary>

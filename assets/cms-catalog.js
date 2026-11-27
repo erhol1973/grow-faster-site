@@ -674,9 +674,9 @@ window.GF_CMS_CATALOG=[
       {
         "key": "orion-food-regels-7",
         "type": "text",
-        "label": "Deze regels zitten in de kern van Orion. Ze staan niet in een instelling die iem",
-        "nl": "Deze regels zitten in de kern van Orion. Ze staan niet in een instelling die iemand kan uitzetten.",
-        "fr": "Ces règles sont au cœur d’Orion. Elles ne figurent pas dans un paramètre que quelqu’un peut désactiver."
+        "label": "Orion controleert de bronnen en legt beslissingen vast in het logboek. Uw bedrij",
+        "nl": "Orion controleert de bronnen en legt beslissingen vast in het logboek. Uw bedrijf bepaalt welke medewerkers antwoorden mogen goedkeuren.",
+        "fr": "Orion contrôle les sources et consigne les décisions dans le journal. Votre entreprise détermine quels collaborateurs peuvent valider les réponses."
       },
       {
         "key": "orion-food-regels-8",
@@ -688,16 +688,16 @@ window.GF_CMS_CATALOG=[
       {
         "key": "orion-food-regels-9",
         "type": "text",
-        "label": "Is een certificaat of specificatie over datum of gewijzigd, dan blokkeert Orion ",
-        "nl": "Is een certificaat of specificatie over datum of gewijzigd, dan blokkeert Orion het antwoord tot uw kwaliteitsverantwoordelijke de bron opnieuw valideert.",
-        "fr": "Si un certificat ou une spécification est périmé ou modifié, Orion bloque la réponse jusqu’à ce que votre responsable qualité valide à nouveau la source."
+        "label": "Bij elke vraag controleert Orion vóór de definitieve export of de gebruikte bron",
+        "nl": "Bij elke vraag controleert Orion vóór de definitieve export of de gebruikte bron nog geldig is. Is die verlopen of gewijzigd, dan stopt de export. Uw team kan de bron opnieuw valideren. Een bevoegde medewerker kan ook de waarschuwing uitdrukkelijk bevestigen bij de goedkeuring van het antwoord. Orion legt die beslissing vast.",
+        "fr": "Avant l’export définitif, Orion vérifie pour chaque question si la source utilisée est encore valable. Si elle a expiré ou a été modifiée, l’export est bloqué. Votre équipe peut valider à nouveau la source. Une personne habilitée peut aussi confirmer explicitement l’avertissement en validant la réponse. Orion consigne cette décision."
       },
       {
         "key": "orion-food-regels-10",
         "type": "text",
-        "label": "Vragen over allergenen worden apart gemarkeerd. Uw kwaliteitsverantwoordelijke k",
-        "nl": "Vragen over allergenen worden apart gemarkeerd. Uw kwaliteitsverantwoordelijke kijkt ze altijd zelf na.",
-        "fr": "Les questions sur les allergènes sont signalées à part. Votre responsable qualité les vérifie toujours lui-même."
+        "label": "Orion markeert vragen over allergenen voor controle door de bevoegde medewerker.",
+        "nl": "Orion markeert vragen over allergenen voor controle door de bevoegde medewerker. In de demobakkerij is dat de kwaliteitsverantwoordelijke.",
+        "fr": "Orion signale les questions sur les allergènes à la personne habilitée à les vérifier. Dans la boulangerie de démonstration, il s’agit de la responsable qualité."
       },
       {
         "key": "orion-food-regels-11",
@@ -758,9 +758,9 @@ window.GF_CMS_CATALOG=[
       {
         "key": "orion-food-gegevens-19",
         "type": "text",
-        "label": "Voor de pilot start, bespreken we met uw IT-verantwoordelijke waar Orion draait ",
-        "nl": "Voor de pilot start, bespreken we met uw IT-verantwoordelijke waar Orion draait en welke gegevens waarheen gaan. U krijgt vooraf de verwerkersovereenkomst en de lijst van alle partijen die gegevens verwerken. Pas daarna beslist u.",
-        "fr": "Avant le début du pilote, nous examinons avec votre responsable informatique où fonctionne Orion et quelles données vont où. Vous recevez au préalable le contrat de sous-traitance et la liste de toutes les parties qui traitent des données. Vous décidez ensuite."
+        "label": "Voordat u over een pilot beslist, bespreken we met uw IT-verantwoordelijke waar ",
+        "nl": "Voordat u over een pilot beslist, bespreken we met uw IT-verantwoordelijke waar Orion draait, welke gegevens worden verwerkt en door welke partijen. We leggen de afspraken voor uw pilot vast in de verwerkersovereenkomst en de bijbehorende lijst van verwerkers.",
+        "fr": "Avant que vous décidiez de lancer un pilote, nous examinons avec votre responsable informatique où Orion fonctionne, quelles données sont traitées et par qui. Nous consignons les modalités de votre pilote dans le contrat de sous-traitance et dans la liste des prestataires concernés."
       },
       {
         "key": "orion-food-pilot-20",
@@ -779,23 +779,23 @@ window.GF_CMS_CATALOG=[
       {
         "key": "orion-food-pilot-22",
         "type": "text",
-        "label": "een recente vragenlijst en de documenten waarin uw team de antwoorden zoekt.",
-        "nl": "een recente vragenlijst en de documenten waarin uw team de antwoorden zoekt.",
-        "fr": "un questionnaire récent et les documents que votre équipe consulte pour y répondre."
+        "label": "Een recente vragenlijst en de documenten waarin uw team de antwoorden zoekt.",
+        "nl": "Een recente vragenlijst en de documenten waarin uw team de antwoorden zoekt.",
+        "fr": "Un questionnaire récent et les documents que votre équipe consulte pour y répondre."
       },
       {
         "key": "orion-food-pilot-23",
         "type": "text",
-        "label": "de voorstellen bekijken, de bronnen openen en corrigeren waar nodig.",
-        "nl": "de voorstellen bekijken, de bronnen openen en corrigeren waar nodig.",
-        "fr": "examiner les propositions, consulter les sources et corriger si nécessaire."
+        "label": "De voorstellen bekijken, de bronnen openen en corrigeren waar nodig.",
+        "nl": "De voorstellen bekijken, de bronnen openen en corrigeren waar nodig.",
+        "fr": "Examiner les propositions, consulter les sources et corriger si nécessaire."
       },
       {
         "key": "orion-food-pilot-24",
         "type": "text",
-        "label": "hoeveel tijd het zoeken en nakijken kost, vandaag en met Orion, en hoeveel antwo",
-        "nl": "hoeveel tijd het zoeken en nakijken kost, vandaag en met Orion, en hoeveel antwoorden uw team nog moet verbeteren.",
-        "fr": "le temps que prennent la recherche et la vérification, aujourd’hui et avec Orion, et le nombre de réponses que votre équipe doit encore corriger."
+        "label": "Hoeveel tijd het zoeken en nakijken kost, vandaag en met Orion, en hoeveel antwo",
+        "nl": "Hoeveel tijd het zoeken en nakijken kost, vandaag en met Orion, en hoeveel antwoorden uw team nog moet verbeteren.",
+        "fr": "Le temps que prennent la recherche et la vérification, aujourd’hui et avec Orion, et le nombre de réponses que votre équipe doit encore corriger."
       },
       {
         "key": "orion-food-maker-25",
@@ -807,9 +807,9 @@ window.GF_CMS_CATALOG=[
       {
         "key": "orion-food-maker-26",
         "type": "text",
-        "label": "Orion is gemaakt door Grow Faster, de onderneming van Erlend Hollebosch. De demo",
-        "nl": "Orion is gemaakt door Grow Faster, de onderneming van Erlend Hollebosch. De demo, de opstart en de opvolging gebeuren in het Nederlands, bij u in het bedrijf.",
-        "fr": "Orion est conçu par Grow Faster, l’entreprise d’Erlend Hollebosch. La démonstration, la mise en route et le suivi se font en néerlandais, dans votre entreprise."
+        "label": "Orion is gemaakt door Grow Faster, de onderneming van Erlend Hollebosch. Orion s",
+        "nl": "Orion is gemaakt door Grow Faster, de onderneming van Erlend Hollebosch. Orion stelt vandaag antwoorden op in het Nederlands. Ook de demo, de opstart en de opvolging bij u in het bedrijf gebeuren in het Nederlands.",
+        "fr": "Orion est conçu par Grow Faster, l’entreprise d’Erlend Hollebosch. Aujourd’hui, Orion rédige ses réponses en néerlandais. La démonstration, la mise en route et le suivi dans votre entreprise se déroulent également en néerlandais."
       },
       {
         "key": "orion-food-vragen-27",
@@ -828,9 +828,9 @@ window.GF_CMS_CATALOG=[
       {
         "key": "orion-food-vragen-29",
         "type": "text",
-        "label": "Om een tekst te herschrijven is die prima. Een algemene assistent werkt met wat ",
-        "nl": "Om een tekst te herschrijven is die prima. Een algemene assistent werkt met wat u hem op dat moment geeft en houdt zelf niet bij welke documenten goedgekeurd en nog geldig zijn. Orion is rond dat register gebouwd.",
-        "fr": "Pour reformuler un texte, il convient très bien. Un assistant généraliste travaille avec ce que vous lui donnez à ce moment-là et ne tient pas lui-même la liste des documents approuvés et encore valables. Orion est construit autour de ce registre."
+        "label": "Een algemene AI-assistent kan teksten herschrijven en samenvatten. Hoe u bronnen",
+        "nl": "Een algemene AI-assistent kan teksten herschrijven en samenvatten. Hoe u bronnen, versies en goedkeuringen opvolgt, hangt af van uw hulpmiddel en de inrichting ervan. In Orion werkt uw kwaliteitsteam met een bronnenregister en ziet het wie elk antwoord heeft goedgekeurd.",
+        "fr": "Un assistant IA généraliste peut reformuler ou résumer un texte. Le suivi des sources, des versions et des validations dépend de l’outil choisi et de sa configuration. Dans Orion, votre équipe qualité dispose d’un registre des sources et peut voir qui a validé chaque réponse."
       },
       {
         "key": "orion-food-vragen-30",

@@ -619,284 +619,18 @@ window.GF_CMS_CATALOG=[
     "label": "Orion",
     "fields": [
       {
-        "key": "orion-vraag-titel",
+        "key": "orion-food-heading",
         "type": "text",
-        "label": "Orion bereidt uw klantvragenlijsten voor.",
-        "nl": "Orion bereidt uw klantvragenlijsten voor.",
-        "fr": "Orion prépare vos réponses aux questionnaires clients."
+        "label": "De vragenlijst van uw klant, ingevuld vanuit uw eigen documenten.",
+        "nl": "De vragenlijst van uw klant, ingevuld vanuit uw eigen documenten.",
+        "fr": "Le questionnaire de votre client, complété à partir de vos propres documents."
       },
       {
-        "key": "orion-demo-intro",
+        "key": "orion-food-intro",
         "type": "text",
-        "label": "Een retailer vraagt hoe u allergenen beheert. Met Orion vindt uw kwaliteitsteam het antw",
-        "nl": "Een retailer vraagt hoe u allergenen beheert. Met Orion vindt uw kwaliteitsteam het antwoord in de eigen productspecificaties en certificaten. Uw medewerker controleert de bron en beslist wat naar de klant gaat.",
-        "fr": "Un distributeur vous interroge sur la gestion des allergènes. Avec Orion, votre équipe qualité retrouve la réponse dans vos fiches produits et certificats. Elle vérifie la source et décide de ce qui est envoyé au client."
-      },
-      {
-        "key": "orx-16",
-        "type": "text",
-        "label": "Onderzoek in de zorg, waar overgetypte gegevens nauwkeurig worden nagekeken, vindt 2 tot 4",
-        "nl": "Onderzoek in de zorg, waar overgetypte gegevens nauwkeurig worden nagekeken, vindt 2 tot 4 fouten per 100 overgetypte velden. In vrije tekstvelden zijn dat er meer.",
-        "fr": "Des études dans le secteur des soins, où les données ressaisies sont vérifiées avec précision, trouvent 2 à 4 erreurs pour 100 champs ressaisis. Dans les champs de texte libre, il y en a davantage."
-      },
-      {
-        "key": "orx-18",
-        "type": "text",
-        "label": "Zo werkt Orion",
-        "nl": "Zo werkt Orion",
-        "fr": "Comment fonctionne Orion"
-      },
-      {
-        "key": "orx-19",
-        "type": "text",
-        "label": "Vier stappen. Orion doet het zoek- en overtypwerk, uw medewerker houdt de beslissing.",
-        "nl": "Vier stappen. Orion doet het zoek- en overtypwerk, uw medewerker houdt de beslissing.",
-        "fr": "Quatre étapes. Orion fait les recherches et les ressaisies, votre collaborateur garde la décision."
-      },
-      {
-        "key": "orx-20",
-        "type": "text",
-        "label": "U laadt de vragenlijst op",
-        "nl": "U laadt de vragenlijst op",
-        "fr": "Vous chargez le questionnaire"
-      },
-      {
-        "key": "orion-demo-formaat",
-        "type": "text",
-        "label": "U start met het Excel-bestand dat uw klant heeft gestuurd.",
-        "nl": "U start met het Excel-bestand dat uw klant heeft gestuurd.",
-        "fr": "Vous partez du fichier Excel envoyé par votre client."
-      },
-      {
-        "key": "orx-22",
-        "type": "text",
-        "label": "Orion zoekt de antwoorden",
-        "nl": "Orion zoekt de antwoorden",
-        "fr": "Orion recherche les réponses"
-      },
-      {
-        "key": "orx-23",
-        "type": "text",
-        "label": "in de documenten die u eerder opgeladen hebt: specificaties, certificaten, technische fich",
-        "nl": "in de documenten die u eerder opgeladen hebt: specificaties, certificaten, technische fiches, procedures en goedgekeurde antwoorden van vroeger.",
-        "fr": "dans les documents que vous avez chargés auparavant : spécifications, certificats, fiches techniques, procédures et réponses validées précédemment."
-      },
-      {
-        "key": "orx-24",
-        "type": "text",
-        "label": "U kijkt na.",
-        "nl": "U kijkt na.",
-        "fr": "Vous vérifiez."
-      },
-      {
-        "key": "orx-25",
-        "type": "text",
-        "label": "Bij elk antwoord staat uit welk document het komt. Vragen waar een fout zwaar weegt, zoals",
-        "nl": "Bij elk antwoord staat uit welk document het komt. Vragen waar een fout zwaar weegt, zoals allergenen of veiligheidsgegevens, staan apart gemarkeerd. Vindt Orion geen bron, dan zegt het dat.",
-        "fr": "Chaque réponse indique le document dont elle provient. Les questions où une erreur pèse lourd, comme les allergènes ou les données de sécurité, sont signalées à part. Si Orion ne trouve pas de source, il le dit."
-      },
-      {
-        "key": "orx-26",
-        "type": "text",
-        "label": "U keurt goed en verstuurt.",
-        "nl": "U keurt goed en verstuurt.",
-        "fr": "Vous validez et envoyez."
-      },
-      {
-        "key": "orx-27",
-        "type": "text",
-        "label": "U krijgt de lijst terug in hetzelfde formaat. Orion verstuurt nooit zelf iets.",
-        "nl": "U krijgt de lijst terug in hetzelfde formaat. Orion verstuurt nooit zelf iets.",
-        "fr": "Vous récupérez le questionnaire dans le même format. Orion n’envoie jamais rien lui-même."
-      },
-      {
-        "key": "orion-sector-titel",
-        "type": "text",
-        "label": "Welke vragen krijgt uw team?",
-        "nl": "Welke vragen krijgt uw team?",
-        "fr": "Quelles questions votre équipe reçoit-elle ?"
-      },
-      {
-        "key": "orx-31",
-        "type": "text",
-        "label": "Orion werkt overal waar iemand informatie opvraagt die al in uw documenten staat.",
-        "nl": "Orion werkt overal waar iemand informatie opvraagt die al in uw documenten staat.",
-        "fr": "Orion fonctionne partout où quelqu’un demande des informations qui figurent déjà dans vos documents."
-      },
-      {
-        "key": "orx-38",
-        "type": "text",
-        "label": "Kwaliteit in de voedingsproductie",
-        "nl": "Kwaliteit in de voedingsproductie",
-        "fr": "Qualité dans la production alimentaire"
-      },
-      {
-        "key": "orx-39",
-        "type": "text",
-        "label": "Retailers en industriële afnemers",
-        "nl": "Retailers en industriële afnemers",
-        "fr": "Distributeurs et clients industriels"
-      },
-      {
-        "key": "orx-40",
-        "type": "text",
-        "label": "Klantvragenlijsten en productspecificaties",
-        "nl": "Klantvragenlijsten en productspecificaties",
-        "fr": "Questionnaires clients et spécifications produit"
-      },
-      {
-        "key": "orx-41",
-        "type": "text",
-        "label": "Specificaties, allergenenmatrix, certificaten",
-        "nl": "Specificaties, allergenenmatrix, certificaten",
-        "fr": "Spécifications, matrice des allergènes, certificats"
-      },
-      {
-        "key": "orx-42",
-        "type": "text",
-        "label": "Technisch onderhoud",
-        "nl": "Technisch onderhoud",
-        "fr": "Maintenance technique"
-      },
-      {
-        "key": "orx-43",
-        "type": "text",
-        "label": "Klanten, verzekeraars en auditors",
-        "nl": "Klanten, verzekeraars en auditors",
-        "fr": "Clients, assureurs et auditeurs"
-      },
-      {
-        "key": "orx-44",
-        "type": "text",
-        "label": "Vragenlijsten over veiligheid en onderhoud",
-        "nl": "Vragenlijsten over veiligheid en onderhoud",
-        "fr": "Questionnaires sur la sécurité et la maintenance"
-      },
-      {
-        "key": "orx-45",
-        "type": "text",
-        "label": "Technische fiches, onderhoudsrapporten, keuringsattesten",
-        "nl": "Technische fiches, onderhoudsrapporten, keuringsattesten",
-        "fr": "Fiches techniques, rapports de maintenance, attestations de contrôle"
-      },
-      {
-        "key": "orx-46",
-        "type": "text",
-        "label": "Administratie",
-        "nl": "Administratie",
-        "fr": "Administration"
-      },
-      {
-        "key": "orx-47",
-        "type": "text",
-        "label": "Klanten, aankopers en overheden",
-        "nl": "Klanten, aankopers en overheden",
-        "fr": "Clients, acheteurs et pouvoirs publics"
-      },
-      {
-        "key": "orx-48",
-        "type": "text",
-        "label": "Leveranciersformulieren en aanbestedingsvragen",
-        "nl": "Leveranciersformulieren en aanbestedingsvragen",
-        "fr": "Formulaires fournisseurs et questions de marchés publics"
-      },
-      {
-        "key": "orx-49",
-        "type": "text",
-        "label": "Algemene voorwaarden, attesten, eerdere offertes",
-        "nl": "Algemene voorwaarden, attesten, eerdere offertes",
-        "fr": "Conditions générales, attestations, offres précédentes"
-      },
-      {
-        "key": "orx-50",
-        "type": "text",
-        "label": "Logistiek",
-        "nl": "Logistiek",
-        "fr": "Logistique"
-      },
-      {
-        "key": "orx-51",
-        "type": "text",
-        "label": "Verladers en klanten",
-        "nl": "Verladers en klanten",
-        "fr": "Chargeurs et clients"
-      },
-      {
-        "key": "orx-52",
-        "type": "text",
-        "label": "Vragenlijsten over transport en opslag",
-        "nl": "Vragenlijsten over transport en opslag",
-        "fr": "Questionnaires sur le transport et le stockage"
-      },
-      {
-        "key": "orx-53",
-        "type": "text",
-        "label": "Procedures, certificaten, contracten",
-        "nl": "Procedures, certificaten, contracten",
-        "fr": "Procédures, certificats, contrats"
-      },
-      {
-        "key": "orx-56",
-        "type": "text",
-        "label": "In een experiment met 758 consultants werkten wie AI gebruikte sneller en beter bij taken ",
-        "nl": "In een experiment met 758 consultants werkten wie AI gebruikte sneller en beter bij taken die AI aankan. Bij een taak buiten het bereik van AI vonden ze 19% minder vaak de juiste oplossing, en vooraf zag je dat verschil niet.",
-        "fr": "Dans une expérience menée auprès de 758 consultants, ceux qui utilisaient l’IA travaillaient plus vite et mieux sur les tâches que l’IA maîtrise. Sur une tâche hors de sa portée, ils trouvaient 19 % moins souvent la bonne solution, et cette différence ne se voyait pas à l’avance."
-      },
-      {
-        "key": "orx-70",
-        "type": "text",
-        "label": "Veelgestelde vragen",
-        "nl": "Veelgestelde vragen",
-        "fr": "Questions fréquentes"
-      },
-      {
-        "key": "orx-71",
-        "type": "text",
-        "label": "Ja. Orion werkt overal waar klanten, auditors of overheden informatie opvragen die al in u",
-        "nl": "Ja. Orion werkt overal waar klanten, auditors of overheden informatie opvragen die al in uw documenten staat. In de pilot testen we het op vragenlijsten uit uw eigen sector.",
-        "fr": "Oui. Orion fonctionne partout où des clients, des auditeurs ou les pouvoirs publics demandent des informations qui figurent déjà dans vos documents. Pendant le pilote, nous le testons sur des questionnaires de votre propre secteur."
-      },
-      {
-        "key": "orx-72",
-        "type": "text",
-        "label": "Elk antwoord toont zijn bron en gevoelige vragen worden gemarkeerd. Uw medewerker keurt al",
-        "nl": "Elk antwoord toont zijn bron en gevoelige vragen worden gemarkeerd. Uw medewerker keurt alles goed voor het vertrekt.",
-        "fr": "Chaque réponse affiche sa source et les questions sensibles sont signalées. Votre collaborateur valide tout avant l’envoi."
-      },
-      {
-        "key": "orion-demo-bestanden",
-        "type": "text",
-        "label": "Breng de Excel-vragenlijst van uw klant mee, samen met de specificaties, procedures of a",
-        "nl": "Breng de Excel-vragenlijst van uw klant mee, samen met de specificaties, procedures of attesten waarop uw antwoorden steunen. Werkt u met een ander formaat, dan bespreken we dat bij de intake.",
-        "fr": "Apportez le questionnaire Excel de votre client et les spécifications, procédures ou attestations qui étayent vos réponses. Si vous utilisez un autre format, nous en discutons lors du premier entretien."
-      },
-      {
-        "key": "orx-74",
-        "type": "text",
-        "label": "Voor de pilot start, bespreken we met uw IT-verantwoordelijke hoe Orion met uw gegevens om",
-        "nl": "Voor de pilot start, bespreken we met uw IT-verantwoordelijke hoe Orion met uw gegevens omgaat, en bezorgen we vooraf alle informatie die hij nodig heeft.",
-        "fr": "Avant le début du pilote, nous examinons avec votre responsable informatique la manière dont Orion traite vos données, et nous lui transmettons au préalable toutes les informations dont il a besoin."
-      },
-      {
-        "key": "orx-75",
-        "type": "text",
-        "label": "Dat hangt af van het aantal vragenlijsten. U start zonder groot project: in de pilot meten",
-        "nl": "Dat hangt af van het aantal vragenlijsten. U start zonder groot project: in de pilot meten we eerst hoeveel tijd u wint. Dan weten we allebei of het de moeite waard is.",
-        "fr": "Cela dépend du nombre de questionnaires. Vous commencez sans grand projet : pendant le pilote, nous mesurons d’abord le temps que vous gagnez. Nous saurons alors tous les deux si cela en vaut la peine."
-      },
-      {
-        "key": "orx-77",
-        "type": "text",
-        "label": "Test Orion op uw eigen vragenlijsten",
-        "nl": "Test Orion op uw eigen vragenlijsten",
-        "fr": "Testez Orion sur vos propres questionnaires"
-      },
-      {
-        "key": "orx-78",
-        "type": "text",
-        "label": "We starten met een paar vragenlijsten die u echt gekregen hebt. We meten hoeveel tijd ze v",
-        "nl": "We starten met een paar vragenlijsten die u echt gekregen hebt. We meten hoeveel tijd ze vandaag kosten en hoeveel met Orion. Ziet u geen verschil, dan stoppen we.",
-        "fr": "Nous commençons avec quelques questionnaires que vous avez réellement reçus. Nous mesurons le temps qu’ils prennent aujourd’hui et avec Orion. Si vous ne voyez pas de différence, nous arrêtons."
+        "label": "Een retailer vraagt hoe u allergenen beheert. Een afnemer wil uw certificaten en",
+        "nl": "Een retailer vraagt hoe u allergenen beheert. Een afnemer wil uw certificaten en uw traceerprocedure. Orion zoekt de antwoorden in de documenten die u zelf hebt goedgekeurd en zet bij elk antwoord de bron. U leest na, u keurt goed, u verstuurt.",
+        "fr": "Un distributeur vous interroge sur la gestion des allergènes. Un client veut vos certificats et votre procédure de traçabilité. Orion cherche les réponses dans les documents que vous avez vous-même approuvés et indique la source de chaque réponse. Vous relisez, vous validez, vous envoyez."
       },
       {
         "key": "cms-video-orion",
@@ -908,6 +642,314 @@ window.GF_CMS_CATALOG=[
           "nl": "",
           "fr": ""
         }
+      },
+      {
+        "key": "orion-food-probleem-3",
+        "type": "text",
+        "label": "Dezelfde vragen, telkens in een ander bestand",
+        "nl": "Dezelfde vragen, telkens in een ander bestand",
+        "fr": "Les mêmes questions, chaque fois dans un autre fichier"
+      },
+      {
+        "key": "orion-food-probleem-4",
+        "type": "text",
+        "label": "Allergenen. Certificaten. Herkomst. Traceerbaarheid. Elke klant stelt ze op zijn",
+        "nl": "Allergenen. Certificaten. Herkomst. Traceerbaarheid. Elke klant stelt ze op zijn manier, in zijn eigen Excel-bestand. Het antwoord staat ergens in uw specificaties, uw procedures of een vragenlijst van vorig jaar. Iemand moet het zoeken, overtypen en nakijken, tussen een audit en een klacht door.",
+        "fr": "Allergènes. Certificats. Origine. Traçabilité. Chaque client les pose à sa manière, dans son propre fichier Excel. La réponse se trouve quelque part dans vos spécifications, vos procédures ou un questionnaire de l’an dernier. Quelqu’un doit la chercher, la ressaisir et la vérifier, entre un audit et une réclamation."
+      },
+      {
+        "key": "orion-food-probleem-5",
+        "type": "text",
+        "label": "Elk antwoord is een handtekening van uw bedrijf. Een verouderd certificaat of ee",
+        "nl": "Elk antwoord is een handtekening van uw bedrijf. Een verouderd certificaat of een fout over een allergeen komt later terug, bij een audit of bij uw klant.",
+        "fr": "Chaque réponse engage votre entreprise. Un certificat périmé ou une erreur sur un allergène revient plus tard, lors d’un audit ou chez votre client."
+      },
+      {
+        "key": "orion-food-regels-6",
+        "type": "text",
+        "label": "Vijf regels waar Orion zich aan houdt",
+        "nl": "Vijf regels waar Orion zich aan houdt",
+        "fr": "Cinq règles qu’Orion respecte"
+      },
+      {
+        "key": "orion-food-regels-7",
+        "type": "text",
+        "label": "Deze regels zitten in de kern van Orion. Ze staan niet in een instelling die iem",
+        "nl": "Deze regels zitten in de kern van Orion. Ze staan niet in een instelling die iemand kan uitzetten.",
+        "fr": "Ces règles sont au cœur d’Orion. Elles ne figurent pas dans un paramètre que quelqu’un peut désactiver."
+      },
+      {
+        "key": "orion-food-regels-8",
+        "type": "text",
+        "label": "Vindt Orion geen bron, dan schrijft het niets. Ook geen voorstel.",
+        "nl": "Vindt Orion geen bron, dan schrijft het niets. Ook geen voorstel.",
+        "fr": "Si Orion ne trouve pas de source, il n’écrit rien. Pas même une proposition."
+      },
+      {
+        "key": "orion-food-regels-9",
+        "type": "text",
+        "label": "Is een certificaat of specificatie over datum of gewijzigd, dan blokkeert Orion ",
+        "nl": "Is een certificaat of specificatie over datum of gewijzigd, dan blokkeert Orion het antwoord tot uw kwaliteitsverantwoordelijke de bron opnieuw valideert.",
+        "fr": "Si un certificat ou une spécification est périmé ou modifié, Orion bloque la réponse jusqu’à ce que votre responsable qualité valide à nouveau la source."
+      },
+      {
+        "key": "orion-food-regels-10",
+        "type": "text",
+        "label": "Vragen over allergenen worden apart gemarkeerd. Uw kwaliteitsverantwoordelijke k",
+        "nl": "Vragen over allergenen worden apart gemarkeerd. Uw kwaliteitsverantwoordelijke kijkt ze altijd zelf na.",
+        "fr": "Les questions sur les allergènes sont signalées à part. Votre responsable qualité les vérifie toujours lui-même."
+      },
+      {
+        "key": "orion-food-regels-11",
+        "type": "text",
+        "label": "Vragen over aansprakelijkheid, vrijwaring of auditkosten gaan altijd naar een me",
+        "nl": "Vragen over aansprakelijkheid, vrijwaring of auditkosten gaan altijd naar een mens. Orion doet daar geen voorstel.",
+        "fr": "Les questions sur la responsabilité, les garanties ou les frais d’audit vont toujours à une personne. Orion n’y fait aucune proposition."
+      },
+      {
+        "key": "orion-food-regels-12",
+        "type": "text",
+        "label": "U ziet later terug welk antwoord uit welk document kwam, wie het heeft goedgekeu",
+        "nl": "U ziet later terug welk antwoord uit welk document kwam, wie het heeft goedgekeurd en wanneer.",
+        "fr": "Vous retrouvez plus tard quelle réponse venait de quel document, qui l’a validée et quand."
+      },
+      {
+        "key": "orion-food-vandaag-13",
+        "type": "text",
+        "label": "Wat Orion vandaag kan, en wat nog niet",
+        "nl": "Wat Orion vandaag kan, en wat nog niet",
+        "fr": "Ce qu’Orion fait aujourd’hui, et ce qu’il ne fait pas encore"
+      },
+      {
+        "key": "orion-food-vandaag-14",
+        "type": "text",
+        "label": "Orion is nieuw. We hebben nog geen klanten en geen gemeten cijfers over tijdwins",
+        "nl": "Orion is nieuw. We hebben nog geen klanten en geen gemeten cijfers over tijdwinst. Die meten we samen met de eerste pilotbedrijven. U leest hier dus geen beloftes over uren of procenten.",
+        "fr": "Orion est nouveau. Nous n’avons pas encore de clients ni de chiffres mesurés sur le gain de temps. Nous les mesurerons avec les premières entreprises pilotes. Vous ne lirez donc ici aucune promesse en heures ou en pourcentages."
+      },
+      {
+        "key": "orion-food-vandaag-15",
+        "type": "text",
+        "label": "Werkt vandaag",
+        "nl": "Werkt vandaag",
+        "fr": "Fonctionne aujourd’hui"
+      },
+      {
+        "key": "orion-food-vandaag-16",
+        "type": "text",
+        "label": "In ontwikkeling",
+        "nl": "In ontwikkeling",
+        "fr": "En développement"
+      },
+      {
+        "key": "orion-food-vandaag-17",
+        "type": "text",
+        "label": "Doet Orion niet",
+        "nl": "Doet Orion niet",
+        "fr": "Orion ne le fait pas"
+      },
+      {
+        "key": "orion-food-gegevens-18",
+        "type": "text",
+        "label": "Uw receptuur blijft van u",
+        "nl": "Uw receptuur blijft van u",
+        "fr": "Vos recettes restent les vôtres"
+      },
+      {
+        "key": "orion-food-gegevens-19",
+        "type": "text",
+        "label": "Voor de pilot start, bespreken we met uw IT-verantwoordelijke waar Orion draait ",
+        "nl": "Voor de pilot start, bespreken we met uw IT-verantwoordelijke waar Orion draait en welke gegevens waarheen gaan. U krijgt vooraf de verwerkersovereenkomst en de lijst van alle partijen die gegevens verwerken. Pas daarna beslist u.",
+        "fr": "Avant le début du pilote, nous examinons avec votre responsable informatique où fonctionne Orion et quelles données vont où. Vous recevez au préalable le contrat de sous-traitance et la liste de toutes les parties qui traitent des données. Vous décidez ensuite."
+      },
+      {
+        "key": "orion-food-pilot-20",
+        "type": "text",
+        "label": "Test Orion op uw eigen vragenlijsten",
+        "nl": "Test Orion op uw eigen vragenlijsten",
+        "fr": "Testez Orion sur vos propres questionnaires"
+      },
+      {
+        "key": "orion-food-pilot-21",
+        "type": "text",
+        "label": "We zoeken voedingsbedrijven in West-Vlaanderen met 20 tot 249 medewerkers voor d",
+        "nl": "We zoeken voedingsbedrijven in West-Vlaanderen met 20 tot 249 medewerkers voor de eerste pilots in 2027. We starten met een paar vragenlijsten die u echt gekregen hebt en spreken vooraf één meetbaar doel af. Ziet u geen verschil, dan stoppen we.",
+        "fr": "Nous cherchons des entreprises alimentaires de 20 à 249 collaborateurs en Flandre-Occidentale pour les premiers pilotes en 2027. Nous commençons avec quelques questionnaires que vous avez réellement reçus et nous fixons à l’avance un objectif mesurable. Si vous ne voyez pas de différence, nous arrêtons."
+      },
+      {
+        "key": "orion-food-pilot-22",
+        "type": "text",
+        "label": "een recente vragenlijst en de documenten waarin uw team de antwoorden zoekt.",
+        "nl": "een recente vragenlijst en de documenten waarin uw team de antwoorden zoekt.",
+        "fr": "un questionnaire récent et les documents que votre équipe consulte pour y répondre."
+      },
+      {
+        "key": "orion-food-pilot-23",
+        "type": "text",
+        "label": "de voorstellen bekijken, de bronnen openen en corrigeren waar nodig.",
+        "nl": "de voorstellen bekijken, de bronnen openen en corrigeren waar nodig.",
+        "fr": "examiner les propositions, consulter les sources et corriger si nécessaire."
+      },
+      {
+        "key": "orion-food-pilot-24",
+        "type": "text",
+        "label": "hoeveel tijd het zoeken en nakijken kost, vandaag en met Orion, en hoeveel antwo",
+        "nl": "hoeveel tijd het zoeken en nakijken kost, vandaag en met Orion, en hoeveel antwoorden uw team nog moet verbeteren.",
+        "fr": "le temps que prennent la recherche et la vérification, aujourd’hui et avec Orion, et le nombre de réponses que votre équipe doit encore corriger."
+      },
+      {
+        "key": "orion-food-maker-25",
+        "type": "text",
+        "label": "U spreekt met de maker",
+        "nl": "U spreekt met de maker",
+        "fr": "Vous parlez au concepteur"
+      },
+      {
+        "key": "orion-food-maker-26",
+        "type": "text",
+        "label": "Orion is gemaakt door Grow Faster, de onderneming van Erlend Hollebosch. De demo",
+        "nl": "Orion is gemaakt door Grow Faster, de onderneming van Erlend Hollebosch. De demo, de opstart en de opvolging gebeuren in het Nederlands, bij u in het bedrijf.",
+        "fr": "Orion est conçu par Grow Faster, l’entreprise d’Erlend Hollebosch. La démonstration, la mise en route et le suivi se font en néerlandais, dans votre entreprise."
+      },
+      {
+        "key": "orion-food-vragen-27",
+        "type": "text",
+        "label": "Veelgestelde vragen",
+        "nl": "Veelgestelde vragen",
+        "fr": "Questions fréquentes"
+      },
+      {
+        "key": "orion-food-vragen-28",
+        "type": "text",
+        "label": "Ja. Orion is een hulpmiddel. De kwaliteit hangt af van uw brondocumenten, en uw ",
+        "nl": "Ja. Orion is een hulpmiddel. De kwaliteit hangt af van uw brondocumenten, en uw team keurt elk antwoord goed voordat het vertrekt. Daarom toont Orion bij elk antwoord de bron.",
+        "fr": "Oui. Orion est un outil. La qualité dépend de vos documents sources, et votre équipe valide chaque réponse avant l’envoi. C’est pour cela qu’Orion affiche la source de chaque réponse."
+      },
+      {
+        "key": "orion-food-vragen-29",
+        "type": "text",
+        "label": "Om een tekst te herschrijven is die prima. Een algemene assistent werkt met wat ",
+        "nl": "Om een tekst te herschrijven is die prima. Een algemene assistent werkt met wat u hem op dat moment geeft en houdt zelf niet bij welke documenten goedgekeurd en nog geldig zijn. Orion is rond dat register gebouwd.",
+        "fr": "Pour reformuler un texte, il convient très bien. Un assistant généraliste travaille avec ce que vous lui donnez à ce moment-là et ne tient pas lui-même la liste des documents approuvés et encore valables. Orion est construit autour de ce registre."
+      },
+      {
+        "key": "orion-food-vragen-30",
+        "type": "text",
+        "label": "Nee. U begint met de documenten die u vandaag al gebruikt.",
+        "nl": "Nee. U begint met de documenten die u vandaag al gebruikt.",
+        "fr": "Non. Vous commencez avec les documents que vous utilisez déjà."
+      },
+      {
+        "key": "orion-food-vragen-31",
+        "type": "text",
+        "label": "Nog niet. Orion start bij voedingsbedrijven, omdat de vakkennis en de controles ",
+        "nl": "Nog niet. Orion start bij voedingsbedrijven, omdat de vakkennis en de controles daarvoor gebouwd zijn. Andere sectoren volgen later.",
+        "fr": "Pas encore. Orion démarre dans l’alimentaire, car les connaissances et les contrôles ont été conçus pour ce secteur. D’autres secteurs suivront."
+      },
+      {
+        "key": "orion-food-vragen-32",
+        "type": "text",
+        "label": "In de pilot meten we eerst hoeveel tijd u wint. Daarna krijgt u een vast bedrag ",
+        "nl": "In de pilot meten we eerst hoeveel tijd u wint. Daarna krijgt u een vast bedrag per bedrijf, niet per vraag en niet per gebruiker.",
+        "fr": "Pendant le pilote, nous mesurons d’abord le temps que vous gagnez. Vous recevez ensuite un montant fixe par entreprise, et non par question ni par utilisateur."
+      },
+      {
+        "key": "orion-food-vragen-33",
+        "type": "text",
+        "label": "Nog niet. Uw IT-verantwoordelijke krijgt vooraf alle informatie over beveiliging",
+        "nl": "Nog niet. Uw IT-verantwoordelijke krijgt vooraf alle informatie over beveiliging en gegevens.",
+        "fr": "Pas encore. Votre responsable informatique reçoit au préalable toutes les informations sur la sécurité et les données."
+      },
+      {
+        "key": "orion-food-final-34",
+        "type": "text",
+        "label": "Stuur ons één vragenlijst",
+        "nl": "Stuur ons één vragenlijst",
+        "fr": "Envoyez-nous un questionnaire"
+      },
+      {
+        "key": "orion-food-final-35",
+        "type": "text",
+        "label": "Kies een vragenlijst die u onlangs hebt ingevuld. We tonen u wat Orion ermee doe",
+        "nl": "Kies een vragenlijst die u onlangs hebt ingevuld. We tonen u wat Orion ermee doet, met uw eigen documenten.",
+        "fr": "Choisissez un questionnaire que vous avez rempli récemment. Nous vous montrons ce qu’Orion en fait, avec vos propres documents."
+      },
+      {
+        "key": "orion-food-werking-36",
+        "type": "text",
+        "label": "Zo werkt Orion",
+        "nl": "Zo werkt Orion",
+        "fr": "Comment fonctionne Orion"
+      },
+      {
+        "key": "orion-food-werking-37",
+        "type": "text",
+        "label": "Vier stappen. Orion doet het zoek- en overtypwerk. De beslissing blijft bij u.",
+        "nl": "Vier stappen. Orion doet het zoek- en overtypwerk. De beslissing blijft bij u.",
+        "fr": "Quatre étapes. Orion fait les recherches et les ressaisies. La décision reste chez vous."
+      },
+      {
+        "key": "orion-food-werking-38",
+        "type": "text",
+        "label": "U bepaalt de bronnen.",
+        "nl": "U bepaalt de bronnen.",
+        "fr": "Vous choisissez les sources."
+      },
+      {
+        "key": "orion-food-werking-39",
+        "type": "text",
+        "label": "U zet de documenten die u goedkeurt in het bronnenregister, met versie, vervalda",
+        "nl": "U zet de documenten die u goedkeurt in het bronnenregister, met versie, vervaldatum en de naam van wie ze heeft goedgekeurd.",
+        "fr": "Vous placez les documents que vous approuvez dans le registre des sources, avec leur version, leur date d’expiration et le nom de la personne qui les a validés."
+      },
+      {
+        "key": "orion-food-werking-40",
+        "type": "text",
+        "label": "U laadt de vragenlijst op.",
+        "nl": "U laadt de vragenlijst op.",
+        "fr": "Vous chargez le questionnaire."
+      },
+      {
+        "key": "orion-food-werking-41",
+        "type": "text",
+        "label": "U start met het Excel-bestand dat uw klant heeft gestuurd.",
+        "nl": "U start met het Excel-bestand dat uw klant heeft gestuurd.",
+        "fr": "Vous partez du fichier Excel envoyé par votre client."
+      },
+      {
+        "key": "orion-food-werking-42",
+        "type": "text",
+        "label": "Orion zoekt en controleert.",
+        "nl": "Orion zoekt en controleert.",
+        "fr": "Orion cherche et contrôle."
+      },
+      {
+        "key": "orion-food-werking-43",
+        "type": "text",
+        "label": "Orion zoekt per vraag het antwoord in uw bronnen en noteert uit welk document he",
+        "nl": "Orion zoekt per vraag het antwoord in uw bronnen en noteert uit welk document het komt. Een vaste controle toetst daarna elk antwoord aan de bron: citaten, cijfers, allergenen en ontkenningen.",
+        "fr": "Pour chaque question, Orion cherche la réponse dans vos sources et note le document dont elle provient. Un contrôle fixe compare ensuite chaque réponse à la source : citations, chiffres, allergènes et négations."
+      },
+      {
+        "key": "orion-food-werking-44",
+        "type": "text",
+        "label": "U keurt goed en verstuurt.",
+        "nl": "U keurt goed en verstuurt.",
+        "fr": "Vous validez et envoyez."
+      },
+      {
+        "key": "orion-food-werking-45",
+        "type": "text",
+        "label": "U krijgt hetzelfde Excel-bestand terug, ingevuld en leesbaar opgemaakt. Orion ve",
+        "nl": "U krijgt hetzelfde Excel-bestand terug, ingevuld en leesbaar opgemaakt. Orion verstuurt nooit zelf iets naar uw klant.",
+        "fr": "Vous récupérez le même fichier Excel, complété et lisible. Orion n’envoie jamais rien lui-même à votre client."
+      },
+      {
+        "key": "orion-food-werking-46",
+        "type": "text",
+        "label": "De film toont ook het rechtstreeks lezen van bronbestanden. Vandaag zetten we uw",
+        "nl": "De film toont ook het rechtstreeks lezen van bronbestanden. Vandaag zetten we uw documenten samen met u klaar als tekst.",
+        "fr": "Le film montre aussi la lecture directe des fichiers sources. Aujourd’hui, nous préparons vos documents avec vous sous forme de texte."
       }
     ]
   },

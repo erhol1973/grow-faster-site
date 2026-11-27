@@ -9,7 +9,7 @@ test('Orion film sits under the four steps on orion.html, plays only on request 
   assert.ok(sec.includes('class="mk-steps"')&&sec.indexOf('class="mk-steps"')<sec.indexOf('id="orion-film"'),'film follows the steps');
   assert.doesNotMatch(read('index.html'),/orion-film|orion-werking/,'the homepage no longer carries the film');
   const v=sec.match(/<video[^>]*>/)[0];
-  for(const a of ['controls','preload="none"','playsinline','poster="img/orion-werking-nl.webp"','aria-labelledby="werking-h"','aria-describedby="orion-film-text"','data-src-fr="media/orion-werking-fr.mp4"','data-poster-fr="img/orion-werking-fr.webp"'])assert.ok(v.includes(a),a);
+  for(const a of ['controls','preload="none"','playsinline','poster="img/orion-werking-nl.webp"','aria-label="Film: zo werkt Orion in vier stappen"','aria-describedby="orion-film-text"','data-src-fr="media/orion-werking-fr.mp4"','data-poster-fr="img/orion-werking-fr.webp"'])assert.ok(v.includes(a),a);
   assert.doesNotMatch(v,/\b(autoplay|muted|loop)\b/,'the film has a voice-over and never starts by itself');
   assert.match(sec,/<source src="media\/orion-werking-nl\.mp4" type="video\/mp4">/);
   assert.match(sec,/<h2 id="werking-h"/);
@@ -22,7 +22,7 @@ test('film files and posters stay within budget',()=>{
 });
 
 test('every line of the text alternative has the French wording of the French edition',()=>{
-  const c={window:{}};vm.runInNewContext(read('assets/i18n.js'),c);const I=c.window.I18N;
+  const c={window:{}};vm.runInNewContext(read('assets/i18n.js'),c);vm.runInNewContext(read('assets/i18n-orion.js'),c);const I=c.window.I18N;
   const sec=read('orion.html').match(/<details class="orion-film-text"[\s\S]*?<\/details>/)[0];
   const lines=[...sec.matchAll(/<(?:strong|span|summary)>([^<]+)</g)].map(m=>m[1].trim());assert.equal(lines.length,15);
   for(const t of lines)assert.ok(I[t]?.[1]&&I[t][1]!==t,'FR missing: '+t);

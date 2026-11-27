@@ -149,9 +149,9 @@
     const burger = document.getElementById('burger');
     if (burger) burger.setAttribute('aria-label', translated(burger.getAttribute('aria-expanded') === 'true' ? 'Close menu' : 'Menu', language));
     const ogTitle = document.querySelector('meta[property="og:title"]');
-    if (ogTitle) ogTitle.content = document.title;
+    if (ogTitle) ogTitle.content = ogTitle.dataset[language] || document.title;
     const description = document.querySelector('meta[name="description"]');
-    const localizedDescription = descriptions[pageName]?.[localeIndex[language]];
+    const localizedDescription = description?.dataset[language] || descriptions[pageName]?.[localeIndex[language]];
     if (description) description.content = localizedDescription || translated(originalDescription, language);
     const ogDescription = document.querySelector('meta[property="og:description"]');
     if (ogDescription) ogDescription.content = localizedDescription || translated(originalOgDescription, language);

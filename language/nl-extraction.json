@@ -36,7 +36,7 @@
     },
     {
       "file": "assets/cms-catalog.js",
-      "sha256": "e7c2f21503a318babb6dc5a4bf792e3c2d74aae138f6685f7c23d24e52857674"
+      "sha256": "445aaf7fc49a4bbe7f100f782d5f4c802a6e7275f7a0ee0242d7188afa8a519f"
     },
     {
       "file": "assets/cms-client.js",
@@ -112,7 +112,7 @@
     },
     {
       "file": "assets/i18n-orion.js",
-      "sha256": "10e8c4244ed92e7ee66b16438b99e5d21a3f3f8b842bab7b7d11921792623387"
+      "sha256": "826e86c9e428912517fefe103e46cb2eae9209ec19c067f87f9a5601b4fa7314"
     },
     {
       "file": "assets/i18n-sector-photos.js",
@@ -139,6 +139,10 @@
       "sha256": "f559c785bba371d7129be18a6a5f35a4eb5e3b6eeeaf87a07be0e3c687576ace"
     },
     {
+      "file": "assets/orion-locale.js",
+      "sha256": "c1a0a18afa8df734c2e9313a2d9f4e623a3fa888f59a1849d18f89539c6dbc63"
+    },
+    {
       "file": "assets/page-flip-2.0.7.js",
       "sha256": "bbaca0bbef57a22bb66a3fc69d67baf9a17fb9a9c89ec9ed35e2b91abe4bd1e7"
     },
@@ -148,11 +152,11 @@
     },
     {
       "file": "assets/site.js",
-      "sha256": "a085b4bd99cd9beeea778bbae8c932cc2bf901ae4b981aa9545a4132f072a262"
+      "sha256": "67eb654c78ae2689fca01008d7dc6d5220ac71082da3bb07857e708ca1150f07"
     },
     {
       "file": "assets/ux.js",
-      "sha256": "3bf69258dac10d29b6f3e7bd7f0665cb58635735c9b9a5dcf707fe96880a733c"
+      "sha256": "80d0e7e6aef9afc2a8230a93e1fac3896ac667a2af7c08da5ddb093b47259245"
     },
     {
       "file": "assets/workshop.js",
@@ -286,7 +290,7 @@
     },
     {
       "file": "orion.html",
-      "sha256": "cfe7ea3df503f19dd286bf67c403c5c21e3570d55c75e50eb25a7db03a892453"
+      "sha256": "495716b90bdebbfc9f6db67fcf60ec378c19a496655017135adf4a163a81bbde"
     },
     {
       "file": "privacy.html",

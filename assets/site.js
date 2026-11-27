@@ -481,7 +481,7 @@
     document.querySelectorAll("a[data-mail]").forEach(e=>e.addEventListener("click",()=>{e.href=mailFor(e)}))})();
   /* start */
   const stored=store.get("avs-lang"), nav0=(navigator.language||"nl").slice(0,2).toLowerCase();
-  const requested=new URLSearchParams(location.search).get("lang");
+  const requested=new URLSearchParams(location.search).get("lang")||document.documentElement.dataset.pageLanguage;
   const initial=Object.hasOwn(NATIVE,requested)?requested:Object.hasOwn(NATIVE,stored)?stored:(Object.hasOwn(NATIVE,nav0)?nav0:"nl");
   applyLang(initial,!!stored&&stored!==initial);
   const c0=readConsent();applyConsent(c0);
